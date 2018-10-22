@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Functioal Programming on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/functioal-programming/</link>
+    <description>Recent content in Functioal Programming on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 18 Oct 2016 21:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/functioal-programming/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>자바스크립트 함수형 프로그래밍 연습 - Table 테그 레퍼</title>
+      <link>http://taewan.kim/post/functional_javascript/</link>
+      <pubDate>Tue, 18 Oct 2016 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/functional_javascript/</guid>
+      <description>최근에 함수형 언어을 다른 시각에서 접근한다는 취지로 &amp;ldquo;함수형 자바스크립트 : 새롭고 올바른 자바스크립트 프로그래밍 기법&amp;ldquo;을 보고 있습니다. (기존에는 Scala를 중심으로 함수형을 접근했습니다.) 이 책의 4장까지의 내용을 기초로 테이블 테그 래퍼를 작성해 보았습니다.
+이 책에서는 함수형을 지원하기 위해서 underscore.js를 사용하고 있지만, ES6는 함수형의 핵심 함수들을 대부분 포함하고 있습니다.
+첫번째 구현체를 ES6 코드로 작성해 보았습니다.
+코드를 리뷰해 주신 분의 의견은 &amp;ldquo;함수형을 빙지한 순차적 프로그래밍이다&amp;rdquo;라는 리뷰를 받았습니다. 함수형 코드를 모방한 함수를 사용하기는 했지만 지역변수가 존재하고 제어문이 그대로 노출되는 문제를 안고 있습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

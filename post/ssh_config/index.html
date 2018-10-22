@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>ssh config 설정 방법</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="ssh config 설정 방법" />
+<meta property="og:description" content="클라우드 서비스에 접근하기 위해서 혹은 github에 인증을 받기 위해서 ssh 보안키를 생성하는 절차가 필요합니다. " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/post/ssh_config/" />
+
+
+
+<meta property="article:published_time" content="2017-03-05T12:07:16&#43;09:00"/>
+<meta property="article:modified_time" content="2017-03-05T12:07:16&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=bsh&amp;skin=sons-of-obsidian"></script>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		
+		
+		<header class="post__header clearfix">
+			<h1 class="post__title">ssh config 설정 방법 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2017-03-05 12:07:16 &#43;0900 KST">March 05, 2017</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/tech-tip" rel="category">Tech Tip</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://oracloud-kr-teamrepo.github.io/2017/04/sshkey/post.jpg" alt="ssh config 설정 방법">
+			</figure>
+			
+
+<p>하나의 컴퓨터에서 복수의 SSH 키를 사용할 경우 SSH 접속에 사용하는 ssh 명령이 복잡해지는 단점이 있습니다.
+이러한 복잡성은 SSH config 파일을 이용하여 해결할 수 있습니다.</p>
+
+<p>이 문서는 SSH 키 파일을 이미 갖고있는 것을 전제로 합니다. 아직 SSH 키를 생성하지 않은 상태라면,
+다음 문서를 참조하시기 바랍니다.</p>
+
+<ul>
+<li><a href="/post/ssh_key/">윈도우, 리눅스, 맥에서 ssh 보안키 생성</a></li>
+</ul>
+
+<h2 id="ssh-명령-기본-사용법">ssh 명령 기본 사용법</h2>
+
+<p>ssh 명령의 기본 사용법은 다음과 같습니다.</p>
+
+<pre class="prettyprint">
+> ssh 사용자ID@서버명
+</pre>
+
+<p>다음과 같은 명령을 내릴 때 ssh 명령은 &ldquo;~/.ssh/id_rsa&rdquo; 키 파일을 사용하여,
+52.79.103.139 서버에 ubuntu 계정으로 로그인을 시도합니다.</p>
+
+<pre class="prettyprint">
+> ssh ubuntu@52.79.103.139
+Welcome to Ubuntu 14.04.3 LTS (GNU/Linux 3.13.0-74-generic x86_64)
+
+Last login: Mon Feb  1 01:44:13 2016 from 211.210.76.6
+ubuntu@ip-172-31-11-175:~$ pwd
+/home/ubuntu
+ubuntu@ip-172-31-11-175:~$
+</pre>
+
+<p>기본 SSH 키(<code>~/.ssh/id_rsa</code>)가 아닌 다른 SSH 키 파일을 사용해야 한다면,
+ 다음과 같이 -i 옵션을 사용해야 합니다.</p>
+
+<pre class="prettyprint">
+> ssh ubuntu@52.79.103.139 -i ~/.ssh/aws-seoul.pem
+Welcome to Ubuntu 14.04.3 LTS (GNU/Linux 3.13.0-74-generic x86_64)
+
+Last login: Mon Feb  1 02:10:40 2016 from 211.210.76.6
+ubuntu@ip-172-31-11-175:~$
+</pre>
+
+<p>위 명령은 SSH 키 파일을 직접 지정해야 하므로 사용하기 부담스러운 면이 있습니다.
+ssh 명령을 단순하게 사용하는 방법의 하나는 다음과 같은 alias를 사용하는 것입니다.</p>
+
+<pre class="prettyprint">
+> alias awsssh="ssh ubuntu@52.79.103.139 -i ~/.ssh/aws-seoul.pem"
+> awsssh
+Welcome to Ubuntu 14.04.3 LTS (GNU/Linux 3.13.0-74-generic x86_64)
+
+Last login: Mon Feb  1 02:23:47 2016 from 211.210.76.6
+ubuntu@ip-172-31-11-175:~$
+</pre>
+
+<p>alias를 사용하면 명령을 쉽게 입력할 수 는 있지만 별도로 alias를 관리한다는 부담이 증가합니다.<br />
+또한 ssh 명령은 인증서, 서버 포트, 포트 포워딩 등 다양한 설정 옵션이 있으므로,
+다양한 옵션 변경에 효과적으로 대응하기에 어렵다는 단점이 있습니다.</p>
+
+<h2 id="ssh-config-설정-파일">~/.ssh/config 설정 파일</h2>
+
+<p>여러 ssh 키 파일들을 사용할 때 발생하는 문제는 <code>~/.ssh/config</code> 파일로 해결할 수 있습니다.
+다음은 일반적인 형태의 <code>~/.ssh/config</code> 파일 구성입니다.</p>
+
+<pre class="prettyprint">
+### for aws
+Host aws-ubuntu1
+    HostName 52.79.103.139
+    IdentityFile ~/.ssh/aws-seoul.pem
+
+Host aws-ubuntu2
+    HostName 52.79.103.139
+    User ubuntu
+    IdentityFile ~/.ssh/aws-seoul.pem   
+
+## for git
+Host github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa_XXXXXXXXXXXX
+Host bitbucket.org
+    User git
+    IdentityFile ~/.ssh/id_rsa_@@@@@@@@@@@@
+</pre>
+
+<p>위 설정 파일은 2개의 아마존 서버와 github 및 bitbucket 서버 설정으로 구성되어 있습니다.
+위 예제에서 아마존 AWS 서버는 다음의 두 가지 방법으로 로그인할 수 있습니다.
+SSH config 설정을 사용할 경우,
+복수의 인증서를 사용하는 상황에서도 다음과 같이 ssh 명령을 단순하게 유지할 수 있습니다.</p>
+
+<pre class="prettyprint">
+> ssh ubuntu@aws-ubuntu1
+Welcome to Ubuntu 14.04.3 LTS (GNU/Linux 3.13.0-74-generic x86_64)
+
+Last login: Mon Feb  1 02:37:28 2016 from 211.210.76.6
+ubuntu@ip-172-31-11-175:~$
+</pre>
+
+<p>아래의 경우 aws-ubuntu2에 로그인 계정명을 등록하였기 때문에 ssh 명령을 더욱 단순하게 사용 가능합니다.</p>
+
+<pre class="prettyprint">
+> ssh aws-ubuntu2
+Welcome to Ubuntu 14.04.3 LTS (GNU/Linux 3.13.0-74-generic x86_64)
+
+Last login: Mon Feb  1 02:56:27 2016 from 211.210.76.6
+ubuntu@ip-172-31-11-175:~$
+</pre>
+
+<h2 id="ssh-config-권한-설정">~/.ssh/config 권한 설정</h2>
+
+<p>SSH 설정 파일은 다른 사용자가 사용할 경우 심각한 보안 문제가 발생할 수 있습니다.
+따라서 다음과 같이 오로지 파일 소유권자만이 설정 파일을 읽을 수 있도록 권한을 제한해야 합니다.</p>
+
+<pre class="prettyprint">
+chmod 440 ~/.ssh/config
+</pre>
+
+<h2 id="ssh-설정-파일-구성">ssh 설정 파일 구성</h2>
+
+<p>SSH 설정 파일의 기본 형태는 다음과 같습니다.</p>
+
+<pre class="prettyprint">
+Host firsthost
+    SSH_OPTION_1 custom_value
+    SSH_OPTION_2 custom_value
+    SSH_OPTION_3 custom_value
+
+Host secondhost
+    ANOTHER_OPTION custom_value
+
+Host *host
+    ANOTHER_OPTION custom_value
+
+Host *
+    CHANGE_DEFAULT custom_value
+</pre>
+
+<p>SSH 설정 파일의 옵션 값은 다음과 같이 3가지 방법으로 설정 할 수 있습니다.
+다음 3 가지는 모두 유효한 설정입니다.</p>
+
+<pre class="prettyprint">
+Port 4567
+Port=4567
+Port = 4567
+</pre>
+
+<h3 id="호스트-맵핑">호스트 맵핑</h3>
+
+<p>호스트 맵핑은 Host 속성과 Hostname 속성을 이용하여 실제 호스트 URL에 맵핑을 합니다.</p>
+
+<ul>
+<li>Host: ssh 명령에 사용하는 이름</li>
+<li>Hostname: Host에 지정된 이름이 매핑되는 실제 호스트 명</li>
+</ul>
+
+<pre class="prettyprint">
+Host dev
+    HostName dev.taewan.kim
+    Uset admin
+</pre>
+
+<p>위와 같이 설정된 상태에서 &ldquo;ssh dev&rdquo;이 실행된다면 다음과 같은 명령으로 변환되어 실행됩니다.</p>
+
+<pre class="prettyprint">
+ssh admin@dev.taewan.kim -i ~/.ssh/id_rsa"
+</pre>
+
+<h3 id="서브-도메인-등-와일드카드-문자-지정">서브 도메인 등 와일드카드 문자 지정</h3>
+
+<p>다음과 같이 와일드카드 문자로 호스트 명을 지정 할 수 있습니다. 이 경우 taewan.kim의 서브 도메인에 모두 적용됩니다.</p>
+
+<pre class="prettyprint">
+Host *.taewan.kim
+    User taewan
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/taewan.dev
+</pre>
+
+<h2 id="ssh-config의-주요-속성">ssh config의 주요 속성</h2>
+
+<h3 id="일반-속성">일반 속성</h3>
+
+<ul>
+<li>Hostname: 연결될 서버 호스트 명으로 사용됨.
+
+<ul>
+<li>선택적 속성</li>
+<li>미 설정시 Host 값이 Hostname으로 사용됨</li>
+</ul></li>
+<li>User: 네트웍 커넥션에 사용되는 계정 명</li>
+<li>Port: 원격 ssh 데몬이 사용하는 포트, 기본 값=22</li>
+</ul>
+
+<h3 id="네트웍-속성">네트웍 속성</h3>
+
+<ul>
+<li>ServerAliveInterval
+
+<ul>
+<li>서버에 테스트 패킷을 전송하는 주기 설정</li>
+<li>초단위 설정</li>
+<li>기본 값: 0</li>
+</ul></li>
+<li>ServerAliveCountMax
+
+<ul>
+<li>서버에 테스트용 패킷을 전송하는 횟수를 설정</li>
+<li>서버에 추가적인 데이터 전송 없이 ServerAliveInterval의 최대 임계 값을 초과할 경우 커넥션 종료</li>
+<li>기본값: 3</li>
+<li>예: ServerAliveInterval 15, ServerAliveCountMax 3
+
+<ul>
+<li>통신없이 45초 결과후 커넥션 종료</li>
+</ul></li>
+</ul></li>
+<li>LogLevel
+
+<ul>
+<li>클라이언트 측의 로그 레벨</li>
+<li>최소 로그: QUIET</li>
+<li>최대 로그: DEBUG3</li>
+<li>설정 값: [&ldquo;QUIET&rdquo;,&ldquo;FATAL&rdquo;,&ldquo;ERROR&rdquo;,&ldquo;INFO&rdquo;,&ldquo;VERBOSE&rdquo;,&ldquo;DEBUG1&rdquo;,&ldquo;DEBUG2&rdquo;,&ldquo;DEBUG3&rdquo;]</li>
+</ul></li>
+<li>StrictHostKeyChecking
+
+<ul>
+<li>~/.ssh/known_hosts에 자동으로 호스트를 추가하는 설정</li>
+<li>기본 설정은 저장을 질문 함</li>
+<li>비활성 설정: &ldquo;no&rdquo;</li>
+</ul></li>
+<li>UserKnownHostsFile
+
+<ul>
+<li>연결된 호스트에 대한 정보를 남기는 파일을 지정하는 설정</li>
+<li>기본 값: ~/.ssh/known_hosts</li>
+<li>일반적으로 이 설정을 변경하지 않음</li>
+<li>StrictHostKeyChecking을 &ldquo;no&rdquo;로 설정할 경우에 이 설정을 &ldquo;/dev/null&rdquo;로 설정</li>
+</ul></li>
+<li>VisualHostKey
+
+<ul>
+<li>원격지의 호스트 키를 클라이언트 접속시 출력</li>
+</ul></li>
+<li>Compression
+
+<ul>
+<li>느린 네트웍 상에서 네트웍 패킷을 압축하는 옵션</li>
+<li>일반적인 상황에서 사용하지 않음</li>
+</ul></li>
+</ul>
+
+<h3 id="ssh-키-지정">ssh 키 지정</h3>
+
+<ul>
+<li>IdentityFile
+
+<ul>
+<li>Host 별로 사용할 키의 위치를 지정</li>
+<li>기본값: 프로토콜에 따라 결정 됨 (~/.ssh/id_rsa or ~/.ssh/id_dsa)</li>
+</ul></li>
+</ul>
+
+<h3 id="multiplexing">Multiplexing</h3>
+
+<p>ssh 명령은 하나의 서버에 접속하는 여러 SSH 커넥션을 하나의 TCP 커넥션을 사용하여 연결하는 기능을 제공합니다.
+복수의 SSH 커넥션으로 발생하는 부하를 제거하는 용도로 적합</p>
+
+<ul>
+<li>ControlMaster
+
+<ul>
+<li>Multiplexing을 허용하는 옵션</li>
+<li>허용 설정 값: auto</li>
+</ul></li>
+<li>ControlPath
+
+<ul>
+<li>커넥션을 제어하는 용도로 사용하는 socket 파일 지정</li>
+<li>/path/to/socket/%r@%h:%p
+
+<ul>
+<li>r: username</li>
+<li>h: remote host</li>
+<li>p: port</li>
+</ul></li>
+</ul></li>
+<li>ControlPersist
+
+<ul>
+<li>커넥션이 유지해야 할 시간을 초단위로 지정</li>
+<li>초단위 설정</li>
+<li>낮은 값을 설정할 경우 불필요한 커넥션 연결 오픈을 방지할 수 있음</li>
+</ul></li>
+</ul>
+
+<h2 id="요약">요약</h2>
+
+<p>하나의 컴퓨터에서 여러 개의 SSH 키 파일를 유지하는 것은 매우 번거로운 일입니다.
+최근에 여러 클라우드 서비스, github, bitbucket, gitlab 등 SSH 키 인증을 사용하는 서비스가 늘어나면서
+ssh 키 파일 관리가 필요한 상황입니다.</p>
+
+<p>ssh config 파일을 이용하면 도메인, ip 혹은 서버의 alias명 별로 접속 계정, SSH 키 파일, ssh 명령 속성
+을 설정할 수 있기 때문에 ssh 명령을 간결하게 유지하는 방법을 제공합니다.</p>
+
+<p>ssh config는  <code>~/.ssh/config</code>파일입니다.
+이 파일은 소유권자만이 접근할 수 있도록 퍼미션을 <code>400</code>으로 제한해야 합니다.</p>
+
+<h2 id="참고자료">참고자료</h2>
+
+<ul>
+<li><a href="http://taewan.kim/blog/2016/01/28/ssh_config/">ssh 사용을 단순화하기 위한 ssh config 설정</a>:  <code>http://taewan.kim/blog/2016/01/28/ssh_config/</code></li>
+<li><a href="http://www.popit.kr/ssh-key-효율적인-관리-방법/">ssh key 효율적인 관리 방법</a>: <code>http://www.popit.kr/ssh-key-효율적인-관리-방법/</code></li>
+</ul>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/cloud/" rel="tag">cloud</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/ssh/" rel="tag">ssh</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/ssh_key/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">윈도우, 리눅스, 맥에서 ssh 보안키 생성</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/changing_trial_account/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">Oracle Cloud 트라이얼 계정 지원 방식 변경</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/post/ssh_config/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#ssh-명령-기본-사용법">ssh 명령 기본 사용법</a></li>
+<li><a href="#ssh-config-설정-파일">~/.ssh/config 설정 파일</a></li>
+<li><a href="#ssh-config-권한-설정">~/.ssh/config 권한 설정</a></li>
+<li><a href="#ssh-설정-파일-구성">ssh 설정 파일 구성</a>
+<ul>
+<li><a href="#호스트-맵핑">호스트 맵핑</a></li>
+<li><a href="#서브-도메인-등-와일드카드-문자-지정">서브 도메인 등 와일드카드 문자 지정</a></li>
+</ul></li>
+<li><a href="#ssh-config의-주요-속성">ssh config의 주요 속성</a>
+<ul>
+<li><a href="#일반-속성">일반 속성</a></li>
+<li><a href="#네트웍-속성">네트웍 속성</a></li>
+<li><a href="#ssh-키-지정">ssh 키 지정</a></li>
+<li><a href="#multiplexing">Multiplexing</a></li>
+</ul></li>
+<li><a href="#요약">요약</a></li>
+<li><a href="#참고자료">참고자료</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

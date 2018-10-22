@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Google on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/google/</link>
+    <description>Recent content in Google on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 29 Mar 2018 21:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/google/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>구글 vs 오라클 Java 라이센스 전쟁</title>
+      <link>http://taewan.kim/post/android_java_war_8years/</link>
+      <pubDate>Thu, 29 Mar 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/android_java_war_8years/</guid>
+      <description>지난 8년간 오라클과 구글의 자바 라이센스 분쟁이 끝났습니다. 재판 과정을 지켜보면서 제가 느낀 감정과 사견을 정리해 보겠습니다. 이 글은 전적으로 저 개인의 사견임을 먼저 밝힙니다.
+재심에서 재판부는 구글은 오라클에 라이센스를 지급할 것을 판결했고, 구글의 대법원 상고 요청이 기각되었습니다. 실질적으로 최종 판결인 것으로 판단됩니다. 앞으로 라이센스 규모 산정 및 협상이 이루어질 것입니다.
+ 그림 1: 구글, 지재권 소송서 오라클에 패배…자바     관련기사 링크: 구글, 지재권 소송서 오라클에 패배…자바  오라클 재판 승소 기사를 보면 다음과 같은 내용을 포함합니다.</description>
+    </item>
+    
+  </channel>
+</rss>

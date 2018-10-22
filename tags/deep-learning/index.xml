@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deep Learning on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/deep-learning/</link>
+    <description>Recent content in Deep Learning on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 07 Oct 2018 19:59:47 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker Image: 파이썬 기반 머신러닝 학습용 이미지</title>
+      <link>http://taewan.kim/docs/docker4ml/</link>
+      <pubDate>Sun, 07 Oct 2018 19:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/docs/docker4ml/</guid>
+      <description>파이썬으로 데이터를 분석하고 머신러닝을 수행하기 위해서 필요한 환경을 Docker 이미지 &amp;lsquo;pyml&amp;lsquo;을 만들어 운영하고 있습니다. 컴퓨터에 Docker가 설치되어 있다면 바로 Docker 이미지를 다운받아 사용할 수 있습니다.
+&amp;lsquo;pyml&amp;rsquo; 더커 이미지는 주기적으로 업데이트되며 docker hub 레파지토리에서 운영됩니다.
+ https://hub.docker.com/r/taewanme/pyml/  이 문서에서는 &amp;lsquo;pyml&amp;rsquo; 더커 이미지의 주요 정보와 설치 방법에 대한 최신 정보를 제공하겠습니다.
+pyml Docker 최신 정보 pyml Docker 이미지 버전 pyml Docker 이미지 버전은 다음 URL의 Tags 페이지에서 확인 할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>Bookbark for Living</title>
+      <link>http://taewan.kim/bookmark/living/</link>
+      <pubDate>Mon, 27 Aug 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/bookmark/living/</guid>
+      <description> 날씨  바람 방향 시뮬레이션  https://earth.nullschool.net/#current/wind/surface/level/orthographic=132.48,19.90,491   Learning  https://www.lynda.com/  </description>
+    </item>
+    
+    <item>
+      <title>Bookbark for Machine Learning</title>
+      <link>http://taewan.kim/bookmark/machine_learning/</link>
+      <pubDate>Mon, 27 Aug 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/bookmark/machine_learning/</guid>
+      <description>Article  https://towardsdatascience.com/  Article 공유 사이트 머신러닝 다양한 주제의 블로그 타입 정보  https://www.datascience.com/blog  머신러닝 관련 공동 블로깅 datascience.com 운영   정보통신  정보통신기술용어해설  http://www.ktword.co.kr/m/index.php 통계, 정보통신, 수학 용어 사전   확률 통계  확률 통계 기초 블로그  https://m.blog.naver.com/PostList.nhn?blogId=mykepzzang&amp;amp;currentPage=1 https://blog.naver.com/PostList.nhn?blogId=mykepzzang  수학 용어 백과 사전  http://www.mathlove.kr/shop/mathlove/share/share_01.php?tm=1&amp;amp;menus=share1 수학 용어 관련 영문/한글 설명으로 구성  통계 용어 사전  https://www.hf.go.kr/research/portal/bbs/dic/searchBulletinPage.do 주책 금융 통계 시스템의 용어 사전  강의</description>
+    </item>
+    
+    <item>
+      <title>Bookmark for Machine Learning</title>
+      <link>http://taewan.kim/bookmark/oracle/</link>
+      <pubDate>Mon, 27 Aug 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/bookmark/oracle/</guid>
+      <description> Oracle Official Blog  Big Data Spatial and Graph: https://blogs.oracle.com/bigdataspatialgraph/ Big Data &amp;amp; Data Integration - Japan https://blogs.oracle.com/bigdata-dataintegration-jp/ Big Data Blog: https://blogs.oracle.com/bigdata/ https://blogs.oracle.com/cloudnative/ https://blogs.oracle.com/cloud-platform/ https://blogs.oracle.com/datawarehousing https://blogs.oracle.com/developers/ https://blogs.oracle.com/thejavatutorials/ https://blogs.oracle.com/java/ https://blogs.oracle.com/r/ https://blogs.oracle.com/wercker/  Oracle Cloud  Data Center:  https://cloud.oracle.com/data-regions   Oracle Machine Learning  Oracle Data Miner를 이용한 감성 분석
+ http://www.oracle.com/webfolder/technetwork/tutorials/obe/db/12c/r1/dm/dm_41/ODM12c-17-2_EMClus.html#overview   </description>
+    </item>
+    
+    <item>
+      <title>[Handson_ML]ch02: ML 프로젝트 처음부터 끝까지</title>
+      <link>http://taewan.kim/til/handson_ml_ch02/</link>
+      <pubDate>Thu, 26 Jul 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/handson_ml_ch02/</guid>
+      <description>머신러닝 프로제트 절차
+ 머신러닝 프로제트 절차
+ 문제 정의 데이터 수집 Data Discovery: 탐색과 시각화 for Insight 데이터 전처리 모델 선택 및 훈련 모델 미세 조정 해법(Solution) 제시 시스템 구축 및 모니터링, 유지보수   Dataset  주요 데이터 공개 사이트
+ UC 얼바인: http://archive.ics.uci.edu/ml Kaggle: http://www.kaggle.com/datasets AWS: http://aws.amazon.com/ko/datasets meta potal site  http://dataportals.org http://opendatamonitor.eu http://quandl.com  인기 데이터셋 목록  List of datasets for machine learning research in wikipedia https://www.</description>
+    </item>
+    
+    <item>
+      <title>[Handson_ML]ch05: SVM</title>
+      <link>http://taewan.kim/til/handson_ml_ch05/</link>
+      <pubDate>Thu, 26 Jul 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/handson_ml_ch05/</guid>
+      <description> SVM  적용 분야: 선형 분류, 비선형 분류, 회귀, 이상치 탐색 적용 데이터: 중/소 규모 데이터에 적합 복잡한 데이터를 잘 풀이
+ 용어
+ Large Margin Classification: 라지 마진 분류 Support Vector: 도로 경계에 위치한 데이터  SVM은 도로 경계를 나누는 모델
+ 데이터의 Scale에 민감하게 만응 정규화를 선행해야 함 레이블을 반환, 확률을 반환하지 않음  SVM의 유형
+ Hard Margin 분류: 하드 마진 분류  선형 분류가 가능해야 함 이상치에 만김함 일반화 성능 떨어짐  Soft Margin 분류: 소프트 마진 분류  마진 오류(Margin Violation)과 Margin의 균형 감 sklearn에서는 C 파라미터로 균형정도 설정  $C=\frac{1}{\lamba}$      선형 SVM  sklearn 클래스  LinearSVC(C=1, loss=&amp;lsquo;hinge&amp;rsquo;) SVC(kernel=&amp;ldquo;linear&amp;rdquo;, C=1)  데이터 셋이 커지면 속도가 느림  SGCClassfier(loss=hinge, alpha=1/(m*c))  경사 하강법 사용 속도는 LinearSVC보다 느리지만 대용량 데이터에 대하여 효과적으로 대응    비선형 SVM </description>
+    </item>
+    
+    <item>
+      <title>[Coursera]Neural network and deep Learning: Week2</title>
+      <link>http://taewan.kim/til/deeplearning_s01_week02/</link>
+      <pubDate>Mon, 09 Jul 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/deeplearning_s01_week02/</guid>
+      <description> Coursera에서 deeplearning.ai가 운영하는 &amp;lsquo;Neural network and deep learning ]&amp;lsquo;의 2주차 강의 정리입니다.
+ 강의 구성  Logistic Regression as a Neural Network  Binary Classification Logistic Regression Logistic Regression Cost Function Gradient Descent Derivatives More Derivative Examples Computation Graph Derivative with a computation graph Logistic Regression Gradient Descent Gradient Descent m Examples  Python and Vectorization  Vectorization More Vectorization Examples Vectorizing Logistic Regression Vectorizing Logistic Regression&amp;rsquo;s Gradient Output Broadcasting in Python A note on python/numpy vectors Quick tour of jupyter notebooks Explanation of logistic regression cost function    Logistic Regression as a Neural Network  for문을 지향하고 Vectorization을 수행 forward propagation과 back propagation을 소개  Binary Classification  Logistic regression은  </description>
+    </item>
+    
+    <item>
+      <title>[Coursera]Neural network and deep Learning: Week1</title>
+      <link>http://taewan.kim/til/deeplearning_s01_week01/</link>
+      <pubDate>Sun, 08 Jul 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/deeplearning_s01_week01/</guid>
+      <description>Coursera에서 deeplearning.ai가 운영하는 &amp;lsquo;Neural network and deep learning ]&amp;lsquo;의 1주차 강의 정리입니다.
+ 동영상 목록  Welcome: (5min) What is a neural network (7min) Surpervised Learning with neural network (8min) Why is deep learning taking off? (10min) About This Courses? (2min) Frequently asked questions? (10min)   Welcome(5min)  AI is the new electircity 100년 전부터 전기 공급이 모든 산업계를 변화 시켰던 것 처럼, AI도 모든 산업계를 변화 시키고 있다.</description>
+    </item>
+    
+    <item>
+      <title>Docker Image: 파이썬 기반 머신러닝 학습용 이미지 </title>
+      <link>http://taewan.kim/post/python_env_for_machine_learning/</link>
+      <pubDate>Fri, 06 Jul 2018 19:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/python_env_for_machine_learning/</guid>
+      <description>파이썬을 기반으로 머신러닝이나 딥러닝 작업을 진행할 때 가장 귀찮고 꺼려지는 작업은 기본 환경을 준비하는 과정입니다. 파이썬 기본 환경을 효과적으로 관리하기 위해서 Docker Image 형태로 PYML을 만들었습니다. PYML은 텐서플로우, 파이토치, 케라스 및 Scikit-Learn을 활용하여 데이터를 분석할 수 있는 환경이며 UI로 IPython을 사용합니다.
+taewanme/pyml 컨테이너 이미지 pyml 더커 이미지는 docker hub에 자동 빌드 프로젝트 형태로 배포되어 있습니다. pyml을 관리하는 레파지토리 주소는 다음 URL과 같습니다.
+ https://hub.docker.com/r/taewanme/pyml/  2018년 7월 5일 현재 최신 버전은 0.</description>
+    </item>
+    
+    <item>
+      <title>Machine Learning 용어집</title>
+      <link>http://taewan.kim/docs/ml_glossary/</link>
+      <pubDate>Tue, 20 Mar 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/docs/ml_glossary/</guid>
+      <description>머신러닝 관련 용어를 정리합니다. 머신러닝 원문 용어의 한글 맵핑과 관련 정보를 정리합니다.
+A  Accuracy: 정확도  분류 성능 모델 성능 지표 다중 클래스 분류에서 정확도  $\frac{#True Positive}{#Total Examples}$  이진 분류 정확도  $\frac{#True Positive + #True Negative}{#Total Examples}$   Activation function: 활성화 함수 Adam: Adaptive Moment Estimation  과거의 미분값의 방향과 분산을 계속 가중평균 내에서 효과적인 업데이트 방향과 크기 선택  AdamGrad  미분값의 크기를 추적하고 학습률을 데이터에 적응  Affine transformation: 어파인 변환 Algorithm: 알고리즘  입력을 출력으로 변환하기 위해 수행되는 명령의 순서  Anomaly Detection: 이상 탐지 Area under the curve(AUC): 곡선 아래 면적  관련 용어: ROC 곡선  Artificial Neural Network: 인공신경망 Association Rule Learning: 연관 규칙 학습 Autoencoder: 오토인코더 Average pooling: 평균 풀링  B  backpropagation: 오차역전파법 Backpropagation Through Time: 시간 기반 오차역전파법 Backward propagation: 역전파 Batch: 배치 Batch Learning: 배치 학습 Batch Nomalization: 배치 정규화  학습 속도 향상 과대적홥 방지 초깃값에 크게 의존하지 않음  Bayesian: 베이지언  불확실성을 정량화하는 것을 목표로 하는 통계확 관점 베이지언은 확률을 빈도의 개념이 아니라 믿음의 정도로 해석하는 관점  Bias: 편향 Bidirected RNN: 양방향 순환 신경망 binary classification: 이진 분류  상호 배타적인 두 클래스 중 하나를 출력하는 분류 예: &amp;lsquo;스팸&amp;rsquo; / &amp;lsquo;스팸 아님&amp;rsquo;  bilinear interpolation: 이중선형 보간</description>
+    </item>
+    
+    <item>
+      <title>CNN, Convolution Neural Network 요약</title>
+      <link>http://taewan.kim/post/cnn/</link>
+      <pubDate>Thu, 04 Jan 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/cnn/</guid>
+      <description>Fully Connected Layer1 만으로 구성된 인공 신경망의 입력 데이터는 1차원(배열) 형태로 한정됩니다. 한 장의 컬러 사진은 3차원 데이터입니다. 배치 모드에 사용되는 여러장의 사진은 4차원 데이터입니다. 사진 데이터로 전연결(FC, Fully Connected) 신경망을 학습시켜야 할 경우에, 3차원 사진 데이터를 1차원으로 평면화시켜야 합니다. 사진 데이터를 평면화 시키는 과정에서 공간 정보가 손실될 수밖에 없습니다. 결과적으로 이미지 공간 정보 유실로 인한 정보 부족으로 인공 신경망이 특징을 추출 및 학습이 비효율적이고 정확도를 높이는데 한계가 있습니다. 이미지의 공간 정보를 유지한 상태로 학습이 가능한 모델이 바로 CNN(Convolutional Neural Network)입니다.</description>
+    </item>
+    
+    <item>
+      <title>신경망 W 행렬 표기법: &#39;ij&#39;/&#39;ji&#39; 의 차이점?</title>
+      <link>http://taewan.kim/post/wij_and_wji/</link>
+      <pubDate>Sat, 23 Dec 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/wij_and_wji/</guid>
+      <description>제가 처음에 딥러닝을 학습할 때 가장 혼란스러웠던 것은 입력 레이어의 데이터와 가중치 W의 합 표현하는 &amp;ldquo;Z(Weighted Sum)&amp;rdquo; 수식이 문서마다 다른 것이었습니다.
+  &amp;lt;식 1&amp;gt;. Z(Weighted Sum)을 표현하는 수식 $$ \begin{align} Z^{[l]} &amp;amp; = W^{[l]T}A^{[l-1]} &amp;amp; (1) \\
+Z^{[l]} &amp;amp; = W^{[l]}A^{[l-1]} &amp;amp; (2) \end{align} $$   &amp;lt;식 1&amp;gt;의 (1)과 (2)는 다른 수식임에도 어떤 자료는 (1)과 같이 표현하고 어떤 자료는 (2)와 같이 표현합니다. &amp;lt;식 1&amp;gt; 표기법의 각 요소는 다음과 정리할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>딥러닝 역전파 수식 행렬의 전치(Transpose) 기준?</title>
+      <link>http://taewan.kim/post/backpropagation_matrix_transpose/</link>
+      <pubDate>Wed, 20 Dec 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/backpropagation_matrix_transpose/</guid>
+      <description>Backpropagation을 직접 구현하는 과정에서 이유 없이 갑자기 발생하는 행렬 전치(Transpose)와 관련된 의문점이 오랜 기간 절 괴롭혔습니다. Backpropagation을 하기 위해서 Cost Function을 해당 계층의 W(가중치)로 편미분 한 후, 현재 W를 수정하는 수식을 유도하는 과정에서 일부 행렬이 전치행렬로 갑자기 변경됩니다. 문제는 제가 행렬이 전치(Transpose)되는 근거와 기준을 이해할 수가 없다는 것입니다. 딥러닝 책이나 웹 문서를 찾아보면 &amp;ldquo;편미분 과정에서 적당히 행렬을 맞춰준다.&amp;ldquo;라는 표현으로 이 부분을 설명합니다. 제가 찾고 싶었던 답은 Backpropagation 미분 과정에서 행렬의 방향성(Transpose 할 것이나 말 것이냐)은 어떻게 결정되는가입니다.</description>
+    </item>
+    
+    <item>
+      <title>딥러닝을 위한 Norm, 노름</title>
+      <link>http://taewan.kim/post/norm/</link>
+      <pubDate>Fri, 15 Dec 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/norm/</guid>
+      <description>기계학습 자료에서 간혹 Norm과 관련된 수식이나 표기법을 나오면 당황스러울 때가 있습니다. 선형대수에 익숙하지 않다면 Norm이 이상하게 보일 수 있습니다. 본 문서에서는 인공신공망과 기계학습 일고리즘에서 사용되는 Norm을 이해하는 것을 목표로 최소한도의 Norm 개념을 정리합니다.
+일반적으로 딥러닝에서 네트워크의 Overfitting(과적합) 문제를 해결하는 방법으로 다음과 같은 3가지 방법을 제시합니다.
+ 더 많은 데이터를 사용할 것 Cross Validation Regularization  더 이상 학습 데이터를 추가할 수 없거나 학습 데이터를 늘려도 과적합 문제가 해결되지 않을 때에는 3번 Regularization을 사용해야 합니다.</description>
+    </item>
+    
+    <item>
+      <title>Hidden Layer의 오차 계산</title>
+      <link>http://taewan.kim/post/error_in_hidden/</link>
+      <pubDate>Fri, 08 Dec 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/error_in_hidden/</guid>
+      <description>Neural Network에서는 Forward Propagation 결과로 계산된 Output Layer 출력과 해당 입력 데이터 레이블의 차이를 계산하여 오차(손실, Error/Loss)를 계산합니다. 그리고 이 오차 최소화를 목표로 Hidden Layer들의 Weight(가중치)와 Bias(편향)를 업데이트합니다. 이렇게 딥러닝에서는 Neural Network에 데이터를 지속해서 흘려보내고, 오차를 계산한 후 Weight와 Bias를 수정하는 작업을 반복합니다.
+Output Layer 출력과 레이블의 차이를 계산하고 은닉층의 Weight와 Bias를 업데이트하는 일련의 과정을 &amp;ldquo;역전파&amp;rdquo; 혹은 &amp;ldquo;Backpropagation&amp;ldquo;이라고 합니다. &amp;ldquo;Backpropagation&amp;ldquo;에서는 출력층의 오차로부터 은닉층의 노드별 오차를 계산하는 것이 핵심입니다. 은닉층의 노드별 오차를 알아야 은닉층의 Weight와 Bias를 수정할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>Hidden Layer의 오차 계산</title>
+      <link>http://taewan.kim/post/error_in_hidden/</link>
+      <pubDate>Fri, 08 Dec 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/error_in_hidden/</guid>
+      <description>Neural Network에서는 Forward Propagation 결과로 계산된 Output Layer 출력과 해당 입력 데이터 레이블의 차이를 계산하여 오차(손실, Error/Loss)를 계산합니다. 그리고 이 오차 최소화를 목표로 Hidden Layer들의 Weight(가중치)와 Bias(편향)를 업데이트합니다. 이렇게 딥러닝에서는 Neural Network에 데이터를 지속해서 흘려보내고, 오차를 계산한 후 Weight와 Bias를 수정하는 작업을 반복합니다.
+Output Layer 출력과 레이블의 차이를 계산하고 은닉층의 Weight와 Bias를 업데이트하는 일련의 과정을 &amp;ldquo;역전파&amp;rdquo; 혹은 &amp;ldquo;Backpropagation&amp;ldquo;이라고 합니다. &amp;ldquo;Backpropagation&amp;ldquo;에서는 출력층의 오차로부터 은닉층의 노드별 오차를 계산하는 것이 핵심입니다. 은닉층의 노드별 오차를 알아야 은닉층의 Weight와 Bias를 수정할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>Neural Network 표기법(Feat: Andrew NG)</title>
+      <link>http://taewan.kim/post/nn_notation/</link>
+      <pubDate>Tue, 28 Nov 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/nn_notation/</guid>
+      <description>그림 1: Neural Network 예제    Neural Network에 대한 Forward Propagation, Backpropagation, predict, Cost Function 등을 정리할 때 뉴럴 네트워크의 구성 요소와 각 위치가 혼동되어 어려움을 겪는 경우가 많습니다. Coursera에서 deeplearning.ai가 진행하는 Neural Networks and Deep Learning 강의에서 Neural Network 표기법 잘 정리하고 있습니다. Andrew NG 교수가 소개한 Neural Network 표기법을 정리합니다. 이 표기법을 사용하면 Neural Network의 여러 수식과 알고리즘을 다룰 때 혼동을 최소화 할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>tanh 미분 정리</title>
+      <link>http://taewan.kim/post/tanh_diff/</link>
+      <pubDate>Tue, 19 Sep 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/tanh_diff/</guid>
+      <description>Hyperbolic Tangent(tanh) 함수는 Sigmoid의 대체제로 사용될 수 있는 활성화 함수입니다. Hyperbolic Tangent(tanh)는 Sigmoid와 매우 유사합니다. 실제로, Hyperbolic Tangent 함수는 확장 된 시그모이드 함수입니다. tanh와 Sigmoid의 차이점은 Sigmoid의 출력 범위가 0에서 1 사이인 반면 tanh와 출력 범위는 -1에서 1사이라는 점입니다. Sigmoid와 비교하여 tanh와는 출력 범위가 더 넓고 경사면이 큰 범위가 더 크기 때문에 더 빠르게 수렴하여 학습하는 특성이 있습니다.
+Sigmoid와 비교하여 중심점이 0이고 범위가 기울기 넓은 차이점이 있지만 Sigmoid의 치명적인 단점인 Vanishing gradient problem 문제를 그대로 갖고 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>Sigmoid 함수 미분 정리</title>
+      <link>http://taewan.kim/post/sigmoid_diff/</link>
+      <pubDate>Mon, 18 Sep 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/sigmoid_diff/</guid>
+      <description>Sigmoid 함수는 S자와 유사한 완만한 시그모이드 커브 형태를 보이는 함수입니다. Sigmoid는 대표적인 Logistic 함수입니다. Sigmoid 함수는 모든 실수 입력 값을 0보다 크고 1보다 작은 미분 가능한 수로 변환하는 특징을 갖습니다. 모든 입력에 대하여 sigmoid는 S와 같은 형태로 미분 가능한 0~1 사이의 값을 반환하기에 Logistic Classification과 같은 분류 문제의 가설과 비용 함수(Cost Function)1에 많이 사용됩니다. sigmoid의 반환 값은 확률형태이기 때문에 결과를 확률로 해석할 때 유용합니다.
+딥러닝에서는 노드에 임계값을 넘을 때만 출력하는 활성 함수로도 이용됩니다.</description>
+    </item>
+    
+  </channel>
+</rss>

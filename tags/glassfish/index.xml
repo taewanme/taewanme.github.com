@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Glassfish on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/glassfish/</link>
+    <description>Recent content in Glassfish on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 05 Apr 2011 21:59:47 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/glassfish/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Glassfish의 asadmin 명령어 한글 깨짐 현상</title>
+      <link>http://taewan.kim/post/glassfish_encoding/</link>
+      <pubDate>Tue, 05 Apr 2011 21:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/glassfish_encoding/</guid>
+      <description>예전 2011년에 devtainer.blogspot.kr 블로그에서 섰던 글 입니다. 추억으로 보관합니다.
+원문: http://devtainer.blogspot.jp/2011/04/glassfish-asadmin.html GlassFish를 설치하고 &amp;ldquo;asadmin&amp;rdquo;를 실행하면 한글이 깨지는 현상이 발생합니다. 다음은 GlassFish 3.1을 설치하고 asadmin을 수행한 결과 입니다.
+taewan:bin taewankim$ ./asadmin ?????Ϸ??? &amp;quot;exit&amp;quot;??, ?¶??? ?????? ?????? &amp;quot;help&amp;quot;?? ????մϴ?. asadmin&amp;gt; help ??ƿ??Ƽ ???? asadmin(1M) NAME asadmin - Oracle GlassFish Server?? ???? ???? ?۾??? ?????ϱ? ???? ??ƿ??Ƽ?Դϴ?. SYNOPSIS asadmin [--host host] [--port port] [--user admin-user] [--passwordfile filename] [--terse={true|false}] [--secure={false|true}] [--echo={true|false}] [--interactive={true|false}] [--help] [subcommand [options] [operands]] DESCRIPTION Oracle GlassFish Server?</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>다차원 텐서 Transpose와 Reshape</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="다차원 텐서 Transpose와 Reshape" />
+<meta property="og:description" content="Data Representation은 머신러닝에서 가장 중요한 요소입니다. Data Representation 과정에서 다차원 텐서의 형태를 변형하는 Reshape과 Transpose는 빈번하게 수행하는 작업이지만, 대상 데이터가 N 차원 텐서일 경우에 이해하기 어려운 개념입니다. 머신러닝의 다차원 텐서의 Reshape과 Tranpose에 대하여 정리합니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/post/transpose_reshape/" />
+
+
+
+<meta property="article:published_time" content="2018-08-22T23:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2018-08-22T23:28:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="http://taewan.kim/css/jupyter.css" type="text/css" media="all" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		
+		
+		<header class="post__header clearfix">
+			<h1 class="post__title">다차원 텐서 Transpose와 Reshape </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2018-08-22 23:28:14 &#43;0900 KST">August 22, 2018</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/" rel="category"></a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2018/08/transpose/post2.jpg" alt="다차원 텐서 Transpose와 Reshape">
+			</figure>
+			
+
+<p>CNN과 같은 이미지 데이터를 다룰 때 입력 데이터로 4차원 텐서를 다룹니다. 이 4차원 데이터는 (image 수, channel 수,  Height , Width)와 같은 구조를 갖습니다. 데이터를 전처리하는 과정에서 Channel First인 텐서를 Channel Last 텐서로 변형해야 하는 상황이 발생했습니다. 처음에 4차원 구조는 상상하기도 어려운데 4차원 텐서를 전치하라는 것은 어떤 의미인지 난감했습니다.</p>
+
+<h2 id="문제의-시작-channel-first를-channel-last로-변환">문제의 시작: Channel First를 Channel Last로 변환</h2>
+
+<p>파이토치로 CIFAR10 데이터셋을 읽어와서 대상 이미지를 Mathplotlib의 plt.imshow() 함수로 출력하는 작업을 진행했습니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e"># 변환기 파이프라인 </span>
+<span style="color: #f8f8f2">transform</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">transforms</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">Compose(</span>
+    <span style="color: #f8f8f2">[transforms</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">ToTensor(),</span>
+     <span style="color: #f8f8f2">transforms</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">Normalize((</span><span style="color: #ae81ff">0.5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.5</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">0.5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.5</span><span style="color: #f8f8f2">))])</span>
+<span style="color: #75715e"># CIFAR10 데이터셋 로딩 및 변환</span>
+<span style="color: #f8f8f2">trainset</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torchvision</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">datasets</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">CIFAR10(root</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;./data&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">train</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">True,</span>
+                                        <span style="color: #f8f8f2">download</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">True,</span> <span style="color: #f8f8f2">transform</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">transform)</span>
+<span style="color: #75715e"># 미니배치 처리를 위한 데이터로더 생성</span>
+<span style="color: #f8f8f2">trainloader</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">utils</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">data</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">DataLoader(trainset,</span> <span style="color: #f8f8f2">batch_size</span><span style="color: #f92672">=</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span>
+                                          <span style="color: #f8f8f2">shuffle</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">True,</span> <span style="color: #f8f8f2">num_workers</span><span style="color: #f92672">=</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">dataiter</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">iter(trainloader)</span>
+<span style="color: #75715e">#첫번째 그룹 4개 이미지 데이터 획득</span>
+<span style="color: #f8f8f2">train,</span> <span style="color: #f8f8f2">label</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">dataiter</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">next()</span>
+<span style="color: #75715e"># 첫번째 4개 이미지의 데이터 Shape 확인</span>
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(train</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">shape)</span>
+</pre></div>
+
+<blockquote>
+<p>출력:</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">Size([</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">32</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">32</span><span style="color: #f8f8f2">])</span>
+</pre></div>
+</blockquote>
+
+<p>위 코드로 데이터의 첫 번째 그룹을 획득하고, 데이터의 Shape을 확인했습니다. 획득한 데이터의 Shape은 [4, 3, 32, 32]입니다.</p>
+
+<p>Shape 정보로부터 현재 획득한 데이터는 4차원의 구조를 가지며, 4개 이미지가 각각 3개의 채널을 가집니다. 그리고 이미지 크기가 32X32라는 것을 파악할 수 있습니다.</p>
+
+<p>현재 데이터는 이미지의 채널 정보가 앞에 위치하는 Channel First 형태입니다. plt.imshow()는 이미지를 출력하는 함수입니다. 이 함수는 Channel Last 형태의 이미지 데이터만을 지원합니다. 따라서 Channel First을 Channel Last 포멧으로 변경해야 했습니다.</p>
+
+<p>데이터의 Shape은 다음과 같은 코드로 변경할 수 있습니다.</p>
+
+<pre><code>train_t = np.transpose(train, (0, 2, 3, 1))
+train_t.shape
+</code></pre>
+
+<blockquote>
+<p>출력</p>
+
+<pre><code>torch.Size([4, 32, 32, 3])
+</code></pre>
+</blockquote>
+
+<p>위 코드의 transpose 함수는 다차원 텐서을 변형(Transpose)하는 작업을 수행합니다. train_t의 shape을 확인해 보면 채널이 마지막으로 이동한 것을 확인할 수 있습니다.</p>
+
+<p>그러나 이 코드에서 사용된 다차원 행렬이 어떻게 전치되는지를 직관적으로 이해하기란 상당히 어렵습니다. 이 문서에서는 다차원 행렬을 전치한다는 것이 어떤 의미가 있고 어떻게 수행하는가에 대하여 정리해 보겠습니다.</p>
+
+<h2 id="텐서의-shape-reshape">텐서의 Shape &amp; Reshape</h2>
+
+<p>다차원 행렬인 텐서의 Transpose를 다루기 전에 Shape과 Reshape이 무엇인지 알아보겠습니다.</p>
+
+<p>머신러닝에서 데이터의 형태를 기준으로 다음과 같이 분류합니다.</p>
+
+<ul>
+<li>스칼라(Scala): 0 차원 텐서</li>
+<li>배열(Array): 1 차원 텐서</li>
+<li>행렬(Matrix): 2 차원 텐서</li>
+<li>텐서(Tensor): N 차원 텐서</li>
+</ul>
+
+<h3 id="shape">Shape</h3>
+
+<p>Shape을 통해서 텐서의 구조를 파악할 수 있습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>Shape 예제</th>
+<th>분류</th>
+<th>설명</th>
+<th>샘플</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>(8,)</td>
+<td>1차원 텐서</td>
+<td>배열 형태로 8개의 요소로 구성되어 있음</td>
+<td>[1 2 3 4 5 6 7 8]</td>
+</tr>
+
+<tr>
+<td>(2,4)</td>
+<td>2차원 텐서</td>
+<td>두 개 그룹으로 나누고 각 그룹은 4개의 요소를 갖고 있는 구조</td>
+<td>[[1, 2, 3, 4],<br/>[5, 6, 7, 8]]</td>
+</tr>
+
+<tr>
+<td>(2,2,2)</td>
+<td>3차원 텐서</td>
+<td>2개의 구룹으로 나누고, 각 그롭 별로 각각 4개의 요소로 2개 그룹으로 분할 됨</td>
+<td>[<br/>&nbsp;[&nbsp;[1, 2], <br/>&nbsp;&nbsp;[3, 4]&nbsp;],<br/>&nbsp;[&nbsp;[5, 6], <br/>&nbsp;&nbsp;[7, 8]&nbsp;]<br/>]</td>
+</tr>
+</tbody>
+</table>
+
+<p>이와 같은 데이터가 어떤 형태를 보이는지 설명하는 방식이 Shape입니다. Shape을 통해서 몇 개의 데이터가 어떤 구조로 구조화되어 있는지 파악할 수 있습니다.</p>
+
+<p>텐서는 배열을 구성하는 요소를 구분하는 구조를 만들고, 그곳에 요소를 할당한 것으로 생각할 수 있습니다. 여기서 요소를 구분하는 구조가 바로 Shape입니다.</p>
+
+<h3 id="reshape">Reshape</h3>
+
+<p>Reshape은 특정 데이터의 구조를 변경하는 작업입니다. np.reshpae 함수로 구현되어 있습니다. 기존 데이터의 구조를 변경하는 작업입니다. 여기서 데이터 구조가 변경될 뿐, 데이터의 순서는 변경되지 않습니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/08/transpose/010.jpg" alt="reshape 예제" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 1</strong>:
+        
+        reshape 예제
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>&lt;그림 1&gt;은 배열을 행렬로 행렬을 텐서로 변환하는 예제입니다. 데이터가 분할되는 구조는 변경되지만, 데이터의 배열 순서는 변경되지 않는 것을 확인할 수 있습니다.</p>
+
+<p>요약하면 Reshape(np.reshape)은 데이터의 배치 순서는 변경하지 않고 데이터를 구분하는 블록 구조를 변경하는 작업입니다.</p>
+
+<h2 id="행렬-전치-matrix-transpose">행렬 전치(Matrix Transpose)</h2>
+
+<p>선형대수에서 행렬의 전치란 행과 연을 교환하여 새로운 행렬을 얻는 것입니다. 2차원 행렬은 &lt;그림 2&gt;와 같이 <strong>행</strong>을 의미하는 i와 <strong>열</strong>을 의미하는 j로 나타냅니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/08/transpose/020.png" alt="행렬의 요소 위치" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 2</strong>:
+        
+        행렬의 요소 위치
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>2차원 행렬을 전치(Transpose)할 경우 요소의 i와 j를 뒤바꿔 새로운 위치로 요소를 이동시킵니다. &lt;그림 3&gt;과 같이 행렬의 각 요소는 i와 j의 위치를 바뀐 새로운 자리로 이동합니다. 이때 i와 j가 같은 대각선의 요소는 i와 j를 교환해도 같은 위치를 나타내기 때문에 기존 위치를 유지합니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/08/transpose/030.jpg" alt="2차원 행렬의 전치" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 3</strong>:
+        
+        2차원 행렬의 전치
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>이렇게 행렬의 전치(Transpose)를 수행하면 요소의 위치가 변경됩니다. 다음 &lt;그림 4&gt;는 Shape이 (2, 3)인 2차원 행렬을 전치시킨 결과입니다. 정사각 행렬이 아닌 행렬의 경우 Shape과 요소의 위치가 모두 변경됩니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/08/transpose/040.jpg" alt="2차원 행렬의 전치, Shape 변경" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 4</strong>:
+        
+        2차원 행렬의 전치, Shape 변경
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<h2 id="n차원-텐서의-전치">N차원 텐서의 전치</h2>
+
+<p>텐서의 전치는 행렬의 위치를 나타내는 인덱스 순열 중 하나의 기준으로 요소의 위치를 변경하는 일련의 과정입니다.</p>
+
+<p>&lt;그림 4&gt;의 2차원 행렬에서 요소의 위치를 나타내는 인덱스는 i와 j였습니다. i와 j의 순열은 총 2가지이며, 현재 인덱스 형태를 제외하면 1개만 남습니다.<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup> 즉 전치에 따른 요소 이동의 기준은 (j, i) 1개 뿐입니다. 행렬의 전치의 기준이 되는 인덱스 형태는 (j, i) 1개뿐입니다. 결과적으로 2차원 행렬의 전치는 i와 j를 뒤바꾼 (j, i)를 기준으로 요소의 위치를 변경하는 것이 전부입니다.</p>
+
+<p>3차원 텐서부터는 전치가 간단하지 않습니다. 3차원 텐서의 경우 요소의 위치를 결정하는 인덱스는 i, j, k 3개로 구성됩니다. 3개 인덱스의 순열 수는 총 (3!)입니다. 즉 순열 수는 총 6개이며, 현재 인덱스를 제외하면 5가지 유형의 인덱스가 만들어집니다. 현재 (i, j, k)를 제외하고 (i, k, j), (j, i, k), (j, k, i), (k, i, j), (k, j, i) 5개의 인덱스 형태를 기준으로 3차원 텐서는 전치할 수 있습니다.</p>
+
+<p>이렇게 인덱스 순열의 형태에 따라서 Shape도 정의되고, 요소의 위치도 변경됩니다.</p>
+
+<h3 id="3차원-순열의-전치">3차원 순열의 전치</h3>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/08/transpose/050.jpg" alt="3차원 텐서" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 5</strong>:
+        
+        3차원 텐서
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>&lt;그림 5&gt;는 3차원 텐서를 준비하는 과정입니다. 12개의 요소로 Shape이 (2, 2, 3)인 3차원 텐서를 준비했습니다.</p>
+
+<p>다차원 텐서의 전치는 numpy.transpose 함수로 처리됩니다. transpose 함수는 2개의 입력 파라미터를 취합니다. 첫 번째 파라미터는 전치할 대상 텐서 객체를 취하고, 두 번째 파라미터로는 전치의 기준이 되는 axis입니다. axis에는 튜플 형태로 전치의 기준을 설정합니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">np</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">transpose(a,</span> <span style="color: #f8f8f2">axes</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">None)</span>
+</pre></div>
+
+<p>axis에는 두 가지 의미가 있습니다. 하나는 입력된 텐서(a)의 Shape을 변경하는 기준이며, 두 번째는 입력 텐서의 요소를 어떤 기준으로 이동시킬지를 결정하는 기준입니다. n 차원 텐서는 n개의 인덱스를 갖고 있습니다. n개의 인덱스를 순서대로 숫자로 지정했습니다. 첫 번째 인덱스는 0이고, 두 번째 인덱스는 1입니다. 마지막 n번째 인덱스는 (n-1)이 됩니다.</p>
+
+<h3 id="shape-변환">Shape 변환</h3>
+
+<p>Shape이 (2, 2, 3)인 텐서를 (1, 2, 0)으로 전치(Transpose)하면 새로운 텐서의 Shape은 (2, 3, 2) 형태로 변경됩니다. 0은 첫 번째 shape(a.shape[0]), 1은 두 번째 shape(a.shape<a href="1" title="n차원의 텐서에서 변경 가능한 순열의 수는 (n!-1)개 입니다. 
+">1</a>), 2는 세 번째 shape(a.shape[2])를 나타냅니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">np</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">transpose(a,</span> <span style="color: #f8f8f2">axes</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">))</span>
+</pre></div>
+
+<p>위 코드는 a 텐서의 shape은 <code>(a.shape[0], a.shape[1], a.shape[2])</code> 입니다. 이 shape을 axes 기준에 따라 (a.shape<a href="1" title="n차원의 텐서에서 변경 가능한 순열의 수는 (n!-1)개 입니다. 
+">1</a>, a.shape[2], a.shape[0])으로 변환합니다.</p>
+
+<h3 id="각-요소의-위치-이동">각 요소의 위치 이동</h3>
+
+<p>axis는 앞에서 설명한 인덱스별로 할당된 숫자로 전치의 기준이 되는 인덱스 조합 순서를 정의합니다. axis에 정의된 인덱스 순서로 요소의 위치를 변경합니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/08/transpose/060.jpg" alt="3차원 텐서, 기존 인덱스를 그대로 유지한 전치" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 6</strong>:
+        
+        3차원 텐서, 기존 인덱스를 그대로 유지한 전치
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>&lt;그림 6&gt;에서 transpose 함수의 axex에 (0, 1, 2)를 입력했습니다. 이 axex 설정값은 기존 인덱스를 그대로 유지하겠다는 의미입니다. 따라서 (0, 1, 2)를 축으로 다차원 텐서를 전치하면, shape과 요소의 위치 같은 입력 텐서와 동일한 텐서가 반환됩니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/08/transpose/070.jpg" alt="3차원 텐서, (1, 2, 0)으로 전치" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 7</strong>:
+        
+        3차원 텐서, (1, 2, 0)으로 전치
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>&lt;그림 7&gt;에서 transpose 함수의 axis에 (1, 2, 0)을 입력했습니다. 이 axex 설정값은 입력 텐서의 ijk에 요소를 출력 텐서의 jki 위치로 이동시킨다는 설정입니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/08/transpose/080.jpg" alt="3차원 텐서, (1, 2, 0)를 축으로 요소 위치 변화" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 8</strong>:
+        
+        3차원 텐서, (1, 2, 0)를 축으로 요소 위치 변화
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>&lt;그림 7&gt;의 텐서 변환은 &lt;그림 8&gt;과 같은 방식으로 입력 텐서의 요소를 이동시킵니다. 각 요소는 기존의 인덱스(ijk)를 axis에 설정된 순서로 변환하여, 새로운 텐서 구조의 새로운 위치로 이동하게 됩니다.</p>
+
+<h2 id="np-tranpose-함수의-axis-설정이-이해">np.tranpose 함수의 axis 설정이 이해</h2>
+
+<p>다음은 CIFAR10 데이터 셋을  Pytorch로 로딩한 후, 첫 번째 데이터에 대한 Shape을 확인하느 코드입니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e"># CIFAR10 데이터셋 로딩 및 변환</span>
+<span style="color: #f8f8f2">trainset</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torchvision</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">datasets</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">CIFAR10(root</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;./data&#39;</span><span style="color: #f8f8f2">,</span> 
+    <span style="color: #f8f8f2">train</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">True,</span> <span style="color: #f8f8f2">download</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">True,</span> <span style="color: #f8f8f2">transform</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">transform)</span>
+<span style="color: #75715e"># 미니배치 처리를 위한 데이터로더 생성</span>
+<span style="color: #f8f8f2">trainloader</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">utils</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">data</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">DataLoader(trainset,</span>    
+    <span style="color: #f8f8f2">batch_size</span><span style="color: #f92672">=</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">shuffle</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">True,</span> <span style="color: #f8f8f2">num_workers</span><span style="color: #f92672">=</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">dataiter</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">iter(trainloader)</span>
+<span style="color: #75715e">#첫번째 그룹 4개 이미지 데이터 획득</span>
+<span style="color: #f8f8f2">train,</span> <span style="color: #f8f8f2">label</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">dataiter</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">next()</span>
+<span style="color: #75715e"># 첫번째 4개 이미지의 데이터 Shape 확인</span>
+<span style="color: #f8f8f2">dataiter</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">iter(trainloader)</span>
+<span style="color: #f8f8f2">train,</span> <span style="color: #f8f8f2">test</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">dataiter</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">next()</span>
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;trains의 Shape: {}&#39;</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">format(train</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">shape))</span>
+</pre></div>
+
+<blockquote>
+<p>출력:</p>
+
+<pre><code>trains의 Shape: torch.Size([4, 3, 32, 32])
+</code></pre>
+</blockquote>
+
+<p>앞에서 설명한 것처럼 CIFAR10 데이터 셋은 4차원 텐서로 구성됩니디. 위 학습 데이터는 4장의 이미지, 이미지 별로 3개의 필터, 필터 별로 높이가 32 픽셀이고 폭이 32픽셀인 데이터 셋입니다. 특이한 점은 Channel First 포맷입니다. 이 데이터를 Matplotlib로 시각화하기 위해서 Channel First를 Channel Last로 변환해야 합니다. [4, 3, 32, 32]의 Shape을 [4, 32, 32, 3]의 형태로 변환해야 합니다.</p>
+
+<p>학습 데이터의 포맷을 변경하기 위해서 tp.transpose 함수를 사용할 것이며, 입력 파라미터인 axis로 (0, 2, 3, 1)을 설정합니다. 이 함수를 실행하면 사진의 폭과 높이 앞에 존재하던 채널을 Shape의 마지막으로 옮겨집니다. 결과적으로 Channel Last 포맷으로 변환됩니다.</p>
+
+<pre><code>train_t = np.transpose(train, (0, 2, 3, 1))
+train_t.shape
+</code></pre>
+
+<blockquote>
+<p>출력:</p>
+
+<pre><code>torch.Size([4, 32, 32, 3])
+</code></pre>
+</blockquote>
+
+<p>transpose 함수의 axis에 입력된 기준을 보면 (0, 2, 3, 1)을 입력한 것을 볼 수 있습니다. 첫 번째 Shape(이미지)은 그대로 유지하고 두 번째 채널을 마지막으로 돌리는 설정입니다. 기존의 (4, 3, 32, 32, )의 Shape을 (4, 32, 32, 3)으로 구조를 재조정하고 (i,j,k,l) 인덱스 요소를 (i,k,l,j)로 이동시키는 작업을 수행합니다.</p>
+
+<h2 id="요약">요약</h2>
+
+<p>numpy를 사용하여 행렬 혹은 텐서를 전치(Transpose)하는 것이 어떤 의미인지를 확인해 보았습니다. 행렬의 전치란 지정한 축으로 텐서의 Shape을 변경하고, 새로운 Shape 구조에 맞도록 각 요소의 위치를 변경하는 과정입니다.</p>
+
+<p>numpy의 transpose 함수는 n 차원 텐서를 <strong>전치</strong>시키는 기능을 제공합니다. 이 함수는 변환할 텐서와 변환 기준 축(axis)을 입력 매개변수로 갖습니다. axis는 shape과 인덱스의 순서를 숫자로 나타내는 튜플입니다.</p>
+
+<p>numpy의 transpose 함수는 axis 튜플을 기준으로 텐서의 shape을 변경하고, axis 튜플을 기준으로 요소의 인덱스를 변경하고 재배치합니다.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">n차원의 텐서에서 변경 가능한 순열의 수는 (n!-1)개 입니다.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/numpy/" rel="tag">numpy</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/transpose/" rel="tag">transpose</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/reshape/" rel="tag">reshape</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/machine-learning/" rel="tag">machine learning</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/" rel="tag">기계학습</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/mathjax_latex_error/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Mathjax의 시그마 중첩 렌더링 오류</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/kim_eunsook_universe/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">김은숙 유니버스: 다시 태어난 캐릭터</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/post/transpose_reshape/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#문제의-시작-channel-first를-channel-last로-변환">문제의 시작: Channel First를 Channel Last로 변환</a></li>
+<li><a href="#텐서의-shape-reshape">텐서의 Shape &amp; Reshape</a>
+<ul>
+<li><a href="#shape">Shape</a></li>
+<li><a href="#reshape">Reshape</a></li>
+</ul></li>
+<li><a href="#행렬-전치-matrix-transpose">행렬 전치(Matrix Transpose)</a></li>
+<li><a href="#n차원-텐서의-전치">N차원 텐서의 전치</a>
+<ul>
+<li><a href="#3차원-순열의-전치">3차원 순열의 전치</a></li>
+<li><a href="#shape-변환">Shape 변환</a></li>
+<li><a href="#각-요소의-위치-이동">각 요소의 위치 이동</a></li>
+</ul></li>
+<li><a href="#np-tranpose-함수의-axis-설정이-이해">np.tranpose 함수의 axis 설정이 이해</a></li>
+<li><a href="#요약">요약</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

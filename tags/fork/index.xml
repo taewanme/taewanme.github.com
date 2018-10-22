@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fork on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/fork/</link>
+    <description>Recent content in Fork on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 05 Sep 2017 16:50:36 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/fork/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fork된 Git 레파지토리에 원본 레파지토리 업데이트</title>
+      <link>http://taewan.kim/post/updating_fork/</link>
+      <pubDate>Tue, 05 Sep 2017 16:50:36 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/updating_fork/</guid>
+      <description>Github을 사용할 때 fork 레파지토리를 만들어 코드 변경 작업을 수행하는 것이 일반적입니다. Fork 된 레파지토리가 너무 오래되거나, 원본 레파지토리 병합 요청(&amp;rdquo;pull request&amp;rdquo;)이 반려되는 경우, Fork 된 레파지토리에 원본 레파지토리 변경 사항을 적용해야 하는 경우가 있습니다. Fork 된 레파지토리에 원본 레파지토리 변경 사항을 반영하는 방법을 정리합니다.
+github에서 Fork를 왜하는가? github 등 git 서비스에서 commit 권한이 없는 레파지토리를 테스트하거나 대상 레파지토리을 변경하는 목적으로 fork 기능을 사용합니다. 다른 계정(Account) 혹은 조직(Organization)의 레파지토리를 fork 하면 해당 레파지토리는 사용자의 계정으로 복제됩니다.</description>
+    </item>
+    
+  </channel>
+</rss>

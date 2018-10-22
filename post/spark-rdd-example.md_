@@ -1,0 +1,328 @@
++++
+date = "2017-03-20T23:28:14+09:00"
+description = "Spark RDD 사용법을 정리합니다. "
+title = "Spark RDD 메소드 사용법 정리"
+thumbnailInList = "https://taewanmerepo.github.io/2018/03/rdd/list.jpg"
+thumbnailInPost = "https://taewanmerepo.github.io/2018/03/rdd/head.jpg"
+tags = ["spark", "RDD", "Big Data"]
+categories = ["BigData"]
+author = "taewan.kim"
+language = ""
+jupyter = "false"
+adsense = "true"
++++
+
+Spark에서 RDD(Resilient Distributed DataSet)는 데이터를 분산 처리하는 근간입니다. RDD는 여러 분산 노드에 데이터를 분산 저장하는 데이터 객체입니다.
+RDD는 데이터를 로딩하면 변경이 불가능한 Immutable 객체입니다. 데이터가 RDD로 로딩되면 여러 파티션으로 분할되고 각 파티션은 분산 노드에 분산됩니다.
+RDD는 Spark 데이터 분산과 분산 프로세싱이 근간입니다.
+
+RDD의 오퍼레이션은 방식에 따라 다음과 같이 구분됩니다.
+
+- Transformation : 소스 RDD 데이타를 변경하고 새로운 RDD 생성 (예: filter, map)
+- Action : 소스 RDD를 계산하여 결과를 반환 (예: count, reduce)
+
+본 문서는 RDD의 생성 방법, RDD Transformation 오퍼레이션, RDD Action 오퍼레이션을 소개합니다.
+아래에서 사용되는 ```sc```는 SparkContext 객체를 의미합니다.
+
+## 1. RDD 생성 방법
+
+SparkContext는 RDD를 생성하는 다양한 방법을 제공합니다. 주요 RDD 생성 메소드 사용 방법을 정리합니다.
+
+### 1.1 sc.parallelize
+
+```ScalaContext.parallelize``` 메소드는 로컬 스칼라 컬렉션을 분산 RDD로 만듭니다. RDD의 파티션 갯수를 지정할 수 있습니다.
+
+```
+//메소드 형식
+def parallelize[T](seq: Seq[T], numSlices: Int): RDD[T]
+```
+
+사용 코드는 5개 요소의 리스트를 3개 파티션이 RDD를 생성합니다. parallelize 메소드는 테스트 용도로 주로 사용됩니다.
+
+
+```scala
+val rdd1 =  sc.parallelize(List("yellow","red","blue","cyan","black"), 3)
+```
+
+### 1.2 sc.textFile
+
+HDFS, 로컬 파일 시스템의 파일을 읽어서 스트링 RDD를 반환하는 메소드입니다.
+
+```
+// path: 파일 위치
+// minPartitions: 최소 파이션 수
+// 반환형: 스크링 타입 RDD
+def textFile(path: String, minPartitions: Int): RDD[String]
+```
+
+다음 코드는 하둡의 파일을 읽어서 RDD로 만드는 예제 입니다. 텍스트 파일의 한 줄이 RDD의 한 요소가 됩니다.
+파일 지정은 디렉터리 단위, 파일단위 모두 가능하고, 와일드 카드를 사용할 수 있습니다.
+
+```
+> hadoop fs -ls taewan/linkage
+
+Found 10 items
+-rw-r--r--   2 zeppelin hdfs   26248574 2018-03-21 01:10 taewan/linkage/block_1.csv
+-rw-r--r--   2 zeppelin hdfs   26241784 2018-03-21 01:10 taewan/linkage/block_2.csv
+```
+
+파일명을 지정하여 RDD를 생성할 수 있습니다.
+
+```scala
+val rdd = sc.textFile("taewan/linkage/block_1.csv")
+println(s"partition num: ${rdd.getNumPartitions}")
+println(s"rdd size: ${rdd.count}")
+```
+
+>출력:
+```
+partition num: 2
+rdd size: 574914
+```
+
+### 1.3 sc.wholeTextFiles
+
+HDFS, 로컬 파일 시스템 혹은 하둡 지원 파일 시스템을 읽어서 key-value의 RDD를 반환합니다. ```path```를 지정할 때 디렉터리를 설정하거나 와일드 카드를 이용하여 여러 파일을 지정합니다.
+디렉터리 아래 혹은 지정된 파일 목록이 로딩됩니다. RDD의 각 요소는 Key-Value 형태의 튜플입니다. Key는 파일명이고 Value는 파일의 문자열입니다. 파일 갯수 만큼의 요소가 만들어 집니다.
+
+```
+//path: 디렉터리 지정
+def wholeTextFiles(path: String, minPartitions: Int): RDD[(String, String)]
+```
+
+다음은 예제로 사용할 하둡에 저장된 파일 목록입니다.
+
+```
+> hadoop fs -ls taewan/linkage/block_?.csv
+
+-rw-r--r--   2 zeppelin hdfs   26248574 2018-03-21 01:10 taewan/linkage/block_1.csv
+-rw-r--r--   2 zeppelin hdfs   26241784 2018-03-21 01:10 taewan/linkage/block_2.csv
+-rw-r--r--   2 zeppelin hdfs   26253247 2018-03-21 01:10 taewan/linkage/block_3.csv
+-rw-r--r--   2 zeppelin hdfs   26247471 2018-03-21 01:10 taewan/linkage/block_4.csv
+-rw-r--r--   2 zeppelin hdfs   26249424 2018-03-21 01:10 taewan/linkage/block_5.csv
+-rw-r--r--   2 zeppelin hdfs   26256126 2018-03-21 01:10 taewan/linkage/block_6.csv
+-rw-r--r--   2 zeppelin hdfs   26261911 2018-03-21 01:10 taewan/linkage/block_7.csv
+-rw-r--r--   2 zeppelin hdfs   26253911 2018-03-21 01:10 taewan/linkage/block_8.csv
+-rw-r--r--   2 zeppelin hdfs   26254012 2018-03-21 01:10 taewan/linkage/block_9.csv
+```
+
+다음과 같이 하둡 파일을 로딩합니다. key-value 형태의 RDD가 만들어 집니다.
+RDD의 요소 수, 첫 번째 요소의 key 값과 value 값을 출력합니다.
+
+```scala
+val rdd = sc.wholeTextFiles("taewan/linkage/block_?.csv")
+println(s"RDD Count: ${rdd.count}")
+println(s"First Element's key: ${rdd.first._1}")
+println(s"First Element's value: ${rdd.first._2.take(100)}")
+```
+
+> 출력:
+```
+RDD Count: 9
+First Element's key: hdfs://spark1-bdcsce-1.compute-598663394.oraclecloud.internal:8020/user/zeppelin/taewan/linkage/block_1.csv
+First Element's value: "id_1","id_2","cmp_fname_c1","cmp_fname_c2","cmp_lname_c1","cmp_lname_c2","cmp_sex","cmp_bd","cmp_bm
+```
+
+### 1.4 기타 RDD 생성 메서드
+
+이외에도 SparkContext에는 여러 RDD 생성 메소드가 있습니다. 주요 RDD 생성 메소드는 다음과 같습니다.
+
+|메소드 명|메소드 시그니처|설명|
+|---|---|---|
+|sequenceFile|```def sequenceFile[K, V](path: String, keyClass: Class[K], valueClass: Class[V]): RDD[(K, V)]```|하둡 시퀀스 파일을로 부터 RDD를 생성, RDD는 Key-Value 타입.|
+|range|```def range(start: Long, end: Long, step: Long = 1, numSlices: Int:RDD[Long]```|long 타입 RDD 생성|
+|empty|```def emptyRDD[T](implicit arg0: ClassTag[T]): RDD[T]```|빈 RDD를 생성합니다.|
+
+
+## 2. RDD의 기본 메서드
+
+다음은 RDD의 기본 정보를 확인하는 주요 메서드입니다.
+
+### 2.1 getStorageLevel
+
+
+RDD는 데이터를 기본적으로 메모리에 로딩합니다. RDD에 스토리지 옵션을 설정하여 메모리와 디스크 사용 여부 및 직렬화 여부를 지정할 수 있습니다.
+이는 메모리 사용 여부에 대한 튜닝 영역입니다. 현재 RDD의 스토리지 욥션을 getStorageLevel 메소드를 이용하여 확인할 수 있습니다.
+
+```
+def getStorageLevel: StorageLevel
+```
+
+다음은 RDD의 스토리지레벨을 확인하는 방법입니다.
+
+```scala
+val sl = rdd.getStorageLevel
+println(sl.toString)
+println(s"RDD desc : ${sl.description}")
+println(s"RDD replication: ${sl.replication}")
+println(s"Does RDD use Disk?: ${sl.useDisk}")
+```
+
+>출력:
+```
+StorageLevel(1 replicas)
+RDD desc : Serialized 1x Replicated
+RDD replication: 1
+Does RDD use Disk?: false
+```
+
+
+### 2.2 getNumPartitions
+
+RDD의 getNumPartitions 메서드는  클러스터에 분산된 RDD 파티션의 수를 반환합니다.
+
+```scala
+//1000개의 요소를 10개 파티션 RDD로 분할
+val rdd = sc.parallelize(1 to 1000, 10)
+//rdd의 파티션수 반환
+val partitionNum = rdd.getNumPartitions
+println(s"#Partition of RDD: ${partitionNum}")
+```
+
+>출력:
+```
+#Partition of RDD: 10
+```
+
+### 2.3 count
+
+count() 메서드는 RDD의 요소 수를 반환합니다. 메서드 시그니처를 다음과 같습니다.
+
+
+```
+def count(): Long
+```
+
+count()를 사용하는 방법은 다음과 같습니다.
+
+```scala
+val rowCount = rdd.count()
+println(s"Element Counts: ${rowCount}")
+```
+
+> 출력:
+```
+Element Counts: 9
+```
+
+### 2.4 context
+
+RDD를 생성한 SparkContext를 반환합니다.
+
+```
+def context: SparkContext
+```
+
+다음은 context룰 사용한 예입니다.
+
+```scala
+val sparkcontext = rdd.context
+print(sparkcontext)
+```
+
+> 출력:
+```
+org.apache.spark.SparkContext@49caf08d
+```
+
+### 2.5 RDD 데이터 로컬로 가져오기
+
+RDD 요소를 로컬로 가져와야 할 때 fist(), collect()와 take() 메서드를 사용합니다.
+
+이 메서드를 다음과 같이 정리할 수 있습니다.
+
+|메서드|시그니처|설명|
+|---|---|---|
+|first|```def first(): T```|RDD의 첫 번째 요소를 로컬 JVM에 가져옵니다.|
+|collect|```def collect(): Array[T]```|RDD의 모든 요소를 Array 형태로 반환합니다.|
+|take|```def take(num: Int): Array[T]```|RDD의 파티션에서 지정된 수 만큼의 요소를 Array 형태로 반환합니다. take는 모든 데이터가 메모리에 로딩됨을 가정합니다. |
+
+이 메소드의 사용법은 다음과 같습
+
+```scala
+val data = sc.parallelize(1 to 1000, 10)
+//첫 번째 요소 가져오기
+val firstElem = data.first()
+println(s"First Element: $firstElem")
+//요소 5개 가져오기
+val fiveElem = data.take(5)
+println(s"Take(5): fiveElem")
+//전체 데이터 가죠오기
+val elements = data.collect()
+println(s"collect result: ${elements.size}")
+```
+
+>  출력:
+```
+firstElem: Int = 1
+First Element: 1
+fiveElem: Array[Int] = Array(1, 2, 3, 4, 5)
+Take(5): fiveElem
+collect(): 1000
+```
+
+
+### map
+
+map 메소드는 고차함수입니다.
+입력 파라미터로 함수를 받아 신규 RDD를 생성합니다.
+소스 RDD의 각 요소를 map 함수에 전달된 함수에 적용하고, 그 결과로 새로운 RDD를 생성합니다.
+
+```scala
+val lines = Array("I Love it", "I hate it", "I like you") //배열 생성
+val rdd = sc.parallelize(lines) //rdd 생성
+//map 함수 실행, 실행 결과로 새로운 RDD 생성
+val newRdd = rdd.map {l => l.length}
+//newRDD의 데이터를 가져와서 Array 생성
+val values = newRdd.collect()
+println(values.mkString("[",", ", "]")) // Array 객체 출력
+```
+
+>출력:
+```
+[9, 9, 10]
+```
+
+### flatMap
+
+flatMap 메소드는 고차함수이고 map과 유사하게 동작합니다.
+입력 파라미터로 함수를 받아 신규 RDD를 생성합니다.
+소스 RDD의 각 요소를 flatMap 함수에 전달된 함수에 적용합니다. 그 결과가 컬렉션일 때, 각 컬렉션의 요소로 새로운 RDD를 생성합니다.
+flatMap은 요소의 차원을 하나 낮추는 효과가 있습니다.
+
+```scala
+val lines = Array("I Love it", "I hate it", "I like you")
+val rdd = sc.parallelize(lines)
+val flatMapRdd = rdd.flatMap {l => l.split(" ")}
+val values1 = flatMapRdd.collect()
+println(values1.mkString("[",", ", "]"))
+```
+
+>출력:
+```
+[I, Love, it, I, hate, it, I, like, you]
+```
+
+{{< img src="https://taewanmerepo.github.io/2018/03/rdd/flatmap2.png"
+title="그림 1"
+caption="flatMap 실행 절차" >}}
+
+### filter
+
+filter 메소드는 고차함수입니다. 입력 파라미터로 Boolean을 반환하는 함수를 입력받습니다. 소스 RDD의 각 요소를 filter 함수에 입력된 Boolean 함수에 적용하고, 그 결과가 ```True```인 엘리먼트로 새로운 RDD를 생성합니다.
+
+```scala
+val lines = Array("I Love it", "I hate it", "I like you") //배열 생성
+val rdd = sc.parallelize(lines) //rdd 생성
+//문자열 길이가 10 이상인 요소로 새로운 RDD 생성
+//예제에서 문자열 길이가 9인 요소는 제외 됨
+val newRdd = rdd.filter {l => l.length>= 10}
+//newRDD의 데이터를 가져와서 Array 생성
+val values = newRdd.collect()
+println(values.mkString("[",", ", "]")) // Array 객체 출력
+```
+
+>출력:
+```
+[I like you]
+```

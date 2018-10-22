@@ -1,0 +1,40 @@
++++
+date = "2018-08-18T16:28:14+09:00"
+description = "Ubuntu 18.04에 Nvidia와 "
+title = "Mathjax의 시그마 중첩 렌더링 오류"
+thumbnailInList = "https://taewanmerepo.github.io/2018/08/mathjaxerror/list.jpg"
+thumbnailInPost = "https://taewanmerepo.github.io/2018/08/mathjaxerror/post.jpg"
+tags = ["latex", "mathjax"]
+categories = ["tip"]
+author = "taewan.kim"
+language = ""  
+jupyter = "false"
+adsense = "true"
+autoadsense = "true"
++++
+
+## 사전 준비사항
+## Nvidia Driver 설치
+
+### Nvidia 드라이버 삭제
+
+드라이버를 삭제할 경우 다음 명령을 이용합니다. 
+
+- 그라이버 삭제
+
+>```bash
+sudo apt purge nvidia-*
+sudo apt autoremove
+```
+
+- Nvidia 드라이버 PPA 삭제
+
+>```
+sudo add-apt-repository --remove ppa:graphics-drives/ppa
+```
+
+## CUDA Driver 설치
+## Python 환경 구성
+## Pytorch 설치
+## 설치 환경 점검
+

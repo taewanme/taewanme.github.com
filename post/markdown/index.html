@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>마크다운 사용법 - Quick Start</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="마크다운 사용법 - Quick Start" />
+<meta property="og:description" content="Markdown 테그 사용법을 정리합니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/post/markdown/" />
+
+
+
+<meta property="article:published_time" content="2016-04-04T13:47:07&#43;09:00"/>
+<meta property="article:modified_time" content="2016-04-04T13:47:07&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=bsh&amp;skin=sons-of-obsidian"></script>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		
+		
+		<header class="post__header clearfix">
+			<h1 class="post__title">마크다운 사용법 - Quick Start </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2016-04-04 13:47:07 &#43;0900 KST">April 04, 2016</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/tech-tip" rel="category">Tech Tip</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+			
+
+<p>taewan.kim은 대부분의 내용을 markdown으로 관리하고 있습니다. markdown은 직관적이고 간단한 문법으로 컨텐츠 관리에 매우 효과적입니다. markdown에서 주로 이용되는 테그는 15개정도 입니다. 혼동되는 주요 테그를 정리하겠습니다.</p>
+
+<hr />
+
+<ul>
+<li>목차 <a id="top"></a>
+
+<ul>
+<li><a href="#header">헤더</a></li>
+<li><a href="#hr">수평선</a></li>
+<li><a href="#text">텍스트 출력</a></li>
+<li><a href="#em">텍스트 강조</a></li>
+<li><a href="#quotation">인용</a></li>
+<li><a href="#list">목록</a></li>
+<li><a href="#code">코드</a></li>
+<li><a href="#table">테이블</a></li>
+<li><a href="#link">링크</a></li>
+<li><a href="#image">이미지</a></li>
+<li><a href="#comment">주석</a></li>
+<li><a href="#footnote">각주</a></li>
+</ul></li>
+</ul>
+
+<h2 id="헤더-a-id-header-a-top-top">헤더 <a id="header"></a> <a href="#top">(top)</a></h2>
+
+<p>H1 ~ H6까지 테그를 #으로 표현</p>
+
+<pre><code># 헤더 스타일 (h1)
+## 헤더 스타일 (h2)
+### 헤더 스타일 (h3)
+#### 헤더 스타일 (h4)
+##### 헤더 스타일 (h5)
+###### 헤더 스타일 (h6)
+</code></pre>
+
+<ul>
+<li>출력 결과</li>
+</ul>
+
+<h1 id="헤더-스타일-h1">헤더 스타일 (h1)</h1>
+
+<h2 id="헤더-스타일-h2">헤더 스타일 (h2)</h2>
+
+<h3 id="헤더-스타일-h3">헤더 스타일 (h3)</h3>
+
+<h4 id="헤더-스타일-h4">헤더 스타일 (h4)</h4>
+
+<h5 id="헤더-스타일-h5">헤더 스타일 (h5)</h5>
+
+<h6 id="헤더-스타일-h6">헤더 스타일 (h6)</h6>
+
+<ul>
+<li>효과: 다음과 같은 코드와 동일한 결과가 됨</li>
+</ul>
+
+<pre><code>&lt;h1&gt;헤더 스타일 (h1)&lt;/h1&gt;
+&lt;h2&gt;헤더 스타일 (h2)&lt;/h2&gt;
+&lt;h3&gt;헤더 스타일 (h3)&lt;/h3&gt;
+&lt;h4&gt;헤더 스타일 (h4)&lt;/h4&gt;
+&lt;h5&gt;헤더 스타일 (h5)&lt;/h5&gt;
+&lt;h6&gt;헤더 스타일 (h6)&lt;/h6&gt;
+</code></pre>
+
+<hr />
+
+<h2 id="수평선-a-id-hr-a-top-top">수평선 <a id="hr"></a> <a href="#top">(top)</a></h2>
+
+<ul>
+<li>&lt;hr /&gt;와 동일한 결과를 출력</li>
+<li>&rsquo;-&lsquo;, &lsquo;*&lsquo;, &lsquo;_&lsquo;을 세개 이상 나열하면 수평선을 만듦</li>
+<li>단락 나누기 용도로 많이 사용.</li>
+</ul>
+
+<pre><code>***
+___
+___
+</code></pre>
+
+<ul>
+<li>출력 결과</li>
+</ul>
+
+<hr />
+
+<hr />
+
+<hr />
+
+<hr />
+
+<h2 id="텍스트-출력-a-id-text-a-top-top">텍스트 출력 <a id="text"></a> <a href="#top">(top)</a></h2>
+
+<p>별도의 테그 없이 입력된 내용은 &lt;p&gt; ~ &lt;\p&gt; 처리가 됨</p>
+
+<pre><code>markdown은 직관적이고 간단한 문법으로 컨텐츠 관리에 매우 효과적입니다.
+</code></pre>
+
+<ul>
+<li>효과: 다음과 같은 코드와 동일한 결과가 됨</li>
+</ul>
+
+<pre><code>&lt;p&gt;markdown은 직관적이고 간단한 문법으로 컨텐츠 관리에 매우 효과적입니다.&lt;/p&gt;
+</code></pre>
+
+<hr />
+
+<h2 id="텍스트-강조-a-id-em-a-top-top">텍스트 강조 <a id="em"></a> <a href="#top">(top)</a></h2>
+
+<pre><code>*single asterisks* - 기울임체
+_single underscores_ - 기울임체
+**double asterisks** - 굵은글씨체
+__double underscores__ - 기울임체/굵은글씨체
+***triple underscores*** - 기울임체/굵은글씨체
+~~cancelline~~ - 취소줄
+</code></pre>
+
+<ul>
+<li>결과 출력</li>
+</ul>
+
+<p><em>single asterisks</em> - 기울임체<br/>
+<em>single underscores</em> - 기울임체<br/>
+<strong>double asterisks</strong> - 굵은글씨체 <br/>
+<strong>double underscores</strong> - 기울임체/굵은글씨체<br/>
+<strong><em>triple underscores</em></strong> - 기울임체/굵은글씨체 <br/>
+<del>cancelline</del> - 취소줄<br/></p>
+
+<hr />
+
+<h2 id="인용-a-id-quotation-a-top-top">인용 <a id="quotation"></a> <a href="#top">(top)</a></h2>
+
+<ul>
+<li>분문 중 인용된 글을 표시할 때 사용하며, &ldquo;&gt;&rdquo; 기호를 모든 줄 앞에 붙임.</li>
+<li>&rdquo;&gt;&rdquo; 기호의 개수에 따라 들여쓰기 레벨 조정 가능</li>
+<li>인용 블록 안에서 다른 마크다운 테그를 포함할 수 있음</li>
+<li>인용 블록 안에서 중첩 인용 표기 가능</li>
+</ul>
+
+<h3 id="인용-예제-1-기본-스타일">인용 예제 1: 기본 스타일</h3>
+> 인용되는 글입니다.
+> 인용되는 글의 두 번째 줄.
+> 인용되는 글의 세 번째 줄.
+
+<ul>
+<li>출력 결과</li>
+</ul>
+
+<blockquote>
+<p>인용되는 글입니다. <br/>
+인용되는 글의 두 번째 줄.<br/>
+인용되는 글의 세 번째 줄. <br/></p>
+</blockquote>
+
+<ul>
+<li>인용문의 레벨을 설정 할 수 있음</li>
+</ul>
+
+<h3 id="인용-예제-2-중첩-인용-및-스타일-적용">인용 예제 2: 중첩 인용 및 스타일 적용</h3>
+
+<pre><code>&gt; 인용되는 첫 번째 줄입니다.
+&gt;&gt; 인용되는 내용 안에서 다시 인용되는 부분입니다.
+&gt; (인용 수준을 변경할 때 이렇게 빈 줄 하나 넣어주세요)
+&gt; 꺽쇠 한 번만 쓰면 다시 상위 수준으로 표시됩니다.
+&gt; ###### 인용문 내부 헤더
+</code></pre>
+
+<blockquote>
+<p>인용되는 첫 번째 줄입니다.</p>
+
+<blockquote>
+<p>인용되는 내용 안에서 다시 인용되는 부분입니다.</p>
+</blockquote>
+
+<p>(인용 수준을 변경할 때 이렇게 빈 줄 하나 넣어주세요)</p>
+
+<p>꺽쇠 한 번만 쓰면 다시 상위 수준으로 표시됩니다.</p>
+
+<h6 id="인용문-내부-헤더">인용문 내부 헤더</h6>
+</blockquote>
+
+<h3 id="인용-예제-2-tab-을-적용한-인용">인용 예제 2: tab 을 적용한 인용</h3>
+
+<ul>
+<li>인용 기호 앞에 tab을 입력하면 인용문의 들여 쓰기를 작성 가능.</li>
+</ul>
+	> 인용되는 글입니다.
+	> 인용되는 글의 두 번째 줄.
+	> 인용되는 글의 세 번째 줄.
+
+<ul>
+<li><p>출력 결과</p>
+
+<blockquote>
+<p>인용되는 글입니다. <br/>
+인용되는 글의 두 번째 줄.<br/>
+인용되는 글의 세 번째 줄. <br/>
+인용문의 레벨을 설정 할 수 있음<br/></p>
+</blockquote></li>
+</ul>
+
+<hr />
+
+<h2 id="목록-a-id-list-a-top-top">목록 <a id="list"></a> <a href="#top">(top)</a></h2>
+
+<ul>
+<li>MarkDown으로 숫자 리스트, 블릿 리스트를 표현할 수 있음.</li>
+<li>순차가 없는 리스트를 표현할 때는 &lsquo;*&lsquo;, &lsquo;+&rsquo;, &lsquo;-&rdquo; 기호 사용 가능.</li>
+<li>순차가 있는 리스트를 표현할 때 &lsquo;숫자&rsquo; 사용용</li>
+</ul>
+* 리스트1
++ 리스트2
+    * 서브 리스트1
+    * 서브리스트 2
+- 리스트3
+    1. 순차 리스트1
+    2. 순차 리스트2
+
+<ul>
+<li><p>출력 결과</p></li>
+
+<li><p>리스트1</p></li>
+
+<li><p>리스트2</p>
+
+<ul>
+<li>서브 리스트1</li>
+<li>서브리스트 2</li>
+</ul></li>
+
+<li><p>리스트3</p>
+
+<ol>
+<li>순차 리스트1</li>
+<li>순차 리스트2<br /></li>
+</ol></li>
+</ul>
+
+<h2 id="코드-a-id-code-a-top-top">코드 <a id="code"></a> <a href="#top">(top)</a></h2>
+
+<h3 id="코드-유형-1-공백">코드 유형 1: 공백</h3>
+
+<p>4개의 공백 또는 하나의 탭으로 들여쓰기를 만나면 변환되기 시작하여 들여쓰지 않은 행을 만날때까지 변환이 계속됨.</p>
+
+<pre><code>공백 없이 바로 시작...
+
+    스페이스 4개로 시작
+    스페이스 4개로 시작
+
+공백 없이 바로 시작...
+</code></pre>
+
+<ul>
+<li>출력 결과</li>
+</ul>
+
+<p>공백 없이 바로 시작&hellip;</p>
+
+<pre><code>스페이스 4개로 시작
+스페이스 4개로 시작
+</code></pre>
+
+<p>공백 없이 바로 시작&hellip;</p>
+
+<h3 id="코드-유형-2-코드-블록">코드 유형 2: 코드 블록</h3>
+
+<ul>
+<li>코드 첫라인 앞과 마지막 라인 다음에 &ldquo;```&rdquo; (fense) 설치</li>
+</ul>
+
+<h3 id="코드-유형-3-인라인-코드">코드 유형 3: 인라인 코드</h3>
+
+<pre><code>스칼라에서는 `val a:Int = 3`과 같은 형식으로 변수를 선언합니다.
+</code></pre>
+
+<ul>
+<li>출력 결과</li>
+</ul>
+
+<p>스칼라에서는 <code>val a:Int = 3</code>과 같은 형식으로 변수를 선언합니다.</p>
+
+<h2 id="테이블-a-id-table-a-top-top">테이블 <a id="table"></a> <a href="#top">(top)</a></h2>
+
+<pre><code>| 이름   | 설명  | 나이 |
+| ----- | ---- | --- |
+| 김태완  | 아빠  | 40 |
+| 임선영  | 엄마  | 30 |
+| 김민수  | 아들  | 2  |
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>이름</th>
+<th>설명</th>
+<th>나이</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>김태완</td>
+<td>아빠</td>
+<td>40</td>
+</tr>
+
+<tr>
+<td>임선영</td>
+<td>엄마</td>
+<td>30</td>
+</tr>
+
+<tr>
+<td>김민수</td>
+<td>아들</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="테이블-정렬">테이블 정렬</h3>
+
+<ul>
+<li>테이블 정렬: 헤더와 row 구분 자에 적용
+
+<ul>
+<li>오른쪽 정렬</li>
+<li>&mdash;-:</li>
+<li>왼쪽 정렬</li>
+<li>:&mdash;-</li>
+<li>가운데 정렬</li>
+<li>:&mdash;-:</li>
+</ul></li>
+</ul>
+
+<pre><code>| 이름   | 설명  | 나이 |
+| :----- | ----: | :---: |
+| 김태완  | 아빠  | 40 |
+| 임선영  | 엄마  | 30 |
+| 김민수  | 아들  | 2  |
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">이름</th>
+<th align="right">설명</th>
+<th align="center">나이</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">김태완</td>
+<td align="right">아빠</td>
+<td align="center">40</td>
+</tr>
+
+<tr>
+<td align="left">임선영</td>
+<td align="right">엄마</td>
+<td align="center">30</td>
+</tr>
+
+<tr>
+<td align="left">김민수</td>
+<td align="right">아들</td>
+<td align="center">2</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2 id="링크-a-id-link-a-top-top">링크 <a id="link"></a> <a href="#top">(top)</a></h2>
+
+<h3 id="기본-링크">기본 링크</h3>
+
+<ul>
+<li>기본 문법: [링크걸 문구](http://주소)</li>
+</ul>
+
+<pre><code>[taewan.kim](http://taewan.kim)
+</code></pre>
+
+<ul>
+<li>HTML 변환 결과</li>
+</ul>
+
+<pre><code>&lt;a href=&quot;http://taewan.kim&quot;&gt;taewan.kim&lt;/a&gt;
+</code></pre>
+
+<ul>
+<li>출력 결과</li>
+</ul>
+
+<p><a href="http://taewan.kim">taewan.kim</a></p>
+
+<h3 id="타이틀을-포함하는-링크">타이틀을 포함하는 링크</h3>
+
+<ul>
+<li>기본 문법: [링크걸 문구](http://주소 &ldquo;타이틀 문구&rdquo;)</li>
+<li>&ldquo;타이틀 문구&rdquo;는 툴팁으로 표현 됨</li>
+</ul>
+
+<pre><code>[taewan.kim](http://taewan.kim &quot;김태완 블러그&quot;)
+</code></pre>
+
+<ul>
+<li>HTML 변환 결과</li>
+</ul>
+
+<pre><code>&lt;a href=&quot;https://taewan.kim&quot; title=&quot;김태완 블러그&quot;&gt;taewan.kim&lt;/a&gt;
+</code></pre>
+
+<ul>
+<li>출력 결과</li>
+</ul>
+
+<p><a href="http://taewan.kim" title="김태완 블러그">taewan.kim</a></p>
+
+<h3 id="참조-링크">참조 링크</h3>
+
+<ul>
+<li>주소를 id로 참조</li>
+<li>[id] 형식으로 지정</li>
+</ul>
+
+<pre><code>    [구글][1]
+    [1]: http://www.google.com
+</code></pre>
+
+<ul>
+<li>출력 결과</li>
+</ul>
+
+<p><a href="http://www.google.com">구글</a></p>
+
+<h3 id="주소만으로-링크">주소만으로 링크</h3>
+
+<ul>
+<li>주소를 &ldquo;&lt;&ldquo;와 &ldquo;&gt;&ldquo;기호로 감싸서 사용</li>
+</ul>
+
+<pre><code>&lt;http://taewan.kim&gt;
+</code></pre>
+
+<ul>
+<li>HTML 변환 결과</li>
+</ul>
+
+<pre><code>&lt;a href=&quot;https://taewan.kim&quot;&gt;http://taewan.kim&lt;/a&gt;
+</code></pre>
+
+<ul>
+<li>출력 결과</li>
+</ul>
+
+<p><a href="http://taewan.kim">http://taewan.kim</a></p>
+
+<h3 id="네임드-앵커">네임드 앵커</h3>
+
+<ul>
+<li>네임드 앵커는 특정 앵커로 점프하는 용도로 적합.</li>
+</ul>
+
+<pre><code>
+### 테이블 구성
+  * [1장](#chapter-1)
+  * [2장](#chapter-2)
+  * [3장](#chapter-3)
+
+</code></pre>
+
+<pre><code>###### 1장 &lt;a id=&quot;chapter-1&quot;&gt;&lt;/a&gt;
+1장의 내용은.....
+
+###### 2장 &lt;a id=&quot;chapter-2&quot;&gt;&lt;/a&gt;
+2장의 내용은.....
+
+###### 3장 &lt;a id=&quot;chapter-3&quot;&gt;&lt;/a&gt;
+3장의 내용은.....
+</code></pre>
+
+<ul>
+<li>출력 결과</li>
+</ul>
+
+<h3 id="테이블-구성">테이블 구성</h3>
+
+<ul>
+<li><a href="#chapter-1">1장</a></li>
+<li><a href="#chapter-2">2장</a></li>
+<li><a href="#chapter-3">3장</a></li>
+</ul>
+
+<h6 id="1장-a-id-chapter-1-a">1장 <a id="chapter-1"></a></h6>
+
+<p>1장의 내용은&hellip;..</p>
+
+<h6 id="2장-a-id-chapter-2-a">2장 <a id="chapter-2"></a></h6>
+
+<p>2장의 내용은&hellip;..</p>
+
+<h6 id="3장-a-id-chapter-3-a">3장 <a id="chapter-3"></a></h6>
+
+<p>3장의 내용은&hellip;..</p>
+
+<hr />
+
+<h2 id="이미지-a-id-image-a-top-top">이미지 <a id="image"></a> <a href="#top">(top)</a></h2>
+
+<h3 id="기본-이미지">기본 이미지</h3>
+
+<p>문법: <code>![사진이름](사진경로)</code></p>
+
+<pre><code>![Minion](http://octodex.github.com/images/minion.png)
+</code></pre>
+
+<ul>
+<li>HTML 변환 결과</li>
+</ul>
+
+<pre><code>&lt;img src=&quot;http://octodex.github.com/images/minion.png&quot; alt=&quot;Minion&quot; /&gt;
+</code></pre>
+
+<ul>
+<li>출력 결과</li>
+</ul>
+
+<p><img src="http://octodex.github.com/images/minion.png" alt="Minion" /></p>
+
+<h3 id="타이클을-포함하는-이미지">타이클을 포함하는 이미지</h3>
+
+<ul>
+<li>툴팁으로 타이틀이 출력 됨</li>
+</ul>
+
+<pre><code>![Alt text](http://octodex.github.com/images/stormtroopocat.jpg &quot;The Stormtroopocat&quot;)
+</code></pre>
+
+<ul>
+<li>HTML 변환 결과</li>
+</ul>
+
+<pre><code>&lt;img src=&quot;http://octodex.github.com/images/stormtroopocat.jpg&quot; alt=&quot;Alt text&quot; title=&quot;The Stormtroopocat&quot; /&gt;
+</code></pre>
+
+<ul>
+<li>출력 결과</li>
+</ul>
+
+<p><img src="http://octodex.github.com/images/stormtroopocat.jpg" alt="Alt text" title="The Stormtroopocat" /></p>
+
+<h3 id="주소-참조-이미지">주소 참조 이미지</h3>
+
+<p>링크와 같이 참조 주소를 갖는 이미지</p>
+
+<pre><code>    ![Alt text][10]
+    [10]: http://octodex.github.com/images/dojocat.jpg  &quot;The Dojocat&quot;
+</code></pre>
+
+<ul>
+<li>출력 결과</li>
+</ul>
+
+<p><img src="http://octodex.github.com/images/dojocat.jpg" alt="Alt text" title="The Dojocat" /></p>
+
+<hr />
+
+<h2 id="주석-a-id-comment-a-top-top">주석 <a id="comment"></a> <a href="#top">(top)</a></h2>
+
+<pre><code>&lt;!--
+마크다운으로 주석 처리 가능
+--&gt;
+</code></pre>
+
+<ul>
+<li><p>출력결과 (출력 결과가 노출되지 않습니다.)</p></li>
+
+<li><p>HTML 변환 결과</p></li>
+</ul>
+
+<pre><code>&lt;!--
+마크다운으로 주석 처리 가능
+--&gt;
+</code></pre>
+
+<h2 id="각주-a-id-footnote-a-top-top">각주 <a id="footnote"></a> <a href="#top">(top)</a></h2>
+
+<p>본문의 어떤 부분을 설명하거나 보충하기 위해 본문 아래쪽에 별도로 작성하는 간단한 설명문으로서 주로 내용의 출처를 밝힐 때 사용됩니다.</p>
+
+<pre><code>최근 스칼라는 매우 인기가 높은 언어이다.[^scala]
+
+\[^scala]: 스칼라는 마틴 오더시크가 개발한 함수형 언어이다.
+</code></pre>
+
+<ul>
+<li><p>주의사항: 각주 두번째 라인의 역슬레쉬는 hugo의 코드 블록의  제약 사항으로 부득이하게 입력한 것입니다.</p></li>
+
+<li><p>출력 결과</p></li>
+</ul>
+
+<p>최근 스칼라는 매우 인기가 높은 언어이다.<sup class="footnote-ref" id="fnref:scala"><a rel="footnote" href="#fn:scala">1</a></sup></p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:scala">스칼라는 마틴 오더시크가 개발한 함수형 언어이다.
+ <a class="footnote-return" href="#fnref:scala"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/tip/" rel="tag">tip</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/markdown/" rel="tag">markdown</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/installing_bigdatalite/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">오라클 Big Data Lite 설치</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/cost_function_derivation/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">선형회귀 MSE 오차함수 미분 및 코드 구현</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/post/markdown/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#헤더-a-id-header-a-top-top">헤더 <a id="header"></a> <a href="#top">(top)</a></a></li>
+</ul></li>
+<li><a href="#헤더-스타일-h1">헤더 스타일 (h1)</a>
+<ul>
+<li><a href="#헤더-스타일-h2">헤더 스타일 (h2)</a>
+<ul>
+<li><a href="#헤더-스타일-h3">헤더 스타일 (h3)</a>
+<ul>
+<li><a href="#헤더-스타일-h4">헤더 스타일 (h4)</a>
+<ul>
+<li><a href="#헤더-스타일-h5">헤더 스타일 (h5)</a>
+<ul>
+<li><a href="#헤더-스타일-h6">헤더 스타일 (h6)</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#수평선-a-id-hr-a-top-top">수평선 <a id="hr"></a> <a href="#top">(top)</a></a></li>
+<li><a href="#텍스트-출력-a-id-text-a-top-top">텍스트 출력 <a id="text"></a> <a href="#top">(top)</a></a></li>
+<li><a href="#텍스트-강조-a-id-em-a-top-top">텍스트 강조 <a id="em"></a> <a href="#top">(top)</a></a></li>
+<li><a href="#인용-a-id-quotation-a-top-top">인용 <a id="quotation"></a> <a href="#top">(top)</a></a>
+<ul>
+<li><a href="#인용-예제-1-기본-스타일">인용 예제 1: 기본 스타일</a></li>
+<li><a href="#인용-예제-2-중첩-인용-및-스타일-적용">인용 예제 2: 중첩 인용 및 스타일 적용</a>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#인용문-내부-헤더">인용문 내부 헤더</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#인용-예제-2-tab-을-적용한-인용">인용 예제 2: tab 을 적용한 인용</a></li>
+</ul></li>
+<li><a href="#목록-a-id-list-a-top-top">목록 <a id="list"></a> <a href="#top">(top)</a></a></li>
+<li><a href="#코드-a-id-code-a-top-top">코드 <a id="code"></a> <a href="#top">(top)</a></a>
+<ul>
+<li><a href="#코드-유형-1-공백">코드 유형 1: 공백</a></li>
+<li><a href="#코드-유형-2-코드-블록">코드 유형 2: 코드 블록</a></li>
+<li><a href="#코드-유형-3-인라인-코드">코드 유형 3: 인라인 코드</a></li>
+</ul></li>
+<li><a href="#테이블-a-id-table-a-top-top">테이블 <a id="table"></a> <a href="#top">(top)</a></a>
+<ul>
+<li><a href="#테이블-정렬">테이블 정렬</a></li>
+</ul></li>
+<li><a href="#링크-a-id-link-a-top-top">링크 <a id="link"></a> <a href="#top">(top)</a></a>
+<ul>
+<li><a href="#기본-링크">기본 링크</a></li>
+<li><a href="#타이틀을-포함하는-링크">타이틀을 포함하는 링크</a></li>
+<li><a href="#참조-링크">참조 링크</a></li>
+<li><a href="#주소만으로-링크">주소만으로 링크</a></li>
+<li><a href="#네임드-앵커">네임드 앵커</a></li>
+<li><a href="#테이블-구성">테이블 구성</a>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#1장-a-id-chapter-1-a">1장 <a id="chapter-1"></a></a></li>
+<li><a href="#2장-a-id-chapter-2-a">2장 <a id="chapter-2"></a></a></li>
+<li><a href="#3장-a-id-chapter-3-a">3장 <a id="chapter-3"></a></a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#이미지-a-id-image-a-top-top">이미지 <a id="image"></a> <a href="#top">(top)</a></a>
+<ul>
+<li><a href="#기본-이미지">기본 이미지</a></li>
+<li><a href="#타이클을-포함하는-이미지">타이클을 포함하는 이미지</a></li>
+<li><a href="#주소-참조-이미지">주소 참조 이미지</a></li>
+</ul></li>
+<li><a href="#주석-a-id-comment-a-top-top">주석 <a id="comment"></a> <a href="#top">(top)</a></a></li>
+<li><a href="#각주-a-id-footnote-a-top-top">각주 <a id="footnote"></a> <a href="#top">(top)</a></a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

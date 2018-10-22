@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>JUnit 4.x 어노테이션</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="JUnit 4.x 어노테이션" />
+<meta property="og:description" content="JUnit 4.x의 어노테이션" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/post/junit4_annotation/" />
+
+
+
+<meta property="article:published_time" content="2010-11-09T10:50:36&#43;09:00"/>
+<meta property="article:modified_time" content="2010-11-09T10:50:36&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		
+		
+		<header class="post__header clearfix">
+			<h1 class="post__title">JUnit 4.x 어노테이션 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2010-11-09 10:50:36 &#43;0900 KST">November 09, 2010</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/tech-tip" rel="category">Tech Tip</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+			
+
+<p>2010년 11월 9일에 <a href="http://devtainer.blogspot.kr/에서">http://devtainer.blogspot.kr/에서</a> 섰던 글입니다. 추억 팔이로 옮겨 놓습니다.
+2010년 추억 속으로&hellip;.
+- 원문: <a href="http://devtainer.blogspot.kr/2010/11/junit-4x.html">http://devtainer.blogspot.kr/2010/11/junit-4x.html</a></p>
+
+<hr />
+
+<p>JUnit4의 주요 어노테이션을 정리해 보았습니다. 별것 아닌것 같아도 막상 사용해 보면 헛갈리기 쉬운것 같습니다. Junit4의 주요 어노테이션은 다음과 같습니다.</p>
+
+<h2 id="junit-4-테스트-클래스-작성">Junit 4 테스트 클래스 작성</h2>
+
+<p>JUnit4에서는 POJO 형태로 단위 테스트 클래스가 정의 됩니다. 단위 테스트 대상 메소드는 @Test를 통해서 정의 됩니다. 또한 단위 테스트 앞뒤에 초기화와 정리를 수행하는 메소드를 지정할 수 있습니다. 추가적으로 클래스 실행 앞뒤에 초기화와 정리를 수행하는 메서드를 정의 할 수 있습니다.</p>
+
+<p>@Test 어노테이션은 timeout과 expected 속성을 갖습니다. timeout은 실행 시간은 지정된 단위 시간(밀리세컨드)를 초과하면 않된다는 것이며 expected는 지정한 클래스의 exception이 단위 테스트 메서드에서 발생할 것을 의미합니다.</p>
+
+<ul>
+<li>@Test 어노테이션으로 단위 테스트 클래스정의</li>
+<li>@After, @Before 어네테이션을 사용하여 각 단위 테스트 메서드의 실행 앞뒤에서 초기화와 자원 정리 작업을 수행</li>
+<li>@AfterClass, @BeoreClass 어노테이션을 사용하여 각 단위 테스트 클래스 수행 전후에 초기화와 자원 정리 작업을 수행</li>
+</ul>
+
+<pre><code>package devtainer.demo.unitTest.junit4;
+
+import junit.framework.Assert;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+public class JunitTest {
+  static final Logger logger =
+    LoggerFactory.getLogger(JunitTest.class);
+
+  @Before
+  public void setup(){
+    logger.info(&quot;@Before 메서드 실행&quot;);
+  }
+
+  @After
+  public void tearDown(){
+    logger.info(&quot;@After 메서드 실행&quot;);
+  }
+
+  @BeforeClass
+  public static void setupForClass(){
+    logger.info(&quot;@BeforeClass 메서드 실행&quot;);
+  }
+
+  @AfterClass
+  public static void tearDownForClass(){
+    logger.info(&quot;@AfterClass 메서드 실행&quot;);
+  }
+
+
+  @Test(expected=RuntimeException.class) //예외 발생을 예상
+  public void test1(){
+    logger.info(&quot;@Test 단위 테스트 메서드  메서드 실행&quot;);
+    throw new RuntimeException();
+  }
+
+  @Test(timeout=100) //100 millisecond 초과시 에러
+  public void test2(){
+    logger.info(&quot;@Test 단위 테스트 메서드  메서드 실행&quot;);
+
+    int a = 5;
+    int b = 5;
+
+    Assert.assertEquals(&quot;add 메서드 테스트&quot;, a+b, Calculator.add(a, b));
+    Assert.assertEquals(&quot;minus 메서드 테스트&quot;, a-b, Calculator.minus(a, b));
+    Assert.assertEquals(&quot;multiply 메서드 테스트&quot;, a*b, Calculator.multiply(a, b));
+    Assert.assertEquals(&quot;divide 메서드 테스트&quot;, (double)a/b, Calculator.divide(a, b));
+    // fail(String)
+    // assertTrue(true);
+    // assertsEquals([String message], expected, actual)
+    // assertsEquals([String message], expected, actual, tolerance)
+    // assertNull([message], object)
+    // assertNotNull([message], object)
+    // assertSame([String], expected, actual)
+    // assertNotSame([String], expected, actual)
+    // assertTrue([message], boolean condition)
+
+  }
+}
+</code></pre>
+
+<h2 id="단위테스트-클래스-수행-결과">단위테스트 클래스 수행 결과</h2>
+
+<pre><code>INFO - JunitTest  :  setupForClass  @BeforeClass 메서드 실행
+INFO - JunitTest  :  setup  @Before 메서드 실행
+INFO - JunitTest  :  test1  @Test 단위 테스트 메서드  메서드 실행
+INFO - JunitTest  :  tearDown  @After 메서드 실행
+INFO - JunitTest  :  setup  @Before 메서드 실행
+INFO - JunitTest  :  test2  @Test 단위 테스트 메서드  메서드 실행
+INFO - JunitTest  :  tearDown  @After 메서드 실행
+INFO - JunitTest  :  tearDownForClass  @AfterClass 메서드 실행
+</code></pre>
+
+<h2 id="suite-설정">Suite 설정</h2>
+
+<p>앞에 예제와 같이 단위 테스트 클래스를 독자적으로 정리하고 실행할 수 있습니다. 그러나 때로는 몇개의 단위 테스트를 하나의 단위로 묶어서 수행해야 하는 경우가 있습니다. 이러한 경우에 Suite의 개념을 사용할 수 있습니다. JUnit4에서 Suite을 위한 어노테이션은 다음과 같습니다.</p>
+
+<pre><code>package devtainer.demo.unitTest.junit4;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+
+@RunWith(Suite.class)
+@Suite.SuiteClasses( { JunitTest.class, Junit2Test.class })
+public class SuiteTest {
+
+}
+</code></pre>
+
+<ul>
+<li>@RunWith로 Suite.class 지정</li>
+<li>@Suite.SuiteClass 지정</li>
+</ul>
+
+<h2 id="suite-클래스-실행-결과">Suite 클래스 실행 결과</h2>
+
+<pre><code>INFO - JunitTest  :  setupForClass  @BeforeClass 메서드 실행
+INFO - JunitTest  :  setup  @Before 메서드 실행
+INFO - JunitTest  :  test1  @Test 단위 테스트 메서드  메서드 실행
+INFO - JunitTest  :  tearDown  @After 메서드 실행
+INFO - JunitTest  :  setup  @Before 메서드 실행
+INFO - JunitTest  :  test2  @Test 단위 테스트 메서드  메서드 실행
+INFO - JunitTest  :  tearDown  @After 메서드 실행
+INFO - JunitTest  :  tearDownForClass  @AfterClass 메서드 실행
+INFO - Junit2Test  :  setupForClass  @BeforeClass 메서드 실행
+INFO - Junit2Test  :  setup  @Before 메서드 실행
+INFO - Junit2Test  :  test1  @Test 단위 테스트 메서드  메서드 실행
+INFO - Junit2Test  :  tearDown  @After 메서드 실행
+INFO - Junit2Test  :  setup  @Before 메서드 실행
+INFO - Junit2Test  :  test2  @Test 단위 테스트 메서드  메서드 실행
+INFO - Junit2Test  :  tearDown  @After 메서드 실행
+INFO - Junit2Test  :  tearDownForClass  @AfterClass 메서드 실행
+</code></pre>
+
+<h2 id="예제">예제</h2>
+
+<p>예제는 다음 URL에서 SVN으로 받으실 수 있습니다.</p>
+
+<ul>
+<li>SVN URL: <a href="http://devtainer-demo.googlecode.com/svn/trunk/junit4">http://devtainer-demo.googlecode.com/svn/trunk/junit4</a></li>
+<li>프로젝트는 Maven 형태로 구성</li>
+<li>maven 2.2.x 설치가 필수</li>
+<li>실행방법
+
+<ul>
+<li>위치: 프로젝트 root</li>
+<li>command: mvn clean test</li>
+</ul></li>
+</ul>
+
+<pre><code>C:\test-cloud\workspace\archetype\junit4&gt;mvn clean test
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building junit4
+[INFO]    task-segment: [clean, test]
+[INFO] ------------------------------------------------------------------------
+[INFO] [clean:clean {execution: default-clean}]
+[INFO] Deleting directory C:\test-cloud\workspace\archetype\junit4\target
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Compiling 1 source file to C:\test-cloud\workspace\archetype\junit4\targe
+t\classes
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] Compiling 3 source files to C:\test-cloud\workspace\archetype\junit4\targ
+et\test-classes
+[INFO] [surefire:test {execution: default-test}]
+[INFO] Surefire report directory: C:\test-cloud\workspace\archetype\junit4\targe
+t\surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running devtainer.demo.unitTest.junit4.JunitTest
+INFO - JunitTest  :  setupForClass  @BeforeClass 메서드 실행
+INFO - JunitTest  :  setup  @Before 메서드 실행
+INFO - JunitTest  :  test1  @Test 단위 테스트 메서드  메서드 실행
+INFO - JunitTest  :  tearDown  @After 메서드 실행
+INFO - JunitTest  :  setup  @Before 메서드 실행
+INFO - JunitTest  :  test2  @Test 단위 테스트 메서드  메서드 실행
+INFO - JunitTest  :  tearDown  @After 메서드 실행
+INFO - JunitTest  :  tearDownForClass  @AfterClass 메서드 실행
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.172 sec
+Running devtainer.demo.unitTest.junit4.SuiteTest
+INFO - JunitTest  :  setupForClass  @BeforeClass 메서드 실행
+INFO - JunitTest  :  setup  @Before 메서드 실행
+INFO - JunitTest  :  test1  @Test 단위 테스트 메서드  메서드 실행
+INFO - JunitTest  :  tearDown  @After 메서드 실행
+INFO - JunitTest  :  setup  @Before 메서드 실행
+INFO - JunitTest  :  test2  @Test 단위 테스트 메서드  메서드 실행
+INFO - JunitTest  :  tearDown  @After 메서드 실행
+INFO - JunitTest  :  tearDownForClass  @AfterClass 메서드 실행
+INFO - Junit2Test  :  setupForClass  @BeforeClass 메서드 실행
+INFO - Junit2Test  :  setup  @Before 메서드 실행
+INFO - Junit2Test  :  test1  @Test 단위 테스트 메서드  메서드 실행
+INFO - Junit2Test  :  tearDown  @After 메서드 실행
+INFO - Junit2Test  :  setup  @Before 메서드 실행
+INFO - Junit2Test  :  test2  @Test 단위 테스트 메서드  메서드 실행
+INFO - Junit2Test  :  tearDown  @After 메서드 실행
+INFO - Junit2Test  :  tearDownForClass  @AfterClass 메서드 실행
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.062 sec
+Running devtainer.demo.unitTest.junit4.Junit2Test
+INFO - Junit2Test  :  setupForClass  @BeforeClass 메서드 실행
+INFO - Junit2Test  :  setup  @Before 메서드 실행
+INFO - Junit2Test  :  test1  @Test 단위 테스트 메서드  메서드 실행
+INFO - Junit2Test  :  tearDown  @After 메서드 실행
+INFO - Junit2Test  :  setup  @Before 메서드 실행
+INFO - Junit2Test  :  test2  @Test 단위 테스트 메서드  메서드 실행
+INFO - Junit2Test  :  tearDown  @After 메서드 실행
+INFO - Junit2Test  :  tearDownForClass  @AfterClass 메서드 실행
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 sec
+
+Results :
+
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 4 seconds
+[INFO] Finished at: Tue Nov 09 11:25:15 VET 2010
+[INFO] Final Memory: 13M/32M
+[INFO] ------------------------------------------------------------------------
+C:\test-cloud\workspace\archetype\junit4&gt;
+</code></pre>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/tip/" rel="tag">tip</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/junit/" rel="tag">Junit</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/testing/" rel="tag">testing</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/java/" rel="tag">Java</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/jersey_license_gpl2_cddl1.1/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Jersey License: CDDL 1.1 &amp; GPL 2</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/sudo_in_centos/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">sudo 사용자 등록 (in CentOS)</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/post/junit4_annotation/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#junit-4-테스트-클래스-작성">Junit 4 테스트 클래스 작성</a></li>
+<li><a href="#단위테스트-클래스-수행-결과">단위테스트 클래스 수행 결과</a></li>
+<li><a href="#suite-설정">Suite 설정</a></li>
+<li><a href="#suite-클래스-실행-결과">Suite 클래스 실행 결과</a></li>
+<li><a href="#예제">예제</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

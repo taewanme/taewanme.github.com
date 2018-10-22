@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Oracle Code on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/oracle-code/</link>
+    <description>Recent content in Oracle Code on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Sep 2017 10:50:36 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/oracle-code/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>2017 Oracle Code in Seoul을 마치며</title>
+      <link>http://taewan.kim/post/review_oracle_code/</link>
+      <pubDate>Sat, 02 Sep 2017 10:50:36 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/review_oracle_code/</guid>
+      <description>Oracle Code in Seoul의 발표를 무사히 마쳤습니다. 오랜만에 개발자 행사에 참여하는 관계로 긴장도 많이 했고, 컨텐츠 개발에 많은 공을 들였습니다. 정말로 오라클이 주도하는 개발자 행사는 오랜만인것 같습니다. 오랜만에 진행한 개발자 행사다 아쉬운 점도 많지만, 개인적으로는 150% 만족하는 행사였습니다. 이런 행사가 더 자주 만이 진행되었으면 합니다.
+제가 오랜만에 발표에 참여한 행사다 보니 애정이 생기네요. 확보한 이미지로 행상 현장을 기록하게습니다.
+발표 자료: Hot to control cloud resources 이번 행사에서 &amp;ldquo;Hot to control cloud resources&amp;rdquo;를 주제로 발표를 했습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

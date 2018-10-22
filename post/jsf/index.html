@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>자바 웹 개발의 페이스오프: JavaServer Faces</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="자바 웹 개발의 페이스오프: JavaServer Faces" />
+<meta property="og:description" content="자바 웹 개발의 페이스오프: JavaServer Faces" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/post/jsf/" />
+
+
+
+<meta property="article:published_time" content="2017-08-23T21:59:47&#43;09:00"/>
+<meta property="article:modified_time" content="2017-08-23T21:59:47&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		
+		
+		<header class="post__header clearfix">
+			<h1 class="post__title">자바 웹 개발의 페이스오프: JavaServer Faces </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2017-08-23 21:59:47 &#43;0900 KST">August 23, 2017</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/tech-event" rel="category">Tech Event</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+			
+
+<p>월간 마이크로 소프트웨어 2004년 12월호 &ldquo;2005년을 달굴 프레임워크 열전!&rdquo; 특집호에 기고했던 JSF 기사입니다.
+어렵게 원본을 발굴하여 복원한 문서입니다. ^^</p>
+
+<ul>
+<li>원본
+
+<ul>
+<li><a href="http://www.dbguide.net/dbqna.db?cmd=view&amp;boardUid=125476&amp;boardConfigUid=19&amp;boardStep=0&amp;categoryUid=205">dbguide.net-기사링크</a></li>
+<li><a href="http://webcache.googleusercontent.com/search?q=cache:cx-djTT9hhsJ:m.dbguide.net/about.db%3Fcmd%3Dview%26boardConfigUid%3D19%26boardUid%3D125476+&amp;cd=1&amp;hl=ko&amp;ct=clnk&amp;gl=jp&amp;client=safari">구글 캐쉬</a></li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>JSF의 최종 릴리즈가 지난 2월 발표되었고, 2004년 자바원 컨퍼런스의 주요 기술로 소개되었다. JSF는 자바 기반 웹 애플리케이션을 위한 서버사이드 사용자 인터페이스 컴포넌트 프레임워크이다. 요즘 들어 많은 프레임워크가 발표되고 있고, 스트럿츠가 사실상 웹 개발의 표준으로 자리 잡고 있는 상황에서 또 하나의 프레임워크가 발표되었다고 간과하기에는 J2EE 진영 대형 벤더들이 제시하는 JSF 지원책이나 오픈소스의 움직임이 너무나 활발하다. 특집 3부에서는 JSF의 개괄적인 사항과 주변 프레임워크들과의 관계에 대해 다룰 것이다.</p>
+</blockquote>
+
+<hr />
+
+<ul>
+<li>김태완 okcode@gmail.com</li>
+<li>필자는 프로자바(www.pro-java.com)의 운영자로 활동하고 있으며, 오픈소스 기반 Rapid Development에 관심을 갖고 있다. 프레임웍을 주제로 하는 새로운 커뮤니티를 기획하고 있으며, 상식이 통하는 고객과 개발자, 관리자가 함께하는 날이 언젠가 올 것이라 간절히 소망하고 있다. 현재 대우정보시스템에 재직 중이다.</li>
+</ul>
+
+<hr />
+
+<h2 id="자바-웹-개발의-페이스오프-javaserver-faces">자바 웹 개발의 페이스오프: JavaServer Faces</h2>
+
+<p>아파치 프로젝트의 스트럿츠는 표준 스펙은 아니지만 실질적으로 웹 개발의 표준으로 자리잡고 있다. J2EE 진영 주요 벤더들은 자사의 WAS(Web Application Server)의 관리 툴을 대부분 스트럿츠 기반으로 제공하고 있다. 이러한 시점에서 스트럿츠 프로젝트의 리더인 Craig R. McClanahan이 주도한 또 하나의 웹 개발 프레임워크가 발표되었으며, 발표되기 전부터 오픈소스 및 각 메이저 벤더들이 JSF 지원을 발표할 정도로 상당한 이슈를 일으킨 것이 바로 JSF(JavaServer Faces)이다. JSF는 JCP(Java Community Process)에서 정의한 자바 표준 스펙(JCP-127)이다. 스트럿츠 커미터들이 대거 참여한 표준 스펙 JSF는 도대체 무엇일까? 썬, IBM, 오라클 등 메이저 벤더들은 왜 JSF 지원 방안을 벌써부터 발표하는 것일까? 어쩌면 JSF는 향후 웹 개발의 개념을 변화시킬 수도 있는 거대한 놈(?)이 아닐까?</p>
+
+<p>현재 웹 개발에서 가장 높은 위험 요소로 꼽자면 아마도 뷰(View)일 것이다. 웹 개발 프로젝트에서 가장 큰 어려운 요구사항 중에 하나는 C/S 프로그램의 GUI를 웹 기반 애플리케이션에서 요구하는 경우일 것이다. 고객의 요구 사항을 수용하자면 JSP 파일은 자바스크립트 범벅이 될 수밖에 없다. 이러한 시점에서 GUI 컴포넌트의 재사용성을 높이고 자바 기반 웹 개발의 편이성을 극대화하기 위한 프레임워크가 바로 JSF이다.</p>
+
+<p>JSF는 “J2EE 웹 애플리케이션에 사용되는 서버사이드 사용자 인터페이스 컴포넌트 프레임워크”라고 정의할 수 있다. JSF는 기존의 HTML을 컴포넌트화하고, 클라이언트의 상태를 서버에서 관리하며, 브라우저에서 발생한 이벤트를 서버가 제어할 수 있도록 하여 스윙 스타일의 객체지향 웹 애플리케이션 개발이 가능하게 한다. JSF를 사용함으로써 다음과 같은 EoD(Easy of Development)를 얻을 수 있다.</p>
+
+<ul>
+<li>재사용성 가능한 UI 컴포넌트로 UI 작성의 편리성</li>
+<li>UI와 애플리케이션 데이터간의 데이터 변환이 용이함</li>
+<li>서버 리퀘스트를 통해 UI 상태를 서버에서 관리</li>
+<li>클라이언트가 발생시킨 이벤트를 서버 애플리케이션 코드가 관리하는 모델 제공</li>
+<li>Custom UI 컴포넌트 개발의 용이성</li>
+</ul>
+
+<h2 id="jsf의-특징과-사용-방식">JSF의 특징과 사용 방식</h2>
+
+<p>JSF는 표준 및 확장 가능한 사용자 인터페이스(UI) 구성요소, 쉽게 구성할 수 있는 페이지 검색, 입력 검증, 자동 빈 관리, 이벤트 처리, 국제화(I18N) 등 여러 가지 기능을 이용하여 개발 속도를 가속시킨다(&lt;그림 1&gt;). 또한 스트럿츠와 비슷한 아키텍처를 갖고 있기 때문에 기존 스트럿츠를 경험한 개발자라면 접근성이 매우 높다는 장점을 갖고 있다. 여기서는 간단한 JSF 예제를 살펴보고 각 구성 요소별 특징과 사용방식에 대하여 알아볼 것이다.</p>
+
+<ul>
+<li>&lt;그림 1&gt; JSF 구성도</li>
+</ul>
+
+<p><img src="https://taewanmerepo.github.io/repo1/jsf/img01.jpg" alt="" /></p>
+
+<h2 id="jsf-샘플-애플리케이션-설치">JSF 샘플 애플리케이션 설치</h2>
+
+<p>새로운 기술을 익히는 효율적인 방법은 직접 실행해 보는 것이다. 따라서 먼저 JSF 개발 환경을 먼저 구성해보고 간단한 예제 샘플을 작성해 보도록 하겠다. JSF를 테스트하기 위해서는 &lt;표 1&gt;과 같은 소프트웨어가 필요하다.</p>
+
+<ul>
+<li>&lt;표 1&gt; JSF 데모를 위한 소프트웨어</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>소프트웨어</th>
+<th>다운로드 URLL</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Java SDK 1.4.2_05</td>
+<td><a href="http://java.sun.com/j2se">http://java.sun.com/j2se</a></td>
+</tr>
+
+<tr>
+<td>JavaServer Faces v1.1.01</td>
+<td><a href="http://java.sun.com/j2ee/javaserverfaces/">http://java.sun.com/j2ee/javaserverfaces/</a></td>
+</tr>
+
+<tr>
+<td>Jakarta-tomcat-5.0.28</td>
+<td><a href="http://jakarta.apache.org/tomcat">http://jakarta.apache.org/tomcat</a></td>
+</tr>
+</tbody>
+</table>
+
+<p>JSF 구현체(v1.1.01)는 jsf-1_1_01.zip의 형태로 배포된다. 배포판의 압축을 풀면 Sample 디렉토리에 4개의 war 파일을 찾아볼 수 있다. 이 war 파일을 /webapps에 복사하고 톰캣을 실행하면, JSF Sample App를 살펴볼 수 있다. 특히 JSF 컴포넌트를 살펴볼 수 있는 jsf-components를 살펴볼 것을 추천한다.</p>
+
+<h3 id="helloworld-jsf-app-sample">HelloWorld JSF App Sample</h3>
+
+<p>&lt;그림 2&gt;는 이제부터 작성해 볼 예제의 실행 화면이다. 사용자 입력을 받아 출력하는 간단한 JSF-HelloWorld 프로그램이다. 예제는 필수 jar 체크, web.xml 설정, JSF 페이지 작성, JavaBean 작성, faces-config.xml 설정 순서로 진행될 것이다. JSF-HelloWorld는 &lt;그림 3&gt;의 디렉터리 구조를 갖는다.</p>
+
+<ul>
+<li>&lt;그림 2&gt;HelloWorld JSF App 실행 화면</li>
+</ul>
+
+<p><img src="https://taewanmerepo.github.io/repo1/jsf/img02.jpg" alt="" /></p>
+
+<ul>
+<li>&lt;그림 3&gt; JSF-HelloWorld 프로젝트 디렉터리 구조</li>
+</ul>
+
+<p><img src="https://taewanmerepo.github.io/repo1/jsf/img03.jpg" alt="" /></p>
+
+<h3 id="jar-파일-체크">JAR 파일 체크</h3>
+
+<p>JSF App를 개발하기 위한 필수 JAR는 다음과 같다.</p>
+
+<ul>
+<li>commons-beanutils.jar</li>
+<li>commons-collections.jar</li>
+<li>commons-digester.jar</li>
+<li>commons-logging.jar</li>
+<li>jsf-api.jar, jsf-impl.jar)</li>
+</ul>
+
+<p>이들 JAR는 JSF 배포판의 lib 디렉터리에서 찾을 수 있다.</p>
+
+<h3 id="web-xml-설정">web.xml 설정</h3>
+
+<p>기존의 스트럿츠와 유사한 형태로 web.xml에 JSF 애플리케이션을 설정한다. 리스트 1은 JSF-HelloWorld의 web.xml 설정 파일이다. 각 요소의 의미를 설명하기 위해서 주석을 첨부하였다.</p>
+
+<ul>
+<li>&lt;리스트 1&gt;  web.xml의 JSF 설정</li>
+</ul>
+
+<pre><code>&lt;?xml version=’1.0’ encoding=’UTF-8’?&gt;
+&lt;!DOCTYPE web-app PUBLIC “-//Sun Microsystems, Inc.//DTD Web Application
+2.3//EN”  “http://java.sun.com/dtd/web-app_2_3.dtd”&gt;
+&lt;web-app&gt;
+   &lt;!--javax.faces.STATE_SAVING_METHOD는 request들 사이에 view의 상태를 어디에  
+   저장할 것인가를 결정한다. value로 client/server를 설정할 수 있다(default: server).-&gt;
+   &lt;context-param&gt;
+      &lt;param-name&gt;javax.faces.STATE_SAVING_METHOD&lt;/param-name&gt;
+      &lt;param-value&gt;client&lt;/param-value&gt;
+   &lt;/context-param&gt;
+
+   &lt;!-- faces-config.xml의 위치를 지정한다. 이 context-param을 설정하지 않을 경우
+   /WEB-INF/faces-config.xml에 위치하는 것으로 간주한다. --&gt;
+   &lt;context-param&gt;
+      &lt;param-name&gt;javax.faces.application.CONFIG_FILES&lt;/param-name&gt;
+      &lt;param-value&gt;/WEB-INF/faces-config.xml&lt;/param-value&gt;
+   &lt;/context-param&gt;
+
+   &lt;!-- faces-config.xml에 대한 유효성 검사 여부를 설정(default: false) --&gt;
+   &lt;context-param&gt;
+      &lt;param-name&gt;com.sun.faces.validateXml&lt;/param-name&gt;
+      &lt;param-value&gt;true&lt;/param-value&gt;
+   &lt;/context-param&gt;
+
+   &lt;!-- 설정된 component, converter, renderer, validator가 생성되었는지를
+   체크하는 옵션 (default: false)--&gt;
+   &lt;context-param&gt;
+      &lt;param-name&gt;com.sun.faces.verifyObjects&lt;/param-name&gt;
+      &lt;param-value&gt;true&lt;/param-value&gt;
+   &lt;/context-param&gt;
+
+   &lt;!-- JSF의 controller servlet 등록 --&gt;
+   &lt;servlet&gt;
+      &lt;servlet-name&gt;Faces Servlet&lt;/servlet-name&gt;
+      &lt;servlet-class&gt;javax.faces.webapp.FacesServlet&lt;/servlet-class&gt;
+      &lt;load-on-startup&gt; 1 &lt;/load-on-startup&gt;
+   &lt;/servlet&gt;
+   &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;Faces Servlet&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/faces/*&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;
+</code></pre>
+
+<h3 id="javabean-작성">JavaBean 작성</h3>
+
+<p>JSF 페이지 상태를 저장하는 자바빈은 멤버 변수와 getter/setter 메쏘드만을 포함하는 POJO 클래스이다(리스트 2).</p>
+
+<ul>
+<li>&lt;리스트 2&gt; UserInfo Bean 코드</li>
+</ul>
+
+<pre><code>package kr.co.imaso.jsf;
+public class UserInfo {
+   private String name;
+   private int age;
+   public int getAge() { return age;}
+   public void setAge(int age) { this.age = age; }
+   public String getName() { return name; }
+   public void setName(String name) { this.name = name; }
+   public String getMessage(){ return name+”! Welcom to JSF World!!! your
+   age is “+age; }
+}
+</code></pre>
+
+<h3 id="faces-페이지-작성">Faces 페이지 작성</h3>
+
+<p>JSF-HelloWorld는 사용자 입력을 받는 index.jsp와 결과를 출력하는 response.jsp 2개의 JSP 페이지로 구성된다(리스트 3, 4 ).</p>
+
+<ul>
+<li>&lt;리스트 3&gt; index.jsp 코드</li>
+</ul>
+
+<pre><code>&lt;%@ taglib uri=”http://java.sun.com/jsf/html” prefix=”h” %&gt;
+&lt;%@ taglib uri=”http://java.sun.com/jsf/core” prefix=”f” %&gt;
+&lt;html&gt;
+   &lt;f:view&gt;
+   &lt;head&gt;                  
+      &lt;f:loadBundle basename=”kr.co.imaso.jsf.Resource” var=”msg”/&gt;
+      &lt;title&gt;&lt;h:outputText value=”#{msg.title}”/&gt;&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+         &lt;h:form&gt;
+         &lt;h3&gt;&lt;h:outputText value=”#{msg.heading}”/&gt;&lt;/h3&gt;
+         &lt;p&gt;&lt;h:outputText value=”#{msg.command}”/&gt;&lt;/p&gt;
+         &lt;p&gt;&lt;h:outputText value=”#{msg.name}”/&gt;
+            &lt;h:inputText value=”#{userInfo.name}”/&gt;&lt;/p&gt;
+         &lt;p&gt;&lt;h:outputText value=”#{msg.age}”/&gt;
+            &lt;h:inputText value=”#{userInfo.age}”/&gt;&lt;/p&gt;
+         &lt;p&gt;&lt;h:commandButton value=”#{msg.submit}” action=”next”/&gt;&lt;/p&gt;
+         &lt;/h:form&gt;
+      &lt;/body&gt;
+   &lt;/f:view&gt;
+&lt;/html&gt;
+</code></pre>
+
+<ul>
+<li>&lt;리스트 4&gt; reponse.jsp 코드</li>
+</ul>
+
+<pre><code>&lt;%@ taglib uri=”http://java.sun.com/jsf/html” prefix=”h” %&gt;
+&lt;%@ taglib uri=”http://java.sun.com/jsf/core” prefix=”f” %&gt;
+&lt;html&gt;
+   &lt;f:view&gt;
+      &lt;head&gt;
+         &lt;f:loadBundle basename=”kr.co.imaso.jsf.Resource” var=”msg”/&gt;                  
+         &lt;title&gt;&lt;h:outputText value=”#{msg.response}”/&gt;&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+         &lt;h:form&gt;
+            &lt;h3&gt;&lt;h:outputText value=”#{userInfo.message}”/&gt;&lt;/h3&gt;
+            &lt;p&gt;&lt;h:commandButton value=”#{msg.submit}” action=”next”/&gt;&lt;/p&gt;
+         &lt;/h:form&gt;
+      &lt;/body&gt;
+   &lt;/f:view&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>예제 소스를 살펴보면 2개의 태그 라이브러리를 사용하고 있다. JSF는 2개의 태그 라이브러리(html, core)를 제공한다. html 태그 라이브러리는 25가지 태그를 정의하고 있으며, 대부분 HTML 요소를 렌더링하는 역할을 담당한다. core 태그 라이브러리는 18개 태그를 정의하고 있다. core 태그는 이벤트 리스너와 유효성 검사기와 같은 기능을 제공한다. JSF 페이지에 사용될 컴포넌트들은 태그 내부에 작성해야 한다. 태그 내부의 컴포넌트는 서버에서 컴포넌트 트리로 작성되고, 각 컴포넌트들의 상태(속성 및 값)는 서버에서 관리된다.</p>
+
+<p>JSF 페이지의 , , 태그는 html의 form, input, button으로 렌자바빈과 맵핑하는 방법으로 Expression Language를 사용한다. #{userInfo.name}는 서버의 userInfo 객체와 JSF 페이지의 UI 컴포넌트간의 상태를 동기화한다.</p>
+
+<h3 id="faces-config-xml-작성">faces-config.xml 작성</h3>
+
+<p>faces-config.xml은 스트럿츠의 struts-config.xml과 유사한 구조와 기능을 제공한다. faces-config.xml 파일에는 bean 관리, 페이지 검색, 사용자 지정 UI 구성요소, 사용자 지정 유효성 검사기 등을 설정한다.</p>
+
+<p>&lt;리스트 5&gt;는 과 요소로 구성되어 있다. 에는 JSF 페이지에서 사용할 자바빈의 이름, 클래스 명, 저장 스코프를 정의하고, 요소는 페이지의 이동 경로를 정의한다. JSF 페이지의 commandButton 태그 action과 일치하는 로 이동한다. index.jsp의 경우 commandButton 태그의 action을 “next”로 설정하였다. 이 경우에 가 “/index.jsp”이고 이 “next”인 response.jsp로 포워드(forward)된다. JSF 페이지의 디폴트 이동 방식은 forward이며 redirect 방식을 이용하기 위해서는 요소를 에 추가해야 한다.</p>
+
+<ul>
+<li>&lt;리스트 5&gt; faces-config.xml 정의</li>
+</ul>
+
+<pre><code>&lt;?xml version=’1.0’ encoding=’UTF-8’?&gt;
+&lt;!DOCTYPE faces-config PUBLIC
+  “-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN”
+  “http://java.sun.com/dtd/web-facesconfig_1_1.dtd”&gt;
+&lt;faces-config&gt;
+  &lt;navigation-rule&gt;
+    &lt;from-view-id&gt;/index.jsp&lt;/from-view-id&gt;
+    &lt;navigation-case&gt;
+      &lt;from-outcome&gt;next&lt;/from-outcome&gt;
+      &lt;to-view-id&gt;/response.jsp&lt;/to-view-id&gt;
+    &lt;/navigation-case&gt;
+  &lt;/navigation-rule&gt;
+  &lt;navigation-rule&gt;
+    &lt;from-view-id&gt;/response.jsp&lt;/from-view-id&gt;
+    &lt;navigation-case&gt;
+      &lt;from-outcome&gt;next&lt;/from-outcome&gt;
+      &lt;to-view-id&gt;/index.jsp&lt;/to-view-id&gt;
+    &lt;/navigation-case&gt;
+  &lt;/navigation-rule&gt;
+
+  &lt;managed-bean&gt;
+    &lt;managed-bean-name&gt;userInfo&lt;/managed-bean-name&gt;
+    &lt;managed-bean-class&gt;kr.co.imaso.jsf.UserInfo&lt;/managed-bean-class&gt;
+    &lt;managed-bean-scope&gt;session&lt;/managed-bean-scope&gt;
+  &lt;/managed-bean&gt;
+&lt;/faces-config&gt;
+</code></pre>
+
+<h2 id="jsf의-주요-구성-요소">JSF의 주요 구성 요소</h2>
+
+<p>JSF는 서블릿 API를 기반으로 하는 서블릿 프로그램으로 웹 컨테이너에서 동작한다. JSF의 주요 구성 요소는 UI 컴포넌트 백킹 빈(Backing bean), Validator, 컨버터(Converter), 이벤트/리스너, 네비게이션이다.</p>
+
+<h3 id="ui-컴포넌트">UI 컴포넌트</h3>
+
+<p>UI 컴포넌트는 사용자와 상호작용을 관리하는 객체로 서버에서 컴포넌트 트리 형태로 저장되며 클라이언트가 발생한 리퀘스트들의 사이에서 상태를 유지한다. 표준 컴포넌트로 텍스트 박스, 라디오 버튼, 체크박스, 패널, 라벨 등이 있다. UI 컴포넌트는 마크업 형태로 JSF 페이지에 정의된다. 각 UI 컴포넌트에는 Validator, 컨버터, 리스너를 설정할 수 있고, 서버의 백킹 빈에서 JSF 페이지의 속성을 제어할 수도 있다(리스트 6) UI 컴포넌트의 특성에 따라 3가지로 구분 가능하다(표 2).</p>
+
+<ul>
+<li>&lt;리스트 6&gt; JSF html 태그와 UI 컴포넌트를 제어하는 코드</li>
+</ul>
+
+<pre><code>* UI 컴포넌트 태그
+&lt;h:inputText id=”helloInput” value=”default” required=”true”&gt;
+
+// 백킹 빈의 코드
+HtmlInputText input = (HtmlInputText)event.getSender();
+input.setDisabled(true);
+input.setStyle(“color: blue”);
+</code></pre>
+
+<ul>
+<li>&lt;표 1&gt; JSF 데모를 위한 소프트웨어
+|UI Component type|컴포넌트|특성|
+|&mdash;|&mdash;|&mdash;|
+|UICommand|링크, 버튼 |actionEvent 발생|
+|UIInput|텍스트 필드, 라이도 버튼 |ValueChangedEvent 발생 |
+|Layout |리스트, 그리드 |페이지의 레이아웃과 관련|</li>
+</ul>
+
+<p>앞에서 UI 컴포넌트는 서버의 컴포넌트 트리 형태로 저장된다고 말했는데 그렇다면 컴포넌트 트리란 무엇일까? JSF 애플리케이션 사용자가 버튼을 클릭할 경우 서버에 리퀘스트가 전달된다. 이때 해당 리퀘스트를 처리하기 위한 FacesContext가 생성되고 리퀘스트의 폼(Form) 정보를 바탕으로 컴포넌트 트리가 생성된다. 이때 생성된 컴포넌트 트리 인스턴스는 FacesContext에 저장된다. 한 개의 JSF 페이지가 다른 JSF 페이지로 전달되기 전에 actionEvent와 valueChangedEvent가 여러 번 발생할 수 있다. 이때 발생한 리퀘스트들은 동일한 FacesContext를 공유하고 FacesContext의 컴포넌트 트리를 통해서 상태를 유지한다(그림 4).</p>
+
+<ul>
+<li>&lt;그림 4&gt; JSF-HelloWorld (예제) Component tree와 브라우저의 상호관계</li>
+</ul>
+
+<p><img src="https://taewanmerepo.github.io/repo1/jsf/img04.jpg" alt="" /></p>
+
+<h3 id="백킹-빈">백킹 빈</h3>
+
+<p>백킹 빈은 UI 컴포넌트로부터 입력 값을 수집하는 빈으로 JSF 페이지의 컴포넌트를 프로퍼티로 갖는다. 백킹 빈은 기능적으로 볼 때 스트럿츠의 ActionForm과 Action을 결합한 형태이다. 리퀘스트가 발생하면 JSF 페이지의 폼에 포함되어 있는 컴포넌트 정보를 기반으로 컴포넌트 트리가 서버에 생성된다. 컴포넌트 트리의 값은 뒤에 나올 컨버터와 Validator를 수행한 후, JSF 페이지의 UI 컴포넌트에 설정된 백킹 빈 프로퍼티에 해당 값이 저장된다.</p>
+
+<p>앞 예제는 백킹 빈을 사용하지 않고 JSF 애플리케이션을 개발하였다. 그러나 JSF의 특성인 Validation을 빈의 메쏘드로 설정하거나 JSF 클라이언트에서 발생한 이벤트를 처리할 리스너를 설정하기 위해서는 백킹 빈을 사용해야 한다. 백킹 빈을 사용할 경우 JSF 페이지의 UI 컴포넌트의 속성을 백킹 빈을 통해 제어할 수 있다. 썬의 자바 스튜디오 크리에이터와 같은 IDE를 사용할 경우 JSF 페이지를 드레그앤드롭 형식으로 디자인하면 백킹 빈이 자동 생성된다. &lt;리스트 2&gt;에 수록한 UserInfo 클래스를 백킹 빈으로 수정하면 &lt;리스트 7&gt;과 같이 변형된다.</p>
+
+<ul>
+<li>&lt;리스트 7&gt; UserInfo 백킹 빈 코드</li>
+</ul>
+
+<pre><code>public class UserInfo {
+   private UIInput name;
+   private UIInput age;
+   private UIOutput nameLabel;
+   private UIOutput ageLabel;
+
+   //각 프로퍼티의 setter/setter 추가
+}
+</code></pre>
+
+<p>JSF 페이지 컴포넌트는 value 속성으로 EL(Expression Lang uage)을 사용하여 백킹 빈의 프로퍼티 값을 사용할 수 있고, binding 속성을 사용하여 JSF 컴포넌트와 백킹 빈의 프로퍼티를 바인딩할 수 있다. 그 형식은 다음과 같다.</p>
+
+<pre><code>&lt;h:outputText value=”#{userInf.nameLabel}”/&gt;
+&lt;h:inputText binding=”#{userInfo.name}”/&gt;
+</code></pre>
+
+<h3 id="컨버터">컨버터</h3>
+
+<p>웹에서 사용자가 입력한 데이터는 String 형태로 서버에 전달된다. 컨버터는 서버에 전달된 값을 UI 컴포넌트에 저장하기 전에 값을 지정된 객체 형으로 변환하는 역할을 담당한다. JSF 페이지의 각 UI 컴포넌트는 1개의 컨버터만을 지정할 수 있다. 원시 데이터 형은 자동으로 해당 데이터형의 랩퍼(Wrapper)로 전환된다. 데이터 타입을 변경하는 과정에서 에러가 발생할 경우에는 지정한 message 태그에 에러 메시지를 출력할 수 있다(&lt;리스트 8&gt;). 에러가 발생한 UI 컴포넌트는 초기화된 후, 리퀘스트가 발생한 페이지로 포워드된다.</p>
+
+<ul>
+<li>&lt;리스트 8&gt; Converter 사용 예제</li>
+</ul>
+
+<pre><code>&lt;h:inputText id=”birth” value=”#{user.dateOfBirth}”&gt;
+	&lt;f:convertDateTime type=”date” /&gt;
+&lt;/h:inputText&gt;
+&lt;h:message for=”birth” /&gt;
+</code></pre>
+
+<p>표준 컨버터와는 별도로 사용자 지정 컨버터를 개발할 수 있다. 사용자 지정 컨버터는 javax.faces.converter.Converter 인터페이스를 상속하여 구현한다. 사용자 지정 컨버터를 개발할 경우 faces-config. xml converter 요소(element)를 추가해야 한다(&lt;리스트 9&gt;)</p>
+
+<ul>
+<li>&lt;리스트 9&gt; 사용자 지정 Converter 설정 및 사용법</li>
+</ul>
+
+<pre><code>* faces-config.xml custom Converter 등록
+&lt;converter&gt;
+   &lt;converter-id&gt;kr.co.imaso.ConvrterUser&lt;/converte&gt;
+   &lt;converter-class&gt;kr.co.imaso.ConvrterUser&lt;/converter-class&gt;
+&lt;/converter&gt;
+* JSF 페이지 태그 사용법
+&lt;h:inputText id=”name” value=”#{userInfo.name}” required=”true”/&gt;
+   &lt;h:converter converteId=”kr.co.imaso.ConvrterUser” /&gt;
+&lt;/h:inputText&gt;
+&lt;h:message for=”name” /&gt;
+</code></pre>
+
+<h3 id="validator">Validator</h3>
+
+<p>Validator는 UI 컴포넌트에 저장될 사용자 입력 값을 검증하는 역할을 한다. 각 UI 컴포넌트는 한 개 이상의 Validator가 설정될 수 있다. JSF 1.1 구현체는 표준 Validator 3개를 제공한다(&lt;표 3&gt;). javax.faces.validator.Validator 인터페이스를 구현하여 사용자 지정 Validator를 개발할 수도 있다. 또한 백킹 빈의 메쏘드로 Validator를 구현할 수도 있다.</p>
+
+<ul>
+<li>&lt;표 3&gt; Validator 테그
+|JSP 태그|속성|의미|
+|&mdash;|&mdash;|&mdash;|
+| f:validateDoubleRange|mininum, maxnum | doubel 값의 범위|
+| f:validateLongRange|mininum, maxnum | ong 값의 범위|
+| f:validatelength|mininum, maxnum | String의 길이|</li>
+</ul>
+
+<p>&lt;리스트 10&gt;은 표준 Validator의 예제이다. 예제에서 f:inputText는 required 속성을 사용하고 있다. JSF 페이지의 컴포넌트가 필수 입력 컴포넌트로 설정되어야 할 경우 required 속성을 사용한다. JSF 페이지의 UI 컴포넌트가 지정된 validation 과정에서 에러가 발생할 경우에 h:message 태그를 사용하여 에러 메시지를 표시할 수 있다. h:message 태그는 for 속성으로 지정한 UI 컴포넌트가 Convert나 Validation 과정에서 에러가 발생할 경우에 에러 메시지를 출력한다.</p>
+
+<ul>
+<li>&lt;리스트 10&gt; 표준 Validator 사용 예제</li>
+</ul>
+
+<pre><code>&lt;h:inputText id=&quot;name&quot; value=&quot;#{userInfo.name}&quot; required=&quot;true&quot;/&gt;
+   &lt;h:validateLength minimum=&quot;13&quot; /&gt;
+&lt;/h:inputText&gt;
+&lt;h:message for=&quot;name&quot; /&gt;
+</code></pre>
+
+<p>사용자 정의 Validator는 Validator 인터페이스를 구현하여 만들 수 있다. 사용자 지정 Validator는 faces-config.xml &lt;리스트 11&gt;과 같은 설정이 필요하다.</p>
+
+<ul>
+<li>&lt;리스트 11&gt; 사용자 지정 Validator 설정 및 사용법</li>
+</ul>
+
+<pre><code>* faces-config.xml custom validator 등록
+&lt;validator&gt;
+   &lt;validator-id&gt;kr.co.imaso.UserId&lt;/validator&gt;
+   &lt;validator-class&gt;kr.co.imaso.UserId&lt;/validator-class&gt;
+&lt;/validator&gt;
+* JSF 페이지 태그 사용법
+&lt;h:inputText id=”name” value=”#{userInfo.name}” required=”true”/&gt;
+   &lt;h:validator validatorId=”kr.co.imaso.UserId” /&gt;
+&lt;/h:inputText&gt;
+&lt;h:message for=”name” /&gt;
+</code></pre>
+
+<p>백킹 빈의 메쏘드를 Validator로 사용할 경우에는 validator 속성에 EL를 사용하여 지정한다. 사용법은 &lt;리스트 12&gt;와 같다. 백킹 빈에 Validator로 사용할 메쏘드는 Validator 인터페이스의 validate 메쏘드와 반환형, 매개 변수가 일치해야 한다.</p>
+
+<ul>
+<li>&lt;리스트 12&gt; 자바빈에 정의된 validator 메쏘드와 JSF 페이지의 사용법</li>
+</ul>
+
+<pre><code>* JSF 페이지 태그 사용법
+&lt;h:inputText id=”name” value=”#{userInfo.name}” required=”true” validator=
+”#{userInfo.checkName}”/&gt;
+&lt;h:message for=”name” /&gt;
+
+* 메쏘드 정의
+public void checkName(FacesContext context, UIComponent component,
+Object value){
+ // Validation Logic
+}
+</code></pre>
+
+<p>이벤트/리on event, Phase event)를 지원한다. Value change event는 Input Component( h:inputtext, h:selectOneRadio, h:selectManyMenu)의 값이 변경될 때 발생되고, Action event는 Command component (h:commandButton,h:commandLink)가 클릭될 때 발생된다. Phase event는 JSF 라이프 사이클 과정에서 발생된다. 두 가지 방법으로 JSF 이벤트를 처리하는 리스너를 정의할 수 있다. 첫 번째는 백킹 빈에 메쏘드로 정의하는 방식이고 나머지 하나는 리스너 인터페이스를 구현한 클래스를 작성하는 방법이 있다. 리스너 클래스를 작성하는 경우 Action event용 리스너는 javax.faces.event. Action Listener를 구현하고 value change event용 리스너는 javax. faces.event.ValueChangedListener를 구현한다.</p>
+
+<p>리스너를 정의하는 방식에 따라 컴포넌트에 리스너를 등록하는 방식도 달라진다. Backing bean 메쏘드로 리스너를 정의할 때는 actionListener/valueChangedListener 속성을 사용하여 설정하고 별도의 리스너 클래스를 작성할 때는 중첩 요소로 등록한다(&lt;리스트 13, 14&gt;).</p>
+
+<ul>
+<li>&lt;리스트 13&gt; Backing bean method 방식의 리스너 설정 예제</li>
+</ul>
+
+<pre><code>&lt;h:commandButton type=”submit” value=”Login” actionListener=
+     ”#{loginForm.login}”/&gt;
+&lt;h:inputText value=”#{userInfo.age}”  valueChangedListener=
+     ”#{loginForm.changedValue}” /&gt;
+</code></pre>
+
+<ul>
+<li>&lt;리스트 14&gt; 리스너 클래스 작성 방식의 리스너 설정 예제</li>
+</ul>
+
+<pre><code>&lt;h:commandButton type=”submit” value=”Login”&gt;
+   &lt;f:actionListener
+       type=”kr.co.imaso.LoginActionListener” /&gt;
+&lt;/h:commandButton&gt;
+&lt;h:inputText value=”#{userInfo.age}”&gt;
+   &lt;f:valueChangedListener
+       type=”kr.co.imaso.LoginValueChangedListener” /&gt;
+&lt;/h:inputText&gt;
+</code></pre>
+
+<p>한 개의 컴포넌트에 두 개 이상의 리스너를 설정할 수 있다. 이와 같이 설정한 경우에는 리스너가 설정된 순서로 실행된다. JSF는 각 라이프 사이클 phase가 시작할 때와 종료할 때 Phase event가 발생된다. Phase 이벤트는 phase 리스너가 처리한다. Phase event는 Action과 Value change event와 달리 faces-config.xml에 설정하는 절차가 필요하다(&lt;리스트 15&gt;).</p>
+
+<ul>
+<li>&lt;리스트 15&gt; Phase Event 설정 예제</li>
+</ul>
+
+<pre><code>&lt;faces-config&gt;
+   &lt;lifecycle&gt;
+      &lt;phase-listener&gt;kr.co.imaso.PhaseListener&lt;/phase-listener&gt;
+   &lt;/lifecycle&gt;
+&lt;/faces-config&gt;
+</code></pre>
+
+<h2 id="jsf-페이지의-라이프-사이클">JSF 페이지의 라이프 사이클</h2>
+
+<p>JSF 페이지는 이벤트 처리, 데이터 타입 변환, 검증 등의 기능을 수행하기 위하여 6개 Phase로 구분된 라이프 사이클을 갖는다. 각 라이프 사이클의 단계는 &lt;그림 5&gt;와 같다. 이제 각 Phase의 의미와 어떤 일이 발생하는가에 대하여 살펴볼 것이다.</p>
+
+<ul>
+<li>&lt;그림 5&gt; JSF 라이프 사이클</li>
+</ul>
+
+<p><img src="https://taewanmerepo.github.io/repo1/jsf/img05.jpg" alt="" /></p>
+
+<ol>
+<li><strong>Restore View</strong> : Restore View 단계에서는 리퀘스트가 발생된 페이지의 FacesContext 객체가 존재하는가를 검사하고 없을 경우 FacesContext 객체를 생성한다. 이 FacesContext에 요청 페이지의 컴포넌트 트리가 생성되어 저장된다. 리퀘스트에 쿼리 데이터가 없을 경우에는 Apply Request Values 단계 이후는 생략하고 Render Response 단계로 넘어간다.</li>
+<li><strong>Apply Request Values</strong> : 이 단계에서 리퀘스트의 쿼리 데이터는 컴포넌트 트리에 저장된다.</li>
+<li><strong>Process Validations</strong> : 각 컴포넌트에 validation이 설정되어 있는 경우 validation을 수행한다. validation에 실패하면 validation 에러가 발생한다. 지금 처리하는 리퀘스트가 value change event가 발생하여 생성된 것이라면 process validation 단계를 마친 후 해당 이벤트의 리스너가 실행된다.</li>
+<li><strong>Update Model Values</strong> : 이 단계에서 컴포넌트들의 값은 conversion과 유효성 검사가 완료된 상태이다. 컴포넌트의 값들을 변경한다.</li>
+<li><strong>nvoke Application</strong> : 리퀘스트가 버튼이나 링크 컴포넌트의 action event로 인하여 발생하였다면, 이 단계에서 이벤트 메쏘드가 실행된다.</li>
+<li><strong>Render Response</strong> : 현재 상태를 저장하고, 이동할 페이지로 리퀘스트가 포워드된다.</li>
+</ol>
+
+<h2 id="jsf와-ide">JSF와 IDE</h2>
+
+<p>JSF는 스펙 초기 단계부터 개발 툴의 지원을 고려하였다. 개발 툴의 지원을 통해 신속하고 쉬운 웹 애플리케이션 개발을 목표로 하고 있다. JSF 스펙인 JCP-127에 썬, IBM, BEA, 볼랜드 등이 전문가 그룹(Expert Group)으로 참여하고 있다. 이들 업체는 모두 JSF를 지원하는 IDE를 발표한 상태이다(&lt;표 4&gt;).</p>
+
+<table>
+<thead>
+<tr>
+<th>벤더</th>
+<th>개발 툴</th>
+<th>비고</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Sun</td>
+<td>자바 스튜디오 크리에이터</td>
+<td></td>
+</tr>
+
+<tr>
+<td>IBM</td>
+<td>WSD(WebShere Studio Application Developer) v5.1.2</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Oracle</td>
+<td>Oracle JDeveloper 10g</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Boland</td>
+<td>JBuilder</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Exadel</td>
+<td>JSF 스튜디오</td>
+<td>이클립스 플러그인</td>
+</tr>
+
+<tr>
+<td>Exadel</td>
+<td>Exadel MyEclipse</td>
+<td>이클립스 플러그인</td>
+</tr>
+</tbody>
+</table>
+
+<p>JSF를 지원하는 개발 툴 중에서 썬의 자바 스튜디오 크리에이터는 상당히 재미있는 툴이다. 2003년 자바원에서 제임스 고슬링은 자바 개발 툴의 혁신을 일으킬 소프트웨어를 개발 중이며 프로젝트 코드명은 ‘레이브(Rave)’라고 발표하였다. 레이브의 결과물이 바로 자바 스튜디오 크리에이터이다. 이 툴은 넷빈즈 기반으로 만들어졌다. 넷빈즈는 이클립스와 같은 오픈소스 프로젝트이며 스윙을 기반으로 하고 있다.</p>
+
+<p>자바 스튜디오 크리에이터는 닷넷 스튜디오와 유사한 GUI를 갖고 있고, JSF UI 컴포넌트 드래그앤드롭을 지원하는 디자인 캔버스(design canvas), 페이지 네비게이터(Page navigator) 등을 제공한다. 드래그앤드롭으로 JSP를 디자인하는 동시에 Backing Bean이 자동 생성된다. 또한 속성창(Property Window)을 제공하여 UI 컴포넌트의 태그 속성 편집을 편리하게 지원한다.</p>
+
+<h2 id="jsf와-오픈소스-프레임워크-통합">JSF와 오픈소스 프레임워크 통합</h2>
+
+<p>요즘은 오픈소스 프레임워크의 중흥기라고 생각될 정도로 많은 오픈소스 프레임워크이 발표되고 있다. 오픈소스 프레임워크 중에서 JSF와 연관성이 높은 프레임워크를 살펴보면 아마도 스트럿츠와 스프링이라고 생각된다. 여기서는 스트럿츠와 스프링을 JSF와 통합하는 방법과 간단한 사용법을 살펴볼 것이다.</p>
+
+<h3 id="jsf와-스트럿츠">JSF와 스트럿츠</h3>
+
+<p>JSF를 살펴보면 스트럿츠와 매우 유사하다는 것을 알 수 있다(&lt;표 5&gt;). 이것은 아마도 JSF와 스트럿츠의 리더가 Craig R. McClana han이라는 사실을 생각해 보면 당연한 결과일지도 모른다. 또한 JSF가 기존의 스트럿츠 개발자에게 친숙한 프레임워크를 만들기 위해 비슷하게 만들었을 가능성도 있다.</p>
+
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>JSF</th>
+<th>Struts</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>컨트롤러</td>
+<td>FacesServlet</td>
+<td>ActionServlet</td>
+</tr>
+
+<tr>
+<td>빈</td>
+<td>Backing Bean</td>
+<td>ActionForm</td>
+</tr>
+
+<tr>
+<td>설정 파일</td>
+<td>faces-config.xml</td>
+<td>strusts-config.xml</td>
+</tr>
+
+<tr>
+<td>태그 라이브러리</td>
+<td>JSF tag library(html, core)</td>
+<td>Struts tag library(html, logic, bena)</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>&lt;화면 1&gt; 자바 스튜디오 크리에이터 GUI 편집 기능과 네비게이션 편집 기능</li>
+</ul>
+
+<p><img src="https://taewanmerepo.github.io/repo1/jsf/img06.jpg" alt="" /></p>
+
+<p>JSF는 서비스 부분, 즉 폼 처리, 네비게이션, I18N, 액션 위치 등에서 스트럿츠와 중복된다. 여기서 “서로 유사한 구조를 갖고 있고 중복되는 프레임워크 구조를 갖는 JSF와 스트럿츠는 경쟁 프레임워크인가?”라는 의문이 생기게 된다. 현 시점에서 이러한 의문에 대한 정답은 없을 것이다. 다만 JSF가 스펙으로 정의된 이유를 생각해 보면 어느 정도 예상이 가능할 것이다. 웹 애플리케이션에 대해 고객의 리치 클라이언트에 대한 욕구는 점점 증가하고 있다. 이러한 이유로 X인터넷 제품군이 출현하였고 또한 ASP.NET 웹폼(Web Forms)에 대한 상대 기술이 자바 진영 표준에 없는 상황이었다.</p>
+
+<p>JSF는 잘 정의된 MVC 구조를 갖고 있고 그 중에서 뷰의 기능이 탁월한 프레임워크이다. JSF는 렌더러 개념을 도입하여 UI 컴포넌트와 최종 산출물(HTML, WML)의 독립성을 확보하고 있다. 현재 JSF 1.1 구현체는 HTML 4.01 렌더 킷만을 포함하고 있지만 다른 렌더러를 설정하여 특정 클라이언트(PDA, 핸드폰)에 맞는 마크업 언어로 전환이 가능해질 것이다. 스윙의 “Pluggable Look and Feel”을 자바 웹 애플리케이션에 적용하는 것이 가능하다. 또한 이벤트를 추가하여 효과적으로 User Action의 처리가 쉬워졌다. 향후에도 JSF의 주요 관심사는 뷰일 것이다. Craig R. McClanahan의 블러그에 실린 「Struts Or JSF? Struts And JSF?」라는 글을 보면 JSF와 스트럿츠의 관계는 경쟁 관계가 아닌 상호 보완적인 관계이며 향후 스트럿츠는 컨트롤과 모델을, JSF는 뷰를 강화하는 상호 보완적인 방향으로 발전할 것이라고 말하고 있다.</p>
+
+<h3 id="jsf와-스트럿츠의-통합">JSF와 스트럿츠의 통합</h3>
+
+<p>JSF와 스트럿츠의 통합은 struts-faces 라이브러리를 통해 가능하다. 현재 정식 릴리즈된 상태는 아니지만 <a href="http://cvs.apache.org/builds/">http://cvs.apache.org/builds/</a> jakarta-struts/nightly/struts-faces/에서 라이브러리와 샘플 애플리케이션을 다운받을 수 있다. 기존 스트럿츠 애플리케이션에 JSF를 적용시키는 절차는 &lt;리스트 16&gt;과 같다.</p>
+
+<ul>
+<li>&lt;리스트 16&gt; 스트럿츠 애플리케이션에 JSF적용 절차</li>
+</ul>
+
+<pre><code>Step 1. 스트럿츠 기반 웹 애플리케이션 /WEB-INF/lib에 Jar 추가
+ □ Struts-Faces 라이브러리 : struts-faces.jar
+ □ JSF 구현체 : jsf-api.jar, jsf-impl.jar
+ □ JSTL : jstl.jar, standard.jar
+Step 2. web.xml 수정: &lt;servlet&gt; 요소 추가
+    &lt;servlet&gt;
+      &lt;servlet-name&gt;faces&lt;/servlet-name&gt;
+      &lt;servlet-class&gt;javax.faces.webapp.FacesServlet&lt;/servlet-class&gt;
+      &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+   &lt;/servlet&gt;
+Step 3. web.xml 수정: Struts ActionServlet의 load-on-startup을 FacesServlet
+보다 큰 숫자로 설정
+ □ FacesServlet이 ActonServlet보다 먼저 로드되도록 설정
+Step 4. web.xml 수정: servlet mapping 추가	 
+   &lt;servlet-mapping&gt;
+      &lt;servlet-name&gt;faces&lt;/servlet-name&gt;
+      &lt;url-pattern&gt;*.faces&lt;/url-pattern&gt;
+   &lt;/servlet-mapping&gt;
+Step 5. JSP 파일 수정: 태그 라이브러리 선언 추가
+   &lt;%@ taglib prefix=”c” uri=”http://java.sun.com/jstl/core” %&gt;
+   &lt;%@ taglib prefix=”f” uri=”http://java.sun.com/jsf/core” %&gt;
+   &lt;%@ taglib prefix=”h” uri=”http://java.sun.com/jsf/html” %&gt;
+   &lt;%@ taglib prefix=”s” uri=”http://struts.apache.org/tags-faces” %&gt;
+Step 6. JSP 파일 수정: &lt;html:form&gt;을 &lt;s:form&gt;으로 수정
+Step 7. JSP 파일 수정: Struts HTML 태그 수정
+   변경 전 : &lt;html:text property=”username” size=”16” maxlength=”18”/&gt;
+   변경 후 : &lt;h:inputText id=”username” size=”16” maxlength=”18” value=
+                     ”#{logonForm.username}”/&gt;
+Step 8. JSP 파일 수정: Struts BEAN과 LOGIC 태그를 JSTL로 변경
+Step 9. struts-config.xml 수정: forward 정보 수정
+   변경 전 : &lt;forward name=”registration” path=”/registration.jsp”/&gt;
+   변경 후 : &lt;forward name=”registration” path=”/registration.faces”/&gt;  
+Step 10. struts-config.xml 수정: 커스텀 RequestProcessor 클래스 지정
+ □ Tile을 사용할 경우
+   &lt;controller&gt;
+      &lt;set-property property=”processorClass”
+       value=”org.apache.struts.faces.application.FacesRequestProcessor”/&gt;
+   &lt;/controller&gt;
+ □ Tile을 사용하지 않을 경우
+   &lt;controller&gt;
+      &lt;set-property property=”processorClass”
+       value=”org.apache.struts.faces.application.FacesTilesRequestProcessor”/&gt;
+   &lt;/controller&gt;
+</code></pre>
+
+<h3 id="jsf와-스트럿츠-선택에-대한-권고">JSF와 스트럿츠 선택에 대한 권고</h3>
+
+<p>썬에서 발표하는 JSF 관련 자료를 살펴보면 스트럿츠에 대한 비교와 함께 “JSF와 스트럿츠 중 어떤 것을 선택할 것인가?” 라는 질문에 대한 답변으로 &lt;표 6&gt;을 포함하고 있다.</p>
+
+<ul>
+<li>&lt;표 6&gt; 프로젝트 유형별 웹 애플리케이션 프레임워크 선정 가이드라인</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>프로젝트 유형</th>
+<th>JSF와 스트럿츠</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>기존에 존재하는 스트럿츠 기반 애플리케이션</td>
+<td>기존 애플리케이션 유지</td>
+</tr>
+
+<tr>
+<td>UI 리모델링이 필요한 스트럿츠 기반 애플리케이션</td>
+<td>JSF + 스트럿츠로 변경</td>
+</tr>
+
+<tr>
+<td>신규 프로젝트(비즈니스 로직이 간단한 경우)</td>
+<td>JSF</td>
+</tr>
+
+<tr>
+<td>신규 프로젝트(&ldquo;비즈니스 로직이 복잡한 경우)</td>
+<td>스트럿츠 + JSF</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="jsf와-스프링">JSF와 스프링</h3>
+
+<p>스프링은 경량 컨테이너 프레임워크(Lightweigh container framework)이다. POJO(Plain Old Java Object: 상속관계가 없는 자바빈)를 기반으로 Dependency Injection을 사용하여 상호연관성을 갖도록 하는 프레임워크이다. 스프링을 사용함으로써 싱글톤 클래스 관리를 효과적으로 하고, 객체의 상속 관계나 연관 관계를 최소화하여 느슨한 결합(Loosely coupling)의 컴포넌트를 개발할 수 있다. 이러한 특징으로 인하여 클래스의 구조가 간단해지고, 재사용성이 증대되며, 단위 테스트가 쉬워진다는 장점을 갖고 있다. 스프링의 이러한 장점을 통해서 미들티어를 구조화하는 데 효과적이다.</p>
+
+<p>JSF-스프링 통합 라이브러리는 <a href="http://jsf-spring.sourceforge.net에서">http://jsf-spring.sourceforge.net에서</a> 다운받을 수 있다. jsf-spring.jar의 형태로 배포된다. 11월 17일 현재 2.6이 최신 버전이다.</p>
+
+<h3 id="jsf-스프링-통합-라이브러리-설정-및-사용법">JSF-스프링 통합 라이브러리 설정 및 사용법</h3>
+
+<p>통합 라이브러리(jsf-spring.jar)를 웹 애플리케이션의 /web-inf/lib에 추가하고 web.xml에 &lt;리스트 17&gt;과 같이 필터(filter), 필터 맵핑(filter-mapping), 리스너 3가지를 추가하면 모든 설정은 완료된다.</p>
+
+<ul>
+<li>&lt;리스트 17&gt; JSF-스프링 통합을 위한 web.xml 추가 내용</li>
+</ul>
+
+<pre><code>&lt;filter&gt;
+   &lt;filter-name&gt;RequestHandled&lt;/filter-name&gt;
+   &lt;filter-class&gt;
+      de.mindmatters.faces.spring.RequestHandledFilter
+   &lt;/filter-class&gt;
+&lt;/filter&gt;
+&lt;filter-mapping&gt;
+   &lt;filter-name&gt;RequestHandled&lt;/filter-name&gt;
+   &lt;url-pattern&gt;/faces/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+&lt;listener&gt;
+   &lt;listener-class&gt;
+      org.springframework.web.context.ContextLoaderListener
+   &lt;/listener-class&gt;
+&lt;/listener&gt;
+</code></pre>
+
+<p>JAR 추가와 web.xml의 수정이 완료되면 &lt;그림 6&gt;과 같이 스프링에 정의된 빈을 JSF의 managed-bean으로 사용할 수 있다.</p>
+
+<ul>
+<li>&lt;그림 6&gt; JSF-스프링 빈 설정 방법 및 사용법</li>
+</ul>
+
+<p><img src="https://taewanmerepo.github.io/repo1/jsf/img07.jpg" alt="" /></p>
+
+<h2 id="jsf의-향후-전망">JSF의 향후 전망</h2>
+
+<p>신규 기술을 접할 때, “이 기술이 향후 활성화될 것인가?”라는 것을 예측하기는 어려운 일이다. 그러나 신규 기술의 주변 상황을 살펴본다 면 어느 정도 파악이 가능하다고 생각된다. JSF에 대한 메이저 벤더의 움직임이 매우 적극적이다. 각 벤더의 IDE는 이미 JSF를 지원하고 있고 오라클의 경우에는 오라클 ADF Faces Components라는 JSF UI 컴포넌트를 추가로 발표하였다. 자바 기술의 저변 확대에 미치는 오픈소스의 영향력이 점차 증대되고 있다. JSF의 경우 스트럿츠와 스프링의 통합 라이브러리가 이미 발표되었고, 아파치의 인큐베이터 프로젝트에 myFaces라는 프로젝트가 있다. myFaces는 JCP­127 스펙을 구현하는 오픈소스 프로젝트이다. 오픈소스 진영에서도 JSF를 적극적으로 수용하고 있다고 판단된다.</p>
+
+<p>리치 클라이언트에 대한 고객의 욕구가 갈수록 증가되고 있는 상황에서 JSF 컴포넌트를 사용하여 GUI의 품질을 높일 수 있고, 자바 스튜 디오 크리에이터와 같은 개발 툴을 사용하여 개발 효율성까지도 보장된다면 개발자와 고객에게까지도 환영할 만한 일이 될 것이다. 표준 화된 스펙을 지원하는 벤더, 오픈소스의 움직임과 주변 상황을 감안해 볼 때 JSF는 향후 J2EE의 핵심 UI 컴포넌트로 자리매김할 것으로 예상된다. 아마도 우리는 곧 JSF를 이용한 J2EE 애플리케이션의 여러 가지 얼굴을 감상하게 될 것이다. 듀크가 주연한 페이스오프가 박 스오피스에 등극할 날이 얼마 남지 않은 것 같다.</p>
+
+<h2 id="참고자료">참고자료</h2>
+
+<ol>
+<li>Sun J2EE 1.4 Tutorial Chapter 17-21. <a href="http://java.sun.com/j2ee/1.4/docs/tutorial-update2/doc/J2EETutorialFront.html">http://java.sun.com/j2ee/1.4/docs/tutorial-update2/doc/J2EETutorialFront.html</a></li>
+<li>Sun JavaServer Faces. <a href="http://java.sun.com/j2ee/javaserverfaces/">http://java.sun.com/j2ee/javaserverfaces/</a></li>
+<li>JSF Tutorial. <a href="http://www.jsftutorials.net">http://www.jsftutorials.net</a></li>
+<li>Sun Tech Days. <a href="http://developers.sun.com/events/techdas/presentations/">http://developers.sun.com/events/techdas/presentations/</a></li>
+<li>jsfcentral.com. <a href="http://www.jsfcentral.com">http://www.jsfcentral.com</a></li>
+<li>Core JavaServer Faces. Sun</li>
+<li>JavaServer Faces. O`REILLY</li>
+</ol>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/java/" rel="tag">java</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/jsf/" rel="tag">JSF</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EB%A7%88%EC%86%8C%EA%B8%B0%EA%B3%A0/" rel="tag">마소기고</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/2006_javaone/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">The Power Of The Java:2006 자바원 컨퍼런스 후기</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/review_oracle_code/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">2017 Oracle Code in Seoul을 마치며</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/post/jsf/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#자바-웹-개발의-페이스오프-javaserver-faces">자바 웹 개발의 페이스오프: JavaServer Faces</a></li>
+<li><a href="#jsf의-특징과-사용-방식">JSF의 특징과 사용 방식</a></li>
+<li><a href="#jsf-샘플-애플리케이션-설치">JSF 샘플 애플리케이션 설치</a>
+<ul>
+<li><a href="#helloworld-jsf-app-sample">HelloWorld JSF App Sample</a></li>
+<li><a href="#jar-파일-체크">JAR 파일 체크</a></li>
+<li><a href="#web-xml-설정">web.xml 설정</a></li>
+<li><a href="#javabean-작성">JavaBean 작성</a></li>
+<li><a href="#faces-페이지-작성">Faces 페이지 작성</a></li>
+<li><a href="#faces-config-xml-작성">faces-config.xml 작성</a></li>
+</ul></li>
+<li><a href="#jsf의-주요-구성-요소">JSF의 주요 구성 요소</a>
+<ul>
+<li><a href="#ui-컴포넌트">UI 컴포넌트</a></li>
+<li><a href="#백킹-빈">백킹 빈</a></li>
+<li><a href="#컨버터">컨버터</a></li>
+<li><a href="#validator">Validator</a></li>
+</ul></li>
+<li><a href="#jsf-페이지의-라이프-사이클">JSF 페이지의 라이프 사이클</a></li>
+<li><a href="#jsf와-ide">JSF와 IDE</a></li>
+<li><a href="#jsf와-오픈소스-프레임워크-통합">JSF와 오픈소스 프레임워크 통합</a>
+<ul>
+<li><a href="#jsf와-스트럿츠">JSF와 스트럿츠</a></li>
+<li><a href="#jsf와-스트럿츠의-통합">JSF와 스트럿츠의 통합</a></li>
+<li><a href="#jsf와-스트럿츠-선택에-대한-권고">JSF와 스트럿츠 선택에 대한 권고</a></li>
+<li><a href="#jsf와-스프링">JSF와 스프링</a></li>
+<li><a href="#jsf-스프링-통합-라이브러리-설정-및-사용법">JSF-스프링 통합 라이브러리 설정 및 사용법</a></li>
+</ul></li>
+<li><a href="#jsf의-향후-전망">JSF의 향후 전망</a></li>
+<li><a href="#참고자료">참고자료</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

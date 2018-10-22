@@ -1,0 +1,472 @@
+## ch00. 시작하며...
+
+- 파이썬 버전: 3.4
+
+## ch01. 파이썬을 소개합니다. 
+
+
+## ch02. 파이썬 설치 및 개발 환경
+- http://py3readiness.org/ 사이트 숙지할 것
+ - 파이썬 라이브러리의 업그레이드 상태를 공지하는 사이트
+ - pypi에서 가장 빈번하게 사용되는 360개의 라이브러리 중 업그레이드 지원 상태 
+ - 현재 360개 중 327개
+
+ ```
+>>> for x in range(10):
+...     print(x)
+... 
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+>>> for x in range(1,10):
+...     print(x)
+... 
+1
+2
+3
+4
+5
+6
+7
+8
+9
+>>>
+
+파이썬 버전 정리
+- [메이저].[마이너].[버그수정]
+- Alpha -> Beta -Release Candidate
+	- 접미사 단축형
+		- aN
+		- bN
+		- cN
+- 버전예: 3.0aN->3.0bN->3.0cN->3.0
+- 
+
+
+ ```
+## ch03. 프로그래밍의 기본
+- 입력받기 함수
+  -  input("message")
+
+- 객체의 3요소
+  - 식별자, 상태, 속성
+
+```
+var s1 = "merong"
+var s2 = "merong"
+s1 == s2 #true, 객체 값 비교
+s1 is s2 #false, 객체 비교
+```
+
+- 객체의 식별자 확인 방법
+```
+>>> s1 = "merong ddddddd"
+>>> s2 = "merong ddddddd"
+>>> s1 == s2
+True
+>>> s1 is s2
+True
+>>> id(s1)
+4322259104
+>>> id(s2)
+4322259104
+>>> type(s1)
+<class 'str'>
+>>> type(s2)
+<class 'str'>
+>>> 
+```
+
+- 객체 타입 확인 함수: type()
+
+- 책추천: 객체지향의 사실과 오해 (조영호)
+## ch04. 데이터형이란?
+
+- "//" 내림값 연산자
+```
+>>> 100/9
+11.11111111111111
+>>> 100//9
+11
+>>> 
+```
+- "**" - power
+```
+>>> 2**3
+8
+>>> 
+```
+연산자 우선순위
+
+** > +, -(단항) > % > // > /, * > +, -
+
+- 비교 연산자
+ - == 값이 같은
+ - != 값이 다른
+ - is 같은 객체인
+ - is not 같은 객체가 아닌
+- 논리 연산자
+ - and
+ - or
+ - not
+
+ - 문자열
+
+ ```
+>>> print('kkkk\n'
+...       'lll')
+kkkk
+lll
+
+ ```
+
+- 문자열 길이 측정: len()
+
+```
+>>> '/'.join("PYTHON")
+'P/Y/T/H/O/N'
+```
+
+- 데이터 변환
+  - 예제
+    - int("350")
+  - 유형
+    - int()
+    - str()
+    - float()
+    - 	
+- 리스트 선언
+```
+>>> list = ["merong", "kkk"]
+>>> list
+['merong', 'kkk']
+>>> id(list)
+4322219656
+>>> list[0] = "ttt"
+>>> list
+['ttt', 'kkk']
+>>> id(list)
+4322219656
+>>> 
+
+```  
+ 
+- immutable and mutable
+  - immutable type
+    - 숫자형
+    - 문자열형
+    - 튜플형
+    - 불편집합형 - frozenset
+    - 바이트 형
+  - mutable
+    - list
+    - dict
+    - set
+    - byte array
+## ch05. 데이터 구조
+### 리스트
+
+- 리스트 색인
+  - 양수 색인: 왼쪽에서 시작, 첫번째 값: 0
+  - 음수 색인: 오른쪽에서 시작, 첫번째 값: -1
+```
+>> pocket = [1, 2, 3, 4, 5]
+>>> pocket[0]
+1
+>>> pocket[2]
+3
+>>> pocket[4]
+5
+>>> pocket[-1]
+5
+>>> pocket[-2]
+4
+>>> pocket[-3]
+3
+```
+- 리스트 항목 추가: append, 마지막에 항목 추가
+- 항목 제거: remove(index)
+- 항목 삽입: insert(index, value)
+- 리스트 자리기: list[start:end]
+  - start index부터
+  - (end-1) index 까지
+
+```
+>>> pocket = [1, 2, 3, 4, 5]
+>>> pocket[0]
+1
+>>> pocket[2]
+3
+>>> pocket[4]
+5
+>>> pocket[-1]
+5
+>>> pocket[-2]
+4
+>>> pocket[-3]
+3
+>>> pocket[2:4]
+[3, 4]
+>>> pocket[-3:]
+[3, 4, 5]
+>>> pocket[-3:4]
+[3, 4]
+>>> 
+
+- 객체 복사
+
+```
+>>> pocket_copy = pocket[:]
+>>> id(pocket_copy)
+4322245064
+>>> id(pocket)
+4322219592
+>>> 
+```
+
+- 리스트 데이터 합치기
+```
+>>> a=[1, 2, 3]
+>>> b=[4, 5, 6]
+>>> c=a+b
+>>> c
+[1, 2, 3, 4, 5, 6]
+>>> id(a)
+4322244360
+>>> id(b)
+4322244040
+>>> id(c)
+4322245896
+>>> 
+```
+
+- 리스트를 직접 결합
+  - extend() 
+```
+>>> a = ["aa", "bb", "cc"]
+>>> b = [1, 2, 3]
+>>> a.extend(b)
+>>> a
+['aa', 'bb', 'cc', 1, 2, 3]
+>>> 
+```
+- 리스트 함수
+  - append
+  - remove
+  - insert
+  - pop
+  - extend
+  - del
+
+추가 정보: http://docs.python.org/3.4/tutorial/datastructures.html#more-on-lists
+
+- 빈 리스트 생성 방법
+  - []
+  - list()
+
+### 튜플
+
+```
+>>> touple1 = 1, 2, "merong"
+>>> touple1
+(1, 2, 'merong')
+>>> touple2 = (1, 2, "merong")
+>>> touple
+touple1 touple2
+>>> touple2
+(1, 2, 'merong')
+>>> touple2 == touple1
+True
+>>> id(touple1)
+4324352792
+>>> id(touple2)
+4324352576
+>>> touple1[1]
+2
+>>> 
+
+```
+- 튜플 생성 방법: 괄호 사용하거나 괄호 없이 구분자로만 기술
+- == 연산자 비교시 값 비교
+- == true일 경우에도 id는 다름
+- 접근 방법은 list와 동일
+
+- 튜플의 packing & unpacking
+  - packing
+    - touple1 = 1, 2, "merong"
+  - unpackaing
+    - a, b, c = touple1
+- 튜플을 리스트로 변환
+```
+>>> list(touple1)
+[1, 2, 'merong']
+>>> type(list(touple1))
+<class 'list'>
+>>>
+```
+- 리스트 & 튜플 변환 메서드
+  - list()
+  - touple()
+- list, set, tuple에 in 연산자 사용 가능
+- set을 지원하는 연산자
+
+ - a-b
+ - a|b
+ - a&b
+ - a^b = (a-b)|(b-a)
+
+### map
+```
+balls={'red':3, 'yello':4, 'blue':5}
+
+print(balls)
+print(type(balls))
+print(len(balls))
+print(balls['red'])
+
+print(balls.keys())
+print(sorted(balls.keys()))
+
+del balls['red']
+print(balls.keys())
+print(sorted(balls.keys()))
+
+```
+
+```
+{'red': 3, 'yello': 4, 'blue': 5}
+<class 'dict'>
+3
+3
+dict_keys(['red', 'yello', 'blue'])
+['blue', 'red', 'yello']
+dict_keys(['yello', 'blue'])
+['blue', 'yello']
+```
+
+## ch06. 제어문 다루기
+
+```
+new_sqares = [y**2 for y in range(10)]
+new_pairs =[(a, b) for a in A for b in B if a!=b]
+new_set = {x for x in 'abcdefghijklmnopqrstu' if x not in 'abc'}
+```
+## ch07. 실습 프로젝트 1
+## ch08. 내가 만든 함수
+return
+==> None이 이런됨
+- None 타입: NoneType
+```
+type(None)
+```
+
+### 가변 인자 리스트
+*: 튜플형 가변 인자
+**: key=value 형 가변 인자
+
+```
+def test11(age, *address, **merong):
+    for data in address:
+        print(data)
+
+    for key in merong.keys():
+        print(key, merong[key])
+
+    type(address)
+
+test11(24, 111, 222, 333, 444, "taewan", 집="kkk", 나=26)
+```
+
+### unpacking
+
+```
+>>> list(range(3, 6))
+[3, 4, 5]
+>>> args = [3, 6]
+>>> list(range(*args))
+[3, 4, 5]
+>>> 
+```
+
+- packing, unpacking모두 *를 사용함
+  - packing: 매개변수에 *변수명으로 표시
+    - 여러 인자를 하나의 tuple로 만듬
+  - unpacking
+    - tuple을 여러 변수로 만듦
+    - *리스트형 변수명으로 입력
+
+- packing ==> 함수 선언에 *변수명 으로 설정
+  - 선언시
+- unpacking ==> 함수 사용 부분에 *변수명으로 입력 
+  - 사용시
+
+### 문서화
+'''
+>>> def merong():
+...   """for testing in documentation"""
+...   pass
+... 
+>>> merong.__doc__
+'for testing in documentation'
+'''
+
+## ch09. 내가 만든 클래스
+### 클래스 이해하기
+- 파이썬에서 클래스는 하나의 객체다
+	- type 클래스인 객체
+	- id가 할당되어 있음
+```
+<class 'str'>
+>>> type(str)
+<class 'type'>
+>>> id(str)
+4297246016
+```
+
+```
+>>> var = "test"
+>>> type(var)
+<class 'str'>
+>>> var.__class__
+<class 'str'>
+>>> var.
+var.__add__(          var.__hash__(         var.__rmod__(         var.find(             var.istitle(          var.rsplit(          
+var.__class__(        var.__init__(         var.__rmul__(         var.format(           var.isupper(          var.rstrip(          
+var.__contains__(     var.__iter__(         var.__setattr__(      var.format_map(       var.join(             var.split(           
+var.__delattr__(      var.__le__(           var.__sizeof__(       var.index(            var.ljust(            var.splitlines(      
+var.__dir__(          var.__len__(          var.__str__(          var.isalnum(          var.lower(            var.startswith(      
+var.__doc__           var.__lt__(           var.__subclasshook__( var.isalpha(          var.lstrip(           var.strip(           
+var.__eq__(           var.__mod__(          var.capitalize(       var.isdecimal(        var.maketrans(        var.swapcase(        
+var.__format__(       var.__mul__(          var.casefold(         var.isdigit(          var.partition(        var.title(           
+var.__ge__(           var.__ne__(           var.center(           var.isidentifier(     var.replace(          var.translate(       
+var.__getattribute__( var.__new__(          var.count(            var.islower(          var.rfind(            var.upper(           
+var.__getitem__(      var.__reduce__(       var.encode(           var.isnumeric(        var.rindex(           var.zfill(           
+var.__getnewargs__(   var.__reduce_ex__(    var.endswith(         var.isprintable(      var.rjust(           
+var.__gt__(           var.__repr__(         var.expandtabs(       var.isspace(          var.rpartition(      
+>>> var.
+
+```
+### 클래스 정의 및 불러오기
+### 클래스 초기화 함수 __init__() 재정의
+### 데이터 은닉과 이름 장식 (name mangling)
+### 객체 지향의 꽃 상속
+### 다형성
+### warp-up
+
+## ch10. 내가 만든 모듈과 패키지
+## ch11. 실습 프로젝트 2
+## ch12. 입/출력 그리고 로깅
+## ch13. 에러 및 예외 처리
+## ch14. 새로운 개발 환경, 파이참
+## ch15. 단위테스트 및 디버깅
+## ch16. 파일을 활용한 데이터 보관
+## ch17. 데이터베이스 프로그래밍 맛보기
+## ch18. 웹 프로그래밍 맛보기
+## ch19. 파이썬으로 해보는 데이터 분석 맛보기

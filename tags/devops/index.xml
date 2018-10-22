@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Devops on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/devops/</link>
+    <description>Recent content in Devops on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 04 Oct 2017 21:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[번역]Fn–An Open Source Serverless Functions Platform</title>
+      <link>http://taewan.kim/cloud/oracle_blog_fn/</link>
+      <pubDate>Wed, 04 Oct 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_blog_fn/</guid>
+      <description>Oracle OpenWorld 2017에서 오라클 클라우드를 강화하는 많은 새로운 키워드가 발표되었습니다. 오라클 클라우드는 최근에 Container 기술을 중점적으로 개발하고 있습니다. 이번 Oracle OpenWorld 2017에서 Serverless Platform으로 Fn을 공개했습니다. Fn은 오라클 클라우드 Serverless 플랫폼의 핵심에 위치할 것으로 예상됩니다. 2017.10.02 오라클 공식 블로그에 올라온 Fn관련 짧은 포스트를 소개합니다.
+ 출처: blogs.oracle.com 원문: https://blogs.oracle.com/developers/announcing-fn 제목: Oracle cloud acquisitions bear fruit, with a new serverless platform and container services 문서작성 일시: 2017. 10. 02 작성자: Shaun Smith, Director of Product Management  새로운 오픈 소스 서버리스 플랫폼 Fn을 발표하게 된 것을 대단히 기쁘게 생각합니다.</description>
+    </item>
+    
+  </channel>
+</rss>

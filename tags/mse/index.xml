@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mse on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/mse/</link>
+    <description>Recent content in Mse on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 09 Aug 2016 16:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/mse/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>선형회귀 MSE 오차함수 미분 및 코드 구현</title>
+      <link>http://taewan.kim/post/cost_function_derivation/</link>
+      <pubDate>Tue, 09 Aug 2016 16:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/cost_function_derivation/</guid>
+      <description>지도학습의 선형회귀 모델은 비용 함수로 MSE(Mean squared error, 평균 제곱 오차) 사용합니다. MSE를 사용하여 가장 간단한 선형회귀 모델을 학습시키는 알고리즘을 구현해 보겠습니다.
+이 문서에서는 여러 수식을 사용합니다. 수식에서 스칼라, 벡터, 행렬을 다음과 같은 표기법을 사용할 것입니다.
+ $w$: 스칼라, 소문자 표기는 스칼라를 의미합니다. 예제에서는 가중치 1개를 의미합니다.
+ $\boldsymbol{w}$: 벡터, 소문자 볼츠체는 벡트를 이미합니다. $W$: 행렬, 대문자는 행렬(Matrix)을 의미합니다.  본문에서 $\theta$와 $\boldsymbol{w}$는 모두 가중치 벡터를 의미합니다.
+1. 지도학습이란? 지도학습의 데이터는 사례와 라벨로 구성됩니다.</description>
+    </item>
+    
+  </channel>
+</rss>

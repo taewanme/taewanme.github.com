@@ -1,0 +1,2858 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://taewan.kim/writing2/openjdk_java/</loc>
+    <lastmod>2018-10-22T09:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tip/oracloud_tips/</loc>
+    <lastmod>2018-10-17T09:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/book/memory_of_murder/</loc>
+    <lastmod>2018-10-08T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/writing2/java_license/</loc>
+    <lastmod>2018-10-08T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/docs/docker4ml/</loc>
+    <lastmod>2018-10-07T19:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/hdp_sandbox_setup/</loc>
+    <lastmod>2018-10-07T18:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/book/understaning_ml_with_math/</loc>
+    <lastmod>2018-09-29T09:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/book/1982kim_ji_young/</loc>
+    <lastmod>2018-09-24T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/kim_eunsook_universe/</loc>
+    <lastmod>2018-09-24T11:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tip/oracloud/</loc>
+    <lastmod>2018-09-12T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/oracle_impact/</loc>
+    <lastmod>2018-09-08T01:09:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/bookmark/living/</loc>
+    <lastmod>2018-08-27T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/bookmark/machine_learning/</loc>
+    <lastmod>2018-08-27T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/bookmark/oracle/</loc>
+    <lastmod>2018-08-27T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/transpose_reshape/</loc>
+    <lastmod>2018-08-22T23:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/first_ml_05/</loc>
+    <lastmod>2018-08-18T20:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/first_ml_04/</loc>
+    <lastmod>2018-08-18T20:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/mathjax_latex_error/</loc>
+    <lastmod>2018-08-18T16:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/first_ml_03/</loc>
+    <lastmod>2018-08-17T20:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/first_ml_02/</loc>
+    <lastmod>2018-08-15T20:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/first_ml_01/</loc>
+    <lastmod>2018-08-13T20:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/basic_math/</loc>
+    <lastmod>2018-08-08T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/mse_gd/</loc>
+    <lastmod>2018-08-08T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/matplotlib_hangul/</loc>
+    <lastmod>2018-08-08T16:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/matrics_in_classification/</loc>
+    <lastmod>2018-08-07T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/basic_statistics_09/</loc>
+    <lastmod>2018-08-06T20:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/gauss_distribution/</loc>
+    <lastmod>2018-08-05T10:50:36+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/sklearn_mnist_fetch_error/</loc>
+    <lastmod>2018-08-04T19:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/basic_statistics_08/</loc>
+    <lastmod>2018-08-03T23:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/plwml-02/</loc>
+    <lastmod>2018-08-03T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/basic_statistics_07/</loc>
+    <lastmod>2018-08-02T23:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/basic_statistics_06/</loc>
+    <lastmod>2018-08-02T11:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/basic_statistics_05/</loc>
+    <lastmod>2018-08-01T23:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/basic_statistics_04/</loc>
+    <lastmod>2018-07-30T23:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/basic_statistics_03/</loc>
+    <lastmod>2018-07-29T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/basic_statistics_02/</loc>
+    <lastmod>2018-07-28T01:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/basic_statistics_01/</loc>
+    <lastmod>2018-07-27T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/handson_ml_ch02/</loc>
+    <lastmod>2018-07-26T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/handson_ml_ch05/</loc>
+    <lastmod>2018-07-26T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/ml_kooc_1week_01/</loc>
+    <lastmod>2018-07-26T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/mlglossary/word_embedding/</loc>
+    <lastmod>2018-07-25T10:50:36+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tip/submarine_cable/</loc>
+    <lastmod>2018-07-19T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tip/nn_animation/</loc>
+    <lastmod>2018-07-18T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tip/law_of_cosine/</loc>
+    <lastmod>2018-07-18T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tip/dimmension/</loc>
+    <lastmod>2018-07-18T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/sample_example/</loc>
+    <lastmod>2018-07-18T19:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans_docs/t_mly_14/</loc>
+    <lastmod>2018-07-16T09:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans_docs/t_mly_15/</loc>
+    <lastmod>2018-07-16T09:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans_docs/t_mly_16/</loc>
+    <lastmod>2018-07-16T09:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/docs/t_mly_00/</loc>
+    <lastmod>2018-07-12T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans_docs/t_mly_13/</loc>
+    <lastmod>2018-07-12T09:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/deeplearning_s01_week02/</loc>
+    <lastmod>2018-07-09T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/deeplearning_s01_week01/</loc>
+    <lastmod>2018-07-08T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/plwml-01/</loc>
+    <lastmod>2018-07-07T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/python_env_for_machine_learning/</loc>
+    <lastmod>2018-07-06T19:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/oraprd/bda-x7-2/</loc>
+    <lastmod>2018-06-25T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans_docs/t_mly_12/</loc>
+    <lastmod>2018-06-20T17:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/bdc_object_storage_integration/</loc>
+    <lastmod>2018-06-18T01:09:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tip/gif_animation/</loc>
+    <lastmod>2018-06-16T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans_docs/t_mly_11/</loc>
+    <lastmod>2018-06-08T17:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/oci/activity/expired_message/</loc>
+    <lastmod>2018-06-08T17:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans_docs/t_mly_10/</loc>
+    <lastmod>2018-06-07T23:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans_docs/t_mly_09/</loc>
+    <lastmod>2018-06-06T23:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans_docs/t_mly_08/</loc>
+    <lastmod>2018-06-06T22:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans_docs/t_mly_07/</loc>
+    <lastmod>2018-06-06T13:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans_docs/t_mly_06/</loc>
+    <lastmod>2018-06-06T11:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans_docs/t_mly_05/</loc>
+    <lastmod>2018-06-05T16:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans_docs/t_mly_04/</loc>
+    <lastmod>2018-06-04T16:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans_docs/t_mly_03/</loc>
+    <lastmod>2018-06-03T01:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans_docs/t_mly_02/</loc>
+    <lastmod>2018-06-02T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans_docs/t_mly_01/</loc>
+    <lastmod>2018-06-01T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/bdc_ambari/</loc>
+    <lastmod>2018-05-31T23:20:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/oehcs_patch/</loc>
+    <lastmod>2018-05-22T23:20:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/seminar/180516_bdc_handson/</loc>
+    <lastmod>2018-05-16T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/oracle_paas_on_oci/</loc>
+    <lastmod>2018-05-16T15:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tip/apt-apt-get/</loc>
+    <lastmod>2018-05-05T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/oci_and_oci_classic/</loc>
+    <lastmod>2018-05-03T15:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/oracle_cloud_trial/</loc>
+    <lastmod>2018-05-01T11:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/oci_classic_computing_with_permanent_public_ip/</loc>
+    <lastmod>2018-04-30T11:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/repo/ml_reference/</loc>
+    <lastmod>2018-04-30T10:50:36+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/repo/oracle_cloud_logo/</loc>
+    <lastmod>2018-04-30T10:50:36+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tip/latex_on_hugo/</loc>
+    <lastmod>2018-04-30T10:50:36+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/oci_classic_computing/</loc>
+    <lastmod>2018-04-27T15:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tip/oracle_new_feature/</loc>
+    <lastmod>2018-04-27T10:50:36+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/kotlin_jupyter/</loc>
+    <lastmod>2018-04-26T15:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/protecting_private_information_and_pk/</loc>
+    <lastmod>2018-04-21T15:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/flume_images/</loc>
+    <lastmod>2018-04-15T15:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/kim_domain/</loc>
+    <lastmod>2018-04-14T23:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/how_to_process_abnomal_pattern_with_flatmap/</loc>
+    <lastmod>2018-04-13T21:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/the_day_sea/</loc>
+    <lastmod>2018-04-12T01:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/book/how_we_decide/</loc>
+    <lastmod>2018-04-04T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/how_we_decide/</loc>
+    <lastmod>2018-04-04T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/integrating_adw_bdc_os/</loc>
+    <lastmod>2018-03-31T08:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/ready_player_one/</loc>
+    <lastmod>2018-03-30T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/android_java_war_8years/</loc>
+    <lastmod>2018-03-29T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans/pytorch/tutorial/blits/03_neural_networks/</loc>
+    <lastmod>2018-03-27T03:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/docs/ml_glossary/</loc>
+    <lastmod>2018-03-20T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/torchtrans/tutorial/blits/autograd/</loc>
+    <lastmod>2018-03-18T03:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans/pytorch/tutorial/blits/02_autograd/</loc>
+    <lastmod>2018-02-27T03:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/torchtrans/tutorial/blits/pythorh_tutorial_01_what_is_pytorch/</loc>
+    <lastmod>2018-02-27T03:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans/pytorch/tutorial/blits/01_what_is_pytorch/</loc>
+    <lastmod>2018-02-27T03:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/torchtrans/tutorial/main/pythorh_tutorial_01/</loc>
+    <lastmod>2018-02-26T19:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans/pytorch/tutorial/main/01_blits/</loc>
+    <lastmod>2018-02-26T19:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans/pytorch/tutorial/main/</loc>
+    <lastmod>2018-02-25T19:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/ml-translation/</loc>
+    <lastmod>2018-02-25T19:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/numpy_cheat_sheet/</loc>
+    <lastmod>2018-01-16T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/trans_jshell/</loc>
+    <lastmod>2018-01-06T19:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans/javagc/ch01/</loc>
+    <lastmod>2018-01-06T19:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/cnn/</loc>
+    <lastmod>2018-01-04T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/machinelearning/term4ml/</loc>
+    <lastmod>2018-01-01T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans/jshell/jshell07/</loc>
+    <lastmod>2017-12-27T19:35:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans/jshell/jshell06/</loc>
+    <lastmod>2017-12-27T19:30:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans/jshell/jshell05/</loc>
+    <lastmod>2017-12-27T19:25:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans/jshell/jshell04/</loc>
+    <lastmod>2017-12-27T19:20:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans/jshell/jshell03/</loc>
+    <lastmod>2017-12-27T19:15:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans/jshell/jshell02/</loc>
+    <lastmod>2017-12-27T19:10:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans/jshell/jshell01/</loc>
+    <lastmod>2017-12-27T19:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/translation/</loc>
+    <lastmod>2017-12-27T01:50:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/trans_data_hub/</loc>
+    <lastmod>2017-12-26T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/trans_kubernetes_serverless/</loc>
+    <lastmod>2017-12-25T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/wij_and_wji/</loc>
+    <lastmod>2017-12-23T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/backpropagation_matrix_transpose/</loc>
+    <lastmod>2017-12-20T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/oracle_cloud_developer_meetup_201712/</loc>
+    <lastmod>2017-12-16T22:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/norm/</loc>
+    <lastmod>2017-12-15T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/error_in_hidden/</loc>
+    <lastmod>2017-12-08T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/nn_notation/</loc>
+    <lastmod>2017-11-28T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/oracle_blog_fn/</loc>
+    <lastmod>2017-10-04T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/terraform_jupyter_installer/</loc>
+    <lastmod>2017-10-03T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/oracle-cloud_dc_location/</loc>
+    <lastmod>2017-09-29T22:15:48+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/mysqlcs_backup/</loc>
+    <lastmod>2017-09-29T17:17:35+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/oracle_cncf/</loc>
+    <lastmod>2017-09-25T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/stroage_cs_url/</loc>
+    <lastmod>2017-09-24T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/tanh_diff/</loc>
+    <lastmod>2017-09-19T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/sigmoid_diff/</loc>
+    <lastmod>2017-09-18T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/numpy_sum_axis/</loc>
+    <lastmod>2017-09-17T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/changing_cs_naming/</loc>
+    <lastmod>2017-09-14T17:15:48+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/oracle_code_iac_youtube/</loc>
+    <lastmod>2017-09-10T08:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/oracle_code_iac_youtube/</loc>
+    <lastmod>2017-09-10T08:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/python_virtual_env/</loc>
+    <lastmod>2017-09-09T10:50:36+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/extra/install_python/</loc>
+    <lastmod>2017-09-06T10:50:36+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tip/basic_linux_command/</loc>
+    <lastmod>2017-09-05T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/updating_fork/</loc>
+    <lastmod>2017-09-05T16:50:36+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/misunderstanding_on_oracle/</loc>
+    <lastmod>2017-09-03T08:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/review_oracle_code/</loc>
+    <lastmod>2017-09-02T10:50:36+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/oracle_code_provisioning/</loc>
+    <lastmod>2017-08-31T08:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/oracle_cloud_reg/</loc>
+    <lastmod>2017-08-26T08:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/jsf/</loc>
+    <lastmod>2017-08-23T21:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/2006_javaone/</loc>
+    <lastmod>2017-08-22T21:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/oracloud_patch/</loc>
+    <lastmod>2017-08-20T23:20:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/kafka_paas_eventhub_cs/</loc>
+    <lastmod>2017-08-14T23:20:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/identity_domain/</loc>
+    <lastmod>2017-08-11T22:20:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/installing_pms/</loc>
+    <lastmod>2017-08-06T22:20:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/changing_trial_account/</loc>
+    <lastmod>2017-08-01T04:20:12+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/container_infographics/</loc>
+    <lastmod>2017-08-01T01:20:12+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/stpe_by_step_new_cluster_bdcsce/</loc>
+    <lastmod>2017-07-31T11:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/bdcsce01/</loc>
+    <lastmod>2017-07-27T11:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tip/shortcode_at_this_blog/</loc>
+    <lastmod>2017-05-28T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/mysql_cs/</loc>
+    <lastmod>2017-05-10T15:48:24+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/compute_security/</loc>
+    <lastmod>2017-05-04T13:23:35+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/compute_instance/</loc>
+    <lastmod>2017-05-02T11:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/storage_cs/</loc>
+    <lastmod>2017-04-28T23:02:33+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/occs_new_docker_container/</loc>
+    <lastmod>2017-04-24T19:34:26+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/occs-new-inst/</loc>
+    <lastmod>2017-04-20T19:36:38+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/docker_in_oc/</loc>
+    <lastmod>2017-04-19T19:01:16+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/occs/</loc>
+    <lastmod>2017-04-05T11:23:40+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/win-vm/</loc>
+    <lastmod>2017-03-31T22:42:46+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/dbcs_demo/</loc>
+    <lastmod>2017-03-12T13:20:12+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/objest-storage-replication/</loc>
+    <lastmod>2017-03-06T08:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/iaas_vm/</loc>
+    <lastmod>2017-03-05T22:20:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/ssh_config/</loc>
+    <lastmod>2017-03-05T12:07:16+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/ssh_key/</loc>
+    <lastmod>2017-03-04T12:07:16+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/accont/</loc>
+    <lastmod>2017-03-02T21:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans/cs231n/convolutional-networks/</loc>
+    <lastmod>2017-01-06T19:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/functional_javascript/</loc>
+    <lastmod>2016-10-18T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/cost_function_derivation/</loc>
+    <lastmod>2016-08-09T16:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/markdown/</loc>
+    <lastmod>2016-04-04T13:47:07+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/installing_bigdatalite/</loc>
+    <lastmod>2016-03-28T17:04:26+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tip/ps_grep_kill/</loc>
+    <lastmod>2016-03-27T10:50:36+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/ora_magazin_201512/</loc>
+    <lastmod>2016-03-25T00:17:44+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/youtube/</loc>
+    <lastmod>2016-03-25T00:17:44+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/question/</loc>
+    <lastmod>2016-03-23T14:01:55+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/remarkjs/</loc>
+    <lastmod>2016-03-22T10:23:15+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/change_log/</loc>
+    <lastmod>2016-03-19T01:50:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/minsu/</loc>
+    <lastmod>2016-03-19T01:50:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/info/</loc>
+    <lastmod>2016-03-19T01:50:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/vagrant_intro/</loc>
+    <lastmod>2016-02-06T20:47:54+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/bitbucket_jenkins_webhook/</loc>
+    <lastmod>2016-02-03T14:01:55+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/virtualbox_network_config/</loc>
+    <lastmod>2016-01-31T12:42:43+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/seam_log/</loc>
+    <lastmod>2016-01-27T10:50:36+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/os_bit/</loc>
+    <lastmod>2016-01-27T10:50:36+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/log4j_perf/</loc>
+    <lastmod>2016-01-03T00:17:44+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tip/python_pickle/</loc>
+    <lastmod>2016-01-02T10:50:36+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/oracle_cloud_developer_meetup_201712/</loc>
+    <lastmod>2015-12-16T22:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tip/oracle_database_scott_hr_unlock/</loc>
+    <lastmod>2015-11-27T10:50:36+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/oracle_cloud_trial/</loc>
+    <lastmod>2015-05-01T11:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/tomcat_encoding/</loc>
+    <lastmod>2011-08-01T10:50:36+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/worker_in_masscom/</loc>
+    <lastmod>2011-04-17T00:17:44+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/glassfish_encoding/</loc>
+    <lastmod>2011-04-05T21:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/seam_ip_address/</loc>
+    <lastmod>2011-03-30T10:50:36+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/sudo_in_centos/</loc>
+    <lastmod>2011-03-16T14:01:55+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/junit4_annotation/</loc>
+    <lastmod>2010-11-09T10:50:36+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/jersey_license_gpl2_cddl1.1/</loc>
+    <lastmod>2010-10-21T10:50:36+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/testng/</loc>
+    <lastmod>2006-03-01T21:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/programatic/</loc>
+    <lastmod>2005-09-04T21:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/i_like_new_techs/</loc>
+    <lastmod>2005-07-25T00:17:44+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/</loc>
+    <lastmod>2018-08-22T23:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/dl/pytorch_quick_start/</loc>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/life/review/</loc>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/mlpy_adding_opencv.1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/1982%EB%85%84%EC%83%9D%EA%B9%80%EC%A7%80%EC%98%81/</loc>
+    <lastmod>2018-09-24T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/acc/</loc>
+    <lastmod>2017-04-19T19:01:16+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/activation-function/</loc>
+    <lastmod>2017-09-19T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/adec/</loc>
+    <lastmod>2018-03-31T08:05:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/ai/</loc>
+    <lastmod>2018-09-08T01:09:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/amabari/</loc>
+    <lastmod>2018-05-31T23:20:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/andrew-ng/</loc>
+    <lastmod>2018-07-16T09:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/android/</loc>
+    <lastmod>2018-03-29T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/ansible/</loc>
+    <lastmod>2017-09-10T08:54:32+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/autoenv/</loc>
+    <lastmod>2017-09-09T10:50:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/autograd/</loc>
+    <lastmod>2018-03-27T03:05:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/autonomous/</loc>
+    <lastmod>2018-03-31T08:05:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/axis/</loc>
+    <lastmod>2017-09-17T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/backpropagation/</loc>
+    <lastmod>2017-12-20T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/bdc/</loc>
+    <lastmod>2018-06-18T01:09:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/bdcsce/</loc>
+    <lastmod>2017-07-31T11:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/beakerx/</loc>
+    <lastmod>2018-04-26T15:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/big-data/</loc>
+    <lastmod>2018-06-18T01:09:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/big-data-lite/</loc>
+    <lastmod>2016-03-28T17:04:26+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/bigdata/</loc>
+    <lastmod>2018-10-08T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/bigdata/</loc>
+    <lastmod>2018-04-15T15:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/bitbucket/</loc>
+    <lastmod>2016-02-03T14:01:55+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/blogs.oracle.com/</loc>
+    <lastmod>2017-10-04T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/book/</loc>
+    <lastmod>2018-10-08T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/book/</loc>
+    <lastmod>2018-10-08T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/bookmark/</loc>
+    <lastmod>2018-08-27T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/book/</loc>
+    <lastmod>2018-10-08T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/brain/</loc>
+    <lastmod>2018-04-04T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/cassandra/</loc>
+    <lastmod>2017-12-26T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/</loc>
+    <lastmod>2018-08-22T23:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/cc/</loc>
+    <lastmod>2018-05-03T15:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/cheat-sheet/</loc>
+    <lastmod>2018-01-16T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/ci/</loc>
+    <lastmod>2016-02-03T14:01:55+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/cli/</loc>
+    <lastmod>2017-08-06T22:20:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/cloud/</loc>
+    <lastmod>2018-10-08T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/cloud/</loc>
+    <lastmod>2018-09-08T01:09:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/cloudera/</loc>
+    <lastmod>2016-03-28T17:04:26+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/cloud/</loc>
+    <lastmod>2018-09-08T01:09:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/cncf/</loc>
+    <lastmod>2017-09-25T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/cnn/</loc>
+    <lastmod>2018-01-04T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/collection/</loc>
+    <lastmod>2018-04-13T21:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/column-vector/</loc>
+    <lastmod>2017-12-23T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/compute-cs/</loc>
+    <lastmod>2017-05-02T11:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/container/</loc>
+    <lastmod>2017-08-01T01:20:12+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/convolutional-neural-network/</loc>
+    <lastmod>2018-01-04T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/coursera/</loc>
+    <lastmod>2018-07-09T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/data-center/</loc>
+    <lastmod>2017-09-29T22:15:48+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/data-hub/</loc>
+    <lastmod>2017-12-26T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/data-management/</loc>
+    <lastmod>2017-09-29T17:17:35+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/data-science/</loc>
+    <lastmod>2018-01-16T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/database/</loc>
+    <lastmod>2017-09-29T17:17:35+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/dbcs/</loc>
+    <lastmod>2017-09-24T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/deep-learning/</loc>
+    <lastmod>2018-10-07T19:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/deeplearning.ai/</loc>
+    <lastmod>2017-11-28T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/dev-set/</loc>
+    <lastmod>2018-06-06T13:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/deverlper-meetup/</loc>
+    <lastmod>2017-12-16T22:54:32+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/devops/</loc>
+    <lastmod>2017-10-04T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/differential/</loc>
+    <lastmod>2017-09-19T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/dl/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/docker/</loc>
+    <lastmod>2018-10-07T19:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/docs/</loc>
+    <lastmod>2018-10-07T19:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/domain/</loc>
+    <lastmod>2018-04-14T23:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/dw/</loc>
+    <lastmod>2018-03-31T08:05:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/e-book/</loc>
+    <lastmod>2018-07-16T09:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/editing/</loc>
+    <lastmod>2017-12-27T19:20:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/encoding/</loc>
+    <lastmod>2011-08-01T10:50:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/error/</loc>
+    <lastmod>2017-12-08T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/evaluation-matric/</loc>
+    <lastmod>2018-06-06T22:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/event-hub/</loc>
+    <lastmod>2017-08-14T23:20:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/external-code/</loc>
+    <lastmod>2017-12-27T19:25:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/extra/</loc>
+    <lastmod>2017-09-06T10:50:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/family-name/</loc>
+    <lastmod>2018-04-14T23:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/feedback-mode/</loc>
+    <lastmod>2017-12-27T19:30:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/flatmap/</loc>
+    <lastmod>2018-04-13T21:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/flume/</loc>
+    <lastmod>2018-04-15T15:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/fork/</loc>
+    <lastmod>2017-09-05T16:50:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/functioal-programming/</loc>
+    <lastmod>2016-10-18T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/garbage-collection/</loc>
+    <lastmod>2018-01-06T19:05:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/gc/</loc>
+    <lastmod>2018-01-06T19:05:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/git/</loc>
+    <lastmod>2017-09-05T16:50:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/github/</loc>
+    <lastmod>2017-09-05T16:50:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/gitlab/</loc>
+    <lastmod>2016-02-03T14:01:55+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/glassfish/</loc>
+    <lastmod>2011-04-05T21:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/glossary/</loc>
+    <lastmod>2018-08-27T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/glossory/</loc>
+    <lastmod>2018-07-18T19:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/google/</loc>
+    <lastmod>2018-03-29T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/hadoop/</loc>
+    <lastmod>2018-10-08T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/hostname/</loc>
+    <lastmod>2018-04-27T15:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/hotonworks/</loc>
+    <lastmod>2018-10-07T18:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/hyperbolic-tangent/</loc>
+    <lastmod>2017-09-19T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/iaas/</loc>
+    <lastmod>2018-05-03T15:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/identity-domain/</loc>
+    <lastmod>2017-08-11T22:20:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/it-life/</loc>
+    <lastmod>2018-03-30T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/java/</loc>
+    <lastmod>2018-10-22T09:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/java/</loc>
+    <lastmod>2018-10-22T09:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/java-ee/</loc>
+    <lastmod>2017-09-03T08:54:32+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/java-license/</loc>
+    <lastmod>2018-03-29T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/java9/</loc>
+    <lastmod>2018-01-06T19:05:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/javaone/</loc>
+    <lastmod>2017-08-22T21:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/javascript/</loc>
+    <lastmod>2016-10-18T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/jboss/</loc>
+    <lastmod>2016-01-27T10:50:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/jenkins/</loc>
+    <lastmod>2016-02-03T14:01:55+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/jersey/</loc>
+    <lastmod>2010-10-21T10:50:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/jsf/</loc>
+    <lastmod>2017-08-23T21:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/jshell/</loc>
+    <lastmod>2018-01-06T19:05:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/junit/</loc>
+    <lastmod>2010-11-09T10:50:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/jupyter/</loc>
+    <lastmod>2018-04-26T15:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/kafka/</loc>
+    <lastmod>2017-08-14T23:20:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/kim/</loc>
+    <lastmod>2018-04-14T23:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/kooc/</loc>
+    <lastmod>2018-07-26T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/kotlin/</loc>
+    <lastmod>2018-04-26T15:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/kubernetes/</loc>
+    <lastmod>2017-12-25T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/l1-norm/</loc>
+    <lastmod>2017-12-15T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/l2-norm/</loc>
+    <lastmod>2017-12-15T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/language/</loc>
+    <lastmod>2018-10-07T19:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/latex/</loc>
+    <lastmod>2018-08-18T16:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/license/</loc>
+    <lastmod>2010-10-21T10:50:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/life/</loc>
+    <lastmod>2018-09-24T11:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/life-story-think/</loc>
+    <lastmod>2005-07-25T00:17:44+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/linux/</loc>
+    <lastmod>2011-03-16T14:01:55+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/life/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/log/</loc>
+    <lastmod>2018-04-15T15:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/log4j/</loc>
+    <lastmod>2016-01-03T00:17:44+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/machine-learning/</loc>
+    <lastmod>2018-10-07T19:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/machine-learning/</loc>
+    <lastmod>2018-08-08T16:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/machinelearning/</loc>
+    <lastmod>2018-01-01T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/markdown/</loc>
+    <lastmod>2016-04-04T13:47:07+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/math/</loc>
+    <lastmod>2018-08-08T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/mathjax/</loc>
+    <lastmod>2018-08-18T16:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/mathplotlib/</loc>
+    <lastmod>2018-08-08T16:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/minsu/</loc>
+    <lastmod>2016-03-19T01:50:05+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/ml/</loc>
+    <lastmod>2018-08-27T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/mlglossary/</loc>
+    <lastmod>2018-07-25T10:50:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/mse/</loc>
+    <lastmod>2016-08-09T16:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/mysql/</loc>
+    <lastmod>2017-09-29T17:17:35+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/mysql/</loc>
+    <lastmod>2017-09-29T17:17:35+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/mysql-cs/</loc>
+    <lastmod>2017-09-24T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/network/</loc>
+    <lastmod>2016-01-31T12:42:43+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/neural-network/</loc>
+    <lastmod>2017-12-08T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/news/</loc>
+    <lastmod>2011-04-17T00:17:44+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/nomalization/</loc>
+    <lastmod>2016-03-23T14:01:55+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/norm/</loc>
+    <lastmod>2017-12-15T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/nosql/</loc>
+    <lastmod>2017-12-26T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/notation/</loc>
+    <lastmod>2017-11-28T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/numpy/</loc>
+    <lastmod>2018-08-22T23:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/object-storage/</loc>
+    <lastmod>2018-06-18T01:09:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/occs/</loc>
+    <lastmod>2017-04-19T19:01:16+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/oci/</loc>
+    <lastmod>2018-05-16T15:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/oci-c/</loc>
+    <lastmod>2018-04-30T11:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/oci-classic/</loc>
+    <lastmod>2018-05-03T15:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/oci/</loc>
+    <lastmod>2018-06-08T17:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/openjdk/</loc>
+    <lastmod>2018-10-22T09:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/opensource/</loc>
+    <lastmod>2016-01-27T10:50:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/optimization-metric/</loc>
+    <lastmod>2018-06-06T23:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/oracl-bdcsce/</loc>
+    <lastmod>2017-09-24T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/oracle/</loc>
+    <lastmod>2018-10-22T09:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/oracle/</loc>
+    <lastmod>2018-05-16T15:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/oracle-bdcsce/</loc>
+    <lastmod>2017-08-20T23:20:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/oracle-big-data-cloud/</loc>
+    <lastmod>2018-05-31T23:20:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/oracle-cloud/</loc>
+    <lastmod>2018-06-18T01:09:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/oracle-code/</loc>
+    <lastmod>2017-09-02T10:50:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/oracle-compute-cs/</loc>
+    <lastmod>2017-05-04T13:23:35+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/oracle-event-hub/</loc>
+    <lastmod>2018-05-22T23:20:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/oraprd/</loc>
+    <lastmod>2018-06-25T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/orchestration/</loc>
+    <lastmod>2017-09-25T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/paas/</loc>
+    <lastmod>2018-05-16T15:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/partial-derivative/</loc>
+    <lastmod>2017-12-20T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/patch/</loc>
+    <lastmod>2018-05-22T23:20:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/pickle/</loc>
+    <lastmod>2016-01-02T10:50:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/pip/</loc>
+    <lastmod>2017-09-09T10:50:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/pk/</loc>
+    <lastmod>2018-04-21T15:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/post/</loc>
+    <lastmod>2018-10-07T18:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/psm/</loc>
+    <lastmod>2017-08-06T22:20:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/pubic-ip/</loc>
+    <lastmod>2018-04-30T11:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/pyenv/</loc>
+    <lastmod>2017-09-09T10:50:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/python/</loc>
+    <lastmod>2018-10-07T19:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/pytorch/</loc>
+    <lastmod>2018-03-27T03:05:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/rdbms/</loc>
+    <lastmod>2016-03-23T14:01:55+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/ready-player-one/</loc>
+    <lastmod>2018-03-30T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/regularization/</loc>
+    <lastmod>2017-12-15T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/remark/</loc>
+    <lastmod>2016-03-22T10:23:15+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/repl/</loc>
+    <lastmod>2018-01-06T19:05:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/repo/</loc>
+    <lastmod>2018-04-30T10:50:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/reshape/</loc>
+    <lastmod>2018-08-22T23:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/row-vector/</loc>
+    <lastmod>2017-12-23T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/sandbox/</loc>
+    <lastmod>2018-10-07T18:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/satisficing-metric/</loc>
+    <lastmod>2018-06-06T23:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/script/</loc>
+    <lastmod>2017-12-27T19:35:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/seam/</loc>
+    <lastmod>2016-01-27T10:50:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/security/</loc>
+    <lastmod>2017-05-04T13:23:35+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/seminar/</loc>
+    <lastmod>2018-05-16T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/seminar/</loc>
+    <lastmod>2017-12-16T22:54:32+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/seminar/</loc>
+    <lastmod>2018-05-16T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/serverless/</loc>
+    <lastmod>2017-12-25T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/setup/</loc>
+    <lastmod>2018-10-07T18:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/sigmoid/</loc>
+    <lastmod>2017-09-18T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/sklearn/</loc>
+    <lastmod>2018-08-04T19:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/snippet/</loc>
+    <lastmod>2017-12-27T19:10:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/spark/</loc>
+    <lastmod>2018-10-08T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/ssh/</loc>
+    <lastmod>2017-03-05T12:07:16+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/storage/</loc>
+    <lastmod>2017-04-28T23:02:33+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/storage-cs/</loc>
+    <lastmod>2017-09-24T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/</loc>
+    <lastmod>2018-09-24T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/tanh/</loc>
+    <lastmod>2017-09-19T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/tech-event/</loc>
+    <lastmod>2017-09-10T08:54:32+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/tech-tip/</loc>
+    <lastmod>2017-09-05T16:50:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/terraform/</loc>
+    <lastmod>2017-10-03T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/test-set/</loc>
+    <lastmod>2018-06-06T13:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/testing/</loc>
+    <lastmod>2010-11-09T10:50:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/testng/</loc>
+    <lastmod>2006-03-01T21:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til/</loc>
+    <lastmod>2018-08-18T20:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/tip/</loc>
+    <lastmod>2016-04-04T13:47:07+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/tip/</loc>
+    <lastmod>2018-08-18T16:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tip/</loc>
+    <lastmod>2018-10-17T09:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/tomcat/</loc>
+    <lastmod>2011-08-01T10:50:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/torchtrans/</loc>
+    <lastmod>2018-03-18T03:05:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans/</loc>
+    <lastmod>2018-03-27T03:05:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/trans_docs/</loc>
+    <lastmod>2018-07-16T09:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/transpose/</loc>
+    <lastmod>2018-08-22T23:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/trial/</loc>
+    <lastmod>2018-05-01T11:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/trial-account/</loc>
+    <lastmod>2017-08-01T04:20:12+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/tunning/</loc>
+    <lastmod>2018-01-06T19:05:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/tutorial/</loc>
+    <lastmod>2018-03-27T03:05:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/universe/</loc>
+    <lastmod>2018-09-24T11:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/url/</loc>
+    <lastmod>2018-04-14T23:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/user-guide/</loc>
+    <lastmod>2018-01-06T19:05:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/vagrant/</loc>
+    <lastmod>2017-09-10T08:54:32+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/virtualbox/</loc>
+    <lastmod>2016-03-28T17:04:26+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/virtualization/</loc>
+    <lastmod>2017-03-31T22:42:46+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/virualenv/</loc>
+    <lastmod>2017-09-09T10:50:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/virutalbox/</loc>
+    <lastmod>2018-10-07T18:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/vm/</loc>
+    <lastmod>2018-04-30T11:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/vr/</loc>
+    <lastmod>2018-03-30T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/web-presentation/</loc>
+    <lastmod>2016-03-22T10:23:15+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/window/</loc>
+    <lastmod>2017-03-31T22:42:46+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/writing2/</loc>
+    <lastmod>2018-10-22T09:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/youtube/</loc>
+    <lastmod>2016-03-25T00:17:44+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/youtube/</loc>
+    <lastmod>2016-03-19T01:50:05+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/</loc>
+    <lastmod>2018-10-22T09:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EA%B0%80%EC%9D%B4%EB%93%9C/</loc>
+    <lastmod>2018-01-16T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/</loc>
+    <lastmod>2018-04-21T15:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/</loc>
+    <lastmod>2018-10-07T19:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EA%B9%80%EC%96%B4%EC%A4%80/</loc>
+    <lastmod>2018-04-12T01:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EA%B9%80%EC%98%81%ED%95%98/</loc>
+    <lastmod>2018-10-08T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EA%B9%80%EC%9D%80%EC%88%99/</loc>
+    <lastmod>2018-09-24T11:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EA%B9%80%EC%A7%80%EC%98%81/</loc>
+    <lastmod>2018-04-12T01:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EA%B9%80%ED%83%9C%EC%99%84/</loc>
+    <lastmod>2018-10-07T19:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EB%8B%A4%ED%81%90%EB%A9%98%ED%84%B0%EB%A6%AC/</loc>
+    <lastmod>2018-04-12T01:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EB%8D%94%EC%BB%A4/</loc>
+    <lastmod>2017-09-25T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%84%BC%ED%84%B0/</loc>
+    <lastmod>2017-09-29T22:15:48+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EB%8F%84%EA%B9%A8%EB%B9%84/</loc>
+    <lastmod>2018-09-24T11:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EB%8F%99%EB%AA%85%EC%9D%B4%EC%9D%B8/</loc>
+    <lastmod>2018-04-21T15:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EB%93%9C%EB%9D%BC%EB%A7%88/</loc>
+    <lastmod>2018-09-24T11:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/</loc>
+    <lastmod>2018-07-26T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EB%A0%88%EB%94%94-%ED%94%8C%EB%A0%88%EC%9D%B4%EC%96%B4-%EC%9B%90/</loc>
+    <lastmod>2018-03-30T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EB%A1%9C%EB%B2%A1%ED%84%B0/</loc>
+    <lastmod>2017-12-23T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EB%A6%AC%EB%B7%B0/</loc>
+    <lastmod>2018-10-08T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EB%A7%88%EC%86%8C%EA%B8%B0%EA%B3%A0/</loc>
+    <lastmod>2017-08-23T21:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</loc>
+    <lastmod>2018-09-29T09:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EB%AA%85%EB%A0%B9/</loc>
+    <lastmod>2017-12-27T19:15:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EB%AC%B8%EC%9D%BC%EC%B2%9C/</loc>
+    <lastmod>2018-07-26T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EB%AF%B8%EB%B6%84/</loc>
+    <lastmod>2017-09-19T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EB%AF%B8%EC%8A%A4%ED%84%B0%EC%8D%AC%EC%83%A4%EC%9D%B8/</loc>
+    <lastmod>2018-09-24T11:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EB%B2%88%EC%97%AD/</loc>
+    <lastmod>2018-03-31T08:05:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/%EB%B2%88%EC%97%AD/</loc>
+    <lastmod>2017-12-27T01:50:05+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EB%B3%B4%EC%95%88%EC%9C%84%EB%B0%98/</loc>
+    <lastmod>2018-04-21T15:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EC%82%AC%EC%9A%A9%EB%B2%95/</loc>
+    <lastmod>2018-01-16T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EC%82%AC%EC%9A%A9%EC%9E%90-%EA%B0%80%EC%9D%B4%EB%93%9C/</loc>
+    <lastmod>2018-01-06T19:05:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EC%84%B8%EA%B3%84%EA%B4%80/</loc>
+    <lastmod>2018-09-24T11:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EC%84%B8%EC%9B%94%ED%98%B8/</loc>
+    <lastmod>2018-04-12T01:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EC%88%98%ED%95%99/</loc>
+    <lastmod>2018-09-29T09:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EC%8A%A4%EB%8B%88%ED%8E%AB/</loc>
+    <lastmod>2017-12-27T19:10:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88/</loc>
+    <lastmod>2017-09-24T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EC%8A%A4%ED%8B%B0%EB%B8%90-%EC%8A%A4%ED%95%84%EB%B2%84%EA%B7%B8/</loc>
+    <lastmod>2018-03-30T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EC%8B%9C%EA%B7%B8%EB%AA%A8%EC%9D%B4%EB%93%9C/</loc>
+    <lastmod>2017-09-18T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EC%97%90%EC%9D%B4%EC%BD%98/</loc>
+    <lastmod>2018-03-30T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EC%98%A4%EB%9D%BC%ED%81%B4/</loc>
+    <lastmod>2017-08-06T22:20:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EC%98%A4%EB%9D%BC%ED%81%B4-%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4/</loc>
+    <lastmod>2017-12-25T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</loc>
+    <lastmod>2017-12-26T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</loc>
+    <lastmod>2017-12-26T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EC%9A%A9%EC%96%B4/</loc>
+    <lastmod>2018-07-18T19:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EC%9E%90%EB%B0%94%EC%89%98/</loc>
+    <lastmod>2018-01-06T19:05:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EC%A0%84%EC%B9%98%ED%96%89%EB%A0%AC/</loc>
+    <lastmod>2017-12-20T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/%EC%A7%9C%ED%88%AC%EB%A6%AC/</loc>
+    <lastmod>2016-03-25T00:17:44+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EC%B9%B4%EC%82%B0%EB%93%9C%EB%9D%BC/</loc>
+    <lastmod>2017-12-26T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EC%BB%AC%EB%9F%BC%EB%B2%A1%ED%84%B0/</loc>
+    <lastmod>2017-12-23T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</loc>
+    <lastmod>2017-08-06T22:20:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%ED%83%9C%EC%96%91%EC%9D%98%ED%9B%84%EC%98%88/</loc>
+    <lastmod>2018-09-24T11:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%ED%85%8C%EB%9D%BC%ED%8F%BC/</loc>
+    <lastmod>2017-10-03T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%ED%85%8C%EC%9D%B4%EB%B8%94-%ED%82%A4-%EB%94%94%EC%9E%90%EC%9D%B8/</loc>
+    <lastmod>2018-04-21T15:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%ED%86%B5%EA%B3%84/</loc>
+    <lastmod>2018-08-18T20:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%ED%86%B5%EB%82%98%EB%AC%B4/</loc>
+    <lastmod>2018-04-15T15:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%ED%86%B5%ED%95%A9/</loc>
+    <lastmod>2018-03-31T08:05:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC/</loc>
+    <lastmod>2018-03-27T03:05:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</loc>
+    <lastmod>2017-09-17T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%ED%8E%B8%EB%AF%B8%EB%B6%84/</loc>
+    <lastmod>2017-12-20T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%ED%91%9C%EA%B8%B0%EB%B2%95/</loc>
+    <lastmod>2017-11-28T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%ED%95%9C%EA%B8%80%ED%99%94/</loc>
+    <lastmod>2017-12-27T19:35:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%ED%95%A9%EC%84%B1%EA%B3%B1/</loc>
+    <lastmod>2018-01-04T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%ED%99%95%EB%A5%A0/</loc>
+    <lastmod>2018-08-18T20:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%ED%99%9C%EC%84%B1%ED%99%94-%ED%95%A8%EC%88%98/</loc>
+    <lastmod>2017-09-19T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%ED%9B%84%EA%B8%B0/</loc>
+    <lastmod>2018-09-24T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>MySQL 인스턴스에 대한 백업과 복구</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="MySQL 인스턴스에 대한 백업과 복구" />
+<meta property="og:description" content="MySQL Cloud Service에서의 백업과 복구하는 방법에 대해서 알아보도록 하겠습니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/cloud/mysqlcs_backup/" />
+
+
+
+<meta property="article:published_time" content="2017-09-29T17:17:35&#43;09:00"/>
+<meta property="article:modified_time" content="2017-09-29T17:17:35&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=bsh&amp;skin=sons-of-obsidian"></script>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">MySQL 인스턴스에 대한 백업과 복구 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2017-09-29 17:17:35 &#43;0900 KST">September 29, 2017</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/mysql" rel="category">MySQL</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+			
+
+<p>본 문서는 Oracle MySQL APAC 세일즈 컨설팅팀에서 고객 전달용으로 작성한 블로그입니다. 해당 문서는 앞서 포스팅된 <a href="post/mysqlcs/">&ldquo;MySQL Cloud를 시작하고 샘플 스키마 생성하기&rdquo;</a>라는 블로그에 이어서 MySQL Cloud Service에서 생성된 인스턴스에 대하여 어떻게 백업을 하고 복구를 하는지에 대하여 보여주고 있습니다.</p>
+
+<h2 id="선행-작업">선행 작업</h2>
+
+<p>본 문서는 다음과 같은 절차가 완료되었다는 것을 전제로 합니다.</p>
+
+<ul>
+<li>오라클 클라우드 계정을 신청</li>
+<li>MySQL Cloud Service 서브스크립션 구매</li>
+<li>Oracle Cloud Service 인스턴스에 등록할 보안키를 생성</li>
+<li>Oracle Cloud Service 인스턴스 생성 완료</li>
+</ul>
+
+<p>선행 작업이 완료되지 못한 상태라면 다음 문서를 참조하여 먼저 준비하시고 다음으로 넘어가시기 바랍니다.</p>
+
+<ul>
+<li><a href="/post/accont/">오라클 클라우드 계정</a></li>
+<li><a href="/post/ssh_key/">윈도우, 리눅스, 맥에서 SSH 보안키 생성</a></li>
+<li><a href="/post/mysqlcs/">MySQL Cloud를 시작하고 샘플 스키마 생성하기</a></li>
+</ul>
+
+<h2 id="백업과-복구-설정">백업과 복구 설정</h2>
+
+<p>MySQL Cloud Service는 <strong>MySQL Enterprise Backup</strong> 을 이용하여 백업과 복구 작업을 수행합니다. MySQL Cloud Service에서 제공하는 백업기능은 MySQL의 <strong>data</strong> 디렉토리의 전체 파일을 백업하게 되는데 이 백업 기능을 제공하기 위해서 MySQL Cloud Service는 MySQL 데이터베이스 생성단계에서 <strong>MySQL Enterprise Backup</strong> 툴을 설치하기 때문에 백업과 복구기능은 인스턴스를 생성하는 단계에서 활용여부를 결정해야 합니다.</p>
+
+<p>백업을 사용할 경우에는 백업설정의 <strong>Backup Destination</strong> 에 “None”이 외의 값 즉 “<strong>Both Cloud and Disk Storage</strong>”거나 “<strong>Cloud Storage Only</strong>”를 선택해야 합니다.</p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/09/mysqlcs_backup/config.png" alt="" /></p>
+
+<p><strong>Both Cloud Storage and Disk Storage</strong> : 백업은 자동적으로 Oracle MySQL Cloud Service 인스턴스의 가상머신의 로컬 컴퓨터 스토리지와 Oracle Storage Cloud Service 컨테이너에 저장됩니다. 이 컨테이너는 기존것을 사용할 수 있고 새로운 Oracle Storage 컨테이너를 생성할 수 있습니다.</p>
+
+<p><strong>Cloud Storage Only</strong> : 백업은 자동적으로 Oracle Storage Cloud Service 컨테이너에만 저장됩니다. 이 컨테이너는 기존것을 사용하거나 새로운 Oracle Storage 컨테이너를 생성할 수 있습니다.</p>
+
+<h2 id="디폴트-백업설정">디폴트 백업설정</h2>
+
+<p>자동백업은 주단위 전체 백업, 일단위 증분 백업을 실행하게 됩니다.
+백업에 대한 보유기간은 MySQL Cloud Service 가상머신에 저장되는 백업 데이터는 최대 7일간 유지되고 클라우드 스토리지에서는 30일간 유지됩니다.</p>
+
+<p>백업설정 화면에서 디폴트 백업설정을 변경할 수 있습니다.</p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/09/mysqlcs_backup/change1.png" alt="" />
+<img src="https://oracloud-kr-teamrepo.github.io/2017/09/mysqlcs_backup/change2.png" alt="" /></p>
+
+<p>백업설정 화면에서 주 1회씩 실행이 되는 전체 백업 시간과 하루에 1회씩 실행이 되는 증분 백업 시간 그리고 클라우드 스토리지상의 백업 데이터의 유지기간을 변경할 수 있습니다.</p>
+
+<h2 id="백업의-로컬-스토리지">백업의 로컬 스토리지</h2>
+
+<p>MySQL 인스턴스의 로컬 스토리지를 확인할려면 Oracle Compute Cloud Service에서 해당 인스턴스의 “<strong>보기</strong>” 버튼을 클릭하여 스토리지 볼륨상세를 확인할 수 있습니다.</p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/09/mysqlcs_backup/storage1.png" alt="" />
+<img src="https://oracloud-kr-teamrepo.github.io/2017/09/mysqlcs_backup/storage2.png" alt="" /></p>
+
+<p>백업용으로 사용된 로컬 스토리지 용량은 데이터베이스 용량의 2배입니다.예를 들면 데이터베이스 스토리지 용량을 25GB로 설정했을 경우 백업용 스토리지 용량은 50GB로 설정됩니다.</p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/09/mysqlcs_backup/storage3.png" alt="" /></p>
+
+<h2 id="on-demand-백업">On-Demand 백업</h2>
+
+<p>On-Demand 백업은 사용자가 원할때 백업을 수행할 수 있는 기능으로 백업 페이지에서 “<strong>Backup Now</strong>”를 클릭하면 됩니다.</p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/09/mysqlcs_backup/ondemand1.png" alt="" />
+<img src="https://oracloud-kr-teamrepo.github.io/2017/09/mysqlcs_backup/ondemand2.png" alt="" /></p>
+
+<p>백업이 완료되면 백업 이력에 해당 기록이 추가되고 우측 메뉴를 통해 이 백업본에 대해서 <strong>삭제</strong> 및 <strong>복구</strong> 를 실행할 수 있습니다.</p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/09/mysqlcs_backup/ondemand3.png" alt="" /></p>
+
+<h2 id="백업으로-부터-복구">백업으로 부터 복구</h2>
+
+<p>위 화면에서 백업이력의 우측 메뉴버튼을 클릭한후  “<strong>Restore</strong>”를 클릭한 다음 확인하면 해당 백업파일로 복구작업을 실행하게 됩니다.</p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/09/mysqlcs_backup/restore1.png" alt="" />
+<img src="https://oracloud-kr-teamrepo.github.io/2017/09/mysqlcs_backup/restore2.png" alt="" /></p>
+
+<p>복구 작업은 다음 스탭을 거치게 됩니다.</p>
+
+<ul>
+<li>데이터베이스 Shutdown</li>
+<li>복구 준비 작업</li>
+<li>복구 실행</li>
+<li>복구 실행후 데이터베이스 서버 재시작</li>
+</ul>
+
+<p>복구작업이 완성되면 복구 이력에서 복구 상태를 확인할 수 있습니다.</p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/09/mysqlcs_backup/restore3.png" alt="" /></p>
+
+<h2 id="point-in-time-복구">Point in Time 복구</h2>
+
+<p>MySQL Cloud Service는 <strong>binary log</strong> 를 이용한 Point in Time 복구를 지원합니다.
+Point in Time복구는 내부적으로 다음과 같은 스텝을 거치게 됩니다.</p>
+
+<ul>
+<li>데이터베이스 shuts down</li>
+<li>복구 작업 준비</li>
+<li>MEB에 의한 데이터의 복구</li>
+<li>mysqlbinlog에 의한 바이너리 로그의 복구</li>
+<li>데이터베이스 재시작</li>
+</ul>
+
+<p>Point In Time 복구방법은 다음과 같습니다.
+MySQL Cloud Service의 백업화면에서 메뉴를 클릭하여 “<strong>Restore Service</strong>”를 선택합니다.</p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/09/mysqlcs_backup/restore4.png" alt="" /></p>
+
+<p>복구 서비스의 입력창에서 복구시점과 복구유형을 선택합니다.
+<img src="https://oracloud-kr-teamrepo.github.io/2017/09/mysqlcs_backup/restore5.png" alt="" /></p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/09/mysqlcs_backup/restore6.png" alt="" /></p>
+
+<p>복구 작업이 완료되면 복구 이력에서 복구작업의 상태를 확인할 수 있습니다.
+<img src="https://oracloud-kr-teamrepo.github.io/2017/09/mysqlcs_backup/restore7.png" alt="" /></p>
+
+<p>Point in Time복구를 실행할려면 복구할 시점이 기존에 실행했던 <strong>전체백업과 증분백업 시점의 사이</strong> 에 있거나 또는 <strong>두 증분백업사이의 시점</strong> 이여야 가능합니다.
+<img src="https://oracloud-kr-teamrepo.github.io/2017/09/mysqlcs_backup/PIT.png" alt="" /></p>
+
+<p>그 이외의 경우는 mysqlbinlog를 이용하여 해결할 수 있습니다.
+구체적인 방법에 대해서는 메뉴얼을 참조하시기 바랍니다.</p>
+
+<p><a href="https://dev.mysql.com/doc/mysql-enterprise-backup/4.0/en/advanced.point.html">https://dev.mysql.com/doc/mysql-enterprise-backup/4.0/en/advanced.point.html</a></p>
+
+<h2 id="백업-디렉토리">백업 디렉토리</h2>
+
+<p>MySQL Cloud Service인스턴스에서 백업 툴이 위치한 디렉토리 : <strong>/u01/bin/meb/bin</strong></p>
+
+<p>MySQL Cloud Service인스턴스의 <strong>로컬 스토리지</strong> 에서의 스케줄 백업 저장 위치 :</p>
+
+<p>/u01/backup/domain name/Instance name/onDemandFull/*</p>
+
+<p>/u01/backup/domain name/Instance name/scheduledFull/*</p>
+
+<p>/u01/backup/domain name/Instance name/scheduledIncremental/*</p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/09/mysqlcs_backup/backupdir.png" alt="" /></p>
+
+<p>Cloud Storage 에 저장된 백업파일에 대한 정보는 <strong>Oracle Storage Cloud Service</strong> 의 &ldquo;<strong>Containers</strong>&ldquo;화면에서 찾아 볼 수 있고 특정 백업파일에 대한 <strong>다운로드</strong>, <strong>삭제</strong> 및 <strong>복제</strong> 기능을 활용할 수 있습니다.</p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/09/mysqlcs_backup/storage_cloud1.png" alt="" /></p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/09/mysqlcs_backup/storage_cloud2.png" alt="" /></p>
+
+<h2 id="수동-백업-방법">수동 백업 방법</h2>
+
+<p><strong>Full 백업</strong> 을 하는 경우를 예를 들어 설명 드리자면 다음과 같습니다.</p>
+
+<p>[oracle@master-mysql-1 backup]$ /u01/bin/meb/bin/mysqlbackup &ndash;user=root -p &ndash;backup-dir=/u01/backup/ManualBackup backup-and-apply-log</p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/09/mysqlcs_backup/manual1.png" alt="" /></p>
+
+<p>수동 백업이 완료되면 지정된 백업 디렉토리가 생성이 되고 해당위치에서 백업된 파일들을 찾아 볼수 있습니다.</p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/09/mysqlcs_backup/manual2.png" alt="" /></p>
+
+<p><strong>mysqlbackup</strong> 의 사용방법에 대해서는 아래 메뉴얼을 참조하십시오.</p>
+
+<p><a href="https://dev.mysql.com/doc/mysql-enterprise-backup/4.0/en/meb-command-reference.html">https://dev.mysql.com/doc/mysql-enterprise-backup/4.0/en/meb-command-reference.html</a></p>
+
+<h2 id="마치며">마치며</h2>
+
+<p>여기까지 MySQL Cloud Service에 대한 백업과 복구하는 방법에 대해서 살펴보았습니다. 다음 문서에서는 MySQL Cloud Service 환경에서 인스턴스 사이의 복제(Replication)기능을 구성하는 방법에 대해서 설명해 드리겠습니다.</p>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/database/" rel="tag">database</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/data-management/" rel="tag">data management</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/mysql/" rel="tag">MySQL</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/oracle_cncf/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">[번역]오라클의 CNCF(Cloud Native Computing Foundation) 가입 의미</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/oracle-cloud_dc_location/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">오라클 클라우드 데이터 센터와 센터별 IaaS와 PaaS 서비스 목록</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/cloud/mysqlcs_backup/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#선행-작업">선행 작업</a></li>
+<li><a href="#백업과-복구-설정">백업과 복구 설정</a></li>
+<li><a href="#디폴트-백업설정">디폴트 백업설정</a></li>
+<li><a href="#백업의-로컬-스토리지">백업의 로컬 스토리지</a></li>
+<li><a href="#on-demand-백업">On-Demand 백업</a></li>
+<li><a href="#백업으로-부터-복구">백업으로 부터 복구</a></li>
+<li><a href="#point-in-time-복구">Point in Time 복구</a></li>
+<li><a href="#백업-디렉토리">백업 디렉토리</a></li>
+<li><a href="#수동-백업-방법">수동 백업 방법</a></li>
+<li><a href="#마치며">마치며</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

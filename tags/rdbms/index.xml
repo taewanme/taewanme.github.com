@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rdbms on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/rdbms/</link>
+    <description>Recent content in Rdbms on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 23 Mar 2016 14:01:55 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/rdbms/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>세미나 퀴즈: 다음 데이터를 정규화하시요!</title>
+      <link>http://taewan.kim/post/question/</link>
+      <pubDate>Wed, 23 Mar 2016 14:01:55 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/question/</guid>
+      <description>다음 데이터를 이용하여 제 3 정규화가 완료된 ERD를 작성하시오.</description>
+    </item>
+    
+  </channel>
+</rss>

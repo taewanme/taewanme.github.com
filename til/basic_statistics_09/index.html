@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>[til]기초 확률&amp;통계#8: 확률 변수, 확률 분포, 이산확률 분포 </title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="[til]기초 확률&amp;통계#8: 확률 변수, 확률 분포, 이산확률 분포 " />
+<meta property="og:description" content="01. 확률 변수, 확률 분포 확률변수, 확률 분포는 함수다.
+  Sample Space는 시행에서 얻어지는 모든 결과의 집합. Sample Space의 모든 원소를 실수로 대응하는 함수: 확률 변수 확률 변수로 얻어진 실수를 확률값으로 변화하는 함수: 확률 분포 확률 변수와 확률 분포를 이용하여 시행의 결과를 실수로 변환할 수 있고, 발생 확률로 변환할 수 있다.   그림 1: 확률 변수와 확률 분포는 함수다     최종 확률분포표로 제시  02." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/til/basic_statistics_09/" />
+
+
+
+<meta property="article:published_time" content="2018-08-06T20:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2018-08-06T20:28:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		
+		
+		<header class="post__header clearfix">
+			<h1 class="post__title">[til]기초 확률&amp;통계#8: 확률 변수, 확률 분포, 이산확률 분포  </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2018-08-06 20:28:14 &#43;0900 KST">August 06, 2018</time>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+			
+
+<h2 id="01-확률-변수-확률-분포">01. 확률 변수, 확률 분포</h2>
+
+<div class="notices note" ><p>확률변수, 확률 분포는 함수다.</p>
+</div>
+
+
+<ul>
+<li>Sample Space는 시행에서 얻어지는 모든 결과의 집합.</li>
+<li>Sample Space의 모든 원소를 실수로 대응하는 함수: 확률 변수</li>
+<li>확률 변수로 얻어진 실수를 확률값으로 변화하는 함수: 확률 분포</li>
+<li>확률 변수와 확률 분포를 이용하여 시행의 결과를 실수로 변환할 수 있고, 발생 확률로 변환할 수 있다.</li>
+</ul>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/08/til20180806/020.jpg" alt="확률 변수와 확률 분포는 함수다" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 1</strong>:
+        
+        확률 변수와 확률 분포는 함수다
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<ul>
+<li>최종 확률분포표로 제시</li>
+</ul>
+
+<h2 id="02-이산-확률-분포">02. 이산 확률 분포</h2>
+
+<ul>
+<li>확률 분포의 유형
+
+<ul>
+<li>연속 확률 분포: 확률 분포가 연속적인 것: 무수히 많은 것
+
+<ul>
+<li>정규분포</li>
+</ul></li>
+<li>이산 확률 분포: 확률 분포가 불연속 적인 것
+
+<ul>
+<li>이항분포</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h3 id="이산-확률-분포">이산 확률 분포</h3>
+
+<ul>
+<li>확률 분포가 셀수 있고 나열할 수 있는 분포</li>
+<li>확률 분포는 실수를 확률로 변환하는 함수이다.
+
+<ul>
+<li>이산 확률 분포에서 확률 함수를 확률 질량 함수라고 한다.</li>
+</ul></li>
+</ul>
+
+<h3 id="이산-확률-분포의-특징">이산 확률 분포의 특징</h3>
+
+<p>|X|x_1|x_2|x_3|&hellip;.|x_n|
+|&mdash;-|&mdash;-|&mdash;-|&mdash;-|&mdash;-|
+|P(X)|p_1|p_2|p_3|&hellip;.|p_n|</p>
+
+<ul>
+<li>$0 \leq P(X=x_i) \leq 1$
+
+<ul>
+<li>확률 분포에 나오는 확률값이 범위</li>
+</ul></li>
+<li>$\sum^{n}_{i=1}P(X=x<em>i) = \sum^{n}</em>{i=1}p_i= 1$</li>
+<li>$P(x_i \leq X \leq x<em>j) = \sum^{j}</em>{k=i}p_k$</li>
+</ul>
+
+<h2 id="3-이산확률-변수의-기댓값">3. 이산확률 변수의 기댓값</h2>
+
+<table>
+<thead>
+<tr>
+<th>X</th>
+<th>30</th>
+<th>40</th>
+<th>50</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>도수</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>확률</td>
+<td><sup>1</sup>&frasl;<sub>3</sub></td>
+<td><sup>1</sup>&frasl;<sub>2</sub></td>
+<td><sup>1</sup>&frasl;<sub>6</sub></td>
+</tr>
+
+<tr>
+<td></td>
+<td>30*<sup>1</sup>&frasl;<sub>3</sub></td>
+<td>40*<sup>1</sup>&frasl;<sub>2</sub></td>
+<td>50*<sup>1</sup>&frasl;<sub>6</sub></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><p>가능성(확률)로 계산한 평균: 기대값
+$$
+E(X)=\sum(x_i*P(x_i))
+$$</p></li>
+
+<li><p>평균과 기댓값의 차이</p>
+
+<ul>
+<li>평균은 전체의 값에 대한 중간 값</li>
+<li>기댓값은 전체가 아닌 확률로 계산한 평균</li>
+</ul></li>
+</ul>
+
+<h2 id="4-이산환률-변수의-분산과-표준편차">4. 이산환률 변수의 분산과 표준편차</h2>
+
+<ul>
+<li>평균은 값의 분포를 설명하지 못함</li>
+<li>값이 떨어진 정도를 제공하는 개념 필요: 편차</li>
+<li>편차: $Deviation = x_i - m$
+
+<ul>
+<li>m: mean</li>
+</ul></li>
+<li>$V(X)=\frac{\sum^{n}_{i=1} Deviation^2}{n}$
+
+<ul>
+<li>Variance</li>
+<li>편차 제곱의 평균</li>
+<li>분산이 크면 값은 떨어져 있음</li>
+</ul></li>
+<li>기댓값과 분산
+
+<ul>
+<li>$E(X) = meam$</li>
+<li>$V(X) = E[(X-m)^2]$</li>
+</ul></li>
+<li>표준편차: Standard Deviation
+
+<ul>
+<li>$\sqrt{V(X)} = \sigma(X)$</li>
+<li>$V(X) = E[(X-m)^2]=\sum(x_i-m)^2p_i$</li>
+<li>표준편차가 크면 값들이 평균으로 부터 많이 떨어져 있음을 의미</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>$$
+\begin{align}
+V(X) &amp;= E[(X-m)^2]=\sum(x_i-m)^2p_i \\<br />
+&amp;= \sum(x^2_ip_i-2mx_ip_i+m^2p_i) \\<br />
+&amp;= \sum(x^{2}_ip_i)-2m\sum(x_ip_i)+m^2\sum p_i \\<br />
+&amp;= E(X^2)-2mE(X)+m^2 \\<br />
+&amp;= E(X^2)-2mm+m^2 \\<br />
+&amp;= E(X^2)-m^2
+\end{align}
+$$</p>
+</blockquote>
+
+<h2 id="5-평균과-분산의-성질">5. 평균과 분산의 성질</h2>
+
+<h3 id="이산환률-변수의-평균과-표준-편차의-성질">이산환률 변수의 평균과 표준 편차의 성질</h3>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>x_1</th>
+<th>x_2</th>
+<th>x_3</th>
+<th>E(X)</th>
+<th>etc</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>X</td>
+<td>30</td>
+<td>40</td>
+<td>50</td>
+<td>40</td>
+<td>E(X)</td>
+</tr>
+
+<tr>
+<td>2X</td>
+<td>60</td>
+<td>80</td>
+<td>100</td>
+<td>80</td>
+<td>2E(X)</td>
+</tr>
+
+<tr>
+<td>X+30</td>
+<td>60</td>
+<td>70</td>
+<td>80</td>
+<td>70</td>
+<td>E(X)+30</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>E(aX+b) (a, b는 실수, X는 확률 변수)</li>
+</ul>
+
+<blockquote>
+<p>$$
+\begin{align}
+E(aX+b) &amp;= \sum_{i=1}^n(ax_i+b)p_i \\<br />
+&amp;= \sum(ax_ip_i+bp_i) \\<br />
+&amp;= \sum(ax_i p_i)+b \sum p_i \\<br />
+&amp;= aE(X)+b*1 \\<br />
+&amp;= aE(X)+b
+\end{align}
+$$</p>
+</blockquote>
+
+<h3 id="분산의-성질">분산의 성질</h3>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>x_1</th>
+<th>x_2</th>
+<th>x_3</th>
+<th>E(X)</th>
+<th>편차</th>
+<th>etc</th>
+<th>편차^2</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>X</td>
+<td>30</td>
+<td>40</td>
+<td>50</td>
+<td>40</td>
+<td>(-10, 0, 10)</td>
+<td></td>
+<td>편차^2</td>
+</tr>
+
+<tr>
+<td>2X</td>
+<td>60</td>
+<td>80</td>
+<td>100</td>
+<td>80</td>
+<td>(-20, 0, 20)</td>
+<td>편차도 2배</td>
+<td>2X2 배</td>
+</tr>
+
+<tr>
+<td>X+30</td>
+<td>60</td>
+<td>70</td>
+<td>800</td>
+<td>70</td>
+<td>(-10, 00, 10)</td>
+<td>편차에 변화 없음</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>$V(aX+b) = a^2V(X)$</li>
+<li>$\sigma(aX+b) = \sqrt{a^2V(X)} = a\sqrt{V(X)}=a\sigma(x)$</li>
+</ul>
+
+<h3 id="성질-요약">성질 요약</h3>
+
+<ul>
+<li>E(aX+b) = aE(X)+b</li>
+<li>V(aX+b) = $a^2$V(X)</li>
+<li>$\sigma(aX+b) = |a|\sigma(X)$</li>
+</ul>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/%ED%99%95%EB%A5%A0/" rel="tag">확률</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%ED%86%B5%EA%B3%84/" rel="tag">통계</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/til/gauss_distribution/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">가우스가 들려주는 근삿값과 오차 이야기</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/til/matrics_in_classification/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">Classification 성능 matrix</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/til/basic_statistics_09/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#01-확률-변수-확률-분포">01. 확률 변수, 확률 분포</a></li>
+<li><a href="#02-이산-확률-분포">02. 이산 확률 분포</a>
+<ul>
+<li><a href="#이산-확률-분포">이산 확률 분포</a></li>
+<li><a href="#이산-확률-분포의-특징">이산 확률 분포의 특징</a></li>
+</ul></li>
+<li><a href="#3-이산확률-변수의-기댓값">3. 이산확률 변수의 기댓값</a></li>
+<li><a href="#4-이산환률-변수의-분산과-표준편차">4. 이산환률 변수의 분산과 표준편차</a></li>
+<li><a href="#5-평균과-분산의-성질">5. 평균과 분산의 성질</a>
+<ul>
+<li><a href="#이산환률-변수의-평균과-표준-편차의-성질">이산환률 변수의 평균과 표준 편차의 성질</a></li>
+<li><a href="#분산의-성질">분산의 성질</a></li>
+<li><a href="#성질-요약">성질 요약</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

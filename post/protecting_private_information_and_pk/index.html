@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>보안 Black List 테이블의 Key 디자인: 억울한 이름</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="보안 Black List 테이블의 Key 디자인: 억울한 이름" />
+<meta property="og:description" content="개인정보 보호법과 고객사의 보안 블랙리스트 관리 테이블 설계 문제로 경험했던 에피스드입니다. " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/post/protecting_private_information_and_pk/" />
+
+
+
+<meta property="article:published_time" content="2018-04-21T15:59:47&#43;09:00"/>
+<meta property="article:modified_time" content="2018-04-21T15:59:47&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		
+		
+		<header class="post__header clearfix">
+			<h1 class="post__title">보안 Black List 테이블의 Key 디자인: 억울한 이름 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2018-04-21 15:59:47 &#43;0900 KST">April 21, 2018</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/life" rel="category">Life</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2018/04/samename/img03.jpg" alt="보안 Black List 테이블의 Key 디자인: 억울한 이름">
+			</figure>
+			
+
+<p>세상에는 수많은 동명이인이 존재합니다. 대한민국에 김태완이라는 사람이 약 500명 정도는 있을 것 같습니다. 상단 이미지는 구글링으로 확인한 대한민국의 김태완입니다. 지난 몇 년간 고객사에서 제 이름 때문에 생겼던 웃지 못할 경험을 했고, 이 에피소드는 현재도 진행 중입니다. 이 에피소드는 2018년 1월 24일 페이스북에 올려 100명의 페친으로 부터 공감을 얻은 사건이 있었습니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/04/samename/img02.jpg" alt="Facebook 원문: https://www.facebook.com/alvinkim082/posts/1741731909216635" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 1</strong>:
+        
+        Facebook 원문: https://www.facebook.com/alvinkim082/posts/1741731909216635
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<h2 id="이유를-알-수-없는-고객사로부터-퇴출">이유를 알 수 없는 고객사로부터 퇴출</h2>
+
+<p>2013년 3월 고객사에서 빅데이터 PoC를 준비할 때였습니다. 고객사로 부터 사업장에서 떠날 것을 통보받았습니다. 내가 고객사의 보안 정책을 위반했기 때문에 고객사 사업장에 출입할 수 있다는 통보였습니다. 내가 고객사의 어떤 보안 정책을 위반했는지 알아보았으나 누구도 그 이유를 말해 주지 않았습니다.</p>
+
+<p>저는 소프트웨어 기술 지원하는 역할을 하고 있기 때문에, 고객사 출입이 많은 편입니다. 특히 저에게 퇴출 명령을 내린 그 고객사는 우리 회사의 가장 큰 고객사이기 때문에, 회사 업무에 상당한 영향을 미쳤습니다. 회사에서도 당황스럽기는 마찬가지였습니다. 고객사 출입이 제한되기 때문에 난처한 일이 많았습니다.</p>
+
+<p>보안 위반 통보를 받은 후, 아래 그림과 같이 보안 위반자로서의 주홍 글씨가 찐하게 써졌습니다. 이 당시 고객사 문의 결과 이유를 파악할 수 없지만, 고객사 사업장에 영구 출입 정지 대상자라는 통보를 받았습니다. 회사에서 무슨 일을 저지른 거냐는 비난을 받아야 했습니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/04/samename/img01.jpg" alt="고객사 출입 신청 시스템: 보안 위반자 등록" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 2</strong>:
+        
+        고객사 출입 신청 시스템: 보안 위반자 등록
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<h2 id="그리고-5년-후-밝혀진-허무한-진실-생년월일이-같은-동명이인">그리고 5년 후 밝혀진 허무한 진실: 생년월일이 같은 동명이인</h2>
+
+<p>그리고 5년이 흘렀습니다. 5년간 해당 고객사에 들어가야 할 경우, VIP로 출입하거나 여러 가지 편법을 써가며 생 난리를 치며 출입을 했습니다. 그러다가 고객사의 내부 시스템이 통합된 어느 날 보안 담당자에게서 이런 말을 들었습니다.</p>
+
+<blockquote>
+<p>2011년 8월에 XX 사업장에서 하드디스크를 불법 반출하다 걸리셨네요. 이 정도 보안 위반이면 영구 출입 정지입니다. 출입 불가합니다.</p>
+</blockquote>
+
+<p>저는 그런 사실이 없기에 다시 확인했습니다.</p>
+
+<blockquote>
+<p>197X년 XX월 XX일 생 김태완: 보안 위반 대상자로 등록되어 있습니다.
+XX 컴퓨터 소속으로 되어 있는데요?</p>
+</blockquote>
+
+<p>저는 2011년에 소속이 현재 회사였고, XX 컴퓨터에는 근무한 적이 없습니다. 동명이인의 덫에 걸린 겁니다.</p>
+
+<p>2013년에 개인 정보 보호법이 강화되면서 데이터베이스에 주민등록번호를 사용할 수 없게 되었습니다. 이 법규 때문에 주민등록번호로 PK(Primary Key)로 사용하는 많은 테이블이 수정되었습니다. 절 출입 금지한 고객사는 BlackList 테이블을 기존에 주민등록번호로 관리해 왔던 것 같습니다. 2013년 개인 정보 보호법이 강화되면서 BlackList의 PK를 <strong>이름+생년월일</strong>로 변경한 것 같습니다.</p>
+
+<p>이렇게 BlackList 테이블이 수정되면서, 저와 이름+생년월일이 같은 다른 사람의 보안 위반 기록이 어느 순간 저를 지목하는 문제가 발생한 것입니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/04/samename/img06.jpg" alt="BlackList 테이블 키 변화" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 3</strong>:
+        
+        BlackList 테이블 키 변화
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<h2 id="생년-월일이-같은-사람이-동명이인일-확률-11-7">생년 월일이 같은 사람이 동명이인일 확률: 11.7%</h2>
+
+<p>신용평가사 NICE신용평가정보는 2012년 9월 17일 성명·주민등록번호 정보 4천266만 2천467개를 분석한 결과 주민등록상 생년월일이 동일한 사람 중 동명이인이 있을 확률은 11.7%라고 밝혔습니다. 그리고 가장 흔한 성씨는 <strong>김-이-박-정-최</strong>이라고 합니다. 막연하게 굉장히 확률이 작을 것만 같은 생년월일+이름 조합은 결코 키가 될 수 없는 조합입니다. 데이터 충돌이 너무 많이 발생하는 조합입니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/04/samename/img07.jpg" alt="생년월일&#43;동명이인 확률 관련 기사, 출처: http://news.jtbc.joins.com/article/ArticlePrint.aspx?news_id=NB10169590" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 4</strong>:
+        
+        생년월일&#43;동명이인 확률 관련 기사, 출처: http://news.jtbc.joins.com/article/ArticlePrint.aspx?news_id=NB10169590
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<h2 id="풀린-족쇄-그리고-테이블-디자인에-대한-고민">풀린 족쇄, 그리고 테이블 디자인에 대한 고민</h2>
+
+<p>2017년 8월에 경력증명서를 고객사에 제출한 후 고객사 출입이 약간 자유로워졌습니다. 출입은 가능해졌지만, 약간의 부가적인 절차는 필요했습니다. 보안위반자 관리 시스템을 새로 개발해야 했기에 완전 해결은 어려웠습니다. 저 하나 때문에 고객님께서 새로 예산을 확보해서 시스템을 개발해 주실 일은 없겠죠. ^^</p>
+
+<p>제 에피소드의 고객사는 다음과 같은 원칙으로 보안 위반자 관리를 관리해 왔습니다.</p>
+
+<ul>
+<li>보안 위반자는 지정된 기간 고객사 출입 불가함</li>
+<li>보안 위반자가 소속 회사를 변경하더라도 당사자의 출입 제한 기간은 유지되어야 함</li>
+</ul>
+
+<p>이러한 요건으로 데이터베이스 테이블을 설계할 경우 PK를 어떻게 잡아야 할까요? 주민등록번호 사용이 제한됨에 따라서 이런 로직을 데이터베이스에 디자인하는 것이 정말 어려운 문제입니다. 개인적으로 지난 5년 동안의 에피소드가 짜증 나기는 하지만, 이런 요구사항을 테이블 디자인에 반영할 적당한 key가 없다는 사실도 공감이 갑니다.</p>
+
+<p>기존에 주민등록번호는 정말 대단한 Feature였습니다. 대한민국 국민에게 부여되는 유일한 값이고, 번호 안에 생년월일, 성별, 출생지역, 출생신고 접수순서 및 검증 필드를 포함하는 정말 잘 디자인된 Feature였습니다. 개인 정보 보호법이 강화되면서 이런 값을 사용하지 못하면서 많은 부수적인 문제가 발생하고 있습니다.</p>
+
+<p>이런 문제를 해결하기 위해서 Key를 어떻게 정의해야 할까요? 부가적으로 추가해야 할 정보는 무엇일까요? <strong>LinkedIn 계정</strong>과 같은 부가적인 정보가 필요한 상황인 것 같습니다. 지속해서 자신의 경력을 관리하는 SNS 계정과 출입 계정 생성 시 사진을 추가하여 보안 문제 발생 시 검증 필드로 활용하는 방안을 고려해야 할 것 같습니다.</p>
+
+<h2 id="최근에-다시-시작된-에피소드와-고객사-관계자의-당당함">최근에 다시 시작된 에피소드와 고객사 관계자의 당당함</h2>
+
+<p>얼마 전에 다른 고객사로부터 또다시 출입 제지를 받았습니다. 제가 보안 위반자라 출입 등록할 수 없다는 연락을 받았습니다. 저와 생일과 이름이 다른 그분께서 또 다른 고객사에서도 하드디스크를 반출하다가 적발되어 영구 출입 정지를 당하셨다고 합니다. 저로서는 정말 악연입니다.</p>
+
+<p>정말 악연인 그분에게 화가 나는 상황에서 황당한 요구를 받았습니다. 저를 보안관리 대상자로 지목한 고객사로 부터 제가 그 사람이 아니라는 것을 증빙을 위해서 건강보험 납부 증명서 원본을 제출하라는 요구를 당당히 받았습니다. 재직 증명서는 위조 가능성이 있으니 건강보험 납부 증명서 원본을 제출하라는 당당한 요구였습니다.</p>
+
+<blockquote>
+<p>피해자는 난데 갑님이라고 너무 당당한 것 아닙니까? 내?
+그리고 우리 회사에서 발행한 재직 증명서를 위조 가능한 문서라고 말하는것은 너무 무례한 것 아닙니까?</p>
+</blockquote>
+
+<h2 id="꼭-전달하고-싶은-말">꼭 전달하고 싶은 말</h2>
+
+<ul>
+<li>고객사 보안 시스템 개발 담당자
+
+<ul>
+<li>PK 좀 잘 디자인해 주세요</li>
+<li>생년월일과 이름은 PK 될 수 없습니다.</li>
+<li>어려운 일이란 것 알지만 그래도, 당신이 선택한 생년월일과 이름 조합은 충돌이 발생할 확률이 매우 높은 조합입니다.</li>
+</ul></li>
+<li>고객사 보안 담당자
+
+<ul>
+<li>고객사 보안이 중요한 만큼, 내 개인 정보도 중요합니다.</li>
+<li>개인 소득 및 가족 사항 등 많은 정보가 공유되는 개인 정보 함부로 요구하지 맙시다.</li>
+<li>그리고 파트너사의 도덕성을 무시하지 맙시다. 위조 가능한 문서라뇨&hellip;</li>
+</ul></li>
+<li>생년월일이 같은 또 다른 김태완님
+
+<ul>
+<li>누군지 모르지만 제발 적법하게 일합시다. 쫌..</li>
+</ul></li>
+</ul>
+
+<p>그나저나 데이터베이스 PK 디자인은 정말 어려운 분야인 것 같습니다. 이번에 정말 정말 정말&hellip;&hellip;. 현실을 세계를 반영한 데이터베이스 디자인은 정말 어려운 것임을알게 되었습니다.</p>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/" rel="tag">개인정보보호법</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EB%8F%99%EB%AA%85%EC%9D%B4%EC%9D%B8/" rel="tag">동명이인</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/pk/" rel="tag">PK</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%ED%85%8C%EC%9D%B4%EB%B8%94-%ED%82%A4-%EB%94%94%EC%9E%90%EC%9D%B8/" rel="tag">테이블 키 디자인</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EB%B3%B4%EC%95%88%EC%9C%84%EB%B0%98/" rel="tag">보안위반</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/flume_images/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">오픈소스 작명 센스: 아파치 플룸(Apache Flume)</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/kotlin_jupyter/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">Kotlin 지원 Jupyter: BeakerX 도커 이미지</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/post/protecting_private_information_and_pk/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#이유를-알-수-없는-고객사로부터-퇴출">이유를 알 수 없는 고객사로부터 퇴출</a></li>
+<li><a href="#그리고-5년-후-밝혀진-허무한-진실-생년월일이-같은-동명이인">그리고 5년 후 밝혀진 허무한 진실: 생년월일이 같은 동명이인</a></li>
+<li><a href="#생년-월일이-같은-사람이-동명이인일-확률-11-7">생년 월일이 같은 사람이 동명이인일 확률: 11.7%</a></li>
+<li><a href="#풀린-족쇄-그리고-테이블-디자인에-대한-고민">풀린 족쇄, 그리고 테이블 디자인에 대한 고민</a></li>
+<li><a href="#최근에-다시-시작된-에피소드와-고객사-관계자의-당당함">최근에 다시 시작된 에피소드와 고객사 관계자의 당당함</a></li>
+<li><a href="#꼭-전달하고-싶은-말">꼭 전달하고 싶은 말</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

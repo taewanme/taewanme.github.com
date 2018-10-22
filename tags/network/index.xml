@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Network on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/network/</link>
+    <description>Recent content in Network on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 31 Jan 2016 12:42:43 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/network/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>VirtualBox: 호스트에서 게스트 접근 네트웍 설정</title>
+      <link>http://taewan.kim/post/virtualbox_network_config/</link>
+      <pubDate>Sun, 31 Jan 2016 12:42:43 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/virtualbox_network_config/</guid>
+      <description>최근에는 VirtualBox 이미지로 테스트 환경을 구성하거나 배포하는 경우가 많아졌습니다. 특히 오라클에서는 초기 테스트 및 교육 목적으로 다수의 VirtualBox 이미지를 배포하고 있습니다. 이렇게 만들어진 이미지를 사용할 경우 사용자는 새로운 기술을 접할 때 경험해야 하는 설치 및 구성에 대한 난제를 해결 할 수 있습니다. 즉 사용자는 새로운 기술의 기능 테스트 및 활용에 집중할 수 있게됩니다.
+오라클이 제공하는 VirtualBox 이미지는 Oracle Big Data Lite입니다. Oracle Big Data Lite는 오라클의 빅데이터 소프트웨어 (CHD배포본 + Orale Software)의 최신 구성을 하나의 VirtualBox 이미지에 담아서 제공합니다.</description>
+    </item>
+    
+  </channel>
+</rss>

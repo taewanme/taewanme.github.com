@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>Identity Domain</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="Identity Domain" />
+<meta property="og:description" content="Oracle Public Cloud에서 사용되는 Identity Domain의 의미가 무엇인지 살펴보겠습니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/cloud/identity_domain/" />
+
+
+
+<meta property="article:published_time" content="2017-08-11T22:20:25&#43;09:00"/>
+<meta property="article:modified_time" content="2017-08-11T22:20:25&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">Identity Domain </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2017-08-11 22:20:25 &#43;0900 KST">August 11, 2017</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/cloud" rel="category">Cloud</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://oracloud-kr-teamrepo.github.io/2017/08/identity_domain/logoinpost.jpg" alt="Identity Domain">
+			</figure>
+			
+
+<p>Oracle Cloud 계정 생성, Oracle Cloud 로그인, 클라우드 서비스 활성화 과정에는 &ldquo;<strong>Identity Domain</strong>&ldquo;을 직접 설정하거나,  Identity Domain을 포함하는 정보를 입력해야만 합니다.
+Identity Domain은 기존에 일반적인 IT 용어로 생각하기 쉽지만, 오라클 클라우드의 고유명사입니다.
+Oracle Cloud에서 Identity Domain의 정의가 무엇이고, 어떤 의미가 있는지 알아보겠습니다.
+추가로, Identity Domain에는 Cloud User 관리 기능이 포함됩니다.
+이와 관련하여 Oracle Cloud에서 Identity Domain과 Cloud User의 관계를 알아보겠습니다.</p>
+
+<h2 id="terminology-용어-정리">Terminology: 용어 정리</h2>
+
+<p>본 문서에서는 다음과 같은 용어를 사용하며, 의미는 다음과 같습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>주요 용어</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Oracle Account</td>
+<td>oracle.com에 로그인 가능한 계정.<br/> 오라클 클라우드의 사용자 계정은 oracle.com에 사전 등록이 되어 있어야 합니다. Identity Domain에는 Oracle Account만이 등록될 수 있습니다. 하나의 Oracle Account는 여러 Identity Domain에 등록될 수 있습니다.</td>
+</tr>
+
+<tr>
+<td>Cloud User</td>
+<td>특정 Identity domain에 등록된 Oracle Account.<br/> - 오라클 클라우드에 로그인하고 작업하는 사용자 계정을 의미합니다.</td>
+</tr>
+
+<tr>
+<td>Oracle Cloud service account</td>
+<td>회사나 조직에서 지명한 오라클 클라우드 관리자 계정. 슈퍼 권한이 할당된 Cloud User<br/> 주요 역할: <br /> - identity domain 생성. <br/> - 클라우드 서비스 활성화. <br/> - Oracle Account를 Cloud User로 등록. <br/> - Cloud User의 권한 관리.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="identity-domain이란">Identity Domain이란?</h2>
+
+<p>오라클 클라우드 문서에서 &ldquo;<strong>Identity Domain</strong>&ldquo;을 다음과 같이 설명합니다.</p>
+
+<blockquote>
+<p>Identity domain controls the authentication and authorization of the users who can sign in to an Oracle Cloud service and what features they can access.</p>
+
+<p>An Oracle Cloud service must belong to an identity domain. Multiple services can be associated with a single identity domain to share user definitions and authentication. Users in an identity domain can be granted different levels of access to each service associated with the domain.</p>
+</blockquote>
+
+<p>위 설명에 따르면 &ldquo;<strong>Identity Domain</strong>&ldquo;는 Cloud User의 인증과 서비스 접근 권한을 관리하는 단위입니다. 모든 오라클 클라우드 서비스가 활성화되기 위해서는 Identity Domain에 포함되어야 합니다. 하나의 Identity Domain에 여러 오라클 클라우드 서비스가 인스턴스 형태로 만들어지고 활성화될 수 있습니다. 같은 &ldquo;<strong>Identity Domain</strong>&ldquo;에 소속된 오라클 클라우드 서비스는 사용자 인증과 접근 권한 정보를 공유합니다.</p>
+
+<p>오라클 문서의 Identity Domain 설명에서는 사용자 권한 관리 측면이 강조되어 있습니다. Identity Domain은 오라클 클라우드 시스템 디자인 측면과 클라우드 인프라 관점에서도 중요한 의미가 있습니다.</p>
+
+<h3 id="엔터프라이즈-조직을-반영한-디자인">엔터프라이즈 조직을 반영한 디자인</h3>
+
+<p>오라클 클라우드는 &ldquo;<strong>Enterprise Cloud</strong>&ldquo;를 지향합니다. 기업의 IT 부서에서는 관련된 시스템 단위로 조직을 구성하고, 담당자 지정 및 권한을 관리됩니다. 클라우드에서도 관련 시스템을 그룹화하고 시스템 담당자 할당 및 권한을 관리하는 체계가 필요했습니다. 클라우드 디자인에 전통적인 기업 IT 조직의 개념을 반영한 결과물 중의 하나가 Identity Domain입니다. Identity Domain은 관련된 시스템의 묶음이며, 이 시스템을 관리하는 담당자들의 인증, 권한관리 및 접근 제어를 통합 관리하는 체계입니다. 오라클 클라우드를 사용하는 기업(사용자)은 동시에 여러 Identity Domain을 만들고 관리할 수 있습니다.</p>
+
+<h3 id="클라우드-인프라-자원-관점">클라우드 인프라 자원 관점</h3>
+
+<p>클라우드 시스템은 멀티테넌시(Multitenancy) 개념을 근간으로 발전하였습니다. 테넌트(Tenant)의 사전적 의미는 &ldquo;임차인&rdquo;입니다. 건물 하나를 여러 임차인이 사용하여 활용도를 극대화하는 개념이 클라우드의 멀티-테넌트 개념입니다. 클라우드는 기본적으로 테넌트끼리 논리적으로 격리하여 사생활 침해를 방지하는 기능을 포함합니다.<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">1</a></sup></p>
+
+<p>오라클 클라우드에서 Identity Domain은 테넌트와 같은 의미로 사용됩니다. Identity Domain 내에 활성화된 모든 클라우드 서비스는 하나의 네트워크에 배치됩니다. 즉 Identity domain에서 활성화되는 Compute CS의 VM, DBCS의 데이터베이스, JCS의 WAS, Container CS의 Docker 등 모든 자원은 하나의 네트워크에 배치됩니다. Identity Domain 내부에서도 네트워크 레벨의 격리가 필요할 경우 Subnet을 구성할 수 있습니다.<sup class="footnote-ref" id="fnref:3"><a rel="footnote" href="#fn:3">2</a></sup></p>
+
+<p>Identity Domain은 컴퓨팅 자원 측면과 네트워크 측면에서 관련 자원이 하나의 시스템 단위로 관리되고 격리되는 공간인 테넌트(Tenant)입니다.</p>
+
+<h3 id="identity-domain을-요약하면">Identity Domain을 요약하면&hellip;</h3>
+
+<p>Identity Domain은 연관된 클라우드 서비스를 묶는 네트워크 및 컴퓨팅 자원관리 체계입니다. Identity Domain에는 복수의 사용자가 Cloud User로 등록됩니다. 등록된 Cloud User에는 개별적인 접근 권한과 Role이 할당됩니다. 이 정보는 Identity Domain에 활성화된 모든 서비스가 공유합니다. Identity Domain 들은 완전하게 격리된 테넌트 공간입니다. 물론 필요한 경우 추가적인 보안 설정을 통해서 Identity Domain 간의 통신이 가능합니다. Identity Domain 사이의 통신은 외부 네트워크 통신으로 분류됩니다.<sup class="footnote-ref" id="fnref:4"><a rel="footnote" href="#fn:4">3</a></sup></p>
+
+<h2 id="cloud-user-등록-및-권한-관리">Cloud user 등록 및 권한 관리</h2>
+
+<p>&ldquo;<strong>Oracle Cloud service account</strong>&ldquo;는 Identity Domain을 생성하고 관리하는 슈퍼 유저 권한을 갖습니다. 오라클 트라이얼 계정을 신청하면 Identity Domain이 만들어지고, 계정을 신청한 Oracle Account는 &ldquo;<strong>Oracle Cloud service account</strong>&ldquo;로 등록됩니다.</p>
+
+<p>&ldquo;<strong>Oracle Cloud service account</strong>&ldquo;는 동시에 여러개의 Identity Domain을 관리할 수 있습니다. &ldquo;<strong>Oracle Cloud service account</strong>&ldquo;는 Identity Domain에 Cloud User를 등록하고, Cloud User에게 서비스 별 접근 권한을 설정할 수 있습니다.</p>
+
+<p>하나의 &ldquo;<strong>Cloud User</strong>&ldquo;는 동시에 여러 Identity Domain에 등록될 수 있습니다. &ldquo;<strong>Cloud User</strong>&ldquo;에 설정된 권한은 해당 Identity Domain에서만 유효합니다.</p>
+
+<h3 id="사용자-등록">사용자 등록</h3>
+
+<p>오라클 클라우드에서 &ldquo;<strong>Oracle Cloud service account</strong>&rdquo; 계정으로 Identity Domain에 로그인하면 &lt;그림 1&gt;과 같은 오라클 클라우드 대시보드가 출력됩니다. 대시보드에서 <strong>USER</strong> 메뉴를 클릭하여 메뉴관리 페이지로 이동할 수 있습니다.</p>
+
+<ul>
+<li>&lt;그림 1&gt; 오라클 클라우드 대시보드의 Cloud User 관리 메뉴
+
+<ul>
+<li><img src="https://oracloud-kr-teamrepo.github.io/2017/08/identity_domain/usermgt01.jpg" alt="" /></li>
+</ul></li>
+</ul>
+
+<p>Cloud User 관리 페이지에서 <strong>Add</strong> 버튼을 클릭하여  현재 Identity Domain에 Cloud User를 추가할 수 있습니다. &lt;그림 2 참조&gt;</p>
+
+<ul>
+<li>&lt;그림 2&gt; Cloud User 관리 페이지
+
+<ul>
+<li><img src="https://oracloud-kr-teamrepo.github.io/2017/08/identity_domain/usermgt02.jpg" alt="" /></li>
+</ul></li>
+</ul>
+
+<p>&lt;그림 3&gt;과 같이 추가할 Cloud User의 이름, 메일, 권한을 선택하고 <strong>Add</strong> 메뉴를 클릭합니다. &lt;그림 3&gt;에서 추가한 메일은 <strong>Oracle Account</strong> 로 등록된 메일이어야 합니다. &lt;그림 3&gt;에서는 &ldquo;<strong>Application Container Cloud Service</strong>&ldquo;를 선택하였습니다. 현재 Identity Domain에는 활성화된 Application Container Cloud Service가 없는 상태입니다.</p>
+
+<ul>
+<li>&lt;그림 3&gt; Cloud User 설정 및 추가
+
+<ul>
+<li><img src="https://oracloud-kr-teamrepo.github.io/2017/08/identity_domain/usermgt03.jpg" alt="" /></li>
+</ul></li>
+</ul>
+
+<p>Cloud User가 정상적으로 추가되면 &lt;그림 4&gt;와 같이 출력됩니다.</p>
+
+<ul>
+<li>&lt;그림 4&gt; Cloud User 목록
+
+<ul>
+<li><img src="https://oracloud-kr-teamrepo.github.io/2017/08/identity_domain/usermgt04.jpg" alt="" /></li>
+</ul></li>
+</ul>
+
+<p>&lt;그림 4&gt;에서 추가한 Cloud User에게는 &lt;그림 5&gt;와 같은 메일이 발송됩니다. 이 메일에는 접속에 필요한 계정명, 임시 패스워드, 데이터 센터, Identity Domain 명과 같은 정보를 확인할 수 있습니다.</p>
+
+<ul>
+<li>&lt;그림 5&gt; Identity 도메인 접속 정보 메일
+
+<ul>
+<li><img src="https://oracloud-kr-teamrepo.github.io/2017/08/identity_domain/usermgt05.jpg" alt="" /></li>
+</ul></li>
+</ul>
+
+<p>&lt;그림 5&gt;의 Identity Domain 접속 정보로 오라클 클라우드에 접속하면 &lt;그림 6&gt;과 같은 페이지가 출력됩니다. &lt;그림 3&gt;에서 Cloud User에게는 <strong>Application Container Cloud Service</strong> 일반 접속 관리만을 추가시켰습니다. 현재 Identity Domain에는 <strong>Application Container Cloud Service</strong> 이 존재하지 않기 때문에 이용 가능한 서비스가 없다는 메시지가 출력됩니다.</p>
+
+<ul>
+<li>&lt;그림 6&gt; 오라클 클라우드 대시보드 페이지: Cloud User 권한 문제로 서비스를 출력하지 메시지 출력
+
+<ul>
+<li><img src="https://oracloud-kr-teamrepo.github.io/2017/08/identity_domain/usermgt06.jpg" alt="" /></li>
+</ul></li>
+</ul>
+
+<p>&lt;그림 7&gt;, &lt;그림 8&gt;과 같이 &ldquo;<strong>Oracle Cloud service account</strong>&ldquo;로 다시 로그인하여 현재 사용 중인 Cloud User에 Oracle BDCSCE(BigData Cloud Service - Compute Edition) 관리자 권한을 추가합니다.</p>
+
+<ul>
+<li><p>&lt;그림 7&gt; Cloud User 권한 수정 페이지 이동</p>
+
+<ul>
+<li><img src="https://oracloud-kr-teamrepo.github.io/2017/08/identity_domain/usermgt07.jpg" alt="" /></li>
+</ul></li>
+
+<li><p>&lt;그림 8&gt; BigData Cloud Service - Compute Edition 생성 권한 추가</p>
+
+<ul>
+<li><img src="https://oracloud-kr-teamrepo.github.io/2017/08/identity_domain/usermgt08.jpg" alt="" /></li>
+</ul></li>
+</ul>
+
+<p>수정한 Cloud User 계정 정보로 다시 오라클 클라우드에 로그인하면 &lt;그림 9&gt;와 같은 대시보드를 확인할 수 있습니다. 권한이 수정된 Cloud User로 로그인한 오라클 클라우드 대시보드에는 Oracle BDCSCE 서비스 콘솔 메뉴가 추가된 것을 확인할 수 있습니다.
+- &lt;그림 9&gt; BigData Cloud Service - Compute Edition 생성 권한 추가
+  - <img src="https://oracloud-kr-teamrepo.github.io/2017/08/identity_domain/usermgt09.jpg" alt="" /></p>
+
+<h3 id="사용자-일괄-등록">사용자 일괄 등록</h3>
+
+<p>Identity Domain에 여러 Oracle Account를 한꺼번에 Cloud User로 등록할 수있습니다.
+&lt;그림 10&gt;과 같이 &ldquo;<strong>import</strong>&rdquo; 메뉴를 이용하여 파일을 등록하면 됩니다.</p>
+
+<ul>
+<li>&lt;그림 10&gt; Cloud User 파일업로드 등록 방식
+
+<ul>
+<li><img src="https://oracloud-kr-teamrepo.github.io/2017/08/identity_domain/batch00.jpg" alt="" /></li>
+</ul></li>
+</ul>
+
+<p>&lt;그림 10&gt;에 등록하는 파일 포멧은 첫 번째 줄에 헤더를 포함하는 CSV 파일 포맷입니다. 파일 구성은 다음과 같습니다.</p>
+
+<ul>
+<li>&lt;그림 11&gt; csv 파일 포멧
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/identity_domain/batch01.jpg" alt="" />
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/identity_domain/batch02.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 11&gt;이 Cloud User 배치 등록을 위한 CSV 파일을 준비할 때 다음과 같은 사항을 고려해야 합니다.</p>
+
+<ol>
+<li>&lt;그림 11&gt;과 같은 컬럼 명과 순서를 유지해야 합니다.</li>
+<li>파일은 ANSI 혹은 UTF-8으로 인코딩해야 합니다. 데이터에 한글을 포함할 경우 반드시 UTF-8으로 인코딩해야 합니다.</li>
+<li>파일 사이즈는 2MB를 넘을 수 없습니다.</li>
+<li>구분자는 반드시 &ldquo;comma(,)&ldquo;를 사용해야 합니다.</li>
+</ol>
+
+<h2 id="요약">요약</h2>
+
+<p>Identity Domain은 오라클 클라우드 시스템에서 컴퓨팅 자원을 관리하는 독립적인 테넌트입니다. Identity Domain 사이에 컴퓨팅 자원, 네트워크 그리고 Cloud User 정보가 격리 및 관리되어 독립성이 확보됩니다.</p>
+
+<p>Oracle Cloud의 Cloud User는 동시에 여러 Identity Domain에 할당될 수 있습니다. Identity Doman 관리자 계정인 &ldquo;<strong>Oracle Cloud service account</strong>&ldquo;는 Identity Domain에서 관리자 권한을 갖는 계정입니다. 모든 클라우드 서비스를 활성화 및 제거 등 라이프사이클 전체를 관장할 수 있습니다. 또한, Identity Domain에 Cloud User를 등록하고 권한을 관리 할 수 있습니다.</p>
+
+<p>Identity Domain에는 복수의 여러 서비스가 활성화될 수 있고, IP Network을 이용하여 서브넷을 구성할 수 있습니다.  서브넷에 지정되는 IP는 자체적으로 관리합니다. IP Network로 구성된 서브넷들은 IP Exchange<sup class="footnote-ref" id="fnref:5"><a rel="footnote" href="#fn:5">4</a></sup>로 통신 가능합니다. 필요한 경우 Identity Domain 간의 통신도 가능합니다. 이때 Identity Domain 사이의 통신은 외부 네트워크 통신으로 간주됩니다. Identity Domain 사이의 통신은 외부 네트워크 통신으로 분류되지만, 여전히 오라클 클라우드 내부 트래픽이기 때문에 별도의 과금은 발생하지 않습니다.</p>
+
+<h2 id="참고자료">참고자료</h2>
+
+<ul>
+<li><a href="https://docs.oracle.com/en/cloud/get-started/subscriptions-cloud/csgsg/oracle-cloud-terminology.html">Getting Started with Oracle Cloud: Oracle Cloud Terminology</a></li>
+<li><a href="https://docs.oracle.com/en/cloud/get-started/subscriptions-cloud/csgsg/oracle-cloud-terminology.html">Oracle Cloud Terminology </a></li>
+<li><a href="https://docs.oracle.com/cloud/latest/pbcs_common/UPBCS/identity_domain.htm#UPBCS-cloud_user_book_29">Using Oracle Planning and Budgeting Cloud: Identity Domain</a></li>
+<li><a href="https://docs.oracle.com/en/cloud/get-started/subscriptions-cloud/csgsg/oracle-cloud-terminology.html">Getting Started with Oracle Cloud: Oracle Cloud Terminology </a></li>
+<li><a href="http://expertoracle.com/2016/12/24/oracle-cloud-concepts/">Oracle Cloud Identity Domain – Concepts</a></li>
+<li><a href="https://docs.oracle.com/en/cloud/get-started/subscriptions-cloud/csgsg/importing-batch-user-accounts.html">Importing a Batch of User Accounts</a></li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:2">클라우드의 Multitenancy로 부터 &ldquo;noisy neighbor&rdquo; 문제가 발생하기도 합니다. 하나의 서버에 여러 VM(Virtual Machine, 가상머신)이 동작할 경우, 특정 VM이 과도한 자원을 사용하는 경우, 동일 서버내의 VM의 성능이 저하되는 문제입니다. Oracle Cloud는 이런 문제를 제공하기 위해서 General Purpose Compute, Dedicated Compute, Bare metal를 제공합니다. Dedicated는 특성 서버를 계정에 할당하는 고객의 VM은 지정된 서버에 전용으로 동작하는 방식입니다. Bare metal은 서버 자체를 계정에 임대하고 고객이 직접 가상화 및 모든 서버 운영 체계를 결정하는 방식입니다.
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:3">오라클 클라우드는 IP Address를 중앙에서 관리하는 Shared Network와 Identity Domain에서 IP 할당과 Subnet을 관리하는 IP Network 두 가지 방식을 제공합니다. Identity Domain이 기본적으로 하나의 네트워크에 구성된다는 것은 Shared Network을 사용합니다. Subnet을 구성하면 IP Network가 적용됩니다.
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+<li id="fn:4">Identity Domain 간의 통신이 외부 네트워크 통신으로 분류되지만, 여전히 오라클 클라우드 내부에서 발생하는 트래픽입니다. 오라클 클라우드 내부에서 발생하는 트래픽에 대해서는 별도의 과금을 하지 않습니다.
+ <a class="footnote-return" href="#fnref:4"><sup>[return]</sup></a></li>
+<li id="fn:5">IP Exchange는 Oracle Cloud의 Route입니다.
+ <a class="footnote-return" href="#fnref:5"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/identity-domain/" rel="tag">Identity Domain</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/oracle-cloud/" rel="tag">Oracle Cloud</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/installing_pms/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Oracle PaaS Service Manager 소개 및 설치</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/kafka_paas_eventhub_cs/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">Apache Kafka PaaS: Oracle Event Hub CS 소개..</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/cloud/identity_domain/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#terminology-용어-정리">Terminology: 용어 정리</a></li>
+<li><a href="#identity-domain이란">Identity Domain이란?</a>
+<ul>
+<li><a href="#엔터프라이즈-조직을-반영한-디자인">엔터프라이즈 조직을 반영한 디자인</a></li>
+<li><a href="#클라우드-인프라-자원-관점">클라우드 인프라 자원 관점</a></li>
+<li><a href="#identity-domain을-요약하면">Identity Domain을 요약하면&hellip;</a></li>
+</ul></li>
+<li><a href="#cloud-user-등록-및-권한-관리">Cloud user 등록 및 권한 관리</a>
+<ul>
+<li><a href="#사용자-등록">사용자 등록</a></li>
+<li><a href="#사용자-일괄-등록">사용자 일괄 등록</a></li>
+</ul></li>
+<li><a href="#요약">요약</a></li>
+<li><a href="#참고자료">참고자료</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

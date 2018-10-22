@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mathplotlib on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/mathplotlib/</link>
+    <description>Recent content in Mathplotlib on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Aug 2018 16:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/mathplotlib/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Matplotlib 한글 폰트 설정</title>
+      <link>http://taewan.kim/post/matplotlib_hangul/</link>
+      <pubDate>Wed, 08 Aug 2018 16:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/matplotlib_hangul/</guid>
+      <description>파이썬으로 데이터 시각화를 할 때 &amp;ldquo;Matplotlib&amp;rdquo;을 주로 사용합니다. 최근에 Bokeh나 seaborn와 같은 라이브러리를 사용하기도 하지만, IPython에서 작업할 때 주로 Matplotlib를 선호합니다.
+최신의 사용이 편리하고 우수한 다른 라이브러리가 있음에도 Matplotlib를 선호하는 이유는 마지막 실행 결과를 보관하는 기능 때문입니다. Jupyter 파일을 github과 같은 레파지터리에 올려 놓아도 matplotlib는 마지막 실행 결과를 유지하는 것이 장점입니다. Bokeh는 사용하기 편리하고, API가 직관적이며 화려만 웹 기반 차트 제공합니다. 그러나 Bokeh가 웹 기반 기술이다 보니 Jupyter에서 마지막 실행 결과를 보관하지 못하는 한계를 보입니다.</description>
+    </item>
+    
+  </channel>
+</rss>

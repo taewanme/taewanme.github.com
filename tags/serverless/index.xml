@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Serverless on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/serverless/</link>
+    <description>Recent content in Serverless on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 25 Dec 2017 21:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/serverless/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[번역]2017 KubeCon 오라클 발표: Kubernetes와 Serverless</title>
+      <link>http://taewan.kim/cloud/trans_kubernetes_serverless/</link>
+      <pubDate>Mon, 25 Dec 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/trans_kubernetes_serverless/</guid>
+      <description>본문은 blogs.oracle.com에서 운영중인 Oracle Developer 블로그의 12월 7일자 포스트를 번역한 문서입니다. 오라클은 최근 KubeCon에서 Serverless 배포와 멀티 클라우드를 관리하는 Kubernetes 툴 2 가지를 공개하였습니다. 이와 관련한 오라클 공식 블로그의 포스트를 번역합니다. 원문 정보는 다음과 같습니다.
+  출처: 오라클 공식 블로그, blogs.oracle.com 원문: https://blogs.oracle.com/developers/kubernetes-serverless-and-federation-oracle-at-kubecon-2017 제목: Kubernetes and Serverless: Oracle at KubeCon 2017 문서작성 일시: 2017. 12. 7 작성자: Bob Quillin, Developer Relations 부사장   Kubernetes and Serverless: Oracle at KubeCon 2017 오늘 텍사스주 오스틴에서 개최된 KubeCon + CloudNativeCon 2017 컨퍼런스에서, 오라클 컨테이너 네이티브 애플리케이션 개발팀은 새로운 Kubernetes 관련 프로젝트 2개를 오픈소스로 공개했고, 현장에서 데모를 진행하였습니다.</description>
+    </item>
+    
+    <item>
+      <title>[번역]Fn–An Open Source Serverless Functions Platform</title>
+      <link>http://taewan.kim/cloud/oracle_blog_fn/</link>
+      <pubDate>Wed, 04 Oct 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_blog_fn/</guid>
+      <description>Oracle OpenWorld 2017에서 오라클 클라우드를 강화하는 많은 새로운 키워드가 발표되었습니다. 오라클 클라우드는 최근에 Container 기술을 중점적으로 개발하고 있습니다. 이번 Oracle OpenWorld 2017에서 Serverless Platform으로 Fn을 공개했습니다. Fn은 오라클 클라우드 Serverless 플랫폼의 핵심에 위치할 것으로 예상됩니다. 2017.10.02 오라클 공식 블로그에 올라온 Fn관련 짧은 포스트를 소개합니다.
+ 출처: blogs.oracle.com 원문: https://blogs.oracle.com/developers/announcing-fn 제목: Oracle cloud acquisitions bear fruit, with a new serverless platform and container services 문서작성 일시: 2017. 10. 02 작성자: Shaun Smith, Director of Product Management  새로운 오픈 소스 서버리스 플랫폼 Fn을 발표하게 된 것을 대단히 기쁘게 생각합니다.</description>
+    </item>
+    
+  </channel>
+</rss>

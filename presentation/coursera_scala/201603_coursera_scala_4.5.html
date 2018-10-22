@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Coursera Scala: Lecture 4.5 Decomposition </title>
+    <!--<script src="https://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript"> </script> -->
+     <script src="/js/remark-latest.min.js" type="text/javascript"> </script>
+
+    <style type="text/css" media="screen">
+      @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
+      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        margin-top: 10px;
+      }
+      h1 { font-size: 3.5em; 
+      }
+
+      h2 { font-size: 3em; }
+      h3 { font-size: 1.6em; }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      pre {
+        border-left: 0.4em solid #d7d7d7;
+        padding: 1em !important;
+      }
+      code {
+        background: transparent !important;
+      }
+      a {
+        color: #F92672;
+        text-decoration: none;
+      }
+      .task {
+        float: right;
+        font-size: 0.9em;
+        padding-top: 0.6em;      
+      }
+      .task a {
+        color: #080;
+        text-decoration: none;
+      }
+      .right {
+        float: right;
+        margin-left: 1em;
+      }
+      .pushdown {
+        margin-top: 12em;
+      }
+      .source {
+        bottom: 20px;
+        font-size: 15px;
+        left: 300px;
+        opacity: .5;
+        position: absolute;
+      }
+
+      .author {
+        bottom: 20px;
+        font-size: 12px;
+        left: 12px;
+        opacity: .5;
+        position: absolute;
+      }
+      .task {
+        float: right;
+        font-size: 0.9em;
+        padding-top: 0.6em;
+      }
+      .task a {
+        color: #080;
+        text-decoration: none;
+      }
+      .image-50 img {
+        width: 50%;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 5px;
+        border: 1px solid gray;
+      }
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle, inverse
+
+# Coursera
+##Functional Programming Principles in Scala
+### Lecture 4.5 Decomposition
+----
+### 김태완, [taewanme@gmail.com](http://taewan.kim)
+### Mar, 29, 2016
+???
+- 2016년 3월 29일 스터디 발표 자료
+- Lascala 수요 스터디 세미나 발표 자료
+
+---
+.task[4.5 Decomposition]
+# Decomposition
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]   
+- 산술 표현식 해석기 작성을 가정
+- 단순함을 유지하기 위해서, 숫자와 덧셈 연산에 제한
+- 표현식은 클래스 계층으로 표현
+  - 기본 트레잇: Expr
+  - 2개의 서브 클래스: Number, Sum
+- 표현식을 처리하기 위해서, 표현식의 형태와 컴포넌트를 인지해야 함
+???
+- 클래스의 인스턴스로 부터 트리와 같은 데이터 스트럭처를 만들 수 있음 
+
+---
+.task[4.5 Decomposition]
+# Expressions : 1/2
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]   
+
+```scala
+trait Expr{
+  def isNumber: Boolean     //classification
+  def isSum: Boolean        //classification 
+  def numValue: Int         //Accessor
+  def leftOp: Expr          //Accessor
+  def rightOp: Expr         //Accessor
+}
+```
+
+```scala
+class Number(n:Int) extends Expr{
+  def isNumber: Boolean = true     
+  def isSum: Boolean = false         
+  def numValue: Int = n        
+  def leftOp: Expr  = throw new Error("Number.leftOp")        
+  def rightOp: Expr = throw new Error("Number.rightOp")        
+}
+```
+---
+.task[4.5 Decomposition]
+# Evaluation of Expressions
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]   
+
+- 평가 함수
+
+```scala
+def eval(e:Expr):Int = {
+  if(e.isNumber) e.numValue
+* else if(e.isSum) eval(e.leftOp)+eval(e.rightOp)
+  else throw new Error("Unknown Expresion"+e)
+}
+```
+
+-Problem: Classification&accessor 함수가 장황함
+
+- new Sum(e1, e2) = e1 + e2
+---
+.task[4.5 Decomposition]
+# 새로운 표현식 추가
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]   
+
+- 새로운 표현식을 추가
+
+```scala
+class Prod(e1:Expr, e2:Expr) extends Expr   //e1*e2
+class Var(x:String) extends Exp             //Variable 'x'
+```
+
+- 새로운 표현식 추가시 classification/access 메서드 등록해야 함
+---
+
+.task[4.5 Decomposition]
+# Question
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]   
+
+- prod와 var를 통합하기 위해서 몇개의 메서드가 필요한가?
+  - prod와 var에 등록되는 메서드만을 계산할 것.
+  - 기존의 메서드는 제외
+
+
+
+    </textarea>
+    <script>
+      var slideshow = remark.create({
+                                      highlightLanguage: 'scala',
+                                      countIncrementalSlides: false,
+                                      highlightLines: true,
+                                      highlightStyle: 'arta',
+                                      highlightSpan: true
+      });
+
+    </script>
+    <script>
+//  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+//  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+//  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+  </body>
+</html>

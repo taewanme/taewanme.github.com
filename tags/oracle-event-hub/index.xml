@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Oracle Event Hub on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/oracle-event-hub/</link>
+    <description>Recent content in Oracle Event Hub on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 22 May 2018 23:20:25 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/oracle-event-hub/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Oracle Cloud의 PaaS 서비스 패치: Event Hub Service</title>
+      <link>http://taewan.kim/cloud/oehcs_patch/</link>
+      <pubDate>Tue, 22 May 2018 23:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oehcs_patch/</guid>
+      <description>오라클 Event Hub Service의 패치 절차를 소개합니다. Event Hub Service는 오라클 클라우드에서 제공하는 Kafka 관리형 서비스입니다. Event Hub Service 패치의 특징은 다음과 같습니다.
+ 오라클 클라우드 &amp;ldquo;Event Hub - Dedicated&amp;rdquo;의 서비스 콘솔에서 수행 패치 요청 인터페이스: WebUI, PSM(PaaS Service Manager), REST API Precheck 프로세스 제공: 패치 사전 점검 패치 Rollback 기능 제공 패치는 무중단 서비스로 진행: Rolling Patch  Event Hub Service는 Precheck와 Rollback 패치 기능을 제공하여 서비스 패치의 안전성을 확보하는 동시에 클러스터 노드를 하나씩 패치하는 Rolling Patch 방식으로 패치를 적용합니다.</description>
+    </item>
+    
+  </channel>
+</rss>

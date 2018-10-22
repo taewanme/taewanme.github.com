@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubernetes on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/kubernetes/</link>
+    <description>Recent content in Kubernetes on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 25 Dec 2017 21:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[번역]2017 KubeCon 오라클 발표: Kubernetes와 Serverless</title>
+      <link>http://taewan.kim/cloud/trans_kubernetes_serverless/</link>
+      <pubDate>Mon, 25 Dec 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/trans_kubernetes_serverless/</guid>
+      <description>본문은 blogs.oracle.com에서 운영중인 Oracle Developer 블로그의 12월 7일자 포스트를 번역한 문서입니다. 오라클은 최근 KubeCon에서 Serverless 배포와 멀티 클라우드를 관리하는 Kubernetes 툴 2 가지를 공개하였습니다. 이와 관련한 오라클 공식 블로그의 포스트를 번역합니다. 원문 정보는 다음과 같습니다.
+  출처: 오라클 공식 블로그, blogs.oracle.com 원문: https://blogs.oracle.com/developers/kubernetes-serverless-and-federation-oracle-at-kubecon-2017 제목: Kubernetes and Serverless: Oracle at KubeCon 2017 문서작성 일시: 2017. 12. 7 작성자: Bob Quillin, Developer Relations 부사장   Kubernetes and Serverless: Oracle at KubeCon 2017 오늘 텍사스주 오스틴에서 개최된 KubeCon + CloudNativeCon 2017 컨퍼런스에서, 오라클 컨테이너 네이티브 애플리케이션 개발팀은 새로운 Kubernetes 관련 프로젝트 2개를 오픈소스로 공개했고, 현장에서 데모를 진행하였습니다.</description>
+    </item>
+    
+    <item>
+      <title>[번역]오라클의 CNCF(Cloud Native Computing Foundation) 가입 의미</title>
+      <link>http://taewan.kim/cloud/oracle_cncf/</link>
+      <pubDate>Mon, 25 Sep 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_cncf/</guid>
+      <description>blog.oracle.com의 &amp;ldquo;Modern Developer&amp;rdquo; 부문에 올라온 포스트를 번역한 문서입니다. 최근에 오라클은 리눅스 재단의 하부 기구인 CNCF(Cloud Native Computing Foundation)에 프리미엄 멤버로 가입했습니다. 이 기구에 오라클이 가입한 목적은 Kubernetes를 오라클 클라우드에서 지원하기 위함입니다. &amp;ldquo;What Does Oracle’s Embrace of CNCF Mean for Developers?&amp;ldquo;는 CNCF에 오라클이 가입한 것이 어떤 의미가 있는지 설명하는 포스트입니다. 원본 정보는 다음과 같습니다.
+ 출처: https://blog.oracle.com, MODERN DEVELOPER 원문: https://blogs.oracle.com/what-does-oracle’s-embrace-of-cncf-mean-for-cloud-developers 발표일시: 2017. 09. 18 작성자: Alexa Morales  더커(Docker) 현상에 힘입어, 클라우드에 소프트웨어 애플리케이션을 배포하고 작은 서비스를 패키징하는 가장 적합한 기술로 리눅스 컨테이너가 부각되고 있습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

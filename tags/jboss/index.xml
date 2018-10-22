@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jboss on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/jboss/</link>
+    <description>Recent content in Jboss on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 Jan 2016 10:50:36 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/jboss/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JBoss Seam 로고의 의미</title>
+      <link>http://taewan.kim/post/seam_log/</link>
+      <pubDate>Wed, 27 Jan 2016 10:50:36 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/seam_log/</guid>
+      <description>2008~2009년도에는 JBoss Seam에 몰입했던 시기였습니다. 그 당시에 작성했던 글입니다. 오픈소스를 이해할 때 오픈소스의 이름과 로고가 담고 있는 의미를 이해하는 도움이 됩니다. 오픈소스 이름과 로고를 해석한 사례로 봐 주시면 좋을 것 같습니다. 그럼 2009년으로 돌아가 보겠습니다.
+Seam Framework 로고는 어떤 의미일까요? Seam Framework은 기존과 차별되는 독특한 컴포넌트 관리 모델을 제안하고 있습니다. 기존에 Java EE 애플리케이션은 Web 티어와 EJB 티어로 구분되어 있기 때문어 상호간에 참조하기가 어려웠습니다. 웹 에서 EJB 컴포넌트를 참조하기 위해서는 JNDI Lookup과 Casting 작업이 선행되어야 했습니다.</description>
+    </item>
+    
+    <item>
+      <title>Seam - 사용자 IPAddress 확인</title>
+      <link>http://taewan.kim/post/seam_ip_address/</link>
+      <pubDate>Wed, 30 Mar 2011 10:50:36 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/seam_ip_address/</guid>
+      <description>Seam은 애플리케이션 UI 프레임웍으로 JSF를 사용합니다. JSF는 컴포넌트 기반 프레임웍이고 Seam과 결합하여 완전한 컴포넌트 기반 프레임웍의 모습을 갖추고 있습니다.
+Seam 애플리케이션을 개발하다 보면 HttpServletRequest와 HttpSession 객체를 전혀 접근하지 않고 등록된 컴포넌트를 참조하여 사용하게 됩니다. 사용자 등록 폼 정보는 컴포넌트 맵핑 정보를 이용하여 사용하면 되지만 간혹 사용자가 입력하지 않는 별도의 정보를 사용해야 할 수도 있습니다.
+가령 어떤 어떤 IP/Host에서 접근하는지 로깅을 남겨야 하거나 게시판에서 게시글의 IP Adress를 저장해야 한다면 어떻게 해야 할까요?</description>
+    </item>
+    
+  </channel>
+</rss>

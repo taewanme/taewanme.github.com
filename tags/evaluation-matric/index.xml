@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Evaluation Matric on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/evaluation-matric/</link>
+    <description>Recent content in Evaluation Matric on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 06 Jun 2018 22:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/evaluation-matric/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MLY:08. 최적화에 사용되는 단일 숫자 평가 지표</title>
+      <link>http://taewan.kim/trans_docs/t_mly_08/</link>
+      <pubDate>Wed, 06 Jun 2018 22:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans_docs/t_mly_08/</guid>
+      <description>원문제목: 8. Establish a single-number evaluation metric for your team to optimize 최종 업데이트: 2018년 06월 06일 목차이동: Machine Learning Yearning 목차 저자: Andrew NG 원문: http://www.mlyearning.org 분류: Setting up development and test sets  분류 정확도는 단일 평가 지표(single-number evaluation metric)의 예입니다. 개발 세트(또는 테스트 세트)에서 분류기를 실행하고 정확하게 분류한 데이터 비율을 한 개 숫자로 반환합니다. 이 측정 기준에 따라 분류기 A가 97%의 정확도를 얻고, 분류기 B가 90%의 정확도를 얻었다면, 분류기 A가 더 우수하다고 판단할 수 있습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

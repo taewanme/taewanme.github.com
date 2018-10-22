@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>[번역]2017 KubeCon 오라클 발표: Kubernetes와 Serverless</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="[번역]2017 KubeCon 오라클 발표: Kubernetes와 Serverless" />
+<meta property="og:description" content="blogs.oracle.com 블러그의 2017년 Kubernetes와 Serverless 마지막 포스팅 번역입니다. 오라클의 2018년 방향을 감지할 수 있습니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/cloud/trans_kubernetes_serverless/" />
+
+
+
+<meta property="article:published_time" content="2017-12-25T21:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2017-12-25T21:28:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="http://taewan.kim/css/jupyter.css" type="text/css" media="all" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">[번역]2017 KubeCon 오라클 발표: Kubernetes와 Serverless </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2017-12-25 21:28:14 &#43;0900 KST">December 25, 2017</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c" rel="category">오라클 클라우드</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2017/12/transplation_kubecon/post.jpg" alt="[번역]2017 KubeCon 오라클 발표: Kubernetes와 Serverless">
+			</figure>
+			
+
+<p>본문은 blogs.oracle.com에서 운영중인 Oracle Developer 블로그의 12월 7일자 포스트를 번역한 문서입니다. 오라클은 최근 KubeCon에서 Serverless 배포와 멀티 클라우드를 관리하는 Kubernetes 툴 2 가지를 공개하였습니다. 이와 관련한 오라클 공식 블로그의 포스트를 번역합니다. 원문 정보는 다음과 같습니다.</p>
+
+<blockquote>
+<ul>
+<li>출처: 오라클 공식 블로그, blogs.oracle.com</li>
+<li>원문: <a href="https://blogs.oracle.com/developers/kubernetes-serverless-and-federation-oracle-at-kubecon-2017">https://blogs.oracle.com/developers/kubernetes-serverless-and-federation-oracle-at-kubecon-2017</a></li>
+<li>제목: Kubernetes and Serverless: Oracle at KubeCon 2017</li>
+<li>문서작성 일시: 2017. 12. 7</li>
+<li>작성자: Bob Quillin, Developer Relations 부사장</li>
+</ul>
+</blockquote>
+
+<hr />
+
+<h1 id="kubernetes-and-serverless-oracle-at-kubecon-2017">Kubernetes and Serverless: Oracle at KubeCon 2017</h1>
+
+<p>오늘 텍사스주 오스틴에서 개최된 <strong>KubeCon + CloudNativeCon 2017</strong> 컨퍼런스에서, 오라클 컨테이너 네이티브 애플리케이션 개발팀은 새로운 Kubernetes 관련 프로젝트 2개를 오픈소스로 공개했고, 현장에서 데모를 진행하였습니다. 이번에 공개한 첫 번째 오픈소스 프로젝트는 Kubernetes 용 &ldquo;<strong>Fn Installer</strong>&ldquo;입니다. Fn은 2017년 10월 오라클 오픈 월드에서 공개한 오픈소스 서버리스 프로젝트입니다. 이번에 공개한 Fn용 헬름차트(Helm Charts)<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>를 사용하면, 오라클 관리형 Kubernetes 서비스인 Oracle Container Engine(OCE)<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup>을 포함한 모든 Kubernetes 배포에서 Fn을 쉽게 설치하고 실행할 수 있습니다.</p>
+
+<p>두 번째로 오라클이 공개한 오픈소스 프로젝트는 <a href="https://github.com/oracle/navarkos">Global Multi-Cluster Management</a> 입니다. 이 프로젝트는 고도로 분산된 행성급 규모(planet-scale)의 애플리케이션을 지능적으로 관리하기 위해서 분산 클러스터 관리 기능을 Kubernetes federation<sup class="footnote-ref" id="fnref:3"><a rel="footnote" href="#fn:3">3</a></sup>에 제공하는 프로젝트입니다. Kubernetes federation을 통해서 복수 리전, 하이브리드 심지어 복수 클라우드에 분산된 Kubernetes 클러스터를 연합하여 운영할 수 있습니다. 이렇게 연합된(Federated) 세상에서는 많은 운영상의 문제가 발생할 수 있습니다. 글로벌 애플리케이션을 관리하고 자동 확장하는 방법 그리고 필요에 따라서 임시 클러스터(Spot Cluster)를 생성하고 애플리케이션을 배치하는 방안을 상상해 보시기 바랍니다. 이것을 주제로 2017년 12월 7일 15시 50분에 &ldquo;<a href="https://kccncna17.sched.com/event/CU7i">Multi-Cluster Ops in a Hybrid World</a>&rdquo; 세션이 진행될 예정입니다. 이 세션의 발표는 Kire Filipovski 와 Vitaliy Zinchenko이 담당합니다.</p>
+
+<h2 id="전망-개방-통합-그리고-엔터프라이즈-급-경향-유지">전망: 개방, 통합 그리고 엔터프라이즈-급 경향 유지</h2>
+
+<p>고객은 특정 클라우드에 종속됨 없이 기존에 로컬에서 사용하는 기술 스텍을 그대로 클라우드에서 사용하기를 원합니다. 고객은 이러한 요구사항이 반영된 개방적이고, 클라우드 중립적이면서 커뮤니티가 주도하는 컨테이너-네이티브(Container-native) 기술 스텍을 찾고 있습니다. 이것이 바로 2017년 10월 오라클 오픈월드에서 &ldquo;<a href="https://blogs.oracle.com/developers/meet-the-new-application-development-stack-kubernetes-serverless-registry-cicd-java">Container Native Application Development Platform</a>&ldquo;을 출시할 때 밝힌 오라클의 비전이었습니다.</p>
+
+<p>그 후, <a href="https://www.cncf.io/announcement/2017/11/13/cloud-native-computing-foundation-launches-certified-kubernetes-program-32-conformant-distributions-platforms/">2017년 11월에 공개된</a> Oracle Container Engine(OCE)은 &ldquo;<a href="https://github.com/cncf/k8s-conformance"><strong>Certified Kubernetes</strong></a>&ldquo;를 획득한 첫 번째 서비스입니다. 개발자와 개발팀은  &ldquo;<strong>Certified Kubernetes</strong>&ldquo;을 획득한 OCE를 사용함으로써 프로덕션과 개발 구현체 사이에 일관성과 이식성을 확신할 수 있습니다.</p>
+
+<p>현재 커뮤니티는 서비리스 기술(Serverless Technology) 선정에서도 개방적이면서 그들의 클라우드 네이티브 스텍과 일치하는 일관된 방식으로 구축됨을 보장하는 방법을 찾고 있습니다. 다시 말해서 개방적이면서 Kubernetes 위에서 동작하는 Serverless 기술을 찾고 있습니다. 오픈소스 기반의 솔루션이 클라우드 종속(Cloud lock-in)의 해법일 수 있습니다. 핵심은 DevOps 팀이 클러스터가 여러 클라우드에 걸쳐있거나 혹은 하이브리드 모드로 운영되는 사황에서도 쉽게 관리할 수 있어야 합니다. 이는 고객, 개발팀 및 기업으로부터 들려오는 세 가지 주요 &ldquo;요구 사항&rdquo;과 일치합니다. 따라서 컨테이너 네이티브 플랫폼은 개방적이고 통합형이며 엔터프라이즈급이어야 합니다.</p>
+
+<h3 id="개방-개방-위에-개방">개방: 개방 위에 개방</h3>
+
+<p>Fn 프로젝트와 Global Multi-Cluster Management는 클라우드 중립적인 오픈소스입니다. 프로젝트의 개방성이 강화되었습니다. 이제 Fn Helm Chart를 통해서 선도적인 오픈 컨테이너 오케스트레이션 플렛폼인 Kubernetes 위에서 오픈 서버리스 프로젝트(Fn)를 실행할 수 있게 되었습니다. Helm 패키지 관리자(helm.sh)을 사용하여 Kubernetes 클러스터에 <a href="https://github.com/fnproject/fn">Fn</a>을 배포할 수 있습니다. 이렇게 배포된 Fn은 기능적인 제약이 없습니다.</p>
+
+<h3 id="통합-일관성과-연결">통합: 일관성과 연결</h3>
+
+<p>통합 플랫폼에 대한 보장을 제공하기 위해서, Fn Installer Helm Charts와 Global Multi-Cluster Management를 Kubernetes 위에서 동작하도록 빌드하였습니다. 이 두 프로젝트는 오라클의 컨테이너 네이티브 플랫폼에 완전히 통합되어 있습니다. 홈 데포와 코스트코<sup class="footnote-ref" id="fnref:4"><a rel="footnote" href="#fn:4">4</a></sup>에서 모든 것을 할 수는 있지만, 종합적인 애플리케이션 개발자 경험을 만들 수는 없습니다. 특히 수백 클러스터 규모의 경험은 불가능합니다. 이는 수천 명의 개발 조직을 갖춘 상황에서도 어렵습니다. Fn Installer와 Global Multi-Cluster Management는 오라클의 관리형 Kubernetes 서비스인 OCE 위에서 이용 가능합니다.</p>
+
+<h3 id="엔터프라이즈급-ha-보안-및-운영-인식">엔터프라이즈급 : HA, 보안 및 운영 인식</h3>
+
+<p>Oracle Container Engine 같은 엔터프라이즈급 Kubernetes 서비스에 Fn을 배포할 수 있으므로 고 가용성의 안전한 백엔드 플랫폼에 서버리스(Serverless)를 배포하고 실행할 수 있게 되었습니다. 또한 Global Multi-Cluster Management는 엔터프라이즈 플랫폼을 여러 클러스터 및 클라우드로 확장하고 더 나은 활용 및 용량 관리를 원하는 기업의 요구를 만족시키는 기술입니다.</p>
+
+<p>대형 분산 시스템의 프로덕션 운영은 단일 클라우드와 온-프라미스에서 조차도 상당히 어렵습니다. 더군다나 복수 리전, 하이브리드(클라우드+온-프라미스) 혹은 복수 클라우드에 걸쳐 여러 클러스터를 사용하는 연합 배포(federated deployments)는 더 복잡합니다. 이런 상황에서, DevOps 팀은 필요한 시점에 애플리케이션 혹은 임시 클러스터를 배포하고 자동 확장할 수 있어야 합니다. 그리고 클라우드 이전과 하이브리드 시나리오를 실행할 수 있어야 합니다.</p>
+
+<p><img src="https://cdn.app.compendium.com/uploads/user/e7c690e8-6ff9-102a-ac6d-e4aebca50425/66fa09c5-4231-4306-b7e8-071282e381e2/Image/d2f4f40a79477f19e27594fa6eae3826/fn_300x125.png" alt="" /></p>
+
+<h2 id="거대한-파워와-함께-찾아온-거대한-책임감-그리고-복잡성">거대한 파워와 함께 찾아온 거대한 책임감(그리고 복잡성)</h2>
+
+<p>Kubernetes federation은 엄청난 기능과 가능성을 제공함과 동시에 커다란 책임과 새로운 복잡성을 발생시켰습니다. 컨테이너 네이티브 배포에 애플리케이션 인지 결정 로직<sup class="footnote-ref" id="fnref:5"><a rel="footnote" href="#fn:5">5</a></sup>을 적용하는 과제가 대표적인 예입니다. 험난한 비즈니스 및 운영 문제에는 비용, 지역적 유사성, 성능, 서비스 품질 및 준수가 포함될 수 있습니다. 여러 Kubernetes 클러스터 배포를 관리할 경우, 온-프라미스 및 퍼블릭 클라우드 환경을 혼합하여 배포하는 상황이 발생할 수 있습니다. 이 때 DevOps팀은 여러 클러스터 프로파일 때문에 어려움을 겪을 수 있습니다.</p>
+
+<p>다음은 기본적이지만 답변하기는 까다로운 DevOps 관련 질문입니다.</p>
+
+<ul>
+<li>얼마나 많은 클러스터를 운영해야 합니까?
+
+<ul>
+<li>각 환경에 대해서 개별적인 클러스터가 필요합니까?</li>
+<li>각 클러스터에 얼마나 많은 용량을 할당해야 하는가?</li>
+</ul></li>
+<li>누가 클러스터의 생명주기(Lifecycle)을 관리하나요?</li>
+<li>어떤 클라우드가 내 애플리케이션에 가장 적합합니까?</li>
+<li>어떻게 클라우드 종속을 피할 수 있나요?</li>
+<li>애플리케이션을 여러 클러스터에 어떻게 배치합니까?</li>
+</ul>
+
+<p>&ldquo;<strong>Global Multi-Cluster Management</strong>&ldquo;는 세 개의 오픈 소스 컴포넌트(Navarkos, Cluster Manager, Federated Ingress Controller)로 구성됩니다. Navarkos는 그리스어로 &ldquo;제독(Admiral)&ldquo;을 의미합니다. Kubernetes 연합 배포는 Navarkos를 이용하여 복수 클러스터 인프라스트럭처를 자동으로 관리할 수 있습니다. 그리고 연합된 Kubernetes 애플리케이션 배포의 반응을 기준으로 클러스터를 관리할 수 있습니다. Cluster Manager는 Kubernetes federation 백엔드를 이용하여 Kubernetes 클러스터의 생명주기(Lifecycle)를 관리합니다. 마지막으로 Federated Ingress Controller는 외부 DNS를 사용하는 Ingress를 대체합니다.</p>
+
+<p>Global Multi-Cluster Management는 Kubernetes federation과 함께 다음과 같은 여러 가지 문제를 해결합니다.</p>
+
+<ul>
+<li>필요한 시점에 Kubernetes 클러스터 생성 및 클러스터에 앱 배포
+
+<ul>
+<li>클러스터는 퍼블릭 클라우드와 프라이빗 클라우드에서 모두 실행 가능</li>
+<li>수요와 공급에 맞춰 애플리케이션 실행</li>
+</ul></li>
+<li>클러스터 일관성과 클러스터 생명주기(life-cycle) 관리
+
+<ul>
+<li>Ingress, nodes, network</li>
+</ul></li>
+<li>다중 클라우드 응용 프로그램 배포 제어
+
+<ul>
+<li>클라우드 제공 업체에 독립적으로 애플리케이션 제어</li>
+</ul></li>
+<li>애플리케이션 인지 클러스터(Application-aware clusters)
+
+<ul>
+<li>클러스터는 idle 시점에 오프라인 전환</li>
+<li>워크로드에 따른 자동 확장(auto-scaled) 기능 자동화</li>
+<li>비용, 지역적 유사성, 성능, 서비스 품질 및 준수를 포함한 여러 요소를 근간으로 앱을 실행하는 위치를 결정하는 기반 제공</li>
+</ul></li>
+</ul>
+
+<p>&ldquo;<strong>Global Multi-Cluster Management</strong>&ldquo;는 애플리케이션 배포를 기준으로 필요한 시점에 Kubernets 클러스터를 생성하고 규모를 조절하고, 제거합니다. 모든 클러스터 관리는 애플리케이션 배포 요청을 기준으로 관리됩니다. 배포된 애플리케이션이 없는 상황에서는 Kubernetes 클러스터는 어디에도 존재하지 않습니다.</p>
+
+<p>DevOps 팀이 연합 Kubernetes 환경에 여러 유형의 애플리케이션을 배포할 때, Global Multi-Cluster Management는 어떤 클러스터를 만들어야 하는지, 얼마나 많이 만들지, 어디에 배치해야 하는지 지능적으로 결정합니다. 운영 중인 클러스터는 애플리케이션의 현재 시점의 요청을 기준으로 조절됩니다. Kubernetes 인프라스트럭처는 더 많은 애플리케이션을 운영하고 운영 상황을 인식하게 됩니다.</p>
+
+<h2 id="g8-부스-방문에-주세요-오라클-세션에-참여해-주세요-kubecon-cloudnativecon-2017">G8 부스 방문에 주세요, 오라클 세션에 참여해 주세요(KubeCon + CloudNativeCon 2017)</h2>
+
+<p>G8 부스에 오라클 엔지니어와 기여자(Contributor)들 만날 수 있습니다. 오스틴 네이티브<sup class="footnote-ref" id="fnref:6"><a rel="footnote" href="#fn:6">6</a></sup>도 격하게 환영합니다.</p>
+
+<p>세션 정보는 다음과 같습니다.</p>
+
+<ul>
+<li><a href="https://kccncna17.sched.com/event/CU7S/panel-kubernetes-cloud-native-and-the-public-cloud-b-moderated-by-dan-kohn-cloud-native-computing-foundation">Panel: Kubernetes, Cloud Native and the Public Cloud [B] - Moderated by Dan Kohn, Cloud Native Computing Foundation</a>
+
+<ul>
+<li>발표자: Join Jon Mittelhauser(오라클 컨테이너 네이티브 플랫폼 팀 부사장) 외 5명</li>
+<li>일시: 2017년 12월 6일 11:10 – 11:45</li>
+<li>장소: Ballroom A, Level 1</li>
+</ul></li>
+<li><strong><a href="https://kccncna17.sched.com/event/CU7i">Multi-Cluster Ops in a Hybrid World deep dive</a></strong> 세션
+
+<ul>
+<li>발표자: Kire Filipovski(오라클 클라우드 아키텍트), Vitaliy Zinchenko(오라클 클라우드 아키텍트),</li>
+<li>일시: 2017년 12월 7일 15:50 – 16:25</li>
+<li>장소: Room 8ABC, Level 3.</li>
+</ul></li>
+<li><strong><a href="http://sched.co/CU7g">Lightning Talk: Moving Fast with Microservices: Building and Deploying Containerized Applications in a Cloud-Native World </a></strong>
+
+<ul>
+<li>발표자: Micha Hernandez van Leuffen (오라클 소프트웨어 개발 부사장, Wercker CEO)</li>
+<li>일시: 2017년 12월 5일 18:00 - 18:55</li>
+<li>장소: Ballroom A, Level 1</li>
+</ul></li>
+<li><strong><a href="http://sched.co/CU80">Running MySQL on Kubernetes</a></strong>
+
+<ul>
+<li>발표자: Patrick Galbraith(오라클 플랫폼 엔지니어)</li>
+<li>일시: 2017년 12월 7일 15:50 – 16:25</li>
+<li>장소: Room 9C, Level 3</li>
+</ul></li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">[역자주]: Helm은 Kubernetes 용 패키지 관리 툴입니다. Kubernetes에 배포될 패지키를 설치하고 제거하는 역할을 담당합니다. Ubuntu의 apt-get, CentOS의 yum과 같은 역할을 담당합니다. Helm이 대상 패키지를 관리하는 단위가 Helm Charts 입니다.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">[역자주]: Oracle Container Engine는 Oracle Cloud infrastructure(OCI) 위에서 동작하는 Docker Container 서비스입니다. 서비스 URL: <a href="https://cloud.oracle.com/ko_KR/containers">https://cloud.oracle.com/ko_KR/containers</a>
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:3">[역자주]Kubernetes federation은 다른 지역에 위치한 여러 Kubernetes 클러스터에 애플리케이션을 배포하고 관리하는 Kubernetes의 핵심 기능입니다. 참고 URL: <a href="https://kubernetes.io/docs/concepts/cluster-administration/federation/">https://kubernetes.io/docs/concepts/cluster-administration/federation/</a>
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+<li id="fn:4">[역자주]대형 쇼핑몰(Home Depo, Costco) 에서 무엇이든 구입할 수 있지만 경험많은 DevOps 인력을 살 수는 없다는 비유적인 표현입니다. Home Depo(홈 데포): 미국의 대표적인 가정용 건축자재 제조 및 판매업체. Costco: 미국의 대표적인 대형 할인 마트.
+ <a class="footnote-return" href="#fnref:4"><sup>[return]</sup></a></li>
+<li id="fn:5">[역자주]애플리케이션 인지 결정 로직이란 애플리케이션에 대한 현재 부하와 애플리케이션 특성을 인지하여 어디에 배포할지를 결정하는 로직을 의미합니다. 배포 자동화와 자동 확장을 지능적으로 처리하는 방식입니다.
+ <a class="footnote-return" href="#fnref:5"><sup>[return]</sup></a></li>
+<li id="fn:6">[역자주]오스틴에는 StackEngine 팀이 위치합니다. 오라클은 현재 2 개의 Docker 기술을 지원합니다. 2016년에 오라클은 StackEngine을 인수하여 Oracle Container Cloud Service를 오라클 클라우드에서 서비스 중입니다.
+ <a class="footnote-return" href="#fnref:6"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/oracle/" rel="tag">ORACLE</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/oracle-cloud/" rel="tag">Oracle Cloud</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/oci/" rel="tag">OCI</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/kubernetes/" rel="tag">kubernetes</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/serverless/" rel="tag">serverless</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EC%98%A4%EB%9D%BC%ED%81%B4-%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4/" rel="tag">오라클 쿠버네티스</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/" rel="tag">오라클 클라우드</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/oracle_cloud_developer_meetup_201712/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">2017년 12월 제2회 오라클 클라우드 Developer Meetup 현장 스케치</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/trans_data_hub/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">[번역]관리형 아파치 카산드라 서비스 소개: Oracle Data Hub Cloud Service</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/cloud/trans_kubernetes_serverless/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li><a href="#kubernetes-and-serverless-oracle-at-kubecon-2017">Kubernetes and Serverless: Oracle at KubeCon 2017</a>
+<ul>
+<li><a href="#전망-개방-통합-그리고-엔터프라이즈-급-경향-유지">전망: 개방, 통합 그리고 엔터프라이즈-급 경향 유지</a>
+<ul>
+<li><a href="#개방-개방-위에-개방">개방: 개방 위에 개방</a></li>
+<li><a href="#통합-일관성과-연결">통합: 일관성과 연결</a></li>
+<li><a href="#엔터프라이즈급-ha-보안-및-운영-인식">엔터프라이즈급 : HA, 보안 및 운영 인식</a></li>
+</ul></li>
+<li><a href="#거대한-파워와-함께-찾아온-거대한-책임감-그리고-복잡성">거대한 파워와 함께 찾아온 거대한 책임감(그리고 복잡성)</a></li>
+<li><a href="#g8-부스-방문에-주세요-오라클-세션에-참여해-주세요-kubecon-cloudnativecon-2017">G8 부스 방문에 주세요, 오라클 세션에 참여해 주세요(KubeCon + CloudNativeCon 2017)</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

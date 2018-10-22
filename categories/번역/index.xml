@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>번역 on taewan.kim 블로그</title>
+    <link>http://taewan.kim/categories/%EB%B2%88%EC%97%AD/</link>
+    <description>Recent content in 번역 on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 Dec 2017 01:50:05 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/categories/%EB%B2%88%EC%97%AD/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>한글화 문서</title>
+      <link>http://taewan.kim/translation/</link>
+      <pubDate>Wed, 27 Dec 2017 01:50:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/translation/</guid>
+      <description>blogs.oracle.com 블로그 번역  관리형 아파치 카산드라 서비스 소개: Oracle Data Hub Cloud Service 2017 KubeCon 오라클 발표: Kubernetes와 Serverless Fn–An Open Source Serverless Functions Platform 오라클의 CNCF(Cloud Native Computing Foundation) 가입 의미  Java 관련 Java 9  JShell 사용자 가이드  1. JShell Introduction: JShell 소개 2. Snippets: JShell 스니펫 3. Command: JShell 명령 4. Editing: JShell 편집 5. External Code: JShell 외부 코드 6. Feedback Modes: JShell 피드백 모드 7.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>Docker Image: 파이썬 기반 머신러닝 학습용 이미지 </title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="Docker Image: 파이썬 기반 머신러닝 학습용 이미지 " />
+<meta property="og:description" content="Python 기반으로 머신러닝을 학습할 때 사용할 목적으로 만든 docker 이미지입니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/post/python_env_for_machine_learning/" />
+
+
+
+<meta property="article:published_time" content="2018-07-06T19:59:47&#43;09:00"/>
+<meta property="article:modified_time" content="2018-07-06T19:59:47&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		
+		
+		<header class="post__header clearfix">
+			<h1 class="post__title">Docker Image: 파이썬 기반 머신러닝 학습용 이미지  </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2018-07-06 19:59:47 &#43;0900 KST">July 06, 2018</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/language" rel="category">Language</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2018/07/pyml/010.jpg" alt="Docker Image: 파이썬 기반 머신러닝 학습용 이미지 ">
+			</figure>
+			
+
+<p>파이썬을 기반으로 머신러닝이나 딥러닝 작업을 진행할 때 가장 귀찮고 꺼려지는 작업은 기본 환경을 준비하는 과정입니다.
+파이썬 기본 환경을 효과적으로 관리하기 위해서 Docker Image 형태로 PYML을 만들었습니다.
+PYML은 텐서플로우, 파이토치, 케라스 및 Scikit-Learn을 활용하여 데이터를 분석할 수 있는 환경이며 UI로 IPython을 사용합니다.</p>
+
+<h2 id="taewanme-pyml-컨테이너-이미지">taewanme/pyml 컨테이너 이미지</h2>
+
+<p>pyml 더커 이미지는 docker hub에 자동 빌드 프로젝트 형태로 배포되어 있습니다. pyml을 관리하는 레파지토리 주소는 다음 URL과 같습니다.</p>
+
+<ul>
+<li><a href="https://hub.docker.com/r/taewanme/pyml/">https://hub.docker.com/r/taewanme/pyml/</a></li>
+</ul>
+
+<p>2018년 7월 5일 현재 최신 버전은 0.1.07입니다. 위 레파지토리의 tag <code>Tags</code> 텝에서 pyml의 최신 이미지 버전을 확인할 수 있습니다.</p>
+
+<p>이 컨테이너에는 다음과 같은 라이브러리가 설치 되어 있습니다.</p>
+
+<ul>
+<li>numpy</li>
+<li>Pandas</li>
+<li>scrapy</li>
+<li>sklearn</li>
+<li>bokeh</li>
+<li>scipy</li>
+<li>keras</li>
+<li>tensorflow</li>
+<li>pythorch</li>
+<li>konlpy</li>
+</ul>
+
+<p>이 이미지의 빌드 스크립트는 아래 레파지터리의 Dockerfiles 텝에서 확인할 수 있습니다.</p>
+
+<ul>
+<li><a href="https://hub.docker.com/r/taewanme/pyml/~/dockerfile/">https://hub.docker.com/r/taewanme/pyml/~/dockerfile/</a></li>
+</ul>
+
+<p><img src="https://taewanmerepo.github.io/2018/07/pyml/010.jpg" alt="" /></p>
+
+<h2 id="pyml-이미지-설치-컨테이너-실행-종료-및-삭제">pyml 이미지 설치, 컨테이너 실행, 종료 및 삭제</h2>
+
+<p>현재 사용 중인 운영체제에 Docker가 설치되어 있다고 가정하고 이미지를 설치 실행 및 종료하는 방법을 소개합니다.</p>
+
+<h3 id="pyml-더커-이미지-설치">pyml 더커 이미지 설치</h3>
+
+<p>다음 명령으로 더커 이미지를 설치할 수 있습니다.</p>
+
+<pre><code>&gt; docker pull taewanme/pyml:0.1.07
+
+0.1.07: Pulling from taewanme/pyml
+b234f539f7a1: Already exists
+55172d420b43: Already exists
+5ba5bbeb6b91: Already exists
+43ae2841ad7a: Already exists
+f6c9c6de4190: Already exists
+cf5157da4fc3: Pull complete
+6ff16b04ac5c: Pull complete
+5f9bd51c41f4: Pull complete
+5a72f6c1bc04: Pull complete
+3ad5a6e64a3c: Pull complete
+3add21ca39c9: Pull complete
+12f721ff0f07: Pull complete
+Digest: sha256:c02dc2009b3bc20cb952fa27bfde64acf200acca75c250da97593c8c2b0ba83e
+Status: Downloaded newer image for taewanme/pyml:0.1.07
+&gt;
+</code></pre>
+
+<p>다음 명령으로 이미지 설치를 확인할 수 있습니다.</p>
+
+<pre><code>&gt; docker images --all
+
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+taewanme/pyml       0.1.07              823a55c894d0        19 hours ago        1.87GB
+&gt;
+</code></pre>
+
+<h3 id="pyml-컨테이어-실행">pyml 컨테이어 실행</h3>
+
+<p>다음 명령으로 더커 컨테이너를 실행할 수 있습니다.</p>
+
+<pre><code>&gt;docker run -itd -p 8888:8888 -p 6006:6006   \
+-v /devspace/pytorch:/root/ipython   \
+--name pyml      \
+taewanme/pyml:0.1.07
+
+&gt;0b5ee2af902ea823ff0372a9ccc0fbe194eb1c52152de14933da8bce0d0da241
+</code></pre>
+
+<p><code>docker run -idt</code> 명령으로 데몬 형태로 더커 컨테이너를 실행합니다. <code>-p</code><code>,</code><code>-v</code><code>,</code><code>--name</code>``` 옵션으로 포토 설정, 디텍러티 볼륨 마운트 및 컨테이너 명을 설정합니다.</p>
+
+<h2 id="주요-라이브러리-버전">주요 라이브러리 버전</h2>
+
+<p>실행 옵션은 다음과 같이 정리할 수 있습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>옵션</th>
+<th>옵션 설명</th>
+<th>현제 설정값</th>
+<th>설정값 섦명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>-p</td>
+<td>포트 설정, 호스트 컴퓨터 포트와 더커 컨테이너의 포트 포워드 설정</td>
+<td>-p 8888:8888<br/> -p 6006:6006</td>
+<td>호스트 8888 포트를 컨테이너 8888에 연결</br>호스트 6666 포트를 컨테이너 6666에 연결</br></td>
+</tr>
+
+<tr>
+<td>-v</td>
+<td>볼륨 설정, 호스트 컴퓨터 디텍터리를 더커 컨테이너에 마운트</td>
+<td>-v /devspace/pytorch:/root/ipython</td>
+<td>호스트 /devspace/pytorch를 컨테이너 /root/ipython에 마운트</td>
+</tr>
+
+<tr>
+<td>&ndash;name</td>
+<td>컨테이너 이름 설정</td>
+<td>&ndash;name pyml</td>
+<td>컨테이너 명 pyml로 설정</td>
+</tr>
+</tbody>
+</table>
+
+<p>컨테이너가 실행되면 다음 명령으로 컨테이너 실행 상태를 확인할 수 있습니다.</p>
+
+<pre><code>&gt; docker ps --all
+
+CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS              PORTS                                            NAMES
+0b5ee2af902e        taewanme/pyml:0.1.07   &quot;/bin/bash start-not…&quot;   3 minutes ago       Up 3 minutes        0.0.0.0:6006-&gt;6006/tcp, 0.0.0.0:8888-&gt;8888/tcp   pyml
+&gt;
+</code></pre>
+
+<h3 id="컨테이너의-jupyter-서비스-접속-및-활용">컨테이너의 jupyter 서비스 접속 및 활용</h3>
+
+<p>컨테이너가 실행되면 <code>http://localhsot:8888</code> 주소로 jupyter에 접속할 수 있습니다.
+Jupyter에 접속하면 패스워드 요청 페이지가 오픈됩니다. 패스워드는 <code>Welcome1</code>입니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2018/07/pyml/030.jpg" alt="" /></p>
+
+<p>패스워드를 입력하고 이동한 페이지에서 노트북을 만들고 파이썬 코드르 수행할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2018/07/pyml/040.jpg" alt="" /></p>
+
+<p>노크북을 만들면 다음과 같이 코드를 입력하고 수행할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2018/07/pyml/050.jpg" alt="" /></p>
+
+<h3 id="컨테이너의-jupyter-종료">컨테이너의 jupyter 종료</h3>
+
+<p><code>docker stop</code> 명령으로 컨테이너를 종료하고, <code>docker ps</code> 명령으로 컨테이너 프로세스 상태를 확인할 수 있습니다.</p>
+
+<pre><code>&gt; docker stop pyml
+pyml
+&gt; docker ps -all
+CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS                        PORTS               NAMES
+0b5ee2af902e        taewanme/pyml:0.1.07   &quot;/bin/bash start-not…&quot;   32 minutes ago      Exited (137) 11 seconds ago
+&gt;
+</code></pre>
+
+<h3 id="pyml-컨테이너의-삭제">pyml 컨테이너의 삭제</h3>
+
+<p><code>docker rm</code> 명령으로 컨테이너를 삭제하고, <code>docker container ls</code> 명령으로 컨테이너 목록을 확인할 수 있습니다.</p>
+
+<pre><code>&gt; docker rm pyml
+pyml
+&gt; docker container ls -all
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+&gt;
+</code></pre>
+
+<h3 id="pyml-더커-이미지-삭제">PYML 더커 이미지 삭제</h3>
+
+<p><code>docker rmi</code> 명령으로 이미지를 삭제하고, <code>docker images</code> 명령으로 더커 이미지을 확인할 수 있습니다.</p>
+
+<pre><code>&gt; docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+taewanme/pyml       0.1.07              823a55c894d0        20 hours ago        1.87GB
+&gt; docker rmi taewanme/pyml:0.1.07
+Untagged: taewanme/pyml:0.1.07
+Untagged: taewanme/pyml@sha256:c02dc2009b3bc20cb952fa27bfde64acf200acca75c250da97593c8c2b0ba83e
+Deleted: sha256:823a55c894d003b985736164a0e2753f3679c259f52031bc1fa0a33bf5bb204d
+Deleted: sha256:6ebf9e6163e3da895248c340984846e5ddb6bcbd6f9e5372e88ec02ad5accd0f
+Deleted: sha256:80dbc3fda391e5664252e36b0948c295bdcad68334c2fa92176dccfc5f0f32e0
+Deleted: sha256:fe7d183b729bbc766f5803fd19e149db4f69bdc07d160d4b6ed2720dccb3ed4f
+Deleted: sha256:66c8bb652e6f7b792aadba8b3e95ccf6f278be866a2a03bb8692733cd923fef2
+Deleted: sha256:d17ccf6f6dcffee261a47dc6f363c4019024f075fdf442d32cae5bbf8f771d61
+Deleted: sha256:9d27577fdbc5a9c7efc2a04f4537d9c001b719b06c557980019868b49457beda
+Deleted: sha256:b6708b96d9c7e3a1422347357a97e15d0438db3fa05ce0fff4cb11ad50c1ea2b
+Deleted: sha256:ef572e1ba2ecca900f0ec3db00e997de12dd380ce3e360b5813fd75920232359
+Deleted: sha256:98fc4d5421178c7be7d5718d2d44abba8053dc5c712e51658fe5b872675b4f7a
+Deleted: sha256:7b2cc05dfd889e28234f8831c80ac20cf299d5bbebbbac013f8f7d2b7abc0d65
+Deleted: sha256:6b0187d1cdff63eb5966ac72bf4ccd96150586c1409eb858bb98783f02018ee7
+Deleted: sha256:644879075e24394efef8a7dddefbc133aad42002df6223cacf98bd1e3d5ddde2
+&gt; docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+&gt;
+</code></pre>
+
+<h2 id="pyml-구성-라이브러리">pyml 구성 라이브러리</h2>
+
+<p>pyml에서는 다음과 같은 라이브러리가 설치됩니다.</p>
+
+<p><code>pip freeze</code>로 설치된 라이브러리를 확인하면 120여개의 라이브러리가 설치됩니다. 주요 라이브러리 버전은 다음과 같습니다.</p>
+
+<pre><code>beautifulsoup4==4.6.0
+bokeh==0.13.0
+h5py==2.8.0
+html5lib==0.9999999
+ipykernel==4.8.2
+ipython==6.4.0
+ipython-genutils==0.2.0
+jupyter==1.0.0
+Keras==2.2.0
+Keras-Applications==1.0.2
+Keras-Preprocessing==1.0.1
+lxml==4.2.3
+matplotlib==2.2.2
+mistune==0.8.3
+networkx==2.1
+nltk==3.3
+numpy==1.14.5
+pandas==0.23.1
+scikit-learn==0.19.1
+scipy==1.1.0
+Scrapy==1.5.0
+seaborn==0.8.1
+tensorboard==1.8.0
+tensorflow==1.8.0
+torch==0.4
+torchvision==0.2.1
+xlrd==1.1.0
+</code></pre>
+
+<h2 id="요약">요약</h2>
+
+<p>taewanme/pyml 더커 이미지는 파이썬 기반의 기계학습/딥러닝 실행환경입니다. 다음 명령으로 pyml을 설치하고 실행할 수 있습니다.</p>
+
+<pre><code>&gt; docker pull taewanme/pyml:0.1.07
+&gt; docker run -itd -p 8888:8888 -p 6006:6006 -v /devspace/pytorch:/root/ipython --name pyml taewanme/pyml:0.15
+</code></pre>
+
+<p>실행시 포트 매핑과 볼륨 지정이 필요합니다. pyml 컨테이너는 Jupyter UI를 제공하며 패스워드는 <code>Welcome1</code>입니다.</p>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/docker/" rel="tag">docker</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/python/" rel="tag">python</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/" rel="tag">기계학습</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/machine-learning/" rel="tag">machine learning</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/deep-learning/" rel="tag">Deep Learning</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/kotlin_jupyter/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Kotlin 지원 Jupyter: BeakerX 도커 이미지</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/sample_example/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">머신러닝 용어: Example, Sample &amp; Data Point</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/post/python_env_for_machine_learning/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#taewanme-pyml-컨테이너-이미지">taewanme/pyml 컨테이너 이미지</a></li>
+<li><a href="#pyml-이미지-설치-컨테이너-실행-종료-및-삭제">pyml 이미지 설치, 컨테이너 실행, 종료 및 삭제</a>
+<ul>
+<li><a href="#pyml-더커-이미지-설치">pyml 더커 이미지 설치</a></li>
+<li><a href="#pyml-컨테이어-실행">pyml 컨테이어 실행</a></li>
+</ul></li>
+<li><a href="#주요-라이브러리-버전">주요 라이브러리 버전</a>
+<ul>
+<li><a href="#컨테이너의-jupyter-서비스-접속-및-활용">컨테이너의 jupyter 서비스 접속 및 활용</a></li>
+<li><a href="#컨테이너의-jupyter-종료">컨테이너의 jupyter 종료</a></li>
+<li><a href="#pyml-컨테이너의-삭제">pyml 컨테이너의 삭제</a></li>
+<li><a href="#pyml-더커-이미지-삭제">PYML 더커 이미지 삭제</a></li>
+</ul></li>
+<li><a href="#pyml-구성-라이브러리">pyml 구성 라이브러리</a></li>
+<li><a href="#요약">요약</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

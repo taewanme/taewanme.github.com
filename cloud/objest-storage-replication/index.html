@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>Oracle Storage Cloud Service 활성화</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="Oracle Storage Cloud Service 활성화" />
+<meta property="og:description" content="오라클 클라우드 계정을 생성한 후 Oracle Storage Cloud Service의 기본 복제 정책을 설정해야 합닏. " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/cloud/objest-storage-replication/" />
+
+
+
+<meta property="article:published_time" content="2017-03-06T08:54:32&#43;09:00"/>
+<meta property="article:modified_time" content="2017-03-06T08:54:32&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">Oracle Storage Cloud Service 활성화 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2017-03-06 08:54:32 &#43;0900 KST">March 06, 2017</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c" rel="category">오라클 클라우드</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://oracloud-kr-teamrepo.github.io/2017/04/object_storage_init/post.png" alt="Oracle Storage Cloud Service 활성화">
+			</figure>
+			
+
+<p>Oracle Storage Cloud Service(이하 Storage Cloud)는 오라클 클라우드의 핵심 서비스입니다.
+오라클 클라우드의 대부분의 서비스는 데이터 저장 목적으로 Storage Cloud를 사용합니다.
+오라클 클라우드에서 Storage Cloud를 사용하는 서비스는 다음과 같습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>서비스</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Java Cloud Service(이하 JCS)</td>
+<td>JCS는 클러스터 백업 및 메타 정보 저장을 위해서 Storage Cloud를 사용합니다. JCS 설정시 Storage Cloud 정보 입력이 필 수 사항입니다.</td>
+</tr>
+
+<tr>
+<td>Database CS (이하 DBCS)</td>
+<td>DBCS는 데이터베이스 백업에 Storage Cloud를 사용합니다. DBCS 인스턴스 생성 시 Storage Cloud 정보를 입력합니다. 필수 사항은 아니며 선택적 입력필드입니다.</td>
+</tr>
+
+<tr>
+<td>Big Data - Compute Edition (이하 BDCE)</td>
+<td>BDCE는 Spark에서 데이터를 읽어오는 스토리지로 Storage Cloud를 사용합니다. 인스턴스 생성시 Cloud Storage Container, 인증정보를 입력해야 합니다.</td>
+</tr>
+</tbody>
+</table>
+
+<p>오라클 클라우드의 많은 부분에서 Storage Cloud를 사용하기 때문에 오라클 클라우드 계정을 생성한 직후에
+Storage Cloud를 활성화하는 것이 좋습니다. Storage Cloud 활성화를 위해서는 Storage Cloud 서비스 콘솔에서<br />
+기본 정책(데이터 복제 정책)을 설정해야 합니다.
+Storage Cloud 복제 정책을 설정한다는 것은 Storage Cloud 서비스를 활성화한다는 의미가 있습니다.</p>
+
+<p>Oracle Cloud 계정이 없다면 다음 문서를 참조하여 계정을 생성하시기 바랍니다.</p>
+
+<ul>
+<li><a href="http://www.oracloud.kr/post/accont/">Oracle Cloud 계정 생성하기</a></li>
+</ul>
+
+<h2 id="storage-cloud-서비스-콘솔">Storage Cloud 서비스 콘솔</h2>
+
+<p>오라클 클라우드에 로그인하면 &lt;그림 1&gt;과 같이 오라클 클라우드 대시보드가 출력됩니다.</p>
+
+<ul>
+<li>그림 1. 오라클 클라우드 대시보드
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/object_storage_init/ocdashboard.jpg" alt="" /></li>
+</ul>
+
+<p>Storage Cloud 서비스 콘솔에 접근하기 위하여 &lt;그림 2&gt;와 같이 Storage 상자의 오른쪽 위에 메뉴 아이콘을 클릭한 후, 출력되는 메뉴 목록에서 <code>서비스 콘솔 열기</code>를 클릭하면 &lt;그림 3&gt;의 서비스 콘솔로 이동합니다.</p>
+
+<ul>
+<li>그림 2. 오라클 클라우드 대시보드
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/object_storage_init/ocdashboard2.jpg" alt="" /></li>
+</ul>
+
+<h2 id="storage-cloud의-복제-정책">Storage Cloud의 복제 정책</h2>
+
+<ul>
+<li>용어 정리
+
+<ul>
+<li>Primary Data Center(기본 데이터 센터, Primary DC): 데이터가 저장되는 데이터 센터</li>
+<li>Georeplication Data Center(지역복제 데이터 센터, Georeplication DC): 데이터가 복제되는 원격지 데이터 센터</li>
+</ul></li>
+</ul>
+
+<p>Storage Cloud의 복제 정책은 다음 2가지로 구분됩니다.</p>
+
+<h3 id="지역-간-데이터-복제-없음-no-georeplication-policy">지역 간 데이터 복제 없음 (No Georeplication policy)</h3>
+
+<p>모든 읽기 쓰기 요청은 Primary DC에서 처리됩니다. Primary DC가 사용 불가능한 상태가 되면 모든 요청은 실패합니다.</p>
+
+<h3 id="지역-간-데이터-복제-허용-georeplication-policy">지역 간 데이터 복제 허용 (Georeplication policy)</h3>
+
+<p>데이터는 Primary DC와 Georeplication DC에 모두 데이터가 저장됩니다. 모든 요청은 Global Namespace URL에 요청되고,
+데이터 저장 요청은 Primary DC에 전달됩니다. 저장된 데이터는 비동기 적으로 Georeplication DC에 저장됩니다.
+Primary DC와 Georeplication DC의 데이터 동기화는 Eventual Consistency<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>입니다.</p>
+
+<p>Primary DC에 장애가 발생하면 쓰기 요청에 대해서는 403 에러가 발생하지만, 읽기 요청은 Georeplication DC에서 처리되어 정상적으로 처리 됩니다. Primary DC가 복구되면 Global Namespace URL은 쓰기 요청을 다시 Primary DC에 전달하고 정상적으로 처리됩니다.</p>
+
+<p>지역 간 데이터 복제 허용 옵션을 설정하면 Storage Cloud의 비용은 저장 공간의 두 배로 책정됩니다.</p>
+
+<h2 id="storage-cloud의-복제-정책-설정">Storage Cloud의 복제 정책 설정</h2>
+
+<p>Storage Cloud의 서비스 콘솔에 처음 접근할 경우에 데이터 복제 정책을 설정하는 팝업이 &lt;그림 3&gt;과 같이 출력됩니다.
+Storage Cloud의 복제 정책은 두 가지로 구분됩니다.</p>
+
+<ul>
+<li>그림 3. Storage Cloud 서비스 콘솔의 복제 정책 설정 팝업
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/object_storage_init/policy01.jpg" alt="" /></li>
+</ul>
+
+<p>Storage Cloud는 &lt;그림 4&gt;와 같이 7개의 설정 옵션이 제공됩니다. 현재 데모는 트라이얼 계정을 사용하고 있고
+한국에서 요청하는 트라이얼 계정은 US2 데이터센터에 위치합니다. &lt;그림 4&gt;의 옵션에서 데이터센터가 1개인 것은
+복제 없이 Primary DC를 지정하는 옵션입니다. &ldquo;-&ldquo;로 구분된 2개의 데이터센테를 표현하는 옵션은 Primary DC(앞)와
+Georeplication DC(뒤)를 지정하는 복제 옵션입니다.</p>
+
+<p>현재 Trial 계정에서는 별도의 복제가 필요 없다면 <code>Chicago(US2)</code>를 선택하는 것이 권장됩니다.
+Trial 계정의 다른 서비스 인스턴스들이 모두 <code>Chicago(US2)</code>에서 생성되기 때문에, Storage Cloud의 위치를
+동일하게 맞추는 것이 성능 관점에서 유리합니다.</p>
+
+<p>복제 설정을 할 것이라면 <code>Chicago-Ashburn(US2-US6)</code>를 선택하는 것이 권장됩니다. Primary DC를 US2를 사용하는 복제 옵션이기 때문에
+Storage Cloud의 성능과 안정성 모두를 만족하는 옵션입니다.</p>
+
+<ul>
+<li>그림 4. Storage Cloud 서비스 복제 옵션 목록
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/object_storage_init/policy02.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 5&gt;에서는 <code>Chicago(US2)</code>를 선택하여 복제하지 않고 US2를 Primary DC로 선택하는 방식을 설정하고 있습니다.</p>
+
+<ul>
+<li>그림 5. Storage Cloud 서비스의 복제 설정 완료
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/object_storage_init/policy03.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 5&gt;에서 옵션을 선택한 후 <code>set policy</code> 버튼을 클릭하면 &lt;그림 6&gt;과 같은 서비스 콘솔의 화면이 출력됩니다.</p>
+
+<ul>
+<li>그림 6. Storage Cloud의 대시보드
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/object_storage_init/sc_dashboard.jpg" alt="" /></li>
+</ul>
+
+<h2 id="요약">요약</h2>
+
+<p>오라클 클라우드 계정을 생성한 후 Storage Cloud 활성화 절차에 대하여 살펴보았습니다.
+Storage Cloud 복제 정책을 설정한다는 것은 Storage Cloud 서비스를 활성화한다는 의미입니다.</p>
+
+<p>복제 설정 옵션은 Storage Cloud의 primary DC를 선택하고 복제 여부를 선택하는 방식으로 구성됩니다.
+Primary DC는 계정이 사용하는 데이터 센터와 같은 DC를 선택하는 것이 효과적입니다.</p>
+
+<p>복제 선택 시 Primary DC에 저장된 데이터는 복제 DC에 비동기적으로 복제됩니다.</p>
+
+<p>복제하지 않은 정책을 사용할 경우에 Primary DC가 이용 불가능한 상태가 되면 모든 데이터 읽기/쓰기 요청은 실패합니다.
+복제 정책을 사용할 경우 사용할 경우 Primary DC 장애 때에도 데이터 읽기 요청은 원격지 복제 데이터 센터를 이용하여 정상적으로 처리됩니다.
+비용 관점에서 복제 정책을 사용할 경우 Storage Cloud에 요금이 부과되는 비용은 저장 용량의 2배입니다.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">Eventural Consistency는 일시적으로 일관성이 깨질수 있지만, 지정된 시간간격 이내에서 일관성을 확보한다는 개념입니다. 궁긍적 일관성, 지연 일관성 이라는 표현으로 번역될 수 있습니다.<br />
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/object-storage/" rel="tag">Object Storage</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/storage/" rel="tag">Storage</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/iaas_vm/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">오라클 IaaS를 이용한 VM 인스턴스 생성</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/dbcs_demo/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">Oracle Database CS: 인스턴스 생성 및 접속 Demo</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/cloud/objest-storage-replication/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#storage-cloud-서비스-콘솔">Storage Cloud 서비스 콘솔</a></li>
+<li><a href="#storage-cloud의-복제-정책">Storage Cloud의 복제 정책</a>
+<ul>
+<li><a href="#지역-간-데이터-복제-없음-no-georeplication-policy">지역 간 데이터 복제 없음 (No Georeplication policy)</a></li>
+<li><a href="#지역-간-데이터-복제-허용-georeplication-policy">지역 간 데이터 복제 허용 (Georeplication policy)</a></li>
+</ul></li>
+<li><a href="#storage-cloud의-복제-정책-설정">Storage Cloud의 복제 정책 설정</a></li>
+<li><a href="#요약">요약</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

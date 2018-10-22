@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Log4j on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/log4j/</link>
+    <description>Recent content in Log4j on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 03 Jan 2016 00:17:44 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/log4j/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Log4J 로깅 비용 계산</title>
+      <link>http://taewan.kim/post/log4j_perf/</link>
+      <pubDate>Sun, 03 Jan 2016 00:17:44 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/log4j_perf/</guid>
+      <description>2006년 4월 30일에 이글루스 블로그에서 섰던 글입니다. 추억 팔이로 옮겨 놓습니다. 2006년 추억 속으로&amp;hellip;. - 원문: http://okcode.egloos.com/1892085
+기존의 System.out.println()으로 로그를 남길 때 발생하는 문제의 대안으로 Log4J를 요즘 많이 사용한다.
+Log4J를 사용하면 OutputStream에서 발생하는 자원독점 문제 해결, logging 레벨 설정을 코드와 분리, 로그 출력 방식 설정 변경 등 다양한 이점을 얻을 수 있다.
+그러나 Log4J가 실행될 때 발행하는 비용을 계산해 보면 Log4J를 사용할 때 주의가 필요하다. 무작정 사용하는 것은 WAS 전체에 심각한 문제를 발생시킬 수 있다.</description>
+    </item>
+    
+  </channel>
+</rss>

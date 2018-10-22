@@ -1,0 +1,106 @@
++++
+date = "2018-04-10T21:28:14+09:00"
+description = "Advanced Analytics With Spark 3장을 정리합니다. "
+title = "스팍 고급 분석: 3장 음악 추천과 Audioscrobbler 데이터셋"
+thumbnailInList = "https://taewanmerepo.github.io/2018/03/29/androidjava/list.jpg"
+thumbnailInPost = "https://taewanmerepo.github.io/2018/03/29/androidjava/head.jpg"
+tags = ["spark", "recommendation", "ML", "last.fm", "김태완"]
+categories = ["Machine-Learning"]
+author = "taewan.kim"
+language = ""
+jupyter = "false"
+adsense = "true"
+autoadsense = "true"
++++
+
+Advanced Analytics With Spark 3장 음악 추천을 정리합니다.
+
+## 데이터 로딩
+### 데이터 다운로드
+
+3장에서 사용하는 데이터셋은 다음 URL에서 다운로드 합니다.
+
+- http://bit.ly/2ms3z6w
+
+```
+>wget -o /dev/null http://bit.ly/2ms3z6w
+>mv 2ms3z6w lastfm.gtz
+>tar zxvf lastfm.gtz
+>ls -al ./lastfm
+```
+
+>출력:
+```
+-rw-r--r-- 1 zeppelin zeppelin   2932731 May  6  2005 artist_alias.txt
+-rw-r--r-- 1 zeppelin zeppelin  55963575 May  6  2005 artist_data.txt
+-rw-r--r-- 1 zeppelin zeppelin 426761761 May  5  2005 user_artist_data.txt
+```
+
+Dataset의 파일 정보는 다음과 같습니다.
+
+|파일명|파일 사이즈|파일 라인스|
+|----|----|----|
+|artist_alias.txt|2.8MB|193,027|
+|artist_data.txt|54MB|1,848,579|
+|user_artist_data.txt|407MB|24,296,858|
+
+### HDFS에 저장
+
+```
+> hadoop fs -mkdir /user/zeppelin/lastfm
+> hadoop fs -put ./lastfm/artist_alias.txt /user/zeppelin/lastfm
+> hadoop fs -put ./lastfm/artist_data.txt /user/zeppelin/lastfm
+> hadoop fs -put ./lastfm/user_artist_data.txt /user/zeppelin/lastfm
+> hadoop fs -ls /user/zeppelin/lastfm
+```
+>출력:
+```
+-rw-r--r-- 1 zeppelin zeppelin   2932731 May  6  2005 artist_alias.txt
+-rw-r--r-- 1 zeppelin zeppelin  55963575 May  6  2005 artist_data.txt
+-rw-r--r-- 1 zeppelin zeppelin 426761761 May  5  2005 user_artist_data.txt
+```
+
+## 데이터 탐색
+
+### user_artist_data.txt 파일 리뷰
+
+데이터 구성 파악, 5개 파일로 데이터 상태 파악
+
+```scala
+val rawUserArtistData = spark.read.textFile("/user/zeppelin/lastfm/user_artist_data.txt")
+rawUserArtistData.take(5).foreach(println)
+```
+>출력:
+```
+rawUserArtistData: org.apache.spark.sql.Dataset[String] = [value: string]
+1000002 1 55
+1000002 1000006 33
+1000002 1000007 8
+1000002 1000009 144
+1000002 1000010 314
+```
+
+DataFrame을 만들고 user와 artist의 최대 최소값 확인
+
+```scala
+val userArtistDF = rawUserArtistData.map { line =>
+    val Array(user, artist, _*) = line.split(' ')
+    (user.toInt, artist.toInt)
+}.toDF("user", "artist")
+
+userArtistDF.agg(min("user"), max("user"), min("artist"), max("artist")).show()
+```
+
+>출력:
+```
++---------+---------+-----------+-----------+
+|min(user)|max(user)|min(artist)|max(artist)|
++---------+---------+-----------+-----------+
+|       90|  2443548|          1|   10794401|
++---------+---------+-----------+-----------+
+```
+{{< img src="https://taewanmerepo.github.io/2018/03/29/androidjava/img04.jpeg"
+title="그림 1"
+caption="구글, 지재권 소송서 오라클에 패배…자바" >}}
+
+- user와 artist의 최대 값은 Int.MaxValue보다 작은 값이다.

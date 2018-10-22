@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sandbox on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/sandbox/</link>
+    <description>Recent content in Sandbox on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 07 Oct 2018 18:59:47 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/sandbox/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>VirtualBox에 Hotonworks 가상머신 설치</title>
+      <link>http://taewan.kim/post/hdp_sandbox_setup/</link>
+      <pubDate>Sun, 07 Oct 2018 18:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/hdp_sandbox_setup/</guid>
+      <description>호튼웍스(Hotonworks)는 빅데이터 플랫폼의 테스트와 학습을 효과적으로 지원하는 것을 목표로 HDP Sandbox를 제공합니다. HDP Sandbox는 HDP 최신 패키지를 모두 포함하며, VirtualBox, VMWare 및 Docker 이미지로 배포됩니다. 하둡이 익숙하지 않거나 최신 HDP 구성을 확인하고자 한다면 HDP Sandbox는 가장 이상적인 시작점입니다.
+본 문서는 HDP Sandbox를 VirtualBox에 설치하는 과정을 소개합니다.
+HDP Snadbox 설치 VirtualBox에 HDP Snadbox 설치하는 과정을 소개합니다. VirtualBox는 컴퓨터에 설치되어 있다는 가정으로 진행하겠습니다. HDP Sanbox는 다음 URL에서 다룬로드 받을 수 있습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

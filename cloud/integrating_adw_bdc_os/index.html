@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>Oracle Autonomous Data Warehouse와 Big Data의 오브젝트 스토리지 연계</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="Oracle Autonomous Data Warehouse와 Big Data의 오브젝트 스토리지 연계" />
+<meta property="og:description" content="Oracle ADWC(Autonomous Data Warehouse Cloud Service)와 Big Data를 Object Storage로 통합하는 방법을 소개합니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/cloud/integrating_adw_bdc_os/" />
+
+
+
+<meta property="article:published_time" content="2018-03-31T08:05:14&#43;09:00"/>
+<meta property="article:modified_time" content="2018-03-31T08:05:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="http://taewan.kim/css/jupyter.css" type="text/css" media="all" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">Oracle Autonomous Data Warehouse와 Big Data의 오브젝트 스토리지 연계 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2018-03-31 08:05:14 &#43;0900 KST">March 31, 2018</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/java" rel="category">java</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2018/03/adwc/head.jpg" alt="Oracle Autonomous Data Warehouse와 Big Data의 오브젝트 스토리지 연계">
+			</figure>
+			
+
+<p>본 문서는 오라클 공식 블로그의 포스트의 번역입니다.</p>
+
+<blockquote>
+<ul>
+<li>원문: <a href="https://blogs.oracle.com/bigdata/integrating-autonomous-data-warehouse-big-data-object-storage">https://blogs.oracle.com/bigdata/integrating-autonomous-data-warehouse-big-data-object-storage</a></li>
+<li>제목: Integrating Autonomous Data Warehouse and Big Data Using Object Storage</li>
+<li>작성자: Peter Jeffcock (Big Data Product Marketing)</li>
+<li>작성일: 2018.03.27</li>
+</ul>
+</blockquote>
+
+<p>문서를 시작하기 전에 주요 단어를 정리합니다.</p>
+
+<ul>
+<li>Oracle Autonomous Data Warehouse
+
+<ul>
+<li>오라클 자율 주행 Data warehouse용 데이터베이스 서비스. 일반적으로 ADWC로 부릅니다. ADWC는 주행의 개념을 도입한 오라클 클라우드 기술의 첫 번째 데이터베이스 클라우드 서비스입니다. Oracle ADWC는 차세대 오라클 자율 데이터베이스 기술로 만들어 졌으며, 인공지능을 활용하여 탁월한 안정성과 성능을 제공합니다. 탄력적으로 CPU을 조절(확대/축소)하는 기능을 제공합니다. 필요에 따라서 서비스를 종료하고 사용하는 on-demand 방식의 사용이 가능합니다.</li>
+</ul></li>
+<li>Oracle Big Data Cloud
+
+<ul>
+<li>오라클 클라우드의 하둡 서비스입니다. 일반적으로 Oracle BDC라고 부릅니다. 오라클 클라우드는 빅데이터 서비스로 2가지 서비스를 제공합니다. 전용 서버 개념이 강한 Oracle Big Data Cloud Service와 가상 머신(VM)을 기반으로하는 Oracle Big Data Cloud 입니다. 본문에서 언급한 Oracle Big Data Cloud는 VM 기반의 Hadoop 서비스입니다. 호튼웍스 기반의 패키지로 구성되며, Spark 1.6 버전과 Spark 2.2 버전을 선택할 수 있습니다. 또한 Zeppline이 설치되어 있습니다. 관련 URL: <a href="https://cloud.oracle.com/en_US/big-data-cloud">https://cloud.oracle.com/en_US/big-data-cloud</a><br /></li>
+</ul></li>
+</ul>
+
+<hr />
+
+<p><a href="https://www.oracle.com/database/data-warehouse/index.html">Oracle Autonomous Data Warehouse</a>(이하 Oracle ADWC)에 저장된 데이터를 이용하여 비즈니스 환경을 분석하고 관리할 수 있습니다. 이밖에도 잠재적인 가치를 갖는 많은 다른 데이터<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>도 존재합니다. <a href="https://cloud.oracle.com/en_US/big-data-cloud">Oracle Big Data Cloud</a>를 이용하여 이런 유형의 데이터를 저장하고 처리할 수 있습니다. 이렇게 처리된 데이터를 ADWC에 적재하고 쿼리로 질의할 수 있습니다. 이 두 서비스의 통합 지점은 <a href="https://cloud.oracle.com/storage/object-storage/features">오브젝트 스토리지</a>(Object Storage)입니다.</p>
+
+<h2 id="data-lake와-데이터-웨어하우스-dw-의-사용-사례">Data Lake와 데이터 웨어하우스(DW)의 사용 사례</h2>
+
+<p><img src="https://cdn.app.compendium.com/uploads/user/e7c690e8-6ff9-102a-ac6d-e4aebca50425/f0499405-1197-4b43-b7c5-40548eeb9f34/Image/e083d22a5783494e403395c8b865758d/autonomous_data_warehouse_big_data.png" alt="" /></p>
+
+<p>거의 모든 빅데이터 사례에서 데이터는 <a href="https://blogs.oracle.com/bigdata/data-lake-database-data-warehouse-difference">Data Lake와 DW(Data Warehouse)</a>에 위치합니다. 예를 들어서, <a href="https://blogs.oracle.com/bigdata/predictive-maintenance-big-data-use-cases">예측 정비(Predictive Maintenance)</a>에서 Data Lake에 저장된 센서 데이터와 DW에 저장된 공식적인 유지보수 구매 기록을 결합하고 싶을 때가 있습니다.</p>
+
+<p>특정 고객의 다음 행동 예측을 예측 분석할 때, 고객의 구매 전표(DW에 저장)와 고객 웹 브라우저 사용 기록 혹은 소셜 미디어 이용(이런 상세 기록은 주로 Data Lake에서 정장 관리)을 함께 분석하려 할 것입니다. 의료기기 제조업의 사례에서 사용 가능한 모든 데이터의 완전한 뷰를 갖고 있다는 것은 DW와 Data Lake 모두에서 데이터 분석 작업을 한다는 것을 의미합니다.</p>
+
+<h2 id="예측-정비를-위한-data-lake와-data-warehouse">예측 정비를 위한 Data Lake와 Data Warehouse</h2>
+
+<p>예측 정비 분야를 예로 살펴보겠습니다. 예측 정비 분야에서 공식 유지보수 기록, 구매 및 보증 정보는 핵심 정보입니다. 이런 정보는 적절한 프로세스가 준수되고 있는지를 규제 기관이 확인하기 위해서 필요합니다. 또한 구매 부서가 예산을 관리하거나 새로운 컴포넌트를 주문하기 위해서 필요할 수도 있습니다.</p>
+
+<p>또한, 기계, 기상 관측소, 온도계, 지진계 및 이런 유형의 장비는 센서는 장비의 동작을 이해하고 예측을 잠재적으로 돕는 데이터를 생산합니다. DW 관리자에게 수 테라바이트의 원시 데이터 형식이고 잘 알려지지 않은 다중 구조 데이터를 DW에서 관리할 것을 요청하면 냉담한 반응을 경험하게 될 것입니다. 이런 종류의 데이터는 Data Lake가 훨씬 더 적합합니다. 이런 데이터는 Data Lake에서 변환되고, 머신 러닝 알고리즘의 입력으로 사용될 수 있습니다. 그러나 궁극적으로 장애와 허용 오차(Tolerance)를 벗어날 컴포넌트를 예축하기 위해서, Dw와 Data Lake의 데이터셋을 결합하여 관리하는 방식을 추구할 것입니다.</p>
+
+<h2 id="사례-오브젝트-스토리지와-dw를-연동하는-방법">사례: 오브젝트 스토리지와 DW를 연동하는 방법</h2>
+
+<p><a href="https://blogs.oracle.com/bigdata/the-new-data-lake-you-need-more-than-hdfs">이전 블로그 포스트</a>에서 <a href="https://blogs.oracle.com/bigdata/what-is-object-storage">오프젝트 스토리지를 기반으로 데이터 레이크를 구성하는 방법</a>에 대하여 소개했습니다. 본 문서에서 다루는 DW와 오브젝트 스토리지의 연동은 그 이상의 가치를 갖습니다. 오브젝트 스토리지를 DW 백업, 아카이브, DW를 위한 데이터 준비 용도로 사용하거나 더 이상 DW에 저장할 필요가 없는 데이터의 이관(Offload) 용도로 사용할 수 있습니다. 이런 방식을 사용하면 오브젝트 스토리지(Data Lake)와 DW를 효과적으로 연계할 수 있습니다.</p>
+
+<p>예측 정비 사례로 되돌가 보겠습니다. Data Lake(오브젝트 스코리지)에 센서 데이터를 올린 다음에, 이 데이터는 스팍 클러스터에서 처리될 수 있습니다. 오라클 클라우드에서 Oracle BDC로 스팍 클러스터를 만들 수 있습니다. 여기서 말하는 데이터 처리란 단순한 필터 부터 복잡한 머신 러닝 알고리즘으로 미지의 숨은 패턴을 찾아내는 모든것을 의미합니다.</p>
+
+<p>이런 모든 작업이 완료되면, 데이터 처리 결과는 오브젝트 스토리지에 저장됩니다. 그 다음에 오브젝트 소토리지에 저장된 결과는 Oracle ADWC에 적제될 수 있습니다. 이렇게 적제된 데이터는 필요한 시점에 질의 될 수 있습니다. 어떤 방식으로 데이터를 관리하는 것이 가장 최선일까요? 이것은 상황에 따라 결정됩니다. 데이터의 접근 빈도가 높거나 쿼리 성능이 중요한 요소라면, 일반적으로 Oracle ADWC에 대상 데이터를 적제하는 것이 최선입니다. 그리고 오브젝트 스토리지를 저장 계층 구성의 또 다른 레이어로 생각할 수 있습니다. Oracle ADWC는 스토리지 티어로써 RAM, Flash와 디스크를 갖습니다.</p>
+
+<p>또한, ETL 오프로드 사례에서도 유사한 접근법을 볼 수 있습니다. 원천 데이터는 오브젝트 스토리지에 저장됩니다. 데이터 변환 프로세스는 빅데이터 클라우드 Spark 클러스터에서 실행됩니다. 이때 처리된 결과는 오브젝트 스토리지에 저장됩니다. 이렇게 변환된 데이터는 Oracle ADWC에 적제되어 이용가능해 집니다.</p>
+
+<h2 id="adwc-autonomous-data-warehouse-와-big-data-cloud-연동">ADWC(Autonomous Data Warehouse)와 Big Data Cloud 연동</h2>
+
+<p>Oracle ADEC와 Oracle BDC는 완전히 분리된 다른 서비스가 아닙니다. 이 두 서비스는 상호보완적인 강점을 갖습니다. 오브젝트 스토리지를 매개로 상호운용할 수 있습니다. 이렇게 사용할 때, 모든 데이터를 활용하여 비즈니스 전반에 효율을 얻을 수 있습니다.</p>
+
+<p>더 많은 정보를 필요하다면, Oracle 무료 평가판에 가입하여 직접 Data Lake를 구축하고 체험할 수 있습니다. 오라클 클라우드에서 Data Lake를 구축하는 튜토리얼과 가이드를 제공합니다.<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup></p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">[역자주]전형적인 데이터베이스 관리하는 대상 데이터(정형 데이터 및 기업 비즈니스 데이터) 이외의 데이터를 의미합니다. 전통적으로 데이터베이스에서 관리하지 않고 관리 대상이 아닌 소위 빅데이터에서 관리하는 데이터를 의미합니다.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">[역자주]Data Lake를 구성하는 가이드는 다음 URL에서 확인할 수 있습니다. - <a href="https://go.oracle.com/bigdatajourney">https://go.oracle.com/bigdatajourney</a>
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/oracle/" rel="tag">ORACLE</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/adec/" rel="tag">ADEC</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/autonomous/" rel="tag">Autonomous</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/dw/" rel="tag">DW</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/big-data/" rel="tag">Big Data</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%ED%86%B5%ED%95%A9/" rel="tag">통합</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EB%B2%88%EC%97%AD/" rel="tag">번역</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/trans_data_hub/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">[번역]관리형 아파치 카산드라 서비스 소개: Oracle Data Hub Cloud Service</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/oci_classic_computing/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">OCI Classic: Compute 서비스, VM 생성</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/cloud/integrating_adw_bdc_os/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#data-lake와-데이터-웨어하우스-dw-의-사용-사례">Data Lake와 데이터 웨어하우스(DW)의 사용 사례</a></li>
+<li><a href="#예측-정비를-위한-data-lake와-data-warehouse">예측 정비를 위한 Data Lake와 Data Warehouse</a></li>
+<li><a href="#사례-오브젝트-스토리지와-dw를-연동하는-방법">사례: 오브젝트 스토리지와 DW를 연동하는 방법</a></li>
+<li><a href="#adwc-autonomous-data-warehouse-와-big-data-cloud-연동">ADWC(Autonomous Data Warehouse)와 Big Data Cloud 연동</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

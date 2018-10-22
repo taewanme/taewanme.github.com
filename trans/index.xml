@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Trans on taewan.kim 블로그</title>
+    <link>http://taewan.kim/trans/</link>
+    <description>Recent content in Trans on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 27 Mar 2018 03:05:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/trans/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Neural Networks</title>
+      <link>http://taewan.kim/trans/pytorch/tutorial/blits/03_neural_networks/</link>
+      <pubDate>Tue, 27 Mar 2018 03:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/pytorch/tutorial/blits/03_neural_networks/</guid>
+      <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt; PyTorch와 함께하는 딥러닝: 60분 리뷰 &amp;gt; 신경망
+  원문: http://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html 원문 제목: Neural Networks   torch.nn 패키지를 사용하여 신경망을 만들 수 있습니다.
+지금까지 autograd에 대하여 살펴보았습니다. nn 패지지는 autograd를 사용하여 모델을 정의하고 미분합니다. nn.Module은 여러 레이어와 forward(input) 메서드를 포함합니다. 이 forward 메서드는 output을 반환합니다.
+다음 이미지는 디지틀 사진을 분류하는 신경망입니다.
+convnet1
+위 신경망은 단순한 feed-forward 네트워크입니다. 이 신경망은 입력된 데이터를 순차적으로 여러 레이어에 데이터를 공급합니다.</description>
+    </item>
+    
+    <item>
+      <title>Autograd: 미분 자동화</title>
+      <link>http://taewan.kim/trans/pytorch/tutorial/blits/02_autograd/</link>
+      <pubDate>Tue, 27 Feb 2018 03:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/pytorch/tutorial/blits/02_autograd/</guid>
+      <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt; PyTorch와 함께하는 딥러닝: 60분 리뷰 &amp;gt; Autograd: 미분 자동화
+  원문: http://http://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html 원문 제목: Autograd: automatic differentiation   PyTorch으로 만든 모든 신경망의 중심에는 autograd 패키지가 있습니다. 먼저 autograd 패키지를 간략히 살펴보겠습니다. 그리구 다음 문서에서 첫 번째 신경망을 훈련해 보겠습니다.
+autograd 패키지는 Tensor로 수행한 모든 연산에 대하여 자동-미분(Autimatic differentiation) 기능을 제공합니다. autograd는 실행 시점에 정의되는(define-by-run) 프레임워크입니다. 이것은 코드가 어떻게 실행되는가에 따라서 역전파(backprop)가 정의됨을 의미합니다.</description>
+    </item>
+    
+    <item>
+      <title>PyTorch는 무엇인가?</title>
+      <link>http://taewan.kim/trans/pytorch/tutorial/blits/01_what_is_pytorch/</link>
+      <pubDate>Tue, 27 Feb 2018 03:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/pytorch/tutorial/blits/01_what_is_pytorch/</guid>
+      <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt; PyTorch와 함께하는 딥러닝: 60분 리뷰 &amp;gt; PyTorch는 무엇인가?
+  원문: http://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-beginner-blitz-tensor-tutorial-py 원문 제목: What is PyTorch?   PyTorch란 무엇인가? PyTorch는 파이썬 기반의 과학 컴퓨팅 패키지로 두 집단을 대상으로 합니다.
+ NumPy를 대체하고 GPU의 힘을 사용 최고의 유연성과 속도를 제공하는 딥러닝 연구 플랫폼  시작하기 Tensors Tensors는 NumPy의 ndarrays와 유사하며, 차별점은 Tensors는 연산을 가속하는 GPU에서 사용될 수 있다는 점입니다.
+from __future__ import print_function import torch   초기화되지 않은 5X3 매트릭스 생성  x = torch.</description>
+    </item>
+    
+    <item>
+      <title>PyTorch와 함께하는 딥러닝: 60분 리뷰</title>
+      <link>http://taewan.kim/trans/pytorch/tutorial/main/01_blits/</link>
+      <pubDate>Mon, 26 Feb 2018 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/pytorch/tutorial/main/01_blits/</guid>
+      <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt; PyTorch와 함께하는 딥러닝: 60분 리뷰
+  원문: http://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html 작성자: Soumith Chintala 원문 제목: Deep Learning with PyTorch: A 60 Minute Blitz   튜토리얼 목적
+ 높은 수준에서 PyTorch의 텐서 라이브러리와 신경망을 이해할 수 있다. 이미지를 분류하는 작은 신경 네트워크를 학습시킬 수 있다.  이 튜토리얼에서는 numpy에 대한 기본적인 지식이 있다고 가정합니다.
+torch와 torchvision 패키지가 모두 설치되어 있어야 합니다.
+    원문제목 번역문서 제목     What is PyTorch?</description>
+    </item>
+    
+    <item>
+      <title>PyTorch 튜토리얼</title>
+      <link>http://taewan.kim/trans/pytorch/tutorial/main/</link>
+      <pubDate>Sun, 25 Feb 2018 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/pytorch/tutorial/main/</guid>
+      <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt;
+  원문: http://pytorch.org/tutorials/index.html 원문 제목: Welcome to PyTorch Tutorials.   PyTorch 학습을 시작하려면, 입문자 튜토리얼로부터 시작하시기 바랍니다. &amp;ldquo;60분 blitz&amp;rdquo;는 초보자에게 가장 적합한 시작점으로, PyTorch에 대한 간단한 소개를 제공합니다. 예제를 통해 학습하는 것을 선호한다면, &amp;ldquo;Learning PyTorch With Examples&amp;rdquo; 문서로 시작하시기 바랍니다.
+각 튜토리얼 문서는 Jupyter 노트북과 파이썬 소스 코드 다운로드 링크를 제공합니다. IPython/Jupyter 노트북을 내려받아 대화식 학습을 진행할 수 있습니다.
+또한, 다수의 고품질 예제를 제공합니다.</description>
+    </item>
+    
+    <item>
+      <title>가비지 컬렉션(Garbage Collection) 튜닝</title>
+      <link>http://taewan.kim/trans/javagc/ch01/</link>
+      <pubDate>Sat, 06 Jan 2018 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/javagc/ch01/</guid>
+      <description>이 문서는 Java9의 오라클 공식 문서 중 Java Platform, Standard Edition HotSpot Virtual Machine Garbage Collection Tuning Guide의 한글화 문서입니다. 원문 정보는 다음과 같습니다.
+  원문: https://docs.oracle.com/javase/9/gctuning/toc.htm 제목: Java Platform, Standard Edition HotSpot Virtual Machine Garbage Collection Tuning Guide  문서번호: E76294-05 배포: 2017년 10월  라이센스: 원본 문서 라이센스를 준수합니다.  원문: https://docs.oracle.com/javase/9/gctuning/title.htm  본 문서의 원본은 github repository로 관리합니다.  github 주소:    A wide variety of applications, from small applets on desktops to web services on large servers, use the Java Platform, Standard Edition (Java SE).</description>
+    </item>
+    
+    <item>
+      <title>JShell: 7. JShell 소개</title>
+      <link>http://taewan.kim/trans/jshell/jshell07/</link>
+      <pubDate>Wed, 27 Dec 2017 19:35:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/jshell/jshell07/</guid>
+      <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.
+  원문: https://docs.oracle.com/javase/9/jshell/scripts.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 7 Scripts  문서번호: E87478-01 릴리즈: 2017년 09월  라이센스: 원본 문서 라이센스를 준수합니다.  원문: https://docs.oracle.com/javase/9/jshell/title.htm    JShell 사용자 가이드의 한글화 문서는 다음과 같이 구성됩니다.
+ 1. JShell 소개 2. 스니펫 3. 명령 4. 편집 5. 외부 코드 6.</description>
+    </item>
+    
+    <item>
+      <title>JShell:6. 피드백 모드</title>
+      <link>http://taewan.kim/trans/jshell/jshell06/</link>
+      <pubDate>Wed, 27 Dec 2017 19:30:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/jshell/jshell06/</guid>
+      <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.
+  원문: https://docs.oracle.com/javase/9/jshell/feedback-modes.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 6 Feedback Modes  문서번호: E87478-01 릴리즈: 2017년 09월  라이센스: 원본 문서 라이센스를 준수합니다.  원문: https://docs.oracle.com/javase/9/jshell/title.htm    JShell 사용자 가이드의 한글화 문서는 다음과 같이 구성됩니다.
+ 1. JShell 소개 2. 스니펫 3. 명령 4. 편집 5. 외부 코드 6.</description>
+    </item>
+    
+    <item>
+      <title>JShell:5. 외부 코드</title>
+      <link>http://taewan.kim/trans/jshell/jshell05/</link>
+      <pubDate>Wed, 27 Dec 2017 19:25:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/jshell/jshell05/</guid>
+      <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.
+  원문: https://docs.oracle.com/javase/9/jshell/external-code.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 5 External Code  문서번호: E87478-01 배포: 2017년 09월  라이센스: 원본 문서 라이센스를 준수합니다.  원문: https://docs.oracle.com/javase/9/jshell/title.htm    JShell 사용자 가이드의 한글화 문서는 다음과 같이 구성됩니다.
+ 1. JShell 소개 2. 스니펫 3. 명령 4. 편집 5. 외부 코드 6.</description>
+    </item>
+    
+    <item>
+      <title>JShell: 4. 편집 </title>
+      <link>http://taewan.kim/trans/jshell/jshell04/</link>
+      <pubDate>Wed, 27 Dec 2017 19:20:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/jshell/jshell04/</guid>
+      <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.
+  원문: https://docs.oracle.com/javase/9/jshell/editing.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 4 Editing  문서번호: E87478-01 배포: 2017년 09월  라이센스: 원본 문서 라이센스를 준수합니다.  원문: https://docs.oracle.com/javase/9/jshell/title.htm    JShell 사용자 가이드의 한글화 문서는 다음과 같이 구성됩니다.
+ 1. JShell 소개 2. 스니펫 3. 명령 4. 편집 5. 외부 코드 6.</description>
+    </item>
+    
+    <item>
+      <title>JShell: 3. 명령</title>
+      <link>http://taewan.kim/trans/jshell/jshell03/</link>
+      <pubDate>Wed, 27 Dec 2017 19:15:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/jshell/jshell03/</guid>
+      <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.
+  원문: https://docs.oracle.com/javase/9/jshell/commands.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 3 Commands  문서번호: E87478-01 배포: 2017년 09월  라이센스: 원본 문서 라이센스를 준수합니다.  원문: https://docs.oracle.com/javase/9/jshell/title.htm    JShell 사용자 가이드의 한글화 문서는 다음과 같이 구성됩니다.
+ 1. JShell 소개 2. 스니펫 3. 명령 4. 편집 5. 외부 코드 6.</description>
+    </item>
+    
+    <item>
+      <title>JShell: 2. 스니펫(Snippets)</title>
+      <link>http://taewan.kim/trans/jshell/jshell02/</link>
+      <pubDate>Wed, 27 Dec 2017 19:10:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/jshell/jshell02/</guid>
+      <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.
+  원문: https://docs.oracle.com/javase/9/jshell/snippets.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 2 Snippets  문서번호: E87478-01 배포: 2017년 09월  라이센스: 원본 문서 라이센스를 준수합니다.  원문: https://docs.oracle.com/javase/9/jshell/title.htm    JShell 사용자 가이드의 한글화 문서는 다음과 같이 구성됩니다.
+ 1. JShell 소개 2. 스니펫 3. 명령 4. 편집 5. 외부 코드 6.</description>
+    </item>
+    
+    <item>
+      <title>JShell:1. JShell 소개</title>
+      <link>http://taewan.kim/trans/jshell/jshell01/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/jshell/jshell01/</guid>
+      <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.
+  원문: https://docs.oracle.com/javase/9/jshell/introduction-jshell.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 1 Introduction to JShell  문서번호: E87478-01 배포: 2017년 09월  라이센스: 원본 문서 라이센스를 준수합니다.  원문: https://docs.oracle.com/javase/9/jshell/title.htm    JShell 사용자 가이드의 한글화 문서는 다음과 같이 구성됩니다.
+ 1. JShell 소개 2. 스니펫 3. 명령 4. 편집 5.</description>
+    </item>
+    
+    <item>
+      <title>[번역]CS231n - 시각 인식을 위한 CNN(Convolutional Neural Networks for Visual Recognition)</title>
+      <link>http://taewan.kim/trans/cs231n/convolutional-networks/</link>
+      <pubDate>Fri, 06 Jan 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/cs231n/convolutional-networks/</guid>
+      <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.
+  원문: https://docs.oracle.com/javase/9/jshell/introduction-jshell.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 1 Introduction to JShell  문서번호: E87478-01 배포: 2017년 09월  라이센스: 원본 문서 라이센스를 준수합니다.  원문: https://docs.oracle.com/javase/9/jshell/title.htm    CS231n - 시각 인식을 위한 CNN(Convolutional Neural Networks for Visual Recognition)  Table of Contents:  Architecture Overview ConvNet Layers Convolutional Layer Pooling Layer Normalization Layer Fully-Connected Layer Converting Fully-Connected Layers to Convolutional Layers ConvNet Architectures Layer Patterns Layer Sizing Patterns Case Studies (LeNet / AlexNet / ZFNet / GoogLeNet / VGGNet) Computational Considerations Additional References   Convolutional Neural Networks (CNNs / ConvNets) Convolutional Neural Networks are very similar to ordinary Neural Networks from the previous chapter: they are made up of neurons that have learnable weights and biases.</description>
+    </item>
+    
+  </channel>
+</rss>

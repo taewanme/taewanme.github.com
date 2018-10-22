@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine Learning on taewan.kim 블로그</title>
+    <link>http://taewan.kim/categories/machine-learning/</link>
+    <description>Recent content in Machine Learning on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Aug 2018 16:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Matplotlib 한글 폰트 설정</title>
+      <link>http://taewan.kim/post/matplotlib_hangul/</link>
+      <pubDate>Wed, 08 Aug 2018 16:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/matplotlib_hangul/</guid>
+      <description>파이썬으로 데이터 시각화를 할 때 &amp;ldquo;Matplotlib&amp;rdquo;을 주로 사용합니다. 최근에 Bokeh나 seaborn와 같은 라이브러리를 사용하기도 하지만, IPython에서 작업할 때 주로 Matplotlib를 선호합니다.
+최신의 사용이 편리하고 우수한 다른 라이브러리가 있음에도 Matplotlib를 선호하는 이유는 마지막 실행 결과를 보관하는 기능 때문입니다. Jupyter 파일을 github과 같은 레파지터리에 올려 놓아도 matplotlib는 마지막 실행 결과를 유지하는 것이 장점입니다. Bokeh는 사용하기 편리하고, API가 직관적이며 화려만 웹 기반 차트 제공합니다. 그러나 Bokeh가 웹 기반 기술이다 보니 Jupyter에서 마지막 실행 결과를 보관하지 못하는 한계를 보입니다.</description>
+    </item>
+    
+    <item>
+      <title>scikit-learn의 fetch_mldata(&#39;MNIST original&#39;) 에러</title>
+      <link>http://taewan.kim/post/sklearn_mnist_fetch_error/</link>
+      <pubDate>Sat, 04 Aug 2018 19:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/sklearn_mnist_fetch_error/</guid>
+      <description>scikit-learn은 테스트 데이터로 사용할 수 있는 여러 데이터셋를 간편하게 로딩하는 기능을 제공합니다. 특히 머신러닝 테스트에 사용할 수 있는 대표적인 데이터셋을 로딩하는 기능을 제공하기 때문에, 이 기능을 이용하여 많은 문서가 이용하여 입문자 문서를 작성하는 것이 일반적입니다.
+scikit-learn이 제공하는 데이터셋 로딩 기능 중에서 fetch_mldata 함수는 mldata.org의 데이터셋을 이용합니다. 최근에 mldata.org 사이트가 장애가 발생하면서 이 함수는 정상적으로 작동하지 않습니다. 이 오류를 우회하는 방법을 정리합니다.
+무엇이 문제인가? &amp;lt;그림 1&amp;gt;과 같이 fetch_mldata를 실행하면 HTTP Error 404 에로 로그가 출력됩니다.</description>
+    </item>
+    
+    <item>
+      <title>머신러닝 용어: Example, Sample &amp; Data Point</title>
+      <link>http://taewan.kim/post/sample_example/</link>
+      <pubDate>Wed, 18 Jul 2018 19:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/sample_example/</guid>
+      <description>머신러닝을 공부하면서 굉장히 생소하게 느껴졌던 용어가 몇 개 있습니다. 그 중에서 가장 어색했던 용어는 데이터셋의 개별 데이터를 표현하는 용어였습니다. 일반적으로 머신러닝 데이터셋의 개별 데이터를 다음과 같은 용어로 표현합니다.
+ Example Sample Instance Data Point  문서를 번역하거나 정리하는 과정에서 위 용어를 어떻게 처리해야 할지가 항상 고민이었습니다. 개별 데이터를 왜 이렇게 표현하는지 제 개인적인 느낌을 정리해 보겠습니다.
+Example과 Sample  The MNIST database of handwritten digits, available from this page, has a training set of 60,000 examples, and a test set of 10,000 examples.</description>
+    </item>
+    
+    <item>
+      <title>파이썬 데이터 사이언스 Cheat Sheet: NumPy 기초, 기본</title>
+      <link>http://taewan.kim/post/numpy_cheat_sheet/</link>
+      <pubDate>Tue, 16 Jan 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/numpy_cheat_sheet/</guid>
+      <description>파이썬 기반 데이터 분석 환경에서 NumPy1는 행렬 연산을 위한 핵심 라이브러리입니다. NumPy는 &amp;ldquo;Numerical Python&amp;ldquo;의 약자로 대규모 다차원 배열과 행렬 연산에 필요한 다양한 함수를 제공합니다. 특히 메모리 버퍼에 배열 데이터를 저장하고 처리하는 효율적인 인터페이스를 제공합니다. 파이썬 list 객체를 개선한 NumPy의 ndarray 객체를 사용하면 더 많은 데이터를 더 빠르게 처리할 수 있습니다.
+NumPy는 다음과 같은 특징을 갖습니다.
+ 강력한 N 차원 배열 객체 정교한 브로드케스팅(Broadcast) 기능 C/C ++ 및 포트란 코드 통합 도구 유용한 선형 대수학, 푸리에 변환 및 난수 기능 범용적 데이터 처리에 사용 가능한 다차원 컨테이너  본 문서는 cs231n 강좌의 Python Numpy Tutorial 문서와 DataCamp의 Python For Data Science Cheat Sheet NumPy Basics 문서를 참조하여 작성하였습니다.</description>
+    </item>
+    
+    <item>
+      <title>CNN, Convolution Neural Network 요약</title>
+      <link>http://taewan.kim/post/cnn/</link>
+      <pubDate>Thu, 04 Jan 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/cnn/</guid>
+      <description>Fully Connected Layer1 만으로 구성된 인공 신경망의 입력 데이터는 1차원(배열) 형태로 한정됩니다. 한 장의 컬러 사진은 3차원 데이터입니다. 배치 모드에 사용되는 여러장의 사진은 4차원 데이터입니다. 사진 데이터로 전연결(FC, Fully Connected) 신경망을 학습시켜야 할 경우에, 3차원 사진 데이터를 1차원으로 평면화시켜야 합니다. 사진 데이터를 평면화 시키는 과정에서 공간 정보가 손실될 수밖에 없습니다. 결과적으로 이미지 공간 정보 유실로 인한 정보 부족으로 인공 신경망이 특징을 추출 및 학습이 비효율적이고 정확도를 높이는데 한계가 있습니다. 이미지의 공간 정보를 유지한 상태로 학습이 가능한 모델이 바로 CNN(Convolutional Neural Network)입니다.</description>
+    </item>
+    
+    <item>
+      <title>신경망 W 행렬 표기법: &#39;ij&#39;/&#39;ji&#39; 의 차이점?</title>
+      <link>http://taewan.kim/post/wij_and_wji/</link>
+      <pubDate>Sat, 23 Dec 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/wij_and_wji/</guid>
+      <description>제가 처음에 딥러닝을 학습할 때 가장 혼란스러웠던 것은 입력 레이어의 데이터와 가중치 W의 합 표현하는 &amp;ldquo;Z(Weighted Sum)&amp;rdquo; 수식이 문서마다 다른 것이었습니다.
+  &amp;lt;식 1&amp;gt;. Z(Weighted Sum)을 표현하는 수식 $$ \begin{align} Z^{[l]} &amp;amp; = W^{[l]T}A^{[l-1]} &amp;amp; (1) \\
+Z^{[l]} &amp;amp; = W^{[l]}A^{[l-1]} &amp;amp; (2) \end{align} $$   &amp;lt;식 1&amp;gt;의 (1)과 (2)는 다른 수식임에도 어떤 자료는 (1)과 같이 표현하고 어떤 자료는 (2)와 같이 표현합니다. &amp;lt;식 1&amp;gt; 표기법의 각 요소는 다음과 정리할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>딥러닝 역전파 수식 행렬의 전치(Transpose) 기준?</title>
+      <link>http://taewan.kim/post/backpropagation_matrix_transpose/</link>
+      <pubDate>Wed, 20 Dec 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/backpropagation_matrix_transpose/</guid>
+      <description>Backpropagation을 직접 구현하는 과정에서 이유 없이 갑자기 발생하는 행렬 전치(Transpose)와 관련된 의문점이 오랜 기간 절 괴롭혔습니다. Backpropagation을 하기 위해서 Cost Function을 해당 계층의 W(가중치)로 편미분 한 후, 현재 W를 수정하는 수식을 유도하는 과정에서 일부 행렬이 전치행렬로 갑자기 변경됩니다. 문제는 제가 행렬이 전치(Transpose)되는 근거와 기준을 이해할 수가 없다는 것입니다. 딥러닝 책이나 웹 문서를 찾아보면 &amp;ldquo;편미분 과정에서 적당히 행렬을 맞춰준다.&amp;ldquo;라는 표현으로 이 부분을 설명합니다. 제가 찾고 싶었던 답은 Backpropagation 미분 과정에서 행렬의 방향성(Transpose 할 것이나 말 것이냐)은 어떻게 결정되는가입니다.</description>
+    </item>
+    
+    <item>
+      <title>딥러닝을 위한 Norm, 노름</title>
+      <link>http://taewan.kim/post/norm/</link>
+      <pubDate>Fri, 15 Dec 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/norm/</guid>
+      <description>기계학습 자료에서 간혹 Norm과 관련된 수식이나 표기법을 나오면 당황스러울 때가 있습니다. 선형대수에 익숙하지 않다면 Norm이 이상하게 보일 수 있습니다. 본 문서에서는 인공신공망과 기계학습 일고리즘에서 사용되는 Norm을 이해하는 것을 목표로 최소한도의 Norm 개념을 정리합니다.
+일반적으로 딥러닝에서 네트워크의 Overfitting(과적합) 문제를 해결하는 방법으로 다음과 같은 3가지 방법을 제시합니다.
+ 더 많은 데이터를 사용할 것 Cross Validation Regularization  더 이상 학습 데이터를 추가할 수 없거나 학습 데이터를 늘려도 과적합 문제가 해결되지 않을 때에는 3번 Regularization을 사용해야 합니다.</description>
+    </item>
+    
+    <item>
+      <title>Hidden Layer의 오차 계산</title>
+      <link>http://taewan.kim/post/error_in_hidden/</link>
+      <pubDate>Fri, 08 Dec 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/error_in_hidden/</guid>
+      <description>Neural Network에서는 Forward Propagation 결과로 계산된 Output Layer 출력과 해당 입력 데이터 레이블의 차이를 계산하여 오차(손실, Error/Loss)를 계산합니다. 그리고 이 오차 최소화를 목표로 Hidden Layer들의 Weight(가중치)와 Bias(편향)를 업데이트합니다. 이렇게 딥러닝에서는 Neural Network에 데이터를 지속해서 흘려보내고, 오차를 계산한 후 Weight와 Bias를 수정하는 작업을 반복합니다.
+Output Layer 출력과 레이블의 차이를 계산하고 은닉층의 Weight와 Bias를 업데이트하는 일련의 과정을 &amp;ldquo;역전파&amp;rdquo; 혹은 &amp;ldquo;Backpropagation&amp;ldquo;이라고 합니다. &amp;ldquo;Backpropagation&amp;ldquo;에서는 출력층의 오차로부터 은닉층의 노드별 오차를 계산하는 것이 핵심입니다. 은닉층의 노드별 오차를 알아야 은닉층의 Weight와 Bias를 수정할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>Neural Network 표기법(Feat: Andrew NG)</title>
+      <link>http://taewan.kim/post/nn_notation/</link>
+      <pubDate>Tue, 28 Nov 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/nn_notation/</guid>
+      <description>그림 1: Neural Network 예제    Neural Network에 대한 Forward Propagation, Backpropagation, predict, Cost Function 등을 정리할 때 뉴럴 네트워크의 구성 요소와 각 위치가 혼동되어 어려움을 겪는 경우가 많습니다. Coursera에서 deeplearning.ai가 진행하는 Neural Networks and Deep Learning 강의에서 Neural Network 표기법 잘 정리하고 있습니다. Andrew NG 교수가 소개한 Neural Network 표기법을 정리합니다. 이 표기법을 사용하면 Neural Network의 여러 수식과 알고리즘을 다룰 때 혼동을 최소화 할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>tanh 미분 정리</title>
+      <link>http://taewan.kim/post/tanh_diff/</link>
+      <pubDate>Tue, 19 Sep 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/tanh_diff/</guid>
+      <description>Hyperbolic Tangent(tanh) 함수는 Sigmoid의 대체제로 사용될 수 있는 활성화 함수입니다. Hyperbolic Tangent(tanh)는 Sigmoid와 매우 유사합니다. 실제로, Hyperbolic Tangent 함수는 확장 된 시그모이드 함수입니다. tanh와 Sigmoid의 차이점은 Sigmoid의 출력 범위가 0에서 1 사이인 반면 tanh와 출력 범위는 -1에서 1사이라는 점입니다. Sigmoid와 비교하여 tanh와는 출력 범위가 더 넓고 경사면이 큰 범위가 더 크기 때문에 더 빠르게 수렴하여 학습하는 특성이 있습니다.
+Sigmoid와 비교하여 중심점이 0이고 범위가 기울기 넓은 차이점이 있지만 Sigmoid의 치명적인 단점인 Vanishing gradient problem 문제를 그대로 갖고 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>Sigmoid 함수 미분 정리</title>
+      <link>http://taewan.kim/post/sigmoid_diff/</link>
+      <pubDate>Mon, 18 Sep 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/sigmoid_diff/</guid>
+      <description>Sigmoid 함수는 S자와 유사한 완만한 시그모이드 커브 형태를 보이는 함수입니다. Sigmoid는 대표적인 Logistic 함수입니다. Sigmoid 함수는 모든 실수 입력 값을 0보다 크고 1보다 작은 미분 가능한 수로 변환하는 특징을 갖습니다. 모든 입력에 대하여 sigmoid는 S와 같은 형태로 미분 가능한 0~1 사이의 값을 반환하기에 Logistic Classification과 같은 분류 문제의 가설과 비용 함수(Cost Function)1에 많이 사용됩니다. sigmoid의 반환 값은 확률형태이기 때문에 결과를 확률로 해석할 때 유용합니다.
+딥러닝에서는 노드에 임계값을 넘을 때만 출력하는 활성 함수로도 이용됩니다.</description>
+    </item>
+    
+    <item>
+      <title>선형회귀 MSE 오차함수 미분 및 코드 구현</title>
+      <link>http://taewan.kim/post/cost_function_derivation/</link>
+      <pubDate>Tue, 09 Aug 2016 16:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/cost_function_derivation/</guid>
+      <description>지도학습의 선형회귀 모델은 비용 함수로 MSE(Mean squared error, 평균 제곱 오차) 사용합니다. MSE를 사용하여 가장 간단한 선형회귀 모델을 학습시키는 알고리즘을 구현해 보겠습니다.
+이 문서에서는 여러 수식을 사용합니다. 수식에서 스칼라, 벡터, 행렬을 다음과 같은 표기법을 사용할 것입니다.
+ $w$: 스칼라, 소문자 표기는 스칼라를 의미합니다. 예제에서는 가중치 1개를 의미합니다.
+ $\boldsymbol{w}$: 벡터, 소문자 볼츠체는 벡트를 이미합니다. $W$: 행렬, 대문자는 행렬(Matrix)을 의미합니다.  본문에서 $\theta$와 $\boldsymbol{w}$는 모두 가중치 벡터를 의미합니다.
+1. 지도학습이란? 지도학습의 데이터는 사례와 라벨로 구성됩니다.</description>
+    </item>
+    
+  </channel>
+</rss>

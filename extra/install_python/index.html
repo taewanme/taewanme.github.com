@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>파이썬 설치</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="파이썬 설치" />
+<meta property="og:description" content="파이썬 가상 개발 환경을 소개합낟. pyenv, virtualenv, autoenv, pip 사용법을 소개합니다. " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/extra/install_python/" />
+
+
+
+<meta property="article:published_time" content="2017-09-06T10:50:36&#43;09:00"/>
+<meta property="article:modified_time" content="2017-09-06T10:50:36&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		
+		
+		<header class="post__header clearfix">
+			<h1 class="post__title">파이썬 설치 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2017-09-06 10:50:36 &#43;0900 KST">September 06, 2017</time>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+			
+
+<h2 id="ubuntu-python-with-apt-get-설치-제거">ubuntu: Python with apt-get (설치/제거)</h2>
+
+<p>apt-get으로 설치명령과 로그는 다음과 같습니다.</p>
+
+<p>실제 설치 로그는 다음과 같습니다.</p>
+
+<pre><code>ubuntu@e7d50d:~$ sudo apt-get install python
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following additional packages will be installed:
+  libpython-stdlib libpython2.7-minimal libpython2.7-stdlib python-minimal python2.7 python2.7-minimal
+Suggested packages:
+  python-doc python-tk python2.7-doc binutils binfmt-support
+The following NEW packages will be installed:
+  libpython-stdlib libpython2.7-minimal libpython2.7-stdlib python python-minimal python2.7 python2.7-minimal
+0 upgraded, 7 newly installed, 0 to remove and 9 not upgraded.
+Need to get 3,915 kB of archives.
+After this operation, 16.6 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://oracle.clouds.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libpython2.7-minimal amd64 2.7.12-1ubuntu0~16.04.1 [339 kB]
+Get:2 http://oracle.clouds.archive.ubuntu.com/ubuntu xenial-updates/main amd64
+# 중간 로그 생략
+Get:7 http://oracle.clouds.archive.ubuntu.com/ubuntu xenial/main amd64 python amd64 2.7.11-1 [137 kB]
+Fetched 3,915 kB in 2s (1,543 kB/s)
+## 중간로그 생략
+Setting up python2.7 (2.7.12-1ubuntu0~16.04.1) ...
+Setting up libpython-stdlib:amd64 (2.7.11-1) ...
+Setting up python (2.7.11-1) ...
+ubuntu@e7d50d:~$ python --version
+Python 2.7.12
+ubuntu@e7d50d:~$
+</code></pre>
+
+<p>python 제거 방법으 다음과 같습니다.</p>
+
+<pre><code>sudo apt-get purge python
+</code></pre>
+
+<p>실제 설치 로그는 다음과 같습니다.</p>
+
+<pre><code>ubuntu@e7d50d:~$ sudo apt-get purge python
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  libpython-stdlib libpython2.7-minimal libpython2.7-stdlib python-minimal python2.7 python2.7-minimal
+# 중간로그 생략
+After this operation, 650 kB disk space will be freed.
+Do you want to continue? [Y/n] y
+(Reading database ... 82584 files and directories currently installed.)
+Removing python (2.7.11-1) ...
+Purging configuration files for python (2.7.11-1) ...
+Processing triggers for man-db (2.7.5-1) ...
+</code></pre>
+
+<h2 id="리눅스-python-소스-설치">리눅스 Python 소스 설치</h2>
+
+<p>CentOS, Oracle Linux, Redhat Enterprise 리눅스에서는 다음과 같이 소스로 파이썬을 설치할 수 있습니다.</p>
+
+<h3 id="python-2-7-소스코드-다운로드">Python 2.7 소스코드: 다운로드</h3>
+
+<p>소스코드의 위치는 다음 페이지에서 확인 가능합니다.
+ - <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></p>
+
+<p>Python-2.7.12의 소스 파일 위치는 다음과 같습니다.<br />
+- <a href="https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tar.xz">https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tar.xz</a></p>
+
+<p>다음과 같이 wget 명령으로 파이썬 파일을 다운로드 할 수 있씁니다.</p>
+
+<pre><code>[opc@b4b8b6 ~]$ wget https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tar.xz
+--2017-09-07 03:53:10--  https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tar.xz
+Resolving www.python.org... 151.101.40.223, 2a04:4e42:a::223
+Connecting to www.python.org|151.101.40.223|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 12390820 (12M) [application/octet-stream]
+Saving to: “Python-2.7.12.tar.xz”
+
+100%[==========================================================================================================&gt;] 12,390,820  4.23M/s   in 2.8s
+
+2017-09-07 03:53:16 (4.23 MB/s) - “Python-2.7.12.tar.xz” saved [12390820/12390820]
+</code></pre>
+
+<h3 id="python-2-7-소스코드-압축풀기">Python 2.7 소스코드: 압축풀기</h3>
+
+<pre><code>[opc@b4b8b6 ~]$ tar xJvf Python-2.7.12.tar.xz
+...
+# 로그 생략
+Python-2.7.12/Demo/tix/bitmaps/rightj.xbm
+Python-2.7.12/Demo/tix/bitmaps/combobox.xbm
+Python-2.7.12/Demo/tix/bitmaps/leftj.xbm
+</code></pre>
+
+<h3 id="python-2-7-소스코드-config">Python 2.7 소스코드: config</h3>
+
+<pre><code>[opc@b4b8b6 ~]$ cd Python-2.7.12
+[opc@b4b8b6 Python-2.7.12]$ ./configure --prefix=/usr/local/python2.7 --enable-shared
+## 로그 생략
+checking for ensurepip... no
+configure: creating ./config.status
+config.status: creating Makefile.pre
+config.status: creating Modules/Setup.config
+config.status: creating Misc/python.pc
+config.status: creating Modules/ld_so_aix
+config.status: creating pyconfig.h
+creating Modules/Setup
+creating Modules/Setup.local
+creating Makefile
+[opc@b4b8b6 Python-2.7.12]$
+</code></pre>
+
+<h3 id="python-2-7-소스코드-빌드-테스트">Python 2.7 소스코드: 빌드 테스트</h3>
+
+<p>빌드 테스트를 다음과 같이 수행합니다.</p>
+
+<pre><code>[opc@b4b8b6 Python-2.7.12]$ make test
+## 로그 생략
+[401/401] test_zlib
+test_zlib skipped -- No module named zlib
+353 tests OK.
+1 test altered the execution environment:
+    test_ftplib
+47 tests skipped:
+    test_aepack test_al test_applesingle test_bsddb185 test_bsddb3
+    test_bz2 test_cd test_cl test_codecmaps_cn test_codecmaps_hk
+    test_codecmaps_jp test_codecmaps_kr test_codecmaps_tw test_curses
+    test_dl test_gdb test_gl test_gzip test_idle test_imageop
+    test_imgfile test_kqueue test_linuxaudiodev test_macos
+    test_macostools test_msilib test_ossaudiodev test_readline
+    test_scriptpackages test_smtpnet test_socketserver test_sqlite
+    test_ssl test_startfile test_sunaudiodev test_tcl test_timeout
+    test_tk test_ttk_guionly test_ttk_textonly test_turtle
+    test_urllib2net test_urllibnet test_winreg test_winsound
+    test_zipfile64 test_zlib
+12 skips unexpected on linux2:
+    test_bz2 test_gdb test_gzip test_idle test_readline test_ssl
+    test_tcl test_tk test_ttk_guionly test_ttk_textonly test_turtle
+    test_zlib
+</code></pre>
+
+<h3 id="python-2-7-소스코드-설치">Python 2.7 소스코드: 설치</h3>
+
+<p><code>make install</code>으로 설치를 시작합니다.</p>
+
+<pre><code>[opc@b4b8b6 Python-2.7.12]$ sudo make install
+</code></pre>
+
+<h3 id="python-2-7-소스코드-환경-변수-설정">Python 2.7 소스코드: 환경 변수 설정</h3>
+
+<p>.bash_profile 혹은 .zshrc에 다음과 같이 환경 변수 설정을 추가합니다.</p>
+
+<pre><code>PY27=/usr/local/python2.7/
+export PATH=$PATH:${PY27}/bin
+export LD_LIBRARY_PATH=${PY27}/lib:$LD_LIBRARY_PATH
+</code></pre>
+
+<h3 id="python-2-7-소스코드-쉘-설정-반영">Python 2.7 소스코드: 쉘 설정 반영</h3>
+
+<p>다음과 같이 shell 설정을 반영하고 python 설치 여부를 확인 합니다.</p>
+
+<pre><code>[opc@b4b8b6 Python-2.7.12] source ~/.bash_profile
+[opc@b4b8b6 Python-2.7.12]$ python --version
+Python 2.7.12
+[opc@b4b8b6 Python-2.7.12]$ which python
+/usr/local/python2.7/bin/python
+[opc@b4b8b6 Python-2.7.12]$
+</code></pre>
+
+<h2 id="리눅스-python-rpm-설치">리눅스 Python RPM 설치</h2>
+
+<p>//todo</p>
+
+		</div>
+		
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/extra/install_python/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#ubuntu-python-with-apt-get-설치-제거">ubuntu: Python with apt-get (설치/제거)</a></li>
+<li><a href="#리눅스-python-소스-설치">리눅스 Python 소스 설치</a>
+<ul>
+<li><a href="#python-2-7-소스코드-다운로드">Python 2.7 소스코드: 다운로드</a></li>
+<li><a href="#python-2-7-소스코드-압축풀기">Python 2.7 소스코드: 압축풀기</a></li>
+<li><a href="#python-2-7-소스코드-config">Python 2.7 소스코드: config</a></li>
+<li><a href="#python-2-7-소스코드-빌드-테스트">Python 2.7 소스코드: 빌드 테스트</a></li>
+<li><a href="#python-2-7-소스코드-설치">Python 2.7 소스코드: 설치</a></li>
+<li><a href="#python-2-7-소스코드-환경-변수-설정">Python 2.7 소스코드: 환경 변수 설정</a></li>
+<li><a href="#python-2-7-소스코드-쉘-설정-반영">Python 2.7 소스코드: 쉘 설정 반영</a></li>
+</ul></li>
+<li><a href="#리눅스-python-rpm-설치">리눅스 Python RPM 설치</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

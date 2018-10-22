@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Book on taewan.kim 블로그</title>
+    <link>http://taewan.kim/categories/book/</link>
+    <description>Recent content in Book on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 08 Oct 2018 21:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/categories/book/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>&#39;살인자의 기억법&#39; 리뷰</title>
+      <link>http://taewan.kim/book/memory_of_murder/</link>
+      <pubDate>Mon, 08 Oct 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/book/memory_of_murder/</guid>
+      <description>요즘 김영하 &amp;amp; 유시민 작가가 나오는 &amp;ldquo;알뜰신잡3&amp;rdquo;을 즐겨봅니다. 이분들이 복잡한 개념을 단순하고 이해하기 쉽게 설명하는 모습을 보고 있으면 정말 감동적입니다. 이 예능을 보면서 김영하 작가에 대해서 궁금해 졌습니다. 이런 사람은 어떤 소설을 쓰는지 알고 싶어졌습니다. 이참에 김영하 님의 대표작인 &amp;ldquo;살인자의 기억법&amp;rdquo;을 읽어봤습니다.
+&amp;ldquo;살인자의 기억법&amp;ldquo;의 마지막 반전은 제 경우에는 역대급이있습니다. &amp;ldquo;살인자의 기억법&amp;ldquo;의 결과에 대한 공개 혹은 암시는 &amp;ldquo;살인자의 기억법&amp;ldquo;의 미래 독자에게는 연쇄살인과 같은 범죄 행위라고 생각합니다. 이 문서는 &amp;ldquo;살인자의 기억법&amp;ldquo;에 대한 스포일러를 최대한 조심하겠습니다.</description>
+    </item>
+    
+    <item>
+      <title>&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</title>
+      <link>http://taewan.kim/book/understaning_ml_with_math/</link>
+      <pubDate>Sat, 29 Sep 2018 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/book/understaning_ml_with_math/</guid>
+      <description>&amp;lsquo;기초 수학으로 이해하는 머신러닝 알고리즘&amp;lsquo;은 올해 초에 읽고 도움을 많이 받은 책입니다. 위키북스에서 출간한 도서로 일본 도서의 번역서입니다. 일본 도서 특유의 만화적인 전개와 다수의 그림으로 채워져 있습니다.
+가벼워 보이지만 내용은 묵직한 책 책 제목, 분량(252페이지), 구성을 보고 2~3일이면 완독할 수 있다고 가볍게 접근했다가 상당히 고생했던 기업이 납니다. 물론 독자의 수학에 대한 배경과 접근 방식에 따라서 이런 느낌은 다를 수 있습니다.
+제 경우에는 &amp;ldquo;Classification은 구분 선의 법선 벡터를 학습하는 과정이다&amp;rdquo;라는 내용에 막혀서 고민했던 기억이 납니다.</description>
+    </item>
+    
+    <item>
+      <title>&#39;82년생 김지영&#39; 리뷰</title>
+      <link>http://taewan.kim/book/1982kim_ji_young/</link>
+      <pubDate>Mon, 24 Sep 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/book/1982kim_ji_young/</guid>
+      <description>올해 가장 유명한 소설은 ‘82년생 김지영’인 것 같습니다. 왜 이렇게 논란이 되는지 궁금해서 추석 연휴에 읽어봤습니다. ‘82년생 김지영’은 호불호가 강하게 갈라질 수밖에 없는 책입니다. 크게 공감하는 부류(여성)와 강한 반감을 갖는 부류(남성)로 나뉠 수밖에 없는 구성입니다.
+제 경우에는 ‘82년생 김지영’을 읽으면서 반감, 인정, 공감 그리고 동질감(의사와)에 대해 아쉬운 감정이 들었습니다.
+1982년생 김지영 구성 ‘82년생 김지영’은 어머니의 출산으로부터 김지영의 출산과 육아까지의 과정을 담당 의사가 인터뷰한 내용을 토대로 설명하는 형식입니다. 김지영이 경험한 여성 차별을 9개의 개별적인 사건으로 이야기합니다.</description>
+    </item>
+    
+    <item>
+      <title>뇌는 어떻게 결정하는가?</title>
+      <link>http://taewan.kim/book/how_we_decide/</link>
+      <pubDate>Wed, 04 Apr 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/book/how_we_decide/</guid>
+      <description>최근에 제가 집중하고 있는 키워드는 인공지능 그중에서도 딥러닝 입니다.
+ 인공지능이란 &amp;ldquo;인간이 수행하는 지적인 작업의 자동화&amp;rdquo;하는 것이라고 정의할 수 있습니다.
+ 일반적으로 인공지능 그 중에서도 딥러닝을 소개할 때 인간의 뇌에서 영감을 받아 만든 기술로 데이터를 학습하여 숨겨진 패턴을 찾아내는 기술이라고 설명합니다.
+딥러닝 기술을 익히면서 정말 사람의 뇌는 어떻게 움직이는지 궁금해졌습니다. 이런 궁금증으로 읽기 시작한 책이 &amp;ldquo;뇌는 어떻게 결정하는가?&amp;ldquo;입니다. 이 책에서 인공 지능 / 딥러닝은 전혀 언급되지 않습니다. 저자는 사람의 뇌가 동작하는 방식을 사례를 중심으로 소개합니다.</description>
+    </item>
+    
+    <item>
+      <title>뇌는 어떻게 결정하는가?</title>
+      <link>http://taewan.kim/post/how_we_decide/</link>
+      <pubDate>Wed, 04 Apr 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/how_we_decide/</guid>
+      <description>최근에 제가 집중하고 있는 키워드는 인공지능 그중에서도 딥러닝 입니다.
+ 인공지능이란 &amp;ldquo;인간이 수행하는 지적인 작업의 자동화&amp;rdquo;하는 것이라고 정의할 수 있습니다.
+ 일반적으로 인공지능 그 중에서도 딥러닝을 소개할 때 인간의 뇌에서 영감을 받아 만든 기술로 데이터를 학습하여 숨겨진 패턴을 찾아내는 기술이라고 설명합니다.
+딥러닝 기술을 익히면서 정말 사람의 뇌는 어떻게 움직이는지 궁금해졌습니다. 이런 궁금증으로 읽기 시작한 책이 &amp;ldquo;뇌는 어떻게 결정하는가?&amp;ldquo;입니다. 이 책에서 인공 지능 / 딥러닝은 전혀 언급되지 않습니다. 저자는 사람의 뇌가 동작하는 방식을 사례를 중심으로 소개합니다.</description>
+    </item>
+    
+    <item>
+      <title> [책리뷰]실용주의 프로그래머 : The Pragmatic Programmer</title>
+      <link>http://taewan.kim/post/programatic/</link>
+      <pubDate>Sun, 04 Sep 2005 21:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/programatic/</guid>
+      <description>저자: Andrew Hunt , David Thomas 역자: 정지호 , 김창준 출판사: Insight (인사이트) 분류: 번역서 페이지: 480 등급: A+ 도서정보:http://kangcom.com/common/bookinfo/bookinfo.asp?sku=200505180011   책 중에 시간을 두고 되풀이해서 읽게 되는 책들이 있다. 나는 막심고리끼의 &amp;ldquo;어머니&amp;rdquo;, 법정 스님의 &amp;ldquo;무소유&amp;rdquo;를 즐겨 읽는다. 꿀꿀할때 왠지 일이 꼬이거나 어려울 때 읽어보면 새로운 느낌을 받는다. 분명히 전에 읽었을 때는 이런 느낌이 아니었는데&amp;hellip; 이 부분의 의미가 이런 건가? 항상 신선한 느낌을 준다. 실용주의 프로그래머는 그런 책이다.</description>
+    </item>
+    
+  </channel>
+</rss>

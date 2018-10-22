@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vm on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/vm/</link>
+    <description>Recent content in Vm on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 30 Apr 2018 11:59:47 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/vm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>OCI Classic: Compute 서비스, VM의 고정 Public IP 지정</title>
+      <link>http://taewan.kim/cloud/oci_classic_computing_with_permanent_public_ip/</link>
+      <pubDate>Mon, 30 Apr 2018 11:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_classic_computing_with_permanent_public_ip/</guid>
+      <description>OCI Classic: Compute 서비스, VM 생성 문서를 참고하여 VM을 생성하면 Public IP가 할당됩니다. 이 Public IP를 이용하여 외부에서 VM에 접근이 가능합니다. 그러나 이렇게 VM을 만들면, VM을 재시작할 때마다 &amp;lt;그림 1&amp;gt;과 같이 Public IP가 변경됩니다. Public IP가 자주 변경되면, 여러 서버를 구성 할 때 관리가 복잡해집니다.
+ 그림 1: OCI-Classic VM의 Public IP 변경: {129.152.141.152 =&amp;gt; 129.152.141.117}    앞에서 만든 VM을 재시작하면 Public IP가 변경되는 이유는 VM을 생성할 때, Network 설정 단계에서 &amp;lt;그림 2&amp;gt;와 같이 &amp;ldquo;Public IP Address&amp;ldquo;가 &amp;ldquo;Auto Generation&amp;ldquo;으로 설정했기 때문입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI Classic: Compute 서비스, VM 생성</title>
+      <link>http://taewan.kim/cloud/oci_classic_computing/</link>
+      <pubDate>Fri, 27 Apr 2018 15:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_classic_computing/</guid>
+      <description>오라클은 클라우드 IaaS로 Oracle Cloud Infrastructure(OCI)와 Oracle Cloud Infrastructure Classic(OCI Classic) 두 가지를 제공하고 있습니다. 오라클은 Public Cloud IaaS로 OPC(Oracle Public Cloud)를 2014년 OOW(Oracle Open World)에서 공개하였고, OOW 2017에서 OCI Classic으로 서비스 브랜드 명을 변경하였습니다.
+OCI Classic은 Nimbula Director(Xen 기반 하이퍼바이저)을 기반으로 만들어졌으며, IaaS 서비스로 가상머신 컴퓨팅과 네트워크(Shared &amp;amp; IP Networks)를 제공합니다.
+본 문서에서는 Oracle Cloud에서 OCI Classic에서 VM을 생성하는 과정을 소개합니다.
+VM 생성 시나리오 다음과 같은 시나리오를 바탕으로 VM을 구성해 보겠습니다.</description>
+    </item>
+    
+    <item>
+      <title>오라클 IaaS를 이용한 VM 인스턴스 생성</title>
+      <link>http://taewan.kim/cloud/iaas_vm/</link>
+      <pubDate>Sun, 05 Mar 2017 22:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/iaas_vm/</guid>
+      <description>오라클 클라우드의 IaaS 서비스에서 Ubuntu 14.04를 VM 인스턴스로 만드는 절차를 정리합니다. 오라클 클라우드에서 가상머신을 생성하기 위해서는 Oracle Cloud의 계정이 필요합니다. 계정을 생성하는 방법에 대해서는 &amp;ldquo;오라클 클라우드 계정 생성하기&amp;rdquo; 를 참조하시기 바랍니다.
+Oracle Cloud VM 인스턴스 생성 실습 본 문서는 OS X(Mac) 환경에서 작성되었습니다. 이 문서를 윈도우에서 실습하실 경우에는 PUTTY와 같은 Terminal을 사용하는 부분과 SSH-KEYGEN 을 사용하는 절차가 달라질 것입니다. 이 부분에 대해서는 별도 문서로 정리하겠습니다.
+오라클 클라우드 VM 생성 실습은 약 10~15분 정도 소요됩니다.</description>
+    </item>
+    
+  </channel>
+</rss>

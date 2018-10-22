@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Virtualization on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/virtualization/</link>
+    <description>Recent content in Virtualization on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 31 Mar 2017 22:42:46 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/virtualization/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>오라클 클라우드에서 window VM 인스턴스 생성</title>
+      <link>http://taewan.kim/cloud/win-vm/</link>
+      <pubDate>Fri, 31 Mar 2017 22:42:46 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/win-vm/</guid>
+      <description>오라클 클라우드(Oracle Public Cloud, OPC)의 Compute 서비스에서 Window VM 인스턴스를 생성하는 절차를 정리합니다. 오라클 클라우드에서 가상머신을 생성하기 위해서는 Oracle Cloud 계정이 필요합니다. 현재 OPC 계정이 없다면 &amp;ldquo;오라클 클라우드 계정 생성하기&amp;rdquo;를 먼저 확인하시기 바랍니다.
+Oracle Cloud VM 인스턴스 생성 실습 본 문서는 OS X(Mac) 환경에서 작성되었습니다. 이 문서의 실습에 있어서 윈도우와 &amp;ldquo;OS X&amp;rdquo;의 차이는 거의 없습니다. Window VM을 생성한 후, RDP로 Window VM에 접속하는 부분만 차이가 있습니다. 이 부분은 Window와 &amp;ldquo;OS X&amp;rdquo;를 구분하여 작성했습니다.</description>
+    </item>
+    
+    <item>
+      <title>내 친구 Vagrant를 소개합니다.</title>
+      <link>http://taewan.kim/post/vagrant_intro/</link>
+      <pubDate>Sat, 06 Feb 2016 20:47:54 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/vagrant_intro/</guid>
+      <description>Vagrant는 가상화 인스턴스를 관리하는 소프트웨입니다. Vagrant의 실체는 가상 개발 환경을 생성하고 설정하기 위한 주요 가상화 소프트웨어의 고수준 레퍼입니다. Vagrant가 지원하는 가상화 기술은 다음과 같습니다.
+ VirtualBox VMware KVM Linux Container(LXC) Docker  Vagrant는 위에서 나열한 프로바이더 기술을 기반으로하여 가상화 인스턴스를 효과적으로 생성하고 관리 일관성을 확보하는 방안을 제공합니다. Vagrant의 가장 매력적인 부분은 가상 인스턴스를 만들고 실행하는 과정이 매우 빠르고 편리하다는 것입니다.
+Vagrant의 사전적인 의미는 &amp;ldquo;부랑자&amp;rdquo;/&amp;ldquo;정처없는 사람&amp;rdquo; 이라는 사전적인 의미를 갖습니다. Vagrant는 가상화 이미지를 효과적으로 만들고 테스트하는 유연한 환경이라는 의미에서 명명된 것이라고 생각됩니다.</description>
+    </item>
+    
+    <item>
+      <title>VirtualBox: 호스트에서 게스트 접근 네트웍 설정</title>
+      <link>http://taewan.kim/post/virtualbox_network_config/</link>
+      <pubDate>Sun, 31 Jan 2016 12:42:43 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/virtualbox_network_config/</guid>
+      <description>최근에는 VirtualBox 이미지로 테스트 환경을 구성하거나 배포하는 경우가 많아졌습니다. 특히 오라클에서는 초기 테스트 및 교육 목적으로 다수의 VirtualBox 이미지를 배포하고 있습니다. 이렇게 만들어진 이미지를 사용할 경우 사용자는 새로운 기술을 접할 때 경험해야 하는 설치 및 구성에 대한 난제를 해결 할 수 있습니다. 즉 사용자는 새로운 기술의 기능 테스트 및 활용에 집중할 수 있게됩니다.
+오라클이 제공하는 VirtualBox 이미지는 Oracle Big Data Lite입니다. Oracle Big Data Lite는 오라클의 빅데이터 소프트웨어 (CHD배포본 + Orale Software)의 최신 구성을 하나의 VirtualBox 이미지에 담아서 제공합니다.</description>
+    </item>
+    
+  </channel>
+</rss>

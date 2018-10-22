@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cassandra on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/cassandra/</link>
+    <description>Recent content in Cassandra on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 26 Dec 2017 21:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/cassandra/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[번역]관리형 아파치 카산드라 서비스 소개: Oracle Data Hub Cloud Service</title>
+      <link>http://taewan.kim/cloud/trans_data_hub/</link>
+      <pubDate>Tue, 26 Dec 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/trans_data_hub/</guid>
+      <description>본문은 blogs.oracle.com에서 운영 중인 Oracle Developer 블로그의 11월 22일자 포스트를 번역한 문서입니다. Oracle Data Hub Cloud Service는 MySQL과 Oracle Database를 제외한 다른 데이터베이스와 NoSQL(MongoDB, Cassandra, Redis)을 일괄 제공하는 것을 목표로 만들어진 클라우드 서비스입니다. 현재 첫 번째 데이터베이스로 카산드라를 제공합니다. 이와 관련한 오라클 공식 블로그의 포스트를 번역합니다. 원문 정보는 다음과 같습니다.
+  출처: 오라클 공식 블로그, blogs.oracle.com: Oracle Developer Blog 원문: https://blogs.oracle.com/developers/introducing-data-hub-cloud-service-to-manage-apache-cassandra 제목: Introducing Data Hub Cloud Service to Manage Apache Cassandra and More 문서작성 일시: 2017.</description>
+    </item>
+    
+  </channel>
+</rss>

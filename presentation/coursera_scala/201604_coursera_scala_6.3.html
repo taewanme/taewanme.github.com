@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Coursera Scala: Lecture 6.3 Combinatorial Search Example </title>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript"> </script> 
+     <!--<script src="/js/remark-latest.min.js" type="text/javascript"> </script> -->
+
+    <style type="text/css" media="screen">
+      @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
+      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        margin-top: 10px;
+      }
+      h1 { font-size: 3.5em; 
+      }
+
+      h2 { font-size: 3em; }
+      h3 { font-size: 1.6em; }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      pre {
+        border-left: 0.4em solid #d7d7d7;
+        padding: 1em !important;
+      }
+      code {
+        background: transparent !important;
+      }
+      a {
+        color: #F92672;
+        text-decoration: none;
+      }
+      .task {
+        float: right;
+        font-size: 0.9em;
+        padding-top: 0.6em;      
+      }
+      .task a {
+        color: #080;
+        text-decoration: none;
+      }
+      .right {
+        float: right;
+        margin-left: 1em;
+      }
+      .pushdown {
+        margin-top: 12em;
+      }
+      .source {
+        bottom: 20px;
+        font-size: 15px;
+        left: 300px;
+        opacity: .5;
+        position: absolute;
+      }
+
+      .author {
+        bottom: 20px;
+        font-size: 12px;
+        left: 12px;
+        opacity: .5;
+        position: absolute;
+      }
+      .task {
+        float: right;
+        font-size: 0.9em;
+        padding-top: 0.6em;
+      }
+      .task a {
+        color: #080;
+        text-decoration: none;
+      }
+      .image-50 img {
+        width: 50%;
+      }
+
+      .image-65 img {
+        width: 65%;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 5px;
+        border: 1px solid gray;
+      }
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle, inverse
+
+# Coursera
+##Functional Programming Principles in Scala
+### Lecture 6.3 Combinatorial Search Example
+----
+### 김태완, [taewanme@gmail.com](http://taewan.kim)
+### 2016.04.06
+???
+
+---
+.task[6.3 Combinatorial Search Example]
+# Collection Hierachy
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]   
+
+- Seq: List와 Vector의 기본 클래스
+- Seq는 Iterable의 서브 클래스
+
+.image-65[![](/images/coursera_scala/6.3.hierarchy.jpg)]
+
+---
+
+.task[6.3 Combinatorial Search Example]
+# Set
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]   
+
+- Set은 Scala 컬렉션의 기본 클래스
+- Sequence 타입의 클래스와 같은 방식으로 생성
+
+```scala
+  val fruit = Set("apple", "banana", "pear")
+  val s = (1 to 6).toSet
+```
+--
+
+- Sequence의 대부분의 오퍼레이션 이용 가능
+
+```scala
+   s map (_ + 2)     // Set(5, 6, 7, 3, 8, 4)
+   //fruit filter (_.startWith == "app") ==> 예제 코드 오류
+   fruit.filter( _ startsWith "App") //Set(apple)
+   s.nonEmpty //true
+```
+- 모든 리스트의 지원 오퍼레이션은 Scaladoc에서 Iterable을 확인 할 것
+  - http://www.scala-lang.org/api/current/#scala.collection.Iterable
+
+---
+
+.task[6.3 Combinatorial Search Example]
+# Set과 Sequence
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]   
+
+- Set과 Sequence의 차이점
+  - Set: 비순차, 집합이 형태로 인식
+  
+  - 중복이 없음  
+  ```
+  s map (_/2) //set(2, 0, 3, 1)
+  ```
+
+  - set의 기본 오퍼레이션: contains
+  ```
+  s contains 5 //true 
+  ```
+
+---
+
+.task[6.3 Combinatorial Search Example]
+# Example: N-Queens
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]   
+
+- Eight Queen Problem
+  - 체스 보드에 8 퀸이 존재
+  - 어떤 퀸도 상대방을 위협하면 
+  - 두개의 퀸이 동일한 행, 열, 대각선상에 위치하면 안됨
+
+![](/images/coursera_scala/6.3.queen.png)
+
+--
+
+  - 8개가 아닌 모든 사이즈에 대한 체스판을 대상으로하는 솔루션 개발
+  - 솔루션 1: 각 row에 퀸을 배치하는 것
+  - k-1개의 퀸을 배치하고 k번째 퀸을 배치할 때 보드 상의 어떤 퀸도 체크되지 않는 컬럼에 놓아야 함 
+
+???
+- 각 퀸은 자신의 Row와 Column을 가짐
+- 대각선으로도 겹치지 않음
+- n칸의 체스판으로 일반화를 원함
+
+![](/images/coursera_scala/6.3.queens.png)
+
+---
+.task[6.3 Combinatorial Search Example]
+# 알고리즘
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]   
+
+- 리커시브 알고리즘 적용
+  - 가정: n 사이즈 체스판에 k-1번째 퀸을 배치하는 모든 해법을 생성
+  - 각 솔루션은 k-1길이의 리스트로 표현
+    - 0 부터 n-1의 컬럼 번호를 포함
+  - k-1번째 행에서 퀸의 컬럼 번호는 리스트의 첫번째에 위치
+  - 해법의 집합은 리스트의 set으로 표현됨, 각 해법은 하나의 엘리먼트가 됨
+  - 이제 K번째 퀸을 배치하기 위해서, 각 해법에 대한 모든 가능한 확장을 생성
+
+    
+
+
+
+---
+class: center, middle, inverse
+
+# Coursera
+##Functional Programming Principles in Scala
+### Lecture 5.1 More Functions on Lists
+----
+# QnA
+### Mar, 29, 2016
+    </textarea>
+    <script>
+      var slideshow = remark.create({
+                                      highlightLanguage: 'scala',
+                                      countIncrementalSlides: false,
+                                      highlightLines: true,
+                                      highlightStyle: 'arta',
+                                      highlightSpan: true
+      });
+
+    </script>
+    <script>
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+  </body>
+</html>

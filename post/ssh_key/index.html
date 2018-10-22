@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>윈도우, 리눅스, 맥에서 ssh 보안키 생성</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="윈도우, 리눅스, 맥에서 ssh 보안키 생성" />
+<meta property="og:description" content="클라우드 서비스에 접근하기 위해서 혹은 github에 인증을 받기 위해서 ssh 보안키를 생성하는 절차가 필요합니다. " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/post/ssh_key/" />
+
+
+
+<meta property="article:published_time" content="2017-03-04T12:07:16&#43;09:00"/>
+<meta property="article:modified_time" content="2017-03-04T12:07:16&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=bsh&amp;skin=sons-of-obsidian"></script>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		
+		
+		<header class="post__header clearfix">
+			<h1 class="post__title">윈도우, 리눅스, 맥에서 ssh 보안키 생성 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2017-03-04 12:07:16 &#43;0900 KST">March 04, 2017</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/tech-tip" rel="category">Tech Tip</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://oracloud-kr-teamrepo.github.io/2017/04/sshkey/post.jpg" alt="윈도우, 리눅스, 맥에서 ssh 보안키 생성">
+			</figure>
+			
+
+<p>클라우드 서비스로 만든 가상 서버에 안전한 로그인을 하기 위해서 SSH(Secure Shell) 프로토콜을 사용하는 것이 일반적입니다.
+SSH 프로토콜은 안전하지 못한 네트워크에서 강력한 인증과 안전한 통신을 가능하게 합니다.
+SSH 프로토콜에서 패스워드 입력없이 로그인하기 위해서는 인증서가 필요하며, 기본 포트는 22번입니다.</p>
+
+<p>SSH 프로토콜에 대한 자세한 내용은 다음 문서를 참조하시기 바랍니다.</p>
+
+<ul>
+<li><a href="https://opentutorials.org/module/432/3738">오픈 튜토리얼: SSH 원격제어</a></li>
+<li><a href="https://opentutorials.org/module/432/3742">오픈 튜토리얼: SSH 키</a></li>
+</ul>
+
+<p>이 문서에서는 다음 내용을 다루겠습니다.</p>
+
+<ul>
+<li>운영체제별 SSH 키 생성 방법 (window, linux, osx)</li>
+<li>SSH 키 설치 방법</li>
+<li>ssh config를 이용한 ssh 명령 단순하게 사용하기</li>
+</ul>
+
+<h2 id="인증서-생성-방법">인증서 생성 방법</h2>
+
+<p>각 운영체제(Linux, OSX, Window)의 SSH 키 생성 방법에 대하여 정리하겠습니다.
+운영체제 별로 SSH 키를 생성하는 방법은 다음과 같습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>운영체제</th>
+<th>SSH 키 생성 툴</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>리눅스</td>
+<td>ssh-keygen</td>
+</tr>
+
+<tr>
+<td>OS X</td>
+<td>ssh-keygen, 리눅스와 OS X는 ssh-key 생성 방법 동일</td>
+</tr>
+
+<tr>
+<td>window</td>
+<td>puttygen - pytty key genetator</td>
+</tr>
+
+<tr>
+<td>window</td>
+<td>git 2.7 이상이 설치된 경우, <code>git bash</code>에서 ssh-keygen 이용</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="리눅스와-os-x에서-ssh-키-생성">리눅스와 OS X에서 SSH 키 생성</h3>
+
+<p>리눅스와 OS X에서는 ssh-keygen을 이용하여 SSH 키를 생성합니다.
+다음 명령은 ssh-keygen을 사용하는 예입니다.</p>
+
+<pre class="prettyprint linenums">
+> ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/Users/taewan/.ssh/id_rsa): ./oracloud_rsa
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in ./oracloud_rsa.
+Your public key has been saved in ./oracloud_rsa.pub.
+The key fingerprint is:
+SHA256:9lsbDIYtkRrkXDflaZ4YAOqV5Kq5TOXrYNZcJE8OA/A taewan@taewanui-MacBook-Pro.local
+The key's randomart image is:
++---[RSA 2048]----+
+|...   +.o o..    |
+| . . B o + o .   |
+|  E = X o . +    |
+|   . @ o + = .   |
+|    + = S = o    |
+|   B . . + o     |
+|  B +     . +    |
+| = o .     o o   |
+|  o.o     . .    |
++----[SHA256]-----+
+> ls -al oracloud_rsa*
+-rw-------  1 taewan  staff  1675  4 22 09:31 oracloud_rsa
+-rw-r--r--  1 taewan  staff   415  4 22 09:31 oracloud_rsa.pub
+>
+</pre>
+
+<ul>
+<li>라인 1: ssh-keygen 은 -t 옵션으로 암호화 유형을 선택합니다. 기본값은 rsa입니다.</li>
+<li>라인 3: SSH 키 위치와 파일명을 지정합니다.
+
+<ul>
+<li>개인 키: <code>./oracloud_rsa</code></li>
+<li>공개 키: <code>./oracloud_rsa.pub</code></li>
+</ul></li>
+</ul>
+
+<p>나머지는 별도의 입력 없이 넘어갑니다.</p>
+
+<h3 id="window에서-ssh-키-생성">Window에서 SSH 키 생성</h3>
+
+<p>윈도우에서 SSH 키를 생성하는 방법은 putty에 포함된 puttygen을 이용할 수 있습니다. 또한
+git이 설치되어 있다면 윈도우에서, git과 함께 설치되는 MINGW32이 제공하는 ssh-keygen을 이용하여
+SSH 키를 생성할 수 있습니다.</p>
+
+<h4 id="window에서-puttygen을-이용하는-ssh-키-만들기">Window에서 puttygen을 이용하는 ssh 키 만들기</h4>
+
+<p><a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">putty</a>를 내려받아 설치하면 puttygen도 함께 설치됩니다.
+puttygen을 실행하면 &lt;그림 1&gt;과 같은 모습으로 실행됩니다.
+&lt;그림 1&gt;와 같이 puttygen에서 키 타입으로 RSA와 키 생성의 비트 수를 2048로 설정한 후 &ldquo;Generate&rdquo; 버튼을 클릭합니다.</p>
+
+<ul>
+<li>그림 1. puttygen(Putty Key Generator) 모습
+<img src="https://oracloud-kr-teamrepo.github.io/2017/03/ssh_key/window010.jpg" alt="" /></li>
+</ul>
+
+<p>PuttyGen은 키를 생성할 때  마우스 위치 값을 키 생성 초깃값으로 활용합니다.
+따라서 키를 생성이 완료할 때까지 &lt;그림 2&gt;의 빨간색 영역에서 마우스를 움직여야 합니다.</p>
+
+<ul>
+<li>그림 2. RSA 키 생성 진행 중
+<img src="https://oracloud-kr-teamrepo.github.io/2017/03/ssh_key/window020.jpg" alt="" /></li>
+</ul>
+
+<p>RSA 키 생성이 완료되면 &lt;그림 3&gt;과 같이 UI가 변경됩니다.
+여기에서 <code>Save Public Key</code> 버튼을 클릭해서 공개 키 저장을 요청합니다.</p>
+
+<ul>
+<li>그림 3. RSA 생성 결과, 공개 키 저장 요청
+<img src="https://oracloud-kr-teamrepo.github.io/2017/03/ssh_key/window030.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 4&gt;와 같이 공개 키는 확장자를 <code>pub</code>로 설정하여 저장합니다.</p>
+
+<ul>
+<li>그림 4. 공개 키 저장
+<img src="https://oracloud-kr-teamrepo.github.io/2017/03/ssh_key/window040.jpg" alt="" /></li>
+</ul>
+
+<p>공개 키 저장이 완료되면 &lt;그림 5&gt;와 같이 <code>Save Private Key</code> 버튼을 클릭해서 개인 키 저장을 요청합니다..</p>
+
+<ul>
+<li>그림 5. 개인 키 저장 요청
+<img src="https://oracloud-kr-teamrepo.github.io/2017/03/ssh_key/window050.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 5&gt;와 같이 개인 키를 저장합니다.</p>
+
+<ul>
+<li>그림 6. 개인 키 저장
+<img src="https://oracloud-kr-teamrepo.github.io/2017/03/ssh_key/window060.jpg" alt="" /></li>
+</ul>
+
+<h4 id="window에서-git과-설치후-ssh-키-만들기">Window에서 Git과 설치후 ssh 키 만들기</h4>
+
+<p>윈도우에 git이 설치되어 있다면, git과 함께 설치되는 MINGW32이 제공하는 ssh-keygen을 이용하여
+SSH 키를 생성할 수 있습니다.</p>
+
+<p>&lt;그림 6&gt;과 같이 <code>git bash</code>를 윈도우에서 실행하면 리눅스 명령을 사용할 수 있습니다.
+&lt;그림 6&gt;에서는 ssh-keygen을 이용하여 RSA 키를 생성한 후, 생성 파일 목록을 조회하고 있습니다.</p>
+
+<ul>
+<li>그림 6. <code>git bash</code>에서 ssh-keygen을 이용하여 SSH 키 생성하기
+<img src="https://oracloud-kr-teamrepo.github.io/2017/03/ssh_key/window070.jpg" alt="" /></li>
+</ul>
+
+<p>지금까지 리눅스, 맥, 윈도우에서 SSH 키를 생성하는 절차를 알아보았습니다.
+다음 절에서는 공개키 서버 설정과 SSH 키 관리 설정 방법에 대하여 알아보겠습니다.</p>
+
+<h2 id="공개키-서버-설정">공개키 서버 설정</h2>
+
+<p>Oracle cloud는 클라우드 서비스 인스턴스를 생성할 때, 공개 키를 등록하는 절차를 포함합니다.<br />
+서버에 수작업으로 공개 키를 등록해야 한다면, 공개 키 등록 절차는 다음과 같습니다.</p>
+
+<ul>
+<li>공개키 서버에 전송 (클라이언트 컴퓨터에서 수행)</li>
+</ul>
+
+<pre class="prettyprint">
+> scp ./oracloud_rsa.pub 사용자ID@서버명:oracloud_rsa.pub
+</pre>
+
+<ul>
+<li>서버에서 공개키 설정</li>
+</ul>
+
+<pre class="prettyprint">
+> mkdir ~/.ssh
+> chmod 700 .ssh
+> cat ~/oracloud_rsa.pub >> .ssh/authorized_keys
+</pre>
+
+<p>ssh 명령은 기본 SSH 키로 ~/.ssh/id_rsa를 사용합니다.
+기본 키가 아닌 다른 SSH 키를 사용해야 한다면 <code>-i</code> 옵션을 사용해서 서버에 접속합니다.</p>
+
+<pre class="prettyprint">
+> ssh 사용자ID@서버명 -i ./oracloud_rsa
+</pre>
+
+<p>ssh 접속은 관련 파일의 권한 설정 때문에 발생하는 경우가 있습니다.
+ssh 접속 클라이언트 컴퓨터와 서버의 ssh 관련 파일의 권한은 다음과 같아야 합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>파일명</th>
+<th>권한</th>
+<th>command</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>~/.ssh</td>
+<td>700</td>
+<td>chmod 700 ~/.ssh</td>
+</tr>
+
+<tr>
+<td>개인키 (oracloud_rsa)</td>
+<td>600</td>
+<td>chmod 600 ~/oracloud_rsa</td>
+</tr>
+
+<tr>
+<td>공개키 (oracloud_rsa.pub)</td>
+<td>644</td>
+<td>chmod 644 ~/oracloud_rsa.pub</td>
+</tr>
+
+<tr>
+<td>~/.ssh/authorized_keys</td>
+<td>700</td>
+<td>chmod 600 ~/.ssh/authorized_keys</td>
+</tr>
+
+<tr>
+<td>~/.ssh/known_hosts</td>
+<td>600</td>
+<td>chmod 644 ~/.ssh/known_hosts</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="요약">요약</h2>
+
+<p>운영체제별 ssh 키 파일 생성 방법에 대하여 알아보았습니다.
+리눅스와 OS X의 경우 ssh-keygen 명령으로 간단하게 인증서를 생성할 수 있습니다.
+윈도우의 경우 puttygen을 사용하거나 윈도우 git을 설치할 때 함께 설치되는 MINGW32의 ssh-keygen
+을 사용하여 ssh 키 파일을 생성할 수 있습니다.</p>
+
+<p>하나의 컴퓨터에서 어려개의 ssh 키를 사용하게 되면 ssh 명령이 복잡해지는 단점이 있습니다.
+이 부분은 ssh config 파일을 이용하여 해결할 수 있습니다.</p>
+
+<p>ssh config을 설정하는 방법에 대해서는
+<a href="/post/ssh_config/">ssh config를 이용한 ssh 단순화</a>에서 다루도록 하겠습니다.</p>
+
+<h2 id="참고자료">참고자료</h2>
+
+<ul>
+<li><a href="https://ko.wikipedia.org/wiki/시큐어_셸">Wikipedia - Secure shell</a></li>
+</ul>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/cloud/" rel="tag">cloud</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/ssh/" rel="tag">ssh</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/functional_javascript/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">자바스크립트 함수형 프로그래밍 연습 - Table 테그 레퍼</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/ssh_config/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">ssh config 설정 방법</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/post/ssh_key/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#인증서-생성-방법">인증서 생성 방법</a>
+<ul>
+<li><a href="#리눅스와-os-x에서-ssh-키-생성">리눅스와 OS X에서 SSH 키 생성</a></li>
+<li><a href="#window에서-ssh-키-생성">Window에서 SSH 키 생성</a>
+<ul>
+<li><a href="#window에서-puttygen을-이용하는-ssh-키-만들기">Window에서 puttygen을 이용하는 ssh 키 만들기</a></li>
+<li><a href="#window에서-git과-설치후-ssh-키-만들기">Window에서 Git과 설치후 ssh 키 만들기</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#공개키-서버-설정">공개키 서버 설정</a></li>
+<li><a href="#요약">요약</a></li>
+<li><a href="#참고자료">참고자료</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

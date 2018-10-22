@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine Learning on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/machine-learning/</link>
+    <description>Recent content in Machine Learning on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 07 Oct 2018 19:59:47 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker Image: 파이썬 기반 머신러닝 학습용 이미지</title>
+      <link>http://taewan.kim/docs/docker4ml/</link>
+      <pubDate>Sun, 07 Oct 2018 19:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/docs/docker4ml/</guid>
+      <description>파이썬으로 데이터를 분석하고 머신러닝을 수행하기 위해서 필요한 환경을 Docker 이미지 &amp;lsquo;pyml&amp;lsquo;을 만들어 운영하고 있습니다. 컴퓨터에 Docker가 설치되어 있다면 바로 Docker 이미지를 다운받아 사용할 수 있습니다.
+&amp;lsquo;pyml&amp;rsquo; 더커 이미지는 주기적으로 업데이트되며 docker hub 레파지토리에서 운영됩니다.
+ https://hub.docker.com/r/taewanme/pyml/  이 문서에서는 &amp;lsquo;pyml&amp;rsquo; 더커 이미지의 주요 정보와 설치 방법에 대한 최신 정보를 제공하겠습니다.
+pyml Docker 최신 정보 pyml Docker 이미지 버전 pyml Docker 이미지 버전은 다음 URL의 Tags 페이지에서 확인 할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>다차원 텐서 Transpose와 Reshape</title>
+      <link>http://taewan.kim/post/transpose_reshape/</link>
+      <pubDate>Wed, 22 Aug 2018 23:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/transpose_reshape/</guid>
+      <description>CNN과 같은 이미지 데이터를 다룰 때 입력 데이터로 4차원 텐서를 다룹니다. 이 4차원 데이터는 (image 수, channel 수, Height , Width)와 같은 구조를 갖습니다. 데이터를 전처리하는 과정에서 Channel First인 텐서를 Channel Last 텐서로 변형해야 하는 상황이 발생했습니다. 처음에 4차원 구조는 상상하기도 어려운데 4차원 텐서를 전치하라는 것은 어떤 의미인지 난감했습니다.
+문제의 시작: Channel First를 Channel Last로 변환 파이토치로 CIFAR10 데이터셋을 읽어와서 대상 이미지를 Mathplotlib의 plt.imshow() 함수로 출력하는 작업을 진행했습니다.
+# 변환기 파이프라인  transform = transforms.</description>
+    </item>
+    
+    <item>
+      <title>비용 함수 MSE를 미분하여 경사하강법 유도</title>
+      <link>http://taewan.kim/til/mse_gd/</link>
+      <pubDate>Wed, 08 Aug 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/mse_gd/</guid>
+      <description>2장. 지도학습  지도학습  &amp;ldquo;Input/Label&amp;rdquo;로 구성된 사례 데이터를 이용하여 ML 모델을 학습 최종 목표: 새로운 데이터를 정확하게 에측하는 것 유형: 회귀 &amp;amp; 분류   2.1 분류와 회귀  그림 1: 지도학습 요약    2.2 일반화, 과대적합, 과소적합  Generalization:  일반화 새로운 데이터에 정확한 예측을 제공하는 모델의 역량 모델이 복잡해 지면 학습셋에만 정확한 예측 제공 학습데이터에만 정확도를 보이는 상태를 과대적합(Overfitting) 되었다고 함 데이터의 노이즈가지 학습한 상태를 의미  Overfitting  학습셋에는 좋은 정확도를 보이지만, 새로운 데이터에 대해서 정확도가 상당히 떨어짐 과도하게 복잡한 모델 사용 모든 데이터 암기 학습셋의 노이즈까지 익힌 상태  Underfitting  학습이 아직 부족한 상태</description>
+    </item>
+    
+    <item>
+      <title>Classification 성능 matrix</title>
+      <link>http://taewan.kim/til/matrics_in_classification/</link>
+      <pubDate>Tue, 07 Aug 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/matrics_in_classification/</guid>
+      <description> 분류 평가 기준  그림 1: Accuracy: 정확도     정확도: 전체 데이터 중에서 정확하게 분류한 비율   그림 2: Precision: 정밀도     정밀도: 양성의 예측 중에서 진짜로 양성인 비율  양성의 품질을 중요시 하는 경향    그림 3: Recall     재현율: 실제 양성 중에서 양성으로 분류한 비율  원본의 상태를 중시하는 경향   ROC Curve  그림 4: Recall &amp;amp; FPR     진짜 양성 비율: 양성관측한 것이 양성 가짜 음성 비율: 양성으로 예측, 음성  </description>
+    </item>
+    
+    <item>
+      <title>scikit-learn의 fetch_mldata(&#39;MNIST original&#39;) 에러</title>
+      <link>http://taewan.kim/post/sklearn_mnist_fetch_error/</link>
+      <pubDate>Sat, 04 Aug 2018 19:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/sklearn_mnist_fetch_error/</guid>
+      <description>scikit-learn은 테스트 데이터로 사용할 수 있는 여러 데이터셋를 간편하게 로딩하는 기능을 제공합니다. 특히 머신러닝 테스트에 사용할 수 있는 대표적인 데이터셋을 로딩하는 기능을 제공하기 때문에, 이 기능을 이용하여 많은 문서가 이용하여 입문자 문서를 작성하는 것이 일반적입니다.
+scikit-learn이 제공하는 데이터셋 로딩 기능 중에서 fetch_mldata 함수는 mldata.org의 데이터셋을 이용합니다. 최근에 mldata.org 사이트가 장애가 발생하면서 이 함수는 정상적으로 작동하지 않습니다. 이 오류를 우회하는 방법을 정리합니다.
+무엇이 문제인가? &amp;lt;그림 1&amp;gt;과 같이 fetch_mldata를 실행하면 HTTP Error 404 에로 로그가 출력됩니다.</description>
+    </item>
+    
+    <item>
+      <title>&#39;파이썬 라이브러리를 활용한 머신러닝&#39; 2장. 지도학습</title>
+      <link>http://taewan.kim/til/plwml-02/</link>
+      <pubDate>Fri, 03 Aug 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/plwml-02/</guid>
+      <description>2장. 지도학습  지도학습  &amp;ldquo;Input/Label&amp;rdquo;로 구성된 사례 데이터를 이용하여 ML 모델을 학습 최종 목표: 새로운 데이터를 정확하게 에측하는 것 유형: 회귀 &amp;amp; 분류   2.1 분류와 회귀  그림 1: 지도학습 요약    2.2 일반화, 과대적합, 과소적합  Generalization:  일반화 새로운 데이터에 정확한 예측을 제공하는 모델의 역량 모델이 복잡해 지면 학습셋에만 정확한 예측 제공 학습데이터에만 정확도를 보이는 상태를 과대적합(Overfitting) 되었다고 함 데이터의 노이즈가지 학습한 상태를 의미  Overfitting  학습셋에는 좋은 정확도를 보이지만, 새로운 데이터에 대해서 정확도가 상당히 떨어짐 과도하게 복잡한 모델 사용 모든 데이터 암기 학습셋의 노이즈까지 익힌 상태  Underfitting  학습이 아직 부족한 상태</description>
+    </item>
+    
+    <item>
+      <title>[Handson_ML]ch02: ML 프로젝트 처음부터 끝까지</title>
+      <link>http://taewan.kim/til/handson_ml_ch02/</link>
+      <pubDate>Thu, 26 Jul 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/handson_ml_ch02/</guid>
+      <description>머신러닝 프로제트 절차
+ 머신러닝 프로제트 절차
+ 문제 정의 데이터 수집 Data Discovery: 탐색과 시각화 for Insight 데이터 전처리 모델 선택 및 훈련 모델 미세 조정 해법(Solution) 제시 시스템 구축 및 모니터링, 유지보수   Dataset  주요 데이터 공개 사이트
+ UC 얼바인: http://archive.ics.uci.edu/ml Kaggle: http://www.kaggle.com/datasets AWS: http://aws.amazon.com/ko/datasets meta potal site  http://dataportals.org http://opendatamonitor.eu http://quandl.com  인기 데이터셋 목록  List of datasets for machine learning research in wikipedia https://www.</description>
+    </item>
+    
+    <item>
+      <title>[Handson_ML]ch05: SVM</title>
+      <link>http://taewan.kim/til/handson_ml_ch05/</link>
+      <pubDate>Thu, 26 Jul 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/handson_ml_ch05/</guid>
+      <description> SVM  적용 분야: 선형 분류, 비선형 분류, 회귀, 이상치 탐색 적용 데이터: 중/소 규모 데이터에 적합 복잡한 데이터를 잘 풀이
+ 용어
+ Large Margin Classification: 라지 마진 분류 Support Vector: 도로 경계에 위치한 데이터  SVM은 도로 경계를 나누는 모델
+ 데이터의 Scale에 민감하게 만응 정규화를 선행해야 함 레이블을 반환, 확률을 반환하지 않음  SVM의 유형
+ Hard Margin 분류: 하드 마진 분류  선형 분류가 가능해야 함 이상치에 만김함 일반화 성능 떨어짐  Soft Margin 분류: 소프트 마진 분류  마진 오류(Margin Violation)과 Margin의 균형 감 sklearn에서는 C 파라미터로 균형정도 설정  $C=\frac{1}{\lamba}$      선형 SVM  sklearn 클래스  LinearSVC(C=1, loss=&amp;lsquo;hinge&amp;rsquo;) SVC(kernel=&amp;ldquo;linear&amp;rdquo;, C=1)  데이터 셋이 커지면 속도가 느림  SGCClassfier(loss=hinge, alpha=1/(m*c))  경사 하강법 사용 속도는 LinearSVC보다 느리지만 대용량 데이터에 대하여 효과적으로 대응    비선형 SVM </description>
+    </item>
+    
+    <item>
+      <title>[til]문일천 교수님 기계학습 개론: 1week-Lec01 </title>
+      <link>http://taewan.kim/til/ml_kooc_1week_01/</link>
+      <pubDate>Thu, 26 Jul 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/ml_kooc_1week_01/</guid>
+      <description>강좌 URL: http://kooc.kaist.ac.kr/machinelearning1_17  1주 Lecture 0: Introduction   강좌 동영상       최근 인공지능은 어디에서나 쓰이는 기술 요소  인공지능은 어디에서나 쓰이는 기술 요소 이메일 스팸필터 기능 SNS의 친구 추천 기능 동영상 재생 추천 기능 자동차 번호판 인식 기능 대규모 생산 공정에서의 품질 관리 적재적소에 물품을 운송하는 물류 시스템 군대의 자동화 무기 재난 대응을 위한 로봇    지능이란?
+ 지속적인 경험 축적을 통해서 어떠한 행동 및 의사 결정을 점점 더 잘 할 수 있다면 이러한 학습을 하는 대상은 지능이 있다고 말할 수 있음.</description>
+    </item>
+    
+    <item>
+      <title>머신러닝 용어: Example, Sample &amp; Data Point</title>
+      <link>http://taewan.kim/post/sample_example/</link>
+      <pubDate>Wed, 18 Jul 2018 19:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/sample_example/</guid>
+      <description>머신러닝을 공부하면서 굉장히 생소하게 느껴졌던 용어가 몇 개 있습니다. 그 중에서 가장 어색했던 용어는 데이터셋의 개별 데이터를 표현하는 용어였습니다. 일반적으로 머신러닝 데이터셋의 개별 데이터를 다음과 같은 용어로 표현합니다.
+ Example Sample Instance Data Point  문서를 번역하거나 정리하는 과정에서 위 용어를 어떻게 처리해야 할지가 항상 고민이었습니다. 개별 데이터를 왜 이렇게 표현하는지 제 개인적인 느낌을 정리해 보겠습니다.
+Example과 Sample  The MNIST database of handwritten digits, available from this page, has a training set of 60,000 examples, and a test set of 10,000 examples.</description>
+    </item>
+    
+    <item>
+      <title>[Coursera]Neural network and deep Learning: Week2</title>
+      <link>http://taewan.kim/til/deeplearning_s01_week02/</link>
+      <pubDate>Mon, 09 Jul 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/deeplearning_s01_week02/</guid>
+      <description> Coursera에서 deeplearning.ai가 운영하는 &amp;lsquo;Neural network and deep learning ]&amp;lsquo;의 2주차 강의 정리입니다.
+ 강의 구성  Logistic Regression as a Neural Network  Binary Classification Logistic Regression Logistic Regression Cost Function Gradient Descent Derivatives More Derivative Examples Computation Graph Derivative with a computation graph Logistic Regression Gradient Descent Gradient Descent m Examples  Python and Vectorization  Vectorization More Vectorization Examples Vectorizing Logistic Regression Vectorizing Logistic Regression&amp;rsquo;s Gradient Output Broadcasting in Python A note on python/numpy vectors Quick tour of jupyter notebooks Explanation of logistic regression cost function    Logistic Regression as a Neural Network  for문을 지향하고 Vectorization을 수행 forward propagation과 back propagation을 소개  Binary Classification  Logistic regression은  </description>
+    </item>
+    
+    <item>
+      <title>[Coursera]Neural network and deep Learning: Week1</title>
+      <link>http://taewan.kim/til/deeplearning_s01_week01/</link>
+      <pubDate>Sun, 08 Jul 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/deeplearning_s01_week01/</guid>
+      <description>Coursera에서 deeplearning.ai가 운영하는 &amp;lsquo;Neural network and deep learning ]&amp;lsquo;의 1주차 강의 정리입니다.
+ 동영상 목록  Welcome: (5min) What is a neural network (7min) Surpervised Learning with neural network (8min) Why is deep learning taking off? (10min) About This Courses? (2min) Frequently asked questions? (10min)   Welcome(5min)  AI is the new electircity 100년 전부터 전기 공급이 모든 산업계를 변화 시켰던 것 처럼, AI도 모든 산업계를 변화 시키고 있다.</description>
+    </item>
+    
+    <item>
+      <title>[20180707]&#39;파이썬 라이브러리를 활용한 머신러닝&#39; 1장</title>
+      <link>http://taewan.kim/til/plwml-01/</link>
+      <pubDate>Sat, 07 Jul 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/plwml-01/</guid>
+      <description>1장에서는 머신러닝의 기본 개념과 Scikit-learn에 대한 간략한 소개로 시작합니다. 또한 이 책에서 다룰 주요 환경에 대해 소개합니다. 마지막으로 KNN으로 붓꽃을 분류하는 예제를 통해서 데이터 수집, 적재, 탐색 및 학습의 과정을 소개합니다. 머신러닝의 가장 기본적인 용어와 접근법에 대한 기초적인 이해를 전달하는 것을 목표로합니다.
+1장의 예제 코드와 실행 결과는 다음 URL에서 확인할 수 있습니다. - https://github.com/taewanme/notebooks4til/blob/master/MLWithPythonLibraries/ch01.ipynb
+1장 구성 전에 26페이지 정도 분량으로 기계학습이란 무엇이고 이 책에서 다루는 환경에 대하여 소개합니다. 붓꽃을 분류하는 첫 번째 예제로 간단한 지도학습을 진행하는 방식을 소개합니다.</description>
+    </item>
+    
+    <item>
+      <title>Docker Image: 파이썬 기반 머신러닝 학습용 이미지 </title>
+      <link>http://taewan.kim/post/python_env_for_machine_learning/</link>
+      <pubDate>Fri, 06 Jul 2018 19:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/python_env_for_machine_learning/</guid>
+      <description>파이썬을 기반으로 머신러닝이나 딥러닝 작업을 진행할 때 가장 귀찮고 꺼려지는 작업은 기본 환경을 준비하는 과정입니다. 파이썬 기본 환경을 효과적으로 관리하기 위해서 Docker Image 형태로 PYML을 만들었습니다. PYML은 텐서플로우, 파이토치, 케라스 및 Scikit-Learn을 활용하여 데이터를 분석할 수 있는 환경이며 UI로 IPython을 사용합니다.
+taewanme/pyml 컨테이너 이미지 pyml 더커 이미지는 docker hub에 자동 빌드 프로젝트 형태로 배포되어 있습니다. pyml을 관리하는 레파지토리 주소는 다음 URL과 같습니다.
+ https://hub.docker.com/r/taewanme/pyml/  2018년 7월 5일 현재 최신 버전은 0.</description>
+    </item>
+    
+    <item>
+      <title>기계학습(Machine Learning) 문서 번역</title>
+      <link>http://taewan.kim/ml-translation/</link>
+      <pubDate>Sun, 25 Feb 2018 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/ml-translation/</guid>
+      <description> PyTorch PyTorch 튜토리얼  PyTorch 튜토리얼 목차 01. PyTorch와 함께하는 딥러닝: 60분 리뷰  PyTorch는 무엇인가? Autograd: 미분 자동화 신경망   </description>
+    </item>
+    
+    <item>
+      <title>파이썬 데이터 사이언스 Cheat Sheet: NumPy 기초, 기본</title>
+      <link>http://taewan.kim/post/numpy_cheat_sheet/</link>
+      <pubDate>Tue, 16 Jan 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/numpy_cheat_sheet/</guid>
+      <description>파이썬 기반 데이터 분석 환경에서 NumPy1는 행렬 연산을 위한 핵심 라이브러리입니다. NumPy는 &amp;ldquo;Numerical Python&amp;ldquo;의 약자로 대규모 다차원 배열과 행렬 연산에 필요한 다양한 함수를 제공합니다. 특히 메모리 버퍼에 배열 데이터를 저장하고 처리하는 효율적인 인터페이스를 제공합니다. 파이썬 list 객체를 개선한 NumPy의 ndarray 객체를 사용하면 더 많은 데이터를 더 빠르게 처리할 수 있습니다.
+NumPy는 다음과 같은 특징을 갖습니다.
+ 강력한 N 차원 배열 객체 정교한 브로드케스팅(Broadcast) 기능 C/C ++ 및 포트란 코드 통합 도구 유용한 선형 대수학, 푸리에 변환 및 난수 기능 범용적 데이터 처리에 사용 가능한 다차원 컨테이너  본 문서는 cs231n 강좌의 Python Numpy Tutorial 문서와 DataCamp의 Python For Data Science Cheat Sheet NumPy Basics 문서를 참조하여 작성하였습니다.</description>
+    </item>
+    
+    <item>
+      <title>CNN, Convolution Neural Network 요약</title>
+      <link>http://taewan.kim/post/cnn/</link>
+      <pubDate>Thu, 04 Jan 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/cnn/</guid>
+      <description>Fully Connected Layer1 만으로 구성된 인공 신경망의 입력 데이터는 1차원(배열) 형태로 한정됩니다. 한 장의 컬러 사진은 3차원 데이터입니다. 배치 모드에 사용되는 여러장의 사진은 4차원 데이터입니다. 사진 데이터로 전연결(FC, Fully Connected) 신경망을 학습시켜야 할 경우에, 3차원 사진 데이터를 1차원으로 평면화시켜야 합니다. 사진 데이터를 평면화 시키는 과정에서 공간 정보가 손실될 수밖에 없습니다. 결과적으로 이미지 공간 정보 유실로 인한 정보 부족으로 인공 신경망이 특징을 추출 및 학습이 비효율적이고 정확도를 높이는데 한계가 있습니다. 이미지의 공간 정보를 유지한 상태로 학습이 가능한 모델이 바로 CNN(Convolutional Neural Network)입니다.</description>
+    </item>
+    
+    <item>
+      <title>신경망 W 행렬 표기법: &#39;ij&#39;/&#39;ji&#39; 의 차이점?</title>
+      <link>http://taewan.kim/post/wij_and_wji/</link>
+      <pubDate>Sat, 23 Dec 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/wij_and_wji/</guid>
+      <description>제가 처음에 딥러닝을 학습할 때 가장 혼란스러웠던 것은 입력 레이어의 데이터와 가중치 W의 합 표현하는 &amp;ldquo;Z(Weighted Sum)&amp;rdquo; 수식이 문서마다 다른 것이었습니다.
+  &amp;lt;식 1&amp;gt;. Z(Weighted Sum)을 표현하는 수식 $$ \begin{align} Z^{[l]} &amp;amp; = W^{[l]T}A^{[l-1]} &amp;amp; (1) \\
+Z^{[l]} &amp;amp; = W^{[l]}A^{[l-1]} &amp;amp; (2) \end{align} $$   &amp;lt;식 1&amp;gt;의 (1)과 (2)는 다른 수식임에도 어떤 자료는 (1)과 같이 표현하고 어떤 자료는 (2)와 같이 표현합니다. &amp;lt;식 1&amp;gt; 표기법의 각 요소는 다음과 정리할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>딥러닝 역전파 수식 행렬의 전치(Transpose) 기준?</title>
+      <link>http://taewan.kim/post/backpropagation_matrix_transpose/</link>
+      <pubDate>Wed, 20 Dec 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/backpropagation_matrix_transpose/</guid>
+      <description>Backpropagation을 직접 구현하는 과정에서 이유 없이 갑자기 발생하는 행렬 전치(Transpose)와 관련된 의문점이 오랜 기간 절 괴롭혔습니다. Backpropagation을 하기 위해서 Cost Function을 해당 계층의 W(가중치)로 편미분 한 후, 현재 W를 수정하는 수식을 유도하는 과정에서 일부 행렬이 전치행렬로 갑자기 변경됩니다. 문제는 제가 행렬이 전치(Transpose)되는 근거와 기준을 이해할 수가 없다는 것입니다. 딥러닝 책이나 웹 문서를 찾아보면 &amp;ldquo;편미분 과정에서 적당히 행렬을 맞춰준다.&amp;ldquo;라는 표현으로 이 부분을 설명합니다. 제가 찾고 싶었던 답은 Backpropagation 미분 과정에서 행렬의 방향성(Transpose 할 것이나 말 것이냐)은 어떻게 결정되는가입니다.</description>
+    </item>
+    
+    <item>
+      <title>딥러닝을 위한 Norm, 노름</title>
+      <link>http://taewan.kim/post/norm/</link>
+      <pubDate>Fri, 15 Dec 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/norm/</guid>
+      <description>기계학습 자료에서 간혹 Norm과 관련된 수식이나 표기법을 나오면 당황스러울 때가 있습니다. 선형대수에 익숙하지 않다면 Norm이 이상하게 보일 수 있습니다. 본 문서에서는 인공신공망과 기계학습 일고리즘에서 사용되는 Norm을 이해하는 것을 목표로 최소한도의 Norm 개념을 정리합니다.
+일반적으로 딥러닝에서 네트워크의 Overfitting(과적합) 문제를 해결하는 방법으로 다음과 같은 3가지 방법을 제시합니다.
+ 더 많은 데이터를 사용할 것 Cross Validation Regularization  더 이상 학습 데이터를 추가할 수 없거나 학습 데이터를 늘려도 과적합 문제가 해결되지 않을 때에는 3번 Regularization을 사용해야 합니다.</description>
+    </item>
+    
+    <item>
+      <title>Terraform Jupyter Installer: Machine Learning 환경 프로비저닝 </title>
+      <link>http://taewan.kim/post/terraform_jupyter_installer/</link>
+      <pubDate>Tue, 03 Oct 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/terraform_jupyter_installer/</guid>
+      <description>Terraform은 클라우드 인프라의 생성, 변경 및 형상 버전을 관리하는 툴입니다. Terraform을 이용하면 클라우드 자원을 효과적으로 사용하고 관리할 수 있습니다. Terraform을 활용하여 오라클 클라우드의 쉬운 접근법 제시를 목적으로 &amp;ldquo;Terraform Installer On Oracle Cloud&amp;ldquo;1 프로젝트를 준비하고 있습니다. Terraform으로 자원 할당, VM 생성, 소프트웨어 설치, 보안룰 적용 등이 완료된 완전한 형태의 인프라를 제공하여, 신규 오라클 클라우드 사용자가 오라클 클라우드에 접근을 쉽게 하고, 활용 폭을 넓히는 것을 목표로 합니다.
+&amp;ldquo;Terraform Installer On Oracle Cloud&amp;rdquo; 프로젝트의 파일럿 형태로 &amp;ldquo;Terraform Jupyter Installer&amp;ldquo;를 만들었습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

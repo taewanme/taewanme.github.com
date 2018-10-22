@@ -1,0 +1,546 @@
++++
+date = "2017-10-10T21:28:14+09:00"
+description = "blog.oracle.com의 포스트를 번역한 문서입니다. 최근에 오라클이 CNCF에 가입한 영향을 설명하는 글입니다.  Docker와 Kubernetes와 관련된 내용을 포함합니다."
+title = "[번역]Fn–An Open Source Serverless Functions Platform"
+thumbnailInList = "https://cdn.app.compendium.com/uploads/user/e7c690e8-6ff9-102a-ac6d-e4aebca50425/0dd8491b-d053-4912-b0b8-0ff4ca10b987/File/5b7362d3dfbfe6cc09cd68f830492c9d/3238546967_104858abee_b.jpg"
+thumbnailInPost = "https://cdn.app.compendium.com/uploads/user/e7c690e8-6ff9-102a-ac6d-e4aebca50425/a3e7d69b-5a30-44b2-af3c-3f7ef2882cd6/File/42216d4b32031c796d6e64ea0010942e/3336189.jpg"
+tags = ["docker", "serverless", "DevOps", "java", "김태완"]
+categories = ["오라클"]
+author = "taewan.kim"
+language = ""
+jupyter = "true"
+adsense = "true"
++++
+
+## Step0: MNIST 데이터 로딩
+
+<div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Tenforflow-&#48260;&#51204;-&#54869;&#51064;">Tenforflow &#48260;&#51204; &#54869;&#51064;<a class="anchor-link" href="#Tenforflow-&#48260;&#51204;-&#54869;&#51064;">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span>
+<span class="n">tensorflow</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[1]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;1.3.0&#39;</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="MNIST-&#45936;&#51060;&#53552;-&#47196;&#46377;">MNIST &#45936;&#51060;&#53552; &#47196;&#46377;<a class="anchor-link" href="#MNIST-&#45936;&#51060;&#53552;-&#47196;&#46377;">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.examples.tutorials.mnist</span> <span class="k">import</span> <span class="n">input_data</span>
+<span class="n">mnist</span> <span class="o">=</span> <span class="n">input_data</span><span class="o">.</span><span class="n">read_data_sets</span><span class="p">(</span><span class="s2">&quot;MNIST_data/&quot;</span><span class="p">,</span> <span class="n">one_hot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Extracting MNIST_data/train-images-idx3-ubyte.gz
+Extracting MNIST_data/train-labels-idx1-ubyte.gz
+Extracting MNIST_data/t10k-images-idx3-ubyte.gz
+Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="MNIST-&#45936;&#51060;&#53552;-&#54869;&#51064;">MNIST &#45936;&#51060;&#53552; &#54869;&#51064;<a class="anchor-link" href="#MNIST-&#45936;&#51060;&#53552;-&#54869;&#51064;">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shape of images for training: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shape of labels for training: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shape of images for training: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shape of labels for training: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Shape of images for training: (55000, 784)
+Shape of labels for training: (55000, 10)
+Shape of images for training: (10000, 784)
+Shape of labels for training: (10000, 10)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Data for mini-batch</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">batch_xs</span><span class="p">,</span> <span class="n">batch_ys</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">next_batch</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shape of images for mini-batch: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">batch_xs</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shape of labels for mini-batch: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">batch_ys</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Shape of images for mini-batch: (100, 784)
+Shape of labels for mini-batch: (100, 10)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#45936;&#51060;&#53552;-&#54869;&#51064;">&#45936;&#51060;&#53552; &#54869;&#51064;<a class="anchor-link" href="#&#45936;&#51060;&#53552;-&#54869;&#51064;">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">image</span><span class="o">.</span><span class="n">shape</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;inital data: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;data after reshape: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray_r</span><span class="p">,</span> <span class="n">interpolation</span> <span class="o">=</span> <span class="s2">&quot;nearest&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>inital data: (784,)
+data after reshape: (28, 28)
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+HTKzbWZ2Rc4268ysambVWq021SoAStB0+M1snqRfSdrg7n+U9HNJ35C0WPVnBj+dajt3H3X3irtX
+BgYGCmgZQBGaCr+ZfUX14O90972S5O4n3f0Ldz8v6ReSlnSuTQBFaxh+MzNJj0t6x91/Nmn54KTV
+fiDpcPHtAeiUZl7t/5akf5L0lpld+I7oTZJWmdli1Yf/xiX9sCMdAuiIZl7tPyjJpigxpg/MYLzD
+DwiK8ANBEX4gKMIPBEX4gaAIPxAU4QeCIvxAUIQfCIrwA0ERfiAowg8ERfiBoAg/EJS5e/d2ZlaT
+9IdJi/olne5aA9PTq731al8SvbWqyN6ucfemvi+vq+H/0s7Nqu5eKa2BhF7trVf7kuitVWX1xtN+
+ICjCDwRVdvhHS95/Sq/21qt9SfTWqlJ6K/WaH0B5yj7zAyhJKeE3s5vN7F0ze8/M7i2jhzxmNm5m
+b5nZmJlVS+5lm5mdMrPDk5ZdaWb7zexIdjvlNGkl9Xa/mR3Pjt2Ymd1SUm8Lzey/zex3Zva2md2T
+LS/12CX6KuW4df1pv5nNkfR/kr4r6Zik1yStcvffdbWRHGY2Lqni7qWPCZvZ30s6J+kJd78+W/av
+ks64+0PZP84r3P3HPdLb/ZLOlT1zczahzODkmaUl3Srpn1XisUv0tUIlHLcyzvxLJL3n7u+7+58k
+7ZY0UkIfPc/dX5J05qLFI5J2ZPd3qP7H03U5vfUEd59w9zey+x9LujCzdKnHLtFXKcoI/wJJRyc9
+PqbemvLbJf3GzF43s3VlNzOF+dm06ZJ0QtL8MpuZQsOZm7vpopmle+bYtTLjddF4we/Llrr730r6
+vqT12dPbnuT1a7ZeGq5paubmbpliZuk/K/PYtTrjddHKCP9xSQsnPf5atqwnuPvx7PaUpGfUe7MP
+n7wwSWp2e6rkfv6sl2ZunmpmafXAseulGa/LCP9rkobN7OtmNlfSSkn7SujjS8ysL3shRmbWJ+l7
+6r3Zh/dJWp3dXy3puRJ7+Qu9MnNz3szSKvnY9dyM1+7e9R9Jt6j+iv/vJf1LGT3k9HWtpDezn7fL
+7k3SLtWfBn6m+msjayT9laQDko5I+i9JV/ZQb/8h6S1Jh1QP2mBJvS1V/Sn9IUlj2c8tZR+7RF+l
+HDfe4QcExQt+QFCEHwiK8ANBEX4gKMIPBEX4gaAIPxAU4QeC+n+PJy2su/wN4gAAAABJRU5ErkJg
+gg==">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">labels</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[7]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>4</pre>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+## Step-1: Single Layer Perceptron
+
+<div tabindex="-1" id="notebook" class="border-box-sizing">
+  <div class="container" id="notebook-container">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#46972;&#51060;&#48652;&#47084;&#47532;-&#51076;&#54252;&#53944;">&#46972;&#51060;&#48652;&#47084;&#47532; &#51076;&#54252;&#53944;<a class="anchor-link" href="#&#46972;&#51060;&#48652;&#47084;&#47532;-&#51076;&#54252;&#53944;">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+  <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow.examples.tutorials.mnist</span> <span class="k">import</span> <span class="n">input_data</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="MNIST-&#45936;&#51060;&#53552;-&#47196;&#46377;">MNIST &#45936;&#51060;&#53552; &#47196;&#46377;<a class="anchor-link" href="#MNIST-&#45936;&#51060;&#53552;-&#47196;&#46377;">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+  <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mnist</span> <span class="o">=</span> <span class="n">input_data</span><span class="o">.</span><span class="n">read_data_sets</span><span class="p">(</span><span class="s2">&quot;MNIST_data/&quot;</span><span class="p">,</span> <span class="n">one_hot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Extracting MNIST_data/train-images-idx3-ubyte.gz
+Extracting MNIST_data/train-labels-idx1-ubyte.gz
+Extracting MNIST_data/t10k-images-idx3-ubyte.gz
+Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#47700;&#53440;&#48320;&#49688;-&#51221;&#51032;">&#47700;&#53440;&#48320;&#49688; &#51221;&#51032;<a class="anchor-link" href="#&#47700;&#53440;&#48320;&#49688;-&#51221;&#51032;">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+  <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">training_epochs</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">lr</span> <span class="o">=</span> <span class="mf">0.01</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Placeholde-&amp;-Variable-&#49440;&#50616;">Placeholde &amp; Variable &#49440;&#50616;<a class="anchor-link" href="#Placeholde-&amp;-Variable-&#49440;&#50616;">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+  <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">784</span><span class="p">])</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+  <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">W</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">random_normal</span><span class="p">([</span><span class="mi">784</span><span class="p">,</span> <span class="mi">10</span><span class="p">]))</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">random_normal</span><span class="p">([</span><span class="mi">10</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="hypothesis-&amp;-cost-&#51221;&#51032;">hypothesis &amp; cost &#51221;&#51032;<a class="anchor-link" href="#hypothesis-&amp;-cost-&#51221;&#51032;">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+  <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hypothesis</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span><span class="o">+</span><span class="n">b</span>
+<span class="n">cost</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax_cross_entropy_with_logits</span><span class="p">(</span>
+      <span class="n">logits</span><span class="o">=</span><span class="n">hypothesis</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">Y</span> <span class="p">))</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="n">lr</span><span class="p">)</span>
+<span class="n">train</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">cost</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Training">Training<a class="anchor-link" href="#Training">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+  <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">())</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">training_epochs</span><span class="p">):</span>
+  <span class="n">avg_cost</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">total_batch</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">num_examples</span><span class="o">/</span><span class="n">batch_size</span><span class="p">)</span>
+  <span class="k"></span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">total_batch</span><span class="p">):</span>
+      <span class="n">batch_xs</span><span class="p">,</span> <span class="n">batch_ys</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">next_batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+      <span class="n">c</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">cost</span><span class="p">,</span> <span class="n">train</span><span class="p">],</span>
+                      <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span><span class="n">batch_xs</span><span class="p">,</span> <span class="n">Y</span><span class="p">:</span><span class="n">batch_ys</span><span class="p">})</span>
+      <span class="n">avg_cost</span> <span class="o">+=</span> <span class="n">c</span> <span class="o">/</span> <span class="n">total_batch</span>
+      <span class="k"></span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Epoch:</span><span class="si">{:03d}</span><span class="s1">, cost:</span><span class="si">{:.9f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">avg_cost</span><span class="p">))</span>
+  <span class="k"></span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Learning finished&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Epoch:001, cost:7.750408133
+Epoch:002, cost:4.052506310
+Epoch:003, cost:2.878681440
+Epoch:004, cost:2.327688742
+Epoch:005, cost:2.005707187
+Epoch:006, cost:1.791686290
+Epoch:007, cost:1.637686452
+Epoch:008, cost:1.520768481
+Epoch:009, cost:1.428604177
+Epoch:010, cost:1.353537025
+Epoch:011, cost:1.290685902
+Epoch:012, cost:1.237364555
+Epoch:013, cost:1.191129968
+Epoch:014, cost:1.150495637
+Epoch:015, cost:1.114458549
+Learning finished
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Evaluating-Accuracy">Evaluating Accuracy<a class="anchor-link" href="#Evaluating-Accuracy">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+  <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">correct_predict</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">hypothesis</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">correct_predict</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+<span class="n">t_images</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span>
+<span class="n">t_labels</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">labels</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">X</span><span class="p">:</span><span class="n">t_images</span><span class="p">,</span> <span class="n">Y</span><span class="p">:</span><span class="n">t_labels</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy: &quot;</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Accuracy:  0.7969
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#49464;&#49496;-&#51333;&#47308;">&#49464;&#49496; &#51333;&#47308;<a class="anchor-link" href="#&#49464;&#49496;-&#51333;&#47308;">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+  <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sess</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+</div>
+  </div>
+</div>
+
+## multi player 3layer
+
+## deep multi layer 5단
+
+## deep multi layer 5단 - relu

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/python/</link>
+    <description>Recent content in Python on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 07 Oct 2018 19:59:47 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker Image: 파이썬 기반 머신러닝 학습용 이미지</title>
+      <link>http://taewan.kim/docs/docker4ml/</link>
+      <pubDate>Sun, 07 Oct 2018 19:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/docs/docker4ml/</guid>
+      <description>파이썬으로 데이터를 분석하고 머신러닝을 수행하기 위해서 필요한 환경을 Docker 이미지 &amp;lsquo;pyml&amp;lsquo;을 만들어 운영하고 있습니다. 컴퓨터에 Docker가 설치되어 있다면 바로 Docker 이미지를 다운받아 사용할 수 있습니다.
+&amp;lsquo;pyml&amp;rsquo; 더커 이미지는 주기적으로 업데이트되며 docker hub 레파지토리에서 운영됩니다.
+ https://hub.docker.com/r/taewanme/pyml/  이 문서에서는 &amp;lsquo;pyml&amp;rsquo; 더커 이미지의 주요 정보와 설치 방법에 대한 최신 정보를 제공하겠습니다.
+pyml Docker 최신 정보 pyml Docker 이미지 버전 pyml Docker 이미지 버전은 다음 URL의 Tags 페이지에서 확인 할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>비용 함수 MSE를 미분하여 경사하강법 유도</title>
+      <link>http://taewan.kim/til/mse_gd/</link>
+      <pubDate>Wed, 08 Aug 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/mse_gd/</guid>
+      <description>2장. 지도학습  지도학습  &amp;ldquo;Input/Label&amp;rdquo;로 구성된 사례 데이터를 이용하여 ML 모델을 학습 최종 목표: 새로운 데이터를 정확하게 에측하는 것 유형: 회귀 &amp;amp; 분류   2.1 분류와 회귀  그림 1: 지도학습 요약    2.2 일반화, 과대적합, 과소적합  Generalization:  일반화 새로운 데이터에 정확한 예측을 제공하는 모델의 역량 모델이 복잡해 지면 학습셋에만 정확한 예측 제공 학습데이터에만 정확도를 보이는 상태를 과대적합(Overfitting) 되었다고 함 데이터의 노이즈가지 학습한 상태를 의미  Overfitting  학습셋에는 좋은 정확도를 보이지만, 새로운 데이터에 대해서 정확도가 상당히 떨어짐 과도하게 복잡한 모델 사용 모든 데이터 암기 학습셋의 노이즈까지 익힌 상태  Underfitting  학습이 아직 부족한 상태</description>
+    </item>
+    
+    <item>
+      <title>Classification 성능 matrix</title>
+      <link>http://taewan.kim/til/matrics_in_classification/</link>
+      <pubDate>Tue, 07 Aug 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/matrics_in_classification/</guid>
+      <description> 분류 평가 기준  그림 1: Accuracy: 정확도     정확도: 전체 데이터 중에서 정확하게 분류한 비율   그림 2: Precision: 정밀도     정밀도: 양성의 예측 중에서 진짜로 양성인 비율  양성의 품질을 중요시 하는 경향    그림 3: Recall     재현율: 실제 양성 중에서 양성으로 분류한 비율  원본의 상태를 중시하는 경향   ROC Curve  그림 4: Recall &amp;amp; FPR     진짜 양성 비율: 양성관측한 것이 양성 가짜 음성 비율: 양성으로 예측, 음성  </description>
+    </item>
+    
+    <item>
+      <title>&#39;파이썬 라이브러리를 활용한 머신러닝&#39; 2장. 지도학습</title>
+      <link>http://taewan.kim/til/plwml-02/</link>
+      <pubDate>Fri, 03 Aug 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/plwml-02/</guid>
+      <description>2장. 지도학습  지도학습  &amp;ldquo;Input/Label&amp;rdquo;로 구성된 사례 데이터를 이용하여 ML 모델을 학습 최종 목표: 새로운 데이터를 정확하게 에측하는 것 유형: 회귀 &amp;amp; 분류   2.1 분류와 회귀  그림 1: 지도학습 요약    2.2 일반화, 과대적합, 과소적합  Generalization:  일반화 새로운 데이터에 정확한 예측을 제공하는 모델의 역량 모델이 복잡해 지면 학습셋에만 정확한 예측 제공 학습데이터에만 정확도를 보이는 상태를 과대적합(Overfitting) 되었다고 함 데이터의 노이즈가지 학습한 상태를 의미  Overfitting  학습셋에는 좋은 정확도를 보이지만, 새로운 데이터에 대해서 정확도가 상당히 떨어짐 과도하게 복잡한 모델 사용 모든 데이터 암기 학습셋의 노이즈까지 익힌 상태  Underfitting  학습이 아직 부족한 상태</description>
+    </item>
+    
+    <item>
+      <title>[20180707]&#39;파이썬 라이브러리를 활용한 머신러닝&#39; 1장</title>
+      <link>http://taewan.kim/til/plwml-01/</link>
+      <pubDate>Sat, 07 Jul 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/plwml-01/</guid>
+      <description>1장에서는 머신러닝의 기본 개념과 Scikit-learn에 대한 간략한 소개로 시작합니다. 또한 이 책에서 다룰 주요 환경에 대해 소개합니다. 마지막으로 KNN으로 붓꽃을 분류하는 예제를 통해서 데이터 수집, 적재, 탐색 및 학습의 과정을 소개합니다. 머신러닝의 가장 기본적인 용어와 접근법에 대한 기초적인 이해를 전달하는 것을 목표로합니다.
+1장의 예제 코드와 실행 결과는 다음 URL에서 확인할 수 있습니다. - https://github.com/taewanme/notebooks4til/blob/master/MLWithPythonLibraries/ch01.ipynb
+1장 구성 전에 26페이지 정도 분량으로 기계학습이란 무엇이고 이 책에서 다루는 환경에 대하여 소개합니다. 붓꽃을 분류하는 첫 번째 예제로 간단한 지도학습을 진행하는 방식을 소개합니다.</description>
+    </item>
+    
+    <item>
+      <title>Docker Image: 파이썬 기반 머신러닝 학습용 이미지 </title>
+      <link>http://taewan.kim/post/python_env_for_machine_learning/</link>
+      <pubDate>Fri, 06 Jul 2018 19:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/python_env_for_machine_learning/</guid>
+      <description>파이썬을 기반으로 머신러닝이나 딥러닝 작업을 진행할 때 가장 귀찮고 꺼려지는 작업은 기본 환경을 준비하는 과정입니다. 파이썬 기본 환경을 효과적으로 관리하기 위해서 Docker Image 형태로 PYML을 만들었습니다. PYML은 텐서플로우, 파이토치, 케라스 및 Scikit-Learn을 활용하여 데이터를 분석할 수 있는 환경이며 UI로 IPython을 사용합니다.
+taewanme/pyml 컨테이너 이미지 pyml 더커 이미지는 docker hub에 자동 빌드 프로젝트 형태로 배포되어 있습니다. pyml을 관리하는 레파지토리 주소는 다음 URL과 같습니다.
+ https://hub.docker.com/r/taewanme/pyml/  2018년 7월 5일 현재 최신 버전은 0.</description>
+    </item>
+    
+    <item>
+      <title>Neural Networks</title>
+      <link>http://taewan.kim/trans/pytorch/tutorial/blits/03_neural_networks/</link>
+      <pubDate>Tue, 27 Mar 2018 03:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/pytorch/tutorial/blits/03_neural_networks/</guid>
+      <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt; PyTorch와 함께하는 딥러닝: 60분 리뷰 &amp;gt; 신경망
+  원문: http://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html 원문 제목: Neural Networks   torch.nn 패키지를 사용하여 신경망을 만들 수 있습니다.
+지금까지 autograd에 대하여 살펴보았습니다. nn 패지지는 autograd를 사용하여 모델을 정의하고 미분합니다. nn.Module은 여러 레이어와 forward(input) 메서드를 포함합니다. 이 forward 메서드는 output을 반환합니다.
+다음 이미지는 디지틀 사진을 분류하는 신경망입니다.
+convnet1
+위 신경망은 단순한 feed-forward 네트워크입니다. 이 신경망은 입력된 데이터를 순차적으로 여러 레이어에 데이터를 공급합니다.</description>
+    </item>
+    
+    <item>
+      <title>Autograd: 미분 자동화</title>
+      <link>http://taewan.kim/torchtrans/tutorial/blits/autograd/</link>
+      <pubDate>Sun, 18 Mar 2018 03:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/torchtrans/tutorial/blits/autograd/</guid>
+      <description>원문: http://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html 원문 제목: Autograd: automatic differentiation?  PyTorch의 모든 신경 네트워크의 중심에는 autograd 패키지가 있습니다. 먼저 autograd에 대하여 간략히 살펴 보겠습니다. 그러나서 첫 번째 신경망을 훈련해 볼 것 입니다.
+autograd 패키지는 오든 텐서 연산에 대해 미분 자동화 기능을 제공합니다. 실행 정의(define-by-run) 프레임웍입니다. 실행 정의란 역전파는 코드가 실행되는 방식에 이해 정이됨을 의미합니다. 모든 반복마다 달라질 수 있습니다.
+몇 가지 예로 좀 더 간단한 용어를 살펴보겠습니다.
+Variable Gradients NumPy 배열을 Torch 텐서로 변환 import numpy as np a = np.</description>
+    </item>
+    
+    <item>
+      <title>Autograd: 미분 자동화</title>
+      <link>http://taewan.kim/trans/pytorch/tutorial/blits/02_autograd/</link>
+      <pubDate>Tue, 27 Feb 2018 03:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/pytorch/tutorial/blits/02_autograd/</guid>
+      <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt; PyTorch와 함께하는 딥러닝: 60분 리뷰 &amp;gt; Autograd: 미분 자동화
+  원문: http://http://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html 원문 제목: Autograd: automatic differentiation   PyTorch으로 만든 모든 신경망의 중심에는 autograd 패키지가 있습니다. 먼저 autograd 패키지를 간략히 살펴보겠습니다. 그리구 다음 문서에서 첫 번째 신경망을 훈련해 보겠습니다.
+autograd 패키지는 Tensor로 수행한 모든 연산에 대하여 자동-미분(Autimatic differentiation) 기능을 제공합니다. autograd는 실행 시점에 정의되는(define-by-run) 프레임워크입니다. 이것은 코드가 어떻게 실행되는가에 따라서 역전파(backprop)가 정의됨을 의미합니다.</description>
+    </item>
+    
+    <item>
+      <title>PyTorch는 무엇인가?</title>
+      <link>http://taewan.kim/torchtrans/tutorial/blits/pythorh_tutorial_01_what_is_pytorch/</link>
+      <pubDate>Tue, 27 Feb 2018 03:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/torchtrans/tutorial/blits/pythorh_tutorial_01_what_is_pytorch/</guid>
+      <description>원문: http://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-beginner-blitz-tensor-tutorial-py 원문 제목: What is PyTorch?  PyTorch란 무엇인가? PyTorch는 파이썬 기반의 과학 컴퓨팅 패키지로 두 집단을 대상으로 합니다.
+ NumPy를 대체하고 GPU의 힘을 사용 최고의 유연성과 속도를 제공하는 딥러닝 연구 플래폼  시작하기 Tensors Tensors는 NumPy의 ndarrays와 유사하며, 차별점은 Tensors는 연산을 가속하는 GPU에서 사용될 수 있다는 점 입니다.
+from __future__ import print_function import torch   초기화 되지 않은 5X3 매트릭스 생성  x = torch.Tensor(5, 3) print(x)   출력:</description>
+    </item>
+    
+    <item>
+      <title>PyTorch는 무엇인가?</title>
+      <link>http://taewan.kim/trans/pytorch/tutorial/blits/01_what_is_pytorch/</link>
+      <pubDate>Tue, 27 Feb 2018 03:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/pytorch/tutorial/blits/01_what_is_pytorch/</guid>
+      <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt; PyTorch와 함께하는 딥러닝: 60분 리뷰 &amp;gt; PyTorch는 무엇인가?
+  원문: http://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-beginner-blitz-tensor-tutorial-py 원문 제목: What is PyTorch?   PyTorch란 무엇인가? PyTorch는 파이썬 기반의 과학 컴퓨팅 패키지로 두 집단을 대상으로 합니다.
+ NumPy를 대체하고 GPU의 힘을 사용 최고의 유연성과 속도를 제공하는 딥러닝 연구 플랫폼  시작하기 Tensors Tensors는 NumPy의 ndarrays와 유사하며, 차별점은 Tensors는 연산을 가속하는 GPU에서 사용될 수 있다는 점입니다.
+from __future__ import print_function import torch   초기화되지 않은 5X3 매트릭스 생성  x = torch.</description>
+    </item>
+    
+    <item>
+      <title>PyTorch와 함께하는 딥러닝: 60분 리뷰</title>
+      <link>http://taewan.kim/torchtrans/tutorial/main/pythorh_tutorial_01/</link>
+      <pubDate>Mon, 26 Feb 2018 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/torchtrans/tutorial/main/pythorh_tutorial_01/</guid>
+      <description> 원문: http://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html 작성자: Soumith Chintala 원문 제목: Deep Learning with PyTorch: A 60 Minute Blitz  튜토리얼 목적
+ 높은 수준에서 PyTorch의 텐서 라이브러리와 신경망을 이해할 수 있다. 이미지를 분류하는 작은 신경 네트워크를 학습시킬 수 있다.  이 튜토리얼에서는 numpy에 대한 기본적인 지식이 있다고 가정합니다.
+torch와 torchvision 패키지가 모두 설치되어 있어야 합니다.
+  What is PyTorch? Autograd: automatic differentiation Neural networks Training a classifier Optional: Data Parallelism  </description>
+    </item>
+    
+    <item>
+      <title>PyTorch와 함께하는 딥러닝: 60분 리뷰</title>
+      <link>http://taewan.kim/trans/pytorch/tutorial/main/01_blits/</link>
+      <pubDate>Mon, 26 Feb 2018 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/pytorch/tutorial/main/01_blits/</guid>
+      <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt; PyTorch와 함께하는 딥러닝: 60분 리뷰
+  원문: http://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html 작성자: Soumith Chintala 원문 제목: Deep Learning with PyTorch: A 60 Minute Blitz   튜토리얼 목적
+ 높은 수준에서 PyTorch의 텐서 라이브러리와 신경망을 이해할 수 있다. 이미지를 분류하는 작은 신경 네트워크를 학습시킬 수 있다.  이 튜토리얼에서는 numpy에 대한 기본적인 지식이 있다고 가정합니다.
+torch와 torchvision 패키지가 모두 설치되어 있어야 합니다.
+    원문제목 번역문서 제목     What is PyTorch?</description>
+    </item>
+    
+    <item>
+      <title>PyTorch 튜토리얼</title>
+      <link>http://taewan.kim/trans/pytorch/tutorial/main/</link>
+      <pubDate>Sun, 25 Feb 2018 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/pytorch/tutorial/main/</guid>
+      <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt;
+  원문: http://pytorch.org/tutorials/index.html 원문 제목: Welcome to PyTorch Tutorials.   PyTorch 학습을 시작하려면, 입문자 튜토리얼로부터 시작하시기 바랍니다. &amp;ldquo;60분 blitz&amp;rdquo;는 초보자에게 가장 적합한 시작점으로, PyTorch에 대한 간단한 소개를 제공합니다. 예제를 통해 학습하는 것을 선호한다면, &amp;ldquo;Learning PyTorch With Examples&amp;rdquo; 문서로 시작하시기 바랍니다.
+각 튜토리얼 문서는 Jupyter 노트북과 파이썬 소스 코드 다운로드 링크를 제공합니다. IPython/Jupyter 노트북을 내려받아 대화식 학습을 진행할 수 있습니다.
+또한, 다수의 고품질 예제를 제공합니다.</description>
+    </item>
+    
+    <item>
+      <title>파이썬 데이터 사이언스 Cheat Sheet: NumPy 기초, 기본</title>
+      <link>http://taewan.kim/post/numpy_cheat_sheet/</link>
+      <pubDate>Tue, 16 Jan 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/numpy_cheat_sheet/</guid>
+      <description>파이썬 기반 데이터 분석 환경에서 NumPy1는 행렬 연산을 위한 핵심 라이브러리입니다. NumPy는 &amp;ldquo;Numerical Python&amp;ldquo;의 약자로 대규모 다차원 배열과 행렬 연산에 필요한 다양한 함수를 제공합니다. 특히 메모리 버퍼에 배열 데이터를 저장하고 처리하는 효율적인 인터페이스를 제공합니다. 파이썬 list 객체를 개선한 NumPy의 ndarray 객체를 사용하면 더 많은 데이터를 더 빠르게 처리할 수 있습니다.
+NumPy는 다음과 같은 특징을 갖습니다.
+ 강력한 N 차원 배열 객체 정교한 브로드케스팅(Broadcast) 기능 C/C ++ 및 포트란 코드 통합 도구 유용한 선형 대수학, 푸리에 변환 및 난수 기능 범용적 데이터 처리에 사용 가능한 다차원 컨테이너  본 문서는 cs231n 강좌의 Python Numpy Tutorial 문서와 DataCamp의 Python For Data Science Cheat Sheet NumPy Basics 문서를 참조하여 작성하였습니다.</description>
+    </item>
+    
+    <item>
+      <title>Numpy에서 np.sum 함수의 axis 이해</title>
+      <link>http://taewan.kim/post/numpy_sum_axis/</link>
+      <pubDate>Sun, 17 Sep 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/numpy_sum_axis/</guid>
+      <description>통계 및 데이터 분석, 딥러닝을 하다 보면 스칼라, 벡터, 행렬, 텐서와 같은 다양한 데이터 유형을 다루게 됩니다. 데이터 분석은 여러 유형의 데이터 합을 구하고 빈도수와 확률을 계산하는 반복적인 작업입니다. 다양한 데이터를 대상으로 선형대수(Linear Algebra) 연산에 numpy의 sum 함수을 사용하면 매우 편리합니다. 그러나 처음 numpy의 sum 함수를 접하면 axis 파라미터 때문에 굉장히 어렵게 느껴집니다. axis를 기준으로 합을 계산하는 의미를 이해하기 어렵습니다. 이제부터 numpy의 sum 함수에서 axis가 무엇을 의미하는지 알아보겠습니다.
+numpy의 sum 함수 사용 예 다음 코드는 3차원 배열을 만들고, 3차원 배열의 합을 구하는 코드입니다.</description>
+    </item>
+    
+    <item>
+      <title>파이썬 팁: pickle 모듈로 객체 저장</title>
+      <link>http://taewan.kim/tip/python_pickle/</link>
+      <pubDate>Sat, 02 Jan 2016 10:50:36 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tip/python_pickle/</guid>
+      <description>pickle 모듈은 파이썬 객체를 파일로 저장하고 로딩하는 기능을 제공합니다.
+pickle 모델 함수  dump(object, file, protocol) load(file)  파이썬 객체 저장 파이썬 객체 저장시 pickle 모듈이 dump 함수를 사용합니다.
+import pickle list = [1, 2, 3, 4, 5] with open(&#39;list.pkl&#39;, &#39;wb&#39;) as f: pickle.dump(l, f)   $ ls -al *.pkl -rw-r--r-- 1 root root 34 6월 2 13:10 list.pkl   pickle 파일 로딩 with open(&#39;./list.pkl&#39;, &#39;rb&#39;) as f: list2 = pickle.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vagrant on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/vagrant/</link>
+    <description>Recent content in Vagrant on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 10 Sep 2017 08:54:32 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/vagrant/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>2017 Oracle Code in Seoul: IaC 발표 동영상</title>
+      <link>http://taewan.kim/cloud/oracle_code_iac_youtube/</link>
+      <pubDate>Sun, 10 Sep 2017 08:54:32 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_code_iac_youtube/</guid>
+      <description>2017 Oracle Code in Seoul에서 발표한 &amp;ldquo;Vagrant, Terraform, Ansible을 활용한 클라우드 인프라 관리법&amp;ldquo;의 발표 동영상이 올라 왔습니다. 발표 동영상, 발표 자료 및 데모 문서를 정리합니다. 이 세미나는 2017년 8월 30일 14시 30분에 여의도 콘래드 3층 그랜드 볼륨에서 진행되었습니다. 클라우드 서비스에 Infrastructure as Code(IaC) 개념을 적용하여, 클라우드 자원을 형상관리하고 필요한 시점에 원하는 형상의 클라우드 자원을 빌드하는 체계를 소개합니다..
+발표 동영상   발표 문서 세미나 발표 문서는 다음 Slideshare에 확인할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>2017 Oracle Code in Seoul: IaC 발표 동영상</title>
+      <link>http://taewan.kim/post/oracle_code_iac_youtube/</link>
+      <pubDate>Sun, 10 Sep 2017 08:54:32 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/oracle_code_iac_youtube/</guid>
+      <description>2017 Oracle Code in Seoul에서 발표한 &amp;ldquo;Vagrant, Terraform, Ansible을 활용한 클라우드 인프라 관리법&amp;ldquo;의 발표 동영상이 올라 왔습니다. 발표 동영상, 발표 자료 및 데모 문서를 정리합니다. 이 세미나는 2017년 8월 30일 14시 30분에 여의도 콘래드 3층 그랜드 볼륨에서 진행되었습니다. 클라우드 서비스에 Infrastructure as Code(IaC) 개념을 적용하여, 클라우드 자원을 형상관리하고 필요한 시점에 원하는 형상의 클라우드 자원을 빌드하는 체계를 소개합니다..
+발표 동영상   발표 문서 세미나 발표 문서는 다음 Slideshare에 확인할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>2017 Oracle Code In Seoul: How to control cloud resources 데모</title>
+      <link>http://taewan.kim/cloud/oracle_code_provisioning/</link>
+      <pubDate>Thu, 31 Aug 2017 08:54:32 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_code_provisioning/</guid>
+      <description>2017 Oracle Code in Seoul에서 발표한 &amp;ldquo;Vagrant, Terraform, Ansible을 활용한 클라우드 인프라 관리법&amp;ldquo;의 발표 자료와 진행한 데모를 소개하는 문서입니다. 클라우드 자원을 체계적으로 관리하고, 완전한 자원 통제권을 확보하는 방법을 소개하는 세션입니다. 이 세션은 2017년 8월 30일 14시 30분에 여의도 콘래드 3층 그랜드 볼륨에서 진행됩니다. 클라우드 서비스에 Infrastructure as Code(IaC) 개념을 적용하여, 클라우드 자원을 형상관리하고 필요한 시점에 원하는 형상의 클라우드 자원을 빌드하는 체계입니다.
+발표 문서 세션의 장표는 Slideshare에 공유하였습니다.
+ 데모 &amp;amp; 사전 준비 사항 이 세션에서는 3개의 데모가 진행되었습니다.</description>
+    </item>
+    
+    <item>
+      <title>내 친구 Vagrant를 소개합니다.</title>
+      <link>http://taewan.kim/post/vagrant_intro/</link>
+      <pubDate>Sat, 06 Feb 2016 20:47:54 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/vagrant_intro/</guid>
+      <description>Vagrant는 가상화 인스턴스를 관리하는 소프트웨입니다. Vagrant의 실체는 가상 개발 환경을 생성하고 설정하기 위한 주요 가상화 소프트웨어의 고수준 레퍼입니다. Vagrant가 지원하는 가상화 기술은 다음과 같습니다.
+ VirtualBox VMware KVM Linux Container(LXC) Docker  Vagrant는 위에서 나열한 프로바이더 기술을 기반으로하여 가상화 인스턴스를 효과적으로 생성하고 관리 일관성을 확보하는 방안을 제공합니다. Vagrant의 가장 매력적인 부분은 가상 인스턴스를 만들고 실행하는 과정이 매우 빠르고 편리하다는 것입니다.
+Vagrant의 사전적인 의미는 &amp;ldquo;부랑자&amp;rdquo;/&amp;ldquo;정처없는 사람&amp;rdquo; 이라는 사전적인 의미를 갖습니다. Vagrant는 가상화 이미지를 효과적으로 만들고 테스트하는 유연한 환경이라는 의미에서 명명된 것이라고 생각됩니다.</description>
+    </item>
+    
+  </channel>
+</rss>

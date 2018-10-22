@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Extras on taewan.kim 블로그</title>
+    <link>http://taewan.kim/extra/</link>
+    <description>Recent content in Extras on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 06 Sep 2017 10:50:36 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/extra/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>파이썬 설치</title>
+      <link>http://taewan.kim/extra/install_python/</link>
+      <pubDate>Wed, 06 Sep 2017 10:50:36 +0900</pubDate>
+      
+      <guid>http://taewan.kim/extra/install_python/</guid>
+      <description>ubuntu: Python with apt-get (설치/제거) apt-get으로 설치명령과 로그는 다음과 같습니다.
+실제 설치 로그는 다음과 같습니다.
+ubuntu@e7d50d:~$ sudo apt-get install python Reading package lists... Done Building dependency tree Reading state information... Done The following additional packages will be installed: libpython-stdlib libpython2.7-minimal libpython2.7-stdlib python-minimal python2.7 python2.7-minimal Suggested packages: python-doc python-tk python2.7-doc binutils binfmt-support The following NEW packages will be installed: libpython-stdlib libpython2.7-minimal libpython2.7-stdlib python python-minimal python2.7 python2.7-minimal 0 upgraded, 7 newly installed, 0 to remove and 9 not upgraded.</description>
+    </item>
+    
+  </channel>
+</rss>

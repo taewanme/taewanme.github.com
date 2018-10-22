@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Event Hub on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/event-hub/</link>
+    <description>Recent content in Event Hub on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 14 Aug 2017 23:20:25 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/event-hub/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Apache Kafka PaaS: Oracle Event Hub CS 소개..</title>
+      <link>http://taewan.kim/cloud/kafka_paas_eventhub_cs/</link>
+      <pubDate>Mon, 14 Aug 2017 23:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/kafka_paas_eventhub_cs/</guid>
+      <description>Oracle Cloud는 Apache Kafka(이하 Kafka)를 클라우드 관리 서비스(PaaS) 형태로 제공하고 있습니다. Oracle Cloud가 2017년 1월에 출시한 &amp;ldquo;Oracle Event Hub Cloud Service&amp;rdquo;(이하 Oracle Event Hub CS)가 바로 Kafka 관리 서비스입니다. Oracle Event Hub CS는 오라클이 기술지원하고 관리하는 클라우드 서비스로 Kafka 클러스터의 효율적인 관리 방법과 지속적인 확장성을 제공합니다. 본 문서는 다음과 같은 내용으로 구성됩니다.
+ Oracle Event Hub CS 소개 Oracle Event Hub CS 클러스터 생성 Kafak 클러스터에 Topic 생성 Topic에 데이터 저장(Producing) &amp;amp; 가져오기(Consuming) 테스트  Oracle Event Hub CS Oracle Event Hub CS는 Kafaka 클라우드 관리형 서비스(managed service)입니다.</description>
+    </item>
+    
+  </channel>
+</rss>

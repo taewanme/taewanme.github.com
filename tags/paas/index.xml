@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Paas on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/paas/</link>
+    <description>Recent content in Paas on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 16 May 2018 15:59:47 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/paas/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>OCI 배포 가능한 Oracle Platform Services(2018.05.15 기준)</title>
+      <link>http://taewan.kim/cloud/oracle_paas_on_oci/</link>
+      <pubDate>Wed, 16 May 2018 15:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_paas_on_oci/</guid>
+      <description>오라클 클라우드는 IaaS로 OCI Classic과 OCI를 제공합니다. OCI Classic은 오라클 클라우드의 1세대 IaaS 기술이고 OCI(Oracle Cloud Infrastructure)는 오라클 클라우드의 2세대 기술입니다. 초기 Oracle Platform Services는 OCI Classic을 기준으로 발표되었고 현재 OCI으로 확장되고 있습니다. 2018년 5월 기준으로 OCI를 지원하는 Oracle Platform Services 목록은 다음과 같습니다.
+   OCI 지원 PaaS 서비스 명 Oracle PaaS 관련 가이드 문서     Database Cloud Service About Database Deployments in Oracle Cloud Infrastructure   Java Cloud Service About Java Cloud Service Instances in Oracle Cloud Infrastructure   MySQL Cloud Service About MySQL Cloud Service Deployments   Event Hub Cloud Service About Oracle Event Hub Cloud Service - Dedicated instances inOracle Cloud Infrastructure   Data Hub Cloud Service About Oracle Data Hub Cloud Service Clusters in Oracle Cloud Infrastructure   Big Data Cloud About Big Data Cloud Clusters in Oracle Cloud Infrastructure   Oracle SOA Cloud Service About SOA Cloud Service Instances in Oracle Cloud Infrastructure Classic and Oracle Cloud Infrastructure    출처  Information About Supported Platform Services  Oracle Cloud 관련 문서   Oracle Cloud 공통  Oracle Cloud IaaS: OCI vs OCI Classic Oracle Cloud 트라이얼 신청 절차 (2018.</description>
+    </item>
+    
+    <item>
+      <title>Oracle PaaS Service Manager 소개 및 설치</title>
+      <link>http://taewan.kim/cloud/installing_pms/</link>
+      <pubDate>Sun, 06 Aug 2017 22:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/installing_pms/</guid>
+      <description>Oracle PaaS Service Manager(이하 PSM)는 오라클 클라우드의 PaaS 서비스 관리에 사용되는 CLI(Command Line Interface)입니다. Oracle 클라우드는 PaaS 서비스를 관리하는 REST API를 제공합니다. 이 REST API를 이용하여 PaaS 서비스를 인스턴스 생성, 중지 그리고 삭제를 할 수 있습니다. Oracle PSM은 PaaS REST API에 대한 CLI 유형의 클라이언트 구현체입니다. Oracle PSM를 이용하여 오라클 클라우드 PaaS 서비스의 프로비저닝, 모니터링, 관리(생성, 중지, 삭제) 자동화 환경을 구축할 수 있습니다.
+Oracle PSM 지원 PaaS 서비스    Oracle PaaS 비고     Oracle Application Container Cloud Service Container 서비스, Polyglot 환경, Java, Python, PHP, Ruby 지원   Oracle Analytics Cloud 데이터 분석 클라우드 서비스   Oracle Big Data Cloud Service - Compute Edition 빅데이터 클라우드 서비스   Oracle Database Cloud Service Managed Oracle Database 서비스   Java Cloud Service.</description>
+    </item>
+    
+    <item>
+      <title>Oracle MySQL Cloud Service</title>
+      <link>http://taewan.kim/cloud/mysql_cs/</link>
+      <pubDate>Wed, 10 May 2017 15:48:24 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/mysql_cs/</guid>
+      <description>Oracle MySQL Cloud Service 개요 오라클이 오픈소스 형태로 개발하고 있는 MySQL은 전 세계에서 가장 많이 사용되는 오픈소스 데이터베이스 입니다. 오라클 클라우드는 Oracle MySQL Cloud Service(이하 MySQL CS)를 2016년 11월에 출시하였습니다. 2017년 5월 현재 오라클 클라우드는 관계형 데이터베이스 서비스1로 Oracle Database CS와 MySQL CS를 제공합니다.
+MySQL CS는 MySQL Enterprise Edition 라이센스를 기반으로하는 PaaS 서비스 입니다.
+MySQL CS가 제공하는 엔터프라이즈 지원 기능은 다음과 같습니다.
+ 데이터베이스 관리 체계(백업, 패치, 모니터링) MySQL 전문 관리 도구  MySQL Query Analyzer MySQL Enterprise Monitor  셀프 프로비저닝 탄력적인 확장성(Elastic scalability) 다중계층 보안(Multi-layer security)  MySQL CS의 특징 Oracle MySQL CS는 라이센스, 보안, 성능, 안전성, 관리 효율성, 백업과 복구 측면에서 다음과 같은 특징을 제공합니다.</description>
+    </item>
+    
+  </channel>
+</rss>

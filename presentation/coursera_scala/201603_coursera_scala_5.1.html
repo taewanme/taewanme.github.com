@@ -1,0 +1,520 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Coursera Scala: Lecture 5.1 More Functions on Lists </title>
+        <!--<script src="https://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript"> </script>-->
+    <script src="/js/remark-latest.min.js" type="text/javascript"> </script>
+
+    <style type="text/css" media="screen">
+      @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
+      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        margin-top: 10px;
+      }
+      h1 { font-size: 3.5em; 
+      }
+
+      h2 { font-size: 3em; }
+      h3 { font-size: 1.6em; }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      pre {
+        border-left: 0.4em solid #d7d7d7;
+        padding: 1em !important;
+      }
+      code {
+        background: transparent !important;
+      }
+      a {
+        color: #F92672;
+        text-decoration: none;
+      }
+      .task {
+        float: right;
+        font-size: 0.9em;
+        padding-top: 0.6em;      
+      }
+      .task a {
+        color: #080;
+        text-decoration: none;
+      }
+      .right {
+        float: right;
+        margin-left: 1em;
+      }
+      .pushdown {
+        margin-top: 12em;
+      }
+      .source {
+        bottom: 20px;
+        font-size: 15px;
+        left: 300px;
+        opacity: .5;
+        position: absolute;
+      }
+
+      .author {
+        bottom: 20px;
+        font-size: 12px;
+        left: 12px;
+        opacity: .5;
+        position: absolute;
+      }
+      .task {
+        float: right;
+        font-size: 0.9em;
+        padding-top: 0.6em;
+      }
+      .task a {
+        color: #080;
+        text-decoration: none;
+      }
+      .image-50 img {
+        width: 50%;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 5px;
+        border: 1px solid gray;
+      }
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle, inverse
+
+# Coursera
+##Functional Programming Principles in Scala
+### Lecture 5.1 More Functions on Lists
+----
+### 김태완, [taewanme@gmail.com](http://taewan.kim)
+### Mar, 29, 2016
+???
+- 2016년 3월 29일 스터디 발표 자료
+- Lascala 수요 스터디 세미나 발표 자료
+
+---
+.task[5.1 More functions on List]
+# List Mehtod (1) -1/2
+----
+```scala
+ val xs = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+```
+| 리스트 메서드   |      설명      | 예제 | 결과 |
+|--------------|:-------------|:------|:------|------:|
+| xs.length | xs의 엘리먼트 갯수를 반환                              | xs.length |10 |
+| xs.last   | 리스트의 마지막 엘리먼트 반환 <br/>(xs가 empty 상황 제외)   |xs.last    |10 |
+| xs.init   | xs의 마지막 엘리먼트를 제외한 모든 엘리먼트를 포함하는 리스트 반환 |xs.init |List(1, 2, 3, 4, 5, 6, 7, 8, 9) |
+| xs take n | n-1 인덱스까지 목록을 반환, n 보다 xs 길이가 짧으면 전체 반환 |xs take 3 |List(1, 2, 3) |
+| xs drop n | n-1 인덱스 다음부터 나머지 목록을 반환  |xs drop 7|List(8, 9, 10)|
+| xs(n)     | apply 메서드 적용, n 인덱스 엘리먼트 반환 |xs(6) |7 |
+
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]   
+---
+
+.task[5.1 More functions on List]
+# List Mehtod (1) - 2/2
+----
+scala List 메서드 요약
+
+![](/images/coursera_scala/5-1-1.list.jpg)
+
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]  
+---
+
+.task[5.1 More functions on List]
+# List Mehtod (2) - 1/2
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]  
+
+```scala
+scala> val xs = List(1, 2, 3)
+scala> val ys = List(4, 5, 6)
+```
+
+### 새로운 리스트 생성
+| 메서드   |      설명      | 예제 | 결과 |
+|--------------|:-------------|:------|:------|------:|
+| xs ++ ys          | 모든 xs와 ys의 엘리먼트를 포함하는 리스트<br/>xs가 앞에 위치하고 ys가 뒤따름| xs ++ ys  |List(1, 2, 3, 4, 5, 6)          |
+| xs.reverse        | xs의 모든 엘리먼트를 포함하고 순서가 반대인 리스트 반환  |xs.reverse    |List(3, 2, 1) |
+| xs updated (n,x)   | 인덱스 n의 값이 x인 것을 제외한 모든 엘리먼트가 동일한 리스트 반환 |xs update (1,0)|  List(1, 0, 3) |
+  
+---
+.task[5.1 More functions on List]
+# List Mehtod (2) - 2/2
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]  
+
+```scala
+scala> val xs = List(1, 2, 3)
+```
+
+### 리스트 엘리먼트 찾기
+| 메서드   |      설명      | 예제 | 결과 |
+|--------------|:-------------|:------|:------|------:|
+| xs indexOf x | xs에서 x와 같은 첫번째 엘리먼트 인덱스 반환.<br/> 리스트에 x와 일치하는 엘리먼트 없으면 -1 반환 | xs indexOf 2 |1|
+| xs contain x | xs에 x와 동일한 엘리먼트 존재 여부 체크 <br/> 로직: (xs indexOf x) >=0 |xs contains 0    |false | 
+---
+
+.task[5.1 More functions on List]
+# last 메서드 구현하기
+----
+- head의 complexity는 Constant Time.
+- last의 complexity는 어떠한가?
+
+```scala
+def last[T](xs: List[T]): T = xs match {
+  case List() => throw new Error("last of empty list")
+  case List(x) =>
+  case y :: ys =>
+}
+```
+
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]  
+---
+
+count: false
+.task[5.1 More functions on List]
+# last 메서드 구현하기
+----
+- head의 complexity는 Constant Time.
+- last의 complexity는 어떠한가?
+
+```scala
+def last[T](xs: List[T]): T = xs match {
+  case List() => throw new Error("last of empty list")
+* case List(x) => x
+  case y :: ys =>
+}
+```
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]  
+---
+
+count: false
+.task[5.1 More functions on List]
+# last 메서드 구현하기
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]  
+
+- head의 complexity는 Constant Time.
+- last의 complexity는 어떠한가?
+
+```scala
+def last[T](xs: List[T]): T = xs match {
+  case List() => throw new Error("last of empty list")
+  case List(x) => x
+* case y :: ys => last(ys)
+}
+```
+--
+
+- xs의 길이에 따라 처리 절차는 비례하여 증가함.
+---
+
+.task[5.1 More functions on List]
+# 연습문제
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]  
+
+- last와 유사한 방식으로 init 함수를 구현하시오.
+
+```scala
+def init[T](xs: List[T]): T = xs match {
+  case List() => throw new Error("init of empty list")
+  case List(x) => ???
+  case y :: ys => ???
+}
+```
+---
+
+.task[5.1 More functions on List]
+# 연습문제 풀이
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]  
+
+- last와 유사한 방식으로 init 함수를 구현하시오.
+
+```scala
+def init[T](xs: List[T]):List[T] = xs match {
+  case List() => throw new Error("init of empty list")
+* case List(x) => List()
+* case y :: ys => y::init(ys)
+}
+```
+
+---
+
+.task[5.1 More functions on List]
+# 연결(concat) 메서드 구현
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]  
+
+- :::(concat)을 어떻게 구현할 것인가?
+- 단일 메서드(stand-alone)로 구현할 것.
+
+```scala
+def concat[T](xs: List[T], ys: List[T]) =
+```
+
+---
+count:false
+.task[5.1 More functions on List]
+# 연결(concat) 메서드 구현
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]  
+
+- :::(concat)을 어떻게 구현할 것인가?
+- 단일 메서드(stand-alone)로 구현할 것.
+
+```scala
+def concat[T](xs: List[T], ys: List[T]) = xs match{
+  case List() => 
+  case z::zs  => 
+} 
+```
+
+---
+count:false
+.task[5.1 More functions on List]
+# 연결(concat) 메서드 구현
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]  
+
+- :::(concat)을 어떻게 구현할 것인가?
+- 단일 메서드(stand-alone)로 구현할 것.
+
+```scala
+def concat[T](xs: List[T], ys: List[T]) = xs match{
+* case List() => ys
+* case z::zs  => z :: concat(zs, ys)
+} 
+```
+--
+
+- concat의 복잡도는 어떠한가?
+
+--
+
+  - xs의 길이에 따라서 길이가 증가할 수록 선형적 증가를 함
+
+--
+
+- xs ::: ys = ys.:::(xs)
+
+--
+
+- 재귀 호출이 발생하므로 반환값에 대한 변수형을 선언해야 함 (생략 불가)
+
+---
+
+.task[5.1 More functions on List]
+# 리버스 함수 구현
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]  
+
+- reverse 함수를 어떻게 구현할 것인가?
+- 단일 메서드(stand-alone)로 구현할 것.
+
+```scala
+def reverse[T](xs:List[T]):List[T] = xs match{
+  
+}
+```
+
+---
+count:false
+.task[5.1 More functions on List]
+# 리버스 함수 구현
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]  
+
+- reverse 함수를 어떻게 구현할 것인가?
+- 단일 메서드(stand-alone)로 구현할 것.
+
+```scala
+def reverse[T](xs:List[T]):List[T] = xs match{
+  case List() => 
+  case y::ys  => 
+  
+}
+```
+
+---
+
+count:false
+.task[5.1 More functions on List]
+# 리버스 함수 구현
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]  
+
+- reverse 함수를 어떻게 구현할 것인가?
+- 단일 메서드(stand-alone)로 구현할 것.
+
+```scala
+def reverse[T](xs:List[T]):List[T] = xs match{
+  case List() => Nil
+* case y::ys => reverse(ys) ++ List(y)
+  
+}
+```
+--
+
+- 복잡도는? 
+--
+
+  - n*n
+--
+
+- 개선방안?
+--
+ 
+  - 선형적 증가로 교체해야 함
+
+
+---
+.task[5.1 More functions on List]
+# 연습문제
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]  
+
+- xs 리스트 중 n번째 엔리먼트를 제거할 것. n이 리스트 범위 밖이면 xs자체를 반환할 럿
+
+```scala
+def removeAt[T](xs:List[T],n:Int) = ???
+```
+- 예제: removeAt(1, List('a', 'b', 'c','d')) > List('a', 'c', 'd')
+
+---
+count:false
+.task[5.1 More functions on List]
+# 연습문제
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]  
+
+- xs 리스트 중 n번째 엔리먼트를 제거할 것. n이 리스트 범위 밖이면 xs자체를 반환할 럿
+
+```scala
+def removeAt[T](xs:List[T],n:Int) = 
+    (xs take n) ::: (xs drop (n+1))
+```
+- 예제: removeAt(1, List('a', 'b', 'c','d')) > List('a', 'c', 'd')
+
+---
+
+.task[5.1 More functions on List]
+# 연습문제 2 
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]  
+
+- xs 리스트 중 n번째 엔리먼트를 제거할 것. n이 리스트 범위 밖이면 xs자체를 반환할 럿
+
+```scala
+def flatten(xs: List[Any]): List[Any] = ???
+```
+- 예제: flatten(List(List(1, 1), 2, List(3, List(5, 8))))
+  - List(1, 1, 2, 3, 5, 8)
+---
+count:false
+.task[5.1 More functions on List]
+# 연습문제 2 
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]  
+
+- xs 리스트 중 n번째 엔리먼트를 제거할 것. n이 리스트 범위 밖이면 xs자체를 반환할 럿
+
+```scala
+def flatten(xs:List[Any]):List[Any] = xs match {
+* case Nil => Nil
+* case (head:List[_])::tail => flatten(head) ++ flatten(tail)
+* case head::tail => head :: flatten(tail)
+}
+```
+- 예제: flatten(List(List(1, 1), 2, List(3, List(5, 8))))
+  - List(1, 1, 2, 3, 5, 8)
+---
+
+.task[5.1 More functions on List]
+# 연습문제 2 
+----
+.author[Taewan Kim/taewanme@gmail.com]
+.source[Feedback:[http://taewan.kim/presentation.html](/presentation.html)]  
+
+- xs 리스트 중 n번째 엔리먼트를 제거할 것. n이 리스트 범위 밖이면 xs자체를 반환할 럿
+
+```scala
+def flatten(xs:List[Any]):List[Any] = xs match {
+* case Nil => Nil
+* case (head:List[_])::tail => flatten(head) ++ flatten(tail)
+* case head::tail => head :: flatten(tail)
+}
+```
+```scala
+flatten(List(List(1, 1), 2, List(3, List(5, 8))))
+> res2: List[Any] = List(1, 1, 2, 3, 5, 8)
+``` 
+---
+class: center, middle, inverse
+
+# Coursera
+##Functional Programming Principles in Scala
+### Lecture 5.1 More Functions on Lists
+----
+# QnA
+### Mar, 29, 2016
+    </textarea>
+    <script>
+      var slideshow = remark.create({
+                                      highlightLanguage: 'scala',
+                                      countIncrementalSlides: false,
+                                      highlightLines: true,
+                                      highlightStyle: 'arta',
+                                      highlightSpan: true
+      });
+
+    </script>
+    <script>
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+  </body>
+</html>

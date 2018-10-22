@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/linux/</link>
+    <description>Recent content in Linux on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 16 Mar 2011 14:01:55 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>sudo 사용자 등록 (in CentOS)</title>
+      <link>http://taewan.kim/post/sudo_in_centos/</link>
+      <pubDate>Wed, 16 Mar 2011 14:01:55 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/sudo_in_centos/</guid>
+      <description>일반 사용자가 루트 권한을 획득하기 위해서는 su 명령을 사용해야 합니다. 사실 매번 루트 권한을 얻기 위해서 su를 수행하는 것은 불편하죠. Ubunto를 사용할 때 가장 편 리한 명령은 아마도 sudo일 것입니다. sudo는 일반사용자가 루트 권한을 임시적으로 획득하여 특정 명령을 할 수 있도록 합니다.
+Ubuntu에서는 처음부터 일반 사용자가 sudo를 사용할 수 있도록 되어 있지만 CentOS &amp;gt;등 다른 리눅스 배포판에서는 sudo를 기본적으로 사용할 수 없도록 되어 있습니다.
+[was@centos ~]$ sudo more /etc/sysctl.conf [sudo] password for was: was is not in the sudoers file.</description>
+    </item>
+    
+  </channel>
+</rss>

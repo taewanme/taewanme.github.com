@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Log on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/log/</link>
+    <description>Recent content in Log on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Apr 2018 15:59:47 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/log/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>오픈소스 작명 센스: 아파치 플룸(Apache Flume)</title>
+      <link>http://taewan.kim/post/flume_images/</link>
+      <pubDate>Sun, 15 Apr 2018 15:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/flume_images/</guid>
+      <description>Flume에 대한 전체적인 개요를 정리한 문서입니다. Flume을 아직 잘 모르시는 분들에게 전체적인 Flume 이미지를 제공하는 목적으로 작성하였습니다.
+Flume이란? Apache Flume은 오픈소스 프로젝트로 개발된 로그 데이터를 수집 기술입니다. 여러 서버에서 생산된 대용량 로그 데이터를 효과적으로 수집하여, HDFS과 같은 원격 목적지에 데이터를 전송하는 기능을 제공합니다. 구조가 단순하고 유연하여 다양한 유형의 스트리밍 데이터 플로우(Streaming Data Flow) 아키텍처를 구성할 수 있습니다.
+Apache Flume 프로젝트는 공식 홈페이지는 https://flume.apache.org/ 입니다.
+로그 수집에 Flume을 사용함으로써 신뢰성, 규모 확장성 및 기능 확장성을 확보할 수 있습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

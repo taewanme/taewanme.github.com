@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Markdown on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/markdown/</link>
+    <description>Recent content in Markdown on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 04 Apr 2016 13:47:07 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>마크다운 사용법 - Quick Start</title>
+      <link>http://taewan.kim/post/markdown/</link>
+      <pubDate>Mon, 04 Apr 2016 13:47:07 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/markdown/</guid>
+      <description>taewan.kim은 대부분의 내용을 markdown으로 관리하고 있습니다. markdown은 직관적이고 간단한 문법으로 컨텐츠 관리에 매우 효과적입니다. markdown에서 주로 이용되는 테그는 15개정도 입니다. 혼동되는 주요 테그를 정리하겠습니다.
+ 목차   헤더 수평선 텍스트 출력 텍스트 강조 인용 목록 코드 테이블 링크 이미지 주석 각주   헤더  (top) H1 ~ H6까지 테그를 #으로 표현
+# 헤더 스타일 (h1) ## 헤더 스타일 (h2) ### 헤더 스타일 (h3) #### 헤더 스타일 (h4) ##### 헤더 스타일 (h5) ###### 헤더 스타일 (h6)   출력 결과  헤더 스타일 (h1) 헤더 스타일 (h2) 헤더 스타일 (h3) 헤더 스타일 (h4) 헤더 스타일 (h5) 헤더 스타일 (h6)  효과: 다음과 같은 코드와 동일한 결과가 됨  &amp;lt;h1&amp;gt;헤더 스타일 (h1)&amp;lt;/h1&amp;gt; &amp;lt;h2&amp;gt;헤더 스타일 (h2)&amp;lt;/h2&amp;gt; &amp;lt;h3&amp;gt;헤더 스타일 (h3)&amp;lt;/h3&amp;gt; &amp;lt;h4&amp;gt;헤더 스타일 (h4)&amp;lt;/h4&amp;gt; &amp;lt;h5&amp;gt;헤더 스타일 (h5)&amp;lt;/h5&amp;gt; &amp;lt;h6&amp;gt;헤더 스타일 (h6)&amp;lt;/h6&amp;gt;  수평선  (top)  &amp;lt;hr /&amp;gt;와 동일한 결과를 출력 &amp;rsquo;-&amp;lsquo;, &amp;lsquo;*&amp;lsquo;, &amp;lsquo;_&amp;lsquo;을 세개 이상 나열하면 수평선을 만듦 단락 나누기 용도로 많이 사용.</description>
+    </item>
+    
+    <item>
+      <title>remark를 이용한 웹 프리젠테이션</title>
+      <link>http://taewan.kim/post/remarkjs/</link>
+      <pubDate>Tue, 22 Mar 2016 10:23:15 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/remarkjs/</guid>
+      <description>PPT를 공유하는 Slideshare 서비스가 있기는 하지만, 웹 상에서 내가 직접 제어와 공유가 가능한 순수 HTML기반의 웹 프리젠테이션에 대한 필요성을 느껴왔씁니다. 오픈소스로 다수의 웹 프리젠테이션 기술 중에서 하나를 선택하라면 remark를 선택하겠습니다.
+remark의 장점은 다음과 같습니다.
+ 순수 HTML 기술이다. 슬라이드 데이터는 Markdown 포멧을 사용한다. PPT의 기본 레이아웃 지원에 충실하다. 사용법이 간단하다. Syntax Highlight 기능을 잘 지원한다. Latex를 지원한다. Graph를 지원한다.  반면 단점을 꼽으라면 Animation 효과가 지원되지 않는다는 것입니다. 개인적으로 Animation 효과보다는 프리젠테이션 구성 지원과 문서 작성 편리성을 중시하는 관계로 제 경우에는 이 단점이 크게 작용하지 않았습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

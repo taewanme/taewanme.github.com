@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tunning on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/tunning/</link>
+    <description>Recent content in Tunning on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 06 Jan 2018 19:05:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/tunning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>가비지 컬렉션(Garbage Collection) 튜닝</title>
+      <link>http://taewan.kim/trans/javagc/ch01/</link>
+      <pubDate>Sat, 06 Jan 2018 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/javagc/ch01/</guid>
+      <description>이 문서는 Java9의 오라클 공식 문서 중 Java Platform, Standard Edition HotSpot Virtual Machine Garbage Collection Tuning Guide의 한글화 문서입니다. 원문 정보는 다음과 같습니다.
+  원문: https://docs.oracle.com/javase/9/gctuning/toc.htm 제목: Java Platform, Standard Edition HotSpot Virtual Machine Garbage Collection Tuning Guide  문서번호: E76294-05 배포: 2017년 10월  라이센스: 원본 문서 라이센스를 준수합니다.  원문: https://docs.oracle.com/javase/9/gctuning/title.htm  본 문서의 원본은 github repository로 관리합니다.  github 주소:    A wide variety of applications, from small applets on desktops to web services on large servers, use the Java Platform, Standard Edition (Java SE).</description>
+    </item>
+    
+  </channel>
+</rss>

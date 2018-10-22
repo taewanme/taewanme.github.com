@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>신경망 W 행렬 표기법: &#39;ij&#39;/&#39;ji&#39; 의 차이점?</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="신경망 W 행렬 표기법: &#39;ij&#39;/&#39;ji&#39; 의 차이점?" />
+<meta property="og:description" content="GPU Performance" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/post/wij_and_wji/" />
+
+
+
+<meta property="article:published_time" content="2017-12-23T21:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2017-12-23T21:28:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="http://taewan.kim/css/jupyter.css" type="text/css" media="all" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		
+		
+		<header class="post__header clearfix">
+			<h1 class="post__title">신경망 W 행렬 표기법: &#39;ij&#39;/&#39;ji&#39; 의 차이점? </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2017-12-23 21:28:14 &#43;0900 KST">December 23, 2017</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/machine-learning" rel="category">Machine Learning</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2017/12/W-index/post.jpg" alt="신경망 W 행렬 표기법: &#39;ij&#39;/&#39;ji&#39; 의 차이점?">
+			</figure>
+			
+
+<p>제가 처음에 딥러닝을 학습할 때 가장 혼란스러웠던 것은 입력 레이어의 데이터와 가중치 W의 합 표현하는 &ldquo;Z(Weighted Sum)&rdquo; 수식이 문서마다 다른 것이었습니다.</p>
+
+<blockquote>
+<ul>
+<li>&lt;식 1&gt;. Z(Weighted Sum)을 표현하는 수식
+$$
+\begin{align}
+Z^{[l]} &amp; = W^{[l]T}A^{[l-1]}  &amp; (1) \\<br />
+Z^{[l]} &amp; = W^{[l]}A^{[l-1]}  &amp; (2)
+\end{align}
+$$</li>
+</ul>
+</blockquote>
+
+<p>&lt;식 1&gt;의 (1)과 (2)는 다른 수식임에도 어떤 자료는 (1)과 같이 표현하고 어떤 자료는 (2)와 같이 표현합니다.
+&lt;식 1&gt; 표기법의 각 요소는 다음과 정리할 수 있습니다.</p>
+
+<ul>
+<li>$Z^{[l]}$: &lsquo;l&rsquo;번째 레이어의 Z(가중치 합, Weighted Sum) 벡터</li>
+<li>$W^{[l]}$: &lsquo;l&rsquo;번째 레이어의 가중치 W 행렬</li>
+<li>$A^{[l-1]}$: &lsquo;l-1&rsquo;번째 레이어의 출력 벡터, &lsquo;l&rsquo;번째 레이어의 입력 벡터</li>
+</ul>
+
+<p>더욱 혼란스러운 것은 W 행렬의 요소를 표현하는 방식입니다. Coursera 등의 Andrew NG 교수님의 강의 자료를 보면 W 행렬의 각 요소를 $W^{[l]}_{ji}$ 로 표현합니다.</p>
+
+<p>국내 여러 딥러닝 도서를 보면 W 행렬의 요소를 $W^{[l]}_{ij}로 표현합니다. 이러한 미묘한 차이에 따라서 Cost 함수 수식이나 Backpropagation 수식이 약간씩 달라지는 것 같고 상당히 혼란스러웠습니다.</p>
+
+<p>딥러닝에 어느 정도 익숙해지면, 이러한 문제는 지엽적인 문제이기 때문에 크게 고려할 필요는 없습니다. 하지만 초기 입문자에게는 많은 혼란을 주는 첫 번째 시련의 시작점입니다. 본 문서에서는 $W<em>{ji}$와 $W</em>{ij}$의 의미와 이것이 어떤 영향을 주는지에 대하여 정리해 보겠습니다</p>
+
+<h2 id="0-시작하기-전에-용어-정의">0. 시작하기 전에: 용어 정의</h2>
+
+<p>표현이 혼동을 줄이기 위해서 W 행렬 표현 방식에 대하여 다음과 같이 명명하겠습니다.</p>
+
+<ul>
+<li>W 행렬 요소를 $W_{ji}$로 표현하는 방법을 &ldquo;<strong>ji</strong> 방식&rdquo;으로 표현하겠습니다.<br /></li>
+<li>W 행렬 요소를 $W_{ij}$로 표현하는 방법을 &ldquo;<strong>ij</strong> 방식&rdquo;으로 표현하겠습니다.<br /></li>
+</ul>
+
+<h2 id="1-컬럼벡터와-열벡터">1. 컬럼벡터와 열벡터</h2>
+
+<p>W 행렬을 &ldquo;<strong>ji</strong> 방식&rdquo; 혹은 &ldquo;<strong>ij</strong> 방식&rdquo;으로 관리하는 의미를 살펴보기 전에 데이터를 행렬로 처리하는 방식에 대하여 살펴보겠습니다.</p>
+
+<p>딥러닝은 여러 개의 데이터를 행렬로 묶어서 한 번에 연산을 처리하는 방식을 좋아합니다. 이 방식을 사용함으로써 수식과 코드를 단순하게 유지할 수 있습니다. 또한, 행렬로 처리한 신경망을 GPU로 실행할 경우 연산 속도를 극단적으로 향상할 수있습니다.</p>
+
+<p>여러 데이터를 하나의 행렬로 나타내는 방식으로는 컬럼벡터 방식과 와 열벡터 방식이 있습니다.</p>
+
+<p>예를 들어서, 한 개 입력 데이터가 4개 항목으로 구성된다면, 이 데이터를 벡터로 표현할 경우 4차원 벡터라고 합니다.
+이 4차원 벡터를 한 개 &ldquo;<strong>인스턴스</strong>&ldquo;라고 합니다. 이 인스턴스를 행렬로 표현하는 방식에는 앞에서 언급한 컬럼벡터와 열백터가 있습니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2017/12/W-index/030.jpg" alt="컬럼벡터와 열벡터" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 1</strong>:
+        
+        컬럼벡터와 열벡터
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>&lt;그림 1&gt;의 첫 번째는 하나의 컬럼을 한 개의 인스턴스로 표현하는 컬럼벡터 방식 입니다. &lt;그림 1&gt;의 두 번째는 하나의 인스턴스를 열로 표현하는 열벡터 방식을 설명합니다.</p>
+
+<p>관계형 데이터베이스는 열벡터 방식을 사용하는 대표적인 예입니다. 따라서 관계형 데이터베이스에 익숙한 일반적인 애플리케이션 개발자는 열벡터 방식이 더 친숙합니다. 그러나 기계학습(ML)에서는 열벡터보다는 컬럼벡터 방식을 더 선호합니다. 학습에 이용할 데이터는 컬럼벡터 방식으로 로딩하고 상요합니다.</p>
+
+<h3 id="1-1-ml-데이터-로딩-컬럼벡터">1.1 ML 데이터 로딩:컬럼벡터</h3>
+
+<p>다음은 numpy를 이용하여 열벡터 방식으로 파일에 저장된 데이터를 컬럼벡터 방식으로 로딩하는 코드입니다.
+아래 코드는 신경망에 학습시킬 데이터를 파일부터 로딩때 때 자주 사용됩니다.</p>
+
+<div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>cat ./data/ch02-file.txt
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>#x1 x2  x3  y
+1 1 0 1
+1 0 2 2
+1 3 0 3
+1 0 4 4
+1 5 0 5</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;./data/ch02-file.txt&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>unpack옵션을 사용하여 row vector를 column vector로 변환(Transpose)</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">x_data</span> <span class="c1"># 학습 데이터</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[3]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[ 1.,  1.,  1.,  1.,  1.],
+       [ 1.,  0.,  3.,  0.,  5.],
+       [ 0.,  2.,  0.,  4.,  0.]], dtype=float32)</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">y_data</span> <span class="c1">#레이블 데이터</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[4]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 1.,  2.,  3.,  4.,  5.], dtype=float32)</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+    </div>
+  </div>
+
+<p>&nbsp;</p>
+
+<h2 id="2-w-ji-는-무엇이-이상한가">2. $W_{ji}$는 무엇이 이상한가?</h2>
+
+<p>Andrew NG 교수님의 Coursera 강좌를 보면 각 레이어의 W 행렬의 요소를 &lt;그림 2&gt;와 표현합니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2017/12/W-index/080.jpg" alt="W 행렬의 요소 표기법" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 2</strong>:
+        
+        W 행렬의 요소 표기법
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>&lt;그림 2&gt;의 각 요소는 다음과 같이 정리할 수 있습니다.</p>
+
+<ul>
+<li><strong>l</strong>: <strong>W</strong> 행렬이 적용될 레이어 인덱스</li>
+<li><strong>j</strong>: <strong>l</strong> 계층의 노드 위치 인덱스</li>
+<li><strong>i</strong>: <strong>l-1</strong> 계층의 노드 위치 인덱스<br /></li>
+</ul>
+
+<p>&lt;그림 3&gt;은 W 행렬 요소의 표기법 예제입니다. $W^{[1]}_{12}$는 &lt;그림 3&gt;의 빨간색으로 표기된 W 행렬 요소입니다. 이 표현은 다음과 같이 정리할 수 있습니다.</p>
+
+<ul>
+<li>$W^{[1]}_{12}$: 첫 번째 레이어의 위치한 가중치 요소
+
+<ul>
+<li>출력 노드: 첫 번째 레이어(Layer 1)의 첫 번째 노드(j=1)</li>
+<li>입력 데이터: 입력 레이어(Layer 0)의 두 번째 노드(i=2)</li>
+</ul></li>
+</ul>
+
+<p>여기에서 &ldquo;i&rdquo;와 &ldquo;j&rdquo;는 두 가지 의미로 사용됩니다. 첫 번째 의미는 신경망의 W 행렬의 요소와 연관되는 관련 노드의 입력/출력 노드 정보입니다. 두 번째 의미는 W 행렬에서 요소의 위치를 나타내는 정보입니다. 이렇게 관련 노드 정보와 W 행렬의 요소  위치를 지정하는 두 가지 의미를 모두 포함합니다. 알파벳 &ldquo;i&rdquo; 다음 문자가 &ldquo;j&rdquo; 입니다. &ldquo;i&rdquo;는 입력 레이어의 노드 번호를 j는 출력 레이어의 노드 번호를 나타내는 문자입니다. 또한 행렬의 관점에서 볼 때 W 행렬의 요소 위치를 나타내기도 합니다. $W^{[1]}_{12}$는 W 행렬 첫 번째 행의 두 번째 컬럼 요소를 의미합니다.</p>
+
+<p>W 행렬의 위치 관점에서 <strong>ji</strong>/<strong>ij</strong> 방식은 다음과 같이 정리할 수 있습니다.</p>
+
+<ul>
+<li><strong>ji</strong>: j는 행 지정, i는 열 지정</li>
+<li><strong>ij</strong>: i는 행 지정, j는 열 지정</li>
+</ul>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2017/12/W-index/040.jpg" alt="W 행렬의 요소 표기법" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 3</strong>:
+        
+        W 행렬의 요소 표기법
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>그러나 &lt;그림 3&gt;의 $W^{[1]}_{12}$는 다음과 같은 의미를 담고 있습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>표현방식</th>
+<th>표기법</th>
+<th>의미</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ji 방식</td>
+<td>$W^{[1]}_{12}$</td>
+<td>Layer (l-1)의 두번째 노드의 입력에 적용할 가중치이며 저장은 Layer l의 첫 번째 노드</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>ji</strong> 방식은 어딘지 조금 이상합니다. 표기법의 숫자(1)는 앞 표시가 다음 레이어의 노드 위치를 나태나고, 두 번째 숫자(2)는 앞 레이어의 노드 위치를 나타냅니다. 이 방식은 왠지 앞뒤가 바꾼 느낌입니다. W 행렬을 표현할 때 &ldquo;<strong>ji</strong>&ldquo;보다는 &ldquo;<strong>ij</strong>&rdquo; 방식이 가 더 직관적입니다. &ldquo;<strong>ij</strong>&ldquo;로 W 행렬을 표현하면 더 이해하기 편합니다. 가령 &ldquo;<strong>ij</strong>&ldquo;를 사용할 경우 &lt;그림 3&gt;의 W 요소는 $W^{[1]}_{21}$로 표기할 수 있습니다. 이 표기법은 다음과 같이 해석할 수 있습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>표현방식</th>
+<th>표기법</th>
+<th>의미</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ij 방식</td>
+<td>$W^{[1]}_{21}$</td>
+<td>Layer (l-1)의 두번째 노드의 입력에 적용할 가중치이며 저장은 Layer l의 첫 번째 노드</td>
+</tr>
+</tbody>
+</table>
+
+<p>이 &ldquo;<strong>ij</strong>&rdquo; 방식은 시선의 흐름에 따라 데이터의 흐름을 직관적으로 이해할 수 있습니다.</p>
+
+<p>그런데 Andrew NG 교수는 &ldquo;<strong>ji</strong>&rdquo; 방식을 사용합니다. Andrew NG 교수는 직관성이 떨어지는 &ldquo;<strong>ji</strong>&rdquo; 표기법을 사용할까요? Andrew NG 교수는 &ldquo;<strong>ji</strong>&rdquo; 표기법을 사용하지만, 국내 딥러닝 책 중에서 다수는 &ldquo;<strong>ij</strong>&rdquo; 표기법을 사용합니다. 왜 각기 다른 표현 방식을 사용할까요?</p>
+
+<p>다음 절에서는 W 행렬의 &ldquo;<strong>ji</strong>&ldquo;와 &ldquo;<strong>ij</strong>&rdquo; 방식의 차이점과 영향에 대하여 살펴보겠습니다.</p>
+
+<h2 id="3-w-행렬의-인덱스-ji-와-ij-의-차이점">3. W 행렬의 인덱스: &ldquo;<strong>ji</strong>&ldquo;와 &ldquo;<strong>ij</strong>&ldquo;의 차이점</h2>
+
+<p>W 행렬을 &ldquo;<strong>ji</strong>&ldquo;와 &ldquo;<strong>ij</strong>&rdquo; 표기법으로 표현할 때 무엇이 달라지는지 확인하기 위해서 &lt;그림 4&gt;와 같은 단순한 네트워크의 W 행렬을 만들어 보겠습니다. &lt;그림 4&gt;의 첫 번째 레이어의 W 행렬을 표현할 때 입력 데이터(Input Feature)는 ㅓ컴컬럼벡터 방식을 사용합니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2017/12/W-index/090.jpg" alt="예제로 사용할 신경망" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 4</strong>:
+        
+        예제로 사용할 신경망
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<h3 id="3-1-w-l-ij-ij-표기법-사용">3.1 $W^{[l]}_{ij}$: &ldquo;<strong>ij</strong>&rdquo; 표기법 사용</h3>
+
+<p>아래와 같이 &ldquo;<strong>ij</strong>&rdquo; 표기법으로 W 행렬의 요소를 표현할 때, &lt;그림 4&gt;의 첫 번째 레이어 W 행렬을 정리해 보겠습니다.
+여기서 &ldquo;i&rdquo;는 입력 레이어의 노드 번호이고 &ldquo;j&rdquo;는 출력 레이어의 데이터 저장 노드 번호입니다.</p>
+
+<blockquote>
+<ul>
+<li>&lt;수식 2&gt; &ldquo;<strong>ij</strong>&rdquo; 방식 표현
+<font size='6'>$$W^{[l]}_{ij}$$
+</font></li>
+</ul>
+</blockquote>
+
+<p>&ldquo;<strong>ij</strong>&rdquo; 방식으로 &lt;그림 4&gt;의 W 행렬을 정의하고 $Z^{[1]}$을 구하는 과정을 정리하면 &lt;그림 5&gt;와 같습니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2017/12/W-index/100.jpg" alt="ij 방식으로 W 행렬 정의" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 5</strong>:
+        
+        ij 방식으로 W 행렬 정의
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>&ldquo;<strong>ij</strong>&rdquo; 표기법을 사용할 경우 W 행렬은 학습 데이터(X)와 같은 컬럼벡터 형태로 행렬이 만들어집니다. 따라서 학습 데이터와 W 행렬을 행렬곱하여 Weighted Sum인 $Z^{[1]}$을 만들기 위해서는 W 행렬을 전치(Transpose)해야 합니다.</p>
+
+<h3 id="3-2-w-l-ji-ji-표기법-사용">3.2 $W^{[l]}_{ji}$: &ldquo;<strong>ji</strong>&rdquo; 표기법 사용</h3>
+
+<p>이제  &ldquo;<strong>ji</strong>&rdquo; 방식으로 &lt;그림 4&gt;의 첫 번째 레이어 W 행렬 다시 표현해 보겠습니다.</p>
+
+<blockquote>
+<ul>
+<li>&lt;수식 3&gt;  &ldquo;<strong>ji</strong>&rdquo; 방식 표현
+<font size='6'>$$W^{[l]}_{ji}$$
+</font></li>
+</ul>
+</blockquote>
+
+<p>&ldquo;<strong>ji</strong>&rdquo; 표기법으로 &lt;그림 4&gt;의 W 행렬을 정의하고 $Z^{[1]}$을 구하는 과정을 정리하면 &lt;그림 6&gt;과 같습니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2017/12/W-index/110.jpg" alt="ji 표기법으로 W 행렬 정의" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 6</strong>:
+        
+        ji 표기법으로 W 행렬 정의
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>&ldquo;<strong>ji</strong>&rdquo; 표기법을 사용할 경우 W 행렬은 열벡터 형태로 행렬이 만들어집니다. 따라서 학습 데이터와 W 행렬을 행렬곱하여 Weighted Sum인 $Z^{[1]}$을 만들 때, 행렬 변환 없이 바로 행렬곱을 할 수 있습니다.</p>
+
+<h2 id="4-w-행렬에-대한-ji-와-ij-방식-사용시-주의-사항">4. W 행렬에 대한 &ldquo;ji&rdquo;와 &ldquo;ij&rdquo; 방식 사용시 주의 사항</h2>
+
+<p>&ldquo;ji&rdquo;와 &ldquo;ij&rdquo; 방식에 따라서 변경 점이 무엇인지 확인해 보겠습니다.</p>
+
+<h3 id="4-1-표기법에-따른-w-행렬의-shape">4.1 표기법에 따른 W 행렬의 Shape</h3>
+
+<p>위 &lt;그림 5&gt;와 &lt;그림 6&gt;에서 확인한 것 처럼, W 행렬에 대한 &ldquo;<strong>ji</strong>&ldquo;와 &ldquo;<strong>ij</strong>&rdquo; 방식에 따라서 W의 Shape이 다르게 만들어집니다.</p>
+
+<ul>
+<li>j: &ldquo;레이어 l&rdquo;의 노드 인덱스</li>
+<li>i: &ldquo;레이어 l-1&rdquo;의 노드 인덱스</li>
+<li>$n_l$: &ldquo;레이어 l-1&rdquo;(출력 레이어)의 노드 수</li>
+<li>$n_{l-1}$: &ldquo;레이어 l&rdquo;(입력 레이어)의 노드 수</li>
+</ul>
+
+<p>&ldquo;<strong>ij</strong>&rdquo; 방식을 사용할 경우에 &lt;그림 4&gt; 신경망의 $W^{[l]}$의 Shape은 다음과 같이 만들어집니다.</p>
+
+<blockquote>
+<ul>
+<li>&lt;수식 5&gt; &ldquo;<strong>ij</strong>&rdquo; 방식 사용 시 &lt;그림 4&gt; $W^{[l]}$ shape
+$$
+W^{[l]}의 shape = (n_{l-1}, n_l) = (3, 2)
+$$</li>
+</ul>
+</blockquote>
+
+<p>또한 &ldquo;<strong>ji</strong>&rdquo; 방식을 사용할 경우에 &lt;그림 4&gt; 신경망의 $W^{[l]}$의 Shape은 다음과 같습니다.</p>
+
+<blockquote>
+<ul>
+<li>&lt;수식 6&gt; &ldquo;<strong>ji</strong>&rdquo; 방식 사용 시 &lt;그림 4&gt; $W^{[l]}$ shape
+$$
+W^{[l]}의 shape = (nl, n_{l-1}) = (2, 3)
+$$</li>
+</ul>
+</blockquote>
+
+<h3 id="4-2-표기법에-따른-w의-전치">4.2 표기법에 따른 W의 전치</h3>
+
+<p>신경망에서 W의 표현 방식에 따라서 W 행렬의 Shape이 달라집니다. 이 Shape의 변화는 Z(Weighted Sum)을 구하는 수식과 Backpropagation의 $\Delta W$를 구하는 수식에 영향을 미칩니다.</p>
+
+<h4 id="case-1-ij-방식-사용-시">Case 1. <strong>ij 방식</strong> 사용 시</h4>
+
+<p>ij 방식을 사용할 경우 forward propagation에서 Z를 계산할 때 W의 전치(transpose)가 발생합니다.
+반면에 Backpropagation의 Hidden Layer의 오차 계산<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>에는 W를 전치할 필요가 없습니다.</p>
+
+<blockquote>
+<ul>
+<li>&lt;수식 7&gt;. &ldquo;<strong>ij 방식</strong>&rdquo; 사용시 의 Forward propagation 식
+$$
+\begin{align}
+Z^{[l]} &amp; = W^TX+b &amp; (1) \\<br />
+E^{[l]} &amp; \equiv W^{[l+1]}E^{[l+1]} &amp; (2)
+\end{align}
+$$</li>
+</ul>
+</blockquote>
+
+<ul>
+<li>(1): Forward propagation에서 Z 계산 (W 전치)</li>
+<li>(2): Backpropagation의 Hidden Layer의 오차 계산</li>
+</ul>
+
+<h4 id="case-2-ji-방식-사용-시">Case 2. <strong>ji 방식</strong> 사용 시</h4>
+
+<p>ji 방식을 사용할 경우 forward propagation에서 Z를 계산할 때 W를 전치(transpose)할 필요가 없습니다.
+반면에 Backpropagation의 Hidden Layer의 오차 계산에는 W를 전치해야 합니다.</p>
+
+<blockquote>
+<p>&lt;수식 8&gt;. &ldquo;<strong>ji 방식</strong>&rdquo; 사용시 의 Forward propagation 식
+$$
+\begin{align}
+Z^{[l]} &amp; = WX+b &amp; (1) \\<br />
+E^{[l]} &amp; \equiv W^{[l+1]T}E^{[l+1]} &amp; (2)
+\end{align}
+$$</p>
+</blockquote>
+
+<ul>
+<li>(1): Forward propagation에서 Z 계산</li>
+<li>(2): Backpropagation의 Hidden Layer의 오차 계산 (W 전치)</li>
+</ul>
+
+<h2 id="5-andrew-ng는-왜-ji-방식을-선호">5. Andrew NG는 왜 &ldquo;<strong>ji</strong>&rdquo; 방식을 선호?</h2>
+
+<p>앞에서 설명한 것처럼 W의 &ldquo;<strong>ji</strong>&ldquo;와 &ldquo;<strong>ij</strong>&rdquo; 표기법을 사용할 때 다음과 같은 부분을 주의해야 합니다.</p>
+
+<ol>
+<li>W 행렬의 Shape 지정</li>
+<li>Weighted Sum 계산 시 W 행렬의 전치</li>
+<li>Hidden Layer의 오차 계산 시 W 행렬의 전치</li>
+</ol>
+
+<p>주의할 사항 중에 1번은 신경망을 개발할 때, W 행렬을 초기화하는 과정에서 매우 중요한 요소입니다. 그러나 2와 3의 경우 Tensorflow, Keras, Pytorch 등 딥러닝 프레임워크를 사용할 경우 추상화된 부분입니다.</p>
+
+<p>Andrew NG 교수의 강좌는 대부분 신경망의 이론적인 접근을 강조하고 있습니다. 이러한 이유로 Forward Propagation과 BackPropagation을 수식 중심으로 접근합니다. Andrew NG 교수님은 Forward Propagation의 수식을 단순하게 유지하려는 목적으로 W 행렬을 표현할 때 &ldquo;<strong>ji</strong>&rdquo; 방식을 사용한다고 생각합니다. &ldquo;<strong>ji</strong>&rdquo; 방식을 사용하기에 Andrew NG 교수님은 Forward Propagation을 다음과 같이 단순하게 정의합니다.</p>
+
+<blockquote>
+<ul>
+<li>&lt;수식 9&gt;. &ldquo;<strong>ji</strong>&rdquo; 방식 사용시 Forward Propagation 수식
+$$
+\begin{align}
+Z^{[l]} &amp; = WX+b  &amp; (1) \\<br />
+A^{[l]} &amp; = g(Z^{[l]}) &amp; (2)\\<br />
+\end{align}
+$$</li>
+</ul>
+</blockquote>
+
+<ul>
+<li>Z: Weighted sum 벡터</li>
+<li>A: 출력 벡터</li>
+<li>(2): g함수는 활성화 함수입니다.</li>
+</ul>
+
+<h2 id="6-딥러닝-프레임워크이-선호하는-방식">6. 딥러닝 프레임워크이 선호하는 방식?</h2>
+
+<p>Tensorflow, Keras, Pytorch 등 모든 딥러닝 프레임워크는 W 행렬을 &ldquo;ij&rdquo; 방식을 선호하거나, W 행렬 자체를 추상화합니다.
+Tensorflow는 W 행렬 정의 및 초기화에 $(n_{l-1}, n_l)$로 shape을 정의합니다.</p>
+
+<ul>
+<li>$n_{l-1}$: 입력 레이어의 노드 수</li>
+<li>$n_l$: 출력 레이어이 노드 수</li>
+</ul>
+
+<p>Tensorflow에서 [그림 4]의 $W^{[1]}$ 행렬을 정의하고 초기화하면 코드는 다음가 같습니다.</p>
+
+<pre><code># &lt;코드 1&gt; Tensorflow의 W 행렬 초기화 코드
+
+import tensorlow as tf
+
+W1 = tf.Variable(tf.random_uniform([3, 2], -1.0., 1.0.))
+</code></pre>
+
+<p>Tensorflow는 W 행렬을 &ldquo;ij&rdquo; 방식으로 표현하기 때문에, W의 Shape을 정의하는 코드가 직관적입니다.</p>
+
+<p>keras는 W 자체를 추상화하여 개발자에게 노출되지 않습니다. 코드 상에서 &lsquo;units&rsquo;는 출력 레이어의 노드 수이고 &lsquo;input_dims&rsquo;는 입력 레이어의 노드 수입니다. keras는 W 행렬을 완전히 추상화하기 때문에 신경망을 직관적으로 이해하기 좋습니다.</p>
+
+<pre><code># &lt;코드 2&gt; Keras의 W Shape 정의 코드: W 행렬이 추성화되어 있음
+
+from keras.models import Sequential
+from keras.layers import Dense, Activation
+
+model = Sequential()
+model.add(Dense(units=2, input_dim=3, activation='relu'))
+</code></pre>
+
+<h2 id="7-결론">7. 결론</h2>
+
+<p>W 행렬 표기법은 딥러닝을 처음 접할 때 굉장히 어렵게 느껴지는 부분입니다. 그러나 딥러닝 프레임워크를 사용한다면 W 행렬을 요소 단위로 접근하는 일은 거의 없습니다. 자료를 볼 때, W 행렬을 &ldquo;<strong>ij</strong>&ldquo;방식을 사용하느냐 &ldquo;<strong>ji</strong>&rdquo; 방식을 사용하느냐에 따라서 W 행렬의 Shape 정의와 Weight Sum 연산, Backpropagation의 은닉층 오차 연산 수식이 변화한다는 것을 이해하면 됩니다.</p>
+
+<p>&ldquo;<strong>ji</strong>&rdquo; 방식을 사용할 경우 Forward Propagation을 단순하게 표기할 수 있습니다. 있다는 장점이 있습니다. 반면 W 행렬의 각 요소와 행렬의 Shape을 직관적으로 이해하기 어렵다는 단점이 있습니다. (사실 금방 익숙해집니다.)</p>
+
+<p>&ldquo;<strong>ij</strong>&rdquo; 방식을 사용할 경우 W 행렬의 요소와 Shape을 더 직관적으로 표기할 수 있습니다. 반면에 Forward Propagation에 W 행렬을 전치하고, Backpropagation에서 W 행렬을 전치해야 하기 때문에 약간 복잡하게 느껴집니다. 이러한 복잡도는 딥러닝 프레임워크를 사용할 경우, 프레임워크가 전부 내부적으로 처리하기 때문에 코드 작성가가 직접 관여할 문제는 아닙니다.</p>
+
+<p>이 차이점을 이해한다면 &ldquo;<strong>ji</strong>&ldquo;와 &ldquo;<strong>ij</strong>&rdquo; 방식의 표기법의 혼동을 최소화 할 수 있습니다. 이런 이유로 개념 파악과 이론을 중시하는 강좌에서는 &ldquo;<strong>ji</strong>&rdquo; 방식을 사용하고, 코드의 가독성을 높여야 하는 딥러닝 프레임워크에서는 &ldquo;<strong>ij</strong>&rdquo; 방식을 사용합니다.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">Hidden Layer의 오차 계산에 대한 자세한 설명은 <a href="../error_in_hidden/">Hidden Layer의 오차 계산</a> 문서를 참조하시기 바랍니다. <a href="http://taewan.kim/post/error_in_hidden/">http://taewan.kim/post/error_in_hidden/</a>
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/deep-learning/" rel="tag">deep learning</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/machine-learning/" rel="tag">Machine Learning</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/column-vector/" rel="tag">Column Vector</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/row-vector/" rel="tag">Row Vector</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EC%BB%AC%EB%9F%BC%EB%B2%A1%ED%84%B0/" rel="tag">컬럼벡터</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EB%A1%9C%EB%B2%A1%ED%84%B0/" rel="tag">로벡터</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/" rel="tag">기계학습</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/" rel="tag">딥러닝</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/backpropagation_matrix_transpose/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">딥러닝 역전파 수식 행렬의 전치(Transpose) 기준?</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/cnn/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">CNN, Convolution Neural Network 요약</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/post/wij_and_wji/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#0-시작하기-전에-용어-정의">0. 시작하기 전에: 용어 정의</a></li>
+<li><a href="#1-컬럼벡터와-열벡터">1. 컬럼벡터와 열벡터</a>
+<ul>
+<li><a href="#1-1-ml-데이터-로딩-컬럼벡터">1.1 ML 데이터 로딩:컬럼벡터</a></li>
+</ul></li>
+<li><a href="#2-w-ji-는-무엇이-이상한가">2. $W_{ji}$는 무엇이 이상한가?</a></li>
+<li><a href="#3-w-행렬의-인덱스-ji-와-ij-의-차이점">3. W 행렬의 인덱스: &ldquo;<strong>ji</strong>&ldquo;와 &ldquo;<strong>ij</strong>&ldquo;의 차이점</a>
+<ul>
+<li><a href="#3-1-w-l-ij-ij-표기법-사용">3.1 $W^{[l]}_{ij}$: &ldquo;<strong>ij</strong>&rdquo; 표기법 사용</a></li>
+<li><a href="#3-2-w-l-ji-ji-표기법-사용">3.2 $W^{[l]}_{ji}$: &ldquo;<strong>ji</strong>&rdquo; 표기법 사용</a></li>
+</ul></li>
+<li><a href="#4-w-행렬에-대한-ji-와-ij-방식-사용시-주의-사항">4. W 행렬에 대한 &ldquo;ji&rdquo;와 &ldquo;ij&rdquo; 방식 사용시 주의 사항</a>
+<ul>
+<li><a href="#4-1-표기법에-따른-w-행렬의-shape">4.1 표기법에 따른 W 행렬의 Shape</a></li>
+<li><a href="#4-2-표기법에-따른-w의-전치">4.2 표기법에 따른 W의 전치</a>
+<ul>
+<li><a href="#case-1-ij-방식-사용-시">Case 1. <strong>ij 방식</strong> 사용 시</a></li>
+<li><a href="#case-2-ji-방식-사용-시">Case 2. <strong>ji 방식</strong> 사용 시</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#5-andrew-ng는-왜-ji-방식을-선호">5. Andrew NG는 왜 &ldquo;<strong>ji</strong>&rdquo; 방식을 선호?</a></li>
+<li><a href="#6-딥러닝-프레임워크이-선호하는-방식">6. 딥러닝 프레임워크이 선호하는 방식?</a></li>
+<li><a href="#7-결론">7. 결론</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

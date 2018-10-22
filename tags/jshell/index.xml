@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jshell on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/jshell/</link>
+    <description>Recent content in Jshell on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 06 Jan 2018 19:05:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/jshell/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[번역] JShell 사용자 가이드</title>
+      <link>http://taewan.kim/post/trans_jshell/</link>
+      <pubDate>Sat, 06 Jan 2018 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/trans_jshell/</guid>
+      <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.
+  원문: https://docs.oracle.com/javase/9/jshell/toc.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 1 Introduction to JShell  문서번호: E87478-01 배포: 2017년 09월  라이센스: 원본 문서 라이센스를 준수합니다.  원문: https://docs.oracle.com/javase/9/jshell/title.htm  본 문서의 원본은 github repository로 관리합니다.  github 주소: https://github.com/taewanme/translation-java9-jshell    1. JShell 소개 Java Shell(JShell)은 Java 프로그래밍 학습과 Java 코드 프로토타이핑을 위한 대화식 도구입니다.</description>
+    </item>
+    
+    <item>
+      <title>JShell: 7. JShell 소개</title>
+      <link>http://taewan.kim/trans/jshell/jshell07/</link>
+      <pubDate>Wed, 27 Dec 2017 19:35:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/jshell/jshell07/</guid>
+      <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.
+  원문: https://docs.oracle.com/javase/9/jshell/scripts.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 7 Scripts  문서번호: E87478-01 릴리즈: 2017년 09월  라이센스: 원본 문서 라이센스를 준수합니다.  원문: https://docs.oracle.com/javase/9/jshell/title.htm    JShell 사용자 가이드의 한글화 문서는 다음과 같이 구성됩니다.
+ 1. JShell 소개 2. 스니펫 3. 명령 4. 편집 5. 외부 코드 6.</description>
+    </item>
+    
+    <item>
+      <title>JShell:6. 피드백 모드</title>
+      <link>http://taewan.kim/trans/jshell/jshell06/</link>
+      <pubDate>Wed, 27 Dec 2017 19:30:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/jshell/jshell06/</guid>
+      <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.
+  원문: https://docs.oracle.com/javase/9/jshell/feedback-modes.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 6 Feedback Modes  문서번호: E87478-01 릴리즈: 2017년 09월  라이센스: 원본 문서 라이센스를 준수합니다.  원문: https://docs.oracle.com/javase/9/jshell/title.htm    JShell 사용자 가이드의 한글화 문서는 다음과 같이 구성됩니다.
+ 1. JShell 소개 2. 스니펫 3. 명령 4. 편집 5. 외부 코드 6.</description>
+    </item>
+    
+    <item>
+      <title>JShell:5. 외부 코드</title>
+      <link>http://taewan.kim/trans/jshell/jshell05/</link>
+      <pubDate>Wed, 27 Dec 2017 19:25:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/jshell/jshell05/</guid>
+      <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.
+  원문: https://docs.oracle.com/javase/9/jshell/external-code.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 5 External Code  문서번호: E87478-01 배포: 2017년 09월  라이센스: 원본 문서 라이센스를 준수합니다.  원문: https://docs.oracle.com/javase/9/jshell/title.htm    JShell 사용자 가이드의 한글화 문서는 다음과 같이 구성됩니다.
+ 1. JShell 소개 2. 스니펫 3. 명령 4. 편집 5. 외부 코드 6.</description>
+    </item>
+    
+    <item>
+      <title>JShell: 4. 편집 </title>
+      <link>http://taewan.kim/trans/jshell/jshell04/</link>
+      <pubDate>Wed, 27 Dec 2017 19:20:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/jshell/jshell04/</guid>
+      <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.
+  원문: https://docs.oracle.com/javase/9/jshell/editing.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 4 Editing  문서번호: E87478-01 배포: 2017년 09월  라이센스: 원본 문서 라이센스를 준수합니다.  원문: https://docs.oracle.com/javase/9/jshell/title.htm    JShell 사용자 가이드의 한글화 문서는 다음과 같이 구성됩니다.
+ 1. JShell 소개 2. 스니펫 3. 명령 4. 편집 5. 외부 코드 6.</description>
+    </item>
+    
+    <item>
+      <title>JShell: 3. 명령</title>
+      <link>http://taewan.kim/trans/jshell/jshell03/</link>
+      <pubDate>Wed, 27 Dec 2017 19:15:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/jshell/jshell03/</guid>
+      <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.
+  원문: https://docs.oracle.com/javase/9/jshell/commands.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 3 Commands  문서번호: E87478-01 배포: 2017년 09월  라이센스: 원본 문서 라이센스를 준수합니다.  원문: https://docs.oracle.com/javase/9/jshell/title.htm    JShell 사용자 가이드의 한글화 문서는 다음과 같이 구성됩니다.
+ 1. JShell 소개 2. 스니펫 3. 명령 4. 편집 5. 외부 코드 6.</description>
+    </item>
+    
+    <item>
+      <title>JShell: 2. 스니펫(Snippets)</title>
+      <link>http://taewan.kim/trans/jshell/jshell02/</link>
+      <pubDate>Wed, 27 Dec 2017 19:10:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/jshell/jshell02/</guid>
+      <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.
+  원문: https://docs.oracle.com/javase/9/jshell/snippets.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 2 Snippets  문서번호: E87478-01 배포: 2017년 09월  라이센스: 원본 문서 라이센스를 준수합니다.  원문: https://docs.oracle.com/javase/9/jshell/title.htm    JShell 사용자 가이드의 한글화 문서는 다음과 같이 구성됩니다.
+ 1. JShell 소개 2. 스니펫 3. 명령 4. 편집 5. 외부 코드 6.</description>
+    </item>
+    
+    <item>
+      <title>JShell:1. JShell 소개</title>
+      <link>http://taewan.kim/trans/jshell/jshell01/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/jshell/jshell01/</guid>
+      <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.
+  원문: https://docs.oracle.com/javase/9/jshell/introduction-jshell.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 1 Introduction to JShell  문서번호: E87478-01 배포: 2017년 09월  라이센스: 원본 문서 라이센스를 준수합니다.  원문: https://docs.oracle.com/javase/9/jshell/title.htm    JShell 사용자 가이드의 한글화 문서는 다음과 같이 구성됩니다.
+ 1. JShell 소개 2. 스니펫 3. 명령 4. 편집 5.</description>
+    </item>
+    
+    <item>
+      <title>[번역]CS231n - 시각 인식을 위한 CNN(Convolutional Neural Networks for Visual Recognition)</title>
+      <link>http://taewan.kim/trans/cs231n/convolutional-networks/</link>
+      <pubDate>Fri, 06 Jan 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/cs231n/convolutional-networks/</guid>
+      <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.
+  원문: https://docs.oracle.com/javase/9/jshell/introduction-jshell.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 1 Introduction to JShell  문서번호: E87478-01 배포: 2017년 09월  라이센스: 원본 문서 라이센스를 준수합니다.  원문: https://docs.oracle.com/javase/9/jshell/title.htm    CS231n - 시각 인식을 위한 CNN(Convolutional Neural Networks for Visual Recognition)  Table of Contents:  Architecture Overview ConvNet Layers Convolutional Layer Pooling Layer Normalization Layer Fully-Connected Layer Converting Fully-Connected Layers to Convolutional Layers ConvNet Architectures Layer Patterns Layer Sizing Patterns Case Studies (LeNet / AlexNet / ZFNet / GoogLeNet / VGGNet) Computational Considerations Additional References   Convolutional Neural Networks (CNNs / ConvNets) Convolutional Neural Networks are very similar to ordinary Neural Networks from the previous chapter: they are made up of neurons that have learnable weights and biases.</description>
+    </item>
+    
+  </channel>
+</rss>

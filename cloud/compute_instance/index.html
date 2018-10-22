@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>우분투 17.04 가상머신 만들기</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="우분투 17.04 가상머신 만들기" />
+<meta property="og:description" content="오라클 클라우드의 Compute 서비스는 최근에 업그레이드가 적용되었고, 가상 머신 인스턴스를 UI가 일정부분 변경되었습니다. 변경된 UI상에서 가상머신을 생성하는 방법에 대하여 알아보겠습니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/cloud/compute_instance/" />
+
+
+
+<meta property="article:published_time" content="2017-05-02T11:59:47&#43;09:00"/>
+<meta property="article:modified_time" content="2017-05-02T11:59:47&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=bsh&amp;skin=sons-of-obsidian"></script>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">우분투 17.04 가상머신 만들기 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2017-05-02 11:59:47 &#43;0900 KST">May 02, 2017</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c" rel="category">오라클 클라우드</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+			
+
+<p>2017년 04월 오라클 클라우드 Compute Service에는 17.1.2 버전<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>이 적용되었습니다.
+17.1.2 버전에는 네트워크 구성에 대한 새로운 기능이 추가되었습니다.
+기존의 Shared Network와 별개로 IPNetwork를 이용하여 서브넷을 구성할 수 있습니다.
+새로운 기능 추가와 함께, 가상머신을 만드는 UI와 가상머신을 생성하는 오케스트레이션에 변경된 부분이 있습니다.</p>
+
+<p>매년 4월은 Ubuntu 새 버전이 출시되는 시점입니다. 올해에도 지난 4월에 Ubuntu 17.04 버전이 출시되었습니다.
+새로 출시된 Ubuntu 17.04 설치 이미지는 현재 오라클 클라우드 마켓 플레이스에 등록된 상태이며,
+이 이미지를 이용하여 가상머신을 만들 수 있습니다.</p>
+
+<p>본 문서에서는 Compute Cloud Service(이하 Compute CS)가 제공하는 웹 콘솔을 이용하여,
+Ubuntu 17.04 가상머신을 만들어 보고,
+SSH 접근을 위한 네트워크 보안 룰 설정 및 블록 스토리지 마운트를 실습 형태로 진행해 보겠습니다.</p>
+
+<h2 id="선행-작업">선행 작업</h2>
+
+<p>본 문서는 다음과 같은 절차가 완료되었다는 것을 전제로 합니다.</p>
+
+<ul>
+<li>오라클 클라우드 계정 생성 완료</li>
+<li>가상머신 생성에 필요한 인증서를 생성</li>
+<li>오라클 클라우드 웹 사이트에 로그인이 완료</li>
+</ul>
+
+<p>오라클 클라우드 계정을 확보하지 못했거나, 가상머신에 등록 할 보안 키를 만들지 못한 상태라면,
+다음 문서를 참조하여 먼저 준비하시고 다음으로 넘어가시기 바랍니다.</p>
+
+<ul>
+<li><a href="/post/accont/">오라클 클라우드 계정</a></li>
+<li><a href="/post/ssh_key/">윈도우, 리눅스, 맥에서 SSH 보안키 생성</a></li>
+</ul>
+
+<h2 id="compute-cs-가상머신-만들기">Compute CS 가상머신 만들기</h2>
+
+<h3 id="ubuntu-17-04-인스턴스-만들기">Ubuntu 17.04 인스턴스 만들기</h3>
+
+<p>Compute CS에 Ubuntu 17.04 이미지로 가상머신을 생성하겠습니다.</p>
+
+<p>오라클 클라우드에 로그인하면 &lt;그림 1&gt;과 같이 오라클 클라우드 대시보드가 출력됩니다.
+오라클 클라우드 대시보드 왼쪽 위의 메뉴 아이콘을 클릭하면 현재 로그인한 계정이 접근 가능한 오라클 클라우드 서비스 목록이 출력됩니다.</p>
+
+<ul>
+<li>그림 1. 오라클 클라우드 대시보드
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img010.jpg" alt="" /></li>
+</ul>
+
+<p>2017년 04월에 생성한 오라클 클라우드 Trial 계정의 경우 &lt;그림 2&gt;와 같이 12개의 서비스를 사용할 수 있습니다.
+12개의 서비스 중에서 현재 Compute CS에 가상머신을 생성할 계획이기 때문에 <code>Compute</code>를 클릭하여,
+Compute CS 서비스 콘솔에 접근합니다.</p>
+
+<ul>
+<li>그림 2. 오라클 클라우드 대시보드에서 <code>Compute</code> 메뉴 선택
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img020.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 3&gt;과 같이 Compute CS 서비스 콘솔의 오른쪽 위에 위치하는 <code>Create Instance</code>
+버튼을 클릭하여 가상머신 생성을 시작합니다.</p>
+
+<ul>
+<li>그림 3. Compute CS 서비스 콘솔에서 <code>Create Instance</code> 클릭하여 가상머신 생성 시작
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img030.jpg" alt="" /></li>
+</ul>
+
+<p>가상머신 생성은 6단계로 구성되며, 이 중에서 첫 번째 단계는 이미지 선택 단계입니다. Compute CS는
+세 가지 유형으로 이미지를 관리합니다. 첫 번째는 <code>Oracle Images</code>입니다.
+오라클은 공식 이미지로 21개를 제공하고 있고, 이 오라클 공식 이미지는 <code>Oracle Images</code>에 포함됩니다.
+오라클 공식 이미지 21개에는 Oracle Enterprise Linux와 Solaris가 포함되어 있습니다.</p>
+
+<p>두번째는 <code>Private Images</code>입니다.
+이 카테고리에는 사용자가 직접 올린 이미지 혹은 Market Place에서 다운로드 받은 이미지가 포함됩니다.</p>
+
+<p>세번째는 &ldquo;Market Place&rdquo;입니다.
+오라클 클라우드는 <a href="https://bitnami.com/oracle">Bitnami</a>와 협력하여 오라클 클라우드에서 이용 가능한 349개 (2017년 5월 2일 기준) 이미지를 제공합니다.</p>
+
+<p>우리는 Ubuntu 17.04 이용하여 가상머신을 만들 예정입니다.
+Ubuntu 17.04 이미지는 Market Place에 포함되어 있습니다.
+따라서 이미지 선택 페이지에서 &lt;그림 4&gt;와 같이 Market Place를 선택합니다.</p>
+
+<ul>
+<li>그림 4. Market Place 오픈
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img040.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 5&gt;와 같이 Market Place를 선택한 후, Ubuntu를 검색합니다.
+검색 결과 중에 <code>Ubuntu Server 17.04 amd64</code> 박스의 <code>select</code> 버튼을 클릭합니다.</p>
+
+<ul>
+<li>그림 5. Market Place에서 Ubuntu 검색 후, 대상 이미지 선택
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img050.jpg" alt="" /></li>
+</ul>
+
+<p>Market place에서 이미지를 선택하면, 해당 이미지는 Private Images에 복사하는 작업이 선행됩니다.
+&lt;그림 6&gt;에서 Private Images에 이미지를 복사하는 것에 대한 동의를 한 후 <code>install</code>버튼을 클릭합니다.
+이렇게 <code>install</code> 버튼을 클릭하면 이미지 복사가 진행됩니다.</p>
+
+<ul>
+<li>그림 6. 가상머신 이미지 다운로드 동의 및 설치<br />
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img060.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 7&gt;은 이미지 설치가 완료된 다음의 모습입니다. 이제 <code>&gt;</code> 버튼을 클릭하여 다음 단계로 진행합니다.</p>
+
+<ul>
+<li>그림 7. 가상머신 이미지 선택 후 다음 단계로 이동
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img070.jpg" alt="" /></li>
+</ul>
+
+<p>가상머신에 적용할 <code>shape</code>을 선택합니다. Shape이란 가상머신에 적용할 하드웨어 스펙입니다.
+&lt;그림 8&gt;과 같이 oc3를 선택하고, <code>&gt;</code> 버튼을 클릭하여 다음 단계로 진행합니다.</p>
+
+<ul>
+<li>그림 8. 가상머신에 적용할 Shape 선택
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img080.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 9&gt;와 같이 인스턴스 기본 정보를 입력합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>설정값</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Name</td>
+<td>Ubuntu_17_04_amd64</td>
+<td>서버명</td>
+</tr>
+
+<tr>
+<td>Label</td>
+<td>Ubuntu_17_04_amd64</td>
+<td>서버명</td>
+</tr>
+
+<tr>
+<td>Description</td>
+<td>Instance for demo</td>
+<td>서버에 대한 설명</td>
+</tr>
+</tbody>
+</table>
+
+<p>기본값을 설정한 후 <code>Add SSH Public Key</code> 버튼을 클릭하여, 사전에 준비한 SSH 공개 키를 추가합니다.</p>
+
+<ul>
+<li>그림 9. 인스턴스 기본 정보 설정
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img090.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 10&gt;과 같이 등록할 SSH 공개키에 대한 이름을 등록하고, 공개키를 추가한 후 <code>add</code> 버튼을 클릭합니다.</p>
+
+<ul>
+<li>그림 10. SSH 공개키 등록
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img100.jpg" alt="" /></li>
+</ul>
+
+<p>이제 <code>SSH Keys</code>에 앞에서 등록한 공개키 명이 출력되었다면, <code>&gt;</code> 버튼을 클릭하여 다음 단계로 진행합니다.</p>
+
+<ul>
+<li>그림 11. SSH Keys에 공개키 등록 결과 확인 후, 다음 단계 이동
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img110.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 12&gt;는 네트워크 설정 단계입니다.</p>
+
+<p>Public IP Address 컬럼은 다음과 같은 3개의 옵션 중에 한개를 선택합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>옵션</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Auto Generated</td>
+<td>가상머신에 공개 IP를 새로 생성하여 붙임.</td>
+</tr>
+
+<tr>
+<td>Persistent Public IP Reservation</td>
+<td>사전에 만든 공개 IP 중에 선택하여 가상머신에 붙임</td>
+</tr>
+
+<tr>
+<td>None</td>
+<td>공개 IP를 연결하지 않음</td>
+</tr>
+</tbody>
+</table>
+
+<p>&lt;그림 12&gt;에서는  Auto Genetated 옵션을 선택하고 Security List로 <code>default</code>를 선택한 후
+, <code>&gt;</code> 버튼을 클릭하여 다음 단계로 진행합니다.</p>
+
+<ul>
+<li>그림 12. 네트워크 설정 단계
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img120.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 13&gt;은 스토리지 설정 단계입니다.
+오른쪽 위의 <code>Add New Volumes</code>를 클릭하여 새로운 블록 스토리지를 등록합니다.
+블록 스토리지 추가 단계는 선택 사항입니다.
+추가적인 블록 스토리지가 필요 없다면 이 단계를 생략해도 무방합니다.</p>
+
+<ul>
+<li>그림 13. 스토리지 설정 단계
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img130.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 14&gt;와 다음 목록은 새로운 블록 스토리지 등록에 필요한 설정 값을 보여줍니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>설정값</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Name</td>
+<td>data_vol</td>
+<td>블록 스토리지의 이름</td>
+</tr>
+
+<tr>
+<td>Size</td>
+<td>30</td>
+<td>GB 단위로 설정. 최댓값: 2000</td>
+</tr>
+
+<tr>
+<td>Storage Property</td>
+<td>storage/default</td>
+<td>스토리지 타입</td>
+</tr>
+
+<tr>
+<td>Decription</td>
+<td>&rdquo;&rdquo;</td>
+<td>블록 스토리지 설명</td>
+</tr>
+
+<tr>
+<td>Attach at Disk #</td>
+<td>2</td>
+<td>디스크 순서 2번은 /dev/xvdc로 표시 <br/> 디스크 순서 3번은 /dev/xvdd로 표시</td>
+</tr>
+
+<tr>
+<td>Boot Drives</td>
+<td>&rdquo;&rdquo;</td>
+<td>체크 박스를 체크하면 디스크 1번으로 설정됨. 디스크 1번은 운영체제가 설치되는 디스크</td>
+</tr>
+</tbody>
+</table>
+
+<p>&lt;그림 14&gt;에서 모든 속성 설정이 완료되면, <code>add</code> 버튼을 클릭합니다.</p>
+
+<ul>
+<li>그림 14. 블록 스토리스 추가
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img140.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 15&gt;에서 앞에서 추가된 블록 스토리지가 출력되었다면, <code>&gt;</code> 버튼을 클릭하여 다음 단계로 진행합니다.</p>
+
+<ul>
+<li>그림 15. 블록 스토리지 등록 확인
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img150.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 16&gt;에서 가상머신 설정 정보가 출력됩니다. 앞에서 설정한 내용이 모두 맞다면, <code>create</code>
+버튼을 클릭하여 가상머신 생성을 시작합니다.</p>
+
+<ul>
+<li>그림 16. 가상머신 등록 정보 리뷰
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img160.jpg" alt="" /></li>
+</ul>
+
+<p>가상 머신 생성 절차가 시작되면, 웹 페이지는 Compute CS 서비스 콘솔 메인 페이지로 이동합니다.
+가상머신 생성 시간은 약 5 분 정도가 입니다. 가상머신 배포 상태는 Orchestration 탭에서 확인 가능합니다.
+&lt;그림 17&gt;에서는 Orchestration 탭을 클릭합니다.</p>
+
+<ul>
+<li>그림 17. Compute CS 서비스 콘솔 메인 페이지에서 Orchestration 탭 선택
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img170.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 18&gt;에서 총 6개의 Orchestration을 확인 할 수 있습니다. Compute CS의 웹 UI에서 만들어진 가상 머신은 3개의 Orchestration으로 구성됩니다.</p>
+
+<ul>
+<li>Ubuntu_17_04_amd64_instance: 가상머신 생성 orchestration</li>
+<li>Ubuntu_17_04_amd64_master: instance와 storage를 관리하는 orchestration</li>
+<li>Ubuntu_17_04_amd64_storage: 블록 스토리지 생성 orchestation</li>
+</ul>
+
+<p>&lt;그림 18&gt;에서 각 Orchestration의 상태는 stopped, starting, starting입니다.</p>
+
+<ul>
+<li>그림 18. Orchestration 상태 확인<br />
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img180.jpg" alt="" /></li>
+</ul>
+
+<p>Orchestration이 완료되면 상태는 ready로 변환됩니다.</p>
+
+<ul>
+<li>그림 19. Orchestration 완료 상태
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img190.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 19&gt;에서 Orchestration 상태가 완료되면, Instance 탭에 클릭하여 &lt;그림 20&gt;으로 이동합니다.
+&lt;그림 20&gt;에서는 Ubuntu_17_04_amd64가 추가된 것을 확인 할 수 있습니다.
+Ubuntu_17_04_amd64에 설정된 공개 IP는 129.144.12.116입니다.</p>
+
+<ul>
+<li>그림 20. Ubuntu_17_04_amd64 가상머신 생성 결과
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img200.jpg" alt="" /></li>
+</ul>
+
+<h3 id="가상머신-접근을-위한-ssh-보안-설정">가상머신 접근을 위한 SSH 보안 설정</h3>
+
+<p>Ubuntu_17_04_amd64 가상머신이 생성된 후에, &lt;그림 21&gt;과 같이 129.144.12.116에 SSH 키로 접근하면
+, <code>Time out</code>되어 실패합니다.</p>
+
+<p>오라클 클라우드가 제공하는 OL(Oracle Linux) 리눅스 이미지의 기본 ssh 접근 user는 OPC입니다. Ubuntu의 경우의 기본 계정명은 ubuntu입니다. &lt;그림 21&gt;에서는 ubuntu를 사용하여 ssh 접속을 하고 있습니다.</p>
+
+<p>가상머신은 처음 생성될 때 모든 네트워크 접근이 막혀 있습니다. 이와 관련하여 네트워크 접근을 허용하는 설정을 추가해야 합니다.</p>
+
+<ul>
+<li>그림 21. SSH 접근 실패
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img215.jpg" alt="" /></li>
+</ul>
+
+<p>본 문서에서는 SSH 보안 접근을 처리하는 부분만을 설명하겠습니다. 보안 설정에 대한 정의와 의미는 별도 문서로 다루겠습니다.</p>
+
+<p>Compute CS의 서비스 콘솔 메인 페이지에서 <code>Network</code> 탭을 클릭하고 왼쪽 메뉴 중에 <code>Security Rule</code>을 클릭한 후,
+Security Rule 페이지에서 <code>Create Security Rule</code><sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup>을 클릭하여 보안 룰을 생성합니다.</p>
+
+<ul>
+<li>그림 22. Security Rule 생성 시작
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img217.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 23&gt;은 Security Rule의 정보 입력 폼입니다. &lt;그림 23&gt;과 같이 입력하고 <code>Create</code>를 클릭하여 보안 룰을 생성합니다.
+Ubuntu_17_04_amd64 가상 머신은 <code>deault</code> Secutiry List에 포함되기 때문에, <code>deault</code> Secutiry List에
+설정된 Security Rule은 Ubuntu_17_04_amd64 가상 머신에 적용됩니다.</p>
+
+<ul>
+<li>그림 23. Security Rule 정보입력
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img210.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 23&gt;에서 <code>Create</code>를 클릭하면, &lt;그림 24&gt;와 같이 Security Rule 목록에 새로 생성된 룰이 추가된 것을 확인할 수 있습니다.</p>
+
+<ul>
+<li>그림 24. Security Rule 생성 결과
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img220.jpg" alt="" /></li>
+</ul>
+
+<p>이제 Ubuntu_17_04_amd64에 SSH 접근에 필요한 Security Rule을 추가했기 때문에,
+&lt;그림 25&gt;와 같이 가상머신에 SSH 접근 가능합니다.</p>
+
+<ul>
+<li>그림 25. Ubuntu_17_04_amd64에 SSH 접근<br />
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img230.jpg" alt="" /></li>
+</ul>
+
+<h3 id="블록-스토리지-마운트">블록 스토리지 마운트</h3>
+
+<p>&lt;그림 15&gt;에서 data_vol 블록 스토리지를 Ubuntu_17_04_amd64에 추가 했습니다. data_vol은 index가 2입니다.
+이 블록 스토리지는 /dev/xvdc로 표현됩니다.</p>
+
+<pre class="prettyprint">
+ubuntu@demo:~$ ls -al /dev/xvd*
+brw-rw---- 1 root disk 202, 16 Apr 30 09:29 /dev/xvdb
+brw-rw---- 1 root disk 202, 17 Apr 30 09:29 /dev/xvdb1
+brw-rw---- 1 root disk 202, 30 Apr 30 09:29 /dev/xvdb14
+brw-rw---- 1 root disk 202, 31 Apr 30 09:29 /dev/xvdb15
+brw-rw---- 1 root disk 202, 32 Apr 30 09:29 /dev/xvdc
+</pre>
+
+<p>블록 스토리지 <code>/dev/xvdc</code>를 마운트하는 명령은 다음과 같습니다.</p>
+
+<p>&lt;그림 26&gt;과 같이
+주요 명령 요약은 다름과 같습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>명령</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>sudo mkfs -t ext3 /dev/xvdc</td>
+<td>파일 시스템 생성</td>
+</tr>
+
+<tr>
+<td>mkdir data</td>
+<td>마운트 포인트 디렉터리 생성</td>
+</tr>
+
+<tr>
+<td>sudo mount /dev/xvdc data</td>
+<td>data 디렉터리에 블록 스토리지 마운트</td>
+</tr>
+
+<tr>
+<td>df -h</td>
+<td>마운트 포인트 확인</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>그림 26. 블록 스토리지 마운트
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img240.jpg" alt="" /></li>
+</ul>
+
+<p>블록 스토리지 마운트 설정이 가상머신 재시작 이후에도 유지되기 위해서는 <code>/etc/fstab</code> 파일에 다음을 추가해야 합니다.</p>
+
+<pre class="prettyprint linenums">
+LABEL=cloudimg-rootfs   /    ext4   defaults    0 0
+LABEL=UEFI  /boot/efi   vfat    defaults    0 0
+/dev/xvdc  /home/ubuntu/data     ext3    defaults  0 0
+</pre>
+
+<p>1, 2라인은 기본 설정이고, 블록스토리지 마운트 관련 설정은 3라인입니다.</p>
+
+<h2 id="가상머신-인스턴스-재시작">가상머신 인스턴스 재시작</h2>
+
+<p>가상머신을 리부팅해야 할 경우에 &lt;그림 27&gt;과 같이 Compute CS의 서비스 콘솔에서 인스턴스를 재시작할 수 있습니다.
+인스턴스 재시작에 필요한 시간은 약 2분 정도입니다.</p>
+
+<ul>
+<li>그림 27. 가상머신 인스턴스 재시작
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img270.jpg" alt="" /></li>
+</ul>
+
+<h2 id="orchestration에서-가상머신-제어">Orchestration에서 가상머신 제어</h2>
+
+<p>Orchestraion 탭에서 가상머신을 제어할 수 있습니다.
+Orchestration에서 가상머신을 종료하는 것은 모든 자원을 반환하고 초기화하는 것을 의미합니다.
+종료된 가상머신은 Orchestration을 통해서 다시 시작할 수 있습니다. 다시 시작한 가상머신은
+새로운 자원이 할당된 완전히 새로운 인스턴스 입니다.</p>
+
+<p>웹 콘솔을 통해서 만들어진 가상머신은 3개의 orchestration을 갖습니다.
+이 3개의 가상머신 Orchestration을 &lt;그림 28&gt;과 같이 메뉴 <code>stop</code>을 실행할 수있습니다.</p>
+
+<ul>
+<li>그림 28. Orchestration에서 가상머신 종료하기
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img280.jpg" alt="" /></li>
+</ul>
+
+<p>종료된 가상머신의 Orchestration은 <code>stopped</code>으로 표현됩니다.</p>
+
+<ul>
+<li>그림 29. Orchestration 종료 상태
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img290.jpg" alt="" /></li>
+</ul>
+
+<p>가상머신을 시작할 때 Orchestration 중에서 master orchestration을 &lt;그림 30&gt;과 같이
+메뉴 <code>start</code>를 실행하면됩니다.
+Master Orchestration만 시작하면 나머지 2개의 Orchestration은 자동으로 실행됩니다.</p>
+
+<ul>
+<li>그림 30. Orchestration에서 가상머신 시작
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img300.jpg" alt="" /></li>
+</ul>
+
+<p>Orchestration 실행이 완료되면 상태는 <code>ready</code> 상태로 표현됩니다. (&lt;그림 31&gt; 참조)</p>
+
+<ul>
+<li>그림 31. 가상머신 인스턴스 재시작
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/compute_new/img310.jpg" alt="" /></li>
+</ul>
+
+<h2 id="요약">요약</h2>
+
+<p>지금까지 Compute CS에서 Ubuntu 17.04 가상머신을 생성하고,
+외부에서 가상머신에 네트워크 접근이 가능하도록 Security Rule 추가하였습니다. 그리고
+SSH 원격 접속 후, 사전에 정의한 블록스토리를 마운트하였으며, 마지막으로 인스턴스 재시작 및
+Orchestration 종료 방법을 살펴보았습니다.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">오라클 클라우드 인프라스트럭처 버전.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">Security Rule은 네트워크 접속에 대한 룰을 설정하는 오라클 클라우드의 개념입니다. Security Rule은  소스, 목적지 그룹 간에 어떤 포트와 프로토콜(TCP/UDP)에 대한 연결 설정입니다. &lt;그림 23&gt;은 일반 인터넷(public internet)에서 default 그룹에 SSH 통신을 수행하는 것을 허용하는 보안 룰입니다.
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/cloud/" rel="tag">Cloud</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/compute-cs/" rel="tag">Compute CS</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/storage_cs/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Oracle Storage Cloud Service</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/compute_security/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">오라클 클라우드 Compute CS 보안 적용</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/cloud/compute_instance/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#선행-작업">선행 작업</a></li>
+<li><a href="#compute-cs-가상머신-만들기">Compute CS 가상머신 만들기</a>
+<ul>
+<li><a href="#ubuntu-17-04-인스턴스-만들기">Ubuntu 17.04 인스턴스 만들기</a></li>
+<li><a href="#가상머신-접근을-위한-ssh-보안-설정">가상머신 접근을 위한 SSH 보안 설정</a></li>
+<li><a href="#블록-스토리지-마운트">블록 스토리지 마운트</a></li>
+</ul></li>
+<li><a href="#가상머신-인스턴스-재시작">가상머신 인스턴스 재시작</a></li>
+<li><a href="#orchestration에서-가상머신-제어">Orchestration에서 가상머신 제어</a></li>
+<li><a href="#요약">요약</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

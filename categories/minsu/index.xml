@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Minsu on taewan.kim 블로그</title>
+    <link>http://taewan.kim/categories/minsu/</link>
+    <description>Recent content in Minsu on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 19 Mar 2016 01:50:05 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/categories/minsu/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>유튜브 민수 채널</title>
+      <link>http://taewan.kim/minsu/</link>
+      <pubDate>Sat, 19 Mar 2016 01:50:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/minsu/</guid>
+      <description> 2016.02.23 민수는 못말려&amp;hellip;.   엄마와 민수.. 아빠 사랑해   2016.02.13 할머니 집에서 아빠 사랑해   레이서 민수   2015.10.03 물이 맛있어&amp;hellip;.   2015.10.03 모래가 무서워   </description>
+    </item>
+    
+  </channel>
+</rss>

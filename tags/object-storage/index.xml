@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Object Storage on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/object-storage/</link>
+    <description>Recent content in Object Storage on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 Jun 2018 01:09:25 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/object-storage/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Oracle Big Data Cloud와 Object Storage 연동</title>
+      <link>http://taewan.kim/cloud/bdc_object_storage_integration/</link>
+      <pubDate>Mon, 18 Jun 2018 01:09:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/bdc_object_storage_integration/</guid>
+      <description>Oracle Cloud는 대용량 데이터 병렬 처리와 분석을 담당하는 빅데이터 서비스로 Big Data Cloud(이하 BDC)를 제공합니다. 오라클 클라우드에서 Data Lake는 DBMS와 하둡 HDFS가 아닌 Oracle Storage Cloud Service(이하 Storage Service)에서 제공하는 Object Storage입니다.
+이 문서에서는 대용량 병렬 처리를 담당하는 BDC가 Object Storage에 데이터를 읽고/쓰기는 연동 설정과 연동 방식에 대하여 살펴보겠습니다. 오라클 클라우드는 Storage Service로 OCI Storage Classic과 OCI Storage 서비스 두 가지를 제공합니다. 이 두 가지 서비스는 Object Storage 관점에서 다음과 같이 정리할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle Storage Cloud Service 활성화</title>
+      <link>http://taewan.kim/cloud/objest-storage-replication/</link>
+      <pubDate>Mon, 06 Mar 2017 08:54:32 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/objest-storage-replication/</guid>
+      <description>Oracle Storage Cloud Service(이하 Storage Cloud)는 오라클 클라우드의 핵심 서비스입니다. 오라클 클라우드의 대부분의 서비스는 데이터 저장 목적으로 Storage Cloud를 사용합니다. 오라클 클라우드에서 Storage Cloud를 사용하는 서비스는 다음과 같습니다.
+   서비스 설명     Java Cloud Service(이하 JCS) JCS는 클러스터 백업 및 메타 정보 저장을 위해서 Storage Cloud를 사용합니다. JCS 설정시 Storage Cloud 정보 입력이 필 수 사항입니다.   Database CS (이하 DBCS) DBCS는 데이터베이스 백업에 Storage Cloud를 사용합니다.</description>
+    </item>
+    
+  </channel>
+</rss>

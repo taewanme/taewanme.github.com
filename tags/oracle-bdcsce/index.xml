@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Oracle Bdcsce on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/oracle-bdcsce/</link>
+    <description>Recent content in Oracle Bdcsce on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 20 Aug 2017 23:20:25 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/oracle-bdcsce/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Oracle Cloud의 PaaS 서비스 패치: Orace BDCSCE</title>
+      <link>http://taewan.kim/cloud/oracloud_patch/</link>
+      <pubDate>Sun, 20 Aug 2017 23:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracloud_patch/</guid>
+      <description>Oracle Cloud는 지속적으로 새로운 기능을 클라우드 서비스에 추가하고 있습니다. 기능 개선을 위해서는 소프트웨어 변경이 필요합니다. 이미 클라우드 서비스 인스턴스를 생성하고 사용 중인 고객을 위해서 오라클은 패치를 만들고 적용하는 프로세스를 제공합니다. 클라우드 사용자는 현재 사용 중인 서비스에 패치를 적용 여부와 시점을 직접 결정할 수 있습니다. 본 문서에서는 &amp;ldquo;Oracle Big Data Cloud Service - Compute Edition&amp;rdquo;(이하 Oracle BDCSCE)의 인스턴스에 패치를 적용하는 방법을 살펴보겠습니다. 여기에서 다루는 Oracle BDCSCE 인스턴스에 패치를 적용하는 절차는 다른 Oracle PaaS에도 적용할 수 있습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

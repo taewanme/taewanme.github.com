@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>JShell:6. 피드백 모드</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="JShell:6. 피드백 모드" />
+<meta property="og:description" content="java9의 신규 기능인 JShell 공식 문서의 한글화 입니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/trans/jshell/jshell06/" />
+
+
+
+<meta property="article:published_time" content="2017-12-27T19:30:14&#43;09:00"/>
+<meta property="article:modified_time" content="2017-12-27T19:30:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="http://taewan.kim/css/jupyter.css" type="text/css" media="all" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		
+		
+		<header class="post__header clearfix">
+			<h1 class="post__title">JShell:6. 피드백 모드 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2017-12-27 19:30:14 &#43;0900 KST">December 27, 2017</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/java" rel="category">java</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+			
+
+<p>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.</p>
+
+<blockquote>
+<ul>
+<li>원문: <a href="https://docs.oracle.com/javase/9/jshell/feedback-modes.htm">https://docs.oracle.com/javase/9/jshell/feedback-modes.htm</a></li>
+<li>제목: Java Platform, Standard Edition Java Shell User’s Guide: 6 Feedback Modes
+
+<ul>
+<li>문서번호: E87478-01</li>
+<li>릴리즈: 2017년 09월</li>
+</ul></li>
+<li>라이센스: 원본 문서 라이센스를 준수합니다.
+
+<ul>
+<li>원문: <a href="https://docs.oracle.com/javase/9/jshell/title.htm">https://docs.oracle.com/javase/9/jshell/title.htm</a></li>
+</ul></li>
+</ul>
+</blockquote>
+
+<p>JShell 사용자 가이드의 한글화 문서는 다음과 같이 구성됩니다.</p>
+
+<ul>
+<li><a href="/trans/jshell/jshell01/">1. JShell 소개</a></li>
+<li><a href="/trans/jshell/jshell02/">2. 스니펫</a></li>
+<li><a href="/trans/jshell/jshell03/">3. 명령</a></li>
+<li><a href="/trans/jshell/jshell04/">4. 편집</a></li>
+<li><a href="/trans/jshell/jshell05/">5. 외부 코드</a></li>
+<li><strong>6. 피그백 모드</strong></li>
+<li><a href="/trans/jshell/jshell07/">7. 스크립트</a></li>
+</ul>
+
+<hr />
+
+<h2 id="jshell-사용자-가이드-6-피그백-모드">JShell 사용자 가이드: 6. 피그백 모드</h2>
+
+<hr />
+
+<p>피드백 모드는 JShell에서 프롬프트, 피드백에 대한 정의입니다.
+피드백은 JShell과 사용자의 상호작용에 사용됩니다.
+피드백 수준이 다른 여러 사전 정의 피드백 모드가 제공됩니다.
+필요에 따라 사용자 정의 피드백 모드를 만들 수 있습니다.</p>
+
+<ul>
+<li>문서 구성
+
+<ul>
+<li>피드백 모드 설정</li>
+<li>피드백 모드 정의</li>
+</ul></li>
+</ul>
+
+<h3 id="피드백-모드-설정">피드백 모드 설정</h3>
+
+<p>피드백 모드는 JShell에서 프롬프트 및 피드백에 대한 정의입니다.
+피드백은 JShell과 여러분의 상호작용에 사용됩니다.
+사용자 편의를 위해서 여러 사전 정의 피드백 모드(Predefined feedback mode)가 제공됩니다.
+필요에 따라 사용자 정의 피드백 모드를 만들 수 있습니다.</p>
+
+<p>사전 정의 피드백 모드는 수정할 수 없습니다. 그러나
+사전 정의된 피드백 모드를 사용하여 사용자 정의 모드를 만들 수 있습니다.
+사전 정의된 피드백 모드가 제공하는 정보의 양은 <strong>verbose</strong>, <strong>normal</strong>, <strong>consice</strong>, <strong>silent</strong> 순입니다.
+정보양이 가장 많은 것은 <strong>verbose</strong> 입니다.</p>
+
+<p>다음 표는 사전 정의 피드백 모드에 대한 요약입니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>값 스니펫</th>
+<th>선언</th>
+<th>업데이트</th>
+<th>명령</th>
+<th>프롬프트</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>verbose</td>
+<td>name ==&gt; value (설명)</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>\njshell&gt;</td>
+</tr>
+
+<tr>
+<td>normal</td>
+<td>name ==&gt; value</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>\njshell&gt;</td>
+</tr>
+
+<tr>
+<td>concise</td>
+<td>name ==&gt; value (식만 제공)</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td></td>
+</tr>
+
+<tr>
+<td>jshell&gt;</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>concise</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>-&gt;</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Mode 컬럼은 설명할 피드백 모드를 나타냅니다.</li>
+<li>값 스니펫(Value Snippets) 컬럼은 식(expressions), 할당문, 변수 선언과 같은 값을 갖는 스니펫을 표현하는 방식을 설명합니다.</li>
+<li>선언(Declaration) 컬럼은 선언 혹은 메서드, 클래스, enum, 인터페이스 그리고 어노테이션 인터페이스에 대해 피드백 제공 여부를 설명합니다.</li>
+<li>업데이트 컴럼은 현재 스니펫 이외에 변경 사항의 출력 여부를 설명합니다.</li>
+<li>명령 컬럼은 명령에 대한 성공을 나타내는 피드백 제공 여부 설명합니다.</li>
+<li>프롬프트 컬럼은 어떤 프롬프트가 사용되는지 설명합니다.</li>
+</ul>
+
+<p>기본 피드백 모드는 &ldquo;<strong>normal</strong>&ldquo;입니다.</p>
+
+<p>피드백 모드는 다음 예제와 같이 커맨드 라인 옵션으로 설정하거나 <strong>/set feedback</strong> 명령을 사용하여 변경할 수 있습니다.</p>
+
+<pre><code>jshell&gt; /set feedback verbose
+|  Feedback mode: verbose
+
+jshell&gt; 2 + 2
+$1 ==&gt; 4
+|  created scratch variable $1 : int
+
+jshell&gt; /set feedback silent
+-&gt; 2 + 2
+-&gt; /set feedback normal
+|  Feedback mode: normal
+
+jshell&gt; 2 + 2
+$3 ==&gt; 4
+
+jshell&gt; /set feedback concise
+jshell&gt; 2 + 2
+$4 ==&gt; 4
+jshell&gt;
+</code></pre>
+
+<p>피드백 모드로 <strong>normal</strong>  혹은 <strong>verbose</strong>로 설정할 경우, 명령 피드백은 설정 모드를 출력합니다.<br />
+그러나 피드백 모드로 <strong>consise</strong> 혹은 <strong>silent</strong>가 설정될 때는, 명령 피드백으로 설정 모드를 출력하지 않습니다.<br />
+또한 식 <strong>2+2</strong>에 대한 피드백의 3 가지 다른 피드백 형식에 대해서 주의 깊이 살펴보시기 바랍니다.
+<strong>silent</strong>로 피드백 모드가 설정되면 식 <strong>2+2</strong>에 어떤 피드백도 제공하지 않습니다.</p>
+
+<p>현재 및 사용 가능한 피드백 모드는 옵션없이 <strong>/set feedback</strong> 명령 사용하여 확인할 수 있습니다. 현재 모드는 다음과 같이 피드백 모드를 설정하는 명령으로 표시됩니다.</p>
+
+<pre><code>jshell&gt; /set feedback
+|  /set feedback verbose
+|
+|  Available feedback modes:
+|     concise
+|     normal
+|     silent
+|     verbose
+</code></pre>
+
+<h3 id="피드백-모드-정의">피드백 모드 정의</h3>
+
+<p>사용자 정의 피드백 모드에서 사용자가 원하는 프롬프트를 정의할 수 있습니다. 또한 JShell에 입력된 요소들에 대해서 수신을 원하는 피드백을 정의할 수 있습니다.</p>
+
+<p>피드백 모드는 다음을 설정을 갖습니다.</p>
+
+<ul>
+<li>Prompts: regular 프롬프트 문자, continuation 프롬프트 문자<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup></li>
+<li>Truncation: 출력할 값의 최대 길이</li>
+<li>Format: 제공할 피드백의 포멧</li>
+</ul>
+
+<p>사전 정의 피드백 모드는 변경할 수 없습니다. 그러나 다음 예제와 같이 기존 사전 정의 피드백 모드의 복사본을 만들수 있습니다.</p>
+
+<pre><code>jshell&gt; /set mode mine normal -command
+|  Created new feedback mode: mine
+</code></pre>
+
+<p>새로운 피드백 모드 <strong>mine</strong> 모드는 <strong>normal</strong> 모드의 복사본입니다. &ldquo;<strong>-command</strong>&rdquo; 옵션은 명령 피드백을 원한다는 의미입니다. 만약 발생한 액션에 대한 설명을 원하지 않는다면, &ldquo;<strong>-command</strong>&rdquo; 옵션 대신에 &ldquo;<strong>-quiet</strong>&rdquo; 옵션을 사용합니다.</p>
+
+<h4 id="프롬프트-설정">프롬프트 설정</h4>
+
+<p>다른 <strong>/set</strong> 명령과 마찬가지로, 추가 설정이 없는 <strong>/set prompt</strong> 명령을 실행하면 현제 프롬프트 설정을 출력합니다.</p>
+
+<pre><code>jshell&gt; /set prompt normal
+|  /set prompt normal &quot;\njshell&gt; &quot; &quot;   ...&gt; &quot;
+</code></pre>
+
+<p>앞 예제의 피드백을 보면, 첫번째 문자열이 <strong>regulaer</strong> 프롬프트이고, 두 번째 문자열이 <strong>continuation</strong> 프롬프트 입니다. <strong>continuation</strong> 프롬프트는 여러줄로 스니펫이 구성될 경우에 사용되는 프롬프트입니다. 다음 예제에서는 새로운 모드에서 프롬프트를 변경하는 방법을 소개합니다.</p>
+
+<pre><code>jshell&gt; /set prompt mine &quot;\nmy mode: &quot;  &quot;.......: &quot;
+
+jshell&gt; /set feedback mine
+|  Feedback mode: mine
+
+my mode: class C {
+.......:    int x;
+.......: }
+|  created class C
+
+my mode:
+</code></pre>
+
+<p>프롬프트 문자열은 <strong>%s</strong> 문자열을 포함할 수 있습니다. 이 문자는 다음 스니펫 ID로 변환됩니다. 그러나 명령이 입력되거나 에러로 스니펫을 반환할 경우, 프롬프트에 사용자가 입력한 값은 ID에 새로운 값이 할당되지 않습니다.</p>
+
+<p>모든 설정은 현재 세션에서만 유지됩니다. <strong>/reset</strong> 명령으로 재설정되지 않습니다. 미래의 다른 세션에서도 현재 설정이 기본으로 유지되길 원한다면, 설정을 유지하기 위해서 <strong>-retain</strong> 옵션을 사용해야 합니다. 다음 예제는 사용자 정의 모드를 여러 세션에서 걸쳐서 유지하는 방법을 소개합니다.</p>
+
+<pre><code>my mode: /set mode mine -retain
+
+my mode: /set feedback mine -retain
+|  Feedback mode: mine
+
+my mode: /exit
+|  Goodbye
+% jshell
+|  Welcome to JShell -- Version 9
+|  For an introduction type: /help intro
+
+my mode:
+</code></pre>
+
+<h4 id="truncation-자름-설정">Truncation(자름) 설정</h4>
+
+<p>출력할 값이 너무 길 경우에, 출력시점에 출력 데이터를 잘라야 합니다. <strong>/set truncation</strong> 명령을 사용하여 출력할 값의 최대 길이를 설정합니다. 별도의 옵션 없이 <strong>/set truncation</strong> 명령을 입력하면, 현재 설정을 출력합니다. 다음 예제는 normal 모드를 상속한 <strong>mine</strong> 모드의  설정을 보여줍니다.</p>
+
+<pre><code>my mode: /set truncation mine
+|  /set truncation mine 80
+|  /set truncation mine 1000 expression,varvalue
+
+my mode: String big = IntStream.range(0,1200).mapToObj(n -&gt; &quot;&quot; + (char) ('a' + n % 26)).collect(Collectors.joining())
+big ==&gt; &quot;abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuv ... fghijklmnopqrstuvwxyzabcd&quot;
+</code></pre>
+
+<p>Truncation(절단) 설정이 적용되는 조건은 Truncation(절단) 길이 다음에 입력될 선택자(selector)로 결정됩니다. 온라인 도움말에 따르면 선택자 유형으로 두 가지 타입이 정의되어 있습니다.</p>
+
+<ul>
+<li>케이스 셀렉터는 출력할 값의 스니펫 타입을 표시합니다.</li>
+<li>액션 셀렉터는 스니펫에 무슨 일이 발생하는지를 설명합니다.</li>
+</ul>
+
+<p>센렉터에 대한 자세한 설명은 <strong>/help /set truncation</strong> 명령으로 확인할 수 있습니다.</p>
+
+<p>이전 예제에서의 식의 결과 값(expression case selector) 혹은 변수의 값이 아닌, 변수 명을 입력하여 명시적으로 요청하는 것과 같은 상황이라면, 처럼 값이 식의 값(expression case selector)이거나 변수의 값이 아니라면, 변수 명(varvalue case selector)을 입력하여 명시적으로 출력을 요청할 때 80개 문자로 절단하라는 의미입니다. 이 순서는 중요합니다. 마지막 것이 사용됩니다. 만약에 순서가 반대라면, 모든 값은 80 개 문자에서 절달될 것입니다.<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup></p>
+
+<p>다음 예제에서 기본 Truncation(절단)을 100으로 설정합니다. 그리고 명시적으로 요청할 때에만 실제 전체 값을 출력합니다.</p>
+
+<pre><code>my mode: /set truncation mine 100
+
+my mode: /set truncation mine 300 varvalue
+
+my mode: big + big
+$2 ==&gt; &quot;abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghi ... yzabcdefghijklmnopqrstuvwxyzabcd&quot;
+
+my mode: big
+big ==&gt; &quot;abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstu
+vwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijkl ... jklmnopq
+rstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd&quot;
+
+my mode: /set mode mine -retain
+</code></pre>
+
+<p>새로운 설정을 유지하기 위해서, 예제의 마지막에서 처럼 <strong>-retain</strong> 옵션을 사용하여 변경을 유지합니다.</p>
+
+<h4 id="포멧-설정-set-formats">포멧 설정(Set Formats)</h4>
+
+<p>스니펫 출력은 사용자가 변경할 수 있는 설정입니다. <strong>normal</strong> 모드로 부터 상속한 출력 형식은 import 문에 대해서는 어떤 피드백도 제공하지 않습니다. 값의 유형도 출력하지 않습니다.</p>
+
+<pre><code>my mode: import java.beans.*
+
+my mode: Locale.CANADA.getUnicodeLocaleAttributes()
+$5 ==&gt; []
+</code></pre>
+
+<p>스니펫 출력 형식은 <strong>/set format</strong> 명령으로 설정할 수 있습니다. <strong>/set format</strong> 명령을 모드 명만을 추가해서 실행하면 현재 포멧 설정을 출력합니다.</p>
+
+<pre><code>my mode: /set format mine
+</code></pre>
+
+<p>출력 포멧 설정 명령에 대한 자세한 도움말은 <strong>/help /set</strong> 명령을 통해서 이용 가능합니다. 포멧을 정의할 때 사용하는 필드를 설명하는 이 절의 나머지 부분에서 이 도움말을 참조로써 사용할 수 있습니다.</p>
+
+<p>피드백에 출력됨은 display 필드로 결정합니다. 출력 필드 정의하는데 돕는 용도로 여러 필드를 정의할 수 있습니다. <strong>silent</strong> 모드를 제외한 사전 정의 모드는 <strong>/help /set format</strong> 명령에서 볼 수 있는 필드 중 몇 가지를 정의합니다. 이 필드는 예제 모드에서 상속됩니다. 다음 예제는 import 문의 출력 정의(Display Definition)하는 방법을 설명합니다.</p>
+
+<pre><code>my mode: /set format mine display &quot;{pre}added import {name}{post}&quot; import-added
+
+my mode: /set format mine display &quot;{pre}re-added import {name}{post}&quot; import-modified,replaced
+</code></pre>
+
+<p>name 필드는 스니펫 이름으로 사전 정의된 필드입니다. 다음 예제는 import 문에 제공되는 피드백입니다.</p>
+
+<pre><code>my mode: import java.beans.*
+|  re-added import java.beans.*
+</code></pre>
+
+<p>표시 정의(Display Definition)에 사용 된 <strong>pre</strong> 및 <strong>post</strong> 필드는 피드백 출력의 각 행에 대한 접두어 및 접미어 문자입니다. 다음 예제에서는 세로 막대 접두사를 빈 문자열로 변경하는 설정입니다.</p>
+
+<pre><code>my mode: /set format mine pre &quot;&quot;
+
+my mode: void m() {}
+created method m()
+
+my mode: import java.beans.*
+re-added import java.beans.*
+
+my mode: /set truncation mine
+/set truncation mine 100
+/set truncation mine 300 varvalue
+</code></pre>
+
+<div class="notices note" ><p>접두 문자 변경은 명령 피드백을 포함한 모든 피디백에 영향을 미칩니다.</p>
+</div>
+
+
+<p>값을 표시 할 때 타입을 표시하려면, 사전 정의 모드에서 정의 된 결과 필드를 변경하십시오.</p>
+
+<pre><code>my mode: /set format mine result &quot;{type} {name} = {value}{post}&quot; added,modified,replaced-primary-ok
+
+my mode: Locale.CANADA.getUnicodeLocaleAttributes()
+Set&lt;String&gt; $11 = []
+
+my mode: 2 + 2
+int $12 = 4
+</code></pre>
+
+<p>이 변경은 새로 추가되거나 업데이트(추가, 수정, 대체)된 경우 입력된 스니펫(primary)에 에러가 없는 경우(ok)에만 결과를 만듭니다.</p>
+
+<p>유지 설정된 모드를 영구적으로 삭제하기 위해서는 <strong>-delete</strong> 옵션과 함께 <strong>-retain</strong> 옵션을 함께 사용해야 합니다.</p>
+
+<pre><code>my mode: /set feedback verbose -retain
+|  Feedback mode: verbose
+
+jshell&gt; /set mode mine -delete -retain
+</code></pre>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">[역자주]regular 프롬프트 문자는 일반 프롬프트 문자를 의미하고, continuation 프롬프트 문자는 여려 줄로 스니펫을 작성할 때 출력하는 프롬프트 문자입니다. 기본 regular 프롬프트 문자는 &ldquo;<strong>|</strong>&ldquo;입니다. 기본 continuation 프롬프트 문자는 &ldquo;__  &hellip;&gt;__&ldquo;입니다.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">[역자주]expression과 varvalue 셀렉터를 설정함으로써 두 번째 설정은 범위를 한정하였습니다.
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/oracle/" rel="tag">ORACLE</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/java9/" rel="tag">java9</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/java/" rel="tag">Java</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/jshell/" rel="tag">JShell</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%ED%95%9C%EA%B8%80%ED%99%94/" rel="tag">한글화</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EB%B2%88%EC%97%AD/" rel="tag">번역</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EC%82%AC%EC%9A%A9%EC%9E%90-%EA%B0%80%EC%9D%B4%EB%93%9C/" rel="tag">사용자 가이드</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/user-guide/" rel="tag">User Guide</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/feedback-mode/" rel="tag">feedback mode</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/trans/jshell/jshell05/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">JShell:5. 외부 코드</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/trans/jshell/jshell07/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">JShell: 7. JShell 소개</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/trans/jshell/jshell06/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#jshell-사용자-가이드-6-피그백-모드">JShell 사용자 가이드: 6. 피그백 모드</a>
+<ul>
+<li><a href="#피드백-모드-설정">피드백 모드 설정</a></li>
+<li><a href="#피드백-모드-정의">피드백 모드 정의</a>
+<ul>
+<li><a href="#프롬프트-설정">프롬프트 설정</a></li>
+<li><a href="#truncation-자름-설정">Truncation(자름) 설정</a></li>
+<li><a href="#포멧-설정-set-formats">포멧 설정(Set Formats)</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>Oracle MySQL Cloud Service</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="Oracle MySQL Cloud Service" />
+<meta property="og:description" content="Oracle MySQL Cloud Service를 소개합니다. Oracle MySQL Cloud Service는 오라클이 제공하는 Database PaaS입니다. " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/cloud/mysql_cs/" />
+
+
+
+<meta property="article:published_time" content="2017-05-10T15:48:24&#43;09:00"/>
+<meta property="article:modified_time" content="2017-05-10T15:48:24&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">Oracle MySQL Cloud Service </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2017-05-10 15:48:24 &#43;0900 KST">May 10, 2017</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c" rel="category">오라클 클라우드</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://oracloud-kr-teamrepo.github.io/2017/04/mysqlcs_01/mysqllogo.jpg" alt="Oracle MySQL Cloud Service">
+			</figure>
+			
+
+<h2 id="oracle-mysql-cloud-service-개요">Oracle MySQL Cloud Service 개요</h2>
+
+<p>오라클이 오픈소스 형태로 개발하고 있는 MySQL은 전 세계에서 가장 많이 사용되는 오픈소스 데이터베이스 입니다.
+오라클 클라우드는 Oracle MySQL Cloud Service(이하 MySQL CS)를 2016년 11월에 출시하였습니다.
+2017년 5월 현재 오라클 클라우드는 관계형 데이터베이스 서비스<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>로 Oracle Database CS와 MySQL CS를 제공합니다.</p>
+
+<p>MySQL CS는 MySQL Enterprise Edition 라이센스를 기반으로하는 PaaS 서비스 입니다.</p>
+
+<p>MySQL CS가 제공하는 엔터프라이즈 지원 기능은 다음과 같습니다.</p>
+
+<ul>
+<li>데이터베이스 관리 체계(백업, 패치, 모니터링)</li>
+<li>MySQL 전문 관리 도구
+
+<ul>
+<li>MySQL Query Analyzer</li>
+<li>MySQL Enterprise Monitor</li>
+</ul></li>
+<li>셀프 프로비저닝</li>
+<li>탄력적인 확장성(Elastic scalability)</li>
+<li>다중계층 보안(Multi-layer security)</li>
+</ul>
+
+<h2 id="mysql-cs의-특징">MySQL CS의 특징</h2>
+
+<p>Oracle MySQL CS는 라이센스, 보안, 성능, 안전성, 관리 효율성, 백업과 복구 측면에서 다음과 같은 특징을 제공합니다.</p>
+
+<h3 id="mysql-버전과-라이센스">MySQL 버전과 라이센스</h3>
+
+<p>Oracle MySQL CS의 차별점<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup>은 MySQL Enterprise Edition을 사용한다는 것입니다.
+Enterprise Edition을 사용함으로써 성능, 보안 및 가용성 측면에서 강점을 갖습니다. 기존에 on-premise에서 사용하던 MySQL 기능을 제약없이 클라우드에서도 사용할 수 있습니다.</p>
+
+<p>MySQL Enterprise Edition은 다음과 같은 기능을 포함합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>구성 컴포넌트</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>MySQL Enterprise Transparent Data Encryption(TDE)</td>
+<td>MySQL 데이터 파일은 암호화되기 때문에, 데이터 파일을 복사하여 유출하는 행위는 무의미합니다. 데이터는 쓰기 시점에 암호화되고 읽기 시점에 복호화됩니다.</td>
+</tr>
+
+<tr>
+<td>MySQL Enterprise Backup</td>
+<td>온라인 hot backup을 제공하여 데이터 유실 위험을 최소화합니다. <br /> 백업 데이터 압축 및 백업 데이터 검증 기능을 제공합니다.</td>
+</tr>
+
+<tr>
+<td>MySQL Enterprise Scalability</td>
+<td>MySQL Thread Pool은 효율적인 쓰레드 제어 모델을 제공합니다. 효과적으로 Scale-up/down의 토대가 됩니다.</td>
+</tr>
+
+<tr>
+<td>MySQL Enterprise Authentication</td>
+<td>외부 인증 모듈과 통합 연동을 지원 합니다. PAM과 Window Active Directory 같은 외부 보안 백엔드를 지원합니다.</td>
+</tr>
+
+<tr>
+<td>MySQL Enterprise Encryption</td>
+<td>비대칭키 기반의 암호화와 키 생성을 담당합니다.</td>
+</tr>
+
+<tr>
+<td>MySQL Enterprise Firewall</td>
+<td>사이버 보안 위협에 대응하는 컴포넌트입니다. SQL Injection에 실시간 대응 가능합니다. 비인가 된 데이터베이스 작업에 대한 차단을 제공합니다.</td>
+</tr>
+
+<tr>
+<td>MySQL Enterprise Audit</td>
+<td>정책 기반 감사 기능을 제공합니다. 사용자 단위 로깅을 설정할 수 있습니다.</td>
+</tr>
+
+<tr>
+<td>MySQL Enterprise Monitor</td>
+<td>MySQL Enterprise Monitor, MySQL Query Analyzer와 Database File IO를 이용하여 고급 데이터베이스 관리가 가능합니다.</td>
+</tr>
+
+<tr>
+<td>Oracle Enterprise Manager for MySQL</td>
+<td>오라클이 제공하는 모니터링 도구입니다. 성능과 가용성에 대한 실시간 모니터링 정보를 제공하고 인스턴스 구성 정보를 확인할 수 있습니다.</td>
+</tr>
+
+<tr>
+<td>MySQL Router</td>
+<td>MySQL을 위한 경량형 미들웨어로, 백엔드 MySQL 서버를 추상화 할 수 있습니다.</td>
+</tr>
+
+<tr>
+<td>MySQL Workbench</td>
+<td>데이터베이스 아키텍트, 개발자 그리고 DBA를 위한 통합 도구입니다.</td>
+</tr>
+</tbody>
+</table>
+
+<p>MySQL CS는 Enterprise Edition 라이센스를 포함하기 때문에, 위 모든 기능을 제약없이 사용할 수 있습니다.</p>
+
+<p>2017년 5월 현재 MySQL CS가 지원하는 MySQL 버전은 5.7입니다.</p>
+
+<h3 id="oracle-cloud-최적화">Oracle Cloud 최적화</h3>
+
+<p>Oracle MySQL CS의 my.conf와 운영체제에는 안정성, 성능 측면에서 검증된 설정이 적용되어 있습니다. IO Thread 수, Redo log 사이즈와 버퍼 사이즈, Buffer pool 등은 Oracle MySQL CS의 Shape<sup class="footnote-ref" id="fnref:3"><a rel="footnote" href="#fn:3">3</a></sup>에 최적화된 값이 설정됩니다.</p>
+
+<h3 id="사용자-친화적인-인터페이스-제공">사용자 친화적인 인터페이스 제공</h3>
+
+<p>오라클 클라우드 서비스 콘솔에서 몇 가지 정보 입력과 몇 번의 클릭만으로 MySQL 인스턴스를 언제든지 새로 만들 수 있습니다. MySQL 인스턴스 생성 시간은 약 10분입니다.
+웹 콘솔과는 별개로 MySQL CS를 관리하는 <a href="http://docs.oracle.com/cloud/latest/mysql-cloud/CSMCS/index.html">REST API</a>와 PSM(PaaS Service Management) CLI<sup class="footnote-ref" id="fnref:4"><a rel="footnote" href="#fn:4">4</a></sup>를 제공합니다.</p>
+
+<ul>
+<li>그림 1. MySQL Cloud Service의 REST API 스펙 문서
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/mysqlcs_01/restapi.jpg" alt="" /></li>
+</ul>
+
+<h3 id="데이터베이스-관리-효율성">데이터베이스 관리 효율성</h3>
+
+<p>원클릭으로 데이터베이스 패치 테스트, 패치 적용 및 패치 롤백을 수행할 수 있습니다.
+MySQL CS는 MySQL 인스턴스를 관리하는 사용자 친화적인 웹 기반 콘솔을 제공합니다.
+동일한 기능이 REST API 및 명령 도구(CLI)로도 제공됩니다.</p>
+
+<p>MySQL CS는 Enterprise Edition 라이센스를 포함하기 때문에, 어떠한 기능 제약도 없습니다. 기존에 사용하던 MySQL Enterprise Monitor(&lt;그림 2&gt; 참조), Query Analyzer(&lt;그림 3&gt; 참조), Database File IO(&lt;그림 4&gt; 참조)) 및 MySQL Workbench와 같은 MySQL 도구를 클라우드에서도 사용 가능합니다. 이런 전문 툴을 사용하여 MySQL 인스턴스의 성능 및 가용성, 관리 효율성을 높일 수 있습니다.</p>
+
+<p>-그림 02. MySQL Enterprise Monitor
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/mysqlcs_01/dashboard.jpg" alt="" /></p>
+
+<p>-그림 03. MySQL Enterprise Monitor: Query Analyzer
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/mysqlcs_01/query_analyzer.jpg" alt="" /></p>
+
+<p>-그림 04. MySQL Enterprise Monitor: Database File IO
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/mysqlcs_01/fileio.jpg" alt="" /></p>
+
+<h3 id="백업-복구">백업 &amp; 복구</h3>
+
+<p>MySQL CS의 백업 기능은 MySQL Enterprise Edition에 포함된 MySQL Enterprise Backup을 이용하여 구현되었습니다. 관리자는 주기적인 핫 온라인 백업을 구성할 수 있고, 필요한 시점에 언제든지 온라인 스냅샷을 만들 수 있습니다.
+MySQL CS의 웹 콘솔에서는 스케줄 백업을 구성하는 웹 UI를 제공합니다.
+모든 백업은 데이터베이스 온라인 상태로 진행됩니다.
+백업 유형은 다음과 같습니다.</p>
+
+<p>|실행 유형|백업 유형|실행 주기|
+|스케줄 백업| full backup | 주 1회(Weekly)|
+|스케줄 백업| incremental backup| 매일 1회 (Daily) |
+|On-demand 백업| full backup | 사용자 요청 시 백업 수행 |</p>
+
+<p>백업 데이터는 Oracle MySQL CS 인스턴스의 가상머신과 Object Storage에 저장됩니다.
+MySQL CS 가상머신에 저장되는 백업 데이터는 최대 7일간 유지되고, Storage CS에
+저장되는 백업 데이터는 30일까지 유지됩니다. Storage CS의 저장 기간은 기본값이 30일입니다. 백업 데이터 유지 기간은  백업 설정 UI에서 변경할 수 있습니다. (&lt;그림 5&gt; 참조)</p>
+
+<ul>
+<li>그림 5. 백업 스케줄 설정
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/mysqlcs_01/backup_config.jpg" alt="" /></li>
+</ul>
+
+<p>MySQL CS 웹 콘솔에서 관리자는 언제든지 백업을 수행할 수 있습니다.
+On-Demand로 백업을 요청할 경우 Full Backup이 수행됩니다.</p>
+
+<p>MySQL Enterprise Backup은 압축과 데이터 검증 기능을 제공합니다.
+백업 데이터는 압축되어 저장되고, 복사 시점에 데이터 검증이 수행됩니다.
+데이터 검증 기능을 통해서 MySQL CS는 백업 데이터의 오류를 사전에 확인할 수 있습니다.</p>
+
+<p>증강분 백업(Incremental Backup) 이후 데이터베이스 변경 정보는 binary log 파일<sup class="footnote-ref" id="fnref:5"><a rel="footnote" href="#fn:5">5</a></sup>에 저장됩니다.
+Oracle MySQL CS 인스턴스는 Binary log가 기본 활성화되어 있으며, 유지 기간은 90일입니다.</p>
+
+<p>Oracle MySQL CS는 Binary log 파일의 기본 보관 주기 설정은 90일 입니다. 이 파일 저장기간 설정은 my.conf 파일과 <code>Oracle Enterprise Manager for MySQL</code>에서 변경 가능합니다.</p>
+
+<p>Oracle MySQL CS 서비스 콘솔에서 백업 데이터로부터 데이터베이스를 복구할 수 있습니다. 복구 유형은 두 가지 입니다.
+백업 데이터를 지정하여 해당 백업 데이터까지 복구하는 방식(&lt;그림 6&gt;)과 시간을 지정하여 백업데이터와 binary log 파일로부터 복구하는 point-in-time 복구 방식(&lt;그림 7&gt;)을 제공합니다.</p>
+
+<ul>
+<li><p>그림 6. 백업 스케줄 설정
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/mysqlcs_01/recovery2.jpg" alt="" /></p></li>
+
+<li><p>그림 7. 백업 스케줄 설정
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/mysqlcs_01/pointintime.jpg" alt="" /></p></li>
+</ul>
+
+<h3 id="고가용성-high-availability">고가용성(High Availability)</h3>
+
+<p>Oracle MySQL CS는 가상머신에 SSH 접근할 수 있습니다.
+DBA는 데이터베이스 가상머신에 SSH 접근하여, MySQL 복제 환경을 구성할 수 있습니다.
+복제 대상으로는 Oracle MySQL CS의 다른 인스턴스 및 원격에 위치하는 on-premise MySQL 데이터베이스 모두 가능합니다.
+MySQL Replication Monitor로 마스터와 슬레이브의 상태를 모니터링할 수 있습니다.</p>
+
+<ul>
+<li>그림 8. Oracle MySQL CS 인스턴스의 데이터베이스 복제
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/mysqlcs_01/replication.jpeg" alt="" /></li>
+</ul>
+
+<h3 id="다계층-보안-기능">다계층 보안 기능</h3>
+
+<p>MySQL CS은 Oracle Compute Cloud Service(이하 Compute CS)의 네트워크 접근 제어 기능과 MySQL Enterprise Edition의 보안 기능을 결합하여 다계층 보안 기능을 제공합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>컴포넌트</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Compute CS</td>
+<td>Network Access Control</td>
+<td>인프라 계층의 네트워크 통제</td>
+</tr>
+
+<tr>
+<td>Enterprise Edition</td>
+<td>MySQL Enterprise Firewall</td>
+<td>SQL Injection 공격 방어 <br/>침입 탐지</td>
+</tr>
+
+<tr>
+<td>Enterprise Edition</td>
+<td>MySQL Enterprise Authentication</td>
+<td>비대칭 암호화, 데이터 검증, 디지털 시그니처</td>
+</tr>
+
+<tr>
+<td>Enterprise Edition</td>
+<td>MySQL Enterprise Encryption</td>
+<td>외부 인증 모듈 제공: PAM, Window Active Directory</td>
+</tr>
+
+<tr>
+<td>Enterprise Edition</td>
+<td>Transparent Data Encryption</td>
+<td>데이터 파일 암호화</td>
+</tr>
+
+<tr>
+<td>Enterprise Edition</td>
+<td>MySQL Enterprise Audit</td>
+<td>사용자 단위로 정책에 기반을 두고 활동내용 감사, Audit log 관리</td>
+</tr>
+</tbody>
+</table>
+
+<p>Oracle MySQL CS를 생성하면 기본 5개의 Security Rule이 생성됩니다.
+이 Security Rule은 &lt;그림 9&gt;와 같이 Oracle MySQL CS 서비스 콘솔에서 접근 가능합니다.
+MySQL 관리자는 &lt;그림 10&gt;에서 Security Rule을 추가할 수 있습니다.</p>
+
+<ul>
+<li>그림 9. Oracle MySQL CS 인스턴스의 Security Rule 접근
+<img src="https://oracloud-kr-teamrepo.github.io/2017/04/mysqlcs_01/access_rule01.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 10&gt;의 5개 Security Rule은 데이터베이스 접속(3306 포트), Enterprise Monitor 접속(18443 포트)과 SSH 접속(22번 포트) 관련 규칙입니다.</p>
+
+<ul>
+<li>그림 10. Oracle MySQL CS 인스턴스의 기본 Security Rule</li>
+</ul>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/04/mysqlcs_01/access_rule02.jpeg" alt="" /></p>
+
+<h3 id="효과적인-패치-관리-환경">효과적인 패치 관리 환경</h3>
+
+<p>오라클은 주기적으로 hot fixes &amp; maintennce release를 패치 형태로 제공합니다.
+데이터베이스 패치를 적용은 관리자에게 부담스러운 작업입니다.
+Oracle MySQL CS는 효율적인이고 안전한 패치 관리 체계를 제공합니다.
+신규 패치가 등록되면 Oracle MySQL CS는 사용자에게 신규 패치 등록을 통지합니다.
+사용자는 원하는 시점에 패치를 적용할 수 있습니다.
+서비스 콘솔의 패치 UI는 &lt;그림 10&gt;과 같이 <code>precheck</code>와 <code>patch</code> 메뉴를 제공합니다.
+첫 번째 메뉴인 <code>precheck</code>는 실제 적용 전에 패치 과정을 점검하고 summary 리포트를 제공합니다.
+사전 점검을 완료하면 <code>patch</code> 메뉴를 이용하여 실제 패치를 수행할 수 있습니다.</p>
+
+<ul>
+<li>그림 11. Oracle MySQL CS 서비스 콘솔의 패치 UI
+<img src="https://oracloud-kr-teamrepo.github.io/2017/05/mysqlcs/patch.jpg" alt="" /></li>
+</ul>
+
+<p>메뉴를 통해서 패치를 수행하면 실제 패치를 적용하기 전에 바이너리 백업이 수행됩니다.
+패치 작업이 완료된 이후에는 &lt;그림 11&gt;과 같이 패치 롤백을 요청하여 패치 적용 이전으로 복귀할 수 있습니다.</p>
+
+<ul>
+<li>그림 12. Oracle MySQL CS 서비스 콘솔의 패치 롤백 기능
+<img src="https://oracloud-kr-teamrepo.github.io/2017/05/mysqlcs/rollback_patch.jpg" alt="" /></li>
+</ul>
+
+<h3 id="탄력적-확장성-elastic-scalability">탄력적 확장성(Elastic Scalability)</h3>
+
+<p>MySQL CS는 <code>Scale up/down</code>을 지원합니다.
+관리자는 MySQL CS 서비스 콘솔에서 Oracle MySQL CS 인스턴스의 Shape을 변경하여 인스턴스가 사용하는 CPU 수와 메모리 크기, 디스크 유형을 변경할 수 있습니다.
+MySQL 인스턴스의 Shape 변경은 REST API와 PSM(PaaS Service Manager) CLI를 이용해서도 가능합니다.
+REST API와 PSM CLI를 이용하여 Oracle MySQL CS 인스턴스의 Shape이 주기적으로 변경하도록 자동화할 수 있습니다.
+탄력적인 확장성을 지원하기 위한 <code>Scale up/down</code>의 소요 시간은 약 5~10분 정도이며, 이 기간에는 MySQL CS 인스턴스 이용이 제한됩니다.</p>
+
+<h3 id="mysql-서포트">MySQL 서포트</h3>
+
+<p>MySQL CS의 비용에는 오라클의 MySQL 엔터프라이즈 기술 지원이 포함되어 있습니다.
+MySQL 기술 지원과 클라우드 인프라스터럭처 기술 이슈에 대하여 원 스톱으로 오라클 프리미엄 기술 지원을 받을 수 있습니다.
+오라클은 글로벌 최대의 MySQL 엔지니어와 개발 그룹을 보유하고 있으며,
+이 전문 인력이 직접 기술 지원에 참여하고 있습니다.
+주기적으로 hot fixes &amp; maintenance release를 제공하며, 29개국 언어로 24X7X365 기술 지원을 제공합니다.</p>
+
+<h3 id="ssh-접근-지원">SSH 접근 지원</h3>
+
+<p>사용자는 MySQL CS 인스턴스에 SSH 접속을 이용하여 운영체제에 직접 접근할 수 있습니다.<sup class="footnote-ref" id="fnref:6"><a rel="footnote" href="#fn:6">6</a></sup>
+DBA는 MySQL CS 가상머신에 접근하여 고급 튜닝 및 관리 작업을 수행하고 필요한 소프트웨어를 설치할 수 있습니다.
+MySQL CS가 제공하는 패치 및 업그레이드 기능 수행 중 사용자가 설치한 소프트웨어가 영향을 미치면 <code>해당 소프트웨어의 수정/설치제거</code>를 묻는 메시지가 표시됩니다.</p>
+
+<p>MySQL Workbench를 사용하기 위해서 MySQL이 설치된 서버의 3306포트를 오픈해야 합니다. Oracle MySQL CS는 가상머신에 SSH 접근을 허용하기 때문에 MySQL Workbench가 ssh 터널링으로 MySQL에 접근하는 것이 가능합니다. 결과적으로 MySQL Workbench 사용을 위한 불필요한 포트 오픈을 최소화할 수 있습니다.</p>
+
+<h2 id="mysql-cs-배포">MySQL CS 배포</h2>
+
+<p>MySQL CS를 인스턴스 절차에 대해서는 <a href="/post/mysqlcs/">MySQL Cloud를 시작하고 샘플 스키마 생성하기</a> 문서에서 다루겠습니다.</p>
+
+<h2 id="요약">요약</h2>
+
+<p>Oracle MySQL Cloud Service는 클라우드 업계에서 유일하게 MySQL Enterprise Edition을 제공하는 데이터베이스 클라우드 서비스입니다.
+MySQL Enterprise Edition을 사용하기에 기능의 제약이 없고, 성능, 보안 및 가용성 측면에서 엔터프라이즈의 요구사항을 만족하는 서비스를 제공합니다.
+백업, 복구, 패치 및 모니터링에 대한 편리한 웹 기반 UI와 REST API 및 CLI 인터페이스를 제공하여 관리자의 편의성을 높이고 있습니다.
+Oracle MySQL Cloud Service는 Oracle Cloud(Storage CS와 Compute CS)에 최적화 구성이 적용되어 있습니다.</p>
+
+<p>Oracle MySQL Cloud Service는 가상머신에 대한 SSH 접속을 허용합니다. MySQL DBA는 가상머신에 접근하여 고급 튜닝 및 관리 작업을 수행할 수 있습니다. 마지막으로 Oracle MySQL Cloud Serivce의 비용에는 오라클 프리미엄 서포트 비용이 포함되어 있습니다. Oracle Compute CS와 MySQL에 관한 24X7 기술 지원을 받을 수 있습니다.</p>
+
+<h2 id="참고자료">참고자료</h2>
+
+<ul>
+<li><a href="https://cloud.oracle.com/ko_KR/mysql">Oracle MySQL 클라우드 서비스 홈페이지</a></li>
+<li><a href="http://docs.oracle.com/cloud/latest/mysql-cloud/index.html">Oracle MySQL 클라우드 서비스 문서 홈페이지</a></li>
+<li><a href="http://docs.oracle.com/cloud/latest/mysql-cloud/CSMCS/index.html">Oracle MySQL 클라우드 서비스의 REST API</a></li>
+<li><a href="http://ronaldbradford.com/blog/introducing-the-mysql-cloud-service-2016-09-23/">Introducing the MySQL Cloud Service</a></li>
+<li><a href="https://www.datavail.com/blog/oracle-mysql-cloud-service/">www.datavail.com: Oracle MySQL Cloud Service</a></li>
+<li><a href="https://www.toadworld.com/platforms/mysql/b/weblog/archive/2017/03/01/oracle-mysql-cloud-service-on-oracle-cloud-platform">toadworld: Oracle MySQL Cloud Service on Oracle Cloud Platform</a></li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">오라클은 PaaS 형태로 제공하는 데이터베이스를 Database as a Service[DBaaS]로 명명하고 있습니다.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">클라우드 업체는 대부분 MySQL 서비스를 제공합니다. <a href="https://aws.amazon.com/ko/rds/mysql/">AWS RDS</a>, <a href="https://cloud.google.com/sql/">GCP Cloud SQL</a> 그리고 <a href="https://docs.microsoft.com/ko-kr/azure/store-php-create-mysql-database">Azure MySQL App Service</a>와 같은 MySQL 서비스는 모두 MySQL Community Edition을 사용합니다. 오라클을 제외한 다른 클라우드에서는 MySQL Enterprise Edition에서 제공하는 고급 기능(성능, 보안, 가용성 관련)을 사용할 수 없습니다.
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:3">Shape은 Oracle Compute Cloud Service에서 인스턴스에 할당할 OCPU 수와 메모리 크기를 정의하는 자원 프로파일입니다. Shape은 인스턴스가 사용하는 디스크 유형을 결정합니다. 범용(General Purpose) 또는 높은 메모리(High Memory) Shape을 선택하면 하드 디스크가 사용하고, High I/O Shape을 선택하면 NVM Express SSD를 사용합니다.
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+<li id="fn:4">PSM(PaaS Service Management) CLI는 Oracle PaaS 서비스가 제공하는 REST API를 파이썬으로 구현한 명령 도구(CLI, Command Line Interface)입니다. PSM CLI를 사용하기 위해서는 Python 3.3 이상 버전이 필요합니다. PSM CLI에 대한 상세 정보는 <a href="http://docs.oracle.com/en/cloud/paas/java-cloud/pscli/">PSM CLI 메뉴얼</a>을 참조하시기 바랍니다.
+ <a class="footnote-return" href="#fnref:4"><sup>[return]</sup></a></li>
+<li id="fn:5">MySQL 변경 데이터 로그를 저장하는 파일입니다. 트랜잭션 시점 복구 및 데이터베이스 복제의 근간이 됩니다. 주기적으로 지우지 않으면 파일 용량이 엄청나게 늘어날 수 있습니다.
+ <a class="footnote-return" href="#fnref:5"><sup>[return]</sup></a></li>
+<li id="fn:6">일반적으로 클라우드 PaaS 서비스, 특히 Database 관련 서비스는 운영체제의 직접적인 접근을 제한합니다. 그러나 오라클 클라우드는 Database CS에 대한 운영체제 레벨의 접근을 허용하고 있습니다. 경험이 많은 DBA는 데이터베이스 엔진 레벨의 파라미터 조정 및 튜닝작업 필요성을 강조합니다. 오라클은 오랜 기간 데이터베이스 개발하고 지원하는 과정에서 DBA의 운영체제 접근은 클라우드 PaaS에서도 필요한 부분으로 분류하고 있습니다.
+ <a class="footnote-return" href="#fnref:6"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/mysql/" rel="tag">Mysql</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/paas/" rel="tag">PaaS</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/database/" rel="tag">Database</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/oracle-cloud/" rel="tag">Oracle Cloud</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/compute_security/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">오라클 클라우드 Compute CS 보안 적용</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/bdcsce01/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">Oracle Big Data Cloud Service Compute-Edition</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/cloud/mysql_cs/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#oracle-mysql-cloud-service-개요">Oracle MySQL Cloud Service 개요</a></li>
+<li><a href="#mysql-cs의-특징">MySQL CS의 특징</a>
+<ul>
+<li><a href="#mysql-버전과-라이센스">MySQL 버전과 라이센스</a></li>
+<li><a href="#oracle-cloud-최적화">Oracle Cloud 최적화</a></li>
+<li><a href="#사용자-친화적인-인터페이스-제공">사용자 친화적인 인터페이스 제공</a></li>
+<li><a href="#데이터베이스-관리-효율성">데이터베이스 관리 효율성</a></li>
+<li><a href="#백업-복구">백업 &amp; 복구</a></li>
+<li><a href="#고가용성-high-availability">고가용성(High Availability)</a></li>
+<li><a href="#다계층-보안-기능">다계층 보안 기능</a></li>
+<li><a href="#효과적인-패치-관리-환경">효과적인 패치 관리 환경</a></li>
+<li><a href="#탄력적-확장성-elastic-scalability">탄력적 확장성(Elastic Scalability)</a></li>
+<li><a href="#mysql-서포트">MySQL 서포트</a></li>
+<li><a href="#ssh-접근-지원">SSH 접근 지원</a></li>
+</ul></li>
+<li><a href="#mysql-cs-배포">MySQL CS 배포</a></li>
+<li><a href="#요약">요약</a></li>
+<li><a href="#참고자료">참고자료</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

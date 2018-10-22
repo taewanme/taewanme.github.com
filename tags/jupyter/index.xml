@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jupyter on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/jupyter/</link>
+    <description>Recent content in Jupyter on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 26 Apr 2018 15:59:47 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/jupyter/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kotlin 지원 Jupyter: BeakerX 도커 이미지</title>
+      <link>http://taewan.kim/post/kotlin_jupyter/</link>
+      <pubDate>Thu, 26 Apr 2018 15:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/kotlin_jupyter/</guid>
+      <description>최근에 Kotlin을 익히고 있습니다. 안드로이드 개발을 목적으로 하기 보다는 서버사이드 개발언어, Micoroservice 구현언어로 Kotlin을 살펴보고 있습니다. Kotlin을 잘 지원하는 IntelliJ라는 개발툴이 있기는 하지만, 새로운 언어를 익힐때 빠른 실험과 결과 확인이 편리한 REPL 환경을 더 선호합니다.
+Kotlin은 자체적으로 REPL을 지원하기는 하지만 터미널에서 CLI 형태로 사용하기 때문에, 편집이 불편합니다. 또한, 코드 추천 기능이 지원되지 않고, 테스트한 코드를 별도로 보관하기 어렵습니다. Kotlin 자체 REPL보다 편리한 다음 조건을 부합하는 REPL 환경을 찾아보았습니다.
+ Jupyter 환경의 Kotlin 커널 Kotlin과 Java9의 완전한 환경 분리  현재 업무로 Java9을 사용중 입니다.</description>
+    </item>
+    
+    <item>
+      <title>Terraform Jupyter Installer: Machine Learning 환경 프로비저닝 </title>
+      <link>http://taewan.kim/post/terraform_jupyter_installer/</link>
+      <pubDate>Tue, 03 Oct 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/terraform_jupyter_installer/</guid>
+      <description>Terraform은 클라우드 인프라의 생성, 변경 및 형상 버전을 관리하는 툴입니다. Terraform을 이용하면 클라우드 자원을 효과적으로 사용하고 관리할 수 있습니다. Terraform을 활용하여 오라클 클라우드의 쉬운 접근법 제시를 목적으로 &amp;ldquo;Terraform Installer On Oracle Cloud&amp;ldquo;1 프로젝트를 준비하고 있습니다. Terraform으로 자원 할당, VM 생성, 소프트웨어 설치, 보안룰 적용 등이 완료된 완전한 형태의 인프라를 제공하여, 신규 오라클 클라우드 사용자가 오라클 클라우드에 접근을 쉽게 하고, 활용 폭을 넓히는 것을 목표로 합니다.
+&amp;ldquo;Terraform Installer On Oracle Cloud&amp;rdquo; 프로젝트의 파일럿 형태로 &amp;ldquo;Terraform Jupyter Installer&amp;ldquo;를 만들었습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

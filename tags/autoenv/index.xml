@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Autoenv on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/autoenv/</link>
+    <description>Recent content in Autoenv on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 09 Sep 2017 10:50:36 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/autoenv/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>파이썬 가상 개발 환경 구성: pyenv, virtualenv, autoenv, pip</title>
+      <link>http://taewan.kim/post/python_virtual_env/</link>
+      <pubDate>Sat, 09 Sep 2017 10:50:36 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/python_virtual_env/</guid>
+      <description>파이썬에는 Python 2와 Python 3이 공존하고, 파이썬 별로 다수의 서브 버전이 존재합니다. 또한, 파이썬 커뮤니티는 엄청난 수의 패키지를 만들고 공유하고 있습니다. 이러한 패키지들은 개별적으로 여러 버전을 갖고 있습니다. 컴퓨터 한 대에 여러 파이썬 프로그램을 돌릴 경우, 파이썬 애플리케이션의 파이썬 런타임 버전과 파이썬 라이브러리 충돌 문제가 빈번하게 발생합니다. 이러한 문제는 개발 언어와 런타임 및 라이브러리가 전역적으로 설치되고 운영되기 때문에 발생합니다. 사실 이러한 문제는 개발 컴퓨터에서 더 심각하게 발생합니다.
+이 문제는 파이썬 애플리케이션별로 독립적인 환경을 사용할 수 있도록 파이썬 환경을 가상화하는 방식을 통해서 해결 할 수 있습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deverlper Meetup on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/deverlper-meetup/</link>
+    <description>Recent content in Deverlper Meetup on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 16 Dec 2017 22:54:32 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/deverlper-meetup/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>2017년 12월 제2회 오라클 클라우드 Developer Meetup 현장 스케치</title>
+      <link>http://taewan.kim/cloud/oracle_cloud_developer_meetup_201712/</link>
+      <pubDate>Sat, 16 Dec 2017 22:54:32 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_cloud_developer_meetup_201712/</guid>
+      <description>한국 오라클에서는 매월 개발자를 대상으로 &amp;ldquo;Oracle Developer Meetup&amp;ldquo;을 운영하고 있습니다. 2017년 12월 16일 토요일 아셈타워 15층에서 두 번째 &amp;ldquo;Oracle Developer Meetup&amp;ldquo;이 진행되었습니다. 58명의 개발자가 참석한 가운데 오후 1시 부터 5시30분 까지 3개의 세션과 네트워킹이 진행되었습니다.
+&amp;ldquo;제2회 Oracle Developer Meetup&amp;ldquo;은 다음과 같은 주제로 진행되었습니다.
+   시간 발표자 세션 명     13:00~13:50 강인호 부장(Oracle) Microservice 트래픽 관리를 위한 Istio 알아보기   14:00~15:20 양수열 Java Champion(OnFace) 개발자를 위한 JavaOne 2017 업데이트 - New Feature 중심으로   15:00~14:50 황주필 부장(Oracle) [Hands-On]Kubernetes 실습 및 모니터링    세미나의 현장 스케치를 사진 중심으로 정리합니다.</description>
+    </item>
+    
+    <item>
+      <title>2017년 12월 제2회 오라클 클라우드 Developer Meetup 현장 스케치</title>
+      <link>http://taewan.kim/post/oracle_cloud_developer_meetup_201712/</link>
+      <pubDate>Wed, 16 Dec 2015 22:54:32 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/oracle_cloud_developer_meetup_201712/</guid>
+      <description>한국 오라클에서는 매월 개발자를 대상으로 &amp;ldquo;Oracle Developer Meetup&amp;ldquo;을 운영하고 있습니다. 2017년 12월 16일 토요일 아셈타워 15층에서 두 번째 &amp;ldquo;Oracle Developer Meetup&amp;ldquo;이 진행되었습니다. 58명의 개발자가 참석한 가운데 오후 1시 부터 5시30분 까지 3개의 세션과 네트워킹이 진행되었습니다.
+&amp;ldquo;제2회 Oracle Developer Meetup&amp;ldquo;은 다음과 같은 주제로 진행되었습니다.
+   시간 발표자 세션 명     13:00~13:50 강인호 부장(Oracle) Microservice 트래픽 관리를 위한 Istio 알아보기   14:00~15:20 양수열 Java Champion(OnFace) 개발자를 위한 JavaOne 2017 업데이트 - New Feature 중심으로   15:00~14:50 황주필 부장(Oracle) [Hands-On]Kubernetes 실습 및 모니터링    세미나의 현장 스케치를 사진 중심으로 정리합니다.</description>
+    </item>
+    
+  </channel>
+</rss>

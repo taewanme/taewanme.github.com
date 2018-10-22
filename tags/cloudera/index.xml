@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cloudera on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/cloudera/</link>
+    <description>Recent content in Cloudera on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 28 Mar 2016 17:04:26 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/cloudera/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>오라클 Big Data Lite 설치</title>
+      <link>http://taewan.kim/post/installing_bigdatalite/</link>
+      <pubDate>Mon, 28 Mar 2016 17:04:26 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/installing_bigdatalite/</guid>
+      <description>오라클에서는 빅데이터 플랫폼의 테스트와 학습을 효과적으로 지원하는 것을 목표로 Oracle Big Data Lite를 제공합니다. Oracle Big Data Lite는 Cloudera의 최신 CDH와 오라클 연계 솔루션을 하나의 VitrualBox 이미지에 담고 있습니다. 오라클 Big Data Lite는 빅데이터 소프트웨어에 대한 모든 설치와 구성이 완성된 상태로 배포되기 때문에, 하둡이 익숙하지 않은 엔지니어가 Hadoop Eco를 학습하기에 가장 이상적인 시작점입니다.
+오라클 Big Data Lite의 메인 페이지의 URL은 다음과 같습니다.
+ http://www.oracle.com/technetwork/database/bigdata-appliance/oracle-bigdatalite-2104726.html  오라클 Big Data Lite 버전과 구성 컴포넌트 2016년 2월 현재 오라클 Big Data Lite의 최신 버전은 4.</description>
+    </item>
+    
+  </channel>
+</rss>

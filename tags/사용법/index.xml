@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>사용법 on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/%EC%82%AC%EC%9A%A9%EB%B2%95/</link>
+    <description>Recent content in 사용법 on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Jan 2018 21:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/%EC%82%AC%EC%9A%A9%EB%B2%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>파이썬 데이터 사이언스 Cheat Sheet: NumPy 기초, 기본</title>
+      <link>http://taewan.kim/post/numpy_cheat_sheet/</link>
+      <pubDate>Tue, 16 Jan 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/numpy_cheat_sheet/</guid>
+      <description>파이썬 기반 데이터 분석 환경에서 NumPy1는 행렬 연산을 위한 핵심 라이브러리입니다. NumPy는 &amp;ldquo;Numerical Python&amp;ldquo;의 약자로 대규모 다차원 배열과 행렬 연산에 필요한 다양한 함수를 제공합니다. 특히 메모리 버퍼에 배열 데이터를 저장하고 처리하는 효율적인 인터페이스를 제공합니다. 파이썬 list 객체를 개선한 NumPy의 ndarray 객체를 사용하면 더 많은 데이터를 더 빠르게 처리할 수 있습니다.
+NumPy는 다음과 같은 특징을 갖습니다.
+ 강력한 N 차원 배열 객체 정교한 브로드케스팅(Broadcast) 기능 C/C ++ 및 포트란 코드 통합 도구 유용한 선형 대수학, 푸리에 변환 및 난수 기능 범용적 데이터 처리에 사용 가능한 다차원 컨테이너  본 문서는 cs231n 강좌의 Python Numpy Tutorial 문서와 DataCamp의 Python For Data Science Cheat Sheet NumPy Basics 문서를 참조하여 작성하였습니다.</description>
+    </item>
+    
+    <item>
+      <title>[번역] JShell 사용자 가이드</title>
+      <link>http://taewan.kim/post/trans_jshell/</link>
+      <pubDate>Sat, 06 Jan 2018 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/trans_jshell/</guid>
+      <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.
+  원문: https://docs.oracle.com/javase/9/jshell/toc.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 1 Introduction to JShell  문서번호: E87478-01 배포: 2017년 09월  라이센스: 원본 문서 라이센스를 준수합니다.  원문: https://docs.oracle.com/javase/9/jshell/title.htm  본 문서의 원본은 github repository로 관리합니다.  github 주소: https://github.com/taewanme/translation-java9-jshell    1. JShell 소개 Java Shell(JShell)은 Java 프로그래밍 학습과 Java 코드 프로토타이핑을 위한 대화식 도구입니다.</description>
+    </item>
+    
+  </channel>
+</rss>

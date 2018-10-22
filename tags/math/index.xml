@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Math on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/math/</link>
+    <description>Recent content in Math on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Aug 2018 21:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>머신러닝을 위한 기초 수학</title>
+      <link>http://taewan.kim/til/basic_math/</link>
+      <pubDate>Wed, 08 Aug 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/basic_math/</guid>
+      <description>시그마, 파이, 미분, 편미분, 합성함수, 백터 및 행렬, 기하벡터, 지수, 대수에 대하여 요점 정리합니다.
+Sigma &amp;amp; Phi  1 부터 100까지 합산  $$ \sum_{i=1}^{100}i $$
+ 몇시적으로 마지막 값을 모르는 합산  $$ \sum_{i=1}^{n}i $$
+ 집합 합산  $$ G = {2, 3, 6, 8, 10} \\
+\sum_{g \in G}g $$
+ 모든 것을 곱함 (1~100)  $$ 1 \cdot 2 \cdot 3 \cdot 4 \cdot \cdot \cdot 99 \cdot 100 \\</description>
+    </item>
+    
+  </channel>
+</rss>

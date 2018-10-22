@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cloud on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/cloud/</link>
+    <description>Recent content in Cloud on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 08 Oct 2018 21:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/cloud/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>On-Premise 빅데이터 기술 Hadoop Core</title>
+      <link>http://taewan.kim/writing2/java_license/</link>
+      <pubDate>Mon, 08 Oct 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/writing2/java_license/</guid>
+      <description>본 문서는 현재 작성중인 문서이며, 공식 배포전입니다.
+ 하둡 선도 기업의 합병과 하둡의 위상 변화 최근에 빅데이터 업계에 선두 기업인 Cloudera와 Hotonworks가 합병 소식이 화제가 되었습니다. Cloudera는 Hadoop 기술을 선도하는 대표 기업으로 글로벌하게 가장 많은 상용 배포본을 공급하고 있는 업체입니다. Hotonworks도 Cloudera와 같이 Hadoop 기술을 선도하는 대표 기업입니다.
+ 그림 1: cloudera와 Hotonworks의 주식 총액    두 회사는 같은 같은 오픈소스 기술을 근간으로 하지만 상당히 다른 성향으로 발전해 왔습니다.</description>
+    </item>
+    
+    <item>
+      <title>&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</title>
+      <link>http://taewan.kim/cloud/oracle_impact/</link>
+      <pubDate>Sat, 08 Sep 2018 01:09:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_impact/</guid>
+      <description>2018월 9월 7일에 르메르디앙 호텔에서 Oracle IMPACT 세미나가 진행되었습니다. 이 행사에서 오라클이 바라보는 AI의 관점과 현재 Oracle Cloud의 AI 지원 서비스 및 향후 비전을 주제로 발표를 했습니다. 발표 동영상과 자료 및 발표 내용을 간략하게 정리하겠습니다.
+youtube 동영상   발표 문서  Oracle Impact: Oracle Cloud AI 요약 Enterprise AI  그림 1: 오라클 AI 지향점    오라클은 오라클 클라우드에서 &amp;ldquo;엔터프라이즈 AI&amp;rdquo;관점에서 서비스를 만들고 있으며, 이 서비스를 고도화하고 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle Big Data Cloud와 Object Storage 연동</title>
+      <link>http://taewan.kim/cloud/bdc_object_storage_integration/</link>
+      <pubDate>Mon, 18 Jun 2018 01:09:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/bdc_object_storage_integration/</guid>
+      <description>Oracle Cloud는 대용량 데이터 병렬 처리와 분석을 담당하는 빅데이터 서비스로 Big Data Cloud(이하 BDC)를 제공합니다. 오라클 클라우드에서 Data Lake는 DBMS와 하둡 HDFS가 아닌 Oracle Storage Cloud Service(이하 Storage Service)에서 제공하는 Object Storage입니다.
+이 문서에서는 대용량 병렬 처리를 담당하는 BDC가 Object Storage에 데이터를 읽고/쓰기는 연동 설정과 연동 방식에 대하여 살펴보겠습니다. 오라클 클라우드는 Storage Service로 OCI Storage Classic과 OCI Storage 서비스 두 가지를 제공합니다. 이 두 가지 서비스는 Object Storage 관점에서 다음과 같이 정리할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI 배포 가능한 Oracle Platform Services(2018.05.15 기준)</title>
+      <link>http://taewan.kim/cloud/oracle_paas_on_oci/</link>
+      <pubDate>Wed, 16 May 2018 15:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_paas_on_oci/</guid>
+      <description>오라클 클라우드는 IaaS로 OCI Classic과 OCI를 제공합니다. OCI Classic은 오라클 클라우드의 1세대 IaaS 기술이고 OCI(Oracle Cloud Infrastructure)는 오라클 클라우드의 2세대 기술입니다. 초기 Oracle Platform Services는 OCI Classic을 기준으로 발표되었고 현재 OCI으로 확장되고 있습니다. 2018년 5월 기준으로 OCI를 지원하는 Oracle Platform Services 목록은 다음과 같습니다.
+   OCI 지원 PaaS 서비스 명 Oracle PaaS 관련 가이드 문서     Database Cloud Service About Database Deployments in Oracle Cloud Infrastructure   Java Cloud Service About Java Cloud Service Instances in Oracle Cloud Infrastructure   MySQL Cloud Service About MySQL Cloud Service Deployments   Event Hub Cloud Service About Oracle Event Hub Cloud Service - Dedicated instances inOracle Cloud Infrastructure   Data Hub Cloud Service About Oracle Data Hub Cloud Service Clusters in Oracle Cloud Infrastructure   Big Data Cloud About Big Data Cloud Clusters in Oracle Cloud Infrastructure   Oracle SOA Cloud Service About SOA Cloud Service Instances in Oracle Cloud Infrastructure Classic and Oracle Cloud Infrastructure    출처  Information About Supported Platform Services  Oracle Cloud 관련 문서   Oracle Cloud 공통  Oracle Cloud IaaS: OCI vs OCI Classic Oracle Cloud 트라이얼 신청 절차 (2018.</description>
+    </item>
+    
+    <item>
+      <title>Oracle Cloud 트라이얼 신청 절차 (2018.05.01 기준)</title>
+      <link>http://taewan.kim/cloud/oracle_cloud_trial/</link>
+      <pubDate>Tue, 01 May 2018 11:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_cloud_trial/</guid>
+      <description>오라클 클라우드 트라이얼이란? 오라클 클라우드 트라이얼은 사용자에게 30일간 300불 크래딧을 무료로 제공하는 프로그램입니다. 사용자는 이 기간 동안 할당된 크래딧을 제약 없이 사용할 수 있습니다. 이 프로그램에서 자원 사용량은 시간 단위로 계산되고, 300불 크래딧에서 차감됩니다. 300불 크래딧이 모두 소진되면 오라클 클라우드 트라이얼 프로그램은 종료됩니다.
+오라클 클라우드 트라이얼 신청 시 신용카드를 입력해야 합니다. 이 부분은 사용자 확인 절차일 뿐이며, 과금을 목적으로 입력하는 항목이 아닙니다. 사용자 확인 목적으로 1불을 결제하고 1분 후에 해당 결제를 취소합니다.</description>
+    </item>
+    
+    <item>
+      <title>2017년 12월 제2회 오라클 클라우드 Developer Meetup 현장 스케치</title>
+      <link>http://taewan.kim/cloud/oracle_cloud_developer_meetup_201712/</link>
+      <pubDate>Sat, 16 Dec 2017 22:54:32 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_cloud_developer_meetup_201712/</guid>
+      <description>한국 오라클에서는 매월 개발자를 대상으로 &amp;ldquo;Oracle Developer Meetup&amp;ldquo;을 운영하고 있습니다. 2017년 12월 16일 토요일 아셈타워 15층에서 두 번째 &amp;ldquo;Oracle Developer Meetup&amp;ldquo;이 진행되었습니다. 58명의 개발자가 참석한 가운데 오후 1시 부터 5시30분 까지 3개의 세션과 네트워킹이 진행되었습니다.
+&amp;ldquo;제2회 Oracle Developer Meetup&amp;ldquo;은 다음과 같은 주제로 진행되었습니다.
+   시간 발표자 세션 명     13:00~13:50 강인호 부장(Oracle) Microservice 트래픽 관리를 위한 Istio 알아보기   14:00~15:20 양수열 Java Champion(OnFace) 개발자를 위한 JavaOne 2017 업데이트 - New Feature 중심으로   15:00~14:50 황주필 부장(Oracle) [Hands-On]Kubernetes 실습 및 모니터링    세미나의 현장 스케치를 사진 중심으로 정리합니다.</description>
+    </item>
+    
+    <item>
+      <title>오라클 클라우드 트라이얼 신청: $300 Credit</title>
+      <link>http://taewan.kim/cloud/oracle_cloud_reg/</link>
+      <pubDate>Sat, 26 Aug 2017 08:54:32 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_cloud_reg/</guid>
+      <description>Oracle은 무료로 오라클 클라우드를 체험할 수 있는 오라클 클라우드 트라이얼 프로그램을 운영하고 있습니다. 2017년 8월 1일부터 트라이얼을 신청하면 &amp;ldquo;$300 Credit&amp;ldquo;을 제공합니다. $300 Credit이란 오라클 클라우드 사용 권한으로, 오라클 클라우드를 $300 Credit로 자유롭게 사용할 수 있습니다. 오라클 클라우드 서비스를 사용하면 지급한 Credit은 분 단위로 차감됩니다. 차감되는 비용은 서비스별로 차이가 있습니다. 각 서비스 과금 비용은 오라클 클라우드 홈페이지(http://cloud.oracle.com )에서 확인할 수 있습니다. $300 Credit의 유효 기간은 신청일로부터 30일 입니다. 오라클 클라우드 트라이얼 프로그램에서 다음과 같은 서비스를 체험해 볼 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>우분투 17.04 가상머신 만들기</title>
+      <link>http://taewan.kim/cloud/compute_instance/</link>
+      <pubDate>Tue, 02 May 2017 11:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/compute_instance/</guid>
+      <description>2017년 04월 오라클 클라우드 Compute Service에는 17.1.2 버전1이 적용되었습니다. 17.1.2 버전에는 네트워크 구성에 대한 새로운 기능이 추가되었습니다. 기존의 Shared Network와 별개로 IPNetwork를 이용하여 서브넷을 구성할 수 있습니다. 새로운 기능 추가와 함께, 가상머신을 만드는 UI와 가상머신을 생성하는 오케스트레이션에 변경된 부분이 있습니다.
+매년 4월은 Ubuntu 새 버전이 출시되는 시점입니다. 올해에도 지난 4월에 Ubuntu 17.04 버전이 출시되었습니다. 새로 출시된 Ubuntu 17.04 설치 이미지는 현재 오라클 클라우드 마켓 플레이스에 등록된 상태이며, 이 이미지를 이용하여 가상머신을 만들 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle Storage Cloud Service</title>
+      <link>http://taewan.kim/cloud/storage_cs/</link>
+      <pubDate>Fri, 28 Apr 2017 23:02:33 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/storage_cs/</guid>
+      <description>클라우드 서비스에서 기본은 Compute 서비스와 오브젝트 스토리지 서비스입니다. 그만큼 스토리지 서비스는 가장 많이 사용하고 중요한 서비스입니다. 아마존의 S3에 해당하는 오라클 클라우드의 오브젝트 스토리지 서비스는 Oracle Storage Cloud Service입니다.
+Oracle Storage Cloud Service는 인터넷 접근이 가능한 어디서나 데이터를 저장하고 사용할 수 있는 신뢰성과 안전성을 겸비한 스토리지 서비스입니다. 높은 수준의 가용성을 제공하기 위해서 모든 데이터는 데이터 센터 내에서 복수의 복사본(Replica)으로 관리됩니다. 99.9%의 가용성과 Eleven-Nine의 Durability1를 SLA로 보장합니다. 더 높은 고가용성을 제공하기 위해서 데이터 센터간 복제 설정을 추가할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>OCCS에 Docker 이미지 배포</title>
+      <link>http://taewan.kim/cloud/occs_new_docker_container/</link>
+      <pubDate>Mon, 24 Apr 2017 19:34:26 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/occs_new_docker_container/</guid>
+      <description>Oracle Container Cloud Service(이하 OCCS)는 오라클 클라우드가 제공하는 Docker 서비스입니다. OCCS에는 Kubernetes(k8s), docker-swarm 그리고 marathon 과 유사한 container orchestration 도구가 포함되어 있습니다. Docker를 운영환경에 적용하기 위해서는 Container orchestration 도구를 반드시 사용해야 합니다. Kubernetes나 docker-swarm 등을 직접 설치하고 운영할 경우에 관리 부담이 증가하고, Container orchestration을 운영하기 위한 노하우와 연구가 필요합니다. OCCS를 통해서 이러한 Container orchestration의 어려움을 해결할 수 있습니다. 또한 Docker 인프라 운영의 기술적 &amp;amp; 관리적 문제를 상당 부분 해결할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle Container CS 인스턴스 생성</title>
+      <link>http://taewan.kim/cloud/occs-new-inst/</link>
+      <pubDate>Thu, 20 Apr 2017 19:36:38 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/occs-new-inst/</guid>
+      <description>Oracle Cloud는 Docker 기반의 컨테이너 서비스를 2016년 11월에 출시하였습니다. 오라클은 2015년 11월에 StackEngine을 인수하였습니다. (관련 공지). StackEngine사는 2014년 텍사스 오스틴 주에서 설립된 업체로, 엔터프라이즈급 컨테이너 관리 및 자동화 솔루션 개발 업체입니다. StackEngine은 kubernetes(k8s), docker-swarm 그리고 marathon과 같은 container orchestration 도구입니다.
+오라클은 2015년 11월에 StackEngine을 인수한 후, 1년 동안 Oracle Public Cloud에 StackEngine을 통합하였습니다. 이 결과물이 Oracle Container Cloud Service 입니다.
+Oracle Container Clod Service를 통해서 Docker 컨테이너의 클러스터 구성, 인스턴스 배포 및 운영, 모니터링을 효과적으로 할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle Container Cloud Service 소개와 Docker 개요</title>
+      <link>http://taewan.kim/cloud/occs/</link>
+      <pubDate>Wed, 05 Apr 2017 11:23:40 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/occs/</guid>
+      <description>오라클은 2015년에 Stack Engine이라는 Docker 전문 업체를 인수하였고, 이 업체의 솔루션을 클라우드 서비스 형태로 제공하고 있습니다. 이 서비스가 Oracle Container Cloud Service입니다.
+OCCS(Oracle Container Cloud Service)에 대한 개요와 Docker의 개념을 소개하는 슬라이드를 공유합니다.
+ 작성일: 2017-02-07   </description>
+    </item>
+    
+    <item>
+      <title>Oracle Database CS: 인스턴스 생성 및 접속 Demo</title>
+      <link>http://taewan.kim/cloud/dbcs_demo/</link>
+      <pubDate>Sun, 12 Mar 2017 13:20:12 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/dbcs_demo/</guid>
+      <description>Oracle DBMS 소개 Oracle Database Cloud Service(이하 Oracle DBCS)는 오라클 클라우드에서 PaaS 형태로 제공하는 오라클 데이터베이스 서비스입니다.
+Oracle Database Cloud Service에는 다음과 같이 4 가지 유형의 패키지로 라이센스가 구분됩니다.
+ Standard Edition Enterprise Edition  TDE (transparent Data Encryption) Data Guard  Enterprise Edition High Performance  Multitenant Partitioning Advanced Compression Advanced Security Database Vault  Enterprise Edition Extreme Performance  Oracle RAC 지원 In-memory Active Data Guard   2017년 04월 현재 Oracle Database CS의 지원 버전은 다음과 같습니다.</description>
+    </item>
+    
+    <item>
+      <title>ssh config 설정 방법</title>
+      <link>http://taewan.kim/post/ssh_config/</link>
+      <pubDate>Sun, 05 Mar 2017 12:07:16 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/ssh_config/</guid>
+      <description>하나의 컴퓨터에서 복수의 SSH 키를 사용할 경우 SSH 접속에 사용하는 ssh 명령이 복잡해지는 단점이 있습니다. 이러한 복잡성은 SSH config 파일을 이용하여 해결할 수 있습니다.
+이 문서는 SSH 키 파일을 이미 갖고있는 것을 전제로 합니다. 아직 SSH 키를 생성하지 않은 상태라면, 다음 문서를 참조하시기 바랍니다.
+ 윈도우, 리눅스, 맥에서 ssh 보안키 생성  ssh 명령 기본 사용법 ssh 명령의 기본 사용법은 다음과 같습니다.
+ ssh 사용자ID@서버명  다음과 같은 명령을 내릴 때 ssh 명령은 &amp;ldquo;~/.</description>
+    </item>
+    
+    <item>
+      <title>윈도우, 리눅스, 맥에서 ssh 보안키 생성</title>
+      <link>http://taewan.kim/post/ssh_key/</link>
+      <pubDate>Sat, 04 Mar 2017 12:07:16 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/ssh_key/</guid>
+      <description>클라우드 서비스로 만든 가상 서버에 안전한 로그인을 하기 위해서 SSH(Secure Shell) 프로토콜을 사용하는 것이 일반적입니다. SSH 프로토콜은 안전하지 못한 네트워크에서 강력한 인증과 안전한 통신을 가능하게 합니다. SSH 프로토콜에서 패스워드 입력없이 로그인하기 위해서는 인증서가 필요하며, 기본 포트는 22번입니다.
+SSH 프로토콜에 대한 자세한 내용은 다음 문서를 참조하시기 바랍니다.
+ 오픈 튜토리얼: SSH 원격제어 오픈 튜토리얼: SSH 키  이 문서에서는 다음 내용을 다루겠습니다.
+ 운영체제별 SSH 키 생성 방법 (window, linux, osx) SSH 키 설치 방법 ssh config를 이용한 ssh 명령 단순하게 사용하기  인증서 생성 방법 각 운영체제(Linux, OSX, Window)의 SSH 키 생성 방법에 대하여 정리하겠습니다.</description>
+    </item>
+    
+    <item>
+      <title>오라클 클라우드 계정</title>
+      <link>http://taewan.kim/cloud/accont/</link>
+      <pubDate>Thu, 02 Mar 2017 21:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/accont/</guid>
+      <description>Oracle Cloud의 트라이얼 계정을 이용하여 무료로 오라클 클라우드를 경험할 수 있습니다. 무료 트라이얼 계정에는 Oracle Database Cloud Service(이하 Cloud Service는 CS로 표기), Java CS, Compute CS, Developer CS, Database Backup CS, Storage CS, Application Container CS, SOA CS 등 11개 서비스와 6개 OCPU와 500GB 스토리지 자원에 대한 사용 권한이 포함됩니다. 트라이얼 계정의 유효 기간은 계정 생성일로부터 30일입니다.
+본 문에서는 Oracle Cloud 계정을 생성하는 방법에 대하여 설명하겠습니다.
+Oracle Cloud 계정 등록 절차 오라클 클라우드의 계정 등록 절차는 다음과 같습니다.</description>
+    </item>
+    
+    <item>
+      <title>2017년 12월 제2회 오라클 클라우드 Developer Meetup 현장 스케치</title>
+      <link>http://taewan.kim/post/oracle_cloud_developer_meetup_201712/</link>
+      <pubDate>Wed, 16 Dec 2015 22:54:32 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/oracle_cloud_developer_meetup_201712/</guid>
+      <description>한국 오라클에서는 매월 개발자를 대상으로 &amp;ldquo;Oracle Developer Meetup&amp;ldquo;을 운영하고 있습니다. 2017년 12월 16일 토요일 아셈타워 15층에서 두 번째 &amp;ldquo;Oracle Developer Meetup&amp;ldquo;이 진행되었습니다. 58명의 개발자가 참석한 가운데 오후 1시 부터 5시30분 까지 3개의 세션과 네트워킹이 진행되었습니다.
+&amp;ldquo;제2회 Oracle Developer Meetup&amp;ldquo;은 다음과 같은 주제로 진행되었습니다.
+   시간 발표자 세션 명     13:00~13:50 강인호 부장(Oracle) Microservice 트래픽 관리를 위한 Istio 알아보기   14:00~15:20 양수열 Java Champion(OnFace) 개발자를 위한 JavaOne 2017 업데이트 - New Feature 중심으로   15:00~14:50 황주필 부장(Oracle) [Hands-On]Kubernetes 실습 및 모니터링    세미나의 현장 스케치를 사진 중심으로 정리합니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle Cloud 트라이얼 신청 절차 (2018.05.01 기준)</title>
+      <link>http://taewan.kim/post/oracle_cloud_trial/</link>
+      <pubDate>Fri, 01 May 2015 11:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/oracle_cloud_trial/</guid>
+      <description>오라클 클라우드 트라이얼이란? 오라클 클라우드 트라이얼은 사용자에게 30일간 300불 크래딧을 무료로 제공하는 프로그램입니다. 사용자는 이 기간 동안 할당된 크래딧을 제약 없이 사용할 수 있습니다. 이 프로그램에서 자원 사용량은 시간 단위로 계산되고, 300불 크래딧에서 차감됩니다. 300불 크래딧이 모두 소진되면 오라클 클라우드 트라이얼 프로그램은 종료됩니다.
+오라클 클라우드 트라이얼 신청 시 신용카드를 입력해야 합니다. 이 부분은 사용자 확인 절차일 뿐이며, 과금을 목적으로 입력하는 항목이 아닙니다. 사용자 확인 목적으로 1불을 결제하고 1분 후에 해당 결제를 취소합니다.</description>
+    </item>
+    
+  </channel>
+</rss>

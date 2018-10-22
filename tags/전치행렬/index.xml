@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>전치행렬 on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/%EC%A0%84%EC%B9%98%ED%96%89%EB%A0%AC/</link>
+    <description>Recent content in 전치행렬 on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 Dec 2017 21:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/%EC%A0%84%EC%B9%98%ED%96%89%EB%A0%AC/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>딥러닝 역전파 수식 행렬의 전치(Transpose) 기준?</title>
+      <link>http://taewan.kim/post/backpropagation_matrix_transpose/</link>
+      <pubDate>Wed, 20 Dec 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/backpropagation_matrix_transpose/</guid>
+      <description>Backpropagation을 직접 구현하는 과정에서 이유 없이 갑자기 발생하는 행렬 전치(Transpose)와 관련된 의문점이 오랜 기간 절 괴롭혔습니다. Backpropagation을 하기 위해서 Cost Function을 해당 계층의 W(가중치)로 편미분 한 후, 현재 W를 수정하는 수식을 유도하는 과정에서 일부 행렬이 전치행렬로 갑자기 변경됩니다. 문제는 제가 행렬이 전치(Transpose)되는 근거와 기준을 이해할 수가 없다는 것입니다. 딥러닝 책이나 웹 문서를 찾아보면 &amp;ldquo;편미분 과정에서 적당히 행렬을 맞춰준다.&amp;ldquo;라는 표현으로 이 부분을 설명합니다. 제가 찾고 싶었던 답은 Backpropagation 미분 과정에서 행렬의 방향성(Transpose 할 것이나 말 것이냐)은 어떻게 결정되는가입니다.</description>
+    </item>
+    
+  </channel>
+</rss>

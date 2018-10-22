@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>오픈소스 작명 센스: 아파치 플룸(Apache Flume)</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="오픈소스 작명 센스: 아파치 플룸(Apache Flume)" />
+<meta property="og:description" content="apache fluem은 스트리밍 데이터 플로우를 만드는 오픈소스 프로젝트입니다. 아이치 플름은 기술을 이름으로 가장 잘 표현한 대표적인 사례입니다. 아파치 플름이 의미하는 바를 소개합니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/post/flume_images/" />
+
+
+
+<meta property="article:published_time" content="2018-04-15T15:59:47&#43;09:00"/>
+<meta property="article:modified_time" content="2018-04-15T15:59:47&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		
+		
+		<header class="post__header clearfix">
+			<h1 class="post__title">오픈소스 작명 센스: 아파치 플룸(Apache Flume) </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2018-04-15 15:59:47 &#43;0900 KST">April 15, 2018</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/bigdata" rel="category">bigdata</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2018/04/flume/img03.jpg" alt="오픈소스 작명 센스: 아파치 플룸(Apache Flume)">
+			</figure>
+			
+
+<p>Flume에 대한 전체적인 개요를 정리한 문서입니다. Flume을 아직 잘 모르시는 분들에게 전체적인 Flume 이미지를 제공하는 목적으로 작성하였습니다.</p>
+
+<h2 id="flume이란">Flume이란?</h2>
+
+<p>Apache Flume은 오픈소스 프로젝트로 개발된 로그 데이터를 수집 기술입니다. 여러 서버에서 생산된 대용량 로그 데이터를 효과적으로 수집하여, HDFS과 같은 원격 목적지에 데이터를 전송하는 기능을 제공합니다. 구조가 단순하고 유연하여 다양한 유형의 스트리밍 데이터 플로우(Streaming Data Flow) 아키텍처를 구성할 수 있습니다.</p>
+
+<p>Apache Flume 프로젝트는 공식 홈페이지는 <a href="https://flume.apache.org/">https://flume.apache.org/</a> 입니다.</p>
+
+<p>로그 수집에 Flume을 사용함으로써 신뢰성, 규모 확장성 및 기능 확장성을 확보할 수 있습니다. Flume을 사용하면 장애시에도 수집된 로그 유실을 방지할 수 있으며, Scale-up/Scale-out 방식의 확장을 모두 지원합니다. 마지막으로 새로운 기능을 쉽게 커스터마이징 할 수 있습니다. Flume의 기본 구성은 &lt;그림 1&gt;과 같습니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/04/flume/img04.jpg" alt="Flume 구성" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 1</strong>:
+        
+        Flume 구성
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<h2 id="작명-끝판왕-flume">작명 끝판왕: Flume</h2>
+
+<p>오픈소스 프로젝트 이름에는 생각보다 많은 의미가 담겨 있습니다. 오픈소스 프로젝트 이름이 시스템 전체의 특징을 직관적으로 설명하기도 합니다. Flume이 이런 대표적인 사례입니다.</p>
+
+<p>Flume이라는 단어의 본래 의미를 아시는 분은 거의 없으실 것 같습니다. 이 단어는 토목분야에서 사용되는 전문 용어입니다. Flume은 모르겠지만 &ldquo;후룸라이드&rdquo;는 대부분 아실 겁니다. 맞습니다. &ldquo;후룸라이드&rdquo;는 누구나 한 번쯤은 타봤을, 거의 모든 놀이 공원에 있는 대표적인 놀이 기구입니다.&lt;그림 2 참조&gt;</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/04/flume/img01.jpg" alt="친숙한 놀이 기구: 후룸라이드" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 2</strong>:
+        
+        친숙한 놀이 기구: 후룸라이드
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>&ldquo;후룸라이드&rdquo;는 통나무를 운반하는 수로인 프룸에서 영감을 얻어 만든 놀이기구 입니다. Flume의 사전적 의미는 다음과 같습니다.</p>
+
+<blockquote>
+<p>Flume: 토목용어, 수로 측벽과 밑판이 구조적으로 한 몸으로 되어 토압과 수압을 지지하는 형식의 일반적인 개수로. (출처: 네이버 토목 용어 사전)</p>
+</blockquote>
+
+<p>후룸라이드를 알고 있다고 해도, Flume의 정의만으로 실제 모습을 상상하기는 어려울 것 같습니다. 그리고 &ldquo;개방형수로(개수로)&ldquo;가 왜 분산형 로그 수집 프로젝트의 이름이 되었는지 연관 짓기도 어려운 것 같습니다.</p>
+
+<h3 id="벌목-현장의-flume">벌목 현장의 Flume</h3>
+
+<p>&lt;그림 3&gt;은 전통적인 통나무 벌목 현장입니다. 산에서 통나무를 벌목한 다음, 나무꾼이 통나무를 직접 산 아래로 들고 운반해야 한다면 정말 지옥일 겁니다. 그리고 굉장히 비효율적일 겁니다. 이러한 이유로 옛날에 통나무 벌목 현장에서는 통나무를 강으로 운반하는 특수한 형태의 수로를 만들어 사용했습니다. &lt;그림 4&gt;와 같이 벌목 현장에서 통나무를 산 아래로 운반하는 용도로 만든 개방형 수로가 플룸(Flume)입니다. 이 플룸을 놀이 공원에서 간단하게 만들어 사람이 탈 수 있도록 만든 것이 &ldquo;후룸라이드&rdquo;입니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/04/flume/img08.jpg" alt="통나무 벌목 현장, 사람이 직접 나무를 운반한다고?" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 3</strong>:
+        
+        통나무 벌목 현장, 사람이 직접 나무를 운반한다고?
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>벌목한 나무를 효율적으로 산 아래로 나르기 위해서 플룸이라는 반개방형 수로를 만들어 사용했습니다.&lt;그림 4-A, B 참조&gt;. 일반적으로 강을 둘러싸는 큰 산을 중심으로 여러 벌목장이 만들어지고, 각 벌목장은 벌목에 앞서 통나무를 강으로 운반할 플룸이 만듭니다. 그다음에 각 벌목장에서는 벌목한 통나무를 플룸에 태워 강으로 이동 시킵니다. Flume은 각 벌목장에서 자른 통나무는 강에 전달합니다. 강에 모든 벌목장의 통나무 모이게 됩니다. 강에 목제가 모이면, 배나 뗏목을 이용하여 통나무를 강 하구 목제 공장으로 운반합니다. &lt;그림 4-C, D 참조&gt;</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/04/flume/img09.jpg" alt="플룸, 통나무 운반 수로" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 4</strong>:
+        
+        플룸, 통나무 운반 수로
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<h3 id="통나무가-영어로-뭘까요">통나무가 영어로 뭘까요?</h3>
+
+<p>여기서 간단한 퀴즈를 내겠습니다. 통나무가 영어로 뭘까요?</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/04/flume/img12.jpg" alt="통나무, 영어로 log" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 5</strong>:
+        
+        통나무, 영어로 log
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>통나무는 영어로 로그입니다. 따라서 벌목장의 플룸은 다음과 같이 표현할 수 있습니다.</p>
+
+<blockquote>
+<p><strong>산속 여러 벌목장에서 벌목한 &ldquo;로그&rdquo;(통나무)를 강으로 보내는 수로이다.</strong></p>
+</blockquote>
+
+<h3 id="apache-flume과-벌목장-플룸">Apache Flume과 벌목장 플룸</h3>
+
+<p>Apache Flume은 로그(통나무)의 이중적인 의미에서 착안한 멋진 비유입니다. 통나무를 운반하는 수로의 이미지로 여러 서버로부터 로그를 수집하고 모으는 스트리밍 로그 수집기 기술을 설명하는, 딱 맞는 이름입니다.</p>
+
+<p>Apache Flume과 벌목장 플룸을 다음과 같이 표현으로 설명할 수 있습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>기술적 표현</th>
+<th>일상적 표현</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>Apache Flume이란</td>
+<td>전통적인 벌목장의 플룸이란</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>여러 서버에</td>
+<td>여러 벌목장에</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>설치되는 소프트웨어로</td>
+<td>설치되는 통나무 운반용 수로(플룸)로</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>수집한 로그를</td>
+<td>벌목한 통나무(로그)를</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>원격지의 Data Lake로</td>
+<td>산 아래 강으로</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>전송하는 비동기 채널입니다.</td>
+<td>운반하는 수로입니다.</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Apache Flume이란 여러 서버에 설치되는 소프트웨어로 수집한 로그를 원격지의 Data Lake로 전송하는 비동기 채널입니다.</li>
+<li>전통적인 벌목장의 플룸이란 여러 벌목장에 설치되는 통나무 운반용 수로(플룸)로 벌목한 통나무(로그)를 산 아래 강으로 운반하는 수로입니다.</li>
+</ul>
+
+<p>벌목장에서 나무를 운반하는 과정과 서버에서 로그를 수집하는 과정이 굉장히 유사합니다. 그리고 로그와 통나무가 같은 영어로 표현되기에 개념전달에 좋은 이름입니다.</p>
+
+<p>벌목장의 플룸의 이미지로 부터 우리는 다음과 같은 Apache Flume의 기술적인 특징을 유추할 수 있습니다.</p>
+
+<ul>
+<li>분산환경에서 로그를 모으는 소프트웨어다. (벌목장과 강이 멀리 떨어진..)</li>
+<li>여러곳에 위치하는 로그를 한 곳으로 모을 수 있다.</li>
+<li>로그를 배치로 한꺼번에 보내는 것이 아니라 스트리밍하게 지속적으로 보낸다.</li>
+<li>비동기 방식으로 처리한다.</li>
+<li>로그를 수집하는 역할과 로그를 전송하는 역할은 개별적으로 움직인다. (Source와 Sink는 개별적인 Thread임)</li>
+</ul>
+
+<p>실제 이렇게 유추한 특징은 Apache Flume의 기술적 특성과 정확하게 일치합니다.</p>
+
+<h2 id="apache-flume의-실체">Apache Flume의 실체</h2>
+
+<p>Flume은 자바로 작성된 유연한 로그 수집하는 툴입니다. Flume은 &lt;그림 6&gt;과 같이 한 개의 자바 프로세스로 실행됩니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/04/flume/img11.jpg" alt="Flume 구성요소 상세" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 6</strong>:
+        
+        Flume 구성요소 상세
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>Flum의 핵심 구성 요소는 Source, Channel, Sink입니다. Source와 Sink는 개별적인 쓰레드로 동작합니다. Flume 구성 요소는 다음과 같은 역할을 담당합니다.</p>
+
+<ul>
+<li>Source: 외부 이벤트가 생성되어 수집되는 영역
+
+<ul>
+<li>1개 구성, 복수 Channel 지정</li>
+</ul></li>
+<li>Channel: Source와 Sink 간의 버퍼 구간
+
+<ul>
+<li>채널 별로 1개 Sink 지정</li>
+</ul></li>
+<li>Sink: 수집된 로그/이벤트를 목적지에 전달</li>
+<li>Interceptor: 수집된 로그/이벤트 가공</li>
+</ul>
+
+<p>Flume의 구성 요소는 다음과 같은 방식으로 동작합니다.</p>
+
+<ol>
+<li>수집 대상 데이터(로그/이벤트) 생성</li>
+<li>수집 대상 로그/이벤트를 Source에 수신</li>
+<li>Source는 수신한 메시지를  Channel에 전달</li>
+<li>Sink는 Channel로부터 메시지를 가져와서 목적지에 데이터 전달/저장</li>
+</ol>
+
+<p>각 구성 요소는 다음 그림과 같이 다양한 구현 컴포넌트를 제공합니다. 일반적으로 별도의 추가 개발 없이 로그/이벤트 수집 환경을 구성할 수 있습니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/04/flume/img05.jpg" alt="Flume 구성 요소의 구현 컴포넌트" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 7</strong>:
+        
+        Flume 구성 요소의 구현 컴포넌트
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<h2 id="flume-설치">Flume 설치</h2>
+
+<p>Flume 설치 파일은 다음 URL에서 다운로드 할 수 있습니다. 2018.04 현재 최신버전은 1.8.0입니다. 설치 파일은 gz파일 형태로 배포됩니다.</p>
+
+<ul>
+<li><a href="https://flume.apache.org/download.html">https://flume.apache.org/download.html</a></li>
+</ul>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/04/flume/img13.jpg" alt="Flume 다운로드" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 8</strong>:
+        
+        Flume 다운로드
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>설치는 압축 파일을 푸는 것으로 완료됩니다.</p>
+
+<pre><code>$ cd /usr/local/lib
+$ sudo tar -zxvf apache-flume-1.8.0-bin.tar.gz
+$ sudo mv apache-flume-1.8.0 flume
+</code></pre>
+
+<p>Flume 설치 디렉터리 <code>/usr/local/lib/flume</code>로 가정합니다. 이 디렉터리는 아래에서 <strong>{FLUME_HOME}</strong>으로 참조하겠습니다.</p>
+
+<h2 id="flume-기본-설정과-실행-방법">Flume 기본 설정과 실행 방법</h2>
+
+<p>Flume으로 서버로그를 Hadoop에 수집하는 예제를 소개합니다. Flume은 에이전트 노드와 컬렉트 노드에 설치되었음을 가정합니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/04/flume/img14.jpg" alt="Flume 설정 및 실행 예제" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 9</strong>:
+        
+        Flume 설정 및 실행 예제
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<ul>
+<li>Agent Node
+
+<ul>
+<li>로그가 발생하는 서버</li>
+<li>WAS 로그가 저장되는 디렉터리를 spooling 하여 로그 메모리 채널에 전송</li>
+<li>Avro Sink가 채널의 로그를 Collecting node로 전송</li>
+<li>port: 4545</li>
+</ul></li>
+<li>Collecting node
+
+<ul>
+<li>Avro Source : Server A로부터 Avro통신을 통해 로그 수집하여 메모리 채널에 전달</li>
+<li>HDFS Sink : 수집된 이벤트를 HDFS에 저장</li>
+</ul></li>
+</ul>
+
+<h3 id="agent-노드-flume-설정-및-실행">Agent 노드 Flume 설정 및 실행</h3>
+
+<p>로그를 수집하는 에이전트 노드에 다음과 같은 Flume 설정을 추가합니다. 파일명은 <code>flume.conf</code>입니다. 다음 예제는 <code>/data/waslogs</code>에 추가되는 로그 파일을 컬렉트 노드에 전송하는 설정입니다. 전송 포맷은 avro입니다.</p>
+
+<p>이 설정 파일은 <code>/usr/local/lib/flume/conf</code>에 하는 것으로 가정합니다.</p>
+
+<pre><code>agentDataSource.sources = logsrc
+agentDataSource.channels = logChannel
+agentDataSource.sinks = avroSink
+
+# Source : 지정된 디렉터리에 추가되는 파일 로그 전송, 전송후 파일명 변경
+agentDataSource.sources.logsrc.type = spooldir
+agentDataSource.sources.logsrc.channels = logChannel
+agentDataSource.sources.logsrc.spoolDir = /data/waslogs
+
+# Sink : Avro
+agentDataSource.sinks.avroSink.type = avro
+agentDataSource.sinks.avroSink.channel = logChannel
+agentDataSource.sinks.avroSink.hostname = 142.3.3.1
+agentDataSource.sinks.avroSink.port = 4545
+
+# Channel : 메모리 채널
+agentDataSource.channels.logChannel.type = memory
+agentDataSource.channels.logChannel.capacity = 100
+################################################
+</code></pre>
+
+<p>에이전트 노드의 flume은 다음과 같은 명령으로 실행됩니다.</p>
+
+<pre><code>cd /usr/local/lib/flume
+./bin/flume-ng agent --conf-file ./conf/flume.conf --name agent01
+</code></pre>
+
+<h3 id="collecting-노드-flume-설정-및-실행">Collecting 노드 Flume 설정 및 실행</h3>
+
+<p>다음은 컬렉트 노드의 flume 설정입니다. avro 포멧으로 유입되는 로그를 수집항 hadoop에 저장하는 구성입니다.
+파일명은 <code>flume.conf</code>입니다. 이 설정 파일은 <code>/usr/local/lib/flume/conf</code>에 하는 것으로 가정합니다.</p>
+
+<pre><code>agentDataCollector.sources = targetSource
+agentDataCollector.channels = targetChannel
+agentDataCollector.sinks = targetSink
+
+# Source : Avro
+agentDataCollector.sources.targetSource.type = avro
+agentDataCollector.sources.targetSource.channels = targetChannel
+agentDataCollector.sources.targetSource.bind = 142.3.3.1
+agentDataCollector.sources.targetSource.port = 4545
+
+# Sink : HDFS
+agentDataCollector.sinks.targetSink.type  = hdfs
+agentDataCollector.sinks.targetSink.channel = memoryChannel
+agentDataCollector.sinks.targetSink.hdfs.path = hdfs://142.3.3.5:9000/data/stats/%Y-%m-%d/%H
+agentDataCollector.sinks.targetSink.hdfs.fileType = DataStream
+agentDataCollector.sinks.targetSink.writeFormat = Text
+agentDataCollector.sinks.targetSink.hdfs.filePrefix = access_log
+agentDataCollector.sinks.targetSink.hdfs.fileSuffix = .log
+agentDataCollector.sinks.targetSink.hdfs.threadsPoolSize = 10
+agentDataCollector.sinks.targetSink.hdfs.rollInterval = 30
+agentDataCollector.sinks.targetSink.hdfs.round = false
+local_agent.sinks.localHdfsSink.hdfs.roundValue = 5
+local_agent.sinks.localHdfsSink.hdfs.roundUnit = minute
+
+# Channel : Memory
+agentDataCollector.channels.targetChannel.type = memory
+agentDataCollector.channels.targetChannel.capacity = 100
+</code></pre>
+
+<p>에이전트 노드의 flume은 다음과 같은 명령으로 실행됩니다.</p>
+
+<pre><code>cd /usr/local/lib/flume
+./bin/flume-ng agent --conf-file ./conf/flume.conf --name agent02
+</code></pre>
+
+<h2 id="flume의-유연한-구성-그리고-kafka-결합">Flume의 유연한 구성 그리고 Kafka 결합</h2>
+
+<p>&lt;그림 7&gt;에서 확인할 수 있는 것처럼 Flume은 다양한 Source와 Sink 타입을 제공합니다. 이런 구현체를 이용하여 다양한 형태의 Data Flow를 디자인할 수 있습니다. &lt;그림 10&gt;은 일반적인 Flume 데이터 흐름 모델입니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/04/flume/img10.jpg" alt="Flume 데이터 흐름 모델" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 10</strong>:
+        
+        Flume 데이터 흐름 모델
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>&lt;그림 8&gt;의 각 모델을 정리하면 다음과 같습니다.</p>
+
+<ul>
+<li>A 모델: Consolidation Model
+
+<ul>
+<li>여러 서버로부터 로그를 통합하여 수집하고 저장하는 모델</li>
+<li>각 서버에 Flume Agent가 설치되어 로그를 통합 Flume에 저장</li>
+<li>통합 Flume은 지정된 목적지에 저장</li>
+</ul></li>
+<li>B 모델: HA 모델
+
+<ul>
+<li>A 모델에서 통합 Flume 장애의 SPOF(단일 장애 포인트)에 대한 보완</li>
+<li>고가용성을 위해서 통합 Flume을 이중화</li>
+</ul></li>
+<li>C 모델: Multi-Target Model
+
+<ul>
+<li>A 모델으 목적지를 복수로 지정</li>
+</ul></li>
+<li>D 모델: Flafka Model
+
+<ul>
+<li>Flume이 Kafka의 Producer와 Consumer 역할 수행</li>
+<li>통합 Flume을 Kafka로 대체하여 고가용성 및 확장성, 유연성을 확보</li>
+<li>Flume을 이용하여 Kafka 개발 요소 제거</li>
+</ul></li>
+</ul>
+
+<p>Flume의 가장 큰 취약점은 데이터의 안정성입니다. Flume은 Channel로 메모리와 파일 그리고 JDBC를 제공합니다. 메모리 타입은 처리 성능은 좋지만, Flume 장애 발생 시 데이터가 유실의 문제가 있습니다. 반면 파일 타입을 사용하면 데이터 안정성은 향상되지만, 성능이 크게 떨어집니다. 그리고 고가용성 모드로 관리하기 어렵다는 것입니다. 이러한 문제는 Flume과 Kafka를 결합함으로써 해결할 수 있습니다. 최근에 로그/이벤트 수집 환경을 구성 시 Flume만으로 구성하는 경우는 거의 없습니다. &lt;그림 10-D&gt;와 같이 Flafka Model을 사용합니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/04/flume/img07.jpg" alt="Flafka = Flume &#43; Kafka" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 11</strong>:
+        
+        Flafka = Flume &#43; Kafka
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>Flume의 장점은 다양한 소스와 목적지에 대한 컴포넌트가 이미 구현되어 있다는 것입니다. 일반적으로 Flume 설치 및 설정만으로 작업을 완료할 수 있습니다. (물론 기능 확장 가능합니다.) Flume의 단점은 데이터를 저장하는 부분에서 장애가 발생할 경우, 데이터 유실의 가능성이 있고 확장 구성이 복잡하다는 것입니다. Kafka의 장점은 저장된 데이터를 안전하게 관리할 수 있고, 구성이 간단하고 확장성이 좋다는 것입니다. Kafka의 단점은 데이터 수집기(producer)와 데이터 처리기(Consumer)를 대부분 사용자가 구현해야 한다는 것입니다.</p>
+
+<p>이 구 컴포넌트를 함께 사용하면 각자의 취약점을 보완하고 강점을 부각할 수 있습니다. Kafka의 확장성과 관리 편의성 그리고 데이터 안정성을 확보하면서, Flume 컴포넌트 구성을 통해서 사용 편의성을 높일 수 있습니다.</p>
+
+<h2 id="flume-모니터링">Flume 모니터링</h2>
+
+<p>Flume을 모니터링하는 방법은 기본적으로 3가지가 있습니다.</p>
+
+<ul>
+<li>Ganglia</li>
+<li>JMX</li>
+<li>JSON Reporting</li>
+</ul>
+
+<p>flume 실행 시 <code>-Dflume.monitoring.type=ganglia</code> 옵션을 추가하여 Ganglia에서 모니터링이 가능합니다.</p>
+
+<p>flume은 자바로 개발되어 있기에 JMX로 모니터링 가능합니다. JMX로 모니터링하기 위해서는 환경 변수로 다음과 같은 JAVA_OPTS 옵션을 추가하는 방법을 추천합니다.</p>
+
+<pre><code>export JAVA_OPTS=”-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=5445 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false”
+</code></pre>
+
+<p>JMX 사용시 &lt;그림 12&gt;과 같은 형태로 Flume 상태를 모니터링할 수 있습니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/04/flume/img15.png" alt="JMX 모니터링 UI" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 12</strong>:
+        
+        JMX 모니터링 UI
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>Flume은 JSON 리포팅 기능을 제공합니다. 이 기능을 상용하기 위해서는</p>
+
+<p>flume 실행 시 <code>-Dflume.monitoring.type=http</code> 옵션을 추가하여 웹 기반 모니터링이 가능합니다.</p>
+
+<p>리포팅 기본 포트는 <code>41414</code>이며 변경 가능합니다. <code>http://&lt;모니터링 대상 Flum IP&gt;:41414/metrics</code> 호출하면 아래와 같은 정보가 출력됩니다.</p>
+
+<pre><code>{
+   &quot;SINK.avroSink&quot;:{
+      &quot;BatchCompleteCount&quot;:&quot;133&quot;,
+      &quot;ConnectionFailedCount&quot;:&quot;0&quot;,
+      &quot;EventDrainAttemptCount&quot;:&quot;13300&quot;,
+      &quot;ConnectionCreatedCount&quot;:&quot;1&quot;,
+      &quot;Type&quot;:&quot;SINK&quot;,
+      &quot;BatchEmptyCount&quot;:&quot;0&quot;,
+      &quot;ConnectionClosedCount&quot;:&quot;0&quot;,
+      &quot;EventDrainSuccessCount&quot;:&quot;13300&quot;,
+      &quot;StopTime&quot;:&quot;0&quot;,
+      &quot;StartTime&quot;:&quot;1398215901251&quot;,
+      &quot;BatchUnderflowCount&quot;:&quot;0&quot;
+   },
+   &quot;SOURCE.otvSource&quot;:{
+      &quot;OpenConnectionCount&quot;:&quot;0&quot;,
+      &quot;Type&quot;:&quot;SOURCE&quot;,
+      &quot;AppendBatchAcceptedCount&quot;:&quot;133&quot;,
+      &quot;AppendBatchReceivedCount&quot;:&quot;133&quot;,
+      &quot;EventAcceptedCount&quot;:&quot;13300&quot;,
+      &quot;AppendReceivedCount&quot;:&quot;0&quot;,
+      &quot;StopTime&quot;:&quot;0&quot;,
+      &quot;StartTime&quot;:&quot;1398215901332&quot;,
+      &quot;EventReceivedCount&quot;:&quot;13300&quot;,
+      &quot;AppendAcceptedCount&quot;:&quot;0&quot;
+   },
+   &quot;CHANNEL.otvChannel&quot;:{
+      &quot;EventPutSuccessCount&quot;:&quot;13300&quot;,
+      &quot;ChannelFillPercentage&quot;:&quot;0.0&quot;,
+      &quot;Type&quot;:&quot;CHANNEL&quot;,
+      &quot;EventPutAttemptCount&quot;:&quot;13300&quot;,
+      &quot;ChannelSize&quot;:&quot;0&quot;,
+      &quot;StopTime&quot;:&quot;0&quot;,
+      &quot;StartTime&quot;:&quot;1398215901247&quot;,
+      &quot;EventTakeSuccessCount&quot;:&quot;13300&quot;,
+      &quot;ChannelCapacity&quot;:&quot;100&quot;,
+      &quot;EventTakeAttemptCount&quot;:&quot;13301&quot;
+   }
+}
+</code></pre>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/flume/" rel="tag">flume</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/log/" rel="tag">log</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%ED%86%B5%EB%82%98%EB%AC%B4/" rel="tag">통나무</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/kim_domain/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">최초 Family Name 도메인 - kim</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/protecting_private_information_and_pk/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">보안 Black List 테이블의 Key 디자인: 억울한 이름</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/post/flume_images/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#flume이란">Flume이란?</a></li>
+<li><a href="#작명-끝판왕-flume">작명 끝판왕: Flume</a>
+<ul>
+<li><a href="#벌목-현장의-flume">벌목 현장의 Flume</a></li>
+<li><a href="#통나무가-영어로-뭘까요">통나무가 영어로 뭘까요?</a></li>
+<li><a href="#apache-flume과-벌목장-플룸">Apache Flume과 벌목장 플룸</a></li>
+</ul></li>
+<li><a href="#apache-flume의-실체">Apache Flume의 실체</a></li>
+<li><a href="#flume-설치">Flume 설치</a></li>
+<li><a href="#flume-기본-설정과-실행-방법">Flume 기본 설정과 실행 방법</a>
+<ul>
+<li><a href="#agent-노드-flume-설정-및-실행">Agent 노드 Flume 설정 및 실행</a></li>
+<li><a href="#collecting-노드-flume-설정-및-실행">Collecting 노드 Flume 설정 및 실행</a></li>
+</ul></li>
+<li><a href="#flume의-유연한-구성-그리고-kafka-결합">Flume의 유연한 구성 그리고 Kafka 결합</a></li>
+<li><a href="#flume-모니터링">Flume 모니터링</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

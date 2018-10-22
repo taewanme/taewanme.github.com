@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tip on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/tip/</link>
+    <description>Recent content in Tip on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 04 Apr 2016 13:47:07 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/tip/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>마크다운 사용법 - Quick Start</title>
+      <link>http://taewan.kim/post/markdown/</link>
+      <pubDate>Mon, 04 Apr 2016 13:47:07 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/markdown/</guid>
+      <description>taewan.kim은 대부분의 내용을 markdown으로 관리하고 있습니다. markdown은 직관적이고 간단한 문법으로 컨텐츠 관리에 매우 효과적입니다. markdown에서 주로 이용되는 테그는 15개정도 입니다. 혼동되는 주요 테그를 정리하겠습니다.
+ 목차   헤더 수평선 텍스트 출력 텍스트 강조 인용 목록 코드 테이블 링크 이미지 주석 각주   헤더  (top) H1 ~ H6까지 테그를 #으로 표현
+# 헤더 스타일 (h1) ## 헤더 스타일 (h2) ### 헤더 스타일 (h3) #### 헤더 스타일 (h4) ##### 헤더 스타일 (h5) ###### 헤더 스타일 (h6)   출력 결과  헤더 스타일 (h1) 헤더 스타일 (h2) 헤더 스타일 (h3) 헤더 스타일 (h4) 헤더 스타일 (h5) 헤더 스타일 (h6)  효과: 다음과 같은 코드와 동일한 결과가 됨  &amp;lt;h1&amp;gt;헤더 스타일 (h1)&amp;lt;/h1&amp;gt; &amp;lt;h2&amp;gt;헤더 스타일 (h2)&amp;lt;/h2&amp;gt; &amp;lt;h3&amp;gt;헤더 스타일 (h3)&amp;lt;/h3&amp;gt; &amp;lt;h4&amp;gt;헤더 스타일 (h4)&amp;lt;/h4&amp;gt; &amp;lt;h5&amp;gt;헤더 스타일 (h5)&amp;lt;/h5&amp;gt; &amp;lt;h6&amp;gt;헤더 스타일 (h6)&amp;lt;/h6&amp;gt;  수평선  (top)  &amp;lt;hr /&amp;gt;와 동일한 결과를 출력 &amp;rsquo;-&amp;lsquo;, &amp;lsquo;*&amp;lsquo;, &amp;lsquo;_&amp;lsquo;을 세개 이상 나열하면 수평선을 만듦 단락 나누기 용도로 많이 사용.</description>
+    </item>
+    
+    <item>
+      <title>youtube 관련 팁 정리</title>
+      <link>http://taewan.kim/post/ora_magazin_201512/</link>
+      <pubDate>Fri, 25 Mar 2016 00:17:44 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/ora_magazin_201512/</guid>
+      <description>Youtube 관련 몇 가지 팁을 정리합니다. 동영상 다운로드, 반복재생, 특정 위치 URL공유하기 등의 방법을 소개합니다.
+ 문서 구성  Youtube 동영상 다운로드 동영상 반복 재생 동영상 특정 위치 공유 나중에 볼 동영상 관리   
+Youtube 동영상 다운로드   Youtube URL에 ss를 추가하면 다운로드 사이트로 이동  이동한 사이트에서 동영상 다운로드  관련 예  Original URL: https://www.youtube.com/watch?v=kpfRSQv4zm4 Download URL: https://ssyoutube.com/watch?v=kpfRSQv4zm4   
+동영상 반복 재생  youtube 동영상 위에서 context menu를 수행하여 &amp;ldquo;연속재생(loop)&amp;rdquo; 선택</description>
+    </item>
+    
+    <item>
+      <title>youtube 관련 팁 정리</title>
+      <link>http://taewan.kim/post/youtube/</link>
+      <pubDate>Fri, 25 Mar 2016 00:17:44 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/youtube/</guid>
+      <description>Youtube 관련 몇 가지 팁을 정리합니다. 동영상 다운로드, 반복재생, 특정 위치 URL공유하기 등의 방법을 소개합니다.
+ 문서 구성  Youtube 동영상 다운로드 동영상 반복 재생 동영상 특정 위치 공유 나중에 볼 동영상 관리   
+Youtube 동영상 다운로드   Youtube URL에 ss를 추가하면 다운로드 사이트로 이동  이동한 사이트에서 동영상 다운로드  관련 예  Original URL: https://www.youtube.com/watch?v=kpfRSQv4zm4 Download URL: https://ssyoutube.com/watch?v=kpfRSQv4zm4   
+동영상 반복 재생  youtube 동영상 위에서 context menu를 수행하여 &amp;ldquo;연속재생(loop)&amp;rdquo; 선택</description>
+    </item>
+    
+    <item>
+      <title>OS별 bit 확인 방법</title>
+      <link>http://taewan.kim/post/os_bit/</link>
+      <pubDate>Wed, 27 Jan 2016 10:50:36 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/os_bit/</guid>
+      <description>2011년 4월 6일에 http://devtainer.blogspot.kr/에서 섰던 글입니다. 추억 팔이로 옮겨 놓습니다. 2011년 추억 속으로&amp;hellip;. - 원문: http://devtainer.blogspot.kr/2011/04/os-bit.html
+맥, 리눅스, AIX 운영체제의 bit를 확인하는 방법을 정리해 보았습니다.
+Linux 리눅스의 경우 uname 명령어로 간단히 확인 가능 합니다. &amp;ldquo;uname -a&amp;rdquo; 명령어로 현재 운영체제의 비트를 확인할 수 있습니다.
+AIX AIX에서는 getconf명령어와 /usr/lib/boot/unix*에 대한 file 명령를 통해서 bit를 확인 할 수 있습니다. 다음은 64비트 운영환경에서 테스트한 결과 입니다. 운영체제가 32비트이면 결과는 32로 표시될 것입니다.
+[ ONLINE Mode ]&amp;gt;getconf -a | grep KERN KERNEL_BITMODE: 64 [ ONLINE Mode ]&amp;gt;file /usr/lib/boot/unix* /usr/lib/boot/unix: 64-bit XCOFF executable or object module not stripped /usr/lib/boot/unix_64: 64-bit XCOFF executable or object module not stripped  Mac OS X sysctl명령어로 운영체제 비트 정보를 확인할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>Log4J 로깅 비용 계산</title>
+      <link>http://taewan.kim/post/log4j_perf/</link>
+      <pubDate>Sun, 03 Jan 2016 00:17:44 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/log4j_perf/</guid>
+      <description>2006년 4월 30일에 이글루스 블로그에서 섰던 글입니다. 추억 팔이로 옮겨 놓습니다. 2006년 추억 속으로&amp;hellip;. - 원문: http://okcode.egloos.com/1892085
+기존의 System.out.println()으로 로그를 남길 때 발생하는 문제의 대안으로 Log4J를 요즘 많이 사용한다.
+Log4J를 사용하면 OutputStream에서 발생하는 자원독점 문제 해결, logging 레벨 설정을 코드와 분리, 로그 출력 방식 설정 변경 등 다양한 이점을 얻을 수 있다.
+그러나 Log4J가 실행될 때 발행하는 비용을 계산해 보면 Log4J를 사용할 때 주의가 필요하다. 무작정 사용하는 것은 WAS 전체에 심각한 문제를 발생시킬 수 있다.</description>
+    </item>
+    
+    <item>
+      <title>JUnit 4.x 어노테이션</title>
+      <link>http://taewan.kim/post/junit4_annotation/</link>
+      <pubDate>Tue, 09 Nov 2010 10:50:36 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/junit4_annotation/</guid>
+      <description>2010년 11월 9일에 http://devtainer.blogspot.kr/에서 섰던 글입니다. 추억 팔이로 옮겨 놓습니다. 2010년 추억 속으로&amp;hellip;. - 원문: http://devtainer.blogspot.kr/2010/11/junit-4x.html
+JUnit4의 주요 어노테이션을 정리해 보았습니다. 별것 아닌것 같아도 막상 사용해 보면 헛갈리기 쉬운것 같습니다. Junit4의 주요 어노테이션은 다음과 같습니다.
+Junit 4 테스트 클래스 작성 JUnit4에서는 POJO 형태로 단위 테스트 클래스가 정의 됩니다. 단위 테스트 대상 메소드는 @Test를 통해서 정의 됩니다. 또한 단위 테스트 앞뒤에 초기화와 정리를 수행하는 메소드를 지정할 수 있습니다. 추가적으로 클래스 실행 앞뒤에 초기화와 정리를 수행하는 메서드를 정의 할 수 있습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>테라폼 on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/%ED%85%8C%EB%9D%BC%ED%8F%BC/</link>
+    <description>Recent content in 테라폼 on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 03 Oct 2017 21:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/%ED%85%8C%EB%9D%BC%ED%8F%BC/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Terraform Jupyter Installer: Machine Learning 환경 프로비저닝 </title>
+      <link>http://taewan.kim/post/terraform_jupyter_installer/</link>
+      <pubDate>Tue, 03 Oct 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/terraform_jupyter_installer/</guid>
+      <description>Terraform은 클라우드 인프라의 생성, 변경 및 형상 버전을 관리하는 툴입니다. Terraform을 이용하면 클라우드 자원을 효과적으로 사용하고 관리할 수 있습니다. Terraform을 활용하여 오라클 클라우드의 쉬운 접근법 제시를 목적으로 &amp;ldquo;Terraform Installer On Oracle Cloud&amp;ldquo;1 프로젝트를 준비하고 있습니다. Terraform으로 자원 할당, VM 생성, 소프트웨어 설치, 보안룰 적용 등이 완료된 완전한 형태의 인프라를 제공하여, 신규 오라클 클라우드 사용자가 오라클 클라우드에 접근을 쉽게 하고, 활용 폭을 넓히는 것을 목표로 합니다.
+&amp;ldquo;Terraform Installer On Oracle Cloud&amp;rdquo; 프로젝트의 파일럿 형태로 &amp;ldquo;Terraform Jupyter Installer&amp;ldquo;를 만들었습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

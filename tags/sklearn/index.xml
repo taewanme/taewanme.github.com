@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sklearn on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/sklearn/</link>
+    <description>Recent content in Sklearn on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 04 Aug 2018 19:59:47 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/sklearn/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>scikit-learn의 fetch_mldata(&#39;MNIST original&#39;) 에러</title>
+      <link>http://taewan.kim/post/sklearn_mnist_fetch_error/</link>
+      <pubDate>Sat, 04 Aug 2018 19:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/sklearn_mnist_fetch_error/</guid>
+      <description>scikit-learn은 테스트 데이터로 사용할 수 있는 여러 데이터셋를 간편하게 로딩하는 기능을 제공합니다. 특히 머신러닝 테스트에 사용할 수 있는 대표적인 데이터셋을 로딩하는 기능을 제공하기 때문에, 이 기능을 이용하여 많은 문서가 이용하여 입문자 문서를 작성하는 것이 일반적입니다.
+scikit-learn이 제공하는 데이터셋 로딩 기능 중에서 fetch_mldata 함수는 mldata.org의 데이터셋을 이용합니다. 최근에 mldata.org 사이트가 장애가 발생하면서 이 함수는 정상적으로 작동하지 않습니다. 이 오류를 우회하는 방법을 정리합니다.
+무엇이 문제인가? &amp;lt;그림 1&amp;gt;과 같이 fetch_mldata를 실행하면 HTTP Error 404 에로 로그가 출력됩니다.</description>
+    </item>
+    
+  </channel>
+</rss>

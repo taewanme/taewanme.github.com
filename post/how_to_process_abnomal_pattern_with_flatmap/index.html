@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>Spark: Collection의 flatMap을 이용한 비정상 패턴 처리</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="Spark: Collection의 flatMap을 이용한 비정상 패턴 처리" />
+<meta property="og:description" content="Spark 컬렉션에서 예상치 못한 데이터 패턴을 flatMap으로 처리하는 방법을 소개합니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/post/how_to_process_abnomal_pattern_with_flatmap/" />
+
+
+
+<meta property="article:published_time" content="2018-04-13T21:59:47&#43;09:00"/>
+<meta property="article:modified_time" content="2018-04-13T21:59:47&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		
+		
+		<header class="post__header clearfix">
+			<h1 class="post__title">Spark: Collection의 flatMap을 이용한 비정상 패턴 처리 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2018-04-13 21:59:47 &#43;0900 KST">April 13, 2018</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/language" rel="category">language</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2018/04/spark/head.jpeg" alt="Spark: Collection의 flatMap을 이용한 비정상 패턴 처리">
+			</figure>
+			
+
+<p>스칼라에서 map과 flatMap의 차이점을 파악하고 이해하는 것은 쉽지 않은것 같습니다. 이상 데이터 처리는 두 함수를 차아점을 구분하는 예제로 적합하다고 생가합니다. 이상 데이터 처리 예젤로 두 함수의 의미를 정리하겠습니다.</p>
+
+<p>스칼라에서 컬렉션을 map함수로 변환시킬 때 어떤 것을 걸러 내야 할 때가 있습니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">val</span> <span style="color: #f8f8f2">x</span> <span style="color: #66d9ef">=</span> <span style="color: #a6e22e">List</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;taewan 45&quot;</span><span style="color: #f92672">,</span> <span style="color: #e6db74">&quot;minsu 6&quot;</span><span style="color: #f92672">,</span> <span style="color: #e6db74">&quot;sunny 40&quot;</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">x</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">map</span><span style="color: #f92672">{</span> <span style="color: #f8f8f2">v</span> <span style="color: #66d9ef">=&gt;</span>
+    <span style="color: #66d9ef">val</span> <span style="color: #a6e22e">Array</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">name</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">age</span><span style="color: #f92672">)</span> <span style="color: #66d9ef">=</span> <span style="color: #f8f8f2">v</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">split</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot; &quot;</span><span style="color: #f92672">)</span>
+    <span style="color: #f92672">(</span><span style="color: #f8f8f2">name</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">age</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">toInt</span><span style="color: #f92672">)</span>
+<span style="color: #f92672">}</span>
+</pre></div>
+
+<p>위 코드는 다음과 같이 출력됩니다.</p>
+
+<blockquote>
+<p>출력:</p>
+
+<pre><code>List((taewan,45), (minsu,6), (sunny,40))
+</code></pre>
+</blockquote>
+
+<p>이름과 나이가 문자열과 숫자로 구분되는 튜플 리스트를 반환합니다. 입력 데이터가 모두 예상된 패턴이기에 매끄럽게 처리됩니다.</p>
+
+<h2 id="예상치-못한-입력-패턴에-대한-고민">예상치 못한 입력 패턴에 대한 고민</h2>
+
+<p>위와 같은 깨끗한 데이터가 아닌 다음과 같은 데이터라면 어떻게 될까요?</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">val</span> <span style="color: #f8f8f2">x</span> <span style="color: #66d9ef">=</span> <span style="color: #a6e22e">List</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;taewan 45&quot;</span><span style="color: #f92672">,</span> <span style="color: #e6db74">&quot;minsu 6&quot;</span><span style="color: #f92672">,</span> <span style="color: #e6db74">&quot;sunny secret&quot;</span><span style="color: #f92672">)</span>
+</pre></div>
+
+<p>나이가 비밀이라고 적혀 있네요. 이런 데이터를 위와 같은 로직으로 처리하면 어떻게 될까요?</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">val</span> <span style="color: #f8f8f2">x</span> <span style="color: #66d9ef">=</span> <span style="color: #a6e22e">List</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;taewan 45&quot;</span><span style="color: #f92672">,</span> <span style="color: #e6db74">&quot;minsu 6&quot;</span><span style="color: #f92672">,</span> <span style="color: #e6db74">&quot;sunny secret&quot;</span><span style="color: #f92672">)</span>
+</pre></div>
+
+<p>출력은 다음과 같은 예외가 발생됩니다. 예상치 못한 타입이 출현했으니 당연할 결과입니다.</p>
+
+<blockquote>
+<p>출력:</p>
+
+<pre><code>java.lang.NumberFormatException: For input string: &quot;secret&quot;
+  at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+  at java.lang.Integer.parseInt(Integer.java:580)
+  at java.lang.Integer.parseInt(Integer.java:615)
+  at scala.collection.immutable.StringLike$class.toInt(StringLike.scala:272)
+  at scala.collection.immutable.StringOps.toInt(StringOps.scala:29)
+  at $anonfun$1.apply(&lt;console&gt;:81)
+  at $anonfun$1.apply(&lt;console&gt;:79)
+  at scala.collection.immutable.List.map(List.scala:277)
+  ... 58 elided
+</code></pre>
+</blockquote>
+
+<h2 id="예상치-못한-입력-패턴에-대한-대응">예상치 못한 입력 패턴에 대한 대응</h2>
+
+<p>예상치 못한 패턴에 대하여 다음과 같이 예외 처리를 할 수 있습니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">val</span> <span style="color: #f8f8f2">x</span> <span style="color: #66d9ef">=</span> <span style="color: #a6e22e">List</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;taewan 45&quot;</span><span style="color: #f92672">,</span> <span style="color: #e6db74">&quot;minsu 6&quot;</span><span style="color: #f92672">,</span> <span style="color: #e6db74">&quot;sunny secret&quot;</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">x</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">map</span><span style="color: #f92672">{</span> <span style="color: #f8f8f2">v</span> <span style="color: #66d9ef">=&gt;</span>
+    <span style="color: #66d9ef">val</span> <span style="color: #a6e22e">Array</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">name</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">age</span><span style="color: #f92672">)</span> <span style="color: #66d9ef">=</span> <span style="color: #f8f8f2">v</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">split</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot; &quot;</span><span style="color: #f92672">)</span>
+    <span style="color: #66d9ef">try</span><span style="color: #f92672">{</span>
+        <span style="color: #a6e22e">Some</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">name</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">age</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">toInt</span><span style="color: #f92672">)</span>
+    <span style="color: #f92672">}</span><span style="color: #66d9ef">catch</span><span style="color: #f92672">{</span>
+        <span style="color: #66d9ef">case</span> <span style="color: #66d9ef">_:NumberFormatException</span> <span style="color: #f92672">=&gt;</span> <span style="color: #a6e22e">None</span>
+    <span style="color: #f92672">}</span>
+<span style="color: #f92672">}</span>
+</pre></div>
+
+<p>결과는 다음과 같습니다. 왠지 결과가 마음에 들지 않습니다. None객체가 포함되어 있고 제가 원하는 튜플이 아닌 Some객체입니다.</p>
+
+<blockquote>
+<p>출력:</p>
+
+<pre><code>List(Some((taewan,45)), Some((minsu,6)), None)
+</code></pre>
+</blockquote>
+
+<p>저는 튜플 객체 리스트를 원합니다. 그리고 불필요한 None도 제거하고 싶습니다.</p>
+
+<h2 id="예상치-못한-입력-패턴에-대한-해법-flatmap과-some-none">예상치 못한 입력 패턴에 대한 해법: flatMap과 Some/None</h2>
+
+<p>위와 같은 불필요한 요소를 제거하기 위해서는 filter 함수를 추가하면 됩니다. 그러나 filter함수를 추가하면 map 다음에 추가적인 연산이 적용되고 불필요한 오버헤드를 유발할 수 있습니다. 컬렉션 처리에 한 단계가 더 추가되는 상황이 됩니다. 좀 지져분한 느낌이 듭니다.</p>
+
+<p>이렇게 오류가 발생한 데이터를 제거하고 결과를 컬렉션 데이터를 변형하여 다른 컬렉션을 만들어야 하는 상황에서, flatMat과 Some/None을 사용하면 이런 기능을 간단하게 구현할 수 있습니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">val</span> <span style="color: #f8f8f2">x</span> <span style="color: #66d9ef">=</span> <span style="color: #a6e22e">List</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;taewan 45&quot;</span><span style="color: #f92672">,</span> <span style="color: #e6db74">&quot;minsu 6&quot;</span><span style="color: #f92672">,</span> <span style="color: #e6db74">&quot;sunny secret&quot;</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">x</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">flatMap</span><span style="color: #f92672">{</span> <span style="color: #f8f8f2">v</span> <span style="color: #66d9ef">=&gt;</span>
+    <span style="color: #66d9ef">val</span> <span style="color: #a6e22e">Array</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">name</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">age</span><span style="color: #f92672">)</span> <span style="color: #66d9ef">=</span> <span style="color: #f8f8f2">v</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">split</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot; &quot;</span><span style="color: #f92672">)</span>
+    <span style="color: #66d9ef">try</span><span style="color: #f92672">{</span>
+        <span style="color: #a6e22e">Some</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">name</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">age</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">toInt</span><span style="color: #f92672">)</span>
+    <span style="color: #f92672">}</span><span style="color: #66d9ef">catch</span><span style="color: #f92672">{</span>
+        <span style="color: #66d9ef">case</span> <span style="color: #66d9ef">_:NumberFormatException</span> <span style="color: #f92672">=&gt;</span> <span style="color: #a6e22e">None</span>
+    <span style="color: #f92672">}</span>
+<span style="color: #f92672">}</span>
+</pre></div>
+
+<p>출력은 다음과 같습니다.</p>
+
+<blockquote>
+<p>출력:</p>
+
+<pre><code>List[(String, Int)] = List((taewan,45), (minsu,6))
+</code></pre>
+</blockquote>
+
+<p>비정상 입력 데이터를 제거하고 정상적인 데이터만로 새로운 컬렉션을 만들었습니다.</p>
+
+<p>flatMap 함수는 출력 결과로 부터 컨테이너를 제거하는 과정을 한번더 수행합니다. 이 과정에서 랩핑된 객체를 제거합니다. 이때 None 요소는 자연스럽게 제거 됩니다. 위 코드를 보면 flatMap을 사용하고 내부적으로 정상적이면 Some 객체로, 비정상 포멧은 None을 반환합니다.</p>
+
+<p>그리고 flatMap은 최상위 컨테이너를 제거하고 내부 객체를 반환합니다. 이 과정에서 None 객체는 완전히 제거되고, Some 객체가 벗겨진 내부 객체가 등장하게 됩니다.</p>
+
+<p>결과적으로 비 정상적인 데이터 패턴을 걸러내는 기능을 제공하게 됩니다.</p>
+
+<h2 id="flatmap에-대한-이해">flatMap에 대한 이해</h2>
+
+<p>flatMap은 차원을 낮춘다고 표현하시는 분들도 있습니다. 처음에는 flatMap은 차원을 낮추는 기능이다라고 표현하는 것을 이해하기 어려웠습니다. 사실 이 표현은 List, Array 같은 컬렉션 혹은 Some과 같이 어떤 객체를 감싸는 최상위 객체를 제거하고 그 안의 요소 혹은 객체를 반환하여 컬렉션을 만드는 기능을 제공한다와 같은 의미입니다.</p>
+
+<p>flatMap과 Some/None 객체를 이용하면 불안전한 입력 데이터를 효과적으로 처리할 수 있습니다.</p>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/spark/" rel="tag">spark</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/flatmap/" rel="tag">flatMap</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/collection/" rel="tag">Collection</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/the_day_sea/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">&#39;그날,바다&#39; 후기 (노스포)</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/kim_domain/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">최초 Family Name 도메인 - kim</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/post/how_to_process_abnomal_pattern_with_flatmap/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#예상치-못한-입력-패턴에-대한-고민">예상치 못한 입력 패턴에 대한 고민</a></li>
+<li><a href="#예상치-못한-입력-패턴에-대한-대응">예상치 못한 입력 패턴에 대한 대응</a></li>
+<li><a href="#예상치-못한-입력-패턴에-대한-해법-flatmap과-some-none">예상치 못한 입력 패턴에 대한 해법: flatMap과 Some/None</a></li>
+<li><a href="#flatmap에-대한-이해">flatMap에 대한 이해</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

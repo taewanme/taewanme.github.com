@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>Apache Kafka PaaS: Oracle Event Hub CS 소개..</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="Apache Kafka PaaS: Oracle Event Hub CS 소개.." />
+<meta property="og:description" content="Oracle Public Cloud에서 Apache Kafka를 클라우드 관리 서비스(PaaS)로 제공합니다. 서비스 명은 Oracle Event Hub Cloud Service입니다. Oracle Event Hub Cloud Service를 소개하고, Kafka 서비스를 생성하는 방법을 소개합니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/cloud/kafka_paas_eventhub_cs/" />
+
+
+
+<meta property="article:published_time" content="2017-08-14T23:20:25&#43;09:00"/>
+<meta property="article:modified_time" content="2017-08-14T23:20:25&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">Apache Kafka PaaS: Oracle Event Hub CS 소개.. </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2017-08-14 23:20:25 &#43;0900 KST">August 14, 2017</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/cloud" rel="category">cloud</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/logoinpost.jpg" alt="Apache Kafka PaaS: Oracle Event Hub CS 소개..">
+			</figure>
+			
+
+<p>Oracle Cloud는 Apache Kafka(이하 Kafka)를 클라우드 관리 서비스(PaaS) 형태로 제공하고 있습니다. Oracle Cloud가 2017년 1월에 출시한 &ldquo;<strong>Oracle Event Hub Cloud Service</strong>&rdquo;(이하 Oracle Event Hub CS)가 바로 Kafka 관리 서비스입니다. Oracle Event Hub CS는 오라클이 기술지원하고 관리하는 클라우드 서비스로 Kafka 클러스터의 효율적인 관리 방법과 지속적인 확장성을 제공합니다. 본 문서는 다음과 같은 내용으로 구성됩니다.</p>
+
+<ul>
+<li>Oracle Event Hub CS 소개</li>
+<li>Oracle Event Hub CS 클러스터 생성</li>
+<li>Kafak 클러스터에 Topic 생성</li>
+<li>Topic에 데이터 저장(Producing) &amp; 가져오기(Consuming) 테스트</li>
+</ul>
+
+<h2 id="oracle-event-hub-cs">Oracle Event Hub CS</h2>
+
+<p>Oracle Event Hub CS는 Kafaka 클라우드 관리형 서비스(managed service)입니다. Kafka와 Apache Zookeeper(이하 ZooKeeper)를 포함한 관련 소프트웨어의 설치, 관리, 업그레이드, 모니터링 등 전체 라이프사이클을 관리합니다.</p>
+
+<p>Oracle Event Hub CS는 2017년 1월 출시 당시 Kafka 버전 v0.9를 지원했습니다.
+2017년 8월 현재 Oracle Event Hub CS는 Kafka 버전 v0.10.2를 지원합니다.</p>
+
+<p>Oracle Event Hub CS를 이용하면 비동기 메시지 처리 환경을 필요한 시점에 효과적으로 구축할 수 있습니다. 또한 서비스 이용 중에 언제든지 Scale-out 방식으로 확장할 수 있습니다. 특히 Oracle Big Data Cloud Service - Compute Edition과 연동하여 고성능 스트리밍 데이터 처리 환경 혹은 빅데이터 Ingestion 인프라를 구축할 수 있습니다. Oracle Event Hub CS는 다음과 같은 Oracle Cloud 서비스와 연동될 수 있습니다.</p>
+
+<ul>
+<li><a href="https://cloud.oracle.com/en_US/big-data-compute-edition">Oracle Big Data Cloud Service - Compute Edition</a> (이하: Oracle Big Data CS-CE)</li>
+<li><a href="https://cloud.oracle.com/en_US/iot">Oracle IoT Analytics Cloud Service</a></li>
+<li><a href="https://cloud.oracle.com/en_US/big-data-preparation">Oracle Big Data Preparation Clood Serivce</a></li>
+<li><a href="https://cloud.oracle.com/en_US/log-analytics">Oracle Mabile Analytics cloud Service</a></li>
+</ul>
+
+<p>Oracle Event Hub CS는 Oracle Cloud의 Trial 계정으로 이용 가능합니다. 본 문서는 Oracle Cloud Trial 계정을 이용하여 Oracle Event Hub CS의 클러스터 생성 및 &ldquo;Quick Start&rdquo; 데모를 진행하겠습니다.</p>
+
+<h3 id="oracle-event-hub-cs-특징">Oracle Event Hub CS 특징</h3>
+
+<p>Oracle Event Hub CS는 다음과 같은 특징을 갖습니다.</p>
+
+<ul>
+<li>Kafka 관리형 서비스(Managed Service, PaaS)</li>
+<li>Kafka Native API 접근 허용</li>
+<li>Kafka 클러스터 REST API 지원 (Proxy 서버 포함)</li>
+<li>Scale-out 클러스터 확장 기능 &lt;그림 1 참조&gt;</li>
+<li>소프트웨어 패치 관리 &lt;그림 2 참조&gt;</li>
+<li>Oracle Event Hub CS의 클러스터 VM 접근 허용 (ssh)</li>
+<li>Oracle Big Data CS-CE 클라우드 서비스에 최적화 구성</li>
+<li>Oracle Event Hub CS 클러스터의 라이프사이클 관리 CLI<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup> 제공: PaaS Service Manager(PSM)</li>
+
+<li><p>Oracle Cloud의 보안체계에 따른 세밀한 보안 설정<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup></p></li>
+
+<li><p>&lt;그림 1&gt;. Oracle Event Hub CS 클러스터의 Scale-out
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/eventhub20.jpg" alt="" /></p></li>
+
+<li><p>&lt;그림 2&gt;. Oracle Event Hub CS의 클러스터별 패치 관리
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/eventhub19.jpg" alt="" /></p></li>
+</ul>
+
+<p>&lt;그림 2&gt;는 현재 설치해야 할 패치가 없으므로 패치 항목 없으므로 표시됩니다.</p>
+
+<h3 id="oracle-event-hub-cs-구성-컴포넌트">Oracle Event Hub CS 구성 컴포넌트</h3>
+
+<p>Oracle Event Hub CS에는 다음과 같은 소프트웨어가 설치됩니다.</p>
+
+<ul>
+<li>Java 1.8</li>
+<li>Scala 2.12.2</li>
+<li>Apache Kafka</li>
+<li>Apache ZooKeeper</li>
+<li>Confluent 3.0.1 (REST proxy, Avro registry)</li>
+<li>NGINX</li>
+</ul>
+
+<h3 id="oracle-event-hub-cs-클러스터-설치-방식">Oracle Event Hub CS 클러스터 설치 방식</h3>
+
+<p>Oracle Event Hub CS는 다음과 같은 두 가지 설치 방식을 지원합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>설치 방식</th>
+<th>설명</th>
+<th>비고</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Basic</td>
+<td>ZooKeeper와 Kafka가 같은 VM에 설치 되는 방식입니다. <br /> 클러스터 사이즈로 VM 1개와 3개 중 하나를 선택할 수 합니다.</td>
+<td>- 고가성 지원 불가<sup class="footnote-ref" id="fnref:3"><a rel="footnote" href="#fn:3">3</a></sup><br />- 테스트 용도에 적합</td>
+</tr>
+
+<tr>
+<td>Recommended</td>
+<td>Kafka와 Zookeeper가 별도의 VM에 설치됩니다. <br />고가용성 디자인이 적용된 설치 방식입니다.</td>
+<td>- 고가용성 지원</td>
+</tr>
+</tbody>
+</table>
+
+<p>Oracle Event Hub CS 클러스터가 고가용성을 제공해야 한다면, Recommended 설치 모드에서 다음과 같은 구성을 권장합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>컴포넌트</th>
+<th>VM 규모</th>
+<th>비고</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Apache Kafka 브로커</td>
+<td>5+ VM</td>
+<td>- 최소 5 VM 이상 <br />- Topic 및 Partition 증가에 따라서 확장 가능<br/> - 클러스터 생성 후 VM 추가 가능 &lt; 그림 1 참조&gt;<br />- VM 추가에 제약 없음</td>
+</tr>
+
+<tr>
+<td>Apache Zookeeper</td>
+<td>3 VM</td>
+<td>- Zookeeper 운영 정책에 따라 변경 가능<br/>- 1VM, 3VM, 5VM 중 하나를 선택<br/>- 일반적으로 3VM으로 구성</td>
+</tr>
+
+<tr>
+<td>REST Proxy 노드</td>
+<td>2 VM</td>
+<td>- 설치 시 선택 가능한 컴포넌트<br/>- 1 ~ 4 VM 중 하나를 선택<br/>- 일반적을 2VM으로 구성</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="oracle-event-hub-cs-데모">Oracle Event Hub CS 데모</h2>
+
+<p>이 절에서는 오라클 클라우드 Trial 계정을 이용하여 Oracle Event Hub CS 클러스터를 생성하는 절차를 소개합니다.</p>
+
+<h3 id="oracle-event-hub-cs-클러스커-생성">Oracle Event Hub CS 클러스커 생성</h3>
+
+<p>오라클 클라우드 Trial 계정으로 Oracle Cloud에 로그인하면, &lt;그림 3&gt;과 같이 Oracle Cloud 대시보드가 출력됩니다. 왼쪽 위 메뉴 아이콘을 이용하여 각 클라우드 서비스 콘솔로 이동할 수 있습니다.</p>
+
+<ul>
+<li>&lt;그림 3&gt;. Oracle Cloud 대시보드
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/eventhub01.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 4&gt;에서 &ldquo;Event Hub - Dedicated&rdquo;를 선택하여 Oracle Event Hub CS 서비스 콘솔로 이동합니다.</p>
+
+<ul>
+<li>&lt;그림 4&gt;. Oracle Cloud 대시보드에서 Oracle Event Hub CS 서비스 콘솔 이동 메뉴
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/eventhub02.jpg" alt="" /></li>
+</ul>
+
+<p>Oracle Cloud 계정으로 처음 Oracle Event Hub CS 서비스 콘솔에 접근했다면, &lt;그림 5&gt;와 같은 환영 페이지가 출력될 것입니다. 환영 페이지가 출력될 경우 &ldquo;Go to console&rdquo; 버튼을 클릭하여 Oracle Event Hub CS 서비스 콘솔로 이동합니다.&lt;그림 6 참조&gt;</p>
+
+<ul>
+<li>&lt;그림 5&gt;. Oracle Event Hub CS 클라우드 서비스 환영 페이지
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/eventhub03.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 6&gt;에서 &ldquo;인스턴스 생성&rdquo; 버튼을 클릭하여 Oracle Event Hub CS 클러스터 생성을 시작할 수 있습니다.</p>
+
+<ul>
+<li>&lt;그림 6&gt;. Oracle Event Hub CS 서비스 콘솔: 클러스터 생성 시작
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/eventhub04.jpg" alt="" /></li>
+</ul>
+
+<p>Oracle Event Hub CS 클러스터 생성 과정은 3단계로 구성됩니다. &lt;그림 7&gt;은 클러스터 생성의 1단계입니다. 클러스터 생성 1단계에서는 클러스터 명 및 관리자 메일 등 기본 정보를 입력합니다. 입력이 완료되면, &ldquo;다음&rdquo; 버튼을 클릭하여 클러스터 생성 2단계로 넘어갑니다. &lt;그림 8 참조&gt;</p>
+
+<ul>
+<li>&lt;그림 7&gt;. Oracle Event Hub CS 클러스터 생성 1단계
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/eventhub05.jpg" alt="" /></li>
+</ul>
+
+<p>클러스터 2단계에서는 설치 방식, Kafka 노드 수 등 클러스터 설치에 필요한 상세 정보를 다음과 같이 입력합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>설정 항목</th>
+<th>설명</th>
+<th>데모 사용 값</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>기본정보</td>
+<td>배치 유형</td>
+<td>Basic과 Recommended 중 선택입니다. Recommended는 고가용성 모드입니다.</td>
+<td>Basic 선택</td>
+</tr>
+
+<tr>
+<td></td>
+<td>SSH Public Key</td>
+<td>SSH 공개키를 등록합니다.</td>
+<td>SSH 공개키 등록</td>
+</tr>
+
+<tr>
+<td>Kafka</td>
+<td>Number of Brokers</td>
+<td>Kafka 브로커 노드 수</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td></td>
+<td>컴퓨터 구성</td>
+<td>Kafka 브로커 VM의 Shape</td>
+<td>OC1m 선택</td>
+</tr>
+
+<tr>
+<td></td>
+<td>Usable Topic Storage</td>
+<td>Topic 용 사이즈 지정, GB 단위</td>
+<td>50</td>
+</tr>
+
+<tr>
+<td>Enable REST Proxy</td>
+<td>Enable REST Access</td>
+<td>프락시 설치 여부 선택</td>
+<td>체크</td>
+</tr>
+
+<tr>
+<td></td>
+<td>노드수</td>
+<td>프락시 서버 노드 수</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td></td>
+<td>컴퓨터 구성</td>
+<td>Proxy 서버 VM의 Shape</td>
+<td>OC1m 선택</td>
+</tr>
+
+<tr>
+<td></td>
+<td>사용자 이름</td>
+<td>Proxy 서버 사용자 ID</td>
+<td>admin</td>
+</tr>
+
+<tr>
+<td></td>
+<td>Password</td>
+<td>Proxy 서버 사용자 ID 인증 패스워드</td>
+<td>Welcome1@</td>
+</tr>
+
+<tr>
+<td></td>
+<td>Confirmed Password</td>
+<td>Proxy 서버 사용자 ID 인증 패스워드 확인</td>
+<td>Welcome1@</td>
+</tr>
+</tbody>
+</table>
+
+<p>설정은 &lt;그림 8&gt;을 참조하시기 바랍니다. &lt;그림 8&gt;에서 Recommended 설치 모드를 선택할 경우 ZooKeeper 설치 항목이 추가됩니다.</p>
+
+<ul>
+<li>&lt;그림 8&gt; Oracle Event Hub CS 클러스터 생성 2단계: 세부 정보 입력
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/eventhub06.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 8&gt;에서 &ldquo;다음&rdquo; 메뉴를 선택하면 Oracle Event Hub CS 클러스터 생성 3단계 &ldquo;클러스터 정보 확인&rdquo;으로 넘어갑니다.</p>
+
+<ul>
+<li>&lt;그림 9&gt; 클러스터 생성 정보 확인
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/eventhub07.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 9&gt;에서 &ldquo;생성&rdquo; 버튼을 클릭하여 Oracle Event Hub CS 클러스터 생성을 시작합니다. 클러스터 생성에는 약 15분 정도가 걸립니다. &lt;그림 10&gt;은 클러스터 생성이 완료된 결과입니다.</p>
+
+<ul>
+<li>&lt;그림 10&gt; Oracle Event Hub CS 클러스터 생성 결과, 클러스터 목록 출력
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/eventhub08.jpg" alt="" /></li>
+</ul>
+
+<p>앞에서 생성한 KafkaDemo 클러스터는 5개 VM으로 구성됩니다. 전체 CPU는 5 OCPU<sup class="footnote-ref" id="fnref:4"><a rel="footnote" href="#fn:4">4</a></sup>이며 75GB 메모리, 435GB 블록스토리지, 6000개 파티션 용량으로 만들어 졌습니다. &lt;그림 10 참조&gt;</p>
+
+<p>&lt;그림 10&gt;의 클러스터 명을 클릭하면 &lt;그림 11&gt;과 같이 클러스터 상세 정보 페이지로 이동합니다. 외부 네트워크에서 클러스터에 접근을 허용하기 위해서, 페이지 상단 메뉴 아이콘을 클릭한 후 &ldquo;Access Rules&rdquo; 메뉴를 선택합니다.</p>
+
+<ul>
+<li>&lt;그림 11&gt; Oracle Event Hub CS 클러스터 상세 페이지에서 &ldquo;Access Rules&rdquo; 이동
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/eventhub09.jpg" alt="" /></li>
+</ul>
+
+<p>&ldquo;Access Rules&rdquo; 관리페이지로 이동한 후, &ldquo;Create Rule&rdquo; 버튼을 클릭하여 클러스터에 적용할 &ldquo;<strong>Security Rule</strong>&ldquo;을 생성합니다.</p>
+
+<ul>
+<li>&lt;그림 12&gt; Oracle Event Hub CS 클러스터 Security Rule 생성
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/eventhub10.jpg" alt="" /></li>
+</ul>
+
+<p>Security Rule에서 &lt;그림 13&gt;과 같이 Kafka 브로커 접근 규칙과 Zookeeper 접근 규칙을 정의 합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>Security Rule 명</th>
+<th>소스</th>
+<th>목적지</th>
+<th>포트</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>kafkaserver_publicaccess</td>
+<td>PUBLIC-INTERNET</td>
+<td>kafka_KAFKA_SERVER</td>
+<td>6667</td>
+</tr>
+
+<tr>
+<td>Zookeeper_publicaccess</td>
+<td>PUBLIC-INTERNET</td>
+<td>kafka_KAFKA_ZK_SERVER</td>
+<td>2181</td>
+</tr>
+</tbody>
+</table>
+
+<p>외부 인터넷에서 Oracle Event Hub CS 클러스터에 접근을 허용하는 규칙을 생성합니다.</p>
+
+<ul>
+<li>&lt;그림 13&gt; Security Rule 생성
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/eventhub11.jpg" alt="" />
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/eventhub12.jpg" alt="" /></li>
+</ul>
+
+<p>두 Security Rule이 생성되면 &lt;그림 14&gt;와 같이 Security rule에서 새로 정의한 Security Rule을 확인할 수 있습니다.</p>
+
+<ul>
+<li>&lt;그림 14&gt; Security Rule 목록
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/eventhub13.jpg" alt="" /></li>
+</ul>
+
+<h3 id="oracle-event-hub-cs-토픽-생성">Oracle Event Hub CS 토픽 생성</h3>
+
+<p>지금까지 Oracle Event Hub CS 클러스터를 생성하는 절차를 확인해 보았습니다. 이제는 데이터를 저장할 Topic을 만들 차례입니다. Oracle Event Hub CS 클러스터를 생성한 후에, Oracle Event Hub CS 서비스 콘솔의 메뉴를 살펴보면, &ldquo;Oracle Event Hub Cloud Services - Topics&rdquo; 메뉴가 추가된 것을 확인 할 수 있습니다. &lt;그림 15 참조&gt;</p>
+
+<p>&ldquo;Oracle Event Hub Cloud Services - Topics&rdquo; 메뉴를 사용하여 Oracle Event Hub CS 클러스터에  Kafka 토픽을 서비스 형태로 생성할 수 있습니다.</p>
+
+<ul>
+<li>&lt;그림 15&gt; Oracle Event Hub CS 서비스 콘솔의 메뉴
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/eventhub14.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 15&gt;에서 &ldquo;Oracle Event Hub Cloud Services - Topics&rdquo; 메뉴를 선택하먄 Kafka 토픽 생성 페이지로 이동합니다. &lt;그림 16&gt;과 같이 토픽 생성 페이지에서 토픽 명, 파티션 수, 데이터 유지 기간을 입력하고 &ldquo;다음&rdquo; 버튼을 클릭합니다.</p>
+
+<ul>
+<li>&lt;그림 16&gt; Kafka 토픽 생성 페이지
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/eventhub15.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 16&gt;에서 &ldquo;다음&rdquo; 버튼을 클릭하면, &lt;그림 17&gt;과 같은 Kafka 토픽 생성 정보 확인 페이지로 이동합니다.
+그리고 &ldquo;생성&rdquo; 버튼을 클릭하면 클러스터에 topic이 바로 생성됩니다.</p>
+
+<ul>
+<li>&lt;그림 17&gt; Kafka 토픽 생성 정보 확인 페이지
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/eventhub16.jpg" alt="" /></li>
+</ul>
+
+<p>topic 생성 시간은 약 5초 입니다. 토픽이 정상적으로 생성되면 &lt;그림 18&gt;과 같이 토픽 목록이 출력됩니다. 지금 만든 것은 Topic 서비스 입니다. Topic 서비스에서 만들어지는 실제 토픽의 이름은 다음과 같은 패턴으로 만들어 집니다.</p>
+
+<pre><code>실제 Topic 명: &lt;Identity_doman_name&gt;-&lt;Topic_service_name&gt;
+</code></pre>
+
+<ul>
+<li>&lt;그림 18&gt;. 토픽 목록 페이지
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/eventhub17.jpg" alt="" /></li>
+</ul>
+
+<h3 id="테스트용-apache-kafka-설치">테스트용 Apache Kafka 설치</h3>
+
+<p>Kafka 클러스터 접속 테스트를 위하여 Kafka를 현재 사용중인 컴퓨터에 설치해야 합니다. 여기에서 &ldquo;사용중인 컴퓨터&rdquo;란 여러분들이 작업하는(오라클 클라우드에 접속 중인) 컴퓨터(노트북)을 의미합니다. Kafka를 설치하기 위해서는 설치 대상 컴퓨터에 Scala 버전을 확인해야 합니다. 다음과 같은 명령으로 Scala 버전을 확인할 수 있습니다. 아직 Scala가 설치되지 않은 상태라면, Kafka 설치에 앞서 Scala를 먼저 설치해야 합니다.</p>
+
+<pre><code>~ &gt; scala -version
+Scala code runner version 2.12.2 -- Copyright 2002-2017, LAMP/EPFL and Lightbend, Inc.
+~ &gt;
+</code></pre>
+
+<p>위 예제에서 Kafka를 설치할 컴퓨터에 설치된 scala 버전은 2.12.2입니다. 데모에서 설치할 Kafka 버전은 0.10.2.1입니다. Kafka 다운로드 페이지는 다음 URL 입니다. 다음 페이지에서 scala 버전과 Kafka 버전이 맞는 파일을 내려받야야 합니다.</p>
+
+<ul>
+<li><a href="https://kafka.apache.org/downloads">https://kafka.apache.org/downloads</a></li>
+</ul>
+
+<p>현재 예제에서 Scala 버전 2.12.2과 Kafka 버전 0.10.2.1에 맞는 파일은  kafka_2.12-0.10.2.1.tgz 입니다. 다음과 같이 대상 파일을 내려받고 압축을 해제합니다. 아래에서 파일 다운로드 툴로 &ldquo;<strong>curl</strong>&ldquo;을 사용하였습니다.</p>
+
+<pre><code>~/demo &gt; curl http://www-us.apache.org/dist/kafka/0.10.2.1/kafka_2.12-0.10.2.1.tgz -o kafka_2.12-0.10.2.1.tgz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 32.4M  100 32.4M    0     0   623k      0  0:00:53  0:00:53 --:--:--  580k
+~/demo &gt;
+~/demo &gt; tar -xzf kafka_2.12-0.10.2.1.tgz
+~/demo &gt; ls -al kafka_2.12-0.10.2.1
+total 72
+drwxr-xr-x   8 taewan  staff    272  4 22 01:27 .
+drwxr-xr-x   4 taewan  staff    136  8 14 16:26 ..
+-rw-r--r--   1 taewan  staff  28824  4 22 01:23 LICENSE
+-rw-r--r--   1 taewan  staff    336  4 22 01:23 NOTICE
+drwxr-xr-x  31 taewan  staff   1054  4 22 01:27 bin
+drwxr-xr-x  15 taewan  staff    510  4 22 01:27 config
+drwxr-xr-x  73 taewan  staff   2482  4 22 01:27 libs
+drwxr-xr-x   3 taewan  staff    102  4 22 01:27 site-docs
+~/demo &gt;
+</code></pre>
+
+<h3 id="oracle-event-hub-cs-클러스터-테스트">Oracle Event Hub CS 클러스터 테스트</h3>
+
+<p>현재 Kafka 브로커 서버 및 ZooKeeper가 설치된 서버의 Public IP는 129.157.161.106이고 Zookeeper 포트 번호는 2181, Kafka 브로커 포트 번호는 6667입니다.<sup class="footnote-ref" id="fnref:5"><a rel="footnote" href="#fn:5">5</a></sup> Kafka 클러스터에 생성된 topic 목록은 다음 명령을 이용하여 확인 할 수 있습니다.</p>
+
+<ul>
+<li>현재 Kafka가 설치된 위치: ~/demo/kafka_2.12-0.10.2.1</li>
+</ul>
+
+<pre><code>&gt; bin/kafka-topics.sh --list \
+--zookeeper  129.157.161.106:2181
+
+KafkaDemo
+__consumer_offsets
+krplustvio-twTopic
+&gt;
+</code></pre>
+
+<p>위 명령에서 &ldquo;_<em>_</em>&ldquo;는 콘솔에서 명령이 끊어지지 않고 연결된 라인임을 의미합니다. 위 명령은 한 줄로 처리됩니다.</p>
+
+<p>Kafka에 포함된 kafka-console-producer.sh와 kafka-console-consumer.sh 명령으로 topic에 데이터를 비동기 처리하는 테스트를 수행할 수 있습니다.
+- &lt;그림 18&gt; kafka-console-producer.sh와 kafka-console-consumer.sh 테스트
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/eventhub18.jpg" alt="" /></p>
+
+<p>&lt;그림 18&gt;에서 사용한 명령은 다음과 같습니다.</p>
+
+<ul>
+<li><p>Producer 명령 (아래 명령은 한 줄로 처리됩니다.)</p>
+
+<pre><code>bin/kafka-console-producer.sh \
+--broker-list 129.157.161.106:6667 \
+--topic krplustvio-twTopic
+</code></pre></li>
+
+<li><p>Consumer 명령 (아래 명령은 한 줄로 처리됩니다.)</p>
+
+<pre><code>bin/kafka-console-consumer.sh \
+--bootstrap-server 129.157.161.102:6667 \
+--topic krplustvio-twTopic --from-beginning
+</code></pre></li>
+</ul>
+
+<p>&lt;그림 18&gt;에서 왼쪽 콘솔에는 Kafka에서 제공하는 kafka-console-producer.sh가 앞에서 생성한 twTopic에 메시지를 producing하고, 오른쪽 콘솔에는 kafka-console-consumer.sh가 twTopic으로 부터 메시지를 가져옵니다. 왼쪽 콘솔에서 메시지를 입력하면 바로 오른쪽 콘솔에 출력되는 것을 확인할 수 있습니다.</p>
+
+<h2 id="요약">요약</h2>
+
+<p>Oracle Cloud는 Kafka 관리 서비스로 Oracle Event Hub CS를 제공합니다. 이 서비스를 이용하여 비동기 스트리밍 처리 인프라를 빠르고 쉽게 만들 수 있습니다. Oracle Event Hub CS는 소프트웨어 패치, 설치, 관리 및 확장을 효과적으로 처리하는 방법을 제공합니다. Oracle Event Hub CS 클러스터 생성 시간은 15분입니다.</p>
+
+<p>Oracle Event Hub CS와 Oracle Big Data Cloud Service - Compute Edition을 이용하여 확장성과 대용량 처리가 가능한 스트리밍 및 비동기 메시지 처리 환경을 필요한 시점에 바로 구축할 수 있습니다.</p>
+
+<h2 id="참고자료">참고자료</h2>
+
+<ul>
+<li><a href="https://technology.amis.nl/2016/09/28/oracle-public-cloud-and-kafka-events-powering-the-cloud-the-oracle-paas-cloud-event-bushub/">Oracle Public Cloud and Kafka – Events powering the cloud – The Oracle PaaS Cloud Event BusHub</a></li>
+<li><a href="https://www.linkedin.com/pulse/apache-kafka-cloud-oracle-event-hub-service-harris-moin-qureshi">Apache Kafka in the Cloud &mdash; Oracle Event Hub Cloud Service</a></li>
+<li><a href="http://docs.oracle.com/en/cloud/paas/event-hub-cloud/ehcug/index.html">Oracle Official Document: Using Oracle Event Hub Cloud Service</a></li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">CLI는 Command Line Interface의 약자입니다. 터너멀에서 실행되는 명령어로 구성된 툴을 의미합니다.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">오라클 보안 체계는 다음 문서를 참조 하시기 바랍니다. - <a href="../compute_security/">오라클 클라우드 Compute CS 보안 적용</a>
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:3">Kafka 클러스터가 고가용성을 지원하기 위해서는  Kakfa와 ZooKeeper가 분리되어 개별적인 서버에 설치되어야 합니다. 또한 Kafka와 ZooKeeper의 장애 대응과 복제계수를 고려하여 각각 3개 서버 이상으로 클러스터를 디자인 해야 합니다. Kafka 서버는 일반적으로 3set 이상으로 구성하고 ZooKeeper는 3set 혹은 5set으로 구성합니다.
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+<li id="fn:4">OCPU는 Oracle Compute Unit의 줄임말입니다. 1 OCPU는 하이퍼 쓰레딩이 활성화된 Intel Xeon 프로세스 입니다. 따라서 1개의 OCPU는 vCPU 2개에 해당합니다.
+ <a class="footnote-return" href="#fnref:4"><sup>[return]</sup></a></li>
+<li id="fn:5">이 정보는 &lt;그림 11&gt;과 같은 Oracle Event Hub CS 서비스 콘솔의 클러스터 상세 정보 페이지에서 확인 할 수 있습니다. 포트 정보는 &lt;그림 14&gt;와 같이 &ldquo;Security Rule&rdquo; 페이지에서 확인 할 수 있습니다.
+ <a class="footnote-return" href="#fnref:5"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/event-hub/" rel="tag">Event Hub</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/kafka/" rel="tag">Kafka</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/big-data/" rel="tag">Big Data</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/identity_domain/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Identity Domain</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/oracloud_patch/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">Oracle Cloud의 PaaS 서비스 패치: Orace BDCSCE</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/cloud/kafka_paas_eventhub_cs/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#oracle-event-hub-cs">Oracle Event Hub CS</a>
+<ul>
+<li><a href="#oracle-event-hub-cs-특징">Oracle Event Hub CS 특징</a></li>
+<li><a href="#oracle-event-hub-cs-구성-컴포넌트">Oracle Event Hub CS 구성 컴포넌트</a></li>
+<li><a href="#oracle-event-hub-cs-클러스터-설치-방식">Oracle Event Hub CS 클러스터 설치 방식</a></li>
+</ul></li>
+<li><a href="#oracle-event-hub-cs-데모">Oracle Event Hub CS 데모</a>
+<ul>
+<li><a href="#oracle-event-hub-cs-클러스커-생성">Oracle Event Hub CS 클러스커 생성</a></li>
+<li><a href="#oracle-event-hub-cs-토픽-생성">Oracle Event Hub CS 토픽 생성</a></li>
+<li><a href="#테스트용-apache-kafka-설치">테스트용 Apache Kafka 설치</a></li>
+<li><a href="#oracle-event-hub-cs-클러스터-테스트">Oracle Event Hub CS 클러스터 테스트</a></li>
+</ul></li>
+<li><a href="#요약">요약</a></li>
+<li><a href="#참고자료">참고자료</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

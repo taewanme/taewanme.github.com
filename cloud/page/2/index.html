@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>Clouds</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="Clouds" />
+<meta property="og:description" content="taewan.kim" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://taewan.kim/cloud/" />
+
+
+
+<meta property="og:updated_time" content="2017-09-29T17:17:35&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+<link rel="alternate" type="application/rss+xml" title="taewan.kim 블로그 Feed" href="http://taewan.kim/cloud/index.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item menu__item--active"><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+	<hr/>
+	<div class="main-content loop content" role="main">
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/cloud/mysqlcs_backup/">
+					<img src="https://oracloud-kr-teamrepo.github.io/2017/05/mysqlcs/mysqlcs.jpg" alt="MySQL 인스턴스에 대한 백업과 복구" />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/cloud/mysqlcs_backup/" rel="bookmark">MySQL 인스턴스에 대한 백업과 복구</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2017-09-29 17:17:35 &#43;0900 KST">September 29, 2017</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  본 문서는 Oracle MySQL APAC 세일즈 컨설팅팀에서 고객 전달용으로 작성한 블로그입니다. 해당 문서는 앞서 포스팅된 &amp;ldquo;MySQL Cloud를 시작하고 샘플 스키마 생성하기&amp;rdquo;라는 블로그에 이어서 MySQL Cloud Service에서 생성된 인스턴스에 대하여 어떻게 백업을 하고 복구를 하는지에 대하여 보여주고 있습니다.
+선행 작업 본 문서는 다음과 같은 절차가 완료되었다는 것을 전제로 합니다.
+ 오라클 클라우드 계 ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/database/" rel="tag">database</a></li>
+						<a class="label" href="/tags/data-management/" rel="tag">data management</a></li>
+						<a class="label" href="/tags/mysql/" rel="tag">MySQL</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/cloud/oracle_cncf/">
+					<img src="https://cdn.app.compendium.com/uploads/user/e7c690e8-6ff9-102a-ac6d-e4aebca50425/a3e7d69b-5a30-44b2-af3c-3f7ef2882cd6/File/42216d4b32031c796d6e64ea0010942e/3336189.jpg" alt="[번역]오라클의 CNCF(Cloud Native Computing Foundation) 가입 의미" />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/cloud/oracle_cncf/" rel="bookmark">[번역]오라클의 CNCF(Cloud Native Computing Foundation) 가입 의미</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2017-09-25 21:28:14 &#43;0900 KST">September 25, 2017</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  blog.oracle.com의 &amp;ldquo;Modern Developer&amp;rdquo; 부문에 올라온 포스트를 번역한 문서입니다. 최근에 오라클은 리눅스 재단의 하부 기구인 CNCF(Cloud Native Computing Foundation)에 프리미엄 멤버로 가입했습니다. 이 기구에 오라클이 가입한 목적은 Kubernetes를 오라클 클라우드에서 지원하기 위함입니다. &amp;ldquo;What Does Oracle’s Embrace of CNCF  ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/docker/" rel="tag">docker</a></li>
+						<a class="label" href="/tags/cncf/" rel="tag">cncf</a></li>
+						<a class="label" href="/tags/kubernetes/" rel="tag">kubernetes</a></li>
+						<a class="label" href="/tags/%EB%8D%94%EC%BB%A4/" rel="tag">더커</a></li>
+						<a class="label" href="/tags/orchestration/" rel="tag">orchestration</a></li>
+						<a class="label" href="/tags/oracle/" rel="tag">oracle</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/cloud/stroage_cs_url/">
+					<img src="https://oracloud-kr-teamrepo.github.io/2017/04/object_storage_init/list.jpg" alt="Oracle PaaS의 Storage CS 컨테이너 설정 형식 변경" />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/cloud/stroage_cs_url/" rel="bookmark">Oracle PaaS의 Storage CS 컨테이너 설정 형식 변경</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2017-09-24 21:28:14 &#43;0900 KST">September 24, 2017</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  오라클 클라우드에서 Oracle BDCS1, Oracle MySQL CS2 그리고 Oracle BDCSCE3와 같은 PaaS 서비스는 인스턴스 생성 과정에 Oracle Storage CS의 컨테이너를 등록 하는 항목을 포함합니다. 오라클 클라우드 PaaS는 백업 및 데이터 저장 용도로 Oracle Storage CS를 사용합니다. 지난 8월에 오라클 클라우드의 트라이얼 계정이 Credit 체제로 변경되는 과정에서 Storage CS 컨테이너 등 ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/storage-cs/" rel="tag">Storage CS</a></li>
+						<a class="label" href="/tags/oracl-bdcsce/" rel="tag">Oracl BDCSCE</a></li>
+						<a class="label" href="/tags/dbcs/" rel="tag">DBCS</a></li>
+						<a class="label" href="/tags/mysql-cs/" rel="tag">MySQL CS</a></li>
+						<a class="label" href="/tags/%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88/" rel="tag">스토리지 컨테이너</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/cloud/oracle_code_iac_youtube/">
+					<img src="https://oracloud-kr-teamrepo.github.io/2017/08/oraclecode_ktw/list.jpg" alt="2017 Oracle Code in Seoul: IaC 발표 동영상" />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/cloud/oracle_code_iac_youtube/" rel="bookmark">2017 Oracle Code in Seoul: IaC 발표 동영상</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2017-09-10 08:54:32 &#43;0900 KST">September 10, 2017</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  2017 Oracle Code in Seoul에서 발표한 &amp;ldquo;Vagrant, Terraform, Ansible을 활용한 클라우드 인프라 관리법&amp;ldquo;의 발표 동영상이 올라 왔습니다. 발표 동영상, 발표 자료 및 데모 문서를 정리합니다. 이 세미나는 2017년 8월 30일 14시 30분에 여의도 콘래드 3층 그랜드 볼륨에서 진행되었습니다. 클라우드 서비스에 Infrastructure as Code(IaC) 개념을 적용하여, 클라우드 ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/terraform/" rel="tag">Terraform</a></li>
+						<a class="label" href="/tags/vagrant/" rel="tag">Vagrant</a></li>
+						<a class="label" href="/tags/ansible/" rel="tag">Ansible</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/cloud/oracle_code_provisioning/">
+					<img src="https://oracloud-kr-teamrepo.github.io/2017/08/oraclecode_ktw/list.jpg" alt="2017 Oracle Code In Seoul: How to control cloud resources 데모" />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/cloud/oracle_code_provisioning/" rel="bookmark">2017 Oracle Code In Seoul: How to control cloud resources 데모</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2017-08-31 08:54:32 &#43;0900 KST">August 31, 2017</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  2017 Oracle Code in Seoul에서 발표한 &amp;ldquo;Vagrant, Terraform, Ansible을 활용한 클라우드 인프라 관리법&amp;ldquo;의 발표 자료와 진행한 데모를 소개하는 문서입니다. 클라우드 자원을 체계적으로 관리하고, 완전한 자원 통제권을 확보하는 방법을 소개하는 세션입니다. 이 세션은 2017년 8월 30일 14시 30분에 여의도 콘래드 3층 그랜드 볼륨에서 진행됩니다. 클라우드 서비스에 Infrastruct ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/terraform/" rel="tag">Terraform</a></li>
+						<a class="label" href="/tags/vagrant/" rel="tag">Vagrant</a></li>
+						<a class="label" href="/tags/ansible/" rel="tag">Ansible</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/cloud/oracle_cloud_reg/">
+					<img src="https://taewanmerepo.github.io/oracloudreg/img000.jpg" alt="오라클 클라우드 트라이얼 신청: $300 Credit" />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/cloud/oracle_cloud_reg/" rel="bookmark">오라클 클라우드 트라이얼 신청: $300 Credit</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2017-08-26 08:54:32 &#43;0900 KST">August 26, 2017</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  Oracle은 무료로 오라클 클라우드를 체험할 수 있는 오라클 클라우드 트라이얼 프로그램을 운영하고 있습니다. 2017년 8월 1일부터 트라이얼을 신청하면 &amp;ldquo;$300 Credit&amp;ldquo;을 제공합니다. $300 Credit이란 오라클 클라우드 사용 권한으로, 오라클 클라우드를 $300 Credit로 자유롭게 사용할 수 있습니다. 오라클 클라우드 서비스를 사용하면 지급한 Credit은 분 단위로 차감됩니다. 차감되는 비용은 서비스별 ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/oracle/" rel="tag">oracle</a></li>
+						<a class="label" href="/tags/cloud/" rel="tag">cloud</a></li>
+						<a class="label" href="/tags/oracle-cloud/" rel="tag">oracle cloud</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/cloud/oracloud_patch/">
+					<img src="https://oracloud-kr-teamrepo.github.io/2017/08/patch/patch00.jpg" alt="Oracle Cloud의 PaaS 서비스 패치: Orace BDCSCE" />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/cloud/oracloud_patch/" rel="bookmark">Oracle Cloud의 PaaS 서비스 패치: Orace BDCSCE</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2017-08-20 23:20:25 &#43;0900 KST">August 20, 2017</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  Oracle Cloud는 지속적으로 새로운 기능을 클라우드 서비스에 추가하고 있습니다. 기능 개선을 위해서는 소프트웨어 변경이 필요합니다. 이미 클라우드 서비스 인스턴스를 생성하고 사용 중인 고객을 위해서 오라클은 패치를 만들고 적용하는 프로세스를 제공합니다. 클라우드 사용자는 현재 사용 중인 서비스에 패치를 적용 여부와 시점을 직접 결정할 수 있습니다. 본 문서에서는 &amp;ldquo;Oracle Big Data Cloud Service - Com ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/patch/" rel="tag">patch</a></li>
+						<a class="label" href="/tags/oracle-bdcsce/" rel="tag">Oracle BDCSCE</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/cloud/kafka_paas_eventhub_cs/">
+					<img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/logoinlist.jpg" alt="Apache Kafka PaaS: Oracle Event Hub CS 소개.." />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/cloud/kafka_paas_eventhub_cs/" rel="bookmark">Apache Kafka PaaS: Oracle Event Hub CS 소개..</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2017-08-14 23:20:25 &#43;0900 KST">August 14, 2017</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  Oracle Cloud는 Apache Kafka(이하 Kafka)를 클라우드 관리 서비스(PaaS) 형태로 제공하고 있습니다. Oracle Cloud가 2017년 1월에 출시한 &amp;ldquo;Oracle Event Hub Cloud Service&amp;rdquo;(이하 Oracle Event Hub CS)가 바로 Kafka 관리 서비스입니다. Oracle Event Hub CS는 오라클이 기술지원하고 관리하는 클라우드 서비스로 Kafka 클러스터의 효 ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/event-hub/" rel="tag">Event Hub</a></li>
+						<a class="label" href="/tags/kafka/" rel="tag">Kafka</a></li>
+						<a class="label" href="/tags/big-data/" rel="tag">Big Data</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/cloud/identity_domain/">
+					<img src="https://oracloud-kr-teamrepo.github.io/2017/08/identity_domain/logoinlist.jpg" alt="Identity Domain" />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/cloud/identity_domain/" rel="bookmark">Identity Domain</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2017-08-11 22:20:25 &#43;0900 KST">August 11, 2017</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  Oracle Cloud 계정 생성, Oracle Cloud 로그인, 클라우드 서비스 활성화 과정에는 &amp;ldquo;Identity Domain&amp;ldquo;을 직접 설정하거나, Identity Domain을 포함하는 정보를 입력해야만 합니다. Identity Domain은 기존에 일반적인 IT 용어로 생각하기 쉽지만, 오라클 클라우드의 고유명사입니다. Oracle Cloud에서 Identity Domain의 정의가 무엇이고, 어떤 의미가 있는지 알 ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/identity-domain/" rel="tag">Identity Domain</a></li>
+						<a class="label" href="/tags/oracle-cloud/" rel="tag">Oracle Cloud</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/cloud/installing_pms/">
+					<img src="https://oracloud-kr-teamrepo.github.io/2017/08/psm/psm.jpg" alt="Oracle PaaS Service Manager 소개 및 설치" />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/cloud/installing_pms/" rel="bookmark">Oracle PaaS Service Manager 소개 및 설치</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2017-08-06 22:20:25 &#43;0900 KST">August 06, 2017</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  Oracle PaaS Service Manager(이하 PSM)는 오라클 클라우드의 PaaS 서비스 관리에 사용되는 CLI(Command Line Interface)입니다. Oracle 클라우드는 PaaS 서비스를 관리하는 REST API를 제공합니다. 이 REST API를 이용하여 PaaS 서비스를 인스턴스 생성, 중지 그리고 삭제를 할 수 있습니다. Oracle PSM은 PaaS REST API에 대한 CLI 유형의 클라이언트 구현체입니다. ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/paas/" rel="tag">paas</a></li>
+						<a class="label" href="/tags/psm/" rel="tag">PSM</a></li>
+						<a class="label" href="/tags/oracle/" rel="tag">oracle</a></li>
+						<a class="label" href="/tags/cli/" rel="tag">CLI</a></li>
+						<a class="label" href="/tags/%EC%98%A4%EB%9D%BC%ED%81%B4/" rel="tag">오라클</a></li>
+						<a class="label" href="/tags/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/" rel="tag">클라우드</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/cloud/container_infographics/">
+					<img src="https://oracloud-kr-teamrepo.github.io/2017/08/container_infographics/maxresdefault.jpg" alt="Oracle Container Cloud Service의 Infographics입니다." />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/cloud/container_infographics/" rel="bookmark">Oracle Container Cloud Service의 Infographics입니다.</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2017-08-01 01:20:12 &#43;0900 KST">August 01, 2017</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+										Oracle Container Cloud Service에 대한 개요와 특징이 잘 정리된 Infographics입니다.
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/container/" rel="tag">container</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/cloud/stpe_by_step_new_cluster_bdcsce/">
+					<img src="https://oracloud-kr-teamrepo.github.io/2017/07/bdcsce_provisioning/bdcsceInList.jpg" alt="Oracle BDCSCE: 클러스터 생성 " />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/cloud/stpe_by_step_new_cluster_bdcsce/" rel="bookmark">Oracle BDCSCE: 클러스터 생성 </a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2017-07-31 11:59:47 &#43;0900 KST">July 31, 2017</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  Oracle Big Data Cloud Service Compute-Edition(이하 Oracle BDCSCE)은 PaaS 형태로 제공되는 Oracle Pubic Cloud의 빅데이터 서비스입니다. 본 문서에서는 Oracle BDCSCE 서비스를 이용하여 하둡 클러스터를 생성하는 절차를 소개합니다.
+본 문서는 오라클 클라우드 트라이얼 계정을 사용하여 진행하겠습니다. Oracle BDCSCE 서비스를 이용하여 하둡 클러스터를 생성하기 위해서는  ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/big-data/" rel="tag">big data</a></li>
+						<a class="label" href="/tags/hadoop/" rel="tag">hadoop</a></li>
+						<a class="label" href="/tags/spark/" rel="tag">spark</a></li>
+						<a class="label" href="/tags/bdcsce/" rel="tag">bdcsce</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/cloud/bdcsce01/">
+					<img src="https://oracloud-kr-teamrepo.github.io/2017/07/bdcsce_provisioning/oracloud-big-logo.png" alt="Oracle Big Data Cloud Service Compute-Edition" />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/cloud/bdcsce01/" rel="bookmark">Oracle Big Data Cloud Service Compute-Edition</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2017-07-27 11:59:47 &#43;0900 KST">July 27, 2017</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  빅데이터 기술을 사용하면서 가장 어려운 부분은 오픈소스로 구성된 빅데이터 에코 기술을 설치하고 관리하는 부분입니다. 빅데이터 에코 기술들은 여러 오픈소스 프로젝트로 구성되어 있고, 각 오픈소스 프로젝트는 특정 오픈소스 프로젝트의 버전에 의존성을 갖고 있습니다. 또한, 각 오픈소스는 개별적인 업그레이드 주기를 갖습니다. 여러 오픈소스 프로젝트가 상호 버전 의존성을 갖고 있고, 개별적인 업그레이드 주기를 갖는 기술들로 빅데이터 환경을 구성하고 관리 ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/big-data/" rel="tag">big data</a></li>
+						<a class="label" href="/tags/hadoop/" rel="tag">hadoop</a></li>
+						<a class="label" href="/tags/spark/" rel="tag">spark</a></li>
+						<a class="label" href="/tags/bdcsce/" rel="tag">bdcsce</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/cloud/mysql_cs/">
+					<img src="https://oracloud-kr-teamrepo.github.io/2017/04/mysqlcs_01/mysqlcs.jpg" alt="Oracle MySQL Cloud Service" />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/cloud/mysql_cs/" rel="bookmark">Oracle MySQL Cloud Service</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2017-05-10 15:48:24 &#43;0900 KST">May 10, 2017</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  Oracle MySQL Cloud Service 개요 오라클이 오픈소스 형태로 개발하고 있는 MySQL은 전 세계에서 가장 많이 사용되는 오픈소스 데이터베이스 입니다. 오라클 클라우드는 Oracle MySQL Cloud Service(이하 MySQL CS)를 2016년 11월에 출시하였습니다. 2017년 5월 현재 오라클 클라우드는 관계형 데이터베이스 서비스1로 Oracle Database CS와 MySQL CS를 제공합니다.
+MySQL CS는 ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/mysql/" rel="tag">Mysql</a></li>
+						<a class="label" href="/tags/paas/" rel="tag">PaaS</a></li>
+						<a class="label" href="/tags/database/" rel="tag">Database</a></li>
+						<a class="label" href="/tags/oracle-cloud/" rel="tag">Oracle Cloud</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/cloud/compute_security/">
+					<img src="https://oracloud-kr-teamrepo.github.io/2017/05/cloud_security/list_logo.jpg" alt="오라클 클라우드 Compute CS 보안 적용" />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/cloud/compute_security/" rel="bookmark">오라클 클라우드 Compute CS 보안 적용</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2017-05-04 13:23:35 &#43;0900 KST">May 04, 2017</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  Oracle Compute CS에서 인스턴스(가상머신)를 만들면, 해당 가상머신에 대한 네트워크 접근은 완전히 막혀 있는 상태입니다. 외부와 어떤 네트워크 연결도 불가능한 상태로 만들어집니다. 새로 만든 가상머신에 네트워크로 접근하기 위해서는, 오라클 클라우드가 제공하는 보안 설정을 적용해야 합니다.
+오라클 클라우드는 가상머신 별로 섬세한 보안 설정을 구성하는 방법을 제공합니다. 본 문서에서는 오라클 클라우드의 보안 구성 요소를 파악하고, 각  ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/security/" rel="tag">security</a></li>
+						<a class="label" href="/tags/oracle-compute-cs/" rel="tag">oracle compute cs</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+				</div>
+			</div>
+		</article>
+
+		
+<div class="pagination clearfix">
+	<a class="pagination__item pagination__item--prev" href="/cloud/">«</a>
+	<span class="pagination__item pagination__item--current">2/3</span>
+	<a class="pagination__item pagination__item--next" href="/cloud/page/3/">»</a>
+</div>
+
+
+	</div>
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/cloud/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

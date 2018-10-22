@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Oraprds on taewan.kim 블로그</title>
+    <link>http://taewan.kim/oraprd/</link>
+    <description>Recent content in Oraprds on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 25 Jun 2018 21:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/oraprd/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>BDA X7-2 관련 정보</title>
+      <link>http://taewan.kim/oraprd/bda-x7-2/</link>
+      <pubDate>Mon, 25 Jun 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oraprd/bda-x7-2/</guid>
+      <description> 공식 문서  BDA x7-2 Datasheet  http://www.oracle.com/technetwork/database/bigdata-appliance/overview/bigdataappliance-datasheet-1883358.pdf   CPU 관련  스펙: 2 x 24-Core (2.1GHz) Intel ® Xeon ® 8160  memory 증설 관련  BDA x7-2 노드당 기본 메모리는 256GB  8 x 32GB DDR4-2666 MHz 최대: 1.5TB 확장 가능 노드 당 memory slot: 24개 솔롯 최대 확장 구성: 24 X 64GB DDR4   </description>
+    </item>
+    
+  </channel>
+</rss>

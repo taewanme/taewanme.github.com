@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Virtualbox on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/virtualbox/</link>
+    <description>Recent content in Virtualbox on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 28 Mar 2016 17:04:26 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/virtualbox/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>오라클 Big Data Lite 설치</title>
+      <link>http://taewan.kim/post/installing_bigdatalite/</link>
+      <pubDate>Mon, 28 Mar 2016 17:04:26 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/installing_bigdatalite/</guid>
+      <description>오라클에서는 빅데이터 플랫폼의 테스트와 학습을 효과적으로 지원하는 것을 목표로 Oracle Big Data Lite를 제공합니다. Oracle Big Data Lite는 Cloudera의 최신 CDH와 오라클 연계 솔루션을 하나의 VitrualBox 이미지에 담고 있습니다. 오라클 Big Data Lite는 빅데이터 소프트웨어에 대한 모든 설치와 구성이 완성된 상태로 배포되기 때문에, 하둡이 익숙하지 않은 엔지니어가 Hadoop Eco를 학습하기에 가장 이상적인 시작점입니다.
+오라클 Big Data Lite의 메인 페이지의 URL은 다음과 같습니다.
+ http://www.oracle.com/technetwork/database/bigdata-appliance/oracle-bigdatalite-2104726.html  오라클 Big Data Lite 버전과 구성 컴포넌트 2016년 2월 현재 오라클 Big Data Lite의 최신 버전은 4.</description>
+    </item>
+    
+    <item>
+      <title>내 친구 Vagrant를 소개합니다.</title>
+      <link>http://taewan.kim/post/vagrant_intro/</link>
+      <pubDate>Sat, 06 Feb 2016 20:47:54 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/vagrant_intro/</guid>
+      <description>Vagrant는 가상화 인스턴스를 관리하는 소프트웨입니다. Vagrant의 실체는 가상 개발 환경을 생성하고 설정하기 위한 주요 가상화 소프트웨어의 고수준 레퍼입니다. Vagrant가 지원하는 가상화 기술은 다음과 같습니다.
+ VirtualBox VMware KVM Linux Container(LXC) Docker  Vagrant는 위에서 나열한 프로바이더 기술을 기반으로하여 가상화 인스턴스를 효과적으로 생성하고 관리 일관성을 확보하는 방안을 제공합니다. Vagrant의 가장 매력적인 부분은 가상 인스턴스를 만들고 실행하는 과정이 매우 빠르고 편리하다는 것입니다.
+Vagrant의 사전적인 의미는 &amp;ldquo;부랑자&amp;rdquo;/&amp;ldquo;정처없는 사람&amp;rdquo; 이라는 사전적인 의미를 갖습니다. Vagrant는 가상화 이미지를 효과적으로 만들고 테스트하는 유연한 환경이라는 의미에서 명명된 것이라고 생각됩니다.</description>
+    </item>
+    
+    <item>
+      <title>VirtualBox: 호스트에서 게스트 접근 네트웍 설정</title>
+      <link>http://taewan.kim/post/virtualbox_network_config/</link>
+      <pubDate>Sun, 31 Jan 2016 12:42:43 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/virtualbox_network_config/</guid>
+      <description>최근에는 VirtualBox 이미지로 테스트 환경을 구성하거나 배포하는 경우가 많아졌습니다. 특히 오라클에서는 초기 테스트 및 교육 목적으로 다수의 VirtualBox 이미지를 배포하고 있습니다. 이렇게 만들어진 이미지를 사용할 경우 사용자는 새로운 기술을 접할 때 경험해야 하는 설치 및 구성에 대한 난제를 해결 할 수 있습니다. 즉 사용자는 새로운 기술의 기능 테스트 및 활용에 집중할 수 있게됩니다.
+오라클이 제공하는 VirtualBox 이미지는 Oracle Big Data Lite입니다. Oracle Big Data Lite는 오라클의 빅데이터 소프트웨어 (CHD배포본 + Orale Software)의 최신 구성을 하나의 VirtualBox 이미지에 담아서 제공합니다.</description>
+    </item>
+    
+  </channel>
+</rss>

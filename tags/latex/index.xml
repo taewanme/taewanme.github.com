@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Latex on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/latex/</link>
+    <description>Recent content in Latex on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 18 Aug 2018 16:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/latex/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mathjax의 시그마 중첩 렌더링 오류</title>
+      <link>http://taewan.kim/post/mathjax_latex_error/</link>
+      <pubDate>Sat, 18 Aug 2018 16:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/mathjax_latex_error/</guid>
+      <description>Mathjax는 웹 상에서 LaTex를 표현하는 지원하는 자바스크립트 라이브러리 입니다. 일반적으로 웹 페이지에서 LaTex를 표현하는 용도로 많이 사용되는 자바스크립트 라이브러리를 입니다.
+Mathjax 문제점 Mathjax은 거의 모든 LaTex 테그를 잘 표현하지만, \sum 테그를 중첩해서 사용하면 출력을 하지 못하는 문제가 있습니다.
+한 개의 \sum 테그는 문제 없이 렌더링을 잘 수행합니다. 다음 코드는 아래와 같이 렌더링 됩니다.
+$$ \bar x =\underset{x}\arg \min \sum_{i=1}^{n} \left(x -x_i \right) $$   $$ \bar x = \underset{x}\arg \min \sum_{i=1}^{n} \left( x - x_i \right) $$</description>
+    </item>
+    
+  </channel>
+</rss>

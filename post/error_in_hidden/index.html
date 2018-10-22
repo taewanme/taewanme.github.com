@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>Hidden Layer의 오차 계산</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="Hidden Layer의 오차 계산" />
+<meta property="og:description" content="Feed Forward Neural Network에서 은닉층의 Error를 계산하는 방법을 소개합니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/post/error_in_hidden/" />
+
+
+
+<meta property="article:published_time" content="2017-12-08T21:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2017-12-08T21:28:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="http://taewan.kim/css/jupyter.css" type="text/css" media="all" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		
+		
+		<header class="post__header clearfix">
+			<h1 class="post__title">Hidden Layer의 오차 계산 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2017-12-08 21:28:14 &#43;0900 KST">December 08, 2017</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/machine-learning" rel="category">Machine Learning</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+			
+
+<p>Neural Network에서는 Forward Propagation 결과로 계산된 Output Layer 출력과 해당 입력 데이터 레이블의 차이를 계산하여 오차(손실, Error/Loss)를 계산합니다. 그리고 이 오차 최소화를 목표로 Hidden Layer들의 Weight(가중치)와 Bias(편향)를 업데이트합니다. 이렇게 딥러닝에서는 Neural Network에 데이터를 지속해서 흘려보내고, 오차를 계산한 후 Weight와 Bias를 수정하는 작업을 반복합니다.</p>
+
+<p>Output Layer 출력과 레이블의 차이를 계산하고 은닉층의 Weight와 Bias를 업데이트하는 일련의 과정을 &ldquo;<strong>역전파</strong>&rdquo; 혹은 &ldquo;<strong>Backpropagation</strong>&ldquo;이라고 합니다. &ldquo;<strong>Backpropagation</strong>&ldquo;에서는 출력층의 오차로부터 은닉층의 노드별 오차를 계산하는 것이 핵심입니다. 은닉층의 노드별 오차를 알아야 은닉층의 Weight와 Bias를 수정할 수 있습니다.</p>
+
+<p>본 문서에서는 한 개의 은닉층과 1개의 출력층으로 구성된 2 Layer 신경망에서 Forward Propagation을 적용하는 방법과 출력층의 오차로부터 은닉층의 오차를 계산하는 방법을 살펴보고, 그 계산법을 일반화하겠습니다.</p>
+
+<h2 id="시작하기-전에">시작하기 전에</h2>
+
+<p>본 문서는 <a href="http://taewan.kim/post/nn_notation/">Neural Network 표기법</a>의 표기법을 따르고 있습니다. 본문에서 사용하는 용어는 다음과 같습니다.</p>
+
+<ul>
+<li>Weight: 가중치
+
+<ul>
+<li>각 레이어에 포함된 가중치 행렬</li>
+<li>$W^{[l]}$로 표현</li>
+</ul></li>
+<li>Bias: 편향
+
+<ul>
+<li>각 레이어에 포함된 편향 행렬</li>
+</ul></li>
+<li>Z: 각 레이어의 Input Sum 행렬
+
+<ul>
+<li>$Z^{[l]}$로 표현</li>
+<li>Z 행렬은 컬럼 벡터로 구성</li>
+<li>Z의 요소는  $z^{[l]}_i$로 표현, i는 행 인덱스</li>
+</ul></li>
+<li>A: 각 레이어의 출력 행렬
+
+<ul>
+<li>$A^{[l]}$로 표현</li>
+<li>A 행렬은 컬럼 벡터로 구성</li>
+<li>A의 요소는  $a^{[l]}_i$로 표현, i는 행 인덱스</li>
+</ul></li>
+<li>Output Layer: 출력층
+
+<ul>
+<li>네트워크의 마지막 레이어</li>
+</ul></li>
+<li>Input Layer: 입력층
+
+<ul>
+<li>네트워크에서 입력데이터가 유입되는 층</li>
+<li>$A^{[0]}$로 표현</li>
+</ul></li>
+</ul>
+
+<h2 id="예제-신경망">예제 신경망</h2>
+
+<p>&lt;그림 1&gt;은 예제로 사용할 신경망입니다. 2 Layer Neural Network입니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2017/12/computingerror/nn01.jpg" alt="Neural Network 예제: L=2, 2 Layer Neural Network" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 1</strong>:
+        
+        Neural Network 예제: L=2, 2 Layer Neural Network
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<ul>
+<li>입력층</li>
+</ul>
+
+<p>$$
+Input Feature = A^{[0]} =
+  \begin{bmatrix}
+    x_1 \\<br />
+    x_2
+  \end{bmatrix}
+$$</p>
+
+<ul>
+<li>은닉층, Layer 1</li>
+</ul>
+
+<p>$$
+W^{[1]} =
+  \begin{bmatrix}
+    w^{[1]}11 &amp; w^{[1]}12   \\<br />
+    w^{[1]}21 &amp; w^{[1]}22    \\<br />
+  \end{bmatrix},
+Z^{[1]} =
+  \begin{bmatrix}
+    z_1 \\<br />
+    z_2
+  \end{bmatrix},
+A^{[1]} =
+  \begin{bmatrix}
+    a_1 \\<br />
+    a_2
+  \end{bmatrix}<br />
+$$</p>
+
+<ul>
+<li>은닉층, &ldquo;<strong>Layer 2</strong>&ldquo;</li>
+</ul>
+
+<p>$$
+W^{[2]} =
+  \begin{bmatrix}
+    w^{[2]}11 &amp; w^{[2]}12   \\<br />
+    w^{[2]}21 &amp; w^{[2]}22    \\<br />
+  \end{bmatrix},
+Z^{[2]} =
+  \begin{bmatrix}
+    z_1 \\<br />
+    z_2
+  \end{bmatrix},
+A^{[2]} =
+  \begin{bmatrix}
+    a_1 \\<br />
+    a_2
+  \end{bmatrix},<br />
+E^{[2]} =
+  \begin{bmatrix}
+    e_1 \\<br />
+    e_2
+  \end{bmatrix}<br />
+$$</p>
+
+<h2 id="forward-propagation">Forward Propagation</h2>
+
+<p>&ldquo;<strong>Layer 1</strong>&ldquo;과 &ldquo;<strong>Layer 2</strong>&ldquo;에서 Forward Propagation이 적용되는 절차를 소개합니다.</p>
+
+<h3 id="layer-1-의-forward-propagation">&ldquo;<strong>Layer 1</strong>&ldquo;의 Forward Propagation</h3>
+
+<p>&lt;그림 2&gt;는 &ldquo;<strong>Layer 1</strong>&ldquo;에서 Forward Propagation을 설명합니다. &ldquo;<strong>Layer 1</strong>&ldquo;에서 Forward Propagation은
+Input Sum과 활성화 함수 적용으로 구성됩니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2017/12/computingerror/nn02.jpg" alt="Input Feature를 이용한 Forward Propagation" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 2</strong>:
+        
+        Input Feature를 이용한 Forward Propagation
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>&ldquo;<strong>Layer 1</strong>&ldquo;에서는 다음과 같은 수식이 수행됩니다.</p>
+
+<blockquote>
+<ul>
+<li>Input Sum
+$$
+Z^{[1]} = W^{[1]}A^{[0]}=
+\begin{bmatrix}
+w^{[1]}11 &amp; w^{[1]}12   \\<br />
+w^{[1]}21 &amp; w^{[1]}22<br />
+\end{bmatrix}
+\begin{bmatrix}
+x_1   \\<br />
+x_2<br />
+\end{bmatrix}=
+\begin{bmatrix}
+w^{[1]}11*x_1 + w^{[1]}12*x_2   \\<br />
+w^{[1]}21*x_1 + w^{[1]}22*x_2<br />
+\end{bmatrix}<br />
+$$</li>
+<li>Activation Function의 출력
+$$
+A^{[1]} = g(Z^{[1]})=
+\begin{bmatrix}
+a^{[1]}_1  \\<br />
+a^{[1]}_2<br />
+\end{bmatrix}<br />
+$$</li>
+</ul>
+</blockquote>
+
+<h3 id="layer-2-의-forward-propagation">&ldquo;<strong>Layer 2</strong>&ldquo;의 Forward Propagation</h3>
+
+<p>&lt;그림 3&gt;은 &ldquo;<strong>Layer 2</strong>&ldquo;의 Forward Propagation을 설명합니다.
+&ldquo;<strong>Layer 2</strong>&ldquo;에서 Forward Propagation은 Input Sum과 활성화 함수 적용, 출력에 대한 오차 계산을 수행합니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2017/12/computingerror/nn03.jpg" alt="Layer 2에서 Forward Propagation" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 3</strong>:
+        
+        Layer 2에서 Forward Propagation
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>&ldquo;<strong>Layer 2</strong>&ldquo;에서 Input sum과 활성화 함수 적용 시 다음과 같은 수식이 적용됩니다.</p>
+
+<blockquote>
+<ul>
+<li>Input Sum
+$$
+Z^{[2]} = W^{[1]}A^{[1]}=
+\begin{bmatrix}
+w^{[2]}11 &amp; w^{[2]}12   \\<br />
+w^{[2]}21 &amp; w^{[2]}22<br />
+\end{bmatrix}
+\begin{bmatrix}
+a^{[1]}_1   \\<br />
+a^{[1]}_2<br />
+\end{bmatrix}=
+\begin{bmatrix}
+w^{[2]}11*a^{[1]}_1 + w^{[2]}12*a^{[1]}_2   \\<br />
+w^{[2]}21*a^{[1]}_1 + w^{[2]}22*a^{[1]}_2<br />
+\end{bmatrix}<br />
+$$</li>
+<li>Activation Function
+$$
+A^{[2]} = g(Z^{[2]})=
+\begin{bmatrix}
+a^{[2]}_1  \\<br />
+a^{[2]}_2<br />
+\end{bmatrix}<br />
+$$</li>
+</ul>
+</blockquote>
+
+<p>출력층인 &ldquo;<strong>Layer 2</strong>&rdquo; 출력으로부터 오차는 &lt;그림 4&gt;와 같이 계산됩니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2017/12/computingerror/nn04.jpg" alt="Layer 2(출력층)의 출력을 이용한 오차 계산" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 4</strong>:
+        
+        Layer 2(출력층)의 출력을 이용한 오차 계산
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>&ldquo;<strong>Y</strong>&ldquo;는 Input Feature의 실제 값인 레이블 행렬입니다.</p>
+
+<blockquote>
+<ul>
+<li>출력층의 오차 계산
+$$
+E^{[2]} = (Y - A^{[2]})^2 =
+(
+\begin{bmatrix}
+y_1  \\<br />
+y_2<br />
+\end{bmatrix} -
+\begin{bmatrix}
+a^{[2]}_1  \\<br />
+a^{[2]}_2<br />
+\end{bmatrix}<br />
+)^2 =
+\begin{bmatrix}
+e^{[2]}_1  \\<br />
+e^{[2]}_2<br />
+\end{bmatrix}<br />
+$$</li>
+</ul>
+</blockquote>
+
+<h3 id="오차에-영향을-주는-인자">오차에 영향을 주는 인자</h3>
+
+<p>지금까지 Neural Network를 Forward Propagation을 진행하고 출력층의 결과로부터 오차를 계산하였습니다.
+이 오차를 이용하면 출력층의 $\frac{dc}{dW^{[2]}}$와 $\frac{dc}{db^{[2]}}$를 계산하고 $W^{[2]}$와 $b^{[2]}$를 업데이트할 수 있습니다.<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup></p>
+
+<p>우선 $E^2$의 첫 번째 노드의 오차 $e^{[2]}_1$에 영향을 미치는 요소는 무엇일까요?
+&lt;그림 5&gt;는 $e^{[2]}_1$에 영향을 미치는 요소를 설명합니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2017/12/computingerror/nn05.jpg" alt="출력층의 첫 번째 노드의 오차에 영향을 미치는 요소" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 5</strong>:
+        
+        출력층의 첫 번째 노드의 오차에 영향을 미치는 요소
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>$e^{[2]}_1$에 영향을 미치는 인지는 &ldquo;<strong>Layer 1</strong>&ldquo;의 출력 값인 $a^{[1]}_1$과 $a^{[1]}_2$이며, 이 두 출력의 Input Sum(Z)에 이용되는 $w^{[2]}11$와 $w^{[2]}12$입니다. 이 4개의 인자로 부터 Input Sum을 계산합니다. 마지막으로 Input Sum의 결과인 $Z^2$를 활성화 함수에 적용한 출력값으로부터 오차를 계산합니다. 따라서 오차에 영향을 미치는 핵심 인자는 2개의 출력과 2개의 Weight입니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2017/12/computingerror/nn06.jpg" alt="출력층의 두 번째 노드의 오차에 영향을 미치는 요소" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 6</strong>:
+        
+        출력층의 두 번째 노드의 오차에 영향을 미치는 요소
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>그렇다면 $e^{[2]}_2$에 영향을 미치는 요소를 무엇일까요? &lt;그림 6&gt;에서 확인할 수 있는 것처럼,
+$e^{[2]}_2$에 영향을 미치는 인지는 &ldquo;<strong>Layer 1</strong>&ldquo;의 출력 값인 $a^{[1]}_1$과 $a^{[1]}_2$, $w^{[2]}21$와 $w^{[2]}22$입니다.</p>
+
+<p>결과적으로 오차에 영향을 미치는 인자는 이전 레이어 출력 값과 해당 노드에 할당된 Weight 값입니다. Fully Connected Neural Network<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup>에서 앞 레이어의 출력은 다음 레이어의 모든 노드에 같이 사용됩니다. 노드별로 달라지는 인자는 노드 별로 지정된 Weight입니다. 결과적으로 오차에 영향을 미치는 핵심 인자는 해당 노드에 지정된 Weight 입니다. 노드에 지정된 Weight는 이전 레이어 노드 출력에 적용될 가중치입니다.</p>
+
+<h2 id="hidden-layer의-오차-계산">Hidden Layer의 오차 계산</h2>
+
+<p>출력층에서는 출력값과 출력 노드의 결과를 레이블로 갖고 있기 때문에 오차를 바로 계산할 수 있습니다.
+그러나 Hidden Layer에는 레이블이 없습니다. 그렇다면 Hidden Layer의 오차는 어떻게 계산할까요?</p>
+
+<p>다음과 같은 논리를 생각해 볼 수 있습니다.</p>
+
+<ul>
+<li>출력층에서 계산된 오차는 이전 레이어의 영향을 받은 결과이다.</li>
+<li>출력층의 오차는 이전 레이어 출력으로 부터 영향을 받고 있으며, 그 영향도를 현재 오차에 반영하여 이전 레이어에 오차를 분배할 수 있다.</li>
+<li>오차의 영향도 관점에서 출력층의 각 노드 오차 총합과 이전 레이어의 각 노드 오차 총합은 같다.</li>
+<li>출력층을 제외한 모든 은닉층은 다음 레이어의 오차와 가중치 비율로 부터 현재 레이어의 오차를 계산할 수 있다.</li>
+</ul>
+
+<p>결과적으로 출력층의 오차를 비율로 이전 레이어에 순차적으로 재분배할 수 있고, 이 방식을 통해서 전체 은닉층
+오차를 재 구성하여, 학습<sup class="footnote-ref" id="fnref:3"><a rel="footnote" href="#fn:3">3</a></sup>을 진행할 수 있습니다.
+Hidden Layer의 오차는 &lt;그림 7&gt;에서 설명하는 오차 재분배 방식으로 계산될 수 있습니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2017/12/computingerror/nn07.jpg" alt="Layer 2(출력층) 첫번째 노드 오차를 Layer 1에 분배" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 7</strong>:
+        
+        Layer 2(출력층) 첫번째 노드 오차를 Layer 1에 분배
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>출력층의 $e^{[2]}_1$은 &ldquo;<strong>Layer 1</strong>&ldquo;의 출력 값인 $a^{[1]}_1$과 $a^{[1]}_2$와 해당 노드의 Weight인 $w^{[2]}11$와 $w^{[2]}12$에 의해 영향을 받습니다. &ldquo;<strong>Layer 1</strong>&ldquo;의 출력 값은 모든 노드에 공통된 입력 값입니다.
+앞에서 설명한 것처럼 $e^{[2]}_1$에 영향을 미치는 핵심 인자는 지정된 Weight입니다.
+따라서 Weight의 비율로 출력층의 오차를 이전 레이어에 재분배할 수 있습니다.</p>
+
+<p>&lt;그림 7&gt;에서와 같이 $e^{[2]}_1$의 오차를 이전 레이어의 각 노드에 Weight의 비율로 재분배해보겠습니다.
+여기서 비율은 이전 레이어의 해당 노드에 할당된 Weight의 합을 분모 $e^{[2]}_1$에 할당된 Weight를 분자로 하는 Weight 비율입니다.</p>
+
+<p>$e^{[2]}_1$의 오차에서 $a^{[1]}_1$의 영향으로 만들어진 오차를 다음과 같이 계산할 수 있습니다.</p>
+
+<blockquote>
+<ul>
+<li>$e^{[2]}_1$의 오차에서 $a^{[1]}_1$에서 발생한 오차 계산
+$$
+\frac{w^{1}11}{w^{1}11 + w^{1}12} * e^{[2]}_1
+$$</li>
+</ul>
+</blockquote>
+
+<p>추가로 $e^{[2]}_1$의 오차에서 $a^{[1]}_2$의 영향으로 만들어진 오차를 다음과 같이 계산할 수 있습니다.</p>
+
+<blockquote>
+<ul>
+<li>e^{[2]}_1의 오차에서 $a^{[1]}_2$에서 발생한 오차 계산
+$$
+\frac{w^{1}21}{w^{1}21 + w^{1}22} * e^{[2]}_1
+$$</li>
+</ul>
+</blockquote>
+
+<p>예제에서 &ldquo;<strong>Layer 1</strong>&ldquo;은 2개의 노드로 구성되기 있기 때문에 $e^{[2]}_1$는 위에서 전개한 2개의 식으로 &ldquo;<strong>Layer 1</strong>&ldquo;의 두 노드에 분배됩니다.</p>
+
+<blockquote>
+<ul>
+<li>$e^{[2]}_1$에서 Layer 1에 배분된 오차의 합
+$$
+\begin{align}
+e^{[2]}_1 &amp; = \frac{w^{2}11}{w^{1}11 + w^{2}12} * e^{[2]}_1 + \frac{w^{2}21}{w^{2}21 + w^{2}22} * e^{[2]}_1 \\<br />
+&amp; = (\frac{w^{2}11}{w^{2}11 + w^{1}12} + \frac{w^{1}21}{w^{1}21 + w^{2}22} ) * e^{[2]}_1 \\<br />
+&amp; = \frac{w^{2}11 + w^{2}12}{w^{1}11 + w^{2}12} * e^{[2]}_1  \\<br />
+&amp; = e^{[2]}_1
+\end{align}
+$$</li>
+</ul>
+</blockquote>
+
+<p>위 식에서 $e^{[2]}_1$의 모든 오차는 비율에 따라서 이전 레이어에 재 분배되었으며,
+재 분배의 총 합은 $e^{[2]}_1$과 같음을 확인할 수 있습니다.</p>
+
+<h3 id="layer-1의-첫-번째-노드-오차">Layer 1의 첫 번째 노드 오차</h3>
+
+<p>이제 관점을 달리해서 출력층의 오차로부터 은닉층의 첫 번째 노드 오차를 계산해 보겠습니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2017/12/computingerror/nn08.jpg" alt="Lyaer 1의 첫번째 노드 오차 계산하기" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 8</strong>:
+        
+        Lyaer 1의 첫번째 노드 오차 계산하기
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<blockquote>
+<ul>
+<li>$e^{[1]}_1$의 오차 계산
+$$
+e^{[1]}_1 = \frac{w^{2}11}{w^{2}11 + w^{2}12} * e^{[2]}_1 + \frac{w^{2}21}{w^{2}21 + w^{2}22} * e^{[2]}_2
+$$</li>
+</ul>
+</blockquote>
+
+<h3 id="layer-1의-오차-계산-행렬식">Layer 1의 오차 계산 행렬식</h3>
+
+<p>앞에서 계산한 공식은 &lt;그림 8&gt;과 같이 행렬식으로 표현할 수 있습니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2017/12/computingerror/nn09.jpg" alt="Layer 1의 오차 계산 행렬식" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 9</strong>:
+        
+        Layer 1의 오차 계산 행렬식
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<blockquote>
+<p>$$
+E^{[1]}=\begin{bmatrix}
+  \frac{w^{[2]}11}{w^{[2]}11+w^{[2]}12} &amp; \frac{w^{[2]}21}{w^{[2]}21+w^{[2]}22}    \\<br />
+  \frac{w^{[2]}12}{w^{[2]}11+w^{[2]}12} &amp; \frac{w^{[2]}22}{w^{[2]}21+w^{[2]}22}<br />
+\end{bmatrix}
+\begin{bmatrix}
+  e^{[2]}_1    \\<br />
+  e^{[2]}_2
+\end{bmatrix}
+$$</p>
+</blockquote>
+
+<h2 id="오차-계산식-단순화">오차 계산식 단순화</h2>
+
+<p>위 계산식은 다음과 같이 단순화할 수 있습니다.</p>
+
+<blockquote>
+<p>$$
+\begin{align}
+E^{[1]} &amp; =\begin{bmatrix}
+  \frac{w^{[2]}11}{w^{[2]}11+w^{[2]}12} &amp; \frac{w^{[2]}21}{w^{[2]}21+w^{[2]}22}    \\<br />
+  \frac{w^{[2]}12}{w^{[2]}11+w^{[2]}12} &amp; \frac{w^{[2]}22}{w^{[2]}21+w^{[2]}22}<br />
+\end{bmatrix}
+\begin{bmatrix}
+  e^{[2]}_1    \\<br />
+  e^{[2]}_2
+\end{bmatrix} \\<br />
+&amp; \equiv
+\begin{bmatrix}
+  w^{[2]}11 &amp; w^{[2]}21    \\<br />
+  w^{[2]}12 &amp; w^{[2]}22<br />
+\end{bmatrix}
+\begin{bmatrix}
+  e^{[2]}_1    \\<br />
+  e^{[2]}_2
+\end{bmatrix}
+\end{align}
+$$</p>
+</blockquote>
+
+<p>기존에 출력 노드의 오차에 대한 이전 레이어에서 대상 노드의 비율을 계산하기 위해서 관련 Weight 요소들의 합으로 나눈 부분(정규화)을 간소화된 식에서는 제거했습니다. 물론 기존에 비율을 정규화하던 부분이 제외했기 때문에 오차의 정확한 배분은 이뤄지지 않지만, 전체 학습 관점에서 보면 정규화를 제거한 영향도가 미비합니다. 이 방식은 Neural Network가 정확한 수치 보다는 경향성을 유지하는 방향으로 반복적으로 수행되는 특성 때문에 가능한 접근법 입니다. 이러한 이유로 은닉층의 오차를 계산할 때 일반적으로 단순화된 식을 사용합니다.</p>
+
+<h3 id="결론-은닉층-오차는-w-t와-e의-행렬-곱">결론: 은닉층 오차는 W.T와 E의 행렬 곱</h3>
+
+<p>위에서 계산한 가중치 행렬은 &lt;그림 10&gt;과 같이 출력층의 W 전치행렬임을 알 수 있습니다.
+따라서 &lt;그림 10&gt;과 같이 은닉층의 오차 계산식을 출력층의 W 전치행렬로 표현할 수 있습니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2017/12/computingerror/nn11.jpg" alt="Layer 1의 오차 계산 결과" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 10</strong>:
+        
+        Layer 1의 오차 계산 결과
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<h2 id="은닉층-오차-계산식-일반화">은닉층 오차 계산식 일반화</h2>
+
+<p>지금까지 은닉층의 오차를 계산하는 과정을 살펴보았습니다. 은닉층의 오차를 계산하는 방법은 다음 레이어의 W 전치행렬과 E(오차) 행렬 곱으로 계산됩니다. 따라서 은닉층의 오차는 다음과 같이 일반화할 수 있습니다.</p>
+
+<p><font size="10">$$E^{[l]} \equiv W^{[l+1]T}E^{[l+1]}$$</font></p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">오차로부터 $W^{[2]}$와 $b^{[2]}$ 업데이트하는 것을 Backpropagation이라고 합니다. Backpropagation의 세부적인 절차는 별도의 문서로 다루겠습니다.<br />
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">Fully Connected Neural Network이란 앞 레이어의 모든 노드가 다음 레이어의 모든 노드에 연결되는 방식입니다.<br />
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:3">여기서 학습이란 오차로부터 Weight와 Bias의 미분을 구하고 Weight와 Bias를 업데이트하는 과정을 의미합니다.
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/deep-learning/" rel="tag">deep learning</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/neural-network/" rel="tag">Neural Network</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/error/" rel="tag">Error</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/backpropagation/" rel="tag">Backpropagation</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/deep-learning/" rel="tag">Deep Learning</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/nn_notation/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Neural Network 표기법(Feat: Andrew NG)</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/norm/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">딥러닝을 위한 Norm, 노름</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/post/error_in_hidden/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#시작하기-전에">시작하기 전에</a></li>
+<li><a href="#예제-신경망">예제 신경망</a></li>
+<li><a href="#forward-propagation">Forward Propagation</a>
+<ul>
+<li><a href="#layer-1-의-forward-propagation">&ldquo;<strong>Layer 1</strong>&ldquo;의 Forward Propagation</a></li>
+<li><a href="#layer-2-의-forward-propagation">&ldquo;<strong>Layer 2</strong>&ldquo;의 Forward Propagation</a></li>
+<li><a href="#오차에-영향을-주는-인자">오차에 영향을 주는 인자</a></li>
+</ul></li>
+<li><a href="#hidden-layer의-오차-계산">Hidden Layer의 오차 계산</a>
+<ul>
+<li><a href="#layer-1의-첫-번째-노드-오차">Layer 1의 첫 번째 노드 오차</a></li>
+<li><a href="#layer-1의-오차-계산-행렬식">Layer 1의 오차 계산 행렬식</a></li>
+</ul></li>
+<li><a href="#오차-계산식-단순화">오차 계산식 단순화</a>
+<ul>
+<li><a href="#결론-은닉층-오차는-w-t와-e의-행렬-곱">결론: 은닉층 오차는 W.T와 E의 행렬 곱</a></li>
+</ul></li>
+<li><a href="#은닉층-오차-계산식-일반화">은닉층 오차 계산식 일반화</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

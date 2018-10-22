@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>수학 on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/%EC%88%98%ED%95%99/</link>
+    <description>Recent content in 수학 on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 29 Sep 2018 09:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/%EC%88%98%ED%95%99/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</title>
+      <link>http://taewan.kim/book/understaning_ml_with_math/</link>
+      <pubDate>Sat, 29 Sep 2018 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/book/understaning_ml_with_math/</guid>
+      <description>&amp;lsquo;기초 수학으로 이해하는 머신러닝 알고리즘&amp;lsquo;은 올해 초에 읽고 도움을 많이 받은 책입니다. 위키북스에서 출간한 도서로 일본 도서의 번역서입니다. 일본 도서 특유의 만화적인 전개와 다수의 그림으로 채워져 있습니다.
+가벼워 보이지만 내용은 묵직한 책 책 제목, 분량(252페이지), 구성을 보고 2~3일이면 완독할 수 있다고 가볍게 접근했다가 상당히 고생했던 기업이 납니다. 물론 독자의 수학에 대한 배경과 접근 방식에 따라서 이런 느낌은 다를 수 있습니다.
+제 경우에는 &amp;ldquo;Classification은 구분 선의 법선 벡터를 학습하는 과정이다&amp;rdquo;라는 내용에 막혀서 고민했던 기억이 납니다.</description>
+    </item>
+    
+    <item>
+      <title>머신러닝을 위한 기초 수학</title>
+      <link>http://taewan.kim/til/basic_math/</link>
+      <pubDate>Wed, 08 Aug 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/basic_math/</guid>
+      <description>시그마, 파이, 미분, 편미분, 합성함수, 백터 및 행렬, 기하벡터, 지수, 대수에 대하여 요점 정리합니다.
+Sigma &amp;amp; Phi  1 부터 100까지 합산  $$ \sum_{i=1}^{100}i $$
+ 몇시적으로 마지막 값을 모르는 합산  $$ \sum_{i=1}^{n}i $$
+ 집합 합산  $$ G = {2, 3, 6, 8, 10} \\
+\sum_{g \in G}g $$
+ 모든 것을 곱함 (1~100)  $$ 1 \cdot 2 \cdot 3 \cdot 4 \cdot \cdot \cdot 99 \cdot 100 \\</description>
+    </item>
+    
+  </channel>
+</rss>

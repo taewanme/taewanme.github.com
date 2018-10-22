@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mlglossaries on taewan.kim 블로그</title>
+    <link>http://taewan.kim/mlglossary/</link>
+    <description>Recent content in Mlglossaries on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 25 Jul 2018 10:50:36 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/mlglossary/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Word Embedding</title>
+      <link>http://taewan.kim/mlglossary/word_embedding/</link>
+      <pubDate>Wed, 25 Jul 2018 10:50:36 +0900</pubDate>
+      
+      <guid>http://taewan.kim/mlglossary/word_embedding/</guid>
+      <description> Word Embedding  - 이미지 출처: https://towardsdatascience.com/deep-learning-4-embedding-layers-f9a02d55ac12
+  NLP(Natural Language Processing, 자연어 처리)에서 언어 모델링 기법 및 피처 합습 기법이 통칭 단어나 구가 어취 크기에 비해 상대적으로 낮은 차원의 공간에 실수 벡터로 맵핑 Word2vec  말뭉치(Corpus)로 부터 단어의 단어의 컨텍스트를 학습하여 고차원 벡터로 맵핑  GloVe(Global Vectors for Wrod Repreesentation)  co-occurence statistics에 기반함   </description>
+    </item>
+    
+  </channel>
+</rss>

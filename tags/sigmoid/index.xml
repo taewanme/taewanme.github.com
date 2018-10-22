@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sigmoid on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/sigmoid/</link>
+    <description>Recent content in Sigmoid on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 Sep 2017 21:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/sigmoid/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Sigmoid 함수 미분 정리</title>
+      <link>http://taewan.kim/post/sigmoid_diff/</link>
+      <pubDate>Mon, 18 Sep 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/sigmoid_diff/</guid>
+      <description>Sigmoid 함수는 S자와 유사한 완만한 시그모이드 커브 형태를 보이는 함수입니다. Sigmoid는 대표적인 Logistic 함수입니다. Sigmoid 함수는 모든 실수 입력 값을 0보다 크고 1보다 작은 미분 가능한 수로 변환하는 특징을 갖습니다. 모든 입력에 대하여 sigmoid는 S와 같은 형태로 미분 가능한 0~1 사이의 값을 반환하기에 Logistic Classification과 같은 분류 문제의 가설과 비용 함수(Cost Function)1에 많이 사용됩니다. sigmoid의 반환 값은 확률형태이기 때문에 결과를 확률로 해석할 때 유용합니다.
+딥러닝에서는 노드에 임계값을 넘을 때만 출력하는 활성 함수로도 이용됩니다.</description>
+    </item>
+    
+  </channel>
+</rss>

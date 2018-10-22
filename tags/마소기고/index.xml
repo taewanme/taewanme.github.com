@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>마소기고 on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/%EB%A7%88%EC%86%8C%EA%B8%B0%EA%B3%A0/</link>
+    <description>Recent content in 마소기고 on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 23 Aug 2017 21:59:47 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/%EB%A7%88%EC%86%8C%EA%B8%B0%EA%B3%A0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>자바 웹 개발의 페이스오프: JavaServer Faces</title>
+      <link>http://taewan.kim/post/jsf/</link>
+      <pubDate>Wed, 23 Aug 2017 21:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/jsf/</guid>
+      <description>월간 마이크로 소프트웨어 2004년 12월호 &amp;ldquo;2005년을 달굴 프레임워크 열전!&amp;rdquo; 특집호에 기고했던 JSF 기사입니다. 어렵게 원본을 발굴하여 복원한 문서입니다. ^^
+ 원본  dbguide.net-기사링크 구글 캐쉬    JSF의 최종 릴리즈가 지난 2월 발표되었고, 2004년 자바원 컨퍼런스의 주요 기술로 소개되었다. JSF는 자바 기반 웹 애플리케이션을 위한 서버사이드 사용자 인터페이스 컴포넌트 프레임워크이다. 요즘 들어 많은 프레임워크가 발표되고 있고, 스트럿츠가 사실상 웹 개발의 표준으로 자리 잡고 있는 상황에서 또 하나의 프레임워크가 발표되었다고 간과하기에는 J2EE 진영 대형 벤더들이 제시하는 JSF 지원책이나 오픈소스의 움직임이 너무나 활발하다.</description>
+    </item>
+    
+    <item>
+      <title>The Power Of The Java:2006 자바원 컨퍼런스 후기</title>
+      <link>http://taewan.kim/post/2006_javaone/</link>
+      <pubDate>Tue, 22 Aug 2017 21:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/2006_javaone/</guid>
+      <description>10년전 Javaone 컨퍼런스 후기 형식으로 2006년 7월에 마이크로 소프트웨어에 기고했던 기사입니다. 어렵게 원본을 발굴하여 복원한 문서입니다. ^^
+ 원본: http://www.zdnet.co.kr/news/news_view.asp?artice_id=00000039153641   &amp;ldquo;자바원 2006&amp;rdquo;은 5월 16일부터 19일까지 나흘 동안 센프란시스코에서 개최되었다. 138개 세션으로 구성된 &amp;ldquo;자바원 2006&amp;rdquo;에는 2 만명의 자바 개발자들은 참가했고, 자바의 신기술들과 다양한 이슈를 공유하는 열정적인 자바 축제로 진행되었다. 나흘간의 진행된 축제의 열기와 분위기를 전달하고자 한다.
+  김태완 okcode@gmail.com 필자는 프로자바(www.pro-java.com)의 운영자로 활동하고 있으며, 오픈소스 기반 Rapid Development에 관심을 갖고 있다.</description>
+    </item>
+    
+    <item>
+      <title>The Power Of The Java:2006 자바원 컨퍼런스 후기</title>
+      <link>http://taewan.kim/post/testng/</link>
+      <pubDate>Wed, 01 Mar 2006 21:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/testng/</guid>
+      <description>10년전 Javaone 컨퍼런스 후기 형식으로 2006년 7월에 마이크로 소프트웨어에 기고했던 기사입니다.
+ 원본: http://www.zdnet.co.kr/news/news_view.asp?artice_id=00000039153641   &amp;ldquo;자바원 2006&amp;rdquo;은 5월 16일부터 19일까지 나흘 동안 센프란시스코에서 개최되었다. 138개 세션으로 구성된 &amp;ldquo;자바원 2006&amp;rdquo;에는 2 만명의 자바 개발자들은 참가했고, 자바의 신기술들과 다양한 이슈를 공유하는 열정적인 자바 축제로 진행되었다. 나흘간의 진행된 축제의 열기와 분위기를 전달하고자 한다.
+  김태완 okcode@gmail.com 필자는 프로자바(www.pro-java.com)의 운영자로 활동하고 있으며, 오픈소스 기반 Rapid Development에 관심을 갖고 있다. 프레임웍을 주제로 하는 새로운 커뮤니티를 기획하고 있으며, 상식이 통하는 고객과 개발자, 관리자가 함께하는 날이 언젠가 올 것이라 간절히 소망하고 있다.</description>
+    </item>
+    
+  </channel>
+</rss>

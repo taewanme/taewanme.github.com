@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Management on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/data-management/</link>
+    <description>Recent content in Data Management on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 29 Sep 2017 17:17:35 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/data-management/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MySQL 인스턴스에 대한 백업과 복구</title>
+      <link>http://taewan.kim/cloud/mysqlcs_backup/</link>
+      <pubDate>Fri, 29 Sep 2017 17:17:35 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/mysqlcs_backup/</guid>
+      <description>본 문서는 Oracle MySQL APAC 세일즈 컨설팅팀에서 고객 전달용으로 작성한 블로그입니다. 해당 문서는 앞서 포스팅된 &amp;ldquo;MySQL Cloud를 시작하고 샘플 스키마 생성하기&amp;rdquo;라는 블로그에 이어서 MySQL Cloud Service에서 생성된 인스턴스에 대하여 어떻게 백업을 하고 복구를 하는지에 대하여 보여주고 있습니다.
+선행 작업 본 문서는 다음과 같은 절차가 완료되었다는 것을 전제로 합니다.
+ 오라클 클라우드 계정을 신청 MySQL Cloud Service 서브스크립션 구매 Oracle Cloud Service 인스턴스에 등록할 보안키를 생성 Oracle Cloud Service 인스턴스 생성 완료  선행 작업이 완료되지 못한 상태라면 다음 문서를 참조하여 먼저 준비하시고 다음으로 넘어가시기 바랍니다.</description>
+    </item>
+    
+  </channel>
+</rss>

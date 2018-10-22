@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Clouds on taewan.kim 블로그</title>
+    <link>http://taewan.kim/cloud/</link>
+    <description>Recent content in Clouds on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 08 Sep 2018 01:09:25 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/cloud/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</title>
+      <link>http://taewan.kim/cloud/oracle_impact/</link>
+      <pubDate>Sat, 08 Sep 2018 01:09:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_impact/</guid>
+      <description>2018월 9월 7일에 르메르디앙 호텔에서 Oracle IMPACT 세미나가 진행되었습니다. 이 행사에서 오라클이 바라보는 AI의 관점과 현재 Oracle Cloud의 AI 지원 서비스 및 향후 비전을 주제로 발표를 했습니다. 발표 동영상과 자료 및 발표 내용을 간략하게 정리하겠습니다.
+youtube 동영상   발표 문서  Oracle Impact: Oracle Cloud AI 요약 Enterprise AI  그림 1: 오라클 AI 지향점    오라클은 오라클 클라우드에서 &amp;ldquo;엔터프라이즈 AI&amp;rdquo;관점에서 서비스를 만들고 있으며, 이 서비스를 고도화하고 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle Big Data Cloud와 Object Storage 연동</title>
+      <link>http://taewan.kim/cloud/bdc_object_storage_integration/</link>
+      <pubDate>Mon, 18 Jun 2018 01:09:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/bdc_object_storage_integration/</guid>
+      <description>Oracle Cloud는 대용량 데이터 병렬 처리와 분석을 담당하는 빅데이터 서비스로 Big Data Cloud(이하 BDC)를 제공합니다. 오라클 클라우드에서 Data Lake는 DBMS와 하둡 HDFS가 아닌 Oracle Storage Cloud Service(이하 Storage Service)에서 제공하는 Object Storage입니다.
+이 문서에서는 대용량 병렬 처리를 담당하는 BDC가 Object Storage에 데이터를 읽고/쓰기는 연동 설정과 연동 방식에 대하여 살펴보겠습니다. 오라클 클라우드는 Storage Service로 OCI Storage Classic과 OCI Storage 서비스 두 가지를 제공합니다. 이 두 가지 서비스는 Object Storage 관점에서 다음과 같이 정리할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle BDC의 Ambari 보안 설정 변경</title>
+      <link>http://taewan.kim/cloud/bdc_ambari/</link>
+      <pubDate>Thu, 31 May 2018 23:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/bdc_ambari/</guid>
+      <description>오라클 클라우드는 Big Data 서비스로 Big Data Cloud(이하 BDC)를 제공합니다. BDC는 Hotonworks 하둡 패키지를 오라클 클라우드의 PaaS로 제공하는 서비스입니다. 2018년 5월 현재 Oracle BDC는 OCI와 OCI Classic에 모두 배포 가능합니다. Oracle BDC에 대한 개요, 설치 방법 및 OCI와 OCI Classic에 대산 자세한 사항은 아래 문서를 참조하시기 바랍니다.
+ BDC 관련문서  Oracle BDC 소개 문서  Oracle BDC 클러스터 생성 절차(작성일: 2017-07-31)  Oracle OCI와 OCI Classic이란?    Oracle BDC의 Apache Ambari Apache Ambari는 하둡 클러스터 전문 관리 툴입니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle Cloud의 PaaS 서비스 패치: Event Hub Service</title>
+      <link>http://taewan.kim/cloud/oehcs_patch/</link>
+      <pubDate>Tue, 22 May 2018 23:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oehcs_patch/</guid>
+      <description>오라클 Event Hub Service의 패치 절차를 소개합니다. Event Hub Service는 오라클 클라우드에서 제공하는 Kafka 관리형 서비스입니다. Event Hub Service 패치의 특징은 다음과 같습니다.
+ 오라클 클라우드 &amp;ldquo;Event Hub - Dedicated&amp;rdquo;의 서비스 콘솔에서 수행 패치 요청 인터페이스: WebUI, PSM(PaaS Service Manager), REST API Precheck 프로세스 제공: 패치 사전 점검 패치 Rollback 기능 제공 패치는 무중단 서비스로 진행: Rolling Patch  Event Hub Service는 Precheck와 Rollback 패치 기능을 제공하여 서비스 패치의 안전성을 확보하는 동시에 클러스터 노드를 하나씩 패치하는 Rolling Patch 방식으로 패치를 적용합니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI 배포 가능한 Oracle Platform Services(2018.05.15 기준)</title>
+      <link>http://taewan.kim/cloud/oracle_paas_on_oci/</link>
+      <pubDate>Wed, 16 May 2018 15:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_paas_on_oci/</guid>
+      <description>오라클 클라우드는 IaaS로 OCI Classic과 OCI를 제공합니다. OCI Classic은 오라클 클라우드의 1세대 IaaS 기술이고 OCI(Oracle Cloud Infrastructure)는 오라클 클라우드의 2세대 기술입니다. 초기 Oracle Platform Services는 OCI Classic을 기준으로 발표되었고 현재 OCI으로 확장되고 있습니다. 2018년 5월 기준으로 OCI를 지원하는 Oracle Platform Services 목록은 다음과 같습니다.
+   OCI 지원 PaaS 서비스 명 Oracle PaaS 관련 가이드 문서     Database Cloud Service About Database Deployments in Oracle Cloud Infrastructure   Java Cloud Service About Java Cloud Service Instances in Oracle Cloud Infrastructure   MySQL Cloud Service About MySQL Cloud Service Deployments   Event Hub Cloud Service About Oracle Event Hub Cloud Service - Dedicated instances inOracle Cloud Infrastructure   Data Hub Cloud Service About Oracle Data Hub Cloud Service Clusters in Oracle Cloud Infrastructure   Big Data Cloud About Big Data Cloud Clusters in Oracle Cloud Infrastructure   Oracle SOA Cloud Service About SOA Cloud Service Instances in Oracle Cloud Infrastructure Classic and Oracle Cloud Infrastructure    출처  Information About Supported Platform Services  Oracle Cloud 관련 문서   Oracle Cloud 공통  Oracle Cloud IaaS: OCI vs OCI Classic Oracle Cloud 트라이얼 신청 절차 (2018.</description>
+    </item>
+    
+    <item>
+      <title>Oracle Cloud IaaS: OCI vs OCI Classic</title>
+      <link>http://taewan.kim/cloud/oci_and_oci_classic/</link>
+      <pubDate>Thu, 03 May 2018 15:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_and_oci_classic/</guid>
+      <description>오라클 클라우드는 IaaS로 OCI(Oracle Cloud Infrastructure)와 OCI Classic(Oracle Cloud Infrastructure Classic) 서비스를 제공합니다. 오라클 클라우드를 처음 접할 때, 왜 두 개의 IaaS가 존재하는지 그리고 다른점이 뭔지 혼란스러운 것이 사실입니다. 이와 관련하여 OCI Classic과 OCI란 무엇이고 어떻게 다른지 간략하게 정리해 보겠습니다.
+이 문서에서 다루는 내용은 작성자의 개인적인 의견이며, 오라클의 공식적인 입장과 다를 수 있습니다.
+ 오라클 클라우드 IaaS 서비스 오라클은 2013년 3월에 Nimbula를 인수했습니다. Nimbula는 Private과 Hybrid 클라우드 인프라 관리 기술로 유명한 회사였습니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle Cloud 트라이얼 신청 절차 (2018.05.01 기준)</title>
+      <link>http://taewan.kim/cloud/oracle_cloud_trial/</link>
+      <pubDate>Tue, 01 May 2018 11:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_cloud_trial/</guid>
+      <description>오라클 클라우드 트라이얼이란? 오라클 클라우드 트라이얼은 사용자에게 30일간 300불 크래딧을 무료로 제공하는 프로그램입니다. 사용자는 이 기간 동안 할당된 크래딧을 제약 없이 사용할 수 있습니다. 이 프로그램에서 자원 사용량은 시간 단위로 계산되고, 300불 크래딧에서 차감됩니다. 300불 크래딧이 모두 소진되면 오라클 클라우드 트라이얼 프로그램은 종료됩니다.
+오라클 클라우드 트라이얼 신청 시 신용카드를 입력해야 합니다. 이 부분은 사용자 확인 절차일 뿐이며, 과금을 목적으로 입력하는 항목이 아닙니다. 사용자 확인 목적으로 1불을 결제하고 1분 후에 해당 결제를 취소합니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI Classic: Compute 서비스, VM의 고정 Public IP 지정</title>
+      <link>http://taewan.kim/cloud/oci_classic_computing_with_permanent_public_ip/</link>
+      <pubDate>Mon, 30 Apr 2018 11:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_classic_computing_with_permanent_public_ip/</guid>
+      <description>OCI Classic: Compute 서비스, VM 생성 문서를 참고하여 VM을 생성하면 Public IP가 할당됩니다. 이 Public IP를 이용하여 외부에서 VM에 접근이 가능합니다. 그러나 이렇게 VM을 만들면, VM을 재시작할 때마다 &amp;lt;그림 1&amp;gt;과 같이 Public IP가 변경됩니다. Public IP가 자주 변경되면, 여러 서버를 구성 할 때 관리가 복잡해집니다.
+ 그림 1: OCI-Classic VM의 Public IP 변경: {129.152.141.152 =&amp;gt; 129.152.141.117}    앞에서 만든 VM을 재시작하면 Public IP가 변경되는 이유는 VM을 생성할 때, Network 설정 단계에서 &amp;lt;그림 2&amp;gt;와 같이 &amp;ldquo;Public IP Address&amp;ldquo;가 &amp;ldquo;Auto Generation&amp;ldquo;으로 설정했기 때문입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI Classic: Compute 서비스, VM 생성</title>
+      <link>http://taewan.kim/cloud/oci_classic_computing/</link>
+      <pubDate>Fri, 27 Apr 2018 15:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_classic_computing/</guid>
+      <description>오라클은 클라우드 IaaS로 Oracle Cloud Infrastructure(OCI)와 Oracle Cloud Infrastructure Classic(OCI Classic) 두 가지를 제공하고 있습니다. 오라클은 Public Cloud IaaS로 OPC(Oracle Public Cloud)를 2014년 OOW(Oracle Open World)에서 공개하였고, OOW 2017에서 OCI Classic으로 서비스 브랜드 명을 변경하였습니다.
+OCI Classic은 Nimbula Director(Xen 기반 하이퍼바이저)을 기반으로 만들어졌으며, IaaS 서비스로 가상머신 컴퓨팅과 네트워크(Shared &amp;amp; IP Networks)를 제공합니다.
+본 문서에서는 Oracle Cloud에서 OCI Classic에서 VM을 생성하는 과정을 소개합니다.
+VM 생성 시나리오 다음과 같은 시나리오를 바탕으로 VM을 구성해 보겠습니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle Autonomous Data Warehouse와 Big Data의 오브젝트 스토리지 연계</title>
+      <link>http://taewan.kim/cloud/integrating_adw_bdc_os/</link>
+      <pubDate>Sat, 31 Mar 2018 08:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/integrating_adw_bdc_os/</guid>
+      <description>본 문서는 오라클 공식 블로그의 포스트의 번역입니다.
+  원문: https://blogs.oracle.com/bigdata/integrating-autonomous-data-warehouse-big-data-object-storage 제목: Integrating Autonomous Data Warehouse and Big Data Using Object Storage 작성자: Peter Jeffcock (Big Data Product Marketing) 작성일: 2018.03.27   문서를 시작하기 전에 주요 단어를 정리합니다.
+ Oracle Autonomous Data Warehouse  오라클 자율 주행 Data warehouse용 데이터베이스 서비스. 일반적으로 ADWC로 부릅니다. ADWC는 주행의 개념을 도입한 오라클 클라우드 기술의 첫 번째 데이터베이스 클라우드 서비스입니다. Oracle ADWC는 차세대 오라클 자율 데이터베이스 기술로 만들어 졌으며, 인공지능을 활용하여 탁월한 안정성과 성능을 제공합니다.</description>
+    </item>
+    
+    <item>
+      <title>[번역]관리형 아파치 카산드라 서비스 소개: Oracle Data Hub Cloud Service</title>
+      <link>http://taewan.kim/cloud/trans_data_hub/</link>
+      <pubDate>Tue, 26 Dec 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/trans_data_hub/</guid>
+      <description>본문은 blogs.oracle.com에서 운영 중인 Oracle Developer 블로그의 11월 22일자 포스트를 번역한 문서입니다. Oracle Data Hub Cloud Service는 MySQL과 Oracle Database를 제외한 다른 데이터베이스와 NoSQL(MongoDB, Cassandra, Redis)을 일괄 제공하는 것을 목표로 만들어진 클라우드 서비스입니다. 현재 첫 번째 데이터베이스로 카산드라를 제공합니다. 이와 관련한 오라클 공식 블로그의 포스트를 번역합니다. 원문 정보는 다음과 같습니다.
+  출처: 오라클 공식 블로그, blogs.oracle.com: Oracle Developer Blog 원문: https://blogs.oracle.com/developers/introducing-data-hub-cloud-service-to-manage-apache-cassandra 제목: Introducing Data Hub Cloud Service to Manage Apache Cassandra and More 문서작성 일시: 2017.</description>
+    </item>
+    
+    <item>
+      <title>[번역]2017 KubeCon 오라클 발표: Kubernetes와 Serverless</title>
+      <link>http://taewan.kim/cloud/trans_kubernetes_serverless/</link>
+      <pubDate>Mon, 25 Dec 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/trans_kubernetes_serverless/</guid>
+      <description>본문은 blogs.oracle.com에서 운영중인 Oracle Developer 블로그의 12월 7일자 포스트를 번역한 문서입니다. 오라클은 최근 KubeCon에서 Serverless 배포와 멀티 클라우드를 관리하는 Kubernetes 툴 2 가지를 공개하였습니다. 이와 관련한 오라클 공식 블로그의 포스트를 번역합니다. 원문 정보는 다음과 같습니다.
+  출처: 오라클 공식 블로그, blogs.oracle.com 원문: https://blogs.oracle.com/developers/kubernetes-serverless-and-federation-oracle-at-kubecon-2017 제목: Kubernetes and Serverless: Oracle at KubeCon 2017 문서작성 일시: 2017. 12. 7 작성자: Bob Quillin, Developer Relations 부사장   Kubernetes and Serverless: Oracle at KubeCon 2017 오늘 텍사스주 오스틴에서 개최된 KubeCon + CloudNativeCon 2017 컨퍼런스에서, 오라클 컨테이너 네이티브 애플리케이션 개발팀은 새로운 Kubernetes 관련 프로젝트 2개를 오픈소스로 공개했고, 현장에서 데모를 진행하였습니다.</description>
+    </item>
+    
+    <item>
+      <title>2017년 12월 제2회 오라클 클라우드 Developer Meetup 현장 스케치</title>
+      <link>http://taewan.kim/cloud/oracle_cloud_developer_meetup_201712/</link>
+      <pubDate>Sat, 16 Dec 2017 22:54:32 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_cloud_developer_meetup_201712/</guid>
+      <description>한국 오라클에서는 매월 개발자를 대상으로 &amp;ldquo;Oracle Developer Meetup&amp;ldquo;을 운영하고 있습니다. 2017년 12월 16일 토요일 아셈타워 15층에서 두 번째 &amp;ldquo;Oracle Developer Meetup&amp;ldquo;이 진행되었습니다. 58명의 개발자가 참석한 가운데 오후 1시 부터 5시30분 까지 3개의 세션과 네트워킹이 진행되었습니다.
+&amp;ldquo;제2회 Oracle Developer Meetup&amp;ldquo;은 다음과 같은 주제로 진행되었습니다.
+   시간 발표자 세션 명     13:00~13:50 강인호 부장(Oracle) Microservice 트래픽 관리를 위한 Istio 알아보기   14:00~15:20 양수열 Java Champion(OnFace) 개발자를 위한 JavaOne 2017 업데이트 - New Feature 중심으로   15:00~14:50 황주필 부장(Oracle) [Hands-On]Kubernetes 실습 및 모니터링    세미나의 현장 스케치를 사진 중심으로 정리합니다.</description>
+    </item>
+    
+    <item>
+      <title>[번역]Fn–An Open Source Serverless Functions Platform</title>
+      <link>http://taewan.kim/cloud/oracle_blog_fn/</link>
+      <pubDate>Wed, 04 Oct 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_blog_fn/</guid>
+      <description>Oracle OpenWorld 2017에서 오라클 클라우드를 강화하는 많은 새로운 키워드가 발표되었습니다. 오라클 클라우드는 최근에 Container 기술을 중점적으로 개발하고 있습니다. 이번 Oracle OpenWorld 2017에서 Serverless Platform으로 Fn을 공개했습니다. Fn은 오라클 클라우드 Serverless 플랫폼의 핵심에 위치할 것으로 예상됩니다. 2017.10.02 오라클 공식 블로그에 올라온 Fn관련 짧은 포스트를 소개합니다.
+ 출처: blogs.oracle.com 원문: https://blogs.oracle.com/developers/announcing-fn 제목: Oracle cloud acquisitions bear fruit, with a new serverless platform and container services 문서작성 일시: 2017. 10. 02 작성자: Shaun Smith, Director of Product Management  새로운 오픈 소스 서버리스 플랫폼 Fn을 발표하게 된 것을 대단히 기쁘게 생각합니다.</description>
+    </item>
+    
+    <item>
+      <title>오라클 클라우드 데이터 센터와 센터별 IaaS와 PaaS 서비스 목록</title>
+      <link>http://taewan.kim/cloud/oracle-cloud_dc_location/</link>
+      <pubDate>Fri, 29 Sep 2017 22:15:48 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle-cloud_dc_location/</guid>
+      <description>2017년 9월 29일 오라클 클라우드 데이터 센터 위치와 데이터 센터별 IaaS/PaaS 제공 서비스 목록 조회 페이지를 오라클 클라우드 홈페이지에 공개하였습니다. 이 페이지 위치는 다음과 같습니다.
+https://cloud.oracle.com/data-regions
+이 페이지에서는 대륙 간 데이터 센터 현황과 각 데이터 센터의 서비스 운영 상황을 확인할 수 있습니다. 그리고 현재 데이터 센터 구축 중인 현황을 확인할 수 있습니다.
+다음은 북미 지역의 데이터 센터 조회 결과입니다.</description>
+    </item>
+    
+    <item>
+      <title>MySQL 인스턴스에 대한 백업과 복구</title>
+      <link>http://taewan.kim/cloud/mysqlcs_backup/</link>
+      <pubDate>Fri, 29 Sep 2017 17:17:35 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/mysqlcs_backup/</guid>
+      <description>본 문서는 Oracle MySQL APAC 세일즈 컨설팅팀에서 고객 전달용으로 작성한 블로그입니다. 해당 문서는 앞서 포스팅된 &amp;ldquo;MySQL Cloud를 시작하고 샘플 스키마 생성하기&amp;rdquo;라는 블로그에 이어서 MySQL Cloud Service에서 생성된 인스턴스에 대하여 어떻게 백업을 하고 복구를 하는지에 대하여 보여주고 있습니다.
+선행 작업 본 문서는 다음과 같은 절차가 완료되었다는 것을 전제로 합니다.
+ 오라클 클라우드 계정을 신청 MySQL Cloud Service 서브스크립션 구매 Oracle Cloud Service 인스턴스에 등록할 보안키를 생성 Oracle Cloud Service 인스턴스 생성 완료  선행 작업이 완료되지 못한 상태라면 다음 문서를 참조하여 먼저 준비하시고 다음으로 넘어가시기 바랍니다.</description>
+    </item>
+    
+    <item>
+      <title>[번역]오라클의 CNCF(Cloud Native Computing Foundation) 가입 의미</title>
+      <link>http://taewan.kim/cloud/oracle_cncf/</link>
+      <pubDate>Mon, 25 Sep 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_cncf/</guid>
+      <description>blog.oracle.com의 &amp;ldquo;Modern Developer&amp;rdquo; 부문에 올라온 포스트를 번역한 문서입니다. 최근에 오라클은 리눅스 재단의 하부 기구인 CNCF(Cloud Native Computing Foundation)에 프리미엄 멤버로 가입했습니다. 이 기구에 오라클이 가입한 목적은 Kubernetes를 오라클 클라우드에서 지원하기 위함입니다. &amp;ldquo;What Does Oracle’s Embrace of CNCF Mean for Developers?&amp;ldquo;는 CNCF에 오라클이 가입한 것이 어떤 의미가 있는지 설명하는 포스트입니다. 원본 정보는 다음과 같습니다.
+ 출처: https://blog.oracle.com, MODERN DEVELOPER 원문: https://blogs.oracle.com/what-does-oracle’s-embrace-of-cncf-mean-for-cloud-developers 발표일시: 2017. 09. 18 작성자: Alexa Morales  더커(Docker) 현상에 힘입어, 클라우드에 소프트웨어 애플리케이션을 배포하고 작은 서비스를 패키징하는 가장 적합한 기술로 리눅스 컨테이너가 부각되고 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle PaaS의 Storage CS 컨테이너 설정 형식 변경</title>
+      <link>http://taewan.kim/cloud/stroage_cs_url/</link>
+      <pubDate>Sun, 24 Sep 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/stroage_cs_url/</guid>
+      <description>오라클 클라우드에서 Oracle BDCS1, Oracle MySQL CS2 그리고 Oracle BDCSCE3와 같은 PaaS 서비스는 인스턴스 생성 과정에 Oracle Storage CS의 컨테이너를 등록 하는 항목을 포함합니다. 오라클 클라우드 PaaS는 백업 및 데이터 저장 용도로 Oracle Storage CS를 사용합니다. 지난 8월에 오라클 클라우드의 트라이얼 계정이 Credit 체제로 변경되는 과정에서 Storage CS 컨테이너 등록 형식이 변경되었습니다. 본 문서에는 Storage CS의 컨테이너 등록 정보를 확인하는 방법과 방법을 소개합니다.
+Oracle Storage CS 이용 Oracle PaaS 아래 &amp;lt;그림 1&amp;gt;, &amp;lt;그림 2&amp;gt;, &amp;lt;그림 3&amp;gt;은 각각 Oracle MySQL CS, Oracle Database CS 그리고 Oracle BDCSCE의 Oracle Storage CS의 설정 화면입니다.</description>
+    </item>
+    
+    <item>
+      <title>2017 Oracle Code in Seoul: IaC 발표 동영상</title>
+      <link>http://taewan.kim/cloud/oracle_code_iac_youtube/</link>
+      <pubDate>Sun, 10 Sep 2017 08:54:32 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_code_iac_youtube/</guid>
+      <description>2017 Oracle Code in Seoul에서 발표한 &amp;ldquo;Vagrant, Terraform, Ansible을 활용한 클라우드 인프라 관리법&amp;ldquo;의 발표 동영상이 올라 왔습니다. 발표 동영상, 발표 자료 및 데모 문서를 정리합니다. 이 세미나는 2017년 8월 30일 14시 30분에 여의도 콘래드 3층 그랜드 볼륨에서 진행되었습니다. 클라우드 서비스에 Infrastructure as Code(IaC) 개념을 적용하여, 클라우드 자원을 형상관리하고 필요한 시점에 원하는 형상의 클라우드 자원을 빌드하는 체계를 소개합니다..
+발표 동영상   발표 문서 세미나 발표 문서는 다음 Slideshare에 확인할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>2017 Oracle Code In Seoul: How to control cloud resources 데모</title>
+      <link>http://taewan.kim/cloud/oracle_code_provisioning/</link>
+      <pubDate>Thu, 31 Aug 2017 08:54:32 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_code_provisioning/</guid>
+      <description>2017 Oracle Code in Seoul에서 발표한 &amp;ldquo;Vagrant, Terraform, Ansible을 활용한 클라우드 인프라 관리법&amp;ldquo;의 발표 자료와 진행한 데모를 소개하는 문서입니다. 클라우드 자원을 체계적으로 관리하고, 완전한 자원 통제권을 확보하는 방법을 소개하는 세션입니다. 이 세션은 2017년 8월 30일 14시 30분에 여의도 콘래드 3층 그랜드 볼륨에서 진행됩니다. 클라우드 서비스에 Infrastructure as Code(IaC) 개념을 적용하여, 클라우드 자원을 형상관리하고 필요한 시점에 원하는 형상의 클라우드 자원을 빌드하는 체계입니다.
+발표 문서 세션의 장표는 Slideshare에 공유하였습니다.
+ 데모 &amp;amp; 사전 준비 사항 이 세션에서는 3개의 데모가 진행되었습니다.</description>
+    </item>
+    
+    <item>
+      <title>오라클 클라우드 트라이얼 신청: $300 Credit</title>
+      <link>http://taewan.kim/cloud/oracle_cloud_reg/</link>
+      <pubDate>Sat, 26 Aug 2017 08:54:32 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_cloud_reg/</guid>
+      <description>Oracle은 무료로 오라클 클라우드를 체험할 수 있는 오라클 클라우드 트라이얼 프로그램을 운영하고 있습니다. 2017년 8월 1일부터 트라이얼을 신청하면 &amp;ldquo;$300 Credit&amp;ldquo;을 제공합니다. $300 Credit이란 오라클 클라우드 사용 권한으로, 오라클 클라우드를 $300 Credit로 자유롭게 사용할 수 있습니다. 오라클 클라우드 서비스를 사용하면 지급한 Credit은 분 단위로 차감됩니다. 차감되는 비용은 서비스별로 차이가 있습니다. 각 서비스 과금 비용은 오라클 클라우드 홈페이지(http://cloud.oracle.com )에서 확인할 수 있습니다. $300 Credit의 유효 기간은 신청일로부터 30일 입니다. 오라클 클라우드 트라이얼 프로그램에서 다음과 같은 서비스를 체험해 볼 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle Cloud의 PaaS 서비스 패치: Orace BDCSCE</title>
+      <link>http://taewan.kim/cloud/oracloud_patch/</link>
+      <pubDate>Sun, 20 Aug 2017 23:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracloud_patch/</guid>
+      <description>Oracle Cloud는 지속적으로 새로운 기능을 클라우드 서비스에 추가하고 있습니다. 기능 개선을 위해서는 소프트웨어 변경이 필요합니다. 이미 클라우드 서비스 인스턴스를 생성하고 사용 중인 고객을 위해서 오라클은 패치를 만들고 적용하는 프로세스를 제공합니다. 클라우드 사용자는 현재 사용 중인 서비스에 패치를 적용 여부와 시점을 직접 결정할 수 있습니다. 본 문서에서는 &amp;ldquo;Oracle Big Data Cloud Service - Compute Edition&amp;rdquo;(이하 Oracle BDCSCE)의 인스턴스에 패치를 적용하는 방법을 살펴보겠습니다. 여기에서 다루는 Oracle BDCSCE 인스턴스에 패치를 적용하는 절차는 다른 Oracle PaaS에도 적용할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>Apache Kafka PaaS: Oracle Event Hub CS 소개..</title>
+      <link>http://taewan.kim/cloud/kafka_paas_eventhub_cs/</link>
+      <pubDate>Mon, 14 Aug 2017 23:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/kafka_paas_eventhub_cs/</guid>
+      <description>Oracle Cloud는 Apache Kafka(이하 Kafka)를 클라우드 관리 서비스(PaaS) 형태로 제공하고 있습니다. Oracle Cloud가 2017년 1월에 출시한 &amp;ldquo;Oracle Event Hub Cloud Service&amp;rdquo;(이하 Oracle Event Hub CS)가 바로 Kafka 관리 서비스입니다. Oracle Event Hub CS는 오라클이 기술지원하고 관리하는 클라우드 서비스로 Kafka 클러스터의 효율적인 관리 방법과 지속적인 확장성을 제공합니다. 본 문서는 다음과 같은 내용으로 구성됩니다.
+ Oracle Event Hub CS 소개 Oracle Event Hub CS 클러스터 생성 Kafak 클러스터에 Topic 생성 Topic에 데이터 저장(Producing) &amp;amp; 가져오기(Consuming) 테스트  Oracle Event Hub CS Oracle Event Hub CS는 Kafaka 클라우드 관리형 서비스(managed service)입니다.</description>
+    </item>
+    
+    <item>
+      <title>Identity Domain</title>
+      <link>http://taewan.kim/cloud/identity_domain/</link>
+      <pubDate>Fri, 11 Aug 2017 22:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/identity_domain/</guid>
+      <description>Oracle Cloud 계정 생성, Oracle Cloud 로그인, 클라우드 서비스 활성화 과정에는 &amp;ldquo;Identity Domain&amp;ldquo;을 직접 설정하거나, Identity Domain을 포함하는 정보를 입력해야만 합니다. Identity Domain은 기존에 일반적인 IT 용어로 생각하기 쉽지만, 오라클 클라우드의 고유명사입니다. Oracle Cloud에서 Identity Domain의 정의가 무엇이고, 어떤 의미가 있는지 알아보겠습니다. 추가로, Identity Domain에는 Cloud User 관리 기능이 포함됩니다. 이와 관련하여 Oracle Cloud에서 Identity Domain과 Cloud User의 관계를 알아보겠습니다.
+Terminology: 용어 정리 본 문서에서는 다음과 같은 용어를 사용하며, 의미는 다음과 같습니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle PaaS Service Manager 소개 및 설치</title>
+      <link>http://taewan.kim/cloud/installing_pms/</link>
+      <pubDate>Sun, 06 Aug 2017 22:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/installing_pms/</guid>
+      <description>Oracle PaaS Service Manager(이하 PSM)는 오라클 클라우드의 PaaS 서비스 관리에 사용되는 CLI(Command Line Interface)입니다. Oracle 클라우드는 PaaS 서비스를 관리하는 REST API를 제공합니다. 이 REST API를 이용하여 PaaS 서비스를 인스턴스 생성, 중지 그리고 삭제를 할 수 있습니다. Oracle PSM은 PaaS REST API에 대한 CLI 유형의 클라이언트 구현체입니다. Oracle PSM를 이용하여 오라클 클라우드 PaaS 서비스의 프로비저닝, 모니터링, 관리(생성, 중지, 삭제) 자동화 환경을 구축할 수 있습니다.
+Oracle PSM 지원 PaaS 서비스    Oracle PaaS 비고     Oracle Application Container Cloud Service Container 서비스, Polyglot 환경, Java, Python, PHP, Ruby 지원   Oracle Analytics Cloud 데이터 분석 클라우드 서비스   Oracle Big Data Cloud Service - Compute Edition 빅데이터 클라우드 서비스   Oracle Database Cloud Service Managed Oracle Database 서비스   Java Cloud Service.</description>
+    </item>
+    
+    <item>
+      <title>Oracle Container Cloud Service의 Infographics입니다.</title>
+      <link>http://taewan.kim/cloud/container_infographics/</link>
+      <pubDate>Tue, 01 Aug 2017 01:20:12 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/container_infographics/</guid>
+      <description>Oracle Container Cloud Service에 대한 개요와 특징이 잘 정리된 Infographics입니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle BDCSCE: 클러스터 생성 </title>
+      <link>http://taewan.kim/cloud/stpe_by_step_new_cluster_bdcsce/</link>
+      <pubDate>Mon, 31 Jul 2017 11:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/stpe_by_step_new_cluster_bdcsce/</guid>
+      <description>Oracle Big Data Cloud Service Compute-Edition(이하 Oracle BDCSCE)은 PaaS 형태로 제공되는 Oracle Pubic Cloud의 빅데이터 서비스입니다. 본 문서에서는 Oracle BDCSCE 서비스를 이용하여 하둡 클러스터를 생성하는 절차를 소개합니다.
+본 문서는 오라클 클라우드 트라이얼 계정을 사용하여 진행하겠습니다. Oracle BDCSCE 서비스를 이용하여 하둡 클러스터를 생성하기 위해서는 오라클 클라우드 계정이 필요합니다. 오라클 계정이 없으면 다음 문서를 참조하여 실습하기 전에 오라클 클라우드 계정을 만드시기 바랍니다.
+ 오라클 클라우드 트라이얼 계정 생성 - http://www.oracloud.kr/post/accont/  Oracle BDCSCE 서비스에서 클러스터를 생성하기 위해서는 Oracle Storage CS 정보를 입력해야 합니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle Big Data Cloud Service Compute-Edition</title>
+      <link>http://taewan.kim/cloud/bdcsce01/</link>
+      <pubDate>Thu, 27 Jul 2017 11:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/bdcsce01/</guid>
+      <description>빅데이터 기술을 사용하면서 가장 어려운 부분은 오픈소스로 구성된 빅데이터 에코 기술을 설치하고 관리하는 부분입니다. 빅데이터 에코 기술들은 여러 오픈소스 프로젝트로 구성되어 있고, 각 오픈소스 프로젝트는 특정 오픈소스 프로젝트의 버전에 의존성을 갖고 있습니다. 또한, 각 오픈소스는 개별적인 업그레이드 주기를 갖습니다. 여러 오픈소스 프로젝트가 상호 버전 의존성을 갖고 있고, 개별적인 업그레이드 주기를 갖는 기술들로 빅데이터 환경을 구성하고 관리하기 위해서는 많은 노력이 필요합니다. 이 문제를 해결하기 위해서 Cloudera와 Hotonworks는 빅데이터 오픈소스 프로젝트들의 검증된 버전을 모아 패키지로 관리합니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle MySQL Cloud Service</title>
+      <link>http://taewan.kim/cloud/mysql_cs/</link>
+      <pubDate>Wed, 10 May 2017 15:48:24 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/mysql_cs/</guid>
+      <description>Oracle MySQL Cloud Service 개요 오라클이 오픈소스 형태로 개발하고 있는 MySQL은 전 세계에서 가장 많이 사용되는 오픈소스 데이터베이스 입니다. 오라클 클라우드는 Oracle MySQL Cloud Service(이하 MySQL CS)를 2016년 11월에 출시하였습니다. 2017년 5월 현재 오라클 클라우드는 관계형 데이터베이스 서비스1로 Oracle Database CS와 MySQL CS를 제공합니다.
+MySQL CS는 MySQL Enterprise Edition 라이센스를 기반으로하는 PaaS 서비스 입니다.
+MySQL CS가 제공하는 엔터프라이즈 지원 기능은 다음과 같습니다.
+ 데이터베이스 관리 체계(백업, 패치, 모니터링) MySQL 전문 관리 도구  MySQL Query Analyzer MySQL Enterprise Monitor  셀프 프로비저닝 탄력적인 확장성(Elastic scalability) 다중계층 보안(Multi-layer security)  MySQL CS의 특징 Oracle MySQL CS는 라이센스, 보안, 성능, 안전성, 관리 효율성, 백업과 복구 측면에서 다음과 같은 특징을 제공합니다.</description>
+    </item>
+    
+    <item>
+      <title>오라클 클라우드 Compute CS 보안 적용</title>
+      <link>http://taewan.kim/cloud/compute_security/</link>
+      <pubDate>Thu, 04 May 2017 13:23:35 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/compute_security/</guid>
+      <description>Oracle Compute CS에서 인스턴스(가상머신)를 만들면, 해당 가상머신에 대한 네트워크 접근은 완전히 막혀 있는 상태입니다. 외부와 어떤 네트워크 연결도 불가능한 상태로 만들어집니다. 새로 만든 가상머신에 네트워크로 접근하기 위해서는, 오라클 클라우드가 제공하는 보안 설정을 적용해야 합니다.
+오라클 클라우드는 가상머신 별로 섬세한 보안 설정을 구성하는 방법을 제공합니다. 본 문서에서는 오라클 클라우드의 보안 구성 요소를 파악하고, 각 구성 요소를 이용하여 보안을 설정하는 방법에 대하여 살펴보겠습니다.
+오라클 클라우드 보안 개념 컴퓨터간의 네트워크를 보안 관리하기 위해서는 최소한 다음과 같은 4가지 정보가 필요합니다.</description>
+    </item>
+    
+    <item>
+      <title>우분투 17.04 가상머신 만들기</title>
+      <link>http://taewan.kim/cloud/compute_instance/</link>
+      <pubDate>Tue, 02 May 2017 11:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/compute_instance/</guid>
+      <description>2017년 04월 오라클 클라우드 Compute Service에는 17.1.2 버전1이 적용되었습니다. 17.1.2 버전에는 네트워크 구성에 대한 새로운 기능이 추가되었습니다. 기존의 Shared Network와 별개로 IPNetwork를 이용하여 서브넷을 구성할 수 있습니다. 새로운 기능 추가와 함께, 가상머신을 만드는 UI와 가상머신을 생성하는 오케스트레이션에 변경된 부분이 있습니다.
+매년 4월은 Ubuntu 새 버전이 출시되는 시점입니다. 올해에도 지난 4월에 Ubuntu 17.04 버전이 출시되었습니다. 새로 출시된 Ubuntu 17.04 설치 이미지는 현재 오라클 클라우드 마켓 플레이스에 등록된 상태이며, 이 이미지를 이용하여 가상머신을 만들 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle Storage Cloud Service</title>
+      <link>http://taewan.kim/cloud/storage_cs/</link>
+      <pubDate>Fri, 28 Apr 2017 23:02:33 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/storage_cs/</guid>
+      <description>클라우드 서비스에서 기본은 Compute 서비스와 오브젝트 스토리지 서비스입니다. 그만큼 스토리지 서비스는 가장 많이 사용하고 중요한 서비스입니다. 아마존의 S3에 해당하는 오라클 클라우드의 오브젝트 스토리지 서비스는 Oracle Storage Cloud Service입니다.
+Oracle Storage Cloud Service는 인터넷 접근이 가능한 어디서나 데이터를 저장하고 사용할 수 있는 신뢰성과 안전성을 겸비한 스토리지 서비스입니다. 높은 수준의 가용성을 제공하기 위해서 모든 데이터는 데이터 센터 내에서 복수의 복사본(Replica)으로 관리됩니다. 99.9%의 가용성과 Eleven-Nine의 Durability1를 SLA로 보장합니다. 더 높은 고가용성을 제공하기 위해서 데이터 센터간 복제 설정을 추가할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>OCCS에 Docker 이미지 배포</title>
+      <link>http://taewan.kim/cloud/occs_new_docker_container/</link>
+      <pubDate>Mon, 24 Apr 2017 19:34:26 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/occs_new_docker_container/</guid>
+      <description>Oracle Container Cloud Service(이하 OCCS)는 오라클 클라우드가 제공하는 Docker 서비스입니다. OCCS에는 Kubernetes(k8s), docker-swarm 그리고 marathon 과 유사한 container orchestration 도구가 포함되어 있습니다. Docker를 운영환경에 적용하기 위해서는 Container orchestration 도구를 반드시 사용해야 합니다. Kubernetes나 docker-swarm 등을 직접 설치하고 운영할 경우에 관리 부담이 증가하고, Container orchestration을 운영하기 위한 노하우와 연구가 필요합니다. OCCS를 통해서 이러한 Container orchestration의 어려움을 해결할 수 있습니다. 또한 Docker 인프라 운영의 기술적 &amp;amp; 관리적 문제를 상당 부분 해결할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle Container CS 인스턴스 생성</title>
+      <link>http://taewan.kim/cloud/occs-new-inst/</link>
+      <pubDate>Thu, 20 Apr 2017 19:36:38 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/occs-new-inst/</guid>
+      <description>Oracle Cloud는 Docker 기반의 컨테이너 서비스를 2016년 11월에 출시하였습니다. 오라클은 2015년 11월에 StackEngine을 인수하였습니다. (관련 공지). StackEngine사는 2014년 텍사스 오스틴 주에서 설립된 업체로, 엔터프라이즈급 컨테이너 관리 및 자동화 솔루션 개발 업체입니다. StackEngine은 kubernetes(k8s), docker-swarm 그리고 marathon과 같은 container orchestration 도구입니다.
+오라클은 2015년 11월에 StackEngine을 인수한 후, 1년 동안 Oracle Public Cloud에 StackEngine을 통합하였습니다. 이 결과물이 Oracle Container Cloud Service 입니다.
+Oracle Container Clod Service를 통해서 Docker 컨테이너의 클러스터 구성, 인스턴스 배포 및 운영, 모니터링을 효과적으로 할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>오라클 클라우드의 Docker 컨테이너 지원 유형</title>
+      <link>http://taewan.kim/cloud/docker_in_oc/</link>
+      <pubDate>Wed, 19 Apr 2017 19:01:16 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/docker_in_oc/</guid>
+      <description>오라클 클라우드에서 docker를 운영하는 방식은 3가지 입니다. 첫 번째는 Oracle cloud의 가상머신에 Docker와 Orchestration tool(Kubernetes, docker-swarm, marathon)을 직접 설치하고 사용하는 것입니다. 두 번째는 Oracle Cloud가 IaaS 형태로 제공하는 Oracle Container Cloud Service (이하 OCCS)를 사용하는 것입니다. 세 번째는 Oracle Cloud가 PaaS 형태로 제공하는 Oracle Application Container Cloud(이하 Oracle ACC)를 사용하는 것입니다.
+Oracle Cloud에서 Docker를 사용하는 방식을 요약하면 다음과 같습니다.
+ DIY 타입: Oracle Compute CS에 직접 설치 IAAS 타입: Oracle Container Cloud Service (OCCS) PAAS 타입: Oracle Application Container Service (Oracle ACC)  Type 1.</description>
+    </item>
+    
+    <item>
+      <title>Oracle Container Cloud Service 소개와 Docker 개요</title>
+      <link>http://taewan.kim/cloud/occs/</link>
+      <pubDate>Wed, 05 Apr 2017 11:23:40 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/occs/</guid>
+      <description>오라클은 2015년에 Stack Engine이라는 Docker 전문 업체를 인수하였고, 이 업체의 솔루션을 클라우드 서비스 형태로 제공하고 있습니다. 이 서비스가 Oracle Container Cloud Service입니다.
+OCCS(Oracle Container Cloud Service)에 대한 개요와 Docker의 개념을 소개하는 슬라이드를 공유합니다.
+ 작성일: 2017-02-07   </description>
+    </item>
+    
+    <item>
+      <title>오라클 클라우드에서 window VM 인스턴스 생성</title>
+      <link>http://taewan.kim/cloud/win-vm/</link>
+      <pubDate>Fri, 31 Mar 2017 22:42:46 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/win-vm/</guid>
+      <description>오라클 클라우드(Oracle Public Cloud, OPC)의 Compute 서비스에서 Window VM 인스턴스를 생성하는 절차를 정리합니다. 오라클 클라우드에서 가상머신을 생성하기 위해서는 Oracle Cloud 계정이 필요합니다. 현재 OPC 계정이 없다면 &amp;ldquo;오라클 클라우드 계정 생성하기&amp;rdquo;를 먼저 확인하시기 바랍니다.
+Oracle Cloud VM 인스턴스 생성 실습 본 문서는 OS X(Mac) 환경에서 작성되었습니다. 이 문서의 실습에 있어서 윈도우와 &amp;ldquo;OS X&amp;rdquo;의 차이는 거의 없습니다. Window VM을 생성한 후, RDP로 Window VM에 접속하는 부분만 차이가 있습니다. 이 부분은 Window와 &amp;ldquo;OS X&amp;rdquo;를 구분하여 작성했습니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle Database CS: 인스턴스 생성 및 접속 Demo</title>
+      <link>http://taewan.kim/cloud/dbcs_demo/</link>
+      <pubDate>Sun, 12 Mar 2017 13:20:12 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/dbcs_demo/</guid>
+      <description>Oracle DBMS 소개 Oracle Database Cloud Service(이하 Oracle DBCS)는 오라클 클라우드에서 PaaS 형태로 제공하는 오라클 데이터베이스 서비스입니다.
+Oracle Database Cloud Service에는 다음과 같이 4 가지 유형의 패키지로 라이센스가 구분됩니다.
+ Standard Edition Enterprise Edition  TDE (transparent Data Encryption) Data Guard  Enterprise Edition High Performance  Multitenant Partitioning Advanced Compression Advanced Security Database Vault  Enterprise Edition Extreme Performance  Oracle RAC 지원 In-memory Active Data Guard   2017년 04월 현재 Oracle Database CS의 지원 버전은 다음과 같습니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle Storage Cloud Service 활성화</title>
+      <link>http://taewan.kim/cloud/objest-storage-replication/</link>
+      <pubDate>Mon, 06 Mar 2017 08:54:32 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/objest-storage-replication/</guid>
+      <description>Oracle Storage Cloud Service(이하 Storage Cloud)는 오라클 클라우드의 핵심 서비스입니다. 오라클 클라우드의 대부분의 서비스는 데이터 저장 목적으로 Storage Cloud를 사용합니다. 오라클 클라우드에서 Storage Cloud를 사용하는 서비스는 다음과 같습니다.
+   서비스 설명     Java Cloud Service(이하 JCS) JCS는 클러스터 백업 및 메타 정보 저장을 위해서 Storage Cloud를 사용합니다. JCS 설정시 Storage Cloud 정보 입력이 필 수 사항입니다.   Database CS (이하 DBCS) DBCS는 데이터베이스 백업에 Storage Cloud를 사용합니다.</description>
+    </item>
+    
+    <item>
+      <title>오라클 IaaS를 이용한 VM 인스턴스 생성</title>
+      <link>http://taewan.kim/cloud/iaas_vm/</link>
+      <pubDate>Sun, 05 Mar 2017 22:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/iaas_vm/</guid>
+      <description>오라클 클라우드의 IaaS 서비스에서 Ubuntu 14.04를 VM 인스턴스로 만드는 절차를 정리합니다. 오라클 클라우드에서 가상머신을 생성하기 위해서는 Oracle Cloud의 계정이 필요합니다. 계정을 생성하는 방법에 대해서는 &amp;ldquo;오라클 클라우드 계정 생성하기&amp;rdquo; 를 참조하시기 바랍니다.
+Oracle Cloud VM 인스턴스 생성 실습 본 문서는 OS X(Mac) 환경에서 작성되었습니다. 이 문서를 윈도우에서 실습하실 경우에는 PUTTY와 같은 Terminal을 사용하는 부분과 SSH-KEYGEN 을 사용하는 절차가 달라질 것입니다. 이 부분에 대해서는 별도 문서로 정리하겠습니다.
+오라클 클라우드 VM 생성 실습은 약 10~15분 정도 소요됩니다.</description>
+    </item>
+    
+    <item>
+      <title>오라클 클라우드 계정</title>
+      <link>http://taewan.kim/cloud/accont/</link>
+      <pubDate>Thu, 02 Mar 2017 21:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/accont/</guid>
+      <description>Oracle Cloud의 트라이얼 계정을 이용하여 무료로 오라클 클라우드를 경험할 수 있습니다. 무료 트라이얼 계정에는 Oracle Database Cloud Service(이하 Cloud Service는 CS로 표기), Java CS, Compute CS, Developer CS, Database Backup CS, Storage CS, Application Container CS, SOA CS 등 11개 서비스와 6개 OCPU와 500GB 스토리지 자원에 대한 사용 권한이 포함됩니다. 트라이얼 계정의 유효 기간은 계정 생성일로부터 30일입니다.
+본 문에서는 Oracle Cloud 계정을 생성하는 방법에 대하여 설명하겠습니다.
+Oracle Cloud 계정 등록 절차 오라클 클라우드의 계정 등록 절차는 다음과 같습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

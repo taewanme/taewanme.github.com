@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>Machine Learning</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="Machine Learning" />
+<meta property="og:description" content="taewan.kim" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://taewan.kim/tags/machine-learning/" />
+
+
+
+<meta property="og:updated_time" content="2018-10-07T19:59:47&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+<link rel="alternate" type="application/rss+xml" title="taewan.kim 블로그 Feed" href="http://taewan.kim/tags/machine-learning/index.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+	<hr/>
+	<div class="main-content loop content" role="main">
+		
+		
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/post/transpose_reshape/">
+					<img src="https://taewanmerepo.github.io/2018/08/transpose/list2.jpg" alt="다차원 텐서 Transpose와 Reshape" />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/post/transpose_reshape/" rel="bookmark">다차원 텐서 Transpose와 Reshape</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2018-08-22 23:28:14 &#43;0900 KST">August 22, 2018</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  CNN과 같은 이미지 데이터를 다룰 때 입력 데이터로 4차원 텐서를 다룹니다. 이 4차원 데이터는 (image 수, channel 수, Height , Width)와 같은 구조를 갖습니다. 데이터를 전처리하는 과정에서 Channel First인 텐서를 Channel Last 텐서로 변형해야 하는 상황이 발생했습니다. 처음에 4차원 구조는 상상하기도 어려운데 4차원 텐서를 전치하라는 것은 어떤 의미인지 난감했습니다.
+문제의 시작: Channel  ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/numpy/" rel="tag">numpy</a></li>
+						<a class="label" href="/tags/transpose/" rel="tag">transpose</a></li>
+						<a class="label" href="/tags/reshape/" rel="tag">reshape</a></li>
+						<a class="label" href="/tags/machine-learning/" rel="tag">machine learning</a></li>
+						<a class="label" href="/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/" rel="tag">기계학습</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/post/sklearn_mnist_fetch_error/">
+					<img src="https://taewanmerepo.github.io/2018/08/sklearnmnisterror/list.jpg" alt="scikit-learn의 fetch_mldata(&#39;MNIST original&#39;) 에러" />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/post/sklearn_mnist_fetch_error/" rel="bookmark">scikit-learn의 fetch_mldata(&#39;MNIST original&#39;) 에러</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2018-08-04 19:59:47 &#43;0900 KST">August 04, 2018</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  scikit-learn은 테스트 데이터로 사용할 수 있는 여러 데이터셋를 간편하게 로딩하는 기능을 제공합니다. 특히 머신러닝 테스트에 사용할 수 있는 대표적인 데이터셋을 로딩하는 기능을 제공하기 때문에, 이 기능을 이용하여 많은 문서가 이용하여 입문자 문서를 작성하는 것이 일반적입니다.
+scikit-learn이 제공하는 데이터셋 로딩 기능 중에서 fetch_mldata 함수는 mldata.org의 데이터셋을 이용합니다. 최근에 mldata.or ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/sklearn/" rel="tag">sklearn</a></li>
+						<a class="label" href="/tags/machine-learning/" rel="tag">machine learning</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/post/sample_example/">
+					<img src="https://taewanmerepo.github.io/2018/07/data_name/list.jpg" alt="머신러닝 용어: Example, Sample &amp; Data Point" />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/post/sample_example/" rel="bookmark">머신러닝 용어: Example, Sample &amp; Data Point</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2018-07-18 19:59:47 &#43;0900 KST">July 18, 2018</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  머신러닝을 공부하면서 굉장히 생소하게 느껴졌던 용어가 몇 개 있습니다. 그 중에서 가장 어색했던 용어는 데이터셋의 개별 데이터를 표현하는 용어였습니다. 일반적으로 머신러닝 데이터셋의 개별 데이터를 다음과 같은 용어로 표현합니다.
+ Example Sample Instance Data Point  문서를 번역하거나 정리하는 과정에서 위 용어를 어떻게 처리해야 할지가 항상 고민이었습니다. 개별 데이터를 왜 이렇게 표현하는지 제 개인적인 느낌을 정리해 ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/glossory/" rel="tag">glossory</a></li>
+						<a class="label" href="/tags/%EC%9A%A9%EC%96%B4/" rel="tag">용어</a></li>
+						<a class="label" href="/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/" rel="tag">기계학습</a></li>
+						<a class="label" href="/tags/machine-learning/" rel="tag">machine learning</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/post/python_env_for_machine_learning/">
+					<img src="https://taewanmerepo.github.io/2018/07/pyml/list.jpg" alt="Docker Image: 파이썬 기반 머신러닝 학습용 이미지 " />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/post/python_env_for_machine_learning/" rel="bookmark">Docker Image: 파이썬 기반 머신러닝 학습용 이미지 </a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2018-07-06 19:59:47 &#43;0900 KST">July 06, 2018</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  파이썬을 기반으로 머신러닝이나 딥러닝 작업을 진행할 때 가장 귀찮고 꺼려지는 작업은 기본 환경을 준비하는 과정입니다. 파이썬 기본 환경을 효과적으로 관리하기 위해서 Docker Image 형태로 PYML을 만들었습니다. PYML은 텐서플로우, 파이토치, 케라스 및 Scikit-Learn을 활용하여 데이터를 분석할 수 있는 환경이며 UI로 IPython을 사용합니다.
+taewanme/pyml 컨테이너 이미지 pyml 더커 이미지는 docker h ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/docker/" rel="tag">docker</a></li>
+						<a class="label" href="/tags/python/" rel="tag">python</a></li>
+						<a class="label" href="/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/" rel="tag">기계학습</a></li>
+						<a class="label" href="/tags/machine-learning/" rel="tag">machine learning</a></li>
+						<a class="label" href="/tags/deep-learning/" rel="tag">Deep Learning</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/post/numpy_cheat_sheet/">
+					<img src="https://taewanmerepo.github.io/2018/01/numpy/post.jpg" alt="파이썬 데이터 사이언스 Cheat Sheet: NumPy 기초, 기본" />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/post/numpy_cheat_sheet/" rel="bookmark">파이썬 데이터 사이언스 Cheat Sheet: NumPy 기초, 기본</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2018-01-16 21:28:14 &#43;0900 KST">January 16, 2018</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  파이썬 기반 데이터 분석 환경에서 NumPy1는 행렬 연산을 위한 핵심 라이브러리입니다. NumPy는 &amp;ldquo;Numerical Python&amp;ldquo;의 약자로 대규모 다차원 배열과 행렬 연산에 필요한 다양한 함수를 제공합니다. 특히 메모리 버퍼에 배열 데이터를 저장하고 처리하는 효율적인 인터페이스를 제공합니다. 파이썬 list 객체를 개선한 NumPy의 ndarray 객체를 사용하면 더 많은 데이터를 더 빠르게 처리할 수 있습니다.
+Nu ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/numpy/" rel="tag">numpy</a></li>
+						<a class="label" href="/tags/python/" rel="tag">python</a></li>
+						<a class="label" href="/tags/machine-learning/" rel="tag">Machine Learning</a></li>
+						<a class="label" href="/tags/data-science/" rel="tag">Data Science</a></li>
+						<a class="label" href="/tags/cheat-sheet/" rel="tag">Cheat Sheet</a></li>
+						<a class="label" href="/tags/%EA%B0%80%EC%9D%B4%EB%93%9C/" rel="tag">가이드</a></li>
+						<a class="label" href="/tags/%EC%82%AC%EC%9A%A9%EB%B2%95/" rel="tag">사용법</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/post/cnn/">
+					<img src="https://taewanmerepo.github.io/2018/01/cnn/post.jpg" alt="CNN, Convolution Neural Network 요약" />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/post/cnn/" rel="bookmark">CNN, Convolution Neural Network 요약</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2018-01-04 21:28:14 &#43;0900 KST">January 04, 2018</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  Fully Connected Layer1 만으로 구성된 인공 신경망의 입력 데이터는 1차원(배열) 형태로 한정됩니다. 한 장의 컬러 사진은 3차원 데이터입니다. 배치 모드에 사용되는 여러장의 사진은 4차원 데이터입니다. 사진 데이터로 전연결(FC, Fully Connected) 신경망을 학습시켜야 할 경우에, 3차원 사진 데이터를 1차원으로 평면화시켜야 합니다. 사진 데이터를 평면화 시키는 과정에서 공간 정보가 손실될 수밖에 없습니다. 결과적으 ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/deep-learning/" rel="tag">deep learning</a></li>
+						<a class="label" href="/tags/machine-learning/" rel="tag">Machine Learning</a></li>
+						<a class="label" href="/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/" rel="tag">기계학습</a></li>
+						<a class="label" href="/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/" rel="tag">딥러닝</a></li>
+						<a class="label" href="/tags/cnn/" rel="tag">CNN</a></li>
+						<a class="label" href="/tags/convolutional-neural-network/" rel="tag">Convolutional Neural Network</a></li>
+						<a class="label" href="/tags/%ED%95%A9%EC%84%B1%EA%B3%B1/" rel="tag">합성곱</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/post/wij_and_wji/">
+					<img src="https://taewanmerepo.github.io/2017/12/W-index/w-index.jpg" alt="신경망 W 행렬 표기법: &#39;ij&#39;/&#39;ji&#39; 의 차이점?" />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/post/wij_and_wji/" rel="bookmark">신경망 W 행렬 표기법: &#39;ij&#39;/&#39;ji&#39; 의 차이점?</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2017-12-23 21:28:14 &#43;0900 KST">December 23, 2017</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  제가 처음에 딥러닝을 학습할 때 가장 혼란스러웠던 것은 입력 레이어의 데이터와 가중치 W의 합 표현하는 &amp;ldquo;Z(Weighted Sum)&amp;rdquo; 수식이 문서마다 다른 것이었습니다.
+  &amp;lt;식 1&amp;gt;. Z(Weighted Sum)을 표현하는 수식 $$ \begin{align} Z^{[l]} &amp;amp; = W^{[l]T}A^{[l-1]} &amp;amp; (1) \\
+Z^{[l]} &amp;amp; = W^{[l]}A^{[l-1]} &amp;amp; ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/deep-learning/" rel="tag">deep learning</a></li>
+						<a class="label" href="/tags/machine-learning/" rel="tag">Machine Learning</a></li>
+						<a class="label" href="/tags/column-vector/" rel="tag">Column Vector</a></li>
+						<a class="label" href="/tags/row-vector/" rel="tag">Row Vector</a></li>
+						<a class="label" href="/tags/%EC%BB%AC%EB%9F%BC%EB%B2%A1%ED%84%B0/" rel="tag">컬럼벡터</a></li>
+						<a class="label" href="/tags/%EB%A1%9C%EB%B2%A1%ED%84%B0/" rel="tag">로벡터</a></li>
+						<a class="label" href="/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/" rel="tag">기계학습</a></li>
+						<a class="label" href="/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/" rel="tag">딥러닝</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/post/backpropagation_matrix_transpose/">
+					<img src="https://taewanmerepo.github.io/2017/12/whytranspose/list.jpg" alt="딥러닝 역전파 수식 행렬의 전치(Transpose) 기준?" />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/post/backpropagation_matrix_transpose/" rel="bookmark">딥러닝 역전파 수식 행렬의 전치(Transpose) 기준?</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2017-12-20 21:28:14 &#43;0900 KST">December 20, 2017</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  Backpropagation을 직접 구현하는 과정에서 이유 없이 갑자기 발생하는 행렬 전치(Transpose)와 관련된 의문점이 오랜 기간 절 괴롭혔습니다. Backpropagation을 하기 위해서 Cost Function을 해당 계층의 W(가중치)로 편미분 한 후, 현재 W를 수정하는 수식을 유도하는 과정에서 일부 행렬이 전치행렬로 갑자기 변경됩니다. 문제는 제가 행렬이 전치(Transpose)되는 근거와 기준을 이해할 수가 없다는 것입니다 ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/deep-learning/" rel="tag">deep learning</a></li>
+						<a class="label" href="/tags/machine-learning/" rel="tag">Machine Learning</a></li>
+						<a class="label" href="/tags/backpropagation/" rel="tag">Backpropagation</a></li>
+						<a class="label" href="/tags/%ED%8E%B8%EB%AF%B8%EB%B6%84/" rel="tag">편미분</a></li>
+						<a class="label" href="/tags/partial-derivative/" rel="tag">partial derivative</a></li>
+						<a class="label" href="/tags/%EC%A0%84%EC%B9%98%ED%96%89%EB%A0%AC/" rel="tag">전치행렬</a></li>
+						<a class="label" href="/tags/transpose/" rel="tag">Transpose</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/post/norm/">
+					<img src="https://taewanmerepo.github.io/2017/12/norm/list.png" alt="딥러닝을 위한 Norm, 노름" />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/post/norm/" rel="bookmark">딥러닝을 위한 Norm, 노름</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2017-12-15 21:28:14 &#43;0900 KST">December 15, 2017</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  기계학습 자료에서 간혹 Norm과 관련된 수식이나 표기법을 나오면 당황스러울 때가 있습니다. 선형대수에 익숙하지 않다면 Norm이 이상하게 보일 수 있습니다. 본 문서에서는 인공신공망과 기계학습 일고리즘에서 사용되는 Norm을 이해하는 것을 목표로 최소한도의 Norm 개념을 정리합니다.
+일반적으로 딥러닝에서 네트워크의 Overfitting(과적합) 문제를 해결하는 방법으로 다음과 같은 3가지 방법을 제시합니다.
+ 더 많은 데이터를 사용할 것 C ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/deep-learning/" rel="tag">deep learning</a></li>
+						<a class="label" href="/tags/machine-learning/" rel="tag">Machine Learning</a></li>
+						<a class="label" href="/tags/norm/" rel="tag">Norm</a></li>
+						<a class="label" href="/tags/l1-norm/" rel="tag">L1 Norm</a></li>
+						<a class="label" href="/tags/l2-norm/" rel="tag">L2 Norm</a></li>
+						<a class="label" href="/tags/regularization/" rel="tag">Regularization</a></li>
+						<a class="label" href="/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/" rel="tag">기계학습</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+				</div>
+			</div>
+		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/post/terraform_jupyter_installer/">
+					<img src="https://oracloud-img-repo.github.io/2017/10/terraform_jupyter/list.jpg" alt="Terraform Jupyter Installer: Machine Learning 환경 프로비저닝 " />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/post/terraform_jupyter_installer/" rel="bookmark">Terraform Jupyter Installer: Machine Learning 환경 프로비저닝 </a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2017-10-03 21:28:14 &#43;0900 KST">October 03, 2017</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+									  Terraform은 클라우드 인프라의 생성, 변경 및 형상 버전을 관리하는 툴입니다. Terraform을 이용하면 클라우드 자원을 효과적으로 사용하고 관리할 수 있습니다. Terraform을 활용하여 오라클 클라우드의 쉬운 접근법 제시를 목적으로 &amp;ldquo;Terraform Installer On Oracle Cloud&amp;ldquo;1 프로젝트를 준비하고 있습니다. Terraform으로 자원 할당, VM 생성, 소프트웨어 설치, 보안룰 적용 등 ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/terraform/" rel="tag">terraform</a></li>
+						<a class="label" href="/tags/%ED%85%8C%EB%9D%BC%ED%8F%BC/" rel="tag">테라폼</a></li>
+						<a class="label" href="/tags/oracle-cloud/" rel="tag">oracle cloud</a></li>
+						<a class="label" href="/tags/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/" rel="tag">오라클 클라우드</a></li>
+						<a class="label" href="/tags/jupyter/" rel="tag">jupyter</a></li>
+						<a class="label" href="/tags/machine-learning/" rel="tag">machine learning</a></li>
+						<a class="label" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+				</div>
+			</div>
+		</article>
+
+		
+
+		
+		<div>
+			<hr />
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<ins class="adsbygoogle"
+					 style="display:block"
+					 data-ad-client="ca-pub-8469722754608892"
+					 data-ad-slot="5594090168"
+					 data-ad-format="auto"></ins>
+			<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+		</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/tags/machine-learning/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

@@ -1,0 +1,484 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>taewan.kim:Py-ch09. 클래스</title>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript"> </script> 
+    <!-- <script src="/js/remark-latest.min.js" type="text/javascript"> </script> -->
+
+    <style type="text/css" media="screen">
+      @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
+      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        margin-top: 10px;
+      }
+      h1 { font-size: 3.5em; 
+      }
+      h2 { font-size: 3em; }
+      h3 { font-size: 1.6em; }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      pre {
+        border-left: 0.4em solid #d7d7d7;
+        padding: 1em !important;
+      }
+      code {
+        background: transparent !important;
+      }
+      a {
+        color: #F92672;
+        text-decoration: none;
+      }
+      .task {
+        float: right;
+        font-size: 0.9em;
+        padding-top: 0.6em;
+        opacity: .5;
+      }
+      .task a {
+        color: #080;
+        text-decoration: none;
+      }
+      .right {
+        float: right;
+        margin-left: 1em;
+      }
+      .pushdown {
+        margin-top: 12em;
+      }
+      .source {
+        bottom: 20px;
+        font-size: 15px;
+        left: 300px;
+        opacity: .5;
+        position: absolute;
+      }
+
+      .author {
+        bottom: 20px;
+        font-size: 12px;
+        left: 12px;
+        opacity: .5;
+        position: absolute;
+      }
+      .task {
+        float: right;
+        font-size: 0.9em;
+        padding-top: 0.6em;
+      }
+      .task a {
+        color: #080;
+        text-decoration: none;
+      }
+      .image-50 img {
+        width: 50%;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 5px;
+        border: 1px solid gray;
+      }
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse
+
+# Python 09. Class
+
+### 김태완, [taewanme@gmail.com](http://taewan.kim)
+### Mar, 28, 2016
+
+.author[Taewan Kim/taewanme@gmail.com]
+.source[feedback:[http://taewan.kim/mylearning.html](http://taewan.kim/mylearning.html)]
+
+???
+- 2016년 3월 20일 스터디 발표 자료
+
+---
+template: default
+.task[Remark: Web Presentation Tool]
+
+# class == object
+----
+### 파이썬 클래스는  object
+- 클래스 
+  - 타입: type
+
+```python
+>>> 
+>>> var="string 변수"
+>>> type(var)
+<class 'str'>   
+>>> type(type(var))
+<class 'type'> //클래스의 타입은 type
+>>> id(type(var))
+4297246016  //id가 존재하는 object임
+```
+.author[Taewan Kim/taewanme@gmail.com]
+.source[[http://taewan.kim](http://taewan.kim)]
+---
+
+# 클래스 정의 및 불러 오기
+----
+클래스 정의
+
+- 클래스 명: BookReader
+- 속성: name
+- 메소드: read_book
+
+```python
+class BookReader:
+    name = str("minsu")
+    def read_book(self):
+        print("독자:", self.name)
+
+br = BookReader()
+br.read_book()
+```
+
+```
+독자: minsu
+```
+
+.author[Taewan Kim/taewanme@gmail.com]
+.source[feedback:[http://taewan.kim/blog/2016/03/22/remarkjs/](http://taewan.kim/blog/2016/03/22/remarkjs/)]
+---
+
+# 파이썬 객체 속성: 클래스 관련
+----
+__class__
+
+
+```python
+>>> var.__class__
+<class 'str'>
+>>> var.__class__.__class__
+<class 'type'>
+>>> 
+```
+---
+
+# 클래스 초기화 함수: __init__()
+----
+다음과 같이 css를 설정합니다.
+
+```python
+class BookReader:
+    def __init__(self, name):
+        self.name = name
+
+    def read_book(self):
+        print("독자:", self.name)
+
+br = BookReader("minsu")
+br.read_book()
+```
+
+```
+독자: minsu
+```
+---
+# 클래스 변수 & 인스턴스 변수
+----
+클래스 변수는 클래스 내부에 선언되는 변수이며 인스턴스 변수는 최기화 함수에서 생성됨
+
+```python
+class Person:
+    commander = "Sunny"
+    def __init__(self, name):
+        self.name = name
+
+    def printName(self):
+        print("이름:", self.name)
+
+child = Person("minsu")
+father = Person("Taewan")
+child.printName()
+father.printName()
+print(child.commander, father.commander)
+```
+```
+이름: minsu
+이름: Taewan
+Sunny Sunny
+```
+---
+
+# 클래스 변수 & 인스턴스 변수 
+----
+변경 접근자에 따라서 다른 결과 출력
+
+```python
+class Person:
+    commander = "Sunny"
+    def __init__(self, name):
+        self.name = name
+
+    def printName(self):
+        print("독자:", self.name)
+
+child = Person("minsu")
+father = Person("Taewan")
+
+child.commander="kkk"
+print(child.commander, father.commander)
+
+Person.commander ="kkk"
+print(child.commander, father.commander)
+```
+```
+kkk Sunny
+kkk kkk
+```
+---
+
+# 클래스 변수
+----
+클래스 변수를 정의하면 dir로 정의를 확인할 수 있음
+
+```python
+
+class Person:
+    commander = "Sunny"
+    def __init__(self, name):
+        self.name = name
+
+    def printName(self):
+        print("독자:", self.name)
+
+
+attribute = dir(Person)
+print("commander" in attribute)
+```
+```
+True
+```
+
+---
+# 데이터 은닉
+----
+자바와 같이 접근 지정자를 붙이지는 못함. "__"를 접두사로 사용하여 클래스에서 인식하는 이름을 변경함
+
+```python
+class Person:
+    __commander = "Sunny"
+    def __init__(self, name):
+        self.name = name
+
+    def printCommander(self):
+        print("독자:", self.__commander)
+
+child = Person("minsu")
+father = Person("Taewan")
+child.__commander
+```
+
+```
+Traceback (most recent call last):
+  File "/Users/taewan/PycharmProjects/study/demo.py", line 11, in <module>
+    child.__commander
+AttributeError: 'Person' object has no attribute '__commander'
+```
+
+---
+# 데이터 은닉
+----
+자바와 같이 접근 지정자를 붙이지는 못함. "__"를 접두사로 사용하여 클래스에서 인식하는 이름을 변경함
+
+```python
+class Person:
+    __commander = "Sunny"
+    def __init__(self, name):
+        self.name = name
+    def printCommander(self):
+        print("독자:", self.__commander)
+
+child = Person("minsu")
+father = Person("Taewan")
+print(child._Person__commander) //기본형식: _[클래스명]__[변수명]
+dir(Person)
+```
+```
+Sunny
+['_Person__commander', ... //생략]
+```
+---
+
+# 데이터 은닉: 인스턴스 변수
+----
+자바와 같이 접근 지정자를 붙이지는 못함. "__"를 접두사로 사용하여 클래스에서 인식하는 이름을 변경함
+
+```python
+class Person:
+    def __init__(self, name):
+        self.__name = name
+
+    def printName(self):
+        print("독자:", self.__name)
+
+child = Person("minsu")
+print(child.__name)
+```
+
+```
+minsu
+```
+- 기본형식: _[클래스명]__[변수명]
+---
+
+# 상속
+----
+
+```python
+class Human:
+    country = 'Korea'
+    def __init__(self, name):
+        self.name = name
+
+class BookReader(Human):
+    def read_book(self):
+        print(self.name, 'is reading book!')
+```
+???
+- 다중 상속을 지원
+- 괄호에 상속 클래스를 지정
+- 클래스는 쉼표로 구분됨
+---
+# 상속 타입
+----
+
+```python
+class Human:
+    country = 'Korea'
+    def __init__(self, name):
+        self.name = name
+
+class BookReader(Human):
+    def read_book(self):
+        print(self.name, 'is reading book!')
+
+br = BookReader('taewan')
+br.read_book()
+
+print(BookReader.__bases__)
+print(Human.__bases__)
+```
+
+```
+taewan is reading book!
+(<class '__main__.Human'>,)
+(<class 'object'>,)
+```
+???
+- __bases__는 상속하는 것을 나타냄
+- 상속 구조의 최상위는 object
+- 현재 클래스를 나타내는 속성: __class__
+---
+# 복수 클래스 상속
+----
+
+```python
+class Human:
+    country = 'Korea'
+    def __init__(self, name):
+        self.name = name
+
+class Developer:
+
+class BookReader(Human):
+    def read_book(self):
+        print(self.name, 'is reading book!')
+
+br = BookReader('taewan')
+br.read_book()
+
+print(BookReader.__bases__)
+print(Human.__bases__)
+```
+
+```
+taewan is reading book!
+(<class '__main__.Human'>,)
+(<class 'object'>,)
+```
+???
+- __bases__는 상속하는 것을 나타냄
+- 상속 구조의 최상위는 object
+- 현재 클래스를 나타내는 속성: __class__
+
+---
+# 다중상속
+----
+```python
+class Human:
+    country = 'Korea'
+    def __init__(self, name):
+        self.name = name
+class Developer:
+    def write_code(self):
+        print(self.name,"is writing code")
+class ProgrammingWriter(Human,Developer):
+    def write_book(self):
+        print(self.name,"is writing code")
+
+pw = ProgrammingWriter("taewan")
+pw.write_code()
+pw.write_book()
+
+print(pw.__class__)
+print(pw.__class__.__bases__)
+```
+```
+taewan is writing code
+taewan is writing book
+<class '__main__.ProgrammingWriter'>
+(<class '__main__.Human'>, <class '__main__.Developer'>)
+```
+.author[Taewan Kim/taewanme@gmail.com]
+.source[feedback:[http://taewan.kim/blog/2016/03/22/remarkjs/](http://taewan.kim/blog/2016/03/22/remarkjs/)]
+---
+# 다형성
+----
+- 부모 클래스와 동일한 이름의 메소도를 그대로 자식 클래스에서 구현하여 재정의하는 것
+- 부모 클래스의 메소드 호출시 
+  - super() 사용
+
+```python
+super().coding()
+super().__init__()
+
+    </textarea>
+    <script>
+      var slideshow = remark.create({ 
+                                      countIncrementalSlides: false,
+
+      });
+//      var slideshow = remark.create({source:'merong'});
+
+    </script>
+    <script>
+//  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+//  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+//  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+  </body>
+</html>

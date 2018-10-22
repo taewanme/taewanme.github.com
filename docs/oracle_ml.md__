@@ -1,0 +1,309 @@
+
++++
+date = "2018-07-21T21:28:14+09:00"
+description = "오라클에서 배포하는 'Demystifying Machine Learnin' 문서를 번역하는 문서입니다. "
+title = "Demystifying Machine Learnin(from oracle)"
+thumbnailInList = "https://taewanmerepo.github.io/2018/07/oracleml/list.jpg"
+thumbnailInPost = "https://taewanmerepo.github.io/2018/07/oracleml/post.jpg"
+tags = ["ML", "Andrew NG", "E-book", "Oracle"]
+categories = []
+author = "taewan.kim"
+language = ""  
+adsense = "true"
++++
+
+본 문서는 oracle.com에서 배포하는 머신러닝의 기초 용어를 설명하는 문서인 '__Demystifying Machine Learnin__'를 번역합니다. 원문은 다음 URL에서 다운로드 할 수 있습니다. 
+
+- https://go.oracle.com/LP=68994
+
+{{< img src="https://taewanmerepo.github.io/2018/07/oracleml/010.jpg"
+title="그림 1"
+caption="문서 다운로드 페이지, https://go.oracle.com/LP=68994" >}}
+
+- 문서 상태
+  - 최종 업데이트: 2018.07.21
+  - 단계: 번역중
+
+----
+![](https://taewanmerepo.github.io/2018/07/oracleml/s01.jpg)
+
+## 소개
+
+신용카드가 거절될 이유가 없는데 신용카드 거래가 거절된 경험이 있습니까? 또는 개인화된 이메일 또는 웹 광고를 수신하고 있습니까? 온라인 쇼핑을 할 때, 사이트에서 여러분이 관심을 갖을만한 상품을 추천한다는 사실을 알고 있습니까? 그리고 고객이 떠나는 것을 막기 위해서 디자인된 어떤 회사의 제안(프로모션)을 받아본 적이 있습니까?[^1]
+
+[^1]: 역자주: 한동안 커피숍에 방문하지 않을 경우, 커피 체인점이 할인 쿠폰이나 무료 시음 쿠폰을 SMS나 메일로 발송하는 이벤트를 의미합니다. 
+
+이런 일들을 경험했다면, 아마도 여러분들은 여러분들이 거래하는 회사 혹은 조직이 운영하는 머신러닝 알고리즘을 경험했다고 말할 수 있습니다. 여러분들은 이들 알고리즘의 최종 수신처였을 것 입니다. 
+
+이 문서를 통해서 여러분들을 머신러닝 이면에 대해서 이해하게 될 것입니다. 이 문서를 통해서 여러분은 머신러닝에 대한 기본적인 이해와 머신러닝 입문자 정도의 뷰를 갖게 될 것이며, 머신러닝이 해결하는 문제 유형을 알게 될 것입니다. 만약 여러분이 데이터 과학자라면, 이 문서 보다는 ["빅데이터 여행(big data journey)"](https://go.oracle.com/LP=50757/?)에 더 많은 관심이 갈 것입니다. ["빅데이터 여행(big data journey)"](https://go.oracle.com/LP=50757/?)는 데이터 과학을 가속하는 내용을 다루며, 더 자제한 기술적인 내용을 다룹니다. 이 문서는 비전문적인 분들을 위해서 기획되었습니다. 머신러닝이라는 키워드를 알고 있고 중요하다는 사실은 알고는 있지만, 머신러닝이 무엇인지 구체적으로 알지 못하거나 무신러닝이 무엇을 할 수 있는지 알지 못하시는 분들을 위해서 작성되었습니다. 이 문서를 통해서 여러분들을 위헣ㅁ하게 만들 충분한 정보를 얻을 수 있을 것입니다.[^2]
+
+[^2]: 역자주: 이 문서를 통해서 머신러닝의 매력에 빠져들고, 여러분들이 앞으로 머신러닝 덕후가 될지도 모른다는 썰렁한 농담입니다. 
+
+----
+![](https://taewanmerepo.github.io/2018/07/oracleml/s02.jpg)
+
+## 머신러닝이란?
+
+[맥킨지 (McKinsey)의 한 기사](https://www.mckinsey.com/industries/high-tech/our-insights/an-executives-guide-to-machine-learning)는 기계 학습을 "규칙을 정의하고 프로그래밍하는 것이 아니라 데이터에서 학습하고 성능을 개선하는 알고리즘에 기반한"[...]라고 설명합니다. 빅데이터 시대에, 우리는 많은 양의 데이터를 갖고 있습니다. 그러나 빅데이터로부터 무엇을 해야 할지 결정하고, 무엇을 말하는지 알아내는 것은 상당히 어렵습니다. 이것이 바로 기계학습이 매력적인 이유입니다. 기계 학습은 기본적으로 데이터를 처리하는 능력과 올바른 알고리즘을 찾아내어, 데이터가 의미하는 상황을 우리가 이해할 수 있도록 만듭니다. 
+
+머신러닝에 대한 비유는 바로 인간으로써 우리가 학습하고 주변 세상을 경험하며, 스스로 그 문제렬 해결하는 것 입니다. 아이들에게 자전거 타는 방법을 가르칠 때, 자전거를 타는 규칙을 알려주지 않았습니다. 아이들을 자전거에 태우고, 균형을 유지하도록 합니다. 그러면서 자전거를 운전하도록 합니다. 아이들은 눈과 귀로 때로운 머리결의 감각으로 데이터를 수집합니다. 그리고 자전거를 똑바로 세우는 방법을 스스로  터득합니다. 
+
+그렇습니다. 이것이 바로 기계학습입니다. 데이터를 수집하고, 데이터로 작업하고, 그 결과를 확인하는 것 입니다. 
+
+![](https://taewanmerepo.github.io/2018/07/oracleml/img010.jpg)
+
+----
+![](https://taewanmerepo.github.io/2018/07/oracleml/s03.jpg)
+
+## 머신러닝의 쉬운 예
+
+여러분은 고객에 대한 더 많은 정보를 알아 내야하는 임무를 부여 받았다고 가정해 보겠습니다. 아래 여러 사진으로 부터 고객은 다양하고 매우 행복한 그룹임을 알 수 있습니다. 그러나 이 정보외에 어떤것을 알 수 있을까요?
+
+데이터베이스의 간단한 쿼리로 연령, 성별 또는 연락 방법 (메일, 이메일, 전화, 텍스트) 같은 정보를 알 수 있습니다. 
+
+여러 분석 쿼리를 돌려서 RFM을 계산할 수 있습니다. RFM은 고객이 지출한 규모와 지출 빈도에 따라 고객의 가치를 측정하는 방법입니다. RFM을 사용하면 어떤 고객이 더 가치가 있는지 확인할 수 있습니다. 그러나 이 데이터를 가지고 고객의 가치를 측정하기 위해서 무엇을 어떻게 해야 할 지 알기 어렵습니다. 
+
+기계학습 알고리즘을 이 보다 훨씬 더 많은 것을 할 수 있습니다. 예를 들어서 비슷한 행동을 보이는 고객을 세그먼트로 그룹화하거나, 고객별로 주어진 신제품을 구매할 확률을 알아낼 수 있습니다. 아래 그림에서 고객을 다섯 개의 행동 그룹으로 나눌 수 있습니다. "__은퇴한 글로벌 비지니스 맨__", "__부유한 실업가__", "__신혼집 아이 엄마__", "__성공한 청년 스타트업 CEO__", "__전문적인 상품 수집가__"로 분류할 수 있습니다. 또한 고객 분류 별로 특정 제품에 대한 구매할 가능성이 21%에서 72% 범위를 갖는것을 파악할 수 있습니다.        
+
+이제 잠재적으로 더 강력한 것이 얻었습니다. 이 정보로 토대로 다음과 같을 일을 할 수 있습니다.
+
+- 맞춤형 마케팅 캠페인
+- 그룹 별 맞춤형 언어 사용
+- 캠페인 우선 순위 지정
+- 해당 제품를 구매할 가능성이 높은 구룹에만 해당 제품 판매
+
+![](https://taewanmerepo.github.io/2018/07/oracleml/img020.jpg)
+
+이 상황에서 기계 학습은 고객에 대해 휠씬 더 많은 통찰력을 제공합니다. 무엇보다 가장 중요한 것은 기계학습은 고객이 무엇을할것 혹은  고객의 반응을 무엇인지 예측할 수 있다는 것입니다. 최근에는 딥러닝을 실무에 적용하고 실제 비지니스 문제를 해결하기 시작했습니다. 딥러닝은 굉장히 새롭고 흥미로운 기법입니다. 
+
+그러나 기계학습은 실제로 어떻게 그렇게 할까요? 몇 가지 공통적인 기법을 살펴 보도록하겠습니다. 이것은 기계학습 세계에서 무슨일이 일어나는지를 이해하기 위한 훌룡한 기초가 될 것입니다.
+
+만약 여러분이 현재 데이터 과학자라면, 이 문서는 비전문가를 위해서 작성되었다는 점을 기억해 주십시오.
+
+우선 용어에 대해서 이야기 해 보겠습니다. 테크닉, 알고리즘 그리고 모델 이 세 가지 용어를 먼저 살펴 보겠습니다. 이 용어는 혼용되어 사용될 수 있습니다.(때로는 정확하게 혼용되는 것은 아닙니다.) 각 용어에 대해서 소개하겠습니다.
+
+__테크닉(technique)__은 문제를 해결하는 방법입니다. 예를 들어 분류(Classficiation)는 비슷한 항목을 그룹화하는 기술입니다. 실제로 일부 데이터에서 분류를 수행하려면, 데이터 과학자는 DecisionTrees와 같은 특정 알고리즘을 사용해야합니다. (이 알고리즘 외에도 선택할  수있는 많은 분류 알고리즘이 있습니다.) 마지막으로 일부 데이터에 알고리즘을 적용하면, 최종 결과는 새로운 데이터나 상황에 대해 정확성을 기대하면서 사용할 수있는 학습된 모델이됩니다. 이런 예제에 대해서는 다음 절에서 더 명확하게 살펴보겠습니다.  
+
+----
+![](https://taewanmerepo.github.io/2018/07/oracleml/s04.jpg)
+
+## 머신러닝 기법 #1: 회귀(Regression)
+
+여러분이 다음 파티에서 좋은 대화 소재를 찾고 있다면, 여러분은 이렇게 말할 수 있을 겁니다. "여러분도 알다시피, 기계학습은 그렇게 새로운 것은 아닙니다. 왜냐하면 회귀(Regression)의 개념이 1875년 찰스 다윈의 사촌 인 Francis Galton이 처음으로 사용했기 때문입니다. 물론 여러분이 파티에서 이런 얘기를 한다면 한동안 다른 파티에는 초대받지 못할 겁니다. 
+
+회귀의 개념은 정말 간단합니다. Galton은 여러 세대의 완두콩의 크기를 조사하고 있었습니다. 일반적으로 크기가 큰 완도콩을 의도적으로 선택하여 재배하면, 더 큰 완두콩을 얻게될 것이라고 예상할 것입니다. 그러나 자연에서 이 과정을 관찰하면, 다양한 크기의 완두콘을 볼 수 있습니다. 결국 완두콩의 크기가 커지면 작은 새끼가 생겨 "평균으로 회귀"하게됩니다. 기본적으로 완두콩은 전형적인 크기가 있습니다. 비록 종류가 다양해진다고 해서, 그 다양성이 유지되지 않습니다.
+
+The same principle applies to monkeys picking stocks. On more than one occasion there have been stock-picking competitions (WSJ has done them, for example) where a monkey will beat the pros. Great headline. But what happens next year or the year after that? Chances are that monkey, which is just an entertaining way of illustrating “random,” will not do so well. Put another way, its performance will eventually regress to the mean.
+
+What this means is that in this simple situation, you can predict what the next result will be (with some kind of error).The next generation of pea will be the average size, with some variability or uncertainty (accommodating smaller and larger peas). Of course, in the real world things are a little more complicated than that.
+
+![](https://taewanmerepo.github.io/2018/07/oracleml/img030.jpg)
+
+![](https://taewanmerepo.github.io/2018/07/oracleml/img040.jpg)
+
+In the image above, we don’t have a single mean value like pea size. We have a straight line with a slope and two values to work with, not just one. Instead of variability around a single value, here we have variability in a two- dimensional plane based on an underlying line.
+
+You can see all the various data points in blue, and that red line is the line that best  ts all that data. And based on that red line, you could make a prediction about what would happen if, say, the next data point was a 70 on the X axis. (That prediction would not be a single de nitive value, but rather a projected value with some degree of uncertainty, just like for the pea sizes we looked at earlier).
+
+Regression algorithms are used to make predictions about numbers. For example, with more data, we can:
+1. Make predictions about customer lifetime value, perhaps spotting potentially valuable customers before they have declared themselves by the volume of their purchases
+1. Predict the optimal pricing for a product to maximize revenue or profit
+1. Predict house prices, for companies that want to send out those property newsletters
+
+The straight line in the graph is an example of linear regression, but looking at those three examples above, I’d be surprised if any of them  t well to a straight line. And in fact, the underlying line behind your data doesn’t have to be straight. It could be an exponential, a sine wave or some arbitrary curve. And there are algorithms and techniques to  nd the best  t to the underlying data no matter what shape the underlying line is.
+
+Furthermore, I’ve given you a two-dimensional diagram there. If you were trying to predict house prices, for example, you’d include many more factors than just two: size, number of rooms, school scores, recent sales, size of garden, age of house and more. 
+
+Finally, perhaps my favorite example of regression is this approach to measuring the quality of Bordeaux wine.
+
+----
+![](https://taewanmerepo.github.io/2018/07/oracleml/s05.jpg)
+
+## 머신러닝 기법 #2: 분류
+
+Let’s move on to classi cation. And now I want you to pretend you’re back in preschool and I’ll play the role of teacher trying hard to teach a room of children about fruit (presumably fruit- hating children if they have to this age without knowing what a banana is).
+
+While you kids don’t know about fruit, the good news for you is that I do.You don’t have to guess (at least initially). I’m going to show you many pieces of fruit and tell you what each one is. And so, like children in a preschool, you will learn how to classify fruit.You’ll look at things like size, color, taste,  rmness, smell, shape and whatever else strikes your fancy as you attempt to  gure out what it is that makes an apple, an apple, as opposed to a banana.
+
+Once I’ve gone through 70 percent to 80 percent of the basket, we can move onto the next
+stage. I’ll show you a fruit (that I have already identi ed) and ask you, “What is it?” Based on the learning you’ve done, you should be able to classify that new fruit correctly.
+
+In fact, by testing you on fruit that I’ve already classi ed correctly, I can see how well you’ve learned. If you do a good job, then you’re ready for some real work which in a non-kindergarten situation, would mean deploying that trained model into production. If of course the results of the test weren’t good enough that would mean the model wasn’t ready. Perhaps we need to start again with more data, better data, or a different algorithm.
+
+We call this approach “supervised learning” because we’re testing your ability to get the right answers, and we have a lot of correct examples to work with since we have a whole basket that has been correctly classi ed.That idea of using part of the basket for training and the rest for testing is also important.That’s how techniques like this make sure that the training worked or, alternatively, that the training didn’t work and a new approach is needed.
+
+![](https://taewanmerepo.github.io/2018/07/oracleml/img050.jpg)
+
+Note that the basket of fruit we worked with had only four kinds of fruit: apples, bananas, strawberries (you can’t see them in the picture, but I assure you they are there) and oranges. So, what happens if you were presented with
+a cherry to classify is somewhat unpredictable. It would depend what the algorithm found to be important in differentiating the others.The point here of course is that if you want to recognize cherries then the model should be trained
+on them.
+
+![](https://taewanmerepo.github.io/2018/07/oracleml/img060.jpg)
+
+Here’s an example of a chart showing a data set that has been grouped into two different classes. We have a few outliers in this diagram, a few colored points that are on the wrong side of the line. I show this to emphasize the point that these algorithms aren’t magic and may not get everything right. It could also be the case that with different approaches or algorithms, we could do a better job classifying these data points and identifying them correctly.
+
+Summarizing the previous entry, classi cation enables you to  nd membership in a known class. Examples of known classes? Let’s go back to customer segmentation. I know who my high- value customers are today. What did they look like some time ago? By using them as a training class, I could train a model to spot a valuable customer earlier.
+
+Another example is customer churn. We know who’s left us. Let’s train a model on that class and then see if we do a better job of spotting other churners before they churn.This kind of approach is what triggers those unexpected offers from companies who think you are about to leave them.
+
+Insurance companies pay out on claims and they have a historical set of claims that they have already classi ed into “good claims” and ones that need “further investigation.” Train a classi cation algorithm on all those old claims, and perhaps you can do a better job of spotting dubious claims when they come in.
+
+One additional point.
+
+In all these cases, it’s important to have lots of data available to train on.The more data you have, the better the training (more accurate, wider range of situations etc.). One of the reasons (of course there are others) for building a data lake is to have easy access to more data for machine learning algorithms.
+
+![](https://taewanmerepo.github.io/2018/07/oracleml/img050.jpg)
+
+----
+![](https://taewanmerepo.github.io/2018/07/oracleml/s06.jpg)
+
+## 머신러닝 기법 #3: 클러스터링
+
+Alert readers should have noticed that this is the same basket of fruit used in the classi cation example. Yes, this was done on purpose. Same fruit, but a different approach.
+
+This time we’re going to do clustering, which is an example of unsupervised learning.You’re back in preschool and the same teacher is standing in front of you with the same basket of fruit. But this time, as I hand the stuff out, I’m not going to tell you “This is a banana.” Instead I’m effectively going to say “do these things have any kind of natural grouping?.” (Which is a complex concept for a preschooler, but work with me for a moment).
+
+You’ll look at them and their various characteristics, and you might end up with several piles of fruit that look like “squidgy red things, ““curved yellow things”, “small green things,” and “larger red or green things.”
+
+To clarify, what you did (in your role as preschoolers/machine learning algorithm)
+is to group the fruits in that way. What the teacher (or the human supervising the machine learning process) did was to come up with meaningful names for those different piles. This is likely the same process used to do the customer segmentation mentioned earlier with a shorthand way to name or describe each grouping.
+
+![](https://taewanmerepo.github.io/2018/07/oracleml/img070.jpg)
+
+This approach is very common for customer segmentation.You could evaluate credit risk, or even things like the similarity between written documents. Basically, if you look at a mass of data and don’t know how to logically group it, then clustering is a good place to start.
+
+Here’s a real-world cluster diagram. With these data points you can see  ve separate clusters. Those little arrows represent part of the process of calculating the clusters and their boundaries: basically pick arbitrary centers, calculate which points belong in which cluster, and then move your arbitrary point to the actual center of
+the cluster and repeat until you have close enough (movements of the centers are suf ciently small).
+
+----
+![](https://taewanmerepo.github.io/2018/07/oracleml/s07.jpg)
+
+## 머신러닝 기법 #4: 이상 감지(Anomaly Detection)
+
+Sometimes you’re not trying to group like things together. Maybe you don’t much care about all the things that blend in with the  ock. What you’re looking for is something unusual, something different, something that stands out in some way.This approach is called anomaly detection.You can use this to  nd things that are different, even if you can’t say upfront how they are different. It’s fairly easy to spot the outliers here, but in the real world, those outliers might be harder to  nd.
+
+One health provider used anomaly detection to look at claims for medical services and found
+a dentist billing at the extraordinarily high rate of 85  llings per hour.That’s 42 seconds per patient to get the numbing shot, drill the bad stuff out and put the  lling in. Clearly that’s suspicious and needs further investigation. Just by looking at masses of data (and there were millions of records) it would not have been obvious that you were looking for something like that.
+
+Of course, it might also throw up that fact that one doctor only ever billed onThursdays. Anomalous, yes. Relevant, probably not. Anomaly detection can throw up the outliers for you to evaluate to see if they need further investigation.
+
+Finding a dentist billing for too much work is a relatively simple anomaly. If you knew to look at billing rates (which will not always be the case), you could  nd this kind of issue using other techniques. But anomaly detection could also apply to more complex scenarios. Perhaps you are responsible for some mechanical equipment where things like pressure,  ow rate and temperature are normally in sync with each other: one goes up, they all go up; one goes down, they all go down. Anomaly detection could identify the situation where two of those variables go up and the other one goes down. That would be really hard to spot with any other technique.
+
+![](https://taewanmerepo.github.io/2018/07/oracleml/img080.jpg)
+
+----
+![](https://taewanmerepo.github.io/2018/07/oracleml/s08.jpg)
+
+## 머신러닝 기법 #5: 시장 바구니 분석(Market Basket Analysis)
+
+Association rules are typically used for “market basket analysis.” Basically, you can look at things people buy and use it to predict other things that they might buy. How? Because by examining enough of these things, we can determine rules about which purchases are associated with other ones. For example, if somebody buys peanut butter then there is an X percent chance of buying jelly. A more complex rule (a rule of length four meaning four items are involved) would be “if somebody buys spaghetti, tomato sauce and ground beef, then there is an X percent chance of buying parmesan cheese.”These rules drive things like “you might be interested in...” when you are shopping on a website.
+
+It turns out that you can use these rules in other ways, though. Perhaps you are responsible for operating some mechanical equipment.
+
+You could use association rules to track and uncover the relationships between, say, high temperature, pressure and vibration with a particular failure mode. So these kind of rules can help with root cause analysis.
+
+Did you ever enjoy Gerber Singles? Or Colgate’s packaged meals? What about Pepsi AM? All
+of those products and many others failed. But
+it turns out that some people liked them. And further research from MIT shows that some people consistently like products that turn out to fail.They called them “harbingers of failure.” If you have this kind of business, perhaps you’d like to  nd this kind of consumer. Great way
+to get new insight about the likely success or failure of a new product you’re launching.
+
+----
+![](https://taewanmerepo.github.io/2018/07/oracleml/s09.jpg)
+
+## 머신러닝 기법 #6: 시계열 데이터 
+
+You all experience time series data because your heartbeat, as captured in this EKG, is an example of time series data. Every 50-150 or more times a minute, your heart beats. Multiple sensors on your body might be used to capture all the data about your heartbeat and muscle contractions many times a second and in aggregate that will give you a time series data set. And there are many other examples of time series data that you might experience in daily life:
+
+- Stock market opening and closing prices occur every 24 hours (holidays and
+weekends excluded).
+- Vibration, noise, pressure or similar readings from mechanical devices might be measured every hour, minute, second or less (depending on needs).
+- You could log energy consumption for houses, factories, subdivisions or entire cities.
+- Even economic data like unemployment  gures can be treated as time series data.
+
+With this kind of data you can make predictions about when some reading might hit a threshold, what energy use might be at some given point in the future, or remove systematic time-based biases from data as when unemployment  gures are adjusted to re ect seasonal ups
+and downs based on things like temporary holiday workers, people to bring in the harvest etc. Unemployment among ski instructors, for example, is higher in the summer than winter.
+
+![](https://taewanmerepo.github.io/2018/07/oracleml/img090.jpg)
+
+----
+![](https://taewanmerepo.github.io/2018/07/oracleml/s10.jpg)
+
+## 머신러닝 기법 #6: 신경망
+
+Strictly speaking, neural networks are a
+type of algorithm. I cover them here as a technique because there’s so much interest in understanding what they are and how they work.
+
+The idea behind neural networks is to simulate the way in which human brains work using arti cial neurons. Let’s start by taking a brief look at what they are.
+
+![](https://taewanmerepo.github.io/2018/07/oracleml/img100.jpg)
+
+A neuron is conceptually fairly simple. It has one or more inputs and an output. Depending on the value of those inputs, the neuron may “fire.” Simplistically, “firing” means that the output goes from off to on (think of it like a binary switch going from 0 to 1). In practice, neural networks based on neurons that ip like a binary switch can be unstable, so they generally have a pattern more like that s-shaped curve: 0 for a bit, then a fast (but not instantaneous) transition to a 1.
+
+There are two other concepts that you should know about, called “weight” and “bias”. Not
+all inputs to a neuron are equal; some are more important than others and are given
+more weight. For example, if you are going to a fancy dinner with friends, when picking the restaurant you might want to give more weight to the opinion of the foodie than to the fast food a cionado.
+
+Finally, for this section at least, there is the concept of bias. What that really means is how likely is the neuron to  re in the  rst place. For example, when I say “let’s go for a walk” our labrador puppy is at the front door before I’ve found the leash while the greyhound takes some more persuading. In this respect, some neurons are labrador puppies while others are retired racing greyhounds.
+
+So now let’s look at a real problem that can be tackled by neural networks: recognizing handwriting, speci cally the numbers 0-9.You can get a set of sample scanned digits from here if you want to try this yourself and you can  nd an excellent and in-depth explanation on this problem here.There are some detailed mathematics if you want that level of detail, but you can read it and skip the math if you prefer. In this entry, I’ll just summarize the story to give you the general idea of how it all works.
+
+![](https://taewanmerepo.github.io/2018/07/oracleml/img110.jpg)
+
+Those handwritten numbers were all scanned into 28 by 28 pixel images or 784 pixels in total. We’d start by having 784 input neurons on the left-hand side, each of which will  re based
+on the content of a single pixel in the scanned image. That hidden layer does some additional processing. And on the right-hand side we’d need a total of 10 output neurons representing the possible answers, and we’d expect one and only one of them to  re with each image.
+
+So how does this network generate accurate answers?The details are complex (again, here’s the article with more details), but basically we train it with many known images and look at the answers generated. Using some complex math it’s possible to tune all the weights and biases in the network so we end up with a highly accurate tool for identifying handwritten numbers.
+
+In fact, because they are more accurate than other algorithms on problems like this neural networks are used to process hand-written checks, so you’ve almost certainly encountered them.
+
+If that description of training the network on a set of known answers sounds familiar, then you were paying attention when you read the earlier part of the article.That’s actually the process
+for classi cation and what I described here is using an algorithm (a neural network) to do classi cation. Neural networks can also be used for regression problems.
+
+Finally, since we’re covering all the buzzwords in this article, let’s touch on deep learning. It’s broader than just neural networks, but one approach to deep learning could involve them. And as the name implies, rather than having a shallow network (here we have an input layer, and output layer, and just one hidden layer for a total of 3 layers), you could have a deep network with many more layers. Why do this? Because it enables looking at more data, and in a more sophisticated or nuanced way.This makes machine learning even more like
+a human.
+
+So there you have it: different techniques for machine learning, and how they’re used to solve real business problems. Perhaps you’d like to use them in your organization.
+
+----
+![](https://taewanmerepo.github.io/2018/07/oracleml/s11.jpg)
+
+## 오라클의 머신러닝 
+
+When it comes to incorporating new capabilities powered by machine learning into applications and tools, Oracle is on the cutting edge.The Oracle Autonomous Database is enabled by machine learning, while Oracle Management Cloud uses machine learning to automate the process of intrusion detection (amongst other things). And every day, Oracle is working to release new capabilities powered by machine learning.
+
+But what if you want to deliver new capabilities powered by machine learning in your own applications and tools?To do that you need powerful tools to build, train, and test models against a wide range of data.
+
+The Oracle Big Data Platform provides just that, and is built around three core principles:
+
+### 개발
+
+Open source is a key component of the Oracle big data strategy, and it remains the case here with support for technologies like:
+• R language - Enhanced for greater scalability,
+performance, and integration
+• Apache Spark - As a framework to run
+distributed applications
+• Apache Zeppelin - Notebook to simplify the
+process of interactive data analytics
+
+### 신속 & 빠름
+
+Open source technologies provide a great foundation, but there’s always room for improvement. Oracle has optimized many source algorithms, making them work well in-memory and in parallel. So they are going to run fast. For example, one Oracle-improved algorithm runs 32 times faster on Spark than the standard implementation available with Spark MLlib.
+
+### 통합
+
+Oracle machine learning capabilities are integrated with data management: keeping the analytics with the data helps to get results quicker since data movement is minimized. So Oracle Database Cloud and Oracle Big Data Cloud both include machine learning analytics that work directly on the data stored in those two services.
+
+### 클라우드 머신러닝 시작점
+
+If you would like to  nd out more about machine learning technologies there is in-depth information available about R technologies from Oracle as well as Oracle Advanced Analytics.
+
+If you or somebody in your organization wants to test out machine learning on the Oracle Big Data Platform, then take a look at Oracle’s Big Data Journey, a free trial.
+
+
+Available journeys include “Building a Data Lake,” “Self-Service Analytics,” and “Data Science Acceleration” and they all include self- paced, guided trials that will enable you to get productive with big data and machine learning in the cloud.
+
+![](https://taewanmerepo.github.io/2018/07/oracleml/img120.jpg)
+
+
+
+

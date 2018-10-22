@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>튜토리얼 on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC/</link>
+    <description>Recent content in 튜토리얼 on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 27 Mar 2018 03:05:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Neural Networks</title>
+      <link>http://taewan.kim/trans/pytorch/tutorial/blits/03_neural_networks/</link>
+      <pubDate>Tue, 27 Mar 2018 03:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/pytorch/tutorial/blits/03_neural_networks/</guid>
+      <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt; PyTorch와 함께하는 딥러닝: 60분 리뷰 &amp;gt; 신경망
+  원문: http://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html 원문 제목: Neural Networks   torch.nn 패키지를 사용하여 신경망을 만들 수 있습니다.
+지금까지 autograd에 대하여 살펴보았습니다. nn 패지지는 autograd를 사용하여 모델을 정의하고 미분합니다. nn.Module은 여러 레이어와 forward(input) 메서드를 포함합니다. 이 forward 메서드는 output을 반환합니다.
+다음 이미지는 디지틀 사진을 분류하는 신경망입니다.
+convnet1
+위 신경망은 단순한 feed-forward 네트워크입니다. 이 신경망은 입력된 데이터를 순차적으로 여러 레이어에 데이터를 공급합니다.</description>
+    </item>
+    
+    <item>
+      <title>Autograd: 미분 자동화</title>
+      <link>http://taewan.kim/torchtrans/tutorial/blits/autograd/</link>
+      <pubDate>Sun, 18 Mar 2018 03:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/torchtrans/tutorial/blits/autograd/</guid>
+      <description>원문: http://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html 원문 제목: Autograd: automatic differentiation?  PyTorch의 모든 신경 네트워크의 중심에는 autograd 패키지가 있습니다. 먼저 autograd에 대하여 간략히 살펴 보겠습니다. 그러나서 첫 번째 신경망을 훈련해 볼 것 입니다.
+autograd 패키지는 오든 텐서 연산에 대해 미분 자동화 기능을 제공합니다. 실행 정의(define-by-run) 프레임웍입니다. 실행 정의란 역전파는 코드가 실행되는 방식에 이해 정이됨을 의미합니다. 모든 반복마다 달라질 수 있습니다.
+몇 가지 예로 좀 더 간단한 용어를 살펴보겠습니다.
+Variable Gradients NumPy 배열을 Torch 텐서로 변환 import numpy as np a = np.</description>
+    </item>
+    
+    <item>
+      <title>Autograd: 미분 자동화</title>
+      <link>http://taewan.kim/trans/pytorch/tutorial/blits/02_autograd/</link>
+      <pubDate>Tue, 27 Feb 2018 03:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/pytorch/tutorial/blits/02_autograd/</guid>
+      <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt; PyTorch와 함께하는 딥러닝: 60분 리뷰 &amp;gt; Autograd: 미분 자동화
+  원문: http://http://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html 원문 제목: Autograd: automatic differentiation   PyTorch으로 만든 모든 신경망의 중심에는 autograd 패키지가 있습니다. 먼저 autograd 패키지를 간략히 살펴보겠습니다. 그리구 다음 문서에서 첫 번째 신경망을 훈련해 보겠습니다.
+autograd 패키지는 Tensor로 수행한 모든 연산에 대하여 자동-미분(Autimatic differentiation) 기능을 제공합니다. autograd는 실행 시점에 정의되는(define-by-run) 프레임워크입니다. 이것은 코드가 어떻게 실행되는가에 따라서 역전파(backprop)가 정의됨을 의미합니다.</description>
+    </item>
+    
+    <item>
+      <title>PyTorch는 무엇인가?</title>
+      <link>http://taewan.kim/torchtrans/tutorial/blits/pythorh_tutorial_01_what_is_pytorch/</link>
+      <pubDate>Tue, 27 Feb 2018 03:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/torchtrans/tutorial/blits/pythorh_tutorial_01_what_is_pytorch/</guid>
+      <description>원문: http://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-beginner-blitz-tensor-tutorial-py 원문 제목: What is PyTorch?  PyTorch란 무엇인가? PyTorch는 파이썬 기반의 과학 컴퓨팅 패키지로 두 집단을 대상으로 합니다.
+ NumPy를 대체하고 GPU의 힘을 사용 최고의 유연성과 속도를 제공하는 딥러닝 연구 플래폼  시작하기 Tensors Tensors는 NumPy의 ndarrays와 유사하며, 차별점은 Tensors는 연산을 가속하는 GPU에서 사용될 수 있다는 점 입니다.
+from __future__ import print_function import torch   초기화 되지 않은 5X3 매트릭스 생성  x = torch.Tensor(5, 3) print(x)   출력:</description>
+    </item>
+    
+    <item>
+      <title>PyTorch는 무엇인가?</title>
+      <link>http://taewan.kim/trans/pytorch/tutorial/blits/01_what_is_pytorch/</link>
+      <pubDate>Tue, 27 Feb 2018 03:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/pytorch/tutorial/blits/01_what_is_pytorch/</guid>
+      <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt; PyTorch와 함께하는 딥러닝: 60분 리뷰 &amp;gt; PyTorch는 무엇인가?
+  원문: http://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-beginner-blitz-tensor-tutorial-py 원문 제목: What is PyTorch?   PyTorch란 무엇인가? PyTorch는 파이썬 기반의 과학 컴퓨팅 패키지로 두 집단을 대상으로 합니다.
+ NumPy를 대체하고 GPU의 힘을 사용 최고의 유연성과 속도를 제공하는 딥러닝 연구 플랫폼  시작하기 Tensors Tensors는 NumPy의 ndarrays와 유사하며, 차별점은 Tensors는 연산을 가속하는 GPU에서 사용될 수 있다는 점입니다.
+from __future__ import print_function import torch   초기화되지 않은 5X3 매트릭스 생성  x = torch.</description>
+    </item>
+    
+    <item>
+      <title>PyTorch와 함께하는 딥러닝: 60분 리뷰</title>
+      <link>http://taewan.kim/torchtrans/tutorial/main/pythorh_tutorial_01/</link>
+      <pubDate>Mon, 26 Feb 2018 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/torchtrans/tutorial/main/pythorh_tutorial_01/</guid>
+      <description> 원문: http://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html 작성자: Soumith Chintala 원문 제목: Deep Learning with PyTorch: A 60 Minute Blitz  튜토리얼 목적
+ 높은 수준에서 PyTorch의 텐서 라이브러리와 신경망을 이해할 수 있다. 이미지를 분류하는 작은 신경 네트워크를 학습시킬 수 있다.  이 튜토리얼에서는 numpy에 대한 기본적인 지식이 있다고 가정합니다.
+torch와 torchvision 패키지가 모두 설치되어 있어야 합니다.
+  What is PyTorch? Autograd: automatic differentiation Neural networks Training a classifier Optional: Data Parallelism  </description>
+    </item>
+    
+    <item>
+      <title>PyTorch와 함께하는 딥러닝: 60분 리뷰</title>
+      <link>http://taewan.kim/trans/pytorch/tutorial/main/01_blits/</link>
+      <pubDate>Mon, 26 Feb 2018 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/pytorch/tutorial/main/01_blits/</guid>
+      <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt; PyTorch와 함께하는 딥러닝: 60분 리뷰
+  원문: http://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html 작성자: Soumith Chintala 원문 제목: Deep Learning with PyTorch: A 60 Minute Blitz   튜토리얼 목적
+ 높은 수준에서 PyTorch의 텐서 라이브러리와 신경망을 이해할 수 있다. 이미지를 분류하는 작은 신경 네트워크를 학습시킬 수 있다.  이 튜토리얼에서는 numpy에 대한 기본적인 지식이 있다고 가정합니다.
+torch와 torchvision 패키지가 모두 설치되어 있어야 합니다.
+    원문제목 번역문서 제목     What is PyTorch?</description>
+    </item>
+    
+    <item>
+      <title>PyTorch 튜토리얼</title>
+      <link>http://taewan.kim/trans/pytorch/tutorial/main/</link>
+      <pubDate>Sun, 25 Feb 2018 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/trans/pytorch/tutorial/main/</guid>
+      <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt;
+  원문: http://pytorch.org/tutorials/index.html 원문 제목: Welcome to PyTorch Tutorials.   PyTorch 학습을 시작하려면, 입문자 튜토리얼로부터 시작하시기 바랍니다. &amp;ldquo;60분 blitz&amp;rdquo;는 초보자에게 가장 적합한 시작점으로, PyTorch에 대한 간단한 소개를 제공합니다. 예제를 통해 학습하는 것을 선호한다면, &amp;ldquo;Learning PyTorch With Examples&amp;rdquo; 문서로 시작하시기 바랍니다.
+각 튜토리얼 문서는 Jupyter 노트북과 파이썬 소스 코드 다운로드 링크를 제공합니다. IPython/Jupyter 노트북을 내려받아 대화식 학습을 진행할 수 있습니다.
+또한, 다수의 고품질 예제를 제공합니다.</description>
+    </item>
+    
+    <item>
+      <title>기계학습(Machine Learning) 문서 번역</title>
+      <link>http://taewan.kim/ml-translation/</link>
+      <pubDate>Sun, 25 Feb 2018 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/ml-translation/</guid>
+      <description> PyTorch PyTorch 튜토리얼  PyTorch 튜토리얼 목차 01. PyTorch와 함께하는 딥러닝: 60분 리뷰  PyTorch는 무엇인가? Autograd: 미분 자동화 신경망   </description>
+    </item>
+    
+  </channel>
+</rss>

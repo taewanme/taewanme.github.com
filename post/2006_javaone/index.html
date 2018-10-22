@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>The Power Of The Java:2006 자바원 컨퍼런스 후기</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="The Power Of The Java:2006 자바원 컨퍼런스 후기" />
+<meta property="og:description" content="자바개발자 페스티벌 - The Power Of The Java: 2006 자바원 컨퍼런스" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/post/2006_javaone/" />
+
+
+
+<meta property="article:published_time" content="2017-08-22T21:59:47&#43;09:00"/>
+<meta property="article:modified_time" content="2017-08-22T21:59:47&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		
+		
+		<header class="post__header clearfix">
+			<h1 class="post__title">The Power Of The Java:2006 자바원 컨퍼런스 후기 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2017-08-22 21:59:47 &#43;0900 KST">August 22, 2017</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/tech-event" rel="category">Tech Event</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+			
+
+<p>10년전 Javaone 컨퍼런스 후기 형식으로 2006년 7월에 마이크로 소프트웨어에 기고했던 기사입니다.
+어렵게 원본을 발굴하여 복원한 문서입니다. ^^</p>
+
+<ul>
+<li>원본: <a href="http://www.zdnet.co.kr/news/news_view.asp?artice_id=00000039153641">http://www.zdnet.co.kr/news/news_view.asp?artice_id=00000039153641</a></li>
+</ul>
+
+<blockquote>
+<p>&ldquo;자바원 2006&rdquo;은 5월 16일부터 19일까지 나흘 동안 센프란시스코에서 개최되었다. 138개 세션으로 구성된 &ldquo;자바원 2006&rdquo;에는 2 만명의 자바 개발자들은 참가했고, 자바의 신기술들과 다양한 이슈를 공유하는 열정적인 자바 축제로 진행되었다. 나흘간의 진행된 축제의 열기와 분위기를 전달하고자 한다.</p>
+</blockquote>
+
+<hr />
+
+<ul>
+<li>김태완 okcode@gmail.com</li>
+<li>필자는 프로자바(www.pro-java.com)의 운영자로 활동하고 있으며, 오픈소스 기반 Rapid Development에 관심을 갖고 있다. 프레임웍을 주제로 하는 새로운 커뮤니티를 기획하고 있으며, 상식이 통하는 고객과 개발자, 관리자가 함께하는 날이 언젠가 올 것이라 간절히 소망하고 있다. 현재 대우정보시스템에 재직 중이다.</li>
+</ul>
+
+<hr />
+
+<p>2006 자바원 컨퍼런스가 5월 16일부터 19일까지 나흘 동안 샌프란시스코 모스코니 센터에세 개최되었다. 2006 자바원 컨퍼런스의 슬로건은‘The Power Of JAVA’와‘for Everything that Matters’이다. 작년까지의 자바원이 강력한 플랫폼으로서의 자바를 강조했다면, 2006 자바원은 11살이 된 듀크(자바의 마스코트)가 또 다른 변화를 준비하고 있음을 강조했다. 플랫폼으로서의 자바를 넘어 웹2.0으로의 진화, 다른 플랫폼 및 스크립트 언어의 수용, PC를 넘어서 다양한 디바이스와 하드웨어로의 확장 등 한층 더 성숙된 자바의 진화를 뽐내는 축제의 장이었다.</p>
+
+<p>자바원의 분위기는 자바개발자들을 위한 축제 그 자체였다. 15,000 명의 자바개발자들이 참석한 자바원 컨퍼런스는 강의, 토론, 실습(Hands on lab) 등 다양한 방식의 383개 세션이 진행되었다. 자바원이 진행된 모스코니 센터는 중앙 홀에 대형스크린과 소파를 설치해 놓고 오픈소스 커뮤니티 소개 동영상이나 영화 등을 상영하는 공간과 게임을 할 수 있는 공간 등 다양한 휴식공간을 제공하는 것이 인상적이었다. 이 공간은 책의 저자로만 알고 있던 유명 개발자들이나 다른 문화권의 개발자들이 격의 없는 토론 장소로 활용되었다. 자바라는 공통된 관심을 가진 사람들이 강의, 토론, 부스 관람 등을 하면서 그 시간을 즐길 수 있는 수 있는 완벽한 공간이었다.</p>
+
+<p>2006 자바원 컨퍼런스의 주요 키워드는 AJAX, 웹2.0, 넷빈즈, 오픈소스, 글래스피시(GlassFish), OpenESB, 멀티테스킹 가상머신(MVM), WSIT, EJB3.0을 꼽을 수 있다.</p>
+
+<ul>
+<li>&lt;사진 1&gt;. 개발자의 축제 JavaOne</li>
+</ul>
+
+<p><img src="https://taewanmerepo.github.io/repo1/javaone/img01.gif" alt="" /></p>
+
+<h2 id="썬의-오픈소스-정책">썬의 오픈소스 정책</h2>
+
+<p>올 4월에 조나단 슈왈츠가 썬마이크로시스템즈(이하 썬)의 새로운 최고경영자로 선임되었다. 그 이전에도 썬은 쏠라리스와 WAS(Web Application Server)를 오픈소스화하여 오픈소스를 지원하고 있었지만, 새로운 CEO 조나단 슈왈츠가 갖고 있는 오픈소스에 대한 의지는 더욱 강력한 듯하다. 이번 자바원에서 썬은 썬 자바 시스템 포탈 서버 7, Java CAPS BPEL Engine(OpenJava ESB), Java Studio Enterprise, 자바 메세징 시스템 (JMS), Web Services Interoperability Technologies(WSIT)를 오픈소스화 한다고 발표했다. 또한 Java Studio Creator2를 넷빈즈에 기증할 계획이라고 했다. 향후 넷빈즈에 Java Studion Creator의 JSF 지원 기능이 통합될 것으로 판단된다.</p>
+
+<p>기존에 썬은 자바 자체가 오픈소스화 되는 것에 대해서는 강경한 태도를 보여왔다. 자바의 상호호환성과 일관성을 유지하기 위해서 자바를 오픈소스화 하는 것은 반대한다는 입장이었다. 자바원에서 조나단 슈왈츠와 리치 그린(썬 마이크로 시스템즈 부사장)은“오픈소스 자바가 문제가 아니고 어떻게 오픈소스 자바를 할 것인가가 문제”라고 말하며 100%는 아니지만 자바 코드의 일부를 공개할 의사를 표현했다. “썬의 모든 소프트웨어를 오픈소스화 하겠다는 것”이 향후 소프트웨어 기업으로서 썬의 수익에 어떤 영향을 미칠 것인지 주목할 필요가 있을 듯 하다.</p>
+
+<p>기존에 썬은 자바 자체가 오픈소스화 되는 것에 대해서는 강경한 태도를 보여왔다. 자바의 상호호환성과 일관성을 유지하기 위해서 자바를 오픈소스화 하는 것은 반대한다는 입장이었다. 자바원에서 조나단 슈왈츠와 리치 그린(썬 마이크로 시스템즈 부사장)은“오픈소스 자바가 문제가 아니고 어떻게 오픈소스 자바를 할 것인가가 문제”라고 말하며 100%는 아니지만 자바 코드의 일부를 공개할 의사를 표현했다. “썬의 모든 소프트웨어를 오픈소스화 하겠다는 것”이 향후 소프트웨어 기업으로서 썬의 수익에 어떤 영향을 미칠 것인지 주목할 필요가 있을 듯 하다.</p>
+
+<h2 id="자바ee-5">자바EE 5</h2>
+
+<p>기조연설에서 썬 부사장 제프 존슨은 자바EE 5의 특징을 EoD(Easy of Development), 어노테이션(Annotation)을 활용한 단순한 프로그래밍 모델, POJO를 사용하는 EJB 3.0 지원, 웹 2.0 지원, 닷넷 호환성, 단순한 SOA 개발이라고 요약했다</p>
+
+<p>어노테이션을 사용함으로서 웹 서비스(Web Services), EJB, 자바 클래스와 데이터베이스 매핑에 사용되는 xml이 줄었고 어노테이션과 새로운 퍼시스턴스(Persistance) API를 추가하여 웹 서비스와 EJB 개발이 간단하게 되었다. 또한 EJB는 디펜던시 인젝션(Dependency Injection)과 인터셉터(Interceptor)를 활용해 POJO 모델을 통한 개발이 가능해 졌다.</p>
+
+<p>AJAX에 관한 자바원의 관심은 대단했다. AJAX에 대한 세션에서는 AJAX자체에 대한 토론과 프레임웍에서 AJAX를 어떻게 지원할 것인가에 대하여 다루어졌다. 한국에서와 마찬가지로 AJAX의 한계에 대한 개발 관점에서의 희망과 유지보수 시점에 대한 불안에 대한 내용이 다수를 차지했다. ‘Introduction to AJAX’세션에서 제시된‘AJAX로 개발되고 3년간 유지보수 된 사이트를 당신이 맡아서 관리할 수 있겠습니까?’라는 질문은 이 모든 내용을 함축하는 듯하다. 자바서버 페이시스(JSF :JavaServer Faces)는 AJAX를 지원하기 위한 일환으로 도조(Dojo)를 이용하여 커스컴 테그로 AJAX를 지원하는 방법이 제시되었다. 도조는 자바스크립트로 개발된 오픈소스 DHTML 툴 킷이다. 여기에 구글 맵 등의 오픈 API를 사용하여 매쉬업(Mash-up) 데모가 관심을 모았다. 이 세션은 자바 스크립트를 기반으로 하는 AJAX 코딩이 어렵다면 AJAX를 지원하는 JSF 컴포넌트를 개발하고, 이 컴포넌트를 사용하여 개발 효율성을 높일 수 있다는데 초점이 맞춰져 있었다. 자바EE 5는 전체적으로 단순해진 개발 모델과 AJAX를 지원하는 웹 프레임워크(JSF)의 컴포넌트 활용, 개발모델과 컴포넌트를 지원하는 IDE를 통해서 기존의 개발에 비하여 개발 난이도가 낮아지고 개발라인이 줄뿐만 아니라 생산성도 향상된다는 것이 주요 내용이었다.</p>
+
+<ul>
+<li>&lt;사진 2&gt;. 자바원의 상징이 되어 버린 스크린과 소파</li>
+</ul>
+
+<p><img src="https://taewanmerepo.github.io/repo1/javaone/img03.gif" alt="" /></p>
+
+<h2 id="자바와-닷넷이-함께하는-탱고">자바와 닷넷이 함께하는 탱고</h2>
+
+<p>자바 애플리케이션과 닷넷의 WCF(Windows Communication Foundation)를 웹서비스 상에서의 상호 운용성을 높이는 기술이 탱고(WSIT: Web Services Interoperability Technology)이다. 두 무용수의 호흡이 매우 중요한 라틴댄스의 이름을 코드명으로 사용한 데서 알 수 있듯이, 탱고는 지금까지 라이벌 관계의 두 플랫폼이 탱고를 통해서 상호 통신이 가능해질 것이란 의미를 함축하는 프로젝트 명이다. 탱고는 보안, 메시징, QoS, 메타데이터 지원에 초점이 맞춰져 있으며, 오픈소소인 오픈 자바 EE 커뮤니티를 통해 제공된다.</p>
+
+<p>탱고를 이용하려면 EJB와 JAX-WS를 이용하여 컨슈머와 프로바이더를 개발하고 탱고 컴포넌트를 제어하기 위한 설정 파일을 작성하면 된다. 탱고 설정 파일(wsit-*.xml)을 지원하는 툴로는 넷빈즈 탱고 모듈이 있다. 탱고는 글래스피시(GlassFish)에 통합되어 있고 자바SE 6에 포함될 예정이다.</p>
+
+<h2 id="빨간색-베레모를-쓴-jboss">빨간색 베레모를 쓴 JBoss</h2>
+
+<p>자바원의 최고 볼거리 중 하나는 제너럴 세션이었다. 벤더나 커뮤니티 대표들이 릴레이 형식으로 진행된 이 세션에서는 조나단 슈월츠와 JBoss CEO 마크 프레리가 인상 깊은 에피소드를 만들었다. 마크 프레리는 최근 레드햇이 JBoss를 인수한 것을 표현하기 위해서인지 빨간색 베레모를 쓰고 나왔다.
+​
+마크 프레리는 “최근 자바 통합 개발환경은 API 기반의 프로그래밍을 지원하는 방식에서 경량 모델(Lightweight Model)을 지원하는 방향으로 발전하고 있다. 이러한 방식은 자바EE 5의 특징이기도 하다. 넷빈즈는 자바EE 5 전체 스펙을 지원하는 최초의 IDE이다. 향후 이클립스와 넷빈즈의 장벽은 점차 사라질 것이다. JBoss는 넷빈즈 프로젝트에 가입할 것이다” 라고 말하며 박수갈채를 받았다. 마지막으로 조나단 슈월츠는 JBoss의 마크 프레리에게 &lsquo;I ♥ NetBean&rsquo; 티셔츠를 선물하며 넷빈즈 프로젝트에 가입한 JBoss를 환영하는 에피소드를 연출했다.
+​</p>
+
+<h2 id="오픈소스의-중심-넷빈즈와-글래시피시">오픈소스의 중심 넷빈즈와 글래시피시</h2>
+
+<p>썬 오픈소스 정책의 핵심에는 넷빈즈와 글래스피시가 있다. JSP/Servlet 스펙이 현실성이 있는지 확인하기 위해 톰켓(Tomcat)을 참조구현체로 개발하는 것처럼 자바EE 5의 참조 구현체가 글래스피시이다. 썬은 새로운 스펙을 발표할 때 글래스피시와 넷빈즈에 최우선적으로 적용한다.
+​
+글래스피시는 2005 자바원에서 썬이 기증한 썬 자바 시스템 애플리케이션 서버(Sun Java System Application Server) PE9와 오라클의 탑링크 퍼시스턴스(TopLink persistence) 코드를 기반으로하는 오픈소스 자바 애플리케이션 서버 프로젝트로 자바 EE 5의 모든 스펙이 적용되어 있다.
+​
+Open ESB(BPEL 엔진), MQ(자바 메세징 시스템), 포탈 서버, 더비(Derby-Apache DB project)를 통합하고 있고 이클립스 플러그인를 제공하고 넷빈즈 5.5에 통합되어 있다. 글래스피시의 스펙 리딩은 썬, 오라클, Bea가 담당하고 있으며 티맥스소프트가 개발에 참여하고 있다.
+​
+과거의 넷빈즈는 이클립스에 비하여 UI가 불편하고 느리다는 지적을 받았었다. 넷빈즈는 단점을 빠른 업그레이드와 다양한 기능을 추가하여 극복하고 있다. 우선 넷빈즈는 자바SE 5와 자바 EE 5의 모든 스펙을 지원하고 있고 5.5 버전에서는 자바SE 6까지도 지원하고 있다. 강력한 프로파일링 기능을 내장했을 뿐 아니라 협업 기능도 제공한다. 협업 기능을 이용하면 share. java.net 서버나 자체 서버를 이용하여 원격에 떨어진 넷빈즈를 제어할 수 있고 메신저 기능과 VoIP가 가능하다.
+​
+원격지에 떨어진 두 개발자는 넷빈즈 협업기능을 통해 상대방의 넷빈즈 UI를 공유할 수 있다. 문제가 발생한 개발자의 넷빈즈에 협업 기능을 통해서 원격 접근할 수 있을 뿐 아니라 소스의 공유, 수정, 빌드의 작업이 가능하다. 협업으로 수정하는 파일의 크기가 1.5M 이하여야 한다는 제약사항이 있기는 하지만 자바 소스 파일이 1.5메가 보다 커지는 경우는 극히 드물기 때문에 실질적인 문제가 되기는 힘들다.
+​
+이러한 기능은 원격지에 떨어진 개발자들이 코드를 협의 하거나 수정할 때 매우 효과적으로 활용할 수 있다. 2004년 자바원에서 제임스 고슬링은“아파치 DB 잭팟 프로젝트를 진행하고 있다. 잭팟은 자바 코드를 단순한 문자열로 다루지 않고 시멘틱한 모델로 다룬다”고 말했었다. 이 잭팟 프로젝트가 넷빈즈에 통합되어 공개 되었다. 잭팟 프로젝트는 코딩 룰을 정한 뒤에 자바클래스가 그 룰에 적합한가를 체크하고 수정하는 기능을 제공한다.
+​
+오픈소스중 PMD나 상용 제품인 JTest, AppPerfect와 같은 기능을 제공한다. 자바는 파일별로 룰을 체크할 경우나 코드를 문자열로 인식할 때 속도가 매우 느리다는 단점이 있다. 잭팟은 자바를 문자열이 아닌 모델로 다루고 JVM api로 개발되어 있기 때문에 속도가 매우 빠르다는 것이 장점이다.
+​
+잭팟을 사용하여 자바 프로젝트의 품질보증(QA, QualityAssurance)기능을 수행할 수 있다. 잭팟은 넷빈즈 6에 정식으로 포함될 예정이다. 넷빈즈의 협업기능과 잭팟의 기능은 TDD의 짝 프로그래밍이나 개발 아웃소싱 분야에 매우 효과적으로 활용될 수 있을 것이다. 넷빈즈를 통해서 소스를 공유하거나 체킹 및 음성 통신이 가능하다는 것은 짝 프로그래밍이나 원격 지원에서 매우 효과적이다. 또한 프로젝트별로 코딩 룰을 설정하고 개발자들이 해당 룰에 맞게 개발하고 있는지를 확인하는 기능이 지원된다는 것은 개발자와 PL 모두에게 개발 효율성을 높일 수 있는 방법을 제공할 것이다.
+​
+이외에도 넷빈즈는 GUI 빌더로 마티스(Matisse)를 내장하고 있다. 마티스를 이용하면 스윙(Swing)의 UI를 개발할 때 UI 컴포넌트와 이벤트를 Drag&amp;Drop 방식으로 디자인할 수 있다. 화면에 디자인된 UI는 XML 파일로 레이아웃, 컴포넌트위치 및 크기, 이벤트 등의 정보를 관리한다. 마티스는 XML 파일의 정보를 이용하여 스윙 클래스를 생성한다. 넷빈즈는 모바일 팩을 통해서 MIDP 애플리케이션 개발 및 디버깅에 매우 효과적이다. 자바 이외에 C, C++, Fortran의 편집, 컴파일 및 실행도 가능하다.
+​
+- &lt;사진 3&gt; JavaOne 전경</p>
+
+<p><img src="https://taewanmerepo.github.io/repo1/javaone/img02.gif" alt="" /></p>
+
+<h2 id="실시간-응용-자바-rtsj">실시간 응용 자바 - RTSJ</h2>
+
+<p>자바원의 파빌리온에 사람들의 발길을 이끄는 부스가 있었다. ‘Slot Car Racing Programming Challenge’부스는 자동차를 제어하는 RTSJ(Real-time Specification for Java) 코드를 작성하여 트랙을 완주하는 게임장이었다. 독자들도 잘 알고 있듯이 자바는 실행시간을 예측할 수 없고 시스템 메모리를 직접 읽고 쓰는 것을 허락하지 않기 때문에 실시간 응용에는 적합하지 않다. RTSJ는 이러한 단점을 보안한 자바의 실시간 버전이다. 유비쿼터스가 보편화되어 하드웨어를 제어해야 할 경우에 유용한 기술이다.
+​
+자바원의 마지막 제너럴 세션에서 제임스 고슬링은 RTSJ로 제어하는 자동차인‘토미’를 소개하고 RTSJ에 상당히 많은 시간을 할애했다. 토미는 반자동 자동차로 원격에서 조정 할 수도 있고, 주위 환경에 대한 정보와 외부의 센서를 이용하여 무인 운행이 가능한 자동차이다. 토미의 원격 조정이나 무인 운행에 사용되는 소프트웨어가 100% 자바로 구현되었다. 제임스 고슬링은 향후 자바의 새로운 개척분야로 RTSJ를 지목했다.
+​</p>
+
+<h2 id="2006-javaone을-마치며">2006 JavaOne을 마치며</h2>
+
+<p>기대와 설렘으로 시작된 자바원 컴퍼런스는 막을 내렸다. 예년에 비해 자바원에 참여한 한국 개발자의 수는 늘었고, 모바일 분야에서 멀티태스킹 가상머신(MVM)이 탑재된 삼성 휴대폰을 선보이는 세션이 주목을 받기도 했다. 그러나 자바원에서 더 이상의 Korea는 없었다. 벤더들이 참여하는 파빌리온에서 한국 부스는 찾아 볼 수 없었고 한국 개발자가 진행하는 세션도 없었다. 세계적으로 지명도가 높은 개발자들이 세션을 진행하는 자바원이지만 그 수준은 한국에서 진행되는 세미나에 비하여 그다지 높다고 생각되지는 않는다.
+​
+신기술이 나올 경우 한국의 적용 사례는 미국이나 다른 국가에 비하여 그 적용 범위와 속도가 더 빠르다. 올해 자바원에서 다루어진 주제들 중 상당부분은 한국의 블로그나 커뮤니티, 세미나에서 이미 다루어진 것들이었다. 개인적으로 한국의 자바 수준은 세계적이라고 생각한다. 단지 언어 장벽이나 기타의 이유로 우리의 기술력을 알리지 못하는 경우가 많고, 오픈소스 커뮤니티의 참여가 적다는 것이 우리를 알리지 못하는 이유일 것이다. 2007년 5월의 자바원은‘The Power Of Korea’가 중심이 된 자바 축제가 되었으면 하는 바람이다.</p>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/java/" rel="tag">java</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/javaone/" rel="tag">javaone</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EB%A7%88%EC%86%8C%EA%B8%B0%EA%B3%A0/" rel="tag">마소기고</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/changing_trial_account/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Oracle Cloud 트라이얼 계정 지원 방식 변경</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/jsf/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">자바 웹 개발의 페이스오프: JavaServer Faces</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/post/2006_javaone/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#썬의-오픈소스-정책">썬의 오픈소스 정책</a></li>
+<li><a href="#자바ee-5">자바EE 5</a></li>
+<li><a href="#자바와-닷넷이-함께하는-탱고">자바와 닷넷이 함께하는 탱고</a></li>
+<li><a href="#빨간색-베레모를-쓴-jboss">빨간색 베레모를 쓴 JBoss</a></li>
+<li><a href="#오픈소스의-중심-넷빈즈와-글래시피시">오픈소스의 중심 넷빈즈와 글래시피시</a></li>
+<li><a href="#실시간-응용-자바-rtsj">실시간 응용 자바 - RTSJ</a></li>
+<li><a href="#2006-javaone을-마치며">2006 JavaOne을 마치며</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

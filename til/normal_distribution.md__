@@ -1,0 +1,41 @@
++++
+date = "2018-08-05T10:50:36+09:00"
+description = "자음과 모음에서 출간한 '드무아브로가 들려주는 정규분포 이야기' 도서의 내용을 정리합니다."
+title = "드무아브로가 들려주는 정규분포 이야기"
+thumbnailInList = "https://taewanmerepo.github.io/2018/08/normal_distirbution/list.jpg"
+thumbnailInPost = ""
+tags = []
+categories = []
+author = ""
+language = ""  #bsh,c,cc,cpp,cs,csh,cyc,cv,htm,html,java,js,m,mxml,perl,pl,pm,py,rb,sh,xhtml,xml,xsl
+adsense = "true"
++++
+## 용어 개념 정리
+
+### 변수(Variable)
+
+데이터는 특성(Feature)와 관측치로 구성됩니다. 각 데이터의 특성은 관측치에 따라서 변합니다. 데이터 별 특성은 관측치로 변경된다는 의미로 특성을 변수라고도 합니다. 
+
+- 각 데이터의 변수: "개체의 관측치로 개체별로 변하는 수"
+
+### 확률 변수(Random Variable)
+
+- 관측 결과와 실수를 대응시키는 함수
+
+
+- 확률변수: Random Variable
+    - 
+
+
+확률적 데이터를 수학기호로 표시할 때는 변수를 표시할 때처럼 문자로 표시한다. 하지만 일반적인 변수가 특정한 하나의 숫자를 대표하는 변수인 것과 달리 확률적 데이터를 대표하는 변수는 나올 수 있는 값이 확률적 분포를 가진다. 즉 특정한 값은 자주 나오고 다른 어떤 값은 드물게 나올 수 있다. 이러한 변수를 확률 변수(random variable)이라고 한다.
+
+확률 변수는 숫자 혹은 벡터를 생성하는 기계에 비유할 수 있다.
+
+https://datascienceschool.net/view-notebook/4bcfe70a64de40ec945639236b0e911d/
+
+## reference
+
+- [드무아브로가 들려주는 정규분포 이야기](http://www.yes24.com/24/goods/3435983?scode=032&OzSrank=1)
+    - 출판사: 자음과 모음
+- https://datascienceschool.net/view-notebook/4bcfe70a64de40ec945639236b0e911d/
+- http://bcho.tistory.com/981

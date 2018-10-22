@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Junit on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/junit/</link>
+    <description>Recent content in Junit on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 09 Nov 2010 10:50:36 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/junit/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JUnit 4.x 어노테이션</title>
+      <link>http://taewan.kim/post/junit4_annotation/</link>
+      <pubDate>Tue, 09 Nov 2010 10:50:36 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/junit4_annotation/</guid>
+      <description>2010년 11월 9일에 http://devtainer.blogspot.kr/에서 섰던 글입니다. 추억 팔이로 옮겨 놓습니다. 2010년 추억 속으로&amp;hellip;. - 원문: http://devtainer.blogspot.kr/2010/11/junit-4x.html
+JUnit4의 주요 어노테이션을 정리해 보았습니다. 별것 아닌것 같아도 막상 사용해 보면 헛갈리기 쉬운것 같습니다. Junit4의 주요 어노테이션은 다음과 같습니다.
+Junit 4 테스트 클래스 작성 JUnit4에서는 POJO 형태로 단위 테스트 클래스가 정의 됩니다. 단위 테스트 대상 메소드는 @Test를 통해서 정의 됩니다. 또한 단위 테스트 앞뒤에 초기화와 정리를 수행하는 메소드를 지정할 수 있습니다. 추가적으로 클래스 실행 앞뒤에 초기화와 정리를 수행하는 메서드를 정의 할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>The Power Of The Java:2006 자바원 컨퍼런스 후기</title>
+      <link>http://taewan.kim/post/testng/</link>
+      <pubDate>Wed, 01 Mar 2006 21:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/testng/</guid>
+      <description>10년전 Javaone 컨퍼런스 후기 형식으로 2006년 7월에 마이크로 소프트웨어에 기고했던 기사입니다.
+ 원본: http://www.zdnet.co.kr/news/news_view.asp?artice_id=00000039153641   &amp;ldquo;자바원 2006&amp;rdquo;은 5월 16일부터 19일까지 나흘 동안 센프란시스코에서 개최되었다. 138개 세션으로 구성된 &amp;ldquo;자바원 2006&amp;rdquo;에는 2 만명의 자바 개발자들은 참가했고, 자바의 신기술들과 다양한 이슈를 공유하는 열정적인 자바 축제로 진행되었다. 나흘간의 진행된 축제의 열기와 분위기를 전달하고자 한다.
+  김태완 okcode@gmail.com 필자는 프로자바(www.pro-java.com)의 운영자로 활동하고 있으며, 오픈소스 기반 Rapid Development에 관심을 갖고 있다. 프레임웍을 주제로 하는 새로운 커뮤니티를 기획하고 있으며, 상식이 통하는 고객과 개발자, 관리자가 함께하는 날이 언젠가 올 것이라 간절히 소망하고 있다.</description>
+    </item>
+    
+  </channel>
+</rss>

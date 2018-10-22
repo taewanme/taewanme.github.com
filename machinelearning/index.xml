@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machinelearnings on taewan.kim 블로그</title>
+    <link>http://taewan.kim/machinelearning/</link>
+    <description>Recent content in Machinelearnings on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Jan 2018 21:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/machinelearning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ML관련 용어 정리</title>
+      <link>http://taewan.kim/machinelearning/term4ml/</link>
+      <pubDate>Mon, 01 Jan 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/machinelearning/term4ml/</guid>
+      <description>  Training Dataset: 학습 데이터셋
+ Varialbe
+ Categorical variable 범주형 변수 Nonmetric Variable 정성적 변수 Metric Variable 정량적 변수 Continuous variable 연속변수 Independent Variable 독립변수: 다른 변수에 영향을 주는 변수(원인) 설명 변수 Dependent Variable 종속변수 반응변수: 다른 변수의 영향을 받는 변수(결과)   update log  2018.06.02: 등록  </description>
+    </item>
+    
+  </channel>
+</rss>

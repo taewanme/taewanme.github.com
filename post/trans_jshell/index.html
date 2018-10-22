@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>[번역] JShell 사용자 가이드</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="[번역] JShell 사용자 가이드" />
+<meta property="og:description" content="java9의 신규 기능인 JShell 공식 문서의 한글화 입니다. jshell의 사용법을 제공합니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/post/trans_jshell/" />
+
+
+
+<meta property="article:published_time" content="2018-01-06T19:05:14&#43;09:00"/>
+<meta property="article:modified_time" content="2018-01-06T19:05:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="http://taewan.kim/css/jupyter.css" type="text/css" media="all" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		
+		
+		<header class="post__header clearfix">
+			<h1 class="post__title">[번역] JShell 사용자 가이드 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2018-01-06 19:05:14 &#43;0900 KST">January 06, 2018</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/java" rel="category">java</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2017/12/trans-shell/head.jpg" alt="[번역] JShell 사용자 가이드">
+			</figure>
+			
+
+<p>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.</p>
+
+<blockquote>
+<ul>
+<li>원문: <a href="https://docs.oracle.com/javase/9/jshell/toc.htm">https://docs.oracle.com/javase/9/jshell/toc.htm</a></li>
+<li>제목: Java Platform, Standard Edition Java Shell User’s Guide: 1 Introduction to JShell
+
+<ul>
+<li>문서번호: E87478-01</li>
+<li>배포: 2017년 09월</li>
+</ul></li>
+<li>라이센스: 원본 문서 라이센스를 준수합니다.
+
+<ul>
+<li>원문: <a href="https://docs.oracle.com/javase/9/jshell/title.htm">https://docs.oracle.com/javase/9/jshell/title.htm</a></li>
+</ul></li>
+<li>본 문서의 원본은 github repository로 관리합니다.
+
+<ul>
+<li>github 주소: <a href="https://github.com/taewanme/translation-java9-jshell">https://github.com/taewanme/translation-java9-jshell</a></li>
+</ul></li>
+</ul>
+</blockquote>
+
+<hr />
+
+<h2 id="1-jshell-소개">1. JShell 소개</h2>
+
+<p>Java Shell(JShell)은 Java 프로그래밍 학습과 Java 코드 프로토타이핑을 위한 대화식 도구입니다. JShell에 선언문, 식(Expression), 문(Statement) 및 JShell 명령을 입력하면, 즉시 입력이 평가되고 그 결과(Feedback)가 출력됩니다.
+JShell은 Java9에 새로 추가된 REPL (Read-Evaluate-Print Loop)입니다. 이 도구는 커맨드 라인에서 실행됩니다.</p>
+
+<ul>
+<li>문서 구성
+
+<ul>
+<li>JShell는 왜 필요한가?</li>
+<li>JShell 시작하고 종료하기</li>
+</ul></li>
+</ul>
+
+<p>JShell의 추가 정보는 <strong>Java Platform, Standard Edition Tool Reference</strong> 문서의 <a href="https://docs.oracle.com/javase/9/tools/jshell.htm#JSWOR-GUID-C337353B-074A-431C-993F-60C226163F00">jshell</a> 절을 참조하시기 바랍니다.</p>
+
+<h3 id="jshell는-왜-필요한가">JShell는 왜 필요한가?</h3>
+
+<p>JShell에 프로그램밍 요소를 입력하면, 실행 결과를 즉시 확인할 수 있습니다. 필요할 경우 프로그램 요소를 바로 수정할 수도 있습니다.</p>
+
+<p>일반적으로 자바 프로그램은 다음 프로세스를 거쳐 개발됩니다.</p>
+
+<ul>
+<li>완전한 형태의 프로그램 개발</li>
+<li>프로그램 컴파일 및 에러 수정</li>
+<li>프로그램 실행</li>
+<li>프로그램 실행 중 오류 파악</li>
+<li>프로그램 수정</li>
+<li>지금까지 개발 절차 반복</li>
+</ul>
+
+<p>자바 프로그램을 개발할 때, JShell을 사용하면 코드 실행과 옵션 탐색이 매우 편리합니다. JShell 세션에서 개별적인 문(Statement)을 실행하고 테스트할 수 있고, 메서드의 다양한 옵션을 시험해볼 수 있으며, 익숙하지 않은 API를 실험할 수 있습니다. 그러나 JShell이 IDE를 대체하는 것은 아닙니다. 프로그램을 개발할 때, JShell에 코드를 붙여넣고 시험할 수 있습니다. JShell에서 코드가 정상적으로 동작하면, JShell의 코드를 프로그램 편집기 및 IDE에 복사한는 방식으로 작업을 진행할 수 있습니다.</p>
+
+<h3 id="jshell-시작-및-종료">JShell 시작 및 종료</h3>
+
+<p>JShell은 JDK 9에 포함되어 있습니다. JShell을 시작하기 위해서는 터미널에 jshell 명령을 입력해야 합니다.</p>
+
+<p>JShell을 사용하기 위해서는, 사용 중인 컴퓨터에 JDK 9이 설치되어 있어야 합니다. <strong>java-home/jdk-9/bin</strong> 디렉터리가 PATH 환경 변수에 설정되어 있다면, 디렉터리 위치와 상관없이 jshell을 어디서든지 실행할 수 있습니다.</p>
+
+<p>다음은 jshell를 실행하고 JShell로 부터 결과를 받는 예제입니다. <strong>%</strong> 다음 코드는 사용자가 입력한 명령입니다.</p>
+
+<pre><code>% jshell
+|  Welcome to JShell -- Version 9
+|  For an introduction type: /help intro
+
+jshell&gt;
+</code></pre>
+
+<p>이 문서의 모든 예제는 verbose 모드(상세정보 출력 모드)로 실행한 결과입니다. 이 문서를 실습할 때 Verbose 모드를 사용할 것을 추천합니다. Verbose 모드를 사용하면 예제와 동일한 결과를 확인할 수 있습니다. JShell에 익숙해지면 일반 모드(Normal mode) 혹은 간결 모드(consice Mode)로 전환하여 JShell을 실행하는 것이 좋습니다.</p>
+
+<p>JShell을 Verbose 모드로 실행하기 위해서 -v 옵션을 사용합니다.</p>
+
+<pre><code>% jshell -v
+</code></pre>
+
+<p>JShell 세션을 종료할 때는 <strong>/exit</strong> 명령을 사용합니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">exit</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">Goodbye</span>
+</pre></div>
+
+<h2 id="2-스니펫">2. 스니펫</h2>
+
+<p>JShell에서 자바 문(statements), 정의 문(변수, 메서드, 클래스 둥), 임포트 문 및 식(expression)을 실행할 수 있습니다. JShell이 처리할 수 있는 이런 코드 조각을 스니펫(snippet)이라고 합니다.</p>
+
+<ul>
+<li>문서 구성
+
+<ul>
+<li>스니펫 실행하기</li>
+<li>정의 변경</li>
+<li>Forward References</li>
+<li>예외(Exceptions)</li>
+<li>스니펫 텝 자동 완성</li>
+<li>스니펫 변환</li>
+</ul></li>
+</ul>
+
+<h3 id="스니펫-실행하기">스니펫 실행하기</h3>
+
+<p>JShell에 자바 코드 스니펫을 입력하면 즉시 평가됩니다. 그리고 평가 결과, 수행 액션 및 발생 에러에 대한 피드백이 바로 출력됩니다. 이 절에서 소개하는 예제를 직접 JShell에 테스트해 보시기 바랍니다.</p>
+
+<p>최대한 많은 피드백을 출력하기 위해서, verbose 옵션(-v)을 추가하여 JShell을 시작합니다.</p>
+
+<pre><code>% jshell -v
+|  Welcome to JShell -- Version 9
+|  For an introduction type: /help intro
+</code></pre>
+
+<p>프롬프트에 다음 예제의 문(statement)을 입력하고, 출력 결과를 확인해 보시기 바랍니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">45</span>
+<span style="color: #f8f8f2">x</span> <span style="color: #f92672">==&gt;</span> <span style="color: #ae81ff">45</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">int</span>
+</pre></div>
+
+<p>문을 입력하며, 바로 결과가 출력됩니다. 이 결과를 다음과 같이 해석할 수 있니다. &ldquo;변수 x는 값 45를 갖는다.&rdquo; JShell이 verbose 모드로 실행되었기 때문에, 수행된 액션에 대한 부가 설명도 출력됩니다. 부가 정보 메시지는 수직 막대(|) 문자로 시작합니다. 이 메시지에서 생성된 변수명과 변수 타입 정보를 확인할 수 있습니다.</p>
+
+<div class="notices note" ><p>입력 완료된 스니펫 끝에 세미콜론이 없다면, 내부적으로 문(statement) 종료를 표시하는 세미콜론(;) 문자가 자동 추가됩니다.</p>
+</div>
+
+
+<p>처리 결과를 저장할 변수를 지정하지 않은 식(expression)이 입력되면, 다음에 값을 참조하는 목적으로 스크래치 변수<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>가 생성됩니다. 그리고 그 스크래치 변수에 실행된 식의 결과가 저장됩니다. 다음 예제는 식과 메서드 실행 결과를 스크래치 변수에 저장하는 것을 설명합니다. 그리고 이 예제에서 하나의 스니펫이 여러줄로 완성할 때 사용되는 연속 프롬프트 (<strong>&hellip;&gt;</strong>)를 확인 할 수 있습니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #ae81ff">2</span> <span style="color: #f92672">+</span> <span style="color: #ae81ff">2</span>
+<span style="color: #f8f8f2">$3</span> <span style="color: #f92672">==&gt;</span> <span style="color: #ae81ff">4</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">scratch</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">$3</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">int</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">String</span> <span style="color: #a6e22e">twice</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+   <span style="color: #f92672">...&gt;</span>    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">s</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">;</span>
+   <span style="color: #f92672">...&gt;</span> <span style="color: #f92672">}</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">twice</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span><span style="color: #f92672">)</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">twice</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;Ocean&quot;</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">$5</span> <span style="color: #f92672">==&gt;</span> <span style="color: #e6db74">&quot;OceanOcean&quot;</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">scratch</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">$5</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">String</span>
+</pre></div>
+
+<h3 id="정의-변경">정의 변경</h3>
+
+<p>코드를 실행하다보면 변수, 메서드 및 클래스가 개발자의 의도와 다르게 잘못 정의될 수 있습니다. JShell에서 이런 문제는 정의를 새로 입력하는 것으로 쉽게 해결 됩니다. 새로 입력된 정의는 이전 정의를 덮어씁니다.</p>
+
+<p>변수, 메서드 및 클래스의 정의를 변경해야 한다면, 단순히 새로운 정의를 입력하면 됩니다. 예를 들어서 앞에 &ldquo;스니펫 실행하기&rdquo; 절에서 정의한 <strong>twice</strong> 메서드는 다음 예제를 실행하면 새로운 정의로 변경됩니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">String</span> <span style="color: #a6e22e">twice</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+   <span style="color: #f92672">...&gt;</span>    <span style="color: #66d9ef">return</span> <span style="color: #e6db74">&quot;Twice:&quot;</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">;</span>
+   <span style="color: #f92672">...&gt;</span> <span style="color: #f92672">}</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">modified</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">twice</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span><span style="color: #f92672">)</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">twice</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;thing&quot;</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">$7</span> <span style="color: #f92672">==&gt;</span> <span style="color: #e6db74">&quot;Twice:thing&quot;</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">scratch</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">$7</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">String</span>
+</pre></div>
+
+<p>앞에서 &ldquo;<strong>생성된 메서드(created method)</strong>&ldquo;로 표시된 부분이 이번 피드백에서는 &ldquo;<strong>수정된 메서드(modified method)</strong>&ldquo;로 표시됩니다. 이 메시지는 정의는 변경되었지만, 변경된 메서드가 이전과 같은 서명(signature)을 가지므로, 기존의 메서드 사용법이 여전히 유효합니다.</p>
+
+<p>호화되지 않는 방식으로 정의를 변경할 수도 있습니다. 다음 예제에서 변수 <strong>x</strong> 타입이 <strong>int</strong>에서 <strong>String</strong> 으로 변경되었습니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">45</span>
+<span style="color: #f8f8f2">x</span> <span style="color: #f92672">==&gt;</span> <span style="color: #ae81ff">45</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">int</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">x</span>
+<span style="color: #f8f8f2">x</span> <span style="color: #f92672">==&gt;</span> <span style="color: #66d9ef">null</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">replaced</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">String</span>
+<span style="color: #f92672">|</span>    <span style="color: #f8f8f2">update</span> <span style="color: #f8f8f2">overwrote</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">int</span>
+</pre></div>
+
+<p>위 예제에서 변수 x의 타입 변경에 대한 피드백 메시지가 &ldquo;<strong>replaced</strong>&ldquo;로 표현되어 있습니다.</p>
+
+<h4 id="피드백-레벨-변경">피드백 레벨 변경</h4>
+
+<p>앞에서 가장 많은 정보와 설명을 제공하는 verbose 모드로 JShell을 실행하였습니다. &ldquo;<strong>/set feedback</strong>&rdquo; 명령으로 피드백 양과 형식을 변경할 수 있습니다. (예 : /set feedback consice) 다른 윈도우의 코드를 복사한 후 붙여 넣기 방식으로 JShell을 사용한다면, 여러분은 프롬프트가 없고 오류 피드백 만을 제공하는 모드를 선호할 것입니다. JShell에 &ldquo;<strong>/set feedback silent</strong>&rdquo; 명령을 실행하면, JShell은 오류 피드백만을 출력합니다.</p>
+
+<h3 id="forward-references-사전-참조">Forward References (사전 참조)</h3>
+
+<p>JShell에서 메소드를 정의할 때 아직 정의하지 않은 메서드, 변수, 클래스를 참조할 수 있습니다. 이 기능은 탐색적인 프로그래밍을 지원하기 위해서 만들어졌습니다. 프로그래밍 과정에서 이런 기능이 필요할 때가 있습니다.</p>
+
+<p>예를 들어, 구의 볼륨을 구하는 메소드를 정의할 때, <strong>volume</strong> 메소드를 다음 예제와 같이 구현할 수 있습니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">double</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span> <span style="color: #f8f8f2">radius</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+   <span style="color: #f92672">...&gt;</span>    <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">4.0</span> <span style="color: #f92672">/</span> <span style="color: #ae81ff">3.0</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">cube</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">radius</span><span style="color: #f92672">);</span>
+   <span style="color: #f92672">...&gt;</span> <span style="color: #f92672">}</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">),</span> <span style="color: #f8f8f2">however</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">it</span> <span style="color: #f8f8f2">cannot</span> <span style="color: #f8f8f2">be</span> <span style="color: #f8f8f2">invoked</span> <span style="color: #f8f8f2">until</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">PI</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">and</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">cube</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">)</span> <span style="color: #f8f8f2">are</span> <span style="color: #f8f8f2">declared</span>
+</pre></div>
+
+<p>위 예제의 volume 메소드 정의는 JShell 세션에서 정상적으로 수행됩니다. 그러나, 아직은 volume 메서드가 완전하게 정의된 것이 아니라는 메시지가 출력됩니다. 이 메소드 정의는 참조될 수는 있있습니다. 그러나, 필요한 모든 요소를 정의하기 전에 이 메서드를 실행하면 실폐하고 에러 피드백을 출력합니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">double</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">3.1415926535</span>
+<span style="color: #f8f8f2">PI</span> <span style="color: #f92672">==&gt;</span> <span style="color: #ae81ff">3.1415926535</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">double</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #ae81ff">2</span><span style="color: #f92672">)</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">attempted</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">call</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">)</span> <span style="color: #f8f8f2">which</span> <span style="color: #f8f8f2">cannot</span> <span style="color: #f8f8f2">be</span> <span style="color: #f8f8f2">invoked</span> <span style="color: #f8f8f2">until</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">cube</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">)</span> <span style="color: #f8f8f2">is</span> <span style="color: #f8f8f2">declared</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">double</span> <span style="color: #a6e22e">cube</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span> <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">;</span> <span style="color: #f92672">}</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">cube</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">)</span>
+<span style="color: #f92672">|</span>    <span style="color: #f8f8f2">update</span> <span style="color: #f8f8f2">modified</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">)</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #ae81ff">2</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">$5</span> <span style="color: #f92672">==&gt;</span> <span style="color: #ae81ff">33.510321637333334</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">scratch</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">$5</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">double</span>
+</pre></div>
+
+<p>필요한 모든 정의가 완료되면, <strong>volume</strong> 메서드는 정상적으로 작동합니다.</p>
+
+<p>이 volume 메서드를 이용하여 &ldquo;비호환 교체&rdquo;를 설명하겠습니다. 다음 예제에서는 <strong>PI</strong>의 정밀도를 변경<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup>하고, PI 객체에 새로운 값을 입력하였습니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">BigDecimal</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">BigDecimal</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;3.141592653589793238462643383&quot;</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">PI</span> <span style="color: #f92672">==&gt;</span> <span style="color: #ae81ff">3.141592653589793238462643383</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">replaced</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">BigDecimal</span>
+<span style="color: #f92672">|</span>    <span style="color: #f8f8f2">update</span> <span style="color: #f8f8f2">modified</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">)</span> <span style="color: #f8f8f2">which</span> <span style="color: #f8f8f2">cannot</span> <span style="color: #f8f8f2">be</span> <span style="color: #f8f8f2">invoked</span> <span style="color: #f8f8f2">until</span> <span style="color: #66d9ef">this</span> <span style="color: #f8f8f2">error</span> <span style="color: #f8f8f2">is</span> <span style="color: #f8f8f2">corrected</span><span style="color: #f92672">:</span>
+<span style="color: #f92672">|</span>      <span style="color: #f8f8f2">bad</span> <span style="color: #f8f8f2">operand</span> <span style="color: #f8f8f2">types</span> <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">binary</span> <span style="color: #f8f8f2">operator</span> <span style="color: #e6db74">&#39;*&#39;</span>
+<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">first</span> <span style="color: #f8f8f2">type</span><span style="color: #f92672">:</span>  <span style="color: #66d9ef">double</span>
+<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">second</span> <span style="color: #f8f8f2">type</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">java</span><span style="color: #f92672">.</span><span style="color: #a6e22e">math</span><span style="color: #f92672">.</span><span style="color: #a6e22e">BigDecimal</span>
+<span style="color: #f92672">|</span>          <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">4.0</span> <span style="color: #f92672">/</span> <span style="color: #ae81ff">3.0</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">cube</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">radius</span><span style="color: #f92672">);</span>
+<span style="color: #f92672">|</span>                 <span style="color: #f92672">^------------^</span>
+<span style="color: #f92672">|</span>    <span style="color: #f8f8f2">update</span> <span style="color: #f8f8f2">overwrote</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">double</span>
+</pre></div>
+
+<p>새롭게 정의된 <strong>PI</strong> 타입은 <strong>volume</strong> 메서드 정의에 사용된 타입과 호환되지 않습니다. 현재 JShell은 verbose 모드로 동작하기 때문에,  PI 타입 변경에 영향을 받는 다른 요소 정보를 출력합니다. 이 예제는 비호환성을 설명하는 대표적인 사례입니다. verbose 모드는 업데이트 정보를 출력하는 유일한 사전 정의 피드백 모드(Predefined feedback mode)입니다. 다른 피드백 모드에서는 해당 코드가 실행될 때까지 어떠한 경고도 출력하지 않습니다. verbose 모드를 제외한 다른 사전 정의 피드백 모드는 실행 부하를 줄이기 위해서 업데이트 경고를 제공하지 않습니다. 모든 사전 정의 피드백 모드에서 <strong>volume</strong> 메서드를 실행하면, 다음과 같은 이슈를 출력합니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #ae81ff">2</span><span style="color: #f92672">)</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">attempted</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">call</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">)</span> <span style="color: #f8f8f2">which</span> <span style="color: #f8f8f2">cannot</span> <span style="color: #f8f8f2">be</span> <span style="color: #f8f8f2">invoked</span> <span style="color: #f8f8f2">until</span> <span style="color: #66d9ef">this</span> <span style="color: #f8f8f2">error</span> <span style="color: #f8f8f2">is</span> <span style="color: #f8f8f2">corrected</span><span style="color: #f92672">:</span>
+<span style="color: #f92672">|</span>      <span style="color: #f8f8f2">bad</span> <span style="color: #f8f8f2">operand</span> <span style="color: #f8f8f2">types</span> <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">binary</span> <span style="color: #f8f8f2">operator</span> <span style="color: #e6db74">&#39;*&#39;</span>
+<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">first</span> <span style="color: #f8f8f2">type</span><span style="color: #f92672">:</span>  <span style="color: #66d9ef">double</span>
+<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">second</span> <span style="color: #f8f8f2">type</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">java</span><span style="color: #f92672">.</span><span style="color: #a6e22e">math</span><span style="color: #f92672">.</span><span style="color: #a6e22e">BigDecimal</span>
+<span style="color: #f92672">|</span>          <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">4.0</span> <span style="color: #f92672">/</span> <span style="color: #ae81ff">3.0</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">cube</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">radius</span><span style="color: #f92672">);</span>
+<span style="color: #f92672">|</span>                 <span style="color: #f92672">^------------^</span>
+</pre></div>
+
+<h3 id="예외-exceptions">예외(Exceptions)</h3>
+
+<p>예외 역추적(Backtrace)에서, 피드백은 예외가 발생한 스니펫과 해당 스니펫 내부의 위치를 출력합니다.</p>
+
+<p>JShell에 입력된 코드의 위치는 &ldquo;<strong>#ID:line-number</strong>&rdquo; 형식으로 출력됩니다. 여기서 스니펫 ID는 &ldquo;<strong>/list</strong>&rdquo; 명령이 제공하는 숫자입니다. &ldquo;<strong>line-number</strong>&ldquo;는 스니펫의 행 번호입니다. 다음 예제에서 예외가 발생한 위치는 스니펫 넘버 #1(devide 메서드)의 두 번째 행입니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">int</span> <span style="color: #a6e22e">divide</span><span style="color: #f92672">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">y</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+   <span style="color: #f92672">...&gt;</span> <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">/</span> <span style="color: #f8f8f2">y</span><span style="color: #f92672">;</span>
+   <span style="color: #f92672">...&gt;</span> <span style="color: #f92672">}</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">divide</span><span style="color: #f92672">(</span><span style="color: #66d9ef">int</span><span style="color: #f92672">,</span><span style="color: #66d9ef">int</span><span style="color: #f92672">)</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">divide</span><span style="color: #f92672">(</span><span style="color: #ae81ff">5</span><span style="color: #f92672">,</span> <span style="color: #ae81ff">0</span><span style="color: #f92672">)</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">java</span><span style="color: #f92672">.</span><span style="color: #a6e22e">lang</span><span style="color: #f92672">.</span><span style="color: #a6e22e">ArithmeticException</span> <span style="color: #f8f8f2">thrown</span><span style="color: #f92672">:</span> <span style="color: #f92672">/</span> <span style="color: #f8f8f2">by</span> <span style="color: #f8f8f2">zero</span>
+<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">at</span> <span style="color: #a6e22e">divide</span> <span style="color: #f92672">(</span><span style="color: #960050; background-color: #1e0010">#</span><span style="color: #ae81ff">1</span><span style="color: #f92672">:</span><span style="color: #ae81ff">2</span><span style="color: #f92672">)</span>
+<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">at</span> <span style="color: #f92672">(</span><span style="color: #960050; background-color: #1e0010">#</span><span style="color: #ae81ff">2</span><span style="color: #f92672">:</span><span style="color: #ae81ff">1</span><span style="color: #f92672">)</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span>
+
+   <span style="color: #ae81ff">1</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">int</span> <span style="color: #a6e22e">divide</span><span style="color: #f92672">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">y</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+           <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">/</span> <span style="color: #f8f8f2">y</span><span style="color: #f92672">;</span>
+       <span style="color: #f92672">}</span>
+   <span style="color: #ae81ff">2</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">divide</span><span style="color: #f92672">(</span><span style="color: #ae81ff">5</span><span style="color: #f92672">,</span> <span style="color: #ae81ff">0</span><span style="color: #f92672">)</span>
+</pre></div>
+
+<h3 id="스니펫-텝-자동-완성">스니펫 텝 자동 완성</h3>
+
+<p>스니펫을 입력할 때, 텝 키를 이용하여 코드를 자동 완성할 수 있습니다. 현재까지 입력으로 코드를 결정할 수 없는 상황에서는, 가능한 옵션을 모두 제공합니다.</p>
+
+<p>다음 예제는 volume 메서드가 정의된 상태에서, 메서드 명의 첫 번째 3 개 문자(vol)를 입력한 후에 텝 키를 입력한 상태를 설명합니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">vol</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
+</pre></div>
+
+<p>탭 키를 입력하면 입력값이 다음과 같이 변경됩니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span>
+</pre></div>
+
+<p>자동 완성 기능을 사용할 때 현재 입력 값을 기준으로 한 개 이상의 경우의 수를 갖는다면, 가능한 모든 코드를 출력합니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">System</span><span style="color: #f92672">.</span><span style="color: #a6e22e">c</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
+<span style="color: #66d9ef">class</span>                 <span style="color: #a6e22e">clearProperty</span><span style="color: #f92672">(</span>        <span style="color: #f8f8f2">console</span><span style="color: #f92672">()</span>             <span style="color: #f8f8f2">currentTimeMillis</span><span style="color: #f92672">()</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">System</span><span style="color: #f92672">.</span><span style="color: #a6e22e">c</span>
+</pre></div>
+
+<p>입력한 코드에 공통 문자가 추가되고 커서는 입력 끝부분으로 이동합니다. 아이템을 완성하기 위해 추가 문자를 입력할 수 있습니다.</p>
+
+<p>메소드의 열린 괄호에서 텝 키를 입력하면 매개 변수 유형으로 완료 가능한 형태를 출력합니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #e6db74">&quot;hello&quot;</span><span style="color: #f92672">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
+<span style="color: #f8f8f2">Signatures:</span>
+<span style="color: #66d9ef">boolean</span> <span style="color: #f8f8f2">String</span><span style="color: #f92672">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">prefix</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">toffset</span><span style="color: #f92672">)</span>
+<span style="color: #66d9ef">boolean</span> <span style="color: #f8f8f2">String</span><span style="color: #f92672">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">prefix</span><span style="color: #f92672">)</span>
+
+<span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">press</span> <span style="color: #f8f8f2">tab</span> <span style="color: #f8f8f2">again</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">see</span> <span style="color: #f8f8f2">documentation</span><span style="color: #f92672">&gt;</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #e6db74">&quot;hello&quot;</span><span style="color: #f92672">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(</span>
+</pre></div>
+
+<p>텝 키를 다시 입력하면 첫 번째 메서드의 텍스트 버전 문서가 출력됩니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #e6db74">&quot;hello&quot;</span><span style="color: #f92672">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
+<span style="color: #66d9ef">boolean</span> <span style="color: #f8f8f2">String</span><span style="color: #f92672">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">prefix</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">toffset</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">Tests</span> <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">substring</span> <span style="color: #f8f8f2">of</span> <span style="color: #66d9ef">this</span> <span style="color: #f8f8f2">string</span> <span style="color: #f8f8f2">beginning</span> <span style="color: #f8f8f2">at</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">specified</span> <span style="color: #f8f8f2">index</span> <span style="color: #f8f8f2">starts</span> <span style="color: #f8f8f2">with</span> <span style="color: #f8f8f2">the</span>
+<span style="color: #f8f8f2">specified</span> <span style="color: #f8f8f2">prefix</span><span style="color: #f92672">.</span>
+
+<span style="color: #f8f8f2">Parameters:</span>
+<span style="color: #f8f8f2">prefix</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">prefix</span><span style="color: #f92672">.</span>
+<span style="color: #f8f8f2">toffset</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">where</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">begin</span> <span style="color: #f8f8f2">looking</span> <span style="color: #f8f8f2">in</span> <span style="color: #66d9ef">this</span> <span style="color: #f8f8f2">string</span><span style="color: #f92672">.</span>
+
+<span style="color: #f8f8f2">Returns:</span>
+<span style="color: #66d9ef">true</span> <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">character</span> <span style="color: #f8f8f2">sequence</span> <span style="color: #f8f8f2">represented</span> <span style="color: #f8f8f2">by</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">argument</span> <span style="color: #f8f8f2">is</span> <span style="color: #f8f8f2">a</span> <span style="color: #f8f8f2">prefix</span> <span style="color: #f8f8f2">of</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">substring</span> <span style="color: #f8f8f2">of</span> <span style="color: #66d9ef">this</span>
+          <span style="color: #f8f8f2">object</span> <span style="color: #f8f8f2">starting</span> <span style="color: #f8f8f2">at</span> <span style="color: #f8f8f2">index</span> <span style="color: #f8f8f2">toffset</span> <span style="color: #f92672">;</span> <span style="color: #66d9ef">false</span> <span style="color: #f8f8f2">otherwise</span><span style="color: #f92672">.</span> <span style="color: #f8f8f2">The</span> <span style="color: #f8f8f2">result</span> <span style="color: #f8f8f2">is</span> <span style="color: #66d9ef">false</span> <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">toffset</span> <span style="color: #f8f8f2">is</span>
+          <span style="color: #f8f8f2">negative</span> <span style="color: #f8f8f2">or</span> <span style="color: #f8f8f2">greater</span> <span style="color: #f8f8f2">than</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">length</span> <span style="color: #f8f8f2">of</span> <span style="color: #66d9ef">this</span> <span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">object</span><span style="color: #f92672">;</span> <span style="color: #f8f8f2">otherwise</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">result</span> <span style="color: #f8f8f2">is</span>
+          <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">same</span> <span style="color: #f8f8f2">as</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">result</span> <span style="color: #f8f8f2">of</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">expression</span>
+                    <span style="color: #66d9ef">this</span><span style="color: #f92672">.</span><span style="color: #a6e22e">substring</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">toffset</span><span style="color: #f92672">).</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">prefix</span><span style="color: #f92672">)</span>
+
+
+<span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">press</span> <span style="color: #f8f8f2">tab</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">see</span> <span style="color: #f8f8f2">next</span> <span style="color: #f8f8f2">documentation</span><span style="color: #f92672">&gt;</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #e6db74">&quot;hello&quot;</span><span style="color: #f92672">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(</span>
+</pre></div>
+
+<h3 id="스니펫-변환">스니펫 변환</h3>
+
+<p>JShell은 클래스를 처음 참조할 때 필요한 클래스 임포트(import)를 쉽게 할 수 있습니다. 또한 단축키를 사용하여 식(Expression)을 변수 선언으로 간단하게 변환할 수 있습니다.</p>
+
+<p>아직 가져 오지 않은 식별자를 입력한 다음에 바로 &ldquo;<strong>Shift + Tab i</strong>&ldquo;를 누르면 세션에 import문을 추가하는 옵션이 출력됩니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">JFrame</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Shift</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">Tab</span> <span style="color: #f8f8f2">i</span><span style="color: #f92672">&gt;</span>
+<span style="color: #ae81ff">0</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">Do</span> <span style="color: #f8f8f2">nothing</span>
+<span style="color: #ae81ff">1</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">import</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">javax</span><span style="color: #f92672">.</span><span style="color: #a6e22e">swing</span><span style="color: #f92672">.</span><span style="color: #a6e22e">JFrame</span>
+<span style="color: #f8f8f2">Choice:</span> <span style="color: #ae81ff">1</span>
+<span style="color: #f8f8f2">Imported:</span> <span style="color: #f8f8f2">javax</span><span style="color: #f92672">.</span><span style="color: #a6e22e">swing</span><span style="color: #f92672">.</span><span style="color: #a6e22e">JFrame</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">JFrame</span>
+</pre></div>
+
+<p>임포트 추가 옵션이 출력되면 사용할 옵션 번호를 입력하면 됩니다. 복수의 import 옵션이 제시될 수 있습니다.</p>
+
+<p>식(Expression)을  입력한 후 &ldquo;<strong>Shift+Tab v</strong>&ldquo;를 눌러 식(Expression) 변수 선언으로 변환할 수 있습니다. 앞에서 입력한 식은 변수 선언의 초기값이 되고, 식의 반환 타입은 변수의 타입으로 선언됩니다. 다음 예제에서 &ldquo;<strong>Shift+Tab v</strong>&ldquo;를 누르면, 세로 막대 (|)로 표시된 커서는 변수 이름을 입력해야 하는 곳에 위치하게 됩니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">new</span> <span style="color: #a6e22e">JFrame</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;Demo&quot;</span><span style="color: #f92672">)</span> <span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Shift</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">Tab</span> <span style="color: #f8f8f2">v</span><span style="color: #f92672">&gt;</span>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">JFrame</span> <span style="color: #f92672">|</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">JFrame</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;Demo&quot;</span><span style="color: #f92672">)</span>
+</pre></div>
+
+<div class="notices note" ><p>식(Expression)은 유효해야 하며 그렇지 않으면 변환 요청은 무시됩니다. 이 예제에서 변수를 변환하기 전에 JFrame의 import가 선행되어야 합니다.</p>
+</div>
+
+
+<p>앞 예제를 완료하기 위해서, 커서가 위치한 곳에 변수명 frame을 입력하고 <strong>Enter</strong> 키를 누릅니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">JFrame</span> <span style="color: #f8f8f2">frame</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">JFrame</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;Demo&quot;</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">frame</span> <span style="color: #f92672">==&gt;</span> <span style="color: #f8f8f2">javax</span><span style="color: #f92672">.</span><span style="color: #a6e22e">swing</span><span style="color: #f92672">.</span><span style="color: #a6e22e">JFrame</span><span style="color: #f92672">[</span><span style="color: #f8f8f2">frame0</span><span style="color: #f92672">,</span><span style="color: #ae81ff">0</span><span style="color: #f92672">,</span><span style="color: #ae81ff">0</span><span style="color: #f92672">,</span><span style="color: #ae81ff">0x0</span><span style="color: #f92672">,</span><span style="color: #f8f8f2">invalid</span><span style="color: #f92672">,</span><span style="color: #f8f8f2">hidden</span><span style="color: #f92672">,</span> <span style="color: #f92672">...</span> <span style="color: #f8f8f2">tPaneCheckingEnabled</span><span style="color: #f92672">=</span><span style="color: #66d9ef">true</span><span style="color: #f92672">]</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">frame</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">JFrame</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span>
+</pre></div>
+
+<p>식(Expression)의 반환 타입이 아직 import 되지 않은 경우가 있습니다. 이런 상황에서, &ldquo;<strong>Shift+Tab v</strong>&ldquo;을 누르면 import 옵션과 변수 생성 기능 모두가 제공됩니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">frame</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getGraphics</span><span style="color: #f92672">()</span> <span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Shift</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">Tab</span> <span style="color: #f8f8f2">v</span><span style="color: #f92672">&gt;</span>
+<span style="color: #ae81ff">0</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">Do</span> <span style="color: #f8f8f2">nothing</span>
+<span style="color: #ae81ff">1</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">Create</span> <span style="color: #f8f8f2">variable</span>
+<span style="color: #ae81ff">2</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">import</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">java</span><span style="color: #f92672">.</span><span style="color: #a6e22e">awt</span><span style="color: #f92672">.</span><span style="color: #a6e22e">Graphics</span><span style="color: #f92672">.</span> <span style="color: #f8f8f2">Create</span> <span style="color: #f8f8f2">variable</span>
+<span style="color: #f8f8f2">Choice:</span> <span style="color: #ae81ff">2</span>
+<span style="color: #f8f8f2">Imported:</span> <span style="color: #f8f8f2">java</span><span style="color: #f92672">.</span><span style="color: #a6e22e">awt</span><span style="color: #f92672">.</span><span style="color: #a6e22e">Graphics</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">Graphics</span> <span style="color: #f92672">|</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">frame</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getGraphics</span><span style="color: #f92672">()</span>
+</pre></div>
+
+<p>위 예제를 완료하려면, 커서가 위치한 곳에 변수 이름 <strong>gc</strong>를 입력하고 <strong>Enter</strong> 키를 누릅니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">Graphics</span> <span style="color: #f8f8f2">gc</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">frame</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getGraphics</span><span style="color: #f92672">()</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">gc</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">JFrame</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span>
+</pre></div>
+
+<h2 id="3-명령">3. 명령</h2>
+
+<p>JShell 명령은 JShell 세션에 입력되며, 환경을 제어하고 정보를 출력하는 기능을 제공합니다.</p>
+
+<ul>
+<li>문서 구성
+
+<ul>
+<li>JShell 명령 소개</li>
+<li>JShell 명령의 텝 자동완성</li>
+<li>명령어 약어</li>
+</ul></li>
+</ul>
+
+<h3 id="jshell-명령-소개">JShell 명령 소개</h3>
+
+<p>JShell 명령은 환경을 제어하고, JShell 세션의 정보를 출력합니다.</p>
+
+<p>JShell 명령은 슬래쉬(/)로 시작하기 때문에 스니펫과 명확하게 구분됩니다.
+&ldquo;<strong>/var</strong>&rdquo;, &ldquo;<strong>/methods</strong>&rdquo; 그리고 &ldquo;<strong>/types</strong>&rdquo; 명령을 사용하여 현재 세션에 정의된 변수, 메서드 및 타입 정보를 확인할 수 있습니다.
+&ldquo;<strong>/list</strong>&rdquo; 명령을 사용하면 입력된 스니펫 목록을 확인할 수 있습니다.
+다음 예제는 이런 명령의 사용 방법과 출력 결과를 설명합니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">vars</span>
+<span style="color: #f92672">|</span>    <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">45</span>
+<span style="color: #f92672">|</span>    <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">$3</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">4</span>
+<span style="color: #f92672">|</span>    <span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">$5</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;OceanOcean&quot;</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">methods</span>
+<span style="color: #f92672">|</span>    <span style="color: #f8f8f2">twice</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span><span style="color: #f92672">)</span><span style="color: #f8f8f2">String</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span>
+
+   <span style="color: #ae81ff">1</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">System</span><span style="color: #f92672">.</span><span style="color: #a6e22e">out</span><span style="color: #f92672">.</span><span style="color: #a6e22e">println</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;Hi&quot;</span><span style="color: #f92672">);</span>
+   <span style="color: #ae81ff">2</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">45</span><span style="color: #f92672">;</span>
+   <span style="color: #ae81ff">3</span> <span style="color: #f92672">:</span> <span style="color: #ae81ff">2</span> <span style="color: #f92672">+</span> <span style="color: #ae81ff">2</span>
+   <span style="color: #ae81ff">4</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">String</span> <span style="color: #a6e22e">twice</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+         <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">s</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">;</span>
+       <span style="color: #f92672">}</span>
+   <span style="color: #ae81ff">5</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">twice</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;Ocean&quot;</span><span style="color: #f92672">)</span>
+</pre></div>
+
+<p>변수의 유형과 값 및 메소드의 타입 시그니처(Signature)가 출력됩니다.</p>
+
+<p>JShell에는 JShell이 시작할 때, 기본 시작 스크립트(Default Startup Script)가 자동으로 실행됩니다. 사용자는 별도 부가적인 작업없이 바로 코드 작업을 할 수 있습니다. 시작 스크립트의 실행 항목은 &ldquo;<strong>/list -start</strong>&rdquo; 또는 &ldquo;<strong>/list -all</strong>&rdquo; 명령을 사용하여 확인할 수 있습니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span> <span style="color: #f92672">-</span><span style="color: #f8f8f2">all</span>
+
+  <span style="color: #f8f8f2">s1</span> <span style="color: #f92672">:</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.util.*</span><span style="color: #f92672">;</span>
+  <span style="color: #f8f8f2">s2</span> <span style="color: #f92672">:</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.io.*</span><span style="color: #f92672">;</span>
+  <span style="color: #f8f8f2">s3</span> <span style="color: #f92672">:</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.math.*</span><span style="color: #f92672">;</span>
+  <span style="color: #f8f8f2">s4</span> <span style="color: #f92672">:</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.net.*</span><span style="color: #f92672">;</span>
+  <span style="color: #f8f8f2">s5</span> <span style="color: #f92672">:</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.util.concurrent.*</span><span style="color: #f92672">;</span>
+  <span style="color: #f8f8f2">s6</span> <span style="color: #f92672">:</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.util.prefs.*</span><span style="color: #f92672">;</span>
+  <span style="color: #f8f8f2">s7</span> <span style="color: #f92672">:</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.util.regex.*</span><span style="color: #f92672">;</span>
+   <span style="color: #ae81ff">1</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">System</span><span style="color: #f92672">.</span><span style="color: #a6e22e">out</span><span style="color: #f92672">.</span><span style="color: #a6e22e">println</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;Hi&quot;</span><span style="color: #f92672">);</span>
+   <span style="color: #ae81ff">2</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">45</span><span style="color: #f92672">;</span>
+   <span style="color: #ae81ff">3</span> <span style="color: #f92672">:</span> <span style="color: #ae81ff">2</span> <span style="color: #f92672">+</span> <span style="color: #ae81ff">2</span>
+   <span style="color: #ae81ff">4</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">String</span> <span style="color: #a6e22e">twice</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+         <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">s</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">;</span>
+       <span style="color: #f92672">}</span>
+   <span style="color: #ae81ff">5</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">twice</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;Ocean&quot;</span><span style="color: #f92672">)</span>
+</pre></div>
+
+<p>기본 시작 스크립트는 기본 import 문으로 구성됩니다. &ldquo;<strong>/set start</strong>&rdquo; 명령을 이용하여 시작 항목의 개인화 설정을 할 수 있습니다.
+이 명령에 대한 자세한 정보는 &ldquo;<strong>/help /set start</strong>&rdquo; 명령으로 확인 가능합니다.
+&ldquo;<strong>/save -start</strong>&rdquo; 명령은 현재 시작 스크립트를 자신의 시작 스크립트의 시작점으로 저장합니다.</p>
+
+<p>다른 중요한 명령으로는 JShell을 종료하는 &ldquo;<strong>/exit</strong>&rdquo;, 스니펫을 저장하는 &ldquo;<strong>/save</strong>&ldquo;
+그리고 파일에서 스니펫을 가져오는 &ldquo;<strong>/open</strong>&ldquo;이 있습니다.</p>
+
+<p>JShell 명령 목록은 &ldquo;<strong>/help</strong>&rdquo; 명령으로 확인 가능합니다.</p>
+
+<h3 id="jshell-명령의-텝-자동완성">JShell 명령의 텝 자동완성</h3>
+
+<p>스니펫을 작성할 때와 마찬가지로, 명령과 명령 옵션을 입력할 때, 텝 키를 사용하여 명령과 명령 옵션의 자동 완성 기능을 사용할 수 있습니다.
+현재까지 입력으로 명령과 명령의 옵션의 자동 완성을 결정할 수 없는 상황에서는 가능한 선택 사항을 모두 제공합니다.</p>
+
+<p>다음 예제는 명령 슬래시(/) 다음에 텝 키를 눌렀을 때의 피드백 결과입니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
+<span style="color: #f92672">/!</span>          <span style="color: #f92672">/?</span>          <span style="color: #f92672">/</span><span style="color: #f8f8f2">drop</span>       <span style="color: #f92672">/</span><span style="color: #f8f8f2">edit</span>       <span style="color: #f92672">/</span><span style="color: #f8f8f2">env</span>        <span style="color: #f92672">/</span><span style="color: #f8f8f2">exit</span>       <span style="color: #f92672">/</span><span style="color: #f8f8f2">help</span>
+<span style="color: #f92672">/</span><span style="color: #f8f8f2">history</span>    <span style="color: #f92672">/</span><span style="color: #f8f8f2">imports</span>    <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span>       <span style="color: #f92672">/</span><span style="color: #f8f8f2">methods</span>    <span style="color: #f92672">/</span><span style="color: #f8f8f2">open</span>       <span style="color: #f92672">/</span><span style="color: #f8f8f2">reload</span>     <span style="color: #f92672">/</span><span style="color: #f8f8f2">reset</span>
+<span style="color: #f92672">/</span><span style="color: #f8f8f2">save</span>       <span style="color: #f92672">/</span><span style="color: #f8f8f2">set</span>        <span style="color: #f92672">/</span><span style="color: #f8f8f2">types</span>      <span style="color: #f92672">/</span><span style="color: #f8f8f2">vars</span>
+
+<span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">press</span> <span style="color: #f8f8f2">tab</span> <span style="color: #f8f8f2">again</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">see</span> <span style="color: #f8f8f2">synopsis</span><span style="color: #f92672">&gt;</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span>
+</pre></div>
+
+<p>명령 및 명령 옵션의 자동 완성이 가능한 상황에서는 그 자리에서 완료됩니다. 예를 들어서, <strong>/l</strong>을 입력하고 Tab(텝 키)을 누르면 그 입력줄에  &ldquo;<strong>/list</strong>&ldquo;이 출력됩니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">l</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span>
+</pre></div>
+
+<p>텝 자동 완성 기능은 명령 옵션도 지원합니다. 다음은 &ldquo;<strong>/list</strong>&rdquo; 명령의 옵션을 출력하기 위해서 텝 키를 사용하는 예제입니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span> <span style="color: #f92672">-&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
+<span style="color: #f92672">-</span><span style="color: #f8f8f2">all</span>       <span style="color: #f92672">-</span><span style="color: #f8f8f2">history</span>   <span style="color: #f92672">-</span><span style="color: #f8f8f2">start</span>     
+
+<span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">press</span> <span style="color: #f8f8f2">tab</span> <span style="color: #f8f8f2">again</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">see</span> <span style="color: #f8f8f2">synopsis</span><span style="color: #f92672">&gt;</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span> <span style="color: #f92672">-</span>
+</pre></div>
+
+<p>위 예제서 &ldquo;<strong>명령의 간단한 설명을 출력하려면 텝 키를 다시 입력</strong>&ldquo;과 같은 메세지를 주목하시기 바랍니다. 텝 키를 입력하면 명령에 대한 간단한 설명이 출력됩니다. 텝 키를 3번 입력하면 명령이 도움말 문서가 출력됩니다. 다음 예제는 텝 키를 두 번과 세 번 눌렀을 때의 결과입니다.</p>
+
+<pre><code>jshell&gt; /list -&lt;Tab&gt;
+list the source you have typed
+
+&lt;press tab again to see full documentation&gt;
+
+jshell&gt; /list -&lt;Tab&gt;
+Show the source of snippets, prefaced with the snippet id.
+
+/list
+    List the currently active snippets of code that you typed or read with /open
+
+/list -start
+    List the automatically evaluated start-up snippets
+
+/list -all
+    List all snippets including failed, overwritten, dropped, and start-up
+
+/list &lt;name&gt;
+    List snippets with the specified name (preference for active snippets)
+
+/list &lt;id&gt;
+    List the snippet with the specified snippet id
+
+jshell&gt; /list -
+</code></pre>
+
+<p>고유한 인수의 완성은 제자리에서 수행됩니다. 예를 들어 &ldquo;<strong>/list -a <Tab></strong>&ldquo;을 입력하면 <strong>-all</strong> 옵션이 자동으로 표시됩니다.</p>
+
+<pre><code>jshell&gt; /list -a&lt;Tab&gt;
+
+jshell&gt; /list -all
+</code></pre>
+
+<p>스니펫 이름도 Tab을 사용하여 완성할 수 있습니다. 예를 들어 JShell 세션에서 이전에 <strong>volume</strong> 메서드를 정의해다면, 메서드 이름을 일부 입력한 후 Tab 키를 누르면 전체 메서드 이름이 표시됩니다.</p>
+
+<pre><code>jshell&gt; /ed v&lt;Tab&gt;
+
+jshell&gt; /ed volume
+</code></pre>
+
+<p>명령에 파일명을 인수로 입력해야 하는 위치에서 텝 키를 사용하면 현재 사용 가능한 파일이 표시됩니다.</p>
+
+<pre><code>jshell&gt; /open &lt;Tab&gt;
+myfile1      myfile2    definitions.jsh
+
+&lt;press tab again to see synopsis&gt;
+
+jshell&gt; /open
+</code></pre>
+
+<p>고유한 파일 이름 완성은 제자리에서 수행됩니다.</p>
+
+<pre><code>jshell&gt; /open d&lt;Tab&gt;
+
+jshell&gt; /open definitions.jsh
+</code></pre>
+
+<h3 id="명령-약어">명령 약어</h3>
+
+<p>약어를 사용하여 타이핑 양을 줄일 수 있습니다. 명령, /set subcommand, 명령 인수 및 명령 옵션은 약어가 고유한 경우 모두 축약될 수 있습니다.</p>
+
+<p>&ldquo;<strong>/l</strong>&ldquo;로 시작하는 유일한 명령은 &ldquo;<strong>/list</strong>&ldquo;입니다. &ldquo;<strong>/list</strong>&rdquo; 명령 옵션 중에서 &ldquo;<strong>-a</strong>&ldquo;로 시작하는 옵션은 &ldquo;<strong>-all</strong>&ldquo;입니다. 따라서 &ldquo;<strong>/list -all</strong>&rdquo; 명령은 다음 약어로 실행할 수 있습니다.</p>
+
+<pre><code>jshell&gt; /l -a
+</code></pre>
+
+<p>또한 <strong>/se</strong>로 시작하는 유일한 명령은 <strong>/set</strong>이고, <strong>fe</strong>로 시작하는 유일한 <strong>/set</strong> 서브 명령은 <strong>feedback</strong>입니다. 그리고 <strong>v</strong>로 시작하는 유일한 피드백 모드는 <strong>verbose</strong> 입니다. (전제 조건: &ldquo;v&rdquo;로 시작하는 사용자 정의 피드백 모드가 없는 상황) 따라서 verbose를 피드백 모드로 설정하는 명령은 다음과 같은 약어로 처리할 수 있습니다.</p>
+
+<pre><code>jshell&gt; /se fe v
+</code></pre>
+
+<p>주의할 점은 <strong>s</strong>는 약어로 사용할 수 없다는 것입니다. <strong>set</strong> 명령과 <strong>save</strong> 명령은 모두 &ldquo;s&rdquo; 문자로 시작합니다. 약어가 확실하지 않은 경우, 탭 완성을 사용하여 옵션을 확인할 수 있습니다.</p>
+
+<h2 id="4-편집-editing">4. 편집(Editing)</h2>
+
+<p>JShell은 프롬프트에서 입력된 것을 수정하는 편집 기능을 제공합니다. 또한, 이런 수정 작업에 여러분이 선호하는 외부 편집기를 사용할 수 있습니다.</p>
+
+<p>쉘 편집 기능을 이용하여 이전에 입력한 스니펫과 명령을 입력한 후에, 다시 스니펫과 명령을 편집할 수 있습니다. 이전에 입력했던 스니펫과 명령을 검색하고 변경할 수 있습니다. 또한, 스니펫을 편집하고 생성할 때 외부 편집기를 사용할 수도 있습니다. 외부 편집기 이용은 여러 줄로 구성된 스니펫을 작성할 때 매우 유용합니다.</p>
+
+<ul>
+<li>문서 구성
+
+<ul>
+<li>쉘 편집</li>
+<li>외부 편집기 사용</li>
+</ul></li>
+</ul>
+
+<h3 id="쉘-편집">쉘 편집</h3>
+
+<p>명령 프롬프트의 입력을 수정하는 기능을 이용하여 여러분의 입력을 손쉽게 고칠 수 있고, 이전에 입력한 명령과 스니펫을 검색하고 수정할 수 있습니다.</p>
+
+<p>JShell의 쉘 편집 기능은 JLine2<sup class="footnote-ref" id="fnref:3"><a rel="footnote" href="#fn:3">3</a></sup>을 기반으로 만들었습니다. 기능적으로 Emacs 모드의 <strong>BSD editline</strong>과 <strong>GNU readline</strong>과 유사합니다. 더 자세한 내용은 <a href="https://github.com/jline/jline2/wiki/Using-JLine">JLine2 사용자 정보</a> 및 <a href="https://cnswww.cns.cwru.edu/php/chet/readline/rluserman.html">GNU Readline 문서</a>를 참조하십시오.</p>
+
+<h3 id="입력-행-탐색-input-line-navigation">입력 행 탐색(Input Line Navigation)</h3>
+
+<p>쉡 편집은 현재 행 편집을 지원합니다. JShell의 이전 세션에서 만들어진 히스토리에도 접근할 수 있습니다.</p>
+
+<p>입력 행 탐색을 위한 키 조합에 Ctrl 키와 Meta 키를 사용합니다. 키보드에 Meta 키가 없으면, Alt 키가 Meta 키를 대체합니다.</p>
+
+<p>행(line) 안에서 이동은 왼쪽 화살표 방향키(&lt;-)와 오른쪽 화살표 방향키(-&gt;)를 사용합니다. 뒤로 이동할 때는 <strong>Ctrl+B</strong>를, 앞으로 이동할 때는 <strong>Ctrl+F</strong>를 사용합니다. 히스토리에서 행(line)을 탐색하는 경우에는 <strong>위 화살표 방향키</strong>와 <strong>아래 화살표 방향키</strong>를 사용합니다. <strong>위 화살표</strong> 키를 누르면, 현재 행이 이전 명령이나 스니펫 행으로 대체됩니다. <strong>위 화살표</strong> 키를 다시 누르면 현재 행은 그 이전 행으로 대체됩니다. 히스토리에는 명령과 스니펫이 모두 기록됩니다. 스니펫이 여러 행으로 구성된 경우, <strong>위 화살표</strong> 키와 <strong>아래 화살표</strong> 키는 스니펫의 개별 행을 탐색하고 출력합니다.</p>
+
+<p>다음 표는 입력 행 탐색에 사용되는 키와 기능을 정리합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>키</th>
+<th>액션</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Return</td>
+<td>현재 행 입력</td>
+</tr>
+
+<tr>
+<td>&lt;&ndash;, 왼쪽 화살표 방향키</td>
+<td>한 문자 뒤로 이동</td>
+</tr>
+
+<tr>
+<td>&ndash;&gt;, 오른쪽 화살표 방향키</td>
+<td>한 문자 앞으로 이동</td>
+</tr>
+
+<tr>
+<td>Up arrow, 위 화살표 방향키</td>
+<td>한 줄 위로 이동, 히스토리에서 뒤로 한 줄 이동</td>
+</tr>
+
+<tr>
+<td>Down arrow, 아래 화살표 방향키</td>
+<td>한 줄 아래로 이동, 히스토리에서 앞으로 한 줄 이동</td>
+</tr>
+
+<tr>
+<td>Ctrl+A</td>
+<td>행 시작 부분으로 이동</td>
+</tr>
+
+<tr>
+<td>Ctrl+E</td>
+<td>행 끝으로 이동</td>
+</tr>
+
+<tr>
+<td>Meta+B</td>
+<td>한 단어 뒤로 이동</td>
+</tr>
+
+<tr>
+<td>Meta+F</td>
+<td>한 단어 앞으로 이동</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="히스토리-탐색-history-navigation">히스토리 탐색(History Navigation)</h4>
+
+<p>히스토리에는 여러 JShell 세션의 스니펫과 명령이 기록되고 관리됩니다. 히스토리를 통해서 현재 세션과 이전 세션에서 입력한 항목에 접근할 수 있습니다.</p>
+
+<p>이전애 입력한 것을 다시 입력하거나 수정하려면, 위 혹은 아래 화살표 방향키, 왼쪽 및 오른쪽 화살표 방향키를 사용하여 기록을 탐색한 후 커서가 위치한 곳에 텍스트를 입력합니다. 텍스트를 삭제해야 할 경우 <strong>Delete</strong> 키를 사용합니다. <strong>Enter</strong> 키를 눌러 히스토리 행을 재입력합니다.</p>
+
+<p>다음 예제에서, 위쪽 및 아래쪽 화살표 키는 한 번에 한 줄씩 히스토리를 앞뒤로 이동합니다</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">C</span> <span style="color: #f92672">{</span>
+   <span style="color: #f92672">...&gt;</span>    <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">;</span>
+   <span style="color: #f92672">...&gt;</span> <span style="color: #f92672">}</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #66d9ef">class</span>
+<span style="color: #a6e22e">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span>
+
+   <span style="color: #ae81ff">1</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">C</span>
+         <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">;</span>
+       <span style="color: #f92672">}</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">up</span> <span style="color: #f8f8f2">arrow</span><span style="color: #f92672">&gt;</span>
+</pre></div>
+
+<p>위 화살표 방향키를 입력하면 다음과 같이 <strong>/list</strong> 명령이 출력됩니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span>
+</pre></div>
+
+<p>위 방향 화살표 키를 다시 입력하면 클래스 정의 마지막 라인이 출력됩니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">}</span>
+</pre></div>
+
+<p>아래 방향 화살표 키를 누르면 &ldquo;<strong>/list</strong>&rdquo; 명령을 반환합니다. 엔터 키를 누르면 &ldquo;<strong>/list</strong>&rdquo; 명령이 실행됩니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span>
+
+   <span style="color: #ae81ff">1</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">C</span> <span style="color: #f92672">{</span>
+         <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">;</span>
+       <span style="color: #f92672">}</span>
+</pre></div>
+
+<p><strong>Ctrl+위 화살표 방향키</strong>는 이전 스니펫으로 이동합니다.  스니펫이 한 줄이라면 <strong>Ctrl+위 화살표 방향키</strong><sup class="footnote-ref" id="fnref:4"><a rel="footnote" href="#fn:4">4</a></sup>는 <strong>위 화살표 방향키</strong> 와 결과가 같습니다. 클래스 C와 같이 여러 줄로 구성된 스니펫에서 <strong>Ctrl+위 화살표 방향키</strong>는 해당 스니펫의 첫 번째 행으로 이동합니다. 그 사이에 행은 건너 뜁니다.</p>
+
+<h4 id="입력-행-수정-input-line-modification">입력 행 수정(Input Line Modification)</h4>
+
+<p>히스토리로 부터 입력 행을 조회한 후, 필요에 따라서 코드를 변경하고 재입력할 수 있습니다. 이 기능을 사용할 경우, 코드의 일부분을 수정하기 위해서 행 전체를 다시 입력할 필요가 없습니다.</p>
+
+<p>현재 커서가 위치한 곳에서 텍스트를 입력하면 됩니다. 행에서 커서를 움직이는 키에 대해서는 &ldquo;<strong>입력 행 탐색</strong>&rdquo; 절을 확인하시기 바랍니다.</p>
+
+<p>다음 표는 입력 행 수정에 사용되는 키와 기능을 정리합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>키</th>
+<th>액션</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Delete</td>
+<td>커서 위 또는 이후의 문자를 삭제합니다. 이것은 운영체제에 따라서 결정됩니다.</td>
+</tr>
+
+<tr>
+<td>Backspace</td>
+<td>커서 앞에 있는 문자를 삭제합니다.</td>
+</tr>
+
+<tr>
+<td>Ctrl+K</td>
+<td>커서 위치부터 행의 마지막까지 텍스트를 삭제합니다.</td>
+</tr>
+
+<tr>
+<td>Meta+D</td>
+<td>커서에서 워드(Word) 끝까지 텍스트를 삭제합니다.</td>
+</tr>
+
+<tr>
+<td>Ctrl+W</td>
+<td>커서에서 이전 공백(White Space)까지 텍스트를 삭제합니다.</td>
+</tr>
+
+<tr>
+<td>Ctrl+Y</td>
+<td>행에 가장 최근에 삭제된 문자를 붙여넣습니다.</td>
+</tr>
+
+<tr>
+<td>Meta+Y</td>
+<td>Ctrl+Y 다음에 Meta+Y 이전에 삭제된 텍스를 순환합니다.</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="검색과-기타">검색과 기타</h4>
+
+<p>히스토리 검색은  JShell의 기능으로, 이 기능을 통해서 한 번에 한 줄씩 히스토리를 이동하지 않고도 원하는 줄을 쉽게 찾을 수 있습니다.</p>
+
+<p>검색을 시작하려면 <strong>Ctrl-R</strong>을 누릅니다. 프롬프트에서 검색 문자열을 입력합니다. 검색은 가장 최근 항목에서 뒤쪽으로 이동하며 처리됩니다. 검색은 JShell의 이전 세션을 포함합니다. 다음 예제는 <strong>Ctrl-R</strong>을 누른 후에 표시되는 프롬프트를 보여줍니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Ctrl</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">R</span><span style="color: #f92672">&gt;</span>
+<span style="color: #f92672">((</span><span style="color: #f8f8f2">reverse</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">i</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">search</span><span style="color: #f92672">)</span><span style="color: #960050; background-color: #1e0010">`&#39;</span><span style="color: #f92672">:</span>
+</pre></div>
+
+<p>히스토리 탐색의 예제에서, <strong>class</strong>를 입력하면 텍스트 &ldquo;class&rdquo;를 포함하는 가장 최근 입력 행을 출력합니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">(</span><span style="color: #f8f8f2">reverse</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">i</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">search</span><span style="color: #f92672">)</span><span style="color: #960050; background-color: #1e0010">`</span><span style="color: #f8f8f2">class</span><span style="color: #960050; background-color: #1e0010">&#39;</span><span style="color: #f92672">:</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">C</span> <span style="color: #f92672">{</span>
+</pre></div>
+
+<p>검색은 점증적으로 처리됩니다. 첫 번째 문자 &ldquo;c&rdquo;로 검색하고 예제와 같이 결과를 출력합니다. <strong>Ctrl+R</strong>를 반복적으로 입력해서 히스토리의 이전 결과를 검색할 수 있습니다. <strong>Ctrl+S</strong>는 현재 위치에서 앞 방향으로 검색을 계속합니다.</p>
+
+<p>&ldquo;<strong>Ctrl-x (</strong>&ldquo;를 입력하여 키보드 매크로를 정의할 수 있습니다. 그 다음 텍스트를 입력합니다. 매크로를 종료할 때 &ldquo;<strong>Ctrl-x )</strong>&ldquo;를 입력합니다. &ldquo;<strong>Ctrl + x e</strong>&ldquo;를 입력하면 앞에서 정의한 매크로가 실행됩니다.</p>
+
+<p>다음 표에서는 검색과 매크로 생성에 사용되는 키 조합과 기능을 정리합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>키</th>
+<th>액션</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Ctrl+R</td>
+<td>히스토리 마지막에서 뒤쪽으로 검색</td>
+</tr>
+
+<tr>
+<td>Ctrl+S</td>
+<td>히스토리 처음부터 앞 방향으로 검색</td>
+</tr>
+
+<tr>
+<td>Ctrl+X (</td>
+<td>매크로 정의 시작</td>
+</tr>
+
+<tr>
+<td>Ctrl+X )</td>
+<td>매크로 정의 종료</td>
+</tr>
+
+<tr>
+<td>Ctrl+X e</td>
+<td>매크로 실행</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="외부-편집기-사용">외부 편집기 사용</h3>
+
+<p>JShell 코드 편집에 외부 편집기를 사용할 수도 있습니다. 이 편집기는 스니펫 편집 및 생성에 사용됩니다. 특히 여러 줄로 작성된 스니펫 작업에 유용합니다. 여러분이 선호하는 편집기를 JShell에 지정할 수 있습니다.</p>
+
+<p>기존에 만들어진 모든 스니펫을 편집기에서 한 번에 편집할 경우, 별도 옵션 없이 <strong>/edit</strong> 명령을 사용합니다. 편집기에서 특정 스니펫을 지정하여 편집할 경우, <strong>/edit</strong> 명령에 스니펫 이름 혹은 ID를 추가하여 실행합니다. <strong>/list</strong> 명령을 사용 스니펫 ID를 얻을수 있습니다. 다음 예제를 실행하면 편집기를 열고, 앞에서 정의한 volume 스니펫 코드가 편집기에 출력됩니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">edit</span> <span style="color: #f8f8f2">volume</span>
+</pre></div>
+
+<p>편집기에서 새로운 스니펫을 작성할 수 있습니다. 편집기를 저장하면, 변경되거나 새로 작성된 스니펫은 JShell 세션에 입력됩니다. 이때 스니펫 입력에 대한 피드백은 JShell 윈도우에서 확인할 수 있습니다. 그러나 현재 JShell 윈도우에는 프롬프트가 없는 상태입니다. 편집기를 종료한 이후에는 JShell 윈도우에 명령이나 스니펫을 다시 입력할 수 있습니다.</p>
+
+<p><strong>/edit</strong> 명령을 실행할 때 편집기를 지정하지 않으면, 환경 변수에 설정된 편집기가 실행됩니다. 환경 변수는 JSHELLEDITOR, VISUAL, 그리고 EDITOR 순서로 참조합니다. 설정된 환경 변수가 없다면, JShell에 포함되어 있는 기본 편집기<sup class="footnote-ref" id="fnref:5"><a rel="footnote" href="#fn:5">5</a></sup>를 사용합니다. <strong>/set editor</strong> 명령을 사용하여, 여러분이 선호하는 편집기를 사용하도록 JShell을 설정할 수 있습니다. <strong>/set editor</strong> 명령의 매개 변수로 여러분이 사용하고자 하는 외부 편집기를 실행하는 명령을 추가합니다. 다음은 편집기로 &ldquo;kwrite&rdquo;를 설정하고 기존의 모든 스니펫을 편집기에 오픈하는 예제입니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2017/12/trans-shell/editor.jpg" alt="JShell에 포함된 기본 편집기" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 1</strong>:
+        
+        JShell에 포함된 기본 편집기
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">set</span> <span style="color: #f8f8f2">editor</span> <span style="color: #f8f8f2">kwrite</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">Editor</span> <span style="color: #f8f8f2">set</span> <span style="color: #f8f8f2">to</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">kwrite</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">edit</span>
+</pre></div>
+
+<p>외부 편집기 윈도우에 x 변수를 정의한 다음에, 외부 편집기에 변경을 저장하면, JShell 윈도우에 다음과 메시지가 출력됩니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">x</span> <span style="color: #f8f8f2">of</span> <span style="color: #f8f8f2">type</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">with</span> <span style="color: #f8f8f2">initial</span> <span style="color: #f8f8f2">value</span> <span style="color: #ae81ff">6</span>
+</pre></div>
+
+<p>외부 편집기를 종료하면 JShell 윈도우에 프롬프트가 다시 나타납니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span>
+</pre></div>
+
+<h2 id="5-외부-코드">5. 외부 코드</h2>
+
+<p>JShell 세션은 클래스 패스를 이용하여 외부 클래스에 접근할 수 있습니다.
+외부 모듈은 모듈 경로, 추가 모듈 설정 및 모듈 내보내기 설정을 통해 접근할 수 있습니다.</p>
+
+<ul>
+<li>문서 구성
+
+<ul>
+<li>클래스 패스 설정</li>
+<li>모듈 옵션 설정</li>
+</ul></li>
+</ul>
+
+<h3 id="클래스-경로-설정">클래스 경로 설정</h3>
+
+<p>JShell 세션에 클래스 패스를 설정하여 외부 코드에 접근할 수 있습니다.</p>
+
+<p>커맨드 라인에서 클래스 패스는 다음 예제와 같이 설정할 수 있습니다.</p>
+
+<pre><code> % jshell --class-path myOwnClassPath
+</code></pre>
+
+<p>접근해야 하는 패키지를 포함하는 디렉터리 혹은 JAR 파일을 클래스 패스로 지정합니다. 코드는 클래스 파일로 컴파일되어 있어야 합니다. 이름이 없는 패키지로 표현되는 디폴트 패키지에 코드는 JShell에서는 접근할 수 없습니다. 클래스 패스를 설정한 상태라면, 이 패스에 포함된 패키지들은 세션에서 임포트 가능합니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">my.cool.code.*</span>
+</pre></div>
+
+<p>다음 예제와 같이 JShell 세션 아래에서 <strong>/env</strong> 명령을 사용하여 클래스 패스를 설정할 수 있습니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">env</span> <span style="color: #f92672">--</span><span style="color: #f8f8f2">class</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">path</span> <span style="color: #f8f8f2">myOwnClassPath</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">Setting</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">options</span> <span style="color: #f8f8f2">and</span> <span style="color: #f8f8f2">restoring</span> <span style="color: #f8f8f2">state</span><span style="color: #f92672">.</span>
+</pre></div>
+
+<p><strong>/env</strong> 명령은 실행 상태를 재설정하고, 명령으로 입력 한 새로운 클래스 패스 혹은 환경 설정으로 현재 코드 스니펫을 모두 다시 로드합니다.</p>
+
+<h3 id="모듈-옵션-설정">모듈 옵션 설정</h3>
+
+<p>JShell은 모듈을 지원합니다. 모듈 패스를 설정할 수 있고, 지정된 모듈 패스로부터 추가 모듈을 찾고, 모듈을 내보낼 수 있습니다.</p>
+
+<p>다음 예제와 같이 모듈 옵션은 <strong>/env</strong> 명령이나 커맨드 라인이 옵션으로 제공됩니다.</p>
+
+<pre><code>% jshell --module-path myOwnModulePath  --add-modules my.module
+</code></pre>
+
+<p>현재 환경 설정은 옵션 없이 <strong>/env</strong> 명령을 사용하여 확인할 수 있습니다. 다음은 클래스 패스가 설정된 상황에서, 클래스 패스 정보를 출력하는 <strong>/env</strong> 명령의 사용 예제입니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">env</span>
+<span style="color: #f92672">|</span>     <span style="color: #f92672">--</span><span style="color: #f8f8f2">add</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">modules</span> <span style="color: #f8f8f2">my</span><span style="color: #f92672">.</span><span style="color: #a6e22e">module</span>
+<span style="color: #f92672">|</span>     <span style="color: #f92672">--</span><span style="color: #f8f8f2">module</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">path</span> <span style="color: #f8f8f2">myOwnModulePath</span>
+<span style="color: #f92672">|</span>     <span style="color: #f92672">--</span><span style="color: #f8f8f2">class</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">path</span> <span style="color: #f8f8f2">myOwnClassPath</span>
+</pre></div>
+
+<p>옵션에 대한 자세한 내용을 보려면 다음 명령으로부터 확인할 수 있습니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">help</span> <span style="color: #f8f8f2">context</span>
+</pre></div>
+
+<h2 id="6-피그백-모드">6. 피그백 모드</h2>
+
+<p>피드백 모드는 JShell에서 프롬프트, 피드백에 대한 정의입니다.
+피드백은 JShell과 사용자의 상호작용에 사용됩니다.
+피드백 수준이 다른 여러 사전 정의 피드백 모드가 제공됩니다.
+필요에 따라 사용자 정의 피드백 모드를 만들 수 있습니다.</p>
+
+<ul>
+<li>문서 구성
+
+<ul>
+<li>피드백 모드 설정</li>
+<li>피드백 모드 정의</li>
+</ul></li>
+</ul>
+
+<h3 id="피드백-모드-설정">피드백 모드 설정</h3>
+
+<p>피드백 모드는 JShell에서 프롬프트 및 피드백에 대한 정의입니다.
+피드백은 JShell과 여러분의 상호작용에 사용됩니다.
+사용자 편의를 위해서 여러 사전 정의 피드백 모드(Predefined feedback mode)가 제공됩니다.
+필요에 따라 사용자 정의 피드백 모드를 만들 수 있습니다.</p>
+
+<p>사전 정의 피드백 모드는 수정할 수 없습니다. 그러나
+사전 정의된 피드백 모드를 사용하여 사용자 정의 모드를 만들 수 있습니다.
+사전 정의된 피드백 모드가 제공하는 정보의 양은 <strong>verbose</strong>, <strong>normal</strong>, <strong>consice</strong>, <strong>silent</strong> 순입니다.
+정보양이 가장 많은 것은 <strong>verbose</strong> 입니다.</p>
+
+<p>다음 표는 사전 정의 피드백 모드에 대한 요약입니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>값 스니펫</th>
+<th>선언</th>
+<th>업데이트</th>
+<th>명령</th>
+<th>프롬프트</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>verbose</td>
+<td>name ==&gt; value (설명)</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>\njshell&gt;</td>
+</tr>
+
+<tr>
+<td>normal</td>
+<td>name ==&gt; value</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>\njshell&gt;</td>
+</tr>
+
+<tr>
+<td>concise</td>
+<td>name ==&gt; value (식만 제공)</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td></td>
+</tr>
+
+<tr>
+<td>jshell&gt;</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>concise</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>-&gt;</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Mode 컬럼은 설명할 피드백 모드를 나타냅니다.</li>
+<li>값 스니펫(Value Snippets) 컬럼은 식(expressions), 할당문, 변수 선언과 같은 값을 갖는 스니펫을 표현하는 방식을 설명합니다.</li>
+<li>선언(Declaration) 컬럼은 선언 혹은 메서드, 클래스, enum, 인터페이스 그리고 어노테이션 인터페이스에 대해 피드백 제공 여부를 설명합니다.</li>
+<li>업데이트 컴럼은 현재 스니펫 이외에 변경 사항의 출력 여부를 설명합니다.</li>
+<li>명령 컬럼은 명령에 대한 성공을 나타내는 피드백 제공 여부 설명합니다.</li>
+<li>프롬프트 컬럼은 어떤 프롬프트가 사용되는지 설명합니다.</li>
+</ul>
+
+<p>기본 피드백 모드는 &ldquo;<strong>normal</strong>&ldquo;입니다.</p>
+
+<p>피드백 모드는 다음 예제와 같이 커맨드 라인 옵션으로 설정하거나 <strong>/set feedback</strong> 명령을 사용하여 변경할 수 있습니다.</p>
+
+<pre><code>jshell&gt; /set feedback verbose
+|  Feedback mode: verbose
+
+jshell&gt; 2 + 2
+$1 ==&gt; 4
+|  created scratch variable $1 : int
+
+jshell&gt; /set feedback silent
+-&gt; 2 + 2
+-&gt; /set feedback normal
+|  Feedback mode: normal
+
+jshell&gt; 2 + 2
+$3 ==&gt; 4
+
+jshell&gt; /set feedback concise
+jshell&gt; 2 + 2
+$4 ==&gt; 4
+jshell&gt;
+</code></pre>
+
+<p>피드백 모드로 <strong>normal</strong>  혹은 <strong>verbose</strong>로 설정할 경우, 명령 피드백은 설정 모드를 출력합니다.<br />
+그러나 피드백 모드로 <strong>consise</strong> 혹은 <strong>silent</strong>가 설정될 때는, 명령 피드백으로 설정 모드를 출력하지 않습니다.<br />
+또한 식 <strong>2+2</strong>에 대한 피드백의 3 가지 다른 피드백 형식에 대해서 주의 깊이 살펴보시기 바랍니다.
+<strong>silent</strong>로 피드백 모드가 설정되면 식 <strong>2+2</strong>에 어떤 피드백도 제공하지 않습니다.</p>
+
+<p>현재 및 사용 가능한 피드백 모드는 옵션없이 <strong>/set feedback</strong> 명령 사용하여 확인할 수 있습니다. 현재 모드는 다음과 같이 피드백 모드를 설정하는 명령으로 표시됩니다.</p>
+
+<pre><code>jshell&gt; /set feedback
+|  /set feedback verbose
+|
+|  Available feedback modes:
+|     concise
+|     normal
+|     silent
+|     verbose
+</code></pre>
+
+<h3 id="피드백-모드-정의">피드백 모드 정의</h3>
+
+<p>사용자 정의 피드백 모드에서 사용자가 원하는 프롬프트를 정의할 수 있습니다. 또한 JShell에 입력된 요소들에 대해서 수신을 원하는 피드백을 정의할 수 있습니다.</p>
+
+<p>피드백 모드는 다음을 설정을 갖습니다.</p>
+
+<ul>
+<li>Prompts: regular 프롬프트 문자, continuation 프롬프트 문자<sup class="footnote-ref" id="fnref:6"><a rel="footnote" href="#fn:6">6</a></sup></li>
+<li>Truncation: 출력할 값의 최대 길이</li>
+<li>Format: 제공할 피드백의 포멧</li>
+</ul>
+
+<p>사전 정의 피드백 모드는 변경할 수 없습니다. 그러나 다음 예제와 같이 기존 사전 정의 피드백 모드의 복사본을 만들수 있습니다.</p>
+
+<pre><code>jshell&gt; /set mode mine normal -command
+|  Created new feedback mode: mine
+</code></pre>
+
+<p>새로운 피드백 모드 <strong>mine</strong> 모드는 <strong>normal</strong> 모드의 복사본입니다. &ldquo;<strong>-command</strong>&rdquo; 옵션은 명령 피드백을 원한다는 의미입니다. 만약 발생한 액션에 대한 설명을 원하지 않는다면, &ldquo;<strong>-command</strong>&rdquo; 옵션 대신에 &ldquo;<strong>-quiet</strong>&rdquo; 옵션을 사용합니다.</p>
+
+<h4 id="프롬프트-설정">프롬프트 설정</h4>
+
+<p>다른 <strong>/set</strong> 명령과 마찬가지로, 추가 설정이 없는 <strong>/set prompt</strong> 명령을 실행하면 현제 프롬프트 설정을 출력합니다.</p>
+
+<pre><code>jshell&gt; /set prompt normal
+|  /set prompt normal &quot;\njshell&gt; &quot; &quot;   ...&gt; &quot;
+</code></pre>
+
+<p>앞 예제의 피드백을 보면, 첫번째 문자열이 <strong>regulaer</strong> 프롬프트이고, 두 번째 문자열이 <strong>continuation</strong> 프롬프트 입니다. <strong>continuation</strong> 프롬프트는 여러줄로 스니펫이 구성될 경우에 사용되는 프롬프트입니다. 다음 예제에서는 새로운 모드에서 프롬프트를 변경하는 방법을 소개합니다.</p>
+
+<pre><code>jshell&gt; /set prompt mine &quot;\nmy mode: &quot;  &quot;.......: &quot;
+
+jshell&gt; /set feedback mine
+|  Feedback mode: mine
+
+my mode: class C {
+.......:    int x;
+.......: }
+|  created class C
+
+my mode:
+</code></pre>
+
+<p>프롬프트 문자열은 <strong>%s</strong> 문자열을 포함할 수 있습니다. 이 문자는 다음 스니펫 ID로 변환됩니다. 그러나 명령이 입력되거나 에러로 스니펫을 반환할 경우, 프롬프트에 사용자가 입력한 값은 ID에 새로운 값이 할당되지 않습니다.</p>
+
+<p>모든 설정은 현재 세션에서만 유지됩니다. <strong>/reset</strong> 명령으로 재설정되지 않습니다. 미래의 다른 세션에서도 현재 설정이 기본으로 유지되길 원한다면, 설정을 유지하기 위해서 <strong>-retain</strong> 옵션을 사용해야 합니다. 다음 예제는 사용자 정의 모드를 여러 세션에서 걸쳐서 유지하는 방법을 소개합니다.</p>
+
+<pre><code>my mode: /set mode mine -retain
+
+my mode: /set feedback mine -retain
+|  Feedback mode: mine
+
+my mode: /exit
+|  Goodbye
+% jshell
+|  Welcome to JShell -- Version 9
+|  For an introduction type: /help intro
+
+my mode:
+</code></pre>
+
+<h4 id="truncation-자름-설정">Truncation(자름) 설정</h4>
+
+<p>출력할 값이 너무 길 경우에, 출력시점에 출력 데이터를 잘라야 합니다. <strong>/set truncation</strong> 명령을 사용하여 출력할 값의 최대 길이를 설정합니다. 별도의 옵션 없이 <strong>/set truncation</strong> 명령을 입력하면, 현재 설정을 출력합니다. 다음 예제는 normal 모드를 상속한 <strong>mine</strong> 모드의  설정을 보여줍니다.</p>
+
+<pre><code>my mode: /set truncation mine
+|  /set truncation mine 80
+|  /set truncation mine 1000 expression,varvalue
+
+my mode: String big = IntStream.range(0,1200).mapToObj(n -&gt; &quot;&quot; + (char) ('a' + n % 26)).collect(Collectors.joining())
+big ==&gt; &quot;abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuv ... fghijklmnopqrstuvwxyzabcd&quot;
+</code></pre>
+
+<p>Truncation(절단) 설정이 적용되는 조건은 Truncation(절단) 길이 다음에 입력될 선택자(selector)로 결정됩니다. 온라인 도움말에 따르면 선택자 유형으로 두 가지 타입이 정의되어 있습니다.</p>
+
+<ul>
+<li>케이스 셀렉터는 출력할 값의 스니펫 타입을 표시합니다.</li>
+<li>액션 셀렉터는 스니펫에 무슨 일이 발생하는지를 설명합니다.</li>
+</ul>
+
+<p>센렉터에 대한 자세한 설명은 <strong>/help /set truncation</strong> 명령으로 확인할 수 있습니다.</p>
+
+<p>이전 예제에서의 식의 결과 값(expression case selector) 혹은 변수의 값이 아닌, 변수 명을 입력하여 명시적으로 요청하는 것과 같은 상황이라면, 처럼 값이 식의 값(expression case selector)이거나 변수의 값이 아니라면, 변수 명(varvalue case selector)을 입력하여 명시적으로 출력을 요청할 때 80개 문자로 절단하라는 의미입니다. 이 순서는 중요합니다. 마지막 것이 사용됩니다. 만약에 순서가 반대라면, 모든 값은 80 개 문자에서 절달될 것입니다.<sup class="footnote-ref" id="fnref:7"><a rel="footnote" href="#fn:7">7</a></sup></p>
+
+<p>다음 예제에서 기본 Truncation(절단)을 100으로 설정합니다. 그리고 명시적으로 요청할 때에만 실제 전체 값을 출력합니다.</p>
+
+<pre><code>my mode: /set truncation mine 100
+
+my mode: /set truncation mine 300 varvalue
+
+my mode: big + big
+$2 ==&gt; &quot;abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghi ... yzabcdefghijklmnopqrstuvwxyzabcd&quot;
+
+my mode: big
+big ==&gt; &quot;abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstu
+vwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijkl ... jklmnopq
+rstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd&quot;
+
+my mode: /set mode mine -retain
+</code></pre>
+
+<p>새로운 설정을 유지하기 위해서, 예제의 마지막에서 처럼 <strong>-retain</strong> 옵션을 사용하여 변경을 유지합니다.</p>
+
+<h4 id="포멧-설정-set-formats">포멧 설정(Set Formats)</h4>
+
+<p>스니펫 출력은 사용자가 변경할 수 있는 설정입니다. <strong>normal</strong> 모드로 부터 상속한 출력 형식은 import 문에 대해서는 어떤 피드백도 제공하지 않습니다. 값의 유형도 출력하지 않습니다.</p>
+
+<pre><code>my mode: import java.beans.*
+
+my mode: Locale.CANADA.getUnicodeLocaleAttributes()
+$5 ==&gt; []
+</code></pre>
+
+<p>스니펫 출력 형식은 <strong>/set format</strong> 명령으로 설정할 수 있습니다. <strong>/set format</strong> 명령을 모드 명만을 추가해서 실행하면 현재 포멧 설정을 출력합니다.</p>
+
+<pre><code>my mode: /set format mine
+</code></pre>
+
+<p>출력 포멧 설정 명령에 대한 자세한 도움말은 <strong>/help /set</strong> 명령을 통해서 이용 가능합니다. 포멧을 정의할 때 사용하는 필드를 설명하는 이 절의 나머지 부분에서 이 도움말을 참조로써 사용할 수 있습니다.</p>
+
+<p>피드백에 출력됨은 display 필드로 결정합니다. 출력 필드 정의하는데 돕는 용도로 여러 필드를 정의할 수 있습니다. <strong>silent</strong> 모드를 제외한 사전 정의 모드는 <strong>/help /set format</strong> 명령에서 볼 수 있는 필드 중 몇 가지를 정의합니다. 이 필드는 예제 모드에서 상속됩니다. 다음 예제는 import 문의 출력 정의(Display Definition)하는 방법을 설명합니다.</p>
+
+<pre><code>my mode: /set format mine display &quot;{pre}added import {name}{post}&quot; import-added
+
+my mode: /set format mine display &quot;{pre}re-added import {name}{post}&quot; import-modified,replaced
+</code></pre>
+
+<p>name 필드는 스니펫 이름으로 사전 정의된 필드입니다. 다음 예제는 import 문에 제공되는 피드백입니다.</p>
+
+<pre><code>my mode: import java.beans.*
+|  re-added import java.beans.*
+</code></pre>
+
+<p>표시 정의(Display Definition)에 사용 된 <strong>pre</strong> 및 <strong>post</strong> 필드는 피드백 출력의 각 행에 대한 접두어 및 접미어 문자입니다. 다음 예제에서는 세로 막대 접두사를 빈 문자열로 변경하는 설정입니다.</p>
+
+<pre><code>my mode: /set format mine pre &quot;&quot;
+
+my mode: void m() {}
+created method m()
+
+my mode: import java.beans.*
+re-added import java.beans.*
+
+my mode: /set truncation mine
+/set truncation mine 100
+/set truncation mine 300 varvalue
+</code></pre>
+
+<div class="notices note" ><p>접두 문자 변경은 명령 피드백을 포함한 모든 피디백에 영향을 미칩니다.</p>
+</div>
+
+
+<p>값을 표시 할 때 타입을 표시하려면, 사전 정의 모드에서 정의 된 결과 필드를 변경하십시오.</p>
+
+<pre><code>my mode: /set format mine result &quot;{type} {name} = {value}{post}&quot; added,modified,replaced-primary-ok
+
+my mode: Locale.CANADA.getUnicodeLocaleAttributes()
+Set&lt;String&gt; $11 = []
+
+my mode: 2 + 2
+int $12 = 4
+</code></pre>
+
+<p>이 변경은 새로 추가되거나 업데이트(추가, 수정, 대체)된 경우 입력된 스니펫(primary)에 에러가 없는 경우(ok)에만 결과를 만듭니다.</p>
+
+<p>유지 설정된 모드를 영구적으로 삭제하기 위해서는 <strong>-delete</strong> 옵션과 함께 <strong>-retain</strong> 옵션을 함께 사용해야 합니다.</p>
+
+<pre><code>my mode: /set feedback verbose -retain
+|  Feedback mode: verbose
+
+jshell&gt; /set mode mine -delete -retain
+</code></pre>
+
+<h2 id="7-스크립트">7. 스크립트</h2>
+
+<p>JShell 스크립트는 한 개 파일에 기술된 일련의 스니펫과 JShell 명령이거나 한 줄로 기술된 스니펫 혹은 명령입니다.</p>
+
+<p>스크립트 형태로는 파일과 사전 정의 스크립트<sup class="footnote-ref" id="fnref:8"><a rel="footnote" href="#fn:8">8</a></sup>가 있습니다. 다음 표사는 정의 스크립트에 대한 요약입니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>스크립트 명</th>
+<th>스크립트 내용</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>DEFAULT</td>
+<td>일반적으로 사용되는 임포트 문으로 구성됩니다. 이 스크립트는 별도로 시작 스크립트를 지정하지 않을 때 사용됩니다.</td>
+</tr>
+
+<tr>
+<td>PRINTING</td>
+<td><strong>PrintStream</strong> 클래스의 <strong>print</strong>, <strong>println</strong>, 그리고 <strong>printf</strong> 메서드를 직접 참조하는 JShelll 메서드를 정의합니다.</td>
+</tr>
+
+<tr>
+<td>JAVASE</td>
+<td><strong>java.se</strong> 모듈로 정의된 핵심 Java SE API를 임포트합니다. 패키지의 수가 많기 때문에 JShell 시작이 상당히 지연될 수 있습니다.</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>주제
+
+<ul>
+<li>시작 스크립트 Scripts</li>
+<li>스크립트 생성과 로딩</li>
+</ul></li>
+</ul>
+
+<h3 id="시작-스크립트-startup-scripts">시작 스크립트(Startup Scripts)</h3>
+
+<p>시작 스크립트는 JShell 세션이 시작될 때 실행되는 스니펫과 명령으로 구성됩니다. <strong>DEFAULT</strong> 스크립트는 일반적으로 자주 사용되는 import 문으로 구성되어 있습니다. 필요한 경우 사용자 정의 스크립트를 작성할 수 있습니다.</p>
+
+<p>Jshell이 &ldquo;reset(재설정)&rdquo; 될 때마다 시작 스크립트가 실행됩니다. JShell 세션은 처음 시작 및 <strong>/reset</strong>, <strong>/reload</strong>, <strong>/env</strong> 명령이 실행될때 &ldquo;Reset(재설정)&ldquo;됩니다. 스크립트를 별도로 설정하지 않으면 기본 시작 스크립트인 <strong>DEFAULT</strong> 스크립트가 실행됩니다. 이 <strong>DEFAULT</strong> 스크립트는 일반적으로 사용되는 import 문으로 구성되어 있습니다.</p>
+
+<div class="notices note" ><p>Java는 java.lang 패키지를 자동으로 import 합니다. 따라서 java.lang을 import 문을 사용하여 명시적으로 가져올 필요 없습니다.</p>
+</div>
+
+
+<p>시작 스크립트를 설정하는 용도로 <strong>/set start</strong> 명령을 사용합니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">set</span> <span style="color: #f8f8f2">start</span> <span style="color: #f8f8f2">mystartup</span><span style="color: #f92672">.</span><span style="color: #a6e22e">jsh</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">reset</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">Resetting</span> <span style="color: #f8f8f2">state</span><span style="color: #f92672">.</span>
+</pre></div>
+
+<p>모든 <strong>/set</strong> 명령과 마찬가지로, <strong>-retain</strong> 옵션을 사용하지 않으면 <strong>/set start</strong> 명령은 현재 세션에서만 유효합니다.
+일반적으로 <strong>-retain</strong> 옵션은 시작 스크립트 설정을 테스트할 때에는 사용하지 않습니다. 원하는 설정을 찾았을 경우, <strong>-retain</strong> 옵션을 이용하여 이 설정을 보존합니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">set</span> <span style="color: #f8f8f2">start</span> <span style="color: #f92672">-</span><span style="color: #f8f8f2">retain</span>
+</pre></div>
+
+<p>시작 스크립트는 JShell이 시작할 때마다 실헹됩니다.</p>
+
+<p>시작 스크립트는 세션 상태가 재설정(reset) 될 때만 현재 세션에 실행됩니다.
+스크립트 내용만 저장되며, 스크립트 파일에 대한 참조는 저장되지 않습니다.
+이 스크립트 파일은 <strong>/set start</strong> 명령이 실행될 때만 읽힙집니다.
+사전 정의 스크립트는 참조로 실행되고 새로운 JDK가 릴리즈될 때만 업데이트됩니다.</p>
+
+<p>시작 스크립트는 커맨드 라인 옵션 <strong>&ndash;startup</strong>을 사용하여 지정할 수 있습니다.</p>
+
+<pre><code>% jshell --startup mystartup.jsh
+</code></pre>
+
+<p>System.out을 사용할 필요 없이 print 메서드를 사용할 수 있다면 매우 편리합니다. 사전정의 PRINTING 스크립트를 사용하면 <strong>print</strong>, <strong>println</strong> 및 <strong>printf</strong> 메서드를 바로 사용할 수 있습니다. <strong>/set start</strong> 명령을 사용하여 두 개 이상의 시작 스크립트를 지정할 수 있습니다. 다음 예제는 기본 import 문(DEFAULT)과 print 메소드 정의(PRINTING) 모두를 로드하는 시작 설정입니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">set</span> <span style="color: #f8f8f2">start</span> <span style="color: #f92672">-</span><span style="color: #f8f8f2">retain</span> <span style="color: #f8f8f2">DEFAULT</span> <span style="color: #f8f8f2">PRINTING</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">exit</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">Goodbye</span>
+
+<span style="color: #f92672">%</span> <span style="color: #f8f8f2">jshell</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">Welcome</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">JShell</span> <span style="color: #f92672">--</span> <span style="color: #f8f8f2">Version</span> <span style="color: #ae81ff">9</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">For</span> <span style="color: #f8f8f2">an</span> <span style="color: #f8f8f2">introduction</span> <span style="color: #f8f8f2">type</span><span style="color: #f92672">:</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">help</span> <span style="color: #f8f8f2">intro</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">println</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;Hello World!&quot;</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">Hello</span> <span style="color: #f8f8f2">World</span><span style="color: #f92672">!</span>
+</pre></div>
+
+<p><strong>-retain</strong> 옵션을 사용하여 <strong>jshell</strong>이 실행될 때마다 사전 정의 스크립트가 실행하도록 설정할 수 있습니다.
+옵션 없이 <strong>/set start</strong> 명령을 사용하면 시작 스크립트에서 정의한 내용을 자세하게 확인할 수 있습니다.</p>
+
+<p>커맨드 라인에서 두 개 이상의 시작 스크립트를 설정하려면 각 스크립트에 <strong>&ndash;startup</strong> 플래그를 사용해야 합니다.</p>
+
+<pre><code>% jshell --startup DEFAULT --startup PRINTING
+</code></pre>
+
+<h3 id="스크립트-생성과-로딩">스크립트 생성과 로딩</h3>
+
+<p>스크립트를 이용하여 JShell 세션 내에서 사용할 import 문과 코드를 JShell 세션에 설정합니다.</p>
+
+<h4 id="스크립트-생성">스크립트 생성</h4>
+
+<p>스크립트는 외부 편집기를 이용하여 생성할 수 있습니다. 또한 스크립트는 JShell에 입력 한 항목으로부터 생성할 수도 있습니다.
+다음 명령 중 하나를 사용하여 JShell 세션의 항목을 이용하여 스크립트를 만듭니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">save</span> <span style="color: #f8f8f2">mysnippets</span><span style="color: #f92672">.</span><span style="color: #a6e22e">jsh</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">save</span> <span style="color: #f92672">-</span><span style="color: #f8f8f2">history</span> <span style="color: #f8f8f2">myhistory</span><span style="color: #f92672">.</span><span style="color: #a6e22e">jsh</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">save</span> <span style="color: #f92672">-</span><span style="color: #f8f8f2">start</span> <span style="color: #f8f8f2">mystartup</span><span style="color: #f92672">.</span><span style="color: #a6e22e">jsh</span>
+</pre></div>
+
+<p>위 예제의 첫 번째 명령은 현재 활성 상태의 스니펫을 <strong>mysnippets.jsh</strong>에 저장합니다. 두 번째 명령은 <strong>myhistory.jsh</strong>에 히스토리에 기록된 모든 스니펫과 명령을 저장합니다. 스크립트에 저장된 스니펫은 현재 유효한 스니펫과 유효하지 않은 스니펫 모두를 포함합니다. 마지막 명령은 현재 시작 스크립트를 <strong>mystartup.jsh</strong>에 저장합니다. 명령에 사용된 파일명은 유효한 파일 경로 및 이름이어야 합니다.</p>
+
+<h3 id="스크립트-로드">스크립트 로드</h3>
+
+<p>JShell 세션을 시작할 때 커맨드 라인에서 스크립트를 로드할 수 있습니다.</p>
+
+<pre><code>% jshell mysnippets.jsh
+</code></pre>
+
+<p>JShell 세션 내에 <strong>/open</strong> 명령을 사용하여 스크립트를 로드 할 수도 있습니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">open</span> <span style="color: #f8f8f2">PRINTING</span>
+</pre></div>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">[역자주]스크래치 변수(Scratch variable) - 특별한 의미를 갖지 않는 변수로, 값을 잠시 보관하는 용도로 만들어진 임시 변수로, 대개 보유한 값이 얼마 후에 의미가 없어지거나 삭제됨.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">[역자주]&ldquo;정밀도 변경&rdquo;이란 변수 타입의 변경을 의미하고, &ldquo;새로운 값을 입력&rdquo;은 객체 생성 후 할당을 의미합니다.
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:3">[역자주]JLine은 콘솔 입력을 처리하기 위한 Java 라이브러리입니다. bash의 명령 편집, 자동완성, 히스토리 기능을 제공합니다. <a href="https://github.com/jline/jline2">https://github.com/jline/jline2</a>
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+<li id="fn:4">Mac 환경에서 <strong>Ctrl+위 화살표 방향키</strong> 는 Missing Control로 맵핑되어 있습니다. 따라서 <strong>Ctrl+위 화살표 방향키</strong> 를 사용하기 위해서는 &ldquo;시스템 환경 설정&rdquo;에서 Missing Control의 키 맵핑을 변경해야 합니다.
+ <a class="footnote-return" href="#fnref:4"><sup>[return]</sup></a></li>
+<li id="fn:5">[역자주]JShell은 자바로 개발된 편집기를 표함합니다. JShell은 이 편집기를 기본 편집기로 사용합니다.
+ <a class="footnote-return" href="#fnref:5"><sup>[return]</sup></a></li>
+<li id="fn:6">[역자주]regular 프롬프트 문자는 일반 프롬프트 문자를 의미하고, continuation 프롬프트 문자는 여려 줄로 스니펫을 작성할 때 출력하는 프롬프트 문자입니다. 기본 regular 프롬프트 문자는 &ldquo;<strong>|</strong>&ldquo;입니다. 기본 continuation 프롬프트 문자는 &ldquo;__  &hellip;&gt;__&ldquo;입니다.
+ <a class="footnote-return" href="#fnref:6"><sup>[return]</sup></a></li>
+<li id="fn:7">[역자주]expression과 varvalue 셀렉터를 설정함으로써 두 번째 설정은 범위를 한정하였습니다.
+ <a class="footnote-return" href="#fnref:7"><sup>[return]</sup></a></li>
+<li id="fn:8">사전 정의 스크립트는 별도 파일로 존재하지 않습니다. Java JDK의 API 형태로 개발되어 있습니다.
+ <a class="footnote-return" href="#fnref:8"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/oracle/" rel="tag">ORACLE</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/java9/" rel="tag">java9</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/java/" rel="tag">Java</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/jshell/" rel="tag">JShell</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EC%9E%90%EB%B0%94%EC%89%98/" rel="tag">자바쉘</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EB%B2%88%EC%97%AD/" rel="tag">번역</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EC%82%AC%EC%9A%A9%EC%9E%90-%EA%B0%80%EC%9D%B4%EB%93%9C/" rel="tag">사용자 가이드</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/user-guide/" rel="tag">User Guide</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EC%82%AC%EC%9A%A9%EB%B2%95/" rel="tag">사용법</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/repl/" rel="tag">REPL</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/cnn/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">CNN, Convolution Neural Network 요약</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/numpy_cheat_sheet/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">파이썬 데이터 사이언스 Cheat Sheet: NumPy 기초, 기본</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/post/trans_jshell/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#1-jshell-소개">1. JShell 소개</a>
+<ul>
+<li><a href="#jshell는-왜-필요한가">JShell는 왜 필요한가?</a></li>
+<li><a href="#jshell-시작-및-종료">JShell 시작 및 종료</a></li>
+</ul></li>
+<li><a href="#2-스니펫">2. 스니펫</a>
+<ul>
+<li><a href="#스니펫-실행하기">스니펫 실행하기</a></li>
+<li><a href="#정의-변경">정의 변경</a>
+<ul>
+<li><a href="#피드백-레벨-변경">피드백 레벨 변경</a></li>
+</ul></li>
+<li><a href="#forward-references-사전-참조">Forward References (사전 참조)</a></li>
+<li><a href="#예외-exceptions">예외(Exceptions)</a></li>
+<li><a href="#스니펫-텝-자동-완성">스니펫 텝 자동 완성</a></li>
+<li><a href="#스니펫-변환">스니펫 변환</a></li>
+</ul></li>
+<li><a href="#3-명령">3. 명령</a>
+<ul>
+<li><a href="#jshell-명령-소개">JShell 명령 소개</a></li>
+<li><a href="#jshell-명령의-텝-자동완성">JShell 명령의 텝 자동완성</a></li>
+<li><a href="#명령-약어">명령 약어</a></li>
+</ul></li>
+<li><a href="#4-편집-editing">4. 편집(Editing)</a>
+<ul>
+<li><a href="#쉘-편집">쉘 편집</a></li>
+<li><a href="#입력-행-탐색-input-line-navigation">입력 행 탐색(Input Line Navigation)</a>
+<ul>
+<li><a href="#히스토리-탐색-history-navigation">히스토리 탐색(History Navigation)</a></li>
+<li><a href="#입력-행-수정-input-line-modification">입력 행 수정(Input Line Modification)</a></li>
+<li><a href="#검색과-기타">검색과 기타</a></li>
+</ul></li>
+<li><a href="#외부-편집기-사용">외부 편집기 사용</a></li>
+</ul></li>
+<li><a href="#5-외부-코드">5. 외부 코드</a>
+<ul>
+<li><a href="#클래스-경로-설정">클래스 경로 설정</a></li>
+<li><a href="#모듈-옵션-설정">모듈 옵션 설정</a></li>
+</ul></li>
+<li><a href="#6-피그백-모드">6. 피그백 모드</a>
+<ul>
+<li><a href="#피드백-모드-설정">피드백 모드 설정</a></li>
+<li><a href="#피드백-모드-정의">피드백 모드 정의</a>
+<ul>
+<li><a href="#프롬프트-설정">프롬프트 설정</a></li>
+<li><a href="#truncation-자름-설정">Truncation(자름) 설정</a></li>
+<li><a href="#포멧-설정-set-formats">포멧 설정(Set Formats)</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#7-스크립트">7. 스크립트</a>
+<ul>
+<li><a href="#시작-스크립트-startup-scripts">시작 스크립트(Startup Scripts)</a></li>
+<li><a href="#스크립트-생성과-로딩">스크립트 생성과 로딩</a>
+<ul>
+<li><a href="#스크립트-생성">스크립트 생성</a></li>
+</ul></li>
+<li><a href="#스크립트-로드">스크립트 로드</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

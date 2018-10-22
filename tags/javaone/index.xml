@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Javaone on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/javaone/</link>
+    <description>Recent content in Javaone on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 22 Aug 2017 21:59:47 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/javaone/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The Power Of The Java:2006 자바원 컨퍼런스 후기</title>
+      <link>http://taewan.kim/post/2006_javaone/</link>
+      <pubDate>Tue, 22 Aug 2017 21:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/2006_javaone/</guid>
+      <description>10년전 Javaone 컨퍼런스 후기 형식으로 2006년 7월에 마이크로 소프트웨어에 기고했던 기사입니다. 어렵게 원본을 발굴하여 복원한 문서입니다. ^^
+ 원본: http://www.zdnet.co.kr/news/news_view.asp?artice_id=00000039153641   &amp;ldquo;자바원 2006&amp;rdquo;은 5월 16일부터 19일까지 나흘 동안 센프란시스코에서 개최되었다. 138개 세션으로 구성된 &amp;ldquo;자바원 2006&amp;rdquo;에는 2 만명의 자바 개발자들은 참가했고, 자바의 신기술들과 다양한 이슈를 공유하는 열정적인 자바 축제로 진행되었다. 나흘간의 진행된 축제의 열기와 분위기를 전달하고자 한다.
+  김태완 okcode@gmail.com 필자는 프로자바(www.pro-java.com)의 운영자로 활동하고 있으며, 오픈소스 기반 Rapid Development에 관심을 갖고 있다.</description>
+    </item>
+    
+  </channel>
+</rss>

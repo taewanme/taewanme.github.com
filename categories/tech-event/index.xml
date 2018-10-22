@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tech Event on taewan.kim 블로그</title>
+    <link>http://taewan.kim/categories/tech-event/</link>
+    <description>Recent content in Tech Event on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 10 Sep 2017 08:54:32 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/categories/tech-event/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>2017 Oracle Code in Seoul: IaC 발표 동영상</title>
+      <link>http://taewan.kim/cloud/oracle_code_iac_youtube/</link>
+      <pubDate>Sun, 10 Sep 2017 08:54:32 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_code_iac_youtube/</guid>
+      <description>2017 Oracle Code in Seoul에서 발표한 &amp;ldquo;Vagrant, Terraform, Ansible을 활용한 클라우드 인프라 관리법&amp;ldquo;의 발표 동영상이 올라 왔습니다. 발표 동영상, 발표 자료 및 데모 문서를 정리합니다. 이 세미나는 2017년 8월 30일 14시 30분에 여의도 콘래드 3층 그랜드 볼륨에서 진행되었습니다. 클라우드 서비스에 Infrastructure as Code(IaC) 개념을 적용하여, 클라우드 자원을 형상관리하고 필요한 시점에 원하는 형상의 클라우드 자원을 빌드하는 체계를 소개합니다..
+발표 동영상   발표 문서 세미나 발표 문서는 다음 Slideshare에 확인할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>2017 Oracle Code in Seoul: IaC 발표 동영상</title>
+      <link>http://taewan.kim/post/oracle_code_iac_youtube/</link>
+      <pubDate>Sun, 10 Sep 2017 08:54:32 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/oracle_code_iac_youtube/</guid>
+      <description>2017 Oracle Code in Seoul에서 발표한 &amp;ldquo;Vagrant, Terraform, Ansible을 활용한 클라우드 인프라 관리법&amp;ldquo;의 발표 동영상이 올라 왔습니다. 발표 동영상, 발표 자료 및 데모 문서를 정리합니다. 이 세미나는 2017년 8월 30일 14시 30분에 여의도 콘래드 3층 그랜드 볼륨에서 진행되었습니다. 클라우드 서비스에 Infrastructure as Code(IaC) 개념을 적용하여, 클라우드 자원을 형상관리하고 필요한 시점에 원하는 형상의 클라우드 자원을 빌드하는 체계를 소개합니다..
+발표 동영상   발표 문서 세미나 발표 문서는 다음 Slideshare에 확인할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>&#39;오라클은 Java EE를 떠넘기려한다&#39; 기사의 팩트 체크</title>
+      <link>http://taewan.kim/post/misunderstanding_on_oracle/</link>
+      <pubDate>Sun, 03 Sep 2017 08:54:32 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/misunderstanding_on_oracle/</guid>
+      <description>2017년 08월 18일에 &amp;ldquo;Itworld&amp;ldquo;에서 &amp;ldquo;오라클, 더 이상 자바 EE를 이끌 생각 없다&amp;rdquo;라는 기사가 공개되었습니다.1 기사의 내용을 요약하면 다음과 같습니다.
+ 오라클은 엔터프라이즈 자바 개발에서 리더십을 내려놓기를 원하며 이를 맡아줄 오픈소스 재단을 찾고 있다. 아파치(Apache)와 이클립스(Eclipse)가 자바 EE를 인수할 가능성이 높다. 오라클은 오픈소스 커뮤니티, 라이선스 사용자, 후보 재단들에게 자바 EE를 떠넘기려는 계획이다. 마이크로프로파일(MicroProfile)이라 부르는 오라클의 새로운 계획에 대해 오픈소스 그룹 가운데 가장 선두에 자리한 레드햇(Red Hat)은 갈채를 보냈다 자바 EE에 오라클의 목표는 리더십을 떠넘기려는 것일 뿐 프로젝트에는 지속적으로 참여할 것이다.</description>
+    </item>
+    
+    <item>
+      <title>2017 Oracle Code in Seoul을 마치며</title>
+      <link>http://taewan.kim/post/review_oracle_code/</link>
+      <pubDate>Sat, 02 Sep 2017 10:50:36 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/review_oracle_code/</guid>
+      <description>Oracle Code in Seoul의 발표를 무사히 마쳤습니다. 오랜만에 개발자 행사에 참여하는 관계로 긴장도 많이 했고, 컨텐츠 개발에 많은 공을 들였습니다. 정말로 오라클이 주도하는 개발자 행사는 오랜만인것 같습니다. 오랜만에 진행한 개발자 행사다 아쉬운 점도 많지만, 개인적으로는 150% 만족하는 행사였습니다. 이런 행사가 더 자주 만이 진행되었으면 합니다.
+제가 오랜만에 발표에 참여한 행사다 보니 애정이 생기네요. 확보한 이미지로 행상 현장을 기록하게습니다.
+발표 자료: Hot to control cloud resources 이번 행사에서 &amp;ldquo;Hot to control cloud resources&amp;rdquo;를 주제로 발표를 했습니다.</description>
+    </item>
+    
+    <item>
+      <title>2017 Oracle Code In Seoul: How to control cloud resources 데모</title>
+      <link>http://taewan.kim/cloud/oracle_code_provisioning/</link>
+      <pubDate>Thu, 31 Aug 2017 08:54:32 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_code_provisioning/</guid>
+      <description>2017 Oracle Code in Seoul에서 발표한 &amp;ldquo;Vagrant, Terraform, Ansible을 활용한 클라우드 인프라 관리법&amp;ldquo;의 발표 자료와 진행한 데모를 소개하는 문서입니다. 클라우드 자원을 체계적으로 관리하고, 완전한 자원 통제권을 확보하는 방법을 소개하는 세션입니다. 이 세션은 2017년 8월 30일 14시 30분에 여의도 콘래드 3층 그랜드 볼륨에서 진행됩니다. 클라우드 서비스에 Infrastructure as Code(IaC) 개념을 적용하여, 클라우드 자원을 형상관리하고 필요한 시점에 원하는 형상의 클라우드 자원을 빌드하는 체계입니다.
+발표 문서 세션의 장표는 Slideshare에 공유하였습니다.
+ 데모 &amp;amp; 사전 준비 사항 이 세션에서는 3개의 데모가 진행되었습니다.</description>
+    </item>
+    
+    <item>
+      <title>자바 웹 개발의 페이스오프: JavaServer Faces</title>
+      <link>http://taewan.kim/post/jsf/</link>
+      <pubDate>Wed, 23 Aug 2017 21:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/jsf/</guid>
+      <description>월간 마이크로 소프트웨어 2004년 12월호 &amp;ldquo;2005년을 달굴 프레임워크 열전!&amp;rdquo; 특집호에 기고했던 JSF 기사입니다. 어렵게 원본을 발굴하여 복원한 문서입니다. ^^
+ 원본  dbguide.net-기사링크 구글 캐쉬    JSF의 최종 릴리즈가 지난 2월 발표되었고, 2004년 자바원 컨퍼런스의 주요 기술로 소개되었다. JSF는 자바 기반 웹 애플리케이션을 위한 서버사이드 사용자 인터페이스 컴포넌트 프레임워크이다. 요즘 들어 많은 프레임워크가 발표되고 있고, 스트럿츠가 사실상 웹 개발의 표준으로 자리 잡고 있는 상황에서 또 하나의 프레임워크가 발표되었다고 간과하기에는 J2EE 진영 대형 벤더들이 제시하는 JSF 지원책이나 오픈소스의 움직임이 너무나 활발하다.</description>
+    </item>
+    
+    <item>
+      <title>The Power Of The Java:2006 자바원 컨퍼런스 후기</title>
+      <link>http://taewan.kim/post/2006_javaone/</link>
+      <pubDate>Tue, 22 Aug 2017 21:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/2006_javaone/</guid>
+      <description>10년전 Javaone 컨퍼런스 후기 형식으로 2006년 7월에 마이크로 소프트웨어에 기고했던 기사입니다. 어렵게 원본을 발굴하여 복원한 문서입니다. ^^
+ 원본: http://www.zdnet.co.kr/news/news_view.asp?artice_id=00000039153641   &amp;ldquo;자바원 2006&amp;rdquo;은 5월 16일부터 19일까지 나흘 동안 센프란시스코에서 개최되었다. 138개 세션으로 구성된 &amp;ldquo;자바원 2006&amp;rdquo;에는 2 만명의 자바 개발자들은 참가했고, 자바의 신기술들과 다양한 이슈를 공유하는 열정적인 자바 축제로 진행되었다. 나흘간의 진행된 축제의 열기와 분위기를 전달하고자 한다.
+  김태완 okcode@gmail.com 필자는 프로자바(www.pro-java.com)의 운영자로 활동하고 있으며, 오픈소스 기반 Rapid Development에 관심을 갖고 있다.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>용어 on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/%EC%9A%A9%EC%96%B4/</link>
+    <description>Recent content in 용어 on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 18 Jul 2018 19:59:47 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/%EC%9A%A9%EC%96%B4/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>머신러닝 용어: Example, Sample &amp; Data Point</title>
+      <link>http://taewan.kim/post/sample_example/</link>
+      <pubDate>Wed, 18 Jul 2018 19:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/sample_example/</guid>
+      <description>머신러닝을 공부하면서 굉장히 생소하게 느껴졌던 용어가 몇 개 있습니다. 그 중에서 가장 어색했던 용어는 데이터셋의 개별 데이터를 표현하는 용어였습니다. 일반적으로 머신러닝 데이터셋의 개별 데이터를 다음과 같은 용어로 표현합니다.
+ Example Sample Instance Data Point  문서를 번역하거나 정리하는 과정에서 위 용어를 어떻게 처리해야 할지가 항상 고민이었습니다. 개별 데이터를 왜 이렇게 표현하는지 제 개인적인 느낌을 정리해 보겠습니다.
+Example과 Sample  The MNIST database of handwritten digits, available from this page, has a training set of 60,000 examples, and a test set of 10,000 examples.</description>
+    </item>
+    
+  </channel>
+</rss>

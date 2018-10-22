@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Science on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/data-science/</link>
+    <description>Recent content in Data Science on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Jan 2018 21:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/data-science/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>파이썬 데이터 사이언스 Cheat Sheet: NumPy 기초, 기본</title>
+      <link>http://taewan.kim/post/numpy_cheat_sheet/</link>
+      <pubDate>Tue, 16 Jan 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/numpy_cheat_sheet/</guid>
+      <description>파이썬 기반 데이터 분석 환경에서 NumPy1는 행렬 연산을 위한 핵심 라이브러리입니다. NumPy는 &amp;ldquo;Numerical Python&amp;ldquo;의 약자로 대규모 다차원 배열과 행렬 연산에 필요한 다양한 함수를 제공합니다. 특히 메모리 버퍼에 배열 데이터를 저장하고 처리하는 효율적인 인터페이스를 제공합니다. 파이썬 list 객체를 개선한 NumPy의 ndarray 객체를 사용하면 더 많은 데이터를 더 빠르게 처리할 수 있습니다.
+NumPy는 다음과 같은 특징을 갖습니다.
+ 강력한 N 차원 배열 객체 정교한 브로드케스팅(Broadcast) 기능 C/C ++ 및 포트란 코드 통합 도구 유용한 선형 대수학, 푸리에 변환 및 난수 기능 범용적 데이터 처리에 사용 가능한 다차원 컨테이너  본 문서는 cs231n 강좌의 Python Numpy Tutorial 문서와 DataCamp의 Python For Data Science Cheat Sheet NumPy Basics 문서를 참조하여 작성하였습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

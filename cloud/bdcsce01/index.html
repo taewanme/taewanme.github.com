@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>Oracle Big Data Cloud Service Compute-Edition</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="Oracle Big Data Cloud Service Compute-Edition" />
+<meta property="og:description" content="오라클 클라우드는 Hadoop PaaS 서비스로 Oracle Big Data Cloud Service Compute-Edition을 지난 2017년 03월에 출시하였습니다. Oracle Big Data Cloud Service Compute-Edition은 Hortonworks의 HDP를 기반으로 합니다. Oracle Big Data Cloud Service Compute-Edition 서비스에 대한 주요 특징을 소개합니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/cloud/bdcsce01/" />
+
+
+
+<meta property="article:published_time" content="2017-07-27T11:59:47&#43;09:00"/>
+<meta property="article:modified_time" content="2017-07-27T11:59:47&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">Oracle Big Data Cloud Service Compute-Edition </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2017-07-27 11:59:47 &#43;0900 KST">July 27, 2017</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c" rel="category">오라클 클라우드</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://oracloud-kr-teamrepo.github.io/2017/07/bdcsce_provisioning/oracloud-big-logo.jpg" alt="Oracle Big Data Cloud Service Compute-Edition">
+			</figure>
+			
+
+<p>빅데이터 기술을 사용하면서 가장 어려운 부분은 오픈소스로 구성된 빅데이터 에코 기술을 설치하고 관리하는 부분입니다. 빅데이터 에코 기술들은 여러 오픈소스 프로젝트로 구성되어 있고, 각 오픈소스 프로젝트는 특정 오픈소스 프로젝트의 버전에 의존성을 갖고 있습니다. 또한, 각 오픈소스는 개별적인 업그레이드 주기를 갖습니다. 여러 오픈소스 프로젝트가 상호 버전 의존성을 갖고 있고, 개별적인 업그레이드 주기를 갖는 기술들로 빅데이터 환경을 구성하고 관리하기 위해서는 많은 노력이 필요합니다. 이 문제를 해결하기 위해서 Cloudera와 Hotonworks는 빅데이터 오픈소스 프로젝트들의 검증된 버전을 모아 패키지로 관리합니다. 이러한 이유로 업계에서는 Cloudera의 CDH(Cloudera Distribution Including Apache Hadoop)와 Hotonworks의 HDP(Hotonworks Data Platform)를 대부분 사용합니다. CDH와 HDP 같은 빅데이터 패키지로 오픈소스 프로젝트 간의 버전 충돌은 해결할 수는 있지만, 빅데이터 에코 기술의 구성을 최적화하고 안정성을 확보하는 관리 체계를 확보하기 위해서는 여전히 상당한 노력이 필요합니다.</p>
+
+<p>앞에서 설명한 빅데이터 패키지는 클라우드 기술과 결합할 때, 기술적인 어려움를 크게 낮출 수 있습니다. 검증된 빅데이터 기술을 클라우드 인프라에 검증된 형태로 구성하고 소프트웨어 업그레이드 프로세스를 제공한다면 빅데이터의 기술적 난이도를 크게 낮출 수 있을 것입니다. 결과적으로 클라우드 빅데이터 서비스 사용자는 데이터 분석에 역량을 더 집중할 수 있을 것입니다. 오라클 클라우드는 PaaS 형태의 빅데이터 서비스로 <strong>Oracle Big Data Cloud Service Compute-Edition</strong>(이하 Oracle BDCSCE)을 지난 2017년 03월에 출시하였습니다. Oracle BDCSCE는 AWS EMR과 같은 하둡 서비스입니다. AWS EMR과 다른 점은 AWS EMR은 자체 HDFS를 제공하지 않고 데이터 저장소로 S3를 지원하는 반면, Oracle BDCSCE는 자체 HDFS를 제공합니다. 또한, Object Storage로 Oracle Cloud Storage Service를 사용할 수 있습니다. Oracle BDCSCE는 하둡 패키지로 Hortonworks의 HDP를 사용합니다.</p>
+
+<p>앞에서 설명한 것처럼, Oracle BDCSCE는 Apache Spark/Apache Hadoop 클러스터를 필요한 시점에 즉시 생성할 수 있는 클라우드 서비스 입니다. Oracle BDCSCE는 Oracle Compute Cloud Service의 VM을 인프라스트럭처로 사용합니다.</p>
+
+<p>Oracle BDCSCE은 다음과 같은 특징을 갖습니다.</p>
+
+<ol>
+<li>약 15분 안에 신규 Apache Hadoop/Spark 클러스터 생성</li>
+<li>Scale-up/down 지원</li>
+<li>하나의 Data Lake에 저장된 데이터 분석 용도로 복수의 하둡 클러스터 구성 가능</li>
+<li>Oracle Identity Cloud Service와 통합되어 계정 및 접근 관리 단일화</li>
+<li>HDP(Hortonworks Data Platform)에 근간을 둔 검증된 소프트웨어 패키지 제공</li>
+<li>업그레이드 및 패치 자동화</li>
+<li>클러스터 관리 비용 최소화</li>
+</ol>
+
+<p>Oracle BDCSCE의 최소 구성은 1개 노드<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>입니다. 고가용성을 보장하기 위해서는 3개 노드 이상으로 클러스터를 구성해야 합니다. Oracle BDCSCE 클러스터에 HDFS 노드 외에 별도로 Compute 노드<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup>를 추가할 수 있습니다. 앞에서 설명한 Compute 노드와 Oracle Storage Cloud Service는 Oracle BDCSCE 클러스터와 독립적으로 운영됩니다.</p>
+
+<p>Oracle BDCSCE는 클러스터 생성 시점에 Full Profile과 Basic Profile로 인스턴스 구성을 선택할 수 있습니다. Full Profile은 Hortonworks Data Platform을 근간으로 전체 Hadoop Ecosystem을 설치합니다. Basic Profile을 선택하면 Spark 클러스터 환경만 설치됩니다. Oracle BDCSCE는 인스턴스 생성 시점에 Apache Spark 버전을 선택할 수 있습니다. 2017년 7월 현재 Oracle BDCSCE는 Spark 1.6과 2.1버전을 지원합니다.</p>
+
+<p>Oracle BDCSCE가 사용하는 HDP는 오라클과 Hortonworks가 협력하여 오라클 클라우드에 최적화 구성이 적용된 버전입니다. 2017년 7월 현재 Oracle BDCSCE의 HDP 버전은 2.4.2입니다.</p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/07/bdcsce_intro/bdcsce.jpg" alt="" /></p>
+
+<h2 id="oracle-bdcsce의-컴포넌트-버전">Oracle BDCSCE의 컴포넌트 버전</h2>
+
+<p>Oracle BDCSCE의 Full Profile에 설치되는 컴포넌트들과 각 버전은 다음과 같습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>컴포넌트 명</th>
+<th>버전</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>HDFS</td>
+<td>2.7.1.2.4</td>
+</tr>
+
+<tr>
+<td>YARN + MapReduce2</td>
+<td>2.7.1.2.4</td>
+</tr>
+
+<tr>
+<td>Tez</td>
+<td>0.7.0.2.4</td>
+</tr>
+
+<tr>
+<td>Hive</td>
+<td>1.2.1.2.4</td>
+</tr>
+
+<tr>
+<td>Pig</td>
+<td>0.15.0.2.4</td>
+</tr>
+
+<tr>
+<td>ZooKeeper</td>
+<td>3.4.6.2.4</td>
+</tr>
+
+<tr>
+<td>Spark</td>
+<td>1.6,2.1</td>
+</tr>
+
+<tr>
+<td>Zeppelin Notebook</td>
+<td>0.6.0</td>
+</tr>
+
+<tr>
+<td>Alluxio</td>
+<td>1.2.0</td>
+</tr>
+
+<tr>
+<td>BDCSCE Logstash Agent</td>
+<td>0.0.1</td>
+</tr>
+
+<tr>
+<td>Nginx Reverse Proxy</td>
+<td>0.0.1</td>
+</tr>
+
+<tr>
+<td>Spark Cloud Service UI</td>
+<td>0.5.0</td>
+</tr>
+
+<tr>
+<td>Spocs Fabric Service</td>
+<td>0.1</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="oracle-bdcsce의-차별성">Oracle BDCSCE의 차별성</h2>
+
+<p>Oracle BDCSCE는 다른 클라우드 빅데이터 서비스와 다음과 같은 차별성을 갖습니다.</p>
+
+<h3 id="차별성-1-public-private">차별성&gt;1. Public &amp; Private</h3>
+
+<p>Oracle BDCSCE는 Oracle Public Cloud와 Cloud@Customer에서 모두 제공하는 서비스입니다.
+여기서 Oracle Cloud@Customer란 고객사의 데이터센터에 Oracle Public Cloud와 같은 클라우드 환경을 구성하고, 오라클이 관리하는 클라우드 서비스입니다. Oracle BDCSCE는 Public Cloud와 Private cloud(Cloud@Customer)에 같은 형태로 서비스됩니다. Oracle BDCSCE 사용자는 Public cloud와 Private Cloud에서 동일한 빅데이터 경험을 유지할 수 있습니다.</p>
+
+<h3 id="차별성-2-스트리밍-데이터-처리-환경">차별성&gt;2. 스트리밍 데이터 처리 환경</h3>
+
+<p>오라클은 스트리밍 데이터를 수집하는 서비스로 Oracle Event Hub CS를 제공합니다. Oracle Event Hub CS의 실체는 Apache Kafka입니다. Oracle BDCSCE는 Oracle Event Hub CS에 빠른 접근이 가능한 인프라 환경(네트워크 구성)을 제공합니다. Oracle Event Hub CS와 Oracle BDCSCE를 사용하여 고성능 스트리밍 데이터 분석환경을 구성할 수 있습니다. Oracle Event Hub CS와 Oracle BDCSCE의 Spark Streaming을 사용하여 실시간 이벤트 처리 시스템으로 CEP(Context Event Processing)를 구성할 수 있습니다.</p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/07/bdcsce_intro/eventhubbdcsce.jpg" alt="" /></p>
+
+<h3 id="차별성-3-관계형-데이터베이스-및-클라우드-스토리지-통합">차별성&gt;3. 관계형 데이터베이스 및 클라우드 스토리지 통합</h3>
+
+<p>Oracle BDCSCE는 Oracle DBCS(Oracle Database Cloud Service), Oracle MySQL CS, OEHCS(Oracle EventHub Cloud Service) 및 Oracle Storage Cloud Service와 통합되어 있습니다.</p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/07/bdcsce_intro/dbcsintegration.jpg" alt="" /></p>
+
+<h2 id="oracle-bdcsce-주요-특징">Oracle BDCSCE 주요 특징</h2>
+
+<h3 id="1-탄력적인-서비스">1. 탄력적인 서비스</h3>
+
+<p>Oracle BDCSCE는 3가지 측면(Cluster, Storage, Computer)의 확장성을 지원합니다.</p>
+
+<ul>
+<li>Cluster 확장성
+
+<ul>
+<li>워크로드 크기에 따라서 Scale-out/Scale-in을 지원합니다.</li>
+<li>HDFS 노드와 Compute 노드를 선택적으로 변경 가능합니다.</li>
+<li>HDFS 노드 변경 시에 HDFS 데이터 재분배 옵션을 제공합니다.</li>
+</ul></li>
+<li>Storage 확장성
+
+<ul>
+<li>Oracle BDCSCE는 클러스터의 HDFS와 Oracle Storage Cloud Service에 분석 데이터를 관리합니다. Oracle Storage Cloud Service는 제약 없는 데이터 확장을 지원합니다. Metered 방식을 사용할 경우 사용한 데이터 용량과 Operation 수 만큼 요금이 부과됩니다.</li>
+</ul></li>
+<li>Compute 확장성
+
+<ul>
+<li>HDFS 노드와 Compute 노드에 대한 다양한 Shape을 지원합니다.</li>
+<li>최소 2 OCPU<sup class="footnote-ref" id="fnref:3"><a rel="footnote" href="#fn:3">3</a></sup>, 최대 16 OCPU</li>
+</ul></li>
+</ul>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/07/bdcsce_intro/scaleout.jpg" alt="" /></p>
+
+<h3 id="2-오픈기술">2. 오픈기술</h3>
+
+<p>Oracle BDCSCE는 Hortonworks의 HDP 2.4.2 버전을 근간으로 합니다. HDP를 오라클 클라우드 특성에 맞춰 최적화된 설정과 컴포넌트 구성으로 Oracle BDCSCE 서비스를 디자인하였습니다. Oracle BDCSCE를 사용함으로써 오픈 기술의 안전성을 확보하고, 오픈소스 설치 및 안정화에 들어가는 노력을 최소화할 수 있습니다.</p>
+
+<h3 id="3-관리-서비스-managed-service">3. 관리 서비스 (Managed Service)</h3>
+
+<p>Oracle BDCSCE는 클러스터 관리 부하를 줄일 수 있습니다. 하둡 기술을 사용할 때 가장 어려운 부분은 패치와 업그레이드입니다. Oracle BDCSCE는 검증된 방식의 패치와 업그레이드 기능를 지원합니다.</p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/07/bdcsce_intro/patch.jpg" alt="" /></p>
+
+<p>Oracle BDCSCE는 클러스터를 관리 및 모니터링 기능을 Web UI, Rest API와 CLI(Command Line Interface) 형태로 제공합니다. 사용자는 하둡 클러스터 관리를 자동화하거나 단순화 시킬 수 있습니다.</p>
+
+<h3 id="4-보안">4. 보안</h3>
+
+<p>Oracle BDCSCE는 접근 제어, 데이터 보호, 네트워크 측면에서 대한 보안 안정성이 적용되어 있습니다.</p>
+
+<ul>
+<li>접근 제어(Access Security)
+
+<ul>
+<li>Oracle BDCSCE는 Oracle Identity Cloud Service와 통합.</li>
+<li>Oracle Identity Cloud Service에서 사용자 등록과 접근 제어를 관리 지원.</li>
+<li>Oracle BDCSCE 사용자의 접근 및 활동에 대하여 강력한 감사(Audit)를 지원.</li>
+</ul></li>
+<li>데이터 보안
+
+<ul>
+<li>데이터 운용(data-in-motion) 시점과 데이터 저장(data-in-rest) 시점에 암호화</li>
+<li>모든 REST API는 HTTPS를 사용</li>
+</ul></li>
+<li>네트워크 보안
+
+<ul>
+<li>SDN(Software-Defined Network)을 이용하여 세밀한 네트워크 보안 강화</li>
+<li>VPN 지원</li>
+<li>White-list IP<sup class="footnote-ref" id="fnref:4"><a rel="footnote" href="#fn:4">4</a></sup> 관리 지원</li>
+</ul></li>
+</ul>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/07/bdcsce_intro/network.jpg" alt="" /></p>
+
+<h2 id="트라이얼-계정을-이용한-oracle-bdcsce-테스트">트라이얼 계정을 이용한 Oracle BDCSCE 테스트</h2>
+
+<p>오라클 클라우드가 제공하는 Trial Account로 Oracle BDCSCE를 테스트할 수 있습니다. 오라클 클라우드 Trial Account를 신청하면 1개월간 6 OCPU, 500GB를 제약 없이 사용할 수 있습니다. Trial Account로 Oracle BDCSCE 인스턴스를 생성하여 테스트할 수 있습니다.</p>
+
+<p>오라클 클라우드 계성 생성에 대해서는 다음 Post를 첨고하시기 바랍니다.</p>
+
+<ul>
+<li><a href="../accont/">오라클 클라우드 Trial Account 생성</a></li>
+</ul>
+
+<h2 id="요약">요약</h2>
+
+<p>오라클 클라우드(OPC)는 Apache Hadoop 기술을 서비스하는 PaaS로 Oracle Big Data Cloud Service Compute-Edition을 출시하였습니다. Oracle BDCSCE는 Hortonworks의 HDP 2.4.2 버전을 오라클 클라우드에 최적화한 설정과 구성으로 디자인 되었습니다. 최소 구성은 1 노드이고 고가용성(HA, High Availability)를 확보하기 위해서는 클러스터를 3 노드 이상으로 구성해야 합니다.</p>
+
+<p>Full Profile로 인스턴스를 생성할 경우에 HDFS, MapReduce, Hive, Pig, Tez, Spark 등을 사용할 수 있습니다. 관리 도구로 Ambari가 설치되고, 개발 및 운영 편리성을 위하여 Apache Zeppelin이 포함됩니다.</p>
+
+<p>Oracle BDCSCE는 성능, 보안 및 관리 편리성이 고려된 PaaS 입니다. 데이터 확장, 실시간 데이터 처리, 컴퓨팅 노드 확장, 오픈소스 패치에 대한 고려사항이 적용되어 있습니다.</p>
+
+<h2 id="관련-문서">관련 문서</h2>
+
+<ol>
+<li>Oracle Big Data Cloud Service Compute-Edition 소개</li>
+<li><a href="../stpe_by_step_new_cluster_bdcsce/">Oracle BDCSCE: 클러스터 생성</a></li>
+</ol>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+<li><a href="https://technology.amis.nl/2017/03/18/apache-kafka-on-the-oracle-cloud-my-first-experiences-with-oracle-event-hub-cloud-service/">AMIS TECHNOLOGY BLOG - Apache Kafka on the Oracle Cloud</a></li>
+<li><a href="http://docs.oracle.com/en/cloud/paas/big-data-compute-cloud/csspc/index.html">Official Tutorial- Using Oracle Big Data Cloud Service – Compute Edition</a></li>
+<li><a href="https://www.toadworld.com/platforms/oracle/b/weblog/archive/2017/06/14/introduction-to-oracle-big-data-cloud-service-compute-edition-part-ii-services">Toad World- Introduction to Oracle Big Data Cloud Service – Compute Edition</a></li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">본문에서 노드는 가상머신(VM, Virtual Machine)을 의미합니다. 1개 노드란 가상머신 서버 1대를 의미합니다.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">Compute 노드는 Spark 등 연산 프로세스가 동작하는 VM입니다. Comute 노드는 언제든지 Shape 변경이 가능합니다.
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:3">하이퍼스레딩이 활성화된 Intel Xeon 프로세서의 물리적 코어 한 개 또는 Oracle SPARC 프로세서의 물리적 코어 한 개의 CPU 용량으로 정의됩니다. Intel Xeon 프로세서의 경우 각 OCPU는 vCPU 2개와 같습니다.
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+<li id="fn:4">Black-list IP의 반대 개념으로, 접근을 허용하는 특별한 IP를 지정하는 기능입니다.
+ <a class="footnote-return" href="#fnref:4"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/big-data/" rel="tag">big data</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/hadoop/" rel="tag">hadoop</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/spark/" rel="tag">spark</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/bdcsce/" rel="tag">bdcsce</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/mysql_cs/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Oracle MySQL Cloud Service</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/stpe_by_step_new_cluster_bdcsce/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">Oracle BDCSCE: 클러스터 생성 </p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/cloud/bdcsce01/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#oracle-bdcsce의-컴포넌트-버전">Oracle BDCSCE의 컴포넌트 버전</a></li>
+<li><a href="#oracle-bdcsce의-차별성">Oracle BDCSCE의 차별성</a>
+<ul>
+<li><a href="#차별성-1-public-private">차별성&gt;1. Public &amp; Private</a></li>
+<li><a href="#차별성-2-스트리밍-데이터-처리-환경">차별성&gt;2. 스트리밍 데이터 처리 환경</a></li>
+<li><a href="#차별성-3-관계형-데이터베이스-및-클라우드-스토리지-통합">차별성&gt;3. 관계형 데이터베이스 및 클라우드 스토리지 통합</a></li>
+</ul></li>
+<li><a href="#oracle-bdcsce-주요-특징">Oracle BDCSCE 주요 특징</a>
+<ul>
+<li><a href="#1-탄력적인-서비스">1. 탄력적인 서비스</a></li>
+<li><a href="#2-오픈기술">2. 오픈기술</a></li>
+<li><a href="#3-관리-서비스-managed-service">3. 관리 서비스 (Managed Service)</a></li>
+<li><a href="#4-보안">4. 보안</a></li>
+</ul></li>
+<li><a href="#트라이얼-계정을-이용한-oracle-bdcsce-테스트">트라이얼 계정을 이용한 Oracle BDCSCE 테스트</a></li>
+<li><a href="#요약">요약</a></li>
+<li><a href="#관련-문서">관련 문서</a></li>
+<li><a href="#reference">Reference</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

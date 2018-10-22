@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>클라우드 on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</link>
+    <description>Recent content in 클라우드 on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 06 Aug 2017 22:20:25 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Oracle PaaS Service Manager 소개 및 설치</title>
+      <link>http://taewan.kim/cloud/installing_pms/</link>
+      <pubDate>Sun, 06 Aug 2017 22:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/installing_pms/</guid>
+      <description>Oracle PaaS Service Manager(이하 PSM)는 오라클 클라우드의 PaaS 서비스 관리에 사용되는 CLI(Command Line Interface)입니다. Oracle 클라우드는 PaaS 서비스를 관리하는 REST API를 제공합니다. 이 REST API를 이용하여 PaaS 서비스를 인스턴스 생성, 중지 그리고 삭제를 할 수 있습니다. Oracle PSM은 PaaS REST API에 대한 CLI 유형의 클라이언트 구현체입니다. Oracle PSM를 이용하여 오라클 클라우드 PaaS 서비스의 프로비저닝, 모니터링, 관리(생성, 중지, 삭제) 자동화 환경을 구축할 수 있습니다.
+Oracle PSM 지원 PaaS 서비스    Oracle PaaS 비고     Oracle Application Container Cloud Service Container 서비스, Polyglot 환경, Java, Python, PHP, Ruby 지원   Oracle Analytics Cloud 데이터 분석 클라우드 서비스   Oracle Big Data Cloud Service - Compute Edition 빅데이터 클라우드 서비스   Oracle Database Cloud Service Managed Oracle Database 서비스   Java Cloud Service.</description>
+    </item>
+    
+  </channel>
+</rss>

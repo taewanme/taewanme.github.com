@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>Oracle PaaS의 Storage CS 컨테이너 설정 형식 변경</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="Oracle PaaS의 Storage CS 컨테이너 설정 형식 변경" />
+<meta property="og:description" content="오라클 클라우드의 PaaS 서비스는 인스턴스를 생성하는 과정에 Oracle Storage CS의 컨테이너를 등록하는 설정을 포함합니다. 지난 8월에 오라클 클라우드의 Trial 계정이 Credit 체제로 변경되면서 Storage CS의 컨테이너를 등록하는 방식이 변경되었습니다. Storage CS의 컨테이너 등록 정보를 확인하는 방법을 소개합니다. " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/cloud/stroage_cs_url/" />
+
+
+
+<meta property="article:published_time" content="2017-09-24T21:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2017-09-24T21:28:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">Oracle PaaS의 Storage CS 컨테이너 설정 형식 변경 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2017-09-24 21:28:14 &#43;0900 KST">September 24, 2017</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c" rel="category">오라클 클라우드</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://oracloud-kr-teamrepo.github.io/2017/04/storage_cs/post_logo.png" alt="Oracle PaaS의 Storage CS 컨테이너 설정 형식 변경">
+			</figure>
+			
+
+<p>오라클 클라우드에서 Oracle BDCS<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>, Oracle MySQL CS<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup> 그리고 Oracle BDCSCE<sup class="footnote-ref" id="fnref:3"><a rel="footnote" href="#fn:3">3</a></sup>와 같은 PaaS 서비스는 인스턴스 생성 과정에 Oracle Storage CS의 컨테이너를 등록 하는 항목을 포함합니다. 오라클 클라우드 PaaS는 백업 및 데이터 저장 용도로 Oracle Storage CS를 사용합니다. 지난 8월에 오라클 클라우드의 트라이얼 계정이 Credit 체제로 변경되는 과정에서 Storage CS 컨테이너 등록 형식이 변경되었습니다. 본 문서에는 Storage CS의 컨테이너 등록 정보를 확인하는 방법과 방법을 소개합니다.</p>
+
+<h2 id="oracle-storage-cs-이용-oracle-paas">Oracle Storage CS 이용 Oracle PaaS</h2>
+
+<p>아래 &lt;그림 1&gt;, &lt;그림 2&gt;, &lt;그림 3&gt;은 각각 Oracle MySQL CS, Oracle Database CS 그리고 Oracle BDCSCE의 Oracle Storage CS의 설정 화면입니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://oracloud-kr-teamrepo.github.io/2017/09/storage_container/mysqlcs.jpg" alt="Oracle MySQL CS의 Storage CS 설정" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 1</strong>:
+        
+        Oracle MySQL CS의 Storage CS 설정
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://oracloud-kr-teamrepo.github.io/2017/09/storage_container/dbcs.jpg" alt="Oracle DBCS의 Storage CS 설정" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 2</strong>:
+        
+        Oracle DBCS의 Storage CS 설정
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://oracloud-kr-teamrepo.github.io/2017/09/storage_container/bdcsce.jpg" alt="Oracle DBCSCE의 Storage CS 설정" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 3</strong>:
+        
+        Oracle DBCSCE의 Storage CS 설정
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>각 PaaS 서비스에서 Oracle Storage CS를 사용하는 요약은 다음과 같습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>서비스 유형</th>
+<th>설정 항목</th>
+<th>용도</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Oracle MySQL CS</td>
+<td>Cloud Storage Container</td>
+<td>백업&amp;복구</td>
+</tr>
+
+<tr>
+<td>Oracle DBCS</td>
+<td>Cloud Storage Container</td>
+<td>백업&amp;복구</td>
+</tr>
+
+<tr>
+<td>Oracle BDCSCE</td>
+<td>Cloud Storage Container</td>
+<td>데이터 저장 및 로딩</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="oracle-storage-cs-설정-형식">Oracle Storage CS 설정 형식</h2>
+
+<p>기존에 Storage Cloud Service 설정 형식은 다음과 같습니다.</p>
+
+<pre><code>{SERVICE_NAME}-{IDENTITY_DOMAIN_NAME}/{CONTAINER_NAME}
+</code></pre>
+
+<p>2017년 8월 오라클 클라우드의 트라이얼 계정의 지원이 Credit 방식으로 전환되면서, Storage Cloud Service 설정 형식은 다음과 같이 변경되었습니다.</p>
+
+<pre><code>http://&lt;storagedomain&gt;/v1/&lt;schema name&gt;/&lt;container name&gt;
+</code></pre>
+
+<p>위 PaaS 서비스 설정에 새로운 형식으로 Storage CS의 컨테이너 주소를 등록해야 합니다.</p>
+
+<h2 id="oracle-storage-cs-주소-확인">Oracle Storage CS 주소 확인</h2>
+
+<p>Identity Domain의 Storage CS 정보는 Oracle Storage CS의 &ldquo;<strong>서비스 세부 정보</strong>&rdquo; 페이지에서 확인할 수 있습니다. Oracle Storage CS의 &ldquo;<strong>서비스 세부 정보</strong>&rdquo; 페이지는 다음과 같은 경로로 찾아갈 수 있습니다. Oracle Storage CS의 &ldquo;<strong>서비스 세부 정보</strong>&rdquo; 페이지는 &lt;그림 4&gt; ~ &lt;그림 7&gt;과 같이 이동할 수 있습니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://oracloud-kr-teamrepo.github.io/2017/09/storage_container/img01.jpg" alt="대시보드에 Storage CS 패널이 없을 경우 사용자 정의 메뉴 클릭" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 4</strong>:
+        
+        대시보드에 Storage CS 패널이 없을 경우 사용자 정의 메뉴 클릭
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://oracloud-kr-teamrepo.github.io/2017/09/storage_container/img02.jpg" alt="대시보드 사용자 정의에서 &#39;__표시__&#39;로 설정&#39;" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 5</strong>:
+        
+        대시보드 사용자 정의에서 &#39;__표시__&#39;로 설정&#39;
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://oracloud-kr-teamrepo.github.io/2017/09/storage_container/img03.jpg" alt="Oracle Storage CS의 세부 정보 실행" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 6</strong>:
+        
+        Oracle Storage CS의 세부 정보 실행
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://oracloud-kr-teamrepo.github.io/2017/09/storage_container/img04.jpg" alt="Oracle Storage CS의 세부 정보에서 REST Endpoint 확인" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 7</strong>:
+        
+        Oracle Storage CS의 세부 정보에서 REST Endpoint 확인
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>&ldquo;<strong><em>http://{storagedomain}/v1/{schema name}</em></strong>&ldquo;는 Oracle Storage CS의 세부 정보 페이지의 REST Endpoint의 주소입니다.</p>
+
+<p>위 데모에서 REST Endpoint는 다음과 같습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>Storage CS의 REST Endpoint</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://Storage-a514707.storage.oraclecloud.com/v1/Storage-0961de4eaa364afc937598c31b21ff91">https://Storage-a514707.storage.oraclecloud.com/v1/Storage-0961de4eaa364afc937598c31b21ff91</a></td>
+</tr>
+</tbody>
+</table>
+
+<p>위 REST Endpoint에서 스토리지 도메인과 스키마 명은 다음과 같이 확인 할 수 있습니다.</p>
+
+<ul>
+<li>storagedomain: Storage-a514707.storage.oraclecloud.com</li>
+<li>schema name: Storage-0961de4eaa364afc937598c31b21ff91</li>
+</ul>
+
+<h2 id="oracle-storage-container-설정">Oracle Storage Container 설정</h2>
+
+<p>Oracle Storage CS의 세부 정보 페이지의 REST Endpoint에서 확인한 스토리지 도메인과 스키마 명, 컨테이너 명을 결합하여 Oracle Storage Container를 설정할 수 있습니다. 위 &lt;그림 1&gt;, &lt;그림 2&gt;와 &lt;그림 3&gt;에서 실제 설정한 예는 다음과 같습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>그림 #</th>
+<th>서비스 유형</th>
+<th>Oracle Storage Container</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>그림 1</td>
+<td>mysql cs</td>
+<td><a href="https://Storage-a514707.storage.oraclecloud.com/v1/Storage-0961de4eaa364afc937598c31b21ff91/mysqlbackup">https://Storage-a514707.storage.oraclecloud.com/v1/Storage-0961de4eaa364afc937598c31b21ff91/mysqlbackup</a></td>
+</tr>
+
+<tr>
+<td>그림 2</td>
+<td>dbcs</td>
+<td><a href="https://Storage-a514707.storage.oraclecloud.com/v1/Storage-0961de4eaa364afc937598c31b21ff91/dbbackup">https://Storage-a514707.storage.oraclecloud.com/v1/Storage-0961de4eaa364afc937598c31b21ff91/dbbackup</a></td>
+</tr>
+
+<tr>
+<td>그림 3</td>
+<td>bdcsce</td>
+<td><a href="https://Storage-a514707.storage.oraclecloud.com/v1/Storage-0961de4eaa364afc937598c31b21ff91/bdcsce">https://Storage-a514707.storage.oraclecloud.com/v1/Storage-0961de4eaa364afc937598c31b21ff91/bdcsce</a></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="요약">요약</h2>
+
+<p>지금까지 Oracle Storage CS의 세부 정보 페이지의 REST Endpoint에서 확인한 스토리지 도메인과 스키마 명 그리고 새로 지정한 컨테이너 명을 조합하여 Oracle Storage CS Container를 설정할 수 있습니다.</p>
+
+<h2 id="참고자료">참고자료</h2>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Sigmoid_function">https://en.wikipedia.org/wiki/Sigmoid_function</a></li>
+<li><a href="http://neuralnetworksanddeeplearning.com/chap5.html">CHAPTER 5.Why are deep neural networks hard to train?</a></li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">Oracle BDCS는 Oracle Database를 오라클 클라우드에서 서비스하는 데이터베이스 PaaS 서비스입니다. 오라클은 Oracle Database를 DaaS(Database as a Service)로 표현합니다.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">Oracle MySQL CS는 Mysql Enterprise Edition을 오라클 클라우드에서 PaaS 형태로 서비스하는 데이터베이스 PaaS 서비스 입니다. 오라클은 Oracle Database를 DaaS(Database as a Service)로 표현합니다.
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:3">Oracle BDCSCE는 Oracle Big Data Cloud Service - Compute Edition의 약자입니다. 오라클 클라우드에서 PaaS 형태로 제공하는 빅데이터 하둡 클러스터 클라우드 서비스입니다.
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/storage-cs/" rel="tag">Storage CS</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/oracl-bdcsce/" rel="tag">Oracl BDCSCE</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/dbcs/" rel="tag">DBCS</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/mysql-cs/" rel="tag">MySQL CS</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88/" rel="tag">스토리지 컨테이너</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/oracle_code_iac_youtube/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">2017 Oracle Code in Seoul: IaC 발표 동영상</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/oracle_cncf/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">[번역]오라클의 CNCF(Cloud Native Computing Foundation) 가입 의미</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/cloud/stroage_cs_url/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#oracle-storage-cs-이용-oracle-paas">Oracle Storage CS 이용 Oracle PaaS</a></li>
+<li><a href="#oracle-storage-cs-설정-형식">Oracle Storage CS 설정 형식</a></li>
+<li><a href="#oracle-storage-cs-주소-확인">Oracle Storage CS 주소 확인</a></li>
+<li><a href="#oracle-storage-container-설정">Oracle Storage Container 설정</a></li>
+<li><a href="#요약">요약</a></li>
+<li><a href="#참고자료">참고자료</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

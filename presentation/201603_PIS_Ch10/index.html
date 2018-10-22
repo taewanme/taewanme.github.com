@@ -1,0 +1,784 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>PIS Ch06 - 함수형 객체</title>
+    <script src="http://gnab.github.io/remark/downloads/remark-0.5.9.min.js" type="text/javascript"> </script>
+    <style type="text/css" media="screen">
+      @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
+      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        margin-top: 10px;
+      }
+      h1 { font-size: 3.5em; }
+      h2 { font-size: 3em; }
+      h3 { font-size: 1.6em; }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      pre {
+        border-left: 0.4em solid #d7d7d7;
+        padding: 1em !important;
+      }
+      code {
+        background: transparent !important;
+      }
+      a {
+        color: #F92672;
+        text-decoration: none;
+      }
+      .task {
+        float: right;
+        font-size: 0.9em;
+        padding-top: 0.6em;
+      }
+      .task a {
+        color: #080;
+        text-decoration: none;
+      }
+      .right {
+        float: right;
+        margin-left: 1em;
+      }
+      .pushdown {
+        margin-top: 12em;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse
+
+# Programming in Scala 10장: 상속과 구성
+
+### 김태완, [taewanme@gmail.com](taewan.kim)
+### Mar, 20, 2016
+
+---
+name: default
+layout: true
+task: &nbsp;
+
+.task[{{task}}]
+
+---
+template: default
+layout: true
+
+### 10.0 시작
+
+---
+task: [#10장 함수형 객체](http://taewan.kim/presentation/201603_PIS_Ch10/)
+
+# 목표와 구성
+
+- 목표
+  - Inheritance
+  - composition
+  - 추상 클래스
+  - 파라미터 없는 메소드
+  - 클래스 확장
+  - 메서드 및 필드 오버라이드
+  - 다형성 및 동적 바인딩
+  - final 멤버
+  - final 클래스
+  - 팩토리 객체와 메서드
+
+---
+template: default
+layout: true
+
+### 6.1 분수 클래스 명세
+
+---
+task: [#6장 함수형 객체](http://taewan.kim/presentation/201603_PIS_Ch06/)
+
+# 분수 클래스
+
+- 키워드
+  - 분수: Rational Number
+    - Immutable 속성을 포함하는 개념
+  - 분자: Numerator
+  - 분모: Denominator
+
+- 목표 산출물
+```scala
+  scala> val oneHalf = new Rational(1, 2)
+  oneHalf: Rational = 1/2
+  scala> val twoThirds = new Rational(2, 3)
+  twoThirds: Rational = 2/3
+  scala> (oneHalf / 7) + (1 - twoThirds)
+  res0: Rational = 17/42
+```
+---
+template: default
+layout: true
+
+### 6.2 Rational 생성
+
+---
+task: [#6장 함수형 객체](http://taewan.kim/presentation/201603_PIS_Ch06/)
+
+# Rational 클래스 정의
+
+전제 조건: Rational 객체는 Immutable 객체
+
+```scala
+class Rational(n:Int, d:Int)
+```
+
+자바 코드로의 변환
+
+```java
+public class Rational{
+  private int n;
+  private int d;
+
+  pulbic Rational(int n, int d){
+    this.n = n;
+    this.d = d;
+  }
+}
+```
+---
+template: default
+layout: true
+
+### 6.2 Rational 생성
+
+---
+task: [#6장 함수형 객체](http://taewan.kim/presentation/201603_PIS_Ch06/)
+
+# Immutable 객체 장단점
+
+- Immutable의 장점
+  - 추론의 용이성
+  - 전달의 용이성
+  - 동시성 접근의 안전성
+  - 안전한 HashSet의 키
+- Immutable의 단점
+  - 객체가 커질수록 객체 생성 비용이 커짐
+  - Object Graph
+
+![](http://coreobject.org/technotes/store.012.png)  
+
+???
+- Immutable은 값이다. 
+- 복제가 빈번하면 부담이 된다.
+---
+template: default
+layout: true
+
+### 6.2 Rational 생성
+
+---
+task: [#6장 함수형 객체](http://taewan.kim/presentation/201603_PIS_Ch06/)
+
+# Rational 클래스 
+
+```scala
+scala> class Rational(n:Int, d:Int){
+     |   println("created: "+n+"/"+d+"\n")
+     | }
+defined class Rational
+
+scala> 
+
+scala> new Rational(1, 2)
+created: 1/2
+
+res0: Rational = Rational@4aa8f0b4
+
+scala> 
+```
+---
+template: default
+layout: true
+
+### 6.3 toString 메서드 다시 구현하기 
+
+---
+task: [#6장 함수형 객체](http://taewan.kim/presentation/201603_PIS_Ch06/)
+
+# override
+
+```scala
+scala> class Rational(n:Int, d:Int){
+     |   println("created: "+n+"/"+d+"\n")
+     | 
+     |   override def toString = n+"/"+d
+     | }
+defined class Rational
+
+scala> 
+
+scala> new Rational(1, 3)
+created: 1/3
+
+res2: Rational = 1/3
+
+scala> new Rational(5, 7)
+created: 5/7
+
+res3: Rational = 5/7
+
+scala>
+```
+---
+template: default
+layout: true
+
+### 6.4 전제 조건 확인  
+
+---
+task: [#6장 함수형 객체](http://taewan.kim/presentation/201603_PIS_Ch06/)
+
+# require method
+
+값의 상태를 확인하는 메서드
+
+- scala.Predef 클래스에 정의됨
+- Predef는 기본 임포트 됨 (import scala.Predef._)
+- 메서드 인자로 false 전달시
+  - IllegalArgumentException 발생
+
+```scala
+scala> class Rational(n:Int, d:Int){
+     |   println("input: "+n+"/"+d+"\n")
+     |   require(n!=0)
+     |   override def toString = n+"/"+d
+     | }
+defined class Rational
+
+scala> new Rational(0, 5)
+input: 0/5
+
+java.lang.IllegalArgumentException: requirement failed
+  at scala.Predef$.require(Predef.scala:207)
+  ... 34 elided
+
+scala> 
+```
+---
+template: default
+layout: true
+
+### 6.5 필드 추가  
+
+---
+task: [#6장 함수형 객체](http://taewan.kim/presentation/201603_PIS_Ch06/)
+
+# add 메서드 추가 (1/2)
+
+Immutable 객체 형태로 add 메서드 추가.
+
+```scala
+scala>  class Rational(n: Int, d: Int) { 
+     |      require(d != 0)
+     |      override def toString = n +"/"+ d
+     |      def add(that: Rational): Rational =
+     |        new Rational(n * that.d + that.n * d, d * that.d)
+     |  }
+<console>:15: error: value d is not a member of Rational
+                   new Rational(n * that.d + that.n * d, d * that.d)
+                                         ^
+<console>:15: error: value n is not a member of Rational
+                   new Rational(n * that.d + that.n * d, d * that.d)
+                                                  ^
+<console>:15: error: value d is not a member of Rational
+                   new Rational(n * that.d + that.n * d, d * that.d)
+                                                                  ^
+scala> 
+```
+- 주의 사항
+  - 클래스 파라미터로 추가된 멤버 변수의 기본 속성은 private 속성
+    - that.d 
+    - that.n
+    - thant.d
+---
+template: default
+layout: true
+
+### 6.5 필드 추가  
+
+---
+task: [#6장 함수형 객체](http://taewan.kim/presentation/201603_PIS_Ch06/)
+
+# add 메서드 추가 (2/2)
+
+멤버 변수의 스코프 변경
+
+- 멤버 변수의 기본 스코프: public
+
+```scala
+scala> class Rational(n: Int, d: Int) {
+     |     require(d != 0)
+     |     val numer: Int = n
+     |     val denom: Int = d
+     |     override def toString = numer +"/"+ denom
+     |     def add(that: Rational): Rational =
+     |       new Rational(
+     |         numer * that.denom + that.numer * denom,
+     |         denom * that.denom
+     | ) }
+defined class Rational
+
+scala> var r = new Rational(1, 2)
+r: Rational = 1/2
+
+scala> r.numer
+res5: Int = 1
+
+scala> r.denom
+res7: Int = 2
+
+scala> 
+
+```
+---
+template: default
+layout: true
+
+### 6.6 자기 참조  
+
+---
+task: [#6장 함수형 객체](http://taewan.kim/presentation/201603_PIS_Ch06/)
+
+# this
+
+```scala
+scala> class Rational(n: Int, d: Int) {
+     |     require(d != 0)
+     |     val numer: Int = n
+     |     val denom: Int = d
+     |     override def toString = numer +"/"+ denom
+     |     def add(that: Rational): Rational =
+     |       new Rational(
+     |         numer * that.denom + that.numer * denom,
+     |         denom * that.denom
+     |       )
+     |     def lessThan(that: Rational) =
+     |       this.numer * that.denom < that.numer * this.denom
+     | 
+     |     def max(that: Rational) =
+     |       if (this.lessThan(that)) that else this
+     | }
+defined class Rational
+
+scala> val oneHalf = new Rational(1, 2)
+oneHalf: Rational = 1/2
+
+scala> val twoThird = new Rational(2, 3)
+twoThird: Rational = 2/3
+
+scala> oneHalf lessThan twoThird
+res8: Boolean = true
+
+scala> oneHalf max twoThird
+res10: Rational = 2/3
+
+scala> 
+```
+---
+template: default
+layout: true
+
+### 6.7 보조 생성자  
+
+---
+task: [#6장 함수형 객체](http://taewan.kim/presentation/201603_PIS_Ch06/)
+
+# 생성자
+
+스칼라 클래스에서 메소드 선언과 멤버변수 선언을 제외한 코드
+
+```scala
+class Calculator(brand: String) {
+  /**
+   * 생성자
+   */
+  val color: String = if (brand == "TI") {
+    "blue"
+  } else if (brand == "HP") {
+    "black"
+  } else {
+    "white"
+  }
+
+  // 인스턴스 메소드
+  def add(m: Int, n: Int): Int = m + n
+}
+```
+---
+template: default
+layout: true
+
+### 6.7 보조 생성자  
+
+---
+task: [#6장 함수형 객체](http://taewan.kim/presentation/201603_PIS_Ch06/)
+
+# 보조 생성자
+
+- 보조 생성자명은 def this(...)
+- 보조 생성자의 첫번째 코드는 동일 클래스의 다른 생성자 호출로 시작해야 함
+  - this(...)
+
+```scala
+scala> class Rational(n: Int, d: Int) {
+     |     require(d != 0)
+     |     val numer: Int = n
+     |     val denom: Int = d
+     |     def this(n: Int) = this(n, 1)
+     |   
+     |     override def toString = numer +"/"+ denom
+     |   
+     |     def add(that: Rational): Rational =
+     |       new Rational(
+     |         numer * that.denom + that.numer * denom,
+     |         denom * that.denom
+     |       )
+     | }
+defined class Rational
+
+scala> new Rational(4)
+res11: Rational = 4/1
+
+scala> 
+```
+
+- 보조 생성자는 주 생성자를 호출하는 경로임.
+  - 모든길은 로마로 통한다.
+  - 주생성자는 클래스의 유일한 진입점
+---
+template: default
+layout: true
+
+### 6.8 비공개 필드와 메소드  
+
+---
+task: [#6장 함수형 객체](http://taewan.kim/presentation/201603_PIS_Ch06/)
+
+# 비공개 설정
+
+- private 키워드로 스코프 제한
+
+```scala
+scala> class Rational(n: Int, d: Int) {
+     |     require(d != 0)
+     |     private val g = gcd(n.abs, d.abs)
+     |     val numer: Int = n/g
+     |     val denom: Int = d/g
+     |     def this(n: Int) = this(n, 1)
+     | 
+     |     override def toString = numer +"/"+ denom
+     |     def add(that: Rational): Rational =
+     |       new Rational(
+     |         numer * that.denom + that.numer * denom,
+     |         denom * that.denom
+     |       )
+     |     private def gcd(a:Int, b:Int):Int =
+     |       if (b==0) a else gcd(b, a%b)
+     | }
+defined class Rational
+
+scala> new Rational(2, 4)
+res13: Rational = 1/2
+
+scala> new Rational(66, 42)
+res14: Rational = 11/7
+
+scala>  
+```
+
+---
+template: default
+layout: true
+
+### 6.9 연산자 정의  
+
+---
+task: [#6장 함수형 객체](http://taewan.kim/presentation/201603_PIS_Ch06/)
+
+# 스칼라는 연산자 정의 (1/2)
+
+- 스칼라는 연산자를 메서드 명으로 상용 가능
+- 연산자의 우선순위를 메서드에 적용
+- 메서드 명을 연산자로 정의하여 가독성 향상
+
+```scala
+  def + (that: Rational): Rational =
+    new Rational(
+      numer * that.denom + that.numer * denom,
+      denom * that.denom
+    )
+  def * (that: Rational): Rational =
+     new Rational(numer * that.numer, denom * that.denom)
+```
+
+---
+template: default
+layout: true
+
+### 6.9 연산자 정의 (2/2)
+
+---
+task: [#6장 함수형 객체](http://taewan.kim/presentation/201603_PIS_Ch06/)
+
+# 스칼라는 연산자 정의
+
+```scala
+scala> class Rational(n: Int, d: Int) {
+     |   require(d != 0)
+     |   private val g = gcd(n.abs, d.abs)
+     |   val numer = n / g
+     |   val denom = d / g
+     |   def this(n: Int) = this(n, 1)
+     |   def + (that: Rational): Rational =
+     |     new Rational(
+     |       numer * that.denom + that.numer * denom,
+     |       denom * that.denom
+     |     )
+     |   def * (that: Rational): Rational =
+     |     new Rational(numer * that.numer, denom * that.denom)
+     |   override def toString = numer +"/"+ denom
+     |   private def gcd(a: Int, b: Int): Int = if (b == 0) a else gcd(b, a % b) 
+     | }
+defined class Rational
+
+scala> val oneHalf = new Rational(1, 2)
+oneHalf: Rational = 1/2
+
+scala> val oneThird = new Rational(1, 3)
+oneThird: Rational = 1/3
+
+scala> oneHalf + oneThird
+res15: Rational = 5/6
+
+scala> oneHalf + oneThird * oneHalf
+res16: Rational = 2/3
+
+scala> (oneHalf + oneThird) * oneHalf
+res17: Rational = 5/12
+
+```
+
+---
+template: default
+layout: true
+
+### 6.10 스칼라 식별자
+
+---
+task: [#6장 함수형 객체](http://taewan.kim/presentation/201603_PIS_Ch06/)
+
+# 식별자
+
+- 식별자 유형
+  - 영숫자 식별자
+  - 연산자 식별자
+  - 혼합 식별자
+  - 리터럴 식별자
+---
+template: default
+layout: true
+
+### 6.10 스칼라 식별자
+
+---
+task: [#6장 함수형 객체](http://taewan.kim/presentation/201603_PIS_Ch06/)
+
+# 영숫자 식별자
+문자와 밑줄로 시작, 두 번째 문자부터는 문자, 숫자, 밑줄 모두 가능, $사용은 비권장
+"_"로 끝나는 식별자도 비권장
+
+- Camel-case
+- 상수는 첫번째 문자만을 대문자로 표시
+
+---
+template: default
+layout: true
+
+### 6.10 스칼라 식별자
+
+---
+task: [#6장 함수형 객체](http://taewan.kim/presentation/201603_PIS_Ch06/)
+
+# 연산자 식별자
+
+- +, ++, :::, :->
+- $colon$minus$greater
+
+---
+template: default
+layout: true
+
+### 6.10 스칼라 식별자
+
+---
+task: [#6장 함수형 객체](http://taewan.kim/presentation/201603_PIS_Ch06/)
+
+# 혼합식별자
+
+- 단항 연산자: unary_+
+- myvar_=
+
+---
+template: default
+layout: true
+
+### 6.10 스칼라 식별자
+
+---
+task: [#6장 함수형 객체](http://taewan.kim/presentation/201603_PIS_Ch06/)
+
+# 리터럴 식별자
+
+```scala
+var `1result` = 1 ==> `1result`: Int = 1
+var `yield` = 2 ==> `yield`: Int = 2
+
+
+```
+---
+template: default
+layout: true
+
+### 6.11 메서드 오버로드
+
+---
+task: [#6장 함수형 객체](http://js-workshop.herokuapp.com/#1/1)
+
+# 메서드 재정의 (1/2)
+
+"r*2"를 지원하기 위한 방안
+
+```scala
+class Rational(n: Int, d: Int) {
+  require(d != 0)
+  private val g = gcd(n.abs, d.abs)
+  val numer = n / g
+  val denom = d / g
+  def this(n: Int) = this(n, 1)
+
+  override def toString = numer +"/"+ denom
+  private def gcd(a: Int, b: Int): Int = if (b == 0) a else gcd(b, a % b)
+
+  //생략 
+}
+```
+---
+template: default
+layout: true
+
+### 6.11 메서드 오버로드
+
+---
+task: [#6장 함수형 객체](http://js-workshop.herokuapp.com/#1/1)
+
+# 메서드 재정의 (2/2)
+
+"r*2"를 지원하기 위한 방안
+
+```scala
+  def + (that: Rational): Rational =
+    new Rational(
+      numer * that.denom + that.numer * denom,
+      denom * that.denom
+    )
+  def + (i: Int): Rational =
+    new Rational(numer + i * denom, denom)
+  def - (that: Rational): Rational =
+    new Rational(
+      numer * that.denom - that.numer * denom,
+      denom * that.denom
+    )
+  def - (i: Int): Rational =
+    new Rational(numer - i * denom, denom)
+  def * (that: Rational): Rational =
+    new Rational(numer * that.numer, denom * that.denom)
+  def * (i: Int): Rational =
+    new Rational(numer * i, denom)
+  def / (that: Rational): Rational =
+    new Rational(numer * that.denom, denom * that.numer)
+  def / (i: Int): Rational =
+    new Rational(numer, denom * i)
+
+```
+---
+template: default
+layout: true
+
+### 6.12 암시적 타입 변환
+
+---
+task: [#6장 함수형 객체](http://js-workshop.herokuapp.com/#1/1)
+
+# 메서드 재정의 (2/2)
+
+"2*r"를 지원하기 위한 방안
+
+- RichInt에는 Rational을 인자로 받는  * 메서드가 없음
+- new Rational(2) * r로 표현해야 함
+- Implicit Conversion을 통해서 해결 가능
+- 해당 객체에 메서드가 존재하지 않을 경우 스칼라는 현재 접근 가능한 스코프에서 암시적 타입 변환 메서드 찾아서 해당 객체의 타입을 변환 시킴
+- scala.Prefer 클래스는 다수의 implicit 메서드 포함
+
+```scala
+scala> implicit def intToRational(x:Int) = new Rational(x)
+warning: there was one feature warning; re-run with -feature for details
+intToRational: (x: Int)Rational
+
+scala> 2 * new Rational(2, 3)
+res0: Rational = 4/3
+```
+---
+template: default
+layout: true
+
+### 6.13 주의 사항
+
+---
+task: [#6장 함수형 객체](http://js-workshop.herokuapp.com/#1/1)
+
+# 과유불급
+
+스칼라의 코드 간결화 지원 기능
+
+- 연산자 식별자
+- 암시적 타입 변환
+- 간결한 코드 ? 이해하기 어려운 코드?
+
+---
+layout: false
+class: center, middle, inverse
+
+# 감사합니다!
+
+오타 및 내용 관련 피드백은 taewan.e@gmail.com으로 부탁드립니다. 
+
+    </textarea>
+    <script>
+      var slideshow = remark.create({ highlightLanguage: 'javascript'});
+    </script>
+    <script>
+  var _gaq=[['_setAccount','UA-73312251-1'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+  </body>
+</html>

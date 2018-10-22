@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Notation on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/notation/</link>
+    <description>Recent content in Notation on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 28 Nov 2017 21:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/notation/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Neural Network 표기법(Feat: Andrew NG)</title>
+      <link>http://taewan.kim/post/nn_notation/</link>
+      <pubDate>Tue, 28 Nov 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/nn_notation/</guid>
+      <description>그림 1: Neural Network 예제    Neural Network에 대한 Forward Propagation, Backpropagation, predict, Cost Function 등을 정리할 때 뉴럴 네트워크의 구성 요소와 각 위치가 혼동되어 어려움을 겪는 경우가 많습니다. Coursera에서 deeplearning.ai가 진행하는 Neural Networks and Deep Learning 강의에서 Neural Network 표기법 잘 정리하고 있습니다. Andrew NG 교수가 소개한 Neural Network 표기법을 정리합니다. 이 표기법을 사용하면 Neural Network의 여러 수식과 알고리즘을 다룰 때 혼동을 최소화 할 수 있습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

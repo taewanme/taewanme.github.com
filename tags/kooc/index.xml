@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kooc on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/kooc/</link>
+    <description>Recent content in Kooc on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 26 Jul 2018 21:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/kooc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[til]문일천 교수님 기계학습 개론: 1week-Lec01 </title>
+      <link>http://taewan.kim/til/ml_kooc_1week_01/</link>
+      <pubDate>Thu, 26 Jul 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/ml_kooc_1week_01/</guid>
+      <description>강좌 URL: http://kooc.kaist.ac.kr/machinelearning1_17  1주 Lecture 0: Introduction   강좌 동영상       최근 인공지능은 어디에서나 쓰이는 기술 요소  인공지능은 어디에서나 쓰이는 기술 요소 이메일 스팸필터 기능 SNS의 친구 추천 기능 동영상 재생 추천 기능 자동차 번호판 인식 기능 대규모 생산 공정에서의 품질 관리 적재적소에 물품을 운송하는 물류 시스템 군대의 자동화 무기 재난 대응을 위한 로봇    지능이란?
+ 지속적인 경험 축적을 통해서 어떠한 행동 및 의사 결정을 점점 더 잘 할 수 있다면 이러한 학습을 하는 대상은 지능이 있다고 말할 수 있음.</description>
+    </item>
+    
+  </channel>
+</rss>

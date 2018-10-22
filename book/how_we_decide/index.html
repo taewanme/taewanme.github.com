@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>뇌는 어떻게 결정하는가?</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="뇌는 어떻게 결정하는가?" />
+<meta property="og:description" content="뇌가 결정을 하는 방식을 소개하는 책인 &#39;뇌는 어떻게 결정하는가?&#39;를 소개합니다&#39;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/book/how_we_decide/" />
+
+
+
+<meta property="article:published_time" content="2018-04-04T21:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2018-04-04T21:28:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="http://taewan.kim/css/jupyter.css" type="text/css" media="all" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		
+		
+		<header class="post__header clearfix">
+			<h1 class="post__title">뇌는 어떻게 결정하는가? </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2018-04-04 21:28:14 &#43;0900 KST">April 04, 2018</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/book" rel="category">book</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2018/04/brainhowtodecide/thinking.jpeg" alt="뇌는 어떻게 결정하는가?">
+			</figure>
+			
+
+<p>최근에 제가 집중하고 있는 키워드는 <strong>인공지능</strong> 그중에서도 <strong>딥러닝</strong> 입니다.</p>
+
+<blockquote>
+<p>인공지능이란 &ldquo;인간이 수행하는 지적인 작업의 자동화&rdquo;하는 것이라고 정의할 수 있습니다.</p>
+</blockquote>
+
+<p>일반적으로 <strong>인공지능</strong>  그 중에서도 <strong>딥러닝</strong>을 소개할 때 <strong>인간의 뇌에서 영감을 받아 만든 기술로 데이터를 학습하여  숨겨진 패턴을 찾아내는 기술</strong>이라고 설명합니다.</p>
+
+<p>딥러닝 기술을 익히면서 정말 사람의 뇌는 어떻게 움직이는지 궁금해졌습니다. 이런 궁금증으로 읽기 시작한 책이 &ldquo;<strong>뇌는 어떻게 결정하는가?</strong>&ldquo;입니다. 이 책에서 인공 지능 / 딥러닝은 전혀 언급되지 않습니다. 저자는 사람의 뇌가 동작하는 방식을 사례를 중심으로 소개합니다.</p>
+
+<h2 id="책-소개">책 소개</h2>
+
+<p>&ldquo;뇌는 어떻게 결정하는가?&ldquo;는  21세기북스사 에서 번역한 책으로 2016년 07월에 출간된 책입니다.  이 책은 뇌에 관심이 있거나 최근에 인공지능에 관심을 갖고 있는 분들에게 적극적으로 추천하는 책입니다. 이 책을 읽으면 딥러닝 기술과 인간의 뇌가 동작하는 방식을 자연스럽게 비교하게 됩니다. 뇌와 딥러닝을 재미있는 비교와 기술에 대한 새로운 영감을 주는 책입니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2018/04/brainhowtodecide/list.png" alt="book.png" /></p>
+
+<h2 id="저자의-의도">저자의 의도</h2>
+
+<p>저자는 뇌가 결정을 내리는 메카니즘을 이해하고, 합당한 결정을 내릴 수 있도록, 자신(뇌)를 효과적으로 사용해야 한다고 설명합니다. 무조건적으로 노의 어떤 결정을 따르기 보다, 상황에 따라 생각하는 방식을 선택하고 더 올바른 결정을 내릴 수 있도록 만들어야 한다고 주장합니다. 그러기 위해서는 뇌가 결정을 내리는 방식을 이해해야 한다는 것이 이 책의 주요 맥락입니다.</p>
+
+<h2 id="뇌는-어떻게-결정하는가-의-구성">&ldquo;뇌는 어떻게 결정하는가?&rdquo; 의 구성</h2>
+
+<p>이 책은 총 8장으로 구성되어 있습니다.</p>
+
+<p>이 책은 다음과 같은 장으로 구성됩니다.</p>
+
+<ol>
+<li>쿼터백은 누구에게 공을 패스해야 할까?</li>
+<li>도파민의 예측</li>
+<li>감정에 속다</li>
+<li>이성을 활용하라</li>
+<li>생각이 너무 많아도 문제</li>
+<li>도덕적으로 생각하기</li>
+<li>뇌도 논쟁이 필요하다</li>
+<li>뛰어난 포커 선수의 자세</li>
+</ol>
+
+<p>각 장은 간략한 에피소드를 소개하고, 그 일화로부터 뇌가 결정하는 방식을 소개합니다. 그중에서 인상 깊었던 몇 가지를 간략하게 소개하겠습니다.</p>
+
+<h3 id="이성과-본능-감정-그리고-의사-결정">이성과 본능(감정) 그리고 의사 결정</h3>
+
+<p><strong>사람이 짐승과 다른 부분은 본능이 아니고 이성에 따라 판단하고 생각한다는 것</strong>이라고 우리는 배웠습니다. 그렇다면 사람은 이성에 의해서 결정을 내리는 걸까요? 몇 가지 사례를 들어 의사 결정 과정에서 중요한 것은 본능(감정)이며, 이성만으로 인간은 결정을 내릴 수  없다고 말합니다. 이성은  결정 기준을  나열할 뿐 결정을 내리지 못하는 사례를 소개합니다. 인간의 본능(감정)이 결정 요소에 대한 편향을 일으키고 이러한 편향이 의사 결정에 핵심으로 작용한다고 말합니다. 우리가 직감으로 어떤 결정을 내리는 과정에 이런 현상이라고 소개합니다.</p>
+
+<p>기계 학습/딥러닝에서 데이터를 학습하여 인공지능을 만든다는 것은 연립 선형 방정식의 <strong>계수(Coefficient)</strong>와 편향(Bias)를 결정하는 과정이라고 요약할 수 있습니다. 이렇게 연립 선형 방정식을 만족하는 최적의 계수(Coefficient)를 찾아가는 과정이 학습(Learning)입니다. 데이터 속성 중에서 특정 속성을 강조하거나 무시하는 계수를 찾아내고  편향을 계산합니다. 그리고 이 결과에 활성 함수를 적용하여 연산 결과를 증폭시키거나 제거하는 과정을 거칩니다. 사람의 감정이 만드는 편향은 딥러닝의 활성 함수와 느낌이 상당히 비슷합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2018/04/brainhowtodecide/neuralnetwork.png" alt="book.png" /></p>
+
+<h3 id="인간의-직감이란-무엇인가">인간의 직감이란 무엇인가?</h3>
+
+<p>운동 선수는 종합적인 상황을 판단하고 결정하는 과정에서 직감을 사용하는 경우가 많습니다. 우리가 익숙하고 잘 아는 일을 할 때문 소위 감에 따라서 판단하는 경우가 많고, 이 결정이 놀랍도록 정확한 경우가 많습니다. 다음 예를 보겠습니다.</p>
+
+<ul>
+<li>이 보고서 끝내는데 얼마나 걸릴것 같아?</li>
+<li>이 작업을 끝내는데 몇 명이나 필요할 것 같아?</li>
+</ul>
+
+<p>우리가 잘 아는 일에 대해서 위와 같은 질문을 받으면 직감적으로 기간이나 투입 인력을 대답합니다. 논리적으로 분석하기 보다 직감적으로 결정한 답변이  더 정확한 경우가 많습니다. 이건 어떤 이유일까요?</p>
+
+<p>&ldquo;생각에 관한 생각&rdquo;이란 책에서 인간의 뇌는 System 1과 System 2로 나뉘어 있다고 합니다. System 1은 직감이 관장하는 영역입니다. System 2는 논리적인 판단이 관장하는 부분입니다. System 1은 에너지 소모가 작고 동시에 여러 가지를 한꺼번에 처리합니다.  System 2는 고도의 집중력이 필요한 방식으로 에너지 소모가 크고, 한 번에 한 가지만 처리할 수 있습니다. 인간은 본능적으로 System 1을 선호합니다. 익숙한 일은 System 1로 처리 가능합니다. 그러나 생소하거나 잘 모르는 일을 할 경우에는 System 2를 사용해야 합니다. 운전, 모국어로 대화하기, 매일 반복적으로 수행하는 작업 이런 것들은 System 1이 처리합니다. 대입 시험, 외국인과 영어로 대화하기, 어제 학습한 것 실습 등 이런 것은 System 2에서 처리합니다.</p>
+
+<p>인간의 직감은 System 1이 처리하는 영역에 해당합니다. 앞에서 기계 학습은 지정한 모델의 가중치(계수, Coefficient)를 최적화하는 과정이라고 했습니다. 그렇다면 우리가 성장하면서 배우고 학습하고 익힌 무의식 적인 직감이란  어떤 모델의 최적화된 가충치(계수)와 할성함 수가 아닐까요?  인간의 무의식이란 System1이 관장하는 모델로 여러 가지 요소에 최적화의 종합적인 상황이 고려된 최선의 결정을 내리는 도구가 아닐까요?</p>
+
+<blockquote>
+<p>무의식, 직감 = 최적화된 모델 + 활성 함수</p>
+</blockquote>
+
+<p><img src="https://taewanmerepo.github.io/2018/04/brainhowtodecide/head.png" alt="book.png" /></p>
+
+<h3 id="예상하지-못한-오류에-대한-반응-도파민">예상하지 못한 오류에 대한 반응 도파민</h3>
+
+<p>사람은 어떤 일이 성공하면 도파민이라는 호르몬이 분비된다고 합니다. 이 호르몬은 만족감이나 기쁜 감정을 유발합니다. 또한, 사람은 예상하지 못한 오류를 경험하거나 뭔가 기존과 다른 상황을 경험할 경우에도 도파민이 분비합니다. 오류를 경험하고나 새로운 패턴을 발견할 때 발생하는 도파민은 성취감 만족감을 유발하는 도파민이 3-4배 정도라고 합니다.  오류 및 새로운 패턴과 관련된 도파민은 사람을 긴장시키고 집중하게 만듭니다.</p>
+
+<p>재미있는 것은 도박과 도파민입니다. 카지노의 도박 결과는 철저하게 난수(임의의 수)에 근거합니다. 결과가 무작위적이기 때문에 어떤 패턴으로 그 결과를 맞칠 수 없습니다. 그러나 도박을 하면서 사람은 무의식적으로 어떤 패턴을 만들고 그 패턴에 따라서 배팅을 하고 결과를 예측합니다.  무작위 적인 도박을 사람이 만든 패턴에 적용하여 맞추기란 굉장히 어렵습니다. 결과적으로 무의식의 결론은 계속해서 틀리게 됩니다. 실패가 반복됨에 따라 도파민은 과다 분비됩니다. 도파민이 과다 분비되면, 신경이 날카로워 집중하게 되어 새로운 패턴을 만들어 예측을 만드는 과정을 촉진합니다. 결과적으로 이런 예측은 계속 틀리게되고, 도파민은 지속적으로 더 많이 분비됩니다. 이런 호르몬의 작용은 사람을 흥분시키고, 결국 도박 중독자로 만들기도 합니다.</p>
+
+<p>결국 도박 중독자가 카지노를 찾아가는 이유는 예측 실폐의 결과로 발생하는 도파민을 즐기기 위함이고, 결국 돈을 잃기 위해서 카지노에 출입하는 상황이 만들어집니다.</p>
+
+<p>예측이 실패할 경우 도파민이 평소의 3-4배가 분비되는 이유는 신경을 날카롭게 유지하여 더 빠르게  현재 문제를 해결하는 패턴을 학습하기 위함입니다. 기계학습에서 모델을 학습시킬때 &ldquo;오차&rdquo;를 관리 합니다. 여기서 모델이 만들어낸 오차의 제곱의 합을 최소화하는 방향으로 학습을 진행합니다. 여기서 중요한 것은 오차를 제곱한다는 것입니다. 오차를 제곱한다는 것은 오차가 클 경우 그 오차를 증폭하기 위함입니다.</p>
+
+<p>만약에 오차가 1이라면 이 오차의 제곱은 1입니다. 오차가 10이라면 오차의 제곱은 100입니다. 오차를 제곱함으로써 오차의 규모는 증폭시켜 빠르게 모델을 학습시키는 방법입니다. 이는 인간의 뇌가 예상을 빗나갈 때 평소보다 더 많은 도파민을 분비하여 감각을 날카롭게 만드는 것과 상당히 유사합니다. 재미있는 모습입니다.</p>
+
+<h2 id="인간의-뇌와-딥러닝의-유사성">인간의 뇌와 딥러닝의 유사성</h2>
+
+<p>이 책에서 설명하는 인간의 뇌가 결정을 내리거나 동작하는 방식은 딥러닝의 개념과 대응되는 것들이 상당히 많다고 느껴졌습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>인간의 뇌</th>
+<th>딥러닝</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>감정의 편향</td>
+<td>활성 함수</td>
+</tr>
+
+<tr>
+<td>도파민 과다 분비</td>
+<td>오차 함수</td>
+</tr>
+
+<tr>
+<td>인생, Life</td>
+<td>Epoch</td>
+</tr>
+
+<tr>
+<td>행동의 변화</td>
+<td>Mini-batch</td>
+</tr>
+
+<tr>
+<td>무의식</td>
+<td>학습 파라미터</td>
+</tr>
+
+<tr>
+<td>진화</td>
+<td>신경망 Hyperparameter 개선</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="마치며">마치며</h2>
+
+<p>이 책은 인간의 뇌가 작동하는 방법을 사례를 통해서 직관적이고 어렵지 않게 설명하고 있습니다. 평소에 사람이 어떤 과정과 어떤 이유로 생각하고 결정하는지 궁금하신 분들이라면 적극 추천해 드립니다. 그리고 딥러닝이라는 기술을 익히거나 인간의 사고와 딥러닝의 학습을 어떻게 비교하고 비유할지를 고민하시는 분들에게는 정말 적극 추천해 드립니다. 인간의 뇌와 인공지능의 새로운 느낌을 받으실 것 같습니다.</p>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/%ED%9B%84%EA%B8%B0/" rel="tag">후기</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/brain/" rel="tag">brain</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/book/" rel="tag">book</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/book/1982kim_ji_young/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">&#39;82년생 김지영&#39; 리뷰</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/book/how_we_decide/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#책-소개">책 소개</a></li>
+<li><a href="#저자의-의도">저자의 의도</a></li>
+<li><a href="#뇌는-어떻게-결정하는가-의-구성">&ldquo;뇌는 어떻게 결정하는가?&rdquo; 의 구성</a>
+<ul>
+<li><a href="#이성과-본능-감정-그리고-의사-결정">이성과 본능(감정) 그리고 의사 결정</a></li>
+<li><a href="#인간의-직감이란-무엇인가">인간의 직감이란 무엇인가?</a></li>
+<li><a href="#예상하지-못한-오류에-대한-반응-도파민">예상하지 못한 오류에 대한 반응 도파민</a></li>
+</ul></li>
+<li><a href="#인간의-뇌와-딥러닝의-유사성">인간의 뇌와 딥러닝의 유사성</a></li>
+<li><a href="#마치며">마치며</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kotlin on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/kotlin/</link>
+    <description>Recent content in Kotlin on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 26 Apr 2018 15:59:47 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/kotlin/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kotlin 지원 Jupyter: BeakerX 도커 이미지</title>
+      <link>http://taewan.kim/post/kotlin_jupyter/</link>
+      <pubDate>Thu, 26 Apr 2018 15:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/kotlin_jupyter/</guid>
+      <description>최근에 Kotlin을 익히고 있습니다. 안드로이드 개발을 목적으로 하기 보다는 서버사이드 개발언어, Micoroservice 구현언어로 Kotlin을 살펴보고 있습니다. Kotlin을 잘 지원하는 IntelliJ라는 개발툴이 있기는 하지만, 새로운 언어를 익힐때 빠른 실험과 결과 확인이 편리한 REPL 환경을 더 선호합니다.
+Kotlin은 자체적으로 REPL을 지원하기는 하지만 터미널에서 CLI 형태로 사용하기 때문에, 편집이 불편합니다. 또한, 코드 추천 기능이 지원되지 않고, 테스트한 코드를 별도로 보관하기 어렵습니다. Kotlin 자체 REPL보다 편리한 다음 조건을 부합하는 REPL 환경을 찾아보았습니다.
+ Jupyter 환경의 Kotlin 커널 Kotlin과 Java9의 완전한 환경 분리  현재 업무로 Java9을 사용중 입니다.</description>
+    </item>
+    
+  </channel>
+</rss>

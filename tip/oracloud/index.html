@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>oracloud.kr 문서 작성</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="oracloud.kr 문서 작성" />
+<meta property="og:description" content="oracloud의 문서 작성법을 정리합니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/tip/oracloud/" />
+
+
+
+<meta property="article:published_time" content="2018-09-12T21:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2018-09-12T21:28:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+</hr>
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">oracloud.kr 문서 작성 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2018-09-12 21:28:14 &#43;0900 KST">September 12, 2018</time>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+			
+
+<p>oracloud.kr의 문서 작성 절차를 정리합니다.</p>
+
+<h2 id="준비-사항">준비 사항</h2>
+
+<ul>
+<li>Account
+
+<ul>
+<li>github id
+
+<ul>
+<li>github repoistory 등록용도</li>
+</ul></li>
+</ul></li>
+<li>로컬 설치 software
+
+<ul>
+<li>hugo
+
+<ul>
+<li><a href="https://github.com/gohugoio/hugo/releases">https://github.com/gohugoio/hugo/releases</a></li>
+<li>OS에 맞는 최신 버전 다운로드</li>
+</ul></li>
+<li>git
+
+<ul>
+<li>window 버전: <a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a></li>
+<li>OS에 맞는 최신 버전 다운로드</li>
+</ul></li>
+<li>vscode
+
+<ul>
+<li><a href="https://code.visualstudio.com/download">https://code.visualstudio.com/download</a></li>
+<li>OS에 맞는 최신 버전 다운로드</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h2 id="서비스-구성">서비스 구성</h2>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/09/oracloud/010.jpg" alt="서비스 구성" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 1</strong>:
+        
+        서비스 구성
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<ul>
+<li>github repository
+
+<ul>
+<li>blog contents : oracloud-kr/oracloud_repo</li>
+<li>images: oracloud-kr-teamrepo/oracloud-kr-teamrepo.github.io</li>
+</ul></li>
+<li>서비스 URL
+
+<ul>
+<li>blog: <a href="https://www.oracloud.kr">https://www.oracloud.kr</a></li>
+<li>images: <a href="https://oracloud-kr-teamrepo.github.io">https://oracloud-kr-teamrepo.github.io</a></li>
+</ul></li>
+</ul>
+
+<h2 id="blog-문서-작성-및-배포-절차">Blog 문서 작성 및 배포 절차</h2>
+
+<p>oracloud.kr은 다음과 같은 절차로 작성합니다.</p>
+
+<ol>
+<li>oracloud-kr/oracloud_repo 레파지토리 fork</li>
+<li>repository clone
+
+<ul>
+<li>blog: <a href="https://github.com/{github_id}/oracloud_repo">https://github.com/{github_id}/oracloud_repo</a>
+
+<ul>
+<li>example
+
+<ul>
+<li><a href="https://github.com/taewanme/oracloud_repo">https://github.com/taewanme/oracloud_repo</a></li>
+</ul></li>
+</ul></li>
+<li>images: <a href="https://github.com/oracloud-kr-teamrepo/oracloud-kr-teamrepo.github.io">https://github.com/oracloud-kr-teamrepo/oracloud-kr-teamrepo.github.io</a></li>
+</ul></li>
+<li>문서 작성
+
+<ul>
+<li>md 파일 작성 (blog)</li>
+<li>이미지 추가
+
+<ul>
+<li>commit &amp; push</li>
+<li>이미지 배포</li>
+</ul></li>
+</ul></li>
+<li>문서 작성 완료
+
+<ul>
+<li>blog repository 저장
+
+<ul>
+<li>commit &amp; push</li>
+</ul></li>
+</ul></li>
+<li>pull request
+
+<ul>
+<li>github site</li>
+</ul></li>
+<li>그룹 관리자에게 통보
+
+<ul>
+<li>Security: JC.H</li>
+<li>PaaS: MN.L</li>
+<li>IaaS: IH.K</li>
+<li>Data Analysis: TW.K</li>
+</ul></li>
+<li>그룹 관리자는 문서 점검 후 merge</li>
+<li>5분후 문서 갱신 확인
+
+<ul>
+<li><a href="http://www.oracloud.kr">http://www.oracloud.kr</a></li>
+</ul></li>
+</ol>
+
+<h3 id="1-blog-레파지토리-fork">1. blog 레파지토리 fork</h3>
+
+<ul>
+<li>blog repository 주소: <a href="https://github.com/oracloud-kr/oracloud_repo">https://github.com/oracloud-kr/oracloud_repo</a></li>
+</ul>
+
+<p>blog repsitory를 fork합니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/09/oracloud/020.jpg" alt="블로그 레파지토리 Fork" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 2</strong>:
+        
+        블로그 레파지토리 Fork
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<h3 id="2-repository-clone">2. repository clone</h3>
+
+<pre><code>&gt; git clone https://github.com/taewanme/oracloud_repo 
+&gt; git clone git@github.com:oracloud-kr-teamrepo/oracloud-kr-teamrepo.github.io.git images
+</code></pre>
+
+<h3 id="3-문서-작성-이미지-수정">3. 문서 작성 &amp; 이미지 수정</h3>
+
+<ul>
+<li>문서 작성
+
+<ul>
+<li>markdown 파일 작성</li>
+<li><root>/content/post 디렉터리에 md 파일 추가</li>
+<li><a href="http://taewan.kim/post/markdown/" target="_blank">markdown 문법 참조</a>
+</li>
+<li><a href="http://taewankim/tip/shortcode_at_this_blog/" target="_blank">Hugo Short code</a>
+</li>
+</ul></li>
+<li>images 디렉터리에 이미지 추가
+
+<ul>
+<li>이미지 명명 규칙
+
+<ul>
+<li>디렉터리 명
+
+<ul>
+<li>{year}/[month]/{title}</li>
+<li>tile에 특수문자로 &ldquo;_&rdquo; 만 허용</li>
+<li>파일명: &ldquo;.&ldquo;을 제외한 특수분자를 사용할 수 없음
+<br /></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/09/oracloud/030.jpg" alt="이미지 파일 명명 규칙" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 3</strong>:
+        
+        이미지 파일 명명 규칙
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<ul>
+<li>image 파일 배포
+
+<ul>
+<li>이미지 파일은 직접 배포로 함</li>
+<li>github에 push하는 것으로 배포 완료</li>
+<li>적용시간: 1min</li>
+</ul></li>
+</ul>
+
+<pre><code>cd images
+git add *
+git commit -m &quot;add images for '{title}'&quot;
+git push origin master
+</code></pre>
+
+<ul>
+<li>작업 문서 점검 방법</li>
+</ul>
+
+<pre><code>&gt; cd oracloud_repo
+&gt; hugo server
+</code></pre>
+
+<h3 id="5-md-파일-메타-정보">5. MD 파일 메타 정보</h3>
+
+<p>markdown 파일의 상단에는 다음과 같은</p>
+
+<h3 id="4-문서-작성-완료">4. 문서 작성 완료</h3>
+
+<ul>
+<li>markdown 파일 github에 push</li>
+</ul>
+
+<pre><code>cd oracloud_repo
+git add *
+git commit -m &quot;add article for '{title}'&quot;
+git push origin master
+</code></pre>
+
+<h3 id="5-pull-request">5. pull request</h3>
+
+<p>pull request는 github 사이트에서도 요청할 수 있습니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/09/oracloud/040.jpg" alt="UI에서 Pull Request 생성" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 4</strong>:
+        
+        UI에서 Pull Request 생성
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/09/oracloud/050.jpg" alt="Pull Request 생성 요청" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 5</strong>:
+        
+        Pull Request 생성 요청
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/09/oracloud/060.jpg" alt="Pull request 주석" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 6</strong>:
+        
+        Pull request 주석
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/09/oracloud/070.jpg" alt="Pull Request 생성" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 7</strong>:
+        
+        Pull Request 생성
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/09/oracloud/080.jpg" alt="Pull Request 생성 결과 확인" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 8</strong>:
+        
+        Pull Request 생성 결과 확인
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<h3 id="6-그룹-관리자에게-통보">6. 그룹 관리자에게 통보</h3>
+
+<p>Pull Request가 생성되면 각 그룹리더에게 Pull Request를 통지합니다.</p>
+
+<h3 id="7-관리자는-문서-점검-후-merge">7. 관리자는 문서 점검 후 merge</h3>
+
+<ul>
+<li>문서의 내용 및 의도를 파악하고 Pull Request의 Merge 여부 결정 및 수정 요청</li>
+</ul>
+
+<h2 id="이미지-작업시-유의-사항">이미지 작업시 유의 사항</h2>
+
+<h3 id="1-이미지-저장소-일원화">1. 이미지 저장소 일원화</h3>
+
+<p>문서에 포함되는 모든 문서는&rdquo; oracloud-kr-teamrepo/oracloud-kr-teamrepo.github.io”에 저장해 주시기 바랍니다.</p>
+
+<p>외부에 공개된 이미지를 이용하더라도 대상 이미지를 다운로드 받아 &ldquo;oracloud-kr-teamrepo/oracloud-kr-teamrepo.github.io”에 추가해 주시기 바랍니다.</p>
+
+<h3 id="2-이미지-사이즈">2. 이미지 사이즈</h3>
+
+<p>이미지 크기가 너무 크면 문서가 출력되는 과정에서 브라우저 렌더링이 늦어지는 불편함을 일으킵니다. 따라서 다름과 같은 규칙을 정하겠습니다.</p>
+
+<ul>
+<li>main 페이지 목록의 Thumbnail 이미지
+
+<ul>
+<li>width: 폭 204 pixel</li>
+<li>height: 250 ~ 330 pixel</li>
+<li>파일 사이즈: 50kbyte 이하</li>
+<li>파일 포멧: jpg or png</li>
+</ul></li>
+<li>문서에 포함 이미지
+
+<ul>
+<li>width: 1300 pixel 이하</li>
+<li>이미지 사이즈: 150kbyte 이하를 권장 (최대: 200 kbte)</li>
+<li>파일 포멧: jpg or png<br /></li>
+</ul></li>
+<li>저자 이미지
+
+<ul>
+<li>파일 형식: jpg or png</li>
+<li>이미지 크기: 200 X 200</li>
+</ul></li>
+</ul>
+
+<h3 id="3-이미지-저자권">3. 이미지 저자권</h3>
+
+<p>oracloud.kr은 기업의 기술을 지원하는 서비스다 보니 저작권에 주의해야 합니다. oracle.com의 이미지를 사용할 경우 문제는 없겠지만 다른 경쟁사의 이미지 혹은 외부에서 이미지를 참조하거나
+가져다 사용할 경우 저작권 문제를 고민해 주셔야 합니다. 현재 개인 콘텐츠도 저작권이 인정되는 상태입니다. 따라서 가능한 저작권 문제가 없는 이미지를 사용해 주시기 바랍니다.</p>
+
+<p>저작권 문제를 해결한 서비스(사이트, <a href="http://littlevisuals.co/">http://littlevisuals.co/</a>) 들이 많습니다. 이미지 사용시 참조해 주시기 바랍니다.
+가능한 다음과 같은 가이드를 부탁드립니다.</p>
+
+<ol>
+<li>oracle.com에서 공개한 이미지를 사용</li>
+<li>외부 이미지 사용 시 저작권 문제가 없는 이미지 사용</li>
+<li>애매할 경우 이미지를 직접 작성(ppt 등으로)</li>
+<li>외부 인용 시 출처 명시</li>
+</ol>
+
+<h3 id="4-외부-이미지-사용시-주의-사항">4. 외부 이미지 사용시 주의 사항</h3>
+
+<p>저자권에 문제가 없는 외부에 공개된 이미지를 이용하더라도 대상 이미지를 다운로드 받아 &ldquo;oracloud-kr-teamrepo/oracloud-kr-teamrepo.github.io”에 추가해 주시기 바랍니다.</p>
+
+<p>해당 이미지는 문서 인용시 출처를 면시해 주시기 바랍니다.</p>
+
+<h2 id="문서-작성시-tip">문서 작성시 Tip</h2>
+
+<h3 id="이미지-명명-규칙">이미지 명명 규칙</h3>
+
+<p>이미지를 추가할 때 다음과 같은 명명 규칙을 준수하여 주시기 바랍니다.</p>
+
+<ul>
+<li>이미지 명명 규칙
+
+<ul>
+<li>디렉터리 명
+
+<ul>
+<li>{year}/[month]/{title}</li>
+<li>tile에 특수문자로 &ldquo;_&rdquo; 만 허용</li>
+<li>파일명: &ldquo;.&ldquo;을 제외한 특수분자를 사용할 수 없음</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>이미지 배포 시간은 약 1분이내 입니다.</p>
+
+<h3 id="브라우저-캐싱-off">브라우저 캐싱 off</h3>
+
+<p>브라우저 캐싱을 비활성화 시키시면 작업이 편리합니다. 이미지 배포가 늦게 느껴지는 이유는 브라우저 캐싱 때문에 인식하지 못하는 이유입니다.</p>
+
+<p>크롬은 다음과 같은 절차로 브라우저의 캐쉬를 비활성화 할 수 있습니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/09/oracloud/090.jpg" alt="크롬 개발자 툴" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 9</strong>:
+        
+        크롬 개발자 툴
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/09/oracloud/100.jpg" alt="크롬 캐쉬 비활성화" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 10</strong>:
+        
+        크롬 캐쉬 비활성화
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<h2 id="메타정보-mapping">메타정보 Mapping</h2>
+
+<pre><code>+++
+date = &quot;2018-09-09T01:09:25+09:00&quot;
+description = &quot;Oracle OCI&quot;
+title = &quot;'Key Concepts and Terminology&quot;
+thumbnailInList = &quot;https://taewanmerepo.github.io/2017/12/trans-shell/head.jpg&quot;
+thumbnailInPost = &quot;https://taewanmerepo.github.io/2017/12/trans-shell/head.jpg&quot;
+tags = [&quot;Oracle&quot;, &quot;Cloud&quot;, &quot;OCI&quot;]
+categories = [&quot;cloud&quot;]
+author = &quot;taewan.kim&quot;
+language = &quot;&quot;
+adsense = &quot;true&quot;
++++
+</code></pre>
+
+<ul>
+<li><p>date</p>
+
+<ul>
+<li><a href="http://www.oracloud.kr">http://www.oracloud.kr</a> 의 메인 페이지 문서 목록의 정렬</li>
+</ul></li>
+
+<li><p>description</p>
+
+<ul>
+<li>구글 검색 최적화
+
+<ul>
+<li>tags</li>
+<li>categories</li>
+</ul></li>
+<li>Facebook 노출</li>
+</ul></li>
+</ul>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/09/oracloud/130.jpg" alt="구글 검색 최적화" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 11</strong>:
+        
+        구글 검색 최적화
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/09/oracloud/140.jpg" alt="facebook 링크시 요약 글" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 12</strong>:
+        
+        facebook 링크시 요약 글
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<ul>
+<li><p>thumbnailInList (생략 불가)</p>
+
+<ul>
+<li>문서 목록 이미지</li>
+</ul></li>
+
+<li><p>thumbnailInPost (생략 가능, 사용 권장)</p>
+
+<ul>
+<li>문서의 상단 이미지</li>
+</ul></li>
+
+<li><p>author</p>
+
+<ul>
+<li>mail: id 사용</li>
+</ul></li>
+</ul>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/09/oracloud/150.jpg" alt="저자 서명" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 13</strong>:
+        
+        저자 서명
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<h2 id="문서-배포가-끝나면-문서-홍보">문서 배포가 끝나면: 문서 홍보</h2>
+
+<p>oracloud.kr에 문서를 작성해 주시면, 해당 문서에 대한 홍보를 부탁드립니다. 여기서 홍보란 페이스 북의 “오라클 클라우드 사용자 그룹”에 문서에 대한 소개를 해주시는 것 입니다. 현재 오라클 클라우드 사용자 그룹에 문서 주소와 취지를 간략하게 정리하여 글을 등록하여 주십시요.</p>
+
+<ul>
+<li>oracloud.kr: 컨텐츠 퍼블리싱 툴</li>
+<li>페이스북 오라클 클라우드 사용자 그룹: 커뮤니케이션 인터페이스</li>
+</ul>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/09/oracloud/120.jpg" alt="페이스북 오라클 클라우드 사용자 그룹에 등록" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 14</strong>:
+        
+        페이스북 오라클 클라우드 사용자 그룹에 등록
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<h2 id="참고-url">참고 URL</h2>
+
+<ul>
+<li>Blog Repository:
+
+<ul>
+<li><a href="https://github.com/taewanme/oracloud_repo">https://github.com/taewanme/oracloud_repo</a></li>
+<li><a href="https://github.com/oracloud-kr-teamrepo/oracloud-kr-teamrepo.github.io">https://github.com/oracloud-kr-teamrepo/oracloud-kr-teamrepo.github.io</a></li>
+</ul></li>
+<li>Build(CI): <a href="https://travis-ci.org/oracloud-kr/oracloud_repo">https://travis-ci.org/oracloud-kr/oracloud_repo</a></li>
+<li>Image Server: <a href="https://oracloud-kr-teamrepo.github.io">https://oracloud-kr-teamrepo.github.io</a></li>
+<li>Blog URL: <a href="http://www.oracloud.kr">http://www.oracloud.kr</a></li>
+<li>hugo short code: <a href="http://taewan.kim/tip/shortcode_at_this_blog/">http://taewan.kim/tip/shortcode_at_this_blog/</a></li>
+<li>Markdown: <a href="http://taewan.kim/tags/markdown/">http://taewan.kim/tags/markdown/</a></li>
+</ul>
+
+		</div>
+		
+
+	</article>
+	
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/tip/oracloud/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#준비-사항">준비 사항</a></li>
+<li><a href="#서비스-구성">서비스 구성</a></li>
+<li><a href="#blog-문서-작성-및-배포-절차">Blog 문서 작성 및 배포 절차</a>
+<ul>
+<li><a href="#1-blog-레파지토리-fork">1. blog 레파지토리 fork</a></li>
+<li><a href="#2-repository-clone">2. repository clone</a></li>
+<li><a href="#3-문서-작성-이미지-수정">3. 문서 작성 &amp; 이미지 수정</a></li>
+<li><a href="#5-md-파일-메타-정보">5. MD 파일 메타 정보</a></li>
+<li><a href="#4-문서-작성-완료">4. 문서 작성 완료</a></li>
+<li><a href="#5-pull-request">5. pull request</a></li>
+<li><a href="#6-그룹-관리자에게-통보">6. 그룹 관리자에게 통보</a></li>
+<li><a href="#7-관리자는-문서-점검-후-merge">7. 관리자는 문서 점검 후 merge</a></li>
+</ul></li>
+<li><a href="#이미지-작업시-유의-사항">이미지 작업시 유의 사항</a>
+<ul>
+<li><a href="#1-이미지-저장소-일원화">1. 이미지 저장소 일원화</a></li>
+<li><a href="#2-이미지-사이즈">2. 이미지 사이즈</a></li>
+<li><a href="#3-이미지-저자권">3. 이미지 저자권</a></li>
+<li><a href="#4-외부-이미지-사용시-주의-사항">4. 외부 이미지 사용시 주의 사항</a></li>
+</ul></li>
+<li><a href="#문서-작성시-tip">문서 작성시 Tip</a>
+<ul>
+<li><a href="#이미지-명명-규칙">이미지 명명 규칙</a></li>
+<li><a href="#브라우저-캐싱-off">브라우저 캐싱 off</a></li>
+</ul></li>
+<li><a href="#메타정보-mapping">메타정보 Mapping</a></li>
+<li><a href="#문서-배포가-끝나면-문서-홍보">문서 배포가 끝나면: 문서 홍보</a></li>
+<li><a href="#참고-url">참고 URL</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

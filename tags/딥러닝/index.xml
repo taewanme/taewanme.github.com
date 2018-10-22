@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>딥러닝 on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/</link>
+    <description>Recent content in 딥러닝 on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 26 Jul 2018 21:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[Handson_ML]ch02: ML 프로젝트 처음부터 끝까지</title>
+      <link>http://taewan.kim/til/handson_ml_ch02/</link>
+      <pubDate>Thu, 26 Jul 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/handson_ml_ch02/</guid>
+      <description>머신러닝 프로제트 절차
+ 머신러닝 프로제트 절차
+ 문제 정의 데이터 수집 Data Discovery: 탐색과 시각화 for Insight 데이터 전처리 모델 선택 및 훈련 모델 미세 조정 해법(Solution) 제시 시스템 구축 및 모니터링, 유지보수   Dataset  주요 데이터 공개 사이트
+ UC 얼바인: http://archive.ics.uci.edu/ml Kaggle: http://www.kaggle.com/datasets AWS: http://aws.amazon.com/ko/datasets meta potal site  http://dataportals.org http://opendatamonitor.eu http://quandl.com  인기 데이터셋 목록  List of datasets for machine learning research in wikipedia https://www.</description>
+    </item>
+    
+    <item>
+      <title>[Handson_ML]ch05: SVM</title>
+      <link>http://taewan.kim/til/handson_ml_ch05/</link>
+      <pubDate>Thu, 26 Jul 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/handson_ml_ch05/</guid>
+      <description> SVM  적용 분야: 선형 분류, 비선형 분류, 회귀, 이상치 탐색 적용 데이터: 중/소 규모 데이터에 적합 복잡한 데이터를 잘 풀이
+ 용어
+ Large Margin Classification: 라지 마진 분류 Support Vector: 도로 경계에 위치한 데이터  SVM은 도로 경계를 나누는 모델
+ 데이터의 Scale에 민감하게 만응 정규화를 선행해야 함 레이블을 반환, 확률을 반환하지 않음  SVM의 유형
+ Hard Margin 분류: 하드 마진 분류  선형 분류가 가능해야 함 이상치에 만김함 일반화 성능 떨어짐  Soft Margin 분류: 소프트 마진 분류  마진 오류(Margin Violation)과 Margin의 균형 감 sklearn에서는 C 파라미터로 균형정도 설정  $C=\frac{1}{\lamba}$      선형 SVM  sklearn 클래스  LinearSVC(C=1, loss=&amp;lsquo;hinge&amp;rsquo;) SVC(kernel=&amp;ldquo;linear&amp;rdquo;, C=1)  데이터 셋이 커지면 속도가 느림  SGCClassfier(loss=hinge, alpha=1/(m*c))  경사 하강법 사용 속도는 LinearSVC보다 느리지만 대용량 데이터에 대하여 효과적으로 대응    비선형 SVM </description>
+    </item>
+    
+    <item>
+      <title>[Coursera]Neural network and deep Learning: Week2</title>
+      <link>http://taewan.kim/til/deeplearning_s01_week02/</link>
+      <pubDate>Mon, 09 Jul 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/deeplearning_s01_week02/</guid>
+      <description> Coursera에서 deeplearning.ai가 운영하는 &amp;lsquo;Neural network and deep learning ]&amp;lsquo;의 2주차 강의 정리입니다.
+ 강의 구성  Logistic Regression as a Neural Network  Binary Classification Logistic Regression Logistic Regression Cost Function Gradient Descent Derivatives More Derivative Examples Computation Graph Derivative with a computation graph Logistic Regression Gradient Descent Gradient Descent m Examples  Python and Vectorization  Vectorization More Vectorization Examples Vectorizing Logistic Regression Vectorizing Logistic Regression&amp;rsquo;s Gradient Output Broadcasting in Python A note on python/numpy vectors Quick tour of jupyter notebooks Explanation of logistic regression cost function    Logistic Regression as a Neural Network  for문을 지향하고 Vectorization을 수행 forward propagation과 back propagation을 소개  Binary Classification  Logistic regression은  </description>
+    </item>
+    
+    <item>
+      <title>[Coursera]Neural network and deep Learning: Week1</title>
+      <link>http://taewan.kim/til/deeplearning_s01_week01/</link>
+      <pubDate>Sun, 08 Jul 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/til/deeplearning_s01_week01/</guid>
+      <description>Coursera에서 deeplearning.ai가 운영하는 &amp;lsquo;Neural network and deep learning ]&amp;lsquo;의 1주차 강의 정리입니다.
+ 동영상 목록  Welcome: (5min) What is a neural network (7min) Surpervised Learning with neural network (8min) Why is deep learning taking off? (10min) About This Courses? (2min) Frequently asked questions? (10min)   Welcome(5min)  AI is the new electircity 100년 전부터 전기 공급이 모든 산업계를 변화 시켰던 것 처럼, AI도 모든 산업계를 변화 시키고 있다.</description>
+    </item>
+    
+    <item>
+      <title>CNN, Convolution Neural Network 요약</title>
+      <link>http://taewan.kim/post/cnn/</link>
+      <pubDate>Thu, 04 Jan 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/cnn/</guid>
+      <description>Fully Connected Layer1 만으로 구성된 인공 신경망의 입력 데이터는 1차원(배열) 형태로 한정됩니다. 한 장의 컬러 사진은 3차원 데이터입니다. 배치 모드에 사용되는 여러장의 사진은 4차원 데이터입니다. 사진 데이터로 전연결(FC, Fully Connected) 신경망을 학습시켜야 할 경우에, 3차원 사진 데이터를 1차원으로 평면화시켜야 합니다. 사진 데이터를 평면화 시키는 과정에서 공간 정보가 손실될 수밖에 없습니다. 결과적으로 이미지 공간 정보 유실로 인한 정보 부족으로 인공 신경망이 특징을 추출 및 학습이 비효율적이고 정확도를 높이는데 한계가 있습니다. 이미지의 공간 정보를 유지한 상태로 학습이 가능한 모델이 바로 CNN(Convolutional Neural Network)입니다.</description>
+    </item>
+    
+    <item>
+      <title>신경망 W 행렬 표기법: &#39;ij&#39;/&#39;ji&#39; 의 차이점?</title>
+      <link>http://taewan.kim/post/wij_and_wji/</link>
+      <pubDate>Sat, 23 Dec 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/wij_and_wji/</guid>
+      <description>제가 처음에 딥러닝을 학습할 때 가장 혼란스러웠던 것은 입력 레이어의 데이터와 가중치 W의 합 표현하는 &amp;ldquo;Z(Weighted Sum)&amp;rdquo; 수식이 문서마다 다른 것이었습니다.
+  &amp;lt;식 1&amp;gt;. Z(Weighted Sum)을 표현하는 수식 $$ \begin{align} Z^{[l]} &amp;amp; = W^{[l]T}A^{[l-1]} &amp;amp; (1) \\
+Z^{[l]} &amp;amp; = W^{[l]}A^{[l-1]} &amp;amp; (2) \end{align} $$   &amp;lt;식 1&amp;gt;의 (1)과 (2)는 다른 수식임에도 어떤 자료는 (1)과 같이 표현하고 어떤 자료는 (2)와 같이 표현합니다. &amp;lt;식 1&amp;gt; 표기법의 각 요소는 다음과 정리할 수 있습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

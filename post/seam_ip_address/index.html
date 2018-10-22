@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>Seam - 사용자 IPAddress 확인</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="Seam - 사용자 IPAddress 확인" />
+<meta property="og:description" content="Seam - 사용자 IPAddress 확인" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/post/seam_ip_address/" />
+
+
+
+<meta property="article:published_time" content="2011-03-30T10:50:36&#43;09:00"/>
+<meta property="article:modified_time" content="2011-03-30T10:50:36&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		
+		
+		<header class="post__header clearfix">
+			<h1 class="post__title">Seam - 사용자 IPAddress 확인 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2011-03-30 10:50:36 &#43;0900 KST">March 30, 2011</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/tech-tip" rel="category">Tech Tip</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+			
+
+<p>Seam은 애플리케이션 UI 프레임웍으로 JSF를 사용합니다. JSF는 컴포넌트 기반 프레임웍이고 Seam과 결합하여 완전한 컴포넌트 기반 프레임웍의 모습을 갖추고 있습니다.</p>
+
+<p>Seam 애플리케이션을 개발하다 보면 HttpServletRequest와 HttpSession 객체를 전혀 접근하지 않고 등록된 컴포넌트를 참조하여 사용하게 됩니다. 사용자 등록 폼 정보는 컴포넌트 맵핑 정보를 이용하여 사용하면 되지만 간혹 사용자가 입력하지 않는 별도의 정보를 사용해야 할 수도 있습니다.</p>
+
+<p>가령 어떤 어떤 IP/Host에서 접근하는지 로깅을 남겨야 하거나 게시판에서 게시글의 IP Adress를 저장해야 한다면 어떻게 해야 할까요?</p>
+
+<p>막상 이런 문제가 발생하면 약간은 막막해 지는 것이 사실입니다. 이 문제를 해결하는 방법은 크게 두 가지가 있습니다.</p>
+
+<p>Seam Framework은 사용할 컴포넌트를 클래스 상단에 @Name을 추가하여 등록하던지 @Factory 어노테이션을 메서드에 설정하여 컴포넌트로 등록하고 사용합니다.</p>
+
+<ul>
+<li>클라이언트의 IP Address, Host 명, 사용 Port를 출력
+<img src="https://taewanmerepo.github.io/repo1/seam_ip/seam01.png" alt="" /></li>
+</ul>
+
+<p>지금은 클라이언트 정보를 HttpServeletRequest로 부터 가져와야 합니다. 이 정보를 가져오기 위해서는 Seam 컴포넌트를 등록하는 방법과 API로 가져오는 방법 두가지가 있습니다. Seam 프레임웍은 기본적으로 자바 클래스에 어노테이션을 추가하거나 /WEB-INF/components.xml에 컴포넌트를 설정하는 두 가지 방식으로 컴포넌트를 등록하여 사용합니다.</p>
+
+<p>기본적으로는 어노테이션 사용법을 권장하며 어노테이션을 사용할 수 없는 부득이한 상황에서는 components.xml에 설정하는 방식을 사용합니다.</p>
+
+<h2 id="client-정보-추출-방법">Client 정보 추출 방법</h2>
+
+<p>현재 요청의 클라이언트 정보는 HttpServletRequest에서 추출할 수 있습니다. 관련 메서는 다음과 같습니다.</p>
+
+<ul>
+<li>클라이언트 IP Address: public java.lang.String getRemoteAddr()</li>
+<li>클라이언트 호스트 명: public java.lang.String getRemoteHost()</li>
+<li>클라이언트 포트: public int getRemotePort()</li>
+</ul>
+
+<p>위 와 같은 3개의 메서드를 이용하여 정보를 추출할 수 있습니다. 이 정보를 Seam 컴포넌트로 등록하는 방법은 다음과 두 가지 방법이 존재 합니다.</p>
+
+<h2 id="components-xml-파일에-컴포넌트-등록">components.xml 파일에 컴포넌트 등록</h2>
+
+<p>위 3개의 메서드를 이용하여 추출한 정보를 컴포넌트로 사용하기 위해서는components.xml에 등록하는 방법이 있습니다. 이 방법을 사용하는 이유는 이 API를 사용하는 어노테이션을 마땅히 설정할 클래스가 없기 때문입니다. components.xml에 다음과 같이 등록하여 사용할 수 있습니다.</p>
+
+<ul>
+<li><strong>설정 대상 파일: {SEAM_GEN_PROJECT}/resoueces/WEB-INF/components.xml</strong></li>
+</ul>
+
+<pre><code>&lt;factory name=&quot;clientAddr&quot; value=&quot;#{request.remoteAddr}&quot; scope=&quot;EVENT&quot;/&gt;
+&lt;factory name=&quot;clientHost&quot; value=&quot;#{request.remoteHost}&quot; scope=&quot;EVENT&quot;/&gt;
+&lt;factory name=&quot;clientPort&quot; value=&quot;#{request.remotePort}&quot; scope=&quot;EVENT&quot;/&gt;
+</code></pre>
+
+<ul>
+<li><strong>Seam 페이지 컴포넌트 사용 코드: {SEAM_GEN_PROJECT}/view/layout/menu.xhtml</strong></li>
+</ul>
+
+<pre><code>&lt;rich:toolBarGroup&gt;
+    &lt;h:outputText value=&quot;#{projectName}:&quot;/&gt;
+    &lt;s:link id=&quot;menuHomeId&quot; view=&quot;/home.xhtml&quot; value=&quot;Home&quot; propagation=&quot;none&quot;/&gt;
+    Client Info: IP: #{clientAddr}, Host: #{clientHost}, Port: #{clientPort}
+&lt;/rich:toolBarGroup&gt;
+</code></pre>
+
+<ul>
+<li><strong>facesContext Injection 하는 컴포넌트 만들기</strong></li>
+</ul>
+
+<p>JSF는 UI 디바이스 독립적인 프레임웍입니다. 따라서 프로토콜을 추상화하는 형태로 디자인 되어 있습니다. 웹 상에서 모든 요청은 HttpServletRequest로 유입이 되고 JSF는 이것은 FacesContext라는 객체 형태로 변형하여 프레임웍에서 사용합니다. 또한 FacesContext로 부터 HttpServletRequest를 접근할 수 있습니다.</p>
+
+<p>Seam 프레임웍은 FacesContext 객체를 Seam 컴포넌트에 Injection하는 것을 지원합니다.</p>
+
+<p>따라서 Seam 프레임웍이 Injection 해준 FacesContext를 이용하여 클라이언트 정보를 추출하는 @Factory 메서드를 작성할 수 있습니다.</p>
+
+<p>이렇게 만들어진 컴포넌트는 다음과 같습니다.</p>
+
+<pre><code>import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import org.jboss.seam.ScopeType;
+import org.jboss.seam.annotations.Factory;
+import org.jboss.seam.annotations.In;
+import org.jboss.seam.annotations.Name;
+
+@Name(&quot;clientInfo&quot;)
+public class ClientInfo {
+  @In private FacesContext facesContext;   
+
+  @Factory(value=&quot;clientAddr&quot;, scope=ScopeType.EVENT)
+  public String getClientIpAddress(){
+    HttpServletRequest request =
+      (HttpServletRequest)facesContext.getExternalContext().getRequest();
+    return request.getRemoteAddr();
+  }
+  @Factory(value=&quot;clientHost&quot;, scope=ScopeType.EVENT)
+  public String getClientHost(){
+    HttpServletRequest request =
+      (HttpServletRequest)facesContext.getExternalContext().getRequest();
+    return request.getRemoteHost();
+  }
+  @Factory(value=&quot;clientPort&quot;, scope=ScopeType.EVENT)
+    public int getClientPort(){
+      HttpServletRequest request =
+        (HttpServletRequest)facesContext.getExternalContext().getRequest();
+      return request.getRemotePort();
+  }
+}
+</code></pre>
+
+<p>이 컴포넌트는 앞에서 설정한 components.xml의 설정과 동일한 기능을 제공합니다.</p>
+
+<p>지금까지 Seam 프레임웍에서 HttpServletRequest 자원을 컴포넌트화 하는 두 가지 방법을 살펴 보았습니다. 이렇게 Seam 프레임웍은 XML 설정과 Seam 컴포넌트 Bijection 기능을 이용하여 컴포넌트를 만들고 사용하는 방법을 제공합니다.</p>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/seam/" rel="tag">Seam</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/jboss/" rel="tag">JBoss</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/opensource/" rel="tag">OpenSource</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/sudo_in_centos/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">sudo 사용자 등록 (in CentOS)</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/glassfish_encoding/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">Glassfish의 asadmin 명령어 한글 깨짐 현상</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/post/seam_ip_address/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#client-정보-추출-방법">Client 정보 추출 방법</a></li>
+<li><a href="#components-xml-파일에-컴포넌트-등록">components.xml 파일에 컴포넌트 등록</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

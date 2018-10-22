@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Error on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/error/</link>
+    <description>Recent content in Error on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 08 Dec 2017 21:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/error/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hidden Layer의 오차 계산</title>
+      <link>http://taewan.kim/post/error_in_hidden/</link>
+      <pubDate>Fri, 08 Dec 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/error_in_hidden/</guid>
+      <description>Neural Network에서는 Forward Propagation 결과로 계산된 Output Layer 출력과 해당 입력 데이터 레이블의 차이를 계산하여 오차(손실, Error/Loss)를 계산합니다. 그리고 이 오차 최소화를 목표로 Hidden Layer들의 Weight(가중치)와 Bias(편향)를 업데이트합니다. 이렇게 딥러닝에서는 Neural Network에 데이터를 지속해서 흘려보내고, 오차를 계산한 후 Weight와 Bias를 수정하는 작업을 반복합니다.
+Output Layer 출력과 레이블의 차이를 계산하고 은닉층의 Weight와 Bias를 업데이트하는 일련의 과정을 &amp;ldquo;역전파&amp;rdquo; 혹은 &amp;ldquo;Backpropagation&amp;ldquo;이라고 합니다. &amp;ldquo;Backpropagation&amp;ldquo;에서는 출력층의 오차로부터 은닉층의 노드별 오차를 계산하는 것이 핵심입니다. 은닉층의 노드별 오차를 알아야 은닉층의 Weight와 Bias를 수정할 수 있습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

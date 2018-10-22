@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>PyTorch는 무엇인가?</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="PyTorch는 무엇인가?" />
+<meta property="og:description" content="&#39;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/trans/pytorch/tutorial/blits/01_what_is_pytorch/" />
+
+
+
+<meta property="article:published_time" content="2018-02-27T03:05:14&#43;09:00"/>
+<meta property="article:modified_time" content="2018-02-27T03:05:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="http://taewan.kim/css/jupyter.css" type="text/css" media="all" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		
+		
+		<header class="post__header clearfix">
+			<h1 class="post__title">PyTorch는 무엇인가? </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2018-02-27 03:05:14 &#43;0900 KST">February 27, 2018</time>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+			
+
+<p><a href="/ml-translation/">ML 문서 번역</a> &gt; <a href="/trans/pytorch/tutorial/main/">PyTorch Tutorial</a> &gt; <a href="/trans/pytorch/tutorial/main/01_blits/">PyTorch와 함께하는 딥러닝: 60분 리뷰</a> &gt; PyTorch는 무엇인가?</p>
+
+<blockquote>
+<ul>
+<li>원문: <a href="http://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-beginner-blitz-tensor-tutorial-py">http://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-beginner-blitz-tensor-tutorial-py</a></li>
+<li>원문 제목: What is PyTorch?</li>
+</ul>
+</blockquote>
+
+<hr />
+
+<h2 id="pytorch란-무엇인가">PyTorch란 무엇인가?</h2>
+
+<p>PyTorch는 파이썬 기반의 과학 컴퓨팅 패키지로 두 집단을 대상으로 합니다.</p>
+
+<ul>
+<li>NumPy를 대체하고 GPU의 힘을 사용</li>
+<li>최고의 유연성과 속도를 제공하는 딥러닝 연구 플랫폼</li>
+</ul>
+
+<h2 id="시작하기">시작하기</h2>
+
+<h3 id="tensors">Tensors</h3>
+
+<p>Tensors는 NumPy의 ndarrays와 유사하며, 차별점은 Tensors는 연산을 가속하는 GPU에서 사용될 수 있다는 점입니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">from</span> <span style="color: #f8f8f2">__future__</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">print_function</span>
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">torch</span>
+</pre></div>
+
+<ul>
+<li>초기화되지 않은 5X3 매트릭스 생성</li>
+</ul>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">Tensor(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">)</span>
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(x)</span>
+</pre></div>
+
+<blockquote>
+<p>출력:</p>
+
+<pre><code>0.0000e+00  0.0000e+00 -1.3600e+05
+4.5632e-41 -1.0988e+06  4.5632e-41
+1.5302e-38  0.0000e+00  1.5301e-38
+0.0000e+00 -1.6195e+10  4.5632e-41
+-1.5802e+10  4.5632e-41 -1.2475e-21
+[torch.FloatTensor of size 5x3]
+</code></pre>
+</blockquote>
+
+<ul>
+<li>임의로 초기화된 행렬 생성</li>
+</ul>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">rand(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">)</span>
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(x)</span>
+</pre></div>
+
+<blockquote>
+<p>출력:</p>
+
+<pre><code> 0.6852  0.4599  0.5286
+ 0.2504  0.1677  0.6484
+ 0.3631  0.6898  0.3250
+ 0.0775  0.4226  0.7366
+ 0.6672  0.4518  0.5942
+[torch.FloatTensor of size 5x3]
+</code></pre>
+</blockquote>
+
+<ul>
+<li>Tensors 사이즈 확인</li>
+</ul>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(x</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size())</span>
+</pre></div>
+
+<blockquote>
+<p>출력:</p>
+
+<pre><code>torch.Size([5, 3])
+</code></pre>
+</blockquote>
+
+<div class="notices note" ><p><code>torch.Size</code>는 튜플이며, 모든 튜플 지능을 지원합니다.</p>
+</div>
+
+
+<h3 id="연산-operations">연산(Operations)</h3>
+
+<p>연산에 대한 복수의 문법을 제공합니다. 다음 예제에서, 더하기 연산을 하는 방법을 확인할 수 있습니다.</p>
+
+<ul>
+<li>더하기 연산: 문법 1</li>
+</ul>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">rand(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">y</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">rand(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">)</span>
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(x</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">y)</span>
+</pre></div>
+
+<blockquote>
+<p>출력:</p>
+
+<pre><code>1.4287  0.6300  0.6211
+0.6446  1.0070  0.8954
+1.3791  1.7791  0.7625
+1.5698  0.7837  0.9626
+0.7410  1.4610  1.5716
+[torch.FloatTensor of size 5x3]
+</code></pre>
+</blockquote>
+
+<ul>
+<li>더하기 연산: 문법 2</li>
+</ul>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add(x,</span> <span style="color: #f8f8f2">y))</span>
+</pre></div>
+
+<blockquote>
+<p>출력:</p>
+
+<pre><code>1.4287  0.6300  0.6211
+0.6446  1.0070  0.8954
+1.3791  1.7791  0.7625
+1.5698  0.7837  0.9626
+0.7410  1.4610  1.5716
+[torch.FloatTensor of size 5x3]
+</code></pre>
+</blockquote>
+
+<ul>
+<li>더하기 연산: 전달 인자로 출력 텐서 전달</li>
+</ul>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">result</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">Tensor(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add(x,</span> <span style="color: #f8f8f2">y,</span> <span style="color: #f8f8f2">out</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">result)</span>
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(result)</span>
+</pre></div>
+
+<blockquote>
+<p>출력:</p>
+
+<pre><code>1.4287  0.6300  0.6211
+0.6446  1.0070  0.8954
+1.3791  1.7791  0.7625
+1.5698  0.7837  0.9626
+0.7410  1.4610  1.5716
+[torch.FloatTensor of size 5x3]
+</code></pre>
+</blockquote>
+
+<ul>
+<li>더하기 연산: 객체 메서드(in-place)</li>
+</ul>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e"># x를 y에 더함</span>
+<span style="color: #f8f8f2">y</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add_(x)</span>
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(y)</span>
+</pre></div>
+
+<blockquote>
+<p>출력:</p>
+
+<pre><code>1.4287  0.6300  0.6211
+0.6446  1.0070  0.8954
+1.3791  1.7791  0.7625
+1.5698  0.7837  0.9626
+0.7410  1.4610  1.5716
+[torch.FloatTensor of size 5x3]
+</code></pre>
+</blockquote>
+
+<div class="notices note" ><p>텐서를 수정하는 모든 in-place 연산자는 <code>_</code>로 끝납니다. 예를 들어서 <code>x.copy_(y)</code>와 <code>x.t_()</code>는 x 텐서를 변경합니다.</p>
+</div>
+
+
+<p>NumPy와 같은 방식의 인덱싱 표기법을 사용할 수 있습니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(x[:,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">])</span>
+</pre></div>
+
+<blockquote>
+<p>출력:</p>
+
+<pre><code>0.6262
+0.8069
+0.9057
+0.5266
+0.5330
+[torch.FloatTensor of size 5]
+</code></pre>
+</blockquote>
+
+<ul>
+<li>크기 조정: torch.view를 사용하여 텐서의 사이즈를 변경하거나 Shape을 변경할 수 있습니다.</li>
+</ul>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">randn(</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">y</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">view(</span><span style="color: #ae81ff">16</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">z</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">view(</span><span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">8</span><span style="color: #f8f8f2">)</span>  <span style="color: #75715e"># 사이즈가 -1로 설정되면 다른 차원으로 부터 해당 값을 유추</span>
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(x</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size(),</span> <span style="color: #f8f8f2">y</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size(),</span> <span style="color: #f8f8f2">z</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size())</span>
+</pre></div>
+
+<blockquote>
+<p>출력:</p>
+
+<pre><code>torch.Size([4, 4]) torch.Size([16]) torch.Size([2, 8])
+</code></pre>
+</blockquote>
+
+<ul>
+<li>나중에 읽어볼 거리</li>
+</ul>
+
+<p>행렬 전치, 인덱싱, 슬라이싱, 수학 연산, 선형 대수 연산, 난수 등을 포함한 100개 이상의 텐서 연산 상세 설명은 다음 URL에서 확인할 수 있습니다. - <a href="http://pytorch.org/docs/master/torch.html">텐서 연산 문서</a></p>
+
+<h2 id="numpy-브릿지">NumPy 브릿지</h2>
+
+<p>Torch Tensor를 NumPy 배열로 변환하거나 그 반대로 변환하기는 쉽습니다.</p>
+
+<h3 id="torch의-tensor를-numpy-배열-변환">Torch의 Tensor를 NumPy 배열 변환</h3>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">a</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">ones(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">)</span>
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(a)</span>
+</pre></div>
+
+<blockquote>
+<p>출력:</p>
+
+<pre><code>1
+1
+1
+1
+1
+[torch.FloatTensor of size 5]
+</code></pre>
+</blockquote>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">b</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">a</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">numpy()</span>
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(b)</span>
+</pre></div>
+
+<blockquote>
+<p>출력:</p>
+
+<pre><code>[ 1.  1.  1.  1.  1.]
+</code></pre>
+</blockquote>
+
+<p>숫자로 NumPy 배열을 변경하는 방법은 다음과 같습니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">a</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add_(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span>
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(a)</span>
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(b)</span>
+</pre></div>
+
+<blockquote>
+<p>출력:</p>
+
+<pre><code> 2
+ 2
+ 2
+ 2
+ 2
+[torch.FloatTensor of size 5]
+
+[ 2.  2.  2.  2.  2.]
+</code></pre>
+</blockquote>
+
+<h3 id="numpy-배열을-torch-텐서로-변환">NumPy 배열을 Torch 텐서로 변환</h3>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">import</span> <span style="color: #f8f8f2">numpy</span> <span style="color: #f92672">as</span> <span style="color: #f8f8f2">np</span>
+<span style="color: #f8f8f2">a</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">np</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">ones(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">b</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">from_numpy(a)</span>
+<span style="color: #f8f8f2">np</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add(a,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">out</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">a)</span>
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(a)</span>
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(b)</span>
+</pre></div>
+
+<blockquote>
+<p>출력:</p>
+
+<pre><code>[ 2.  2.  2.  2.  2.]
+
+ 2
+ 2
+ 2
+ 2
+ 2
+[torch.DoubleTensor of size 5]
+</code></pre>
+</blockquote>
+
+<p>CharTensor를 제외한 CPU에서 동작하는 모든 Tensor는 NumPy 변환과 NumPy로 부터의 Tensor 변환을 지원합니다.</p>
+
+<h2 id="cuda-tensors">CUDA Tensors</h2>
+
+<p>Tensors 객체는 <code>.cuda</code> 메서드를 사용하여 GPU용으로 변환 될 수 있습니다.</p>
+
+<pre><code># CUDA가 사용 가능한 환경에소 동잡합니다.
+if torch.cuda.is_available():
+    x = x.cuda()
+    y = y.cuda()
+    x + y
+</code></pre>
+
+<h2 id="코드-다운로드">코드 다운로드</h2>
+
+<ul>
+<li>Python Code 다운로드: <a href="http://pytorch.org/tutorials/_downloads/tensor_tutorial.py">tensor_tutorial.py</a></li>
+<li>Jupyter Notebook 다운로드: <a href="http://pytorch.org/tutorials/_downloads/tensor_tutorial.ipynb">tensor_tutorial.ipynb</a></li>
+</ul>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/python/" rel="tag">python</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/pytorch/" rel="tag">PyTorch</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EB%B2%88%EC%97%AD/" rel="tag">번역</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/tutorial/" rel="tag">tutorial</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC/" rel="tag">튜토리얼</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/trans/pytorch/tutorial/main/01_blits/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">PyTorch와 함께하는 딥러닝: 60분 리뷰</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/trans/pytorch/tutorial/blits/02_autograd/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">Autograd: 미분 자동화</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/trans/pytorch/tutorial/blits/01_what_is_pytorch/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#pytorch란-무엇인가">PyTorch란 무엇인가?</a></li>
+<li><a href="#시작하기">시작하기</a>
+<ul>
+<li><a href="#tensors">Tensors</a></li>
+<li><a href="#연산-operations">연산(Operations)</a></li>
+</ul></li>
+<li><a href="#numpy-브릿지">NumPy 브릿지</a>
+<ul>
+<li><a href="#torch의-tensor를-numpy-배열-변환">Torch의 Tensor를 NumPy 배열 변환</a></li>
+<li><a href="#numpy-배열을-torch-텐서로-변환">NumPy 배열을 Torch 텐서로 변환</a></li>
+</ul></li>
+<li><a href="#cuda-tensors">CUDA Tensors</a></li>
+<li><a href="#코드-다운로드">코드 다운로드</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

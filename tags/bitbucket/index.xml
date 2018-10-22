@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bitbucket on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/bitbucket/</link>
+    <description>Recent content in Bitbucket on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 03 Feb 2016 14:01:55 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/bitbucket/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Webhook 연동: git 서비스 &#43; jenkins</title>
+      <link>http://taewan.kim/post/bitbucket_jenkins_webhook/</link>
+      <pubDate>Wed, 03 Feb 2016 14:01:55 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/bitbucket_jenkins_webhook/</guid>
+      <description>최근에 git 기반의 서비스들(github, bitbucket, gitlab)은 Webhooks 기능을 기본적으로 제공합니다. Webhooks는 해당 git repository에 push, commtit, tag와 같은 이벤트가 발생하면 Jenkins와 같은 CI 서버에 이벤트를 전달하는 기능입니다. Webhooks 이벤트를 전달받은 CI서버는 해당 프로젝트의 빌드 프로세스를 시작하는 방식으로 Git 레파지토리와 CI 서버를 연동하는 방법입니다. Git 레파지토리가 호출하는 Webhooks는 HTTP URL(Restful 서비스)입니다.
+Jenkins의 빌드 트리거 Webhooks 기능을 활성화 시키기 위해서 git 서비스에 Jenkins가 제공하는 URL을 등록해야 합니다. Jenkins는 Job의 설정화면의 &amp;ldquo;빌드 트리거&amp;rdquo;에서 git서비스에 등록할 URL을 만들수 있습니다.</description>
+    </item>
+    
+  </channel>
+</rss>
