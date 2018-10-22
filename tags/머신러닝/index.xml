@@ -6,21 +6,10 @@
     <description>Recent content in 머신러닝 on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 29 Sep 2018 09:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 08 Aug 2018 16:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</title>
-      <link>http://taewan.kim/book/understaning_ml_with_math/</link>
-      <pubDate>Sat, 29 Sep 2018 09:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/book/understaning_ml_with_math/</guid>
-      <description>&amp;lsquo;기초 수학으로 이해하는 머신러닝 알고리즘&amp;lsquo;은 올해 초에 읽고 도움을 많이 받은 책입니다. 위키북스에서 출간한 도서로 일본 도서의 번역서입니다. 일본 도서 특유의 만화적인 전개와 다수의 그림으로 채워져 있습니다.
-가벼워 보이지만 내용은 묵직한 책 책 제목, 분량(252페이지), 구성을 보고 2~3일이면 완독할 수 있다고 가볍게 접근했다가 상당히 고생했던 기업이 납니다. 물론 독자의 수학에 대한 배경과 접근 방식에 따라서 이런 느낌은 다를 수 있습니다.
-제 경우에는 &amp;ldquo;Classification은 구분 선의 법선 벡터를 학습하는 과정이다&amp;rdquo;라는 내용에 막혀서 고민했던 기억이 납니다.</description>
-    </item>
     
     <item>
       <title>Matplotlib 한글 폰트 설정</title>

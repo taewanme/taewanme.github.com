@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>자바의 새로운 도약: OpenJDK</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.25.1" />
+<meta property="og:title" content="자바의 새로운 도약: OpenJDK" />
+<meta property="og:description" content="이 페이지는 구글 검색에 제한된 페이지입니다. 본 문서는 현재 작성중인 문서이며, 공식 배포전입니다. 10월 31일 공개될 예정입니다.
+ 최근에 자바는 OpenJDK를 중심으로 빠르게 변화하고 있습니다. 올해부터 OpenJDK는 일 년에 두 번 3월과 9월에 새 버전을 공개합니다. 점차 OpenJDK 개발에 참여하는 기관도 늘어나고 있습니다. 이제 OpenJDK 개발에 참여하는 인증 기관(기업)은 15개에 달합니다.1 또한 OpenJDK 소스를 기반으로 GraalVM과 같은 독특한 기능을 갖춘 새로운 자바가 만들어지고 있습니다. 예전에 자기 환경에 맞는 WAS를 선택했던 것처럼, 내 환경에 맞는 Java를 선택하고 사용하는 Java 다양성 시대로 진입하고 있습니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/writing2/openjdk2/" />
+
+
+
+<meta property="article:published_time" content="2018-10-22T09:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2018-10-22T09:28:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="http://taewan.kim/css/jupyter.css" type="text/css" media="all" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		
+		
+		<header class="post__header clearfix">
+			<h1 class="post__title">자바의 새로운 도약: OpenJDK </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2018-10-22 09:28:14 &#43;0900 KST">October 22, 2018</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/java" rel="category">java</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+			
+
+<div class="notices note" ><p>이 페이지는 구글 검색에 제한된 페이지입니다. 본 문서는 현재 작성중인 문서이며, 공식 배포전입니다. 10월 31일 공개될 예정입니다.</p>
+</div>
+
+
+<p>최근에 자바는 OpenJDK를 중심으로 빠르게 변화하고 있습니다. 올해부터 OpenJDK는 일 년에 두 번 3월과 9월에 새 버전을 공개합니다. 점차 OpenJDK 개발에 참여하는 기관도 늘어나고 있습니다. 이제 OpenJDK 개발에 참여하는 인증 기관(기업)은 15개에 달합니다.<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup> 또한 OpenJDK 소스를 기반으로 GraalVM과 같은 독특한 기능을 갖춘 새로운 자바가 만들어지고 있습니다. 예전에 자기 환경에 맞는 WAS를 선택했던 것처럼, 내 환경에 맞는 Java를 선택하고 사용하는 Java 다양성 시대로 진입하고 있습니다. 빠른 버전 업그레이드, OpenJDK에 참여하는 조직 확대 및 다양한 Java의 등장과 같은 특징을 통해서 자바는 빠르게 변하는 환경에 신속하게 적응하는 역량을 확보하고 있습니다.</p>
+
+<h2 id="java의-한계-아재-이미지">Java의 한계 &amp; 아재 이미지</h2>
+
+<p>자바는 다양한 분야에서 사용되는 범용 개발 언어입니다. 자바의 가장 큰 특징은 IT 업계의 여러 이해 이해당사자들이 모여 사전에 기능을 선정하고 합의하여 스펙을 정의하고, 이 스펙에 따라서 개발하고 관리하는 체계를 갖고 있다는 것입니다.</p>
+
+<p>이런 운영 방식을 통해서 자바는 체계적이고 일관성 있는 발전을 해 왔습니다. 표준화와 통합이 중요한 시대(2000~2010년)에  자바는 JCP 중심의 자바의 개발 프로세스로 엔터프아이즈에 적합한 개발언어와 신뢰할 수 있는 개발언어라는 이미지를 만들 었습니다.</p>
+
+<p>올해로 자바가 공개된 지 23년이 지났습니다. 이제는 객체 지향뿐만 아니라 다양한 개발 패러다임이 나오고 있고, 새로운 인프라와 플랫폼이 등장했습니다. 자바가 처음 만들어지던 세상과는 완전히 달라졌습니다. 이제는 체계적인 관리도 중요하지만 기민한 개발과 실행력도 중요한 지표가 되고 있습니다. 클라우드와 같은 플랫폼이 등장하면서, 새로운 인프라를 개발 언어 차원에서 지원해야 한다는 요구도 늘어나고 있습니다.</p>
+
+<p>JCP의 합의 과정을 통해서 개발되고, 통일성과 일관성을 중시하는 자바가 새로운 변화를 빠르게 적응하기에는 한계가 있었습니다. 자바는 사실 기민한 이미지보다는 중후한 이미지를 갖고 있습니다. 자바의 한계와 느린 기능 개선 그리고 무거운 이미지 때문에 자바가 이제는 한계에 도달했다는 평가를 받기도 합니다.</p>
+
+<h2 id="openjdk의-급부상-시작점">OpenJDK의 급부상, 시작점</h2>
+
+<p>2018년 09월 오라클은 자바 유료 라이센스 정책을 발표했습니다. 물론 SNS상에서 개발자들은 반응은 굉장히 뜨거웠습니다. 지난 20년 동안 제약 없이 무료로 사용하던 자바를 유료화한다는 것에 큰 충격을 받았습니다.</p>
+
+<p>오라클의 라이센스 정책 변경은 자바의 오픈소스화와 자바 버전 관리 방식의 변화에 큰 영향을 받은 결과입니다. OpenJDK 프로젝트에서 오픈소스 형태로 개발되고 있는 자바의 버전 관리 체계는 올해부터 일 년에 두 번(3월과 9월) 새로운 버전을 공개하는 형태로 변경되었습니다. OpenJDK는 새 버전을 공해한 후, 6개월간 새 JDK의 버그 수정 관리하과 패치를 제공합니다. OpenJDK 프로젝트는 6개월 이후의 LTS(Long Term Support) 계획을 명확하게 공개하지 않고 있습니다. 이 부분은 OpenJDK 개발에 참여하는 조직(기업)의 새로운 비즈니스 영역으로 남겨두고 있습니다. 현재 오라클, RedHat 및 Azul이 자바 LTS 기술 지원 체계를 발표한 상태입니다.</p>
+
+<p>자바를 계속 무료로 사용하고자 할 경우에는 6개월 주기로 자바 버전을 업그레이드해야 합니다. 반대로 특정 자바 버전에 대하여 지속적인 패치와 기술 지원을 받고자 한다면 자바의 LTS를 체계를 가진 오라클, RedHat 및 Azul과 같은 회사의 지원을 받아야 합니다.</p>
+
+<h2 id="openjdk의-시작과-관리-체계">OpenJDK의 시작과 관리 체계</h2>
+
+<p>2000년대 초에 기업용 애플리케이션 개발 언어로 주목받던 자바의 오픈소스화에 대한 지속적인 요구가 있었습니다. JavaOne 2006에서 Sun Microsystems(이하 SUN)는 Java를 오픈소스로 만들겠다고 발표했습니다. 2006년 11월에 Sun은HotSpot VM과 자바 컴파일러를 GPL 라이센스로 공개했습니다. 그리고 2007년 3월에 Sun JDK 소스코드를 공개하고 OpenJDK 프로젝트를 시작했습니다.</p>
+
+<p>Sun은 OpenJDK를 준비하면서, OpenJDK 개발의 참여 기관을 인증하는 체계를 함께 만들었습니다. 오픈소스 자바의 개발과 관리에 참여하기 위해서는, Sun의 TCK검증 을 통과하고 OCTLA 협약을 체결해야 합니다. 2007년에 개발된 협약과 검증 절차는 현재까지 유지되고 있고, 현재는 Sun을 인수한 오라클이 이 역할을 담당하고 있습니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/10/openjdk/010.jpg" alt="OTCLA 신청서(http://openjdk.java.net/legal/OCTLA-JDK9&#43;.pdf)" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 1</strong>:
+        
+        OTCLA 신청서(http://openjdk.java.net/legal/OCTLA-JDK9&#43;.pdf)
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>오픈소스 자바 개발에 참여하고자 하는 기관은 OpenJDK를 기반으로 자체 JDK를 개발해야 합니다. 그리고 그 산출물과 협약 신청서를 오라클에 제출하면, 오라클은 TCK로 제출된 JVM의 JCP 구현 상황과 완성도를 검증합니다.</p>
+
+<p>TCK 인증을 통과하고 오라클과 OCTLA를 체결한 조직(기업)이 만든 JDK는 OpenJDK로 인정을 받으며, 해당 조직은  OpenJDK 프로젝트에서 자바 개발과 운영에 참여할 수 있는 권한을 갖습니다. 현재 OpenJDK 프로젝트는 자바 버전 별로 OCTLA 협약 기관을 관리합니다.</p>
+
+<blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Java SE 9 이상</th>
+<th>Java Se 8</th>
+<th>Java SE 7</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>OCTLA 체결 기관</td>
+<td>Azul Systems, BellSoft, Canonical, Fujitsu, Technology,  Solutions GmbH, London Jamocha, Community, Loongson, Technology Co., MicroDoc, Software GmbH, Red Hat, SAP, SUSE Linux, GmbH,Twitter</td>
+<td>Alibaba, Amazon, Azul Systems, BellSoft Canonical, Cavium, Emmanuel Bourg,  The FreeBSD Foundation,  Fujitsu, Solutions GmbH Huawei Technologies, Intel, Linaro, London Jamocha Community, Loongson, MicroDoc Software GmbH, Myriad Group AG, Red Hat, SAP,  Supercomputing Systems AG, SUSE Linux GmbH, Twitter</td>
+<td>Azul Systems, Inc. Canonical,  The FreeBSD Foundation, Linaro Red Hat, SAP, Supercomputing Systems AG SUSE Linux, GmbH, University Of Tokyo</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>&lt;표 1&gt; Java 버전 별 OCTLA 체결 기관</li>
+<li>출처: <a href="http://openjdk.java.net/groups/conformance/JckAccess/jck-access.html">http://openjdk.java.net/groups/conformance/JckAccess/jck-access.html</a></li>
+</ul>
+</blockquote>
+
+<p>&lt;그림 2&gt;는 OpenJDK 11 프로젝트의JIRA에 등록된 이슈를 처리한 비율을 기관별 시각화한 결과입니다. 이렇게 OpenJDK는 여러 기관이 함께 개발 및 운영에 참여하고 기여하는 공개 소프트웨어입니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/10/openjdk/020.jpg" alt="OCTLA의 OpenJDK 11 이슈 처리율 (기준: 2018.10.1)" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 2</strong>:
+        
+        OCTLA의 OpenJDK 11 이슈 처리율 (기준: 2018.10.1)
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<h2 id="openjdk의-새로운-변화">OpenJDK의 새로운 변화</h2>
+
+<p>2000~2010년까지 자바는 기업에서 대용량 트래픽과 중요한 데이터 처리를 담당하는 백-앤드 혹은 웹 애플리케이션을 만드는 용도로 주로 사용되었습니다. 최근에 자바의 스펙트럼은 광장히 넓어졌습니다. 하둡 파일 시스템과 같은 인프라, Scala, Kotlin, JRuby, Clojure와 같은 개발 언어, 클라우드 네이티브 애플리케이션 및 모바일UI을 모두 자바로 개발합니다. 자바의 쓰임새는 점점 더 확장되고 있습니다.</p>
+
+<p>자바의 쓰임새가 넓어지면서, 자바는 더 신속하게 새로운 기능을 추가하고 다양한 현장의 요구사항을 반영하기 위해서 새로운 버전 관리 체계가 필요해 졌습니다. 올해부터 자바 버전은 연 2회 메이저 버전을 공개 형태로 변경되었습니다.(표 2 참조) <a href="https://openjdk.java.net">https://openjdk.java.net</a> 에서는 새로운 버전을 출시한 후, 다음 버전이 출시 전까지 6개월간 버그 수정과 패치를 제공합니다.</p>
+
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>신규 자바 버전</th>
+<th>구 자바 버전</th>
+<th>출시 일정</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Java SE 18.3</td>
+<td>Java 10</td>
+<td>2018.03</td>
+</tr>
+
+<tr>
+<td>Java SE 18.9</td>
+<td>Java 11</td>
+<td>2018.10</td>
+</tr>
+
+<tr>
+<td>Java SE 19.3</td>
+<td>Java 12</td>
+<td>2019.03</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>&lt;표 2&gt; Java 버전 별 OCTLA 체결 기관</li>
+<li>출처: <a href="http://openjdk.java.net/groups/conformance/JckAccess/jck-access.html">http://openjdk.java.net/groups/conformance/JckAccess/jck-access.html</a></li>
+</ul>
+</blockquote>
+
+<h2 id="oracle과-openjdk">Oracle과 OpenJDK</h2>
+
+<p>오라클이 자바 라이센스 변경을 발표하기에 앞서, OpenJDK에 대한 지원을 먼저 발표했습니다. 새로운 자바 버전을 공개할 때, 오라클은 “Oracle JDK의 모든 기능을 OpenJDK에 공개할 것입니다. 그리고 새로운 버전의 자바 공개 후 6개월간 Oracle JDK 패치를 모두 제공한다.”라고 발표했습니다. 또한 Java 11부터 Oracle JDK와 OpenJDK의 완전한 호환성을 지원하기 위해서 OpenJDK 빌드에 직접 참여하며, 두 JDK의 호환성을 검증하고 있습니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/10/openjdk/030.jpg" alt="오라클의 OpenJDK 지원" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 3</strong>:
+        
+        오라클의 OpenJDK 지원
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>Oracle JDK는 OpenJDK를 기반으로 개발됩니다. 그리고 새로운 자바가 공개되면 6개월 동안 Oracle은 Oracle JDK에 적용하는 모든 패치를 OpenJDK에 제공합니다. 따라서 <a href="https://openjdk.java.net에서">https://openjdk.java.net에서</a> 공개되는 OpenJDK는 6개월 동안 Oracle JDK와 같은 버전이라고 할 수 있습니다.</p>
+
+<p>Oracle과 OpenJDK가 경쟁 관계로 소개되는 경우가 있습니다. 현재 OpenJDK는 오라클이 운영하는 java.net에서 개발 중이며, OCTLA 체결과 검증은 오라클이 수행하고 있습니다. 또한 &lt;그림 2&gt;와 같이 OpenJDK 개발과 개선에 가장 높은 비율로 참여하고 있습니다. Oracle은 OpenJDK의 핵심 스폰서이며 주체입니다.</p>
+
+<h2 id="openjdk-lts-이슈와-새로운-비즈니스">OpenJDK LTS 이슈와 새로운 비즈니스</h2>
+
+<p>Java 11부터 새로 공개되는 OpenJDK는 Oracle JDK와 같은 JDK입니다. OpenJDK는 공식적인 자바 참조 구현체이며, 오라클을 포함한 모든 JDK는 OpenJDK를 근간으로 개발됩니다. 또한 새 버전이 공개된 후 6개월 간 오라클이 개발한 모든 패치를 OpenJDK에 제공합니다. 결과적으로 OpenJDK에서 관리하는 JDK는 Oracle JDK와 같은 소프트웨어입니다.</p>
+
+<p>OpenJDK을 운영 환경에 적용할 때 고려사항은 크게 3가지입니다. 첫 번째는 소프트웨어의 지원 매트릭스입니다. 현재 자바로 개발된 많은 소프트웨어가 Oracle Java만을 지원(써티)하고 아직 OpenJDK는 지원하지 않는 경우가 많습니다. 대표적인 예가 Hadoop입니다. Cloudera의 CDH는 Oracle Java만을 지원합니다. 반가운 소식은 OpenJDK를 지원하는 소프트웨어가 빠르게 늘어간다는 것 입니다. 최근에 Hotownworks의 HDP 자바 지원 매트릭스에 OpenJDK가 추가되었습니다. 점차 OpenJDK 지원을 발표하는 소프트웨어가 늘어가고 있습니다. 가장 큰 걸림돌은 역시 LTS(Long Term Support) 및 기술 지원입니다. OpenJDK는 아직 LTS에 대해서는 명확한 언급을 하지 않고있습니다. 패치 및 업데이트 주기를 명확하지 설명하지 않고 있습니다. 이슈 발생 시 기술 지원을 받기 어렵습니다.</p>
+
+<p>OpenJDK에 대한 서포트 이슈는 OpenJDK에 참여하는 기관에게는 새로운 비즈니스 영역이 되고 있습니다. OCTLA 협약을 체결하고 OpenJDK 개발과 관리에 참여하는 기관은, 그 역량과 경험을 바탕으로 자바 기술 지원 비즈니스에 참여하고 있습니다. 오라클, 레드헷과 Azule이 그 대표적인 예입니다.</p>
+
+<p>오라클은 Oracle Java SE에는 Oracle JDK 외에도 고성능 JDK(JRockit JDK), 분석 및 프로파일링 툴(Java Mission Control, Java Flight Recorder 등)을 함께 제공합니다. 그리고 해당 버전의 LTS(Long Term Support)와 24x7x365 기술 지원 체계에 대한 유료화 모델 갖고 있습니다.</p>
+
+<p>RedHat은 RedHat Enterprise Linux 사용 고객에게 OpenJDK의 LTS를 제공합니다. OpenJDK 7, 8, 11을 지원합니다. RedHat은 이러한 자바 지원을 CentOS와 Ubuntu의 차별점으로 활용하고 있습니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/10/openjdk/040.jpg" alt="오라클의 OpenJDK 지원(출처: https://access.redhat.com/articles/1299013)" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 4</strong>:
+        
+        오라클의 OpenJDK 지원(출처: https://access.redhat.com/articles/1299013)
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>Azule은 OpenJDK로 인증받은 자사의 JDK를 Zulu라는 이름으로 제공합니다. Azule은 Zulu에 대한 유료 라이센스를 제공합니다. Azule의 라이센스의 특징은 서버 단위로 라이센스를 제공한다는 것 입니다. 25대, 100대, 1,000 대 단위로 라이센스를 제공합니다. 스텐다드 서포트는 8x5 기술 지원을 제공하고, 프리미엄 서포트는 24x7x365 기술 지원을 제공합니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/10/openjdk/050.jpg" alt="Azul 라이센스(출처: https://www.azul.com/products/pricing/)" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 5</strong>:
+        
+        Azul 라이센스(출처: https://www.azul.com/products/pricing/)
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<h2 id="openjdk가-만든-java-다양성">OpenJDK가 만든 Java 다양성</h2>
+
+<p>OpenJDK의 긍정적인 효과는 OpenJDK 를 기반으로 하는 다양한 JDK가 만들어지고 있다는 것입니다. 최근에 자바에 대한 기능 개선 요구가 많아지고 있습니다. 새로 등장한 개발 언어의 특징과 기능을 요구하기도 하고, 클라우드 인프라를 위한 기능을 요구하기도 합니다. JCP의 협의 체제를 근간으로 하는 자바 개발 프로세스는 업계의 다양한 요구 사항을 신속하게 수용하기 어렵습니다.</p>
+
+<p>OpenJDK는 TCK로 새로운 JDK를 인증하는 체계를 갖고 있습니다. 이런 체계를 통해서 JDK의 통일성과 다양성을 만들어 가고 있습니다. 대표적인 예가 GraalVM와 Azule의 Zulu입니다.</p>
+
+<p>GraalVM을 사용하면 클라우드 네이티브 애플리케이션에 필요한 다양한 기능을 사용할 수 있습니다. Java 클래스를 실행 파일로 변환하여 빠르게 실행할 수 있고, java프로그램에서 R 코드를 실행하고 컨텍스트로 변수를 공유할 수 있습니다. C++ 코드를 자바 코드에서 호출할 수 있습니다. 또한 GraalVM은 자바로 만든 컴파일러를 제공하여, 자바 프로그램 실행 중에 새로운 코드를 컴파일하여 사용할 수 있습니다.</p>
+
+<p>불과 몇 년 전만 해도 WAS(Web Application Server) 시장의 경쟁은 굉장히 뜨거웠습니다. WebLogic, WebShpere, OC4J, JEUS, JBoss, Tomcat등 여러 WAS가 경쟁하는 체계였습니다. 그때 각 WAS는 각자 Java EE 표준을 완전하게 지원하며, 추가로 특화 기능을 제공하여 효율적이라는 표현을 즐겨 사용했습니다. 개발팀은 여러 WAS(Web Application Server) 중에서 내 환경에 적합한 것이 어떤 것인지를 비교 검증한 후 선정해야 했습니다. 이런 선택이 WAS에서 JDK로 내려왔습니다. 애플리케이션과 비즈니스 환경에 적합한 JDK를 고르는 Java 다양성의 시대가 시작되고 있습니다.</p>
+
+<h2 id="자바-라이센스-아쉬움과-필요성">자바 라이센스: 아쉬움과 필요성</h2>
+
+<p>OpenJDK로 시작된 변화는 다양한 측면에서 긍정적인 효과가 예상됩니다. 자바 생태계가 빠르게 발전하고 다양한 기능이 추가되는 환경은 반가운 소식이지만, 모든 것이 좋을 수는 없는 것 같습니다.</p>
+
+<h3 id="자바-소비자-입장-아쉬움">자바 소비자 입장: 아쉬움</h3>
+
+<p>20년간 자바를 무료로 사용하던 개발자는 부담이 큰것 이 사실입니다. 기존과 같이 자바를 무료로 사용하기 위해서는 6개월 마다 자바 버전을 업그레이드해야 합니다. 6개월마다 새로운 버전이 나오기 때문에, 자바 버전 업그레이드가 과거만큼 어렵지는 않겠지만, 실무에서 운영 환경을 변경한다는 것은 상당히 큰 부담입니다. 기존 버전을 사용하기 위해서 과거에는 발생하지 않던 추가 비용이 발생한다는 것은 실무 담당자에게는 가혹하게 느껴질 것입니다.</p>
+
+<p>이것은 자바 기술 지원 업체가 해결해야 할 중요한 과제입니다. 자바 패치를 다운로드 권한을 부여하는 것 뿐만 아니라, 자바 개발자에게 만족감을 주는 서비스가 무엇인지 고민해야하는 시점이라고 생각합니다. 그리고 이 부분이 자바 저변 확대에 중요한 요소가 될 것이라고 생각합니다.</p>
+
+<h3 id="자바-생산자-입장-라이센스-필요성">자바 생산자 입장: 라이센스 필요성</h3>
+
+<p>특정 기술이 지속적으로 발전하는 안전한 기술 체계가 되기 위해서는 그 기술에 참여하는 생산자와 소비자의 균형이 중요합니다. 기술을 사용하는 소비자와 생산자가 함께 늘어나야 합니다. 자바는 산업계의 필요에 따라서 기업의 주도로 만들어진 개발 언어입니다. 자바 생태계가 지속적으로 발전하고 성장하기 위해서는 자바를 개발하고 관리하는 기업과 여러 조직의 참여가 중요합니다.</p>
+
+<p>과거에는 Sun, IBM, Oracle, HP, BEA와 같은 메이저 IT 기업이 주도하여 자바를 만들었습니다. 자바가 다양한 분야와 플랫폼에서 사용됨에 따라서 더 많은 기업의 참여가 중요합니다. 참여 기업이 지속적으로 자바 개발과 관리에 투자를 늘리고 지속적으로 참여하기 위해서는 자바를 매개로하는 수익 창출이 필요합니다. 자바 라이센스는 자바 생태계를 건전하게 만들고 생산자의 참여를 촉진하는 중요한 요소입니다. 자바 라이센스를 기술 생태계가 건전하게 발전하는 긍정적인 요소로 볼 수 있습니다.</p>
+
+<p>현재 자바에 라이센스를 부과하는 방식은 다양합니다. CPU의 Core단위 혹은 서버 단위로 기술 지원 라이센스 정책을 만든곳도 있고, 자사의 솔루션(WAS, OS 혹은 Cloud)에 자바 라이센스를 번들로 제공하여 해당 솔루션의 가치를 높이는 방식도 있습니다. 다양한 방식으로 자바 라이센스 개념을 만들고 자사의 비지니스에 결합하는 시도를 하고 있습니다.</p>
+
+<p>이제 자바는 더이상 공짜 개발 언어는 아닙니다. 라이센스 비용을 줄이기 위해서 지속적인 버전 업그레이드를 하는 자체 노력 혹은 적합한 기술 지원 라이센스를 선정이 필요합니다. 이 두 가지 모두 자바 생태계를 긍정적으로 만드는 중요한 요소입니다.</p>
+
+<h2 id="마치며-openjdk-선순환에-대한-기대">마치며: OpenJDK 선순환에 대한 기대</h2>
+
+<p>오랫동안 지속되는 주류 기술의 특징은 그 기술의 생산과 소비에 많은 기업과 개발자가 참여하고, 그 기술로 수익을 창출하는 부류가 많다는 것입니다. 이런 관점에서 OpenJDK가 활성화되는 모습은 정말 반갑습니다.</p>
+
+<p>OpenJDK가 활성화되면서 Java를 개발하고 관리하는 조직(기업)이 늘어나고 있고, 이 조직들은 자바 기술 지원 역량을 다양한 비즈니스에 접목하여 수익을 창출하고 있습니다. 이제 자바는 6개월 버전 업그레이드 주기로 좀 더 애자일한 모습을 보이고 있습니다. 또한 OpenJDK를 근간으로 검증된 다양한 JDK를 만들어지면서, 개발자들이 요구하는 새로운 기능을 빠르게 수용하는  자바 다양성의 모습을 보여주고 있습니다. 이 모든것이 긍정적인 선순환 구조를 만들어가고 있습니다.</p>
+
+<p>OpenJDK에서 시작된 변화가 자바 생태계에 어떤 결과를 낳을지 관심을 갖고 지켜볼 필요가 있을 것 같습니다. 그리고 이런 변화가 오랜만에 자바에게서 느껴지는 긍정적인 시그널 이라서 더 기대가 됩니다.</p>
+
+<h2 id="참고자료">참고자료</h2>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/OpenJDK">https://en.wikipedia.org/wiki/OpenJDK</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Technology_Compatibility_Kit">https://en.wikipedia.org/wiki/Technology_Compatibility_Kit</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Java">https://en.wikipedia.org/wiki/Java</a></li>
+<li><a href="https://www.oracle.com/technetwork/java/javase/overview/faqs-jsp-136696.html">https://www.oracle.com/technetwork/java/javase/overview/faqs-jsp-136696.html</a></li>
+<li>OpenJDK 인증 기관: <a href="http://openjdk.java.net/groups/conformance/JckAccess/jck-access.html">http://openjdk.java.net/groups/conformance/JckAccess/jck-access.html</a></li>
+<li>RedHat OpenJDK 지원: <a href="https://access.redhat.com/articles/1299013">https://access.redhat.com/articles/1299013</a></li>
+<li>Azule 라이센스: <a href="https://www.azul.com/products/pricing/">https://www.azul.com/products/pricing/</a></li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">Java 11을 기준으로 15개 입니다. Java 8에는 21개 조직이 참여하고 있습니다.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/java/" rel="tag">java</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/openjdk/" rel="tag">openjdk</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/oracle/" rel="tag">oracle</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 한국오라클 빅데이터 팀 소속으로 빅데이터와 Machine Learning을 중점에 두고 있습니다. 최근에는 Deep Learning을 열공 중입니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/writing2/openjdk_java/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">자바의 새로운 도약: OpenJDK</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/writing2/openjdk-java/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">자바의 새로운 도약: OpenJDK</p></a>
+	</div>
+</nav>
+
+	<div class="fb-comments" data-width="100%" data-numposts="10"></div>
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-8469722754608892"
+				 data-ad-slot="5594090168"
+				 data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	<div class="widget-categories widget">
+	<div class="fb-like" data-href="http://taewan.kim/writing2/openjdk2/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#java의-한계-아재-이미지">Java의 한계 &amp; 아재 이미지</a></li>
+<li><a href="#openjdk의-급부상-시작점">OpenJDK의 급부상, 시작점</a></li>
+<li><a href="#openjdk의-시작과-관리-체계">OpenJDK의 시작과 관리 체계</a></li>
+<li><a href="#openjdk의-새로운-변화">OpenJDK의 새로운 변화</a></li>
+<li><a href="#oracle과-openjdk">Oracle과 OpenJDK</a></li>
+<li><a href="#openjdk-lts-이슈와-새로운-비즈니스">OpenJDK LTS 이슈와 새로운 비즈니스</a></li>
+<li><a href="#openjdk가-만든-java-다양성">OpenJDK가 만든 Java 다양성</a></li>
+<li><a href="#자바-라이센스-아쉬움과-필요성">자바 라이센스: 아쉬움과 필요성</a>
+<ul>
+<li><a href="#자바-소비자-입장-아쉬움">자바 소비자 입장: 아쉬움</a></li>
+<li><a href="#자바-생산자-입장-라이센스-필요성">자바 생산자 입장: 라이센스 필요성</a></li>
+</ul></li>
+<li><a href="#마치며-openjdk-선순환에-대한-기대">마치며: OpenJDK 선순환에 대한 기대</a></li>
+<li><a href="#참고자료">참고자료</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/mathjax_latex_error/" title="Mathjax의 시그마 중첩 렌더링 오류">
+							Mathjax의 시그마 중첩 렌더링 오류</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/matplotlib_hangul/" title="Matplotlib 한글 폰트 설정">
+							Matplotlib 한글 폰트 설정</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

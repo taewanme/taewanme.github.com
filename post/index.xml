@@ -282,6 +282,15 @@ Output Layer 출력과 레이블의 차이를 계산하고 은닉층의 Weight�
     </item>
     
     <item>
+      <title>자바의 새로운 도약: OpenJDK</title>
+      <link>http://taewan.kim/post/openjdk/</link>
+      <pubDate>Sun, 22 Oct 2017 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/openjdk/</guid>
+      <description>..</description>
+    </item>
+    
+    <item>
       <title>Terraform Jupyter Installer: Machine Learning 환경 프로비저닝 </title>
       <link>http://taewan.kim/post/terraform_jupyter_installer/</link>
       <pubDate>Tue, 03 Oct 2017 21:28:14 +0900</pubDate>

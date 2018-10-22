@@ -77,26 +77,6 @@ taewanme/pyml 컨테이너 이미지 pyml 더커 이미지는 docker hub에 자�
     </item>
     
     <item>
-      <title>Oracle Big Data Cloud와 Object Storage 연동</title>
-      <link>http://taewan.kim/cloud/bdc_object_storage_integration/</link>
-      <pubDate>Mon, 18 Jun 2018 01:09:25 +0900</pubDate>
-      
-      <guid>http://taewan.kim/cloud/bdc_object_storage_integration/</guid>
-      <description>Oracle Cloud는 대용량 데이터 병렬 처리와 분석을 담당하는 빅데이터 서비스로 Big Data Cloud(이하 BDC)를 제공합니다. 오라클 클라우드에서 Data Lake는 DBMS와 하둡 HDFS가 아닌 Oracle Storage Cloud Service(이하 Storage Service)에서 제공하는 Object Storage입니다.
-이 문서에서는 대용량 병렬 처리를 담당하는 BDC가 Object Storage에 데이터를 읽고/쓰기는 연동 설정과 연동 방식에 대하여 살펴보겠습니다. 오라클 클라우드는 Storage Service로 OCI Storage Classic과 OCI Storage 서비스 두 가지를 제공합니다. 이 두 가지 서비스는 Object Storage 관점에서 다음과 같이 정리할 수 있습니다.</description>
-    </item>
-    
-    <item>
-      <title>Oracle BDC의 Ambari 보안 설정 변경</title>
-      <link>http://taewan.kim/cloud/bdc_ambari/</link>
-      <pubDate>Thu, 31 May 2018 23:20:25 +0900</pubDate>
-      
-      <guid>http://taewan.kim/cloud/bdc_ambari/</guid>
-      <description>오라클 클라우드는 Big Data 서비스로 Big Data Cloud(이하 BDC)를 제공합니다. BDC는 Hotonworks 하둡 패키지를 오라클 클라우드의 PaaS로 제공하는 서비스입니다. 2018년 5월 현재 Oracle BDC는 OCI와 OCI Classic에 모두 배포 가능합니다. Oracle BDC에 대한 개요, 설치 방법 및 OCI와 OCI Classic에 대산 자세한 사항은 아래 문서를 참조하시기 바랍니다.
- BDC 관련문서  Oracle BDC 소개 문서  Oracle BDC 클러스터 생성 절차(작성일: 2017-07-31)  Oracle OCI와 OCI Classic이란?    Oracle BDC의 Apache Ambari Apache Ambari는 하둡 클러스터 전문 관리 툴입니다.</description>
-    </item>
-    
-    <item>
       <title>Oracle Cloud의 PaaS 서비스 패치: Event Hub Service</title>
       <link>http://taewan.kim/cloud/oehcs_patch/</link>
       <pubDate>Tue, 22 May 2018 23:20:25 +0900</pubDate>
@@ -225,18 +205,6 @@ val x = List(&amp;quot;taewan 45&amp;quot;, &amp;quot;minsu 6&amp;quot;, &amp;qu
       
       <guid>http://taewan.kim/post/the_day_sea/</guid>
       <description>오늘 &amp;lsquo;그날, 바다&amp;lsquo;를 관람했습니다. 제 경우, 그날, 바다를 보기 위해서 극장에 들어가는 과정이 정말 어려웠습니다. 빨리 보고 싶다는 마음과 두려움이 함께 했습니다. &amp;lsquo;그날, 바다&amp;lsquo;는 저에게 꼭 봐야 할 것 같은 영화지만, 두렵고 용기가 필요한 영화였습니다. 저와 같이 세월호에 대한 무게감에 영화 관람이 꺼려지시는 분들을 위해서 &amp;lsquo;그날, 바다&amp;rsquo; 관람 후기를 작성합니다. 여러분들이 이 영화를 보고 느낄 감정을 방해하고 싶지 않기에, 최대한 스포를 제자하겠습니다. 꼭 &amp;lsquo;그날, 바다&amp;lsquo;를 관람하시고 저와 같은 감정, 질문 그리고 의문을 함께했으면 합니다.</description>
-    </item>
-    
-    <item>
-      <title>뇌는 어떻게 결정하는가?</title>
-      <link>http://taewan.kim/book/how_we_decide/</link>
-      <pubDate>Wed, 04 Apr 2018 21:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/book/how_we_decide/</guid>
-      <description>최근에 제가 집중하고 있는 키워드는 인공지능 그중에서도 딥러닝 입니다.
- 인공지능이란 &amp;ldquo;인간이 수행하는 지적인 작업의 자동화&amp;rdquo;하는 것이라고 정의할 수 있습니다.
- 일반적으로 인공지능 그 중에서도 딥러닝을 소개할 때 인간의 뇌에서 영감을 받아 만든 기술로 데이터를 학습하여 숨겨진 패턴을 찾아내는 기술이라고 설명합니다.
-딥러닝 기술을 익히면서 정말 사람의 뇌는 어떻게 움직이는지 궁금해졌습니다. 이런 궁금증으로 읽기 시작한 책이 &amp;ldquo;뇌는 어떻게 결정하는가?&amp;ldquo;입니다. 이 책에서 인공 지능 / 딥러닝은 전혀 언급되지 않습니다. 저자는 사람의 뇌가 동작하는 방식을 사례를 중심으로 소개합니다.</description>
     </item>
     
     <item>
@@ -616,15 +584,6 @@ Oracle PSM 지원 PaaS 서비스    Oracle PaaS 비고     Oracle Application Co
     </item>
     
     <item>
-      <title>Oracle Big Data Cloud Service Compute-Edition</title>
-      <link>http://taewan.kim/cloud/bdcsce01/</link>
-      <pubDate>Thu, 27 Jul 2017 11:59:47 +0900</pubDate>
-      
-      <guid>http://taewan.kim/cloud/bdcsce01/</guid>
-      <description>빅데이터 기술을 사용하면서 가장 어려운 부분은 오픈소스로 구성된 빅데이터 에코 기술을 설치하고 관리하는 부분입니다. 빅데이터 에코 기술들은 여러 오픈소스 프로젝트로 구성되어 있고, 각 오픈소스 프로젝트는 특정 오픈소스 프로젝트의 버전에 의존성을 갖고 있습니다. 또한, 각 오픈소스는 개별적인 업그레이드 주기를 갖습니다. 여러 오픈소스 프로젝트가 상호 버전 의존성을 갖고 있고, 개별적인 업그레이드 주기를 갖는 기술들로 빅데이터 환경을 구성하고 관리하기 위해서는 많은 노력이 필요합니다. 이 문제를 해결하기 위해서 Cloudera와 Hotonworks는 빅데이터 오픈소스 프로젝트들의 검증된 버전을 모아 패키지로 관리합니다.</description>
-    </item>
-    
-    <item>
       <title>Oracle MySQL Cloud Service</title>
       <link>http://taewan.kim/cloud/mysql_cs/</link>
       <pubDate>Wed, 10 May 2017 15:48:24 +0900</pubDate>
@@ -645,16 +604,6 @@ MySQL CS가 제공하는 엔터프라이즈 지원 기능은 다음과 같습니
       <description>Oracle Compute CS에서 인스턴스(가상머신)를 만들면, 해당 가상머신에 대한 네트워크 접근은 완전히 막혀 있는 상태입니다. 외부와 어떤 네트워크 연결도 불가능한 상태로 만들어집니다. 새로 만든 가상머신에 네트워크로 접근하기 위해서는, 오라클 클라우드가 제공하는 보안 설정을 적용해야 합니다.
 오라클 클라우드는 가상머신 별로 섬세한 보안 설정을 구성하는 방법을 제공합니다. 본 문서에서는 오라클 클라우드의 보안 구성 요소를 파악하고, 각 구성 요소를 이용하여 보안을 설정하는 방법에 대하여 살펴보겠습니다.
 오라클 클라우드 보안 개념 컴퓨터간의 네트워크를 보안 관리하기 위해서는 최소한 다음과 같은 4가지 정보가 필요합니다.</description>
-    </item>
-    
-    <item>
-      <title>우분투 17.04 가상머신 만들기</title>
-      <link>http://taewan.kim/cloud/compute_instance/</link>
-      <pubDate>Tue, 02 May 2017 11:59:47 +0900</pubDate>
-      
-      <guid>http://taewan.kim/cloud/compute_instance/</guid>
-      <description>2017년 04월 오라클 클라우드 Compute Service에는 17.1.2 버전1이 적용되었습니다. 17.1.2 버전에는 네트워크 구성에 대한 새로운 기능이 추가되었습니다. 기존의 Shared Network와 별개로 IPNetwork를 이용하여 서브넷을 구성할 수 있습니다. 새로운 기능 추가와 함께, 가상머신을 만드는 UI와 가상머신을 생성하는 오케스트레이션에 변경된 부분이 있습니다.
-매년 4월은 Ubuntu 새 버전이 출시되는 시점입니다. 올해에도 지난 4월에 Ubuntu 17.04 버전이 출시되었습니다. 새로 출시된 Ubuntu 17.04 설치 이미지는 현재 오라클 클라우드 마켓 플레이스에 등록된 상태이며, 이 이미지를 이용하여 가상머신을 만들 수 있습니다.</description>
     </item>
     
     <item>
@@ -773,17 +722,6 @@ Oracle Cloud VM 인스턴스 생성 실습 본 문서는 OS X(Mac) 환경에서 
 SSH 프로토콜에 대한 자세한 내용은 다음 문서를 참조하시기 바랍니다.
  오픈 튜토리얼: SSH 원격제어 오픈 튜토리얼: SSH 키  이 문서에서는 다음 내용을 다루겠습니다.
  운영체제별 SSH 키 생성 방법 (window, linux, osx) SSH 키 설치 방법 ssh config를 이용한 ssh 명령 단순하게 사용하기  인증서 생성 방법 각 운영체제(Linux, OSX, Window)의 SSH 키 생성 방법에 대하여 정리하겠습니다.</description>
-    </item>
-    
-    <item>
-      <title>오라클 클라우드 계정</title>
-      <link>http://taewan.kim/cloud/accont/</link>
-      <pubDate>Thu, 02 Mar 2017 21:59:47 +0900</pubDate>
-      
-      <guid>http://taewan.kim/cloud/accont/</guid>
-      <description>Oracle Cloud의 트라이얼 계정을 이용하여 무료로 오라클 클라우드를 경험할 수 있습니다. 무료 트라이얼 계정에는 Oracle Database Cloud Service(이하 Cloud Service는 CS로 표기), Java CS, Compute CS, Developer CS, Database Backup CS, Storage CS, Application Container CS, SOA CS 등 11개 서비스와 6개 OCPU와 500GB 스토리지 자원에 대한 사용 권한이 포함됩니다. 트라이얼 계정의 유효 기간은 계정 생성일로부터 30일입니다.
-본 문에서는 Oracle Cloud 계정을 생성하는 방법에 대하여 설명하겠습니다.
-Oracle Cloud 계정 등록 절차 오라클 클라우드의 계정 등록 절차는 다음과 같습니다.</description>
     </item>
     
     <item>

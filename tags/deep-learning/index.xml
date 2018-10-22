@@ -24,34 +24,6 @@ pyml Docker 최신 정보 pyml Docker 이미지 버전 pyml Docker 이미지 버
     </item>
     
     <item>
-      <title>Bookbark for Living</title>
-      <link>http://taewan.kim/bookmark/living/</link>
-      <pubDate>Mon, 27 Aug 2018 21:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/bookmark/living/</guid>
-      <description> 날씨  바람 방향 시뮬레이션  https://earth.nullschool.net/#current/wind/surface/level/orthographic=132.48,19.90,491   Learning  https://www.lynda.com/  </description>
-    </item>
-    
-    <item>
-      <title>Bookbark for Machine Learning</title>
-      <link>http://taewan.kim/bookmark/machine_learning/</link>
-      <pubDate>Mon, 27 Aug 2018 21:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/bookmark/machine_learning/</guid>
-      <description>Article  https://towardsdatascience.com/  Article 공유 사이트 머신러닝 다양한 주제의 블로그 타입 정보  https://www.datascience.com/blog  머신러닝 관련 공동 블로깅 datascience.com 운영   정보통신  정보통신기술용어해설  http://www.ktword.co.kr/m/index.php 통계, 정보통신, 수학 용어 사전   확률 통계  확률 통계 기초 블로그  https://m.blog.naver.com/PostList.nhn?blogId=mykepzzang&amp;amp;currentPage=1 https://blog.naver.com/PostList.nhn?blogId=mykepzzang  수학 용어 백과 사전  http://www.mathlove.kr/shop/mathlove/share/share_01.php?tm=1&amp;amp;menus=share1 수학 용어 관련 영문/한글 설명으로 구성  통계 용어 사전  https://www.hf.go.kr/research/portal/bbs/dic/searchBulletinPage.do 주책 금융 통계 시스템의 용어 사전  강의</description>
-    </item>
-    
-    <item>
-      <title>Bookmark for Machine Learning</title>
-      <link>http://taewan.kim/bookmark/oracle/</link>
-      <pubDate>Mon, 27 Aug 2018 21:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/bookmark/oracle/</guid>
-      <description> Oracle Official Blog  Big Data Spatial and Graph: https://blogs.oracle.com/bigdataspatialgraph/ Big Data &amp;amp; Data Integration - Japan https://blogs.oracle.com/bigdata-dataintegration-jp/ Big Data Blog: https://blogs.oracle.com/bigdata/ https://blogs.oracle.com/cloudnative/ https://blogs.oracle.com/cloud-platform/ https://blogs.oracle.com/datawarehousing https://blogs.oracle.com/developers/ https://blogs.oracle.com/thejavatutorials/ https://blogs.oracle.com/java/ https://blogs.oracle.com/r/ https://blogs.oracle.com/wercker/  Oracle Cloud  Data Center:  https://cloud.oracle.com/data-regions   Oracle Machine Learning  Oracle Data Miner를 이용한 감성 분석
- http://www.oracle.com/webfolder/technetwork/tutorials/obe/db/12c/r1/dm/dm_41/ODM12c-17-2_EMClus.html#overview   </description>
-    </item>
-    
-    <item>
       <title>[Handson_ML]ch02: ML 프로젝트 처음부터 끝까지</title>
       <link>http://taewan.kim/til/handson_ml_ch02/</link>
       <pubDate>Thu, 26 Jul 2018 21:28:14 +0900</pubDate>

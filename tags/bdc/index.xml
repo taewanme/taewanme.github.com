@@ -21,5 +21,24 @@
 이 문서에서는 대용량 병렬 처리를 담당하는 BDC가 Object Storage에 데이터를 읽고/쓰기는 연동 설정과 연동 방식에 대하여 살펴보겠습니다. 오라클 클라우드는 Storage Service로 OCI Storage Classic과 OCI Storage 서비스 두 가지를 제공합니다. 이 두 가지 서비스는 Object Storage 관점에서 다음과 같이 정리할 수 있습니다.</description>
     </item>
     
+    <item>
+      <title>Oracle BDC의 Ambari 보안 설정 변경</title>
+      <link>http://taewan.kim/cloud/bdc_ambari/</link>
+      <pubDate>Thu, 31 May 2018 23:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/bdc_ambari/</guid>
+      <description>오라클 클라우드는 Big Data 서비스로 Big Data Cloud(이하 BDC)를 제공합니다. BDC는 Hotonworks 하둡 패키지를 오라클 클라우드의 PaaS로 제공하는 서비스입니다. 2018년 5월 현재 Oracle BDC는 OCI와 OCI Classic에 모두 배포 가능합니다. Oracle BDC에 대한 개요, 설치 방법 및 OCI와 OCI Classic에 대산 자세한 사항은 아래 문서를 참조하시기 바랍니다.
+ BDC 관련문서  Oracle BDC 소개 문서  Oracle BDC 클러스터 생성 절차(작성일: 2017-07-31)  Oracle OCI와 OCI Classic이란?    Oracle BDC의 Apache Ambari Apache Ambari는 하둡 클러스터 전문 관리 툴입니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle Big Data Cloud Service Compute-Edition</title>
+      <link>http://taewan.kim/cloud/bdcsce01/</link>
+      <pubDate>Thu, 27 Jul 2017 11:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/bdcsce01/</guid>
+      <description>빅데이터 기술을 사용하면서 가장 어려운 부분은 오픈소스로 구성된 빅데이터 에코 기술을 설치하고 관리하는 부분입니다. 빅데이터 에코 기술들은 여러 오픈소스 프로젝트로 구성되어 있고, 각 오픈소스 프로젝트는 특정 오픈소스 프로젝트의 버전에 의존성을 갖고 있습니다. 또한, 각 오픈소스는 개별적인 업그레이드 주기를 갖습니다. 여러 오픈소스 프로젝트가 상호 버전 의존성을 갖고 있고, 개별적인 업그레이드 주기를 갖는 기술들로 빅데이터 환경을 구성하고 관리하기 위해서는 많은 노력이 필요합니다. 이 문제를 해결하기 위해서 Cloudera와 Hotonworks는 빅데이터 오픈소스 프로젝트들의 검증된 버전을 모아 패키지로 관리합니다.</description>
+    </item>
+    
   </channel>
 </rss>
