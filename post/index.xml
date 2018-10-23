@@ -6,10 +6,19 @@
     <description>Recent content in Posts on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 07 Oct 2018 18:59:47 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 22 Oct 2018 09:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>자바의 새로운 도약: OpenJDK</title>
+      <link>http://taewan.kim/post/openjdk/</link>
+      <pubDate>Mon, 22 Oct 2018 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/openjdk/</guid>
+      <description>최근에 자바는 OpenJDK를 중심으로 빠르게 변화하고 있습니다. 올해부터 OpenJDK는 일 년에 두 번 3월과 9월에 새 버전을 공개합니다. 점차 OpenJDK 개발에 참여하는 기관도 늘어나고 있습니다. 이제 OpenJDK 개발에 참여하는 인증 기관(기업)은 15개에 달합니다.1 또한 OpenJDK 소스를 기반으로 GraalVM과 같은 독특한 기능을 갖춘 새로운 자바가 만들어지고 있습니다. 예전에 자기 환경에 맞는 WAS를 선택했던 것처럼, 내 환경에 맞는 Java를 선택하고 사용하는 Java 다양성 시대로 진입하고 있습니다. 빠른 버전 업그레이드, OpenJDK에 참여하는 조직 확대 및 다양한 Java의 등장과 같은 특징을 통해서 자바는 빠르게 변하는 환경에 신속하게 적응하는 역량을 확보하고 있습니다.</description>
+    </item>
     
     <item>
       <title>VirtualBox에 Hotonworks 가상머신 설치</title>
@@ -279,16 +288,6 @@ Output Layer 출력과 레이블의 차이를 계산하고 은닉층의 Weight�
       
       <guid>http://taewan.kim/post/nn_notation/</guid>
       <description>그림 1: Neural Network 예제    Neural Network에 대한 Forward Propagation, Backpropagation, predict, Cost Function 등을 정리할 때 뉴럴 네트워크의 구성 요소와 각 위치가 혼동되어 어려움을 겪는 경우가 많습니다. Coursera에서 deeplearning.ai가 진행하는 Neural Networks and Deep Learning 강의에서 Neural Network 표기법 잘 정리하고 있습니다. Andrew NG 교수가 소개한 Neural Network 표기법을 정리합니다. 이 표기법을 사용하면 Neural Network의 여러 수식과 알고리즘을 다룰 때 혼동을 최소화 할 수 있습니다.</description>
-    </item>
-    
-    <item>
-      <title>자바의 새로운 도약: OpenJDK</title>
-      <link>http://taewan.kim/post/openjdk/</link>
-      <pubDate>Sun, 22 Oct 2017 09:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/post/openjdk/</guid>
-      <description>이 페이지는 구글 검색에 제한된 페이지입니다. 본 문서는 현재 작성중인 문서이며, 공식 배포전입니다. 10월 31일 공개될 예정입니다.
- 최근에 자바는 OpenJDK를 중심으로 빠르게 변화하고 있습니다. 올해부터 OpenJDK는 일 년에 두 번 3월과 9월에 새 버전을 공개합니다. 점차 OpenJDK 개발에 참여하는 기관도 늘어나고 있습니다. 이제 OpenJDK 개발에 참여하는 인증 기관(기업)은 15개에 달합니다.1 또한 OpenJDK 소스를 기반으로 GraalVM과 같은 독특한 기능을 갖춘 새로운 자바가 만들어지고 있습니다. 예전에 자기 환경에 맞는 WAS를 선택했던 것처럼, 내 환경에 맞는 Java를 선택하고 사용하는 Java 다양성 시대로 진입하고 있습니다.</description>
     </item>
     
     <item>

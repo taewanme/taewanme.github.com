@@ -13,6 +13,15 @@
     
     <item>
       <title>자바의 새로운 도약: OpenJDK</title>
+      <link>http://taewan.kim/post/openjdk/</link>
+      <pubDate>Mon, 22 Oct 2018 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/openjdk/</guid>
+      <description>최근에 자바는 OpenJDK를 중심으로 빠르게 변화하고 있습니다. 올해부터 OpenJDK는 일 년에 두 번 3월과 9월에 새 버전을 공개합니다. 점차 OpenJDK 개발에 참여하는 기관도 늘어나고 있습니다. 이제 OpenJDK 개발에 참여하는 인증 기관(기업)은 15개에 달합니다.1 또한 OpenJDK 소스를 기반으로 GraalVM과 같은 독특한 기능을 갖춘 새로운 자바가 만들어지고 있습니다. 예전에 자기 환경에 맞는 WAS를 선택했던 것처럼, 내 환경에 맞는 Java를 선택하고 사용하는 Java 다양성 시대로 진입하고 있습니다. 빠른 버전 업그레이드, OpenJDK에 참여하는 조직 확대 및 다양한 Java의 등장과 같은 특징을 통해서 자바는 빠르게 변하는 환경에 신속하게 적응하는 역량을 확보하고 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>자바의 새로운 도약: OpenJDK</title>
       <link>http://taewan.kim/temp/openjdk/</link>
       <pubDate>Mon, 22 Oct 2018 09:28:14 +0900</pubDate>
       
@@ -272,16 +281,6 @@ VM 생성 시나리오 다음과 같은 시나리오를 바탕으로 VM을 구�
       <description>한국 오라클에서는 매월 개발자를 대상으로 &amp;ldquo;Oracle Developer Meetup&amp;ldquo;을 운영하고 있습니다. 2017년 12월 16일 토요일 아셈타워 15층에서 두 번째 &amp;ldquo;Oracle Developer Meetup&amp;ldquo;이 진행되었습니다. 58명의 개발자가 참석한 가운데 오후 1시 부터 5시30분 까지 3개의 세션과 네트워킹이 진행되었습니다.
 &amp;ldquo;제2회 Oracle Developer Meetup&amp;ldquo;은 다음과 같은 주제로 진행되었습니다.
    시간 발표자 세션 명     13:00~13:50 강인호 부장(Oracle) Microservice 트래픽 관리를 위한 Istio 알아보기   14:00~15:20 양수열 Java Champion(OnFace) 개발자를 위한 JavaOne 2017 업데이트 - New Feature 중심으로   15:00~14:50 황주필 부장(Oracle) [Hands-On]Kubernetes 실습 및 모니터링    세미나의 현장 스케치를 사진 중심으로 정리합니다.</description>
-    </item>
-    
-    <item>
-      <title>자바의 새로운 도약: OpenJDK</title>
-      <link>http://taewan.kim/post/openjdk/</link>
-      <pubDate>Sun, 22 Oct 2017 09:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/post/openjdk/</guid>
-      <description>이 페이지는 구글 검색에 제한된 페이지입니다. 본 문서는 현재 작성중인 문서이며, 공식 배포전입니다. 10월 31일 공개될 예정입니다.
- 최근에 자바는 OpenJDK를 중심으로 빠르게 변화하고 있습니다. 올해부터 OpenJDK는 일 년에 두 번 3월과 9월에 새 버전을 공개합니다. 점차 OpenJDK 개발에 참여하는 기관도 늘어나고 있습니다. 이제 OpenJDK 개발에 참여하는 인증 기관(기업)은 15개에 달합니다.1 또한 OpenJDK 소스를 기반으로 GraalVM과 같은 독특한 기능을 갖춘 새로운 자바가 만들어지고 있습니다. 예전에 자기 환경에 맞는 WAS를 선택했던 것처럼, 내 환경에 맞는 Java를 선택하고 사용하는 Java 다양성 시대로 진입하고 있습니다.</description>
     </item>
     
     <item>
