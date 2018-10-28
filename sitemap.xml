@@ -1144,14 +1144,14 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/tags/bigdata/</loc>
-    <lastmod>2017-07-27T11:59:47+09:00</lastmod>
+    <loc>http://taewan.kim/categories/bigdata/</loc>
+    <lastmod>2018-04-15T15:59:47+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://taewan.kim/categories/bigdata/</loc>
-    <lastmod>2018-04-15T15:59:47+09:00</lastmod>
+    <loc>http://taewan.kim/tags/bigdata/</loc>
+    <lastmod>2017-07-27T11:59:47+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1168,13 +1168,13 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/tags/book/</loc>
+    <loc>http://taewan.kim/categories/book/</loc>
     <lastmod>2018-10-08T21:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://taewan.kim/categories/book/</loc>
+    <loc>http://taewan.kim/tags/book/</loc>
     <lastmod>2018-10-08T21:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
@@ -1228,13 +1228,13 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/tags/cloud/</loc>
+    <loc>http://taewan.kim/categories/cloud/</loc>
     <lastmod>2018-09-08T01:09:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://taewan.kim/categories/cloud/</loc>
+    <loc>http://taewan.kim/tags/cloud/</loc>
     <lastmod>2018-09-08T01:09:25+09:00</lastmod>
     <priority>0</priority>
   </url>
@@ -1575,13 +1575,13 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/tags/java/</loc>
+    <loc>http://taewan.kim/categories/java/</loc>
     <lastmod>2018-10-20T09:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://taewan.kim/categories/java/</loc>
+    <loc>http://taewan.kim/tags/java/</loc>
     <lastmod>2018-10-20T09:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
@@ -1754,14 +1754,14 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/tags/machine-learning/</loc>
-    <lastmod>2018-10-07T19:59:47+09:00</lastmod>
+    <loc>http://taewan.kim/categories/machine-learning/</loc>
+    <lastmod>2018-08-08T16:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://taewan.kim/categories/machine-learning/</loc>
-    <lastmod>2018-08-08T16:28:14+09:00</lastmod>
+    <loc>http://taewan.kim/tags/machine-learning/</loc>
+    <lastmod>2018-10-07T19:59:47+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1820,13 +1820,13 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/tags/mysql/</loc>
+    <loc>http://taewan.kim/categories/mysql/</loc>
     <lastmod>2017-09-29T17:17:35+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://taewan.kim/categories/mysql/</loc>
+    <loc>http://taewan.kim/tags/mysql/</loc>
     <lastmod>2017-09-29T17:17:35+09:00</lastmod>
     <priority>0</priority>
   </url>
@@ -1946,14 +1946,14 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/tags/oracle/</loc>
-    <lastmod>2018-10-20T09:28:14+09:00</lastmod>
+    <loc>http://taewan.kim/categories/oracle/</loc>
+    <lastmod>2018-05-16T15:59:47+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://taewan.kim/categories/oracle/</loc>
-    <lastmod>2018-05-16T15:59:47+09:00</lastmod>
+    <loc>http://taewan.kim/tags/oracle/</loc>
+    <lastmod>2018-10-20T09:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2150,14 +2150,14 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/tags/seminar/</loc>
-    <lastmod>2018-05-16T21:28:14+09:00</lastmod>
+    <loc>http://taewan.kim/categories/seminar/</loc>
+    <lastmod>2017-12-16T22:54:32+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://taewan.kim/categories/seminar/</loc>
-    <lastmod>2017-12-16T22:54:32+09:00</lastmod>
+    <loc>http://taewan.kim/tags/seminar/</loc>
+    <lastmod>2018-05-16T21:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2276,14 +2276,14 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/tags/tip/</loc>
-    <lastmod>2016-04-04T13:47:07+09:00</lastmod>
+    <loc>http://taewan.kim/categories/tip/</loc>
+    <lastmod>2018-08-18T16:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://taewan.kim/categories/tip/</loc>
-    <lastmod>2018-08-18T16:28:14+09:00</lastmod>
+    <loc>http://taewan.kim/tags/tip/</loc>
+    <lastmod>2016-04-04T13:47:07+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2420,14 +2420,14 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/tags/youtube/</loc>
-    <lastmod>2016-03-25T00:17:44+09:00</lastmod>
+    <loc>http://taewan.kim/categories/youtube/</loc>
+    <lastmod>2016-03-19T01:50:05+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://taewan.kim/categories/youtube/</loc>
-    <lastmod>2016-03-19T01:50:05+09:00</lastmod>
+    <loc>http://taewan.kim/tags/youtube/</loc>
+    <lastmod>2016-03-25T00:17:44+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2576,14 +2576,14 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/tags/%EB%B2%88%EC%97%AD/</loc>
-    <lastmod>2018-03-31T08:05:14+09:00</lastmod>
+    <loc>http://taewan.kim/categories/%EB%B2%88%EC%97%AD/</loc>
+    <lastmod>2017-12-27T01:50:05+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://taewan.kim/categories/%EB%B2%88%EC%97%AD/</loc>
-    <lastmod>2017-12-27T01:50:05+09:00</lastmod>
+    <loc>http://taewan.kim/tags/%EB%B2%88%EC%97%AD/</loc>
+    <lastmod>2018-03-31T08:05:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2666,13 +2666,13 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/tags/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</loc>
+    <loc>http://taewan.kim/categories/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</loc>
     <lastmod>2017-12-26T21:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://taewan.kim/categories/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</loc>
+    <loc>http://taewan.kim/tags/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</loc>
     <lastmod>2017-12-26T21:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
