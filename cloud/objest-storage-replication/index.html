@@ -11,27 +11,12 @@
 
 <title>Oracle Storage Cloud Service 활성화</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.25.1" />
+<meta name="generator" content="Hugo 0.48" />
 <meta property="og:title" content="Oracle Storage Cloud Service 활성화" />
 <meta property="og:description" content="오라클 클라우드 계정을 생성한 후 Oracle Storage Cloud Service의 기본 복제 정책을 설정해야 합닏. " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/cloud/objest-storage-replication/" />
-
-
-
-<meta property="article:published_time" content="2017-03-06T08:54:32&#43;09:00"/>
+<meta property="og:url" content="http://taewan.kim/cloud/objest-storage-replication/" /><meta property="article:published_time" content="2017-03-06T08:54:32&#43;09:00"/>
 <meta property="article:modified_time" content="2017-03-06T08:54:32&#43;09:00"/>
-
-
-
-
-
-
-
-
-
-
-
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
@@ -209,7 +194,7 @@ Storage Cloud 복제 정책을 설정한다는 것은 Storage Cloud 서비스를
 
 <p>데이터는 Primary DC와 Georeplication DC에 모두 데이터가 저장됩니다. 모든 요청은 Global Namespace URL에 요청되고,
 데이터 저장 요청은 Primary DC에 전달됩니다. 저장된 데이터는 비동기 적으로 Georeplication DC에 저장됩니다.
-Primary DC와 Georeplication DC의 데이터 동기화는 Eventual Consistency<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>입니다.</p>
+Primary DC와 Georeplication DC의 데이터 동기화는 Eventual Consistency<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>입니다.</p>
 
 <p>Primary DC에 장애가 발생하면 쓰기 요청에 대해서는 403 에러가 발생하지만, 읽기 요청은 Georeplication DC에서 처리되어 정상적으로 처리 됩니다. Primary DC가 복구되면 Global Namespace URL은 쓰기 요청을 다시 Primary DC에 전달하고 정상적으로 처리됩니다.</p>
 
@@ -392,8 +377,8 @@ Primary DC는 계정이 사용하는 데이터 센터와 같은 DC를 선택하�
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. 자바 라이센스) ">
-							자바의 새로운 도약: OpenJDK(Feat. 자바 라이센스) </a>
+				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. Oracle JDK Subscription) ">
+							자바의 새로운 도약: OpenJDK(Feat. Oracle JD ......</a>
 		  </li>
 			<li class="widget__item">
 				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
@@ -442,7 +427,7 @@ Primary DC는 계정이 사용하는 데이터 센터와 같은 DC를 선택하�
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
-			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
@@ -520,14 +505,17 @@ Primary DC는 계정이 사용하는 데이터 센터와 같은 DC를 선택하�
 	});
 </script>
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-72835175-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-72835175-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 

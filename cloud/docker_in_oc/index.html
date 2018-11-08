@@ -11,27 +11,12 @@
 
 <title>오라클 클라우드의 Docker 컨테이너 지원 유형</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.25.1" />
+<meta name="generator" content="Hugo 0.48" />
 <meta property="og:title" content="오라클 클라우드의 Docker 컨테이너 지원 유형" />
 <meta property="og:description" content="오라클 클라우드에서 docker 컨테이너를 지원하는 3가지 방식을 설명합니다. 오라클 클라우드는 DIY(형태로 오라클 클라우드 VM에 더커를 직접 설치하고 관리하는 방식), 관리 서비스 형태(Oracle Container Cloud Service, Docker 엔진과 orchestration Tool을 제공하는 방식), PaaS 타입(Oracle Application Container Cloud Service, 코드를 직접 배포하는 방식) 3가지를 제공합니다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/cloud/docker_in_oc/" />
-
-
-
-<meta property="article:published_time" content="2017-04-19T19:01:16&#43;09:00"/>
+<meta property="og:url" content="http://taewan.kim/cloud/docker_in_oc/" /><meta property="article:published_time" content="2017-04-19T19:01:16&#43;09:00"/>
 <meta property="article:modified_time" content="2017-04-19T19:01:16&#43;09:00"/>
-
-
-
-
-
-
-
-
-
-
-
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
@@ -197,7 +182,7 @@ Production 환경을 DIY 방식으로 구성하려면 다음과 같은 사항을
 
 <p>오라클은 2015년 11월에 StackEngine을 인수한 후, 1년 동안 Oracle Cloud에 StackEngine의 소프트웨어를 통합하였습니다. 이 결과물이 Oracle Container Cloud Service입니다.</p>
 
-<p>OCCS를 이용하여 효과적이고 안정적인 Docker 환경을 구성할 수 있습니다. 또한 ALM(Application Life-cycle Manatment) 툴과 연계된 시스템 자동화를 구성할 수 있습니다. 오라클 클라우드가 제공하는 Developer CS<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>를 OCCS과 함께 사용할 경우 효율적인 DevOps 환경을 구성할 수 있습니다. Developer CS는 오라클 클라우드가 제공하는 개발 환경 서비스입니다. Developer CS는 별도의 블로그 포스트 시리즈로 다루겠습니다.</p>
+<p>OCCS를 이용하여 효과적이고 안정적인 Docker 환경을 구성할 수 있습니다. 또한 ALM(Application Life-cycle Manatment) 툴과 연계된 시스템 자동화를 구성할 수 있습니다. 오라클 클라우드가 제공하는 Developer CS<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>를 OCCS과 함께 사용할 경우 효율적인 DevOps 환경을 구성할 수 있습니다. Developer CS는 오라클 클라우드가 제공하는 개발 환경 서비스입니다. Developer CS는 별도의 블로그 포스트 시리즈로 다루겠습니다.</p>
 
 <p>OCCS의 주요 기능은 다음과 같습니다.</p>
 
@@ -282,7 +267,7 @@ Production 환경을 DIY 방식으로 구성하려면 다음과 같은 사항을
 
 <ul>
 <li>사전에 설정된 Java, Node.js, PHP, Python을 위한 환경 제공 (Docker)</li>
-<li>Java SE는 Java Flight Recorder<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup>, Java Mission Control<sup class="footnote-ref" id="fnref:3"><a rel="footnote" href="#fn:3">3</a></sup>, 고급 메모리 관리 기능, 주지적 패치 제공</li>
+<li>Java SE는 Java Flight Recorder<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>, Java Mission Control<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup>, 고급 메모리 관리 기능, 주지적 패치 제공</li>
 <li>주요 프레임워크(Spring, play, jersey)과 컨테이너(Tomcat) 지원<br /></li>
 <li>JVM 기반 언어 지원:  JRuby</li>
 <li>엔터프라이즈급 지원</li>
@@ -472,8 +457,8 @@ Production 환경을 DIY 방식으로 구성하려면 다음과 같은 사항을
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. 자바 라이센스) ">
-							자바의 새로운 도약: OpenJDK(Feat. 자바 라이센스) </a>
+				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. Oracle JDK Subscription) ">
+							자바의 새로운 도약: OpenJDK(Feat. Oracle JD ......</a>
 		  </li>
 			<li class="widget__item">
 				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
@@ -522,7 +507,7 @@ Production 환경을 DIY 방식으로 구성하려면 다음과 같은 사항을
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
-			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
@@ -600,14 +585,17 @@ Production 환경을 DIY 방식으로 구성하려면 다음과 같은 사항을
 	});
 </script>
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-72835175-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-72835175-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 

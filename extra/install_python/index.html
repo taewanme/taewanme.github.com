@@ -11,27 +11,12 @@
 
 <title>파이썬 설치</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.25.1" />
+<meta name="generator" content="Hugo 0.48" />
 <meta property="og:title" content="파이썬 설치" />
 <meta property="og:description" content="파이썬 가상 개발 환경을 소개합낟. pyenv, virtualenv, autoenv, pip 사용법을 소개합니다. " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/extra/install_python/" />
-
-
-
-<meta property="article:published_time" content="2017-09-06T10:50:36&#43;09:00"/>
+<meta property="og:url" content="http://taewan.kim/extra/install_python/" /><meta property="article:published_time" content="2017-09-06T10:50:36&#43;09:00"/>
 <meta property="article:modified_time" content="2017-09-06T10:50:36&#43;09:00"/>
-
-
-
-
-
-
-
-
-
-
-
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
@@ -265,32 +250,34 @@ test_zlib skipped -- No module named zlib
 </code></pre>
 
 <h3 id="python-2-7-소스코드-설치">Python 2.7 소스코드: 설치</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make install```으로 설치를 시작합니다." data-lang="make install```으로 설치를 시작합니다."></code></pre></div>
+<p>[opc@b4b8b6 Python-2.7.12]$ sudo make install</p>
 
-<p><code>make install</code>으로 설치를 시작합니다.</p>
+<pre><code>
+### Python 2.7 소스코드: 환경 변수 설정
 
-<pre><code>[opc@b4b8b6 Python-2.7.12]$ sudo make install
+.bash_profile 혹은 .zshrc에 다음과 같이 환경 변수 설정을 추가합니다.
+
 </code></pre>
 
-<h3 id="python-2-7-소스코드-환경-변수-설정">Python 2.7 소스코드: 환경 변수 설정</h3>
-
-<p>.bash_profile 혹은 .zshrc에 다음과 같이 환경 변수 설정을 추가합니다.</p>
-
-<pre><code>PY27=/usr/local/python2.7/
+<p>PY27=/usr/local/python2.7/
 export PATH=$PATH:${PY27}/bin
-export LD_LIBRARY_PATH=${PY27}/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=${PY27}/lib:$LD_LIBRARY_PATH</p>
+
+<pre><code>
+### Python 2.7 소스코드: 쉘 설정 반영
+
+다음과 같이 shell 설정을 반영하고 python 설치 여부를 확인 합니다.
+
 </code></pre>
 
-<h3 id="python-2-7-소스코드-쉘-설정-반영">Python 2.7 소스코드: 쉘 설정 반영</h3>
-
-<p>다음과 같이 shell 설정을 반영하고 python 설치 여부를 확인 합니다.</p>
-
-<pre><code>[opc@b4b8b6 Python-2.7.12] source ~/.bash_profile
-[opc@b4b8b6 Python-2.7.12]$ python --version
+<p>[opc@b4b8b6 Python-2.7.12] source ~/.bash_profile
+[opc@b4b8b6 Python-2.7.12]$ python &ndash;version
 Python 2.7.12
 [opc@b4b8b6 Python-2.7.12]$ which python
 /usr/local/python2.7/bin/python
 [opc@b4b8b6 Python-2.7.12]$
-</code></pre>
+```</p>
 
 <h2 id="리눅스-python-rpm-설치">리눅스 Python RPM 설치</h2>
 
@@ -381,8 +368,6 @@ Python 2.7.12
 <li><a href="#python-2-7-소스코드-config">Python 2.7 소스코드: config</a></li>
 <li><a href="#python-2-7-소스코드-빌드-테스트">Python 2.7 소스코드: 빌드 테스트</a></li>
 <li><a href="#python-2-7-소스코드-설치">Python 2.7 소스코드: 설치</a></li>
-<li><a href="#python-2-7-소스코드-환경-변수-설정">Python 2.7 소스코드: 환경 변수 설정</a></li>
-<li><a href="#python-2-7-소스코드-쉘-설정-반영">Python 2.7 소스코드: 쉘 설정 반영</a></li>
 </ul></li>
 <li><a href="#리눅스-python-rpm-설치">리눅스 Python RPM 설치</a></li>
 </ul></li>
@@ -397,8 +382,8 @@ Python 2.7.12
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. 자바 라이센스) ">
-							자바의 새로운 도약: OpenJDK(Feat. 자바 라이센스) </a>
+				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. Oracle JDK Subscription) ">
+							자바의 새로운 도약: OpenJDK(Feat. Oracle JD ......</a>
 		  </li>
 			<li class="widget__item">
 				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
@@ -447,7 +432,7 @@ Python 2.7.12
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
-			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
@@ -525,14 +510,17 @@ Python 2.7.12
 	});
 </script>
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-72835175-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-72835175-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 

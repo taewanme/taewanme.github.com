@@ -11,27 +11,12 @@
 
 <title>Numpy에서 np.sum 함수의 axis 이해</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.25.1" />
+<meta name="generator" content="Hugo 0.48" />
 <meta property="og:title" content="Numpy에서 np.sum 함수의 axis 이해" />
 <meta property="og:description" content="Numpy의 sum은 유용한 함수입니다. 그러나 처음 sum 함수를 사용할 때 axis 파라미터가 무엇을 의미하는지 혼동되는 것이 사살입니다. axis의 의미를 정리합니다. " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/post/numpy_sum_axis/" />
-
-
-
-<meta property="article:published_time" content="2017-09-17T21:28:14&#43;09:00"/>
+<meta property="og:url" content="http://taewan.kim/post/numpy_sum_axis/" /><meta property="article:published_time" content="2017-09-17T21:28:14&#43;09:00"/>
 <meta property="article:modified_time" content="2017-09-17T21:28:14&#43;09:00"/>
-
-
-
-
-
-
-
-
-
-
-
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
@@ -245,7 +230,7 @@ $$</p>
 
 <p>벡터에 &lt;그림 1&gt;을 적용해 보면, 벡터는 x 축만을 갖는 자료형입니다. 1차원 배열에 해당하는 벡터의 각 요소(Element)는 그 자체가 Row입니다.</p>
 
-<p>2차원 배열 형태의 행렬(matrix)은 x축의 행과 y축의 컬럼을 갖습니다. 2차원 배열 행렬은 depth가 1이라고 생각할 수 있습니다.<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup></p>
+<p>2차원 배열 형태의 행렬(matrix)은 x축의 행과 y축의 컬럼을 갖습니다. 2차원 배열 행렬은 depth가 1이라고 생각할 수 있습니다.<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup></p>
 
 <p>3차원 배열 형태의 Tensor는 행과 열을 갖고 각 컬럼은 벡터 형태를 갖습니다. 이러한 벡터를 Depth로 표현합니다.</p>
 
@@ -679,8 +664,8 @@ sum 함수의 매개변수를 기준으로 axis는 다음과 같은 의미가 �
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. 자바 라이센스) ">
-							자바의 새로운 도약: OpenJDK(Feat. 자바 라이센스) </a>
+				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. Oracle JDK Subscription) ">
+							자바의 새로운 도약: OpenJDK(Feat. Oracle JD ......</a>
 		  </li>
 			<li class="widget__item">
 				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
@@ -729,7 +714,7 @@ sum 함수의 매개변수를 기준으로 axis는 다음과 같은 의미가 �
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
-			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
@@ -807,14 +792,17 @@ sum 함수의 매개변수를 기준으로 axis는 다음과 같은 의미가 �
 	});
 </script>
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-72835175-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-72835175-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 

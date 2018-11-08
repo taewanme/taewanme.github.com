@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>자바의 새로운 도약: OpenJDK(Feat. 자바 라이센스) </title>
+      <title>자바의 새로운 도약: OpenJDK(Feat. Oracle JDK Subscription) </title>
       <link>http://taewan.kim/post/openjdk/</link>
       <pubDate>Sat, 20 Oct 2018 09:28:14 +0900</pubDate>
       
@@ -182,7 +182,7 @@ youtube 동영상   발표 문서  Oracle Impact: Oracle Cloud AI 요약 Enterpr
       <description>Mathjax는 웹 상에서 LaTex를 표현하는 지원하는 자바스크립트 라이브러리 입니다. 일반적으로 웹 페이지에서 LaTex를 표현하는 용도로 많이 사용되는 자바스크립트 라이브러리를 입니다.
 Mathjax 문제점 Mathjax은 거의 모든 LaTex 테그를 잘 표현하지만, \sum 테그를 중첩해서 사용하면 출력을 하지 못하는 문제가 있습니다.
 한 개의 \sum 테그는 문제 없이 렌더링을 잘 수행합니다. 다음 코드는 아래와 같이 렌더링 됩니다.
-$$ \bar x =\underset{x}\arg \min \sum_{i=1}^{n} \left(x -x_i \right) $$   $$ \bar x = \underset{x}\arg \min \sum_{i=1}^{n} \left( x - x_i \right) $$</description>
+$$ \bar x = \underset{x}\arg \min \sum_{i=1}^{n} \left( x - x_i \right) $$  $$ \bar x = \underset{x}\arg \min \sum_{i=1}^{n} \left( x - x_i \right) $$</description>
     </item>
     
     <item>
@@ -470,7 +470,7 @@ c &amp;amp; = bcosA + acosB \end{align} $$
       
       <guid>http://taewan.kim/tip/dimmension/</guid>
       <description> 차원에 대한 이해를 돕는 동영상입니다. 3차원을 인식하는 인간이 세상을 입체적으로 인식하는 이유를 소개합니다.
-차원에 대하여   우리는 이미 5차원의 존재?    </description>
+차원에 대하여   우리는 이미 5차원의 존재?   </description>
     </item>
     
     <item>
@@ -925,8 +925,9 @@ Apache Flume 프로젝트는 공식 홈페이지는 https://flume.apache.org/ �
       <guid>http://taewan.kim/post/how_to_process_abnomal_pattern_with_flatmap/</guid>
       <description>스칼라에서 map과 flatMap의 차이점을 파악하고 이해하는 것은 쉽지 않은것 같습니다. 이상 데이터 처리는 두 함수를 차아점을 구분하는 예제로 적합하다고 생가합니다. 이상 데이터 처리 예젤로 두 함수의 의미를 정리하겠습니다.
 스칼라에서 컬렉션을 map함수로 변환시킬 때 어떤 것을 걸러 내야 할 때가 있습니다.
-val x = List(&amp;quot;taewan 45&amp;quot;, &amp;quot;minsu 6&amp;quot;, &amp;quot;sunny 40&amp;quot;) x.map{ v =&amp;gt; val Array(name, age) = v.split(&amp;quot; &amp;quot;) (name, age.toInt) }  위 코드는 다음과 같이 출력됩니다.
- 출력:</description>
+val x = List(&amp;#34;taewan 45&amp;#34;, &amp;#34;minsu 6&amp;#34;, &amp;#34;sunny 40&amp;#34;) x.map{ v =&amp;gt; val Array(name, age) = v.split(&amp;#34; &amp;#34;) (name, age.toInt) } 위 코드는 다음과 같이 출력됩니다.
+ 출력:
+List((taewan,45), (minsu,6), (sunny,40))   이름과 나이가 문자열과 숫자로 구분되는 튜플 리스트를 반환합니다.</description>
     </item>
     
     <item>
@@ -1014,9 +1015,8 @@ A  Accuracy: 정확도  분류 성능 모델 성능 지표 다중 클래스 분�
       
       <guid>http://taewan.kim/torchtrans/tutorial/blits/autograd/</guid>
       <description>원문: http://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html 원문 제목: Autograd: automatic differentiation?  PyTorch의 모든 신경 네트워크의 중심에는 autograd 패키지가 있습니다. 먼저 autograd에 대하여 간략히 살펴 보겠습니다. 그러나서 첫 번째 신경망을 훈련해 볼 것 입니다.
-autograd 패키지는 오든 텐서 연산에 대해 미분 자동화 기능을 제공합니다. 실행 정의(define-by-run) 프레임웍입니다. 실행 정의란 역전파는 코드가 실행되는 방식에 이해 정이됨을 의미합니다. 모든 반복마다 달라질 수 있습니다.
-몇 가지 예로 좀 더 간단한 용어를 살펴보겠습니다.
-Variable Gradients NumPy 배열을 Torch 텐서로 변환 import numpy as np a = np.</description>
+몇 가지 예로 좀 더 간단한 용어를 살펴보겠습니다. ## Variable ## Gradients ### NumPy 배열을 Torch 텐서로 변환 ```Python import numpy as np a = np.ones(5) b = torch.from_numpy(a) np.add(a, 1, out=a) print(a) print(b)  출력:
+[ 2. 2. 2.</description>
     </item>
     
     <item>
@@ -1027,7 +1027,7 @@ Variable Gradients NumPy 배열을 Torch 텐서로 변환 import numpy as np a =
       <guid>http://taewan.kim/trans/pytorch/tutorial/blits/02_autograd/</guid>
       <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt; PyTorch와 함께하는 딥러닝: 60분 리뷰 &amp;gt; Autograd: 미분 자동화
   원문: http://http://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html 원문 제목: Autograd: automatic differentiation   PyTorch으로 만든 모든 신경망의 중심에는 autograd 패키지가 있습니다. 먼저 autograd 패키지를 간략히 살펴보겠습니다. 그리구 다음 문서에서 첫 번째 신경망을 훈련해 보겠습니다.
-autograd 패키지는 Tensor로 수행한 모든 연산에 대하여 자동-미분(Autimatic differentiation) 기능을 제공합니다. autograd는 실행 시점에 정의되는(define-by-run) 프레임워크입니다. 이것은 코드가 어떻게 실행되는가에 따라서 역전파(backprop)가 정의됨을 의미합니다.</description>
+[^1]: 역자주 - Weight와 Bias가 업데이트 되는 단위 Mini-Batch를 의미합니다. 좀 더 간단한 용어로 몇 가지 예를 들어 보겠습니다. ## Variable ```autograd.</description>
     </item>
     
     <item>
@@ -1038,7 +1038,7 @@ autograd 패키지는 Tensor로 수행한 모든 연산에 대하여 자동-미�
       <guid>http://taewan.kim/torchtrans/tutorial/blits/pythorh_tutorial_01_what_is_pytorch/</guid>
       <description>원문: http://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-beginner-blitz-tensor-tutorial-py 원문 제목: What is PyTorch?  PyTorch란 무엇인가? PyTorch는 파이썬 기반의 과학 컴퓨팅 패키지로 두 집단을 대상으로 합니다.
  NumPy를 대체하고 GPU의 힘을 사용 최고의 유연성과 속도를 제공하는 딥러닝 연구 플래폼  시작하기 Tensors Tensors는 NumPy의 ndarrays와 유사하며, 차별점은 Tensors는 연산을 가속하는 GPU에서 사용될 수 있다는 점 입니다.
-from __future__ import print_function import torch   초기화 되지 않은 5X3 매트릭스 생성  x = torch.Tensor(5, 3) print(x)   출력:</description>
+from __future__ import print_function import torch  초기화 되지 않은 5X3 매트릭스 생성  x = torch.Tensor(5, 3) print(x)  출력:</description>
     </item>
     
     <item>
@@ -1050,7 +1050,7 @@ from __future__ import print_function import torch   초기화 되지 않은 5X3
       <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt; PyTorch와 함께하는 딥러닝: 60분 리뷰 &amp;gt; PyTorch는 무엇인가?
   원문: http://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-beginner-blitz-tensor-tutorial-py 원문 제목: What is PyTorch?   PyTorch란 무엇인가? PyTorch는 파이썬 기반의 과학 컴퓨팅 패키지로 두 집단을 대상으로 합니다.
  NumPy를 대체하고 GPU의 힘을 사용 최고의 유연성과 속도를 제공하는 딥러닝 연구 플랫폼  시작하기 Tensors Tensors는 NumPy의 ndarrays와 유사하며, 차별점은 Tensors는 연산을 가속하는 GPU에서 사용될 수 있다는 점입니다.
-from __future__ import print_function import torch   초기화되지 않은 5X3 매트릭스 생성  x = torch.</description>
+from __future__ import print_function import torch  초기화되지 않은 5X3 매트릭스 생성  x = torch.</description>
     </item>
     
     <item>

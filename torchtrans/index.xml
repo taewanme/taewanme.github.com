@@ -18,9 +18,8 @@
       
       <guid>http://taewan.kim/torchtrans/tutorial/blits/autograd/</guid>
       <description>원문: http://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html 원문 제목: Autograd: automatic differentiation?  PyTorch의 모든 신경 네트워크의 중심에는 autograd 패키지가 있습니다. 먼저 autograd에 대하여 간략히 살펴 보겠습니다. 그러나서 첫 번째 신경망을 훈련해 볼 것 입니다.
-autograd 패키지는 오든 텐서 연산에 대해 미분 자동화 기능을 제공합니다. 실행 정의(define-by-run) 프레임웍입니다. 실행 정의란 역전파는 코드가 실행되는 방식에 이해 정이됨을 의미합니다. 모든 반복마다 달라질 수 있습니다.
-몇 가지 예로 좀 더 간단한 용어를 살펴보겠습니다.
-Variable Gradients NumPy 배열을 Torch 텐서로 변환 import numpy as np a = np.</description>
+몇 가지 예로 좀 더 간단한 용어를 살펴보겠습니다. ## Variable ## Gradients ### NumPy 배열을 Torch 텐서로 변환 ```Python import numpy as np a = np.ones(5) b = torch.from_numpy(a) np.add(a, 1, out=a) print(a) print(b)  출력:
+[ 2. 2. 2.</description>
     </item>
     
     <item>
@@ -31,7 +30,7 @@ Variable Gradients NumPy 배열을 Torch 텐서로 변환 import numpy as np a =
       <guid>http://taewan.kim/torchtrans/tutorial/blits/pythorh_tutorial_01_what_is_pytorch/</guid>
       <description>원문: http://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-beginner-blitz-tensor-tutorial-py 원문 제목: What is PyTorch?  PyTorch란 무엇인가? PyTorch는 파이썬 기반의 과학 컴퓨팅 패키지로 두 집단을 대상으로 합니다.
  NumPy를 대체하고 GPU의 힘을 사용 최고의 유연성과 속도를 제공하는 딥러닝 연구 플래폼  시작하기 Tensors Tensors는 NumPy의 ndarrays와 유사하며, 차별점은 Tensors는 연산을 가속하는 GPU에서 사용될 수 있다는 점 입니다.
-from __future__ import print_function import torch   초기화 되지 않은 5X3 매트릭스 생성  x = torch.Tensor(5, 3) print(x)   출력:</description>
+from __future__ import print_function import torch  초기화 되지 않은 5X3 매트릭스 생성  x = torch.Tensor(5, 3) print(x)  출력:</description>
     </item>
     
     <item>

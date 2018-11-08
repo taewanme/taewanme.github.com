@@ -11,27 +11,12 @@
 
 <title>JShell:5. 외부 코드</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.25.1" />
+<meta name="generator" content="Hugo 0.48" />
 <meta property="og:title" content="JShell:5. 외부 코드" />
 <meta property="og:description" content="java9의 신규 기능인 JShell 공식 문서의 한글화 입니다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/trans/jshell/jshell05/" />
-
-
-
-<meta property="article:published_time" content="2017-12-27T19:25:14&#43;09:00"/>
+<meta property="og:url" content="http://taewan.kim/trans/jshell/jshell05/" /><meta property="article:published_time" content="2017-12-27T19:25:14&#43;09:00"/>
 <meta property="article:modified_time" content="2017-12-27T19:25:14&#43;09:00"/>
-
-
-
-
-
-
-
-
-
-
-
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
 <link rel="stylesheet" href="http://taewan.kim/css/jupyter.css" type="text/css" media="all" />
@@ -188,14 +173,10 @@
 </code></pre>
 
 <p>접근해야 하는 패키지를 포함하는 디렉터리 혹은 JAR 파일을 클래스 패스로 지정합니다. 코드는 클래스 파일로 컴파일되어 있어야 합니다. 이름이 없는 패키지로 표현되는 디폴트 패키지에 코드는 JShell에서는 접근할 수 없습니다. 클래스 패스를 설정한 상태라면, 이 패스에 포함된 패키지들은 세션에서 임포트 가능합니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">my.cool.code.*</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#f92672">import</span> my.cool.code.*</code></pre></div>
 <p>다음 예제와 같이 JShell 세션 아래에서 <strong>/env</strong> 명령을 사용하여 클래스 패스를 설정할 수 있습니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">env</span> <span style="color: #f92672">--</span><span style="color: #f8f8f2">class</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">path</span> <span style="color: #f8f8f2">myOwnClassPath</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">Setting</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">options</span> <span style="color: #f8f8f2">and</span> <span style="color: #f8f8f2">restoring</span> <span style="color: #f8f8f2">state</span><span style="color: #f92672">.</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#f92672">/</span>env <span style="color:#f92672">--</span>class<span style="color:#f92672">-</span>path myOwnClassPath
+<span style="color:#f92672">|</span>  Setting <span style="color:#66d9ef">new</span> options and restoring state<span style="color:#f92672">.</span></code></pre></div>
 <p><strong>/env</strong> 명령은 실행 상태를 재설정하고, 명령으로 입력 한 새로운 클래스 패스 혹은 환경 설정으로 현재 코드 스니펫을 모두 다시 로드합니다.</p>
 
 <h2 id="모듈-옵션-설정">모듈 옵션 설정</h2>
@@ -208,16 +189,12 @@
 </code></pre>
 
 <p>현재 환경 설정은 옵션 없이 <strong>/env</strong> 명령을 사용하여 확인할 수 있습니다. 다음은 클래스 패스가 설정된 상황에서, 클래스 패스 정보를 출력하는 <strong>/env</strong> 명령의 사용 예제입니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">env</span>
-<span style="color: #f92672">|</span>     <span style="color: #f92672">--</span><span style="color: #f8f8f2">add</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">modules</span> <span style="color: #f8f8f2">my</span><span style="color: #f92672">.</span><span style="color: #a6e22e">module</span>
-<span style="color: #f92672">|</span>     <span style="color: #f92672">--</span><span style="color: #f8f8f2">module</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">path</span> <span style="color: #f8f8f2">myOwnModulePath</span>
-<span style="color: #f92672">|</span>     <span style="color: #f92672">--</span><span style="color: #f8f8f2">class</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">path</span> <span style="color: #f8f8f2">myOwnClassPath</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#f92672">/</span>env
+<span style="color:#f92672">|</span>     <span style="color:#f92672">--</span>add<span style="color:#f92672">-</span>modules my<span style="color:#f92672">.</span><span style="color:#a6e22e">module</span>
+<span style="color:#f92672">|</span>     <span style="color:#f92672">--</span>module<span style="color:#f92672">-</span>path myOwnModulePath
+<span style="color:#f92672">|</span>     <span style="color:#f92672">--</span>class<span style="color:#f92672">-</span>path myOwnClassPath</code></pre></div>
 <p>옵션에 대한 자세한 내용을 보려면 다음 명령으로부터 확인할 수 있습니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">help</span> <span style="color: #f8f8f2">context</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#f92672">/</span>help context</code></pre></div>
 		</div>
 		
 <div class="post__tags tags clearfix">
@@ -322,8 +299,8 @@
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. 자바 라이센스) ">
-							자바의 새로운 도약: OpenJDK(Feat. 자바 라이센스) </a>
+				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. Oracle JDK Subscription) ">
+							자바의 새로운 도약: OpenJDK(Feat. Oracle JD ......</a>
 		  </li>
 			<li class="widget__item">
 				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
@@ -372,7 +349,7 @@
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
-			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
@@ -450,14 +427,17 @@
 	});
 </script>
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-72835175-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-72835175-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 

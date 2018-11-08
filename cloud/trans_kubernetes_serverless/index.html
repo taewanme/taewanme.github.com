@@ -11,27 +11,12 @@
 
 <title>[번역]2017 KubeCon 오라클 발표: Kubernetes와 Serverless</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.25.1" />
+<meta name="generator" content="Hugo 0.48" />
 <meta property="og:title" content="[번역]2017 KubeCon 오라클 발표: Kubernetes와 Serverless" />
 <meta property="og:description" content="blogs.oracle.com 블러그의 2017년 Kubernetes와 Serverless 마지막 포스팅 번역입니다. 오라클의 2018년 방향을 감지할 수 있습니다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/cloud/trans_kubernetes_serverless/" />
-
-
-
-<meta property="article:published_time" content="2017-12-25T21:28:14&#43;09:00"/>
+<meta property="og:url" content="http://taewan.kim/cloud/trans_kubernetes_serverless/" /><meta property="article:published_time" content="2017-12-25T21:28:14&#43;09:00"/>
 <meta property="article:modified_time" content="2017-12-25T21:28:14&#43;09:00"/>
-
-
-
-
-
-
-
-
-
-
-
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
 <link rel="stylesheet" href="http://taewan.kim/css/jupyter.css" type="text/css" media="all" />
@@ -148,9 +133,9 @@
 
 <h1 id="kubernetes-and-serverless-oracle-at-kubecon-2017">Kubernetes and Serverless: Oracle at KubeCon 2017</h1>
 
-<p>오늘 텍사스주 오스틴에서 개최된 <strong>KubeCon + CloudNativeCon 2017</strong> 컨퍼런스에서, 오라클 컨테이너 네이티브 애플리케이션 개발팀은 새로운 Kubernetes 관련 프로젝트 2개를 오픈소스로 공개했고, 현장에서 데모를 진행하였습니다. 이번에 공개한 첫 번째 오픈소스 프로젝트는 Kubernetes 용 &ldquo;<strong>Fn Installer</strong>&ldquo;입니다. Fn은 2017년 10월 오라클 오픈 월드에서 공개한 오픈소스 서버리스 프로젝트입니다. 이번에 공개한 Fn용 헬름차트(Helm Charts)<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>를 사용하면, 오라클 관리형 Kubernetes 서비스인 Oracle Container Engine(OCE)<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup>을 포함한 모든 Kubernetes 배포에서 Fn을 쉽게 설치하고 실행할 수 있습니다.</p>
+<p>오늘 텍사스주 오스틴에서 개최된 <strong>KubeCon + CloudNativeCon 2017</strong> 컨퍼런스에서, 오라클 컨테이너 네이티브 애플리케이션 개발팀은 새로운 Kubernetes 관련 프로젝트 2개를 오픈소스로 공개했고, 현장에서 데모를 진행하였습니다. 이번에 공개한 첫 번째 오픈소스 프로젝트는 Kubernetes 용 &ldquo;<strong>Fn Installer</strong>&ldquo;입니다. Fn은 2017년 10월 오라클 오픈 월드에서 공개한 오픈소스 서버리스 프로젝트입니다. 이번에 공개한 Fn용 헬름차트(Helm Charts)<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>를 사용하면, 오라클 관리형 Kubernetes 서비스인 Oracle Container Engine(OCE)<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>을 포함한 모든 Kubernetes 배포에서 Fn을 쉽게 설치하고 실행할 수 있습니다.</p>
 
-<p>두 번째로 오라클이 공개한 오픈소스 프로젝트는 <a href="https://github.com/oracle/navarkos">Global Multi-Cluster Management</a> 입니다. 이 프로젝트는 고도로 분산된 행성급 규모(planet-scale)의 애플리케이션을 지능적으로 관리하기 위해서 분산 클러스터 관리 기능을 Kubernetes federation<sup class="footnote-ref" id="fnref:3"><a rel="footnote" href="#fn:3">3</a></sup>에 제공하는 프로젝트입니다. Kubernetes federation을 통해서 복수 리전, 하이브리드 심지어 복수 클라우드에 분산된 Kubernetes 클러스터를 연합하여 운영할 수 있습니다. 이렇게 연합된(Federated) 세상에서는 많은 운영상의 문제가 발생할 수 있습니다. 글로벌 애플리케이션을 관리하고 자동 확장하는 방법 그리고 필요에 따라서 임시 클러스터(Spot Cluster)를 생성하고 애플리케이션을 배치하는 방안을 상상해 보시기 바랍니다. 이것을 주제로 2017년 12월 7일 15시 50분에 &ldquo;<a href="https://kccncna17.sched.com/event/CU7i">Multi-Cluster Ops in a Hybrid World</a>&rdquo; 세션이 진행될 예정입니다. 이 세션의 발표는 Kire Filipovski 와 Vitaliy Zinchenko이 담당합니다.</p>
+<p>두 번째로 오라클이 공개한 오픈소스 프로젝트는 <a href="https://github.com/oracle/navarkos">Global Multi-Cluster Management</a> 입니다. 이 프로젝트는 고도로 분산된 행성급 규모(planet-scale)의 애플리케이션을 지능적으로 관리하기 위해서 분산 클러스터 관리 기능을 Kubernetes federation<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup>에 제공하는 프로젝트입니다. Kubernetes federation을 통해서 복수 리전, 하이브리드 심지어 복수 클라우드에 분산된 Kubernetes 클러스터를 연합하여 운영할 수 있습니다. 이렇게 연합된(Federated) 세상에서는 많은 운영상의 문제가 발생할 수 있습니다. 글로벌 애플리케이션을 관리하고 자동 확장하는 방법 그리고 필요에 따라서 임시 클러스터(Spot Cluster)를 생성하고 애플리케이션을 배치하는 방안을 상상해 보시기 바랍니다. 이것을 주제로 2017년 12월 7일 15시 50분에 &ldquo;<a href="https://kccncna17.sched.com/event/CU7i">Multi-Cluster Ops in a Hybrid World</a>&rdquo; 세션이 진행될 예정입니다. 이 세션의 발표는 Kire Filipovski 와 Vitaliy Zinchenko이 담당합니다.</p>
 
 <h2 id="전망-개방-통합-그리고-엔터프라이즈-급-경향-유지">전망: 개방, 통합 그리고 엔터프라이즈-급 경향 유지</h2>
 
@@ -166,7 +151,7 @@
 
 <h3 id="통합-일관성과-연결">통합: 일관성과 연결</h3>
 
-<p>통합 플랫폼에 대한 보장을 제공하기 위해서, Fn Installer Helm Charts와 Global Multi-Cluster Management를 Kubernetes 위에서 동작하도록 빌드하였습니다. 이 두 프로젝트는 오라클의 컨테이너 네이티브 플랫폼에 완전히 통합되어 있습니다. 홈 데포와 코스트코<sup class="footnote-ref" id="fnref:4"><a rel="footnote" href="#fn:4">4</a></sup>에서 모든 것을 할 수는 있지만, 종합적인 애플리케이션 개발자 경험을 만들 수는 없습니다. 특히 수백 클러스터 규모의 경험은 불가능합니다. 이는 수천 명의 개발 조직을 갖춘 상황에서도 어렵습니다. Fn Installer와 Global Multi-Cluster Management는 오라클의 관리형 Kubernetes 서비스인 OCE 위에서 이용 가능합니다.</p>
+<p>통합 플랫폼에 대한 보장을 제공하기 위해서, Fn Installer Helm Charts와 Global Multi-Cluster Management를 Kubernetes 위에서 동작하도록 빌드하였습니다. 이 두 프로젝트는 오라클의 컨테이너 네이티브 플랫폼에 완전히 통합되어 있습니다. 홈 데포와 코스트코<sup class="footnote-ref" id="fnref:4"><a href="#fn:4">4</a></sup>에서 모든 것을 할 수는 있지만, 종합적인 애플리케이션 개발자 경험을 만들 수는 없습니다. 특히 수백 클러스터 규모의 경험은 불가능합니다. 이는 수천 명의 개발 조직을 갖춘 상황에서도 어렵습니다. Fn Installer와 Global Multi-Cluster Management는 오라클의 관리형 Kubernetes 서비스인 OCE 위에서 이용 가능합니다.</p>
 
 <h3 id="엔터프라이즈급-ha-보안-및-운영-인식">엔터프라이즈급 : HA, 보안 및 운영 인식</h3>
 
@@ -178,7 +163,7 @@
 
 <h2 id="거대한-파워와-함께-찾아온-거대한-책임감-그리고-복잡성">거대한 파워와 함께 찾아온 거대한 책임감(그리고 복잡성)</h2>
 
-<p>Kubernetes federation은 엄청난 기능과 가능성을 제공함과 동시에 커다란 책임과 새로운 복잡성을 발생시켰습니다. 컨테이너 네이티브 배포에 애플리케이션 인지 결정 로직<sup class="footnote-ref" id="fnref:5"><a rel="footnote" href="#fn:5">5</a></sup>을 적용하는 과제가 대표적인 예입니다. 험난한 비즈니스 및 운영 문제에는 비용, 지역적 유사성, 성능, 서비스 품질 및 준수가 포함될 수 있습니다. 여러 Kubernetes 클러스터 배포를 관리할 경우, 온-프라미스 및 퍼블릭 클라우드 환경을 혼합하여 배포하는 상황이 발생할 수 있습니다. 이 때 DevOps팀은 여러 클러스터 프로파일 때문에 어려움을 겪을 수 있습니다.</p>
+<p>Kubernetes federation은 엄청난 기능과 가능성을 제공함과 동시에 커다란 책임과 새로운 복잡성을 발생시켰습니다. 컨테이너 네이티브 배포에 애플리케이션 인지 결정 로직<sup class="footnote-ref" id="fnref:5"><a href="#fn:5">5</a></sup>을 적용하는 과제가 대표적인 예입니다. 험난한 비즈니스 및 운영 문제에는 비용, 지역적 유사성, 성능, 서비스 품질 및 준수가 포함될 수 있습니다. 여러 Kubernetes 클러스터 배포를 관리할 경우, 온-프라미스 및 퍼블릭 클라우드 환경을 혼합하여 배포하는 상황이 발생할 수 있습니다. 이 때 DevOps팀은 여러 클러스터 프로파일 때문에 어려움을 겪을 수 있습니다.</p>
 
 <p>다음은 기본적이지만 답변하기는 까다로운 DevOps 관련 질문입니다.</p>
 
@@ -231,7 +216,7 @@
 
 <h2 id="g8-부스-방문에-주세요-오라클-세션에-참여해-주세요-kubecon-cloudnativecon-2017">G8 부스 방문에 주세요, 오라클 세션에 참여해 주세요(KubeCon + CloudNativeCon 2017)</h2>
 
-<p>G8 부스에 오라클 엔지니어와 기여자(Contributor)들 만날 수 있습니다. 오스틴 네이티브<sup class="footnote-ref" id="fnref:6"><a rel="footnote" href="#fn:6">6</a></sup>도 격하게 환영합니다.</p>
+<p>G8 부스에 오라클 엔지니어와 기여자(Contributor)들 만날 수 있습니다. 오스틴 네이티브<sup class="footnote-ref" id="fnref:6"><a href="#fn:6">6</a></sup>도 격하게 환영합니다.</p>
 
 <p>세션 정보는 다음과 같습니다.</p>
 
@@ -403,8 +388,8 @@
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. 자바 라이센스) ">
-							자바의 새로운 도약: OpenJDK(Feat. 자바 라이센스) </a>
+				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. Oracle JDK Subscription) ">
+							자바의 새로운 도약: OpenJDK(Feat. Oracle JD ......</a>
 		  </li>
 			<li class="widget__item">
 				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
@@ -453,7 +438,7 @@
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
-			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
@@ -531,14 +516,17 @@
 	});
 </script>
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-72835175-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-72835175-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 

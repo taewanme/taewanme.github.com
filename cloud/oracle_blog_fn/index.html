@@ -11,27 +11,12 @@
 
 <title>[번역]Fn–An Open Source Serverless Functions Platform</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.25.1" />
+<meta name="generator" content="Hugo 0.48" />
 <meta property="og:title" content="[번역]Fn–An Open Source Serverless Functions Platform" />
 <meta property="og:description" content="blog.oracle.com의 포스트를 번역한 문서입니다. 최근에 오라클이 CNCF에 가입한 영향을 설명하는 글입니다.  Docker와 Kubernetes와 관련된 내용을 포함합니다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/cloud/oracle_blog_fn/" />
-
-
-
-<meta property="article:published_time" content="2017-10-04T21:28:14&#43;09:00"/>
+<meta property="og:url" content="http://taewan.kim/cloud/oracle_blog_fn/" /><meta property="article:published_time" content="2017-10-04T21:28:14&#43;09:00"/>
 <meta property="article:modified_time" content="2017-10-04T21:28:14&#43;09:00"/>
-
-
-
-
-
-
-
-
-
-
-
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
@@ -143,9 +128,9 @@
 
 <hr />
 
-<p>새로운 오픈 소스 서버리스 플랫폼 Fn을 발표하게 된 것을 대단히 기쁘게 생각합니다.<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup></p>
+<p>새로운 오픈 소스 서버리스 플랫폼 Fn을 발표하게 된 것을 대단히 기쁘게 생각합니다.<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup></p>
 
-<p>Fn 프로젝트는 컨테이너 네이티브 서비리스 플랫폼으로 클라우드와 온프라미스(on-premise)<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup> 모두에서 작동할 수 있습니다. Fn 프로젝트 라이센스는 Apache 2.0입니다. Fn은 사용하기 쉽고, 모든 프로그래밍 언어를 지원하며, 확장할 수 있고 효율적입니다.</p>
+<p>Fn 프로젝트는 컨테이너 네이티브 서비리스 플랫폼으로 클라우드와 온프라미스(on-premise)<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup> 모두에서 작동할 수 있습니다. Fn 프로젝트 라이센스는 Apache 2.0입니다. Fn은 사용하기 쉽고, 모든 프로그래밍 언어를 지원하며, 확장할 수 있고 효율적입니다.</p>
 
 <p>Fn은 정말 쉽다는 점을 강조하고 싶습니다. 몇 분 안에 Fn을 실험하고 시작할 수 있습니다. Fn에 익숙해지면 바로 고급 기능을 사용할 수도 있습니다. 우리가 제공하는 <a href="https://github.com/fnproject/fn#quickstart">퀵 스타트</a>를 이용하여 몇 분 안에 자신만의 함수를 실행하고 배포 할 수 있습니다.</p>
 
@@ -301,8 +286,8 @@
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. 자바 라이센스) ">
-							자바의 새로운 도약: OpenJDK(Feat. 자바 라이센스) </a>
+				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. Oracle JDK Subscription) ">
+							자바의 새로운 도약: OpenJDK(Feat. Oracle JD ......</a>
 		  </li>
 			<li class="widget__item">
 				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
@@ -351,7 +336,7 @@
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
-			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
@@ -429,14 +414,17 @@
 	});
 </script>
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-72835175-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-72835175-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 

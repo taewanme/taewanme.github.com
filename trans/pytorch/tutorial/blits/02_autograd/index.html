@@ -11,27 +11,12 @@
 
 <title>Autograd: 미분 자동화</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.25.1" />
+<meta name="generator" content="Hugo 0.48" />
 <meta property="og:title" content="Autograd: 미분 자동화" />
 <meta property="og:description" content="&#39;" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/trans/pytorch/tutorial/blits/02_autograd/" />
-
-
-
-<meta property="article:published_time" content="2018-02-27T03:05:14&#43;09:00"/>
+<meta property="og:url" content="http://taewan.kim/trans/pytorch/tutorial/blits/02_autograd/" /><meta property="article:published_time" content="2018-02-27T03:05:14&#43;09:00"/>
 <meta property="article:modified_time" content="2018-02-27T03:05:14&#43;09:00"/>
-
-
-
-
-
-
-
-
-
-
-
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
 <link rel="stylesheet" href="http://taewan.kim/css/jupyter.css" type="text/css" media="all" />
@@ -137,35 +122,33 @@
 <hr />
 
 <p>PyTorch으로 만든 모든 신경망의 중심에는 autograd 패키지가 있습니다. 먼저 autograd 패키지를 간략히 살펴보겠습니다. 그리구 다음 문서에서 첫 번째 신경망을 훈련해 보겠습니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-autograd``` 패키지는 Tensor로 수행한 모든 연산에 대하여 자동-미분(Autimatic differentiation) 기능을 제공합니다. autograd는 실행 시점에 정의되는(define-by-run) 프레임워크입니다. 이것은 코드가 어떻게 실행되는가에 따라서 역전파(backprop)가 정의됨을 의미합니다. 즉 반복마다[^1] 역전파가 달라질 수 있다는 것을 의미합니다." data-lang="autograd``` 패키지는 Tensor로 수행한 모든 연산에 대하여 자동-미분(Autimatic differentiation) 기능을 제공합니다. autograd는 실행 시점에 정의되는(define-by-run) 프레임워크입니다. 이것은 코드가 어떻게 실행되는가에 따라서 역전파(backprop)가 정의됨을 의미합니다. 즉 반복마다[^1] 역전파가 달라질 수 있다는 것을 의미합니다.">[^1]: 역자주 - Weight와 Bias가 업데이트 되는 단위 Mini-Batch를 의미합니다.
 
-<p><code>autograd</code> 패키지는 Tensor로 수행한 모든 연산에 대하여 자동-미분(Autimatic differentiation) 기능을 제공합니다. autograd는 실행 시점에 정의되는(define-by-run) 프레임워크입니다. 이것은 코드가 어떻게 실행되는가에 따라서 역전파(backprop)가 정의됨을 의미합니다. 즉 반복마다<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup> 역전파가 달라질 수 있다는 것을 의미합니다.</p>
+좀 더 간단한 용어로 몇 가지 예를 들어 보겠습니다.
 
-<p>좀 더 간단한 용어로 몇 가지 예를 들어 보겠습니다.</p>
+## Variable
 
-<h2 id="variable">Variable</h2>
+```autograd.Variable```은 autograd 패키지의 핵심 클래스입니다. Variable 클래스는 Tensor를 감싸고 있으며, Tensor에 정의된 거의 모든 연산을 지원합니다. 모든 계산을 마친 후에 .backward()를 호출하면, 자동으로 모든 기울기가 계산됩니다.
 
-<p><code>autograd.Variable</code>은 autograd 패키지의 핵심 클래스입니다. Variable 클래스는 Tensor를 감싸고 있으며, Tensor에 정의된 거의 모든 연산을 지원합니다. 모든 계산을 마친 후에 .backward()를 호출하면, 자동으로 모든 기울기가 계산됩니다.</p>
+Variable 객체의 .data 속성으로 Tensor의 실제 데이터에 접근할 수 있습니다. Variable에 대한 기울기는 .grad 속성에 저장됩니다.
 
-<p>Variable 객체의 .data 속성으로 Tensor의 실제 데이터에 접근할 수 있습니다. Variable에 대한 기울기는 .grad 속성에 저장됩니다.</p>
+![](http://pytorch.org/tutorials/_images/Variable.png)  
 
-<p><img src="http://pytorch.org/tutorials/_images/Variable.png" alt="" /></p>
+autograd 구현에 있어서 중요한 클래스가 하나 더 있습니다. 바로 ```Function``` 입니다.
 
-<p>autograd 구현에 있어서 중요한 클래스가 하나 더 있습니다. 바로 <code>Function</code> 입니다.</p>
+Variable과 Function 클래스는 상호 연결되어 있고 비순환 그래프를 구성합니다. 연산을 위한 완전한 히스토리를 담고 있습니다. 각 Variable 객체에는 .grad_fn 속성이 있습니다. 이 속성은 해당 Variable 객체를 생성하는 Function 객체를 참조합니다. (예외 상황, Variable을 사용자가 직접 생성한 경우에는 grad_fn이 값은 ```None```입니다.)
 
-<p>Variable과 Function 클래스는 상호 연결되어 있고 비순환 그래프를 구성합니다. 연산을 위한 완전한 히스토리를 담고 있습니다. 각 Variable 객체에는 .grad_fn 속성이 있습니다. 이 속성은 해당 Variable 객체를 생성하는 Function 객체를 참조합니다. (예외 상황, Variable을 사용자가 직접 생성한 경우에는 grad_fn이 값은 <code>None</code>입니다.)</p>
+미분계수를 계산해야 한다면, Variable 객체의 .backward()를 호출합니다. Variable이 스칼라 일 경우(한 개의 요소만을 갖는 상황)에는, backward()에 별도 인자를 지정할 필요가 없습니다. 이와 다르게 여러 요소를 갖는다면, 텐서의 크기를 ```gradient``` 인수로 지정해야 합니다.</code></pre></div>
+<p>import torch
+from torch.autograd import Variable</p>
 
-<p>미분계수를 계산해야 한다면, Variable 객체의 .backward()를 호출합니다. Variable이 스칼라 일 경우(한 개의 요소만을 갖는 상황)에는, backward()에 별도 인자를 지정할 필요가 없습니다. 이와 다르게 여러 요소를 갖는다면, 텐서의 크기를 <code>gradient</code> 인수로 지정해야 합니다.</p>
+<pre><code>
+- Variable 생성
 
-<pre><code>import torch
-from torch.autograd import Variable
+```python
+x = Variable(torch.ones(2, 2), requires_grad=True)
+print(x)
 </code></pre>
-
-<ul>
-<li>Variable 생성</li>
-</ul>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">Variable(torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">ones(</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">requires_grad</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">True)</span>
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(x)</span>
-</pre></div>
 
 <blockquote>
 <p>출력:</p>
@@ -180,10 +163,8 @@ from torch.autograd import Variable
 <ul>
 <li>Variable 연산 수행</li>
 </ul>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">y</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">+</span> <span style="color: #ae81ff">2</span>
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(y)</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">y <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>
+<span style="color:#66d9ef">print</span>(y)</code></pre></div>
 <blockquote>
 <p>출력:</p>
 
@@ -197,9 +178,7 @@ from torch.autograd import Variable
 <ul>
 <li>앞의 연산으로 부터 <code>y</code> 객체가 생성되었습니다. 이 객체의 grad_fn 속성을 다음과 같이 확인할 수 있습니다.</li>
 </ul>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(y</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">grad_fn)</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(y<span style="color:#f92672">.</span>grad_fn)</code></pre></div>
 <blockquote>
 <p>출력:</p>
 
@@ -210,14 +189,12 @@ from torch.autograd import Variable
 <ul>
 <li><code>y</code> 에 추가 연산을 적용합니다.</li>
 </ul>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">z</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">y</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">y</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">3</span>
-<span style="color: #f8f8f2">out</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">z</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">mean()</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">z <span style="color:#f92672">=</span> y <span style="color:#f92672">*</span> y <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>
+out <span style="color:#f92672">=</span> z<span style="color:#f92672">.</span>mean()
 
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(z)</span>
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;---&quot;</span><span style="color: #f92672">*</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">)</span>
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(out)</span>
-</pre></div>
-
+<span style="color:#66d9ef">print</span>(z)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;---&#34;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">5</span>)
+<span style="color:#66d9ef">print</span>(out)</code></pre></div>
 <blockquote>
 <p>출력:</p>
 
@@ -248,12 +225,10 @@ Variable containing:
 </blockquote>
 
 <p>y에 추가 연산을 적용할 수 있습니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">z</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">y</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">y</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">3</span>
-<span style="color: #f8f8f2">out</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">z</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">mean()</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">z <span style="color:#f92672">=</span> y <span style="color:#f92672">*</span> y <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>
+out <span style="color:#f92672">=</span> z<span style="color:#f92672">.</span>mean()
 
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(z,</span> <span style="color: #f8f8f2">out)</span>
-</pre></div>
-
+<span style="color:#66d9ef">print</span>(z, out)</code></pre></div>
 <blockquote>
 <p>출력:</p>
 
@@ -271,9 +246,7 @@ Variable containing:
 <h2 id="gradients">Gradients</h2>
 
 <p>역전파를 해보겠습니다. out.backward()과 out.backward(torch.Tensor([1.0]))은 동일하게 동작합니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">out</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">backward()</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">out<span style="color:#f92672">.</span>backward()</code></pre></div>
 <p>기울기 $ \frac{d(out)}{dx} $를 다음과 같이 출력할 수 있습니다.</p>
 
 <pre><code>print(x.grad)
@@ -304,17 +277,15 @@ Variable containing:
 <li>$ \frac{\partial o}{\partial x_i} \rvert _{x_i=1} = \frac{9}{2} = 4.5 $</li>
 </ul>
 
-<p>자동 기울기 계산(autograd) 기능을 가지고 재미있는 일을 할 수 있습니다. <sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup></p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">randn(</span><span style="color: #ae81ff">3</span><span style="color: #f8f8f2">)</span>
-<span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">Variable(x,</span> <span style="color: #f8f8f2">requires_grad</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">True)</span>
+<p>자동 기울기 계산(autograd) 기능을 가지고 재미있는 일을 할 수 있습니다. <sup class="footnote-ref" id="fnref:2"><a href="#fn:2">1</a></sup></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">3</span>)
+x <span style="color:#f92672">=</span> Variable(x, requires_grad<span style="color:#f92672">=</span>True)
 
-<span style="color: #f8f8f2">y</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">2</span>
-<span style="color: #66d9ef">while</span> <span style="color: #f8f8f2">y</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">data</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">norm()</span> <span style="color: #f92672">&lt;</span> <span style="color: #ae81ff">1000</span><span style="color: #f8f8f2">:</span>
-    <span style="color: #f8f8f2">y</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">y</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">2</span>
+y <span style="color:#f92672">=</span> x <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>
+<span style="color:#66d9ef">while</span> y<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>norm() <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1000</span>:
+    y <span style="color:#f92672">=</span> y <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>
 
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(y)</span>
-</pre></div>
-
+<span style="color:#66d9ef">print</span>(y)</code></pre></div>
 <blockquote>
 <p>출력:</p>
 
@@ -325,12 +296,10 @@ Variable containing:
 [torch.FloatTensor of size 3]
 </code></pre>
 </blockquote>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">gradients</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">FloatTensor([</span><span style="color: #ae81ff">0.1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1.0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.0001</span><span style="color: #f8f8f2">])</span>
-<span style="color: #f8f8f2">y</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">backward(gradients)</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">gradients <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>FloatTensor([<span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">0.0001</span>])
+y<span style="color:#f92672">.</span>backward(gradients)
 
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(x</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">grad)</span>
-</pre></div>
-
+<span style="color:#66d9ef">print</span>(x<span style="color:#f92672">.</span>grad)</code></pre></div>
 <blockquote>
 <p>출력:</p>
 
@@ -361,8 +330,6 @@ Variable containing:
 <hr />
 
 <ol>
-<li id="fn:1">역자주 - Weight와 Bias가 업데이트 되는 단위 Mini-Batch를 의미합니다.
- <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
 <li id="fn:2">역자주 - 첫 번째 예제는 3개의 난수 배열을 만들고 L2 Norm이 1,000이 될 때 까지 y 값을 증가 시키는 코드입니다. 두 번째 예제는 3개의 난 수 배열을 만들고 각 요소의 기울기를 구하는 코드입니다.
  <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
 </ol>
@@ -452,7 +419,6 @@ Variable containing:
 <ul>
 <li>
 <ul>
-<li><a href="#variable">Variable</a></li>
 <li><a href="#gradients">Gradients</a></li>
 <li><a href="#다음에-읽어-볼거리">다음에 읽어 볼거리</a></li>
 <li><a href="#코드-다운로드">코드 다운로드</a></li>
@@ -468,8 +434,8 @@ Variable containing:
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. 자바 라이센스) ">
-							자바의 새로운 도약: OpenJDK(Feat. 자바 라이센스) </a>
+				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. Oracle JDK Subscription) ">
+							자바의 새로운 도약: OpenJDK(Feat. Oracle JD ......</a>
 		  </li>
 			<li class="widget__item">
 				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
@@ -518,7 +484,7 @@ Variable containing:
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
-			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
@@ -596,14 +562,17 @@ Variable containing:
 	});
 </script>
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-72835175-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-72835175-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 

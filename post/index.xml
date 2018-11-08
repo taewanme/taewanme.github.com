@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>자바의 새로운 도약: OpenJDK(Feat. 자바 라이센스) </title>
+      <title>자바의 새로운 도약: OpenJDK(Feat. Oracle JDK Subscription) </title>
       <link>http://taewan.kim/post/openjdk/</link>
       <pubDate>Sat, 20 Oct 2018 09:28:14 +0900</pubDate>
       
@@ -62,7 +62,7 @@ HDP Snadbox 설치 VirtualBox에 HDP Snadbox 설치하는 과정을 소개합니
       <description>Mathjax는 웹 상에서 LaTex를 표현하는 지원하는 자바스크립트 라이브러리 입니다. 일반적으로 웹 페이지에서 LaTex를 표현하는 용도로 많이 사용되는 자바스크립트 라이브러리를 입니다.
 Mathjax 문제점 Mathjax은 거의 모든 LaTex 테그를 잘 표현하지만, \sum 테그를 중첩해서 사용하면 출력을 하지 못하는 문제가 있습니다.
 한 개의 \sum 테그는 문제 없이 렌더링을 잘 수행합니다. 다음 코드는 아래와 같이 렌더링 됩니다.
-$$ \bar x =\underset{x}\arg \min \sum_{i=1}^{n} \left(x -x_i \right) $$   $$ \bar x = \underset{x}\arg \min \sum_{i=1}^{n} \left( x - x_i \right) $$</description>
+$$ \bar x = \underset{x}\arg \min \sum_{i=1}^{n} \left( x - x_i \right) $$  $$ \bar x = \underset{x}\arg \min \sum_{i=1}^{n} \left( x - x_i \right) $$</description>
     </item>
     
     <item>
@@ -163,8 +163,9 @@ Apache Flume 프로젝트는 공식 홈페이지는 https://flume.apache.org/ �
       <guid>http://taewan.kim/post/how_to_process_abnomal_pattern_with_flatmap/</guid>
       <description>스칼라에서 map과 flatMap의 차이점을 파악하고 이해하는 것은 쉽지 않은것 같습니다. 이상 데이터 처리는 두 함수를 차아점을 구분하는 예제로 적합하다고 생가합니다. 이상 데이터 처리 예젤로 두 함수의 의미를 정리하겠습니다.
 스칼라에서 컬렉션을 map함수로 변환시킬 때 어떤 것을 걸러 내야 할 때가 있습니다.
-val x = List(&amp;quot;taewan 45&amp;quot;, &amp;quot;minsu 6&amp;quot;, &amp;quot;sunny 40&amp;quot;) x.map{ v =&amp;gt; val Array(name, age) = v.split(&amp;quot; &amp;quot;) (name, age.toInt) }  위 코드는 다음과 같이 출력됩니다.
- 출력:</description>
+val x = List(&amp;#34;taewan 45&amp;#34;, &amp;#34;minsu 6&amp;#34;, &amp;#34;sunny 40&amp;#34;) x.map{ v =&amp;gt; val Array(name, age) = v.split(&amp;#34; &amp;#34;) (name, age.toInt) } 위 코드는 다음과 같이 출력됩니다.
+ 출력:
+List((taewan,45), (minsu,6), (sunny,40))   이름과 나이가 문자열과 숫자로 구분되는 튜플 리스트를 반환합니다.</description>
     </item>
     
     <item>

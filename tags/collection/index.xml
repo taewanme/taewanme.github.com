@@ -19,8 +19,9 @@
       <guid>http://taewan.kim/post/how_to_process_abnomal_pattern_with_flatmap/</guid>
       <description>스칼라에서 map과 flatMap의 차이점을 파악하고 이해하는 것은 쉽지 않은것 같습니다. 이상 데이터 처리는 두 함수를 차아점을 구분하는 예제로 적합하다고 생가합니다. 이상 데이터 처리 예젤로 두 함수의 의미를 정리하겠습니다.
 스칼라에서 컬렉션을 map함수로 변환시킬 때 어떤 것을 걸러 내야 할 때가 있습니다.
-val x = List(&amp;quot;taewan 45&amp;quot;, &amp;quot;minsu 6&amp;quot;, &amp;quot;sunny 40&amp;quot;) x.map{ v =&amp;gt; val Array(name, age) = v.split(&amp;quot; &amp;quot;) (name, age.toInt) }  위 코드는 다음과 같이 출력됩니다.
- 출력:</description>
+val x = List(&amp;#34;taewan 45&amp;#34;, &amp;#34;minsu 6&amp;#34;, &amp;#34;sunny 40&amp;#34;) x.map{ v =&amp;gt; val Array(name, age) = v.split(&amp;#34; &amp;#34;) (name, age.toInt) } 위 코드는 다음과 같이 출력됩니다.
+ 출력:
+List((taewan,45), (minsu,6), (sunny,40))   이름과 나이가 문자열과 숫자로 구분되는 튜플 리스트를 반환합니다.</description>
     </item>
     
   </channel>

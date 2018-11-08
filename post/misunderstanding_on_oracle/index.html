@@ -11,27 +11,12 @@
 
 <title>&#39;오라클은 Java EE를 떠넘기려한다&#39; 기사의 팩트 체크</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.25.1" />
+<meta name="generator" content="Hugo 0.48" />
 <meta property="og:title" content="&#39;오라클은 Java EE를 떠넘기려한다&#39; 기사의 팩트 체크" />
 <meta property="og:description" content="Itworld의 &#39;오라클, 더 이상 자바 EE를 이끌 생각 없다&#39; 기사는 Infoworld에서 쓴 &#39;Oracle doesn&#39;t want Java EE any more&#39;를 번역한 기사입니다. InfoWorld 영문 기사는 오라클의 취지를 잘못 소개한 기사일 가능성이 큽니다. 오라클은 InfoWorld 기사가 발표되기 전에 오라클은 공식 블로그를 통해서 Java EE 경쟁력 강화를 위해서 오라클 리더쉽을 내려놓고 오픈소스 재단과 협력하고 오픈소스 주도의 새로운 Java EE 개발 프로세스(JCP) 개선안에 대하여 논의할 것이라는 취지를 발표했습니다. 오리혀 Java EE 경쟁력 강화를 위해서 오라클의 리더쉽을 내려놓고 오픈진영 주도의 Java EE 개발 체계로 개편해야 한다는 발표는 오픈 진영 및 자바 개발자들에게는 매우 반가운 소식입니다. 추가로 오라클은 오픈 진영 중심의 Java EE 개발에 오라클은 계속 적극적으로 참여할 것이고, 참조 구현체 개발과 WebLogic을 지원할 계속할 것임을 밝혔습니다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/post/misunderstanding_on_oracle/" />
-
-
-
-<meta property="article:published_time" content="2017-09-03T08:54:32&#43;09:00"/>
+<meta property="og:url" content="http://taewan.kim/post/misunderstanding_on_oracle/" /><meta property="article:published_time" content="2017-09-03T08:54:32&#43;09:00"/>
 <meta property="article:modified_time" content="2017-09-03T08:54:32&#43;09:00"/>
-
-
-
-
-
-
-
-
-
-
-
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
@@ -132,7 +117,7 @@
 			</figure>
 			
 
-<p>2017년 08월 18일에 &ldquo;<strong>Itworld</strong>&ldquo;에서 <a href="http://www.itworld.co.kr/news/106037">&ldquo;오라클, 더 이상 자바 EE를 이끌 생각 없다&rdquo;</a>라는 기사가 공개되었습니다.<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup> 기사의 내용을 요약하면 다음과 같습니다.</p>
+<p>2017년 08월 18일에 &ldquo;<strong>Itworld</strong>&ldquo;에서 <a href="http://www.itworld.co.kr/news/106037">&ldquo;오라클, 더 이상 자바 EE를 이끌 생각 없다&rdquo;</a>라는 기사가 공개되었습니다.<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> 기사의 내용을 요약하면 다음과 같습니다.</p>
 
 <ul>
 <li>오라클은 엔터프라이즈 자바 개발에서 리더십을 내려놓기를 원하며 이를 맡아줄 오픈소스 재단을 찾고 있다.</li>
@@ -292,7 +277,7 @@
 <li>오라클은 지속해서 Java EE 개발에 참여할 것이고 적극적으로 지원할 것이다.</li>
 </ul>
 
-<p>이 포스트에서 오라클은 Java EE에서 오라클의 주도권을 내려놓고 기존에 효율성이 떨어지는 JCP(java community process)<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup>를 개선하려 한다는 내용입니다. Java EE 개발의 효율성과 민첩성을 높이려는 의도입니다. 오픈소스 진영 혹은 다른 플랫폼에 비교하여 산업계의 변화에 민첩하게 대응하기 위한 목적입니다.</p>
+<p>이 포스트에서 오라클은 Java EE에서 오라클의 주도권을 내려놓고 기존에 효율성이 떨어지는 JCP(java community process)<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>를 개선하려 한다는 내용입니다. Java EE 개발의 효율성과 민첩성을 높이려는 의도입니다. 오픈소스 진영 혹은 다른 플랫폼에 비교하여 산업계의 변화에 민첩하게 대응하기 위한 목적입니다.</p>
 
 <h2 id="배경-설명-java-ee">배경 설명: Java EE</h2>
 
@@ -300,7 +285,7 @@
 
 <p>문제는 Java EE에 참여하는 기업이나 오픈소스 커뮤니티의 이해관계가 달라서 스펙 정의 단계가 너무 오래 걸린다는 것입니다. 또한, 2000년대 중후반까지는 벤더(Oracle, Sun, IBM, BEA, HP)가 기술을 주도하는 시기였습니다. Java EE와 같은 스펙이 정의되면, 정의에 따라서 기업 및 오픈소스가 움직이는 형태였습니다. 이것이 Java EE 5부터 역전됩니다. 오픈소스에서 검증된 기술이 Java EE 스펙에 들어오는 형태가 됩니다. 그리고 Java EE 스펙이 정해지면 이 스펙이 오픈소스에 다시 적용되는 선순환 관계가 형성됩니다. 대표적인 사례가 SpringFramework과 Hibernate입니다.</p>
 
-<p>JCP의 스펙 제정 단계는 여러 이해당사자의 합의 도출 과정이 오래 결리는 문제점을 안고 있습니다. 결과적으로 Java EE가 오픈소스의 발전 속도를 따라가지 못하는 원인이 되었습니다. Standardization(표준화)의 가치가 중요한 시대에는 이 문제는 업계에서 받아들일 수 밖에 없는 사항이었습니다. Standardization(표준화)의 시대가 저물고 Optimization(최적화)이 중요한 가치로 부각된 시대에는 JCP의 비효율성은 치명적인 단점이 됩니다. 또한 Java가 20살이 넘어가면서<sup class="footnote-ref" id="fnref:3"><a rel="footnote" href="#fn:3">3</a></sup> 최근에 태어난 Modern Language의 개념과 발전 속도를 못 따라가고 있습니다.<sup class="footnote-ref" id="fnref:4"><a rel="footnote" href="#fn:4">4</a></sup></p>
+<p>JCP의 스펙 제정 단계는 여러 이해당사자의 합의 도출 과정이 오래 결리는 문제점을 안고 있습니다. 결과적으로 Java EE가 오픈소스의 발전 속도를 따라가지 못하는 원인이 되었습니다. Standardization(표준화)의 가치가 중요한 시대에는 이 문제는 업계에서 받아들일 수 밖에 없는 사항이었습니다. Standardization(표준화)의 시대가 저물고 Optimization(최적화)이 중요한 가치로 부각된 시대에는 JCP의 비효율성은 치명적인 단점이 됩니다. 또한 Java가 20살이 넘어가면서<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup> 최근에 태어난 Modern Language의 개념과 발전 속도를 못 따라가고 있습니다.<sup class="footnote-ref" id="fnref:4"><a href="#fn:4">4</a></sup></p>
 
 <p>산업계는 발전 속도가 떨어지는 Java EE에 대하여, 비효율적이고, Old Style이며, 무겁고 다루기 힘들다는 Legacy 이미지를 적용하기 시작했습니다.</p>
 
@@ -477,8 +462,8 @@ Java EE를 위한 중대한 결심을 했다는 것이 더 맞습니다.
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. 자바 라이센스) ">
-							자바의 새로운 도약: OpenJDK(Feat. 자바 라이센스) </a>
+				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. Oracle JDK Subscription) ">
+							자바의 새로운 도약: OpenJDK(Feat. Oracle JD ......</a>
 		  </li>
 			<li class="widget__item">
 				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
@@ -527,7 +512,7 @@ Java EE를 위한 중대한 결심을 했다는 것이 더 맞습니다.
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
-			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
@@ -605,14 +590,17 @@ Java EE를 위한 중대한 결심을 했다는 것이 더 맞습니다.
 	});
 </script>
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-72835175-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-72835175-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 

@@ -11,27 +11,12 @@
 
 <title>Autograd: 미분 자동화</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.25.1" />
+<meta name="generator" content="Hugo 0.48" />
 <meta property="og:title" content="Autograd: 미분 자동화" />
 <meta property="og:description" content="&#39;" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/torchtrans/tutorial/blits/autograd/" />
-
-
-
-<meta property="article:published_time" content="2018-03-18T03:05:14&#43;09:00"/>
+<meta property="og:url" content="http://taewan.kim/torchtrans/tutorial/blits/autograd/" /><meta property="article:published_time" content="2018-03-18T03:05:14&#43;09:00"/>
 <meta property="article:modified_time" content="2018-03-18T03:05:14&#43;09:00"/>
-
-
-
-
-
-
-
-
-
-
-
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
 <link rel="stylesheet" href="http://taewan.kim/css/jupyter.css" type="text/css" media="all" />
@@ -123,32 +108,28 @@
 		</header>
 
 		<div class="post__content clearfix">
-			
-
-<ul>
+			<ul>
 <li>원문: <a href="http://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html">http://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html</a></li>
 <li>원문 제목: Autograd: automatic differentiation?</li>
 </ul>
 
 <p>PyTorch의 모든 신경 네트워크의 중심에는 autograd 패키지가 있습니다. 먼저 autograd에 대하여 간략히 살펴 보겠습니다. 그러나서 첫 번째 신경망을 훈련해 볼 것 입니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-autograd``` 패키지는 오든 텐서 연산에 대해 미분 자동화 기능을 제공합니다. 실행 정의(define-by-run) 프레임웍입니다. 실행 정의란 역전파는 코드가 실행되는 방식에 이해 정이됨을 의미합니다. 모든 반복마다 달라질 수 있습니다." data-lang="autograd``` 패키지는 오든 텐서 연산에 대해 미분 자동화 기능을 제공합니다. 실행 정의(define-by-run) 프레임웍입니다. 실행 정의란 역전파는 코드가 실행되는 방식에 이해 정이됨을 의미합니다. 모든 반복마다 달라질 수 있습니다.">몇 가지 예로 좀 더 간단한 용어를 살펴보겠습니다.
 
-<p><code>autograd</code> 패키지는 오든 텐서 연산에 대해 미분 자동화 기능을 제공합니다. 실행 정의(define-by-run) 프레임웍입니다. 실행 정의란 역전파는 코드가 실행되는 방식에 이해 정이됨을 의미합니다. 모든 반복마다 달라질 수 있습니다.</p>
+## Variable
+## Gradients
 
-<p>몇 가지 예로 좀 더 간단한 용어를 살펴보겠습니다.</p>
 
-<h2 id="variable">Variable</h2>
 
-<h2 id="gradients">Gradients</h2>
+### NumPy 배열을 Torch 텐서로 변환
 
-<h3 id="numpy-배열을-torch-텐서로-변환">NumPy 배열을 Torch 텐서로 변환</h3>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">import</span> <span style="color: #f8f8f2">numpy</span> <span style="color: #f92672">as</span> <span style="color: #f8f8f2">np</span>
-<span style="color: #f8f8f2">a</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">np</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">ones(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">)</span>
-<span style="color: #f8f8f2">b</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">from_numpy(a)</span>
-<span style="color: #f8f8f2">np</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add(a,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">out</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">a)</span>
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(a)</span>
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(b)</span>
-</pre></div>
-
+```Python
+import numpy as np
+a = np.ones(5)
+b = torch.from_numpy(a)
+np.add(a, 1, out=a)
+print(a)
+print(b)</code></pre></div>
 <blockquote>
 <p>출력:</p>
 
@@ -251,23 +232,6 @@
 
 
 	
-<div class="widget-categories widget">
-	<h4 class="widget__title">ToC (목차)</h4>
-	<div class="widget__content">
-	<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#variable">Variable</a></li>
-<li><a href="#gradients">Gradients</a>
-<ul>
-<li><a href="#numpy-배열을-torch-텐서로-변환">NumPy 배열을 Torch 텐서로 변환</a></li>
-</ul></li>
-</ul></li>
-</ul>
-</nav>
-  </div>
-</div>
 
 	
 <div class="widget-recent widget">
@@ -275,8 +239,8 @@
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. 자바 라이센스) ">
-							자바의 새로운 도약: OpenJDK(Feat. 자바 라이센스) </a>
+				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. Oracle JDK Subscription) ">
+							자바의 새로운 도약: OpenJDK(Feat. Oracle JD ......</a>
 		  </li>
 			<li class="widget__item">
 				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
@@ -325,7 +289,7 @@
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
-			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.Oracle.Com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
@@ -403,14 +367,17 @@
 	});
 </script>
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-72835175-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-72835175-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 
