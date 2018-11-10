@@ -6,10 +6,22 @@
     <description>Recent content on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Oct 2018 09:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 10 Nov 2018 17:00:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SQLDeveloper 오류: Locale not recoginized</title>
+      <link>http://taewan.kim/tip/sqldeveloper_error_unrecog_locale/</link>
+      <pubDate>Sat, 10 Nov 2018 17:00:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tip/sqldeveloper_error_unrecog_locale/</guid>
+      <description>오라클의 SQL 툴인 SQLDeveloper를 맥에서 사용할 때, Locale을 인식하지 못하는 에러가 발생할 수 있습니다. 이런 오류는 데이터베이스 커넥션 테스트 과정에서 주로 발생합니다. 특히 OSX를 버전 업그레이드한 다음에 빈번하게 발생합니다.
+SQLDeveloper에서 Java Local를 인식하지 못하는 문제가 발생할 경우 해결하는 방법을 정리합니다.
+ - SQLDeveloper이 커넥션 테스트 오류 (OS: OSX, SQLDeveloper 버전: 18.2.0.183)
+ 위 그림은 SQLDeveloper를 실행한 후, 오라클 데이터베이스 접속 설정 후, 접속 테스트를 진행할 때 발생한 오류입니다. 에러가 발생한 실행 환경은 다음과 같습니다.</description>
+    </item>
     
     <item>
       <title>자바의 새로운 도약: OpenJDK(Feat. Oracle JDK Subscription) </title>
