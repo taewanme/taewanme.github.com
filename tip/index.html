@@ -16,7 +16,7 @@
 <meta property="og:description" content="taewan.kim" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://taewan.kim/tip/" />
-<meta property="og:updated_time" content="2018-11-10T17:00:14&#43;09:00"/>
+<meta property="og:updated_time" content="2018-11-11T09:00:14&#43;09:00"/>
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 <link rel="alternate" type="application/rss+xml" title="taewan.kim 블로그 Feed" href="http://taewan.kim/tip/index.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
@@ -87,6 +87,29 @@
         
 	<hr/>	
 	<div class="main-content loop content" role="main">
+		<article class="loop__item post clearfix">
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/tip/oracle_sample_schema/" rel="bookmark">Oracle Datatbase의 HR, OE, SH 스키마의 ERD</a>
+					</h3>
+					<div class="loop__meta meta">
+						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+						<time class="loop__meta-date" datetime="2018-11-11 09:00:14 &#43;0900 KST">November 11, 2018</time>
+					</div>
+				</header>
+				<div class="loop__excerpt">
+										 Oracle Database는 데모용 스키마로 HR, OE 및 SH를 제공합니다.
+이 데모 스키마는 다음과 같은 의미를 갖습니다.
+ HR: Human Resources OE: Order Entry SH: Sales History  각 스키마의 erd는 다음과 같습니다.
+HR ERD   SH ERD   OE ERD   
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/oracle/" rel="tag">oracle</a></li>
+						<a class="label" href="/tags/erd/" rel="tag">ERD</a></li>
+				</div>
+			</div>
+		</article>
 		<article class="loop__item post clearfix">
 			<div class="loop__content clearfix">
 				<header class="loop__header">
@@ -364,28 +387,6 @@ Oracle Cloud: IaaS  Compute Classic: 기능 업데이트 목록  Container Cloud
  원하는 프로세스 목록만 가져오기 - ps, grep, pgrep(ps&#43;grep) 프로세스 목록에서 pid만 가져오기 - awk kill 명령어로 한번에 프로세스 종료 - ``(backtick)  backtick은 다음 그림과 같은 위치의 문자를 의미합니다 ......
 				</div>
 				<div class="loop__excerpt">
-				</div>
-			</div>
-		</article>
-		<article class="loop__item post clearfix">
-			<div class="loop__content clearfix">
-				<header class="loop__header">
-					<h3 class="loop__title post__title ">
-						<a href="http://taewan.kim/tip/python_pickle/" rel="bookmark">파이썬 팁: pickle 모듈로 객체 저장</a>
-					</h3>
-					<div class="loop__meta meta">
-						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-						<time class="loop__meta-date" datetime="2016-01-02 10:50:36 &#43;0900 KST">January 02, 2016</time>
-					</div>
-				</header>
-				<div class="loop__excerpt">
-									  pickle 모듈은 파이썬 객체를 파일로 저장하고 로딩하는 기능을 제공합니다.
-pickle 모델 함수  dump(object, file, protocol) load(file)  파이썬 객체 저장 파이썬 객체 저장시 pickle 모듈이 dump 함수를 사용합니다.
-import pickle list = [1, 2, 3, 4, 5] with open(&#39;list.pkl&#39;, &#39;wb&#39;) as f: pickle.dump(l, f)   $ ls -al *.p ......
-				</div>
-				<div class="loop__excerpt">
-						<a class="label" href="/tags/python/" rel="tag">python</a></li>
-						<a class="label" href="/tags/pickle/" rel="tag">pickle</a></li>
 				</div>
 			</div>
 		</article>

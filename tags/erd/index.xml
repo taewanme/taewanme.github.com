@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Erd on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/erd/</link>
+    <description>Recent content in Erd on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 11 Nov 2018 09:00:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/erd/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Oracle Datatbase의 HR, OE, SH 스키마의 ERD</title>
+      <link>http://taewan.kim/tip/oracle_sample_schema/</link>
+      <pubDate>Sun, 11 Nov 2018 09:00:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tip/oracle_sample_schema/</guid>
+      <description> Oracle Database는 데모용 스키마로 HR, OE 및 SH를 제공합니다.
+이 데모 스키마는 다음과 같은 의미를 갖습니다.
+ HR: Human Resources OE: Order Entry SH: Sales History  각 스키마의 erd는 다음과 같습니다.
+HR ERD   SH ERD   OE ERD   </description>
+    </item>
+    
+  </channel>
+</rss>
