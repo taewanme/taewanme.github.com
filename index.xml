@@ -1481,7 +1481,8 @@ numpy의 sum 함수 사용 예 다음 코드는 3차원 배열을 만들고, 3�
       <pubDate>Wed, 06 Sep 2017 10:50:36 +0900</pubDate>
       
       <guid>http://taewan.kim/extra/java_updates/</guid>
-      <description>Oracle Java SE 8 업데이트 개요    Update 버전 #Big Fixes #Security Fixes Security Baseline 릴리즈 일자 로드맵 상태 공식 페이지 링크     Java SE 8u5 11 37 1.8.0_5 2014.4.15 Public Update Release NoteBug Fixes PageSecurity Fixes   Java SE 8u11 15 20 1.8.0_11 2014.7.15 Public Update Release NoteBug Fixes PageSecurity Fixes   Java SE 8u20 668 0 1.8.0_11 2014.8.19 Public Update Release NoteBug Fixes Page   Java SE 8u25 10 25 1.</description>
+      <description>Oracle Java SE의 버전별 업데이트 버전의 버그 수정과 보안 패치와 링크를 정리합니다.
+Oracle Java SE 8 업데이트 개요    Update 버전 #Big Fixes #Security Fixes Security Baseline 릴리즈 일자 로드맵 상태 공식 페이지 링크     Java SE 8u5 11 37 1.8.0_5 2014.4.15 Public Update Release NoteBug Fixes PageSecurity Fixes   Java SE 8u11 15 20 1.8.0_11 2014.7.15 Public Update Release NoteBug Fixes PageSecurity Fixes   Java SE 8u20 668 0 1.</description>
     </item>
     
     <item>
