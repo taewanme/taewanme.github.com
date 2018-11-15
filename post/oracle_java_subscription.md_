@@ -1,0 +1,283 @@
++++
+date = "2017-11-14T09:28:14+09:00"
+description = "2019년 1월에 적용되는 Oracle Java Subscription을 정리합니다."
+title = "Oracle Java SE Subscription"
+thumbnailInList = "https://taewanmerepo.github.io/2018/11/oraclejdk/list.jpg"
+thumbnailInPost = ""
+tags = ["oracle JDK", "Subscription"]
+categories = ["java"]
+author = "taewan.kim"
+language = ""  
+jupyter = "false"
+adsense = "true"
+autoadsense = "true"
++++
+
+2019년 1월 부터 Oracle Java SE Subscription이 시작됩니다. 실무에서 Oracle Java SE(이하 Oracke Java)를 사용하시는 분들에게 2019년 01월 부터 기존에 사용하는 JDK를 사용하지 못하는지, 기존에 사용하는 Oracle JDK를 계속 사용하기 위해서는 Oracle Java SE Subscription를 바로 체결 해야 하는가에 대한 질문을 자주 받습니다. 
+
+- 기존에 사용하던 Oracle Java를 사용하지 못하는 것인가?
+- 개발자 컴퓨터도 Oracle Java SE Subscription이 적용되는가?
+- Oracle Java를 사용하는 빌드 및 개발 서버도 Oracle Java SE Subscription이 적용되는가?
+- 오라클 솔루션에 포함된 Oracle Java를 다른 자바 프로그램이 사용하는 것이 가능한가?
+
+최근에 자주 하시는 질문을 중심으로 "Oracle Java SE Subscription"에 대하여 정리하겠습니다. 이 글은 Web 상에 공개된 문서를 기준으로 작성되었음을 미리 말씀 드립니다. 
+
+## 이건 포스트 회고
+
+이전 문서인 "[자바의 새로운 도약: OpenJDK](./openjdk/)"를 통해서 많은 호응도 받았고, 따금한 질책도 받았습니다. "[자바의 새로운 도약: OpenJDK](./openjdk/)"는 제가 생각하는 "Oracle Java SE Subscription"에 담긴 의미를 전달하고 싶다는 취지로 작성된 글이이었습니다. 이 글 중에 "자바는 더이상 공짜가 아닙니다."라는 문구가 문제가 되었습니다. "더 이상 공짜가 아니다."라는 의미는 앞으로 자바를 사용할 때, 여러가지 형태의 상용 서비스를 받을 수도 있고, 무상 지원을 받을 수 있지만, 계속 무상으로 사용하기 위해서는 추가적인 노력이 필요하다는 점을 강조한 문장이었습니다. 이 문장이 제 의도와 다르게 전달되어 의문과 논란을 만들었습니다. 독자의 주안점과 입장에 따라서 기본 취지가 다르게 전달 될 수 있다는 것을 절실하게 느겼습니다.
+
+이 표현에 오해가 있었다면, 양해 말씀을 먼저 드리고 제 취지에 대하여 이해를 부탁드리겠습니다. 앞으로 제 을 더 명확하게 전달하도록 노력하겠습니다.  
+
+## Oracle JDK의 서포트 로드맵과 관련 용어
+
+본론으로 들어가기 전에 Oracle Java 서포트 로드맵에서는 사용하는 용어를 먼저 알아보고, Oracle Java 서포트 로드맵을 일정을 살펴보겠습니다. 본문의 내용은 여기서 다루는 용어와 Oracle Java 서포트 로드맵을 기준으로 진행하겠습니다. Oracle Java 서포트 로드맵에서 사용하는 주요 용어는 다음과 같습니다. 
+
+- GA Date: Oracle Java 해당 버전 출시일
+- Oracle Java-Public Update 
+    - OTN(Oracle Technology Network)에 배포되는 Oracle Java 공개 버전
+- End of Public Update(􏰆􏰐EoPU)
+    - Oracle Java-Public Update의 공개 업데이트 종료일
+- Premier Support
+    - Oracle Java의 유상 기술 지원 서비스 
+    - 24X7 기술 지원 (My Support Oracle)
+    - 해당 버전의 "End of Public Update" 이 후에 Premier Support 기간까지 Oracle Java의 얻데이트 계속 제공
+- Premier Support End
+    - Premier Support 서비스의 종료일. 
+- Extend Support 서비스 
+    - Premier Support 서비스 종료 후 3년간 추가 기술 지원을 유지하는 서비스
+    - 24X7 기술 지원 (My Support Oracle)
+    - 해당 버전의 "Premier Support End" 이 후 3년간 Oracle JDK의 얻데이트는 계속 제공   
+- Extended Support End
+    - Extend Support 서비스의 종료일
+- LTS: Long Term Support
+    - 춮시 후 8년간 보안 업데이트와 버그 수정 지원
+
+이러한 용어를 기준으로 Oracle JDK의 서포트 로드맵은 다음과 같이 관리됩니다.
+
+> |Release|GA Date|End of Public Update|Premier Support End|Extended Support End|
+|----|----|----|----|----|
+|Java 5|2004.05|2009.10|2011.05|2015.05|
+|Java 6|2006.11|2013.02|2015.12|2018.12|
+|Java 7|2011.06|2015.04|2019.01|2022.07|
+|Java 8|2014.03|2019.01|2022.03|2025.03|
+|Java 9(non-LTS)|2017.09|2018.03|2018.03|N/A|
+|Java 10(18.3, non-LTS)|2018.03|2018.09|2018.09|N/A|
+|Java 11(18.9, LTS)|2018.09|N/A|2023.09|2026.09|
+
+> - 출처
+      - http://www.oracle.com/us/assets/lifetime-support-middleware-069163.pdf
+      - https://www.oracle.com/technetwork/java/javase/overview/eol-135779.html
+
+
+## Oracle Java Subscription 
+
+Oracle Java Subscription은 __End of Public Update(이하 EoPU)가 끝난 Oracle JDK를 대상으로 최신 업데이트 버전을 다운로드 받아 사용하는 권리, 자바 기술 지원(7x24, My Support Oracle) 및 자바 상용 툴(Mission Control, ava Flight Recorder 등)의 사용 권한으로 구성됩니다. 
+
+앞에서 정리한 Oracle JDK 서포트 로드맵에 따르면 2019년 1월을 기준으로 java 6는 __Extended Support End__까지도 종료됩니다. 따라서 오라클은 Java 6에 대한 업데이트와 기술 지원을 더 이상 제공하지 않는다고 볼 수 있습니다. 또한 Java 9과 Java 10의 경우 LTS 지원 버전이 아니며, 공식적으로 2018년 3월과 9월로 지원이 종료됩니다. 
+
+결과적으로 2019년 1월 시행되는 Oracle Java Subscription의 대상 Oracle JDK 버전은 __EoPU__가 끝나고 __Premier Support End__가 되지 않은 버전이 대상이 됩니다. 즉 Oracle Java Subscription의 대상 버전은 Oracle JDK 7, 8 과 11만이 해당 됩니다. 
+
+이 내용을 종합하면 2019년 1월 부터 시행되는 Oracle Java Subscription은 java 7, 8 및 11에 대하여 __EoPU__가 끝난 이후에 발표된 Oracle JDK의 업데이트 릴리즈를 다운로드, 사용 및 기술 지원을 받는 서비스 모델입니다.  
+
+### Subscription 모델 가격 테이블
+
+웹 상에 공개된 Oracle Java SE Subscription 가격은 다음과 같습니다.
+
+> ![](https://taewanmerepo.github.io/2018/11/oraclejdk/010.jpg)
+
+> - 출처: https://www.oracle.com/assets/java-se-subscription-pricelist-5028356.pdf
+
+데스트 탑과 서버로 나눠지며, 데스트 탑은 사용자 수 단위이고 서버는 프로세스(core) 단위로 가격이 책정되어 있습니다. 위에서 책정된 가격은 월단위 가격이며 단위는 달러입니다. 수량에 따라서 사용량이 많을 경우 가격은 50%까지 내려갑니다. 또한 이 라이센스는 컴퓨터의 cpu가 x86일 경우 Core Factor 0.5가 적용됩니다. 여기서 Core Factor는 CPU 유형에 따라서 기존 라이센스 비용에 적용되는 비율입니다. 컴퓨터가 x86 프로세스를 사용할 경우 Oracle Java SE Subscription 가격은 50% 할인됩니다.
+
+> ![](https://taewanmerepo.github.io/2018/11/oraclejdk/020.jpg)
+
+> - x86의 core factor
+
+> - 출처: http://www.oracle.com/assets/processor-core-factor-table-070634.pdf
+
+
+예를 들어서 8 core 서버를 운영할 경우 1년 Oracle Java SE Subscription 모델의 공식 가격은 다음과 같습니다. 
+
+|Oracle Java SE Subscription 가격 예시: 8 core x86 CPU 서버 1년 구독 금액 |
+|----|
+|<font size=4>$$8 core * $25/core/month * 12month * 0.5 = $1,200$$</font>|
+
+## 개발 컴퓨터도 Subscription 모델 대상?
+
+Oracle Java SE Subscription가 발표되었을 때 가장 많은 질문은 자바 개발자 컴퓨터도 Subscription 대상이 되는가에 대한 질문입니다. 가격 모델의 첫 부분에 "Java SE Desktop Subscription"이 나와 있다보니 이 문제가 더 크게 느껴지는 것 같습니다. 
+
+결론 부터 말씀 드리면 개발자 PC의 경우 Oracle Java SE Subscription 적용 여부는 선택사항입니다. 기본적으로 개발자 PC는 Oracle Java SE Subscription을 구독하지 않아도 됩니다. 다만 비지니스적인 이유로 전문적인 기술 지원을 받아야하는 상황이라면 Oracle Java SE Subscription을 적용할 수 있습니다.[^1] 
+
+[^1]: 데스크탑 컴퓨터에서 JRE로 특정 애플리케이션을 구동하여 실제 업무를 수행하는 일부 금융권의 경우에 Oracle Java SE Desktop Subscription을 고려하는 곳이 있다고 합니다.
+
+개발자 컴퓨터는 __Oracle Java SE Subscription__의 대상이 아리라는 근거는 OTN에 공개되어 있는 OTN 자바 라이센스 전문에서 찾을 수 있습니다.  다음은 OTN 자바 라이센스 전문에 있는 "License Rights and Restrictions" 절의 내용입니다. 
+
+> ![](https://taewanmerepo.github.io/2018/11/oraclejdk/030.jpg)
+> ![](https://taewanmerepo.github.io/2018/11/oraclejdk/040.jpg)
+> 출처: https://www.oracle.com/technetwork/java/javase/terms/license/javase-license.html
+
+이 내용을 보면 "개발, 시험, 프로토 타이핑 및 증명을 목적으로 사용하는 경우 라이센스를 부여함"으로 되어 있습니다. 따라서 운영 서버가 아닌 개발자 컴퓨터, 테스트 서버, 빌드 서버(Jenkinse)와 같은 개발 관련 컴퓨터에 Subscription 적용은 선택 사항입니다. 기본적으로 Subscription을 적용하지 않아도 됩니다. 물론 꼭 기술 지원을 받고자 한다면 Subscription를 계약할 수 있습니다.
+
+
+## 기존 Oracle JDK를 계속 사용할 수 있는가?
+
+> <font size=4>
+> 현재 사용하는 Oracle JDK를 2019년 1월에 사용하는 것이 가능한가요?
+</font>
+
+서버 운영의 철칙중에 하나는 "잘 동작하는 시스템 건드리지 말라!"입니다. 대다수의 자바 실무 담당자는 "현재 상대 그대로 있어도 문제가 되지 않는다"라는 말을 기대하실 것 같습니다. 
+
+현재 시스템이 사용하고 있는 Oracle JDK는 __EoPU__ 이전에 OTN 사이트(oracle.com)에서 다운로드 받은 공개 버전이라면, 현재 상태 그대로 유지해도 문제가 되지 않습니다. 현재 사용중인 공개 버전 Oracle JDK를 2019년도에 계속 사용한다고 해서 라이센스에 문제가 되지 않습니다. 
+
+물론 안정적으로 버그 패치와 보안 업데이트를 받기 위해서는 현재 기술 지원이 가능한 자바 버전으로 업그레이드하는 것을 권고하지만, 현실에서는 2011년에 Premier Support End되고 2015년에 Extended Support End까지도 끝난 Oracle JDK5를 현재 사용하고 있는 사이트가 많습니다. 이런 시스템을 Java 7혹은 Java 8으로 업그레이드하는 것은 악몽일것 같습니다. 라이센스 적으로 이런 사이트가 계속 공개 버전의 기존 Oracle JDK를 사용하는 것은 라이센스 축면에서 문제는 없습니다. (물론 리스크 적인 측면은 문제가 있겠죠^^)
+
+### 현재 사용하는 Oracle JDK가 공개 버전임을 확인하는 방법?
+
+"[오라클 자바 아카이브 페이지](https://www.oracle.com/technetwork/java/javase/archive-139210.html)"에서는 Oracle JDK 1.1 부터  11까지 오라클이 공개한 모든 버전을 확인할 수 있습니다. 
+
+> ![](https://taewanmerepo.github.io/2018/11/oraclejdk/050.jpg)
+
+> - Java Archive 다운로드 페이지 (https://www.oracle.com/technetwork/java/javase/archive-139210.html)
+
+이 페이지에서 Oracle Java SE 7과 8의 공개 버전 목록은 다음과 같습니다.
+
+> ![](https://taewanmerepo.github.io/2018/11/oraclejdk/070.jpg)
+> - Oracle Java SE 공개 업데이트 버전 목록
+
+현재 사용 중인 자바의 버전은 ```Java --version``` 명력으로 확인할 수 있습니다. 아래에서 Java의 버전은 1.8.0이고 업데이트 번호는 161임을 확인할 수 있습니다. 이 버전은 위 Oracle Java SE 공개 업데이트 버전 목록에 포함되어 있으므로 공개 버전임을 확인할 수 있습니다. 
+
+> ![](https://taewanmerepo.github.io/2018/11/oraclejdk/090.jpg)
+> - Oracle Java SE의 버전 확인 명령
+
+Java Archive 다운로드 페이지에서 확인할 수 있는 공개 자바 버전 목록과 현재 사용중인 Oracle Java SE의 버전을 확인하여, 현재 사용중인 Java SE의 공개 버전인지를 확인할 수 있습니다.
+
+앞에서 강조한 것 처럼, 현재 사용중인 Oracle Java가 공개 버전이라면 앞으로 계속 사용하는 것은 라이센스 입장에서 문제는 없습니다. 
+
+### Oracle Java 업데이트에서 수정되는 버그가 많은가?
+
+기존에 오라클이 공개한 Oracle Java를 계속 사용하는 것은 라이센스 입장에서는 문제가 되지 않지만, 안전한 보안 패치와 버그 수정을 위해서는 최신 업데이트 버전을 사용하는 것이 권고하고 있습니다. 
+
+그러데 실제 Oracle Java의 업데이트는 얼마나 빈번하게 일어날까요? 그리고 각 업데이트에는 무엇이 업데이트 된다는 것일까요? 위 Oracle Java의 공개 업데이트 목록에서 Oava Java 7의 공개버전 마지막 업데이트는 2015년 7월 14일에 공개된 업데이트 80번(JDK 7u80)[^2]입니다. Oracle Java 7은 현재 Premium Support 상태에 있으며, 가장 최근에 발표된 업데이트 버전은 2018년 10월 18일에 릴리즈된 업데이트 201번입니다.(JDK 7u201) [^3]
+
+[^3]: Java SE 7의 Premimum Support 업데이트 버전 정보는 "Java SE 7 Advanced and Java SE 7 Support Release Notes" 페이지에서 확인할 수 있습니다. [페이지 링크](https://www.oracle.com/technetwork/java/javase/documentation/javase7supportreleasenotes-1601161.html)
+
+
+> ![](https://taewanmerepo.github.io/2018/11/oraclejdk/110.jpg)
+
+> - Oracle Java 7의 마지막 업데이트
+
+> - 출처: https://www.oracle.com/technetwork/java/javase/documentation/javase7supportreleasenotes-1601161.html
+
+Oracle Java의 업데이트 빈도와 버그 수정 상태를 조사해 보았습니다. 
+
+#### Oracle Java 8의 업데이트
+
+Oracle Java 8의 경우 현재 Public Update 기간입니다. EoPU는 2019년 01로 종료됩니다. 2014년 7월 이후 현재까지 52개월 동안 총 34번의 업데이트가 공개되었습니다. 34번의 업데이트에서 총 2860개의 버그가 수정되었습니다. 1.5개월 주기로 Oracle Java 업데이트가 공개되었고, 업데이트 마다 약 100개의 버그가 수정되었습니다. 
+
+>|업데이트 버전|버그 수정 갯수|공개 일자|
+|-----|-----|-----|
+|Oracle Java 8u192|	55 |2018.10 |
+|Oracle Java 8u191|	31 |2018.10 |	
+|Oracle Java 8u181|	32 |2018.07 |	
+|Oracle Java 8u172|	36 |2018.04 |	
+|Oracle Java 8u171|	32 |2018.04 |	
+|Oracle Java 8u162|	64 |2018.01 |	
+|Oracle Java 8u161|	14 |2018.01 |	
+|Oracle Java 8u152|	239 |2017.10 |	
+|Oracle Java 8u151|	24 |2017.10 |	
+|Oracle Java 8u144|	1 |	2018.10 |
+|Oracle Java 8u141|	12 | 2017.07 |	
+|Oracle Java 8u131|	42 | 2017.04 |
+|Oracle Java 8u121|	12 | 2017.01|
+> - 2017년 이후 Oracle Java 8 업데이트 정보
+
+#### Oracle Java 7 업데이트: Premium Support 기간
+
+현재 Oracle Java 7는 Public Update가 종료되고, 2015년 01월 부터 지금까지 Premimum Support 기간입니다. 2015년 01월 부터 2018년 11월까지 47개월간 Oracle Java 7 업데이트가 14번 릴리즈 되었습니다. 그리고 총 330개의 버그가 수정되었습니다. 평균 3개월 주기로 새로운 업데이트 버전이 공개되었고, 매 업데이트 마다 평균 24개의 버그 및 보안 패치 및 버그 픽스가 적용되었습니다. 
+
+Oracle Java 8의 경우에 Oracle Java 업데이트의 Release Note가 잘 정리되어 있어서 전체 업데이트를 정리했지만 Oracle Java 7과 Oracle Java 6의 경우 Release Note의 형식이 현재와 다르게 되어 있어서 EoPU의 버그 수정 정보를 정리하기 어려웠습니다. 이러한 이유로 부득이하게 EoPU 이후를 대상으로 정리하였습니다.
+
+>|업데이트 버전|#Fixed of Bug|#Fix of Security vulenabilities|공개 일자|
+|-----|-----|-----|
+|Oracle Java 7u201|	13 |  0|2018.07 |
+|Oracle Java 7u191|	9 |  6|2018.07 |
+|Oracle Java 7u181|	21 |  11|2018.04 |
+|Oracle Java 7u171|	51 |  16|2018.07 |
+|Oracle Java 7u161|	5 |  17|2018.07 |
+|Oracle Java 7u151|	4 |  26|2018.07 |
+|Oracle Java 7u141|	8 |  8|2018.07 |
+|Oracle Java 7u131|	34 |  15|2018.07 |
+|Oracle Java 7u121|	32 |  7|2018.07 |
+|Oracle Java 7u111|	36 |  9|2018.07 |
+|Oracle Java 7u101|	22 |  8|2018.07 |
+|Oracle Java 7u99|	0 |  1|2018.07 |
+|Oracle Java 7u97|	0 |  1|2018.07 |
+|Oracle Java 7u95|	30 |  7|2016.01 |
+|Oracle Java 7u91|	40 |  20|2015.10 |
+|Oracle Java 7u85|	34 |  24|2015.07 |
+|Total|	330 |176||
+> - EoPU 이후 Oracle Java 7 업데이트 정보
+
+#### Oracle Java 6 업데이트: Premium Support와 Extended Support 기간
+
+>|업데이트 버전|Bug Fix|Security vlunerablilities Fix|공개 일자|
+|-----|-----|-----|
+|Oracle Java 6u201|	3 ||2018.07 |
+|Oracle Java 6u191|	7 |6|2018.07 |
+|Oracle Java 6u181|	12 ||2018.07 |
+|Oracle Java 6u171|	7 ||2018.07 |
+|Oracle Java 6u161|	5 ||2018.07 |
+|Oracle Java 6u151|	10 ||2018.07 |
+|Oracle Java 6u141|	17 ||2018.07 |
+|Oracle Java 6u131|	13 ||2018.07 |
+|Oracle Java 6u121|	15 ||2018.07 |
+|Oracle Java 6u115|	8 ||2018.07 |
+|Oracle Java 6u111|	13 ||2018.07 |
+|Oracle Java 6u105|	17 ||2018.07 |
+|Oracle Java 6u101|	11 ||2018.07 |
+|Oracle Java 6u95|	25 |7|2018.07 |
+|Oracle Java 6u91|	20 |20|2018.07 |
+|Oracle Java 6u85|	17 |24|2018.07 |
+|Oracle Java 6u81|	28 ||2018.07 |
+|Oracle Java 6u75|	16 ||2018.07 |
+|Oracle Java 6u71|	33 ||2018.07 |
+|Oracle Java 6u65|	 0 |39|2018.07 |
+|Oracle Java 6u60|	61 ||2018.07 |
+|Oracle Java 6u51|	5 |34|2018.07 |
+
+|Total|	330 ||
+> - EoPU 이후 Oracle Java 7 업데이트 정보
+[^2]: JDK 7u80 업데이트 릴리즈 노트: https://www.oracle.com/technetwork/java/javase/7u80-relnotes-2494162.html
+
+
+
+https://www.oracle.com/technetwork/java/javase/documentation/javase7supportreleasenotes-1601161.html
+
+
+--
+
+## 오라클 솔루션에 포함된 Oracle Java SE 사용
+
+## 마치며
+
+## 참고자료
+
+- https://www.oracle.com/technetwork/java/javaseproducts/javasesubscription-data-sheet-4891969.pdf
+- http://www.oracle.com/us/assets/lifetime-support-middleware-069163.pdf
+- https://www.oracle.com/technetwork/java/javase/overview/eol-135779.html
+- http://www.oracle.com/assets/processor-core-factor-table-070634.pdf
+- https://www.oracle.com/assets/java-se-subscription-pricelist-5028356.pdf
+- Oracle Java SE 7: Release Notes for Public Updates https://www.oracle.com/technetwork/java/javase/7u-relnotes-515228.html
+-  Oracle Java SE 7: Release Notes for Premier Supports https://www.oracle.com/technetwork/java/javase/documentation/javase7supportreleasenotes-1601161.html
+
+
+{{% notice note %}}
+Disclaimer: 본 글은 Oracle과 관계없이 개인으로서 작성된 글 입니다. 본 글의 내용, 입장, 예측은 Oracle을 공식적으로 대변하지 않습니다.
+{{% /notice %}}
+
+
+공개 버전
+
+{{% notice note %}}
+Disclaimer: 본 글은 개인적인 사간에 Oracle과 관계없이 개인으로서 작성된 글 입니다. 본 글의 내용, 입장, 예측은 Oracle을 공식적으로 대변하지 않습니다.
+{{% /notice %}}
