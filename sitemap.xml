@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://taewan.kim/extra/java_updates/</loc>
+    <lastmod>2018-11-15T20:50:36+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tip/oracle_sample_schema/</loc>
     <lastmod>2018-11-11T09:00:14+09:00</lastmod>
   </url>
@@ -695,11 +700,6 @@
   <url>
     <loc>http://taewan.kim/post/python_virtual_env/</loc>
     <lastmod>2017-09-09T10:50:36+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/extra/java_updates/</loc>
-    <lastmod>2017-09-06T10:50:36+09:00</lastmod>
   </url>
   
   <url>
@@ -1459,7 +1459,7 @@
   
   <url>
     <loc>http://taewan.kim/extra/</loc>
-    <lastmod>2017-09-06T10:50:36+09:00</lastmod>
+    <lastmod>2018-11-15T20:50:36+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2466,7 +2466,7 @@
   
   <url>
     <loc>http://taewan.kim/</loc>
-    <lastmod>2018-11-11T09:00:14+09:00</lastmod>
+    <lastmod>2018-11-15T20:50:36+09:00</lastmod>
     <priority>0</priority>
   </url>
   

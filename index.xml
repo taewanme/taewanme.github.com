@@ -6,10 +6,20 @@
     <description>Recent content on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 11 Nov 2018 09:00:14 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 15 Nov 2018 20:50:36 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Oracle Java 업데이트 요약</title>
+      <link>http://taewan.kim/extra/java_updates/</link>
+      <pubDate>Thu, 15 Nov 2018 20:50:36 +0900</pubDate>
+      
+      <guid>http://taewan.kim/extra/java_updates/</guid>
+      <description>Oracle Java SE의 버전별 업데이트 버전의 버그 수정과 보안 패치와 링크를 정리합니다.
+Java 6, 7 및 8 업데이트 개요     Version Roadmap 상태 업데이트 횟수 기간(month) 평균 업데이트 주기 전체 bug fixes 전체 security fixes 업데이트 평균 bux fixes 업데이트 평균 securty fixes     Java 6 Public Update 38 75개월 1.9개월 3,267개 350개 85.9개 9.2개   Java 6 Premier Update 11 31개월 2.</description>
+    </item>
     
     <item>
       <title>Oracle Datatbase 스키마 HR, OE, SH의 ERD</title>
@@ -1473,16 +1483,6 @@ numpy의 sum 함수 사용 예 다음 코드는 3차원 배열을 만들고, 3�
       <guid>http://taewan.kim/post/python_virtual_env/</guid>
       <description>파이썬에는 Python 2와 Python 3이 공존하고, 파이썬 별로 다수의 서브 버전이 존재합니다. 또한, 파이썬 커뮤니티는 엄청난 수의 패키지를 만들고 공유하고 있습니다. 이러한 패키지들은 개별적으로 여러 버전을 갖고 있습니다. 컴퓨터 한 대에 여러 파이썬 프로그램을 돌릴 경우, 파이썬 애플리케이션의 파이썬 런타임 버전과 파이썬 라이브러리 충돌 문제가 빈번하게 발생합니다. 이러한 문제는 개발 언어와 런타임 및 라이브러리가 전역적으로 설치되고 운영되기 때문에 발생합니다. 사실 이러한 문제는 개발 컴퓨터에서 더 심각하게 발생합니다.
 이 문제는 파이썬 애플리케이션별로 독립적인 환경을 사용할 수 있도록 파이썬 환경을 가상화하는 방식을 통해서 해결 할 수 있습니다.</description>
-    </item>
-    
-    <item>
-      <title>Oracle Java 업데이트 요약</title>
-      <link>http://taewan.kim/extra/java_updates/</link>
-      <pubDate>Wed, 06 Sep 2017 10:50:36 +0900</pubDate>
-      
-      <guid>http://taewan.kim/extra/java_updates/</guid>
-      <description>Oracle Java SE의 버전별 업데이트 버전의 버그 수정과 보안 패치와 링크를 정리합니다.
-Oracle Java SE 8 업데이트 개요    Update 버전 #Big Fixes #Security Fixes Security Baseline 릴리즈 일자 로드맵 상태 공식 페이지 링크     Java SE 8u5 11 37 1.8.0_5 2014.4.15 Public Update Release NoteBug Fixes PageSecurity Fixes   Java SE 8u11 15 20 1.8.0_11 2014.7.15 Public Update Release NoteBug Fixes PageSecurity Fixes   Java SE 8u20 668 0 1.</description>
     </item>
     
     <item>

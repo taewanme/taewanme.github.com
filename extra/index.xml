@@ -6,7 +6,7 @@
     <description>Recent content in Extras on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 06 Sep 2017 10:50:36 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 15 Nov 2018 20:50:36 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/extra/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,11 +14,11 @@
     <item>
       <title>Oracle Java 업데이트 요약</title>
       <link>http://taewan.kim/extra/java_updates/</link>
-      <pubDate>Wed, 06 Sep 2017 10:50:36 +0900</pubDate>
+      <pubDate>Thu, 15 Nov 2018 20:50:36 +0900</pubDate>
       
       <guid>http://taewan.kim/extra/java_updates/</guid>
       <description>Oracle Java SE의 버전별 업데이트 버전의 버그 수정과 보안 패치와 링크를 정리합니다.
-Oracle Java SE 8 업데이트 개요    Update 버전 #Big Fixes #Security Fixes Security Baseline 릴리즈 일자 로드맵 상태 공식 페이지 링크     Java SE 8u5 11 37 1.8.0_5 2014.4.15 Public Update Release NoteBug Fixes PageSecurity Fixes   Java SE 8u11 15 20 1.8.0_11 2014.7.15 Public Update Release NoteBug Fixes PageSecurity Fixes   Java SE 8u20 668 0 1.</description>
+Java 6, 7 및 8 업데이트 개요     Version Roadmap 상태 업데이트 횟수 기간(month) 평균 업데이트 주기 전체 bug fixes 전체 security fixes 업데이트 평균 bux fixes 업데이트 평균 securty fixes     Java 6 Public Update 38 75개월 1.9개월 3,267개 350개 85.9개 9.2개   Java 6 Premier Update 11 31개월 2.</description>
     </item>
     
     <item>
