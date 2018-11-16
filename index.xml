@@ -12,13 +12,23 @@
     
     
     <item>
-      <title>Oracle Java 업데이트 요약</title>
+      <title>Oracle Java SE 업데이트 요약</title>
       <link>http://taewan.kim/extra/java_updates/</link>
       <pubDate>Thu, 15 Nov 2018 20:50:36 +0900</pubDate>
       
       <guid>http://taewan.kim/extra/java_updates/</guid>
-      <description>Oracle Java SE의 버전별 업데이트 버전의 버그 수정과 보안 패치와 링크를 정리합니다.
-Java 6, 7 및 8 업데이트 개요     Version Roadmap 상태 업데이트 횟수 기간(month) 평균 업데이트 주기 전체 bug fixes 전체 security fixes 업데이트 평균 bux fixes 업데이트 평균 securty fixes     Java 6 Public Update 38 75개월 1.9개월 3,267개 350개 85.9개 9.2개   Java 6 Premier Update 11 31개월 2.</description>
+      <description>Oracle Java SE의 버전별 업데이트 버전의 버그 수정(Bug Fixes)과 보안 패치(Security Fixes &amp;amp; Security vulnerabilities 조치) 규모와 관련 링크를 정리합니다.
+Oracle Java SE 8 업데이트 개요    Update 버전 #Big Fixes #Security Fixes Security Baseline 릴리즈 일자 로드맵 상태 공식 페이지 링크     Java SE 8u5 11 37 1.8.0_5 2014.4.15 Public Update Release NoteBug Fixes PageSecurity Fixes   Java SE 8u11 15 20 1.</description>
+    </item>
+    
+    <item>
+      <title>Oracle Java SE Subscription</title>
+      <link>http://taewan.kim/post/oracle_java_subscription/</link>
+      <pubDate>Thu, 15 Nov 2018 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/oracle_java_subscription/</guid>
+      <description>2019년 1월부터 Oracle Java SE Subscription(이하 Java Subscription)이 시행됩니다. 새로 적용되는 Java Subscription이 생소하다 보니 어떻게 대응해야 할지 고민하시는 분들이 많은 것 같습니다. Java Subscription에 대한 기본적인 질문을 중심으로 살펴보겠습니다. 본 문에서는 다음과 같은 사항에 대하여 정리해 보겠습니다.
+ Oracle Java SE Subscription이란 무엇인가? Oracle Java SE Subscription 가격 산정 방법 Oracle Java SE Subscription의 대상 자바 버전 기존에 사용하던 공개 버전 Oracle Java SE를 계속 사용할 수 있는가? 데스크톱 컴퓨터도 Oracle Java SE Subscription 적용 대상인가?</description>
     </item>
     
     <item>

@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>Oracle Java SE Subscription</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.48" />
+<meta property="og:title" content="Oracle Java SE Subscription" />
+<meta property="og:description" content="2019년 1월에 적용되는 Oracle Java Subscription을 정리합니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/post/oracle_java_subscription/" /><meta property="article:published_time" content="2018-11-15T09:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2018-11-15T09:28:14&#43;09:00"/>
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="http://taewan.kim/css/jupyter.css" type="text/css" media="all" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">Oracle Java SE Subscription </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2018-11-15 09:28:14 &#43;0900 KST">November 15, 2018</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/java" rel="category">java</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2018/11/oraclejdk/post.jpg" alt="Oracle Java SE Subscription">
+			</figure>
+			
+
+<p>2019년 1월부터 Oracle Java SE Subscription(이하 Java Subscription)이 시행됩니다. 새로 적용되는 Java Subscription이 생소하다 보니 어떻게 대응해야 할지 고민하시는 분들이 많은 것 같습니다. Java Subscription에 대한 기본적인 질문을 중심으로 살펴보겠습니다. 본 문에서는 다음과 같은 사항에 대하여 정리해 보겠습니다.</p>
+
+<ul>
+<li>Oracle Java SE Subscription이란 무엇인가?</li>
+<li>Oracle Java SE Subscription 가격 산정 방법</li>
+<li>Oracle Java SE Subscription의 대상 자바 버전</li>
+<li>기존에 사용하던 공개 버전 Oracle Java SE를 계속 사용할 수 있는가?</li>
+<li>데스크톱 컴퓨터도 Oracle Java SE Subscription 적용 대상인가?</li>
+<li>개발자 컴퓨터도 Oracle Java SE Subscription 적용 대상인가?</li>
+<li>오라클 솔루션에 포함된 Oracle Java를 다른 자바 애플리케이션이 사용할 수 있는가?</li>
+<li>Oracle Java SE 업데이트에서는 무엇이 개선되는가?</li>
+<li>Oracle Java Archive에서 계속 공개 버전을 다운로드 받을 수 있는가?</li>
+</ul>
+
+<p>실무에서 Oracle Java SE(이하 Oracle Java)를 사용하시는 분들께서 물어보시는 항목은 대략 이 정도입니다. 위 질문 사항을 인터넷에 공개된 오라클 문서를 기준으로 정리해 보겠습니다. 이 글은 오라클의 공개 문서를 근거로 각 항목을 명확하게 정리하는 것을 목표로 합니다. 그러나 문서를 작성하는 과정에서 작성자의 주관적 판단과 해석이 포함될 수 있습니다. 이러한 이유로 본문은 오라클의 공식적인 입장과 다를 수 있습니다. 이 글은  &ldquo;Oracle Java SE Subscription&rdquo;에 대해서 고민하실 때, 참고 문서 정도로 봐주셨으면 합니다.</p>
+
+<h2 id="oracle-jdk의-서포트-로드맵과-관련-용어">Oracle JDK의 서포트 로드맵과 관련 용어</h2>
+
+<p>본론으로 들어가기에 앞서 Oracle Java SE(이하 Oracle Java) 서포트 로드맵에서 사용하는 주요 용어를 먼저 알아보고, Oracle Java 서포트 로드맵을 일정을 살펴보겠습니다. 본문은 이 절에서 설명한 용어와 Oracle Java 서포트 로드맵을 기준으로 진행하겠습니다. Oracle Java 서포트 로드맵에서 사용하는 주요 용어는 다음과 같습니다.</p>
+
+<ul>
+<li><strong>GA Date</strong>: Oracle Java 출시일</li>
+<li><strong>Oracle Java SE Public Update</strong>: OTN(Oracle Technology Network)에 배포되는 공개 버전(Public Release) Oracle Java</li>
+<li><strong>End of Public Update(EoPU)</strong>
+
+<ul>
+<li>Oracle 소프트웨어의 Public Update 종료일</li>
+<li>Oracle Java는 버전 별로 EoPU가 계획 Oracle Java 서포트 로드맵에 정의</li>
+</ul></li>
+<li><strong>Premier Support</strong>
+
+<ul>
+<li>Oracle Java의 유상 기술 지원 서비스</li>
+<li>24X7 기술 지원 (My Support Oracle)</li>
+<li>해당 버전의 &ldquo;End of Public Update&rdquo; 이후에 Premier Support 기간까지 Oracle Java의 업데이트 계속 제공</li>
+</ul></li>
+<li><strong>Premier Support End</strong>
+
+<ul>
+<li>Premier Support 서비스의 종료일.</li>
+</ul></li>
+<li><strong>Extended Support 서비스</strong>
+
+<ul>
+<li>Premier Support 서비스 종료 후 3년간 추가 기술 지원을 유지하는 서비스</li>
+<li>24X7 기술 지원 (My Support Oracle)</li>
+<li>해당 버전의 &ldquo;Premier Support End&rdquo; 이후 3년간 Oracle JDK의 업데이트는 계속 제공<br /></li>
+</ul></li>
+<li><strong>Extended Support End</strong>
+
+<ul>
+<li>Extend Support 서비스의 종료일</li>
+</ul></li>
+<li><strong>LTS: Long Term Support</strong>
+
+<ul>
+<li>LTS는 소프트웨어 지원 일정</li>
+<li>Oracle Java 중 LTS 지원 버전은 출시 후 8년간 보안 업데이트와 버그 수정 지원<br /></li>
+</ul></li>
+</ul>
+
+<p>Oracle Java의 서포트 로드맵은 다음 일정으로 관리됩니다.</p>
+
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>Release</th>
+<th>GA Date</th>
+<th>End of Public Update</th>
+<th>Premier Support End</th>
+<th>Extended Support End</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Java 5</td>
+<td>2004.05</td>
+<td>2009.10</td>
+<td>2011.05</td>
+<td>2015.05</td>
+</tr>
+
+<tr>
+<td>Java 6</td>
+<td>2006.11</td>
+<td>2013.02</td>
+<td>2015.12</td>
+<td>2018.12</td>
+</tr>
+
+<tr>
+<td>Java 7</td>
+<td>2011.06</td>
+<td>2015.04</td>
+<td>2019.01</td>
+<td>2022.07</td>
+</tr>
+
+<tr>
+<td>Java 8</td>
+<td>2014.03</td>
+<td>2019.01</td>
+<td>2022.03</td>
+<td>2025.03</td>
+</tr>
+
+<tr>
+<td>Java 9(non-LTS)</td>
+<td>2017.09</td>
+<td>2018.03</td>
+<td>2018.03</td>
+<td>N/A</td>
+</tr>
+
+<tr>
+<td>Java 10(18.3, non-LTS)</td>
+<td>2018.03</td>
+<td>2018.09</td>
+<td>2018.09</td>
+<td>N/A</td>
+</tr>
+
+<tr>
+<td>Java 11(18.9, LTS)</td>
+<td>2018.09</td>
+<td>N/A</td>
+<td>2023.09</td>
+<td>2026.09</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><p>표 1. Oracle Java 서포트 로드 맵 일정</p></li>
+
+<li><p>출처</p>
+
+<ul>
+<li><a href="http://www.oracle.com/us/assets/lifetime-support-middleware-069163.pdf">http://www.oracle.com/us/assets/lifetime-support-middleware-069163.pdf</a></li>
+<li><a href="https://www.oracle.com/technetwork/java/javase/overview/eol-135779.html">https://www.oracle.com/technetwork/java/javase/overview/eol-135779.html</a></li>
+</ul></li>
+</ul>
+</blockquote>
+
+<p>Oracle Java SE의 서포트 로드맵을 차트로 표현하면 다음과 같습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/11/oraclejdk/120.jpg" alt="" /></p>
+
+<ul>
+<li>그림 1. Oracle Java SE 지원 로드맵</li>
+</ul>
+</blockquote>
+
+<h2 id="oracle-java-se-subscription-란-무엇인가">&lsquo;Oracle Java SE Subscription&rsquo;란 무엇인가?</h2>
+
+<p><strong>Oracle Java SE Subscription(이하 Java Subscription)</strong>은 Oracle Java SE의 기술 지원을 받은 구독 모델입니다. Java Subscription을 취득하면 3가지 서비스가 제공됩니다.</p>
+
+<ul>
+<li>서비스 1: Public Update 버전이 아닌 Oracle Java SE를 사용할 권리</li>
+<li>서비스 2: MOS(My Oracle Support)로부터 Java 7, 8, 11 버전의 기술 지원 서비스 이용 권한(24X7)</li>
+<li>서비스 3: Oracle Java SE의 상용 기능의 사용 권리
+
+<ul>
+<li>Java Flight Recorder</li>
+<li>Java Mission Control</li>
+<li>ZGC(Z Garbage Collector)</li>
+<li>Application Class-Data Sharing</li>
+</ul></li>
+</ul>
+
+<p>기술 지원을 받는 &lsquo;서비스 2&rsquo;와 새로운 소프트웨어 사용의 &lsquo;서비스 3&rsquo;은 명확한 것 같습니다. 그러나 &lsquo;서비스 1&rsquo;은 이해하기 조금 어렵습니다. 실제로 많은 분이 혼란스러워하는 부분입니다.</p>
+
+<p>공개 버전 Oracle Java는 GA 릴리즈 이후에 EoPU 전까지 OTN(Oracle Technical Network, <a href="http://www.oracle.com)에">http://www.oracle.com)에</a> &ldquo;public release&rdquo; 라벨을 달고 배포된 버전을 의미합니다. 이 정보는 Oracle Java의 Release Note 페이지에서 확인할 수 있습니다. (버전별로 공개 버전을 확인하는 방법을 별로도 다루겠습니다.) 이제부터 공개 버전 Oracle Java가 아닌 모든 것을 &lsquo;비공개 Oracle Java&rsquo;라고 표현하겠습니다.<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup></p>
+
+<p>2019년 1월부터 OTN(<a href="http://www.oracle.com)에서는">http://www.oracle.com)에서는</a> 새로운 Oracle Java 공개 버전(Public Release)을 발표하지 않을 것입니다. 2019년 1월부터 오라클은 모든 Oracle Java를 &lsquo;비공개 Oracle Java&rsquo; 형태로 릴리즈 하겠다고 발표했습니다. 따라서 2019년 이후에 발표되는 모든 Oracle Java는 &lsquo;비공개 Oracle Java&rsquo;이며 Oracle Java 최신 버전을 사용하기 위해서는 Java Subscription이 필요합니다.</p>
+
+<p>이렇게 설명하면 Java Subscription은 최신 버전 Oracle Java를 사용하기 위한 라이센스라고 오해하기 쉽습니다. &lsquo;서비스 1&rsquo;은 &lsquo;비공개 Oracle Java&rsquo;를 사용하는 권리입니다. 예를 들어서 Oracle Java 6을 현재 사용하고 있고, 현재 사용하는 Oracle Java 6은 &rsquo;비공개 Oracle Java&rsquo;라면, 이 Oracle Java 6를 계속 사용하기 위해서는 Java Subscription이 필요합니다.</p>
+
+<p>이렇게 2019년 1월부터 &lsquo;비공개 Oracle Java&rsquo;를 사용할 경우에는 <strong>Java Subscription</strong>이 필요합니다.</p>
+
+<h2 id="oracle-java-se-subscription-가격-산정-방식">&lsquo;Oracle Java SE Subscription&rsquo; 가격 산정 방식</h2>
+
+<p>웹상에 공개된 Java Subscription 가격 정보는 다음과 같습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/11/oraclejdk/010.jpg" alt="" /></p>
+
+<ul>
+<li><p>그림 2. Oracle Java SE Subscription 가격 테이블</p></li>
+
+<li><p>출처: <a href="https://www.oracle.com/assets/java-se-subscription-pricelist-5028356.pdf">https://www.oracle.com/assets/java-se-subscription-pricelist-5028356.pdf</a></p></li>
+</ul>
+</blockquote>
+
+<p>가격 모델은 데스크톱과 서버로 나뉘며, 데스크톱은 사용자 수 단위이고 서버는 프로세스(core) 단위로 가격이 책정되어 있습니다. 위에서 책정된 가격은 월 단위 가격이며 단위는 달러입니다. 수량<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>에 따라서 사용량이 많을 경우 가격은 50%까지 내려갑니다. 또한 이 라이센스는 컴퓨터의 CPU가 x86인 경우 Core Factor 0.5가 적용됩니다. 여기서 Core Factor는 CPU 유형에 따라서 기존 라이센스 비용에 적용되는 비율입니다. 컴퓨터가 x86 프로세스에 Core Factor 0.5가 적용된다는 의미는, 대상 서버의 CPU가 x86일 경우 Oracle Java SE Subscription 가격을 50% 할인한다는 의미입니다. 계약 기간은 1년과 3년 단위로 계약을 합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/11/oraclejdk/020.jpg" alt="" /></p>
+
+<ul>
+<li><p>그림 3. x86의 core factor</p></li>
+
+<li><p>출처: <a href="http://www.oracle.com/assets/processor-core-factor-table-070634.pdf">http://www.oracle.com/assets/processor-core-factor-table-070634.pdf</a></p></li>
+</ul>
+</blockquote>
+
+<p>예를 들어서 8 core 서버를 운영할 경우 1년 Oracle Java SE Subscription 모델의 공식 가격은 다음과 같습니다. 아래 산정은 수량이 적어서 수량 할인이 적용되지 않는 상황을 가정합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>Oracle Java SE Subscription 가격 예시: 8 core x86 CPU 서버 1년 구독 금액</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><font size=4>$$8 core * $25/core/month * 12month * 0.5 = $1,200$$</font></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="oracle-java-subscription의-대상-자바-버전">Oracle Java Subscription의 대상 자바 버전</h2>
+
+<p>앞에서 Java Subscription의 구성에서 설명한 것처럼, Subscription의 핵심 서비스는 &lsquo;비공개 Oracle Java&rsquo;를 사용하는 권한과 Oracle Java의 기술 지원 권한입니다.</p>
+
+<p>서비스 1의 &lsquo;비공개 Oracle Java&rsquo; 사용의 경우 대상 Oracle Java 버전이 대상이 됩니다. 즉 사용할 Java가 &lsquo;비공개 Oracle Java&rsquo;라면 버전에 상관없이 Java Subscription을 구독해야 합니다.</p>
+
+<p>서비스 2는 MOS(My Oracle Support)로부터 기술 지원을 받는 권한에 대해서는 Oracle Java 서포트 로드랩의 영향을 받습니다. Oracle Java 서포트 로드맵에 따르면 2019년 1월을 기준으로 java 6는 <strong>Extended Support End</strong>까지도 종료됩니다. 자바 서포트 로드랩을 기준으로 오라클은 2019년 1월 이후에 Java 6에 대한 업데이트와 기술 지원을 제공하지 않습니다. 또한 Java 9과 Java 10의 경우 LTS 지원 버전이 아니며, 공식적으로 2018년 3월과 9월로 지원이 종료되었습니다. 따라서 2019년 1월 시행되는 Java Subscription의 대상 Oracle Java 버전은 <strong>EoPU</strong>가 끝나고 <strong>Premier Support End</strong>가 되지 않은 버전이 대상이 됩니다. 즉 Oracle Java Subscription의 대상 버전은 Oracle JDK 7, 8과 11이 &lsquo;서비스 2&rsquo;의 MOS(My Oracle Support)의 기술지원 버전이 됩니다.</p>
+
+<p>요약하면 &lsquo;서비스 1&rsquo;은 모든 버전의 &lsquo;비공개 Oracle Java&rsquo; 업데이트가 대상이 됩니다. &lsquo;서비스 2&rsquo;의 경우 MOS에서 지원받는 기술 지원 버전은 Java 7 ,8 및 11이 됩니다.</p>
+
+<h2 id="기존에-사용하던-공개버전-oracle-java-se를-계속-사용할-수-없는가">기존에 사용하던 공개버전 Oracle Java SE를 계속 사용할 수 없는가?</h2>
+
+<p>운영 시스템의 자바 런타임은 최신 버전으로 안전하게 관리하는 것이 중요합니다. 그러나 실무에서 자바 기반 시스템을 운영하는 현실은 녹록지 않습니다. IT 시스템 담당자 입장에서 &ldquo;운영에 문제가 없는 시스템은 건드리지 않는다.&ldquo;가 철칙입니다. 자바 런타임을 Java 6에서 Java 8로 업그레이드하는 작업을 계획 중이라면, 시스템 담당자 입장에서는 악몽일 것 입니다.</p>
+
+<p>현실이 이렇다 보니 &ldquo;현재 사용하는 자바 버전을 2019년 1월 이후에도 계속 사용할 수 있는가?&ldquo;에 대해 궁금해하시는 분들이 많습니다. 현재 사용하는 Oracle Java가 공개 버전이라면 앞으로 계속 사용할 수 있습니다. 물론 전제 조건이 있습니다.</p>
+
+<ul>
+<li>현재 사용하는 Oracle Java는 공개 버전이다</li>
+<li>새로운 신규 업데이트 버전으로 Java를 업그레이드할 계획이 없다</li>
+<li>시스템이 내부망에 위치하기에 자바 보안 업데이트에 대한 관심이 없다</li>
+<li>현재 상태를 그대로 유지하는 것이 가장 중요하면, 추가 기능 개발 계획이 없다.</li>
+<li>MOS(My Oracle Support)가 필요 없다.</li>
+</ul>
+
+<p>물론 자바 환경을 최신 버전으로 유지하여 버그 수정이 이뤄지고 보안 취약성이 개선된 안전한 시스템을 관리하는 것도 중요하지만, 현재 시스템에 변화를 주는 결정을 하기 어렵고 현재 상태를 유지하는 것이 가장 중요한 경우도 있습니다. 이런 상황에서 현재 사용하는 Oracle Java가 공개 버전이라면, 내년에도 이 Oracle Java를 계속 사용할 수 있습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/11/oraclejdk/130.jpg" alt="" /></p>
+
+<ul>
+<li><p>그림 4. 전자신문 인터뷰 기사 발취 (2018.11.12 기사)</p></li>
+
+<li><p>출처: <a href="http://www.etnews.com/20181112000375">http://www.etnews.com/20181112000375</a></p></li>
+</ul>
+</blockquote>
+
+<p>여기서 문제는 현재 사용하는 자바가 공개 버전인지 비공개 버전인지 확인해야 합니다. 이것을 확인하기 위해서는 사용하고 있는 java의 버전과 업데이트를 확인해야 합니다. 현재 자바를 사용하는 서버에서 <code>java --version</code>을 실행하여 자바 버전과 업데이트 변화를 확인할 수 있습니다.</p>
+
+<pre><code>&gt; java -version
+java version &quot;1.8.0_161&quot;
+Java(TM) SE Runtime Environment (build 1.8.0_161-b12)
+Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)
+&gt;
+</code></pre>
+
+<p>위 로그는 제 노트북에서 <code>java --version</code>를 실행한 결과입니다. 위 로그에서 자바 버전, 업데이트 번호 및 빌드 번호를 확인할 수 있습니다.</p>
+
+<ul>
+<li>Java 버전: 1.8</li>
+<li>업데이터 번호: 161</li>
+<li>빌드 번호: b12</li>
+</ul>
+
+<p>Java 버전과 업데이트 번호로 현재 사용하는 Oracle Java가 공개 버전인지 비공개 버전인지 확인할 수 있습니다.</p>
+
+<h3 id="oracle-java-1-6의-공개-버전-확인">Oracle Java 1.6의 공개 버전 확인</h3>
+
+<ul>
+<li>다음 링크 페이지에는 Oracle Java 6의 공개 버전 Relaease Note 목록을 포함합니다.
+
+<ul>
+<li><a href="https://www.oracle.com/technetwork/java/javase/releasenotes-136954.html">https://www.oracle.com/technetwork/java/javase/releasenotes-136954.html</a></li>
+</ul></li>
+</ul>
+
+<p>아래 목록은 위 링크의 목록을 정리한 내용입니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/11/oraclejdk/130.jpg" alt="" />
+- 그림 6. Oracle java 1.6의 공개 버전 목록</p>
+</blockquote>
+
+<p>현재 Oracle Java 1.6을 사용하고 있고 업데이트 번호가 위 목록에 포함되어 있다면, 그 번호는 공개 버전입니다. Oracle Java 1.6의 EoPU는 업데이트 45에서 종료되었습니다.</p>
+
+<h3 id="oracle-java-7의-공개-버전-확인">Oracle Java 7의 공개 버전 확인</h3>
+
+<p>Oracle Java 7의 공개 버전은 목록은 다음 링크에서 확인할 수 있습니다.</p>
+
+<ul>
+<li><a href="https://www.oracle.com/technetwork/java/javase/7u-relnotes-515228.html">https://www.oracle.com/technetwork/java/javase/7u-relnotes-515228.html</a></li>
+</ul>
+
+<p>현재 Oracle Java 7을 사용하고 있고 업데이트 번호가 위 목록에 포함되어 있다면, 그 번호는 공개 버전입니다. Oracle Java 7의 EoPU는 업데이트 80에서 종료되었습니다.</p>
+
+<h3 id="oracle-java-8의-공개-버전-확인">Oracle Java 8의 공개 버전 확인</h3>
+
+<p>Oracle Java 7의 공개 버전은 목록은 다음 링크에서 확인할 수 있습니다.</p>
+
+<ul>
+<li><a href="https://www.oracle.com/technetwork/java/javase/8all-relnotes-2226344.html">https://www.oracle.com/technetwork/java/javase/8all-relnotes-2226344.html</a></li>
+</ul>
+
+<p>현재 Oracle Java 8을 사용하고 있고 업데이트 번호가 위 목록에 포함되어 있다면, 그 번호는 공개 버전입니다. Oracle Java 8의 EoPU 2019년 01입니다. 2018년 11월 15일 현재 최종 업데이트 번호는 192입니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/11/oraclejdk/150.jpg" alt="" />
+- 그림 7. Oracle java 8의 업데이트 번호로 공개 버전 확인 예시</p>
+</blockquote>
+
+<h2 id="데스트톱-컴퓨터도-java-subscription-적용-대상인가">데스트톱 컴퓨터도 Java Subscription 적용 대상인가?</h2>
+
+<p>Oracle Java SE Subscription이 발표되었을 때, 가장 많은 논란이 된 것은 자바 개발자 컴퓨터도 Subscription 대상이 되는가에 대한 질문입니다. &lt;그림 2&gt;의 가격 테이블 첫 부분에 &ldquo;Java SE Desktop Subscription&rdquo;이 나와 있다 보니 이 문제가 더 크게 주목받은 것 같습니다.</p>
+
+<p>기본적으로 &ldquo;Java SE Desktop Subscription&rdquo;은 개발자 컴퓨터 초점을 맞추고 있지 않습니다. JRE를 설치하고 Java 애플리케이션을 데스크톱에서 업무로 돌리는 컴퓨터에 초점이 맞춰져 있습니다.</p>
+
+<p>금융권이나 제조 라인에서 Swing 자바 애플리케이션을 업무에 사용하는 경우가 있습니다. 이렇게 데스트톱에서 자바 런타임(JRE)를 업무에 사용하는 상황을 고려한 구독 모델입니다. 물론 이 경우에도 공개 버전의 자바 런타임을 사용하고 있다면, Java Subscription이 필수 요건은 아닙니다.</p>
+
+<p>&ldquo;Java SE Desktop Subscription&rdquo;의 경우에는 비공개 자바 런타임을 사용하기 위해서 Java Subscription을 구독하기 보다는, MOS(My Oracle Support)를 통해서 안정적인 기술 지원을 받기 위한 목적이 더 크다고 생각합니다.</p>
+
+<p>정리하면 &ldquo;Java SE Desktop Subscription&rdquo;은 비공개 버전의 자바 런타임을 사용해야 하거나, 기술 지원을 통해서 안전한 데스크톱 애플리케이션 운영 환경을 구성해야 하는 경우에 필요한 구독 모델입니다.</p>
+
+<h2 id="개발자-컴퓨터도-java-subscription-적용-대상인가">개발자 컴퓨터도 Java Subscription 적용 대상인가?</h2>
+
+<p>개발자 컴퓨터의 Java Subscription 적용 여부는 선택사항입니다. 기본적으로 개발자 컴퓨터는 Java Subscription을 구독하지 않아도 됩니다. 물론 어떤 이유로 MOS의 자바 기술 지원이 필요한 상황이라면 Java Subscription을 구독할 수 있습니다.</p>
+
+<p>개발자 컴퓨터는 <strong>Oracle Java SE Subscription</strong>의 적용 대상이 아니라는 근거는 OTN 자바 라이센스 전문에서 찾을 수 있습니다. 다음은 OTN 자바 라이센스 전문에 있는 &ldquo;License Rights and Restrictions&rdquo; 절의 내용입니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/11/oraclejdk/030.jpg" alt="" />
+<img src="https://taewanmerepo.github.io/2018/11/oraclejdk/040.jpg" alt="" />
+그림 8. OTN Java 라이센스 중 개발 환경 라이센스
+출처: <a href="https://www.oracle.com/technetwork/java/javase/terms/license/javase-license.html">https://www.oracle.com/technetwork/java/javase/terms/license/javase-license.html</a></p>
+</blockquote>
+
+<p>이 내용을 보면 &ldquo;개발, 시험, 프로토타이핑 및 증명을 목적으로 사용하는 경우 라이센스를 부여함&rdquo;으로 되어 있습니다. 따라서 운영 서버가 아닌 개발자 컴퓨터, 테스트 서버, 빌드 서버(Jenkins)와 같은 개발 관련 컴퓨터에 Subscription 적용은 선택 사항입니다. 기본적으로 Subscription을 적용하지 않아도 됩니다. 물론 꼭 기술 지원을 받고자 한다면 Subscription를 계약할 수 있습니다.</p>
+
+<p>A라는 회사가 100 Core의 운영 서버, 10Core의 통합 테스트 서버, 8core의 빌드 서버, 4core의 Spring Batch 전용 서버, 10대의 자바 개발자 컴퓨터가 있다고 가정합니다. 이때 <strong>Oracle Java SE Subscription</strong>을 구독하려고 합니다. 구독 대상은 어떻게 될까요?</p>
+
+<p>위 OTN 자바 라이센스 전문을 기준으로 볼 때, 확실한 Subscription 구독 대상은 100 core의 운영 서버와 4core의 Spring Batch 전용 서버입니다. 이 두 서버는 업무용이기 때문에 Subscription 구독 대상이 됩니다. 반면 10대의 자바 개발자 컴퓨터, 10 core의 통합 테스트 서버, 8core의 빌드 서버는 개발 목적과 테스트, 검증 목적이 명확하므로 Subscription 구독 대상이 아니라고 판단됩니다.</p>
+
+<h2 id="오라클-솔루션의-임베디드-oracle-java를-추가로-사용할-수-있나요">오라클 솔루션의 임베디드 Oracle Java를 추가로 사용할 수 있나요?</h2>
+
+<p>오라클이 자바 솔루션에는 Oracle Java가 임베디드 형태로 포함되어 있습니다. 예를 들어서 Oracle WebLogic이나 Oracle Database에는 Oracle Java가 포함되어 있습니다. 이렇게 임베디드 형태로 포함된 Oracle Java는 비공개 버전이라고 할지라도 Java Subscription 대상에 포함되지 않습니다.</p>
+
+<p>이렇게 임베디드 형태로 제공되는 Oracle Java를 다른 애플리케이션이 사용하는 것이 가능한가에 대해서 궁금해 하시는 경우가 많습니다.</p>
+
+<p>일반적으로 임베디드 소프트웨어는 본래의 목적으로만 사용해야 합니다. 본래의 의도와 다르게 사용될 경우 라이센스 위반이 될 수 있습니다. 예를 들어서 WebLogic을 운영하는 서버에 Oracle Java가 임베디드 형태로 WebLogic과 Oracle Java가 함께 설치되어 있습니다. 이 서버에서 어떤 목적으로 Tomcat을 실행해야 하는 상황이 발생했습니다. 이 Tomcat 서버를 WebLogic에 포함된 Oracle Java로 실행하는 경우를 가정해 보겠습니다.</p>
+
+<p>이 경우에 Tomcat이 WebLogic에 포함된 자바를 사용하는 것은 임베디드된 Oracle Java를 다른 목적<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup>으로 사용한 것이기 때문에 라이센스 위반이 될 수 있습니다.</p>
+
+<p>위와 같은 상황에서 Tomcat을 돌리기 위해서는 별도로 공개 버전 Oracle Java 혹은 OpenJDK를 설치하고 이것을 이용해야 합니다. WebLogic에 설치된 내장된 Oracle Java를 사용하기 위해서는 Java Subscription을 별도로 구독해야 합니다.</p>
+
+<h2 id="oracle-java는-업데이트가-중요한가요">Oracle Java는 업데이트가 중요한가요?</h2>
+
+<p>기존에 오라클이 공개한 Oracle Java를 계속 사용하는 것은 라이센스 입장에서는 문제가 되지 않지만, 안전한 자바 시스템을 운영하기 위해서는 최신 업데이트 버전을 사용하는 것이 좋다는 권고를 받습니다. 솔직히 저도 자바를 오래 사용해 왔지만 자바 업데이트의 변경 사항에 대해서는 관심을 갖지 않았습니다. 얼마나 많은 버그가 수정되고 보안 패치가 적용되는지 몰랐습니다.</p>
+
+<p>각 자바 업데이트에 얼마나 많은 버그가 수정되는지, 버전 별로 4-5년 정도의 Public Update 이후에도 버그 수정이 필요한지, 보안 취약성 개선은 얼마나 반영되는지를 모든 업데이트의 Release Notes로 확인해 보았습니다. Oracle Java 6, 7 및 8의 공개와 비공개 업데이트의 변경 내역을 정리해 보았습니다. 원본 데이터는 &ldquo;<a href="/extra/java_updates/">Oracle Java SE 업데이트 요약</a>&ldquo;에서 확인할 수 있습니다. Oracle Java 6, 7 및 8의 Public Update 업데이트, Premier 업데이트 및 Extended 업데이트에 적용된 버그 수정과 보안 취약성 개선 규모는 다음과 같습니다. 아래 조사는 2018.11.15 기준일로 작성되었습니다.</p>
+
+<h3 id="oracle-java-se-6-업데이트-개요">Oracle Java SE 6 업데이트 개요</h3>
+
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Roadmap 상태</th>
+<th>업데이트 횟수</th>
+<th>기간(month)</th>
+<th>평균 업데이트 주기</th>
+<th>전체 bug fixes</th>
+<th>전체 security fixes</th>
+<th>업데이트 평균 bux fixes</th>
+<th>업데이트 평균 securty fixes</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Java 6</td>
+<td>Public Update</td>
+<td>38</td>
+<td>75개월</td>
+<td>1.9개월</td>
+<td>3,267개</td>
+<td>350개</td>
+<td>85.9개</td>
+<td>9.2개</td>
+</tr>
+
+<tr>
+<td>Java 6</td>
+<td>Premier Update</td>
+<td>11</td>
+<td>31개월</td>
+<td>2.8개월</td>
+<td>217개</td>
+<td>292개</td>
+<td>19.7개</td>
+<td>26.5개</td>
+</tr>
+
+<tr>
+<td>Java 6</td>
+<td>Extended Update</td>
+<td>18</td>
+<td>36개월</td>
+<td>2.7개월</td>
+<td>142개</td>
+<td>172개</td>
+<td>10.9개</td>
+<td>13.2개</td>
+</tr>
+
+<tr>
+<td>Java 6</td>
+<td>Total</td>
+<td>62</td>
+<td>142개월</td>
+<td>2.2개월</td>
+<td>3,626개</td>
+<td>814개</td>
+<td>58.4개</td>
+<td>13.1개</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+
+<p>Oracle Java 6는 지금까지 총 62회 업데이트되었고, 총 142개월 동안 총 3,626개의 버그와 814개의 보안 취약성이 수정되었습니다. Public Update 기간에 전체 버그의 90%가 적용되었고, Premier Update 기간에 6% 그리고 Extended Update 기간에 4%의 버그가 처리되었습니다. 보안 취약성의 경우 Public Update 기간에 42.9%, Premier Update 기간에 35.8% 그리고 21.1%가 Extended Update 기간에 개선되었습니다.</p>
+
+<h3 id="oracle-java-se-7-업데이트-개요">Oracle Java SE 7 업데이트 개요</h3>
+
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Roadmap 상태</th>
+<th>업데이트 횟수</th>
+<th>기간(month)</th>
+<th>평균 업데이트 주기</th>
+<th>전체 bug fixes</th>
+<th>전체 security fixes</th>
+<th>업데이트 평균 bux fixes</th>
+<th>업데이트 평균 securty fixes</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Java 7</td>
+<td>Public Update</td>
+<td>28</td>
+<td>46개월</td>
+<td>1.6개월</td>
+<td>2,175개</td>
+<td>435개</td>
+<td>77.6개</td>
+<td>15.5개</td>
+</tr>
+
+<tr>
+<td>Java 7</td>
+<td>Premier Update</td>
+<td>16</td>
+<td>45개월</td>
+<td>2.8개월</td>
+<td>341개</td>
+<td>223개</td>
+<td>21.3개</td>
+<td>13.9개</td>
+</tr>
+
+<tr>
+<td>Java 7</td>
+<td>Total</td>
+<td>44</td>
+<td>91개월</td>
+<td>2.0개월</td>
+<td>2,515개</td>
+<td>658개</td>
+<td>57.1개</td>
+<td>14.9개</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+
+<p>Oracle Java SE 7은 공개된지 8년이 지났습니다. 현재까지 총 44개의 업데이트가 공개되었습니다. 현재는 Premier Update 기간입니다. 처음 4년간의 Public Update 기간에 86%의 버그가 수정되었고, Premier Update 기간에 13%의 버그가 수정되었습니다. 보안 취약성의 경우 Public Update 기간에 66%, Premier Update 기간에 34%가 개선되었습니다.</p>
+
+<h3 id="oracle-java-se-8-업데이트-개요">Oracle Java SE 8 업데이트 개요</h3>
+
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Roadmap 상태</th>
+<th>업데이트 횟수</th>
+<th>기간(month)</th>
+<th>평균 업데이트 주기</th>
+<th>전체 bug fixes</th>
+<th>전체 security fixes</th>
+<th>업데이트 평균 bux fixes</th>
+<th>업데이트 평균 securty fixes</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Java 8</td>
+<td>Public Update</td>
+<td>34개</td>
+<td>54개월</td>
+<td>1.5개월</td>
+<td>2,977개</td>
+<td>338개</td>
+<td>87.5개</td>
+<td>9.9개</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+
+<p>Java 8의 경우 현재 공개된지 54개월이 되었고, 현재 Public Update 기간입니다. EoPU는 2019년 1월입니다. 지금까지 총 34개의 업데이트가 공개되었습니다. 34번의 업데이트에서 총 2,977개의 버그가 수정되었고 338개의 보안 취약성이 수정되었습니다. 평균 1.5개월 주기로 Oracle Java 8 업데이트가 공개되었고, 업데이트마다 약 100개의 버그가 수정되었습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/11/oraclejdk/160.jpg" alt="" /></p>
+
+<ul>
+<li>그림 9. Oracle Java 업데이트 요약 원본 데이터: <a href="http://taewan.kim/extra/java_updates/">http://taewan.kim/extra/java_updates/</a></li>
+</ul>
+</blockquote>
+
+<p>업데이트의 변경 내역을 조사하기 전에는 이 정도 규모로 버그 수정과 보안 패치가 적용되는 줄 몰랐습니다. 자바가 공개되고 Oracle Java 서포트 로드맵 기간에 약 3,000개 이상의 버그 수정과 500개 정도의 보안 취약성 패치가 반영되는 것을 볼 수 있습니다.</p>
+
+<h2 id="공개-버전-oracle-java-다운로드">공개 버전 Oracle Java 다운로드</h2>
+
+<p>OTN에서는 Oracle Java 1.1 부터 Oracle Java 11까지 Oracle Java SE의 모든 업데이트 다운로드하는 Archive 페이지를 운영합니다. 2019년 1월 부터 OTN에서는 Oracle Java 공개 버전을 릴리즈하지 않을 것을 발표했습니다. 2019년 1월 이후에도 Oracle Java SE의 모든 업데이트 다운로드하는 Archive 페이지를 운영할 것인지를 문의하시는 경우가 있습니다. 아직 이 Archive 페이지를 계속 운영할 것인지 아니면 종료할 것인지 구체적으로 언급한 문서는 찾지 못했습니다. 제 개인적인 생각은 앞으로도 계속 운영될 것이라고 믿고 있습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/11/oraclejdk/160.jpg" alt="" /></p>
+
+<ul>
+<li>그림 10. Oracle Java Archive 다운로드 페이지: <a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">https://www.oracle.com/technetwork/java/javase/downloads/index.html</a></li>
+</ul>
+</blockquote>
+
+<p>혹시 모를 불상사를 대비하여 현재 사용하는 Oracle Java의 공개 버전을 별도로 다운로드 받아 놓으시는 것도 좋을 것 같습니다.</p>
+
+<h2 id="마치며">마치며</h2>
+
+<p>Oracle Java Subscription에 대하여 살펴보았습니다. Oracle Java SE Subscription은 비공개 Oracle Java의 사용, MOS(My Oracle Support)의 24X7 기술 지원 및 상용 소프트웨어 사용 권한으로 구성됩니다.</p>
+
+<p>Java Subscription은 월 단위로 Core 수량으로 계산되며, x86을 사용할 경우 50% 할인됩니다. Oracle은 자바 개발 및 테스트 환경에 양도 불가능한 사용 라이센스를 제공하기 때문에, Java Subscription을 산정할 때, 개발자 컴퓨터, 개발 테스트 서버, 빌드 서버는 Java Subscription에 포함되지 필요 없습니다.</p>
+
+<p>Oracle Java Subscription은 2019년 1월부터 시행되지만, 현재 사용하는 Java기 Oracle Java 공개 버전이라면 얖으로도 계속 사용할 수 있습니다. 현재 사용 중인 Oracle Java가 공개버전인지 비공개 버전인지를 확인하기 위해서는 <code>java -version</code>으로 업데이트 번호를 확인하고, 이 업데이트 번호를 OTN에서 제공하는 Upblic Update 목록에서 확인할 수 있습니다.</p>
+
+<p>Oracle Java의 서포트 로드맵은 Public Update, premier Update 및 Extended Update 단계로 관리되며, 지속해서 계속 버그 수정 및 보안 취약성 개선이 이뤄집니다. 앞으로 Oracle Java와 OpenJDK를 선정할 때, 버그 수정 정도와 보안 취약성 개선 상황도 중요한 판단 근거가 될 것입니다.</p>
+
+<p>Oracle Java Subscription은 비공개 Oracle Java를 사용해야 하거나 24X7의 전문적 기술 지원의 필요성할 경우에 구독하는 모델입니다. 마지막으로 오라클 솔루션에 내장된 Oracle Java는 본래 목적에 맞는 용도로만 사용해야 합니다. 오라클 솔루션이 아닌 별도의 자바 애플리케이션이 사용할 경우, 라이센스 위반 사항이 됩니다.</p>
+
+<p>지금까지 Oracle Java SE Subscription에 대하여 정리해 보았습니다. 추가로 궁금한 부분이 있으시다면 댓글로 남져주시기 바랍니다.</p>
+
+<h2 id="참고자료">참고자료</h2>
+
+<ul>
+<li><a href="https://www.oracle.com/technetwork/java/javaseproducts/javasesubscription-data-sheet-4891969.pdf">https://www.oracle.com/technetwork/java/javaseproducts/javasesubscription-data-sheet-4891969.pdf</a></li>
+<li><a href="http://www.oracle.com/us/assets/lifetime-support-middleware-069163.pdf">http://www.oracle.com/us/assets/lifetime-support-middleware-069163.pdf</a></li>
+<li><a href="https://www.oracle.com/technetwork/java/javase/overview/eol-135779.html">https://www.oracle.com/technetwork/java/javase/overview/eol-135779.html</a></li>
+<li><a href="http://www.oracle.com/assets/processor-core-factor-table-070634.pdf">http://www.oracle.com/assets/processor-core-factor-table-070634.pdf</a></li>
+<li><a href="https://www.oracle.com/assets/java-se-subscription-pricelist-5028356.pdf">https://www.oracle.com/assets/java-se-subscription-pricelist-5028356.pdf</a></li>
+<li>Oracle Java SE 7: Release Notes for Public Updates <a href="https://www.oracle.com/technetwork/java/javase/7u-relnotes-515228.html">https://www.oracle.com/technetwork/java/javase/7u-relnotes-515228.html</a></li>
+<li>Oracle Java SE 7: Release Notes for Premier Supports <a href="https://www.oracle.com/technetwork/java/javase/documentation/javase7supportreleasenotes-1601161.html">https://www.oracle.com/technetwork/java/javase/documentation/javase7supportreleasenotes-1601161.html</a></li>
+<li><a href="https://www.oracle.com/technetwork/java/javase/7u80-relnotes-2494162.html">https://www.oracle.com/technetwork/java/javase/7u80-relnotes-2494162.html</a></li>
+<li><a href="https://www.oracle.com/technetwork/java/javase/documentation/javase7supportreleasenotes-1601161.html">https://www.oracle.com/technetwork/java/javase/documentation/javase7supportreleasenotes-1601161.html</a></li>
+</ul>
+
+<div class="notices note" ><p>Disclaimer: 본 글은 개인적인 사간에 Oracle과 관계없이 개인으로서 작성된 글 입니다. 본 글의 내용, 입장, 예측은 Oracle을 공식적으로 대변하지 않습니다.</p>
+</div>
+
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">&lsquo;비공개 Oracle Java&rsquo;는 공식적인 표현은 아닙니다. 이 포스트 문서에서만 사용하는 야메스러운 표현입니다. ^^
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">여기서 수량이란 데스크톱의 경우 사용자 수이고 서버의 경우 전체 계약 서버의 Core 수입니다.
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:3">이 상황에서 본래 의도된 목적은 WebLogic의 런타임으로 Oracle Java를 사용하는 것입니다. 그 외의 모든 것은 다른 목적으로 분류됩니다.
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/oracle-jdk/" rel="tag">oracle JDK</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/subscription/" rel="tag">Subscription</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/openjdk/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">자바의 새로운 도약: OpenJDK(Feat. Oracle JDK Subscription) </p></a>
+	</div>
+</nav>
+
+	
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/post/oracle_java_subscription/"></div>
+
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		
+		<ins class="adsbygoogle"
+			 style="display:block"
+			 data-ad-client="ca-pub-8469722754608892"
+			 data-ad-slot="5594090168"
+			 data-ad-format="auto"
+			 data-full-width-responsive="true"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	
+
+<div class="widget-categories widget">	
+		<div class="fb-like" data-href="http://taewan.kim/post/oracle_java_subscription/" 
+		data-layout="button_count" data-action="like" 
+		data-size="small" 
+		data-show-faces="true" 
+		data-share="true"></div>
+</div>
+
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#oracle-jdk의-서포트-로드맵과-관련-용어">Oracle JDK의 서포트 로드맵과 관련 용어</a></li>
+<li><a href="#oracle-java-se-subscription-란-무엇인가">&lsquo;Oracle Java SE Subscription&rsquo;란 무엇인가?</a></li>
+<li><a href="#oracle-java-se-subscription-가격-산정-방식">&lsquo;Oracle Java SE Subscription&rsquo; 가격 산정 방식</a></li>
+<li><a href="#oracle-java-subscription의-대상-자바-버전">Oracle Java Subscription의 대상 자바 버전</a></li>
+<li><a href="#기존에-사용하던-공개버전-oracle-java-se를-계속-사용할-수-없는가">기존에 사용하던 공개버전 Oracle Java SE를 계속 사용할 수 없는가?</a>
+<ul>
+<li><a href="#oracle-java-1-6의-공개-버전-확인">Oracle Java 1.6의 공개 버전 확인</a></li>
+<li><a href="#oracle-java-7의-공개-버전-확인">Oracle Java 7의 공개 버전 확인</a></li>
+<li><a href="#oracle-java-8의-공개-버전-확인">Oracle Java 8의 공개 버전 확인</a></li>
+</ul></li>
+<li><a href="#데스트톱-컴퓨터도-java-subscription-적용-대상인가">데스트톱 컴퓨터도 Java Subscription 적용 대상인가?</a></li>
+<li><a href="#개발자-컴퓨터도-java-subscription-적용-대상인가">개발자 컴퓨터도 Java Subscription 적용 대상인가?</a></li>
+<li><a href="#오라클-솔루션의-임베디드-oracle-java를-추가로-사용할-수-있나요">오라클 솔루션의 임베디드 Oracle Java를 추가로 사용할 수 있나요?</a></li>
+<li><a href="#oracle-java는-업데이트가-중요한가요">Oracle Java는 업데이트가 중요한가요?</a>
+<ul>
+<li><a href="#oracle-java-se-6-업데이트-개요">Oracle Java SE 6 업데이트 개요</a></li>
+<li><a href="#oracle-java-se-7-업데이트-개요">Oracle Java SE 7 업데이트 개요</a></li>
+<li><a href="#oracle-java-se-8-업데이트-개요">Oracle Java SE 8 업데이트 개요</a></li>
+</ul></li>
+<li><a href="#공개-버전-oracle-java-다운로드">공개 버전 Oracle Java 다운로드</a></li>
+<li><a href="#마치며">마치며</a></li>
+<li><a href="#참고자료">참고자료</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/post/oracle_java_subscription/" title="Oracle Java SE Subscription">
+							Oracle Java SE Subscription</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. Oracle JDK Subscription) ">
+							자바의 새로운 도약: OpenJDK(Feat. Oracle JD ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/1982kim_ji_young/" title="&#39;82년생 김지영&#39; 리뷰">
+							&#39;82년생 김지영&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/kim_eunsook_universe/" title="김은숙 유니버스: 다시 태어난 캐릭터">
+							김은숙 유니버스: 다시 태어난 캐릭터</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_impact/" title="&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact">
+							&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/transpose_reshape/" title="다차원 텐서 Transpose와 Reshape">
+							다차원 텐서 Transpose와 Reshape</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-72835175-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+
