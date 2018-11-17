@@ -17,7 +17,7 @@
       <pubDate>Thu, 15 Nov 2018 09:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/post/oracle_java_subscription/</guid>
-      <description>2019년 1월부터 Oracle Java SE Subscription(이하 Java Subscription)이 시행됩니다. 현재 운영중인 자바 시스템에 Java Subscription을 구독할지를 결정을 하기 위해서는 여러가지 정보가 필요합니다. 내 시스템에 Java Subscription이 정말 필요한지, 2019년 1월까지 바로 결정을 해야하는 것인지, 더 고민할 시간은 없는지, Java Subscription의 대상 범위가 어디까지인지, 개발자 컴퓨터도 Java Subscription에 포함 시켜야 하는지, 기술 지원이 제공되는 Java 버전은 무엇인지 등 여러가지 고려사항이 있습니다. Java Subscription 구독 모델이 생소하다 보니 어떻게 대응해야 할지 고민하시는 분들이 많은 것 같습니다.</description>
+      <description>2019년 1월부터 Oracle Java SE Subscription(이하 Java Subscription)이 시행됩니다. 현재 운영중인 자바 시스템에 Java Subscription을 구독할지를 결정을 하기 위해서는 여러가지 판단 근거가 필요합니다. 내 시스템에 Java Subscription이 정말 필요한지, 2019년 1월까지 바로 결정을 해야하는 것인지, Subscription 구독 결정을 시간을 두고 결정할 수 있는 것인지, Java Subscription의 대상 범위가 어디까지인지, 개발자 컴퓨터와 테스트 서버도 Java Subscription에 포함 시켜야 하는지, 기술 지원이 제공되는 Java 버전은 무엇인지, Java SE 최신 Update를 쓰면 정말 좋은 것인지 등 고려 사항을 고민해야 있습니다.</description>
     </item>
     
     <item>
