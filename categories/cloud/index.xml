@@ -6,10 +6,20 @@
     <description>Recent content in Cloud on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 08 Sep 2018 01:09:25 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 20 Nov 2018 01:17:05 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/categories/cloud/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>hands-on 01.Oracle ADW 서비스 인스턴스 프로비저닝</title>
+      <link>http://taewan.kim/cloud/adw_provisioning/</link>
+      <pubDate>Tue, 20 Nov 2018 01:17:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/adw_provisioning/</guid>
+      <description>Oracle Cloud에서는 Dataware house
+  </description>
+    </item>
     
     <item>
       <title>&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</title>
