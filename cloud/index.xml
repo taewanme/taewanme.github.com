@@ -6,10 +6,20 @@
     <description>Recent content in Clouds on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 08 Sep 2018 01:09:25 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 25 Nov 2018 01:17:05 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/cloud/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Oracle ADW 인스턴스 프로비저닝</title>
+      <link>http://taewan.kim/cloud/adw_provisioning/</link>
+      <pubDate>Sun, 25 Nov 2018 01:17:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/adw_provisioning/</guid>
+      <description>Oracle Cloud는 Data Warehouse(DW) 서비스로 Oracle Autonomous Data Warehouse Cloud Service(ADWC)를 제공합니다. 기존에 DW 역할을 수행하는 서비스입니다.
+최근에 오라클은 Autonomous 서비스를 강조하고 있습니다. 오라클이 말하는 Autonomous 서비스는 Advanced PaaS라고 생각하시면 됩니다. 기존에 PaaS가 인프라 접근 제한하고 서비스 공급자가 서비스의 전반적인 사항을 관리한다는 의미를 강조한 형태라면 Autonomous는 고도화된 PaaS의 성격을 갖습니다. Autonomous 서비스 관리형 서비스외에 성능 및 운영의 더 높은 수준의 자율운영을 강조한 서비스입니다. 최근에 Oracle Cloud는 기존의 PaaS 서비스를 Autonomous 서비스로 전환하는 작업에 집중하고 있습니다.</description>
+    </item>
     
     <item>
       <title>&#39;Oracle Cloud AI 서비스&#39; @ Oracle Impact</title>
@@ -38,7 +48,7 @@ youtube 동영상   발표 문서  Oracle Impact: Oracle Cloud AI 요약 Enterpr
       
       <guid>http://taewan.kim/cloud/bdc_ambari/</guid>
       <description>오라클 클라우드는 Big Data 서비스로 Big Data Cloud(이하 BDC)를 제공합니다. BDC는 Hotonworks 하둡 패키지를 오라클 클라우드의 PaaS로 제공하는 서비스입니다. 2018년 5월 현재 Oracle BDC는 OCI와 OCI Classic에 모두 배포 가능합니다. Oracle BDC에 대한 개요, 설치 방법 및 OCI와 OCI Classic에 대산 자세한 사항은 아래 문서를 참조하시기 바랍니다.
- BDC 관련문서  Oracle BDC 소개 문서  Oracle BDC 클러스터 생성 절차(작성일: 2017-07-31)  Oracle OCI와 OCI Classic이란?    Oracle BDC의 Apache Ambari Apache Ambari는 하둡 클러스터 전문 관리 툴입니다.</description>
+ BDC 관련문서  Oracle BDC 소개 문서[↗NW]  Oracle BDC 클러스터 생성 절차(작성일: 2017-07-31)[↗NW]  Oracle OCI와 OCI Classic이란?[↗NW]    Oracle BDC의 Apache Ambari Apache Ambari는 하둡 클러스터 전문 관리 툴입니다.</description>
     </item>
     
     <item>

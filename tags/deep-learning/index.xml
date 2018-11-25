@@ -54,7 +54,7 @@ pyml Docker 최신 정보 pyml Docker 이미지 버전 pyml Docker 이미지 버
       <pubDate>Mon, 09 Jul 2018 21:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/til/deeplearning_s01_week02/</guid>
-      <description> Coursera에서 deeplearning.ai가 운영하는 &amp;lsquo;Neural network and deep learning ]&amp;lsquo;의 2주차 강의 정리입니다.
+      <description> Coursera에서 deeplearning.ai가 운영하는 &amp;lsquo;Neural network and deep learning[↗NW] ]&amp;lsquo;의 2주차 강의 정리입니다.
  강의 구성  Logistic Regression as a Neural Network  Binary Classification Logistic Regression Logistic Regression Cost Function Gradient Descent Derivatives More Derivative Examples Computation Graph Derivative with a computation graph Logistic Regression Gradient Descent Gradient Descent m Examples  Python and Vectorization  Vectorization More Vectorization Examples Vectorizing Logistic Regression Vectorizing Logistic Regression&amp;rsquo;s Gradient Output Broadcasting in Python A note on python/numpy vectors Quick tour of jupyter notebooks Explanation of logistic regression cost function    Logistic Regression as a Neural Network  for문을 지향하고 Vectorization을 수행 forward propagation과 back propagation을 소개  Binary Classification  Logistic regression은  </description>
     </item>
     
@@ -64,7 +64,7 @@ pyml Docker 최신 정보 pyml Docker 이미지 버전 pyml Docker 이미지 버
       <pubDate>Sun, 08 Jul 2018 21:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/til/deeplearning_s01_week01/</guid>
-      <description>Coursera에서 deeplearning.ai가 운영하는 &amp;lsquo;Neural network and deep learning ]&amp;lsquo;의 1주차 강의 정리입니다.
+      <description>Coursera에서 deeplearning.ai가 운영하는 &amp;lsquo;Neural network and deep learning[↗NW] ]&amp;lsquo;의 1주차 강의 정리입니다.
  동영상 목록  Welcome: (5min) What is a neural network (7min) Surpervised Learning with neural network (8min) Why is deep learning taking off? (10min) About This Courses? (2min) Frequently asked questions? (10min)   Welcome(5min)  AI is the new electircity 100년 전부터 전기 공급이 모든 산업계를 변화 시켰던 것 처럼, AI도 모든 산업계를 변화 시키고 있다.</description>
     </item>
     

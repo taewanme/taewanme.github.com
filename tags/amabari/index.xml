@@ -18,7 +18,7 @@
       
       <guid>http://taewan.kim/cloud/bdc_ambari/</guid>
       <description>오라클 클라우드는 Big Data 서비스로 Big Data Cloud(이하 BDC)를 제공합니다. BDC는 Hotonworks 하둡 패키지를 오라클 클라우드의 PaaS로 제공하는 서비스입니다. 2018년 5월 현재 Oracle BDC는 OCI와 OCI Classic에 모두 배포 가능합니다. Oracle BDC에 대한 개요, 설치 방법 및 OCI와 OCI Classic에 대산 자세한 사항은 아래 문서를 참조하시기 바랍니다.
- BDC 관련문서  Oracle BDC 소개 문서  Oracle BDC 클러스터 생성 절차(작성일: 2017-07-31)  Oracle OCI와 OCI Classic이란?    Oracle BDC의 Apache Ambari Apache Ambari는 하둡 클러스터 전문 관리 툴입니다.</description>
+ BDC 관련문서  Oracle BDC 소개 문서[↗NW]  Oracle BDC 클러스터 생성 절차(작성일: 2017-07-31)[↗NW]  Oracle OCI와 OCI Classic이란?[↗NW]    Oracle BDC의 Apache Ambari Apache Ambari는 하둡 클러스터 전문 관리 툴입니다.</description>
     </item>
     
   </channel>

@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://taewan.kim/cloud/adw_provisioning/</loc>
+    <lastmod>2018-11-25T01:17:05+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tip/usb_format_in_osx/</loc>
     <lastmod>2018-11-21T15:00:14+09:00</lastmod>
   </url>
@@ -1080,6 +1085,18 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/tags/adw/</loc>
+    <lastmod>2018-11-25T01:17:05+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/adwc/</loc>
+    <lastmod>2018-11-25T01:17:05+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tags/ai/</loc>
     <lastmod>2018-09-08T01:09:25+09:00</lastmod>
     <priority>0</priority>
@@ -1123,7 +1140,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/autonomous/</loc>
-    <lastmod>2018-03-31T08:05:14+09:00</lastmod>
+    <lastmod>2018-11-25T01:17:05+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1255,13 +1272,13 @@
   
   <url>
     <loc>http://taewan.kim/tags/cloud/</loc>
-    <lastmod>2018-09-08T01:09:25+09:00</lastmod>
+    <lastmod>2018-11-25T01:17:05+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://taewan.kim/categories/cloud/</loc>
-    <lastmod>2018-09-08T01:09:25+09:00</lastmod>
+    <lastmod>2018-11-25T01:17:05+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1273,7 +1290,7 @@
   
   <url>
     <loc>http://taewan.kim/cloud/</loc>
-    <lastmod>2018-09-08T01:09:25+09:00</lastmod>
+    <lastmod>2018-11-25T01:17:05+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1986,7 +2003,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/oracle/</loc>
-    <lastmod>2018-11-11T09:00:14+09:00</lastmod>
+    <lastmod>2018-11-25T01:17:05+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2502,7 +2519,7 @@
   
   <url>
     <loc>http://taewan.kim/</loc>
-    <lastmod>2018-11-21T15:00:14+09:00</lastmod>
+    <lastmod>2018-11-25T01:17:05+09:00</lastmod>
     <priority>0</priority>
   </url>
   
