@@ -17,9 +17,8 @@
       <pubDate>Tue, 27 Nov 2018 09:17:05 +0900</pubDate>
       
       <guid>http://taewan.kim/cloud/installing_oci_cli/</guid>
-      <description>oci cli는 Oracle Cloud Infrastructure에서 주요 인프라 관리 기능을 수행하는 CLI 툴입니다. &amp;ldquo;oci cli&amp;ldquo;를 사용하여 OCI 웹 콘솔과 동일한 기능을 수행할 수 있습니다. &amp;ldquo;oci cli&amp;ldquo;를 스크립트와 함께 사용할 경우 OCI 인프라 관리 기능을 자동화하고 편리하게 운영할 수 있습니다.
-OCI 인프라스트럭처를 관리하는 언어별 SDK를 오라클 github 레파지토리[↗NW] 에서 오픈소스 형태로 개발하고 있습니다. OCI SDK가 지원하는 언어는 Python, Go, Java와 Ruby입니다. &amp;ldquo;oci cli&amp;ldquo;는 oracle/oci-python-sdk[↗NW] 프로젝트를 기반으로 만들어 졌습니다.
- - Github에서 개발중인 언어별 OCI SDK</description>
+      <description>oci cli는 Oracle Cloud Infrastructure에서 주요 인프라 관리 기능을 수행하는 CLI 툴입니다. &amp;ldquo;oci cli&amp;ldquo;를 사용하여 OCI 웹 콘솔과 동일한 기능을 수행할 수 있습니다. &amp;ldquo;oci cli&amp;ldquo;를 스크립트와 함께 사용할 경우 OCI 인프라 관리 기능을 자동화하고 편리하게 운영할 수 있습니다. Oracle Cloud Infrastructure를 보다 더 효율적으로 사용하기 위해서 Command Line Interface(이하 CLI) 사용이 필수입니다.
+OCI 인프라스트럭처를 관리하는 언어별 SDK를 오라클 github 레파지토리[↗NW] 에서 오픈소스 형태로 개발하고 있습니다. OCI SDK가 지원하는 언어는 Python, Go, Java와 Ruby입니다.</description>
     </item>
     
     <item>

@@ -115,7 +115,7 @@
 			</figure>
 			
 
-<p>oci cli는 Oracle Cloud Infrastructure에서 주요 인프라 관리 기능을 수행하는 CLI 툴입니다. &ldquo;<strong>oci cli</strong>&ldquo;를 사용하여 OCI 웹 콘솔과 동일한 기능을 수행할 수 있습니다. &ldquo;<strong>oci cli</strong>&ldquo;를 스크립트와 함께 사용할 경우 OCI 인프라 관리 기능을 자동화하고 편리하게 운영할 수 있습니다.</p>
+<p>oci cli는 Oracle Cloud Infrastructure에서 주요 인프라 관리 기능을 수행하는 CLI 툴입니다. &ldquo;<strong>oci cli</strong>&ldquo;를 사용하여 OCI 웹 콘솔과 동일한 기능을 수행할 수 있습니다. &ldquo;<strong>oci cli</strong>&ldquo;를 스크립트와 함께 사용할 경우 OCI 인프라 관리 기능을 자동화하고 편리하게 운영할 수 있습니다. Oracle Cloud Infrastructure를 보다 더 효율적으로 사용하기 위해서 Command Line Interface(이하 CLI) 사용이 필수입니다.</p>
 
 <p>OCI 인프라스트럭처를 관리하는 언어별 SDK를 <a href="https://github.com/oracle" target="_blank">오라클 github 레파지토리[↗NW]</a>
 에서 오픈소스 형태로 개발하고 있습니다. OCI SDK가 지원하는 언어는  Python, Go, Java와 Ruby입니다. &ldquo;<strong>oci cli</strong>&ldquo;는 <a href="https://github.com/oracle/oci-python-sdk" target="_blank">oracle/oci-python-sdk[↗NW]</a>
@@ -137,9 +137,172 @@
 
 <h2 id="oci-cli-설치">oci cli 설치</h2>
 
+<p>&ldquo;<strong>oci cli</strong>&ldquo;의 설치 및 설정 방법을 살펴보겠습니다.</p>
+
+<h3 id="oci-cli-설치-1">oci cli 설치</h3>
+
+<p>&ldquo;<strong>oci cli</strong>&ldquo;은 github에서 개발되고 있으며, Window와  mac/Linux에서 설치를 돕는 스크립트를 제공합니다. 설치 스크립트는 <a href="https://github.com/oracle/oci-cli">https://github.com/oracle/oci-cli</a> 사이트에서 확인할 수 있습니다.</p>
+
+<p>다음 운영체제에 맞는 스크립트를 터미널 상에서 수행하면 설치가 됩니다. &ldquo;<strong>oci cli</strong>&ldquo;를 운영학 위해서는 Python (버전 2.7.5 또는 3.5 이상)이 필요합니다. 파이썬이 없는 상태에서 다음 스크립트를 설치하면 최신 Python을 설치합니다. 기존에 파이썬이 설치되어 있다면 버전을 2.7.5 이상 혹은 3.5 이상으로 먼저 맞춰야 합니다.</p>
+
+<p>Linux/Mac OSX에서는 터니멀 상에서 Bash 혹은  Zsh에서 실행하면 됩니다. 윈도우일 경우 Window 10을 권장하고, 다음 스크립트는 PowerShell에서 수행해야 합니다.</p>
+
+<ul>
+<li>Linux/Mac OSX용 설치 스크립트</li>
+</ul>
+
+<blockquote>
+<pre><code>bash -c &quot;$(curl -L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh)&quot;
+</code></pre>
+</blockquote>
+
+<ul>
+<li>윈도우용 설치 스크립트</li>
+</ul>
+
+<blockquote>
+<pre><code>powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.ps1'))&quot;
+</code></pre>
+</blockquote>
+
+<h3 id="oci-cli-설치-확인">oci cli 설치 확인</h3>
+
+<p>oci cli가 제대로 설치되었는지는 다음 명령으로 확인할 수 있습니다.</p>
+
+<blockquote>
+<pre><code>~/temp/demo/taewan &gt; oci -v
+2.4.38
+</code></pre>
+</blockquote>
+
+<h3 id="oci-cli-설정">oci cli 설정</h3>
+
+<p>Oracle Cloud 계정과 통신하기 위해서는 추가 설정이 필요합니다. oci cli설정을 위해서는 다음과 같은 정보가 필요합니다.</p>
+
+<ul>
+<li>User OCID</li>
+<li>Tenancy OCID</li>
+<li>Region</li>
+</ul>
+
+<p>현재 OCI User가 없는 상태라면, 사용할 OCI User를 먼저 생성해야 합니다. OCI User 관리 페이지 이동 메뉴는 &ldquo;OCI Menu -&gt; Identity -&gt; User&rdquo;입니다. OCI User가 생성되었다면 다음 페이지에서 각 정보를 확인할 수 있습니다.</p>
+
+<ul>
+<li>User OCID:</li>
+</ul>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/11/cli/img030.jpg" alt="" />
+- User OCID 정보 확인</p>
+</blockquote>
+
+<ul>
+<li>Tenancy OCID &amp; Region</li>
+</ul>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/11/cli/img040.jpg" alt="" />
+- Tenancy OCID와  Region 정보 확인</p>
+</blockquote>
+
+<p>위 3가지 정보를 확보했다면 다음 명령을 통해서 oci cli의 접속 설정을 수행할 수 있습니다.</p>
+
+<blockquote>
+<pre><code>&gt; oci setup config
+</code></pre>
+</blockquote>
+
+<p>위 명령을 입력하믄 다음가 같은 정보 입력 및 문의가 진행됩니다.</p>
+
+<ul>
+<li><code>Enter a location for your config [/Users/taewan/.oci/config]:</code>
+
+<ul>
+<li>config 파일 위치 지정</li>
+<li>입력: Enter (기본 위치를 사용할 경우)</li>
+</ul></li>
+<li><code>Enter a user OCID:</code></li>
+<li><code>Enter a tenancy OCID</code></li>
+<li><code>Enter a region (e.g. eu-frankfurt-1, uk-london-1, us-ashburn-1, us-phoenix-1):</code></li>
+<li><code>Do you want to generate a new RSA key pair?</code>
+
+<ul>
+<li>RSA 보안 키 파일 생성</li>
+<li>입력: Y</li>
+</ul></li>
+<li><code>Enter a directory for your keys to be created [/Users/taewan/.oci]:</code>
+
+<ul>
+<li>RSA 보안 키 파일 위치 지정</li>
+<li>입력: Enter (기본 위치를 사용할 경우)</li>
+</ul></li>
+<li><code>Enter a name for your key [oci_api_key]:</code>
+
+<ul>
+<li>RSA Private key 파일 이름 지정</li>
+<li>입력: Enter (기본 위치를 사용할 경우)</li>
+</ul></li>
+<li><code>Enter a passphrase for your private key (empty for no passphrase):</code>
+
+<ul>
+<li>입력: Enter</li>
+</ul></li>
+</ul>
+
+<p>기본 위치를 사용할 경우 다음과 같은 결과를 확인할 수 있습니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&gt; pwd
+/Users/taewan
+&gt; ls .oci
+config                 oci_api_key.pem        oci_api_key_public.pem
+&gt; cat .oci/config
+<span style="color:#f92672">[</span>DEFAULT<span style="color:#f92672">]</span>
+user<span style="color:#f92672">=</span>ocid1.user.oc1..aaaaaaaa7q6hc56vqrjk67adfgi4np4k7abcq64ebqdfmhjhod3tmyxca
+fingerprint<span style="color:#f92672">=</span>b1:7a:69:14:f1:ae:2c:13:cc:54:c3:d4:43:b1:9c:b2
+key_file<span style="color:#f92672">=</span>/Users/taewan/.oci/oci_api_key.pem
+tenancy<span style="color:#f92672">=</span>ocid1.tenancy.oc1..aaaaaaaarla6ykabvfryuxqcx5y76stinq7z76lql5xqvcbjx3zfujxi33q
+region<span style="color:#f92672">=</span>us-ashburn-1</code></pre></div>
+<h3 id="oci-user에-rsa-public-파일-등록">oci user에 rsa public 파일 등록</h3>
+
+<p>앞에서 생성한 RSA public 키를 OCI 사용자에 등록합니다.</p>
+
+<pre><code>&gt; cat .oci/oci_api_key_public.pem
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3IPPeI54Nns3HRuaOgLi
+Q2iqB1vKb2idWOf52/lUQZXKJ4AKWkdlbHBfvTIf6V8T35NbGL5e0UO3CmiYYzcc
+Rrv4iEtLxKlZGok6fMG8ojrKya35lUzTiqOUfzTGGmSZzAZTAJ3uiAmziTgzF4rj
+KyEaX+/FdHIQiR+av1w3hm8ooYdCnq3Ja51g+Wmbw9xh4OjmQf8zbnI1Q0qJi4Xv
+V0XmAnMlZbLSpovwzYAQCR2C0fqB5zlRd7miF1EnrVN61lFx+f78qziZtTp8BH8o
+xUwmDAaD4d5f83RsLy+2+0XpDTMfZpaD+JAxko1xxgUg7mW/s82OmTO+onXjoFjV
+4wIDAQAB
+-----END PUBLIC KEY-----
+</code></pre>
+
+<ul>
+<li>OCI Menu -&gt; Identity -&gt; User</li>
+</ul>
+
+<p>OCI USER 관리 페이지에서 demo_user01 사용자의 &ldquo;public key&rdquo;에 앞에서 만든 &ldquo;.oci/oci_api_key_public.pem&rdquo; 파일의 내용을 등록합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/11/cli/img050.jpg" alt="" />
+- OCI User에 public key 등록</p>
+</blockquote>
+
+<h3 id="oci-setup-설정-확인">oci setup 설정 확인</h3>
+
+<p>oci의 tenancy id를 조회하는 <code>oci os ns get</code> 명령을 이용하여 앞에서 수행한 설정 상태를 점검할 수 있습니다. 아래와 같이 Tenancy를 반환한다면, 설정이 제대로 되었다고 판단할 수 있습니다.</p>
+
+<blockquote>
+<pre><code>&gt; oci os ns get
+{
+  &quot;data&quot;: &quot;lm02&quot;
+}
+</code></pre>
+</blockquote>
+
 <h2 id="동영상-데모">동영상 데모</h2>
 
-<p>지금까지 소개할 설치 절차의 동영상 데모입니다.</p>
+<p>지금까지 소개할 설치 및 설정 절차는 다음 동영상에서 확인하실 수 있스비다.</p>
 
 <h3 id="window-10에-oci-cli-설치하기">Window 10에 oci cli 설치하기</h3>
 
@@ -166,10 +329,6 @@
 
 - Mac OSX에 OCI CLI 설치 데모 동영상</p>
 </blockquote>
-
-<h2 id="정리">정리</h2>
-
-<p>// 정리 멘트</p>
 
 <h2 id="related-posts">Related Posts</h2>
 
@@ -272,13 +431,19 @@
 <ul>
 <li>
 <ul>
-<li><a href="#oci-cli-설치">oci cli 설치</a></li>
+<li><a href="#oci-cli-설치">oci cli 설치</a>
+<ul>
+<li><a href="#oci-cli-설치-1">oci cli 설치</a></li>
+<li><a href="#oci-cli-설치-확인">oci cli 설치 확인</a></li>
+<li><a href="#oci-cli-설정">oci cli 설정</a></li>
+<li><a href="#oci-user에-rsa-public-파일-등록">oci user에 rsa public 파일 등록</a></li>
+<li><a href="#oci-setup-설정-확인">oci setup 설정 확인</a></li>
+</ul></li>
 <li><a href="#동영상-데모">동영상 데모</a>
 <ul>
 <li><a href="#window-10에-oci-cli-설치하기">Window 10에 oci cli 설치하기</a></li>
 <li><a href="#mac-osx에-oci-cli-설치하기">Mac OSX에 oci cli 설치하기</a></li>
 </ul></li>
-<li><a href="#정리">정리</a></li>
 <li><a href="#related-posts">Related Posts</a></li>
 </ul></li>
 </ul>
