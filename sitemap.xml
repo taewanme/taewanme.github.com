@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/cloud/rsa_with_oci_cli/</loc>
+    <lastmod>2018-11-27T09:17:05+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/cloud/provisioning_adw/</loc>
     <lastmod>2018-11-24T01:17:05+09:00</lastmod>
   </url>
@@ -2195,6 +2200,12 @@
   <url>
     <loc>http://taewan.kim/tags/row-vector/</loc>
     <lastmod>2017-12-23T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/rsa/</loc>
+    <lastmod>2018-11-27T09:17:05+09:00</lastmod>
     <priority>0</priority>
   </url>
   
