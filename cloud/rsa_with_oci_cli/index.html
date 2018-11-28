@@ -131,26 +131,56 @@
 </ul>
 
 <h2 id="oci-cli를-이용하여-rsa-키-파일-생성">oci cli를 이용하여 RSA 키 파일 생성</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-oci setup keys``` 명령을 이용하면 간편하게 RSA 키 파일을 생성할 수 있습니다.  ```oci setup keys``` 명령은 RSA 키 파일을 생성하는 4 개 옵션을 제공합니다." data-lang="oci setup keys``` 명령을 이용하면 간편하게 RSA 키 파일을 생성할 수 있습니다.  ```oci setup keys``` 명령은 RSA 키 파일을 생성하는 4 개 옵션을 제공합니다.">|옵션|의미|비고|
-|----|----|----|
-|--key-name [text]|key 파일의 이름 지정, {key-name}_public.pem 파일과 {key-name}.pem 파일 생성|필수 옵션|
-|--output-dir [path]| RSA 키 파일 생성 위치|필수 옵션|
-|--passphrase [text]|암호화를 위한 passphrase 설정|선택 옵션|
-|--passphrase-file [filename]| 암호화를 위한 passphase 파일 지정|선택 옵션|
 
-다음은 ```oci setup keys```의 사용 예입니다. 2가지 필수 옵션을 이용하고 있습니다.
+<p>&ldquo;<strong>oci setup keys</strong>&rdquo; 명령을 이용하면 간편하게 RSA 키 파일을 생성할 수 있습니다. &ldquo;<strong>oci setup keys</strong>&rdquo; 명령은 RSA 키 파일을 생성하는 4개 옵션을 제공합니다.</p>
 
-```bash
-&gt; oci setup keys --key-name test --output-dir ./
-Enter a passphrase for your private key (empty for no passphrase):
+<table>
+<thead>
+<tr>
+<th>옵션</th>
+<th>의미</th>
+<th>비고</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>&ndash;key-name [text]</td>
+<td>key 파일의 이름 지정, {key-name}_public.pem 파일과 {key-name}.pem 파일 생성</td>
+<td>필수 옵션</td>
+</tr>
+
+<tr>
+<td>&ndash;output-dir [path]</td>
+<td>RSA 키 파일 생성 위치</td>
+<td>필수 옵션</td>
+</tr>
+
+<tr>
+<td>&ndash;passphrase [text]</td>
+<td>암호화를 위한 passphrase 설정</td>
+<td>선택 옵션</td>
+</tr>
+
+<tr>
+<td>&ndash;passphrase-file [filename]</td>
+<td>암호화를 위한 passphase 파일 지정</td>
+<td>선택 옵션</td>
+</tr>
+</tbody>
+</table>
+
+<p>다음은 <code>oci setup keys</code>의 사용 예입니다. 2가지 필수 옵션을 이용하고 있습니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&gt; oci setup keys --key-name test --output-dir ./
+Enter a passphrase <span style="color:#66d9ef">for</span> your private key <span style="color:#f92672">(</span>empty <span style="color:#66d9ef">for</span> no passphrase<span style="color:#f92672">)</span>:
 Public key written to: ./test_public.pem
 Private key written to: ./test.pem
 Public key fingerprint: 1d:d2:7b:8a:88:6d:4d:b9:85:ba:a4:6a:42:fa:46:d0
 
 
-    If you haven&#39;t already uploaded your public key through the console,
-    follow the instructions on the page linked below in the section &#39;How to
-    upload the public key&#39;:
+    If you haven<span style="color:#e6db74">&#39;t already uploaded your public key through the console,
+</span><span style="color:#e6db74">    follow the instructions on the page linked below in the section &#39;</span>How to
+    upload the public key<span style="color:#960050;background-color:#1e0010">&#39;</span>:
 
         https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#How2
 
@@ -166,7 +196,7 @@ drwxr-xr-x+ 195 taewan  staff  6240 Nov 28 16:03 ..
 
 </code></pre>
 
-<p>이 oci cli 명령은 리눅스 상에서 아래와 같은 명령과 동일한 결과름 만듭니다.</p>
+<p>이 oci cli 명령은 리눅스 상에서 아래 명령과 동일하게 동작합니다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&gt; openssl genrsa -out ./test.pem <span style="color:#ae81ff">2048</span>
 &gt; chmod go-rwx ./test.pem
 &gt; openssl rsa -pubout -in ./test.pem -out ./test_public.pem</code></pre></div>
