@@ -444,7 +444,7 @@ array([[ 4,  6,  8, 10],
 
 <h3 id="case-4-axis-2">case 4: axis=2</h3>
 
-<p>axis=2는 z축을 기준으로 합을 구하는 방식입니다. z축 dpeth 요소를 합치는 연산입니다. shape이 (4, 2, 4)인 데이터를  y축을 기준으로 합산하면 결과 shape은 depth를 제거한 (4, 4)가 반환 됩니다. 각 컬럼의 depth는 1개의 스칼라값으로 변환됩니다.</p>
+<p>axis=2는 z축을 기준으로 합을 구하는 방식입니다. z축 dpeth 요소를 합치는 연산입니다. shape이 (4, 2, 4)인 데이터를  z축을 기준으로 합산하면 결과 shape은 depth를 제거한 (4, 2)가 반환 됩니다. 각 컬럼의 depth는 1개의 스칼라값으로 변환됩니다.</p>
 
 <pre><code>&gt;&gt;&gt; res03=v.sum(axis=2)  ## axis=2 기준 합계
 &gt;&gt;&gt; res03.shape
