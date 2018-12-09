@@ -1,0 +1,109 @@
++++
+date = "2018-12-07T05:17:05+09:00"
+description = " "
+title = "Oracle Big Data Cloud, 인스턴스 생성과 관리"
+thumbnailInList = "https://taewanmerepo.github.io/2018/12/bdc/post000.jpg"
+thumbnailInPost = "https://oracloud-kr-teamrepo.github.io/2017/07/bdcsce_provisioning/bdcsce_00.jpg"
+tags = ["oracle cloud", "oracle", "bdc", "bigdata"]
+categories = ["cloud"]
+author = "taewan.kim"
+language = ""
+adsense = "true"
++++
+
+하둡 기술을 다룰 때, 가장 어려운 부분은 하둡 에코를 설치하고 관리하는 부분입니다.  하둡 에코는 많은 오픈소스 프로젝트로 구성되고 상호 버전 의존성을 갖고 있으며, 각기 다른 업그레이드 주기를 갖고 있습니다. 이러한 이유로 하둡 에코 환경을 구성하고 관리하는 것은 상당이 어렵습니다. 클라우드는 이러한 문제를 단순화 합니다. 클라우드 인프라에 하둡 에코를 통합 및 최적화한 하둡 에코 이미지를 제공함으로써 하둡 에코 관리의 복잡성을 낮출 수 있습니다. 
+
+모든 클라우드 프로바이더는 클라우드 인프라와 Hadoop Eco 기술을 결합하여 빅데이터 서비스를 PaaS 형태로 제공합니다. Oracle Cloud도 PaaS 빅데이터 서비스로 Oracle Big Data Cloud(BDC)을 서비스하고 있습니다. Oracle BDC는 Apache Spark/Apache Hadoop 클러스터를 필요한 시점에 즉시 생성할 수 있는 클라우드 서비스입니다. Oracle BDC는 Oracle OCI(Oracle Cloud Infrastructure)와 OCI Class를 인프라스트럭처로 사용합니다.
+
+{{% notice note %}}
+2017년 3월 Oracle BDC가 처음 출시될 때, 이름은 Oracle Big Data Cloud - Compute Edition (BDCSCE)였습니다. 2018년에 이 서비스 이름이 Oracle Big Data Cloud(BDC)로 변경되었습니다. 많은 문서가 BDC가 BDCSCE 혼용되어 사용되고 있습니다.
+{{% /notice %}}
+
+Oracle BDCSCE는 AWS EMR과 같은 하둡 서비스입니다. AWS EMR과 다른 점은 AWS EMR은 자체 HDFS를 제공하지 않고 데이터 저장소로 S3를 지원하는 반면, Oracle BDC는 자체 HDFS와 Object Storeage를 함께 지원합니다. Object Storage로 OCI Object Storage와 OCI Classic의 Object Storage를 모두 지원합니다. Oracle BDC는 하둡 패키지로 Hortonworks의 HDP을 기반으로 합니다. 
+ 
+![](https://oracloud-kr-teamrepo.github.io/2017/07/bdcsce_intro/bdcsce.jpg)
+
+## Oracle BDC 주요 특징
+
+Oracle BDC는 다음과 같은 특징을 갖습니다.
+
+- 클라우드 Apache Hadoop/Spark 클러스터
+- Scale-up/down 지원
+- 다양한 스토리지 지원
+    - HDFS, Cache(BDFS), Object Storage(OCI & OCI Classic)
+- Big Data File System(Alluxio)
+- 병령 프로세싱 엔진
+    - Spark, Hive, MR, Pig, Alluxio
+- Apache Zeppelin 노트북 통합
+- Oracle Identity Cloud Service와 통합되어 계정 및 접근 관리 단일화
+- HDP(Hortonworks Data Platform)에 근간을 둔 검증된 소프트웨어 패키지
+- Ambari 지원
+- 편리한 업그레이드 및 패치 
+- Cluster Customizing 기능 
+
+## 구성 컴포넌트 및 버전
+
+2018년 12월 07일 현재 Oracle BDC 18.4.2 릴리즈에는 다음과 같은 컴포넌트가 설치되어 있습니다. 
+
+|컴포넌트|버전|설명|컴포넌트 관련 URL|
+|----|----|----|----|
+|Alluxio|1.3.0|메모리 기반 고속 가상 분산 스토리지|{{< extlink link="http://www.alluxio.org/docs/1.3/en/Getting-Started.html" desc="Home">}}|
+|Apache Ambari|2.4.2|오픈소스 아파치 하둡 클러스터 관리 툴|{{< extlink link="https://cwiki.apache.org/confluence/display/AMBARI/Ambari+User+Guides" desc="Home">}}|
+|Apache Hadoop|2.7.1|아파치 하둡, 분산 파일 시스템과 분산 처리 프레임워크|{{< extlink link="https://hadoop.apache.org/docs/r2.7.1/" desc="Home">}}|
+|Apache Hive|1.2.1|SQL on Hadoop|{{< extlink link="https://cwiki.apache.org/confluence/display/Hive/Home" desc="Home">}}|
+|Apache Pig|0.15.0|하둡 기반 분석 스크립트|{{< extlink link="https://pig.apache.org/docs/r0.15.0/" desc="Home">}}|
+|Apache Spark|1.6.0|스팍 1.6|{{< extlink link="https://spark.apache.org/docs/1.6.0/" desc="Home">}}|
+|Apache Spark|2.1.0|스팍 2.1|{{< extlink link="https://spark.apache.org/docs/2.1.0/" desc="Home">}}|
+|Apache Tez|0.7.0|데이터 처리 엔진|{{< extlink link="https://tez.apache.org/releases/apache-tez-0-7-0.html" desc="Home">}}|
+|Apache Zeppelin|0.7|스팍과 통합된 노트북|{{< extlink link="https://zeppelin.apache.org/docs/0.7.0/" desc="Home">}}|
+|Oracle R|3.2.0|오라클 배포 R|{{< extlink link="https://www.oracle.com/technetwork/database/database-technologies/r/r-distribution/overview/index.html" desc="Home">}}|
+
+## 문서 목차
+
+지금 부터 Oracle BDC 서비스에 대하여 다음과 같은 주제를 알아 보겠습니다. 
+
+ > 1. BDC 설치
+    1. OCI에 웹 콘솔로 BDC 설치
+    1. OCI Classic에 웹 콘솔로 BDC 설치
+    1. Stack Manager로 BDC 설치
+    1. PSM을 이용하여 BDC 설치
+1. BDC 접근 인퍼페이스
+    1. Oracle BDC Ui
+        1. Service Console 
+        1. big data cloud console
+        1. Ambari
+    1. 그외 접속 방법
+        1. ssh
+        1. REST API
+        1. CLI
+        1. Thrift
+1. 클러스터 관리
+    1. 클러스터 모니터링
+    1. Scale In/Out
+    1. 클러스터 패치
+    1. 클러스터 삭제
+1. Job 관리
+    1. MapReduce 관리
+        1. Object Storage 연동
+            1. OCI Object Storage
+            1. OCI-C Object Stroage
+    1. Scala Spark Job 관리
+        1. Spark UI
+    1. PySpark Job 관리
+    1. Job Logging 관리
+1. Zeppelin Notebook
+1. Credential 관리
+1. Oracle Database 연동
+1. 클러스터 커스터마이징
+
+
+## 참고자료
+
+- https://docs.oracle.com/en/cloud/paas/big-data-compute-cloud/csspc/cluster-components.html
+
+
+
+
+
+
+

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>&#39;빅데이터는 거품이다&#39; 리뷰</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.48" />
+<meta property="og:title" content="&#39;빅데이터는 거품이다&#39; 리뷰" />
+<meta property="og:description" content="김동환 교수님이 집필하신 &#39;빅데이터는 거품이다&#39;의 리뷰입니다. 사회 현상으로까지 인식되는 기술 키워드를 비판적인 시각으로 분석한 책입니다. 2016년까지 빅데이터에 대한 맹신을 비판하는 내용입니다. 대한민국 사회에서 기술 키워드가 어떻게 포장되고 유통되는지, 그리고 그 트랜드 키워드로 발생하는 문제는 무엇인지를 &#39;모두까는&#39; 내용입니다. 김동환 교수님의 비판적 시각에 2018년 시각으로 보면 지나치다 싶은 부분도 있지만, 상당 부분 수긍이 가는 내용입니다. 그 시대의 기류 기술이 어떻게 만들어지는지, 그리고 무엇인 문제인가에 대한 새로운 시각을 배울 수 있습니다. 최근에 데이터 분석에 입문하시는 분에게 일독을 권합니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/book/bigdata_is_bubble/" /><meta property="article:published_time" content="2018-12-09T17:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2018-12-09T17:28:14&#43;09:00"/>
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="http://taewan.kim/css/jupyter.css" type="text/css" media="all" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
+		<li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+      
+        
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">&#39;빅데이터는 거품이다&#39; 리뷰 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2018-12-09 17:28:14 &#43;0900 KST">December 09, 2018</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/book" rel="category">book</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2018/12/bigdataisbubble/post.jpg" alt="&#39;빅데이터는 거품이다&#39; 리뷰">
+			</figure>
+			
+
+<p>대한민국 사회에서 모두가 믿고 따르는 종교와 정치가 틀리다고 말할 때는 상당한 용기가 필요합니다. 민, 관, 학계가 모두 따르고 신봉(맹신)하는 그 시대의 키워드가 잘못된 것이고, 가치가 없는 허상이라고 현직 대학 교수가 말하는 것은 정말 어렵습니다. 이 책의 저자는 작심하고 2016년 빅데이터의 모든 관련 종사자들을  <strong>모두까기</strong>합니다. 2018년 12월 현재 <strong>빅데이터</strong>라는 키워드는 <strong>AI</strong> 속에 묻혀버린 느낌이 있습니다. <strong>AI</strong>가 <strong>빅데이터</strong>를 압도한다기보다는 <strong>AI</strong>의 기본 요소로 <strong>빅데이터</strong>가 포함되어 전면에 부각되지 않는 것 같습니다. 그러나 이 책이 출간된 2016년에는 빅데이터와 클라우드 키워드가 세상을 장악했고, 알파고 태풍이 막 시작하던 시기였습니다. 빅데이터를 말하지 않으면 경쟁력이 없는 것처럼 여겨지던 시기에, 빅데이터는 허상이고, 과대 포장된 미신이라고 주장하는  책을 저술한 김동환 교수님께 우선 감사의 말을 전하고 싶습니다.</p>
+
+<h2 id="대한민국-빅데이터-모두까지">대한민국 빅데이터 모두까지</h2>
+
+<p>물론 저자의 빅데이터 <strong>모두까기</strong>가 약간 지나친 부분이 있습니다. 그러나 저자의 특정 분야(유비쿼터스)에 대한 편향을 제외한다면, 저자의 논리와 시각에 대해 저는  대부분 동의합니다. 우리 사회는 선진국 특히 미국에 대한 사대주의적인 추종이 있습니다. 국내 일류 기업은 선진국(특히 미국)의 성공한 사례를 국내에 최초로 적용하는 것을 경쟁력으로 생각하는 경향이 있습니다. 또한 실폐를 극단적으로 두려워합니다. 이렇다 보니 새로운 사업을 기획하거나 프로젝트를 준비할 때 항상 &ldquo;글로벌 성공사례&rdquo;에 집착합니다. 대한민국은 정부 주도의 성장 전략과 예산 투자가 많은 편이고, 대기업 혹은 업계 1위 기업은 중소기업 혹은 업계 후발 업체들이 따라가는 모델이 됩니다. 이러한 이유로 특정 기술이 주류가 되면 오랜 기간 지속되는 경향이 있습니다. 주류 기술의 인프라 구축, 애플리케이션 개발 프로젝트, 2차 고도화, 인력 양성, 3차 고도화, 유지 보수와 같은 순서로 5년 ~ 10년은 계속 유지됩니다.</p>
+
+<p>이런 우리 사회 시스템이 <strong>빅데이터</strong>라는 키워드에 어떻게 반응했는지, 적나라하게 짚어가는 과정이 정말 재미있습니다. 기술 키워드가 서구에서 유입되고, 기술이 종교가 되고, 국가적인 투자와 정책이 만들어지고, 부족한 성과와 결과를 해결하기 위해서 교육 사업과 새로운 프로젝트로 확장되다가 다른 키워드로 교체되는 과정을 적나라하게 다룹니다. 또한 구글 독감 예측과 오바마 선거 사례를 실제와 다르게 활용하면서, 기술이 종교가 되고 맹신이 되는 과정을 저자의 독특한 시각으로 기술합니다.</p>
+
+<h2 id="기술-사대주의와-미국의-주주-자본주의">기술 사대주의와 미국의 주주 자본주의</h2>
+
+<p>왜 구글이 빅데이터와 AI를 그렇게 부각하고 있는지, 때로는 과도하게 평가하는지를 미국 경제의 특징인 주주 자본주의 입장에서 설명하는 내용도 재미있습니다. 미국 기업은 고객의 소비로부터 발생하는 실적 보다, 주주가 평가하는 회사의 주식 가격이 가장 중요하며, 자사의 주주에게 높은 평가를 받기 위해서 다양한 시도와 미래가치를 부풀리고 포장해야 한다는 이야기도 흥미롭습니다.</p>
+
+<h2 id="저자가-인정하는-성공사례와-앞으로-가능성">저자가 인정하는 성공사례와 앞으로 가능성</h2>
+
+<p>저자는 빅데이터는 미래를 예측하는 것이 아니라 과거의 기록으로부터 상관관계를 찾아내는 것일 뿐, 미래를 예측하는 인과관계를 찾지는 못한다고 강조합니다. 2016년까지 빅데이터와 미래예측이라는 맹신으로 실패한 여러 사례를 소개하면서, 마지막에 대표적인 성공 사례로 <strong>심야버스 운행노선 선정 프로젝트</strong>와 <strong>2016년 보건복지부가 10개 기관에서 수집한 19종 정보를 기반으로 신규 복지대상자를 선정</strong>을 소개합니다. 그리고 향후 사물인터넷과 빅데이터의 결합을 통해서 새로운 가능성을 얘기합니다.</p>
+
+<h2 id="이-책을-추천하는-이유">이 책을 추천하는 이유</h2>
+
+<p>이 책은 2016년 12월에 출간된 책입니다. 2018년 12월 현재 국내 업계에서 빅데이터를 바라보는 시각은 이 책에서 저자가 말하는 데이터의 본질로 바라보는 시각, 그리고 비정형 데이터에서 분석 가능한 정형 데이터를 추출하고, 분석하여 인사이트를 얻으려는 데이터 분석의 본질적인 모습으로 많이 돌아서고 있습니다. 이 책의 내용을 2018년 12월에 적용하는 것은 상당히 가혹하고 지나칩니다. 그러나 2016년에 이 책의 주장을 적용하면, 상당히 정확하고 그 시기에 놓치거나 간과했던 이야기를  다룹니다.</p>
+
+<p>제 경험상 특정 시기를 관통하는 키워드는 그 기술이 갖는 순수한 가치와 중요도 만으로 만들어지지 않습니다. 여러 이해 당사자들의 이해관계와 여러 가지 복잡한 인과관계로 만들어지고, 급성장하고, 다른 키워드에 병합되거나 소멸됩니다. 우리 사회를 2011년부터 지금까지 강타하고 있는 <strong>빅데이터</strong>라는 키워드의 시작과 과대포장 그리고 종교로써의 맹신과 교육시장으로이 파급 과정을 비판적인 시각으로 설명하는 책입니다.</p>
+
+<p>이 책은 IT 분야의 흐름을 이해하고자 하시는 분들에게 꼭 추천하는 책입니다. IT 분야에서 종사하다 보면 특정 기술이나 키워드의 본질을 보기 보다는 아름답게 포장된 미사어구에 취하여 빠져들기 쉽습니다. 그리고 그 트랜드 교체 주기가 빨라서 매번 변화하는 키워드 속에서 방황하기 쉽습니다. 따라서 IT 종사자는 현재 주류 키워드를 비판적으로 바라보고 본질을 분석하는 저자의 방식을 배울 필요가 있습니다.</p>
+
+<p>당연한 사실(구글 독감)을 원본 문서로 검증하고 본래의 취지가 무엇인지를 확인하거나, 빅데이터가 주류를 이루던 시기에 Small Data와 데이터 분석의 본질과  <strong>보니니의 역설</strong><sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>을 고민하거나, 한국이나 미국에서 지적 유행이 만들어지는 과정을 고민하는 저자의 모습은 기술과 정보의 쓰나미속에서 매년 허덕이는 엔지니어와 개발자에게 필요한 것 같습니다.</p>
+
+<p>데이터 분석에 새로 입문하시는 분이나 너무나 다양한 분야의 IT 기술에 호기심과 관심이 넘쳐서 한 달 이상 하나에 집중하기가 어려운 분들에게 <strong>강추</strong>하는 책입니다.</p>
+
+<h2 id="책-정리-자료">책 정리 자료</h2>
+
+<p>다음 링크에서 <strong>빅데이터는 거품이다</strong>의 주요 요약을 확인할 수 있습니다.</p>
+
+<ul>
+<li><a href="https://www.techsuda.com/archives/8297">https://www.techsuda.com/archives/8297</a></li>
+<li><a href="http://critica.pe.kr/archives/1034">http://critica.pe.kr/archives/1034</a></li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">Bonini&rsquo;s Paradox, 모델이 복잡할수록 예측력이 떨어진다. 모델이 커질수록 가치가 떨어진다.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/%ED%9B%84%EA%B8%B0/" rel="tag">후기</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/book/" rel="tag">book</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/book/memory_of_murder/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">&#39;살인자의 기억법&#39; 리뷰</p></a>
+	</div>
+</nav>
+
+	
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/book/bigdata_is_bubble/"></div>
+
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		
+		<ins class="adsbygoogle"
+			 style="display:block"
+			 data-ad-client="ca-pub-8469722754608892"
+			 data-ad-slot="5594090168"
+			 data-ad-format="auto"
+			 data-full-width-responsive="true"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	
+
+<div class="widget-categories widget">	
+		<div class="fb-like" data-href="http://taewan.kim/book/bigdata_is_bubble/" 
+		data-layout="standard" data-action="like" 
+		data-size="small" 
+		data-show-faces="true" 
+		data-share="true"></div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#대한민국-빅데이터-모두까지">대한민국 빅데이터 모두까지</a></li>
+<li><a href="#기술-사대주의와-미국의-주주-자본주의">기술 사대주의와 미국의 주주 자본주의</a></li>
+<li><a href="#저자가-인정하는-성공사례와-앞으로-가능성">저자가 인정하는 성공사례와 앞으로 가능성</a></li>
+<li><a href="#이-책을-추천하는-이유">이 책을 추천하는 이유</a></li>
+<li><a href="#책-정리-자료">책 정리 자료</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/bigdata_is_bubble/" title="&#39;빅데이터는 거품이다&#39; 리뷰">
+							&#39;빅데이터는 거품이다&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/rsa_with_oci_cli/" title="OCI CLI로 RSA key pair 생성">
+							OCI CLI로 RSA key pair 생성</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/installing_oci_cli/" title="OCI CLI 설치 (Window 10, 맥 OSX &amp; Linux)">
+							OCI CLI 설치 (Window 10, 맥 OSX &amp; Linux)</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/provisioning_adw/" title="Oracle ADW 인스턴스 프로비저닝">
+							Oracle ADW 인스턴스 프로비저닝</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/oracle_java_subscription/" title="오라클 자바 서브스크립션(Oracle Java SE Subscription)에 대하여...">
+							오라클 자바 서브스크립션(Oracle Java SE Subscr ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. Oracle JDK Subscription) ">
+							자바의 새로운 도약: OpenJDK(Feat. Oracle JD ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
+							&#39;살인자의 기억법&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
+							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/hdp_sandbox_setup/" title="VirtualBox에 Hotonworks 가상머신 설치">
+							VirtualBox에 Hotonworks 가상머신 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/understaning_ml_with_math/" title="&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰">
+							&#39;기초 수학으로 이해하는 머신러닝 알고리즘&#39; 리뷰</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2018 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-72835175-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+
