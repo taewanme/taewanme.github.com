@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://taewan.kim/tip/white_noise_raining/</loc>
+    <lastmod>2018-12-13T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/book/bigdata_is_bubble/</loc>
     <lastmod>2018-12-09T17:28:14+09:00</lastmod>
   </url>
@@ -1079,10 +1084,6 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/life/review/</loc>
-  </url>
-  
-  <url>
     <loc>http://taewan.kim/post/mlpy_adding_opencv.1/</loc>
   </url>
   
@@ -1801,11 +1802,6 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/life/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://taewan.kim/tags/locale/</loc>
     <lastmod>2018-11-10T17:00:14+09:00</lastmod>
     <priority>0</priority>
@@ -2407,7 +2403,7 @@
   
   <url>
     <loc>http://taewan.kim/tip/</loc>
-    <lastmod>2018-11-21T15:00:14+09:00</lastmod>
+    <lastmod>2018-12-13T21:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2557,7 +2553,7 @@
   
   <url>
     <loc>http://taewan.kim/</loc>
-    <lastmod>2018-12-09T17:28:14+09:00</lastmod>
+    <lastmod>2018-12-13T21:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   

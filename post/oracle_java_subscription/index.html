@@ -9,14 +9,15 @@
 <META http-equiv="Cache-Control" content="No-Cache">
 <meta property="fb:admins" content="devtainer@gmail.com"/>
 
-<title>오라클 자바 서브스크립션(Oracle Java SE Subscription)에 대하여...</title>
+<title>오라클 자바 라이센스에 대하여...</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.48" />
-<meta property="og:title" content="오라클 자바 서브스크립션(Oracle Java SE Subscription)에 대하여..." />
+<meta name="generator" content="Hugo 0.52" />
+<meta property="og:title" content="오라클 자바 라이센스에 대하여..." />
 <meta property="og:description" content="2019년 1월에 시행되는 Oracle Java SE Subscription에 대하여 기본적인 고려사항을 정리합니다. 오라클 자바 서브스크립션이 어떻게 구성되어있고, 무엇을 고려하고, 어떻게 대응해야 하는지를 소개합니다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/post/oracle_java_subscription/" /><meta property="article:published_time" content="2018-11-15T09:28:14&#43;09:00"/>
 <meta property="article:modified_time" content="2018-11-15T09:28:14&#43;09:00"/>
+
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
 <link rel="stylesheet" href="http://taewan.kim/css/jupyter.css" type="text/css" media="all" />
@@ -98,7 +99,7 @@
 <div class="main-content content" role="main" itemprop="mainContentOfPage">
 	<article class="post">
 		<header class="post__header clearfix">
-			<h1 class="post__title">오라클 자바 서브스크립션(Oracle Java SE Subscription)에 대하여... </h1>
+			<h1 class="post__title">오라클 자바 라이센스에 대하여... </h1>
 			<p class="post__meta meta">
 				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
 				<time class="post__meta-date" datetime="2018-11-15 09:28:14 &#43;0900 KST">November 15, 2018</time>
@@ -112,9 +113,11 @@
 		<div class="post__content clearfix">
 
 			<figure class="post__thumbnail">
-				<img src="https://taewanmerepo.github.io/2018/11/oraclejdk/post.jpg" alt="오라클 자바 서브스크립션(Oracle Java SE Subscription)에 대하여...">
+				<img src="https://taewanmerepo.github.io/2018/11/oraclejdk/post.jpg" alt="오라클 자바 라이센스에 대하여...">
 			</figure>
 			
+
+<h2 id="오라클-자바-서브스크립션-oracle-java-se-subscription">오라클 자바 서브스크립션(Oracle Java SE Subscription)</h2>
 
 <p>2019년 1월부터 Oracle Java SE Subscription(이하 Java Subscription)이 시행됩니다. 현재 운영중인 자바 시스템에 Java Subscription을 구독할지를 결정을 하기 위해서는 여러가지 판단 근거가 필요합니다. 내 시스템에 Java Subscription이 정말 필요한지, 2019년 1월까지 바로 결정을 해야 하는 것인지, Subscription 구독 결정을 시간을 두고 결정할 수 있는 것인지, Java Subscription의 대상 범위가 어디까지인지, 개발자 컴퓨터와 테스트 서버도 Java Subscription에 포함 시켜야 하는지, 오라클 솔루션에 포함된 Java를 사용해도 되는지, 기술 지원이 제공되는 Java 버전은 무엇인지, Java SE 최신 Update를 쓰면 정말 좋은 것인지 등 여러 가지를 고민해야 합니다. Java Subscription 구독 모델이 생소하고 관련 정보 부족으로 어려워하시는 분들이 많은 것 같습니다. Java Subscription에 대하여 가장 빈도가 높은 질문을 중심으로 관련 정보를 정리해 보겠습니다. 본 문에서는 다음과 같은 내용을 포함합니다.</p>
 
@@ -910,6 +913,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)
 <ul>
 <li>
 <ul>
+<li><a href="#오라클-자바-서브스크립션-oracle-java-se-subscription">오라클 자바 서브스크립션(Oracle Java SE Subscription)</a></li>
 <li><a href="#oracle-java-se의-서포트-로드맵과-관련-용어">Oracle Java SE의 서포트 로드맵과 관련 용어</a></li>
 <li><a href="#oracle-java-se-subscription-란-무엇인가">&lsquo;Oracle Java SE Subscription&rsquo;란 무엇인가?</a></li>
 <li><a href="#oracle-java-se-subscription-를-바로-구독해야-하는가">&lsquo;Oracle Java SE Subscription&rsquo;를 바로 구독해야 하는가?</a></li>
@@ -962,8 +966,8 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)
 							Oracle ADW 인스턴스 프로비저닝</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/post/oracle_java_subscription/" title="오라클 자바 서브스크립션(Oracle Java SE Subscription)에 대하여...">
-							오라클 자바 서브스크립션(Oracle Java SE Subscr ......</a>
+				<a class="widget__link" href="/post/oracle_java_subscription/" title="오라클 자바 라이센스에 대하여...">
+							오라클 자바 라이센스에 대하여...</a>
 		  </li>
 			<li class="widget__item">
 				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. Oracle JDK Subscription) ">
