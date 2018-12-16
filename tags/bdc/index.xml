@@ -6,10 +6,22 @@
     <description>Recent content in Bdc on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 07 Dec 2018 05:17:05 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 15 Dec 2018 05:17:05 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/bdc/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Oracle BDC 인스턴스 만들기 (OCIC)</title>
+      <link>http://taewan.kim/oc_bdc/provisioning_bdc_on_ocic/</link>
+      <pubDate>Sat, 15 Dec 2018 05:17:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oc_bdc/provisioning_bdc_on_ocic/</guid>
+      <description>Oracle Cloud는 빅데이터 서비스로 Oracle Big Data Cloud(이하 Oracle BDC)를 제공합니다. Oracle BDC는 Oracle Cloud의 OCI와 OCI-Classic에서 모두 만들 수 있습니다. 이 문서에서는 OCI-Classic에서 Oracle BDC의 클러스터 인스턴스를 생성하는 절차를 소개합니다.
+OCI와 OCI-Classic은 Oracle Cloud의 인프라스터럭처입니다. OCI와 OCI-Classic가 무엇인지 추가 설명이 필요하시다면, &amp;lsquo;Oracle Cloud IaaS: OCI vs OCI Classic[↗NW] &amp;lsquo; 문서를 참고하시기 바랍니다.
+ 이 문서는 Oracle BDC의 18.4.2.1-20을 기준으로 2018년 12월 15일에 작성되었습니다.
+Oracle BDC 프로비저닝 준비사항 Oracle Cloud BDC 인스턴스를 생성하기 위해서는 Oracle Cloud 계정이 필요합니다.</description>
+    </item>
     
     <item>
       <title>Oracle BDC: 컴포넌트 구성과 버전</title>
