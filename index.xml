@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>Oracle BDC 서비스 클러스터 관리 - 서비스 콘솔</title>
+      <link>http://taewan.kim/oc_bdc/cluster_management/</link>
+      <pubDate>Sat, 15 Dec 2018 05:17:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oc_bdc/cluster_management/</guid>
+      <description>Oracle Big Data Cloud(이하 Oracle BDC) 서비스 콘솔에서 BDC 클러스터의 클러스터 상태 확인, 클러스터 시작/정지 및 노드 별 시작/종료, 클러스터 확대(Scale-out)와 축소(Sacle-In)과 클러스터 패치가 가능합니다. 이 문서에서는 Oracle Big Data Cloud 서비스 콘솔에서 BDC 클러스터를 관리하는 방법에 대하여 정리합니다.
+클러스터 관리 클러스터 상태 관리 클러스터 시작하기   클러스터 종료하기   클러스터 Scale-Out Hadoop 클러스터를 운영하는 과정에서 HDFS 용량이 모자라거나 더 많은 컴퓨팅 파워가 필요할 경우에 클러스터 노드를 늘리는 Scale-out 방식으로 문제를 해결합니다.</description>
+    </item>
+    
+    <item>
       <title>Oracle BDC 인스턴스 만들기 (OCIC)</title>
       <link>http://taewan.kim/oc_bdc/provisioning_bdc_on_ocic/</link>
       <pubDate>Sat, 15 Dec 2018 05:17:05 +0900</pubDate>
@@ -49,6 +59,16 @@ Oracle BDC 프로비저닝 준비사항 Oracle Cloud BDC 인스턴스를 생성�
       <pubDate>Fri, 07 Dec 2018 05:17:05 +0900</pubDate>
       
       <guid>http://taewan.kim/oc_bdc/components/</guid>
+      <description>2018년 12월 07일 현재 Oracle BDC 18.4.2 릴리즈에는 다음과 같은 컴포넌트가 설치되어 있습니다.
+구성 컴포넌트 및 버전    컴포넌트 버전 설명 컴포넌트 관련 URL     Alluxio 1.3.0 메모리 기반 고속 가상 분산 스토리지 Home[↗NW]    Apache Ambari 2.4.2 오픈소스 아파치 하둡 클러스터 관리 툴 Home[↗NW]    Apache Hadoop 2.7.1 아파치 하둡, 분산 파일 시스템과 분산 처리 프레임워크 Home[↗NW]    Apache Hive 1.</description>
+    </item>
+    
+    <item>
+      <title>Oracle BDC: 컴포넌트 구성과 버전</title>
+      <link>http://taewan.kim/oc_bdc/glossary/</link>
+      <pubDate>Fri, 07 Dec 2018 05:17:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oc_bdc/glossary/</guid>
       <description>2018년 12월 07일 현재 Oracle BDC 18.4.2 릴리즈에는 다음과 같은 컴포넌트가 설치되어 있습니다.
 구성 컴포넌트 및 버전    컴포넌트 버전 설명 컴포넌트 관련 URL     Alluxio 1.3.0 메모리 기반 고속 가상 분산 스토리지 Home[↗NW]    Apache Ambari 2.4.2 오픈소스 아파치 하둡 클러스터 관리 툴 Home[↗NW]    Apache Hadoop 2.7.1 아파치 하둡, 분산 파일 시스템과 분산 처리 프레임워크 Home[↗NW]    Apache Hive 1.</description>
     </item>

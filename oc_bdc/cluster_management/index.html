@@ -9,14 +9,14 @@
 <META http-equiv="Cache-Control" content="No-Cache">
 <meta property="fb:admins" content="devtainer@gmail.com"/>
 
-<title>Oracle BDC: 컴포넌트 구성과 버전</title>
+<title>Oracle BDC 서비스 클러스터 관리 - 서비스 콘솔</title>
 <meta name="description" content="taewan.kim">
 <meta name="generator" content="Hugo 0.52" />
-<meta property="og:title" content="Oracle BDC: 컴포넌트 구성과 버전" />
-<meta property="og:description" content=" " />
+<meta property="og:title" content="Oracle BDC 서비스 클러스터 관리 - 서비스 콘솔" />
+<meta property="og:description" content="Oracle Cloud의 빅데이터 서비스인 Big Data Cloud 서비스의 인스턴스를 OCI Classic에 생성하는 절차를 소개합니다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/oc_bdc/components/" /><meta property="article:published_time" content="2018-12-07T05:17:05&#43;09:00"/>
-<meta property="article:modified_time" content="2018-12-07T05:17:05&#43;09:00"/>
+<meta property="og:url" content="http://taewan.kim/oc_bdc/cluster_management/" /><meta property="article:published_time" content="2018-12-15T05:17:05&#43;09:00"/>
+<meta property="article:modified_time" content="2018-12-15T05:17:05&#43;09:00"/>
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -98,10 +98,10 @@
 <div class="main-content content" role="main" itemprop="mainContentOfPage">
 	<article class="post">
 		<header class="post__header clearfix">
-			<h1 class="post__title">Oracle BDC: 컴포넌트 구성과 버전 </h1>
+			<h1 class="post__title">Oracle BDC 서비스 클러스터 관리 - 서비스 콘솔 </h1>
 			<p class="post__meta meta">
 				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="post__meta-date" datetime="2018-12-07 05:17:05 &#43;0900 KST">December 07, 2018</time>
+				<time class="post__meta-date" datetime="2018-12-15 05:17:05 &#43;0900 KST">December 15, 2018</time>
 				<span class="post__meta-categories meta-categories">
 					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 					<a class="meta-categories__link" href="/categories/cloud" rel="category">cloud</a>
@@ -110,114 +110,129 @@
 		</header>
 
 		<div class="post__content clearfix">
-
-			<figure class="post__thumbnail">
-				<img src="https://taewanmerepo.github.io/2018/12/bdc/post010.jpg" alt="Oracle BDC: 컴포넌트 구성과 버전">
-			</figure>
 			
 
-<p>2018년 12월 07일 현재 Oracle BDC 18.4.2 릴리즈에는 다음과 같은 컴포넌트가 설치되어 있습니다.</p>
+<p>Oracle Big Data Cloud(이하 Oracle BDC) 서비스 콘솔에서 BDC 클러스터의 클러스터 상태 확인, 클러스터 시작/정지 및 노드 별 시작/종료, 클러스터 확대(Scale-out)와 축소(Sacle-In)과 클러스터 패치가 가능합니다. 이 문서에서는 Oracle Big Data Cloud 서비스 콘솔에서 BDC 클러스터를 관리하는 방법에 대하여 정리합니다.</p>
 
-<h2 id="구성-컴포넌트-및-버전">구성 컴포넌트 및 버전</h2>
+<h2 id="클러스터-관리">클러스터 관리</h2>
 
-<table>
-<thead>
-<tr>
-<th>컴포넌트</th>
-<th>버전</th>
-<th>설명</th>
-<th>컴포넌트 관련 URL</th>
-</tr>
-</thead>
+<h3 id="클러스터-상태-관리">클러스터 상태 관리</h3>
 
-<tbody>
-<tr>
-<td>Alluxio</td>
-<td>1.3.0</td>
-<td>메모리 기반 고속 가상 분산 스토리지</td>
-<td><a href="http://www.alluxio.org/docs/1.3/en/Getting-Started.html" target="_blank">Home[↗NW]</a>
-</td>
-</tr>
+<h3 id="클러스터-시작하기">클러스터 시작하기</h3>
 
-<tr>
-<td>Apache Ambari</td>
-<td>2.4.2</td>
-<td>오픈소스 아파치 하둡 클러스터 관리 툴</td>
-<td><a href="https://cwiki.apache.org/confluence/display/AMBARI/Ambari&#43;User&#43;Guides" target="_blank">Home[↗NW]</a>
-</td>
-</tr>
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdcmngt/210.jpg" alt="" />
+<img src="https://taewanmerepo.github.io/2018/12/bdcmngt/220.jpg" alt="" />
+<img src="https://taewanmerepo.github.io/2018/12/bdcmngt/230.jpg" alt="" />
+<img src="https://taewanmerepo.github.io/2018/12/bdcmngt/240.jpg" alt="" />
+<img src="https://taewanmerepo.github.io/2018/12/bdcmngt/250.jpg" alt="" /></p>
+</blockquote>
 
-<tr>
-<td>Apache Hadoop</td>
-<td>2.7.1</td>
-<td>아파치 하둡, 분산 파일 시스템과 분산 처리 프레임워크</td>
-<td><a href="https://hadoop.apache.org/docs/r2.7.1/" target="_blank">Home[↗NW]</a>
-</td>
-</tr>
+<h3 id="클러스터-종료하기">클러스터 종료하기</h3>
 
-<tr>
-<td>Apache Hive</td>
-<td>1.2.1</td>
-<td>SQL on Hadoop</td>
-<td><a href="https://cwiki.apache.org/confluence/display/Hive/Home" target="_blank">Home[↗NW]</a>
-</td>
-</tr>
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdcmngt/310.jpg" alt="" />
+<img src="https://taewanmerepo.github.io/2018/12/bdcmngt/320.jpg" alt="" />
+<img src="https://taewanmerepo.github.io/2018/12/bdcmngt/330.jpg" alt="" />
+<img src="https://taewanmerepo.github.io/2018/12/bdcmngt/340.jpg" alt="" />
+<img src="https://taewanmerepo.github.io/2018/12/bdcmngt/350.jpg" alt="" /></p>
+</blockquote>
 
-<tr>
-<td>Apache Pig</td>
-<td>0.15.0</td>
-<td>하둡 기반 분석 스크립트</td>
-<td><a href="https://pig.apache.org/docs/r0.15.0/" target="_blank">Home[↗NW]</a>
-</td>
-</tr>
+<h3 id="클러스터-scale-out">클러스터 Scale-Out</h3>
 
-<tr>
-<td>Apache Spark</td>
-<td>1.6.0</td>
-<td>스팍 1.6</td>
-<td><a href="https://spark.apache.org/docs/1.6.0/" target="_blank">Home[↗NW]</a>
-</td>
-</tr>
+<p>Hadoop 클러스터를 운영하는 과정에서 HDFS 용량이 모자라거나 더 많은 컴퓨팅 파워가 필요할 경우에 클러스터 노드를 늘리는 Scale-out 방식으로 문제를 해결합니다.</p>
 
-<tr>
-<td>Apache Spark</td>
-<td>2.1.0</td>
-<td>스팍 2.1</td>
-<td><a href="https://spark.apache.org/docs/2.1.0/" target="_blank">Home[↗NW]</a>
-</td>
-</tr>
+<p>Oracle BDC는 운영중인 클러스터의 Hadoop 슬레이브 노드와 컴퓨팅 노드를 늘리는 Scale-out 기능을 제공합니다. Scale-out을 시도할 때, 클러스터 슬레이브 노드와 컴퓨팅 노드를 구분하여 확장할 수 있습니다. 노드를 확장할 때, 클러스터 상태는 &ldquo;<strong>Maintenance</strong>&rdquo; 상태로 전환됩니다. 클러스터가 Maintenace 상태가 되면 클러스터에 Job을 돌릴 수 없습니다. 노드 확장이 종료되면 클러스터 상태는 &ldquo;<strong>Ready</strong>&ldquo;로 전환됩니다.</p>
 
-<tr>
-<td>Apache Tez</td>
-<td>0.7.0</td>
-<td>데이터 처리 엔진</td>
-<td><a href="https://tez.apache.org/releases/apache-tez-0-7-0.html" target="_blank">Home[↗NW]</a>
-</td>
-</tr>
+<p>BDC 인스턴스의 Scaloue-out을 위해서는 클러스터 상세 페이지로 이동해야 해야합니다. Oracle BDC 서비스 콘솔에서 클러스터 명을 클릭하여 클러스터 상세 페이지로 이동합니다.</p>
 
-<tr>
-<td>Apache Zeppelin</td>
-<td>0.7</td>
-<td>스팍과 통합된 노트북</td>
-<td><a href="https://zeppelin.apache.org/docs/0.7.0/" target="_blank">Home[↗NW]</a>
-</td>
-</tr>
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdcmngt/410.jpg" alt="" />
+- Oracle BDC 서비스 콘솔에서 클러스터 상세 페이지로 이동</p>
+</blockquote>
 
-<tr>
-<td>Oracle R</td>
-<td>3.2.0</td>
-<td>오라클 배포 R</td>
-<td><a href="https://www.oracle.com/technetwork/database/database-technologies/r/r-distribution/overview/index.html" target="_blank">Home[↗NW]</a>
-</td>
-</tr>
-</tbody>
-</table>
+<p>클러스터의 Scale-out을 위해서는 클러스터 상세 페이지에서 오른쪽 상단의 &ldquo;<strong>+</strong>&rdquo; 아이콘을 클릭해야 합니다.</p>
 
-<h2 id="참고자료">참고자료</h2>
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdcmngt/420.jpg" alt="" />
+- 클러스터 상세 페이지에서 Scale-out 요청</p>
+</blockquote>
 
-<ul>
-<li><a href="https://docs.oracle.com/en/cloud/paas/big-data-compute-cloud/csspc/cluster-components.html">https://docs.oracle.com/en/cloud/paas/big-data-compute-cloud/csspc/cluster-components.html</a></li>
-</ul>
+<p>러스터 상세 페이지에서 &ldquo;<strong>+</strong>&rdquo; 아이콘을 클릭하면 다음 그림과 같이 확장 &ldquo;컴퓨트 전용 노드&rdquo;와 &ldquo;HDFS 스토리지가 있는 컴퓨트 노드&rdquo;를 지정하는 상자가 오픈됩니다. &ldquo;컴퓨트 전용 노드&rdquo;와 &ldquo;HDFS 스토리지가 있는 컴퓨트 노드&rdquo;는 각각 한 번에 최대 5개 까지 설정할 수 있습니다. &ldquo;HDFS 스토리지가 있는 컴퓨트 노드&rdquo;를 추가할 때, 그 아래의 &ldquo;HDFS 밸런싱 조정&rdquo;을 체크하면, 기존 HDFS의 데이터가 새로운 노드에 분배됩니다. &ldquo;컴퓨트 전용 노드&rdquo;, &ldquo;HDFS 스토리지가 있는 컴퓨트 노드&rdquo; 및 데이터 재분배 옵션을 결정한 후, &ldquo;<strong>Sacle Out</strong>&rdquo; 버튼을 클릭하면 클러스터 Scale-out이 진행됩니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdcmngt/430.jpg" alt="" />
+- Scale-out 노드 설정 및 Scale-out 시작</p>
+</blockquote>
+
+<p>클러스터의 Scale-out이 시작되면, Oracle BDC 서비스 콘솔에서 인스턴스 상태는 &ldquo;Service maintenance&hellip;&ldquo;라고 표시됩니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdcmngt/440.jpg" alt="" />
+- Scale-out 진행 중 클러스터 상태</p>
+</blockquote>
+
+<p>클러스터의 Scale-out이 완료되면, 인스턴스 상태는 &ldquo;Ready&rdquo;로 변경되고, 클러스터에 추가된 노드는 각각 &ldquo;Slave-6&rdquo;와 &ldquo;Compute-Slave-7&rdquo;으로 표시됩니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdcmngt/450.jpg" alt="" />
+- Scale-out 완료 후 클러스터 상태</p>
+</blockquote>
+
+<h3 id="클러스터-sacle-in">클러스터 Sacle-In</h3>
+
+<p>Oracle BDC는 Scale-out과 함께 Scale-In도 지원합니다. Scale-Out은 한번에 타입별로 최대 5개 노드까지 추가할 수 있지만, Scale-In은 Master 노드가 아닌 slave 노드를 한 번에 1개씩 줄일 수 있습니다. Oracle BDC 인스턴스는 1번 부터 4번까지 노드를 Master 노드로 분류됩니다. Master 노드가 아닌 나머지 노드를 Slave로 분류합니다. Slave 노드는 1번에 1개씩 노드를 줄일 수 있습니다. &ldquo;HDFS 스토리지가 있는 컴퓨트 노드&rdquo;를 줄일 경우 해당 데이터는 다른 노드에 로딩됩니다. Master 노드는 다음과 같이 삭제를 할 수 없습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdcmngt/510.jpg" alt="" />
+- Oracle BDC 클러스터의 마스터 노드 (1 ~ 4번 노드)</p>
+</blockquote>
+
+<p>Master 노드가 아닌 Slave 노드는 다음 그림과 같이 &ldquo;Remove Node&rdquo; 메뉴를 실행하여 Sacle-In 할 수 있습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdcmngt/520.jpg" alt="" /></p>
+</blockquote>
+
+<p>Compute Slave 노드의 &ldquo;Remove Node&rdquo; 메뉴를 실행하면, 다음 그림과 같이 확인 팝업이 나타나고, &ldquo;Remove Node&rdquo;를 선택하여 확인하면 Sacle-In이 수행됩니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdcmngt/530.jpg" alt="" /></p>
+</blockquote>
+
+<p>클러스터의 Scale-In이 시작되면, Oracle BDC 서비스 콘솔에서 인스턴스 상태는 &ldquo;Service maintenance&hellip;&ldquo;라고 표시됩니다. 이 상태에서는 Oracle BDC 인스턴스에 Job을 수행할 수 없습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdcmngt/540.jpg" alt="" /></p>
+</blockquote>
+
+<p>클러스터의 Scale-In 완료되면, 인스턴스 상태는 &ldquo;Ready&rdquo;로 변경되고, 클러스터의 노드수가 6개로 줄어든 것을 확인할 수 있습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdcmngt/550.jpg" alt="" /></p>
+</blockquote>
+
+<p>&ldquo;HDFS 스토리지가 있는 컴퓨트 노드&rdquo;인 Slave 노드의 &ldquo;Remove Node&rdquo; 메뉴를 선택하면 Sacle-In이 수행됩니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdcmngt/560.jpg" alt="" /></p>
+</blockquote>
+
+<p>&ldquo;HDFS 스토리지가 있는 컴퓨트 노드&rdquo;의 &ldquo;Remove Node&rdquo; 메뉴를 실행하면, 다음과 같은 확인 메뉴가 오픈됩니다. &ldquo;Remove Node&rdquo;를 선택하여 확인하면 Sacle-In이 수행됩니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdcmngt/570.jpg" alt="" /></p>
+</blockquote>
+
+<p>클러스터의 Scale-In이 시작되면, Oracle BDC 서비스 콘솔에서 인스턴스 상태는 &ldquo;Service maintenance&hellip;&ldquo;라고 표시됩니다. 이 상태에서는 Oracle BDC 인스턴스에 Job을 수행할 수 없습니다. 클러스터의 Scale-In 완료되면, 인스턴스 상태는 &ldquo;Ready&rdquo;로 변경되고, 클러스터의 노드가 5개로 줄어든 것을 확인할 수 있습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdcmngt/580.jpg" alt="" /></p>
+</blockquote>
+
+<h3 id="클러스터-패치">클러스터 패치</h3>
+
+<h2 id="노드-관리">노드 관리</h2>
 
 		</div>
 		
@@ -227,9 +242,8 @@
 		<li class="tags__item"><a class="tags__link" href="/tags/oracle-cloud/" rel="tag">oracle cloud</a></li>
 		<li class="tags__item"><a class="tags__link" href="/tags/oracle/" rel="tag">oracle</a></li>
 		<li class="tags__item"><a class="tags__link" href="/tags/bdc/" rel="tag">bdc</a></li>
-		<li class="tags__item"><a class="tags__link" href="/tags/bigdata/" rel="tag">bigdata</a></li>
-		<li class="tags__item"><a class="tags__link" href="/tags/%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8/" rel="tag">컴포넌트</a></li>
-		<li class="tags__item"><a class="tags__link" href="/tags/%EB%B2%84%EC%A0%84/" rel="tag">버전</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/oci-classic/" rel="tag">oci classic</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%ED%94%84%EB%A1%9C%EB%B9%84%EC%A0%80%EB%8B%9D/" rel="tag">프로비저닝</a></li>
 	</ul>
 </div>
 
@@ -256,16 +270,13 @@
 	
 <nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	<div class="post-nav__item post-nav__item--prev col-1-2">
-		<a class="post-nav__link" href="http://taewan.kim/oc_bdc/glossary/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Oracle BDC: 컴포넌트 구성과 버전</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next col-1-2">
-		<a class="post-nav__link" href="http://taewan.kim/oc_bdc/provisioning_bdc_on_ocic/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">Oracle BDC 인스턴스 만들기 (OCIC)</p></a>
+		<a class="post-nav__link" href="http://taewan.kim/oc_bdc/provisioning_bdc_on_ocic/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Oracle BDC 인스턴스 만들기 (OCIC)</p></a>
 	</div>
 </nav>
 
 	
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oc_bdc/components/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oc_bdc/cluster_management/"></div>
 
 
 	<div>
@@ -301,7 +312,7 @@
 	
 
 <div class="widget-categories widget">	
-		<div class="fb-like" data-href="http://taewan.kim/oc_bdc/components/" 
+		<div class="fb-like" data-href="http://taewan.kim/oc_bdc/cluster_management/" 
 		data-layout="standard" data-action="like" 
 		data-size="small" 
 		data-show-faces="true" 
@@ -316,8 +327,16 @@
 <ul>
 <li>
 <ul>
-<li><a href="#구성-컴포넌트-및-버전">구성 컴포넌트 및 버전</a></li>
-<li><a href="#참고자료">참고자료</a></li>
+<li><a href="#클러스터-관리">클러스터 관리</a>
+<ul>
+<li><a href="#클러스터-상태-관리">클러스터 상태 관리</a></li>
+<li><a href="#클러스터-시작하기">클러스터 시작하기</a></li>
+<li><a href="#클러스터-종료하기">클러스터 종료하기</a></li>
+<li><a href="#클러스터-scale-out">클러스터 Scale-Out</a></li>
+<li><a href="#클러스터-sacle-in">클러스터 Sacle-In</a></li>
+<li><a href="#클러스터-패치">클러스터 패치</a></li>
+</ul></li>
+<li><a href="#노드-관리">노드 관리</a></li>
 </ul></li>
 </ul>
 </nav>

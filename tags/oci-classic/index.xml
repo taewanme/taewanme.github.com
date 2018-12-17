@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>Oracle BDC 서비스 클러스터 관리 - 서비스 콘솔</title>
+      <link>http://taewan.kim/oc_bdc/cluster_management/</link>
+      <pubDate>Sat, 15 Dec 2018 05:17:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oc_bdc/cluster_management/</guid>
+      <description>Oracle Big Data Cloud(이하 Oracle BDC) 서비스 콘솔에서 BDC 클러스터의 클러스터 상태 확인, 클러스터 시작/정지 및 노드 별 시작/종료, 클러스터 확대(Scale-out)와 축소(Sacle-In)과 클러스터 패치가 가능합니다. 이 문서에서는 Oracle Big Data Cloud 서비스 콘솔에서 BDC 클러스터를 관리하는 방법에 대하여 정리합니다.
+클러스터 관리 클러스터 상태 관리 클러스터 시작하기   클러스터 종료하기   클러스터 Scale-Out Hadoop 클러스터를 운영하는 과정에서 HDFS 용량이 모자라거나 더 많은 컴퓨팅 파워가 필요할 경우에 클러스터 노드를 늘리는 Scale-out 방식으로 문제를 해결합니다.</description>
+    </item>
+    
+    <item>
       <title>Oracle BDC 인스턴스 만들기 (OCIC)</title>
       <link>http://taewan.kim/oc_bdc/provisioning_bdc_on_ocic/</link>
       <pubDate>Sat, 15 Dec 2018 05:17:05 +0900</pubDate>
