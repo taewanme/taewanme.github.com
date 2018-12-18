@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Feedback Mode on taewan.kim 블로그</title>
+    <link>/tags/feedback-mode/</link>
+    <description>Recent content in Feedback Mode on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 Dec 2017 19:30:14 +0900</lastBuildDate>
+    
+	<atom:link href="/tags/feedback-mode/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JShell: 6. 피드백 모드</title>
+      <link>/jshell/jshell06/</link>
+      <pubDate>Wed, 27 Dec 2017 19:30:14 +0900</pubDate>
+      
+      <guid>/jshell/jshell06/</guid>
+      <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다. 원문: https://docs.oracle.com/javase/9/jshell/feedback-modes.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 6 Feedback</description>
+    </item>
+    
+  </channel>
+</rss>
