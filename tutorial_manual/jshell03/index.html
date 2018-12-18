@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>JShell: 3. 명령 - taewan.kim 블로그</title>
+<meta name="description" content="java9의 신규 기능인 JShell 공식 문서의 한글화 입니다.">
+<meta name="generator" content="Hugo 0.52" />
+<link href="/index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="/jshell/jshell03/">
+<link rel="stylesheet" href="/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="/js/jquery.backtothetop/jquery.backtothetop.min.js"></script><link rel="stylesheet" href="/css/taewan.css"  />
+
+</head>
+<body>
+<div class="container"> 
+<header class="header">
+  <div class="container container-inner clearfix" >
+    <div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+      <a class="logo__link" href="/" title="taewan.kim 블로그" rel="home">
+        <h1 class="logo__title">taewan.kim 블로그</h1><br/>
+        <h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list"><li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li><li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li><li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li><li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li><li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li><li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li><li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li></ul>
+</nav>
+
+<div class="content-container">
+<main><h1>JShell: 3. 명령</h1>
+
+<p>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.</p>
+
+<blockquote>
+<ul>
+<li>원문: <a href="https://docs.oracle.com/javase/9/jshell/commands.htm">https://docs.oracle.com/javase/9/jshell/commands.htm</a></li>
+<li>제목: Java Platform, Standard Edition Java Shell User’s Guide: 3 Commands
+
+<ul>
+<li>문서번호: E87478-01</li>
+<li>배포: 2017년 09월</li>
+</ul></li>
+<li>라이센스: 원본 문서 라이센스를 준수합니다.
+
+<ul>
+<li>원문: <a href="https://docs.oracle.com/javase/9/jshell/title.htm">https://docs.oracle.com/javase/9/jshell/title.htm</a></li>
+</ul></li>
+</ul>
+</blockquote>
+
+<p>JShell 사용자 가이드의 한글화 문서는 다음과 같이 구성됩니다.</p>
+
+<ul>
+<li><a href="/trans/jshell/jshell01/">1. JShell 소개</a></li>
+<li><a href="/trans/jshell/jshell02/">2. 스니펫</a></li>
+<li><strong>3. 명령</strong></li>
+<li><a href="/trans/jshell/jshell04/">4. 편집</a></li>
+<li><a href="/trans/jshell/jshell05/">5. 외부 코드</a></li>
+<li><a href="/trans/jshell/jshell06/">6. 피그백 모드</a></li>
+<li><a href="/trans/jshell/jshell07/">7. 스크립트</a></li>
+</ul>
+
+<hr />
+
+<h2 id="jshell-사용자-가이드-3-명령">JShell 사용자 가이드: 3. 명령</h2>
+
+<hr />
+
+<p>JShell 명령은 JShell 세션에 입력되며, 환경을 제어하고 정보를 출력하는 기능을 제공합니다.</p>
+
+<ul>
+<li>문서 구성
+
+<ul>
+<li>JShell 명령 소개</li>
+<li>JShell 명령의 텝 자동완성</li>
+<li>명령어 약어</li>
+</ul></li>
+</ul>
+
+<h3 id="jshell-명령-소개">JShell 명령 소개</h3>
+
+<p>JShell 명령은 환경을 제어하고, JShell 세션의 정보를 출력합니다.</p>
+
+<p>JShell 명령은 슬래쉬(/)로 시작하기 때문에 스니펫과 명확하게 구분됩니다.
+&ldquo;<strong>/var</strong>&rdquo;, &ldquo;<strong>/methods</strong>&rdquo; 그리고 &ldquo;<strong>/types</strong>&rdquo; 명령을 사용하여 현재 세션에 정의된 변수, 메서드 및 타입 정보를 확인할 수 있습니다.
+&ldquo;<strong>/list</strong>&rdquo; 명령을 사용하면 입력된 스니펫 목록을 확인할 수 있습니다.
+다음 예제는 이런 명령의 사용 방법과 출력 결과를 설명합니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">vars</span>
+<span class="o">|</span>    <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">45</span>
+<span class="o">|</span>    <span class="kt">int</span> <span class="n">$3</span> <span class="o">=</span> <span class="n">4</span>
+<span class="o">|</span>    <span class="n">String</span> <span class="n">$5</span> <span class="o">=</span> <span class="s">&#34;OceanOcean&#34;</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">methods</span>
+<span class="o">|</span>    <span class="n">twice</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span><span class="n">String</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">list</span>
+
+   <span class="n">1</span> <span class="o">:</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Hi&#34;</span><span class="o">);</span>
+   <span class="n">2</span> <span class="o">:</span> <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">45</span><span class="o">;</span>
+   <span class="n">3</span> <span class="o">:</span> <span class="n">2</span> <span class="o">+</span> <span class="n">2</span>
+   <span class="n">4</span> <span class="o">:</span> <span class="n">String</span> <span class="nf">twice</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+         <span class="k">return</span> <span class="n">s</span> <span class="o">+</span> <span class="n">s</span><span class="o">;</span>
+       <span class="o">}</span>
+   <span class="n">5</span> <span class="o">:</span> <span class="n">twice</span><span class="o">(</span><span class="s">&#34;Ocean&#34;</span><span class="o">)</span></code></pre></div>
+<p>변수의 유형과 값 및 메소드의 타입 시그니처(Signature)가 출력됩니다.</p>
+
+<p>JShell에는 JShell이 시작할 때, 기본 시작 스크립트(Default Startup Script)가 자동으로 실행됩니다. 사용자는 별도 부가적인 작업없이 바로 코드 작업을 할 수 있습니다. 시작 스크립트의 실행 항목은 &ldquo;<strong>/list -start</strong>&rdquo; 또는 &ldquo;<strong>/list -all</strong>&rdquo; 명령을 사용하여 확인할 수 있습니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">list</span> <span class="o">-</span><span class="n">all</span>
+
+  <span class="n">s1</span> <span class="o">:</span> <span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+  <span class="n">s2</span> <span class="o">:</span> <span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+  <span class="n">s3</span> <span class="o">:</span> <span class="kn">import</span> <span class="nn">java.math.*</span><span class="o">;</span>
+  <span class="n">s4</span> <span class="o">:</span> <span class="kn">import</span> <span class="nn">java.net.*</span><span class="o">;</span>
+  <span class="n">s5</span> <span class="o">:</span> <span class="kn">import</span> <span class="nn">java.util.concurrent.*</span><span class="o">;</span>
+  <span class="n">s6</span> <span class="o">:</span> <span class="kn">import</span> <span class="nn">java.util.prefs.*</span><span class="o">;</span>
+  <span class="n">s7</span> <span class="o">:</span> <span class="kn">import</span> <span class="nn">java.util.regex.*</span><span class="o">;</span>
+   <span class="n">1</span> <span class="o">:</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Hi&#34;</span><span class="o">);</span>
+   <span class="n">2</span> <span class="o">:</span> <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">45</span><span class="o">;</span>
+   <span class="n">3</span> <span class="o">:</span> <span class="n">2</span> <span class="o">+</span> <span class="n">2</span>
+   <span class="n">4</span> <span class="o">:</span> <span class="n">String</span> <span class="nf">twice</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+         <span class="k">return</span> <span class="n">s</span> <span class="o">+</span> <span class="n">s</span><span class="o">;</span>
+       <span class="o">}</span>
+   <span class="n">5</span> <span class="o">:</span> <span class="n">twice</span><span class="o">(</span><span class="s">&#34;Ocean&#34;</span><span class="o">)</span></code></pre></div>
+<p>기본 시작 스크립트는 기본 import 문으로 구성됩니다. &ldquo;<strong>/set start</strong>&rdquo; 명령을 이용하여 시작 항목의 개인화 설정을 할 수 있습니다.
+이 명령에 대한 자세한 정보는 &ldquo;<strong>/help /set start</strong>&rdquo; 명령으로 확인 가능합니다.
+&ldquo;<strong>/save -start</strong>&rdquo; 명령은 현재 시작 스크립트를 자신의 시작 스크립트의 시작점으로 저장합니다.</p>
+
+<p>다른 중요한 명령으로는 JShell을 종료하는 &ldquo;<strong>/exit</strong>&rdquo;, 스니펫을 저장하는 &ldquo;<strong>/save</strong>&ldquo;
+그리고 파일에서 스니펫을 가져오는 &ldquo;<strong>/open</strong>&ldquo;이 있습니다.</p>
+
+<p>JShell 명령 목록은 &ldquo;<strong>/help</strong>&rdquo; 명령으로 확인 가능합니다.</p>
+
+<h3 id="jshell-명령의-텝-자동완성">JShell 명령의 텝 자동완성</h3>
+
+<p>스니펫을 작성할 때와 마찬가지로, 명령과 명령 옵션을 입력할 때, 텝 키를 사용하여 명령과 명령 옵션의 자동 완성 기능을 사용할 수 있습니다.
+현재까지 입력으로 명령과 명령의 옵션의 자동 완성을 결정할 수 없는 상황에서는 가능한 선택 사항을 모두 제공합니다.</p>
+
+<p>다음 예제는 명령 슬래시(/) 다음에 텝 키를 눌렀을 때의 피드백 결과입니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/&lt;</span><span class="n">Tab</span><span class="o">&gt;</span>
+<span class="o">/!</span>          <span class="o">/?</span>          <span class="o">/</span><span class="n">drop</span>       <span class="o">/</span><span class="n">edit</span>       <span class="o">/</span><span class="n">env</span>        <span class="o">/</span><span class="n">exit</span>       <span class="o">/</span><span class="n">help</span>
+<span class="o">/</span><span class="n">history</span>    <span class="o">/</span><span class="n">imports</span>    <span class="o">/</span><span class="n">list</span>       <span class="o">/</span><span class="n">methods</span>    <span class="o">/</span><span class="n">open</span>       <span class="o">/</span><span class="n">reload</span>     <span class="o">/</span><span class="n">reset</span>
+<span class="o">/</span><span class="n">save</span>       <span class="o">/</span><span class="n">set</span>        <span class="o">/</span><span class="n">types</span>      <span class="o">/</span><span class="n">vars</span>
+
+<span class="o">&lt;</span><span class="n">press</span> <span class="n">tab</span> <span class="n">again</span> <span class="n">to</span> <span class="n">see</span> <span class="n">synopsis</span><span class="o">&gt;</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span></code></pre></div>
+<p>명령 및 명령 옵션의 자동 완성이 가능한 상황에서는 그 자리에서 완료됩니다. 예를 들어서, <strong>/l</strong>을 입력하고 Tab(텝 키)을 누르면 그 입력줄에  &ldquo;<strong>/list</strong>&ldquo;이 출력됩니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">l</span><span class="o">&lt;</span><span class="n">Tab</span><span class="o">&gt;</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">list</span></code></pre></div>
+<p>텝 자동 완성 기능은 명령 옵션도 지원합니다. 다음은 &ldquo;<strong>/list</strong>&rdquo; 명령의 옵션을 출력하기 위해서 텝 키를 사용하는 예제입니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">list</span> <span class="o">-&lt;</span><span class="n">Tab</span><span class="o">&gt;</span>
+<span class="o">-</span><span class="n">all</span>       <span class="o">-</span><span class="n">history</span>   <span class="o">-</span><span class="n">start</span>     
+
+<span class="o">&lt;</span><span class="n">press</span> <span class="n">tab</span> <span class="n">again</span> <span class="n">to</span> <span class="n">see</span> <span class="n">synopsis</span><span class="o">&gt;</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">list</span> <span class="o">-</span></code></pre></div>
+<p>위 예제서 &ldquo;<strong>명령의 간단한 설명을 출력하려면 텝 키를 다시 입력</strong>&ldquo;과 같은 메세지를 주목하시기 바랍니다. 텝 키를 입력하면 명령에 대한 간단한 설명이 출력됩니다. 텝 키를 3번 입력하면 명령이 도움말 문서가 출력됩니다. 다음 예제는 텝 키를 두 번과 세 번 눌렀을 때의 결과입니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">list</span> <span class="o">-&lt;</span><span class="n">Tab</span><span class="o">&gt;</span>
+<span class="n">list</span> <span class="n">the</span> <span class="n">source</span> <span class="n">you</span> <span class="n">have</span> <span class="n">typed</span>
+
+<span class="o">&lt;</span><span class="n">press</span> <span class="n">tab</span> <span class="n">again</span> <span class="n">to</span> <span class="n">see</span> <span class="n">full</span> <span class="n">documentation</span><span class="o">&gt;</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">list</span> <span class="o">-&lt;</span><span class="n">Tab</span><span class="o">&gt;</span>
+<span class="n">Show</span> <span class="n">the</span> <span class="n">source</span> <span class="n">of</span> <span class="n">snippets</span><span class="o">,</span> <span class="n">prefaced</span> <span class="n">with</span> <span class="n">the</span> <span class="n">snippet</span> <span class="n">id</span><span class="o">.</span>
+
+<span class="o">/</span><span class="n">list</span>
+    <span class="n">List</span> <span class="n">the</span> <span class="n">currently</span> <span class="n">active</span> <span class="n">snippets</span> <span class="n">of</span> <span class="n">code</span> <span class="n">that</span> <span class="n">you</span> <span class="n">typed</span> <span class="n">or</span> <span class="n">read</span> <span class="n">with</span> <span class="o">/</span><span class="n">open</span>
+
+<span class="o">/</span><span class="n">list</span> <span class="o">-</span><span class="n">start</span>
+    <span class="n">List</span> <span class="n">the</span> <span class="n">automatically</span> <span class="n">evaluated</span> <span class="n">start</span><span class="o">-</span><span class="n">up</span> <span class="n">snippets</span>
+
+<span class="o">/</span><span class="n">list</span> <span class="o">-</span><span class="n">all</span>
+    <span class="n">List</span> <span class="n">all</span> <span class="n">snippets</span> <span class="n">including</span> <span class="n">failed</span><span class="o">,</span> <span class="n">overwritten</span><span class="o">,</span> <span class="n">dropped</span><span class="o">,</span> <span class="n">and</span> <span class="n">start</span><span class="o">-</span><span class="n">up</span>
+
+<span class="o">/</span><span class="n">list</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span>
+    <span class="n">List</span> <span class="n">snippets</span> <span class="n">with</span> <span class="n">the</span> <span class="n">specified</span> <span class="nf">name</span> <span class="o">(</span><span class="n">preference</span> <span class="k">for</span> <span class="n">active</span> <span class="n">snippets</span><span class="o">)</span>
+
+<span class="o">/</span><span class="n">list</span> <span class="o">&lt;</span><span class="n">id</span><span class="o">&gt;</span>
+    <span class="n">List</span> <span class="n">the</span> <span class="n">snippet</span> <span class="n">with</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">snippet</span> <span class="n">id</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">list</span> <span class="o">-</span></code></pre></div>
+<p>고유한 인수의 완성은 제자리에서 수행됩니다. 예를 들어 &ldquo;<strong>/list -a <Tab></strong>&ldquo;을 입력하면 <strong>-all</strong> 옵션이 자동으로 표시됩니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">list</span> <span class="o">-</span><span class="n">a</span><span class="o">&lt;</span><span class="n">Tab</span><span class="o">&gt;</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">list</span> <span class="o">-</span><span class="n">all</span></code></pre></div>
+<p>스니펫 이름도 Tab을 사용하여 완성할 수 있습니다. 예를 들어 JShell 세션에서 이전에 <strong>volume</strong> 메서드를 정의해다면, 메서드 이름을 일부 입력한 후 Tab 키를 누르면 전체 메서드 이름이 표시됩니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">ed</span> <span class="n">v</span><span class="o">&lt;</span><span class="n">Tab</span><span class="o">&gt;</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">ed</span> <span class="n">volume</span></code></pre></div>
+<p>명령에 파일명을 인수로 입력해야 하는 위치에서 텝 키를 사용하면 현재 사용 가능한 파일이 표시됩니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">open</span> <span class="o">&lt;</span><span class="n">Tab</span><span class="o">&gt;</span>
+<span class="n">myfile1</span>      <span class="n">myfile2</span>    <span class="n">definitions</span><span class="o">.</span><span class="na">jsh</span>
+
+<span class="o">&lt;</span><span class="n">press</span> <span class="n">tab</span> <span class="n">again</span> <span class="n">to</span> <span class="n">see</span> <span class="n">synopsis</span><span class="o">&gt;</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">open</span></code></pre></div>
+<p>고유한 파일 이름 완성은 제자리에서 수행됩니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">open</span> <span class="n">d</span><span class="o">&lt;</span><span class="n">Tab</span><span class="o">&gt;</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">open</span> <span class="n">definitions</span><span class="o">.</span><span class="na">jsh</span></code></pre></div>
+<h3 id="명령-약어">명령 약어</h3>
+
+<p>약어를 사용하여 타이핑 양을 줄일 수 있습니다. 명령, /set subcommand, 명령 인수 및 명령 옵션은 약어가 고유한 경우 모두 축약될 수 있습니다.</p>
+
+<p>&ldquo;<strong>/l</strong>&ldquo;로 시작하는 유일한 명령은 &ldquo;<strong>/list</strong>&ldquo;입니다. &ldquo;<strong>/list</strong>&rdquo; 명령 옵션 중에서 &ldquo;<strong>-a</strong>&ldquo;로 시작하는 옵션은 &ldquo;<strong>-all</strong>&ldquo;입니다. 따라서 &ldquo;<strong>/list -all</strong>&rdquo; 명령은 다음 약어로 실행할 수 있습니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">l</span> <span class="o">-</span><span class="n">a</span></code></pre></div>
+<p>또한 <strong>/se</strong>로 시작하는 유일한 명령은 <strong>/set</strong>이고, <strong>fe</strong>로 시작하는 유일한 <strong>/set</strong> 서브 명령은 <strong>feedback</strong>입니다. 그리고 <strong>v</strong>로 시작하는 유일한 피드백 모드는 <strong>verbose</strong> 입니다. (전제 조건: &ldquo;v&rdquo;로 시작하는 사용자 정의 피드백 모드가 없는 상황) 따라서 verbose를 피드백 모드로 설정하는 명령은 다음과 같은 약어로 처리할 수 있습니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">se</span> <span class="n">fe</span> <span class="n">v</span></code></pre></div>
+<p>주의할 점은 <strong>s</strong>는 약어로 사용할 수 없다는 것입니다. <strong>set</strong> 명령과 <strong>save</strong> 명령은 모두 &ldquo;s&rdquo; 문자로 시작합니다. 약어가 확실하지 않은 경우, 탭 완성을 사용하여 옵션을 확인할 수 있습니다.</p>
+<div class="edit-meta">Last updated on 27 Dec 2017 / Published on 27 Dec 2017<br></div><nav class="pagination"><a class="nav nav-prev" href="/jshell/jshell02/" title="JShell: 2. 스니펫(Snippets)"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - JShell: 2. 스니펫(Snippets)</a>
+<a class="nav nav-next" href="/jshell/jshell04/" title="JShell: 4. 편집 ">Next - JShell: 4. 편집  <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
+</footer>
+</main><div class="sidebar">
+<nav>
+<ul>
+
+<li class="parent"><a href="/tutorial_manual/jshell/">Jshells</a>
+<ul class="sub-menu">
+<li class=""><a href="/tutorial_manual/jshell/jshell01/">JShell:1. JShell 소개</a></li>
+<li class=""><a href="/tutorial_manual/jshell/jshell02/">JShell: 2. 스니펫(Snippets)</a></li>
+<li class="active"><a href="/tutorial_manual/jshell/jshell03/">JShell: 3. 명령</a></li>
+<li class=""><a href="/tutorial_manual/jshell/jshell04/">JShell: 4. 편집 </a></li>
+<li class=""><a href="/tutorial_manual/jshell/jshell05/">JShell: 5. 외부 코드</a></li>
+<li class=""><a href="/tutorial_manual/jshell/jshell06/">JShell: 6. 피드백 모드</a></li>
+<li class=""><a href="/tutorial_manual/jshell/jshell07/">JShell: 7. JShell 소개</a></li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>
