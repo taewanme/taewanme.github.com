@@ -23,12 +23,24 @@
 </script>
 <link rel="stylesheet" href="/css/taewan.css"  />
 
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-8469722754608892",
-          enable_page_level_ads: true
-     });
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
 </script>
 
 </head>
