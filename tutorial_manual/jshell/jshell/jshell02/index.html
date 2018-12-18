@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>JShell: 2. 스니펫(Snippets) - taewan.kim 블로그</title>
+<meta name="description" content="java9의 신규 기능인 JShell 공식 문서의 한글화 입니다.">
+<meta name="generator" content="Hugo 0.52" />
+<link href="/index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="/jshell/jshell02/">
+<link rel="stylesheet" href="/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="/js/jquery.backtothetop/jquery.backtothetop.min.js"></script><link rel="stylesheet" href="/css/taewan_minsu.css"  />
+<link rel="stylesheet" href="/css/taewan.css"  />
+
+</head>
+<body>
+<div class="container"> 
+<header class="header">
+  <div class="container container-inner clearfix" >
+    <div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+      <a class="logo__link" href="/" title="taewan.kim 블로그" rel="home">
+        <h1 class="logo__title">taewan.kim 블로그</h1><br/>
+        <h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list"><li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li><li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li><li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li><li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li><li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li><li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li><li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li></ul>
+</nav>
+
+<div class="content-container">
+<main><h1>JShell: 2. 스니펫(Snippets)</h1>
+
+<p>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.</p>
+
+<blockquote>
+<ul>
+<li>원문: <a href="https://docs.oracle.com/javase/9/jshell/snippets.htm">https://docs.oracle.com/javase/9/jshell/snippets.htm</a></li>
+<li>제목: Java Platform, Standard Edition Java Shell User’s Guide: 2 Snippets
+
+<ul>
+<li>문서번호: E87478-01</li>
+<li>배포: 2017년 09월</li>
+</ul></li>
+<li>라이센스: 원본 문서 라이센스를 준수합니다.
+
+<ul>
+<li>원문: <a href="https://docs.oracle.com/javase/9/jshell/title.htm">https://docs.oracle.com/javase/9/jshell/title.htm</a></li>
+</ul></li>
+</ul>
+</blockquote>
+
+<p>JShell 사용자 가이드의 한글화 문서는 다음과 같이 구성됩니다.</p>
+
+<ul>
+<li><a href="/trans/jshell/jshell01/">1. JShell 소개</a></li>
+<li><strong>2. 스니펫</strong></li>
+<li><a href="/trans/jshell/jshell03/">3. 명령</a></li>
+<li><a href="/trans/jshell/jshell04/">4. 편집</a></li>
+<li><a href="/trans/jshell/jshell05/">5. 외부 코드</a></li>
+<li><a href="/trans/jshell/jshell06/">6. 피드백 모드</a></li>
+<li><a href="/trans/jshell/jshell07/">7. 스크립트</a></li>
+</ul>
+
+<hr />
+
+<h2 id="jshell-사용자-가이드-2-스니펫">JShell 사용자 가이드: 2. 스니펫</h2>
+
+<hr />
+
+<p>JShell에서 자바 문(statements), 정의 문(변수, 메서드, 클래스 둥), 임포트 문 및 식(expression)을 실행할 수 있습니다. JShell이 처리할 수 있는 이런 코드 조각을 스니펫(snippet)이라고 합니다.</p>
+
+<ul>
+<li>문서 구성
+
+<ul>
+<li>스니펫 실행하기</li>
+<li>정의 변경</li>
+<li>Forward References</li>
+<li>예외(Exceptions)</li>
+<li>스니펫 텝 자동 완성</li>
+<li>스니펫 변환</li>
+</ul></li>
+</ul>
+
+<h3 id="스니펫-실행하기">스니펫 실행하기</h3>
+
+<p>JShell에 자바 코드 스니펫을 입력하면 즉시 평가됩니다. 그리고 평가 결과, 수행 액션 및 발생 에러에 대한 피드백이 바로 출력됩니다. 이 절에서 소개하는 예제를 직접 JShell에 테스트해 보시기 바랍니다.</p>
+
+<p>최대한 많은 피드백을 출력하기 위해서, verbose 옵션(-v)을 추가하여 JShell을 시작합니다.</p>
+
+<pre><code>% jshell -v
+|  Welcome to JShell -- Version 9
+|  For an introduction type: /help intro
+</code></pre>
+
+<p>프롬프트에 다음 예제의 문(statement)을 입력하고, 출력 결과를 확인해 보시기 바랍니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">45</span>
+<span class="n">x</span> <span class="o">==&gt;</span> <span class="n">45</span>
+<span class="o">|</span>  <span class="n">created</span> <span class="n">variable</span> <span class="n">x</span> <span class="o">:</span> <span class="kt">int</span></code></pre></div>
+<p>문을 입력하며, 바로 결과가 출력됩니다. 이 결과를 다음과 같이 해석할 수 있니다. &ldquo;변수 x는 값 45를 갖는다.&rdquo; JShell이 verbose 모드로 실행되었기 때문에, 수행된 액션에 대한 부가 설명도 출력됩니다. 부가 정보 메시지는 수직 막대(|) 문자로 시작합니다. 이 메시지에서 생성된 변수명과 변수 타입 정보를 확인할 수 있습니다.</p>
+
+<p>처리 결과를 저장할 변수를 지정하지 않은 식(expression)이 입력되면, 다음에 값을 참조하는 목적으로 스크래치 변수<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>가 생성됩니다. 그리고 그 스크래치 변수에 실행된 식의 결과가 저장됩니다. 다음 예제는 식과 메서드 실행 결과를 스크래치 변수에 저장하는 것을 설명합니다. 그리고 이 예제에서 하나의 스니펫이 여러줄로 완성할 때 사용되는 연속 프롬프트 (<strong>&hellip;&gt;</strong>)를 확인 할 수 있습니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="n">2</span> <span class="o">+</span> <span class="n">2</span>
+<span class="n">$3</span> <span class="o">==&gt;</span> <span class="n">4</span>
+<span class="o">|</span>  <span class="n">created</span> <span class="n">scratch</span> <span class="n">variable</span> <span class="n">$3</span> <span class="o">:</span> <span class="kt">int</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="n">String</span> <span class="nf">twice</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+   <span class="o">...&gt;</span>    <span class="k">return</span> <span class="n">s</span> <span class="o">+</span> <span class="n">s</span><span class="o">;</span>
+   <span class="o">...&gt;</span> <span class="o">}</span>
+<span class="o">|</span>  <span class="n">created</span> <span class="n">method</span> <span class="nf">twice</span><span class="o">(</span><span class="n">String</span><span class="o">)</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="nf">twice</span><span class="o">(</span><span class="s">&#34;Ocean&#34;</span><span class="o">)</span>
+<span class="n">$5</span> <span class="o">==&gt;</span> <span class="s">&#34;OceanOcean&#34;</span>
+<span class="o">|</span>  <span class="n">created</span> <span class="n">scratch</span> <span class="n">variable</span> <span class="n">$5</span> <span class="o">:</span> <span class="n">String</span></code></pre></div>
+<h3 id="정의-변경">정의 변경</h3>
+
+<p>코드를 실행하다보면 변수, 메서드 및 클래스가 개발자의 의도와 다르게 잘못 정의될 수 있습니다. JShell에서 이런 문제는 정의를 새로 입력하는 것으로 쉽게 해결 됩니다. 새로 입력된 정의는 이전 정의를 덮어씁니다.</p>
+
+<p>변수, 메서드 및 클래스의 정의를 변경해야 한다면, 단순히 새로운 정의를 입력하면 됩니다. 예를 들어서 앞에 &ldquo;스니펫 실행하기&rdquo; 절에서 정의한 <strong>twice</strong> 메서드는 다음 예제를 실행하면 새로운 정의로 변경됩니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="n">String</span> <span class="nf">twice</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+   <span class="o">...&gt;</span>    <span class="k">return</span> <span class="s">&#34;Twice:&#34;</span> <span class="o">+</span> <span class="n">s</span><span class="o">;</span>
+   <span class="o">...&gt;</span> <span class="o">}</span>
+<span class="o">|</span>  <span class="n">modified</span> <span class="n">method</span> <span class="nf">twice</span><span class="o">(</span><span class="n">String</span><span class="o">)</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="nf">twice</span><span class="o">(</span><span class="s">&#34;thing&#34;</span><span class="o">)</span>
+<span class="n">$7</span> <span class="o">==&gt;</span> <span class="s">&#34;Twice:thing&#34;</span>
+<span class="o">|</span>  <span class="n">created</span> <span class="n">scratch</span> <span class="n">variable</span> <span class="n">$7</span> <span class="o">:</span> <span class="n">String</span></code></pre></div>
+<p>앞에서 &ldquo;<strong>생성된 메서드(created method)</strong>&ldquo;로 표시된 부분이 이번 피드백에서는 &ldquo;<strong>수정된 메서드(modified method)</strong>&ldquo;로 표시됩니다. 이 메시지는 정의는 변경되었지만, 변경된 메서드가 이전과 같은 서명(signature)을 가지므로, 기존의 메서드 사용법이 여전히 유효합니다.</p>
+
+<p>호화되지 않는 방식으로 정의를 변경할 수도 있습니다. 다음 예제에서 변수 <strong>x</strong> 타입이 <strong>int</strong>에서 <strong>String</strong> 으로 변경되었습니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">45</span>
+<span class="n">x</span> <span class="o">==&gt;</span> <span class="n">45</span>
+<span class="o">|</span>  <span class="n">created</span> <span class="n">variable</span> <span class="n">x</span> <span class="o">:</span> <span class="kt">int</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="n">String</span> <span class="n">x</span>
+<span class="n">x</span> <span class="o">==&gt;</span> <span class="kc">null</span>
+<span class="o">|</span>  <span class="n">replaced</span> <span class="n">variable</span> <span class="n">x</span> <span class="o">:</span> <span class="n">String</span>
+<span class="o">|</span>    <span class="n">update</span> <span class="n">overwrote</span> <span class="n">variable</span> <span class="n">x</span> <span class="o">:</span> <span class="kt">int</span></code></pre></div>
+<p>위 예제에서 변수 x의 타입 변경에 대한 피드백 메시지가 &ldquo;<strong>replaced</strong>&ldquo;로 표현되어 있습니다.</p>
+
+<h4 id="피드백-레벨-변경">피드백 레벨 변경</h4>
+
+<p>앞에서 가장 많은 정보와 설명을 제공하는 verbose 모드로 JShell을 실행하였습니다. &ldquo;<strong>/set feedback</strong>&rdquo; 명령으로 피드백 양과 형식을 변경할 수 있습니다. (예 : /set feedback consice) 다른 윈도우의 코드를 복사한 후 붙여 넣기 방식으로 JShell을 사용한다면, 여러분은 프롬프트가 없고 오류 피드백 만을 제공하는 모드를 선호할 것입니다. JShell에 &ldquo;<strong>/set feedback silent</strong>&rdquo; 명령을 실행하면, JShell은 오류 피드백만을 출력합니다.</p>
+
+<h3 id="forward-references-사전-참조">Forward References (사전 참조)</h3>
+
+<p>JShell에서 메소드를 정의할 때 아직 정의하지 않은 메서드, 변수, 클래스를 참조할 수 있습니다. 이 기능은 탐색적인 프로그래밍을 지원하기 위해서 만들어졌습니다. 프로그래밍 과정에서 이런 기능이 필요할 때가 있습니다.</p>
+
+<p>예를 들어, 구의 볼륨을 구하는 메소드를 정의할 때, <strong>volume</strong> 메소드를 다음 예제와 같이 구현할 수 있습니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="kt">double</span> <span class="nf">volume</span><span class="o">(</span><span class="kt">double</span> <span class="n">radius</span><span class="o">)</span> <span class="o">{</span>
+   <span class="o">...&gt;</span>    <span class="k">return</span> <span class="n">4</span><span class="o">.</span><span class="na">0</span> <span class="o">/</span> <span class="n">3</span><span class="o">.</span><span class="na">0</span> <span class="o">*</span> <span class="n">PI</span> <span class="o">*</span> <span class="n">cube</span><span class="o">(</span><span class="n">radius</span><span class="o">);</span>
+   <span class="o">...&gt;</span> <span class="o">}</span>
+<span class="o">|</span>  <span class="n">created</span> <span class="n">method</span> <span class="nf">volume</span><span class="o">(</span><span class="kt">double</span><span class="o">),</span> <span class="n">however</span><span class="o">,</span> <span class="n">it</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">invoked</span> <span class="n">until</span> <span class="n">variable</span> <span class="n">PI</span><span class="o">,</span> <span class="n">and</span> <span class="n">method</span> <span class="nf">cube</span><span class="o">(</span><span class="kt">double</span><span class="o">)</span> <span class="n">are</span> <span class="n">declared</span></code></pre></div>
+<p>위 예제의 volume 메소드 정의는 JShell 세션에서 정상적으로 수행됩니다. 그러나, 아직은 volume 메서드가 완전하게 정의된 것이 아니라는 메시지가 출력됩니다. 이 메소드 정의는 참조될 수는 있있습니다. 그러나, 필요한 모든 요소를 정의하기 전에 이 메서드를 실행하면 실폐하고 에러 피드백을 출력합니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="kt">double</span> <span class="n">PI</span> <span class="o">=</span> <span class="n">3</span><span class="o">.</span><span class="na">1415926535</span>
+<span class="n">PI</span> <span class="o">==&gt;</span> <span class="n">3</span><span class="o">.</span><span class="na">1415926535</span>
+<span class="o">|</span>  <span class="n">created</span> <span class="n">variable</span> <span class="n">PI</span> <span class="o">:</span> <span class="kt">double</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="nf">volume</span><span class="o">(</span><span class="n">2</span><span class="o">)</span>
+<span class="o">|</span>  <span class="n">attempted</span> <span class="n">to</span> <span class="n">call</span> <span class="n">method</span> <span class="nf">volume</span><span class="o">(</span><span class="kt">double</span><span class="o">)</span> <span class="n">which</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">invoked</span> <span class="n">until</span> <span class="n">method</span> <span class="nf">cube</span><span class="o">(</span><span class="kt">double</span><span class="o">)</span> <span class="n">is</span> <span class="n">declared</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="kt">double</span> <span class="nf">cube</span><span class="o">(</span><span class="kt">double</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span> <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">|</span>  <span class="n">created</span> <span class="n">method</span> <span class="nf">cube</span><span class="o">(</span><span class="kt">double</span><span class="o">)</span>
+<span class="o">|</span>    <span class="n">update</span> <span class="n">modified</span> <span class="n">method</span> <span class="nf">volume</span><span class="o">(</span><span class="kt">double</span><span class="o">)</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="nf">volume</span><span class="o">(</span><span class="n">2</span><span class="o">)</span>
+<span class="n">$5</span> <span class="o">==&gt;</span> <span class="n">33</span><span class="o">.</span><span class="na">510321637333334</span>
+<span class="o">|</span>  <span class="n">created</span> <span class="n">scratch</span> <span class="n">variable</span> <span class="n">$5</span> <span class="o">:</span> <span class="kt">double</span></code></pre></div>
+<p>필요한 모든 정의가 완료되면, <strong>volume</strong> 메서드는 정상적으로 작동합니다.</p>
+
+<p>이 volume 메서드를 이용하여 &ldquo;비호환 교체&rdquo;를 설명하겠습니다. 다음 예제에서는 <strong>PI</strong>의 정밀도를 변경<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>하고, PI 객체에 새로운 값을 입력하였습니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="n">BigDecimal</span> <span class="n">PI</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;3.141592653589793238462643383&#34;</span><span class="o">)</span>
+<span class="n">PI</span> <span class="o">==&gt;</span> <span class="n">3</span><span class="o">.</span><span class="na">141592653589793238462643383</span>
+<span class="o">|</span>  <span class="n">replaced</span> <span class="n">variable</span> <span class="n">PI</span> <span class="o">:</span> <span class="n">BigDecimal</span>
+<span class="o">|</span>    <span class="n">update</span> <span class="n">modified</span> <span class="n">method</span> <span class="nf">volume</span><span class="o">(</span><span class="kt">double</span><span class="o">)</span> <span class="n">which</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">invoked</span> <span class="n">until</span> <span class="k">this</span> <span class="n">error</span> <span class="n">is</span> <span class="nl">corrected:</span>
+<span class="o">|</span>      <span class="n">bad</span> <span class="n">operand</span> <span class="n">types</span> <span class="k">for</span> <span class="n">binary</span> <span class="n">operator</span> <span class="sc">&#39;*&#39;</span>
+<span class="o">|</span>        <span class="n">first</span> <span class="nl">type:</span>  <span class="kt">double</span>
+<span class="o">|</span>        <span class="n">second</span> <span class="nl">type:</span> <span class="n">java</span><span class="o">.</span><span class="na">math</span><span class="o">.</span><span class="na">BigDecimal</span>
+<span class="o">|</span>          <span class="k">return</span> <span class="n">4</span><span class="o">.</span><span class="na">0</span> <span class="o">/</span> <span class="n">3</span><span class="o">.</span><span class="na">0</span> <span class="o">*</span> <span class="n">PI</span> <span class="o">*</span> <span class="n">cube</span><span class="o">(</span><span class="n">radius</span><span class="o">);</span>
+<span class="o">|</span>                 <span class="o">^------------^</span>
+<span class="o">|</span>    <span class="n">update</span> <span class="n">overwrote</span> <span class="n">variable</span> <span class="n">PI</span> <span class="o">:</span> <span class="kt">double</span></code></pre></div>
+<p>새롭게 정의된 <strong>PI</strong> 타입은 <strong>volume</strong> 메서드 정의에 사용된 타입과 호환되지 않습니다. 현재 JShell은 verbose 모드로 동작하기 때문에,  PI 타입 변경에 영향을 받는 다른 요소 정보를 출력합니다. 이 예제는 비호환성을 설명하는 대표적인 사례입니다. verbose 모드는 업데이트 정보를 출력하는 유일한 사전 정의 피드백 모드(Predefined feedback mode)입니다. 다른 피드백 모드에서는 해당 코드가 실행될 때까지 어떠한 경고도 출력하지 않습니다. verbose 모드를 제외한 다른 사전 정의 피드백 모드는 실행 부하를 줄이기 위해서 업데이트 경고를 제공하지 않습니다. 모든 사전 정의 피드백 모드에서 <strong>volume</strong> 메서드를 실행하면, 다음과 같은 이슈를 출력합니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="nf">volume</span><span class="o">(</span><span class="n">2</span><span class="o">)</span>
+<span class="o">|</span>  <span class="n">attempted</span> <span class="n">to</span> <span class="n">call</span> <span class="n">method</span> <span class="nf">volume</span><span class="o">(</span><span class="kt">double</span><span class="o">)</span> <span class="n">which</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">invoked</span> <span class="n">until</span> <span class="k">this</span> <span class="n">error</span> <span class="n">is</span> <span class="nl">corrected:</span>
+<span class="o">|</span>      <span class="n">bad</span> <span class="n">operand</span> <span class="n">types</span> <span class="k">for</span> <span class="n">binary</span> <span class="n">operator</span> <span class="sc">&#39;*&#39;</span>
+<span class="o">|</span>        <span class="n">first</span> <span class="nl">type:</span>  <span class="kt">double</span>
+<span class="o">|</span>        <span class="n">second</span> <span class="nl">type:</span> <span class="n">java</span><span class="o">.</span><span class="na">math</span><span class="o">.</span><span class="na">BigDecimal</span>
+<span class="o">|</span>          <span class="k">return</span> <span class="n">4</span><span class="o">.</span><span class="na">0</span> <span class="o">/</span> <span class="n">3</span><span class="o">.</span><span class="na">0</span> <span class="o">*</span> <span class="n">PI</span> <span class="o">*</span> <span class="n">cube</span><span class="o">(</span><span class="n">radius</span><span class="o">);</span>
+<span class="o">|</span>                 <span class="o">^------------^</span></code></pre></div>
+<h3 id="예외-exceptions">예외(Exceptions)</h3>
+
+<p>예외 역추적(Backtrace)에서, 피드백은 예외가 발생한 스니펫과 해당 스니펫 내부의 위치를 출력합니다.</p>
+
+<p>JShell에 입력된 코드의 위치는 &ldquo;<strong>#ID:line-number</strong>&rdquo; 형식으로 출력됩니다. 여기서 스니펫 ID는 &ldquo;<strong>/list</strong>&rdquo; 명령이 제공하는 숫자입니다. &ldquo;<strong>line-number</strong>&ldquo;는 스니펫의 행 번호입니다. 다음 예제에서 예외가 발생한 위치는 스니펫 넘버 #1(devide 메서드)의 두 번째 행입니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="kt">int</span> <span class="nf">divide</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+   <span class="o">...&gt;</span> <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span><span class="o">;</span>
+   <span class="o">...&gt;</span> <span class="o">}</span>
+<span class="o">|</span>  <span class="n">created</span> <span class="n">method</span> <span class="nf">divide</span><span class="o">(</span><span class="kt">int</span><span class="o">,</span><span class="kt">int</span><span class="o">)</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="nf">divide</span><span class="o">(</span><span class="n">5</span><span class="o">,</span> <span class="n">0</span><span class="o">)</span>
+<span class="o">|</span>  <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">ArithmeticException</span> <span class="nl">thrown:</span> <span class="o">/</span> <span class="n">by</span> <span class="n">zero</span>
+<span class="o">|</span>        <span class="n">at</span> <span class="nf">divide</span> <span class="o">(</span><span class="err">#</span><span class="nl">1:</span><span class="n">2</span><span class="o">)</span>
+<span class="o">|</span>        <span class="n">at</span> <span class="o">(</span><span class="err">#</span><span class="nl">2:</span><span class="n">1</span><span class="o">)</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">list</span>
+
+   <span class="n">1</span> <span class="o">:</span> <span class="kt">int</span> <span class="nf">divide</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+           <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span><span class="o">;</span>
+       <span class="o">}</span>
+   <span class="n">2</span> <span class="o">:</span> <span class="n">divide</span><span class="o">(</span><span class="n">5</span><span class="o">,</span> <span class="n">0</span><span class="o">)</span></code></pre></div>
+<h3 id="스니펫-텝-자동-완성">스니펫 텝 자동 완성</h3>
+
+<p>스니펫을 입력할 때, 텝 키를 이용하여 코드를 자동 완성할 수 있습니다. 현재까지 입력으로 코드를 결정할 수 없는 상황에서는, 가능한 옵션을 모두 제공합니다.</p>
+
+<p>다음 예제는 volume 메서드가 정의된 상태에서, 메서드 명의 첫 번째 3 개 문자(vol)를 입력한 후에 텝 키를 입력한 상태를 설명합니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="n">vol</span><span class="o">&lt;</span><span class="n">Tab</span><span class="o">&gt;</span></code></pre></div>
+<p>탭 키를 입력하면 입력값이 다음과 같이 변경됩니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="nf">volume</span><span class="o">(</span></code></pre></div>
+<p>자동 완성 기능을 사용할 때 현재 입력 값을 기준으로 한 개 이상의 경우의 수를 갖는다면, 가능한 모든 코드를 출력합니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="n">System</span><span class="o">.</span><span class="na">c</span><span class="o">&lt;</span><span class="n">Tab</span><span class="o">&gt;</span>
+<span class="kd">class</span>                 <span class="nf">clearProperty</span><span class="o">(</span>        <span class="n">console</span><span class="o">()</span>             <span class="n">currentTimeMillis</span><span class="o">()</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="n">System</span><span class="o">.</span><span class="na">c</span></code></pre></div>
+<p>입력한 코드에 공통 문자가 추가되고 커서는 입력 끝부분으로 이동합니다. 아이템을 완성하기 위해 추가 문자를 입력할 수 있습니다.</p>
+
+<p>메소드의 열린 괄호에서 텝 키를 입력하면 매개 변수 유형으로 완료 가능한 형태를 출력합니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="s">&#34;hello&#34;</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(&lt;</span><span class="n">Tab</span><span class="o">&gt;</span><span class="nl">
+</span><span class="nl">Signatures:</span>
+<span class="kt">boolean</span> <span class="n">String</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="n">String</span> <span class="n">prefix</span><span class="o">,</span> <span class="kt">int</span> <span class="n">toffset</span><span class="o">)</span>
+<span class="kt">boolean</span> <span class="n">String</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="n">String</span> <span class="n">prefix</span><span class="o">)</span>
+
+<span class="o">&lt;</span><span class="n">press</span> <span class="n">tab</span> <span class="n">again</span> <span class="n">to</span> <span class="n">see</span> <span class="n">documentation</span><span class="o">&gt;</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="s">&#34;hello&#34;</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span></code></pre></div>
+<p>텝 키를 다시 입력하면 첫 번째 메서드의 텍스트 버전 문서가 출력됩니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="s">&#34;hello&#34;</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(&lt;</span><span class="n">Tab</span><span class="o">&gt;</span>
+<span class="kt">boolean</span> <span class="n">String</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="n">String</span> <span class="n">prefix</span><span class="o">,</span> <span class="kt">int</span> <span class="n">toffset</span><span class="o">)</span>
+<span class="n">Tests</span> <span class="k">if</span> <span class="n">the</span> <span class="n">substring</span> <span class="n">of</span> <span class="k">this</span> <span class="n">string</span> <span class="n">beginning</span> <span class="n">at</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">index</span> <span class="n">starts</span> <span class="n">with</span> <span class="n">the</span>
+<span class="n">specified</span> <span class="n">prefix</span><span class="o">.</span><span class="nl">
+</span><span class="nl">
+</span><span class="nl">Parameters:</span>
+<span class="n">prefix</span> <span class="o">-</span> <span class="n">the</span> <span class="n">prefix</span><span class="o">.</span>
+<span class="n">toffset</span> <span class="o">-</span> <span class="n">where</span> <span class="n">to</span> <span class="n">begin</span> <span class="n">looking</span> <span class="n">in</span> <span class="k">this</span> <span class="n">string</span><span class="o">.</span><span class="nl">
+</span><span class="nl">
+</span><span class="nl">Returns:</span>
+<span class="kc">true</span> <span class="k">if</span> <span class="n">the</span> <span class="n">character</span> <span class="n">sequence</span> <span class="n">represented</span> <span class="n">by</span> <span class="n">the</span> <span class="n">argument</span> <span class="n">is</span> <span class="n">a</span> <span class="n">prefix</span> <span class="n">of</span> <span class="n">the</span> <span class="n">substring</span> <span class="n">of</span> <span class="k">this</span>
+          <span class="n">object</span> <span class="n">starting</span> <span class="n">at</span> <span class="n">index</span> <span class="n">toffset</span> <span class="o">;</span> <span class="kc">false</span> <span class="n">otherwise</span><span class="o">.</span> <span class="n">The</span> <span class="n">result</span> <span class="n">is</span> <span class="kc">false</span> <span class="k">if</span> <span class="n">toffset</span> <span class="n">is</span>
+          <span class="n">negative</span> <span class="n">or</span> <span class="n">greater</span> <span class="n">than</span> <span class="n">the</span> <span class="n">length</span> <span class="n">of</span> <span class="k">this</span> <span class="n">String</span> <span class="n">object</span><span class="o">;</span> <span class="n">otherwise</span> <span class="n">the</span> <span class="n">result</span> <span class="n">is</span>
+          <span class="n">the</span> <span class="n">same</span> <span class="n">as</span> <span class="n">the</span> <span class="n">result</span> <span class="n">of</span> <span class="n">the</span> <span class="n">expression</span>
+                    <span class="k">this</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">toffset</span><span class="o">).</span><span class="na">startsWith</span><span class="o">(</span><span class="n">prefix</span><span class="o">)</span>
+
+
+<span class="o">&lt;</span><span class="n">press</span> <span class="n">tab</span> <span class="n">to</span> <span class="n">see</span> <span class="n">next</span> <span class="n">documentation</span><span class="o">&gt;</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="s">&#34;hello&#34;</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span></code></pre></div>
+<h3 id="스니펫-변환">스니펫 변환</h3>
+
+<p>JShell은 클래스를 처음 참조할 때 필요한 클래스 임포트(import)를 쉽게 할 수 있습니다. 또한 단축키를 사용하여 식(Expression)을 변수 선언으로 간단하게 변환할 수 있습니다.</p>
+
+<p>아직 가져 오지 않은 식별자를 입력한 다음에 바로 &ldquo;<strong>Shift + Tab i</strong>&ldquo;를 누르면 세션에 import문을 추가하는 옵션이 출력됩니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="k">new</span> <span class="n">JFrame</span><span class="o">&lt;</span><span class="n">Shift</span><span class="o">+</span><span class="n">Tab</span> <span class="n">i</span><span class="o">&gt;</span><span class="nl">
+</span><span class="nl">0:</span> <span class="n">Do</span> <span class="n">nothing</span><span class="nl">
+</span><span class="nl">1:</span> <span class="nl">import:</span> <span class="n">javax</span><span class="o">.</span><span class="na">swing</span><span class="o">.</span><span class="na">JFrame</span><span class="nl">
+</span><span class="nl">Choice:</span> <span class="n">1</span><span class="nl">
+</span><span class="nl">Imported:</span> <span class="n">javax</span><span class="o">.</span><span class="na">swing</span><span class="o">.</span><span class="na">JFrame</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="k">new</span> <span class="n">JFrame</span></code></pre></div>
+<p>임포트 추가 옵션이 출력되면 사용할 옵션 번호를 입력하면 됩니다. 복수의 import 옵션이 제시될 수 있습니다.</p>
+
+<p>식(Expression)을  입력한 후 &ldquo;<strong>Shift+Tab v</strong>&ldquo;를 눌러 식(Expression) 변수 선언으로 변환할 수 있습니다. 앞에서 입력한 식은 변수 선언의 초기값이 되고, 식의 반환 타입은 변수의 타입으로 선언됩니다. 다음 예제에서 &ldquo;<strong>Shift+Tab v</strong>&ldquo;를 누르면, 세로 막대 (|)로 표시된 커서는 변수 이름을 입력해야 하는 곳에 위치하게 됩니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="k">new</span> <span class="nf">JFrame</span><span class="o">(</span><span class="s">&#34;Demo&#34;</span><span class="o">)</span> <span class="o">&lt;</span><span class="n">Shift</span><span class="o">+</span><span class="n">Tab</span> <span class="n">v</span><span class="o">&gt;</span>
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="n">JFrame</span> <span class="o">|</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JFrame</span><span class="o">(</span><span class="s">&#34;Demo&#34;</span><span class="o">)</span></code></pre></div>
+<div class="notices note" ><p>식(Expression)은 유효해야 하며 그렇지 않으면 변환 요청은 무시됩니다. 이 예제에서 변수를 변환하기 전에 JFrame의 import가 선행되어야 합니다.</p>
+</div>
+
+
+<p>앞 예제를 완료하기 위해서, 커서가 위치한 곳에 변수명 frame을 입력하고 <strong>Enter</strong> 키를 누릅니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="n">JFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JFrame</span><span class="o">(</span><span class="s">&#34;Demo&#34;</span><span class="o">)</span>
+<span class="n">frame</span> <span class="o">==&gt;</span> <span class="n">javax</span><span class="o">.</span><span class="na">swing</span><span class="o">.</span><span class="na">JFrame</span><span class="o">[</span><span class="n">frame0</span><span class="o">,</span><span class="n">0</span><span class="o">,</span><span class="n">0</span><span class="o">,</span><span class="n">0x0</span><span class="o">,</span><span class="n">invalid</span><span class="o">,</span><span class="n">hidden</span><span class="o">,</span> <span class="o">...</span> <span class="n">tPaneCheckingEnabled</span><span class="o">=</span><span class="kc">true</span><span class="o">]</span>
+<span class="o">|</span>  <span class="n">created</span> <span class="n">variable</span> <span class="n">frame</span> <span class="o">:</span> <span class="n">JFrame</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span></code></pre></div>
+<p>식(Expression)의 반환 타입이 아직 import 되지 않은 경우가 있습니다. 이런 상황에서, &ldquo;<strong>Shift+Tab v</strong>&ldquo;을 누르면 import 옵션과 변수 생성 기능 모두가 제공됩니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="n">frame</span><span class="o">.</span><span class="na">getGraphics</span><span class="o">()</span> <span class="o">&lt;</span><span class="n">Shift</span><span class="o">+</span><span class="n">Tab</span> <span class="n">v</span><span class="o">&gt;</span><span class="nl">
+</span><span class="nl">0:</span> <span class="n">Do</span> <span class="n">nothing</span><span class="nl">
+</span><span class="nl">1:</span> <span class="n">Create</span> <span class="n">variable</span><span class="nl">
+</span><span class="nl">2:</span> <span class="nl">import:</span> <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">Graphics</span><span class="o">.</span> <span class="n">Create</span> <span class="n">variable</span><span class="nl">
+</span><span class="nl">Choice:</span> <span class="n">2</span><span class="nl">
+</span><span class="nl">Imported:</span> <span class="n">java</span><span class="o">.</span><span class="na">awt</span><span class="o">.</span><span class="na">Graphics</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="n">Graphics</span> <span class="o">|</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="na">getGraphics</span><span class="o">()</span></code></pre></div>
+<p>위 예제를 완료하려면, 커서가 위치한 곳에 변수 이름 <strong>gc</strong>를 입력하고 <strong>Enter</strong> 키를 누릅니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="n">Graphics</span> <span class="n">gc</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="na">getGraphics</span><span class="o">()</span>
+<span class="o">|</span>  <span class="n">created</span> <span class="n">variable</span> <span class="n">gc</span> <span class="o">:</span> <span class="n">JFrame</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span></code></pre></div><div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">[역자주]스크래치 변수(Scratch variable) - 특별한 의미를 갖지 않는 변수로, 값을 잠시 보관하는 용도로 만들어진 임시 변수로, 대개 보유한 값이 얼마 후에 의미가 없어지거나 삭제됨.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">[역자주]&ldquo;정밀도 변경&rdquo;이란 변수 타입의 변경을 의미하고, &ldquo;새로운 값을 입력&rdquo;은 객체 생성 후 할당을 의미합니다.
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+</ol>
+</div>
+<div class="edit-meta">Last updated on 27 Dec 2017 / Published on 27 Dec 2017<br></div><nav class="pagination"><a class="nav nav-prev" href="/jshell/jshell01/" title="JShell:1. JShell 소개"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - JShell:1. JShell 소개</a>
+<a class="nav nav-next" href="/jshell/jshell03/" title="JShell: 3. 명령">Next - JShell: 3. 명령 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
+</footer>
+</main><div class="sidebar">
+<nav>
+<ul>
+
+<li class="parent"><a href="/jshell/">Jshells</a>
+<ul class="sub-menu">
+<li class=""><a href="/jshell/jshell01/">JShell:1. JShell 소개</a></li>
+<li class="active"><a href="/jshell/jshell02/">JShell: 2. 스니펫(Snippets)</a></li>
+<li class=""><a href="/jshell/jshell03/">JShell: 3. 명령</a></li>
+<li class=""><a href="/jshell/jshell04/">JShell: 4. 편집 </a></li>
+<li class=""><a href="/jshell/jshell05/">JShell: 5. 외부 코드</a></li>
+<li class=""><a href="/jshell/jshell06/">JShell: 6. 피드백 모드</a></li>
+<li class=""><a href="/jshell/jshell07/">JShell: 7. JShell 소개</a></li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

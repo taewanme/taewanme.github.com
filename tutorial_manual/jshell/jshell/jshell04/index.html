@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>JShell: 4. 편집  - taewan.kim 블로그</title>
+<meta name="description" content="java9의 신규 기능인 JShell 공식 문서의 한글화 입니다.">
+<meta name="generator" content="Hugo 0.52" />
+<link href="/index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="/jshell/jshell04/">
+<link rel="stylesheet" href="/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="/js/jquery.backtothetop/jquery.backtothetop.min.js"></script><link rel="stylesheet" href="/css/taewan_minsu.css"  />
+<link rel="stylesheet" href="/css/taewan.css"  />
+
+</head>
+<body>
+<div class="container"> 
+<header class="header">
+  <div class="container container-inner clearfix" >
+    <div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+      <a class="logo__link" href="/" title="taewan.kim 블로그" rel="home">
+        <h1 class="logo__title">taewan.kim 블로그</h1><br/>
+        <h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list"><li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li><li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li><li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li><li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li><li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li><li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li><li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li></ul>
+</nav>
+
+<div class="content-container">
+<main><h1>JShell: 4. 편집 </h1>
+
+<p>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.</p>
+
+<blockquote>
+<ul>
+<li>원문: <a href="https://docs.oracle.com/javase/9/jshell/editing.htm">https://docs.oracle.com/javase/9/jshell/editing.htm</a></li>
+<li>제목: Java Platform, Standard Edition Java Shell User’s Guide: 4 Editing
+
+<ul>
+<li>문서번호: E87478-01</li>
+<li>배포: 2017년 09월</li>
+</ul></li>
+<li>라이센스: 원본 문서 라이센스를 준수합니다.
+
+<ul>
+<li>원문: <a href="https://docs.oracle.com/javase/9/jshell/title.htm">https://docs.oracle.com/javase/9/jshell/title.htm</a></li>
+</ul></li>
+</ul>
+</blockquote>
+
+<p>JShell 사용자 가이드의 한글화 문서는 다음과 같이 구성됩니다.</p>
+
+<ul>
+<li><a href="/trans/jshell/jshell01/">1. JShell 소개</a></li>
+<li><a href="/trans/jshell/jshell02/">2. 스니펫</a></li>
+<li><a href="/trans/jshell/jshell03/">3. 명령</a></li>
+<li><strong>4. 편집</strong></li>
+<li><a href="/trans/jshell/jshell05/">5. 외부 코드</a></li>
+<li><a href="/trans/jshell/jshell06/">6. 피그백 모드</a></li>
+<li><a href="/trans/jshell/jshell07/">7. 스크립트</a></li>
+</ul>
+
+<hr />
+
+<h2 id="jshell-사용자-가이드-4-편집">JShell 사용자 가이드: 4. 편집</h2>
+
+<hr />
+
+<p>JShell은 프롬프트에서 입력된 것을 수정하는 편집 기능을 제공합니다. 또한, 이런 수정 작업에 여러분이 선호하는 외부 편집기를 사용할 수 있습니다.</p>
+
+<p>쉘 편집 기능을 이용하여 이전에 입력한 스니펫과 명령을 입력한 후에, 다시 스니펫과 명령을 편집할 수 있습니다. 이전에 입력했던 스니펫과 명령을 검색하고 변경할 수 있습니다. 또한, 스니펫을 편집하고 생성할 때 외부 편집기를 사용할 수도 있습니다. 외부 편집기 이용은 여러 줄로 구성된 스니펫을 작성할 때 매우 유용합니다.</p>
+
+<ul>
+<li>문서 구성
+
+<ul>
+<li>쉘 편집</li>
+<li>외부 편집기 사용</li>
+</ul></li>
+</ul>
+
+<h3 id="쉘-편집">쉘 편집</h3>
+
+<p>명령 프롬프트의 입력을 수정하는 기능을 이용하여 여러분의 입력을 손쉽게 고칠 수 있고, 이전에 입력한 명령과 스니펫을 검색하고 수정할 수 있습니다.</p>
+
+<p>JShell의 쉘 편집 기능은 JLine2<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>을 기반으로 만들었습니다. 기능적으로 Emacs 모드의 <strong>BSD editline</strong>과 <strong>GNU readline</strong>과 유사합니다. 더 자세한 내용은 <a href="https://github.com/jline/jline2/wiki/Using-JLine">JLine2 사용자 정보</a> 및 <a href="https://cnswww.cns.cwru.edu/php/chet/readline/rluserman.html">GNU Readline 문서</a>를 참조하십시오.</p>
+
+<h3 id="입력-행-탐색-input-line-navigation">입력 행 탐색(Input Line Navigation)</h3>
+
+<p>쉡 편집은 현재 행 편집을 지원합니다. JShell의 이전 세션에서 만들어진 히스토리에도 접근할 수 있습니다.</p>
+
+<p>입력 행 탐색을 위한 키 조합에 Ctrl 키와 Meta 키를 사용합니다. 키보드에 Meta 키가 없으면, Alt 키가 Meta 키를 대체합니다.</p>
+
+<p>행(line) 안에서 이동은 왼쪽 화살표 방향키(&lt;-)와 오른쪽 화살표 방향키(-&gt;)를 사용합니다. 뒤로 이동할 때는 <strong>Ctrl+B</strong>를, 앞으로 이동할 때는 <strong>Ctrl+F</strong>를 사용합니다. 히스토리에서 행(line)을 탐색하는 경우에는 <strong>위 화살표 방향키</strong>와 <strong>아래 화살표 방향키</strong>를 사용합니다. <strong>위 화살표</strong> 키를 누르면, 현재 행이 이전 명령이나 스니펫 행으로 대체됩니다. <strong>위 화살표</strong> 키를 다시 누르면 현재 행은 그 이전 행으로 대체됩니다. 히스토리에는 명령과 스니펫이 모두 기록됩니다. 스니펫이 여러 행으로 구성된 경우, <strong>위 화살표</strong> 키와 <strong>아래 화살표</strong> 키는 스니펫의 개별 행을 탐색하고 출력합니다.</p>
+
+<p>다음 표는 입력 행 탐색에 사용되는 키와 기능을 정리합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>키</th>
+<th>액션</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Return</td>
+<td>현재 행 입력</td>
+</tr>
+
+<tr>
+<td>&lt;&ndash;, 왼쪽 화살표 방향키</td>
+<td>한 문자 뒤로 이동</td>
+</tr>
+
+<tr>
+<td>&ndash;&gt;, 오른쪽 화살표 방향키</td>
+<td>한 문자 앞으로 이동</td>
+</tr>
+
+<tr>
+<td>Up arrow, 위 화살표 방향키</td>
+<td>한 줄 위로 이동, 히스토리에서 뒤로 한 줄 이동</td>
+</tr>
+
+<tr>
+<td>Down arrow, 아래 화살표 방향키</td>
+<td>한 줄 아래로 이동, 히스토리에서 앞으로 한 줄 이동</td>
+</tr>
+
+<tr>
+<td>Ctrl+A</td>
+<td>행 시작 부분으로 이동</td>
+</tr>
+
+<tr>
+<td>Ctrl+E</td>
+<td>행 끝으로 이동</td>
+</tr>
+
+<tr>
+<td>Meta+B</td>
+<td>한 단어 뒤로 이동</td>
+</tr>
+
+<tr>
+<td>Meta+F</td>
+<td>한 단어 앞으로 이동</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="히스토리-탐색-history-navigation">히스토리 탐색(History Navigation)</h4>
+
+<p>히스토리에는 여러 JShell 세션의 스니펫과 명령이 기록되고 관리됩니다. 히스토리를 통해서 현재 세션과 이전 세션에서 입력한 항목에 접근할 수 있습니다.</p>
+
+<p>이전애 입력한 것을 다시 입력하거나 수정하려면, 위 혹은 아래 화살표 방향키, 왼쪽 및 오른쪽 화살표 방향키를 사용하여 기록을 탐색한 후 커서가 위치한 곳에 텍스트를 입력합니다. 텍스트를 삭제해야 할 경우 <strong>Delete</strong> 키를 사용합니다. <strong>Enter</strong> 키를 눌러 히스토리 행을 재입력합니다.</p>
+
+<p>다음 예제에서, 위쪽 및 아래쪽 화살표 키는 한 번에 한 줄씩 히스토리를 앞뒤로 이동합니다</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="kd">class</span> <span class="nc">C</span> <span class="o">{</span>
+   <span class="o">...&gt;</span>    <span class="kt">int</span> <span class="n">x</span><span class="o">;</span>
+   <span class="o">...&gt;</span> <span class="o">}</span>
+<span class="o">|</span>  <span class="n">created</span> <span class="kd">class</span>
+<span class="nc">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">list</span>
+
+   <span class="n">1</span> <span class="o">:</span> <span class="kd">class</span> <span class="nc">C</span>
+         <span class="kt">int</span> <span class="n">x</span><span class="o">;</span>
+       <span class="o">}</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">up</span> <span class="n">arrow</span><span class="o">&gt;</span></code></pre></div>
+<p>위 화살표 방향키를 입력하면 다음과 같이 <strong>/list</strong> 명령이 출력됩니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">list</span></code></pre></div>
+<p>위 방향 화살표 키를 다시 입력하면 클래스 정의 마지막 라인이 출력됩니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="o">}</span></code></pre></div>
+<p>아래 방향 화살표 키를 누르면 &ldquo;<strong>/list</strong>&rdquo; 명령을 반환합니다. 엔터 키를 누르면 &ldquo;<strong>/list</strong>&rdquo; 명령이 실행됩니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">list</span>
+
+   <span class="n">1</span> <span class="o">:</span> <span class="kd">class</span> <span class="nc">C</span> <span class="o">{</span>
+         <span class="kt">int</span> <span class="n">x</span><span class="o">;</span>
+       <span class="o">}</span></code></pre></div>
+<p><strong>Ctrl+위 화살표 방향키</strong>는 이전 스니펫으로 이동합니다.  스니펫이 한 줄이라면 <strong>Ctrl+위 화살표 방향키</strong><sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>는 <strong>위 화살표 방향키</strong> 와 결과가 같습니다. 클래스 C와 같이 여러 줄로 구성된 스니펫에서 <strong>Ctrl+위 화살표 방향키</strong>는 해당 스니펫의 첫 번째 행으로 이동합니다. 그 사이에 행은 건너 뜁니다.</p>
+
+<h4 id="입력-행-수정-input-line-modification">입력 행 수정(Input Line Modification)</h4>
+
+<p>히스토리로 부터 입력 행을 조회한 후, 필요에 따라서 코드를 변경하고 재입력할 수 있습니다. 이 기능을 사용할 경우, 코드의 일부분을 수정하기 위해서 행 전체를 다시 입력할 필요가 없습니다.</p>
+
+<p>현재 커서가 위치한 곳에서 텍스트를 입력하면 됩니다. 행에서 커서를 움직이는 키에 대해서는 &ldquo;<strong>입력 행 탐색</strong>&rdquo; 절을 확인하시기 바랍니다.</p>
+
+<p>다음 표는 입력 행 수정에 사용되는 키와 기능을 정리합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>키</th>
+<th>액션</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Delete</td>
+<td>커서 위 또는 이후의 문자를 삭제합니다. 이것은 운영체제에 따라서 결정됩니다.</td>
+</tr>
+
+<tr>
+<td>Backspace</td>
+<td>커서 앞에 있는 문자를 삭제합니다.</td>
+</tr>
+
+<tr>
+<td>Ctrl+K</td>
+<td>커서 위치부터 행의 마지막까지 텍스트를 삭제합니다.</td>
+</tr>
+
+<tr>
+<td>Meta+D</td>
+<td>커서에서 워드(Word) 끝까지 텍스트를 삭제합니다.</td>
+</tr>
+
+<tr>
+<td>Ctrl+W</td>
+<td>커서에서 이전 공백(White Space)까지 텍스트를 삭제합니다.</td>
+</tr>
+
+<tr>
+<td>Ctrl+Y</td>
+<td>행에 가장 최근에 삭제된 문자를 붙여넣습니다.</td>
+</tr>
+
+<tr>
+<td>Meta+Y</td>
+<td>Ctrl+Y 다음에 Meta+Y 이전에 삭제된 텍스를 순환합니다.</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="검색과-기타">검색과 기타</h4>
+
+<p>히스토리 검색은  JShell의 기능으로, 이 기능을 통해서 한 번에 한 줄씩 히스토리를 이동하지 않고도 원하는 줄을 쉽게 찾을 수 있습니다.</p>
+
+<p>검색을 시작하려면 <strong>Ctrl-R</strong>을 누릅니다. 프롬프트에서 검색 문자열을 입력합니다. 검색은 가장 최근 항목에서 뒤쪽으로 이동하며 처리됩니다. 검색은 JShell의 이전 세션을 포함합니다. 다음 예제는 <strong>Ctrl-R</strong>을 누른 후에 표시되는 프롬프트를 보여줍니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">Ctrl</span><span class="o">+</span><span class="n">R</span><span class="o">&gt;</span>
+<span class="o">((</span><span class="n">reverse</span><span class="o">-</span><span class="n">i</span><span class="o">-</span><span class="n">search</span><span class="o">)</span><span class="err">`&#39;</span><span class="o">:</span></code></pre></div>
+<p>히스토리 탐색의 예제에서, <strong>class</strong>를 입력하면 텍스트 &ldquo;class&rdquo;를 포함하는 가장 최근 입력 행을 출력합니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="o">(</span><span class="n">reverse</span><span class="o">-</span><span class="n">i</span><span class="o">-</span><span class="n">search</span><span class="o">)</span><span class="err">`</span><span class="n">class</span><span class="err">&#39;</span><span class="o">:</span> <span class="kd">class</span> <span class="nc">C</span> <span class="o">{</span></code></pre></div>
+<p>검색은 점증적으로 처리됩니다. 첫 번째 문자 &ldquo;c&rdquo;로 검색하고 예제와 같이 결과를 출력합니다. <strong>Ctrl+R</strong>를 반복적으로 입력해서 히스토리의 이전 결과를 검색할 수 있습니다. <strong>Ctrl+S</strong>는 현재 위치에서 앞 방향으로 검색을 계속합니다.</p>
+
+<p>&ldquo;<strong>Ctrl-x (</strong>&ldquo;를 입력하여 키보드 매크로를 정의할 수 있습니다. 그 다음 텍스트를 입력합니다. 매크로를 종료할 때 &ldquo;<strong>Ctrl-x )</strong>&ldquo;를 입력합니다. &ldquo;<strong>Ctrl + x e</strong>&ldquo;를 입력하면 앞에서 정의한 매크로가 실행됩니다.</p>
+
+<p>다음 표에서는 검색과 매크로 생성에 사용되는 키 조합과 기능을 정리합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>키</th>
+<th>액션</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Ctrl+R</td>
+<td>히스토리 마지막에서 뒤쪽으로 검색</td>
+</tr>
+
+<tr>
+<td>Ctrl+S</td>
+<td>히스토리 처음부터 앞 방향으로 검색</td>
+</tr>
+
+<tr>
+<td>Ctrl+X (</td>
+<td>매크로 정의 시작</td>
+</tr>
+
+<tr>
+<td>Ctrl+X )</td>
+<td>매크로 정의 종료</td>
+</tr>
+
+<tr>
+<td>Ctrl+X e</td>
+<td>매크로 실행</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="외부-편집기-사용">외부 편집기 사용</h3>
+
+<p>JShell 코드 편집에 외부 편집기를 사용할 수도 있습니다. 이 편집기는 스니펫 편집 및 생성에 사용됩니다. 특히 여러 줄로 작성된 스니펫 작업에 유용합니다. 여러분이 선호하는 편집기를 JShell에 지정할 수 있습니다.</p>
+
+<p>기존에 만들어진 모든 스니펫을 편집기에서 한 번에 편집할 경우, 별도 옵션 없이 <strong>/edit</strong> 명령을 사용합니다. 편집기에서 특정 스니펫을 지정하여 편집할 경우, <strong>/edit</strong> 명령에 스니펫 이름 혹은 ID를 추가하여 실행합니다. <strong>/list</strong> 명령을 사용 스니펫 ID를 얻을수 있습니다. 다음 예제를 실행하면 편집기를 열고, 앞에서 정의한 volume 스니펫 코드가 편집기에 출력됩니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">edit</span> <span class="n">volume</span></code></pre></div>
+<p>편집기에서 새로운 스니펫을 작성할 수 있습니다. 편집기를 저장하면, 변경되거나 새로 작성된 스니펫은 JShell 세션에 입력됩니다. 이때 스니펫 입력에 대한 피드백은 JShell 윈도우에서 확인할 수 있습니다. 그러나 현재 JShell 윈도우에는 프롬프트가 없는 상태입니다. 편집기를 종료한 이후에는 JShell 윈도우에 명령이나 스니펫을 다시 입력할 수 있습니다.</p>
+
+<p><strong>/edit</strong> 명령을 실행할 때 편집기를 지정하지 않으면, 환경 변수에 설정된 편집기가 실행됩니다. 환경 변수는 JSHELLEDITOR, VISUAL, 그리고 EDITOR 순서로 참조합니다. 설정된 환경 변수가 없다면, JShell에 포함되어 있는 기본 편집기<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup>를 사용합니다. <strong>/set editor</strong> 명령을 사용하여, 여러분이 선호하는 편집기를 사용하도록 JShell을 설정할 수 있습니다. <strong>/set editor</strong> 명령의 매개 변수로 여러분이 사용하고자 하는 외부 편집기를 실행하는 명령을 추가합니다. 다음은 편집기로 &ldquo;kwrite&rdquo;를 설정하고 기존의 모든 스니펫을 편집기에 오픈하는 예제입니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2017/12/trans-shell/editor.jpg" alt="JShell에 포함된 기본 편집기" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 1</strong>:
+        
+        JShell에 포함된 기본 편집기
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">set</span> <span class="n">editor</span> <span class="n">kwrite</span>
+<span class="o">|</span>  <span class="n">Editor</span> <span class="n">set</span> <span class="nl">to:</span> <span class="n">kwrite</span>
+
+<span class="n">jshell</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">edit</span></code></pre></div>
+<p>외부 편집기 윈도우에 x 변수를 정의한 다음에, 외부 편집기에 변경을 저장하면, JShell 윈도우에 다음과 메시지가 출력됩니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="o">|</span>  <span class="n">created</span> <span class="n">variable</span> <span class="n">x</span> <span class="n">of</span> <span class="n">type</span> <span class="kt">int</span> <span class="n">with</span> <span class="n">initial</span> <span class="n">value</span> <span class="n">6</span></code></pre></div>
+<p>외부 편집기를 종료하면 JShell 윈도우에 프롬프트가 다시 나타납니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="n">jshell</span><span class="o">&gt;</span></code></pre></div><div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">[역자주]JLine은 콘솔 입력을 처리하기 위한 Java 라이브러리입니다. bash의 명령 편집, 자동완성, 히스토리 기능을 제공합니다. <a href="https://github.com/jline/jline2">https://github.com/jline/jline2</a>
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">Mac 환경에서 <strong>Ctrl+위 화살표 방향키</strong> 는 Missing Control로 맵핑되어 있습니다. 따라서 <strong>Ctrl+위 화살표 방향키</strong> 를 사용하기 위해서는 &ldquo;시스템 환경 설정&rdquo;에서 Missing Control의 키 맵핑을 변경해야 합니다.
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:3">[역자주]JShell은 자바로 개발된 편집기를 표함합니다. JShell은 이 편집기를 기본 편집기로 사용합니다.
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+</ol>
+</div>
+<div class="edit-meta">Last updated on 27 Dec 2017 / Published on 27 Dec 2017<br></div><nav class="pagination"><a class="nav nav-prev" href="/jshell/jshell03/" title="JShell: 3. 명령"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - JShell: 3. 명령</a>
+<a class="nav nav-next" href="/jshell/jshell05/" title="JShell: 5. 외부 코드">Next - JShell: 5. 외부 코드 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
+</footer>
+</main><div class="sidebar">
+<nav>
+<ul>
+
+<li class="parent"><a href="/jshell/">Jshells</a>
+<ul class="sub-menu">
+<li class=""><a href="/jshell/jshell01/">JShell:1. JShell 소개</a></li>
+<li class=""><a href="/jshell/jshell02/">JShell: 2. 스니펫(Snippets)</a></li>
+<li class=""><a href="/jshell/jshell03/">JShell: 3. 명령</a></li>
+<li class="active"><a href="/jshell/jshell04/">JShell: 4. 편집 </a></li>
+<li class=""><a href="/jshell/jshell05/">JShell: 5. 외부 코드</a></li>
+<li class=""><a href="/jshell/jshell06/">JShell: 6. 피드백 모드</a></li>
+<li class=""><a href="/jshell/jshell07/">JShell: 7. JShell 소개</a></li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>
