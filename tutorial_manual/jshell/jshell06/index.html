@@ -44,15 +44,6 @@
     });
 </script>
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2&appId=404519239985000&autoLogAppEvents=1';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
 </head>
 <body>
 <div class="container"> 
@@ -437,7 +428,16 @@ jshell&gt; /set mode mine -delete -retain
 </nav><footer><p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="/jshell/jshell06/"></div>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2&appId=404519239985000&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="/tutorial_manual/jshell/jshell06/"></div>
 </footer>
 </main><div class="sidebar">
 <nav>
