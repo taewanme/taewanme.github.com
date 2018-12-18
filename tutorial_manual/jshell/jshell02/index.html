@@ -3,7 +3,7 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>JShell: 2. 스니펫(Snippets) - taewan.kim 블로그</title>
+<title>JShell 사용자 가이드: 2. 스니펫 - taewan.kim 블로그</title>
 <meta name="description" content="java9의 신규 기능인 JShell 공식 문서의 한글화 입니다.">
 <meta name="generator" content="Hugo 0.52" />
 <link href="/index.xml" rel="alternate" type="application/rss+xml">
@@ -81,9 +81,11 @@
       (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
     <hr/>
-  </div><h1>JShell: 2. 스니펫(Snippets)</h1>
+  </div><h1>JShell 사용자 가이드: 2. 스니펫</h1>
 
-<p>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.</p>
+<figure class="post__thumbnail">
+  <img src="https://taewanmerepo.github.io/2017/12/trans-shell/head.jpg" alt="JShell 사용자 가이드: 2. 스니펫">
+</figure>
 
 <blockquote>
 <ul>
@@ -102,22 +104,6 @@
 </ul>
 </blockquote>
 
-<p>JShell 사용자 가이드의 한글화 문서는 다음과 같이 구성됩니다.</p>
-
-<ul>
-<li><a href="/trans/jshell/jshell01/">1. JShell 소개</a></li>
-<li><strong>2. 스니펫</strong></li>
-<li><a href="/trans/jshell/jshell03/">3. 명령</a></li>
-<li><a href="/trans/jshell/jshell04/">4. 편집</a></li>
-<li><a href="/trans/jshell/jshell05/">5. 외부 코드</a></li>
-<li><a href="/trans/jshell/jshell06/">6. 피드백 모드</a></li>
-<li><a href="/trans/jshell/jshell07/">7. 스크립트</a></li>
-</ul>
-
-<hr />
-
-<h2 id="jshell-사용자-가이드-2-스니펫">JShell 사용자 가이드: 2. 스니펫</h2>
-
 <hr />
 
 <p>JShell에서 자바 문(statements), 정의 문(변수, 메서드, 클래스 둥), 임포트 문 및 식(expression)을 실행할 수 있습니다. JShell이 처리할 수 있는 이런 코드 조각을 스니펫(snippet)이라고 합니다.</p>
@@ -135,7 +121,7 @@
 </ul></li>
 </ul>
 
-<h3 id="스니펫-실행하기">스니펫 실행하기</h3>
+<h2 id="스니펫-실행하기">스니펫 실행하기</h2>
 
 <p>JShell에 자바 코드 스니펫을 입력하면 즉시 평가됩니다. 그리고 평가 결과, 수행 액션 및 발생 에러에 대한 피드백이 바로 출력됩니다. 이 절에서 소개하는 예제를 직접 JShell에 테스트해 보시기 바랍니다.</p>
 
@@ -165,7 +151,7 @@
 <span class="n">jshell</span><span class="o">&gt;</span> <span class="nf">twice</span><span class="o">(</span><span class="s">&#34;Ocean&#34;</span><span class="o">)</span>
 <span class="n">$5</span> <span class="o">==&gt;</span> <span class="s">&#34;OceanOcean&#34;</span>
 <span class="o">|</span>  <span class="n">created</span> <span class="n">scratch</span> <span class="n">variable</span> <span class="n">$5</span> <span class="o">:</span> <span class="n">String</span></code></pre></div>
-<h3 id="정의-변경">정의 변경</h3>
+<h2 id="정의-변경">정의 변경</h2>
 
 <p>코드를 실행하다보면 변수, 메서드 및 클래스가 개발자의 의도와 다르게 잘못 정의될 수 있습니다. JShell에서 이런 문제는 정의를 새로 입력하는 것으로 쉽게 해결 됩니다. 새로 입력된 정의는 이전 정의를 덮어씁니다.</p>
 
@@ -191,7 +177,7 @@
 <span class="o">|</span>    <span class="n">update</span> <span class="n">overwrote</span> <span class="n">variable</span> <span class="n">x</span> <span class="o">:</span> <span class="kt">int</span></code></pre></div>
 <p>위 예제에서 변수 x의 타입 변경에 대한 피드백 메시지가 &ldquo;<strong>replaced</strong>&ldquo;로 표현되어 있습니다.</p>
 
-<h4 id="피드백-레벨-변경">피드백 레벨 변경</h4>
+<h3 id="피드백-레벨-변경">피드백 레벨 변경</h3>
 
 <p>앞에서 가장 많은 정보와 설명을 제공하는 verbose 모드로 JShell을 실행하였습니다. &ldquo;<strong>/set feedback</strong>&rdquo; 명령으로 피드백 양과 형식을 변경할 수 있습니다. (예 : /set feedback consice) 다른 윈도우의 코드를 복사한 후 붙여 넣기 방식으로 JShell을 사용한다면, 여러분은 프롬프트가 없고 오류 피드백 만을 제공하는 모드를 선호할 것입니다. JShell에 &ldquo;<strong>/set feedback silent</strong>&rdquo; 명령을 실행하면, JShell은 오류 피드백만을 출력합니다.</p>
 
@@ -240,7 +226,7 @@
 <span class="o">|</span>        <span class="n">second</span> <span class="nl">type:</span> <span class="n">java</span><span class="o">.</span><span class="na">math</span><span class="o">.</span><span class="na">BigDecimal</span>
 <span class="o">|</span>          <span class="k">return</span> <span class="n">4</span><span class="o">.</span><span class="na">0</span> <span class="o">/</span> <span class="n">3</span><span class="o">.</span><span class="na">0</span> <span class="o">*</span> <span class="n">PI</span> <span class="o">*</span> <span class="n">cube</span><span class="o">(</span><span class="n">radius</span><span class="o">);</span>
 <span class="o">|</span>                 <span class="o">^------------^</span></code></pre></div>
-<h3 id="예외-exceptions">예외(Exceptions)</h3>
+<h2 id="예외-exceptions">예외(Exceptions)</h2>
 
 <p>예외 역추적(Backtrace)에서, 피드백은 예외가 발생한 스니펫과 해당 스니펫 내부의 위치를 출력합니다.</p>
 
@@ -261,7 +247,7 @@
            <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span><span class="o">;</span>
        <span class="o">}</span>
    <span class="n">2</span> <span class="o">:</span> <span class="n">divide</span><span class="o">(</span><span class="n">5</span><span class="o">,</span> <span class="n">0</span><span class="o">)</span></code></pre></div>
-<h3 id="스니펫-텝-자동-완성">스니펫 텝 자동 완성</h3>
+<h2 id="스니펫-텝-자동-완성">스니펫 텝 자동 완성</h2>
 
 <p>스니펫을 입력할 때, 텝 키를 이용하여 코드를 자동 완성할 수 있습니다. 현재까지 입력으로 코드를 결정할 수 없는 상황에서는, 가능한 옵션을 모두 제공합니다.</p>
 
@@ -357,8 +343,8 @@
  <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
 </ol>
 </div>
-<div class="edit-meta">Last updated on 27 Dec 2017 / Published on 27 Dec 2017<br></div><nav class="pagination"><a class="nav nav-prev" href="/tutorial_manual/jshell/jshell01/" title="JShell:1. JShell 소개"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - JShell:1. JShell 소개</a>
-<a class="nav nav-next" href="/tutorial_manual/jshell/jshell03/" title="JShell: 3. 명령">Next - JShell: 3. 명령 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<div class="edit-meta">Last updated on 27 Dec 2017 / Published on 27 Dec 2017<br></div><nav class="pagination"><a class="nav nav-prev" href="/tutorial_manual/jshell/jshell01/" title="JShell 사용자 가이드: 1. JShell 소개"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - JShell 사용자 가이드: 1. JShell 소개</a>
+<a class="nav nav-next" href="/tutorial_manual/jshell/jshell03/" title="JShell 사용자 가이드: 3. 명령">Next - JShell 사용자 가이드: 3. 명령 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><div class="authorbox row clearfix">
 	<div class="authorbox__header">
 		<span class="authorbox__name">작성자: 김태완</span>
@@ -404,15 +390,15 @@
 <nav>
 <ul>
 
-<li class="parent"><a href="/tutorial_manual/jshell/">Jshells</a>
+<li class="parent"><a href="/tutorial_manual/jshell/">JShell 공식 문서 한글화</a>
 <ul class="sub-menu">
-<li class=""><a href="/tutorial_manual/jshell/jshell01/">JShell:1. JShell 소개</a></li>
-<li class="active"><a href="/tutorial_manual/jshell/jshell02/">JShell: 2. 스니펫(Snippets)</a></li>
-<li class=""><a href="/tutorial_manual/jshell/jshell03/">JShell: 3. 명령</a></li>
-<li class=""><a href="/tutorial_manual/jshell/jshell04/">JShell: 4. 편집 </a></li>
+<li class=""><a href="/tutorial_manual/jshell/jshell01/">JShell 사용자 가이드: 1. JShell 소개</a></li>
+<li class="active"><a href="/tutorial_manual/jshell/jshell02/">JShell 사용자 가이드: 2. 스니펫</a></li>
+<li class=""><a href="/tutorial_manual/jshell/jshell03/">JShell 사용자 가이드: 3. 명령</a></li>
+<li class=""><a href="/tutorial_manual/jshell/jshell04/">JShell 사용자 가이드: 4. 편집</a></li>
 <li class=""><a href="/tutorial_manual/jshell/jshell05/">JShell: 5. 외부 코드</a></li>
-<li class=""><a href="/tutorial_manual/jshell/jshell06/">JShell: 6. 피드백 모드</a></li>
-<li class=""><a href="/tutorial_manual/jshell/jshell07/">JShell: 7. JShell 소개</a></li>
+<li class=""><a href="/tutorial_manual/jshell/jshell06/">JShell 사용자 가이드: 6. 피그백 모드</a></li>
+<li class=""><a href="/tutorial_manual/jshell/jshell07/">JShell 사용자 가이드: 7. 스크립트</a></li>
 </ul>
   
 </li>

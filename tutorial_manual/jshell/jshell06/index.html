@@ -3,7 +3,7 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>JShell: 6. 피드백 모드 - taewan.kim 블로그</title>
+<title>JShell 사용자 가이드: 6. 피그백 모드 - taewan.kim 블로그</title>
 <meta name="description" content="java9의 신규 기능인 JShell 공식 문서의 한글화 입니다.">
 <meta name="generator" content="Hugo 0.52" />
 <link href="/index.xml" rel="alternate" type="application/rss+xml">
@@ -81,7 +81,11 @@
       (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
     <hr/>
-  </div><h1>JShell: 6. 피드백 모드</h1>
+  </div><h1>JShell 사용자 가이드: 6. 피그백 모드</h1>
+
+<figure class="post__thumbnail">
+  <img src="https://taewanmerepo.github.io/2017/12/trans-shell/head.jpg" alt="JShell 사용자 가이드: 6. 피그백 모드">
+</figure>
 
 <p>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.</p>
 
@@ -102,22 +106,6 @@
 </ul>
 </blockquote>
 
-<p>JShell 사용자 가이드의 한글화 문서는 다음과 같이 구성됩니다.</p>
-
-<ul>
-<li><a href="/trans/jshell/jshell01/">1. JShell 소개</a></li>
-<li><a href="/trans/jshell/jshell02/">2. 스니펫</a></li>
-<li><a href="/trans/jshell/jshell03/">3. 명령</a></li>
-<li><a href="/trans/jshell/jshell04/">4. 편집</a></li>
-<li><a href="/trans/jshell/jshell05/">5. 외부 코드</a></li>
-<li><strong>6. 피그백 모드</strong></li>
-<li><a href="/trans/jshell/jshell07/">7. 스크립트</a></li>
-</ul>
-
-<hr />
-
-<h2 id="jshell-사용자-가이드-6-피그백-모드">JShell 사용자 가이드: 6. 피그백 모드</h2>
-
 <hr />
 
 <p>피드백 모드는 JShell에서 프롬프트, 피드백에 대한 정의입니다.
@@ -134,7 +122,7 @@
 </ul></li>
 </ul>
 
-<h3 id="피드백-모드-설정">피드백 모드 설정</h3>
+<h2 id="피드백-모드-설정">피드백 모드 설정</h2>
 
 <p>피드백 모드는 JShell에서 프롬프트 및 피드백에 대한 정의입니다.
 피드백은 JShell과 여러분의 상호작용에 사용됩니다.
@@ -259,7 +247,7 @@ jshell&gt;
 |     verbose
 </code></pre>
 
-<h3 id="피드백-모드-정의">피드백 모드 정의</h3>
+<h2 id="피드백-모드-정의">피드백 모드 정의</h2>
 
 <p>사용자 정의 피드백 모드에서 사용자가 원하는 프롬프트를 정의할 수 있습니다. 또한 JShell에 입력된 요소들에 대해서 수신을 원하는 피드백을 정의할 수 있습니다.</p>
 
@@ -279,7 +267,7 @@ jshell&gt;
 
 <p>새로운 피드백 모드 <strong>mine</strong> 모드는 <strong>normal</strong> 모드의 복사본입니다. &ldquo;<strong>-command</strong>&rdquo; 옵션은 명령 피드백을 원한다는 의미입니다. 만약 발생한 액션에 대한 설명을 원하지 않는다면, &ldquo;<strong>-command</strong>&rdquo; 옵션 대신에 &ldquo;<strong>-quiet</strong>&rdquo; 옵션을 사용합니다.</p>
 
-<h4 id="프롬프트-설정">프롬프트 설정</h4>
+<h3 id="프롬프트-설정">프롬프트 설정</h3>
 
 <p>다른 <strong>/set</strong> 명령과 마찬가지로, 추가 설정이 없는 <strong>/set prompt</strong> 명령을 실행하면 현제 프롬프트 설정을 출력합니다.</p>
 
@@ -320,7 +308,7 @@ my mode: /exit
 my mode:
 </code></pre>
 
-<h4 id="truncation-자름-설정">Truncation(자름) 설정</h4>
+<h3 id="truncation-자름-설정">Truncation(자름) 설정</h3>
 
 <p>출력할 값이 너무 길 경우에, 출력시점에 출력 데이터를 잘라야 합니다. <strong>/set truncation</strong> 명령을 사용하여 출력할 값의 최대 길이를 설정합니다. 별도의 옵션 없이 <strong>/set truncation</strong> 명령을 입력하면, 현재 설정을 출력합니다. 다음 예제는 normal 모드를 상속한 <strong>mine</strong> 모드의  설정을 보여줍니다.</p>
 
@@ -362,7 +350,7 @@ my mode: /set mode mine -retain
 
 <p>새로운 설정을 유지하기 위해서, 예제의 마지막에서 처럼 <strong>-retain</strong> 옵션을 사용하여 변경을 유지합니다.</p>
 
-<h4 id="포멧-설정-set-formats">포멧 설정(Set Formats)</h4>
+<h3 id="포멧-설정-set-formats">포멧 설정(Set Formats)</h3>
 
 <p>스니펫 출력은 사용자가 변경할 수 있는 설정입니다. <strong>normal</strong> 모드로 부터 상속한 출력 형식은 import 문에 대해서는 어떤 피드백도 제공하지 않습니다. 값의 유형도 출력하지 않습니다.</p>
 
@@ -443,7 +431,7 @@ jshell&gt; /set mode mine -delete -retain
 </ol>
 </div>
 <div class="edit-meta">Last updated on 27 Dec 2017 / Published on 27 Dec 2017<br></div><nav class="pagination"><a class="nav nav-prev" href="/tutorial_manual/jshell/jshell05/" title="JShell: 5. 외부 코드"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - JShell: 5. 외부 코드</a>
-<a class="nav nav-next" href="/tutorial_manual/jshell/jshell07/" title="JShell: 7. JShell 소개">Next - JShell: 7. JShell 소개 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="nav nav-next" href="/tutorial_manual/jshell/jshell07/" title="JShell 사용자 가이드: 7. 스크립트">Next - JShell 사용자 가이드: 7. 스크립트 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </nav><footer><div class="authorbox row clearfix">
 	<div class="authorbox__header">
 		<span class="authorbox__name">작성자: 김태완</span>
@@ -489,15 +477,15 @@ jshell&gt; /set mode mine -delete -retain
 <nav>
 <ul>
 
-<li class="parent"><a href="/tutorial_manual/jshell/">Jshells</a>
+<li class="parent"><a href="/tutorial_manual/jshell/">JShell 공식 문서 한글화</a>
 <ul class="sub-menu">
-<li class=""><a href="/tutorial_manual/jshell/jshell01/">JShell:1. JShell 소개</a></li>
-<li class=""><a href="/tutorial_manual/jshell/jshell02/">JShell: 2. 스니펫(Snippets)</a></li>
-<li class=""><a href="/tutorial_manual/jshell/jshell03/">JShell: 3. 명령</a></li>
-<li class=""><a href="/tutorial_manual/jshell/jshell04/">JShell: 4. 편집 </a></li>
+<li class=""><a href="/tutorial_manual/jshell/jshell01/">JShell 사용자 가이드: 1. JShell 소개</a></li>
+<li class=""><a href="/tutorial_manual/jshell/jshell02/">JShell 사용자 가이드: 2. 스니펫</a></li>
+<li class=""><a href="/tutorial_manual/jshell/jshell03/">JShell 사용자 가이드: 3. 명령</a></li>
+<li class=""><a href="/tutorial_manual/jshell/jshell04/">JShell 사용자 가이드: 4. 편집</a></li>
 <li class=""><a href="/tutorial_manual/jshell/jshell05/">JShell: 5. 외부 코드</a></li>
-<li class="active"><a href="/tutorial_manual/jshell/jshell06/">JShell: 6. 피드백 모드</a></li>
-<li class=""><a href="/tutorial_manual/jshell/jshell07/">JShell: 7. JShell 소개</a></li>
+<li class="active"><a href="/tutorial_manual/jshell/jshell06/">JShell 사용자 가이드: 6. 피그백 모드</a></li>
+<li class=""><a href="/tutorial_manual/jshell/jshell07/">JShell 사용자 가이드: 7. 스크립트</a></li>
 </ul>
   
 </li>
