@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>JShell: 6. 피드백 모드 - taewan.kim 블로그</title>
+<meta name="description" content="java9의 신규 기능인 JShell 공식 문서의 한글화 입니다.">
+<meta name="generator" content="Hugo 0.52" />
+<link href="/index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="/jshell/jshell06/">
+<link rel="stylesheet" href="/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="/css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="/js/jquery.backtothetop/jquery.backtothetop.min.js"></script><link rel="stylesheet" href="/css/taewan.css"  />
+
+</head>
+<body>
+<div class="container"> 
+<header class="header">
+  <div class="container container-inner clearfix" >
+    <div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+      <a class="logo__link" href="/" title="taewan.kim 블로그" rel="home">
+        <h1 class="logo__title">taewan.kim 블로그</h1><br/>
+        <h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list"><li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li><li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li><li class="menu__item "><a class="menu__link" href="/dl/" title="Deep Learning 구현 기술에 대하여 정리합니다." >DEEP LEARNING</a></li><li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li><li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li><li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li><li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li></ul>
+</nav>
+
+<div class="content-container">
+<main><h1>JShell: 6. 피드백 모드</h1>
+
+<p>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다.</p>
+
+<blockquote>
+<ul>
+<li>원문: <a href="https://docs.oracle.com/javase/9/jshell/feedback-modes.htm">https://docs.oracle.com/javase/9/jshell/feedback-modes.htm</a></li>
+<li>제목: Java Platform, Standard Edition Java Shell User’s Guide: 6 Feedback Modes
+
+<ul>
+<li>문서번호: E87478-01</li>
+<li>릴리즈: 2017년 09월</li>
+</ul></li>
+<li>라이센스: 원본 문서 라이센스를 준수합니다.
+
+<ul>
+<li>원문: <a href="https://docs.oracle.com/javase/9/jshell/title.htm">https://docs.oracle.com/javase/9/jshell/title.htm</a></li>
+</ul></li>
+</ul>
+</blockquote>
+
+<p>JShell 사용자 가이드의 한글화 문서는 다음과 같이 구성됩니다.</p>
+
+<ul>
+<li><a href="/trans/jshell/jshell01/">1. JShell 소개</a></li>
+<li><a href="/trans/jshell/jshell02/">2. 스니펫</a></li>
+<li><a href="/trans/jshell/jshell03/">3. 명령</a></li>
+<li><a href="/trans/jshell/jshell04/">4. 편집</a></li>
+<li><a href="/trans/jshell/jshell05/">5. 외부 코드</a></li>
+<li><strong>6. 피그백 모드</strong></li>
+<li><a href="/trans/jshell/jshell07/">7. 스크립트</a></li>
+</ul>
+
+<hr />
+
+<h2 id="jshell-사용자-가이드-6-피그백-모드">JShell 사용자 가이드: 6. 피그백 모드</h2>
+
+<hr />
+
+<p>피드백 모드는 JShell에서 프롬프트, 피드백에 대한 정의입니다.
+피드백은 JShell과 사용자의 상호작용에 사용됩니다.
+피드백 수준이 다른 여러 사전 정의 피드백 모드가 제공됩니다.
+필요에 따라 사용자 정의 피드백 모드를 만들 수 있습니다.</p>
+
+<ul>
+<li>문서 구성
+
+<ul>
+<li>피드백 모드 설정</li>
+<li>피드백 모드 정의</li>
+</ul></li>
+</ul>
+
+<h3 id="피드백-모드-설정">피드백 모드 설정</h3>
+
+<p>피드백 모드는 JShell에서 프롬프트 및 피드백에 대한 정의입니다.
+피드백은 JShell과 여러분의 상호작용에 사용됩니다.
+사용자 편의를 위해서 여러 사전 정의 피드백 모드(Predefined feedback mode)가 제공됩니다.
+필요에 따라 사용자 정의 피드백 모드를 만들 수 있습니다.</p>
+
+<p>사전 정의 피드백 모드는 수정할 수 없습니다. 그러나
+사전 정의된 피드백 모드를 사용하여 사용자 정의 모드를 만들 수 있습니다.
+사전 정의된 피드백 모드가 제공하는 정보의 양은 <strong>verbose</strong>, <strong>normal</strong>, <strong>consice</strong>, <strong>silent</strong> 순입니다.
+정보양이 가장 많은 것은 <strong>verbose</strong> 입니다.</p>
+
+<p>다음 표는 사전 정의 피드백 모드에 대한 요약입니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>값 스니펫</th>
+<th>선언</th>
+<th>업데이트</th>
+<th>명령</th>
+<th>프롬프트</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>verbose</td>
+<td>name ==&gt; value (설명)</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>\njshell&gt;</td>
+</tr>
+
+<tr>
+<td>normal</td>
+<td>name ==&gt; value</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>\njshell&gt;</td>
+</tr>
+
+<tr>
+<td>concise</td>
+<td>name ==&gt; value (식만 제공)</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td></td>
+</tr>
+
+<tr>
+<td>jshell&gt;</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>concise</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>-&gt;</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Mode 컬럼은 설명할 피드백 모드를 나타냅니다.</li>
+<li>값 스니펫(Value Snippets) 컬럼은 식(expressions), 할당문, 변수 선언과 같은 값을 갖는 스니펫을 표현하는 방식을 설명합니다.</li>
+<li>선언(Declaration) 컬럼은 선언 혹은 메서드, 클래스, enum, 인터페이스 그리고 어노테이션 인터페이스에 대해 피드백 제공 여부를 설명합니다.</li>
+<li>업데이트 컴럼은 현재 스니펫 이외에 변경 사항의 출력 여부를 설명합니다.</li>
+<li>명령 컬럼은 명령에 대한 성공을 나타내는 피드백 제공 여부 설명합니다.</li>
+<li>프롬프트 컬럼은 어떤 프롬프트가 사용되는지 설명합니다.</li>
+</ul>
+
+<p>기본 피드백 모드는 &ldquo;<strong>normal</strong>&ldquo;입니다.</p>
+
+<p>피드백 모드는 다음 예제와 같이 커맨드 라인 옵션으로 설정하거나 <strong>/set feedback</strong> 명령을 사용하여 변경할 수 있습니다.</p>
+
+<pre><code>jshell&gt; /set feedback verbose
+|  Feedback mode: verbose
+
+jshell&gt; 2 + 2
+$1 ==&gt; 4
+|  created scratch variable $1 : int
+
+jshell&gt; /set feedback silent
+-&gt; 2 + 2
+-&gt; /set feedback normal
+|  Feedback mode: normal
+
+jshell&gt; 2 + 2
+$3 ==&gt; 4
+
+jshell&gt; /set feedback concise
+jshell&gt; 2 + 2
+$4 ==&gt; 4
+jshell&gt;
+</code></pre>
+
+<p>피드백 모드로 <strong>normal</strong>  혹은 <strong>verbose</strong>로 설정할 경우, 명령 피드백은 설정 모드를 출력합니다.<br />
+그러나 피드백 모드로 <strong>consise</strong> 혹은 <strong>silent</strong>가 설정될 때는, 명령 피드백으로 설정 모드를 출력하지 않습니다.<br />
+또한 식 <strong>2+2</strong>에 대한 피드백의 3 가지 다른 피드백 형식에 대해서 주의 깊이 살펴보시기 바랍니다.
+<strong>silent</strong>로 피드백 모드가 설정되면 식 <strong>2+2</strong>에 어떤 피드백도 제공하지 않습니다.</p>
+
+<p>현재 및 사용 가능한 피드백 모드는 옵션없이 <strong>/set feedback</strong> 명령 사용하여 확인할 수 있습니다. 현재 모드는 다음과 같이 피드백 모드를 설정하는 명령으로 표시됩니다.</p>
+
+<pre><code>jshell&gt; /set feedback
+|  /set feedback verbose
+|
+|  Available feedback modes:
+|     concise
+|     normal
+|     silent
+|     verbose
+</code></pre>
+
+<h3 id="피드백-모드-정의">피드백 모드 정의</h3>
+
+<p>사용자 정의 피드백 모드에서 사용자가 원하는 프롬프트를 정의할 수 있습니다. 또한 JShell에 입력된 요소들에 대해서 수신을 원하는 피드백을 정의할 수 있습니다.</p>
+
+<p>피드백 모드는 다음을 설정을 갖습니다.</p>
+
+<ul>
+<li>Prompts: regular 프롬프트 문자, continuation 프롬프트 문자<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup></li>
+<li>Truncation: 출력할 값의 최대 길이</li>
+<li>Format: 제공할 피드백의 포멧</li>
+</ul>
+
+<p>사전 정의 피드백 모드는 변경할 수 없습니다. 그러나 다음 예제와 같이 기존 사전 정의 피드백 모드의 복사본을 만들수 있습니다.</p>
+
+<pre><code>jshell&gt; /set mode mine normal -command
+|  Created new feedback mode: mine
+</code></pre>
+
+<p>새로운 피드백 모드 <strong>mine</strong> 모드는 <strong>normal</strong> 모드의 복사본입니다. &ldquo;<strong>-command</strong>&rdquo; 옵션은 명령 피드백을 원한다는 의미입니다. 만약 발생한 액션에 대한 설명을 원하지 않는다면, &ldquo;<strong>-command</strong>&rdquo; 옵션 대신에 &ldquo;<strong>-quiet</strong>&rdquo; 옵션을 사용합니다.</p>
+
+<h4 id="프롬프트-설정">프롬프트 설정</h4>
+
+<p>다른 <strong>/set</strong> 명령과 마찬가지로, 추가 설정이 없는 <strong>/set prompt</strong> 명령을 실행하면 현제 프롬프트 설정을 출력합니다.</p>
+
+<pre><code>jshell&gt; /set prompt normal
+|  /set prompt normal &quot;\njshell&gt; &quot; &quot;   ...&gt; &quot;
+</code></pre>
+
+<p>앞 예제의 피드백을 보면, 첫번째 문자열이 <strong>regulaer</strong> 프롬프트이고, 두 번째 문자열이 <strong>continuation</strong> 프롬프트 입니다. <strong>continuation</strong> 프롬프트는 여러줄로 스니펫이 구성될 경우에 사용되는 프롬프트입니다. 다음 예제에서는 새로운 모드에서 프롬프트를 변경하는 방법을 소개합니다.</p>
+
+<pre><code>jshell&gt; /set prompt mine &quot;\nmy mode: &quot;  &quot;.......: &quot;
+
+jshell&gt; /set feedback mine
+|  Feedback mode: mine
+
+my mode: class C {
+.......:    int x;
+.......: }
+|  created class C
+
+my mode:
+</code></pre>
+
+<p>프롬프트 문자열은 <strong>%s</strong> 문자열을 포함할 수 있습니다. 이 문자는 다음 스니펫 ID로 변환됩니다. 그러나 명령이 입력되거나 에러로 스니펫을 반환할 경우, 프롬프트에 사용자가 입력한 값은 ID에 새로운 값이 할당되지 않습니다.</p>
+
+<p>모든 설정은 현재 세션에서만 유지됩니다. <strong>/reset</strong> 명령으로 재설정되지 않습니다. 미래의 다른 세션에서도 현재 설정이 기본으로 유지되길 원한다면, 설정을 유지하기 위해서 <strong>-retain</strong> 옵션을 사용해야 합니다. 다음 예제는 사용자 정의 모드를 여러 세션에서 걸쳐서 유지하는 방법을 소개합니다.</p>
+
+<pre><code>my mode: /set mode mine -retain
+
+my mode: /set feedback mine -retain
+|  Feedback mode: mine
+
+my mode: /exit
+|  Goodbye
+% jshell
+|  Welcome to JShell -- Version 9
+|  For an introduction type: /help intro
+
+my mode:
+</code></pre>
+
+<h4 id="truncation-자름-설정">Truncation(자름) 설정</h4>
+
+<p>출력할 값이 너무 길 경우에, 출력시점에 출력 데이터를 잘라야 합니다. <strong>/set truncation</strong> 명령을 사용하여 출력할 값의 최대 길이를 설정합니다. 별도의 옵션 없이 <strong>/set truncation</strong> 명령을 입력하면, 현재 설정을 출력합니다. 다음 예제는 normal 모드를 상속한 <strong>mine</strong> 모드의  설정을 보여줍니다.</p>
+
+<pre><code>my mode: /set truncation mine
+|  /set truncation mine 80
+|  /set truncation mine 1000 expression,varvalue
+
+my mode: String big = IntStream.range(0,1200).mapToObj(n -&gt; &quot;&quot; + (char) ('a' + n % 26)).collect(Collectors.joining())
+big ==&gt; &quot;abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuv ... fghijklmnopqrstuvwxyzabcd&quot;
+</code></pre>
+
+<p>Truncation(절단) 설정이 적용되는 조건은 Truncation(절단) 길이 다음에 입력될 선택자(selector)로 결정됩니다. 온라인 도움말에 따르면 선택자 유형으로 두 가지 타입이 정의되어 있습니다.</p>
+
+<ul>
+<li>케이스 셀렉터는 출력할 값의 스니펫 타입을 표시합니다.</li>
+<li>액션 셀렉터는 스니펫에 무슨 일이 발생하는지를 설명합니다.</li>
+</ul>
+
+<p>센렉터에 대한 자세한 설명은 <strong>/help /set truncation</strong> 명령으로 확인할 수 있습니다.</p>
+
+<p>이전 예제에서의 식의 결과 값(expression case selector) 혹은 변수의 값이 아닌, 변수 명을 입력하여 명시적으로 요청하는 것과 같은 상황이라면, 처럼 값이 식의 값(expression case selector)이거나 변수의 값이 아니라면, 변수 명(varvalue case selector)을 입력하여 명시적으로 출력을 요청할 때 80개 문자로 절단하라는 의미입니다. 이 순서는 중요합니다. 마지막 것이 사용됩니다. 만약에 순서가 반대라면, 모든 값은 80 개 문자에서 절달될 것입니다.<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup></p>
+
+<p>다음 예제에서 기본 Truncation(절단)을 100으로 설정합니다. 그리고 명시적으로 요청할 때에만 실제 전체 값을 출력합니다.</p>
+
+<pre><code>my mode: /set truncation mine 100
+
+my mode: /set truncation mine 300 varvalue
+
+my mode: big + big
+$2 ==&gt; &quot;abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghi ... yzabcdefghijklmnopqrstuvwxyzabcd&quot;
+
+my mode: big
+big ==&gt; &quot;abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstu
+vwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijkl ... jklmnopq
+rstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd&quot;
+
+my mode: /set mode mine -retain
+</code></pre>
+
+<p>새로운 설정을 유지하기 위해서, 예제의 마지막에서 처럼 <strong>-retain</strong> 옵션을 사용하여 변경을 유지합니다.</p>
+
+<h4 id="포멧-설정-set-formats">포멧 설정(Set Formats)</h4>
+
+<p>스니펫 출력은 사용자가 변경할 수 있는 설정입니다. <strong>normal</strong> 모드로 부터 상속한 출력 형식은 import 문에 대해서는 어떤 피드백도 제공하지 않습니다. 값의 유형도 출력하지 않습니다.</p>
+
+<pre><code>my mode: import java.beans.*
+
+my mode: Locale.CANADA.getUnicodeLocaleAttributes()
+$5 ==&gt; []
+</code></pre>
+
+<p>스니펫 출력 형식은 <strong>/set format</strong> 명령으로 설정할 수 있습니다. <strong>/set format</strong> 명령을 모드 명만을 추가해서 실행하면 현재 포멧 설정을 출력합니다.</p>
+
+<pre><code>my mode: /set format mine
+</code></pre>
+
+<p>출력 포멧 설정 명령에 대한 자세한 도움말은 <strong>/help /set</strong> 명령을 통해서 이용 가능합니다. 포멧을 정의할 때 사용하는 필드를 설명하는 이 절의 나머지 부분에서 이 도움말을 참조로써 사용할 수 있습니다.</p>
+
+<p>피드백에 출력됨은 display 필드로 결정합니다. 출력 필드 정의하는데 돕는 용도로 여러 필드를 정의할 수 있습니다. <strong>silent</strong> 모드를 제외한 사전 정의 모드는 <strong>/help /set format</strong> 명령에서 볼 수 있는 필드 중 몇 가지를 정의합니다. 이 필드는 예제 모드에서 상속됩니다. 다음 예제는 import 문의 출력 정의(Display Definition)하는 방법을 설명합니다.</p>
+
+<pre><code>my mode: /set format mine display &quot;{pre}added import {name}{post}&quot; import-added
+
+my mode: /set format mine display &quot;{pre}re-added import {name}{post}&quot; import-modified,replaced
+</code></pre>
+
+<p>name 필드는 스니펫 이름으로 사전 정의된 필드입니다. 다음 예제는 import 문에 제공되는 피드백입니다.</p>
+
+<pre><code>my mode: import java.beans.*
+|  re-added import java.beans.*
+</code></pre>
+
+<p>표시 정의(Display Definition)에 사용 된 <strong>pre</strong> 및 <strong>post</strong> 필드는 피드백 출력의 각 행에 대한 접두어 및 접미어 문자입니다. 다음 예제에서는 세로 막대 접두사를 빈 문자열로 변경하는 설정입니다.</p>
+
+<pre><code>my mode: /set format mine pre &quot;&quot;
+
+my mode: void m() {}
+created method m()
+
+my mode: import java.beans.*
+re-added import java.beans.*
+
+my mode: /set truncation mine
+/set truncation mine 100
+/set truncation mine 300 varvalue
+</code></pre>
+
+<div class="notices note" ><p>접두 문자 변경은 명령 피드백을 포함한 모든 피디백에 영향을 미칩니다.</p>
+</div>
+
+
+<p>값을 표시 할 때 타입을 표시하려면, 사전 정의 모드에서 정의 된 결과 필드를 변경하십시오.</p>
+
+<pre><code>my mode: /set format mine result &quot;{type} {name} = {value}{post}&quot; added,modified,replaced-primary-ok
+
+my mode: Locale.CANADA.getUnicodeLocaleAttributes()
+Set&lt;String&gt; $11 = []
+
+my mode: 2 + 2
+int $12 = 4
+</code></pre>
+
+<p>이 변경은 새로 추가되거나 업데이트(추가, 수정, 대체)된 경우 입력된 스니펫(primary)에 에러가 없는 경우(ok)에만 결과를 만듭니다.</p>
+
+<p>유지 설정된 모드를 영구적으로 삭제하기 위해서는 <strong>-delete</strong> 옵션과 함께 <strong>-retain</strong> 옵션을 함께 사용해야 합니다.</p>
+
+<pre><code>my mode: /set feedback verbose -retain
+|  Feedback mode: verbose
+
+jshell&gt; /set mode mine -delete -retain
+</code></pre>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">[역자주]regular 프롬프트 문자는 일반 프롬프트 문자를 의미하고, continuation 프롬프트 문자는 여려 줄로 스니펫을 작성할 때 출력하는 프롬프트 문자입니다. 기본 regular 프롬프트 문자는 &ldquo;<strong>|</strong>&ldquo;입니다. 기본 continuation 프롬프트 문자는 &ldquo;__  &hellip;&gt;__&ldquo;입니다.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">[역자주]expression과 varvalue 셀렉터를 설정함으로써 두 번째 설정은 범위를 한정하였습니다.
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+</ol>
+</div>
+<div class="edit-meta">Last updated on 27 Dec 2017 / Published on 27 Dec 2017<br></div><nav class="pagination"><a class="nav nav-prev" href="/jshell/jshell05/" title="JShell: 5. 외부 코드"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - JShell: 5. 외부 코드</a>
+<a class="nav nav-next" href="/jshell/jshell07/" title="JShell: 7. JShell 소개">Next - JShell: 7. JShell 소개 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</nav><footer><p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
+</footer>
+</main><div class="sidebar">
+<nav>
+<ul>
+
+<li class="parent"><a href="/tutorial_manual/jshell/">Jshells</a>
+<ul class="sub-menu">
+<li class=""><a href="/tutorial_manual/jshell/jshell01/">JShell:1. JShell 소개</a></li>
+<li class=""><a href="/tutorial_manual/jshell/jshell02/">JShell: 2. 스니펫(Snippets)</a></li>
+<li class=""><a href="/tutorial_manual/jshell/jshell03/">JShell: 3. 명령</a></li>
+<li class=""><a href="/tutorial_manual/jshell/jshell04/">JShell: 4. 편집 </a></li>
+<li class=""><a href="/tutorial_manual/jshell/jshell05/">JShell: 5. 외부 코드</a></li>
+<li class="active"><a href="/tutorial_manual/jshell/jshell06/">JShell: 6. 피드백 모드</a></li>
+<li class=""><a href="/tutorial_manual/jshell/jshell07/">JShell: 7. JShell 소개</a></li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>
