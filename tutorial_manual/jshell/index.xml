@@ -2,75 +2,75 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JShell 공식 문서 한글화 on taewan.kim 블로그</title>
-    <link>/jshell/</link>
+    <link>http://taewan.kim/tutorial_manual/jshell/</link>
     <description>Recent content in JShell 공식 문서 한글화 on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 27 Dec 2017 19:05:14 +0900</lastBuildDate>
     
-	<atom:link href="/jshell/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://taewan.kim/tutorial_manual/jshell/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>JShell 사용자 가이드: 1. JShell 소개</title>
-      <link>/jshell/jshell01/</link>
+      <link>http://taewan.kim/tutorial_manual/jshell/jshell01/</link>
       <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
       
-      <guid>/jshell/jshell01/</guid>
+      <guid>http://taewan.kim/tutorial_manual/jshell/jshell01/</guid>
       <description>원문: https://docs.oracle.com/javase/9/jshell/introduction-jshell.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 1 Introduction to JShell 문서번호: E87478-01 배포: 2017년 09월 라이센스: 원본 문서 라이센스를 준수합니다. 원문: https://docs.oracle.com/javase/9/jshell/title.htm Java Shel</description>
     </item>
     
     <item>
       <title>JShell 사용자 가이드: 2. 스니펫</title>
-      <link>/jshell/jshell02/</link>
+      <link>http://taewan.kim/tutorial_manual/jshell/jshell02/</link>
       <pubDate>Wed, 27 Dec 2017 19:10:14 +0900</pubDate>
       
-      <guid>/jshell/jshell02/</guid>
+      <guid>http://taewan.kim/tutorial_manual/jshell/jshell02/</guid>
       <description>원문: https://docs.oracle.com/javase/9/jshell/snippets.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 2 Snippets 문서번호: E87478-01 배포: 2017년 09월 라이센스: 원본 문서 라이센스를 준수합니다. 원문: https://docs.oracle.com/javase/9/jshell/title.htm JShell에</description>
     </item>
     
     <item>
       <title>JShell 사용자 가이드: 3. 명령</title>
-      <link>/jshell/jshell03/</link>
+      <link>http://taewan.kim/tutorial_manual/jshell/jshell03/</link>
       <pubDate>Wed, 27 Dec 2017 19:15:14 +0900</pubDate>
       
-      <guid>/jshell/jshell03/</guid>
+      <guid>http://taewan.kim/tutorial_manual/jshell/jshell03/</guid>
       <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다. 원문: https://docs.oracle.com/javase/9/jshell/commands.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 3 Commands</description>
     </item>
     
     <item>
       <title>JShell 사용자 가이드: 4. 편집</title>
-      <link>/jshell/jshell04/</link>
+      <link>http://taewan.kim/tutorial_manual/jshell/jshell04/</link>
       <pubDate>Wed, 27 Dec 2017 19:20:14 +0900</pubDate>
       
-      <guid>/jshell/jshell04/</guid>
+      <guid>http://taewan.kim/tutorial_manual/jshell/jshell04/</guid>
       <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다. 원문: https://docs.oracle.com/javase/9/jshell/editing.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 4 Editing</description>
     </item>
     
     <item>
       <title>JShell 사용자 가이드: 5. 외부 코드</title>
-      <link>/jshell/jshell05/</link>
+      <link>http://taewan.kim/tutorial_manual/jshell/jshell05/</link>
       <pubDate>Wed, 27 Dec 2017 19:25:14 +0900</pubDate>
       
-      <guid>/jshell/jshell05/</guid>
+      <guid>http://taewan.kim/tutorial_manual/jshell/jshell05/</guid>
       <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다. 원문: https://docs.oracle.com/javase/9/jshell/external-code.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 5 External</description>
     </item>
     
     <item>
       <title>JShell 사용자 가이드: 6. 피그백 모드</title>
-      <link>/jshell/jshell06/</link>
+      <link>http://taewan.kim/tutorial_manual/jshell/jshell06/</link>
       <pubDate>Wed, 27 Dec 2017 19:30:14 +0900</pubDate>
       
-      <guid>/jshell/jshell06/</guid>
+      <guid>http://taewan.kim/tutorial_manual/jshell/jshell06/</guid>
       <description>이 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다. 원문: https://docs.oracle.com/javase/9/jshell/feedback-modes.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 6 Feedback</description>
     </item>
     
     <item>
       <title>JShell 사용자 가이드: 7. 스크립트</title>
-      <link>/jshell/jshell07/</link>
+      <link>http://taewan.kim/tutorial_manual/jshell/jshell07/</link>
       <pubDate>Wed, 27 Dec 2017 19:35:14 +0900</pubDate>
       
-      <guid>/jshell/jshell07/</guid>
+      <guid>http://taewan.kim/tutorial_manual/jshell/jshell07/</guid>
       <description>본 문서는 Java9의 오라클 공식 문서 중 JShell 사용자 가이드의 한글화 문서입니다. 원문 정보는 다음과 같습니다. 원문: https://docs.oracle.com/javase/9/jshell/scripts.htm 제목: Java Platform, Standard Edition Java Shell User’s Guide: 7 Scripts</description>
     </item>
     
