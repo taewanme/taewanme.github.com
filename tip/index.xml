@@ -6,10 +6,22 @@
     <description>Recent content in Tips on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 13 Dec 2018 21:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 19 Dec 2018 09:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tip/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>BitBucket 오류, (repository access denied. access via a deployment key is read-only.)</title>
+      <link>http://taewan.kim/tip/bitbucket_error/</link>
+      <pubDate>Wed, 19 Dec 2018 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tip/bitbucket_error/</guid>
+      <description>Bitbucket을 사용하는 과정에서 인증서를 잘못 등록하여 발생한 문제.
+ssh key 설정은 다음과 같습니다.
+cat ~/.ssh/config Host bitbucket.org HostName bitbucket.org IdentityFile ~/.ssh/id_rsa_oracloud  bitbucket에 push 과정에서 문제가 발생하고 문제를 찾지 못했습니다. Bitbucket에 공개키를 잘못 등록해서 발생한 문제입니다.
+git push origin master -v Pushing to git@bitbucket.org:taewanme/hugo_tutorial_theme_4tw.git repository access denied. access via a deployment key is read-only. fatal: Could not read from remote repository. Please make sure you have the correct access rights and the repository exists.</description>
+    </item>
     
     <item>
       <title>ASMR: Raining, 빗소리</title>

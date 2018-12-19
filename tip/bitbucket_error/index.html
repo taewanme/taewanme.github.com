@@ -9,14 +9,14 @@
 <META http-equiv="Cache-Control" content="No-Cache">
 <meta property="fb:admins" content="devtainer@gmail.com"/>
 
-<title>ASMR: Raining, 빗소리</title>
+<title>BitBucket 오류, (repository access denied. access via a deployment key is read-only.)</title>
 <meta name="description" content="taewan.kim">
 <meta name="generator" content="Hugo 0.52" />
-<meta property="og:title" content="ASMR: Raining, 빗소리" />
-<meta property="og:description" content="White Noise, 공부할때 좋은 빗소리" />
+<meta property="og:title" content="BitBucket 오류, (repository access denied. access via a deployment key is read-only.)" />
+<meta property="og:description" content="bitbucket에 인증서 오류 해결 방법" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/tip/white_noise_raining/" /><meta property="article:published_time" content="2018-12-13T21:28:14&#43;09:00"/>
-<meta property="article:modified_time" content="2018-12-13T21:28:14&#43;09:00"/>
+<meta property="og:url" content="http://taewan.kim/tip/bitbucket_error/" /><meta property="article:published_time" content="2018-12-19T09:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2018-12-19T09:28:14&#43;09:00"/>
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -98,56 +98,46 @@
 <div class="main-content content" role="main" itemprop="mainContentOfPage">
 	<article class="post">
 		<header class="post__header clearfix">
-			<h1 class="post__title">ASMR: Raining, 빗소리 </h1>
+			<h1 class="post__title">BitBucket 오류, (repository access denied. access via a deployment key is read-only.) </h1>
 			<p class="post__meta meta">
 				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="post__meta-date" datetime="2018-12-13 21:28:14 &#43;0900 KST">December 13, 2018</time>
+				<time class="post__meta-date" datetime="2018-12-19 09:28:14 &#43;0900 KST">December 19, 2018</time>
 			</p>
 		</header>
 
 		<div class="post__content clearfix">
-			<hr />
+			<p>Bitbucket을 사용하는 과정에서 인증서를 잘못 등록하여 발생한 문제.</p>
 
-<p>제가 듣는 Whit Noise 목록입니다. 주로 작업집중을 위해서 주로 사용합니다.</p>
+<p>ssh key 설정은 다음과 같습니다.</p>
 
-<p>- 자연의소리 빗소리 + 클레식음악 에릭 사티 - 짐노페디1번
-    - <a href="https://www.youtube.com/watch?v=UwCjZqoq-aA">https://www.youtube.com/watch?v=UwCjZqoq-aA</a>
-    - 빗소리가 약간 큼, 빗소리 + 클래식
-    - 수면 보다는 작업 집중 효과가 큼</p>
+<pre><code>cat ~/.ssh/config
+Host bitbucket.org
+    HostName bitbucket.org
+    IdentityFile ~/.ssh/id_rsa_oracloud
+</code></pre>
+
+<p>bitbucket에 push 과정에서 문제가 발생하고 문제를 찾지 못했습니다. Bitbucket에 공개키를 잘못 등록해서 발생한 문제입니다.</p>
+
+<pre><code>git push origin master -v
+Pushing to git@bitbucket.org:taewanme/hugo_tutorial_theme_4tw.git
+repository access denied. access via a deployment key is read-only.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+</code></pre>
+
+<p>ssh 공개키는 다음 다름과 같이 사용자 계정의 환경설정에 ssh 공개키를 등록해야 합니다.</p>
 
 <blockquote>
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/UwCjZqoq-aA" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-
+<p><img src="https://taewanmerepo.github.io/2018/12/bitbucket/img010.jpg" alt="" /></p>
 </blockquote>
 
-<hr />
+<p>다음과 같이 레파지토리에 ssh 공개키를 등록하여 접근 권한 오류가 발생하는 경우가 있습니다.</p>
 
-<ul>
-<li>한옥 + 빗소리: 3시간
-&gt; <a href="https://www.youtube.com/watch?v=j5BEPRJd3Aw">https://www.youtube.com/watch?v=j5BEPRJd3Aw</a>
-&gt; 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/j5BEPRJd3Aw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-</li>
-</ul>
-
-<hr />
-
-<ul>
-<li>새소리, 물소리
-&gt; <a href="https://www.youtube.com/watch?v=S7qgudhP4pc">https://www.youtube.com/watch?v=S7qgudhP4pc</a>
-&gt; 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/S7qgudhP4pc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-</li>
-</ul>
-
-<hr />
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bitbucket/img020.jpg" alt="" /></p>
+</blockquote>
 
 		</div>
 		
@@ -158,16 +148,13 @@
 	
 <nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	<div class="post-nav__item post-nav__item--prev col-1-2">
-		<a class="post-nav__link" href="http://taewan.kim/tip/usb_format_in_osx/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">맥, 윈도우 호환 USB 만들기</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next col-1-2">
-		<a class="post-nav__link" href="http://taewan.kim/tip/bitbucket_error/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">BitBucket 오류, (repository access denied. access via a deployment key is read-only.)</p></a>
+		<a class="post-nav__link" href="http://taewan.kim/tip/white_noise_raining/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">ASMR: Raining, 빗소리</p></a>
 	</div>
 </nav>
 
 	
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tip/white_noise_raining/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tip/bitbucket_error/"></div>
 
 
 	<div>
@@ -203,7 +190,7 @@
 	
 
 <div class="widget-categories widget">	
-		<div class="fb-like" data-href="http://taewan.kim/tip/white_noise_raining/" 
+		<div class="fb-like" data-href="http://taewan.kim/tip/bitbucket_error/" 
 		data-layout="standard" data-action="like" 
 		data-size="small" 
 		data-show-faces="true" 
