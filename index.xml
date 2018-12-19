@@ -1373,6 +1373,16 @@ NumPy는 다음과 같은 특징을 갖습니다.
     </item>
     
     <item>
+      <title>JShell 사용자 가이드(번역)</title>
+      <link>http://taewan.kim/tutorial_manual/0001/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tutorial_manual/0001/</guid>
+      <description>최근에 각광받는 여러 언어의 특징은 코드 실행과 테스트가 쉽다는 것입니다. 이런 기능은 주로 REPL 기능으로 제공됩니다. 자바는 컴파일 언어이기 때문에 이러한 기능 제공이 부족했스빈다. Java 9에 REPL 기능이 추가되었습니다. 자바 REPL 기능의 이름이 Java Shell입니다. Java 9에서 새로 소개된 Java Shell의 공식 사용자 가이드를 번역해 보았습니다. 총 7개 문서로 구성되어 있습니다. Java Shell의 구요 기능, 각 기능의 사용법과 응용법을 다룹니다.
+.</description>
+    </item>
+    
+    <item>
       <title>JShell:1. JShell 소개</title>
       <link>http://taewan.kim/trans/jshell/jshell01/</link>
       <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
@@ -1686,15 +1696,6 @@ github에서 Fork를 왜하는가? github 등 git 서비스에서 commit 권한�
       <guid>http://taewan.kim/post/jsf/</guid>
       <description>월간 마이크로 소프트웨어 2004년 12월호 &amp;ldquo;2005년을 달굴 프레임워크 열전!&amp;rdquo; 특집호에 기고했던 JSF 기사입니다. 어렵게 원본을 발굴하여 복원한 문서입니다. ^^
  원본  dbguide.net-기사링크 구글 캐쉬    JSF의 최종 릴리즈가 지난 2월 발표되었고, 2004년 자바원 컨퍼런스의 주요 기술로 소개되었다. JSF는 자바 기반 웹 애플리케이션을 위한 서버사이드 사용자 인터페이스 컴포넌트 프레임워크이다. 요즘 들어 많은 프레임워크가 발표되고 있고, 스트럿츠가 사실상 웹 개발의 표준으로 자리 잡고 있는 상황에서 또 하나의 프레임워크가 발표되었다고 간과하기에는 J2EE 진영 대형 벤더들이 제시하는 JSF 지원책이나 오픈소스의 움직임이 너무나 활발하다.</description>
-    </item>
-    
-    <item>
-      <title>.</title>
-      <link>http://taewan.kim/tutorial_manual/a/</link>
-      <pubDate>Tue, 22 Aug 2017 21:59:47 +0900</pubDate>
-      
-      <guid>http://taewan.kim/tutorial_manual/a/</guid>
-      <description>.</description>
     </item>
     
     <item>
