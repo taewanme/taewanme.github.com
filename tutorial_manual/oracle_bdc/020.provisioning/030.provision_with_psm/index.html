@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>PSM을 이용한 Oracle BDC 인스턴스 생성 - taewan.kim 블로그</title>
+<meta name="description" content="Oracle Big Data Cloud">
+<meta name="generator" content="Hugo 0.52" />
+<link href="/index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="http://taewan.kim/oracle_bdc/020.provisioning/030.provision_with_psm/">
+<link rel="stylesheet" href="/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="/js/jquery.backtothetop/jquery.backtothetop.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-72835175-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-72835175-1');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+<link rel="stylesheet" href="/css/taewan.css"  />
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+</head>
+<body>
+<div class="container"> 
+<header class="header">
+  <div class="container container-inner clearfix" >
+    <div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+      <a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+        <h1 class="logo__title">taewan.kim 블로그</h1><br/>
+        <h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list"><li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li><li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li><li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Tutorial과 Manual 문서를 제공" >TUTORIAL &amp; MANUAL</a></li><li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li><li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li><li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li><li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li></ul>
+</nav>
+<div class="content-container">
+<main>
+
+<figure class="post__thumbnail">
+  <img src="https://taewanmerepo.github.io/2018/12/bdc/post.jpg" alt="PSM을 이용한 Oracle BDC 인스턴스 생성">
+</figure>
+
+<h1>PSM을 이용한 Oracle BDC 인스턴스 생성</h1><p>작성중</p>
+<div class="edit-meta">Last updated on 27 Dec 2017 / Published on 27 Dec 2017<br></div><nav class="pagination">
+<a class="nav nav-prev" href="/tutorial_manual/oracle_bdc/020.provisioning/020.provisioning_oci/" title="Oracle BDC 인스턴스 생성: OCI"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Oracle BDC 인스턴스 생성: OCI</a>
+
+
+<a class="nav nav-next" href="/tutorial_manual/oracle_bdc/020.provisioning/040.customizing_cluster/" title="클러스터 커스터마이징">Next - 클러스터 커스터마이징 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+
+</nav><footer><div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2&appId=404519239985000&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/oracle_bdc/020.provisioning/030.provision_with_psm/"></div>
+<p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
+</footer>
+</main><div class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+<hr/>
+
+<nav>
+<ul>
+
+<li class="parent"><a href="/tutorial_manual/oracle_bdc/">오라클 클라우드 빅데이터 서비스: Oracle BDC(완료)</a>
+<ul class="sub-menu">
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/010.oracle_bdc/">01. Oracle Big Data Cloud</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/oracle_bdc/010.oracle_bdc/010.overview/">오라클 클라우드 BDC 서비스</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/010.oracle_bdc/020.component/">Oracle BDC 하둡 에코(1차완료)</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/010.oracle_bdc/030.data_lake_tech/">Oracle Cloud 데이터 분석 서비스</a></li>
+</ul>
+  
+</li>
+
+<li class="parent"><a href="/tutorial_manual/oracle_bdc/020.provisioning/">02. 인스턴스 프로비저닝</a>
+<ul class="sub-menu">
+<li class=""><a href="/tutorial_manual/oracle_bdc/020.provisioning/010.provisioning_ocic/">Oracle BDC 인스턴스 생성: OCIC(작성)</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/020.provisioning/020.provisioning_oci/">Oracle BDC 인스턴스 생성: OCI</a></li>
+<li class="active"><a href="/tutorial_manual/oracle_bdc/020.provisioning/030.provision_with_psm/">PSM을 이용한 Oracle BDC 인스턴스 생성</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/020.provisioning/040.customizing_cluster/">클러스터 커스터마이징</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/">03. 인스턴스 관리</a>
+<ul class="">
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/010.after_provisioning/">프로비저닝 후속 작업</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/010.after_provisioning/ambari_security/">Ambari 보안 설정 및 </a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/010.after_provisioning/zepplin_sudo/">sudo 권한 설정</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/patch/">BDC 서비스 패치(완료)</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/scale_out/">BDC 인스턴스 Scale-Out(완료)</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/scale_in/">BDC 인스턴스 Scale-In(완료)</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/removing/">BDC 인스턴스 삭제</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/040.interface/">04. BDC 접근 인터페이스</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/oracle_bdc/040.interface/service_console/">BDC 서비스 콘솔</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/040.interface/others/">ssh, cli 및 Apache Trift</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/040.interface/ambari/">Ambari</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/040.interface/zeppelin/">Apache Zeppelin</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/040.interface/sparkui/">Apache Zeppelin</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/050.job/">05. BDC Job 프로세스 관리</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/oracle_bdc/050.job/mapreduce/">MapReduce  프로세스 등록 및 실행</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/050.job/scala_spark/">Scala Spark 프로세스 등록 및 실행</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/050.job/pyspark/">PySpark  프로세스 등록 및 실</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/060.integration/">06. Oracle BDC 연동</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/oracle_bdc/060.integration/object_storage/">Object Storage 통합</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/060.integration/oracle_db/">Oracle DB와 통합</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/060.integration/big_data_connector/">Oracle DB 통합</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/070.security/">07. Oracle BDC 보안 관리</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/oracle_bdc/070.security/reset_password/">패스워드 변경</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/070.security/change_ssh/">ssh 키 파일 변경</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/080.zepplin/">08. zeppelin </a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/oracle_bdc/080.zepplin/addlibrary/">신규 라이브러리 관리</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/080.zepplin/python/">파이썬 설치 및 변경</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/090.review/">09. 마치며 </a>
+</li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

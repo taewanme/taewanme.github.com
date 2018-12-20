@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>02. 인스턴스 프로비저닝 on taewan.kim 블로그</title>
+    <link>http://taewan.kim/oracle_bdc/020.provisioning/</link>
+    <description>Recent content in 02. 인스턴스 프로비저닝 on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 Dec 2017 19:05:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/oracle_bdc/020.provisioning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Oracle BDC 인스턴스 생성: OCIC(작성)</title>
+      <link>http://taewan.kim/oracle_bdc/020.provisioning/010.provisioning_ocic/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oracle_bdc/020.provisioning/010.provisioning_ocic/</guid>
+      <description>Oracle Cloud는 빅데이터 서비스로 Oracle Big Data Cloud(이하 Oracle BDC)를 제공합니다. Oracle BDC는 Oracle Cloud의 OCI와 OCI-Classic에서 모두 만</description>
+    </item>
+    
+    <item>
+      <title>Oracle BDC 인스턴스 생성: OCI</title>
+      <link>http://taewan.kim/oracle_bdc/020.provisioning/020.provisioning_oci/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oracle_bdc/020.provisioning/020.provisioning_oci/</guid>
+      <description>작성중</description>
+    </item>
+    
+    <item>
+      <title>PSM을 이용한 Oracle BDC 인스턴스 생성</title>
+      <link>http://taewan.kim/oracle_bdc/020.provisioning/030.provision_with_psm/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oracle_bdc/020.provisioning/030.provision_with_psm/</guid>
+      <description>작성중</description>
+    </item>
+    
+    <item>
+      <title>클러스터 커스터마이징</title>
+      <link>http://taewan.kim/oracle_bdc/020.provisioning/040.customizing_cluster/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oracle_bdc/020.provisioning/040.customizing_cluster/</guid>
+      <description>작성중</description>
+    </item>
+    
+  </channel>
+</rss>

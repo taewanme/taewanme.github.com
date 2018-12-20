@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>06. Oracle BDC 연동 on taewan.kim 블로그</title>
+    <link>http://taewan.kim/oracle_bdc/060.integration/</link>
+    <description>Recent content in 06. Oracle BDC 연동 on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 Dec 2017 19:05:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/oracle_bdc/060.integration/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Object Storage 통합</title>
+      <link>http://taewan.kim/oracle_bdc/060.integration/object_storage/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oracle_bdc/060.integration/object_storage/</guid>
+      <description>작성중</description>
+    </item>
+    
+    <item>
+      <title>Oracle DB와 통합</title>
+      <link>http://taewan.kim/oracle_bdc/060.integration/oracle_db/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oracle_bdc/060.integration/oracle_db/</guid>
+      <description>작성중</description>
+    </item>
+    
+    <item>
+      <title>Oracle DB 통합</title>
+      <link>http://taewan.kim/oracle_bdc/060.integration/big_data_connector/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oracle_bdc/060.integration/big_data_connector/</guid>
+      <description>작성중</description>
+    </item>
+    
+  </channel>
+</rss>

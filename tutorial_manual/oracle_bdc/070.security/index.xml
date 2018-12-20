@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>07. Oracle BDC 보안 관리 on taewan.kim 블로그</title>
+    <link>http://taewan.kim/oracle_bdc/070.security/</link>
+    <description>Recent content in 07. Oracle BDC 보안 관리 on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 Dec 2017 19:05:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/oracle_bdc/070.security/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>패스워드 변경</title>
+      <link>http://taewan.kim/oracle_bdc/070.security/reset_password/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oracle_bdc/070.security/reset_password/</guid>
+      <description>작성중</description>
+    </item>
+    
+    <item>
+      <title>ssh 키 파일 변경</title>
+      <link>http://taewan.kim/oracle_bdc/070.security/change_ssh/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oracle_bdc/070.security/change_ssh/</guid>
+      <description>작성중</description>
+    </item>
+    
+  </channel>
+</rss>

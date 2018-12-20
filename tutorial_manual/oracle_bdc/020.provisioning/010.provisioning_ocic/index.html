@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Oracle BDC 인스턴스 생성: OCIC(작성) - taewan.kim 블로그</title>
+<meta name="description" content="Oracle Big Data Cloud">
+<meta name="generator" content="Hugo 0.52" />
+<link href="/index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="http://taewan.kim/oracle_bdc/020.provisioning/010.provisioning_ocic/">
+<link rel="stylesheet" href="/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="/js/jquery.backtothetop/jquery.backtothetop.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-72835175-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-72835175-1');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+<link rel="stylesheet" href="/css/taewan.css"  />
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+</head>
+<body>
+<div class="container"> 
+<header class="header">
+  <div class="container container-inner clearfix" >
+    <div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+      <a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+        <h1 class="logo__title">taewan.kim 블로그</h1><br/>
+        <h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list"><li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li><li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li><li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Tutorial과 Manual 문서를 제공" >TUTORIAL &amp; MANUAL</a></li><li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li><li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li><li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li><li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li></ul>
+</nav>
+<div class="content-container">
+<main>
+
+<figure class="post__thumbnail">
+  <img src="https://taewanmerepo.github.io/2018/12/bdc/post.jpg" alt="Oracle BDC 인스턴스 생성: OCIC(작성)">
+</figure>
+
+<h1>Oracle BDC 인스턴스 생성: OCIC(작성)</h1>
+
+<p>Oracle Cloud는 빅데이터 서비스로 Oracle Big Data Cloud(이하 Oracle BDC)를 제공합니다. Oracle BDC는 Oracle Cloud의 OCI와 OCI-Classic에서 모두 만들 수 있습니다. 이 문서에서는 OCI-Classic에서 Oracle BDC의 클러스터 인스턴스를 생성하는 절차를 소개합니다.</p>
+
+<div class="notices note" ><p>OCI와 OCI-Classic은 Oracle Cloud의 인프라스터럭처입니다. OCI와 OCI-Classic가 무엇인지 추가 설명이 필요하시다면, &lsquo;<a href="/cloud/oci_and_oci_classic/" target="_blank">Oracle Cloud IaaS: OCI vs OCI Classic[↗NW]</a>
+&lsquo; 문서를 참고하시기 바랍니다.</p>
+</div>
+
+
+<p>이 문서는 Oracle BDC의 18.4.2.1-20을 기준으로 2018년 12월 15일에 작성되었습니다.</p>
+
+<h2 id="oracle-bdc-프로비저닝-준비사항">Oracle BDC 프로비저닝 준비사항</h2>
+
+<p>Oracle Cloud BDC 인스턴스를 생성하기 위해서는 Oracle Cloud 계정이 필요합니다. 현재 사용 가능한 Oracle Cloud 계정이 없다면 Oracle Cloud Trial 계정을 만드시기 바랍니다.</p>
+
+<ul>
+<li><a href="/post/oracle_cloud_trial/" target="_blank">Oracle Cloud 트라이얼 신청 절차 (2018.05.01 기준)[↗NW]</a>
+</li>
+</ul>
+
+<p>추가로 Oracle BDC 인스턴스를 OCI-Classic에 프로비저닝 하기 위해서는 다음과 같은 작업이 선행되어야 합니다.</p>
+
+<ol>
+<li>Oracle Cloud Account 확보</li>
+<li>OCI Object Storage Classic에 Oracle BDC가 접근할 Container 생성</li>
+<li>OCI Object Storage Classic의 Rest Endpoint 주소 확인</li>
+</ol>
+
+<h2 id="oracle-bdc-인스턴스-만들기">Oracle BDC 인스턴스 만들기</h2>
+
+<p>이제 Oracle BDC 인스턴스를 다음과 같은 사양으로 만들어 보겠습니다.</p>
+
+<ul>
+<li>BDC 인스턴스명: bdc001OnOCIC</li>
+<li>인프라스트럭처: OCI-Classic</li>
+<li>데이터 센터: US-Central</li>
+<li>노드 수: 5</li>
+<li>Spark 버전: 2.1</li>
+</ul>
+
+<p>Oracle BDC 인스턴스를 만드는 절차는 다음과 같습니다.</p>
+
+<ol>
+<li>Oracle Cloud 로그인</li>
+<li>OCI-Classic의 Object Storage 컨테이너 생성</li>
+<li>OCI-Classic의 Object Storage 주소 확인</li>
+<li>Oracle Cloud BDC 인스턴스 정보 설정 및 생성</li>
+<li>Oracle Cloud BDC 인스턴스 상태 확인</li>
+</ol>
+
+<h3 id="오라클-클라우드-로그인">오라클 클라우드 로그인</h3>
+
+<p>활성화된 Oracle Cloud 계정을 확보한 상태라면, 다음과 같이 로그인을 합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/010.jpg" alt="" />
+- Oracle cloud의 로그인</p>
+</blockquote>
+
+<p>로그인은 두 단계로 진행됩니다. 로그인 1단계는 Oracle Cloud Account 명을 입력합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/020.jpg" alt="" />
+- Oracle cloud 로그인 1단계: Oracle Cloud Account 명 입력</p>
+</blockquote>
+
+<p>Oracle Cloud Account에는 여러 사용자가 등록됩니다. 로그인 2단계는 현자 사용할 사용자 명과 패스워드로 인증을 완료합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/030.jpg" alt="" />
+- Oracle cloud 로그인 2단계: 사용자 명과 패스워드로 인증</p>
+</blockquote>
+
+<p>인증이 완료되면 Oracle Cloud의 대시보드가 출력됩니다.</p>
+
+<h3 id="object-storage의-컨테이너-만들기">Object Storage의 컨테이너 만들기</h3>
+
+<p>Oracle Cloud의 BDC 인스턴스를 생성하기 위해서는, 인스턴스가 사용할 Object Storage의 컨테이너를 만들어야 합니다. 대시보드 페이지의 오른쪽 상단 메뉴를 이용하여 &ldquo;Storage Classic&rdquo; 서비스 콘솔로 이동할 수 있습니다. &ldquo;Storage Classic&rdquo; 서비스 콘솔로 이동하기 위해서, 우선 My Home 페이지로 이동해야 합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/040.jpg" alt="" />
+- My Home으로 이동</p>
+</blockquote>
+
+<p>My Home 페이지에는 현재 로그인 사용자가 접근 가능한 모든 서비스가 출력됩니다. &ldquo;<strong>Object Storage Classic</strong>&ldquo;을 검색하고, 검색된 결과로 &ldquo;Storage Classic&rdquo; 서비스 콘솔로 이동합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/050.jpg" alt="" />
+- Object Storage Classic 이동</p>
+</blockquote>
+
+<p>&ldquo;Storage Classic&rdquo; 서비스 콘솔에서 &ldquo;<strong>컨테이너 생성</strong>&rdquo; 버튼을 클릭하여 컨테이너를 생성합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/060.jpg" alt="" />
+- Big Data Cloud 클러스터가 사용할 컨테이너 생성</p>
+</blockquote>
+
+<p>이름이 &ldquo;bdc001OnOCIC&rdquo;인 컨테이너를 생성합니다. 이 컨테이너는 앞으로 BDC 인스턴스과 Object Storage가 통합되는 기본 위치가 됩니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/070.jpg" alt="" />
+<img src="https://taewanmerepo.github.io/2018/12/bdconocic/080.jpg" alt="" />
+- Big Data Cloud 클러스터가 사용할 컨테이너 생성 및 확인</p>
+</blockquote>
+
+<p>컨테이너가 생성되면 위와 같이 &ldquo;Storage Classic&rdquo; 서비스 콘솔에 컨테이너 목록이 출력됩니다.</p>
+
+<h3 id="object-storage-classic의-리전-확인">Object Storage Classic의 리전 확인</h3>
+
+<p>현재 Oracle Cloud Account의 <strong>Object Storage Classic</strong> 서비스가 위치하는 데이터 센터(리전, region)을 확인합니다. &ldquo;Storage Classic&rdquo; 서비스 콘솔의 &ldquo;계정&rdquo; 텝에서 리전 정보를 확인할 수 있습니다. 다음 그림과 같이 갤럭시 URL에서 Oracle Cloud의 리전 명을 확인할 수 있습니다. 데모로 사용하는 계정의 리전은 &ldquo;us-central-1&rdquo;입니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/180.jpg" alt="" /></p>
+</blockquote>
+
+<h3 id="os-classic의-rest-endpoint-정보-확인">OS Classic의 Rest Endpoint 정보 확인</h3>
+
+<p>이제 Object Storage의 Rest Endpoint 주소를 확인해야 합니다. Object Storage의 상세 정보 페이지로 이동합니다. Object Storage의 상세 정보 페이지는 Oracle Cloud의 대시보드에서 이동할 수 있습니다. 왼쪽으 메뉴를 이용하여 Oracle Cloud의 대시보드로 이동합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/090.jpg" alt="" />
+- 대시보드 페이지 이동</p>
+</blockquote>
+
+<p>Object Storage의 상세 정보 페이지로 이동하기 위해서는 대시보드에 &ldquo;<strong>Storage Classic</strong>&rdquo; 위젯이 나타나 있어야 합니다. 위젯이 없다면 대시보드에서 다음 이미지와 같이 &ldquo;<strong>Storage Classic</strong>&rdquo; 위젯을 활성화 합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/100.jpg" alt="" />
+- 대시 보드의 구성 확인: Storage Classic 활성화</p>
+</blockquote>
+
+<p>&ldquo;<strong>Storage Classic</strong>&rdquo; 위젯의 메뉴를 통해서 &ldquo;View Details&rdquo; 페이지로 이동합니다. 그리고 &ldquo;View Details&rdquo; 페이지에서 &ldquo;REST Endpoint&rdquo;의 정보를 기록합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/110.jpg" alt="" />
+<img src="https://taewanmerepo.github.io/2018/12/bdconocic/120.jpg" alt="" />
+- Storage Classic의 상세 페이지 이동 및 Rest Endpoint 주소 기록</p>
+</blockquote>
+
+<h3 id="bdc-인스턴스-생성">BDC 인스턴스 생성</h3>
+
+<p>이제 BDC 인스턴스를 생성할 차례입니다. BDC 인스턴스르 생성하기 위해서 대시보드 페이지에서 &ldquo;My Home&rdquo;으로 이동하고, bdc를 검색한 후, 그 결과를 이용하여 Oracle BDC 서비스 페이지로 이동합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/130.jpg" alt="" />
+<img src="https://taewanmerepo.github.io/2018/12/bdconocic/140.jpg" alt="" />
+- My Home으로 이동 후 Big Data Cloud 서비스로 이동</p>
+</blockquote>
+
+<p>Oracle BDC 서비스 페이지에서, &ldquo;<strong>인스턴스 생성</strong>&rdquo; 버튼을 클릭하고 인스턴스 생성을 시작합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/150.jpg" alt="" />
+- 클러스터 생성 시작</p>
+</blockquote>
+
+<p>BDC 인스턴스 생성 절차는 3 단계로 구성됩니다. 1단계와 2단계에서 구성 정보를 입력하고, 3단계에서는 입력 정보를 확인하면, 인스턴스 생성은 시작됩니다. 1단계에서는 인스턴스명, 리전 위치를 선택합니다. 리전은 Object Storage가 위치하는 곳을 선택합니다. 현재 선택 가능한 리전은 4곳입니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>리전 이름</th>
+<th>리전 타입</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>uscom-central-1</td>
+<td>OCI Classic</td>
+</tr>
+
+<tr>
+<td>uscom-east-1</td>
+<td>OCI Classic</td>
+</tr>
+
+<tr>
+<td>us-ashburn-1</td>
+<td>Oracle Cloud Infrastucture</td>
+</tr>
+
+<tr>
+<td>us-phoenix-1</td>
+<td>Oracle Cloud Infrastucture</td>
+</tr>
+</tbody>
+</table>
+
+<p>현재 사용중인 Oracle Cloud Account의 Object Storage가 &ldquo;uscom-central-1&rdquo;에 위치하므로, Region을 uscom-central-1로 선택합니다. 현재 데모에서는 네트워크 설정을 생략합니다. 따라서 IP Network은 별도 설정 없이 기본값을 그대로 사용합니다. 설정을 마쳤으면 오른쪽 상단의 &ldquo;<strong>다음</strong>&rdquo; 버튼을 클릭합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/160.jpg" alt="" />
+- BDC 인스턴스 생성: 1단계 - 인스턴스 기본 정보 입력</p>
+</blockquote>
+
+<p>BDC 인스턴스 생성 2 단계에서는 5개 영역의 세부 정보를 입력합니다. 첫 영역은 &ldquo;<strong>클러스터 구성</strong>&ldquo;정보입니다. 다음 테이블은 다음 항목에 대한 설명과 설정 값의 요약입니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>입력항목</th>
+<th>입력 데이터</th>
+<th>비고</th>
+<th>실습 입력 값</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Deployment Profile,<br/>배치 프로파일</td>
+<td>Full(전체), Basic(기본) 중 선택</td>
+<td>클러스터 설치 유형을 선택합니다. <br/> <strong>Full</strong>을 선택하면 Spark, MapReduce, Zeppelin, Hive, Spark Thrift, Big Data File System이 설치됩니다.<br/> <strong>Basic</strong>을 선택하면 Spark, MapReduce 그리고 Zeppelin만 설치됩니다.</td>
+<td>Full(전체)</td>
+</tr>
+
+<tr>
+<td>Number of Nodes,<br/>노드 수</td>
+<td>클러스터 노드 수</td>
+<td>클러스터 구성 노드 수의 설정입니다. 최소 구성은 1개 노드입니다. <br />  HA 구성을 위해서는 최소 3개 노드 이상으로 설정해야 합니다. 기본 설정값은 &ldquo;<strong>3</strong>&ldquo;입니다.</td>
+<td>5</td>
+</tr>
+
+<tr>
+<td>Nodes designated as Compute Only Slaves,<br/>컴퓨트 전용 슬레이브로 지정된 노드</td>
+<td>컴퓨트 전용 노드 수</td>
+<td>클러스터 노드를 5개 이상 설정할 경우에 출력되는 항목입니다. 이 항목은 클러스터 노드 중 HDFS를 설치하지 않는 순수 연산 컴퓨터 노드 수를 입력하는 항목입니다. 기본값은 &ldquo;0&rdquo;입니다.</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>Compute Shape,<br/>컴퓨트 구성</td>
+<td>VM의 Shape 선택</td>
+<td>클러스터 각 노드의 VM 자원 할당 유형을 지정합니다. 2017년 7월 현재 다음과 같은 shape이 제공됩니다. <br/> - OC2m - 2.0 OCPU, 30GB RAM<br/> - OC3m - 4.0 OCPU, 60GB RAM<br/> - OC4m - 8.0 OCPU, 120GB RAM<br/> - OC5m - 16.0 OCPU, 240GB RAM<br/> 기본 설정값은 OC2m 입니다.</td>
+<td>OC2m</td>
+</tr>
+
+<tr>
+<td>Queue Profile,<br/>대기열 프라파일</td>
+<td>Job 대기열 프로파일 지정</td>
+<td>Job을 실행하는 프로파일을 지정합니다. 선택 가능한 값은 Preemption On/Preemption Off 두 가지입니다. 이 설정은 클러스터 관리 UI에서 변경 가능합니다. 기본값은 Preemption On입니다.</td>
+<td>Preemption On(선점 설정)</td>
+</tr>
+
+<tr>
+<td>Spark Version,<br/>Spark 버전</td>
+<td>1.6, 2.1 중 선택</td>
+<td>클러스터에 설치될 Spark 버전을 설정합니다.</td>
+<td>2.1</td>
+</tr>
+</tbody>
+</table>
+
+<p>위 테이블의 클러스터 구성 영역의 설정은 다음 그림과 같이 설정됩니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/170.jpg" alt="" />
+- BDC 인스턴스 생성: 2단계 - 클러스터 상세 정보 입력</p>
+</blockquote>
+
+<p>BDC 인스턴스 생성 2 단계의 두 번째 영역은 인증서 관련 설정입니다. 이 영역에서는 SSH 공개키, 사용자 이름 및 패스워드 설정이 진행됩니다. 기존에 사용하던 ssh 공개키 파일을 등록할 수 있고, 공개키 값을 직접 등록할 수 있습니다. 또한 ssh 공개키와 비밀키 생성을 요청할 수 있습니다. 다음 그림은 &ldquo;create a new key&rdquo; 옵션을 사용하여 ssh 키 파일 생성을 요청하는 과정을 소개합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/190.jpg" alt="" />
+- 클러스터 상세 정보 입력: 인증서 생성</p>
+</blockquote>
+
+<p>SSH 키가 생성되면 key 파일을 다운로드하는 팝업이 출력됩니다. zip 파일 평태로 공개키와 비밀키를 제공합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/200.jpg" alt="" />
+- 인증서 생성 및 다운로드</p>
+</blockquote>
+
+<p>SSH Public Key 설정이 완료되면, 이제 사용자 이름과 비밀번호를 설정합니다. 사용자 이름과 패스워드는 “Big Data Cluster Console”과 Ambari를 로그인할 때 사용합니다. 사용자 명의 기본값은 “bdcsce_admin”입니다. 사용자 명은 변경 가능하며, 패스워드에는 영문 대문자, 특수문자, 숫자가 각각 1개 이상 포함 8자 이상 50자 미만으로 설정합니다. (패스워드 예시: Welcome1!)</p>
+
+<p>&ldquo;연관&rdquo; 영역에서는 BDC 서비스와 통합되는 Oracle Cloud를 지정합니다. 현재 연동할 서비스가 없으므로 지금은 별도 설정 없이 넘어 갑니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/210.jpg" alt="" />
+- 클러스터 상세 정보 입력: 인증서 정보 입력</p>
+</blockquote>
+
+<p>&ldquo;클라우드 스토리지 인증서&rdquo;에서는 Object Storage 관련 설정이 진행됩니다. BDC 서비스가 Object Storage Classic에 접속하기 위한 설정입니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>입력값</th>
+<th>비고</th>
+<th>실습 입력 값</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Cloud Storage Container</td>
+<td>컨테이너 주소 입력</td>
+<td>Oracle BDCSCE와 Oracle Storage CS를 연동하기 위한 컨테이너 주서가 입력됩니다. 기본 형식은 &ldquo;<OBJECT_STORAGE_END_POINT_URL>/<CONTAINER_NAME> 입니다.</td>
+<td>아래 참조</td>
+</tr>
+
+<tr>
+<td>Username</td>
+<td>로그인ID</td>
+<td>Oracle Cloud Account의 로그인 아이디를 입력합니다.</td>
+<td>계정 아이디 입력</td>
+</tr>
+
+<tr>
+<td>Password</td>
+<td>패스워드</td>
+<td>Oracle Cloud Account의 로그인 아이디 패스워드를 입력합니다.</td>
+<td>계정 패스워드 입력</td>
+</tr>
+
+<tr>
+<td>Create Cloud Storage Container</td>
+<td>옵션</td>
+<td>지정한 컨테어너가 없으면 Oracle Storage에 생성할 것인가를 설정하는 옵션입니다.</td>
+<td>체크</td>
+</tr>
+</tbody>
+</table>
+
+<p>현재 사용할 Cloud Storage Container 주소는 다음과 같습니다.</p>
+
+<ul>
+<li>현재 Object Storage의 주소: <a href="https://c171764.us.storage.oraclecloud.com/v1/Storage-c171764">https://c171764.us.storage.oraclecloud.com/v1/Storage-c171764</a></li>
+<li>BDC 서비스를 위한 켄터이너: bdc001OnOCIC</li>
+<li>Cloud Storage Container 주소
+
+<ul>
+<li><a href="https://c171764.us.storage.oraclecloud.com/v1/Storage-c171764/bdc001OnOCIC">https://c171764.us.storage.oraclecloud.com/v1/Storage-c171764/bdc001OnOCIC</a></li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/220.jpg" alt="" />
+- 클러스터 상세 정보 입력: 클러스터 스토리지 인증서 정보 입력</p>
+</blockquote>
+
+<p>마지막으로 블록 스코리지 설정은 기본 값을 그대로 유지합니다. 각 항목은 다음과 같이 정리할 수 있습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>입력값</th>
+<th>비고</th>
+<th>실습 입력 값</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>고성능 스토리지</td>
+<td>체크박스</td>
+<td>HDFS의 성능을 높이기 위해서 HDD대신에 SSD를 사용할 것인지 선택하는 옵션입니다.</td>
+<td>사용하지 않음</td>
+</tr>
+
+<tr>
+<td>사용 가능한 HDFS 스토리지</td>
+<td>GB</td>
+<td>사용 가능한 HDFS 스토리지(GB 단위의 값)입니다. <br/> 실제 할당된 스토리지 용량은 지정된 값의 두 배에 추가 5%(중간 로그용)를 더한 값입니다.<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup></td>
+<td>50</td>
+</tr>
+
+<tr>
+<td>사용 가능한 BDFS 스토리지</td>
+<td>GB</td>
+<td>사용 가능한 캐시(GB 단위의 값)입니다.<br/>실제 할당된 스토리지 용량은 지정된 값에 추가 5%(중간 로그용)를 더한 값이 됩니다.<br/> 50~74000 사이의 값을 입력할 수 있습니다.</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/230.jpg" alt="" />
+- 클러스터 상세 정보 입력: 상세 정보 입력 완료 후 다음 단계로 이동</p>
+</blockquote>
+
+<p>이제 모든 설정이 완료되었습니다. 위 그림은 설정이 완료된 상태이 모습입니다. 설정이 완료되면 오른쪽 상단이 &ldquo;다음&rdquo; 버튼을 클릭합니다. 이제 마지막 단계인 입력 정보 확인 단계로 이동합니다. 모든 정보가 맞다면 오른쪽 상단에 위치하는 &ldquo;생성&rdquo; 버튼을 클릭합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/240.jpg" alt="" />
+- 클러스터 정보 확인 및 생성 요청</p>
+</blockquote>
+
+<p>클러스터 생성이 시작되면 &ldquo;Oracle Big Data Cloud&rdquo; 서비스 페이지로 이동하고, 앞에서 생성을 요청한 클러스터가 &ldquo;Creating Service..&rdquo; 상태에 있는 것을 확인할 수 있습니다. 서비스 생성까지 약 15분 정도가 소요됩니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/250.jpg" alt="" />
+- 클러스터 인스턴스 생성 시작</p>
+</blockquote>
+
+<h3 id="bdc-인스턴스-생성-확인">BDC 인스턴스 생성 확인</h3>
+
+<p>클러스터 생성이 완료는 &ldquo;Oracle Big Data Cloud&rdquo; 서비스 페이지에서 확인할 수 있습니다. 클러스터 이름을 클릭하여 클러스터 상세 페이지로 이동할 수있습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/260.jpg" alt="" />
+- 클러스터 인스턴스 생성 완료</p>
+</blockquote>
+
+<p>클러스터 상세 페이지에서 클러스터 노드의 상세 정보를 확인할 수 있습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/270.jpg" alt="" />
+- 클러스터 인스턴스 상세 페이지</p>
+</blockquote>
+
+<h3 id="bdc-인스턴스-관리-메뉴">BDC 인스턴스 관리 메뉴</h3>
+
+<p>클러스터 상세 페이지에서 각 클러스터 노드를 정지하거나 시작할 수 있습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/280.jpg" alt="" />
+- 클러스터 인스턴스 상세 페이에서 서버 별 상태 관리 메뉴</p>
+</blockquote>
+
+<p>&ldquo;Oracle Big Data Cloud&rdquo; 서비스 페이지 클러스터 전체를 시작, 정지 및 삭제할 수 있습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/bdconocic/290.jpg" alt="" />
+- 클러스터 인스턴스 관리 메뉴</p>
+</blockquote>
+
+<h2 id="요약">요약</h2>
+
+<p>&ldquo;Oracle Big Data Cloud&rdquo; 서비스의 인스턴스를 OCI Classic에 만드는 과정을 살펴 보았습니다. OCI Classic에 배포된 BDC 서비스 인스턴스는 Object Storage Classic와 연동합니다. &ldquo;Oracle Big Data Cloud&rdquo; 서비스 페이지에서는 인스턴스를 생성하는 웹 UI를 제공합니다. 이 Web UI는 3단계로 구성됩니다. 하둡 클러스터의 노드 수와 Shape 및 계정 정보를 입력하면 15분 안에 클러스터를 생성할 수 있습니다.</p>
+
+<h2 id="관련-문서">관련 문서</h2>
+
+<ul>
+<li><a href="/post/oracle_cloud_trial/" target="_blank">Oracle Cloud 트라이얼 신청 절차 (2018.05.01 기준)[↗NW]</a>
+</li>
+<li><a href="/cloud/oci_and_oci_classic/" target="_blank">Oracle Cloud IaaS: OCI vs OCI Classic[↗NW]</a>
+</li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">설정된 스토리지의 2배가 할당됩니다. Hadoop의 기본 복제 계수가 3인것을 고려하면 2배인 이유가 궁금할 것입니다. BDC에 사용되는 블록 스토리지는 내부적으로 미러링되어 있습니다. 따라서 미러링과 복제 계수 2를 고려해 보면 복제 계수 3과 같은 효과를 냅니다. 디스크의 특성을 반영한 설정입니다.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+</ol>
+</div>
+<div class="edit-meta">Last updated on 27 Dec 2017 / Published on 27 Dec 2017<br></div><nav class="pagination">
+<a class="nav nav-prev" href="/tutorial_manual/oracle_bdc/020.provisioning/" title="02. 인스턴스 프로비저닝"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 02. 인스턴스 프로비저닝</a>
+
+
+<a class="nav nav-next" href="/tutorial_manual/oracle_bdc/020.provisioning/020.provisioning_oci/" title="Oracle BDC 인스턴스 생성: OCI">Next - Oracle BDC 인스턴스 생성: OCI <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+
+</nav><footer><div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2&appId=404519239985000&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/oracle_bdc/020.provisioning/010.provisioning_ocic/"></div>
+<p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
+</footer>
+</main><div class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+<hr/>
+
+<nav>
+<ul>
+
+<li class="parent"><a href="/tutorial_manual/oracle_bdc/">오라클 클라우드 빅데이터 서비스: Oracle BDC(완료)</a>
+<ul class="sub-menu">
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/010.oracle_bdc/">01. Oracle Big Data Cloud</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/oracle_bdc/010.oracle_bdc/010.overview/">오라클 클라우드 BDC 서비스</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/010.oracle_bdc/020.component/">Oracle BDC 하둡 에코(1차완료)</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/010.oracle_bdc/030.data_lake_tech/">Oracle Cloud 데이터 분석 서비스</a></li>
+</ul>
+  
+</li>
+
+<li class="parent"><a href="/tutorial_manual/oracle_bdc/020.provisioning/">02. 인스턴스 프로비저닝</a>
+<ul class="sub-menu">
+<li class="active"><a href="/tutorial_manual/oracle_bdc/020.provisioning/010.provisioning_ocic/">Oracle BDC 인스턴스 생성: OCIC(작성)</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/020.provisioning/020.provisioning_oci/">Oracle BDC 인스턴스 생성: OCI</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/020.provisioning/030.provision_with_psm/">PSM을 이용한 Oracle BDC 인스턴스 생성</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/020.provisioning/040.customizing_cluster/">클러스터 커스터마이징</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/">03. 인스턴스 관리</a>
+<ul class="">
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/010.after_provisioning/">프로비저닝 후속 작업</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/010.after_provisioning/ambari_security/">Ambari 보안 설정 및 </a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/010.after_provisioning/zepplin_sudo/">sudo 권한 설정</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/patch/">BDC 서비스 패치(완료)</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/scale_out/">BDC 인스턴스 Scale-Out(완료)</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/scale_in/">BDC 인스턴스 Scale-In(완료)</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/removing/">BDC 인스턴스 삭제</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/040.interface/">04. BDC 접근 인터페이스</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/oracle_bdc/040.interface/service_console/">BDC 서비스 콘솔</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/040.interface/others/">ssh, cli 및 Apache Trift</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/040.interface/ambari/">Ambari</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/040.interface/zeppelin/">Apache Zeppelin</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/040.interface/sparkui/">Apache Zeppelin</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/050.job/">05. BDC Job 프로세스 관리</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/oracle_bdc/050.job/mapreduce/">MapReduce  프로세스 등록 및 실행</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/050.job/scala_spark/">Scala Spark 프로세스 등록 및 실행</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/050.job/pyspark/">PySpark  프로세스 등록 및 실</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/060.integration/">06. Oracle BDC 연동</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/oracle_bdc/060.integration/object_storage/">Object Storage 통합</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/060.integration/oracle_db/">Oracle DB와 통합</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/060.integration/big_data_connector/">Oracle DB 통합</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/070.security/">07. Oracle BDC 보안 관리</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/oracle_bdc/070.security/reset_password/">패스워드 변경</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/070.security/change_ssh/">ssh 키 파일 변경</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/080.zepplin/">08. zeppelin </a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/oracle_bdc/080.zepplin/addlibrary/">신규 라이브러리 관리</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/080.zepplin/python/">파이썬 설치 및 변경</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/090.review/">09. 마치며 </a>
+</li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

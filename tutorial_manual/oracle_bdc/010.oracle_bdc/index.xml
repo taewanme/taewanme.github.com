@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>01. Oracle Big Data Cloud on taewan.kim 블로그</title>
+    <link>http://taewan.kim/oracle_bdc/010.oracle_bdc/</link>
+    <description>Recent content in 01. Oracle Big Data Cloud on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 Dec 2017 19:05:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/oracle_bdc/010.oracle_bdc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>오라클 클라우드 BDC 서비스</title>
+      <link>http://taewan.kim/oracle_bdc/010.oracle_bdc/010.overview/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oracle_bdc/010.oracle_bdc/010.overview/</guid>
+      <description>작성중</description>
+    </item>
+    
+    <item>
+      <title>Oracle BDC 하둡 에코(1차완료)</title>
+      <link>http://taewan.kim/oracle_bdc/010.oracle_bdc/020.component/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oracle_bdc/010.oracle_bdc/020.component/</guid>
+      <description>2018년 12월 07일 현재 Oracle BDC의 버전은 18.4.2입니다. Oracle BDC에는 다음과 같은 하둡 에코 컴포넌트가 설치되어 있습니다. 구성 컴포넌트 및 버전 컴</description>
+    </item>
+    
+    <item>
+      <title>Oracle Cloud 데이터 분석 서비스</title>
+      <link>http://taewan.kim/oracle_bdc/010.oracle_bdc/030.data_lake_tech/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oracle_bdc/010.oracle_bdc/030.data_lake_tech/</guid>
+      <description>작성중</description>
+    </item>
+    
+  </channel>
+</rss>

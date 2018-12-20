@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>05. BDC Job 프로세스 관리 on taewan.kim 블로그</title>
+    <link>http://taewan.kim/oracle_bdc/050.job/</link>
+    <description>Recent content in 05. BDC Job 프로세스 관리 on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 Dec 2017 19:05:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/oracle_bdc/050.job/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MapReduce  프로세스 등록 및 실행</title>
+      <link>http://taewan.kim/oracle_bdc/050.job/mapreduce/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oracle_bdc/050.job/mapreduce/</guid>
+      <description>작성중</description>
+    </item>
+    
+    <item>
+      <title>Scala Spark 프로세스 등록 및 실행</title>
+      <link>http://taewan.kim/oracle_bdc/050.job/scala_spark/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oracle_bdc/050.job/scala_spark/</guid>
+      <description>작성중</description>
+    </item>
+    
+    <item>
+      <title>PySpark  프로세스 등록 및 실</title>
+      <link>http://taewan.kim/oracle_bdc/050.job/pyspark/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oracle_bdc/050.job/pyspark/</guid>
+      <description>작성중</description>
+    </item>
+    
+  </channel>
+</rss>

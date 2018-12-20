@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>08. zeppelin  on taewan.kim 블로그</title>
+    <link>http://taewan.kim/oracle_bdc/080.zepplin/</link>
+    <description>Recent content in 08. zeppelin  on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 Dec 2017 19:05:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/oracle_bdc/080.zepplin/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>신규 라이브러리 관리</title>
+      <link>http://taewan.kim/oracle_bdc/080.zepplin/addlibrary/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oracle_bdc/080.zepplin/addlibrary/</guid>
+      <description>작성중</description>
+    </item>
+    
+    <item>
+      <title>파이썬 설치 및 변경</title>
+      <link>http://taewan.kim/oracle_bdc/080.zepplin/python/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oracle_bdc/080.zepplin/python/</guid>
+      <description>작성중</description>
+    </item>
+    
+  </channel>
+</rss>

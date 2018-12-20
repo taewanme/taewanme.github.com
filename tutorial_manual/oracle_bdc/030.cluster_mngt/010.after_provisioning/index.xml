@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>프로비저닝 후속 작업 on taewan.kim 블로그</title>
+    <link>http://taewan.kim/oracle_bdc/030.cluster_mngt/010.after_provisioning/</link>
+    <description>Recent content in 프로비저닝 후속 작업 on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 Dec 2017 19:05:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/oracle_bdc/030.cluster_mngt/010.after_provisioning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ambari 보안 설정 및 </title>
+      <link>http://taewan.kim/oracle_bdc/030.cluster_mngt/010.after_provisioning/ambari_security/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oracle_bdc/030.cluster_mngt/010.after_provisioning/ambari_security/</guid>
+      <description>작성중</description>
+    </item>
+    
+    <item>
+      <title>sudo 권한 설정</title>
+      <link>http://taewan.kim/oracle_bdc/030.cluster_mngt/010.after_provisioning/zepplin_sudo/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oracle_bdc/030.cluster_mngt/010.after_provisioning/zepplin_sudo/</guid>
+      <description>작성중</description>
+    </item>
+    
+  </channel>
+</rss>

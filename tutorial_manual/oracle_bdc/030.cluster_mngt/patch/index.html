@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>BDC 서비스 패치(완료) - taewan.kim 블로그</title>
+<meta name="description" content="Oracle Big Data Cloud">
+<meta name="generator" content="Hugo 0.52" />
+<link href="/index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="http://taewan.kim/oracle_bdc/030.cluster_mngt/patch/">
+<link rel="stylesheet" href="/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="/js/jquery.backtothetop/jquery.backtothetop.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-72835175-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-72835175-1');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+<link rel="stylesheet" href="/css/taewan.css"  />
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+</head>
+<body>
+<div class="container"> 
+<header class="header">
+  <div class="container container-inner clearfix" >
+    <div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+      <a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+        <h1 class="logo__title">taewan.kim 블로그</h1><br/>
+        <h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list"><li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li><li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li><li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Tutorial과 Manual 문서를 제공" >TUTORIAL &amp; MANUAL</a></li><li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li><li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li><li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li><li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li></ul>
+</nav>
+<div class="content-container">
+<main>
+
+<figure class="post__thumbnail">
+  <img src="https://taewanmerepo.github.io/2018/12/bdc/post.jpg" alt="BDC 서비스 패치(완료)">
+</figure>
+
+<h1>BDC 서비스 패치(완료)</h1>
+
+<p>Oracle Cloud는 지속적으로 새로운 기능을 클라우드 서비스에 추가하고 있습니다.
+기능 개선을 위해서는 소프트웨어 변경이 필요합니다.
+이미 클라우드 서비스 인스턴스를 생성하고 사용 중인 고객을 위해서 오라클은 패치를 만들고 적용하는 프로세스를 제공합니다.
+클라우드 사용자는 현재 사용 중인 서비스에 패치를 적용 여부와 시점을 직접 결정할 수 있습니다. 본 문서에서는 &ldquo;<strong>Oracle Big Data Cloud Service - Compute Edition</strong>&rdquo;(이하 Oracle BDCSCE)의 인스턴스에 패치를 적용하는 방법을 살펴보겠습니다. 여기에서 다루는 Oracle BDCSCE 인스턴스에 패치를 적용하는 절차는 다른 Oracle PaaS에도 적용할 수 있습니다.</p>
+
+<h2 id="oracle-cloud-서비스-패치">Oracle Cloud 서비스 패치</h2>
+
+<p>Oracle Cloud PaaS의 특징은 클라우드 사용자가 OS 영역에 접근이 가능하다는 점입니다.
+클라우드 사용자는 PaaS 서비스의 운영체제에 SSH 접근이 가능하고 직접 소프트웨어를 설치할 수 있습니다.<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> 이러한 특징은 사용 중인 서비스에 대에 전문 관리 기능을 적용할 수 있다는 점에서 강점으로 분류됩니다.
+DBMS 관련 서비스(Oracle Database CS, MySQL CS) 혹은 오픈소스 서비스(Big Data CS, Event CS) 서비스 사용자들에게는 매우 매력적인 기능입니다.</p>
+
+<p>사용자가 PaaS 서비스의 운영체제에 접근 가능하다는 점은 사용자 측면에서는 강점이지만, 서비스 운영 측면에서는 어려운 과제입니다.
+특히 지속적인 기능 개선이 패치 형태로 제공되는 상황에서는, 사용자에 의한 운영체제 수준에서의 변경 내역과 신규 패치 사이에 충돌이 발생할 수 있습니다. Oracle Cloud는 이러한 위험 요소를 고려하여 안전한 패치 프로세스를 제공합니다. Oracle Cloud 패치 프로세스는 다음과 같이 구성됩니다.</p>
+
+<ul>
+<li>클라우드 서비스별 대상 패티 공지</li>
+<li>대상 패치 변경사항 리뷰</li>
+<li>사전 패치 테스트</li>
+<li>패치 테스트 결과 리뷰</li>
+<li>패치 적용</li>
+<li>패치 적용 목록 관리</li>
+<li>패치 이전 버전으로 원복(Rollback)</li>
+</ul>
+
+<p>다음 절에서 &ldquo;Oracle Big Data Cloud Service - Compute Edtion&rdquo;에 패치를 적용하는 절차를 소개하겠습니다.</p>
+
+<h2 id="oracle-bdcsce-패치">Oracle BDCSCE 패치</h2>
+
+<p>Oracle BDCSCE는 2017년 03월에 출시된 빅데이터 클라우드 서비스입니다. Oracle BDCSCE는 현재 매월 신규 기능<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>이 추가되고 있습니다. 현재 Oracle BDCSCE 서비스 버전은 17.3.3입니다. 17.3.3 버전에는 다음과 같은 기능이 추가되었습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>Oracle BDCSC - 17.3.3 버전 변경 사항</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>모든 노드에 pip 설치</td>
+</tr>
+
+<tr>
+<td>Storage Cloud Service와 인증 정보가 불일치할 경우 알림 기능</td>
+</tr>
+
+<tr>
+<td>Setting 탭에서 Thrift URL 출력 추가</td>
+</tr>
+
+<tr>
+<td>Status 탭 추가: 서버별 컴포넌트 상태 출력 (그림 1 참조)</td>
+</tr>
+
+<tr>
+<td>오브젝트 저장소 탐색 브라우저 성능 개선</td>
+</tr>
+
+<tr>
+<td>Zeppelin 쉘 인터프리터에 Alluxio 명령 추가</td>
+</tr>
+
+<tr>
+<td>Big Data File System (BDFS)에 저장된 데이터는 Oracle Storage Cloud Service에 자동 저장</td>
+</tr>
+
+<tr>
+<td>Big Data File System (BDFS)의 메모리 할당이 클러스터 생성 시 지정된 크기로 할당 됨(기존에 서버당 1GB로 고정)</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>&lt;그림 1&gt;  Oracle BDCSC - 17.3.3의 UI 기능 개선
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/patch/satus.jpg" alt="" /></li>
+</ul>
+
+<p>최근에 17.3.3 버전이 Oracle BDCSCE 인스턴스 패치 목록에 추가되었습니다. 2017년 7월 초에 생성한 Oracle BDCSCE 인스턴스에  이 패치를 적용하였습니다. 이 패치 적용과정을 이미지 중심으로 소개하겠습니다. 본 문서에서 다룬 Oracle BDCSCE 패치 적용 절차는 Oracle Cloud의 다른 PaaS에도 동일하게 적용될 수 있습니다.</p>
+
+<p>아래에서 진행될 패치 대상 서비스 환경은 다음과 같습니다.</p>
+
+<ul>
+<li>서비스 유형: Oracle BDCSCE</li>
+<li>인스턴스 이름: bdcsce-demo</li>
+<li>서비스 버전: 17.3.1-20</li>
+<li>패치 일시: 2017년 8월 17일</li>
+</ul>
+
+<p>이제부터 Oracle BDCSCE의 인스턴스에 17.3.3-20 패치를 적용하는 절차를 소개합니다.</p>
+
+<h3 id="패치-목록-관리">패치 목록 관리</h3>
+
+<p>&lt;그림 2&gt;와 같이 Oracle BDCSCE 콘솔은 현재 생성된 Oracle BDSCCE 인스턴스<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup> 목록이 출력됩니다.
+&lt;그림 2&gt;에서 bdcsce-demo 클러스터의 버전, 실행 상태, 자원 규모를 확인할 수 있습니다.
+Oracle BDCSCE의 인스턴스에 적용할 패치가 만들어지면,
+&ldquo;One or more patch(es) available&rdquo;이란 메시지가 인스턴스 목록에 출력됩니다.</p>
+
+<ul>
+<li>&lt;그림 2&gt; Oracle BDCSCE 콘솔에서 하둡 클러스터 목록
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/patch/patch01.jpg" alt="" /></li>
+</ul>
+
+<p>&ldquo;One or more patch(es) available&rdquo; 링크를 클릭하면 해당 인스턴스(클러스터)의 패치 목록 관리 페이지로 이동합니다.
+&lt;그림 3&gt;은 bdcsce-demo 클러스터의 패치 목록 관리 페이지입니다.
+&lt;그림 3&gt;에서 BDCS-CE Update 17.3.3-20 패치에 대한 다음과 같은 정보를 확인할 수 있습니다.</p>
+
+<ol>
+<li>Release date</li>
+<li>업데이트 내용 요약 페이지 링크</li>
+<li>적용 대상 서비스 유형</li>
+<li>패치 적용 후 서비스 재시작 여부</li>
+</ol>
+
+<ul>
+<li>&lt;그림 3&gt; BDCSCE 클러스터에 적용할 패치 목록 관리 페이지
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/patch/patch02.jpg" alt="" /></li>
+</ul>
+
+<h3 id="패치-사전-테스트">패치 사전 테스트</h3>
+
+<p>현재 서비스되고 있는 클러스터에 패치를 적용할 때 문제점 혹은 기존 바이너리와 충돌이 없는지를 확인하는 기능을 제공합니다.
+Oracle Cloud의 PaaS는 운영체제 접근을 허용합니다. 따라서 사용자가 직접 설치한 바이너리 혹은 환경 변수 등이 패치 적용 과정에서 충돌이 발생할 수 있습니다. 이러한 문제를 &ldquo;<strong>Precheck</strong>&rdquo; 기능으로 확인 가능합니다. &lt;그림 4&gt;의 오른쪽 위에 위치하는 메뉴에서 &ldquo;<strong>Precheck</strong>&ldquo;를 실행할 수 있습니다.</p>
+
+<ul>
+<li>&lt;그림 4&gt; 적용 대상 패티의 &ldquo;Precheck&rdquo; 실행
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/patch/patch03.jpg" alt="" /></li>
+</ul>
+
+<p>Oracle DBCSCE의 경우 &ldquo;<strong>Precheck</strong>&ldquo;는 약 20분 동안 진행됩니다.
+&ldquo;<strong>Precheck</strong>&ldquo;는 클러스터가 동작하는 서비스 상태에서 수행되며, 기존 서비스에 영향도는 거의 없습니다.
+&ldquo;<strong>Precheck</strong>&ldquo;가 완료되면 &lt;그림 5&gt;와 같이 &ldquo;<strong>Precheck summary</strong>&rdquo; 링크가 출력됩니다.</p>
+
+<ul>
+<li>&lt;그림 5&gt; &ldquo;Precheck&rdquo; 종료 후 &ldquo;<strong>Precheck summary</strong>&rdquo; 링크 출력
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/patch/patch04.jpg" alt="" /></li>
+</ul>
+
+<p>&ldquo;<strong>Precheck summary</strong>&rdquo; 링크를 출력하면 &lt;그림 6&gt;과 같은 요약 리포트가 출력됩니다.
+문제가 없으면 &lt;그림 6&gt;과 같은 메시지가 출력됩니다.
+&ldquo;<strong>Precheck</strong>&ldquo;에서 문제점이 나타나면, Patch를 수행하기 전에 해결해야 할 작업 목록이 출력됩니다.</p>
+
+<ul>
+<li>&lt;그림 6&gt; <strong>Precheck summary</strong>
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/patch/patch05.jpg" alt="" /></li>
+</ul>
+
+<p>&lt;그림 6&gt;과 같이 패치 적용에 문제가 없다는 메시지를 확인했다면 이제 패치를 적용할 차례입니다.</p>
+
+<h3 id="패치-적용">패치 적용</h3>
+
+<p>4 node로 구성된 BDCSCE 인스턴스에서 BDCS-CE Update 17.3.3-20 패치 적용 시간은 40분이 소요되었습니다.
+적용 시간은 패치와 클러스터 규모에 따라 달라질 수 있습니다.
+BDCS-CE Update 17.3.3-20 패치를 적용할 때, 대상 인스턴스는 서비스가 중단됩니다. <sup class="footnote-ref" id="fnref:4"><a href="#fn:4">4</a></sup></p>
+
+<p>&lt;그림 7&gt;과 같이 패치 목록 오른편에 위치하는 메뉴에서 &ldquo;패치&rdquo;를 클릭하면 패치가 시작됩니다.</p>
+
+<ul>
+<li>&lt;그림 7&gt; 패치 적용 메뉴
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/patch/patch06.jpg" alt="" /></li>
+</ul>
+
+<p>패치 시작에 앞서 &lt;그림 8&gt;과 같이 패치에 대한 메시지를 입력해야 합니다.
+이 메시지는 패치 적용 기록 관리에 이용됩니다.</p>
+
+<ul>
+<li>&lt;그림 8&gt; 패치 메시지 입력 페이지
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/patch/patch07.jpg" alt="" /></li>
+</ul>
+
+<p>패치가 시작되면 대상 클러스터의 상태는 &ldquo;Service Maintenance&rdquo;로 출력됩니다.</p>
+
+<ul>
+<li>&lt;그림 9&gt; 패치 진행 중 클러스터 상태: &ldquo;Service Maintenance&rdquo;
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/patch/patch08.jpg" alt="" /></li>
+</ul>
+
+<p>클러스터 상세 페이지에서는 패치 진행 상세 정보가 출력됩니다.</p>
+
+<ul>
+<li>&lt;그림 10&gt; 패치 상태 정보 페이지
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/patch/patch09.jpg" alt="" /></li>
+</ul>
+
+<h3 id="패치-결과-확인">패치 결과 확인</h3>
+
+<p>패치가 완료되면 &lt;그림 11&gt;가 다음과 같이 변경된 것을 확인할 수 있습니다.</p>
+
+<ol>
+<li>&ldquo;진행 중인 프로비저닝 메시지&rdquo; 박스가 사라짐</li>
+<li>&ldquo;status&rdquo;가 Running으로 변경</li>
+<li>버전이 17.3.3-20으로 출력</li>
+</ol>
+
+<ul>
+<li>&lt;그림 11&gt; 패치 적용 후 클러스터 상세 정보 페이지
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/patch/patch10.jpg" alt="" /></li>
+</ul>
+
+<h3 id="패치-되돌리기">패치 되돌리기</h3>
+
+<p>패치가 완료된 후, 여러 가지 이유로 이전 버전으로 되돌려야 하는 경우가 있습니다.
+이런 상황을 대비하여 Oracle Cloud는 패치 &ldquo;Rollback&rdquo; 기능을 제공합니다.
+Oracle Cloud 패치를 수행하기 전에 기존 환경의 백업을 수행하기 때문에, 필요할 경우 이전 환경으로 되돌릴 수 있습니다.
+&lt;그림 12&gt;와 같이 기존 패치 적용 목록의 &ldquo;Roll Back&rdquo; 메뉴를 이용하여 이전 버전으로 돌아갈 수 있습니다.</p>
+
+<ul>
+<li>&lt;그림 12&gt; 패치 &ldquo;Roll Back&rdquo; 메뉴
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/patch/patch11.jpg" alt="" /></li>
+</ul>
+
+<h2 id="요약">요약</h2>
+
+<p>Oracle Cloud는 매달 새로운 기능을 서비스에 추가하고 있으며, 기존에 서비스를 만든 사용자를 위하여 패치를 제공합니다.
+패치는 사용자가 결정한 시점에 적용 가능합니다.
+안전한 패치를 위하여, 패치 사전 테스트(Precheck), 패치 적용, 패치 진행 상태 확인, &ldquo;패치 Roll Back&rdquo; 기능을 제공합니다.
+Oracle Cloud는 패치 작업 부담과 위험을 최소화하는 안전한 패치 프로세스 제공합니다.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">클라우드 사용자가 PaaS 서버에 추가 소프트웨어를 설치할 경우에 발생하는 라이센스 문제는 모두 클라우드 사용자에게 있습니다.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">Oracle BDCSCE 기능 변경 내용은 다음 링크에서 확인 가능합니다. <a href="https://goo.gl/ty14Pu">https://goo.gl/ty14Pu</a>
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:3">본 문서에서는 Oracle BDCSCE의 인스턴스와 클러스터를 같은 의미로 사용합니다.
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+<li id="fn:4">모든 패치 적용 시 서비스가 중단되지는 않습니다. &lt;그림 3&gt;에서 &ldquo;패치 적용 후 서비스 재시작&rdquo;으로 분류된 패치는 서비스가 중단된 상태로 패치가 진행됩니다.
+ <a class="footnote-return" href="#fnref:4"><sup>[return]</sup></a></li>
+</ol>
+</div>
+<div class="edit-meta">Last updated on 19 Dec 2018 / Published on 19 Dec 2018<br></div><nav class="pagination">
+<a class="nav nav-prev" href="/tutorial_manual/oracle_bdc/030.cluster_mngt/010.after_provisioning/zepplin_sudo/" title="sudo 권한 설정"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - sudo 권한 설정</a>
+
+
+<a class="nav nav-next" href="/tutorial_manual/oracle_bdc/030.cluster_mngt/scale_out/" title="BDC 인스턴스 Scale-Out(완료)">Next - BDC 인스턴스 Scale-Out(완료) <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+
+</nav><footer><div class="authorbox row clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2&appId=404519239985000&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/oracle_bdc/030.cluster_mngt/patch/"></div>
+<p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
+</footer>
+</main><div class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+<hr/>
+
+<nav>
+<ul>
+
+<li class="parent"><a href="/tutorial_manual/oracle_bdc/">오라클 클라우드 빅데이터 서비스: Oracle BDC(완료)</a>
+<ul class="sub-menu">
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/010.oracle_bdc/">01. Oracle Big Data Cloud</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/oracle_bdc/010.oracle_bdc/010.overview/">오라클 클라우드 BDC 서비스</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/010.oracle_bdc/020.component/">Oracle BDC 하둡 에코(1차완료)</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/010.oracle_bdc/030.data_lake_tech/">Oracle Cloud 데이터 분석 서비스</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/020.provisioning/">02. 인스턴스 프로비저닝</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/oracle_bdc/020.provisioning/010.provisioning_ocic/">Oracle BDC 인스턴스 생성: OCIC(작성)</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/020.provisioning/020.provisioning_oci/">Oracle BDC 인스턴스 생성: OCI</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/020.provisioning/030.provision_with_psm/">PSM을 이용한 Oracle BDC 인스턴스 생성</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/020.provisioning/040.customizing_cluster/">클러스터 커스터마이징</a></li>
+</ul>
+  
+</li>
+
+<li class="parent"><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/">03. 인스턴스 관리</a>
+<ul class="sub-menu">
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/010.after_provisioning/">프로비저닝 후속 작업</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/010.after_provisioning/ambari_security/">Ambari 보안 설정 및 </a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/010.after_provisioning/zepplin_sudo/">sudo 권한 설정</a></li>
+</ul>
+  
+</li>
+<li class="active"><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/patch/">BDC 서비스 패치(완료)</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/scale_out/">BDC 인스턴스 Scale-Out(완료)</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/scale_in/">BDC 인스턴스 Scale-In(완료)</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/030.cluster_mngt/removing/">BDC 인스턴스 삭제</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/040.interface/">04. BDC 접근 인터페이스</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/oracle_bdc/040.interface/service_console/">BDC 서비스 콘솔</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/040.interface/others/">ssh, cli 및 Apache Trift</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/040.interface/ambari/">Ambari</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/040.interface/zeppelin/">Apache Zeppelin</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/040.interface/sparkui/">Apache Zeppelin</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/050.job/">05. BDC Job 프로세스 관리</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/oracle_bdc/050.job/mapreduce/">MapReduce  프로세스 등록 및 실행</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/050.job/scala_spark/">Scala Spark 프로세스 등록 및 실행</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/050.job/pyspark/">PySpark  프로세스 등록 및 실</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/060.integration/">06. Oracle BDC 연동</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/oracle_bdc/060.integration/object_storage/">Object Storage 통합</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/060.integration/oracle_db/">Oracle DB와 통합</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/060.integration/big_data_connector/">Oracle DB 통합</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/070.security/">07. Oracle BDC 보안 관리</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/oracle_bdc/070.security/reset_password/">패스워드 변경</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/070.security/change_ssh/">ssh 키 파일 변경</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/080.zepplin/">08. zeppelin </a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/oracle_bdc/080.zepplin/addlibrary/">신규 라이브러리 관리</a></li>
+<li class=""><a href="/tutorial_manual/oracle_bdc/080.zepplin/python/">파이썬 설치 및 변경</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/oracle_bdc/090.review/">09. 마치며 </a>
+</li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>
