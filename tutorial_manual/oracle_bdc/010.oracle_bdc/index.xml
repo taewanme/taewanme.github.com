@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>01. Oracle Big Data Cloud on taewan.kim 블로그</title>
+    <title>01.Oracle Big Data Cloud on taewan.kim 블로그</title>
     <link>http://taewan.kim/oracle_bdc/010.oracle_bdc/</link>
-    <description>Recent content in 01. Oracle Big Data Cloud on taewan.kim 블로그</description>
+    <description>Recent content in 01.Oracle Big Data Cloud on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 27 Dec 2017 19:05:14 +0900</lastBuildDate>
@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>오라클 클라우드 BDC 서비스</title>
+      <title>Oracle BDC 개요</title>
       <link>http://taewan.kim/oracle_bdc/010.oracle_bdc/010.overview/</link>
       <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
       
@@ -21,7 +21,16 @@
     </item>
     
     <item>
-      <title>Oracle BDC 하둡 에코(1차완료)</title>
+      <title>Oracle BDC 용어</title>
+      <link>http://taewan.kim/oracle_bdc/010.oracle_bdc/025.terminology/</link>
+      <pubDate>Thu, 20 Dec 2018 08:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oracle_bdc/010.oracle_bdc/025.terminology/</guid>
+      <description>Oracle Cloud 빅데이터 서비스인 Oracle BDC를 설명하는 과정에서 사용하는 용어를 정리합니다. Oracle Cloud Account 오라클 클라우드 계정 오라클 클라우드 계정은 기업 시스템 전체 혹은 기업의</description>
+    </item>
+    
+    <item>
+      <title>Oracle BDC 하둡 구성 컴포넌트</title>
       <link>http://taewan.kim/oracle_bdc/010.oracle_bdc/020.component/</link>
       <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
       

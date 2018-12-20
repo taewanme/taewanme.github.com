@@ -28,17 +28,17 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/tutorial_manual/oracle_bdc/010.oracle_bdc/010.overview/</loc>
+    <lastmod>2017-12-27T19:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tutorial_manual/oracle_bdc/020.provisioning/010.provisioning_ocic/</loc>
     <lastmod>2017-12-27T19:05:14+09:00</lastmod>
   </url>
   
   <url>
     <loc>http://taewan.kim/tutorial_manual/oracle_bdc/060.integration/oracle_db/</loc>
-    <lastmod>2017-12-27T19:05:14+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/tutorial_manual/oracle_bdc/010.oracle_bdc/010.overview/</loc>
     <lastmod>2017-12-27T19:05:14+09:00</lastmod>
   </url>
   
@@ -53,6 +53,11 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/tutorial_manual/oracle_bdc/010.oracle_bdc/025.terminology/</loc>
+    <lastmod>2018-12-20T08:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tutorial_manual/oracle_bdc/020.provisioning/</loc>
     <lastmod>2017-12-27T19:05:14+09:00</lastmod>
   </url>
@@ -64,11 +69,6 @@
   
   <url>
     <loc>http://taewan.kim/tutorial_manual/oracle_bdc/010.oracle_bdc/020.component/</loc>
-    <lastmod>2017-12-27T19:05:14+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/tutorial_manual/oracle_bdc/010.oracle_bdc/030.data_lake_tech/</loc>
     <lastmod>2017-12-27T19:05:14+09:00</lastmod>
   </url>
   
@@ -139,6 +139,11 @@
   
   <url>
     <loc>http://taewan.kim/tutorial_manual/oracle_bdc/040.interface/zeppelin/</loc>
+    <lastmod>2017-12-27T19:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tutorial_manual/oracle_bdc/010.oracle_bdc/030.data_lake_tech/</loc>
     <lastmod>2017-12-27T19:05:14+09:00</lastmod>
   </url>
   
