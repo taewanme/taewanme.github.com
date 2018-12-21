@@ -6,10 +6,19 @@
     <description>Recent content on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 19 Dec 2018 09:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 21 Dec 2018 12:05:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Machine Learning Yearning 한글화</title>
+      <link>http://taewan.kim/tutorial_manual/0002/</link>
+      <pubDate>Fri, 21 Dec 2018 12:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tutorial_manual/0002/</guid>
+      <description>이 문서는 앤드류 응(Andrew Ng.) 교수님이 Ebook 형태로 공개한 &amp;lsquo;Machine Learning Yearning&amp;rsquo; Draft 버전의 한국어 번역입니다. &amp;lsquo;Machine Learning Yearning&amp;rsquo;은 deeplearning.ai에서 진행하고 있는 &amp;ldquo;Deep Learning Specialization&amp;rdquo; 강좌와 병행하여 보시면 좋은 입문 자료입니다.머신러닝 프로젝트를 구조화하고 개선하는 전략과 다양한 기법을 소개합니다. 전체 58장으로 구성되어 있습니다. 일주일에 2-3장씩 번역 문서를 공개할 예정입니다.</description>
+    </item>
     
     <item>
       <title>BitBucket 오류, (repository access denied. access via a deployment key is read-only.)</title>
@@ -867,9 +876,9 @@ taewanme/pyml 컨테이너 이미지 pyml 더커 이미지는 docker hub에 자�
       <pubDate>Mon, 04 Jun 2018 16:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/trans_docs/t_mly_04/</guid>
-      <description>원문제목: 4. Scale drives machine learning progress 최종 업데이트: 2018년 06월 04일 목차이동: Machine Learning Yearning 목차 저자: Andrew NG 원문: http://www.mlyearning.org 분류: Intro  딥러닝(신경망)의 아이디어는 수십 년 동안 계속되어 왔습니다. 왜 이 아이디어가 지금에서 뜨는 걸까요??
-최근 진전을 이끈 가장 큰 두 가지 요인은 다음과 같습니다.
- 데이터 가용성(Data availability): 사람들은 이제 디지털 장비(랩톱, 모바일 장치)에서 더 많은 시간을 보내고 있습니다. 사람들의 디지털 활동은 많은 양의 데이터를 생산합니다.</description>
+      <description>원문제목: 4. Scale drives machine learning progress 최종 업데이트: 2018년 06월 04일 목차이동: Machine Learning Yearning 목차 저자: Andrew NG 원문: http://www.mlyearning.org 분류: Intro  딥러닝(신경망)에 대한 대부분의 개념은 수집 년 동안 계속되어 왔습니다. 왜 이 아이디어가 지금 뜨는 걸까요??
+최근 발전을 이끈 가장 중요한 두 가지 요인은 다음과 같습니다.
+ 데이터 가용성(Data availability): 사람들은 이제 디지털 장비(랩톱, 모바일 장치)와 많은 시간을 보내고 있습니다. 사람들의 디지털 활동은 많은 양의 데이터를 생산합니다.</description>
     </item>
     
     <item>
