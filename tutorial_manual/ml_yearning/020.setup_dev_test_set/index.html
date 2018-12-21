@@ -3,11 +3,10 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>1. 왜 머신러닝 전략이 필요한가? - taewan.kim 블로그</title>
-<meta name="description" content="머신러닝 프로젝트에 왜 전략이 필요한가?">
+<title>Part2. 개발과 테스트셋 구성 - taewan.kim 블로그</title>
 <meta name="generator" content="Hugo 0.52" />
 <link href="/index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="http://taewan.kim/ml_yearning/010.intro/1/">
+<link rel="canonical" href="http://taewan.kim/ml_yearning/020.setup_dev_test_set/">
 <link rel="stylesheet" href="/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="css/chroma.min.css">
@@ -60,64 +59,23 @@
 	<ul class="menu__list"><li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li><li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li><li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Tutorial과 Manual 문서를 제공" >TUTORIAL &amp; MANUAL</a></li><li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li><li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li><li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li><li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li></ul>
 </nav>
 <div class="content-container">
-<main>
-
-<figure class="post__thumbnail">
-  <img src="https://taewanmerepo.github.io/2018/12/mlyearning/post.jpg" alt="1. 왜 머신러닝 전략이 필요한가?">
-</figure>
-
-<h1>1. 왜 머신러닝 전략이 필요한가?</h1>
-
-<p>최근에 기계학습은 웹 검색, 이메일 스팸 방지, 음성 인식, 상품 추천 등 수 많은 중요 애플리케이션의 기반 기술이 되었습니다. 이 책은 보시는 여러분 혹은 개발팀은 기계 학습 애플리케이션을 개발 중이며, 빠른 진행을 바란다고 가정합니다. 이 책은 신속한 진행에 도움이 될 것입니다.</p>
-
-<h2 id="예제-고양이-사진-스타트업-창업">예제: 고양이 사진 스타트업 창업</h2>
-
-<p>고양이 애호가에게 고양이 사진 스트리밍을 계속 제공하는 스타트업을 만들고 있다고 가정해 보겠습니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2018/doc/mlyearning/01/img01.jpg" alt="" /></p>
-
-<p>여러분은 신경망을 사용하여, 사진 속에 고양이를 감지하는 컴퓨터 비전 시스템을 구축하고 있습니다.</p>
-
-<p>안타깝게도 여러분의 학습 알고리즘 정확도는 아직 만족스럽지 못합니다. 또한 개발팀은 고양이 감지기 성능 개선에 상당한 압박을 받고 있습니다. 여러분들은 무엇을 해야 할까요?</p>
-
-<p>고양이 감지기 개발팀은 다음과 같은 아이디어를 갖고 있습니다.</p>
+<main><h1>Part2. 개발과 테스트셋 구성</h1><p><strong>Part 2</strong>에서는 개발 데이터셋과 테스트 데이터셋을 구성하고 관리하는 방법과 최적화를 위한 평가 지표를 만들과 관리하는 방법을 설명합니다.</p>
 
 <ul>
-<li>더 많은 데이터 확보: 고양이 사진을 더 많이 수집한다.</li>
-<li>더 다양한 학습 데이터셋 확보: 예를 들어, 비정상적인 위치의 고양이 사진, 특이한 색상의 고양이 사진 및 다양한 카메라 설정으로 촬영된 고양이 사진 등등</li>
-<li>경사 기울기(Gradient descent) 반복을 더 많이 수행하여, 알고리즘을 더 오래 학습시킨다.</li>
-<li>더 많은 레이어, 은닉층 및 파라미터를 갖는 더 큰 신경망을 만든다.</li>
-<li>더 작은 신경망을 시도해 본다.</li>
-<li>정규화 기법(예: L2 정규화)을 추가해 본다.<br /></li>
-<li>신경망 아키텍처를 변경한다. (활성 함수, 은닉층 수 &hellip;)</li>
-<li>등등</li>
-</ul>
-
-<p>이런 여러 방법 중에서 여러분이 올바른 선택을 한다면, 선도적인 고양이 사진 플랫폼을 구축하고, 스타트업은 성공하게 될 것입니다. 반대로 부적절한 선택을 한다면, 개발팀은 몇 달의 시간을 낭비하게 될 것입니다. 여러분은 어떻게 하시겠습니까?</p>
-
-<p>이 책은 이런 상황에서 무엇을 어떻게 해야 하는지를 소개합니다. 대부분의 기계 학습 문제는 시도해 보면 유용한 것과 시도해 볼 필요가 없다는 것을 알리는 단서를 남깁니다. 이런 단서를 파악할 수 있다면 개발팀은 몇 달 또는 몇 년의 개발 시간을 절약할 수 있을 겁니다.</p>
-
-<div class="notices note" ><p>이 문서는 Andrew NG 교수님께서 집필한 <strong>Machine Learning Yearning</strong>의 1장 번역입니다. 원제는 &ldquo;1. Why Machine Learning Strategy&rdquo; 입니다. 원문 Ebook은 <a href="http://www.mlyearning.org" target="_blank"><a href="http://www.mlyearning.org">http://www.mlyearning.org</a> [↗NW]</a>
-에서 내려받을 수 있습니다.</p>
-</div>
-
-
-<hr />
-
-<h2 id="요점-정리-by-teawan">요점 정리 (By teawan)</h2>
-
-<ul>
-<li>ML 알고리즘은 정답이 있는 것이 아니라 최적화의 과정이기에 추가적인 최적화가 가능한지 파악하는 것이 중요함</li>
-<li>효과적으로 ML을 학습 시키기 위해서는 알고리즘이 남기는 흔적/단서를 파악할 수 있어야 함.</li>
-<li>ML 알고리즘이 남기는 단서를 파악하여 향후 방향을 정리하는 전략적 접근이 필요</li>
-<li>이 책의 목적은 ML 알고리즘의 상태를 여러 단서/흔적으로 파악하고 평가하는 방법을 체계적으로 정리하는 것</li>
-<li>이 체계화를 통해서 머신러닝 작업의 효율성 및 시간 절약이 가능해 짐</li>
+<li><a href="/tutorial_manual/ml_yearning/5/">5. 개발 데이터셋과 테스트 데이터셋</a></li>
+<li><a href="/tutorial_manual/ml_yearning/6/">6. 같은 분포의 개발셋과 테스트셋 구성</a></li>
+<li><a href="/tutorial_manual/ml_yearning/7/">7. 개발셋과 테스트셋의 규모는 어느정도?</a></li>
+<li><a href="/tutorial_manual/ml_yearning/8/">8. 최적화를 위한 단일 숫자 평가 지표</a></li>
+<li><a href="/tutorial_manual/ml_yearning/9/">9. 최적화 지표와 만족 지표</a></li>
+<li><a href="/tutorial_manual/ml_yearning/10/">10. 개발 데이터셋과 평가지표로 개발 사이클 속도 향상</a></li>
+<li><a href="/tutorial_manual/ml_yearning/11/">11. 개발 데이터셋/테스트 데이터셋과 지표를 변경해야하는 시점</a></li>
+<li><a href="/tutorial_manual/ml_yearning/12/">12. 정리: 개발 데이터셋과 테스트 데이터 데이터셋 구성</a></li>
 </ul>
 <div class="edit-meta">Last updated on 21 Dec 2018 / Published on 21 Dec 2018<br></div><nav class="pagination">
-<a class="nav nav-prev" href="/tutorial_manual/ml_yearning/010.intro/" title="Part 1. 시작하기"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - Part 1. 시작하기</a>
+<a class="nav nav-prev" href="/tutorial_manual/ml_yearning/010.intro/4/" title="4. 규모가 머신러닝의 발전을 이끈다."><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 4. 규모가 머신러닝의 발전을 이끈다.</a>
 
 
-<a class="nav nav-next" href="/tutorial_manual/ml_yearning/010.intro/2/" title="2. 이 책 활용법">Next - 2. 이 책 활용법 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="nav nav-next" href="/tutorial_manual/ml_yearning/010.intro/" title="Part 1. 시작하기">Next - Part 1. 시작하기 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 
 </nav><footer><div class="authorbox row clearfix">
 	<figure class="authorbox__avatar">
@@ -143,7 +101,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/ml_yearning/010.intro/1/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/ml_yearning/020.setup_dev_test_set/"></div>
 <p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
 </footer>
 </main><div class="sidebar"><div class="widget-search widget">
@@ -164,9 +122,9 @@
 <li class="parent"><a href="/tutorial_manual/ml_yearning/">Machine Learning Yearning</a>
 <ul class="sub-menu">
 
-<li class="parent"><a href="/tutorial_manual/ml_yearning/010.intro/">Part 1. 시작하기</a>
-<ul class="sub-menu">
-<li class="active"><a href="/tutorial_manual/ml_yearning/010.intro/1/">1. 왜 머신러닝 전략이 필요한가?</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/010.intro/">Part 1. 시작하기</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/ml_yearning/010.intro/1/">1. 왜 머신러닝 전략이 필요한가?</a></li>
 <li class=""><a href="/tutorial_manual/ml_yearning/010.intro/2/">2. 이 책 활용법</a></li>
 <li class=""><a href="/tutorial_manual/ml_yearning/010.intro/3/">3. 사전 준비와 표기법</a></li>
 <li class=""><a href="/tutorial_manual/ml_yearning/010.intro/4/">4. 규모가 머신러닝의 발전을 이끈다.</a></li>
@@ -174,7 +132,7 @@
   
 </li>
 
-<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/">Part2. 개발과 테스트셋 구성</a>
+<li class="parent active"><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/">Part2. 개발과 테스트셋 구성</a>
 </li>
 </ul>
   
