@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Part 1. 시작하기 on taewan.kim 블로그</title>
+    <link>http://taewan.kim/ml_yearning/010.intro/</link>
+    <description>Recent content in Part 1. 시작하기 on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 Dec 2017 19:05:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/ml_yearning/010.intro/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>1. 왜 머신러닝 전략이 필요한가?</title>
+      <link>http://taewan.kim/ml_yearning/010.intro/1/</link>
+      <pubDate>Fri, 21 Dec 2018 08:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/ml_yearning/010.intro/1/</guid>
+      <description>최근에 기계학습은 웹 검색, 이메일 스팸 방지, 음성 인식, 상품 추천 등 수 많은 중요 애플리케이션의 기반 기술이 되었습니다. 이 책은 보시는 여러분 혹은 개발팀은 기계</description>
+    </item>
+    
+    <item>
+      <title>2. 이 책 활용법</title>
+      <link>http://taewan.kim/ml_yearning/010.intro/2/</link>
+      <pubDate>Fri, 21 Dec 2018 08:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/ml_yearning/010.intro/2/</guid>
+      <description>이 책을 읽고 나면, 여러분은 기계 학습 프로젝트의 기술적 방향을 설정하면서 깊이 있는 이해를 갖게 될 것입니다. 머신러닝 프로젝트를 진행하면서 여러분은 프로젝트의</description>
+    </item>
+    
+    <item>
+      <title>3. 사전 준비와 표기법</title>
+      <link>http://taewan.kim/ml_yearning/010.intro/3/</link>
+      <pubDate>Fri, 21 Dec 2018 08:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/ml_yearning/010.intro/3/</guid>
+      <description>Coursera의 머신러닝 MOOC과 같은 머신러닝 과정을 수강했거나, 지도학습을 사용해본 경험이 있다면 이 책이 말하고자 하는 것을 이해할 수 있을 것입니다</description>
+    </item>
+    
+    <item>
+      <title>4. 규모가 기계학습의 발전을 이끈다.</title>
+      <link>http://taewan.kim/ml_yearning/010.intro/4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://taewan.kim/ml_yearning/010.intro/4/</guid>
+      <description>딥러닝(신경망)에 대한 대부분의 개념은 수집 년 동안 계속되어 왔습니다. 왜 이 아이디어가 지금 뜨는 걸까요?? 최근 발전을 이끈 가장 중요한 두 가지 요인은 다음과 같</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>3. 사전 준비와 표기법 - taewan.kim 블로그</title>
+<meta name="description" content="Machine Learning Yearning&#39;을 읽기 위해서 필요한 서전 지식 및 경험">
+<meta name="generator" content="Hugo 0.52" />
+<link href="/index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="http://taewan.kim/ml_yearning/010.intro/3/">
+<link rel="stylesheet" href="/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="/js/jquery.backtothetop/jquery.backtothetop.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-72835175-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-72835175-1');
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+<link rel="stylesheet" href="/css/taewan.css"  />
+</head>
+<body>
+<div class="container"> 
+<header class="header">
+  <div class="container container-inner clearfix" >
+    <div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+      <a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+        <h1 class="logo__title">taewan.kim 블로그</h1><br/>
+        <h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list"><li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li><li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li><li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Tutorial과 Manual 문서를 제공" >TUTORIAL &amp; MANUAL</a></li><li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li><li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li><li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li><li class="menu__item "><a class="menu__link" href="/minsu/" title="IaaS 서비스 관련 문서를 정리하는 페이지입니다." >우리 민수</a></li></ul>
+</nav>
+<div class="content-container">
+<main>
+
+<figure class="post__thumbnail">
+  <img src="https://taewanmerepo.github.io/2018/12/mlyearning/post.jpg" alt="3. 사전 준비와 표기법">
+</figure>
+
+<h1>3. 사전 준비와 표기법</h1>
+
+<p>Coursera의 머신러닝 MOOC과 같은 머신러닝 과정을 수강했거나, 지도학습을 사용해본 경험이 있다면 이 책이 말하고자 하는 것을 이해할 수 있을 것입니다.</p>
+
+<p>이 책의 독자는 지도학습을 어느 정도 알고 있다고 가정합니다. 지도학습은 레이블을 갖는 훈련 데이터 (x, y)를 가지고, x를 y에 대응하는 함수를 학습합니다. 지도 학습 알고리즘에는 선형회귀, 로지스틱 회귀와 신경망이 있습니다. 다양한 유형의 머신러닝이 존재하지만, 오늘날 머신러닝의 실질적 가치는 대부분 지도학습에서 나옵니다.</p>
+
+<p>앞으로 자주 신경망(&ldquo;딥러닝&rdquo;으로 알려진)을 언급할 것입니다. 이 책을 읽어나가기 위해서 여러분에게 필요한 것은, 신경망에 대한 기본적인 이해입니다.</p>
+
+<p>여기에 언급한 개념이 아직 익숙하지 않다면, Coursera의 &ldquo;Machine Learning&rdquo; 과정(<a href="http://ml-class.org">http://ml-class.org</a>)의 처음 3주 동영상을 시청하시기 바랍니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2018/doc/mlyearning/03/img010.jpg" alt="" /></p>
+
+<div class="notices note" ><p>이 문서는 Andrew NG 교수님께서 집필 중인 <strong>Machine Learning Yearning</strong>의 3장 번역입니다. 원제는 &ldquo;3. Prerequisites and Notation&rdquo; 입니다. 원문 Ebook은 <a href="http://www.mlyearning.org" target="_blank"><a href="http://www.mlyearning.org">http://www.mlyearning.org</a> [↗NW]</a>
+에서 내려받을 수 있습니다.</p>
+</div>
+
+
+<hr />
+
+<h2 id="요점-정리-by-teawan">요점 정리 (By teawan)</h2>
+
+<ul>
+<li>이 책을 이해하기 위해서 필요한 개념: 지도학습, 신경망 기초</li>
+</ul>
+<div class="edit-meta">Last updated on 21 Dec 2018 / Published on 21 Dec 2018<br></div><nav class="pagination">
+<a class="nav nav-prev" href="/tutorial_manual/ml_yearning/010.intro/2/" title="2. 이 책 활용법"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 2. 이 책 활용법</a>
+
+
+<a class="nav nav-next" href="/tutorial_manual/ml_yearning/010.intro/4/" title="4. 규모가 기계학습의 발전을 이끈다.">Next - 4. 규모가 기계학습의 발전을 이끈다. <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+
+</nav><footer><div class="authorbox row clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2&appId=404519239985000&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/ml_yearning/010.intro/3/"></div>
+<p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
+</footer>
+</main><div class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+<hr/>
+
+<nav>
+<ul>
+
+<li class="parent"><a href="/tutorial_manual/ml_yearning/">Machine Learning Yearning</a>
+<ul class="sub-menu">
+
+<li class="parent"><a href="/tutorial_manual/ml_yearning/010.intro/">Part 1. 시작하기</a>
+<ul class="sub-menu">
+<li class=""><a href="/tutorial_manual/ml_yearning/010.intro/1/">1. 왜 머신러닝 전략이 필요한가?</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/010.intro/2/">2. 이 책 활용법</a></li>
+<li class="active"><a href="/tutorial_manual/ml_yearning/010.intro/3/">3. 사전 준비와 표기법</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/010.intro/4/">4. 규모가 기계학습의 발전을 이끈다.</a></li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>
