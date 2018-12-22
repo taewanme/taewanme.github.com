@@ -24,16 +24,6 @@ pyml Docker 최신 정보 pyml Docker 이미지 버전 pyml Docker 이미지 버
     </item>
     
     <item>
-      <title>Machine Learning Yearning 번역문서 목록</title>
-      <link>http://taewan.kim/docs/t_mly_00/</link>
-      <pubDate>Thu, 12 Jul 2018 21:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/docs/t_mly_00/</guid>
-      <description>들어가며 &amp;ldquo;Machine Learning Yearning&amp;ldquo;은 최근에 Andrew NG 교수님이 온라인 집필 중인 딥러닝 입문서입니다. 전체 56장으로 구성되어 있으며 매주 2-3장씩 메일링으로 공개되고 있습니다. 이 공개 e-book을 번역하는 페이지입니다. 머신 러닝에 대한 실무적이고 직관적인 내용을 정리하고 있습니다. 수식과 복잡한 개념 보다는 실무에서 고민해야 하는 직관적인 내용으로 구성됩니다. 머신러닝 입문자에게 적합한 e-book입니다. 일주일에 1-2개씩 각 chapter별로 문서를 번역하고 업데이트할 예정입니다.
-   일자 ebook draft version 다운로드     2018.</description>
-    </item>
-    
-    <item>
       <title>Machine Learning 용어집</title>
       <link>http://taewan.kim/docs/ml_glossary/</link>
       <pubDate>Tue, 20 Mar 2018 21:28:14 +0900</pubDate>
