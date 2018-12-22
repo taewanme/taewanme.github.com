@@ -26,7 +26,16 @@
       <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
       
       <guid>http://taewan.kim/ml_yearning/020.setup_dev_test_set/6/</guid>
-      <description></description>
+      <description>시간 규모를 기준으로 지역을 (i) 미국, (ii) 중국, (iii) 인도 및 (iv) 기타 4개 영역로 구분했습니다. 이 4개 지역을 기준으로 고양이 앱 이미지 데이터를 분할하여 보유하고 있습</description>
+    </item>
+    
+    <item>
+      <title>7. 개발셋과 테스트셋의 규모는 어느정도?</title>
+      <link>http://taewan.kim/ml_yearning/020.setup_dev_test_set/7/</link>
+      <pubDate>Sat, 22 Dec 2018 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/ml_yearning/020.setup_dev_test_set/7/</guid>
+      <description>개발 데이터셋1은 여러분이 학습시킨 알고리즘들의 차이를 감지할 수 있을 만큼 커야 합니다. 예를 들어서, A 분류기의 정확도는 90.0%이고 B 분류기의 정확도는</description>
     </item>
     
   </channel>

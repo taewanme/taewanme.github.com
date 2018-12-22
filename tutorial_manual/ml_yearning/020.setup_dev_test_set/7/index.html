@@ -3,11 +3,10 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>2. 이 책 활용법 - taewan.kim 블로그</title>
-<meta name="description" content="이 책의 취지와 구성 그리고 활용법">
+<title>7. 개발셋과 테스트셋의 규모는 어느정도? - taewan.kim 블로그</title>
 <meta name="generator" content="Hugo 0.52" />
 <link href="/index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="http://taewan.kim/ml_yearning/010.intro/2/">
+<link rel="canonical" href="http://taewan.kim/ml_yearning/020.setup_dev_test_set/7/">
 <link rel="stylesheet" href="/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="css/chroma.min.css">
@@ -63,28 +62,39 @@
 <main>
 
 <figure class="post__thumbnail">
-  <img src="https://taewanmerepo.github.io/2018/12/mlyearning/post.jpg" alt="2. 이 책 활용법">
+  <img src="https://taewanmerepo.github.io/2018/12/mlyearning/post.jpg" alt="7. 개발셋과 테스트셋의 규모는 어느정도?">
 </figure>
 
-<h1>2. 이 책 활용법</h1><p>이 책을 읽고 나면, 여러분은 기계 학습 프로젝트의 기술적 방향을 설정하면서 깊이 있는 이해를 갖게 될 것입니다.</p>
+<h1>7. 개발셋과 테스트셋의 규모는 어느정도?</h1><p>개발 데이터셋<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>은 여러분이 학습시킨 알고리즘들의 차이를 감지할 수 있을 만큼 커야 합니다. 예를 들어서, A 분류기의 정확도는 90.0%이고 B 분류기의 정확도는 90.1%라고 가정해 보겠습니다. 여기에 사용하는 개발 데이터셋의 크기가 100건 이라면, 이 개발 데이터셋으로는 두 알고리즘 성능 0.1%의 차이를 감지할 수 없습니다. 지금까지 머신러닝 경험을 생각해보면, 개발 데이터셋으로 데이터 100건<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>은 너무 작습니다. 개발 데이터셋 크기는 일반적으로 1,000개에서 10,000개가 일반적입니다. 개발 데이터셋으로 10,000 건의 데이터를 사용하면, 0.1% 성능 향상<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>은 쉽게 감지할 수 있습니다.<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup></p>
 
-<p>머신러닝 프로젝트를 진행하면서 여러분은 프로젝트의 특정 방향을 추천할 수 있습니다. 그러나 어떤 팀원은 여러분이 그것을 추천한 이유를 이해하지 못할 수도 있습니다. 예를 들어서 여러분은 단일 숫자 평가 기준(Single-number evaluation metric)을 결정하는 것을 원할 수 있습니다. 하지만 팀원 중에는 그 평가 기준에 확신을 갖지 못할 수도 있습니다. 이런 팀원들을 어떻게 설득해야 할까요?</p>
+<p>광고, 웹 검색 및 제품 추천과 같이 성숙하고 중요한 애플리케이션의 경우에, 작은 성능 향상도 회사의 이익에 직접적인 영향을 주기 때문에, 0.01% 성능 개선도 개발팀에 큰 동기 부여가 되기도 합니다. 이런 상황이라면, 개발 데이터셋이 훨씬 더 작은 성능 개선을 탐지할 수 있도록 10,000개 보다 훨씬 더 크게 만들어야 합니다.</p>
 
-<p>이런 상황에서 팀원들을 설득하는 효과적인 자료로 사용되기 위해서, 이 책의 각 장(Chapter)을 짧게 작성했습니다. 팀원들이 알아야 할 장을 출력하고, 그 1-2페이지를 팀원들에게 나눠줍니다.</p>
+<p>테스트 데이터셋의 크기는 어떨까요? 시스템의 전체 성능에 높은 신뢰성을 제공할 수 있을만큼 충분히 커야합니다.<sup class="footnote-ref" id="fnref:4"><a href="#fn:4">4</a></sup> 일반적인 휴레스틱(경험적인) 방법은 전체 데이터의 30%를 테스트 데이터셋으로 사용하는 것입니다. 이런 방식은 전체 데이터가 100개에서 10,000개인 작은 규모에 적합합니다. 그러나 현재는 빅데이터 시대입니다. 10억 개가 넘는 데이터를 머신러닝하는 경우도  있습니다. 이런 상황을 고려하여 최근에는 개발/테스트 데이터셋에 데이터를 나누는 비율이 줄어들고 있습니다. 할당 비율은 줄어들고 있지만 기반 데이터가 매우 크기 때문에 개발 및 테스트 세트의 실제 데이터 수는 늘어나는 상항입니디. 알고리즘 성능을 평가하는 데 필요한 것 이상으로 과도하게 큰 개발 데이터셋과 테스트 데이터셋을 만들 필요는 없습니다.</p>
 
-<p>우선순위의 작은 변화가 팀 생산성에 큰 영향을 미칠 수 있습니다. 이런 작은 변화로 팀에 큰 보탬이 됨으로써, 여러분이 팀의 수퍼히어로가 되길 희망합니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2018/doc/mlyearning/02/img010.jpg" alt="" /></p>
-
-<div class="notices note" ><p>이 문서는 Andrew NG 교수님께서 집필한 <strong>Machine Learning Yearning</strong>의 2장 번역입니다. 원제는 &ldquo;2. How to use this book to help your team&rdquo; 입니다. 원문 Ebook은 <a href="http://www.mlyearning.org" target="_blank"><a href="http://www.mlyearning.org">http://www.mlyearning.org</a> [↗NW]</a>
+<div class="notices note" ><p>이 문서는 Andrew NG 교수님께서 집필 중인 <strong>Machine Learning Yearning</strong>의 7장 번역입니다. 원제는 &ldquo;7. How large do the dev/test sets need to be?&rdquo; 입니다. 문 Ebook은 <a href="http://www.mlyearning.org" target="_blank"><a href="http://www.mlyearning.org">http://www.mlyearning.org</a> [↗NW]</a>
 에서 내려받을 수 있습니다.</p>
 </div>
 
-<div class="edit-meta">Last updated on 21 Dec 2018 / Published on 21 Dec 2018<br></div><nav class="pagination">
-<a class="nav nav-prev" href="/tutorial_manual/ml_yearning/010.intro/1/" title="1. 왜 머신러닝 전략이 필요한가?"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 1. 왜 머신러닝 전략이 필요한가?</a>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">&lt;역자주&gt; 개발 데이터셋은 알고리즘에 적용되는 파라미터를 개선하는데 사용됩니다. 파라미터 변경이 알고리즘에 미치는 영향을 파악하고자하는 스케일 크기가 개발 데이터셋의 크기를 결정하는 기준이됩니다.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">&lt;역자주&gt; 개발 데이터셋으로 데이터 10,000건을 사용하면 소숫점 2자리 백분률를 구할 수 있습니다. 따라서 소숫점 한자리 변화는 쉽게 파악할 수있다는 의미입니다.
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:3">이론적으로, 알고리즘 변경이 개발 세트에 통계적으로 유의미한 차이를 만들면 테스트를 수행할 수도 있습니다. 실무에서는 학문적 연구 논문을 준비하지 않는 한, 이런 작업에 신경을 쓰지 않습니다. 본인도 보통 중간 진척을 측정하는 데 유용한 통계적 중요 테스트를 확인하지 않습니다.
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+<li id="fn:4">&lt;역자주&gt; 개발 데이터셋의 규모는 알고리즘의 정확도를 구분해야 하는 스케일을 기준으로 결정합니다. 테스트 데이터셋의 규모는 알고리즘을 평가하는 신뢰도를 기준으로 결정합니다. 평가 신뢰도가 확보된 상태라면, 학습 데이터셋이 늘어났다고해서, 테스트 데이터셋을 늘릴 필요는 없습니다.
+ <a class="footnote-return" href="#fnref:4"><sup>[return]</sup></a></li>
+</ol>
+</div>
+<div class="edit-meta">Last updated on 22 Dec 2018 / Published on 22 Dec 2018<br></div><nav class="pagination">
+<a class="nav nav-prev" href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/6/" title="6. 같은 분포의 개발셋과 테스트셋 구성"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 6. 같은 분포의 개발셋과 테스트셋 구성</a>
 
 
-<a class="nav nav-next" href="/tutorial_manual/ml_yearning/010.intro/3/" title="3. 사전 준비와 표기법">Next - 3. 사전 준비와 표기법 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="nav nav-next" href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/5/" title="5. 개발 데이터셋과 테스트 데이터셋">Next - 5. 개발 데이터셋과 테스트 데이터셋 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 
 </nav><footer><div class="authorbox row clearfix">
 	<figure class="authorbox__avatar">
@@ -110,7 +120,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/ml_yearning/010.intro/2/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/ml_yearning/020.setup_dev_test_set/7/"></div>
 <p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
 </footer>
 </main><div class="sidebar"><div class="widget-search widget">
@@ -131,21 +141,21 @@
 <li class="parent"><a href="/tutorial_manual/ml_yearning/">Machine Learning Yearning</a>
 <ul class="sub-menu">
 
-<li class="parent"><a href="/tutorial_manual/ml_yearning/010.intro/">Part 1. 시작하기</a>
-<ul class="sub-menu">
+<li class=""><a href="/tutorial_manual/ml_yearning/010.intro/">Part 1. 시작하기</a>
+<ul class="">
 <li class=""><a href="/tutorial_manual/ml_yearning/010.intro/1/">1. 왜 머신러닝 전략이 필요한가?</a></li>
-<li class="active"><a href="/tutorial_manual/ml_yearning/010.intro/2/">2. 이 책 활용법</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/010.intro/2/">2. 이 책 활용법</a></li>
 <li class=""><a href="/tutorial_manual/ml_yearning/010.intro/3/">3. 사전 준비와 표기법</a></li>
 <li class=""><a href="/tutorial_manual/ml_yearning/010.intro/4/">4. 규모가 머신러닝의 발전을 이끈다.</a></li>
 </ul>
   
 </li>
 
-<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/">Part 2. 개발과 테스트셋 구성</a>
-<ul class="">
+<li class="parent"><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/">Part 2. 개발과 테스트셋 구성</a>
+<ul class="sub-menu">
 <li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/5/">5. 개발 데이터셋과 테스트 데이터셋</a></li>
 <li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/6/">6. 같은 분포의 개발셋과 테스트셋 구성</a></li>
-<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/7/">7. 개발셋과 테스트셋의 규모는 어느정도?</a></li>
+<li class="active"><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/7/">7. 개발셋과 테스트셋의 규모는 어느정도?</a></li>
 </ul>
   
 </li>
