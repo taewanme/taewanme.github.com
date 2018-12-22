@@ -20,5 +20,14 @@
       <description>앞부분에서 소개한 고양이 사진 사례로 돌아가 보겠습니다. 이 앱 사용자는 모바일 앱을 실행하고, 여러 사진을 앱에 올립니다. 여러분은 이 중에서 고양이 사진을 자동으</description>
     </item>
     
+    <item>
+      <title>6. 같은 분포의 개발셋과 테스트셋 구성</title>
+      <link>http://taewan.kim/ml_yearning/020.setup_dev_test_set/6/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/ml_yearning/020.setup_dev_test_set/6/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
