@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://taewan.kim/entertain/apt-apt-get/</loc>
+    <lastmod>2018-12-24T05:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tutorial_manual/0002/</loc>
     <lastmod>2018-12-21T12:05:14+09:00</lastmod>
   </url>
@@ -1497,6 +1502,12 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/entertain/</loc>
+    <lastmod>2018-12-24T05:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tags/erd/</loc>
     <lastmod>2018-11-11T09:00:14+09:00</lastmod>
     <priority>0</priority>
@@ -2584,7 +2595,7 @@
   
   <url>
     <loc>http://taewan.kim/</loc>
-    <lastmod>2018-12-21T12:05:14+09:00</lastmod>
+    <lastmod>2018-12-24T05:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
