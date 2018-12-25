@@ -9,17 +9,17 @@
 <META http-equiv="Cache-Control" content="No-Cache">
 <meta property="fb:admins" content="devtainer@gmail.com"/>
 
-<title>Tutorial_manuals</title>
+<title>JShell 사용자 가이드(번역)</title>
 <meta name="description" content="taewan.kim">
 <meta name="generator" content="Hugo 0.52" />
-<meta property="og:title" content="Tutorial_manuals" />
-<meta property="og:description" content="taewan.kim" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://taewan.kim/tutorial_manual/" />
-<meta property="og:updated_time" content="2018-12-21T12:05:14&#43;09:00"/>
+<meta property="og:title" content="JShell 사용자 가이드(번역)" />
+<meta property="og:description" content="java9의 신규 기능인 JShell 공식 문서의 한글화 입니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/tutorial_manual/temp0001/" /><meta property="article:published_time" content="2017-12-27T19:05:14&#43;09:00"/>
+<meta property="article:modified_time" content="2017-12-27T19:05:14&#43;09:00"/>
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-<link rel="alternate" type="application/rss+xml" title="taewan.kim 블로그 Feed" href="http://taewan.kim/tutorial_manual/index.xml">
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
 <link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
 <link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
@@ -74,7 +74,7 @@
 	<ul class="menu__list">
 		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
 		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
-		<li class="menu__item menu__item--active"><a class="menu__link" href="/tutorial_manual/" title="Deep Learning 구현 기술에 대하여 정리합니다." >TUTORIAL &amp; MANUAL</a></li>
+		<li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Deep Learning 구현 기술에 대하여 정리합니다." >TUTORIAL &amp; MANUAL</a></li>
 		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
 		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
 		<li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li>
@@ -86,54 +86,51 @@
 		<div class="wrapper clearfix">
       
         
-	<hr/>
-	<div class="main-content loop content" role="main">
-		<article class="loop__item post clearfix">
-			<figure class="loop__thumbnail">
-				<a href="http://taewan.kim/tutorial_manual/temp0002/">
-					<img src="https://taewanmerepo.github.io/2018/doc/mlyearning/list.png" alt="Machine Learning Yearning 한글화" />
-				</a>
-			</figure>
-			<div class="loop__content clearfix">
-				<header class="loop__header">
-					<h3 class="loop__title post__title ">
-						<a href="/tutorial_manual/ml_yearning" rel="bookmark">Machine Learning Yearning 한글화</a>
-					</h3>
-					<div class="loop__meta meta">
-						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-						<time class="loop__meta-date" datetime="2018-12-21 12:05:14 &#43;0900 KST">December 21, 2018</time>
-					</div>
-				</header>
-				<div class="loop__excerpt">
-										이 문서는 앤드류 응(Andrew Ng.) 교수님이 Ebook 형태로 공개한 &lsquo;Machine Learning Yearning&rsquo; Draft 버전의 한국어 번역입니다. &lsquo;Machine Learning Yearning&rsquo;은 deeplearning.ai에서 진행하고 있는 &ldquo;Deep Learning Specialization&rdquo; 강좌와 병행하여 보시면 좋은 입문 자료입니다.머신러닝 프로젝트를 구조화하고 개선하는 전략과 다양한 기법을 소개합니다. 전체 58장으로 구성되어 있습니다. 일주일에 2-3장씩 번역 문서를 공개할 예정입니다.
-				</div>
-			</div>
-		</article>
-		<article class="loop__item post clearfix">
-			<figure class="loop__thumbnail">
-				<a href="http://taewan.kim/tutorial_manual/temp0001/">
-					<img src="https://taewanmerepo.github.io/2018/12/jshell/list.jpg" alt="JShell 사용자 가이드(번역)" />
-				</a>
-			</figure>
-			<div class="loop__content clearfix">
-				<header class="loop__header">
-					<h3 class="loop__title post__title ">
-						<a href="/tutorial_manual/jshell" rel="bookmark">JShell 사용자 가이드(번역)</a>
-					</h3>
-					<div class="loop__meta meta">
-						<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-						<time class="loop__meta-date" datetime="2017-12-27 19:05:14 &#43;0900 KST">December 27, 2017</time>
-					</div>
-				</header>
-				<div class="loop__excerpt">
-										최근에 각광받는 여러 언어의 특징은 코드 실행과 테스트가 쉽다는 것입니다. 이런 기능은 주로 REPL 기능으로 제공됩니다. 자바는 컴파일 언어이기 때문에 이러한 기능 제공이 부족했스빈다. Java 9에 REPL 기능이 추가되었습니다. 자바 REPL 기능의 이름이 Java Shell입니다. Java 9에서 새로 소개된 Java Shell의 공식 사용자 가이드를 번역해 보았습니다. 총 7개 문서로 구성되어 있습니다. Java Shell의 구요 기능, 각 기능의 사용법과 응용법을 다룹니다.
-.
-				</div>
-			</div>
-		</article>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">JShell 사용자 가이드(번역) </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2017-12-27 19:05:14 &#43;0900 KST">December 27, 2017</time>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+			<p>최근에 각광받는 여러 언어의 특징은 코드 실행과 테스트가 쉽다는 것입니다. 이런 기능은 주로 REPL 기능으로 제공됩니다. 자바는 컴파일 언어이기 때문에 이러한 기능 제공이 부족했스빈다. Java 9에 REPL 기능이 추가되었습니다. 자바 REPL 기능의 이름이 Java Shell입니다. Java 9에서 새로 소개된 Java Shell의 공식 사용자 가이드를 번역해 보았습니다. 총 7개 문서로 구성되어 있습니다. Java Shell의 구요 기능, 각 기능의 사용법과 응용법을 다룹니다.</p>
+
+<p>.</p>
+
+		</div>
 		
 
+	</article>
+	
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/tutorial_manual/temp0002/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">Machine Learning Yearning 한글화</p></a>
 	</div>
+</nav>
+
+	
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manual/temp0001/"></div>
+
+
+	
+	</div>
+
 <aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
 	
 <div class="widget-search widget">
@@ -150,7 +147,7 @@
 	
 
 <div class="widget-categories widget">	
-		<div class="fb-like" data-href="http://taewan.kim/tutorial_manual/" 
+		<div class="fb-like" data-href="http://taewan.kim/tutorial_manual/temp0001/" 
 		data-layout="standard" data-action="like" 
 		data-size="small" 
 		data-show-faces="true" 

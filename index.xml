@@ -32,10 +32,10 @@
     
     <item>
       <title>Machine Learning Yearning 한글화</title>
-      <link>http://taewan.kim/tutorial_manual/0002/</link>
+      <link>http://taewan.kim/tutorial_manual/temp0002/</link>
       <pubDate>Fri, 21 Dec 2018 12:05:14 +0900</pubDate>
       
-      <guid>http://taewan.kim/tutorial_manual/0002/</guid>
+      <guid>http://taewan.kim/tutorial_manual/temp0002/</guid>
       <description>이 문서는 앤드류 응(Andrew Ng.) 교수님이 Ebook 형태로 공개한 &amp;lsquo;Machine Learning Yearning&amp;rsquo; Draft 버전의 한국어 번역입니다. &amp;lsquo;Machine Learning Yearning&amp;rsquo;은 deeplearning.ai에서 진행하고 있는 &amp;ldquo;Deep Learning Specialization&amp;rdquo; 강좌와 병행하여 보시면 좋은 입문 자료입니다.머신러닝 프로젝트를 구조화하고 개선하는 전략과 다양한 기법을 소개합니다. 전체 58장으로 구성되어 있습니다. 일주일에 2-3장씩 번역 문서를 공개할 예정입니다.</description>
     </item>
     
@@ -1315,10 +1315,10 @@ NumPy는 다음과 같은 특징을 갖습니다.
     
     <item>
       <title>JShell 사용자 가이드(번역)</title>
-      <link>http://taewan.kim/tutorial_manual/0001/</link>
+      <link>http://taewan.kim/tutorial_manual/temp0001/</link>
       <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
       
-      <guid>http://taewan.kim/tutorial_manual/0001/</guid>
+      <guid>http://taewan.kim/tutorial_manual/temp0001/</guid>
       <description>최근에 각광받는 여러 언어의 특징은 코드 실행과 테스트가 쉽다는 것입니다. 이런 기능은 주로 REPL 기능으로 제공됩니다. 자바는 컴파일 언어이기 때문에 이러한 기능 제공이 부족했스빈다. Java 9에 REPL 기능이 추가되었습니다. 자바 REPL 기능의 이름이 Java Shell입니다. Java 9에서 새로 소개된 Java Shell의 공식 사용자 가이드를 번역해 보았습니다. 총 7개 문서로 구성되어 있습니다. Java Shell의 구요 기능, 각 기능의 사용법과 응용법을 다룹니다.
 .</description>
     </item>
