@@ -3,11 +3,11 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>4. 규모가 머신러닝의 발전을 이끈다. - taewan.kim 블로그</title>
-<meta name="description" content="Andrew NG 교수의 &#39;Machine Learning Yearning&#39;의 4장 &#39;Scale drives machine learning progress&#39; 번역 문서입니다">
+<title>10. 개발 데이터셋과 평가지표로 개발 순환 사이클 속도 향상 - taewan.kim 블로그</title>
+<meta name="description" content="Andrew NG 교수님이 &#39;Machine Learning Yearning&#39;의 10장 &#39;Having a dev set and metric speeds up iterations">
 <meta name="generator" content="Hugo 0.52" />
 <link href="/index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="http://taewan.kim/ml_yearning/010.intro/4/">
+<link rel="canonical" href="http://taewan.kim/ml_yearning/020.setup_dev_test_set/10/">
 <link rel="stylesheet" href="/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="css/chroma.min.css">
@@ -63,56 +63,37 @@
 <main>
 
 <figure class="post__thumbnail">
-  <img src="https://taewanmerepo.github.io/2018/12/mlyearning/post.jpg" alt="4. 규모가 머신러닝의 발전을 이끈다.">
+  <img src="https://taewanmerepo.github.io/2018/12/mlyearning/post.jpg" alt="10. 개발 데이터셋과 평가지표로 개발 순환 사이클 속도 향상">
 </figure>
 
-<h1>4. 규모가 머신러닝의 발전을 이끈다.</h1><p>딥러닝(신경망)에 대한 대부분의 개념은 수집 년 동안 계속되어 왔습니다. 왜 이 아이디어가 지금 뜨는 걸까요??</p>
+<h1>10. 개발 데이터셋과 평가지표로 개발 순환 사이클 속도 향상</h1><p>새로운 문제에 대하여 어떤 접근법이 가장 효과적인지를 미리 파악하는 것은 상당히 어렵습니다. 기계 학습 전문 연구자조차도 일반적으로 만족스러운 결과를 얻기까지 수집가지 아이디어를 시도해 봅니다. 기계 학습 시스템을 구축할 때 필자는 다음과 같은 절차로 작업을 수행합니다.</p>
 
-<p>최근 딥러닝 발전을 이끈 가장 중요한 두 가지 요인은 다음과 같습니다.</p>
+<ol>
+<li>시스템 구축 방법에 대한 몇 가지 아이디어로 시작</li>
+<li>코드로 아이디어를 구현</li>
+<li>아이디어가 얼마나 잘하는지 실험. (보통 처음 몇 가지 아이디어는 작동하지 않습니다!)
 
 <ul>
-<li><strong>데이터 가용성(Data availability)</strong>:  사람들은 이제 디지털 장비(랩톱, 모바일 장치)에서 더 많은 시간을 보내고 있습니다. 사람들의 활발한 디지털 활동은 거대한 규모의 데이터를 생산합니다. 그리고 이 데이터는 학습 알고리즘의 입력 데이터로 활용됩니다.</li>
-<li><strong>계산 규모(Computational Scale)</strong>: 지금 우리가 가지고 있는 거대한 데이터셋의 잇점을 취할 정도로 충분히 큰 규모의 신경망을 훈련시키는 것이 가능해 진것은   불과 몇 년전 입니다.</li>
-</ul>
+<li>이러한 학습 과정에서 더 많은 아이디어를 만들어 적용</li>
+<li>이 과정을 반복</li>
+</ul></li>
+</ol>
 
-<p>조금 더 자세히 설명하자면, 더 많은 데이터를 축적하더라도, 일반적으로 로지스틱 회귀와 같은 오래된 학습 알고리즘 성능이 일정 수준 이후에 더 이상 향상되지 않습니다.  즉, 학습 곡선이 &ldquo;평평해지고&rdquo;, 이런 현상이 발생하면 알고리즘은 더 많은 데이터를 입력해도 성능이 개선되지 않습니다.</p>
+<p><img src="https://taewanmerepo.github.io/2018/doc/mlyearning/10/img010.jpg" alt="" /></p>
 
-<p><img src="https://taewanmerepo.github.io/2018/doc/mlyearning/04/img010.jpg" alt="" /></p>
+<p>이와 같은 접근법은 반복적인 프로세스입니다. 이 반복을 빠르게 진행하면, 전체적인 진행 속도는 더 빨라집니다. 이것이 바로 개발 데이터셋와 테스트 데이터셋, 평가 지표가 중요한 이유입니다. 새로운 아이디어를 시도해 볼 때마다, 개발 데이터셋으로 이 새로운 시도의 성능을 측정하면, 올바른 방향으로 가고 있는지를 바로 확인할 수 있습니다.</p>
 
-<p>이러한 현상은 마치 예전 알고리즘이 현재 확보한 데이터로 무엇을 해야할지 모르라서 허둥되는 모습처럼 보입니다.</p>
+<p>반대로 개발 데이터셋과 평가 지표가 없다고 가정해 보겠습니다. 새로운 고양이 분류기를 개발할 때마다, 새 분류기를 앱에 통합하고 몇 시간 동안 앱을 사용한 후, 새로운 분류기의 개선 여부를 파악해야 합니다. 이와 같은 개발 프로세스는 너무너무 느립니다. 또한 분류기의 정확도를 95.0%에서 95.1%로 향상하는 경우, 앱을 사용하는 것으로는 0.1% 향상을 감지하지 못할 수도 있습니다. 그러나 시스템은 이런 0.1% 개선이 누적되어 발전합니다. 개발 데이터셋 및 측정 항목을 사용하면, 어떤 아이디어가 만드는 작은 (또는 큰) 성능 변화도 바로 감지할 수 있습니다. 이 아이디어를 더 고민하고 개선할 것인지, 아니면 이 아이디어를 폐기할 것인지를 바로 결정할 수 있습니다.</p>
 
-<p>동일한 지도학습 문제에 작은 신경망으로 적용시킨다 해도, 예전 알고리즘과 비교하여 더 향상된 성능을 얻을 수도 있습니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2018/doc/mlyearning/04/img020.jpg" alt="" /></p>
-
-<p>여기에서 &ldquo;작은 NN&rdquo;이란 작은 수은 은닉 단위/층/파라미터 만을 갖는 신경망을 의미합니다. 마지막으로 더 큰 크기의 신경망을 학습시키면 더 좋은 성능을 얻을 수 있습니다.<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup></p>
-
-<p><img src="https://taewanmerepo.github.io/2018/doc/mlyearning/04/img030.jpg" alt="" /></p>
-
-<p>따라서 (i)매우 큰 신경망을 훈련할 때 최고의 성능을 얻을 수 있습니다. 위 다이아그램에 녹색 곡선이 되기 위해서는, (ii)엄청난 양의 데이터가 필요합니다.</p>
-
-<p>신경망 구조와 같은 많은 다른 세부 사항들도 중요합니다. 그리고 지난 몇 년간 이 부분에서 많은 혁신이 있었습니다. 그러나 오늘날 알고리즘의 성능을 향상는 가장 안정적인 방법은 더 큰 네트워크를 사용하고 더 많은 데이터를 사용하는 것입니다.</p>
-
-<p>(i)과 (ii)를 성공하는 과정은 놀랍도록 복잡합니다. 이 책에서는 그 방법에 대하여 자세하게 설명할 것입니다. 우선 전통적인 학습 알고리즘과 신경망 모두에 적용 가능한 일반적인 전략부터 설명하고, 딥러닝 시스템 구축을 위한 가장 현대적인 전략까지도 다루겠습니다.</p>
-
-<div class="notices note" ><p>이 문서는 Andrew NG 교수님께서 집필 중인 <strong>Machine Learning Yearning</strong>의 4장 번역입니다. 원제는 &ldquo;4. Scale drives machine learning progress&rdquo; 입니다. 원문 Ebook은 <a href="http://www.mlyearning.org" target="_blank"><a href="http://www.mlyearning.org">http://www.mlyearning.org</a> [↗NW]</a>
+<div class="notices note" ><p>이 문서는 Andrew NG 교수님께서 집필 중인 <strong>Machine Learning Yearning</strong>의 10장 번역입니다. 원제는 &ldquo;10. Having a dev set and metric speeds up iterations&rdquo; 입니다. 원문 Ebook은 <a href="http://www.mlyearning.org" target="_blank"><a href="http://www.mlyearning.org">http://www.mlyearning.org</a> [↗NW]</a>
 에서 내려받을 수 있습니다.</p>
 </div>
 
-<div class="footnotes">
-
-<hr />
-
-<ol>
-<li id="fn:1">위 다이아그램은 작은 데이터셋 범위에서 NN이 더 좋은 성능을 보이는 것처럼 보입니다. 이는 방대한 데이터셋의 범위에서 NN이 더 잘 작동한다는 것과 일관성이 떨어집니다. 작은 데이터 규모에서는 피처의 수작업 가공 정도에 따라서, 전통적인 예전 알고리즘이 더 좋을 성능을 보일 수도 있고, 더 나쁜 성능을 보이기도 합니다. 예를 들어서, 20개의 학습 데이터가 있으면, 로지스틱 회귀와 신경망 중에서 어떤 것을 사용할 것인가는 중요하지 않을 수도 있습니다. 피처의 수작업 처리가 알고리즘 선택보다 더 큰 영향을 미칩니다. 그러나 데이터셋이 백만 건이라면, 주저 없이 신경망을 선택할 것입니다.
- <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
-</ol>
-</div>
-<div class="edit-meta">Last updated on 1 Jan 0001 / Published on 1 Jan 0001<br></div><nav class="pagination">
-<a class="nav nav-prev" href="/tutorial_manual/ml_yearning/010.intro/3/" title="3. 사전 준비와 표기법"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 3. 사전 준비와 표기법</a>
+<div class="edit-meta">Last updated on 25 Dec 2018 / Published on 25 Dec 2018<br></div><nav class="pagination">
+<a class="nav nav-prev" href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/9/" title="9. 최적화 지표와 만족 지표"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 9. 최적화 지표와 만족 지표</a>
 
 
-<a class="nav nav-next" href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/" title="Part 2. 개발과 테스트셋 구성">Next - Part 2. 개발과 테스트셋 구성 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="nav nav-next" href="/tutorial_manual/ml_yearning/030.basic_error_analysis/" title="Part 3. 기초 에러 분석">Next - Part 3. 기초 에러 분석 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 
 </nav><footer><div class="authorbox row clearfix">
 	<figure class="authorbox__avatar">
@@ -138,7 +119,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/ml_yearning/010.intro/4/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/ml_yearning/020.setup_dev_test_set/10/"></div>
 <p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
 </footer>
 </main><div class="sidebar"><div class="widget-search widget">
@@ -159,24 +140,24 @@
 <li class="parent"><a href="/tutorial_manual/ml_yearning/">Machine Learning Yearning</a>
 <ul class="sub-menu">
 
-<li class="parent"><a href="/tutorial_manual/ml_yearning/010.intro/">Part 1. 시작하기</a>
-<ul class="sub-menu">
+<li class=""><a href="/tutorial_manual/ml_yearning/010.intro/">Part 1. 시작하기</a>
+<ul class="">
 <li class=""><a href="/tutorial_manual/ml_yearning/010.intro/1/">1. 왜 머신러닝 전략이 필요한가?</a></li>
 <li class=""><a href="/tutorial_manual/ml_yearning/010.intro/2/">2. 이 책 활용법</a></li>
 <li class=""><a href="/tutorial_manual/ml_yearning/010.intro/3/">3. 사전 준비와 표기법</a></li>
-<li class="active"><a href="/tutorial_manual/ml_yearning/010.intro/4/">4. 규모가 머신러닝의 발전을 이끈다.</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/010.intro/4/">4. 규모가 머신러닝의 발전을 이끈다.</a></li>
 </ul>
   
 </li>
 
-<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/">Part 2. 개발과 테스트셋 구성</a>
-<ul class="">
+<li class="parent"><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/">Part 2. 개발과 테스트셋 구성</a>
+<ul class="sub-menu">
 <li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/5/">5. 개발 데이터셋과 테스트 데이터셋</a></li>
 <li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/6/">6. 같은 분포의 개발셋과 테스트셋 구성</a></li>
 <li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/7/">7. 개발셋과 테스트셋의 규모</a></li>
 <li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/8/">8. 최적화를 위한 단일 평가 지표</a></li>
 <li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/9/">9. 최적화 지표와 만족 지표</a></li>
-<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/10/">10. 개발 데이터셋과 평가지표로 개발 순환 사이클 속도 향상</a></li>
+<li class="active"><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/10/">10. 개발 데이터셋과 평가지표로 개발 순환 사이클 속도 향상</a></li>
 </ul>
   
 </li>

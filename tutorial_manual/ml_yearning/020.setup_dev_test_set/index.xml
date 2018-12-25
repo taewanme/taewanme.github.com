@@ -56,5 +56,14 @@
       <description>9장에서는 여러 평가 지표를 결합하는 다른 방법을 소개합니다. 분류 정확성과 실행 시간이 알고리즘 성능 평가의 핵심 지표라고 가정해 보겠습니다. 다음 세 개 분류기 중</description>
     </item>
     
+    <item>
+      <title>10. 개발 데이터셋과 평가지표로 개발 순환 사이클 속도 향상</title>
+      <link>http://taewan.kim/ml_yearning/020.setup_dev_test_set/10/</link>
+      <pubDate>Tue, 25 Dec 2018 13:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/ml_yearning/020.setup_dev_test_set/10/</guid>
+      <description>새로운 문제에 대하여 어떤 접근법이 가장 효과적인지를 미리 파악하는 것은 상당히 어렵습니다. 기계 학습 전문 연구자조차도 일반적으로 만족스러운 결과를 얻기까지 수</description>
+    </item>
+    
   </channel>
 </rss>
