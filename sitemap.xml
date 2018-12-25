@@ -398,51 +398,6 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/trans_docs/t_mly_09/</loc>
-    <lastmod>2018-06-06T23:28:14+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/trans_docs/t_mly_08/</loc>
-    <lastmod>2018-06-06T22:28:14+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/trans_docs/t_mly_07/</loc>
-    <lastmod>2018-06-06T13:28:14+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/trans_docs/t_mly_06/</loc>
-    <lastmod>2018-06-06T11:28:14+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/trans_docs/t_mly_05/</loc>
-    <lastmod>2018-06-05T16:28:14+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/trans_docs/t_mly_04/</loc>
-    <lastmod>2018-06-04T16:28:14+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/trans_docs/t_mly_03/</loc>
-    <lastmod>2018-06-03T01:28:14+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/trans_docs/t_mly_02/</loc>
-    <lastmod>2018-06-02T21:28:14+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/trans_docs/t_mly_01/</loc>
-    <lastmod>2018-06-01T21:28:14+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://taewan.kim/cloud/bdc_ambari/</loc>
     <lastmod>2018-05-31T23:20:25+09:00</lastmod>
   </url>
@@ -1441,12 +1396,6 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/tags/dev-set/</loc>
-    <lastmod>2018-06-06T13:28:14+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://taewan.kim/tags/deverlper-meetup/</loc>
     <lastmod>2017-12-16T22:54:32+09:00</lastmod>
     <priority>0</priority>
@@ -1521,12 +1470,6 @@
   <url>
     <loc>http://taewan.kim/tags/error/</loc>
     <lastmod>2017-12-08T21:28:14+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/tags/evaluation-matric/</loc>
-    <lastmod>2018-06-06T22:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2059,12 +2002,6 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/tags/optimization-metric/</loc>
-    <lastmod>2018-06-06T23:28:14+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://taewan.kim/tags/oracl-bdcsce/</loc>
     <lastmod>2017-09-24T21:28:14+09:00</lastmod>
     <priority>0</priority>
@@ -2269,12 +2206,6 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/tags/satisficing-metric/</loc>
-    <lastmod>2018-06-06T23:28:14+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://taewan.kim/tags/script/</loc>
     <lastmod>2017-12-27T19:35:14+09:00</lastmod>
     <priority>0</priority>
@@ -2403,12 +2334,6 @@
   <url>
     <loc>http://taewan.kim/tags/terraform/</loc>
     <lastmod>2017-10-03T21:28:14+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/tags/test-set/</loc>
-    <lastmod>2018-06-06T13:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
