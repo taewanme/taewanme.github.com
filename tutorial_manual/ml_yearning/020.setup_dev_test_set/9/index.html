@@ -3,10 +3,11 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>7. 개발셋과 테스트셋의 규모 - taewan.kim 블로그</title>
+<title>9. 최적화 지표와 만족 지표 - taewan.kim 블로그</title>
+<meta name="description" content="Andrew NG 교수님이 &#39;Machine Learning Yearning&#39;의 9장 &#39;Optimizing and Satisficing metrics&#39; 번역 문서입니다">
 <meta name="generator" content="Hugo 0.52" />
 <link href="/index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="http://taewan.kim/ml_yearning/020.setup_dev_test_set/7/">
+<link rel="canonical" href="http://taewan.kim/ml_yearning/020.setup_dev_test_set/9/">
 <link rel="stylesheet" href="/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="css/chroma.min.css">
@@ -62,16 +63,58 @@
 <main>
 
 <figure class="post__thumbnail">
-  <img src="https://taewanmerepo.github.io/2018/12/mlyearning/post.jpg" alt="7. 개발셋과 테스트셋의 규모">
+  <img src="https://taewanmerepo.github.io/2018/12/mlyearning/post.jpg" alt="9. 최적화 지표와 만족 지표">
 </figure>
 
-<h1>7. 개발셋과 테스트셋의 규모</h1><p>개발 데이터셋<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>은 여러분이 학습시킨 알고리즘들의 차이를 감지할 수 있을 만큼 커야 합니다. 예를 들어서, A 분류기의 정확도는 90.0%이고 B 분류기의 정확도는 90.1%라고 가정해 보겠습니다. 여기에 사용하는 개발 데이터셋의 크기가 100건이라면, 이 개발 데이터셋으로는 두 알고리즘 성능 0.1%의 차이를 감지할 수 없습니다. 지금까지 머신러닝 경험을 생각해보면, 개발 데이터셋으로 데이터 100건<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>은 너무 작습니다. 개발 데이터셋 크기는 일반적으로 1,000개에서 10,000개가 일반적입니다. 개발 데이터셋으로 10,000 건의 데이터를 사용하면, 0.1% 성능 향상<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>은 쉽게 감지할 수 있습니다.<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup></p>
+<h1>9. 최적화 지표와 만족 지표</h1><p>9장에서는 여러 평가 지표를 결합하는 다른 방법을 소개합니다.</p>
 
-<p>광고, 웹 검색 및 제품 추천과 같이 성숙하고 중요한 애플리케이션의 경우에, 작은 성능 향상도 회사의 이익에 직접적인 영향을 주기 때문에, 0.01% 성능 개선도 개발팀에 큰 동기 부여가 되기도 합니다. 이런 상황이라면, 개발 데이터셋이 훨씬 더 작은 성능 개선을 탐지할 수 있도록 10,000개보다 훨씬 더 크게 만들어야 합니다.</p>
+<p>분류 정확성과 실행 시간이 알고리즘 성능 평가의 핵심 지표라고 가정해 보겠습니다. 다음 세 개 분류기 중에서 어떤 분류기가 가장 좋은 분류기일까요?</p>
 
-<p>테스트 데이터셋의 크기는 어떨까요? 시스템의 전체 성능에 높은 신뢰성을 제공할 수 있을 만큼 충분히 커야 합니다.<sup class="footnote-ref" id="fnref:4"><a href="#fn:4">4</a></sup> 일반적인 휴레스틱(경험적인) 방법은 전체 데이터의 30%를 테스트 데이터셋으로 사용하는 것입니다. 이런 방식은 전체 데이터가 100개에서 10,000개인 작은 규모에 적합합니다. 그러나 현재는 빅데이터 시대입니다. 10억 개가 넘는 데이터를 머신러닝하는 경우도 있습니다. 이런 상황을 고려하여 최근에는 개발/테스트 데이터셋에 데이터를 나누는 비율이 줄어들고 있습니다. 할당 비율은 줄어들고 있지만 기반 데이터가 매우 크기 때문에 개발 및 테스트 세트의 실제 데이터 수는 늘어나는 상항입니디. 알고리즘 성능을 평가하는 데 필요한 것 이상으로 과도하게 큰 개발 데이터셋과 테스트 데이터셋을 만들 필요는 없습니다.</p>
+<table>
+<thead>
+<tr>
+<th>분류기</th>
+<th>정확도(Accuracy)</th>
+<th>실행 시간(Running Time)</th>
+</tr>
+</thead>
 
-<div class="notices note" ><p>이 문서는 Andrew NG 교수님께서 집필 중인 <strong>Machine Learning Yearning</strong>의 7장 번역입니다. 원제는 &ldquo;7. How large do the dev/test sets need to be?&rdquo; 입니다. 원문 Ebook은 <a href="http://www.mlyearning.org" target="_blank"><a href="http://www.mlyearning.org">http://www.mlyearning.org</a> [↗NW]</a>
+<tbody>
+<tr>
+<td>A</td>
+<td>90%</td>
+<td>80ms</td>
+</tr>
+
+<tr>
+<td>B</td>
+<td>92%</td>
+<td>95ms</td>
+</tr>
+
+<tr>
+<td>C</td>
+<td>95%</td>
+<td>1,500ms</td>
+</tr>
+</tbody>
+</table>
+
+<p>정확성과 실행 시간으로 다음과 같은 수식을 만들고 단일 평가 지표를 만드는 것은 조금 부자연스러운 것 같습니다.</p>
+
+<blockquote>
+<p>$$ Accuracy - 0.5*RunningTime $$</p>
+</blockquote>
+
+<p>평가 지표가 여러 개인 경우에 다음과 같이 방식을 사용할 수도 있습니다. 먼저 &ldquo;허용 가능&rdquo; 실행 시간을 정의합니다. 즉 100ms에서 실행되면 허용한다고 정의합니다. 그다음 실행 시간 기준을 만족한 분류기를 대상으로 정확도가 가장 큰 것을 선택합니다. 여기서 실행 시간은 &ldquo;만족 지표(Satisficing metric)&ldquo;입니다. 만족 지표에 실행 시간은 최대 100ms를 넘지 말아야 한다는 기준을 설정할 수 있습니다. 분류기는 이 지표를 만족해야 합니다. 정확성은 &ldquo;최적화 지표&rdquo;입니다.</p>
+
+<p>만약에 모델의 바이너리 파일 크기(모바일 앱에서는 중요한 요소, 사용자는 크기가 큰 앱을 원치 않음), 실행 시간, 정확도와 같이 N개의 여러 기준을 다뤄야 한다면, N-1개 지표를 만족 지표로 설정하는 것이 좋습니다. 모델을 평가할 때, 모델은 충족 지표가 설정한 기준을 모두 만족해야 합니다. 그리고 마지막 남은 지표를 &ldquo;최적화 지표&rdquo;로 정의합니다. 예를 들어서 바이너리 파일 크기 및 실행 시간에 허용되는 임곗값을 설정하고, 이러한 제한 조건을 만족하는 모델중에서 정확도가 가장 높은 모델을 선택할 수 있습니다.</p>
+
+<p>마지막으로 예로 음성인식 디비이스의 평가 지표를 만들어 보겠습니다. 마이크를 사용하여 특정 &ldquo;웨이크워드(wakeword)&rdquo;<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>를 말하는 사용자의 말을 듣고 시스템이 활성화되도록 하드웨어 장치를 구축한다고 가정합니다. 예를 들어 Amazon Echo가 &ldquo;Alexa&rdquo;라는 음성을 인식합니다. Apple Siri는 &ldquo;Hey Siri&rdquo;를 듣습니다. 안드로이드가 &ldquo;Okay Google&rdquo;을 인식하고, Baidu 애플리케이션은 &ldquo;Hello Baidu&rdquo;를 듣습니다. 이런 디바이스의 웨이크워드 엔진의 평가 지표를 만들 때, 거짓 양성비(false positive rate)와 거짓 음성비(false negative rate)를 고려해야 합니다. 여기서 거짓 양성비(false positive rate<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>)란 아무도 웨이크워드를 말하지 않았지만 시스템이 활성화되는 빈도를 의미하고, 거짓 음성비(false negative rate)는 웨이크워드를 말해도 시스템이 활성화되지 않는 빈도를 의미합니다. 이 시스템 성능에 대한 하나의 합리적인 목표는 24시간 작동 기준으로 1개 이상의 거짓 양성(만족 지표)이 발생하지 않는 것을 전제 조건으로 거짓 음성비(최적화 지표)를 최소화하는 것입니다.</p>
+
+<p>이렇게 모델 최적화를 위한 명확한 평가 지표가 여러 충족 지표와 한개의 단일 숫자 평가 지표로 명확하게 정의되다면, 모델 개선 프로세스는 더 빨라 질 것입니다.</p>
+
+<div class="notices note" ><p>이 문서는 Andrew NG 교수님께서 집필 중인 <strong>Machine Learning Yearning</strong>의 9장 번역입니다. 원제는 &ldquo;9. Optimizing and Satisficing metrics&rdquo; 입니다. 원문 Ebook은 <a href="http://www.mlyearning.org" target="_blank"><a href="http://www.mlyearning.org">http://www.mlyearning.org</a> [↗NW]</a>
 에서 내려받을 수 있습니다.</p>
 </div>
 
@@ -80,21 +123,17 @@
 <hr />
 
 <ol>
-<li id="fn:1">&lt;역자주&gt; 개발 데이터셋은 알고리즘에 적용되는 파라미터를 개선하는데 사용됩니다. 파라미터 변경이 알고리즘에 미치는 영향을 파악하고자하는 스케일 크기가 개발 데이터셋의 크기를 결정하는 기준이됩니다.
+<li id="fn:1">&lt;역자주&gt; 웨이크워드는 휴면 장치를 활성화하기 위해서 사람이 말하는 단어 또는 문장을 의미합니다. 출처: <a href="https://en.wiktionary.org/wiki/wake_word">https://en.wiktionary.org/wiki/wake_word</a>
  <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
-<li id="fn:2">&lt;역자주&gt; 개발 데이터셋으로 데이터 10,000건을 사용하면 소수점 2자리 백분률를 구할 수 있습니다. 따라서 소수점 한자리 변화는 쉽게 파악할 수있다는 의미입니다.
+<li id="fn:2">&lt;역자주&gt; 거짓 양성비(false positive rate)는 뒤는 모델의 출력(Positive)이고 앞은 모델의 출력의 맞고 틀림 여부입니다. 즉 거짓 양성비는 모델의 양성 판정중에 틀린 빈도를 의미합니다. 위 예제에서는 잘못된 시스템 활성화를 의미합니다. 거짓 양성비는 일종을 &ldquo;오탐&rdquo; 이라고도 합니다. 거짓 음성비(false negative rate)는 모델이 음성으로 출력한 것 증에 틀린 빈도를 의미합니다. 위 예제에서 웨이크워드를 인식하지 못해서 활성화 되지 않는 상태입니다.
  <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
-<li id="fn:3">이론적으로, 알고리즘 변경이 개발 세트에 통계적으로 유의미한 차이를 만들면 테스트를 수행할 수도 있습니다. 실무에서는 학문적 연구 논문을 준비하지 않는 한, 이런 작업에 신경을 쓰지 않습니다. 본인도 보통 중간 진척을 측정하는 데 유용한 통계적 중요 테스트를 확인하지 않습니다.
- <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
-<li id="fn:4">&lt;역자주&gt; 개발 데이터셋의 규모는 알고리즘의 정확도를 구분해야 하는 스케일을 기준으로 결정합니다. 테스트 데이터셋의 규모는 알고리즘을 평가하는 신뢰도를 기준으로 결정합니다. 평가 신뢰도가 확보된 상태라면, 학습 데이터셋이 늘어났다고해서, 테스트 데이터셋을 늘릴 필요는 없습니다.
- <a class="footnote-return" href="#fnref:4"><sup>[return]</sup></a></li>
 </ol>
 </div>
-<div class="edit-meta">Last updated on 22 Dec 2018 / Published on 22 Dec 2018<br></div><nav class="pagination">
-<a class="nav nav-prev" href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/6/" title="6. 같은 분포의 개발셋과 테스트셋 구성"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 6. 같은 분포의 개발셋과 테스트셋 구성</a>
+<div class="edit-meta">Last updated on 25 Dec 2018 / Published on 25 Dec 2018<br></div><nav class="pagination">
+<a class="nav nav-prev" href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/8/" title="8. 최적화를 위한 단일 평가 지표"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 8. 최적화를 위한 단일 평가 지표</a>
 
 
-<a class="nav nav-next" href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/8/" title="8. 최적화를 위한 단일 평가 지표">Next - 8. 최적화를 위한 단일 평가 지표 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="nav nav-next" href="/tutorial_manual/ml_yearning/030.basic_error_analysis/" title="Part 3. 기초 에러 분석">Next - Part 3. 기초 에러 분석 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 
 </nav><footer><div class="authorbox row clearfix">
 	<figure class="authorbox__avatar">
@@ -120,7 +159,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/ml_yearning/020.setup_dev_test_set/7/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/ml_yearning/020.setup_dev_test_set/9/"></div>
 <p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
 </footer>
 </main><div class="sidebar"><div class="widget-search widget">
@@ -155,9 +194,9 @@
 <ul class="sub-menu">
 <li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/5/">5. 개발 데이터셋과 테스트 데이터셋</a></li>
 <li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/6/">6. 같은 분포의 개발셋과 테스트셋 구성</a></li>
-<li class="active"><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/7/">7. 개발셋과 테스트셋의 규모</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/7/">7. 개발셋과 테스트셋의 규모</a></li>
 <li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/8/">8. 최적화를 위한 단일 평가 지표</a></li>
-<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/9/">9. 최적화 지표와 만족 지표</a></li>
+<li class="active"><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/9/">9. 최적화 지표와 만족 지표</a></li>
 </ul>
   
 </li>

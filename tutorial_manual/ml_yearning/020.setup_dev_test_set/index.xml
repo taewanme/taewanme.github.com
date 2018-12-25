@@ -47,5 +47,14 @@
       <description>분류 정확도는 단일 평가 지표(single-number evaluation metric)의 한 예입니다. 개발 데이터셋(또는 테스트 데이터셋)으로 분류기를 돌렸고, 정확</description>
     </item>
     
+    <item>
+      <title>9. 최적화 지표와 만족 지표</title>
+      <link>http://taewan.kim/ml_yearning/020.setup_dev_test_set/9/</link>
+      <pubDate>Tue, 25 Dec 2018 11:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/ml_yearning/020.setup_dev_test_set/9/</guid>
+      <description>9장에서는 여러 평가 지표를 결합하는 다른 방법을 소개합니다. 분류 정확성과 실행 시간이 알고리즘 성능 평가의 핵심 지표라고 가정해 보겠습니다. 다음 세 개 분류기 중</description>
+    </item>
+    
   </channel>
 </rss>
