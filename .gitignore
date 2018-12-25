@@ -1,1 +1,5 @@
 **/*.md
+writing/
+tutorial_manual/temp*
+change_log/
+
