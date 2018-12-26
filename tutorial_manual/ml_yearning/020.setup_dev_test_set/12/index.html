@@ -3,11 +3,11 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>10. 개발 데이터셋과 평가지표로 개발 순환 사이클 속도 향상 - taewan.kim 블로그</title>
-<meta name="description" content="Andrew NG 교수님이 &#39;Machine Learning Yearning&#39;의 10장 &#39;Having a dev set and metric speeds up iterations">
+<title>12. 정리: 개발/테스트 데이터셋 구성  - taewan.kim 블로그</title>
+<meta name="description" content="Andrew NG 교수님이 &#39;Machine Learning Yearning&#39;의 11장 &#39;Takeaways: Setting up development and test sets&#39;">
 <meta name="generator" content="Hugo 0.52" />
 <link href="/index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="http://taewan.kim/ml_yearning/020.setup_dev_test_set/10/">
+<link rel="canonical" href="http://taewan.kim/ml_yearning/020.setup_dev_test_set/12/">
 <link rel="stylesheet" href="/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="css/chroma.min.css">
@@ -63,37 +63,41 @@
 <main>
 
 <figure class="post__thumbnail">
-  <img src="https://taewanmerepo.github.io/2018/12/mlyearning/post.jpg" alt="10. 개발 데이터셋과 평가지표로 개발 순환 사이클 속도 향상">
+  <img src="https://taewanmerepo.github.io/2018/12/mlyearning/post.jpg" alt="12. 정리: 개발/테스트 데이터셋 구성 ">
 </figure>
 
-<h1>10. 개발 데이터셋과 평가지표로 개발 순환 사이클 속도 향상</h1><p>새로운 문제에 대하여 어떤 접근법이 가장 효과적인지를 미리 파악하는 것은 상당히 어렵습니다. 기계 학습 전문 연구자조차도 일반적으로 만족스러운 결과를 얻기까지 수집가지 아이디어를 시도해 봅니다. 기계 학습 시스템을 구축할 때 필자는 다음과 같은 절차로 작업을 수행합니다.</p>
+<h1>12. 정리: 개발/테스트 데이터셋 구성 </h1><ul>
+<li><p>앞으로 모델에 유입될 것으로 예상되고 모델이 잘 동작하기를 희망하는 데이터의 특성을 반영한 데이터 분포로 초기 개발/테스트 데이터셋을 구성하십시오. 이 개발/테스트 데이터셋는 실제 학습 데이터 분포와 같지 않을 수 있습니다.</p></li>
 
-<ol>
-<li>시스템 구축 방법에 대한 몇 가지 아이디어로 시작</li>
-<li>코드로 아이디어를 구현</li>
-<li>아이디어가 얼마나 잘하는지 실험. (보통 처음 몇 가지 아이디어는 작동하지 않습니다!)
+<li><p>가능한 같은 데이터 분포를 갖는 개발/테스트 데이터셋을 구성하십시오.</p></li>
+
+<li><p>최적화해야 할 단일 숫자 평가 지표를 선정하십시오. 목표 지표가 여러 개인 경우, 여러 오차 지표의 평균을 내는 것과 같이 공식을 정의하여 여러 지표를 단일화하거나 만족 지표와 최적화 지표를 정의하는 방식으로 고려하십시오.</p></li>
+
+<li><p>기계 학습은 상당히 반복적인 프로세스입니다. 만족스러운 결과를 찾기까지 수십 가지 아이디어를 시도할 수 있습니다.</p></li>
+
+<li><p>개발/테스트 데이터셋과 단일 평가 지표[^1]를 사용하면 알고리즘을 신속하게 평가할 수 있고, 기계학습 프로세스를 더 빨리 반복할 수 있습니다.</p></li>
+</ul>
+
+<p>[^1]&lt;역자주&gt; Matrix를 &ldquo;<strong>평가 지표</strong>&ldquo;와 &ldquo;<strong>평가 항목</strong>&ldquo;으로 구분하여 번역하였습니다. &ldquo;<strong>평가 지표</strong>&ldquo;는 평가 공식을 통해서 단일 숫자 평가 지표로 만들어진 결과 값을 의미합니다. &ldquo;<strong>평가 항목</strong>&ldquo;은 평가 공식에 입력되는 평가 요소를 의미합니다. 모델을 평가하는 두 개의 수치인 &ldquo;<strong>정밀도(Precision)</strong>&ldquo;와 &ldquo;<strong>재현률(Recall)</strong>&ldquo;이 있을 때, 두 수치의 조화 평균을 단일 평가 지표로 정의한다면, &ldquo;<strong>정밀도(Precision)</strong>&ldquo;와 &ldquo;<strong>재현률(Recall)</strong>&ldquo;은 &ldquo;<strong>평가 항목</strong>&ldquo;이되고, 조화평균은 &ldquo;<strong>평가 지표</strong>&ldquo;가 됩니다.</p>
 
 <ul>
-<li>이러한 학습 과정에서 더 많은 아이디어를 만들어 적용</li>
-<li>이 과정을 반복</li>
-</ul></li>
-</ol>
+<li><p>새로운 응용 분야를 시작할 때, 개발/테스트 세트와 하나의 평가 지표를 신속하게(1주일 이내) 설정하십시오. 이런 작업이 성숙한 분야에서는 더 오래 걸리기도 합니다.</p></li>
 
-<p><img src="https://taewanmerepo.github.io/2018/doc/mlyearning/10/img010.jpg" alt="" /></p>
+<li><p>학습/테스트 데이터셋을 70:30 비율로 나누는 오래된 관례는 많은 데이터를 확보하고 있는 곳에서는 적합하지 않습니다. 개발/테스트 데이터셋은 전체 데이터의 30% 미만일 수 있습니다.</p></li>
 
-<p>이와 같은 접근법은 반복적인 프로세스입니다. 이 반복을 빠르게 진행하면, 전체적인 진행 속도는 더 빨라집니다. 이것이 바로 개발 데이터셋와 테스트 데이터셋, 평가 지표가 중요한 이유입니다. 새로운 아이디어를 시도해 볼 때마다, 개발 데이터셋으로 이 새로운 시도의 성능을 측정하면, 올바른 방향으로 가고 있는지를 바로 확인할 수 있습니다.</p>
+<li><p>개발 데이터셋은 알고리즘의 정확도 변화를 감지할 정도로 커야 합니다. 그러나 지나치게 클 필요는 없습니다. 테스트 데이터셋은 시스템의 모델 성능 평가에 신뢰도를 확보할 정도의 규모여야 합니다.</p></li>
 
-<p>반대로 개발 데이터셋과 평가 지표가 없다고 가정해 보겠습니다. 새로운 고양이 분류기를 개발할 때마다, 새 분류기를 앱에 통합하고 몇 시간 동안 앱을 사용한 후, 새로운 분류기의 개선 여부를 파악해야 합니다. 이와 같은 개발 프로세스는 너무너무 느립니다. 또한 분류기의 정확도를 95.0%에서 95.1%로 향상하는 경우, 앱을 사용하는 것으로는 0.1% 향상을 감지하지 못할 수도 있습니다. 그러나 시스템은 이런 0.1% 개선이 누적되어 발전합니다. 개발 데이터셋 및 측정 항목을 사용하면, 어떤 아이디어가 만드는 작은 (또는 큰) 성능 변화도 바로 감지할 수 있습니다. 이 아이디어를 더 고민하고 개선할 것인지, 아니면 이 아이디어를 폐기할 것인지를 바로 결정할 수 있습니다.</p>
+<li><p>개발 데이터셋와 평가 지표가 더 이상 올바른 방향을 제시하지 못한다면, 신속하게 변경하십시오.(i)모델이 개발 데이터셋에 과적합 되어 있다면 더 많은 개발 데이터셋를 확보하십시오. (ii)실제 대상 데이터셋과 개발/테스트 데이터셋의 분포와 서로 다르다면, 새로운 개발/테스트 데이터셋을 만드십시오. (iii)모델의 평가 지표가 더 이상 핵심 목표와 정확하게 평가하지 못한다면, 측정 항목을 변경하십시오.</p></li>
+</ul>
 
-<div class="notices note" ><p>이 문서는 Andrew NG 교수님께서 집필 중인 <strong>Machine Learning Yearning</strong>의 10장 번역입니다. 원제는 &ldquo;10. Having a dev set and metric speeds up iterations&rdquo; 입니다. 원문 Ebook은 <a href="http://www.mlyearning.org" target="_blank"><a href="http://www.mlyearning.org">http://www.mlyearning.org</a> [↗NW]</a>
-에서 내려받을 수 있습니다.</p>
+<div class="notices note" ><p>이 문서는 Andrew NG 교수님께서 집필 중인 <strong>Machine Learning Yearning</strong>의 12장 번역입니다. 원제는 &ldquo;12.  Takeaways: Setting up development and test sets&rdquo; 입니다. 원문 Ebook은 <a href="http://www.mlyearning.org">http://www.mlyearning.org</a> 에서 구독할 수 있습니다.</p>
 </div>
 
-<div class="edit-meta">Last updated on 25 Dec 2018 / Published on 25 Dec 2018<br></div><nav class="pagination">
-<a class="nav nav-prev" href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/9/" title="9. 최적화 지표와 만족 지표"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 9. 최적화 지표와 만족 지표</a>
+<div class="edit-meta">Last updated on 27 Dec 2017 / Published on 27 Dec 2017<br></div><nav class="pagination">
+<a class="nav nav-prev" href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/11/" title="11. 개발/테스트 데이터셋과 평가 지표를 변경해야하는 시점"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 11. 개발/테스트 데이터셋과 평가 지표를 변경해야하는 시점</a>
 
 
-<a class="nav nav-next" href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/11/" title="11. 개발/테스트 데이터셋과 평가 지표를 변경해야하는 시점">Next - 11. 개발/테스트 데이터셋과 평가 지표를 변경해야하는 시점 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="nav nav-next" href="/tutorial_manual/ml_yearning/030.basic_error_analysis/" title="Part 3. 기초 에러 분석">Next - Part 3. 기초 에러 분석 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 
 </nav><footer><div class="authorbox row clearfix">
 	<figure class="authorbox__avatar">
@@ -119,7 +123,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/ml_yearning/020.setup_dev_test_set/10/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/ml_yearning/020.setup_dev_test_set/12/"></div>
 <p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
 </footer>
 </main><div class="sidebar"><div class="widget-search widget">
@@ -157,9 +161,9 @@
 <li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/7/">7. 개발셋과 테스트셋의 규모</a></li>
 <li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/8/">8. 최적화를 위한 단일 평가 지표</a></li>
 <li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/9/">9. 최적화 지표와 만족 지표</a></li>
-<li class="active"><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/10/">10. 개발 데이터셋과 평가지표로 개발 순환 사이클 속도 향상</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/10/">10. 개발 데이터셋과 평가지표로 개발 순환 사이클 속도 향상</a></li>
 <li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/11/">11. 개발/테스트 데이터셋과 평가 지표를 변경해야하는 시점</a></li>
-<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/12/">12. 정리: 개발/테스트 데이터셋 구성 </a></li>
+<li class="active"><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/12/">12. 정리: 개발/테스트 데이터셋 구성 </a></li>
 </ul>
   
 </li>

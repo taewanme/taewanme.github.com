@@ -74,5 +74,14 @@
       <description>필자는 새로운 프로젝트를 시작할 때면, 개발 데이터셋과 테스트 데이터셋을 가능한 빨리 준비하려 노력합니다. 그 이유는 이것이 팀에 명확한 목표를 제공하기 때문입니</description>
     </item>
     
+    <item>
+      <title>12. 정리: 개발/테스트 데이터셋 구성 </title>
+      <link>http://taewan.kim/ml_yearning/020.setup_dev_test_set/12/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/ml_yearning/020.setup_dev_test_set/12/</guid>
+      <description>앞으로 모델에 유입될 것으로 예상되고 모델이 잘 동작하기를 희망하는 데이터의 특성을 반영한 데이터 분포로 초기 개발/테스트 데이터셋을 구성하십시오. 이 개발/테</description>
+    </item>
+    
   </channel>
 </rss>
