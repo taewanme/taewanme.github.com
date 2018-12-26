@@ -65,5 +65,14 @@
       <description>새로운 문제에 대하여 어떤 접근법이 가장 효과적인지를 미리 파악하는 것은 상당히 어렵습니다. 기계 학습 전문 연구자조차도 일반적으로 만족스러운 결과를 얻기까지 수</description>
     </item>
     
+    <item>
+      <title>11. 개발 데이터셋/테스트 데이터셋과 지표를 변경해야하는 시점</title>
+      <link>http://taewan.kim/ml_yearning/020.setup_dev_test_set/11/</link>
+      <pubDate>Wed, 26 Dec 2018 09:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/ml_yearning/020.setup_dev_test_set/11/</guid>
+      <description>필자는 새로운 프로젝트를 시작할 때면, 개발 데이터셋과 테스트 데이터셋을 가능한 빨리 준비하려 노력합니다. 그 이유는 이것이 팀에 명확한 목표를 제공하기 때문입니</description>
+    </item>
+    
   </channel>
 </rss>
