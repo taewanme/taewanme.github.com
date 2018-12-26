@@ -20,5 +20,14 @@
       <description>이메일 스팸 방지 시스템을 개발하는 가정해 보겠습니다. 개발팀은 다음과 같은 몇 가지 아이디어를 갖고 있습니다. 스팸 메일의 거대한 학습 데이터셋을 수집한다. 예를</description>
     </item>
     
+    <item>
+      <title>14. 에러 분석: 아이디어 평가를 위해, 개발 데이터셋을 살펴보라.</title>
+      <link>http://taewan.kim/ml_yearning/030.basic_error_analysis/14/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/ml_yearning/030.basic_error_analysis/14/</guid>
+      <description>고양이 앱을 사용하는 과정에서, 이 앱이 강아지를 고양이로 인식하는 오류를 발견했다고 가정하겠습니다. 인식 오류가 발생하는 강아지 이미지를 보면 어떤 것은 고양이</description>
+    </item>
+    
   </channel>
 </rss>
