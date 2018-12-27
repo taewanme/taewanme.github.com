@@ -26,7 +26,7 @@
       <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
       
       <guid>http://taewan.kim/ml_yearning/030.basic_error_analysis/14/</guid>
-      <description>고양이 앱을 사용하는 과정에서, 이 앱이 강아지를 고양이로 인식하는 오류를 발견했다고 가정하겠습니다. 인식 오류가 발생하는 강아지 이미지를 보면 어떤 것은 고양이</description>
+      <description>고양이 앱을 사용하는 과정에서, 고양이 앱이 강아지를 고양이로 잘못 분류하는 오류를 발견했습니다. 앱이 고양이로 인식한 강아지 이미지를 살펴보니 정말 고양이처럼</description>
     </item>
     
   </channel>
