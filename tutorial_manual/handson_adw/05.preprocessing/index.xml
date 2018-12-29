@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>1장. ADW Hands-on 사전 준비 on taewan.kim 블로그</title>
+    <link>http://taewan.kim/handson_adw/05.preprocessing/</link>
+    <description>Recent content in 1장. ADW Hands-on 사전 준비 on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 28 Dec 2018 09:05:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/handson_adw/05.preprocessing/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>1.1 오라클 클라우드 계정 확보</title>
+      <link>http://taewan.kim/handson_adw/05.preprocessing/1/</link>
+      <pubDate>Fri, 21 Dec 2018 08:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/handson_adw/05.preprocessing/1/</guid>
+      <description>현재 사용 가능한 Oracle Cloud 계정이 있는 상태라면, 이 페이지는 건너 뛰셔도 됩니다. 다음 페이지로 이동하시기 바랍니다. Oracle Autonomous Data Warehouse Cloud Service(ADWC) 서비스를 만들기 위해서는 우선 Oracle Cloud</description>
+    </item>
+    
+    <item>
+      <title>1.2 OCI Identity 구성 요소 만들기</title>
+      <link>http://taewan.kim/handson_adw/05.preprocessing/2/</link>
+      <pubDate>Fri, 21 Dec 2018 08:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/handson_adw/05.preprocessing/2/</guid>
+      <description>오라클 클라우드에서 Data Lake는 Object Storage입니다. 모든 클라우드 서비스는 Object Storage를 중심으로 구성되고, Object Storage를 중심으로 데이</description>
+    </item>
+    
+    <item>
+      <title>1.3 OCI CLI 설정 기본 정보 수집</title>
+      <link>http://taewan.kim/handson_adw/05.preprocessing/3/</link>
+      <pubDate>Fri, 21 Dec 2018 08:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/handson_adw/05.preprocessing/3/</guid>
+      <description>oci cli는 Oracle Cloud Infrastructure에서 주요 인프라 관리 기능을 수행하는 CLI(Command Line Interface) 툴입니다. &amp;ldquo;OCI CLI&amp;ldquo;를 사용하여 OCI 웹 콘솔과 같은 기능</description>
+    </item>
+    
+    <item>
+      <title>1.4 OCI CLI 설치 및 기본 설정</title>
+      <link>http://taewan.kim/handson_adw/05.preprocessing/4/</link>
+      <pubDate>Fri, 21 Dec 2018 08:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/handson_adw/05.preprocessing/4/</guid>
+      <description>oci cli는 Oracle Cloud Infrastructure에서 주요 인프라 관리 기능을 수행하는 CLI(Command Line Interface) 툴입니다. &amp;ldquo;oci cli&amp;ldquo;를 사용하여 OCI 웹 콘솔과 같은 기능</description>
+    </item>
+    
+    <item>
+      <title>1.5 OS 버킷 생성 및 정책 설정</title>
+      <link>http://taewan.kim/handson_adw/05.preprocessing/5/</link>
+      <pubDate>Fri, 21 Dec 2018 08:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/handson_adw/05.preprocessing/5/</guid>
+      <description>앞에서도 설명했지만 Oracle Cloud의 Data Lake는 Object Storage입니다. OCI Object Storage는 파일의 포멧과 크기에 제약없이 고가용성 데이터 저장소 이입니</description>
+    </item>
+    
+    <item>
+      <title>1.6 OCI CLI를 이용한 파일 업로드</title>
+      <link>http://taewan.kim/handson_adw/05.preprocessing/6/</link>
+      <pubDate>Fri, 21 Dec 2018 08:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/handson_adw/05.preprocessing/6/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

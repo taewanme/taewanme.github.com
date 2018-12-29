@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>1.3 OCI CLI 설정 기본 정보 수집 - taewan.kim 블로그</title>
+<meta name="description" content="Oracle ADW 서비스와 OCI Object Storage를 효과적으로 연동하기 위해서는 OCI CLI를 설치해야 합니다. OCI CLI를 설치하기 위한 기본 정보 수집 방법을 정리합니다. ">
+<meta name="generator" content="Hugo 0.52" />
+<link href="/index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="http://taewan.kim/handson_adw/05.preprocessing/3/">
+<link rel="stylesheet" href="/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="/js/jquery.backtothetop/jquery.backtothetop.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-72835175-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-72835175-1');
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+<link rel="stylesheet" href="/css/taewan.css"  />
+</head>
+<body>
+<div class="container"> 
+<header class="header">
+  <div class="container container-inner clearfix" >
+    <div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+      <a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+        <h1 class="logo__title">taewan.kim 블로그</h1><br/>
+        <h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list"><li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li><li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li><li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Tutorial과 Manual 문서를 제공" >TUTORIAL &amp; MANUAL</a></li><li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li><li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li><li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li></ul>
+</nav>
+<div class="content-container">
+<main>
+
+<figure class="post__thumbnail">
+  <img src="https://taewanmerepo.github.io/2018/12/mlyearning/post.jpg" alt="1.3 OCI CLI 설정 기본 정보 수집">
+</figure>
+
+<h1>1.3 OCI CLI 설정 기본 정보 수집</h1>
+
+<p>oci cli는 Oracle Cloud Infrastructure에서 주요 인프라 관리 기능을 수행하는 CLI(Command Line Interface) 툴입니다. &ldquo;<strong>OCI CLI</strong>&ldquo;를 사용하여 OCI 웹 콘솔과 같은 기능을 수행할 수 있습니다. &ldquo;<strong>OCI CLI</strong>&ldquo;를 스크립트와 함께 사용할 경우 OCI 인프라 관리 기능을 자동화하고 편리하게 운영할 수 있습니다. Oracle Cloud Infrastructure를 더 효율적으로 사용하기 위해서 Command Line Interface(이하 CLI) 사용이 필수입니다.</p>
+
+<p>&ldquo;<strong>OCI CLI</strong>&ldquo;를 설치하고 Oracle Cloud 계정과 연결하기 위해서는 다음과 같은 정보가 필요합니다.</p>
+
+<ul>
+<li>OCI User의 OCID</li>
+<li>OCI Tenancy ID</li>
+<li>OCI Region</li>
+</ul>
+
+<p>이 정보는 확인하는 방법을 정리합니다.</p>
+
+<h2 id="oci-user의-ocid">OCI User의 OCID</h2>
+
+<p>OCI User의 OCID는 OCI User 관리 페이지에서 확이할 수 있습니다. OCI Compute 관리 페이지에서 다음 메뉴로 &ldquo;<strong>OCI User</strong>&rdquo; 관리 페이지로 이동합니다.</p>
+
+<ul>
+<li>&ldquo;<strong>MENU</strong>&rdquo; -&gt; &ldquo;<strong>Identity</strong>&rdquo; -&gt; &ldquo;<strong>Users</strong>&ldquo;</li>
+</ul>
+
+<p>다음 그림과 같이 OCI User 관리 페이지에서 OCI CLI 접속에 사용할 OCI User의 OCID를 확인할 수 있습니다. OCID 문자열에 &ldquo;copy&rdquo; 링크를 클릭하면 OCID 문자열이 복사됩니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/160.jpg" alt="" /></p>
+
+<ul>
+<li>OCI User(adw_hol_user)의 ocid</li>
+</ul>
+</blockquote>
+
+<h2 id="oci-tenancy-id">OCI Tenancy ID</h2>
+
+<p>OCI Tenancy의 OCID는 OCI Tenancy 관리 페이지에서 확이할 수 있습니다. OCI Compute 관리 페이지에서 다음 이미지와 같이 오른쪽 위의 사용자 아이콘을 클릭한 후 나타나는 &ldquo;Tenancy&rdquo; 메뉴를 클릭하면 &ldquo;<strong>OCI Tenancy</strong>&rdquo; 관리 페이지로 이동합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/170.jpg" alt="" /></p>
+
+<ul>
+<li>OCI Tenancy 관리 페이지 이동 메뉴</li>
+</ul>
+</blockquote>
+
+<p>다음 이미지와 같이 &ldquo;<strong>OCI Tenancy</strong>&rdquo; 관리 페이지에서 OCI Tenency의 ocid와 Region 정보를 확인할 수 있습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/180.jpg" alt="" /></p>
+
+<ul>
+<li>OCI Tenancy ocid와 Region</li>
+</ul>
+</blockquote>
+
+<h2 id="수집-정보">수집 정보</h2>
+
+<p>지금까지 OCI CLI 설정을 위해서 수집한 정보는 다음과 같습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>관련 수집 정보</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>OCI User의 ocid</td>
+<td>ocid1.user.oc1..aaaaabbasatvx3hdkcg2nfa6oaaijdvtctriyvuynhc4dabck3pxhreirbnwa</td>
+</tr>
+
+<tr>
+<td>OCI Tenancy의 oicd</td>
+<td>ocid1.tenancy.oc1..aaaaabbaurlvuhzz6e3ycvayt7rg4gt2uwxynjzvyd4zowknkvmtvyb452na</td>
+</tr>
+
+<tr>
+<td>Region</td>
+<td>us-ashburn-1</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="to-the-next">To the Next&hellip;</h2>
+
+<p>다음 문서에서는 OCI 관리 툴인 OCI CLI를 설치하고 기본 연결 설정을 진행하겠습니다.</p>
+<div class="edit-meta">Last updated on 21 Dec 2018 / Published on 21 Dec 2018<br></div><nav class="pagination">
+<a class="nav nav-prev" href="/tutorial_manual/handson_adw/05.preprocessing/2/" title="1.2 OCI Identity 구성 요소 만들기"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 1.2 OCI Identity 구성 요소 만들기</a>
+
+
+<a class="nav nav-next" href="/tutorial_manual/handson_adw/05.preprocessing/4/" title="1.4 OCI CLI 설치 및 기본 설정">Next - 1.4 OCI CLI 설치 및 기본 설정 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+
+</nav><footer><div class="authorbox row clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2&appId=404519239985000&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/handson_adw/05.preprocessing/3/"></div>
+<p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
+</footer>
+</main><div class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+<hr/>
+
+<nav>
+<ul>
+
+<li class="parent"><a href="/tutorial_manual/handson_adw/">오라클 클라우드 Autonomoous Data Warehouse</a>
+<ul class="sub-menu">
+
+<li class="parent"><a href="/tutorial_manual/handson_adw/05.preprocessing/">1장. ADW Hands-on 사전 준비</a>
+<ul class="sub-menu">
+<li class=""><a href="/tutorial_manual/handson_adw/05.preprocessing/1/">1.1 오라클 클라우드 계정 확보</a></li>
+<li class=""><a href="/tutorial_manual/handson_adw/05.preprocessing/2/">1.2 OCI Identity 구성 요소 만들기</a></li>
+<li class="active"><a href="/tutorial_manual/handson_adw/05.preprocessing/3/">1.3 OCI CLI 설정 기본 정보 수집</a></li>
+<li class=""><a href="/tutorial_manual/handson_adw/05.preprocessing/4/">1.4 OCI CLI 설치 및 기본 설정</a></li>
+<li class=""><a href="/tutorial_manual/handson_adw/05.preprocessing/5/">1.5 OS 버킷 생성 및 정책 설정</a></li>
+<li class=""><a href="/tutorial_manual/handson_adw/05.preprocessing/6/">1.6 OCI CLI를 이용한 파일 업로드</a></li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

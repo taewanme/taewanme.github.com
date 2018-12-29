@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>1.5 OS 버킷 생성 및 정책 설정 - taewan.kim 블로그</title>
+<meta name="description" content="Oracle ADW 서비스와 OCI Object Storage를 효과적으로 연동하기 위해서, OCI Object Storage에 Bucket을 생성하고, OCI User가 Bucket을 사용할 수 있도록 보안 설정하는 과정을 소개합니다.">
+<meta name="generator" content="Hugo 0.52" />
+<link href="/index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="http://taewan.kim/handson_adw/05.preprocessing/5/">
+<link rel="stylesheet" href="/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="/js/jquery.backtothetop/jquery.backtothetop.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-72835175-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-72835175-1');
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+<link rel="stylesheet" href="/css/taewan.css"  />
+</head>
+<body>
+<div class="container"> 
+<header class="header">
+  <div class="container container-inner clearfix" >
+    <div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+      <a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+        <h1 class="logo__title">taewan.kim 블로그</h1><br/>
+        <h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list"><li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li><li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li><li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Tutorial과 Manual 문서를 제공" >TUTORIAL &amp; MANUAL</a></li><li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li><li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li><li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li></ul>
+</nav>
+<div class="content-container">
+<main>
+
+<figure class="post__thumbnail">
+  <img src="https://taewanmerepo.github.io/2018/12/mlyearning/post.jpg" alt="1.5 OS 버킷 생성 및 정책 설정">
+</figure>
+
+<h1>1.5 OS 버킷 생성 및 정책 설정</h1>
+
+<p>앞에서도 설명했지만 Oracle Cloud의 Data Lake는 Object Storage입니다. OCI Object Storage는 파일의 포멧과 크기에 제약없이 고가용성 데이터 저장소 이입니다. OCI Object Storage의 특징을 다음과 같이 요약할 수 있습니다.</p>
+
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Object Storage의 데이터 묶음 단위</td>
+<td>Bucket</td>
+</tr>
+
+<tr>
+<td>Compartment 별 최대 Bucket 수</td>
+<td>1,000 개</td>
+</tr>
+
+<tr>
+<td>Bucket 당 저장 가능한 최대 파일 수</td>
+<td>제약 없음</td>
+</tr>
+
+<tr>
+<td>최대 파일(Object) 사이즈</td>
+<td>10 TB<br/> - 최대 객체 Part Size</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>출처: <a href="https://docs.cloud.oracle.com/iaas/Content/General/Concepts/servicelimits.htm">https://docs.cloud.oracle.com/iaas/Content/General/Concepts/servicelimits.htm</a><br /></li>
+</ul>
+</blockquote>
+
+<p>OCI Object Storage에 데이터를 저장하기 위해서는 bucket을 만들어야 하고, 지정한 Bucket에 &ldquo;<strong>OCI CLI</strong>&ldquo;를 이용하여 파일을 업로드하거나 Oracl ADW 인스턴스가 OCI Object Storage의 Bucket에 파일을 쓰거나 읽기 위해서는 보안 정책(Policy)를 설정해야 합니다.</p>
+
+<p>OCI Object Storage에 Bucket을 만들고, 보안 정책을 설정해보겠습니다.</p>
+
+<h2 id="bucket-만들기">Bucket 만들기</h2>
+
+<p>OCI Object Storage에 이름이 &ldquo;<strong>hol</strong>&ldquo;인 Bucket을 만들어 보겠습니다. OCI Compute 관리 페이지에서 다음 메뉴로 “Object Storage” 관리 페이지로 이동합니다.</p>
+
+<ul>
+<li>메뉴 경로: <strong>MENU</strong> -&gt; <strong>Object Storage</strong> -&gt; <strong>Object Storage</strong></li>
+</ul>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/300.jpg" alt="" /></p>
+
+<ul>
+<li>Object Storage 관리 페이지로 이동</li>
+</ul>
+</blockquote>
+
+<p>“Object Storage” 관리 페이지에서 Compartment에 &ldquo;<strong>adw_hol_cmpt</strong>&ldquo;를 선택하고 &ldquo;<strong>Create Bucket</strong>&ldquo;을 클릭합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/310.jpg" alt="" /></p>
+
+<ul>
+<li>Bucket 생성 요청</li>
+</ul>
+</blockquote>
+
+<p>&ldquo;<strong>Bucket Name</strong>&ldquo;에 &ldquo;<strong>hol</strong>&ldquo;을 입력하고 &ldquo;<strong>Create Bucket</strong>&ldquo;을 클릭합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/320.jpg" alt="" /></p>
+
+<ul>
+<li>Bucket 생성</li>
+</ul>
+</blockquote>
+
+<p>&ldquo;<strong>hol</strong>&rdquo; 버킷이 만들어지면, 다음 그림처럼 “Object Storage” 관리 페이지에 &ldquo;<strong>hol</strong>&rdquo; 버킷이 출력됩니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/330.jpg" alt="" /></p>
+
+<ul>
+<li>“Object Storage” 관리 페이지의 Bucket 목록</li>
+</ul>
+</blockquote>
+
+<p>이제 &ldquo;<strong>hol</strong>&rdquo; 버킷을 만들었습니다. &ldquo;<strong>hol</strong>&rdquo; 버킷에 접근 정책을 설정해 보겠습니다.</p>
+
+<h2 id="자원-정책-policies-설정">자원 정책(Policies) 설정</h2>
+
+<p>OCI Object Storage의 <strong>hol</strong> 버킷의 접근 정책을 만들어 보겠습니다. 다음과 같은 정책을 만들 것입니다.</p>
+
+<ul>
+<li>Policy 개요
+
+<ul>
+<li>adw_hol_cpmt 컴파트먼트의 hol 버킷에 포함된 object에 대한 읽기 권한을 adw_hol_group에 부여</li>
+<li>adw_hol_cpmt 컴파트먼트의 hol 버킷에 포함된 객체의 관리 권한을 adw_hol_group에 부여
+
+<ul>
+<li>관리 권한: 객체 생성, 객체 추가</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>이 정책은 다음과 같이 정의 됩니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>policy 번호</th>
+<th>Policy Statement</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>Allow group adw_hol_group to read objects in compartment adw_hol_cpmt where target.bucket.name=&lsquo;hol&rsquo;</td>
+<td>adw_hol_group에 hol 버킷의 객체 읽기 권한 부여</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Allow group adw_hol_group to manage objects in compartment adw_hol_cpmt where all {target.bucket.name=&lsquo;hol&rsquo;, any {request.permission=&lsquo;OBJECT_CREATE&rsquo;, request.permission=&lsquo;OBJECT_INSPECT&rsquo;}}</td>
+<td>adw_hol_group에 hol 버킷의 객체 쓰기 권한 부여</td>
+</tr>
+</tbody>
+</table>
+
+<p>“OCI Policy” 관리 페이지는 OCI Compute 관리 페이지에서 다음 메뉴로 이동합니다.</p>
+
+<ul>
+<li>메뉴 경로: <strong>MENU</strong> -&gt; <strong>Identity</strong> -&gt; <strong>Policies</strong><br /></li>
+</ul>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/400.jpg" alt="" /></p>
+
+<ul>
+<li>“OCI Policy” 관리 페이지 이동</li>
+</ul>
+</blockquote>
+
+<p>“OCI Policy” 관리 페이지에서 compartment를 &ldquo;<strong>adw_hol_cmpt</strong>&ldquo;를 선택하고 &ldquo;<strong>Create Policy</strong>_&ldquo;를 클릭하여 policy를 만들 수 있습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/410.jpg" alt="" /></p>
+
+<ul>
+<li>OCI Policy 추가 요청</li>
+</ul>
+</blockquote>
+
+<p>앞에서 정의한 정책을 다음과 같이 추가할 수 있습니다. 하나의 Policy는 여러개의 Policy Statement를 포함할 수 있습니다.</p>
+
+<ul>
+<li>Name: hol_from_adw_policy</li>
+<li>Description: policy of adw hands-on</li>
+<li>Statements
+
+<ul>
+<li>Allow group adw_hol_group to read objects in compartment adw_hol_cpmt where target.bucket.name=&lsquo;hol&rsquo;</li>
+<li>Allow group adw_hol_group to manage objects in compartment adw_hol_cpmt where all {target.bucket.name=&lsquo;hol&rsquo;, any {request.permission=&lsquo;OBJECT_CREATE&rsquo;, request.permission=&lsquo;OBJECT_INSPECT&rsquo;}}</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/420.jpg" alt="" /></p>
+
+<ul>
+<li>Policy 생성</li>
+</ul>
+</blockquote>
+
+<p>정책이 정상적으로 만들어지면 다음과 같이 정책 목록이 출력됩니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/430.jpg" alt="" /></p>
+
+<ul>
+<li>Policy 목록</li>
+</ul>
+</blockquote>
+
+<h2 id="oci-cli를-이용한-파일-업로드">OCI CLI를 이용한 파일 업로드</h2>
+
+<p>이제 Object Storage에 Bucket과 Policy를 만들었습니다. Policy이 잘 설정되어 있는지 확인하기 위하여 파일을 업로드해 보겠습니다. 우선 데모에 사용할 파일은 다음 URL에서 다운로드 받을수 있습니다.</p>
+
+<ul>
+<li>파일 링크: <a href="https://www.oracle.com/webfolder/technetwork/tutorials/obe/cloud/adwc/OBE_Loading%20Your%20Data/files/datafiles_for_sh_tables.zip">https://www.oracle.com/webfolder/technetwork/tutorials/obe/cloud/adwc/OBE_Loading%20Your%20Data/files/datafiles_for_sh_tables.zip</a></li>
+</ul>
+
+<p>다음은 wget으로 위 링크의 파일을 다운고 크기를 확인하는 콘솔 이미지입니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/500.jpg" alt="" /></p>
+
+<ul>
+<li>파일 다운로드 및 확인</li>
+</ul>
+</blockquote>
+
+<p>다음 OCI CLI 명령으로 위에서 다운로드 받은 파일을 OCI Object Storage의 &ldquo;<strong>hol</strong>&rdquo; 버킷에 업로드 할 수 있습니다.</p>
+
+<pre><code>&gt; oci os object put --namespace twingirls \
+                  --name dataset.zip --bucket-name hol \
+                  --file ./datafiles_for_sh_tables.zip
+</code></pre>
+
+<p>위 명령에서 &ldquo;\&rdquo; 문자는 맥과 리눅스 콘솔에서 긴 명령을 입력할 때, 인위적으로 다음줄로 넘기지만 아직 현재 입력이 종료되지 않음을 표시하는 키워드 입니다. 위 명령은 콘솔에서 한줄로 처리됩니다. 위 명령의 각 옵션은 다음과 같은 의미를 갖습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>옵션</th>
+<th>의미</th>
+<th>설정값</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>&ndash;namespace</td>
+<td>현재 Oracle Cloud의 tenancy 명 입력</td>
+<td>twingirls</td>
+</tr>
+
+<tr>
+<td>&ndash;file</td>
+<td>OCI Object Storage에 업로드할 로컬 파일</td>
+<td>./datafiles_for_sh_tables.zip</td>
+</tr>
+
+<tr>
+<td>&ndash;name</td>
+<td>OCI Object Storage에 저장되는 파일명</td>
+<td>dataset.zip</td>
+</tr>
+
+<tr>
+<td>&ndash;bucket-name</td>
+<td>OCI Object Storage 대상 버킷명</td>
+<td>hol</td>
+</tr>
+</tbody>
+</table>
+
+<p>파일을 업로드하는 위 명령은 다음과 같이 처리됩니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/510.jpg" alt="" /></p>
+
+<ul>
+<li>OCI CLI 파일 업로드 명령</li>
+</ul>
+</blockquote>
+
+<p>명령이 실행되면 다음과 같은 JSON 결과를 출력합니다.</p>
+
+<pre><code>Uploading object  [####################################]  100%
+{
+  &quot;etag&quot;: &quot;7E27A4B5A138B7ECE0530255C20ABC40&quot;,
+  &quot;last-modified&quot;: &quot;Sat, 29 Dec 2018 10:41:14 GMT&quot;,
+  &quot;opc-content-md5&quot;: &quot;o3oUIGEYreeEsTIckh4dNA==&quot;
+}
+</code></pre>
+
+<p>위 출력과 같은 형식의 로그가 출력되면 파일은 정상적으로 올라간 상태입니다. OCI Object Storage에 업로드된 파일은 OCI Object Storage 관리 페이지의 <strong>hol</strong> 버킷 상세 페이지에서 확인할수 있습니다.</p>
+
+<ul>
+<li>메뉴 경로: OCI Compute  -&gt; <strong>Menu</strong> -&gt; <strong>Object Storage</strong> -&gt; <strong>Object Storage</strong> -&gt; <strong>hol</strong> 클릭</li>
+</ul>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/530.jpg" alt="" /></p>
+
+<ul>
+<li>OCI Object Storage 관리 페이지에서 옵로드 파일 확인</li>
+</ul>
+</blockquote>
+
+<p>OCI CLI 명령으로도 앞에서 업로드한 파일을 확인할 수 있습니다.</p>
+
+<pre><code>oci os object list --namespace twingirls --bucket-name hol \
+                   --all --output table
+</code></pre>
+
+<p>위 명령에서 &ldquo;\&rdquo; 문자는 맥과 리눅스 콘솔에서 긴 명령을 입력할 때, 인위적으로 다음줄로 넘기지만 아직 현재 입력이 종료되지 않음을 표시하는 키워드 입니다. 위 명령은 콘솔에서 한줄로 처리됩니다. 위 명령의 각 옵션은 다음과 같은 의미를 갖습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>옵션</th>
+<th>의미</th>
+<th>설정값</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>&ndash;namespace</td>
+<td>현재 Oracle Cloud의 tenancy 명 입력</td>
+<td>twingirls</td>
+</tr>
+
+<tr>
+<td>&ndash;bucket-name</td>
+<td>OCI Object Storage 대상 버킷명</td>
+<td>hol</td>
+</tr>
+
+<tr>
+<td>&ndash;all</td>
+<td>모든 파일 출력</td>
+<td>없음</td>
+</tr>
+
+<tr>
+<td>&ndash;output</td>
+<td>출력 포멧</td>
+<td>table</td>
+</tr>
+</tbody>
+</table>
+
+<p>이 명령의 실행 결과는 다음과 같이 출력됩니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/520.jpg" alt="" /></p>
+
+<ul>
+<li>OCI Object Storage의 hol 버킷에 포함된 파일 목록 출력</li>
+</ul>
+</blockquote>
+
+<h2 id="to-the-next">To the next &hellip;.</h2>
+
+<p>다음 문서에서는 OCI CLI로 OCI Object Storage에 파일을 업로드하는 몇 가지 명령이 예를 살펴보겠습니다.</p>
+<div class="edit-meta">Last updated on 21 Dec 2018 / Published on 21 Dec 2018<br></div><nav class="pagination">
+<a class="nav nav-prev" href="/tutorial_manual/handson_adw/05.preprocessing/4/" title="1.4 OCI CLI 설치 및 기본 설정"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 1.4 OCI CLI 설치 및 기본 설정</a>
+
+
+<a class="nav nav-next" href="/tutorial_manual/handson_adw/05.preprocessing/6/" title="1.6 OCI CLI를 이용한 파일 업로드">Next - 1.6 OCI CLI를 이용한 파일 업로드 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+
+</nav><footer><div class="authorbox row clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2&appId=404519239985000&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/handson_adw/05.preprocessing/5/"></div>
+<p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
+</footer>
+</main><div class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+<hr/>
+
+<nav>
+<ul>
+
+<li class="parent"><a href="/tutorial_manual/handson_adw/">오라클 클라우드 Autonomoous Data Warehouse</a>
+<ul class="sub-menu">
+
+<li class="parent"><a href="/tutorial_manual/handson_adw/05.preprocessing/">1장. ADW Hands-on 사전 준비</a>
+<ul class="sub-menu">
+<li class=""><a href="/tutorial_manual/handson_adw/05.preprocessing/1/">1.1 오라클 클라우드 계정 확보</a></li>
+<li class=""><a href="/tutorial_manual/handson_adw/05.preprocessing/2/">1.2 OCI Identity 구성 요소 만들기</a></li>
+<li class=""><a href="/tutorial_manual/handson_adw/05.preprocessing/3/">1.3 OCI CLI 설정 기본 정보 수집</a></li>
+<li class=""><a href="/tutorial_manual/handson_adw/05.preprocessing/4/">1.4 OCI CLI 설치 및 기본 설정</a></li>
+<li class="active"><a href="/tutorial_manual/handson_adw/05.preprocessing/5/">1.5 OS 버킷 생성 및 정책 설정</a></li>
+<li class=""><a href="/tutorial_manual/handson_adw/05.preprocessing/6/">1.6 OCI CLI를 이용한 파일 업로드</a></li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

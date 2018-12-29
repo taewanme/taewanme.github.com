@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>1.4 OCI CLI 설치 및 기본 설정 - taewan.kim 블로그</title>
+<meta name="description" content="Oracle ADW 서비스와 OCI Object Storage를 효과적으로 연동하기 위해서 OCI CLI 설치 밒 설정 방법을 소개합니다.">
+<meta name="generator" content="Hugo 0.52" />
+<link href="/index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="http://taewan.kim/handson_adw/05.preprocessing/4/">
+<link rel="stylesheet" href="/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="/js/jquery.backtothetop/jquery.backtothetop.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-72835175-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-72835175-1');
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+<link rel="stylesheet" href="/css/taewan.css"  />
+</head>
+<body>
+<div class="container"> 
+<header class="header">
+  <div class="container container-inner clearfix" >
+    <div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+      <a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+        <h1 class="logo__title">taewan.kim 블로그</h1><br/>
+        <h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list"><li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li><li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li><li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Tutorial과 Manual 문서를 제공" >TUTORIAL &amp; MANUAL</a></li><li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li><li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li><li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li></ul>
+</nav>
+<div class="content-container">
+<main>
+
+<figure class="post__thumbnail">
+  <img src="https://taewanmerepo.github.io/2018/12/mlyearning/post.jpg" alt="1.4 OCI CLI 설치 및 기본 설정">
+</figure>
+
+<h1>1.4 OCI CLI 설치 및 기본 설정</h1>
+
+<p>oci cli는 Oracle Cloud Infrastructure에서 주요 인프라 관리 기능을 수행하는 CLI(Command Line Interface) 툴입니다. &ldquo;<strong>oci cli</strong>&ldquo;를 사용하여 OCI 웹 콘솔과 같은 기능을 수행할 수 있습니다. &ldquo;<strong>oci cli</strong>&ldquo;를 스크립트와 함께 사용할 경우 OCI 인프라 관리 기능을 자동화하고 편리하게 운영할 수 있습니다. Oracle Cloud Infrastructure를 더 효율적으로 사용하기 위해서 Command Line Interface(이하 CLI) 사용이 필수입니다.</p>
+
+<p>OCI 인프라스트럭처를 관리하는 언어별 SDK를 <a href="https://github.com/oracle" target="_blank">오라클 github 레파지토리[↗NW]</a>
+에서 오픈소스 형태로 개발하고 있습니다. OCI SDK가 지원하는 언어는 Python, Go, Java와 Ruby입니다. &ldquo;<strong>oci cli</strong>&ldquo;는 <a href="https://github.com/oracle/oci-python-sdk" target="_blank">oracle/oci-python-sdk[↗NW]</a>
+ 프로젝트를 기반으로 만들어 졌습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/11/ocicli/i010.jpg" alt="" />
+- Github에서 개발중인 언어별 OCI SDK</p>
+</blockquote>
+
+<p>&ldquo;<strong>oci cli</strong>&ldquo;는 Mac, Windows 또는 Linux를 지원하며, Python (버전 2.7.5 또는 3.5 이상)을 기반으로 합니다. 본 문에서는 &ldquo;<strong>oci cli</strong>&ldquo;를 Mac OSX오 윈도우에서 설치하는 방법을 소개합니다. <sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup></p>
+
+<p>본 문서는 Oracle Cloud Infrastucture의 지원 툴인 oci cli를 설치하는 과정을 소개합니다. 현재 독자는 Oracle Cloud 계정이 있다는 전제로 진행합니다. Oracle Cloud 서비스를 이용 가능한 계정이 없다면, 다음 문서를 참조하여 Oracle Cloud 계정을 생성하시기 바랍니다.</p>
+
+<ul>
+<li><a href="/post/oracle_cloud_trial/" target="_blank">Oracle Cloud 트라이얼 신청 절차 (2018.05.01 기준)[↗NW]</a>
+</li>
+</ul>
+
+<h2 id="oci-cli-설치">oci cli 설치</h2>
+
+<p>&ldquo;<strong>oci cli</strong>&ldquo;은 github에서 개발되고 있으며, Window와  mac/Linux에서 설치를 돕는 스크립트를 제공합니다. 설치 스크립트는 <a href="https://github.com/oracle/oci-cli">https://github.com/oracle/oci-cli</a> 사이트에서 확인할 수 있습니다.</p>
+
+<p>여러분의 운영체제에 맞는 스크립트를 터미널상에서 실행하면 설치가 되기 때문에 설치 자체는 상당히 쉽습니다. &ldquo;<strong>oci cli</strong>&ldquo;를 사용하기 위해서는 Python (버전 2.7.5 또는 3.5 이상)이 필요합니다. 파이썬이 없는 상태에서 다음 스크립트로 oci cli를 설치하면 설치 과정에서 최신 Python을 설치합니다. 기존에 파이썬이 설치되어 있다면 버전을 2.7.5 이상 혹은 3.5 이상으로 먼저 맞춰야 합니다.</p>
+
+<div class="notices note" ><p><strong><font color='red'>설치 시 주의 사항</font></strong>: oci cli 설치 스크립트에 에러가 발생하는 경우는 크게 두 가지 입니다. 하나는 현재 2.7과 3.5 아래 버전이 설치된 경우입니다. oci cli 설치 스크립트는 현재 파이썬이 설치되어 있지 않다면, 최신 파이썬을 설치하지만, 최소 기준 아래 버전이 설치된 경우에 업그레이드는 하지 않습니다. 두 번째는 22번 포트가 막혀있는 네트워크 문제입니다. oci cli 설치 스크립트는 ssh 통신을 합니다. 따라서 22번 포트를 사용할 수 있어야 합니다.</p>
+</div>
+
+
+<p>Linux/Mac OSX에서는 터미널상에서 Bash 혹은 Zsh에서 실행하면 됩니다. 윈도우인 경우 Window 10을 권장하고, 다음 스크립트는 PowerShell에서 수행해야 합니다.</p>
+
+<ul>
+<li>Linux/Mac OSX용 설치 스크립트</li>
+</ul>
+
+<blockquote>
+<pre><code>bash -c &quot;$(curl -L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh)&quot;
+</code></pre>
+
+<ul>
+<li>전체 명령: bash -c &ldquo;$(curl -L <a href="https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh)&quot;">https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh)&quot;</a></li>
+</ul>
+</blockquote>
+
+<ul>
+<li>Window용 설치 스크립트</li>
+</ul>
+
+<blockquote>
+<pre><code>powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.ps1'))&quot;
+</code></pre>
+
+<ul>
+<li>전체 명령: powershell -NoProfile -ExecutionPolicy Bypass -Command &ldquo;iex ((New-Object System.Net.WebClient).DownloadString(&lsquo;<a href="https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.ps1'))&quot;">https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.ps1'))&quot;</a></li>
+</ul>
+</blockquote>
+
+<h3 id="oci-cli-설치-확인">oci cli 설치 확인</h3>
+
+<p>oci cli가 제대로 설치되었는지는 다음 명령으로 확인할 수 있습니다.</p>
+
+<blockquote>
+<pre><code>~/temp/demo/taewan &gt; oci -v
+2.4.40
+</code></pre>
+</blockquote>
+
+<h2 id="oci-cli-기본-설정">oci cli 기본 설정</h2>
+
+<p>앞에서 수집한 OCI Identity 정보를 이용하여 OCI CLI 기본 연결 설정을 해보겠습니다. 앞에서 수집한 정보는 다음과 같습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>관련 수집 정보</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>OCI User의 ocid</td>
+<td>ocid1.user.oc1..aaaaabbasatvx3hdkcg2nfa6oaaijdvtctriyvuynhc4dabck3pxhreirbnwa</td>
+</tr>
+
+<tr>
+<td>OCI Tenancy의 oicd</td>
+<td>ocid1.tenancy.oc1..aaaaabbaurlvuhzz6e3ycvayt7rg4gt2uwxynjzvyd4zowknkvmtvyb452na</td>
+</tr>
+
+<tr>
+<td>Region</td>
+<td>us-ashburn-1</td>
+</tr>
+</tbody>
+</table>
+
+<p>다음 명령을 통해서 oci cli의 기본 접속 설정을 할 수 있습니다.</p>
+
+<blockquote>
+<pre><code>&gt; oci setup config
+</code></pre>
+</blockquote>
+
+<p>위 명령을 입력하면 다음가 같은 정보 입력 및 문의가 진행됩니다.</p>
+
+<ul>
+<li><code>Enter a location for your config [/Users/taewan/.oci/config]:</code>
+
+<ul>
+<li>config 파일 위치 지정</li>
+<li>입력: Enter (기본 위치 사용)</li>
+</ul></li>
+<li><code>Enter a user OCID:</code>
+
+<ul>
+<li>입력: OCI User의 ocid</li>
+<li>ocid1.user.oc1..aaaaabbasatvx3hdkcg2nfa6oaaijdvtctriyvuynhc4dabck3pxhreirbnwa</li>
+</ul></li>
+<li><code>Enter a tenancy OCID</code>
+
+<ul>
+<li>입력: OCI Tenancy의 oicd</li>
+<li>ocid1.tenancy.oc1..aaaaabbaurlvuhzz6e3ycvayt7rg4gt2uwxynjzvyd4zowknkvmtvyb452na</li>
+</ul></li>
+<li><code>Enter a region (e.g. eu-frankfurt-1, uk-london-1, us-ashburn-1, us-phoenix-1):</code>
+
+<ul>
+<li>입력: us-ashburn-1</li>
+</ul></li>
+<li><code>Do you want to generate a new RSA key pair?</code>
+
+<ul>
+<li>RSA 보안 키 파일 생성</li>
+<li>입력: Y</li>
+</ul></li>
+<li><code>Enter a directory for your keys to be created [/Users/taewan/.oci]:</code>
+
+<ul>
+<li>RSA 보안 키 파일 위치 지정</li>
+<li>입력: Enter (기본 위치를 사용할 경우)</li>
+</ul></li>
+<li><code>Enter a name for your key [oci_api_key]:</code>
+
+<ul>
+<li>RSA Private key 파일 이름 지정</li>
+<li>입력: Enter (기본 위치를 사용할 경우)</li>
+</ul></li>
+<li><code>Enter a passphrase for your private key (empty for no passphrase):</code>
+
+<ul>
+<li>입력: Enter (기본값 사용)</li>
+</ul></li>
+</ul>
+
+<p>기본 위치를 사용할 경우 다음과 같은 결과를 확인할 수 있습니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">&gt; <span class="nb">pwd</span>
+/Users/taewan
+&gt; ls .oci
+config                 oci_api_key.pem        oci_api_key_public.pem
+&gt; cat .oci/config
+<span class="o">[</span>DEFAULT<span class="o">]</span>
+<span class="nv">user</span><span class="o">=</span>ocid1.user.oc1..aaaaaaaa7q6hc56vqrjk67adfgi4np4k7abcq64ebqdfmhjhod3tmyxca
+<span class="nv">fingerprint</span><span class="o">=</span>b1:7a:69:14:f1:ae:2c:13:cc:54:c3:d4:43:b1:9c:b2
+<span class="nv">key_file</span><span class="o">=</span>/Users/taewan/.oci/oci_api_key.pem
+<span class="nv">tenancy</span><span class="o">=</span>ocid1.tenancy.oc1..aaaaaaaarla6ykabvfryuxqcx5y76stinq7z76lql5xqvcbjx3zfujxi33q
+<span class="nv">region</span><span class="o">=</span>us-ashburn-1</code></pre></div>
+<h2 id="oci-user에-rsa-public-파일-등록">oci user에 rsa public 파일 등록</h2>
+
+<p>OCI CLI의 &ldquo;<strong>oci setup config</strong>&rdquo; 명령으로 만들어진 공개키를 OCI User에 등록해야 합니다. 앞에서 생성된 공개키는 다음과 같이 확인할 수 있습니다.</p>
+
+<pre><code>&gt; cat .oci/oci_api_key_public.pem
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3IPPeI54Nns3HRuaOgLi
+Q2iqB1vKb2idWOf52/lUQZXKJ4AKWkdlbHBfvTIf6V8T35NbGL5e0UO3CmiYYzcc
+Rrv4iEtLxKlZGok6fMG8ojrKya35lUzTiqOUfzTGGmSZzAZTAJ3uiAmziTgzF4rj
+KyEaX+/FdHIQiR+av1w3hm8ooYdCnq3Ja51g+Wmbw9xh4OjmQf8zbnI1Q0qJi4Xv
+V0XmAnMlZbLSpovwzYAQCR2C0fqB5zlRd7miF1EnrVN61lFx+f78qziZtTp8BH8o
+xUwmDAaD4d5f83RsLy+2+0XpDTMfZpaD+JAxko1xxgUg7mW/s82OmTO+onXjoFjV
+4wIDAQAB
+-----END PUBLIC KEY-----
+</code></pre>
+
+<p>이 공개키를 OCI User인 adw_hol_user에 등록하기 위해서, OCI Compute 관리 페이지에서 다음 메뉴로 &ldquo;<strong>OCI User</strong>&rdquo; 관리 페이지로 이동합니다.</p>
+
+<ul>
+<li>&ldquo;<strong>MENU</strong>&rdquo; -&gt; &ldquo;<strong>Identity</strong>&rdquo; -&gt; &ldquo;<strong>Users</strong>&ldquo;</li>
+</ul>
+
+<p>OCI USER 관리 페이지에서 adw_hol_user 사용자의 상세 페이지로 이동한 후, &ldquo;Add Public Key&rdquo;를 클릭하고 공개키 등록 폼을 요청합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/190.jpg" alt="" /></p>
+
+<ul>
+<li>공개키 등록 요청</li>
+</ul>
+</blockquote>
+
+<p>공개키 등록 폼에 &ldquo;.oci/oci_api_key_public.pem&rdquo; 파일의 공개키를 등록합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/200.jpg" alt="" /></p>
+
+<ul>
+<li>공개키 등록</li>
+</ul>
+</blockquote>
+
+<p>&ldquo;adw_hol_user&rdquo; 사용자 상세 페이지에 공개키가 등록되면 다음과 같이 공개키 목록이 출력됩니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/210.jpg" alt="" /></p>
+
+<ul>
+<li>공개키 등록 결과</li>
+</ul>
+</blockquote>
+
+<h2 id="oci-cli-기본-접속-설정-확인">OCI CLI 기본 접속 설정 확인</h2>
+
+<p>oci의 tenancy id를 조회하는 <code>oci os ns get</code> 명령을 이용하여 앞에서 수행한 설정 상태를 점검할 수 있습니다. 아래와 같이 Tenancy를 반환한다면, 설정이 제대로 되었다고 판단할 수 있습니다.</p>
+
+<blockquote>
+<pre><code>&gt; oci os ns get
+{
+  &quot;data&quot;: &quot;twingirls&quot;
+}
+&gt;
+</code></pre>
+</blockquote>
+
+<p>위와 같이 tenancy 정보가 출력되면 oci cli 설치와 기본 연결 설정이 정상적으로 완료된 것으로 판단할 수 있습니다.</p>
+
+<h2 id="동영상-데모">동영상 데모</h2>
+
+<p>지금까지 소개할 설치 및 설정 절차는 다음 동영상에서 확인하실 수 있습니다.</p>
+
+<h3 id="window-10에-oci-cli-설치하기">Window 10에 oci cli 설치하기</h3>
+
+<p>다음 동영상은 Window 10에서 oci cli를 설치하고 설정하는 과정을 확인할 수 있습니다.</p>
+
+<blockquote>
+<p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/rxdeUduFpZ4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+- Window 10에 OCI CLI 설치 데모 동영상</p>
+</blockquote>
+
+<h3 id="mac-osx에-oci-cli-설치하기">Mac OSX에 oci cli 설치하기</h3>
+
+<p>Mac OSX와 리눅스에 oci cli를 설치하는 과정은 거의 같습니다. 다음 동영상에서 Mac OSX에 oci cli를 설치하고 설정하는 과정을 확인할 수 있습니다.</p>
+
+<blockquote>
+<p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/CvpDpskShmY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+- Mac OSX에 OCI CLI 설치 데모 동영상</p>
+</blockquote>
+
+<h2 id="to-the-next">To the next &hellip;.</h2>
+
+<p>다음 문서에서는 OCI CLI로 OCI Object Storage에 파일을 업로드 할 수 있도록, Bucket을 만들고 보안 설정하는 과정을 다루겠습니다.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">&ldquo;<strong>oci cli</strong>&ldquo;를 리눅스에서 설치하는 방법은 Mac OSX와 같습니다.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+</ol>
+</div>
+<div class="edit-meta">Last updated on 21 Dec 2018 / Published on 21 Dec 2018<br></div><nav class="pagination">
+<a class="nav nav-prev" href="/tutorial_manual/handson_adw/05.preprocessing/3/" title="1.3 OCI CLI 설정 기본 정보 수집"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 1.3 OCI CLI 설정 기본 정보 수집</a>
+
+
+<a class="nav nav-next" href="/tutorial_manual/handson_adw/05.preprocessing/5/" title="1.5 OS 버킷 생성 및 정책 설정">Next - 1.5 OS 버킷 생성 및 정책 설정 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+
+</nav><footer><div class="authorbox row clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2&appId=404519239985000&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/handson_adw/05.preprocessing/4/"></div>
+<p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
+</footer>
+</main><div class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+<hr/>
+
+<nav>
+<ul>
+
+<li class="parent"><a href="/tutorial_manual/handson_adw/">오라클 클라우드 Autonomoous Data Warehouse</a>
+<ul class="sub-menu">
+
+<li class="parent"><a href="/tutorial_manual/handson_adw/05.preprocessing/">1장. ADW Hands-on 사전 준비</a>
+<ul class="sub-menu">
+<li class=""><a href="/tutorial_manual/handson_adw/05.preprocessing/1/">1.1 오라클 클라우드 계정 확보</a></li>
+<li class=""><a href="/tutorial_manual/handson_adw/05.preprocessing/2/">1.2 OCI Identity 구성 요소 만들기</a></li>
+<li class=""><a href="/tutorial_manual/handson_adw/05.preprocessing/3/">1.3 OCI CLI 설정 기본 정보 수집</a></li>
+<li class="active"><a href="/tutorial_manual/handson_adw/05.preprocessing/4/">1.4 OCI CLI 설치 및 기본 설정</a></li>
+<li class=""><a href="/tutorial_manual/handson_adw/05.preprocessing/5/">1.5 OS 버킷 생성 및 정책 설정</a></li>
+<li class=""><a href="/tutorial_manual/handson_adw/05.preprocessing/6/">1.6 OCI CLI를 이용한 파일 업로드</a></li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

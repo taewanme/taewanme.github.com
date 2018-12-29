@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>1.2 OCI Identity 구성 요소 만들기 - taewan.kim 블로그</title>
+<meta name="description" content="Oracle ADW 서비스를 프로비저닝하기 위해서는 OCI(Oracle Cloud Infrastructure)의 Identity에 OCI 사용자, OCI 사용자 그룹 그리고 Compartment를 생성하는 방법을 소개합니다.">
+<meta name="generator" content="Hugo 0.52" />
+<link href="/index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="http://taewan.kim/handson_adw/05.preprocessing/2/">
+<link rel="stylesheet" href="/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="/js/jquery.backtothetop/jquery.backtothetop.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-72835175-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-72835175-1');
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+<link rel="stylesheet" href="/css/taewan.css"  />
+</head>
+<body>
+<div class="container"> 
+<header class="header">
+  <div class="container container-inner clearfix" >
+    <div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+      <a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+        <h1 class="logo__title">taewan.kim 블로그</h1><br/>
+        <h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list"><li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li><li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li><li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Tutorial과 Manual 문서를 제공" >TUTORIAL &amp; MANUAL</a></li><li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li><li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li><li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li></ul>
+</nav>
+<div class="content-container">
+<main>
+
+<figure class="post__thumbnail">
+  <img src="https://taewanmerepo.github.io/2018/11/adwprovisioning/post.jpg" alt="1.2 OCI Identity 구성 요소 만들기">
+</figure>
+
+<h1>1.2 OCI Identity 구성 요소 만들기</h1>
+
+<p>오라클 클라우드에서 Data Lake는 Object Storage입니다. 모든 클라우드 서비스는 Object Storage를 중심으로 구성되고, Object Storage를 중심으로 데이터를 이관하고 주고 받는 아키텍처를 갖고 있습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/09/impact/030.jpg" alt="" /></p>
+
+<ul>
+<li>Oracle Cloud Data Lake &amp; Services</li>
+</ul>
+</blockquote>
+
+<p>Data Lake인 Object Storage 저장된 데이터를 Oracle ADW에 올릴수 있도록, OCI Object Storage와 Oracle ADW를 통합 설정하면 데이터를 운영 및 관리 잡업이 편리해 집니다. 이런 통합 설정은 OCI Object Storage 버킷 단위로 설정되며, Oracle ADW에서 OCI Object Storage 버킷을 접근하기 위해서는 보안 정책 설정이 필요합니다. 이러한 보안 정책 설정은 아래 그림과 같이 OCI Group 단위로 설정됩니다. 따라서 OCI User, OCI Group을 미리 만들어야 합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/oci_policy.jpg" alt="" /></p>
+
+<ul>
+<li>OCI Security Policy: Object Storage &amp; ADW</li>
+</ul>
+</blockquote>
+
+<p>또한 Bucket, Oracle ADW를 효과적으로 하나의 단위로 관리하기 위해서, Compartment를 만들고 OCI 자원을 관리해야 합니다. 이렇게 OCI Object Storage와 Oracle ADW을 연동하기 설정을 위해서는 OCI User, OCI Group 및 Compartment를 만들어야 합니다. 이것은 OCI에서 Identity라는 그룹으로 관리됩니다. 이제 OCI Identity 구성 요소를 만들겠습니다.</p>
+
+<h2 id="oci-user-만들기">OCI User 만들기</h2>
+
+<p>Oracle Cloud Trial 계정을 만들때 등록한 E-mail가 OCI User로 기본 등록됩니다. 이렇게 등록된 기본 OCI User는 막대한 권한을 갖습니다. 이 User를 서비스 연동에 사용하는 것은 적절치 않습니다. 따라서 Oracle ADW와 OCI Object Storage를 연동하는 용도로 사용할 OCI User를 만들어 사용해야 합니다. 이제 OCI User &ldquo;adw_hol_user&rdquo;을 만들보겠습니다.</p>
+
+<p>확보한 Oracle Cloud 계정으로 Oracle Cloud를 로그인하면, 다음 그림과 같은 Oracle Cloud 대시보드 페이지가 오픈됩니다. 대시보드 페이지에서 왼쪽 메뉴로 OCI Compute 관리 페이지로 이동합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/010.jpg" alt="" /></p>
+
+<ul>
+<li>Oracle Cloud 대시보드 페이지에서 OCI 페이지로 이동</li>
+</ul>
+</blockquote>
+
+<p>OCI Compute 관리 페이지에서 다음 메뉴로 &ldquo;<strong>OCI User</strong>&rdquo; 관리 페이지로 이동합니다.</p>
+
+<ul>
+<li>&ldquo;<strong>MENU</strong>&rdquo; -&gt; &ldquo;<strong>Identity</strong>&rdquo; -&gt; &ldquo;<strong>Users</strong>&ldquo;</li>
+</ul>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/020.jpg" alt="" /></p>
+
+<ul>
+<li>OCI 페이지에서 OCI Identity -&gt; Users 페이지로 이동</li>
+</ul>
+</blockquote>
+
+<p><strong>OCI User</strong> 관리 페이지에서 &ldquo;<strong>Create User</strong>&rdquo; 버튼을 클릭합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/030.jpg" alt="" /></p>
+
+<ul>
+<li>OCI Users 관리 페이지에서 계정 생성 시작</li>
+</ul>
+</blockquote>
+
+<p>다음과 같이 NAME 항목에 &ldquo;adw_hol_user&rdquo;를 입력하고 DESCRIPTION 항목을 설명을 추가한 후, &ldquo;<strong>Create</strong>&ldquo;를 클릭하면 OCI User가 생성됩니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/035.jpg" alt="" /></p>
+
+<ul>
+<li>adw_hol_user 사용자 생성</li>
+</ul>
+</blockquote>
+
+<p>OCI User가 생성되면 다음과 같이 OCI User 목록이 출력됩니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/040.jpg" alt="" /></p>
+
+<ul>
+<li>adw_hol_user 사용자 생성 결과</li>
+</ul>
+</blockquote>
+
+<h2 id="oci-group-만들기">OCI Group 만들기</h2>
+
+<p>OCI 자원에 대한 Policy는 OCI Group 단위로 설정하는 것이 권장됩니다. 앞으로 OCI 자원 정책을 설정하기 위해서 &ldquo;adw_hol_user&rdquo;의 OCI Group을 만들어야 합니다. 다음 그림과 같이 &ldquo;<strong>OCI Identity</strong>&ldquo;에서 &ldquo;<strong>Groups</strong>&rdquo; 링크를 클릭하여 OCI Groups 관리 페이지로 이동합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/050.jpg" alt="" /></p>
+
+<ul>
+<li>OCI Groups 관리 페이지로 이동</li>
+</ul>
+</blockquote>
+
+<p>OCI Groups 관리 페이지에서 &ldquo;<strong>Great Group</strong>&rdquo; 버튼을 클릭하여 OCI Group 생성을 시작합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/060.jpg" alt="" /></p>
+
+<ul>
+<li>OCI Group 생성 시작</li>
+</ul>
+</blockquote>
+
+<p>다음과 같이 NAME 항목애 &ldquo;adw_hol_group&rdquo;을 입력하고 DESCRIPTION 항목에 설명을 추가 후, &ldquo;<strong>Create</strong>&ldquo;를 클릭하면 OCI Group이 만들어 집니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/070.jpg" alt="" /></p>
+
+<ul>
+<li>OCI Group 사용자 생성</li>
+</ul>
+</blockquote>
+
+<p>OCI Group이 생성되면 다음과 같이 OCI Group 목록이 출력됩니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/080.jpg" alt="" /></p>
+
+<ul>
+<li>OCI Group 목록 출력</li>
+</ul>
+</blockquote>
+
+<p>앞에서 만든 &ldquo;<strong>adw_hol_group</strong>&ldquo;을 OCI User를 추가해야 한다. OCI User를 추가하기 위해서, OCI Group 목록 중에서 앞에서 만든 &ldquo;<strong>adw_hol_group</strong>&ldquo;을 클릭합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/090.jpg" alt="" /></p>
+
+<ul>
+<li>OCI User 추가</li>
+</ul>
+</blockquote>
+
+<p>다음 그림과 같이 OCI User 목록 중에서 &ldquo;adw_hol_user&rdquo;를 추가하고 &ldquo;<strong>Add</strong>&rdquo; 버튼을 클릭합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/100.jpg" alt="" /></p>
+
+<ul>
+<li>OCI User 선택: adw_hol_user</li>
+</ul>
+</blockquote>
+
+<p>OCI User가 OCI Group에 정상적으로 처리되면, 아래와 같이 &ldquo;<strong>adw_hol_group</strong>&ldquo;에 &ldquo;<strong>adw_hol_user</strong>&ldquo;가 추가된 것을 확인할 수 있습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/110.jpg" alt="" /></p>
+
+<ul>
+<li>OCI Group에 OCI User 추가 결과</li>
+</ul>
+</blockquote>
+
+<h2 id="oci-compartment-생성">OCI Compartment 생성</h2>
+
+<p>OCI Compartment는 시스템을 묶는 논리적인 단위입니다. Compartment는 기본적으로 root compartment가 만들어져 있습니다. root compartment는 최상위 compartment입니다. root compartment에 자원을 할당하고 관리하는 것은 바람직하지 않습니다. root 아래에 별도의 compartment를 만들어 사용하는 것이 권장됩니다. compartment는 계층 구조를 가집니다.</p>
+
+<p>다음음 그림과 같은 메뉴로 패스로 &ldquo;<strong>OCI Compartment</strong>&rdquo; 관리 페이지에 이동합니다.</p>
+
+<ul>
+<li>&ldquo;<strong>MENU</strong>&rdquo; -&gt; &ldquo;<strong>Identity</strong>&rdquo; -&gt; &ldquo;<strong>Compartments</strong>&ldquo;</li>
+</ul>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/120.jpg" alt="" /></p>
+
+<ul>
+<li>OCI Compartment로 이동</li>
+</ul>
+</blockquote>
+
+<p>&ldquo;<strong>OCI Compartment</strong>&rdquo; 관리 페이지에서 &ldquo;<strong>Create Compartment</strong>&ldquo;를 클릭하여 Compartment 생성을 시작합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/130.jpg" alt="" /></p>
+
+<ul>
+<li>OCI Compartment에서  OCI Compartment 생성 시작</li>
+</ul>
+</blockquote>
+
+<p>다음과 같이 각 항목을 입력하고 Compartment를 만듭니다.</p>
+
+<ul>
+<li>NAME: adw_hol_cpmt</li>
+<li>DESCRIPTION: compartment for adw_hol</li>
+<li>PARENT COMPARTMENT: root</li>
+</ul>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/140.jpg" alt="" /></p>
+
+<ul>
+<li>OCI Group에 OCI User 추가 결과</li>
+</ul>
+</blockquote>
+
+<p>OCI compartment이 만들어지면 다음과 같이 OCI compartment 목록이 출력됩니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2018/12/adw/150.jpg" alt="" /></p>
+
+<ul>
+<li>OCI Group에 OCI User 추가 결과</li>
+</ul>
+</blockquote>
+
+<h2 id="to-the-next">To the Next&hellip;</h2>
+
+<p>다음 문서에서는 OCI 관리 툴인 OCI CLI를 설치하기 위해서 필요한 정보를 수집해 보겠습니다.</p>
+<div class="edit-meta">Last updated on 21 Dec 2018 / Published on 21 Dec 2018<br></div><nav class="pagination">
+<a class="nav nav-prev" href="/tutorial_manual/handson_adw/05.preprocessing/1/" title="1.1 오라클 클라우드 계정 확보"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 1.1 오라클 클라우드 계정 확보</a>
+
+
+<a class="nav nav-next" href="/tutorial_manual/handson_adw/05.preprocessing/3/" title="1.3 OCI CLI 설정 기본 정보 수집">Next - 1.3 OCI CLI 설정 기본 정보 수집 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+
+</nav><footer><div class="authorbox row clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2&appId=404519239985000&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/handson_adw/05.preprocessing/2/"></div>
+<p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
+</footer>
+</main><div class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+<hr/>
+
+<nav>
+<ul>
+
+<li class="parent"><a href="/tutorial_manual/handson_adw/">오라클 클라우드 Autonomoous Data Warehouse</a>
+<ul class="sub-menu">
+
+<li class="parent"><a href="/tutorial_manual/handson_adw/05.preprocessing/">1장. ADW Hands-on 사전 준비</a>
+<ul class="sub-menu">
+<li class=""><a href="/tutorial_manual/handson_adw/05.preprocessing/1/">1.1 오라클 클라우드 계정 확보</a></li>
+<li class="active"><a href="/tutorial_manual/handson_adw/05.preprocessing/2/">1.2 OCI Identity 구성 요소 만들기</a></li>
+<li class=""><a href="/tutorial_manual/handson_adw/05.preprocessing/3/">1.3 OCI CLI 설정 기본 정보 수집</a></li>
+<li class=""><a href="/tutorial_manual/handson_adw/05.preprocessing/4/">1.4 OCI CLI 설치 및 기본 설정</a></li>
+<li class=""><a href="/tutorial_manual/handson_adw/05.preprocessing/5/">1.5 OS 버킷 생성 및 정책 설정</a></li>
+<li class=""><a href="/tutorial_manual/handson_adw/05.preprocessing/6/">1.6 OCI CLI를 이용한 파일 업로드</a></li>
+</ul>
+  
+</li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>
