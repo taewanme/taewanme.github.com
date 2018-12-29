@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://taewan.kim/tutorial_manual/temp0003/</loc>
+    <lastmod>2018-12-29T12:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/entertain/iu_001/</loc>
     <lastmod>2018-12-24T05:28:14+09:00</lastmod>
   </url>
@@ -328,11 +333,6 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/trans_docs/t_mly_14/</loc>
-    <lastmod>2018-07-16T09:28:14+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://taewan.kim/trans_docs/t_mly_15/</loc>
     <lastmod>2018-07-16T09:28:14+09:00</lastmod>
   </url>
@@ -340,11 +340,6 @@
   <url>
     <loc>http://taewan.kim/trans_docs/t_mly_16/</loc>
     <lastmod>2018-07-16T09:28:14+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/trans_docs/t_mly_13/</loc>
-    <lastmod>2018-07-12T09:28:14+09:00</lastmod>
   </url>
   
   <url>
@@ -373,11 +368,6 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/trans_docs/t_mly_12/</loc>
-    <lastmod>2018-06-20T17:28:14+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://taewan.kim/cloud/bdc_object_storage_integration/</loc>
     <lastmod>2018-06-18T01:09:25+09:00</lastmod>
   </url>
@@ -388,18 +378,8 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/trans_docs/t_mly_11/</loc>
-    <lastmod>2018-06-08T17:28:14+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://taewan.kim/oci/activity/expired_message/</loc>
     <lastmod>2018-06-08T17:28:14+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/trans_docs/t_mly_10/</loc>
-    <lastmod>2018-06-07T23:28:14+09:00</lastmod>
   </url>
   
   <url>
@@ -2434,7 +2414,7 @@
   
   <url>
     <loc>http://taewan.kim/tutorial_manual/</loc>
-    <lastmod>2018-12-21T12:05:14+09:00</lastmod>
+    <lastmod>2018-12-29T12:05:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2530,7 +2510,7 @@
   
   <url>
     <loc>http://taewan.kim/</loc>
-    <lastmod>2018-12-24T05:28:14+09:00</lastmod>
+    <lastmod>2018-12-29T12:05:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   

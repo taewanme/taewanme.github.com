@@ -6,10 +6,19 @@
     <description>Recent content in Tutorial_manuals on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Dec 2018 12:05:14 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 29 Dec 2018 12:05:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tutorial_manual/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Machine Learning Yearning 한글화</title>
+      <link>http://taewan.kim/tutorial_manual/temp0003/</link>
+      <pubDate>Sat, 29 Dec 2018 12:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tutorial_manual/temp0003/</guid>
+      <description>Oracle Cloud의 Autonomous Data Warehouse(이하 Oracle ADW)의 Quick Start Guide입니다. 이 문서는 Oracle ADW는 프로비저닝 및 서비스를 사용하는 기본 기능을 실습 형태로 가이드를 합니다. Oracle ADW 사전 준비 사항, 프로비저닝, 데이터 로딩, 인스턴스 관리 방법을 다룹니다.</description>
+    </item>
     
     <item>
       <title>Machine Learning Yearning 한글화</title>

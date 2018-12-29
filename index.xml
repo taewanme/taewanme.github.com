@@ -6,10 +6,19 @@
     <description>Recent content on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 24 Dec 2018 05:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 29 Dec 2018 12:05:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Machine Learning Yearning 한글화</title>
+      <link>http://taewan.kim/tutorial_manual/temp0003/</link>
+      <pubDate>Sat, 29 Dec 2018 12:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tutorial_manual/temp0003/</guid>
+      <description>Oracle Cloud의 Autonomous Data Warehouse(이하 Oracle ADW)의 Quick Start Guide입니다. 이 문서는 Oracle ADW는 프로비저닝 및 서비스를 사용하는 기본 기능을 실습 형태로 가이드를 합니다. Oracle ADW 사전 준비 사항, 프로비저닝, 데이터 로딩, 인스턴스 관리 방법을 다룹니다.</description>
+    </item>
     
     <item>
       <title>IU-이지금</title>
@@ -690,16 +699,6 @@ Example과 Sample  The MNIST database of handwritten digits, available from this
     </item>
     
     <item>
-      <title>MLY:14. 오류 분석: 새로운 아이디어를 평가하기 위해서 개발셋 데이터를 살펴봐라.</title>
-      <link>http://taewan.kim/trans_docs/t_mly_14/</link>
-      <pubDate>Mon, 16 Jul 2018 09:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/trans_docs/t_mly_14/</guid>
-      <description>원문제목: 14 Error analysis: Look at dev set examples to evaluate ideas 최종 업데이트: 2018년 07월 16일 목차이동: Machine Learning Yearning 목차 저자: Andrew NG 원문: http://www.mlyearning.org 분류: Basic Error Analysis  고양이 앱을 사용하는 과정에서, 이 앱이 강아지를 고양이로 인식하는 오류를 발견했다고 가정하겠습니다. 인식 오류가 발생하는 강아지 이미지를 보면 어떤 것은 고양이처럼 보이기도 합니다.
-한 개발 팀원이 써드파티 소프트웨어를 연동하여, 시스템이 개 이미지를 더 잘 인식할 수 있도록 만들자는 제안을 했습니다.</description>
-    </item>
-    
-    <item>
       <title>MLY:15. 오류 분석 과정에서 동시에 여러 아이디어 평가</title>
       <link>http://taewan.kim/trans_docs/t_mly_15/</link>
       <pubDate>Mon, 16 Jul 2018 09:28:14 +0900</pubDate>
@@ -717,16 +716,6 @@ Example과 Sample  The MNIST database of handwritten digits, available from this
       <guid>http://taewan.kim/trans_docs/t_mly_16/</guid>
       <description>원문제목: 15 Evaluating multiple ideas in parallel during error analysis 최종 업데이트: 2018년 07월 17일 목차이동: Machine Learning Yearning 목차 저자: Andrew NG 원문: http://www.mlyearning.org 분류: Basic Error Analysis  Your team has several ideas for improving the cat detector:
  Fix the problem of your algorithm recognizing dogs as cats. Fix the problem of your algorithm recognizing great cats (lions, panthers, etc.) as house cats (pets). Improve the system’s performance on blurry images.</description>
-    </item>
-    
-    <item>
-      <title>MLY:13. 첫 시스템 빨리 구축하라. 그 다음 반복하라.</title>
-      <link>http://taewan.kim/trans_docs/t_mly_13/</link>
-      <pubDate>Thu, 12 Jul 2018 09:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/trans_docs/t_mly_13/</guid>
-      <description>원문제목: 13 Build your first system quickly, then iterate 최종 업데이트: 2018년 07월 12일 목차이동: Machine Learning Yearning 목차 저자: Andrew NG 원문: http://www.mlyearning.org 분류: Basic Error Analysis  이메일 스팸 방지 시스템을 개발하는 가정해 보겠습니다. 개발팀은 다음과 같은 몇 가지 아이디어를 갖고 있습니다.
- 스팸 메일의 거대한 학습 데이터셋을 수집한다. 예를 들어서 허니팟(honeypot)1을 구성한다. 허위 이메일 주소를 의도적으로 스팸 발송자에게 보낸다. 그리고 이 이메일로 스펨 발송자가 보내는 메시지를 수집한다.</description>
     </item>
     
     <item>
@@ -781,17 +770,6 @@ taewanme/pyml 컨테이너 이미지 pyml 더커 이미지는 docker hub에 자�
     </item>
     
     <item>
-      <title>MLY:12. 핵심정리: 개발 세트와 테스트 세트 구성 </title>
-      <link>http://taewan.kim/trans_docs/t_mly_12/</link>
-      <pubDate>Wed, 20 Jun 2018 17:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/trans_docs/t_mly_12/</guid>
-      <description>원문제목: 12. Takeaways: Setting up development and test sets 최종 업데이트: 2018년 06월 20일 목차이동: Machine Learning Yearning 목차 저자: Andrew NG 원문: http://www.mlyearning.org 분류: Setting up development and test sets   앞으로 확보할 것이고 잘 동작할 것이라고 예상하는 데이터 분포로부터 초기 개발/테스트 세트를 구성하십시오. 이 데이터 세트는 실제 학습 데이터 분포와 같지 않을 수 있습니다.
- 가능한 같은 데이터 분포를 갖는 개발 세트와 테스트 세트를 구성하십시오.
- 팀에서 최적화해야 할 단일 숫자 평가 지표를 선정하십시오.</description>
-    </item>
-    
-    <item>
       <title>Oracle Big Data Cloud와 Object Storage 연동</title>
       <link>http://taewan.kim/cloud/bdc_object_storage_integration/</link>
       <pubDate>Mon, 18 Jun 2018 01:09:25 +0900</pubDate>
@@ -811,16 +789,6 @@ taewanme/pyml 컨테이너 이미지 pyml 더커 이미지는 docker hub에 자�
     </item>
     
     <item>
-      <title>MLY:11. 개발 / 테스트 세트 및 평가 항목 변경 상황</title>
-      <link>http://taewan.kim/trans_docs/t_mly_11/</link>
-      <pubDate>Fri, 08 Jun 2018 17:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/trans_docs/t_mly_11/</guid>
-      <description>원문제목: 11. When to change dev/test sets and metrics 최종 업데이트: 2018년 06월 08일 목차이동: Machine Learning Yearning 목차 저자: Andrew NG 원문: http://www.mlyearning.org 분류: Setting up development and test sets  새로운 프로젝트를 시작할 때, 필자는 개발 세트와 테스트 세트를 빨리 선정하려 합니다. 그 이유는 이것이 팀에 잘 정의된 지향할 목표를 제공하기 때문입니다.
-필자는 일반적으로 1주일 안에 개발팀에 초기 개발/테스트 세트와 측정 항목을 제시할 것을 요청합니다. 개발/테스트 세트를 확보하는 것과 목표를 반영한 평가 지표 선정을 오랫동안 고민하는 것보다는 불완전한 무엇인가를 제시하고 빨리 시작하는 것이 더 좋습니다.</description>
-    </item>
-    
-    <item>
       <title>Oracle Cloud 계정 만료 통지 메시지</title>
       <link>http://taewan.kim/oci/activity/expired_message/</link>
       <pubDate>Fri, 08 Jun 2018 17:28:14 +0900</pubDate>
@@ -829,15 +797,6 @@ taewanme/pyml 컨테이너 이미지 pyml 더커 이미지는 docker hub에 자�
       <description>오라클 클라우드 사용 중 클라우드 계정 사용 기간이 만료 되면 계정 만료(Expired) 메시지가 등록한 E-mail로 발송됩니다. 일반적으로 오라클 클라우드 트라이얼 계정 사용 중 30일이 지난 상황 혹은 계약 기간이 만료되는 상황에서 발생할 수 있습니다.
 아래는 한국 사용자에게 발송되는 계정 만료 매시지입니다.
 (2018.06.12 발송 메일) </description>
-    </item>
-    
-    <item>
-      <title>MLY:10. 개발 세트와 지표로 반복 속도 향상</title>
-      <link>http://taewan.kim/trans_docs/t_mly_10/</link>
-      <pubDate>Thu, 07 Jun 2018 23:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/trans_docs/t_mly_10/</guid>
-      <description>원문제목: 10. Having a dev set and metric speeds up iterations 최종 업데이트: 2018년 06월 08일 목차이동: Machine Learning Yearning 목차 저자: Andrew NG 원문: http://www.mlyearning.org 분류: Setting up development and test sets  새로운 문제에 대하여 어떤 접근법이 가장 효과적인지를 미리 아는 것은 정말 어렵습니다. 기계 학습 전문 연구자 조차도 일반적으로 만족스러운 결과를 얻기 전에 수집가지 아이디어를 시도합니다. 기계 학습 시스템을 구축할 때 필자는 다음과 같은 절차로 작업을 수행합니다.</description>
     </item>
     
     <item>
