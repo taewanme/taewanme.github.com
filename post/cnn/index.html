@@ -9,11 +9,11 @@
 <META http-equiv="Cache-Control" content="No-Cache">
 <meta property="fb:admins" content="devtainer@gmail.com"/>
 
-<title>CNN, Convolution Neural Network 요약</title>
+<title>CNN, Convolutional Neural Network 요약</title>
 <meta name="description" content="taewan.kim">
 <meta name="generator" content="Hugo 0.52" />
-<meta property="og:title" content="CNN, Convolution Neural Network 요약" />
-<meta property="og:description" content="Convolution Neural Network, CNN을 정리합니다. " />
+<meta property="og:title" content="CNN, Convolutional Neural Network 요약" />
+<meta property="og:description" content="Convolutional Neural Network, CNN을 정리합니다. " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/post/cnn/" /><meta property="article:published_time" content="2018-01-04T21:28:14&#43;09:00"/>
 <meta property="article:modified_time" content="2018-01-04T21:28:14&#43;09:00"/>
@@ -99,7 +99,7 @@
 <div class="main-content content" role="main" itemprop="mainContentOfPage">
 	<article class="post">
 		<header class="post__header clearfix">
-			<h1 class="post__title">CNN, Convolution Neural Network 요약 </h1>
+			<h1 class="post__title">CNN, Convolutional Neural Network 요약 </h1>
 			<p class="post__meta meta">
 				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
 				<time class="post__meta-date" datetime="2018-01-04 21:28:14 &#43;0900 KST">January 04, 2018</time>
@@ -113,7 +113,7 @@
 		<div class="post__content clearfix">
 
 			<figure class="post__thumbnail">
-				<img src="https://taewanmerepo.github.io/2018/01/cnn/head.png" alt="CNN, Convolution Neural Network 요약">
+				<img src="https://taewanmerepo.github.io/2018/01/cnn/head.png" alt="CNN, Convolutional Neural Network 요약">
 			</figure>
 			
 
@@ -134,7 +134,7 @@
 <li>필터를 공유 파라미터로 사용하기 때문에, 일반 인공 신경망과 비교하여 학습 파라미터가 매우 적음</li>
 </ul>
 
-<p>CNN은 위 이미지와 같이 이미지의 특징을 추출하는 부분과 클래스를 분류하는 부분으로 나눌 수 있습니다. 특징 추출 영역은 Convolution Layer와 Pooling Layer를 여러 겹 쌓는 형태로 구성됩니다.<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup> Convolution Layer는 입력 데이터에 필터를 적용 후 활성화 함수를 반영하는 필수 요소입니다. Convolutional Layer 다음에 위치하는 Pooling Layer는 선택적인 레이어입니다. CNN 마지막 부분에는 이미지 분류를 위한 Fully Connected 레이어가 추가됩니다. 이미지의 특징을 추출하는 부분과 이미지를 분류하는 부분 사이에 이미지 형태의 데이터를 배열 형태로 만드는 Flatten 레이어가 위치 합니다.</p>
+<p>CNN은 위 이미지와 같이 이미지의 특징을 추출하는 부분과 클래스를 분류하는 부분으로 나눌 수 있습니다. 특징 추출 영역은 Convolution Layer와 Pooling Layer를 여러 겹 쌓는 형태로 구성됩니다.<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup> Convolution Layer는 입력 데이터에 필터를 적용 후 활성화 함수를 반영하는 필수 요소입니다. Convolution Layer 다음에 위치하는 Pooling Layer는 선택적인 레이어입니다. CNN 마지막 부분에는 이미지 분류를 위한 Fully Connected 레이어가 추가됩니다. 이미지의 특징을 추출하는 부분과 이미지를 분류하는 부분 사이에 이미지 형태의 데이터를 배열 형태로 만드는 Flatten 레이어가 위치 합니다.</p>
 
 <p>CNN은 이미지 특징 추출을 위하여 &lt;그림1&gt;과 같이 입력데이터를 필터가 순회하며 합성곱을 계산하고, 그 계산 결과를 이용하여 Feature map을 만듭니다. Convolution Layer는 Filter 크기, Stride, Padding 적용 여부, Max Pooling 크기에 따라서 출력 데이터의 Shape이 변경됩니다.</p>
 
