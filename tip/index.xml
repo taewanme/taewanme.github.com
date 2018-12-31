@@ -6,10 +6,21 @@
     <description>Recent content in Tips on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 19 Dec 2018 09:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 30 Dec 2018 09:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tip/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>vanilla version의 의미</title>
+      <link>http://taewan.kim/tip/vanilla/</link>
+      <pubDate>Sun, 30 Dec 2018 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tip/vanilla/</guid>
+      <description>IT 원문을 보다보면 vanilla version, vanilla software와 같은 단어가 등장합니다. 의미가 잘 와 닿지 않습니다.
+vanilla의 의미를 다음에서 확인할 수 있습니다.
+ In information technology, vanilla (pronounced vah-NIHL-uh ) is an adjective meaning plain or basic. The unfeatured version of a product is sometimes referred to as the vanilla version. The term is based on the fact that vanilla is the most popular or at least the most commonly served flavor of ice cream.</description>
+    </item>
     
     <item>
       <title>BitBucket 오류, (repository access denied. access via a deployment key is read-only.)</title>

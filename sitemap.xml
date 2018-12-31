@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://taewan.kim/tip/vanilla/</loc>
+    <lastmod>2018-12-30T09:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tutorial_manual/temp0003/</loc>
     <lastmod>2018-12-29T12:05:14+09:00</lastmod>
   </url>
@@ -2354,7 +2359,7 @@
   
   <url>
     <loc>http://taewan.kim/tip/</loc>
-    <lastmod>2018-12-19T09:28:14+09:00</lastmod>
+    <lastmod>2018-12-30T09:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2510,7 +2515,7 @@
   
   <url>
     <loc>http://taewan.kim/</loc>
-    <lastmod>2018-12-29T12:05:14+09:00</lastmod>
+    <lastmod>2018-12-30T09:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
