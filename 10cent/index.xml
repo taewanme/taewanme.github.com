@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>10cents on taewan.kim 블로그</title>
+    <link>http://taewan.kim/10cent/</link>
+    <description>Recent content in 10cents on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 01 Jan 2019 21:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/10cent/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>sword art online</title>
+      <link>http://taewan.kim/10cent/sao/</link>
+      <pubDate>Tue, 01 Jan 2019 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/10cent/sao/</guid>
+      <description> 이것은 게임이지만 놀이는 아니다.  개발자: 키야바 아키히코   </description>
+    </item>
+    
+  </channel>
+</rss>
