@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>15. 오류 분석중에 여러 아이디어를 동시에 평가하기 - taewan.kim 블로그</title>
+<meta name="description" content="Andrew NG 교수님이 &#39;Machine Learning Yearning&#39;의 15장 &#39;Evaluating multiple ideas in parallel during error analysis&#39;">
+<meta name="generator" content="Hugo 0.52" />
+<link href="/index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="http://taewan.kim/ml_yearning/030.basic_error_analysis/15/">
+<link rel="stylesheet" href="/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="/js/jquery.backtothetop/jquery.backtothetop.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-72835175-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-72835175-1');
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+<link rel="stylesheet" href="/css/taewan.css"  />
+</head>
+<body>
+<div class="container"> 
+<header class="header">
+  <div class="container container-inner clearfix" >
+    <div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+      <a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+        <h1 class="logo__title">taewan.kim 블로그</h1><br/>
+        <h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list"><li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li><li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li><li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Tutorial과 Manual 문서를 제공" >TUTORIAL &amp; MANUAL</a></li><li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li><li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li><li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li></ul>
+</nav>
+<div class="content-container">
+<main>
+
+<figure class="post__thumbnail">
+  <img src="https://taewanmerepo.github.io/2018/12/mlyearning/post.jpg" alt="15. 오류 분석중에 여러 아이디어를 동시에 평가하기">
+</figure>
+
+<h1>15. 오류 분석중에 여러 아이디어를 동시에 평가하기</h1><p>고양기 탐지기를 개선할 몇 가지 아이디오를 갖고 있다.</p>
+
+<ul>
+<li>강아지를 고양이로 인식하는 알고리즘 문제 수정</li>
+<li>큰 고양이(사자, 표범 등)를 집고양이로 인식하는 알고리즘 문제 수정</li>
+<li>흐린 사진에 대한 시스템 성능 개선</li>
+<li>&hellip;.</li>
+</ul>
+
+<p>이러한 모든 아이디어를 효율적으로 동시에 평가할 수 있습니다. 필자는 스프레드시트를 만들고, 100개의 잘못 분류된 개발 데이터셋 이미지를 보면서 이 스프레드시트를 채워나갑니다. 구체적인 사례(Example)을 기억하는 데 도움이 되는 내용이 있다면 주석에 추가합니다. 이 프로세스를 설명하기 위해서, 4개 Example의 작은 개발 데이터셋으로 만든 스프레드시트를 살펴보겠습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>이미지</th>
+<th>개</th>
+<th>큰 고양이</th>
+<th>흐린 사진</th>
+<th>주석</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>v</td>
+<td></td>
+<td></td>
+<td>특이한 pitbull 색</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td></td>
+<td></td>
+<td>v</td>
+<td></td>
+</tr>
+
+<tr>
+<td>3</td>
+<td></td>
+<td>v</td>
+<td>v</td>
+<td>사자: 비 오는 날 동물원에서 찍은 사진</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td></td>
+<td>v</td>
+<td></td>
+<td>나무 뒤에 표범 사진</td>
+</tr>
+
+<tr>
+<td>전체 중 비율</td>
+<td>25%</td>
+<td>50%</td>
+<td>50%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>위 테이블에서 3번 이미지는 큰 고양이와 흐린 사진 컬럼에 체크되어 있습니다. 하나의 Example은 여러 범주와 연관될 수 있으므로, 마지막 백분율의 합이 100%가 아닐 수 있습니다.</p>
+
+<p>먼저 카테고리(개, 큰 고양이, 흐린 사진)를 작성한 다음에, Example를 수작업으로 분류합니다. 실제 잘못 분류된 Example을 살펴보다 보면, 새로운 에러 카테고리에 대한 아이디어가 떠오를 것입니다. 예를 들어서, 여러 사진을 살펴보다 보니, 많은 오류가 인스타그램 필터가 적용된 이미지에서 발생하고 있다는 것을 발견할 수 있습니다. 그럼 다시 스프레드시트로 돌아가서 새로운 인스타그램 컬럼을 추가합니다. 수작업으로 알고리즘이 잘못 분류한 Example을 살펴보고, 분류할 이미지애 레이블을 어떻게 정하는 것이 논리적이고 효율적인지를 스스로 질문하고 답하다 보면, 새로운 오류 범주와 솔루션에 대한 영감이 떠오르는 경우가 많습니다.</p>
+
+<p>가장 유용한 오류 범주는 개선 방법이 있는 오류 범주입니다. 인스타그램 필터를 제거하거나 원본 이미지를 복구하는 것이 방법을 알고 있고 적용 가능하다면, 인스타그램 카탈로그를 추가하는 것은 큰 도움이 될 것입니다. 그렇다고 개선하는 방법을 알고 있는 에러 범주에만 집착할 필요는 없습니다. 이 프로세스의 목적은 어떤 이슈(오류 카테고리)를 집중해야 하는지 파악하고, 개선 효과가 가장 좋을 것으로 예상되는 영역에 대한 직관을 얻는 것입니다.</p>
+
+<p>오류 분석은 반복적인 프로세스입니다. 분석을 시작할 때, 오류 범주에 대해서 전혀 모르는 상황이라고 해서 걱정할 필요는 없습니다. 잘못 분류된 이미지 몇 장을 살펴보다 보면 오류 범주에 대한 몇 가지 오류 범주가 떠오를 것입니다. 일부 이미지를 수동으로 분류한 후에는 새 범주를 추가하고, 새 범주를 고려하여 이미지를 다시 검토하는 일련의 작업을 수행합니다.</p>
+
+<p>개발 데이터셋에서 잘못 분류된 100장 이미지의 한 오류 분석을 완료했다고 가정하겠습니다. 오류 분석 결과는 다음과 같습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>이미지</th>
+<th>개</th>
+<th>큰 고양이</th>
+<th>흐린 사진</th>
+<th>주석</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>v</td>
+<td></td>
+<td></td>
+<td>특이한 pitbull 색</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td></td>
+<td></td>
+<td>v</td>
+<td></td>
+</tr>
+
+<tr>
+<td>3</td>
+<td></td>
+<td>v</td>
+<td>v</td>
+<td>사자: 비 오는 날 동물원에서 찍은 사진</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td></td>
+<td>v</td>
+<td></td>
+<td>나무 뒤에 표범 사진</td>
+</tr>
+
+<tr>
+<td>&hellip;.</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+</tr>
+
+<tr>
+<td>전체 중 비율</td>
+<td>8%</td>
+<td>43%</td>
+<td>61%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>프로젝트에서 강아지를 잘못 분류하는 오류를 해결하는 작업을 수행할 경우 최대 8%의 오류를 줄일 수 있을 것이고, 흐린 이미지의 사자 사진을 잘못 분류하는 오류를 개선할 경우 더 많은 오류를 해결할 수 있을 것입니다. 이러한 현재 오류에 대한 직관을 기초로 어떤 오류 범주를 선택하고 집중해야 할지 결정할 수 있습니다. 또한 개발팀에 인력이 충분하다면 동시에 여러 오류 범주의 개선작업을 진행할 수 있으며, 위 오류 분석 결과를 근거로 큰 고양이를 잘못 분류하는 오류를 해결하는 그룹에 엔지니어 할당과 흐린 이미지의 개선 작업 그룹에 엔지니어 할당을 결정하거나 요청할 수 있습니다.</p>
+
+<p>오류 분석이 현재 상태에서 가장 우선순위가 높은 작업이 무엇인지 알려주는 거창한 수식을 만드는 것은 아닙니다. 그러나 오류 분석을 통해서 프로젝트 모델의 개선 작업을 수행하여 특정 오류 범주 문제를 해결하면, 얼마나 성능이 개선되는지 예측할 수 있으며, 또한 각 오류 범주를 해결하는 데 필요한 작업량을 고려할 때 이용할 수 있습니다.</p>
+
+<div class="notices note" ><p>이 문서는 Andrew NG 교수님께서 집필 중인 <strong>Machine Learning Yearning</strong>의 15장 번역입니다. 원제는 &ldquo;15. Evaluating multiple ideas in parallel during error analysis&rdquo; 입니다. 원문 Ebook은 <a href="http://www.mlyearning.org" target="_blank"><a href="http://www.mlyearning.org">http://www.mlyearning.org</a> [↗NW]</a>
+에서 내려받을 수 있습니다.</p>
+</div>
+
+<div class="edit-meta">Last updated on 27 Dec 2018 / Published on 27 Dec 2018<br></div><nav class="pagination">
+<a class="nav nav-prev" href="/tutorial_manual/ml_yearning/030.basic_error_analysis/14/" title="14. 에러 분석: 아이디어 평가를 위해, 개발 데이터셋을 살펴보라."><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 14. 에러 분석: 아이디어 평가를 위해, 개발 데이터셋을 살펴보라.</a>
+
+
+<a class="nav nav-next" href="/tutorial_manual/ml_yearning/040.bias_and_variance/" title="Part 4. 편향과 분산">Next - Part 4. 편향과 분산 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+
+</nav><footer><div class="authorbox row clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2&appId=404519239985000&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/ml_yearning/030.basic_error_analysis/15/"></div>
+<p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
+</footer>
+</main><div class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+<hr/>
+
+<nav>
+<ul>
+
+<li class="parent"><a href="/tutorial_manual/ml_yearning/">Machine Learning Yearning</a>
+<ul class="sub-menu">
+
+<li class=""><a href="/tutorial_manual/ml_yearning/010.intro/">Part 1. 시작하기</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/ml_yearning/010.intro/1/">1. 왜 머신러닝 전략이 필요한가?</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/010.intro/2/">2. 이 책 활용법</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/010.intro/3/">3. 사전 준비와 표기법</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/010.intro/4/">4. 규모가 머신러닝의 발전을 이끈다.</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/">Part 2. 개발과 테스트셋 구성</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/5/">5. 개발 데이터셋과 테스트 데이터셋</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/6/">6. 같은 분포의 개발셋과 테스트셋 구성</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/7/">7. 개발셋과 테스트셋의 규모</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/8/">8. 최적화를 위한 단일 평가 지표</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/9/">9. 최적화 지표와 만족 지표</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/10/">10. 개발 데이터셋과 평가지표로 개발 순환 사이클 속도 향상</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/11/">11. 개발/테스트 데이터셋과 평가 지표를 변경해야하는 시점</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/12/">12. 정리: 개발/테스트 데이터셋 구성</a></li>
+</ul>
+  
+</li>
+
+<li class="parent"><a href="/tutorial_manual/ml_yearning/030.basic_error_analysis/">Part 3. 기초 에러 분석</a>
+<ul class="sub-menu">
+<li class=""><a href="/tutorial_manual/ml_yearning/030.basic_error_analysis/13/">13. 첫 시스템 신속한 구축, 그리고 반복</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/030.basic_error_analysis/14/">14. 에러 분석: 아이디어 평가를 위해, 개발 데이터셋을 살펴보라.</a></li>
+<li class="active"><a href="/tutorial_manual/ml_yearning/030.basic_error_analysis/15/">15. 오류 분석중에 여러 아이디어를 동시에 평가하기</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/ml_yearning/040.bias_and_variance/">Part 4. 편향과 분산</a>
+</li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

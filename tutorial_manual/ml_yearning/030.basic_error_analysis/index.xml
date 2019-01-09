@@ -23,10 +23,19 @@
     <item>
       <title>14. 에러 분석: 아이디어 평가를 위해, 개발 데이터셋을 살펴보라.</title>
       <link>http://taewan.kim/ml_yearning/030.basic_error_analysis/14/</link>
-      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      <pubDate>Thu, 27 Dec 2018 14:05:14 +0900</pubDate>
       
       <guid>http://taewan.kim/ml_yearning/030.basic_error_analysis/14/</guid>
       <description>고양이 앱을 사용하는 과정에서, 고양이 앱이 강아지를 고양이로 잘못 분류하는 오류를 발견했습니다. 앱이 고양이로 인식한 강아지 이미지를 살펴보니 정말 고양이처럼</description>
+    </item>
+    
+    <item>
+      <title>15. 오류 분석중에 여러 아이디어를 동시에 평가하기</title>
+      <link>http://taewan.kim/ml_yearning/030.basic_error_analysis/15/</link>
+      <pubDate>Thu, 27 Dec 2018 15:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/ml_yearning/030.basic_error_analysis/15/</guid>
+      <description>고양기 탐지기를 개선할 몇 가지 아이디오를 갖고 있다. 강아지를 고양이로 인식하는 알고리즘 문제 수정 큰 고양이(사자, 표범 등)를 집고양이로 인식하는 알고리즘 문</description>
     </item>
     
   </channel>
