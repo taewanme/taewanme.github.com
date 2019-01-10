@@ -156,3 +156,10 @@ div.notices.tip p {
 div.notices.tip p:first-child:after {
     content: 'Tip';
 }
+div.notices.disclaimer p {
+  border-top: 30px solid #6AB0DE;
+  background: #E7F2FA;
+}
+div.notices.disclaimer p:first-child:after {
+    content: 'Disclaimer';
+}
