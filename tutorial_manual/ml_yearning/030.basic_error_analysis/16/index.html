@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>16. 잘못 레이블된 개발/테스트 데이터셋 처리 - taewan.kim 블로그</title>
+<meta name="description" content="Oracle Big Data Cloud">
+<meta name="generator" content="Hugo 0.52" />
+<link href="/index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="http://taewan.kim/ml_yearning/030.basic_error_analysis/16/">
+<link rel="stylesheet" href="/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="/js/jquery.backtothetop/jquery.backtothetop.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-72835175-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-72835175-1');
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+<link rel="stylesheet" href="/css/taewan.css"  />
+</head>
+<body>
+<div class="container"> 
+<header class="header">
+  <div class="container container-inner clearfix" >
+    <div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+      <a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+        <h1 class="logo__title">taewan.kim 블로그</h1><br/>
+        <h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list"><li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li><li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li><li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Tutorial과 Manual 문서를 제공" >TUTORIAL &amp; MANUAL</a></li><li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li><li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li><li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li></ul>
+</nav>
+<div class="content-container">
+<main>
+
+<figure class="post__thumbnail">
+  <img src="https://taewanmerepo.github.io/2018/12/mlyearning/post.jpg" alt="16. 잘못 레이블된 개발/테스트 데이터셋 처리">
+</figure>
+
+<h1>16. 잘못 레이블된 개발/테스트 데이터셋 처리</h1><p>오류 분석을 통해서, 개발 데이터셋에서 몇몇 데이터의 레이블이 잘못되었다는 것을 파악했습니다. 여기서 레이블이 잘못되었다고 말하면, 알고리즘이 이 데이터를 사용하기 전에, 사람이 사진에 레이블을 설정할 때 이미 레이블을 잘못 붙였다는 것을 의미합니다. 예를 들어서, 한 데이터(Example)가 (x, y)로 표현될 경우에, 이 데이터의 레이블 y가 잘못된 값을 갖고 있다고 가정하겠습니다. 이 상황에서 고양이를 포함하지 않는 몇몇 사진은 고양이를 포함하는 사진으로 레이블 될 수 있습니다. 또한 반대의 경우가 될 수도 있습니다. 틀린 레이블을 갖은 이미지가 많은 것으로 예상되면, 레이블이 잘못된 사례 데이터의 비율을 추적하는 오류 범주를 추가합니다.</p>
+
+<p>|이미지|개|큰 고양이|흐린 사진|잘못된 레이블|주석|
+|&mdash;-|&mdash;-|&mdash;-|&mdash;-|&mdash;|
+|&hellip;|&hellip;|&hellip;|&hellip;|&hellip;|&hellip;|
+| 98||||v|배경의 고양이를 놓친 사진|
+| 99||v||||
+|100||||v|고양이 그림, 실제 고양이가 아님|
+|전체 중 비율|8%|43%|61%||</p>
+
+<p>당신 dev에 레이블 집합을 수정해야 합니까? 개발자 세트의 목표는 알고리즘 A 또는 B가 더 나은지 여부를 알 수 있도록 알고리즘을 신속하게 평가할 수 있도록하는 것입니다. dev 세트의 일부가 잘못 표시되면 이러한 판단을 내리는 데 방해가 됩니다. 잘못 표시된 dev 세트 레이블을 수정하는 데는 시간을 할애할 가치가 있습니다.</p>
+
+<p>개발 데이터셋의 레이블을 수정해야 하나요? 개발 데이터셋의 목적은 알고리즘 A 또는 B 중에서 어떤 것이 더 좋은지를 알 수 있도록 알고리즘을 신속하게 평가하는 것입니다. 개발 데이터셋의 일부 이미지 레이블이 잘못 설정되어 있다면, 알고리즘을 평가하는 데 문제가 될 수 있습니다. 따라서 개발 데이터셋의 잘못 설정된 레이블을 바르게 수정해야 합니다.</p>
+
+<p>분류기 성능이 다음과 같다고 가정합니다.</p>
+
+<ul>
+<li>개발 데이터셋에서 전체 정확도&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;. 90% (10% 전체 오류)</li>
+<li>잘못 레이블 된 사례로 발생한 오류&hellip;&hellip;&hellip;&hellip;&hellip;.. 0.6% (개발 데이터셋 오류의 6%)</li>
+<li>다른 원인의 오류&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.. 9.4% (개발 데이터셋 오류의 94%)</li>
+</ul>
+
+<p>여기애서 잘못 레이블 된 데이터 때문에 발생한 부정확도 0.6%는 개선 가능한 9.4% 오류와 비교해 볼 때 그렇게 중요하지 않다고 볼 수 있습니다. 개발 데이터셋의 잘못 레이블 된 이미지를 수작업으로 정정하는 것이 문제가 되지는 않을 것입니다. 그러나 그렇게 중요한 일도 아닐 것입니다. 시스템 전체 오류가 10% 인지 9.4% 인지는 사실 큰 차이가 없는 것처럼 느껴질 것입니다.</p>
+
+<p>고양이 분류기가 성능이 개선되었고 다음과 같은 결과를 보인다고 가정해 보겠습니다.</p>
+
+<ul>
+<li>개발 데이터셋에서 전체 정확도&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.. 98.0% (2.0% 전체 오류)</li>
+<li>잘못 레이블된 사례로 발생한 오류&hellip;&hellip;. 0.6%. (개발 데이터셋 오류의 30%)</li>
+<li>다른 원인의 오류&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip; 1.4% (개발 데이터셋 오류의 70%)</li>
+</ul>
+
+<p>개발 데이터셋 이미지 중에서 잘못된 레이블 때문에 발생한 오류가 전체 오류의 30%입니다. 이 정도 오류는 전체 정확도에 영향을 미치는 중요한 오류라고 볼 수 있습니다. 이 정도면 개발 데이터셋에 레이블 품질을 개선하는 것이 좋습니다. 잘못 레이블된 데이터를 추적하는 것은 현재 분류기의 에러가 1.4%와 2.0% 중에서 어느 쪽에 더 가까운지를 알아낼 때 필요합니다. 전체 오류율 1.4%와 2.0%에서 0.6%가 차지하는 비율은 상당히 큰 의미있는 수치입니다.</p>
+
+<p>프로젝트를 초기에 일부 잘못 레이블된 개발/테스트 데이터셋을 묵인하는 것이 일반적입니다. 하지만 시스템 성능이 개선됨에 따라 잘못 레이블된 데이터 때문에 발생하는 에러율의 비율이 전체 에러에서 차지하는 비율이 점차 커지게 됩니다. 이런 상황이 계속됨에 따라서 잘못된 레이블 관련 오류를 개선해야 합니다.</p>
+
+<p>15장에서 알고리즘 성능 향상을 통해서 강아지, 큰 고양이와 흐린 사진과 같은 에러 범주를 개선하는 방법에 대하여 설명하였습니다. 16장에서는 잘못 레이블된 데이터의 레이블을 개선하는 작업에 대하여 알아보았습니다.</p>
+
+<p>개발 데이터셋 레이블을 고치기 위해서 적용한 모든 프로젝스는 개발 데이터셋에도 동일하게 적용해야 합니다. 그래야 동일한 데이터 분포를 갖는 개발 데이터셋과 테스트 데이터셋의 상태가 계속 유지됩니다. 6장에서는 개발 데이터셋의 성능 최적화를 수행한 후에 다른 테스트 데이터셋에서 다른 기준으로 평가했다는 사실을 나중에 인지하는 문제를 다뤘습니다. 개발 데이터셋과 테스트 데이터셋을 함께 수정함으로써 6장에서 다룬 문제 즉, 개발 데이터셋과 테스트 데이터셋이 다른 분포를 가질 때 발생하는 문제를 피할 수 있습니다.</p>
+
+<p>레이블 품질을 향상시키기로 결정했다면, 시스템이 잘못 분류한 예제 레이블과 올바르게 분류한 예제 레이블을 모두를 확인해야 합니다. 사례(Example)의 원래의 레이블과 학습 알고리즘이 분류한 레이블이 모두 잘못되었을 수도 있습니다. 시스템이 잘못 분류한 사례 레이블 만 수정하면 평가에 편향을 유발할 수 있습니다. 1,000개의 개발 데이터셋있고 분류 정확도가 98.0%라고 가정해보겠습니다. 이 경우에 잘못 분류한 20개 사례(Example)를 검토하는 것이 올바르게 분류한 980개의 사례(Example)를 검토하기보다 쉽습니다. 이미지 분류기가 잘못 분류한 예제의 레이블만 검토하면, 개발 데이터셋에 Bias(편차)<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> 유입될 수 됩니다. 이런 편향은 제품 또는 응용 프로그램을 개발하는 상황이라면 문제가 되지 않습니다. 그러나 이런 방식은 학술 연구 논문에서 결과로 사용해야 한거나 테스트 데이터셋 정확도의 완전히 편향이 없는 측정이 필요한 경우에는 문제가 될 수 있습니다.</p>
+
+<div class="notices note" ><p>이 문서는 Andrew NG 교수님께서 집필 중인 <strong>Machine Learning Yearning</strong>의 16장 번역입니다. 원제는 &ldquo;16. Cleaning up mislabeled dev and test set examples&rdquo; 입니다. 원문 Ebook은 <a href="http://www.mlyearning.org" target="_blank"><a href="http://www.mlyearning.org">http://www.mlyearning.org</a> [↗NW]</a>
+에서 내려받을 수 있습니다.</p>
+</div>
+
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">&lt;옮긴이&gt; 개발 데이터셋의 데이터의 데이터 분포가 변화하는 것으로, 전체적으로 데이터가 특정한 방향으로 쏠림이 생기는 것을 의미합니다.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+</ol>
+</div>
+<div class="edit-meta">Last updated on 27 Dec 2017 / Published on 27 Dec 2017<br></div><nav class="pagination">
+<a class="nav nav-prev" href="/tutorial_manual/ml_yearning/030.basic_error_analysis/15/" title="15. 오류 분석중에 여러 아이디어를 동시에 평가하기"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 15. 오류 분석중에 여러 아이디어를 동시에 평가하기</a>
+
+
+<a class="nav nav-next" href="/tutorial_manual/ml_yearning/040.bias_and_variance/" title="Part 4. 편향과 분산">Next - Part 4. 편향과 분산 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+
+</nav><footer><div class="authorbox row clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2&appId=404519239985000&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/ml_yearning/030.basic_error_analysis/16/"></div>
+<p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
+</footer>
+</main><div class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+<hr/>
+
+<nav>
+<ul>
+
+<li class="parent"><a href="/tutorial_manual/ml_yearning/">Machine Learning Yearning</a>
+<ul class="sub-menu">
+
+<li class=""><a href="/tutorial_manual/ml_yearning/010.intro/">Part 1. 시작하기</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/ml_yearning/010.intro/1/">1. 왜 머신러닝 전략이 필요한가?</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/010.intro/2/">2. 이 책 활용법</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/010.intro/3/">3. 사전 준비와 표기법</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/010.intro/4/">4. 규모가 머신러닝의 발전을 이끈다.</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/">Part 2. 개발과 테스트셋 구성</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/5/">5. 개발 데이터셋과 테스트 데이터셋</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/6/">6. 같은 분포의 개발셋과 테스트셋 구성</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/7/">7. 개발셋과 테스트셋의 규모</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/8/">8. 최적화를 위한 단일 평가 지표</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/9/">9. 최적화 지표와 만족 지표</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/10/">10. 개발 데이터셋과 평가지표로 개발 순환 사이클 속도 향상</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/11/">11. 개발/테스트 데이터셋과 평가 지표를 변경해야하는 시점</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/020.setup_dev_test_set/12/">12. 정리: 개발/테스트 데이터셋 구성</a></li>
+</ul>
+  
+</li>
+
+<li class="parent"><a href="/tutorial_manual/ml_yearning/030.basic_error_analysis/">Part 3. 기초 에러 분석</a>
+<ul class="sub-menu">
+<li class=""><a href="/tutorial_manual/ml_yearning/030.basic_error_analysis/13/">13. 첫 시스템 신속한 구축, 그리고 반복</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/030.basic_error_analysis/14/">14. 에러 분석: 아이디어 평가를 위해, 개발 데이터셋을 살펴보라.</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/030.basic_error_analysis/15/">15. 오류 분석중에 여러 아이디어를 동시에 평가하기</a></li>
+<li class="active"><a href="/tutorial_manual/ml_yearning/030.basic_error_analysis/16/">16. 잘못 레이블된 개발/테스트 데이터셋 처리</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/ml_yearning/040.bias_and_variance/">Part 4. 편향과 분산</a>
+</li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>

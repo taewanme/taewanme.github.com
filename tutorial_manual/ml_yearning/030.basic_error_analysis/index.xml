@@ -38,5 +38,14 @@
       <description>고양기 탐지기를 개선할 몇 가지 아이디오를 갖고 있다. 강아지를 고양이로 인식하는 알고리즘 문제 수정 큰 고양이(사자, 표범 등)를 집고양이로 인식하는 알고리즘 문</description>
     </item>
     
+    <item>
+      <title>16. 잘못 레이블된 개발/테스트 데이터셋 처리</title>
+      <link>http://taewan.kim/ml_yearning/030.basic_error_analysis/16/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/ml_yearning/030.basic_error_analysis/16/</guid>
+      <description>오류 분석을 통해서, 개발 데이터셋에서 몇몇 데이터의 레이블이 잘못되었다는 것을 파악했습니다. 여기서 레이블이 잘못되었다고 말하면, 알고리즘이 이 데이터를 사</description>
+    </item>
+    
   </channel>
 </rss>
