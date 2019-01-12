@@ -68,13 +68,65 @@
 
 <h1>16. 잘못 레이블된 개발/테스트 데이터셋 처리</h1><p>오류 분석 과정에서 개발 데이터셋의 일부 데이터가 잘못된 레이블을 갖고 있음을 파악했습니다. 여기서 레이블이 잘못되었다고 것은 알고리즘이 데이터를 사용하기 전에 발생한 문제입니다. 즉 사람이 레이블을 설정할 때 레이블을 잘못 설정한 것을 의미합니다. 예를 들어서, 한 데이터(Example)가 (x, y)로 표현됩니다. 이 데이터의 레이블 y가 잘못된 값을 갖고 있다고 가정해 보겠습니다. 이 상황에서 고양이를 포함하지 않는 일부 사진이 고양이를 포함하는 사진으로 레이블될 수 있습니다. 또한 반대의 경우가 될 수도 있습니다. 틀린 레이블을 갖은 이미지가 많은 것으로 예상되면, 레이블이 잘못된 사례 데이터의 비율을 추적하는 오류 범주를 추가합니다.</p>
 
-<p>|이미지|개|큰 고양이|흐린 사진|잘못된 레이블|주석|
-|&mdash;-|&mdash;-|&mdash;-|&mdash;-|&mdash;|
-|&hellip;|&hellip;|&hellip;|&hellip;|&hellip;|&hellip;|
-| 98||||v|배경의 고양이를 놓친 사진|
-| 99||v||||
-|100||||v|고양이 그림, 실제 고양이가 아님|
-|전체 중 비율|8%|43%|61%||</p>
+<table>
+<thead>
+<tr>
+<th>이미지</th>
+<th>개</th>
+<th>큰 고양이</th>
+<th>흐린 사진</th>
+<th>잘못된 레이블</th>
+<th>주석</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+</tr>
+
+<tr>
+<td>98</td>
+<td></td>
+<td></td>
+<td></td>
+<td>v</td>
+<td>배경의 고양이를 놓친 사진</td>
+</tr>
+
+<tr>
+<td>99</td>
+<td></td>
+<td>v</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>100</td>
+<td></td>
+<td></td>
+<td></td>
+<td>v</td>
+<td>고양이 그림, 실제 고양이가 아님</td>
+</tr>
+
+<tr>
+<td>전체 중 비율</td>
+<td>8%</td>
+<td>43%</td>
+<td>61%</td>
+<td>6%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
 <p>당신 dev에 레이블 집합을 수정해야 합니까? 개발자 세트의 목표는 알고리즘 A 또는 B가 더 나은지 여부를 알 수 있도록 알고리즘을 신속하게 평가할 수 있도록하는 것입니다. dev 세트의 일부가 잘못 표시되면 이러한 판단을 내리는 데 방해가 됩니다. 잘못 표시된 dev 세트 레이블을 수정하는 데는 시간을 할애할 가치가 있습니다.</p>
 
@@ -131,7 +183,7 @@
 <a class="nav nav-prev" href="/tutorial_manual/ml_yearning/030.basic_error_analysis/15/" title="15. 오류 분석중에 여러 아이디어를 동시에 평가하기"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 15. 오류 분석중에 여러 아이디어를 동시에 평가하기</a>
 
 
-<a class="nav nav-next" href="/tutorial_manual/ml_yearning/040.bias_and_variance/" title="Part 4. 편향과 분산">Next - Part 4. 편향과 분산 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="nav nav-next" href="/tutorial_manual/ml_yearning/030.basic_error_analysis/17/" title="17. 개발 데이터셋이 클 경우, 개발 데이터셋을 두 개로 분할하고 하나만 살펴볼 것">Next - 17. 개발 데이터셋이 클 경우, 개발 데이터셋을 두 개로 분할하고 하나만 살펴볼 것 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 
 </nav><footer><div class="authorbox row clearfix">
 	<figure class="authorbox__avatar">
@@ -208,6 +260,7 @@
 <li class=""><a href="/tutorial_manual/ml_yearning/030.basic_error_analysis/14/">14. 에러 분석: 아이디어 평가를 위해, 개발 데이터셋을 살펴보라.</a></li>
 <li class=""><a href="/tutorial_manual/ml_yearning/030.basic_error_analysis/15/">15. 오류 분석중에 여러 아이디어를 동시에 평가하기</a></li>
 <li class="active"><a href="/tutorial_manual/ml_yearning/030.basic_error_analysis/16/">16. 잘못 레이블된 개발/테스트 데이터셋 처리</a></li>
+<li class=""><a href="/tutorial_manual/ml_yearning/030.basic_error_analysis/17/">17. 개발 데이터셋이 클 경우, 개발 데이터셋을 두 개로 분할하고 하나만 살펴볼 것</a></li>
 </ul>
   
 </li>

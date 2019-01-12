@@ -47,5 +47,14 @@
       <description>오류 분석 과정에서 개발 데이터셋의 일부 데이터가 잘못된 레이블을 갖고 있음을 파악했습니다. 여기서 레이블이 잘못되었다고 것은 알고리즘이 데이터를 사용하기 전에</description>
     </item>
     
+    <item>
+      <title>17. 개발 데이터셋이 클 경우, 개발 데이터셋을 두 개로 분할하고 하나만 살펴볼 것</title>
+      <link>http://taewan.kim/ml_yearning/030.basic_error_analysis/17/</link>
+      <pubDate>Wed, 27 Dec 2017 19:05:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/ml_yearning/030.basic_error_analysis/17/</guid>
+      <description>이 문서는 Andrew NG 교수님께서 집필 중인 Machine Learning Yearning의 17장 번역입니다. 원제는 &amp;ldquo;17. If you have a large dev set, split it into two subsets, only one of which you look at&amp;rdquo; 입니다. 원문 Ebook은</description>
+    </item>
+    
   </channel>
 </rss>
