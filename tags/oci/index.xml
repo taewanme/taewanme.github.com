@@ -6,10 +6,32 @@
     <description>Recent content in Oci on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 28 Nov 2018 09:17:05 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 12 Jan 2019 09:17:05 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/oci/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OCI Manager: iPhone 용 오라클 클라우드(OCI) 관리 앱</title>
+      <link>http://taewan.kim/cloud/mobile_oci_manager/</link>
+      <pubDate>Sat, 12 Jan 2019 09:17:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/mobile_oci_manager/</guid>
+      <description>iPhone용 Oracle OCI(Oracle Cloud Infrastructure) 관리 앱을 소개합니다. 최근(2018.10)에 Apple App Store에 Oracle OCI 앱이 등록되었습니다. OCI Manager앱을 이용하여 Oracle OCI에 프로비저닝된 서비스를 확인, 시작, 정지, 스케일 업/다운을 할 수 있습니다. Oracle Cloud의 권한에 따라 접근 가능한 서비스를 직접 제어할 수 있습니다.
+이 앱의 크기는 8MB이며, iOS 12.0 이상 iPhone, iPad, iPod touch에 설치 가능합니다.
+OCI Manager의 기능 이 앱을 사용하면 Oracle Cloud에서 OCI 환경에 직접 연결할 수 있습니다. Compartment별로 컴퓨트 인스턴스(Compute, Bare Metal) 및 Database 및 Autonomous 서비스를 통합 지원합니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle OCI 접속 정보 수집</title>
+      <link>http://taewan.kim/cloud/oci_connection_info/</link>
+      <pubDate>Sat, 12 Jan 2019 09:17:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_connection_info/</guid>
+      <description>외부 OCI(Oracle Cloud Infrastructure) Manager나 OCI CLI와 같은 툴을 설하고, Oracle OCI에 접속하기 위해서는 몇 가지 정보가 필요합니다. Oracle Cloud의 OCI에 접속할 필요한 정보는 일반적으로 Tenant OCID, User OCID, Fingerprint, Regions, Private Perm Key와 같은 5개 정보가 필요합니다. 이 정보를 확인하는 방법을 정리합니다. 이 문서는 2019년 01월 13일 기준으로 작성되었습니다.
+지금부터는 Oracle Cloud의 OCI 서비스 콘솔에 접속한 상태를 시작점으로 진행하겠습니다.
+Oracle Cloud에 로그인한 후, Oracle Cloud 대시보드에서 왼쪽 위에 햄버거 아이콘 -&amp;gt; Compute 메뉴 패스로 Oracle Cloud의 OCI 서비스 콘솔로 이동합니다.</description>
+    </item>
     
     <item>
       <title>OCI CLI로 RSA key pair 생성</title>
