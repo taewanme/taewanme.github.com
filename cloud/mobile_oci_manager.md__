@@ -1,0 +1,42 @@
++++
+date = "2019-01-12T09:17:05+09:00"
+description = "iPhone용 OCI(Oracle Cloud Infrastructure) Manager를 소개합니다. iOS 12.0 이상 iPhone, iPad, iPod touch에 설치 가능한 Oracle OCI 서비스 관리 앱 입니다. "
+title = "OCI Manager: iPhone 용 오라클 클라우드(OCI) 관리 앱"
+thumbnailInList = "https://taewanmerepo.github.io/2019/01/mobileocimgr/list.jpg"
+thumbnailInPost = "https://taewanmerepo.github.io/2019/01/mobileocimgr/post.jpg"
+tags = ["oracle cloud", "oci", "iPhone"]
+categories = ["cloud"]
+author = "taewan.kim"
+language = ""
+adsense = "true"
+disclaimer = "true"
++++
+
+iPhone용 Oracle OCI(Oracle Cloud Infrastructure) 관리 앱을 소개합니다. 최근(2018.10)에 Apple App Store에 Oracle OCI 앱이 등록되었습니다. OCI Manager앱을 이용하여 Oracle OCI에 프로비저닝된 서비스를 확인, 시작, 정지, 스케일 업/다운을 할 수 있습니다. Oracle Cloud의 권한에 따라 접근 가능한 서비스를 직접 제어할 수 있습니다.
+
+이 앱의 크기는 8MB이며, iOS 12.0 이상 iPhone, iPad, iPod touch에 설치 가능합니다.
+
+## OCI Manager의 기능
+
+이 앱을 사용하면 Oracle Cloud에서 OCI 환경에 직접 연결할 수 있습니다. Compartment별로 컴퓨트 인스턴스(Compute, Bare Metal) 및 Database 및 Autonomous 서비스를 통합 지원합니다. 서비스 기능에 따라 인스턴스를 시작, 중지 및 재설정 할 수 있으며 사용 된 프로세서를 확장 할 수 있습니다. 인스턴스 이름 (서비스에서 허용하는 경우)을 쉽게 편집 할 수 있으며 Compute Instance에서는 실제 콘솔 출력을 볼 수 있습니다. 또한 Audit log에는 인스턴스의 모든 작성, 수정 및 삭제에 대한 정보가 들어 있습니다.
+ 
+## 앱 설치 및  앱 실행
+
+App Store에서 OCI 검색으로 앱을 확인하고 설치할 수 있습니다.
+
+> ![](https://taewanmerepo.github.io/2019/01/mobileocimgr/040.jpg)
+
+> - (A): Apple App Store의 OCI Manager
+- (B): OCI Manager의 아이콘
+- (C): OCI Manager 앱 실행 첫 화면
+- (D): 접속 정보 설정 UI
+
+## OCI Access Setup에 접근 정보설정
+
+OCI Manager에서 Oracle OCI에 접근하기 위해서는 다음과 같은 5가지 정보를 설정해야 합니다.
+
+- Tenant OCID
+- User OCID
+- FingerPrint
+- Regions
+- Private Perm Key 

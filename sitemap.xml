@@ -3,11 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://taewan.kim/cloud/mobile_oci_manager/</loc>
-    <lastmod>2019-01-12T09:17:05+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://taewan.kim/cloud/oci_connection_info/</loc>
     <lastmod>2019-01-12T09:17:05+09:00</lastmod>
   </url>
@@ -1635,12 +1630,6 @@
   <url>
     <loc>http://taewan.kim/tags/identity-domain/</loc>
     <lastmod>2017-08-11T22:20:25+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/tags/iphone/</loc>
-    <lastmod>2019-01-12T09:17:05+09:00</lastmod>
     <priority>0</priority>
   </url>
   
