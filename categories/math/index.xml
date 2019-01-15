@@ -17,11 +17,10 @@
       <pubDate>Tue, 15 Jan 2019 09:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/post/function_in_semicolon/</guid>
-      <description>수학에서 함수를 표현하는 여러 방법이 있습니다. $f(x)$, $f\colon X\to Y$와 ${\displaystyle x\mapsto f(x).}$와 같은 방식으로 함수를 표현합니다. 복잡한 수식에서 함수를 단순하게 표기함으로써 수식을 단순하게 유지할 수 있습니다. 최근에 &amp;ldquo;딥 러닝 제대로 시작하기[↗NW] &amp;rdquo; 책에서 약간 다른 표기법을 발견하고 그 의미를 획인해 보았습니다. &amp;ldquo;딥러닝 제대로 시작하기&amp;rdquo; 2장에서는 우도함수를 다음과 같이 표기합니다.
+      <description>수학에서 함수를 표현하는 여러 방법이 있습니다. $f(x)$, $f\colon X\to Y$와 ${\displaystyle x\mapsto f(x).}$와 같은 방식으로 함수를 표현합니다. 복잡한 수식에서 함수를 단순하게 표기함으로써 수식을 단순하게 유지할 수 있습니다. 최근에 &amp;ldquo;딥 러닝 제대로 시작하기[↗NW] &amp;rdquo; 책에서 약간 다른 표기법을 발견하고 그 의미를 획인해 보았습니다. &amp;ldquo;딥 러닝 제대로 시작하기[↗NW] &amp;rdquo; 2장에서는 우도함수를 다음과 같이 표기합니다.
 $$ L(w) \equiv \prod_{n=1}^{N}p(d_n|x_n;w) = \prod_{n=1}^{N}\{y(x_n;w)\}^{d_n}\{1-y(x_n;w)\}^{1-d_n}
 $$ 
-위 수식에서 조건부 확률과 출력 함수를 다음과 같이 표현하고 있습니다.
- $$p(d_n|x_n;w)$$ $$y(x_n;w)$$</description>
+위 수식에서 조건부 확률과 출력 함수를 다음과 같이 표현하고 있습니다.</description>
     </item>
     
   </channel>
