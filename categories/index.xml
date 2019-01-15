@@ -50,7 +50,7 @@
     <item>
       <title>Cloud</title>
       <link>http://taewan.kim/categories/cloud/</link>
-      <pubDate>Sat, 12 Jan 2019 09:17:05 +0900</pubDate>
+      <pubDate>Sun, 13 Jan 2019 09:17:05 +0900</pubDate>
       
       <guid>http://taewan.kim/categories/cloud/</guid>
       <description></description>
@@ -98,6 +98,15 @@
       <pubDate>Wed, 08 Aug 2018 16:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/categories/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Math</title>
+      <link>http://taewan.kim/categories/math/</link>
+      <pubDate>Thu, 15 Nov 2018 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/math/</guid>
       <description></description>
     </item>
     

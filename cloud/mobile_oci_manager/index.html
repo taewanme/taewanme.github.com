@@ -15,8 +15,8 @@
 <meta property="og:title" content="OCI Manager: iPhone 용 오라클 클라우드(OCI) 관리 앱" />
 <meta property="og:description" content="iPhone용 OCI(Oracle Cloud Infrastructure) Manager를 소개합니다. iOS 12.0 이상 iPhone, iPad, iPod touch에 설치 가능한 Oracle OCI 서비스 관리 앱 입니다. " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/cloud/mobile_oci_manager/" /><meta property="article:published_time" content="2019-01-12T09:17:05&#43;09:00"/>
-<meta property="article:modified_time" content="2019-01-12T09:17:05&#43;09:00"/>
+<meta property="og:url" content="http://taewan.kim/cloud/mobile_oci_manager/" /><meta property="article:published_time" content="2019-01-13T09:17:05&#43;09:00"/>
+<meta property="article:modified_time" content="2019-01-13T09:17:05&#43;09:00"/>
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -101,7 +101,7 @@
 			<h1 class="post__title">OCI Manager: iPhone 용 오라클 클라우드(OCI) 관리 앱 </h1>
 			<p class="post__meta meta">
 				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="post__meta-date" datetime="2019-01-12 09:17:05 &#43;0900 KST">January 12, 2019</time>
+				<time class="post__meta-date" datetime="2019-01-13 09:17:05 &#43;0900 KST">January 13, 2019</time>
 				<span class="post__meta-categories meta-categories">
 					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 					<a class="meta-categories__link" href="/categories/cloud" rel="category">cloud</a>
@@ -133,24 +133,133 @@
 <p><img src="https://taewanmerepo.github.io/2019/01/mobileocimgr/040.jpg" alt="" /></p>
 
 <ul>
-<li>(A): Apple App Store의 OCI Manager</li>
-<li>(B): OCI Manager의 아이콘</li>
-<li>&copy;: OCI Manager 앱 실행 첫 화면</li>
-<li>(D): 접속 정보 설정 UI</li>
+<li>[A]: Apple App Store의 OCI Manager</li>
+<li>[B]: OCI Manager의 아이콘</li>
+<li>[C]: OCI Manager 앱 실행 첫 화면</li>
+<li>[D]: 접속 정보 설정 UI</li>
 </ul>
 </blockquote>
 
-<h2 id="oci-access-setup에-접근-정보설정">OCI Access Setup에 접근 정보설정</h2>
+<h2 id="oci-access-setup에-필요한-oci-기본-정보-확인">OCI Access Setup에 필요한 OCI 기본 정보 확인</h2>
 
 <p>OCI Manager에서 Oracle OCI에 접근하기 위해서는 다음과 같은 5가지 정보를 설정해야 합니다.</p>
 
-<ul>
+<ol>
 <li>Tenant OCID</li>
 <li>User OCID</li>
 <li>FingerPrint</li>
 <li>Regions</li>
 <li>Private Perm Key</li>
+</ol>
+
+<p>이 5개 기본 정보 수집 방법은 다음 문서를 참조하여 확인할 수 있습니다.</p>
+
+<ul>
+<li><a href="/cloud/oci_connection_info/" target="_blank">Oracle OCI 기본 접속 정보 수집[↗NW]</a>
+</li>
 </ul>
+
+<p>위 문서를 요약하면 OCI 기본 정보는 다음과 같습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>기본 정보 유형</th>
+<th>확인 방법</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>User OCID</td>
+<td>OCI User 상세 페이지에서 확인</td>
+</tr>
+
+<tr>
+<td>Fingerprint</td>
+<td>OCI User 상세 페이지에서 확인</td>
+</tr>
+
+<tr>
+<td>Tenant OCID</td>
+<td>Tenancy 상세 페이지에서 확인</td>
+</tr>
+
+<tr>
+<td>Regions</td>
+<td>Tenancy 상세 페이지에서 확인</td>
+</tr>
+
+<tr>
+<td>RSA Private Key</td>
+<td>OCI User에 등록된 공개키의 대응 비밀키</td>
+</tr>
+</tbody>
+</table>
+
+<p>위 문서를 참고하여 수집한 데모에 사용할 OCI 기본 정보는 다음과 같습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>기본 정보 유형</th>
+<th>확인 방법</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>User OCID</td>
+<td>ocid1.user.oc1..aaaaaaaaftuoiqkzmabchmc6tz4bbjkrcuobswf6cahv4vhs5b33ig2r4snq</td>
+</tr>
+
+<tr>
+<td>Fingerprint</td>
+<td>7d:c4:0f:05:3a:44:90:e7:ad:c8:fc:98:d5:34:9a:88</td>
+</tr>
+
+<tr>
+<td>Tenant OCID</td>
+<td>ocid1.tenancy.oc1..aaaaaaaaurlvuhzz6eabcvyot7rg4gt2uwxynjzvyd4zowknkvmtvyb452na</td>
+</tr>
+
+<tr>
+<td>Regions</td>
+<td>us-ashburn-1</td>
+</tr>
+</tbody>
+</table>
+
+<p>마지막으로 RSA Private Key는 다음을 사용할 예정입니다.</p>
+
+<pre><code>-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEAoxi/nXBq/PYzS13OeWG1djtChGeJEfJXGTXDEzFq00dek+bM
+d9x+xzY72j8dJakuvW4INWKsbiD3H6DtKr6kiOWRpl0bdI/9EzubAoe0l7cgwsRD
+xXRnDaaBN5eI58J/SSe8CUv88zt+7J71AiNwbPfilNQlZG3ISLlFCSt7QuLtDE2s
+S0Uu8CjmKqZQu3ktwSf7qiCmelXXXyhT8Q9fYiMOym0OfDI/zFjZdk+TXoRfAWP2
+2lGKFigoEMqjH8VFFMYviA2N1/varzXATStLCi5oWAFu2rXXPpL9YWquBhdQpYI8
+jNGtd2DBXWYm3t5/O+mUHE/4VzRQZUMrkckV2QIDAQABAoIBAQCSH9FFoHvqqjao
+1qHv9I/dHxjogc64CpTonFdrscHRC8d74bPdy+q2VyvmzNczb9HVnGi0U/TDMrvW
+VZtHycimcnA9SnwXwg3vFl8bbbWkPEmY1rkVhsXx3/UztovNgWADThtVhQRbdDmy
+jHRddxz6NFmIGE5sHUPtjDiDD7b+491abcATrRWg0X38fsg5ZNtNZwJcOqsKsm6k
+5yt0pn/E5fc2Ddt9t/u8nkpOOjzGTK5EAKCUNTOsAxQ3AZgTogU3VXBTXonJsfJA
+mqPnXuuNh23wPKKAAc+bKqhT/1sUDUIBORGqMqQPqaW7TPt9XlWZhMIsKq2zZ9CL
+WN807lkBAoGBANECi9JB9ghvYHxwofTNFfACPfDXCo8Y9vyxyu+50mQVixrNJM4S
+hI46kZR7ptfou53JZNZfIXn6cWCeXVFMBcTgKEwOsRRLpRX0ZJ6lY+R/9C2THz0h
+pvzpoNKT1wP1hYe1ZqPAx9caaaDPwiFGwjE62d+SleosbGVECf0UPEh5AoGBAMfD
+sFuLks00P6ynyy4n6Ew9xLWjzrW+TwKxnEtjD0nA+BRf5f6fsywKaGp3ti2c50+Q
+/KTAn9jI3A8/7noRZ7/1cGLFUea/3qUVTpksVEg9tznKIENKW+F9qXElqCR1U0As
+s4kNYhopD07AmJdTl1mN3NS5Gz4K8nQusZGpVqBhAoGAVWMq6C0WbH/D9VK2d6JJ
+chIYaAoSQD+8t6OS+rj5oPXELKDehmm+SbTXwMd7c/2amG2sin+213RfWU+ZZBsg
+yDujet8NrPLycLO1X7LFypYTlYLjYkAbTnvLvfuz/eQSN0z+r6uUeOm2vleCQcH8
+l8wpMlNad57KcdyIECJyNlECgYEApu+qfiYaTK/AElm6WlzxLF1l+GDmikx6HIcu
+VHV4viqrZeNqASmWAlTEQ0y9CksXpg9Ega2TJwdblsbXVF0dNXY3L+MzeUCYH565
+qxk3aZNhfcKiyXjnZX2szqgoZidBpdx1QC/V7oSnjSk3myY40ZbSl1YFJQji6iJn
+M5GumaECgYAu+wGvUwhmsnubp8IEE/T9/zNFIYcW96MWB4nsppaXFDDflDdgye3j
+faK/VWC20ewA+WhiwOIVN86yID4p5wjEGWGV4PLpOSKG8NZzAKdlsnKRJe6bKJfL
+OxKQF38f7aV1X0Gx9NwcNVA4YTIk53qRhhBQyiLezT12uwKEv2LAyw==
+-----END RSA PRIVATE KEY-----
+</code></pre>
 
 		</div>
 		
@@ -233,7 +342,7 @@
 <ul>
 <li><a href="#oci-manager의-기능">OCI Manager의 기능</a></li>
 <li><a href="#앱-설치-및-앱-실행">앱 설치 및  앱 실행</a></li>
-<li><a href="#oci-access-setup에-접근-정보설정">OCI Access Setup에 접근 정보설정</a></li>
+<li><a href="#oci-access-setup에-필요한-oci-기본-정보-확인">OCI Access Setup에 필요한 OCI 기본 정보 확인</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -274,16 +383,16 @@
 							오라클 자바 라이센스 정리: Oracle Java SE Subs ......</a>
 		  </li>
 			<li class="widget__item">
+				<a class="widget__link" href="/post/function_in_semicolon/" title="함수 표기법에서 세미콜론로 변수와 파라미터 구분">
+							함수 표기법에서 세미콜론로 변수와 파라미터 구분</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/post/openjdk/" title="자바의 새로운 도약: OpenJDK(Feat. Oracle JDK Subscription) ">
 							자바의 새로운 도약: OpenJDK(Feat. Oracle JD ......</a>
 		  </li>
 			<li class="widget__item">
 				<a class="widget__link" href="/book/memory_of_murder/" title="&#39;살인자의 기억법&#39; 리뷰">
 							&#39;살인자의 기억법&#39; 리뷰</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/docs/docker4ml/" title="Docker Image: 파이썬 기반 머신러닝 학습용 이미지">
-							Docker Image: 파이썬 기반 머신러닝 학습용 이미지</a>
 		  </li>
 		</ul>
 	</div>
@@ -304,6 +413,7 @@
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/math">Math</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
 			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
