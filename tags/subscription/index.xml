@@ -6,24 +6,15 @@
     <description>Recent content in Subscription on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 15 Nov 2018 09:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 15 Jan 2019 09:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/subscription/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>오라클 자바 라이센스 정리: Oracle Java SE Subscription</title>
-      <link>http://taewan.kim/post/oracle_java_subscription/</link>
-      <pubDate>Thu, 15 Nov 2018 09:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/post/oracle_java_subscription/</guid>
-      <description>오라클 자바 서브스크립션(Oracle Java SE Subscription) 2019년 1월부터 Oracle Java SE Subscription(이하 Java Subscription)이 시행됩니다. 현재 운영중인 자바 시스템에 Java Subscription을 구독할지를 결정을 하기 위해서는 여러가지 판단 근거가 필요합니다. 내 시스템에 Java Subscription이 정말 필요한지, 2019년 1월까지 바로 결정을 해야 하는 것인지, Subscription 구독 결정을 시간을 두고 결정할 수 있는 것인지, Java Subscription의 대상 범위가 어디까지인지, 개발자 컴퓨터와 테스트 서버도 Java Subscription에 포함 시켜야 하는지, 오라클 솔루션에 포함된 Java를 사용해도 되는지, 기술 지원이 제공되는 Java 버전은 무엇인지, Java SE 최신 Update를 쓰면 정말 좋은 것인지 등 여러 가지를 고민해야 합니다.</description>
-    </item>
-    
-    <item>
       <title>함수 표기법에서 세미콜론로 변수와 파라미터 구분</title>
       <link>http://taewan.kim/post/function_in_semicolon/</link>
-      <pubDate>Thu, 15 Nov 2018 09:28:14 +0900</pubDate>
+      <pubDate>Tue, 15 Jan 2019 09:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/post/function_in_semicolon/</guid>
       <description>수학에서 함수를 표현하는 여러 방법이 있습니다. $f(x)$, $f\colon X\to Y$와 ${\displaystyle x\mapsto f(x).}$ 같은 방식으로 함수를 표현합니다. 복잡한 수식에서 함수를 단순하게 표기함으로써 수식을 단순하게 유지할 수 있습니다. 최근에 &amp;ldquo;딥러닝 제대로 시작하기&amp;rdquo; 책에서 약간 다른 표기법을 발견하고 그 의미를 획인해 보았습니다. &amp;ldquo;딥러닝 제대로 시작하기&amp;rdquo; 2장에서는 우도함수를 다음과 같이 표기합니다.
@@ -32,6 +23,15 @@ $$
 조건부 확률과 출력 함수를 표현을 다음과 같이 표현하고 있습니다.
  $$p(d_n|x_n;w)$$ $$y(x_n;w)$$
  위 표현식에서 세미콜론은 파리미터와 변수를 구분하는 역할을 합니다.</description>
+    </item>
+    
+    <item>
+      <title>오라클 자바 라이센스 정리: Oracle Java SE Subscription</title>
+      <link>http://taewan.kim/post/oracle_java_subscription/</link>
+      <pubDate>Thu, 15 Nov 2018 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/oracle_java_subscription/</guid>
+      <description>오라클 자바 서브스크립션(Oracle Java SE Subscription) 2019년 1월부터 Oracle Java SE Subscription(이하 Java Subscription)이 시행됩니다. 현재 운영중인 자바 시스템에 Java Subscription을 구독할지를 결정을 하기 위해서는 여러가지 판단 근거가 필요합니다. 내 시스템에 Java Subscription이 정말 필요한지, 2019년 1월까지 바로 결정을 해야 하는 것인지, Subscription 구독 결정을 시간을 두고 결정할 수 있는 것인지, Java Subscription의 대상 범위가 어디까지인지, 개발자 컴퓨터와 테스트 서버도 Java Subscription에 포함 시켜야 하는지, 오라클 솔루션에 포함된 Java를 사용해도 되는지, 기술 지원이 제공되는 Java 버전은 무엇인지, Java SE 최신 Update를 쓰면 정말 좋은 것인지 등 여러 가지를 고민해야 합니다.</description>
     </item>
     
   </channel>

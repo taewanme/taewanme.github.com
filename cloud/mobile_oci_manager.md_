@@ -1,0 +1,97 @@
++++
+date = "2019-01-13T09:17:05+09:00"
+description = "iPhone용 OCI(Oracle Cloud Infrastructure) Manager를 소개합니다. iOS 12.0 이상 iPhone, iPad, iPod touch에 설치 가능한 Oracle OCI 서비스 관리 앱 입니다. "
+title = "OCI Manager: iPhone 용 오라클 클라우드(OCI) 관리 앱"
+thumbnailInList = "https://taewanmerepo.github.io/2019/01/mobileocimgr/list.jpg"
+thumbnailInPost = "https://taewanmerepo.github.io/2019/01/mobileocimgr/post.jpg"
+tags = ["oracle cloud", "oci", "iPhone"]
+categories = ["cloud"]
+author = "taewan.kim"
+language = ""
+adsense = "true"
+disclaimer = "true"
++++
+
+iPhone용 Oracle OCI(Oracle Cloud Infrastructure) 관리 앱을 소개합니다. 최근(2018.10)에 Apple App Store에 Oracle OCI 앱이 등록되었습니다. OCI Manager앱을 이용하여 Oracle OCI에 프로비저닝된 서비스를 확인, 시작, 정지, 스케일 업/다운을 할 수 있습니다. Oracle Cloud의 권한에 따라 접근 가능한 서비스를 직접 제어할 수 있습니다.
+
+이 앱의 크기는 8MB이며, iOS 12.0 이상 iPhone, iPad, iPod touch에 설치 가능합니다.
+
+## OCI Manager의 기능
+
+이 앱을 사용하면 Oracle Cloud에서 OCI 환경에 직접 연결할 수 있습니다. Compartment별로 컴퓨트 인스턴스(Compute, Bare Metal) 및 Database 및 Autonomous 서비스를 통합 지원합니다. 서비스 기능에 따라 인스턴스를 시작, 중지 및 재설정 할 수 있으며 사용 된 프로세서를 확장 할 수 있습니다. 인스턴스 이름 (서비스에서 허용하는 경우)을 쉽게 편집 할 수 있으며 Compute Instance에서는 실제 콘솔 출력을 볼 수 있습니다. 또한 Audit log에는 인스턴스의 모든 작성, 수정 및 삭제에 대한 정보가 들어 있습니다.
+ 
+## 앱 설치 및  앱 실행
+
+App Store에서 OCI 검색으로 앱을 확인하고 설치할 수 있습니다.
+
+> ![](https://taewanmerepo.github.io/2019/01/mobileocimgr/040.jpg)
+
+> - [A]: Apple App Store의 OCI Manager
+- [B]: OCI Manager의 아이콘
+- [C]: OCI Manager 앱 실행 첫 화면
+- [D]: 접속 정보 설정 UI
+
+## OCI Access Setup에 필요한 OCI 기본 정보 확인
+
+OCI Manager에서 Oracle OCI에 접근하기 위해서는 다음과 같은 5가지 정보를 설정해야 합니다.
+
+1. Tenant OCID
+1. User OCID
+1. FingerPrint
+1. Regions
+1. Private Perm Key
+
+이 5개 기본 정보 수집 방법은 다음 문서를 참조하여 확인할 수 있습니다.
+
+- {{< extlink link="/cloud/oci_connection_info/" desc="Oracle OCI 기본 접속 정보 수집">}}
+
+위 문서를 요약하면 OCI 기본 정보는 다음과 같습니다.
+
+|기본 정보 유형|확인 방법|
+|----|----|
+|User OCID|OCI User 상세 페이지에서 확인|
+|Fingerprint|OCI User 상세 페이지에서 확인|
+|Tenant OCID|Tenancy 상세 페이지에서 확인|
+|Regions|Tenancy 상세 페이지에서 확인|
+|RSA Private Key|OCI User에 등록된 공개키의 대응 비밀키|
+
+위 문서를 참고하여 수집한 데모에 사용할 OCI 기본 정보는 다음과 같습니다.
+
+|기본 정보 유형|확인 방법|
+|----|----|
+|User OCID|ocid1.user.oc1..aaaaaaaaftuoiqkzmabchmc6tz4bbjkrcuobswf6cahv4vhs5b33ig2r4snq|
+|Fingerprint|7d:c4:0f:05:3a:44:90:e7:ad:c8:fc:98:d5:34:9a:88|
+|Tenant OCID|ocid1.tenancy.oc1..aaaaaaaaurlvuhzz6eabcvyot7rg4gt2uwxynjzvyd4zowknkvmtvyb452na|
+|Regions|us-ashburn-1|
+
+마지막으로 RSA Private Key는 다음을 사용할 예정입니다.
+
+```
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEAoxi/nXBq/PYzS13OeWG1djtChGeJEfJXGTXDEzFq00dek+bM
+d9x+xzY72j8dJakuvW4INWKsbiD3H6DtKr6kiOWRpl0bdI/9EzubAoe0l7cgwsRD
+xXRnDaaBN5eI58J/SSe8CUv88zt+7J71AiNwbPfilNQlZG3ISLlFCSt7QuLtDE2s
+S0Uu8CjmKqZQu3ktwSf7qiCmelXXXyhT8Q9fYiMOym0OfDI/zFjZdk+TXoRfAWP2
+2lGKFigoEMqjH8VFFMYviA2N1/varzXATStLCi5oWAFu2rXXPpL9YWquBhdQpYI8
+jNGtd2DBXWYm3t5/O+mUHE/4VzRQZUMrkckV2QIDAQABAoIBAQCSH9FFoHvqqjao
+1qHv9I/dHxjogc64CpTonFdrscHRC8d74bPdy+q2VyvmzNczb9HVnGi0U/TDMrvW
+VZtHycimcnA9SnwXwg3vFl8bbbWkPEmY1rkVhsXx3/UztovNgWADThtVhQRbdDmy
+jHRddxz6NFmIGE5sHUPtjDiDD7b+491abcATrRWg0X38fsg5ZNtNZwJcOqsKsm6k
+5yt0pn/E5fc2Ddt9t/u8nkpOOjzGTK5EAKCUNTOsAxQ3AZgTogU3VXBTXonJsfJA
+mqPnXuuNh23wPKKAAc+bKqhT/1sUDUIBORGqMqQPqaW7TPt9XlWZhMIsKq2zZ9CL
+WN807lkBAoGBANECi9JB9ghvYHxwofTNFfACPfDXCo8Y9vyxyu+50mQVixrNJM4S
+hI46kZR7ptfou53JZNZfIXn6cWCeXVFMBcTgKEwOsRRLpRX0ZJ6lY+R/9C2THz0h
+pvzpoNKT1wP1hYe1ZqPAx9caaaDPwiFGwjE62d+SleosbGVECf0UPEh5AoGBAMfD
+sFuLks00P6ynyy4n6Ew9xLWjzrW+TwKxnEtjD0nA+BRf5f6fsywKaGp3ti2c50+Q
+/KTAn9jI3A8/7noRZ7/1cGLFUea/3qUVTpksVEg9tznKIENKW+F9qXElqCR1U0As
+s4kNYhopD07AmJdTl1mN3NS5Gz4K8nQusZGpVqBhAoGAVWMq6C0WbH/D9VK2d6JJ
+chIYaAoSQD+8t6OS+rj5oPXELKDehmm+SbTXwMd7c/2amG2sin+213RfWU+ZZBsg
+yDujet8NrPLycLO1X7LFypYTlYLjYkAbTnvLvfuz/eQSN0z+r6uUeOm2vleCQcH8
+l8wpMlNad57KcdyIECJyNlECgYEApu+qfiYaTK/AElm6WlzxLF1l+GDmikx6HIcu
+VHV4viqrZeNqASmWAlTEQ0y9CksXpg9Ega2TJwdblsbXVF0dNXY3L+MzeUCYH565
+qxk3aZNhfcKiyXjnZX2szqgoZidBpdx1QC/V7oSnjSk3myY40ZbSl1YFJQji6iJn
+M5GumaECgYAu+wGvUwhmsnubp8IEE/T9/zNFIYcW96MWB4nsppaXFDDflDdgye3j
+faK/VWC20ewA+WhiwOIVN86yID4p5wjEGWGV4PLpOSKG8NZzAKdlsnKRJe6bKJfL
+OxKQF38f7aV1X0Gx9NwcNVA4YTIk53qRhhBQyiLezT12uwKEv2LAyw==
+-----END RSA PRIVATE KEY-----
+```
