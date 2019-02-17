@@ -85,6 +85,16 @@ OCI 인프라스트럭처를 관리하는 언어별 SDK를 오라클 github 레�
     </item>
     
     <item>
+      <title>Oracle cloud 사용자 첫 번째 로그인 절차</title>
+      <link>http://taewan.kim/cloud/first_login_on_oracle_cloud/</link>
+      <pubDate>Tue, 10 Jul 2018 09:17:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/first_login_on_oracle_cloud/</guid>
+      <description>본 문서에서는 Oracle Cloud 계정의 첫 번째 로그인 절차를 소개합니다. Oracle Cloud Trial 계정을 신청하거나 Oracle Cloud 계정에 신규 사용자로 등록되면, 사용자 접근 정보를 포함하는 메일이 전달됩니다. 이 메일의 계정 정보를 이용하여 Oracle Cloud에 로그인 할 수 있습니다.
+로그인 기본 정보 메일 발송 Oracle Cloud의 계정(Account)에는 여러 사용자가 포함될 수 있습니다. 계정을 생성한 사용자가 관리자 권한을 갖습니다. Oracle Cloud Trial의 경우 계정을 신청한 사용자가 관리자 권한을 가지며, 일반 계정의 경우 Oracle Cloud 사용을 신청할 때, 관리자를 지정할 수 있습니다.</description>
+    </item>
+    
+    <item>
       <title>[번역]관리형 아파치 카산드라 서비스 소개: Oracle Data Hub Cloud Service</title>
       <link>http://taewan.kim/cloud/trans_data_hub/</link>
       <pubDate>Tue, 26 Dec 2017 21:28:14 +0900</pubDate>

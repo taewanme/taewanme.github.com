@@ -6,10 +6,21 @@
     <description>Recent content in Tips on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 30 Dec 2018 09:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 17 Feb 2019 09:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tip/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>slideshare 문서 임베디드 코드 서비스</title>
+      <link>http://taewan.kim/tip/slideshare_embedded_code/</link>
+      <pubDate>Sun, 17 Feb 2019 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tip/slideshare_embedded_code/</guid>
+      <description> https://embed.ly/code  slideshare의 embedded code를 만들어주는 사이트입니다. slideshare 문서의 URL을 입력하면 html에 추가할 임베드 코드를 만들어 줍니다.
+생성된 임베딩 코드는 다음과 같습니다.
+&amp;lt;blockquote class=&amp;quot;embedly-card&amp;quot;&amp;gt;&amp;lt;h4&amp;gt; &amp;lt;a href=&amp;quot;https://www.slideshare.net/arlene5162/victor-hugo-presentation-574850&amp;quot;&amp;gt;Victor Hugo &amp;lt;/a&amp;gt;&amp;lt;/h4&amp;gt;&amp;lt;p&amp;gt;Victor Hugo ( 26 February 1802 - 22 May 1885 - 83yrs) Victor-Marie Hugo ( pronounced /vik&#39;tɔʁ ma&#39;ʁi y&#39;go/ in French ) Victor Hugo was the author of T... &amp;lt;/p&amp;gt;&amp;lt;/blockquote&amp;gt;&amp;lt;script async src=&amp;quot;//cdn.embedly.com/widgets/platform.js&amp;quot; charset=&amp;quot;UTF-8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;  </description>
+    </item>
     
     <item>
       <title>vanilla version의 의미</title>

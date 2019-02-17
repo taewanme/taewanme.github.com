@@ -6,10 +6,21 @@
     <description>Recent content in Openjdk on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Oct 2018 09:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 17 Feb 2019 09:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/openjdk/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>&#39;Cloud Native Java:GraalVM&#39; 발표 문서</title>
+      <link>http://taewan.kim/post/graalvm_seminar/</link>
+      <pubDate>Sun, 17 Feb 2019 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/graalvm_seminar/</guid>
+      <description>2019년 2월 16일에 8번째 &amp;ldquo;Oracle Developer Meetup&amp;rdquo; 세미나에서 GraalVM을 소개하는 세션을 진행했습니다. GraalVM은 고성능 JIT Compiler, Native 컴파일러 및 여러 언어를 통합하는 Polyglot 특징을 제공하는 새로운 Java 입니다. OpenJDK와 함께 다양성 자바의 시작을 알리는 기술이라고 생각합니다. 여기서 GraalVM을 소개하는 100분 세미나를 진행했습니다. 이 세미나의 발표 자료, 동영상 및 예제 코드를 공유합니다.
+세미나 동영상 페이스북에서 스트리밍한 세미나 동영상 입니다.
+ 발표 자료 Cloud Native Java:GraalVM제 8회 Oracle Developer Meetup에서 발표한 &amp;ldquo;Cloud Native Java:GraalVM&amp;rdquo;의 장표입니다.</description>
+    </item>
     
     <item>
       <title>자바의 새로운 도약: OpenJDK(Feat. Oracle JDK Subscription) </title>

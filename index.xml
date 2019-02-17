@@ -6,10 +6,32 @@
     <description>Recent content on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Jan 2019 09:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 17 Feb 2019 09:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>&#39;Cloud Native Java:GraalVM&#39; 발표 문서</title>
+      <link>http://taewan.kim/post/graalvm_seminar/</link>
+      <pubDate>Sun, 17 Feb 2019 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/graalvm_seminar/</guid>
+      <description>2019년 2월 16일에 8번째 &amp;ldquo;Oracle Developer Meetup&amp;rdquo; 세미나에서 GraalVM을 소개하는 세션을 진행했습니다. GraalVM은 고성능 JIT Compiler, Native 컴파일러 및 여러 언어를 통합하는 Polyglot 특징을 제공하는 새로운 Java 입니다. OpenJDK와 함께 다양성 자바의 시작을 알리는 기술이라고 생각합니다. 여기서 GraalVM을 소개하는 100분 세미나를 진행했습니다. 이 세미나의 발표 자료, 동영상 및 예제 코드를 공유합니다.
+세미나 동영상 페이스북에서 스트리밍한 세미나 동영상 입니다.
+ 발표 자료 Cloud Native Java:GraalVM제 8회 Oracle Developer Meetup에서 발표한 &amp;ldquo;Cloud Native Java:GraalVM&amp;rdquo;의 장표입니다.</description>
+    </item>
+    
+    <item>
+      <title>slideshare 문서 임베디드 코드 서비스</title>
+      <link>http://taewan.kim/tip/slideshare_embedded_code/</link>
+      <pubDate>Sun, 17 Feb 2019 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tip/slideshare_embedded_code/</guid>
+      <description> https://embed.ly/code  slideshare의 embedded code를 만들어주는 사이트입니다. slideshare 문서의 URL을 입력하면 html에 추가할 임베드 코드를 만들어 줍니다.
+생성된 임베딩 코드는 다음과 같습니다.
+&amp;lt;blockquote class=&amp;quot;embedly-card&amp;quot;&amp;gt;&amp;lt;h4&amp;gt; &amp;lt;a href=&amp;quot;https://www.slideshare.net/arlene5162/victor-hugo-presentation-574850&amp;quot;&amp;gt;Victor Hugo &amp;lt;/a&amp;gt;&amp;lt;/h4&amp;gt;&amp;lt;p&amp;gt;Victor Hugo ( 26 February 1802 - 22 May 1885 - 83yrs) Victor-Marie Hugo ( pronounced /vik&#39;tɔʁ ma&#39;ʁi y&#39;go/ in French ) Victor Hugo was the author of T... &amp;lt;/p&amp;gt;&amp;lt;/blockquote&amp;gt;&amp;lt;script async src=&amp;quot;//cdn.embedly.com/widgets/platform.js&amp;quot; charset=&amp;quot;UTF-8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;  </description>
+    </item>
     
     <item>
       <title>함수 표기법: 세미콜론으로 변수와 파라미터 구분</title>
@@ -40,7 +62,9 @@ Oracle Cloud에 로그인한 후, Oracle Cloud 대시보드에서 왼쪽 위에 
       <pubDate>Tue, 01 Jan 2019 21:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/10cent/sao/</guid>
-      <description> 이것은 게임이지만 놀이는 아니다.  개발자: 키야바 아키히코   </description>
+      <description> 이것은 게임이지만 놀이는 아니다.
+ 개발자: 키야바 아키히코  엘리시제이션 다시보기
+ https://www.ooani.com/category/%EC%86%8C%EB%93%9C-%EC%95%84%ED%8A%B8-%EC%98%A8%EB%9D%BC%EC%9D%B8-%EC%95%A8%EB%A6%AC%EC%8B%9C%EC%A0%9C%EC%9D%B4%EC%85%98.html   </description>
     </item>
     
     <item>
@@ -771,6 +795,16 @@ Example과 Sample  The MNIST database of handwritten digits, available from this
     </item>
     
     <item>
+      <title>Oracle cloud 사용자 첫 번째 로그인 절차</title>
+      <link>http://taewan.kim/cloud/first_login_on_oracle_cloud/</link>
+      <pubDate>Tue, 10 Jul 2018 09:17:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/first_login_on_oracle_cloud/</guid>
+      <description>본 문서에서는 Oracle Cloud 계정의 첫 번째 로그인 절차를 소개합니다. Oracle Cloud Trial 계정을 신청하거나 Oracle Cloud 계정에 신규 사용자로 등록되면, 사용자 접근 정보를 포함하는 메일이 전달됩니다. 이 메일의 계정 정보를 이용하여 Oracle Cloud에 로그인 할 수 있습니다.
+로그인 기본 정보 메일 발송 Oracle Cloud의 계정(Account)에는 여러 사용자가 포함될 수 있습니다. 계정을 생성한 사용자가 관리자 권한을 갖습니다. Oracle Cloud Trial의 경우 계정을 신청한 사용자가 관리자 권한을 가지며, 일반 계정의 경우 Oracle Cloud 사용을 신청할 때, 관리자를 지정할 수 있습니다.</description>
+    </item>
+    
+    <item>
       <title>[Coursera]Neural network and deep Learning: Week2</title>
       <link>http://taewan.kim/til/deeplearning_s01_week02/</link>
       <pubDate>Mon, 09 Jul 2018 21:28:14 +0900</pubDate>
@@ -819,6 +853,16 @@ taewanme/pyml 컨테이너 이미지 pyml 더커 이미지는 docker hub에 자�
       
       <guid>http://taewan.kim/oraprd/bda-x7-2/</guid>
       <description> 공식 문서  BDA x7-2 Datasheet  http://www.oracle.com/technetwork/database/bigdata-appliance/overview/bigdataappliance-datasheet-1883358.pdf   CPU 관련  스펙: 2 x 24-Core (2.1GHz) Intel ® Xeon ® 8160  memory 증설 관련  BDA x7-2 노드당 기본 메모리는 256GB  8 x 32GB DDR4-2666 MHz 최대: 1.5TB 확장 가능 노드 당 memory slot: 24개 솔롯 최대 확장 구성: 24 X 64GB DDR4   </description>
+    </item>
+    
+    <item>
+      <title>Claymore 단행본 좌표</title>
+      <link>http://taewan.kim/10cent/claymore-location/</link>
+      <pubDate>Mon, 25 Jun 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/10cent/claymore-location/</guid>
+      <description> Animation (Youtube)  https://www.youtube.com/watch?v=Hedq8kNTzM0&amp;amp;list=PLHoWWeBJkqMxLJ6WGHjYRTOzYL159WEcP  프로투칼 자동 번역 &amp;ndash;&amp;gt; 한국어 자동 번역 설정   단행본 좌표 Claymore 전 27권 단행본 좌표입니다.
+ claymore 01 claymore 02 claymore 03 claymore 04 claymore 05 claymore 06 claymore 07 claymore 08 claymore 09 claymore 10 claymore 11 claymore 12 claymore 13 claymore 14 claymore 15 claymore 16 claymore 17 claymore 18 claymore 19 claymore 20 claymore 21 claymore 22 claymore 23 claymore 24 claymore 25 claymore 26 claymore 27  </description>
     </item>
     
     <item>

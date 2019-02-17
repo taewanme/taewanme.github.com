@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://taewan.kim/post/graalvm_seminar/</loc>
+    <lastmod>2019-02-17T09:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tip/slideshare_embedded_code/</loc>
+    <lastmod>2019-02-17T09:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/post/function_in_semicolon/</loc>
     <lastmod>2019-01-15T09:28:14+09:00</lastmod>
   </url>
@@ -368,6 +378,11 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/cloud/first_login_on_oracle_cloud/</loc>
+    <lastmod>2018-07-10T09:17:05+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/til/deeplearning_s01_week02/</loc>
     <lastmod>2018-07-09T21:28:14+09:00</lastmod>
   </url>
@@ -389,6 +404,11 @@
   
   <url>
     <loc>http://taewan.kim/oraprd/bda-x7-2/</loc>
+    <lastmod>2018-06-25T21:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/10cent/claymore-location/</loc>
     <lastmod>2018-06-25T21:28:14+09:00</lastmod>
   </url>
   
@@ -1603,6 +1623,12 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/tags/graalvm/</loc>
+    <lastmod>2019-02-17T09:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tags/hadoop/</loc>
     <lastmod>2017-07-31T11:59:47+09:00</lastmod>
     <priority>0</priority>
@@ -1646,13 +1672,13 @@
   
   <url>
     <loc>http://taewan.kim/tags/java/</loc>
-    <lastmod>2018-11-10T17:00:14+09:00</lastmod>
+    <lastmod>2019-02-17T09:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://taewan.kim/categories/java/</loc>
-    <lastmod>2018-11-15T09:28:14+09:00</lastmod>
+    <lastmod>2019-02-17T09:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2024,7 +2050,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/openjdk/</loc>
-    <lastmod>2018-10-20T09:28:14+09:00</lastmod>
+    <lastmod>2019-02-17T09:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2144,7 +2170,7 @@
   
   <url>
     <loc>http://taewan.kim/post/</loc>
-    <lastmod>2019-01-15T09:28:14+09:00</lastmod>
+    <lastmod>2019-02-17T09:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2402,7 +2428,7 @@
   
   <url>
     <loc>http://taewan.kim/tip/</loc>
-    <lastmod>2018-12-30T09:28:14+09:00</lastmod>
+    <lastmod>2019-02-17T09:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2558,7 +2584,7 @@
   
   <url>
     <loc>http://taewan.kim/</loc>
-    <lastmod>2019-01-15T09:28:14+09:00</lastmod>
+    <lastmod>2019-02-17T09:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
