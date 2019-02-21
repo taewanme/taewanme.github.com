@@ -237,29 +237,43 @@ C:\Users\opc&gt;
 
 </code></pre>
 
-<h2 id="4-anaconda-가상환경-활성화">4. Anaconda 가상환경 활성화</h2>
+<h2 id="4-anaconda-가상환경-활성화-및-패키지-설치">4. Anaconda 가상환경 활성화 및 패키지 설치</h2>
 
-<p>cmd 콘솔에서 activate와 deactivate 명령으로 가사 환경을 활성화 시키고 종료할 수 있습니다.</p>
+<p>다음 명령을 실행하여 앞에서 생성한 <strong>pytorch_env</strong>를 활성화 시키고, Pytorch 실습에 필요한 패키지를 설치합니다. 아래 명령으로 다음 패키지 및 아래 패키지 의존성 패키지가 함께 설치됩니다.</p>
+
+<ul>
+<li>torch</li>
+<li>torchvision</li>
+<li>torchtext</li>
+<li>scikit-learn</li>
+<li>matplotlib</li>
+</ul>
 
 <pre><code>C:\Users\opc&gt;activate pytorch_env
 
-(pytorch_env) C:\Users\opc&gt;python -V
-Python 3.7.2
+(pytorch_env) C:\Users\opc&gt; conda install -y pytorch-cpu torchvision-cpu -c pytorch
+## 로그 생략
 
-(pytorch_env) C:\Users\opc&gt;deactivate
+(pytorch_env) C:\Users\opc&gt; conda install -y -c derickl torchtext
+## 로그 생략
+
+(pytorch_env) C:\Users\opc&gt; conda install -y scikit-learn
+## 로그 생략
+
+(pytorch_env) C:\Users\opc&gt; conda install -y matplotlib
+## 로그 생략
+
+(pytorch_env) C:\Users\opc&gt; deactivate
 
 C:\Users\opc&gt;
 </code></pre>
 
-<h2 id="5-pytorch-실습을-위한-라이브러리-설치">5. Pytorch 실습을 위한 라이브러리 설치</h2>
-
-<pre><code>(pytorch_env) ~/pytorch &gt;  
-</code></pre>
+<p>다음 절에서는 실습 Notebook 다운로드와 Jupyter Notebook을 실행하는 방법에 대하여 알아 보겠습니다.</p>
 <div class="edit-meta">Last updated on 1 Jan 0001 / Published on 1 Jan 0001<br></div><nav class="pagination">
 <a class="nav nav-prev" href="/ml/dl_pytorch/01/01.install/mac_env/" title="1.3 macOS"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 1.3 macOS</a>
 
 
-<a class="nav nav-next" href="/ml/dl_pytorch/01/02.practice_env/" title="Ubuntu에 Pythoch 환경 구성하기">Next - Ubuntu에 Pythoch 환경 구성하기 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="nav nav-next" href="/ml/dl_pytorch/01/02.practice_env/" title="2. Jupyter 실습 환경 구성">Next - 2. Jupyter 실습 환경 구성 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 
 </nav><footer><div class="authorbox row clearfix">
 	<figure class="authorbox__avatar">
@@ -329,7 +343,7 @@ C:\Users\opc&gt;
 </ul>
   
 </li>
-<li class=""><a href="/ml/dl_pytorch/01/02.practice_env/">Ubuntu에 Pythoch 환경 구성하기</a></li>
+<li class=""><a href="/ml/dl_pytorch/01/02.practice_env/">2. Jupyter 실습 환경 구성</a></li>
 </ul>
   
 </li>

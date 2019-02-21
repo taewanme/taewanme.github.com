@@ -276,6 +276,8 @@ drwxr-xr-x  4 root   root        4096 Feb 18 19:48 ..
 
 <h2 id="anaconda-가상환경-구성">Anaconda 가상환경 구성</h2>
 
+<p>다음 명령을 실행하며 <strong>pytorch_env</strong> 가상환경을 만들 수 있습니다.</p>
+
 <pre><code>$ conda create --name pytorch_env python=3
 ## 중간 로그 생략
 
@@ -318,8 +320,18 @@ ubuntu@instance-20190219-0440:~$ packet_write_wait: Connection to 129.213.164.14
 
 <h2 id="3-anaconda-가상환경-활성화-및-패키지-설치">3. Anaconda 가상환경 활성화 및 패키지 설치</h2>
 
+<p>다음 명령을 실행하여 앞에서 생성한 <strong>pytorch_env</strong>를 활성화 시키고, Pytorch 실습에 필요한 패키지를 설치합니다. 아래 명령으로 다음 패키지 및 아래 패키지 의존성 패키지가 함께 설치됩니다.</p>
+
+<ul>
+<li>torch</li>
+<li>torchvision</li>
+<li>torchtext</li>
+<li>scikit-learn</li>
+<li>matplotlib</li>
+</ul>
+
 <pre><code>ubuntu@tw:~$ conda activate pytorch_env
-(pytorch_env) ubuntu@tw:~$ conda install pytorch-cpu torchvision-cpu -c pytorch
+(pytorch_env) ubuntu@tw:~$ conda install -y pytorch-cpu torchvision-cpu -c pytorch
 ## 로그 생략
 
 (pytorch_env) ubuntu@tw:~$ conda install -y -c derickl torchtext
@@ -415,7 +427,7 @@ ubuntu@instance-20190219-0440:~$ packet_write_wait: Connection to 129.213.164.14
 </ul>
   
 </li>
-<li class=""><a href="/ml/dl_pytorch/01/02.practice_env/">Ubuntu에 Pythoch 환경 구성하기</a></li>
+<li class=""><a href="/ml/dl_pytorch/01/02.practice_env/">2. Jupyter 실습 환경 구성</a></li>
 </ul>
   
 </li>
