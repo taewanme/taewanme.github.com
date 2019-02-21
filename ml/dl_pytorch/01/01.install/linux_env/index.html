@@ -63,7 +63,7 @@
 <main>
 
 <figure class="post__thumbnail">
-  <img src="https://taewanmerepo.github.io/2019/02/pytorchquickstarter/post.jpg" alt="1.1 Ubuntu 18.04">
+  <img src="https://taewanmerepo.github.io/2019/02/pytorchquickstarter/post1.jpg" alt="1.1 Ubuntu 18.04">
 </figure>
 
 <h1>1.1 Ubuntu 18.04</h1>
@@ -274,7 +274,7 @@ drwxr-xr-x  4 root   root        4096 Feb 18 19:48 ..
 
 <p>이 명령외에 환경 변수를 적용하기 위해서 현재 사용중인 터미널을 재접속합니다.</p>
 
-<h3 id="step04-conda-가상환경-구성">Step04. Conda 가상환경 구성</h3>
+<h2 id="anaconda-가상환경-구성">Anaconda 가상환경 구성</h2>
 
 <pre><code>$ conda create --name pytorch_env python=3
 ## 중간 로그 생략
@@ -316,15 +316,23 @@ ubuntu@instance-20190219-0440:~$ packet_write_wait: Connection to 129.213.164.14
 #
 </code></pre>
 
-<h3 id="step05-conda-가상환경-활성화-및-패키지-설치">Step05. Conda 가상환경 활성화 및 패키지 설치</h3>
+<h2 id="3-anaconda-가상환경-활성화-및-패키지-설치">3. Anaconda 가상환경 활성화 및 패키지 설치</h2>
 
-<pre><code>ubuntu@instance-20190219-0440:~$ activate pytorch_env
-(my_env) ubuntu@instance-20190219-0440:~$ conda install -y jupyter
-(my_env) ubuntu@instance-20190219-0440:~$ conda install -y pytorch
-(my_env) ubuntu@instance-20190219-0440:~$
+<pre><code>ubuntu@tw:~$ conda activate pytorch_env
+(pytorch_env) ubuntu@tw:~$ conda install pytorch-cpu torchvision-cpu -c pytorch
+## 로그 생략
+
+(pytorch_env) ubuntu@tw:~$ conda install -y -c derickl torchtext
+## 로그 생략
+
+(pytorch_env) ubuntu@tw:~$ conda install -y scikit-learn
+## 로그 생략
+
+(pytorch_env) ubuntu@tw:~$ conda install -y matplotlib
+## 로그 생략
 </code></pre>
 
-<h3 id="step06-jupyter-실행하기">step06. Jupyter 실행하기</h3>
+<p>다음 절에서는 실습 Notebook 다운로드와 Jupyter Notebook을 실행하는 방법에 대하여 알아 보겠습니다.</p>
 
 <h2 id="문서-참조">문서 참조</h2>
 
