@@ -11,5 +11,14 @@
 	<atom:link href="http://taewan.kim/dl_pytorch/01/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Ubuntu에 Pythoch 환경 구성하기</title>
+      <link>http://taewan.kim/dl_pytorch/01/02.practice_env/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://taewan.kim/dl_pytorch/01/02.practice_env/</guid>
+      <description>지금까지 사용하는 컴퓨터에 다음과 같은 소프트웨어를 설치하고 구성했습니다. Python 3.7 Anaconda 3.5.0 Anaconda 가상환경 구성 (pytorch_env) 실습 코드 Jupyter Notebook 실행 conda install pytorch-cpu torchvision-cpu -c pytorch conda install pytorch-cpu torchvision-cpu -c pytorch conda install pytorch torchvision</description>
+    </item>
+    
   </channel>
 </rss>

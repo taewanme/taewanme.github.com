@@ -3,11 +3,10 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>8장. 모던 네트워크 아키텍처 - taewan.kim 블로그</title>
-<meta name="description" content="Oracle Big Data Cloud">
+<title>taewan.kim 블로그</title>
 <meta name="generator" content="Hugo 0.52" />
 <link href="/index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="http://taewan.kim/dl_pytorch/08/">
+<link rel="canonical" href="http://taewan.kim/dl_pytorch/10.logs/mac_conda_sklearn_learn_install/">
 <link rel="stylesheet" href="/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="css/chroma.min.css">
@@ -60,91 +59,62 @@
 	<ul class="menu__list"><li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li><li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li><li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Tutorial과 Manual 문서를 제공" >TUTORIAL &amp; MANUAL</a></li><li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li><li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li><li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li></ul>
 </nav>
 <div class="content-container">
-<main><h1>8장. 모던 네트워크 아키텍처</h1><table>
-<thead>
-<tr>
-<th>원문</th>
-<th>번역</th>
-<th>최종</th>
-</tr>
-</thead>
+<main>
 
-<tbody>
-<tr>
-<td>ch1: Getting Started with Deep Learning Using PyTorch</td>
-<td>1장. 파이토치 딥러닝</td>
-<td>1장 파이토치 딥러닝 첫걸음</td>
-</tr>
-
-<tr>
-<td>ch2: Building Block of Neural Networks</td>
-<td>2장. 생성적 신경망</td>
-<td>2장. 신경망 구성 요소</td>
-</tr>
-
-<tr>
-<td>ch3: Diving Deep Into Neural Networks</td>
-<td>3장. 신경망 파헤치기</td>
-<td>신경망 파헤치기</td>
-</tr>
-
-<tr>
-<td>ch4: Fundamentals of Machine Learning</td>
-<td>4장. 머신러닝 기초</td>
-<td>4장 머신러닝 입문</td>
-</tr>
-
-<tr>
-<td>ch5: Deep Learning for Computer Vision</td>
-<td>5장. 컴퓨터 비전 딥러닝</td>
-<td>5장. 컴퓨터 비전 딥러닝</td>
-</tr>
-
-<tr>
-<td>ch6: Deep Learning with Sequene Data And Text</td>
-<td>6장. 시퀀스 데이터와 텍스트 딥러닝</td>
-<td>6장. 시퀀스 데이터와 텍스트 딥러닝</td>
-</tr>
-
-<tr>
-<td>ch7: Generative Networks</td>
-<td>7장. 생성적 신경망</td>
-<td></td>
-</tr>
-
-<tr>
-<td>ch8: Modern Network Architectures</td>
-<td>8장. 모던 네트워크 아키텍처</td>
-<td>8장. 모던 네트워크 아키텍처</td>
-</tr>
-
-<tr>
-<td>ch9: What Next</td>
-<td>9장. 마지막, 그리고 새로운 시작</td>
-<td>9장. 마지막, 그리고 새로운 시작</td>
-</tr>
-</tbody>
-</table>
-<div class="edit-meta">Last updated on 27 Dec 2017 / Published on 27 Dec 2017<br></div><nav class="pagination">
-<a class="nav nav-prev" href="/tutorial_manual/dl_pytorch/07/" title="7장. 생성적 신경망"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 7장. 생성적 신경망</a>
+<h1></h1><pre><code> ~  cd pytorch
+ ~/pytorch  source activate pytorch_env
+(pytorch_env)  ⚙  ~/pytorch  conda install -y scikit-learn
+Solving environment: done
 
 
-<a class="nav nav-next" href="/tutorial_manual/dl_pytorch/09/" title="9장. 마침표, 그리고 새로운 시작">Next - 9장. 마침표, 그리고 새로운 시작 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+==&gt; WARNING: A newer version of conda exists. &lt;==
+  current version: 4.5.12
+  latest version: 4.6.4
 
-</nav><footer><div class="authorbox row clearfix">
-	<figure class="authorbox__avatar">
-		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan2.jpg" class="avatar" height="90" width="90">
-	</figure>
-	<div class="authorbox__header">
-		<span class="authorbox__name">작성자: 김태완</span>
-	</div>
-	<div class="authorbox__description">
-		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
-	</div>
-	<div class="authorbox__description">
-		E-mail: taewanme@gmail.com
-	</div>
-</div>
+Please update conda by running
+
+    $ conda update -n base -c defaults conda
+
+
+
+## Package Plan ##
+
+  environment location: /Users/taewan/anaconda3/envs/pytorch_env
+
+  added / updated specs:
+    - scikit-learn
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    scipy-1.2.1                |   py37h1410ff5_0        15.6 MB
+    scikit-learn-0.20.2        |   py37h27c97d8_0         5.2 MB
+    ------------------------------------------------------------
+                                           Total:        20.9 MB
+
+The following NEW packages will be INSTALLED:
+
+    scikit-learn: 0.20.2-py37h27c97d8_0
+    scipy:        1.2.1-py37h1410ff5_0
+
+
+Downloading and Extracting Packages
+scipy-1.2.1          | 15.6 MB   | ##################################### | 100%
+scikit-learn-0.20.2  | 5.2 MB    | ##################################### | 100%
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(pytorch_env)  ⚙ 
+</code></pre>
+<div class="edit-meta">Last updated on 1 Jan 0001 / Published on 1 Jan 0001<br></div><nav class="pagination">
+<a class="nav nav-prev" href="/tutorial_manual/dl_pytorch/10.logs/mac_conda_pytorch_install/" title=""><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - </a>
+
+
+<a class="nav nav-next" href="/tutorial_manual/dl_pytorch/10.logs/mac_conda_torchtext_install/" title="">Next -  <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+
+</nav><footer>
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -155,7 +125,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/dl_pytorch/08/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/dl_pytorch/10.logs/mac_conda_sklearn_learn_install/"></div>
 <p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
 </footer>
 </main><div class="sidebar"><div class="widget-search widget">
@@ -222,7 +192,7 @@
 <li class=""><a href="/tutorial_manual/dl_pytorch/07/">7장. 생성적 신경망</a>
 </li>
 
-<li class="parent active"><a href="/tutorial_manual/dl_pytorch/08/">8장. 모던 네트워크 아키텍처</a>
+<li class=""><a href="/tutorial_manual/dl_pytorch/08/">8장. 모던 네트워크 아키텍처</a>
 </li>
 
 <li class=""><a href="/tutorial_manual/dl_pytorch/09/">9장. 마침표, 그리고 새로운 시작</a>
@@ -230,7 +200,7 @@
 <li class=""><a href="/tutorial_manual/dl_pytorch/10.logs/mac_conda_matplotlib_install/"></a></li>
 <li class=""><a href="/tutorial_manual/dl_pytorch/10.logs/mac_conda_pil_install/"></a></li>
 <li class=""><a href="/tutorial_manual/dl_pytorch/10.logs/mac_conda_pytorch_install/"></a></li>
-<li class=""><a href="/tutorial_manual/dl_pytorch/10.logs/mac_conda_sklearn_learn_install/"></a></li>
+<li class="active"><a href="/tutorial_manual/dl_pytorch/10.logs/mac_conda_sklearn_learn_install/"></a></li>
 <li class=""><a href="/tutorial_manual/dl_pytorch/10.logs/mac_conda_torchtext_install/"></a></li>
 </ul>
   
