@@ -64,6 +64,166 @@
 <main><h1>5장. 컴퓨터 비전 딥러닝</h1>
 
 <h2 id="https-taewanmerepo-github-io-2019-02-pytorchquickstarter-post1-jpg"><img src="https://taewanmerepo.github.io/2019/02/pytorchquickstarter/post1.jpg" alt="" /></h2>
+
+<h2 id="cnn을-이용한-mnist-인식">CNN을 이용한 MNIST 인식</h2>
+
+<ul>
+<li>Notebook: /Chapter05/Understanding_Convolutions_and_building_an_MNIST_image_classifier_completed.ipynb</li>
+</ul>
+
+<p>코드 및 실행 로그는 다음과 같습니다.</p>
+
+<pre><code>train_losses , train_accuracy = [],[]
+val_losses , val_accuracy = [],[]
+for epoch in range(1,20):
+    epoch_loss, epoch_accuracy = fit(epoch,model,train_loader,phase='training')
+    val_epoch_loss , val_epoch_accuracy = fit(epoch,model,test_loader,phase='validation')
+    train_losses.append(epoch_loss)
+    train_accuracy.append(epoch_accuracy)
+    val_losses.append(val_epoch_loss)
+    val_accuracy.append(val_epoch_accuracy)
+</code></pre>
+
+<p>실행 로그는 다음과 같습니다.</p>
+
+<pre><code>training loss is  0.61 and training accuracy is 48681/60000      81.14
+validation loss is  0.15 and validation accuracy is 9549/10000      95.49
+training loss is  0.21 and training accuracy is 56377/60000      93.96
+validation loss is 0.093 and validation accuracy is 9702/10000      97.02
+training loss is  0.16 and training accuracy is 57206/60000      95.34
+validation loss is 0.076 and validation accuracy is 9758/10000      97.58
+training loss is  0.13 and training accuracy is 57636/60000      96.06
+validation loss is 0.072 and validation accuracy is 9773/10000      97.73
+training loss is  0.12 and training accuracy is 57902/60000       96.5
+validation loss is 0.058 and validation accuracy is 9806/10000      98.06
+training loss is  0.11 and training accuracy is 58119/60000      96.86
+validation loss is 0.056 and validation accuracy is 9798/10000      97.98
+training loss is 0.096 and training accuracy is 58269/60000      97.11
+validation loss is 0.046 and validation accuracy is 9848/10000      98.48
+training loss is 0.089 and training accuracy is 58395/60000      97.33
+validation loss is 0.045 and validation accuracy is 9856/10000      98.56
+training loss is 0.086 and training accuracy is 58441/60000       97.4
+validation loss is 0.039 and validation accuracy is 9863/10000      98.63
+training loss is 0.079 and training accuracy is 58551/60000      97.58
+validation loss is 0.039 and validation accuracy is 9876/10000      98.76
+training loss is 0.076 and training accuracy is 58647/60000      97.75
+validation loss is 0.038 and validation accuracy is 9875/10000      98.75
+training loss is 0.074 and training accuracy is 58703/60000      97.84
+validation loss is 0.033 and validation accuracy is 9891/10000      98.91
+training loss is  0.07 and training accuracy is 58778/60000      97.96
+validation loss is 0.032 and validation accuracy is 9891/10000      98.91
+training loss is 0.066 and training accuracy is 58811/60000      98.02
+validation loss is 0.032 and validation accuracy is 9892/10000      98.92
+training loss is 0.064 and training accuracy is 58834/60000      98.06
+validation loss is 0.033 and validation accuracy is 9883/10000      98.83
+training loss is 0.062 and training accuracy is 58890/60000      98.15
+validation loss is 0.032 and validation accuracy is 9893/10000      98.93
+training loss is 0.064 and training accuracy is 58876/60000      98.13
+validation loss is 0.032 and validation accuracy is 9898/10000      98.98
+training loss is 0.059 and training accuracy is 58945/60000      98.24
+validation loss is 0.027 and validation accuracy is 9911/10000      99.11
+training loss is 0.058 and training accuracy is 58951/60000      98.25
+validation loss is 0.028 and validation accuracy is 9910/10000       99.1
+</code></pre>
+
+<h3 id="실행-시간">실행 시간</h3>
+
+<ul>
+<li>macOS: 21min 23s</li>
+<li>ubuntu with GPU(1080):</li>
+</ul>
+
+<h2 id="cnn-강아지-고양이-분류">CNN 강아지 고양이 분류</h2>
+
+<ul>
+<li>Notebook: /Chapter05/ImageClassificationDogsandCats_completed.ipynb</li>
+</ul>
+
+<p>코드 및 실행 로그는 다음과 같습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2019/02/pytorch03/010.jpg" alt="" /></p>
+</blockquote>
+
+<h3 id="실행-시간-1">실행 시간</h3>
+
+<ul>
+<li>ubuntu with GPU(1080): 10min 15s</li>
+</ul>
+
+<h2 id="modern-네트워크-활용">Modern 네트워크 활용</h2>
+
+<h3 id="vgg-전이-학습">VGG 전이 학습</h3>
+
+<ul>
+<li>Notebook: /Chapter05/ImageClassificationDogsandCats_completed.ipynb</li>
+</ul>
+
+<p>코드 및 실행 로그는 다음과 같습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2019/02/pytorch03/010.jpg" alt="" /></p>
+</blockquote>
+
+<h4 id="실행-시간-2">실행 시간</h4>
+
+<ul>
+<li>ubuntu with GPU(1080): 10min 15s</li>
+</ul>
+
+<h3 id="vgg-전이학습-dropout-적용">VGG 전이학습 - Dropout 적용</h3>
+
+<ul>
+<li>Notebook: /Chapter05/ImageClassificationDogsandCats_completed.ipynb</li>
+</ul>
+
+<p>코드 및 실행 로그는 다음과 같습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2019/02/pytorch03/020.jpg" alt="" /></p>
+</blockquote>
+
+<h4 id="실행-시간-3">실행 시간</h4>
+
+<ul>
+<li>ubuntu with GPU(1080): 4min 30s</li>
+</ul>
+
+<h3 id="vgg-전이학습-데이터-증식">VGG 전이학습 - 데이터 증식</h3>
+
+<ul>
+<li>Notebook: /Chapter05/ImageClassificationDogsandCats_completed.ipynb</li>
+</ul>
+
+<p>코드 및 실행 로그는 다음과 같습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2019/02/pytorch03/030.jpg" alt="" /></p>
+</blockquote>
+
+<h4 id="실행-시간-4">실행 시간</h4>
+
+<ul>
+<li>ubuntu with GPU(1080): 3min 50s</li>
+</ul>
+
+<h3 id="사전-계산된-컨볼루션-피처-preconvoluted-feature">사전 계산된 컨볼루션 피처(Preconvoluted Feature)</h3>
+
+<ul>
+<li>Notebook: /Chapter05/ImageClassificationDogsandCats_completed.ipynb</li>
+</ul>
+
+<p>코드 및 실행 로그는 다음과 같습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2019/02/pytorch03/040.jpg" alt="" /></p>
+</blockquote>
+
+<h4 id="실행-시간-5">실행 시간</h4>
+
+<ul>
+<li>ubuntu with GPU(1080): 3min 8s</li>
+</ul>
 <div class="edit-meta">Last updated on 27 Dec 2017 / Published on 27 Dec 2017<br></div><nav class="pagination">
 <a class="nav nav-prev" href="/ml/dl_pytorch/04/" title="4장 머신러닝 입문"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 4장 머신러닝 입문</a>
 
