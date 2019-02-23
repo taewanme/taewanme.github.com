@@ -3,12 +3,12 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/01/01.install/</loc>
+    <loc>http://taewan.kim/ml/dl_pytorch/01/</loc>
     <lastmod>2017-12-27T19:05:14+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/01/</loc>
+    <loc>http://taewan.kim/ml/dl_pytorch/02/install/</loc>
     <lastmod>2017-12-27T19:05:14+09:00</lastmod>
   </url>
   
@@ -18,11 +18,11 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/01/01.install/linux_env/</loc>
+    <loc>http://taewan.kim/ml/dl_pytorch/02/install/linux_env/</loc>
   </url>
   
   <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/01/02.practice_env/</loc>
+    <loc>http://taewan.kim/ml/dl_pytorch/02/02.practice_env/</loc>
   </url>
   
   <url>
@@ -51,7 +51,7 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/01/01.install/linux_gpu_env/</loc>
+    <loc>http://taewan.kim/ml/dl_pytorch/02/install/linux_gpu_env/</loc>
   </url>
   
   <url>
@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/01/01.install/mac_env/</loc>
+    <loc>http://taewan.kim/ml/dl_pytorch/02/install/mac_env/</loc>
   </url>
   
   <url>
@@ -74,7 +74,7 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/01/01.install/window_env/</loc>
+    <loc>http://taewan.kim/ml/dl_pytorch/02/install/window_env/</loc>
   </url>
   
   <url>
