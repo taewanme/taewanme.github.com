@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://taewan.kim/tutorial_manual/temp0004/</loc>
+    <lastmod>2019-02-22T19:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/post/graalvm_seminar/</loc>
     <lastmod>2019-02-17T09:28:14+09:00</lastmod>
   </url>
@@ -1105,10 +1110,6 @@
   
   <url>
     <loc>http://taewan.kim/post/mlpy_adding_opencv.1/</loc>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/tutorial_manual/temp0004/</loc>
   </url>
   
   <url>
@@ -2481,7 +2482,7 @@
   
   <url>
     <loc>http://taewan.kim/tutorial_manual/</loc>
-    <lastmod>2018-12-29T12:05:14+09:00</lastmod>
+    <lastmod>2019-02-22T19:05:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2577,7 +2578,7 @@
   
   <url>
     <loc>http://taewan.kim/</loc>
-    <lastmod>2019-02-17T09:28:14+09:00</lastmod>
+    <lastmod>2019-02-22T19:05:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
