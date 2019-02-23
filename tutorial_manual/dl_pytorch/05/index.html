@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>5장. 컴퓨터 비전 딥러닝 - taewan.kim 블로그</title>
+<meta name="description" content="Oracle Big Data Cloud">
+<meta name="generator" content="Hugo 0.52" />
+<link href="/index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="http://taewan.kim/dl_pytorch/05/">
+<link rel="stylesheet" href="/css/theme.min.css">
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="css/chroma.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="/js/functions.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script src="/js/jquery.backtothetop/jquery.backtothetop.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-72835175-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-72835175-1');
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+<link rel="stylesheet" href="/css/taewan.css"  />
+
+</head>
+<body>
+<div class="container"> 
+<header class="header">
+  <div class="container container-inner clearfix" >
+    <div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+      <a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+        <h1 class="logo__title">taewan.kim 블로그</h1><br/>
+        <h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list"><li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li><li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li><li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Deep Learning 구현 기술에 대하여 정리합니다." >TUTORIAL &amp; MANUAL</a></li><li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li><li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li><li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li></ul>
+</nav>
+<div class="content-container">
+<main><h1>5장. 컴퓨터 비전 딥러닝</h1>
+
+<h2 id="https-taewanmerepo-github-io-2019-02-pytorchquickstarter-post1-jpg"><img src="https://taewanmerepo.github.io/2019/02/pytorchquickstarter/post1.jpg" alt="" /></h2>
+
+<p>5장에서는 CNN을 다룹니다. 다음과 같은 예제를 다룹니다.</p>
+
+<ul>
+<li>CNN 강아지/고양이 분류</li>
+<li>VGG16 고급 네트워크 활용</li>
+<li>VGG16 전이학습</li>
+<li>VGG16 전이학습 속대 개선 기법</li>
+</ul>
+
+<p>5장의 예제를 CPU로 테스트 할 경우 1시간 이상이 소요 됩니다.</p>
+
+<h2 id="cnn을-이용한-mnist-인식">CNN을 이용한 MNIST 인식</h2>
+
+<ul>
+<li>Notebook: /Chapter05/Understanding_Convolutions_and_building_an_MNIST_image_classifier_completed.ipynb</li>
+</ul>
+
+<p>코드 및 실행 로그는 다음과 같습니다.</p>
+
+<pre><code>train_losses , train_accuracy = [],[]
+val_losses , val_accuracy = [],[]
+for epoch in range(1,20):
+    epoch_loss, epoch_accuracy = fit(epoch,model,train_loader,phase='training')
+    val_epoch_loss , val_epoch_accuracy = fit(epoch,model,test_loader,phase='validation')
+    train_losses.append(epoch_loss)
+    train_accuracy.append(epoch_accuracy)
+    val_losses.append(val_epoch_loss)
+    val_accuracy.append(val_epoch_accuracy)
+</code></pre>
+
+<p>실행 로그는 다음과 같습니다.</p>
+
+<pre><code>training loss is  0.61 and training accuracy is 48681/60000      81.14
+validation loss is  0.15 and validation accuracy is 9549/10000      95.49
+training loss is  0.21 and training accuracy is 56377/60000      93.96
+validation loss is 0.093 and validation accuracy is 9702/10000      97.02
+training loss is  0.16 and training accuracy is 57206/60000      95.34
+validation loss is 0.076 and validation accuracy is 9758/10000      97.58
+training loss is  0.13 and training accuracy is 57636/60000      96.06
+validation loss is 0.072 and validation accuracy is 9773/10000      97.73
+training loss is  0.12 and training accuracy is 57902/60000       96.5
+validation loss is 0.058 and validation accuracy is 9806/10000      98.06
+training loss is  0.11 and training accuracy is 58119/60000      96.86
+validation loss is 0.056 and validation accuracy is 9798/10000      97.98
+training loss is 0.096 and training accuracy is 58269/60000      97.11
+validation loss is 0.046 and validation accuracy is 9848/10000      98.48
+training loss is 0.089 and training accuracy is 58395/60000      97.33
+validation loss is 0.045 and validation accuracy is 9856/10000      98.56
+training loss is 0.086 and training accuracy is 58441/60000       97.4
+validation loss is 0.039 and validation accuracy is 9863/10000      98.63
+training loss is 0.079 and training accuracy is 58551/60000      97.58
+validation loss is 0.039 and validation accuracy is 9876/10000      98.76
+training loss is 0.076 and training accuracy is 58647/60000      97.75
+validation loss is 0.038 and validation accuracy is 9875/10000      98.75
+training loss is 0.074 and training accuracy is 58703/60000      97.84
+validation loss is 0.033 and validation accuracy is 9891/10000      98.91
+training loss is  0.07 and training accuracy is 58778/60000      97.96
+validation loss is 0.032 and validation accuracy is 9891/10000      98.91
+training loss is 0.066 and training accuracy is 58811/60000      98.02
+validation loss is 0.032 and validation accuracy is 9892/10000      98.92
+training loss is 0.064 and training accuracy is 58834/60000      98.06
+validation loss is 0.033 and validation accuracy is 9883/10000      98.83
+training loss is 0.062 and training accuracy is 58890/60000      98.15
+validation loss is 0.032 and validation accuracy is 9893/10000      98.93
+training loss is 0.064 and training accuracy is 58876/60000      98.13
+validation loss is 0.032 and validation accuracy is 9898/10000      98.98
+training loss is 0.059 and training accuracy is 58945/60000      98.24
+validation loss is 0.027 and validation accuracy is 9911/10000      99.11
+training loss is 0.058 and training accuracy is 58951/60000      98.25
+validation loss is 0.028 and validation accuracy is 9910/10000       99.1
+</code></pre>
+
+<h3 id="실행-시간">실행 시간</h3>
+
+<ul>
+<li>macOS: 21min 23s</li>
+<li>ubuntu with GPU(1080):</li>
+</ul>
+
+<h2 id="cnn-강아지-고양이-분류">CNN 강아지 고양이 분류</h2>
+
+<ul>
+<li>Notebook: /Chapter05/ImageClassificationDogsandCats_completed.ipynb</li>
+</ul>
+
+<p>코드 및 실행 로그는 다음과 같습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2019/02/pytorch03/010.jpg" alt="" /></p>
+</blockquote>
+
+<h3 id="실행-시간-1">실행 시간</h3>
+
+<ul>
+<li>ubuntu with GPU(1080): 10min 15s</li>
+</ul>
+
+<h2 id="modern-네트워크-활용">Modern 네트워크 활용</h2>
+
+<h3 id="vgg-전이-학습">VGG 전이 학습</h3>
+
+<ul>
+<li>Notebook: /Chapter05/ImageClassificationDogsandCats_completed.ipynb</li>
+</ul>
+
+<p>코드 및 실행 로그는 다음과 같습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2019/02/pytorch03/010.jpg" alt="" /></p>
+</blockquote>
+
+<h4 id="실행-시간-2">실행 시간</h4>
+
+<ul>
+<li>ubuntu with GPU(1080): 10min 15s</li>
+</ul>
+
+<h3 id="vgg-전이학습-dropout-적용">VGG 전이학습 - Dropout 적용</h3>
+
+<ul>
+<li>Notebook: /Chapter05/ImageClassificationDogsandCats_completed.ipynb</li>
+</ul>
+
+<p>코드 및 실행 로그는 다음과 같습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2019/02/pytorch03/020.jpg" alt="" /></p>
+</blockquote>
+
+<h4 id="실행-시간-3">실행 시간</h4>
+
+<ul>
+<li>ubuntu with GPU(1080): 4min 30s</li>
+</ul>
+
+<h3 id="vgg-전이학습-데이터-증식">VGG 전이학습 - 데이터 증식</h3>
+
+<ul>
+<li>Notebook: /Chapter05/ImageClassificationDogsandCats_completed.ipynb</li>
+</ul>
+
+<p>코드 및 실행 로그는 다음과 같습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2019/02/pytorch03/030.jpg" alt="" /></p>
+</blockquote>
+
+<h4 id="실행-시간-4">실행 시간</h4>
+
+<ul>
+<li>ubuntu with GPU(1080): 3min 50s</li>
+</ul>
+
+<h3 id="사전-계산된-컨볼루션-피처-preconvoluted-feature">사전 계산된 컨볼루션 피처(Preconvoluted Feature)</h3>
+
+<ul>
+<li>Notebook: /Chapter05/ImageClassificationDogsandCats_completed.ipynb</li>
+</ul>
+
+<p>코드 및 실행 로그는 다음과 같습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2019/02/pytorch03/040.jpg" alt="" /></p>
+</blockquote>
+
+<h4 id="실행-시간-5">실행 시간</h4>
+
+<ul>
+<li>ubuntu with GPU(1080): 3min 8s</li>
+</ul>
+<div class="edit-meta">Last updated on 27 Dec 2017 / Published on 27 Dec 2017<br></div><nav class="pagination">
+<a class="nav nav-prev" href="/tutorial_manual/dl_pytorch/04/" title="4장 머신러닝 입문"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 4장 머신러닝 입문</a>
+
+
+<a class="nav nav-next" href="/tutorial_manual/dl_pytorch/06/" title="6장. 시퀀스 데이터와 텍스트 딥러닝">Next - 6장. 시퀀스 데이터와 텍스트 딥러닝 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+
+</nav><footer><div class="authorbox row clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan2.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2&appId=404519239985000&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/dl_pytorch/05/"></div>
+<p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
+</footer>
+</main><div class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+<hr/>
+<div class="widget-categories widget">
+    <h4 class="widget__title">gitter 챗팅방</h4>
+    <div class="widget__content" align="center">    
+        <ul class="widget__list">
+            <li class="widget__item"><a href="https://gitter.im/acornpub_quickstart_deeplearning_with_pytorch/community#" target="_blank"><img src="https://taewanmerepo.github.io/2019/02/pytorch02/010.jpg"/></a></li>
+        </ul>    
+    </div>
+</div>
+    <div class="widget-categories widget">
+  <h4 class="widget__title">목차</h4>
+  <div class="widget__content">    
+
+<nav>
+<ul>
+
+<li class="parent"><a href="/tutorial_manual/dl_pytorch/">[PyTorch로 시작하는 딥러닝] 보조 자료</a>
+<ul class="sub-menu">
+
+<li class=""><a href="/tutorial_manual/dl_pytorch/01/">1장 파이토치 딥러닝 첫걸음</a>
+</li>
+
+<li class=""><a href="/tutorial_manual/dl_pytorch/02/">2장. 신경망 구성 요소</a>
+<ul class="">
+
+<li class=""><a href="/tutorial_manual/dl_pytorch/02/install/">2.1 Pytorch 실습 환경 구성</a>
+<ul class="">
+<li class=""><a href="/tutorial_manual/dl_pytorch/02/install/linux_env/">2.1.1 Ubuntu 18.04</a></li>
+<li class=""><a href="/tutorial_manual/dl_pytorch/02/install/linux_gpu_env/">2.1.2 Ubuntu 18.04 &#43; GPU</a></li>
+<li class=""><a href="/tutorial_manual/dl_pytorch/02/install/mac_env/">2.1.3 macOS</a></li>
+<li class=""><a href="/tutorial_manual/dl_pytorch/02/install/window_env/">2.11.4 Window 10</a></li>
+</ul>
+  
+</li>
+<li class=""><a href="/tutorial_manual/dl_pytorch/02/02.practice_env/">2.2 Jupyter 실습 환경 구성</a></li>
+</ul>
+  
+</li>
+
+<li class=""><a href="/tutorial_manual/dl_pytorch/03/">3장. 신경망 파헤치기</a>
+</li>
+
+<li class=""><a href="/tutorial_manual/dl_pytorch/04/">4장 머신러닝 입문</a>
+</li>
+
+<li class="parent active"><a href="/tutorial_manual/dl_pytorch/05/">5장. 컴퓨터 비전 딥러닝</a>
+</li>
+
+<li class=""><a href="/tutorial_manual/dl_pytorch/06/">6장. 시퀀스 데이터와 텍스트 딥러닝</a>
+</li>
+
+<li class=""><a href="/tutorial_manual/dl_pytorch/07/">7장. 생성적 신경망</a>
+</li>
+
+<li class=""><a href="/tutorial_manual/dl_pytorch/08/">8장. 모던 네트워크 아키텍처</a>
+</li>
+
+<li class=""><a href="/tutorial_manual/dl_pytorch/09/">9장. 마침표, 그리고 새로운 시작</a>
+</li>
+<li class=""><a href="/tutorial_manual/dl_pytorch/10.logs/mac_conda_matplotlib_install/"></a></li>
+<li class=""><a href="/tutorial_manual/dl_pytorch/10.logs/mac_conda_pil_install/"></a></li>
+<li class=""><a href="/tutorial_manual/dl_pytorch/10.logs/mac_conda_pytorch_install/"></a></li>
+<li class=""><a href="/tutorial_manual/dl_pytorch/10.logs/mac_conda_sklearn_learn_install/"></a></li>
+<li class=""><a href="/tutorial_manual/dl_pytorch/10.logs/mac_conda_torchtext_install/"></a></li>
+</ul>
+  
+</li>
+</ul>
+</nav>
+
+
+</div>
+</div>
+    
+<div class="widget-categories widget">
+    <h4 class="widget__title">관련도서</h4>
+    <div class="widget__content" align="center">    
+        <ul class="widget__list">
+            <li class="widget__item"><a href="http://www.yes24.com/Product/Goods/69335909" target="_blank"><img src="https://taewanmerepo.github.io/2019/02/pytorch/book200.jpg"/></a></li>
+        </ul>    
+    </div>
+</div>
+    
+<div>
+  <hr/>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-8469722754608892"
+       data-ad-slot="5594090168"
+       data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  <hr/>  
+</div>
+
+<div class="sidebar-footer"></div>
+</div>
+</div><a href="#" id="backtothetop-fixed" class="backtothetop"
+ data-backtothetop-duration="600"
+ data-backtothetop-easing="easeOutQuart"
+ data-backtothetop-fixed-fadeIn="1000"
+ data-backtothetop-fixed-fadeOut="1000"
+ data-backtothetop-fixed-bottom="10"
+ data-backtothetop-fixed-right="20">
+<span class="fa-layers fa-fw">
+<i class="fas fa-circle"></i>
+<i class="fas fa-arrow-circle-up"></i>
+</span></a>
+</div>
+</body>
+</html>
