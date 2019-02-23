@@ -26,7 +26,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://taewan.kim/dl_pytorch/02/install/linux_gpu_env/</guid>
-      <description></description>
+      <description>Ubuntu+GPU 구성 가이드를 준비중입니다.</description>
     </item>
     
     <item>
@@ -39,7 +39,7 @@
     </item>
     
     <item>
-      <title>2.11.4 Window 10</title>
+      <title>2.1.4 Window 10</title>
       <link>http://taewan.kim/dl_pytorch/02/install/window_env/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
