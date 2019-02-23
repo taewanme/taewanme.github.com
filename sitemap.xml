@@ -648,11 +648,6 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/ml/temp0001/</loc>
-    <lastmod>2017-12-27T19:05:14+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://taewan.kim/tutorial_manual/temp0001/</loc>
     <lastmod>2017-12-27T19:05:14+09:00</lastmod>
   </url>
@@ -1110,6 +1105,10 @@
   
   <url>
     <loc>http://taewan.kim/post/mlpy_adding_opencv.1/</loc>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tutorial_manual/temp0004/</loc>
   </url>
   
   <url>
@@ -1919,12 +1918,6 @@
   <url>
     <loc>http://taewan.kim/mlglossary/</loc>
     <lastmod>2018-07-25T10:50:36+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/ml/</loc>
-    <lastmod>2017-12-27T19:05:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
