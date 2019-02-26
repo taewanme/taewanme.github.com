@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>6장. 시퀀스 데이터와 텍스트 딥러닝 on taewan.kim 블로그</title>
+    <link>http://taewan.kim/dl_pytorch/06/</link>
+    <description>Recent content in 6장. 시퀀스 데이터와 텍스트 딥러닝 on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 Dec 2017 19:05:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/dl_pytorch/06/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>6.1 워드 임베딩</title>
+      <link>http://taewan.kim/dl_pytorch/06/01.embedding/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://taewan.kim/dl_pytorch/06/01.embedding/</guid>
+      <description>데모 환경 Demo 환경 Ubuntu 18.04 GPU: Nvidia GTX 1080 Data Platform: Anaconda Python: 3.7 PyTorch: 1.0 워드 임베딩 만드기 &amp;amp; 사전 학습 워드 임베딩 사용하기 MNIST 분류 CNN 네트워크를 직접 구현하고 학습시키는 데모입니다. 학습</description>
+    </item>
+    
+    <item>
+      <title>6.2 LSTM</title>
+      <link>http://taewan.kim/dl_pytorch/06/02.lstm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://taewan.kim/dl_pytorch/06/02.lstm/</guid>
+      <description>데모 환경 Demo 환경 Ubuntu 18.04 GPU: Nvidia GTX 1080 Data Platform: Anaconda Python: 3.7 PyTorch: 1.0 LSTM 모델 데모 6장 LSTM 데모에서는 다음과 같은 내용을 다룹니다. IMDB 데이터 다운로드 Vocabulary 데이터인 GloVe 다운로드 LSTM 모델 정의 LSTM</description>
+    </item>
+    
+    <item>
+      <title>6.3 Conv1 연산</title>
+      <link>http://taewan.kim/dl_pytorch/06/03.conv1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://taewan.kim/dl_pytorch/06/03.conv1/</guid>
+      <description>데모 환경 Demo 환경 Ubuntu 18.04 GPU: Nvidia GTX 1080 Data Platform: Anaconda Python: 3.7 PyTorch: 1.0 고급 CNN 이미지 분류기 5장 두 번째 데모에서는 다음과 같은 내용을 다룹니다. CNN 네트워크 모델 구현 전이학습 VGG16 사전 계산</description>
+    </item>
+    
+  </channel>
+</rss>
