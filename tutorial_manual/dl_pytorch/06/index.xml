@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>5.1 MNIST 이미지 분류기 구현 데모</title>
+      <title>6.1 워드 임베딩</title>
       <link>http://taewan.kim/dl_pytorch/06/01.embedding/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -21,7 +21,7 @@
     </item>
     
     <item>
-      <title>5.2 VGG16 이미지 분류기 데모</title>
+      <title>6.2 LSTM</title>
       <link>http://taewan.kim/dl_pytorch/06/02.lstm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -30,7 +30,7 @@
     </item>
     
     <item>
-      <title>5.2 VGG16 이미지 분류기 데모</title>
+      <title>6.3 Conv1 연산</title>
       <link>http://taewan.kim/dl_pytorch/06/03.conv1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
