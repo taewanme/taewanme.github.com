@@ -3,11 +3,11 @@
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>3장. 신경망 파헤치기 - taewan.kim 블로그</title>
-<meta name="description" content="Oracle Big Data Cloud">
+<title>5.2 VGG16 이미지 분류기 데모 - taewan.kim 블로그</title>
+<meta name="description" content="5.2 VGG16 이미지 분류기 데모">
 <meta name="generator" content="Hugo 0.52" />
 <link href="/index.xml" rel="alternate" type="application/rss+xml">
-<link rel="canonical" href="http://taewan.kim/dl_pytorch/03/">
+<link rel="canonical" href="http://taewan.kim/dl_pytorch/07/02.gan/">
 <link rel="stylesheet" href="/css/theme.min.css">
 <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="css/chroma.min.css">
@@ -64,21 +64,57 @@ VUK74mDR
 	<ul class="menu__list"><li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li><li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li><li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Deep Learning 구현 기술에 대하여 정리합니다." >TUTORIAL &amp; MANUAL</a></li><li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li><li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li><li class="menu__item "><a class="menu__link" href="/til/" title="Today I Learned" >TODAY I LEARNED</a></li></ul>
 </nav>
 <div class="content-container">
-<main><h1>3장. 신경망 파헤치기</h1>
+<main>
 
-<h2 id="https-taewanmerepo-github-io-2019-02-pytorchquickstarter-post1-jpg"><img src="https://taewanmerepo.github.io/2019/02/pytorchquickstarter/post1.jpg" alt="" /></h2>
+<figure class="post__thumbnail">
+  <img src="https://taewanmerepo.github.io/2019/02/pytorchquickstarter/post1.jpg" alt="5.2 VGG16 이미지 분류기 데모">
+</figure>
 
-<p><strong><em>[3장. 신경망 파헤치기]</em></strong>에서는 데이터 준비, 텐서 처리를 위한 데이터 로더, 네트워크 아키텍처 생성 관련 패키지, PyTorch 오차 함수 및 옵티마이저에 대하여 소개합니다.</p>
+<h1>5.2 VGG16 이미지 분류기 데모</h1>
+
+<h2 id="데모-환경">데모 환경</h2>
 
 <ul>
-<li>파이토치 신경망 기본 블록 소개</li>
-<li>ResNet을 이용한 강아지와 고양이 사진 분류기 데모</li>
+<li>Demo 환경
+
+<ul>
+<li>Ubuntu 18.04</li>
+<li>GPU: Nvidia GTX 1080</li>
+<li>Data Platform: Anaconda</li>
+<li>Python: 3.7</li>
+<li>PyTorch: 1.0</li>
+</ul></li>
 </ul>
-<div class="edit-meta">Last updated on 27 Dec 2017 / Published on 27 Dec 2017<br></div><nav class="pagination">
-<a class="nav nav-prev" href="/tutorial_manual/dl_pytorch/02/03.practice_env/" title="2.3 신경망 구성 요소 - 데모"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 2.3 신경망 구성 요소 - 데모</a>
+
+<h2 id="고급-cnn-이미지-분류기">고급 CNN 이미지 분류기</h2>
+
+<p>5장 두 번째 데모에서는 다음과 같은 내용을 다룹니다.</p>
+
+<ul>
+<li>CNN 네트워크 모델 구현</li>
+<li>전이학습 VGG16</li>
+<li>사전 계산된 컨볼루션 피처 기법을 이용한 학습 속도 향상</li>
+<li>CNN 중간 레이어의 출력 시각화</li>
+<li>CNN 중간 레이어의 가중치 시각화</li>
+</ul>
 
 
-<a class="nav nav-next" href="/tutorial_manual/dl_pytorch/03/01.pytorch_building_block/" title="3.1 PyTorch 신경망 빌딩 블록">Next - 3.1 PyTorch 신경망 빌딩 블록 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/j18PPabcE8s" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+
+<ul>
+<li><a href="https://github.com/taewanme/DL_With_PyTorch/blob/master/Chapter05/ImageClassificationDogsandCats.ipynb" target="_blank">5장 컴퓨터 비전 딥러닝: VGG16 데모 시작 Jupyter Notebook[↗NW]</a>
+</li>
+<li><a href="https://github.com/taewanme/DL_With_PyTorch/blob/master/Chapter05/ImageClassificationDogsandCats_completed.ipynb" target="_blank">5장 컴퓨터 비전 딥러닝: VGG16 데모 완성 Jupyter Notebook[↗NW]</a>
+</li>
+</ul>
+<div class="edit-meta">Last updated on 1 Jan 0001 / Published on 1 Jan 0001<br></div><nav class="pagination">
+<a class="nav nav-prev" href="/tutorial_manual/dl_pytorch/07/01.style_transfer/" title="5.1 MNIST 이미지 분류기 구현 데모"><i class="fas fa-arrow-left" aria-hidden="true"></i> Prev - 5.1 MNIST 이미지 분류기 구현 데모</a>
+
+
+<a class="nav nav-next" href="/tutorial_manual/dl_pytorch/07/03.language_model/" title="5.2 VGG16 이미지 분류기 데모">Next - 5.2 VGG16 이미지 분류기 데모 <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 
 </nav><footer><div class="authorbox row clearfix">
 	<figure class="authorbox__avatar">
@@ -104,7 +140,7 @@ VUK74mDR
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/dl_pytorch/03/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tutorial_manualhttp://taewan.kim/dl_pytorch/07/02.gan/"></div>
 <p class="powered">Powered by <a href="https://gohugo.io">http://taewan.kim</a></p>
 </footer>
 </main><div class="sidebar"><div class="widget-search widget">
@@ -157,8 +193,8 @@ VUK74mDR
   
 </li>
 
-<li class="parent active"><a href="/tutorial_manual/dl_pytorch/03/">3장. 신경망 파헤치기</a>
-<ul class="sub-menu">
+<li class=""><a href="/tutorial_manual/dl_pytorch/03/">3장. 신경망 파헤치기</a>
+<ul class="">
 <li class=""><a href="/tutorial_manual/dl_pytorch/03/01.pytorch_building_block/">3.1 PyTorch 신경망 빌딩 블록</a></li>
 <li class=""><a href="/tutorial_manual/dl_pytorch/03/02.image_claasification/">3.2 ResNet 이미지 분류기 데모</a></li>
 </ul>
@@ -185,10 +221,10 @@ VUK74mDR
   
 </li>
 
-<li class=""><a href="/tutorial_manual/dl_pytorch/07/">7장. 생성적 신경망</a>
-<ul class="">
+<li class="parent"><a href="/tutorial_manual/dl_pytorch/07/">7장. 생성적 신경망</a>
+<ul class="sub-menu">
 <li class=""><a href="/tutorial_manual/dl_pytorch/07/01.style_transfer/">5.1 MNIST 이미지 분류기 구현 데모</a></li>
-<li class=""><a href="/tutorial_manual/dl_pytorch/07/02.gan/">5.2 VGG16 이미지 분류기 데모</a></li>
+<li class="active"><a href="/tutorial_manual/dl_pytorch/07/02.gan/">5.2 VGG16 이미지 분류기 데모</a></li>
 <li class=""><a href="/tutorial_manual/dl_pytorch/07/03.language_model/">5.2 VGG16 이미지 분류기 데모</a></li>
 </ul>
   
