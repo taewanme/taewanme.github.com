@@ -138,26 +138,6 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/10.logs/mac_conda_matplotlib_install/</loc>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/10.logs/mac_conda_pil_install/</loc>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/10.logs/mac_conda_pytorch_install/</loc>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/10.logs/mac_conda_sklearn_learn_install/</loc>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/10.logs/mac_conda_torchtext_install/</loc>
-  </url>
-  
-  <url>
     <loc>http://taewan.kim/ml/categories/</loc>
     <priority>0</priority>
   </url>
