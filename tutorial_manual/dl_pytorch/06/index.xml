@@ -17,7 +17,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://taewan.kim/dl_pytorch/06/01.embedding/</guid>
-      <description>데모 환경 Demo 환경 Ubuntu 18.04 GPU: Nvidia GTX 1080 Data Platform: Anaconda Python: 3.7 PyTorch: 1.0 워드 임베딩 만드기 &amp;amp; 사전 학습 워드 임베딩 사용하기 MNIST 분류 CNN 네트워크를 직접 구현하고 학습시키는 데모입니다. 학습</description>
+      <description>데모 환경 Demo 환경 Ubuntu 18.04 GPU: Nvidia GTX 1080 Data Platform: Anaconda 가상환경: pytorch_env2 Python: 3.7 PyTorch: 1.0 워드 임베딩 만드기 &amp;amp; 사전 학습 워드 임베딩 사용하기 MNIST 분류 CNN 네트워크를 직접 구현하고 학습시키는 데모</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://taewan.kim/dl_pytorch/06/02.lstm/</guid>
-      <description>데모 환경 Demo 환경 Ubuntu 18.04 GPU: Nvidia GTX 1080 Data Platform: Anaconda Python: 3.7 PyTorch: 1.0 LSTM 모델 데모 6장 LSTM 데모에서는 다음과 같은 내용을 다룹니다. IMDB 데이터 다운로드 Vocabulary 데이터인 GloVe 다운로드 LSTM 모델 정의 LSTM</description>
+      <description>데모 환경 Demo 환경 Ubuntu 18.04 GPU: Nvidia GTX 1080 Data Platform: Anaconda 가상환경: pytorch_env2 Python: 3.7 PyTorch: 1.0 LSTM 모델 데모 6장 LSTM 데모에서는 다음과 같은 내용을 다룹니다. IMDB 데이터 다운로드 Vocabulary 데이터인 GloVe 다운로드</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://taewan.kim/dl_pytorch/06/03.conv1/</guid>
-      <description>데모 환경 Demo 환경 Ubuntu 18.04 GPU: Nvidia GTX 1080 Data Platform: Anaconda Python: 3.7 PyTorch: 1.0 고급 CNN 이미지 분류기 5장 두 번째 데모에서는 다음과 같은 내용을 다룹니다. CNN 네트워크 모델 구현 전이학습 VGG16 사전 계산</description>
+      <description>데모 환경 Demo 환경 Ubuntu 18.04 GPU: Nvidia GTX 1080 Data Platform: Anaconda 가상환경: pytorch_env2 Python: 3.7 PyTorch: 1.0 텍스트 Conv1D 연산 텍스트 데이터에 Conv1D 적용을 소개합니다. Conv1D 연산 소개 관련 Jupyter Notebook 링크 5장 컴퓨터 비전 딥러닝</description>
     </item>
     
   </channel>

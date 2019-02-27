@@ -22,11 +22,11 @@
     
     <item>
       <title>2.3 신경망 구성 요소 - 데모</title>
-      <link>http://taewan.kim/dl_pytorch/02/03.practice_env/</link>
+      <link>http://taewan.kim/dl_pytorch/02/03.practice01/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://taewan.kim/dl_pytorch/02/03.practice_env/</guid>
-      <description>Ch02. 신경망 구성 요소: 데모 동영상 Demo 환경 Ubuntu 18.04 GPU: Nvidia GTX 1080 Data Platform: Anaconda Python: 3.7 PyTorch: 1.0 2장 데모 시작 Jupyter Notebook[↗NW] 2장 데모 완성 Jupyter Notebook[↗NW]</description>
+      <guid>http://taewan.kim/dl_pytorch/02/03.practice01/</guid>
+      <description>Ch02. 신경망 구성 요소: 데모 동영상 Demo 환경 Ubuntu 18.04 GPU: Nvidia GTX 1080 Data Platform: Anaconda 가상환경: pytorch_env2 Python: 3.7 PyTorch: 1.0 PyTorch 기본 API 사용법 &amp;amp; 첫 신경망 모델 만들기 관련 Jupyter Notebook 링크 2장 데모 실습 Jupyter Note</description>
     </item>
     
   </channel>
