@@ -17,7 +17,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://taewan.kim/dl_pytorch/06/01.embedding/</guid>
-      <description>데모 환경 Demo 환경 Ubuntu 18.04 GPU: Nvidia GTX 1080 Data Platform: Anaconda 가상환경: pytorch_env2 Python: 3.7 PyTorch: 1.0 워드 임베딩 만드기 &amp;amp; 사전 학습 워드 임베딩 사용하기 MNIST 분류 CNN 네트워크를 직접 구현하고 학습시키는 데모</description>
+      <description>데모 환경 Demo 환경 Ubuntu 18.04 GPU: Nvidia GTX 1080 Data Platform: Anaconda 가상환경: pytorch_env2 Python: 3.7 PyTorch: 1.0 워드 임베딩 만드기 &amp;amp; 사전 학습 워드 임베딩 사용하기 학습 시간 Ubuntu 18.04 + GPU: 25sec 관련 Jupyter Notebook 링크 5장 컴퓨터 비전</description>
     </item>
     
     <item>
