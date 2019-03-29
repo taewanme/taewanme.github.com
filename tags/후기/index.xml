@@ -6,10 +6,21 @@
     <description>Recent content in 후기 on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Dec 2018 17:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 29 Mar 2019 09:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/%ED%9B%84%EA%B8%B0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</title>
+      <link>http://taewan.kim/book/kubernetes_up_and_running/</link>
+      <pubDate>Fri, 29 Mar 2019 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/book/kubernetes_up_and_running/</guid>
+      <description>최근 급하게 쿠버네티스를 정리해야 할 일이 생겨서 &amp;ldquo;쿠버네티스 시작하기&amp;rdquo;를 읽어봤습니다. &amp;ldquo;쿠버네티스 시작하기&amp;rdquo;를 읽고 개인적인 느낌을 정리해 보겠습니다.
+책은 독자의 상태에 따라서 다양한 책에 대한 평가는 달라 질 수 있습니다. 책에 대한 평가와 느낌을 정리하기 전에, 책을 읽을 당시 제 상태는 다음과 같았습니다.
+ Docker를 2년 전부터 사용했고, 어느 정도 익숙 Dockerfile를 만들어 파이썬 데이터 분석 환경을 만들어 사용 Swarm, Kubernetes에 대한 스터디 및 경험 없음 Kubenetes에 대해서는 클러스터 관리 툴이라는 상식적인 수준으로만 알고 있음  개인적으로 IT 도서를 입문서, 개념서, 이론서, 활용서로 구분합니다.</description>
+    </item>
     
     <item>
       <title>&#39;빅데이터는 거품이다&#39; 리뷰</title>
