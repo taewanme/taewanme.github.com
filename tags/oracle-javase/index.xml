@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Oracle Javase on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/oracle-javase/</link>
+    <description>Recent content in Oracle Javase on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 19 Apr 2019 09:17:05 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/oracle-javase/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Oracle OCI 접속 정보 수집</title>
+      <link>http://taewan.kim/cloud/oracle_java_on_oci/</link>
+      <pubDate>Fri, 19 Apr 2019 09:17:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oracle_java_on_oci/</guid>
+      <description>2019년 4월 10일에 &amp;ldquo;OTN License Agreement for Oracle Java SE&amp;ldquo;가 업데이트되었고, 이번 업데이트에서 주목할 부분은 Oracle OCI(Oracle Cloud Infrastructure, 오라클 클라우드)에서 Oracle Java SE 사용에 대한 구체적인 언급입니다.
+이번 라이센스 업데이트는 Oracle OCI에서 Oracle Java SE의 Subscription 없이 자유로이 사용할 수 있음을 구체적으로 적고 있습니다.
+다음 이미지는 Oracle Technology Network License Agreement for Oracle Java SE[↗NW] 에서 발취한 내용입니다.
+ 그림 1. &amp;ldquo;OTN License Agreement for Oracle Java SE&amp;rdquo;의 OCI User 관련 부분  위 문서에서 Oracle Java SE는 다음 4가지 경우에 Oracle Java SE를 무료로 사용할 수 있다고 정리하고 있습니다.</description>
+    </item>
+    
+  </channel>
+</rss>
