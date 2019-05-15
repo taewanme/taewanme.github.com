@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/til2/temp0001/</loc>
+    <lastmod>2019-05-15T01:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tip/lauch_vscode_in_termial/</loc>
     <lastmod>2019-04-24T09:28:14+09:00</lastmod>
   </url>
@@ -2441,6 +2446,7 @@
   
   <url>
     <loc>http://taewan.kim/til2/</loc>
+    <lastmod>2019-05-15T01:05:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2616,10 +2622,6 @@
     <loc>http://taewan.kim/categories/youtube/</loc>
     <lastmod>2016-03-19T01:50:05+09:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/til2/temp0001/</loc>
   </url>
   
   <url>
