@@ -6,10 +6,20 @@
     <description>Recent content in Tips on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 17 Feb 2019 09:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 24 Apr 2019 09:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tip/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mac OS에서 vscode와 intellij 터미널 실행</title>
+      <link>http://taewan.kim/tip/lauch_vscode_in_termial/</link>
+      <pubDate>Wed, 24 Apr 2019 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tip/lauch_vscode_in_termial/</guid>
+      <description>Visual Studion Code와 IntelliJ의 실행파일을 PATH 환경 변수에 추가하면 터미널에서 두 IDE를 실행할 수 있습니다.
+Visual Sutdio Code 터미널 실행  Visual Studion Code 실행 파일 위치  $ cd /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin /Applications/Visual Studio Code.app/Contents/Resources/app/bin $ pwd /Applications/Visual Studio Code.app/Contents/Resources/app/bin /Applications/Visual Studio Code.app/Contents/Resources/app/bin $ ls -al total 8 drwxr-xr-x 3 taewan staff 96 Apr 11 08:24 . drwxr-xr-x 13 taewan staff 416 Apr 11 08:25 .. -rwxr-xr-x 1 taewan staff 484 Apr 11 08:07 code /Applications/Visual Studio Code.</description>
+    </item>
     
     <item>
       <title>slideshare 문서 임베디드 코드 서비스</title>
