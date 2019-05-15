@@ -2440,6 +2440,11 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/til2/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/til/</loc>
     <lastmod>2018-08-18T20:28:14+09:00</lastmod>
     <priority>0</priority>
@@ -2611,6 +2616,10 @@
     <loc>http://taewan.kim/categories/youtube/</loc>
     <lastmod>2016-03-19T01:50:05+09:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/til2/temp0001/</loc>
   </url>
   
   <url>

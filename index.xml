@@ -2399,5 +2399,15 @@ RESTFul를 구현할때 Jersey를 많이 사용합니다. 아무래도 JAX-RS �
       <description></description>
     </item>
     
+    <item>
+      <title>[ss01]-&#39;&#39;자연어 처리 쿡북 with 파이썬  </title>
+      <link>http://taewan.kim/til2/temp0001/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://taewan.kim/til2/temp0001/</guid>
+      <description>[ss01]에서는 자연어 처리의 기본을 익히자는 취지로 &amp;ldquo;자연어 처리 쿡북 with 파이썬&amp;rdquo;를 주 교재로 스터디를 진행합니다. [ss01]은 2019.05.11 부터 2019.06.08까지 총 5회 진행됩니다. 자연어 처리 기법 이해와 툴 사용법을 익히는 것을 목표로 합니다. {Level=&amp;lsquo;basic&amp;rsquo;, attendant=2, location=&amp;lsquo;sanbon&amp;rsquo;}
+.</description>
+    </item>
+    
   </channel>
 </rss>
