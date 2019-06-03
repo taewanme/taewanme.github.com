@@ -6,10 +6,20 @@
     <description>Recent content in 후기 on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 29 Mar 2019 09:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 03 Jun 2019 09:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/%ED%9B%84%EA%B8%B0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</title>
+      <link>http://taewan.kim/book/only_book_deep_learning/</link>
+      <pubDate>Mon, 03 Jun 2019 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/book/only_book_deep_learning/</guid>
+      <description>이미지 &amp;ldquo;책만&amp;rdquo; 제공  딥러닝 기초를 다지는 신간 리뷰 지난주 &amp;lsquo;실체가 손에 잡히는 딥러닝&amp;rsquo; 도서의 베타 리딩에 참여할 기회가 생겨서 책을 읽어본 후기를 공유합니다. 출간이 안된 책의 후기를 쓴다는게 새롭네요.^^ 결론부터 요약하자면 수식이 매우 깔끔하고 수식을 코드로 전환하는 과정이 굉장히 잘 정리되어 있습니다. 수식과 딥러닝 네트워크를 통해서 기본기를 다지고 싶어하시는 분들에게 강추하는 책입니다.
+도서 구성 &amp;lsquo;실체가 손에 잡히는 딥러닝&amp;lsquo;은 8개 장으로 구성되어 있습니다. 필수 수학 기초와 파이썬 기본 문법으로 시작해서 딥러닝 수식을 이용하여 네트워크의 작동 방식을 소개합니다.</description>
+    </item>
     
     <item>
       <title>[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</title>
