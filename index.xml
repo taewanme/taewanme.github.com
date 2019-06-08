@@ -6,10 +6,20 @@
     <description>Recent content on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 03 Jun 2019 09:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 08 Jun 2019 09:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</title>
+      <link>http://taewan.kim/book/days_of_searching_for_first_love/</link>
+      <pubDate>Sat, 08 Jun 2019 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/book/days_of_searching_for_first_love/</guid>
+      <description>최근에 최재원 박사님께서 번역하신 &amp;ldquo;실체가 손에 잡히는 딥러닝, 기초부터 실전 프로그래밍[↗NW] &amp;rdquo;을 리뷰할 기회가 있었습니다. 이런 인연으로 얼마전에 최재원 박사님을 만나뵐 기회가 있었습니다. 신간 기술 서적 출간과 관련된 얘기를 하던 중, 박사님께서 직접 쓰신 소설을 제게 선물로 주셨습니다. 이렇게 선물로 받은 책이 &amp;ldquo;스테파네트 아가씨를 찾아 헤맨 나날들&amp;ldquo;입니다.
+데이터 분석가가 쓴 소설? &amp;ldquo;스테파네트 아가씨를 찾아 헤맨 나날들&amp;ldquo;은 우선 박자, 엔지니어, 데이터 분석가가 쓴 소설이라는 점이 궁금해서 읽기 시작한 책입니다. 감성 보다는 이성이 절대적으로 발달하는 직업을 가진, 일반적으로 메마른 감성의 논리적인 직업을 가진 사람이 어떤 소설을 쓸까?</description>
+    </item>
     
     <item>
       <title>[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</title>
@@ -80,8 +90,13 @@ Visual Sutdio Code 터미널 실행  Visual Studion Code 실행 파일 위치  $
       <pubDate>Fri, 22 Feb 2019 21:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/bookmark/official_oracle_blogs/</guid>
-      <description> Oracle Official Blog  Big Data Spatial and Graph: https://blogs.oracle.com/bigdataspatialgraph/ Big Data &amp;amp; Data Integration - Japan https://blogs.oracle.com/bigdata-dataintegration-jp/ Big Data Blog: https://blogs.oracle.com/bigdata/ https://blogs.oracle.com/cloudnative/ https://blogs.oracle.com/cloud-platform/ https://blogs.oracle.com/datawarehousing https://blogs.oracle.com/developers/ https://blogs.oracle.com/thejavatutorials/ https://blogs.oracle.com/java/ https://blogs.oracle.com/r/ https://blogs.oracle.com/wercker/  Oracle Cloud  Data Center:  https://cloud.oracle.com/data-regions   Oracle Machine Learning  Oracle Data Miner를 이용한 감성 분석
- http://www.oracle.com/webfolder/technetwork/tutorials/obe/db/12c/r1/dm/dm_41/ODM12c-17-2_EMClus.html#overview   </description>
+      <description>Oracle Cloud Infrastructure Blog
+ https://blogs.oracle.com/cloud-infrastructure/ rss: https://blogs.oracle.com/cloud-infrastructure/rss youtube: https://www.youtube.com/channel/UC60OcDzeEtn194-UPYNJs8A  Big Data &amp;amp; Data Integration - Japan
+ https://blogs.oracle.com/bigdata-dataintegration-jp 주요 키워드: 빅데이터, Data Lake, Cloud, DIPC, Data Miner, Japan rss: https://blogs.oracle.com/bigdata-dataintegration-jp/rss  Developers Blog
+ https://blogs.oracle.com/developers/  Big data
+ Desc: Learn about data lakes, machine learning &amp;amp; more innovations https://blogs.oracle.com/bigdata -  The Java Source
+ https://blogs.oracle.com/java/  Cloud Native
+ https://blogs.oracle.com/cloudnative kubernetes, Container  Oracle Cloud Platform Blog</description>
     </item>
     
     <item>

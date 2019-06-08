@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://taewan.kim/book/days_of_searching_for_first_love/</loc>
+    <lastmod>2019-06-08T09:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/book/only_book_deep_learning/</loc>
     <lastmod>2019-06-03T09:28:14+09:00</lastmod>
   </url>
@@ -1299,13 +1304,13 @@
   
   <url>
     <loc>http://taewan.kim/tags/book/</loc>
-    <lastmod>2019-06-03T09:28:14+09:00</lastmod>
+    <lastmod>2019-06-08T09:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://taewan.kim/categories/book/</loc>
-    <lastmod>2019-06-03T09:28:14+09:00</lastmod>
+    <lastmod>2019-06-08T09:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1317,7 +1322,7 @@
   
   <url>
     <loc>http://taewan.kim/book/</loc>
-    <lastmod>2019-06-03T09:28:14+09:00</lastmod>
+    <lastmod>2019-06-08T09:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2631,7 +2636,7 @@
   
   <url>
     <loc>http://taewan.kim/</loc>
-    <lastmod>2019-06-03T09:28:14+09:00</lastmod>
+    <lastmod>2019-06-08T09:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2930,6 +2935,12 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/tags/%EC%B5%9C%EC%9E%AC%EC%9B%90/</loc>
+    <lastmod>2019-06-08T09:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tags/%EC%B9%B4%EC%82%B0%EB%93%9C%EB%9D%BC/</loc>
     <lastmod>2017-12-26T21:28:14+09:00</lastmod>
     <priority>0</priority>
@@ -3045,7 +3056,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/%ED%9B%84%EA%B8%B0/</loc>
-    <lastmod>2019-06-03T09:28:14+09:00</lastmod>
+    <lastmod>2019-06-08T09:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
