@@ -243,6 +243,17 @@ Oracle Cloud: IaaS  Compute Classic: 기능 업데이트 목록[↗NW]  Containe
     </item>
     
     <item>
+      <title>Tier와 Layer의 차이점</title>
+      <link>http://taewan.kim/tip/tier_layer/</link>
+      <pubDate>Sun, 05 Mar 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tip/tier_layer/</guid>
+      <description>아키텍처를 다룰 때, Tier와 Layer를 자주 언급합니다. Tier와 Layer을 무의식중에 구분없이 사용하는 경우가 있습니다. 사실 Tier와 Layer 사이에는 큰 의미적인 차이가 있습니다.
+Tier는 물리적인 영역 분리이며 Layer는 논리적인 영역의 분리를 의미합니다. Tier는 물리적으로 물리적인 서버가 구분되는 경우에 사용합니다. Layer는 물리적이지 않은 역할의 구분등에 사용됩니다.
+ A layer = a part of your code, if your application is a cake, this is a slice. A tier = a physical machine, a server.</description>
+    </item>
+    
+    <item>
       <title>ps와 grep으로 pid를 조회하여 프로세스 종료(kill)</title>
       <link>http://taewan.kim/tip/ps_grep_kill/</link>
       <pubDate>Sun, 27 Mar 2016 10:50:36 +0900</pubDate>
