@@ -1044,6 +1044,18 @@ taewanme/pyml 컨테이너 이미지 pyml 더커 이미지는 docker hub에 자�
     </item>
     
     <item>
+      <title>argument와 parameter 차이점</title>
+      <link>http://taewan.kim/tip/argument_parameter/</link>
+      <pubDate>Sat, 05 May 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tip/argument_parameter/</guid>
+      <description>영문 문서에서 Parameter와 Argument를 혼동하여 번역하거나 읽는 경우가 많습니다. 두 단어는 변수명과 전달값이라는 의미가 다른 용어 이기에 구분하여 사용해야 합니다.
+Parameter는 함수 혹은 메서드 정의에서 나열되는 변수 명입니다. 반면 Argument는 함수 혹은 메서드를 호출할 때, 전달 혹은 입력되는 실제 값입니다. Argument의 실체는 변수이고 Argument의 실체는 값입니다.
+따라서 두 단어는 명확하게 구분해야 합니다.
+   단어 번역 의미     Parameter 매개변수 함수와 메서드 입력 변수(Variable) 명   Argument 전달인자, 인자 함수와 메서드의 입력 값(Value)    명시된 변</description>
+    </item>
+    
+    <item>
       <title>Oracle Cloud IaaS: OCI vs OCI Classic</title>
       <link>http://taewan.kim/cloud/oci_and_oci_classic/</link>
       <pubDate>Thu, 03 May 2018 15:59:47 +0900</pubDate>

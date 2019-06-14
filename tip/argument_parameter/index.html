@@ -9,14 +9,14 @@
 <META http-equiv="Cache-Control" content="No-Cache">
 <meta property="fb:admins" content="devtainer@gmail.com"/>
 
-<title>hugo markdown의 latex 사용 예제 모음</title>
+<title>argument와 parameter 차이점</title>
 <meta name="description" content="taewan.kim">
 <meta name="generator" content="Hugo 0.52" />
-<meta property="og:title" content="hugo markdown의 latex 사용 예제 모음" />
-<meta property="og:description" content="hugo의 markdown에서 latex 사용 예제 모음" />
+<meta property="og:title" content="argument와 parameter 차이점" />
+<meta property="og:description" content="argument와 parameter 구분" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/tip/latex_on_hugo/" /><meta property="article:published_time" content="2018-04-30T10:50:36&#43;09:00"/>
-<meta property="article:modified_time" content="2018-04-30T10:50:36&#43;09:00"/>
+<meta property="og:url" content="http://taewan.kim/tip/argument_parameter/" /><meta property="article:published_time" content="2018-05-05T21:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2018-05-05T21:28:14&#43;09:00"/>
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -96,458 +96,72 @@
 <div class="main-content content" role="main" itemprop="mainContentOfPage">
 	<article class="post">
 		<header class="post__header clearfix">
-			<h1 class="post__title">hugo markdown의 latex 사용 예제 모음 </h1>
+			<h1 class="post__title">argument와 parameter 차이점 </h1>
 			<p class="post__meta meta">
 				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="post__meta-date" datetime="2018-04-30 10:50:36 &#43;0900 KST">April 30, 2018</time>
+				<time class="post__meta-date" datetime="2018-05-05 21:28:14 &#43;0900 KST">May 05, 2018</time>
 			</p>
 		</header>
 
 		<div class="post__content clearfix">
-			<p>Latex 사용 예제를 정리합니다. Latex를 Hugo markdown에서 사용한 사례입니다.</p>
+			
 
-<ul>
-<li>벡터 내적</li>
-</ul>
+<p>영문 문서에서 Parameter와 Argument를 혼동하여 번역하거나 읽는 경우가 많습니다. 두 단어는 변수명과 전달값이라는 의미가 다른 용어 이기에 구분하여 사용해야 합니다.</p>
 
-<blockquote>
-<p>$$
-\begin{align}
-\vec{a} \cdot \vec{b} &amp;= |\vec{a}||\vec{b}|cos\theta \\<br />
-&amp;= a_1b_1+a_2b_2
-\end{align}
-$$</p>
-</blockquote>
+<p>Parameter는 함수 혹은 메서드 정의에서 나열되는 변수 명입니다. 반면 Argument는 함수 혹은 메서드를 호출할 때, 전달 혹은 입력되는 실제 값입니다. Argument의 실체는 변수이고 Argument의 실체는 값입니다.</p>
 
-<pre><code>$$
-\begin{align}
-\vec{a} \cdot \vec{b} &amp;= |\vec{a}||\vec{b}|cos\theta \\\\\
-&amp;= a_1b_1+a_2b_2
-\end{align}
-$$
+<p>따라서 두 단어는 명확하게 구분해야 합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>단어</th>
+<th>번역</th>
+<th>의미</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Parameter</td>
+<td>매개변수</td>
+<td>함수와 메서드 입력 변수(Variable) 명</td>
+</tr>
+
+<tr>
+<td>Argument</td>
+<td>전달인자, 인자</td>
+<td>함수와 메서드의 입력 값(Value)</td>
+</tr>
+</tbody>
+</table>
+
+<p>명시된 변</p>
+
+<h2 id="parameter와-arguement의-예시">Parameter와 Arguement의 예시</h2>
+
+<p>Parameter와 Argument의 예시는 다음과 같습니다.</p>
+
+<h3 id="parameter-매개변수">parameter(매개변수)</h3>
+
+<p>다음 cancat 함수 정의에서 str1과 str2는 parameter 입니다.</p>
+
+<pre><code>def cancat(str1, str2):
+  return a +&quot; &quot;+ b
 </code></pre>
 
-<hr />
+<h3 id="argument-전달인자">argument(전달인자)</h3>
 
-<ul>
-<li>Forward Propagation 주요 공식</li>
-</ul>
+<p>cancat 함수를 호출할 때, 입력값 &ldquo;parameter&rdquo;와 &ldquo;argument&rdquo;는 argument입니다.</p>
 
-<blockquote>
-<p>$$
-\begin{align}
-A^{[0]} &amp; = Input Feature &amp; (1) \\<br />
-Z^{[1]} &amp; = W^{[1]}A^{[0]} &amp; (2) \\<br />
-A^{[1]} &amp; = g(Z^{[1]}) &amp; (3) \\<br />
-Z^{[2]} &amp; = W^{[2]}A^{[1]} &amp; (4) \\<br />
-A^{[2]} &amp; = g(Z^{[2]}) &amp; (5)
-\end{align}
-$$</p>
-</blockquote>
-
-<pre><code>$$
-\begin{align}
-A^{\[0\]} &amp; = Input Feature &amp; (1) \\\\\
-Z^{\[1\]} &amp; = W^{\[1\]}A^{\[0\]} &amp; (2) \\\\\
-A^{\[1\]} &amp; = g(Z^{\[1\]}) &amp; (3) \\\\\
-Z^{\[2\]} &amp; = W^{\[2\]}A^{\[1\]} &amp; (4) \\\\\
-A^{\[2\]} &amp; = g(Z^{\[2\]}) &amp; (5)
-\end{align}
-$$
+<pre><code>cancat(&quot;parameter&quot;, &quot;argument&quot;)
 </code></pre>
 
-<hr />
+<h2 id="참고">참고</h2>
 
 <ul>
-<li>cost 미분을 위한 공식 정리</li>
+<li><a href="https://stackoverflow.com/questions/1788923/parameter-vs-argument">https://stackoverflow.com/questions/1788923/parameter-vs-argument</a></li>
 </ul>
-
-<blockquote>
-<p>$$
-\begin{align}
-Cost &amp; = \frac{1}{2}(\hat{Y}-Y)^2  &amp; (1)\\<br />
-\frac{\partial Cost}{\partial A^{[2]}} &amp; = \hat{Y}-Y &amp; (2)\\\<br />
-sigmoid(Z^{[l]]}) &amp; = sigmoid(Z^{[l]]})(1-sigmoid(Z^{[l]]})) &amp; (3)\\<br />
-&amp; = A^{[l]}(1-A^{[l]}) \\<br />
-\frac{\partial Z^{[l]}}{\partial W^{[2]}} &amp; = \frac{\partial A^{[l-1]}W^{[l]}}{\partial W^{[l]}} = A^{[l-1]} &amp; (4) \\\<br />
-\end{align}
-$$</p>
-</blockquote>
-
-<pre><code>$$
-\begin{align}
-Cost &amp; = \frac{1}{2}(\hat{Y}-Y)^2  &amp; (1)\\\\\
-\frac{\partial Cost}{\partial A^{\[2\]}} &amp; = \hat{Y}-Y &amp; (2)\\\\\  
-sigmoid(Z^{\[l\]]}) &amp; = sigmoid(Z^{\[l\]]})(1-sigmoid(Z^{\[l\]]})) &amp; (3)\\\\\
-&amp; = A^{\[l\]}(1-A^{\[l\]}) \\\\\
-\frac{\partial Z^{\[l\]}}{\partial W^{\[2\]}} &amp; = \frac{\partial A^{\[l-1\]}W^{\[l\]}}{\partial W^{\[l\]}} = A^{\[l-1\]} &amp; (4) \\\\\  
-\end{align}
-$$
-</code></pre>
-
-<hr />
-
-<ul>
-<li>weight 업데이트 식 유도</li>
-</ul>
-
-<blockquote>
-<p>$$
-\begin{align}
-\Delta W^{[2]} &amp; = \frac{\partial Cost}{\partial W^{[2]}} \\<br />
-&amp; = \frac{\partial Cost}{\partial A^{[2]}}\frac{\partial A^{[2]}}{\partial W^{[2]}} \\<br />
-&amp; =  \frac{\partial Cost}{\partial A^{[2]}}\frac{\partial A^{[2]}}{\partial Z^{[2]}}\frac{\partial Z^{[2]}}{\partial W^{[2]}} \\<br />
-&amp; =  (\hat{y}-y)\frac{\partial A^{[2]}}{\partial Z^{[2]}}\frac{\partial Z^{[2]}}{\partial W^{[2]}} \\<br />
-&amp; =  (\hat{y}-y)g&rsquo;(z^{[2]})\frac{\partial Z^{[2]}}{\partial W^{[2]}} \\<br />
-&amp; =  (\hat{y}-y)sigmoid&rsquo;(z^{[2]})\frac{\partial Z^{[2]}}{\partial W^{[2]}} \\<br />
-&amp; =  (\hat{y}-y)A^{[2]}(1-A^{[2]})\frac{\partial Z^{[2]}}{\partial W^{[2]}} \\<br />
-&amp; =  (\hat{y}-y)A^{[2]}(1-A^{[2]})A^{[1]}
-\end{align}
-$$</p>
-</blockquote>
-
-<pre><code>$$
-\begin{align}
-\Delta W^{\[2\]} &amp; = \frac{\partial Cost}{\partial W^{\[2\]}} \\\\\
-&amp; = \frac{\partial Cost}{\partial A^{\[2\]}}\frac{\partial A^{\[2\]}}{\partial W^{\[2\]}} \\\\\
-&amp; =  \frac{\partial Cost}{\partial A^{\[2\]}}\frac{\partial A^{\[2\]}}{\partial Z^{\[2\]}}\frac{\partial Z^{\[2\]}}{\partial W^{\[2\]}} \\\\\
-&amp; =  (\hat{y}-y)\frac{\partial A^{\[2\]}}{\partial Z^{\[2\]}}\frac{\partial Z^{\[2\]}}{\partial W^{\[2\]}} \\\\\
-&amp; =  (\hat{y}-y)g'(z^{\[2\]})\frac{\partial Z^{\[2\]}}{\partial W^{\[2\]}} \\\\\
-&amp; =  (\hat{y}-y)sigmoid'(z^{\[2\]})\frac{\partial Z^{\[2\]}}{\partial W^{\[2\]}} \\\\\
-&amp; =  (\hat{y}-y)A^{\[2\]}(1-A^{\[2\]})\frac{\partial Z^{\[2\]}}{\partial W^{\[2\]}} \\\\\
-&amp; =  (\hat{y}-y)A^{\[2\]}(1-A^{\[2\]})A^{\[1\]}
-\end{align}
-$$
-</code></pre>
-
-<hr />
-
-<ul>
-<li>Delta W 공식</li>
-</ul>
-
-<blockquote>
-<p>$$
-\begin{align}
-\Delta W^{[2]} &amp; =
-  \begin{bmatrix}
-    \Delta w^{[1]}11 &amp; \Delta w^{[1]}12   \\<br />
-  \end{bmatrix} \\<br />
-  &amp; =\begin{bmatrix}
-    (\hat{y}-y)a^{[2]}_1(1-a^{[2]}_1)a^{[1]}_1 &amp; (\hat{y}-y)a^{[2]}_1(1-a^{[2]}_1)a^{[1]}_2   \\<br />
-  \end{bmatrix} \\<br />
-  &amp; =(\hat{y}-y)a^{[2]}_1(1-a^{[2]}_1) \begin{bmatrix}
-    a^{[1]}_1 &amp; a^{[1]}_2   \\<br />
-  \end{bmatrix}
-\end{align}
-$$</p>
-</blockquote>
-
-<pre><code>$$
-\begin{align}
-\Delta W^{\[2\]} &amp; =
-  \begin{bmatrix}
-    \Delta w^{\[1\]}11 &amp; \Delta w^{\[1\]}12   \\\\\
-  \end{bmatrix} \\\\\
-  &amp; =\begin{bmatrix}
-    (\hat{y}-y)a^{\[2\]}_1(1-a^{\[2\]}_1)a^{\[1\]}_1 &amp; (\hat{y}-y)a^{\[2\]}_1(1-a^{\[2\]}_1)a^{\[1\]}_2   \\\\\
-  \end{bmatrix} \\\\\
-  &amp; =(\hat{y}-y)a^{\[2\]}_1(1-a^{\[2\]}_1) \begin{bmatrix}
-    a^{\[1\]}_1 &amp; a^{\[1\]}_2   \\\\\
-  \end{bmatrix}
-\end{align}
-$$
-</code></pre>
-
-<hr />
-
-<ul>
-<li>출력 데이터 사이즈 계산</li>
-</ul>
-
-<blockquote>
-<p>$$
-\begin{align}
-OutputRowSize &amp; = \frac{InputRowSize}{PoolingSize} \\<br />
-OutputColumnSize &amp; = \frac{InputColumnSize}{PoolingSize}
-\end{align}
-$$</p>
-</blockquote>
-
-<pre><code>$$
-\begin{align}
-OutputRowSize &amp; = \frac{InputRowSize}{PoolingSize} \\\\\
-OutputColumnSize &amp; = \frac{InputColumnSize}{PoolingSize}
-\end{align}
-$$
-</code></pre>
-
-<hr />
-
-<ul>
-<li>Max Pooling 출력 사이즈 계산</li>
-</ul>
-
-<blockquote>
-<p>$$
-\begin{align}
-Row Size &amp; = \frac{36}{2} = 18 \\<br />
-Column Size &amp; =  \frac{28}{2} = 14<br />
-\end{align}
-$$</p>
-</blockquote>
-
-<pre><code>$$
-\begin{align}
-Row Size &amp; = \frac{36}{2} = 18 \\\\\
-Column Size &amp; =  \frac{28}{2} = 14  
-\end{align}
-$$
-</code></pre>
-
-<hr />
-
-<ul>
-<li>Convolution Layer 2의 Activation Map 크기 계산</li>
-</ul>
-
-<blockquote>
-<p>$$
-\begin{align}
-Row Size &amp; = \frac{N-F}{Strid} + 1 = \frac{18-3}{1} + 1 = 16 \\<br />
-Column Size &amp; =  \frac{N-F}{Strid} + 1 = \frac{14-3}{1} + 1 = 12<br />
-\end{align}
-$$</p>
-</blockquote>
-
-<pre><code>$$
-\begin{align}
-Row Size &amp; = \frac{N-F}{Strid} + 1 = \frac{18-3}{1} + 1 = 16 \\\\\
-Column Size &amp; =  \frac{N-F}{Strid} + 1 = \frac{14-3}{1} + 1 = 12  
-\end{align}
-$$
-</code></pre>
-
-<hr />
-
-<ul>
-<li>Regularization에서는 Lose 함수</li>
-</ul>
-
-<blockquote>
-<p>$$
-cost(W, b) = \frac{1}{m}\sum_i^m{L(\hat{y^i}, y^i)} + \lambda\frac{1}{2}||w||^2
-$$
-</font></p>
-</blockquote>
-
-<pre><code>$$
-cost(W, b) = \frac{1}{m}\sum_i^m{L(\hat{y^i}, y^i)} + \lambda\frac{1}{2}||w||^2
-$$
-&lt;/font&gt;
-</code></pre>
-
-<hr />
-
-<ul>
-<li>원점에서 벡터 좌표까지의 거리</li>
-</ul>
-
-<blockquote>
-<p>$$
-L_p = (\sum_i^n |x_i|^p)^{\frac{1}{p}}
-$$
-</font></p>
-</blockquote>
-
-<pre><code>$$
-L_p = (\sum_i^n |x_i|^p)^{\frac{1}{p}}
-$$
-&lt;/font&gt;
-</code></pre>
-
-<hr />
-
-<ul>
-<li>L1 Norm</li>
-</ul>
-
-<blockquote>
-<p>$$
-\begin{align}
-L_1 &amp; = (\sum_i^n |x_i|) \\<br />
-&amp; = |x_1| + |x_2| + |x_3| + &hellip;. + |x_n|<br />
-\end{align}
-$$</p>
-</blockquote>
-
-<pre><code>$$
-\begin{align}
-L_1 &amp; = (\sum_i^n |x_i|) \\\\\
-&amp; = |x_1| + |x_2| + |x_3| + .... + |x_n|  
-\end{align}
-$$
-</code></pre>
-
-<hr />
-
-<ul>
-<li>L1 Norm 계산</li>
-</ul>
-
-<blockquote>
-<p>$$
-\begin{align}
-x &amp; = [1, 2, 3, 4, 5] \\<br />
-||x||_1 &amp; = (|1| +|2| +|3| +|4| +|5|) \\<br />
-&amp; = 15
-\end{align}
-$$</p>
-</blockquote>
-
-<pre><code>$$
-\begin{align}
-x &amp; = [1, 2, 3, 4, 5] \\\\\
-||x||_1 &amp; = (|1| +|2| +|3| +|4| +|5|) \\\\\
-&amp; = 15
-\end{align}
-$$
-</code></pre>
-
-<hr />
-
-<ul>
-<li>tanh</li>
-</ul>
-
-<blockquote>
-<p>$$
-\begin{align}
-tanh(x) &amp; = \frac{1-e^{-x}}{1+e^{-x}} \\<br />
-&amp; = \frac{2}{1+e^{-2x}} -1
-\end{align}
-$$</p>
-</blockquote>
-
-<pre><code>&gt;$$
-\begin{align}
-tanh(x) &amp; = \frac{1-e^{-x}}{1+e^{-x}} \\\\\
-&amp; = \frac{2}{1+e^{-2x}} -1
-\end{align}
-$$
-</code></pre>
-
-<hr />
-
-<ul>
-<li>tanh의 sigmoid 표현</li>
-</ul>
-
-<p>Hyperbolic Tangent(tanh)은 Sigmoid와 유사한 특징을 갖습니다. Sigmoid 형태로 표현할 수 있습니다.</p>
-
-<blockquote>
-<p>$$
-\begin{align}
-sigmoid(x) &amp; = \frac{1}{1+e^{-x}}  \\<br />
-tanh(x) &amp; = 2sigmoid(2x) -1
-\end{align}
-$$</p>
-</blockquote>
-
-<pre><code>&gt;$$
-\begin{align}
-sigmoid(x) &amp; = \frac{1}{1+e^{-x}}  \\\\\
-tanh(x) &amp; = 2sigmoid(2x) -1
-\end{align}
-$$
-</code></pre>
-
-<hr />
-
-<ul>
-<li>주요 미분 공식</li>
-</ul>
-
-<p>$$
-\begin{align}
-(e^{x})&rsquo; &amp;= e^{x} \\<br />
-(e^{-x})&rsquo; &amp;= -e^{-x} \\<br />
-\big[ \frac{f(x)}{g(x)}\big]&rsquo; &amp; = \frac{f&rsquo;(x)g(x)-f(x)g&rsquo;(x)}{g^2(x)}
-\end{align}
-$$</p>
-
-<pre><code>$$
-\begin{align}
-(e^{x})' &amp;= e^{x} \\\\\
-(e^{-x})' &amp;= -e^{-x} \\\\\
-\big[ \frac{f(x)}{g(x)}\big]' &amp; = \frac{f'(x)g(x)-f(x)g'(x)}{g^2(x)}
-\end{align}
-$$
-</code></pre>
-
-<hr />
-
-<ul>
-<li>tanh 함수 미분</li>
-</ul>
-
-<blockquote>
-<p>$$
-\begin{align}
-f(x) &amp; = e^{x}-e^{-x} \\<br />
-g(x) &amp; = e^{x}+e^{-x} \\<br />
-\frac{d}{dx}tanh(x) &amp; = \big[\frac{e^{x}-e^{-x}}{e^{x}+e^{-x}}\big]&rsquo; \\<br />
- &amp; =  \big[\frac{f(x)}{g(x)}\big]&rsquo; \\<br />
- &amp; = \frac{f&rsquo;(x)g(x)-f(x)g&rsquo;(x)}{g^2(x)} \\<br />
- &amp; = \frac{(e^{x}-(-e^{-x}))(e^{x}+e^{-x}) - (e^{x}-e^{-x})(e^{x}-e^{-x} )}{(1+e^{-x})^2} \\<br />
- &amp; = \frac{(e^{x}+e^{-x})^2 - (e^{x}-e^{-x})^2}{(e^{x}+e^{-x})^2} \\<br />
- &amp; = \frac{(e^{x}+e^{-x})^2}{(e^{x}+e^{-x})^2} - \frac{(e^{x}-e^{-x})^2}{(e^{x}+e^{-x})^2} \\<br />
- &amp; = 1 - \big[\frac{(e^{x}-e^{-x})}{(e^{x}+e^{-x})}\big]^2 \\<br />
- &amp; = 1 - tanh^2(x) \\<br />
- &amp; = (1 - tanh(x))(1 + tanh(x))
-\end{align}
-$$</p>
-</blockquote>
-
-<pre><code>&gt;$$
-\begin{align}
-f(x) &amp; = e^{x}-e^{-x} \\\\\
-g(x) &amp; = e^{x}+e^{-x} \\\\\
-\frac{d}{dx}tanh(x) &amp; = \big[\frac{e^{x}-e^{-x}}{e^{x}+e^{-x}}\big]' \\\\\
- &amp; =  \big[\frac{f(x)}{g(x)}\big]' \\\\\
- &amp; = \frac{f'(x)g(x)-f(x)g'(x)}{g^2(x)} \\\\\
- &amp; = \frac{(e^{x}-(-e^{-x}))(e^{x}+e^{-x}) - (e^{x}-e^{-x})(e^{x}-e^{-x} )}{(1+e^{-x})^2} \\\\\
- &amp; = \frac{(e^{x}+e^{-x})^2 - (e^{x}-e^{-x})^2}{(e^{x}+e^{-x})^2} \\\\\
- &amp; = \frac{(e^{x}+e^{-x})^2}{(e^{x}+e^{-x})^2} - \frac{(e^{x}-e^{-x})^2}{(e^{x}+e^{-x})^2} \\\\\
- &amp; = 1 - \big[\frac{(e^{x}-e^{-x})}{(e^{x}+e^{-x})}\big]^2 \\\\\
- &amp; = 1 - tanh^2(x) \\\\\
- &amp; = (1 - tanh(x))(1 + tanh(x))
-\end{align}
-$$
-</code></pre>
-
-<hr />
-
-<ul>
-<li>tanh 미분 결과</li>
-</ul>
-
-<blockquote>
-<p>$$
-\begin{align}
-\frac{d}{dx}tanh(x) &amp; = 1- tanh^2(x) \\<br />
- &amp; = (1-tanh(x))(1+tanh(x)) \\<br />
-\end{align}
-$$</p>
-</blockquote>
-
-<pre><code>&gt;$$
-\begin{align}
-\frac{d}{dx}tanh(x) &amp; = 1- tanh^2(x) \\\\\
- &amp; = (1-tanh(x))(1+tanh(x)) \\\\\
-\end{align}
-$$
-</code></pre>
 
 		</div>
 		
@@ -558,16 +172,16 @@ $$
 	
 <nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	<div class="post-nav__item post-nav__item--prev col-1-2">
-		<a class="post-nav__link" href="http://taewan.kim/tip/oracle_new_feature/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Oracle Cloud: 서비스 별 New Feature 페이지 링크 모음</p></a>
+		<a class="post-nav__link" href="http://taewan.kim/tip/latex_on_hugo/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">hugo markdown의 latex 사용 예제 모음</p></a>
 	</div>
 	<div class="post-nav__item post-nav__item--next col-1-2">
-		<a class="post-nav__link" href="http://taewan.kim/tip/argument_parameter/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">argument와 parameter 차이점</p></a>
+		<a class="post-nav__link" href="http://taewan.kim/tip/apt-apt-get/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">Ubuntu 패키지 관리 툴: apt 사용법</p></a>
 	</div>
 </nav>
 
 	
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tip/latex_on_hugo/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tip/argument_parameter/"></div>
 
 
 	<div>
@@ -603,7 +217,7 @@ $$
 	
 
 <div class="widget-categories widget">	
-		<div class="fb-like" data-href="http://taewan.kim/tip/latex_on_hugo/" 
+		<div class="fb-like" data-href="http://taewan.kim/tip/argument_parameter/" 
 		data-layout="standard" data-action="like" 
 		data-size="small" 
 		data-show-faces="true" 
@@ -611,6 +225,24 @@ $$
 </div>
 	
 	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#parameter와-arguement의-예시">Parameter와 Arguement의 예시</a>
+<ul>
+<li><a href="#parameter-매개변수">parameter(매개변수)</a></li>
+<li><a href="#argument-전달인자">argument(전달인자)</a></li>
+</ul></li>
+<li><a href="#참고">참고</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
 
 	<div class="widget-categories widget">
   <h4 class="widget__title">관련도서</h4>
