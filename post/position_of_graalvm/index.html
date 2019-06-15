@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>GraalVM의 오라클 포지션과 역할에 대하여..</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.52" />
+<meta property="og:title" content="GraalVM의 오라클 포지션과 역할에 대하여.." />
+<meta property="og:description" content="GraalVM의 포지션에 대하여 제 개인적인 생각을 정리합니다. " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/post/position_of_graalvm/" /><meta property="article:published_time" content="2019-06-15T08:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2019-06-15T08:28:14&#43;09:00"/>
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="http://taewan.kim/css/jupyter.css" type="text/css" media="all" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Deep Learning 구현 기술에 대하여 정리합니다." >TUTORIAL &amp; MANUAL</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+		<li class="menu__item "><a class="menu__link" href="/til2/" title="Today I Learned" >TODAY I LEARNED</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">GraalVM의 오라클 포지션과 역할에 대하여.. </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2019-06-15 08:28:14 &#43;0900 KST">June 15, 2019</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/java" rel="category">java</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2019/06/graalvm/000.jpg" alt="GraalVM의 오라클 포지션과 역할에 대하여..">
+			</figure>
+			
+
+<p>2019년 4월에 GraalVM이 GA되었고, 여러 프레임워크(Spring, SpringFoo, Micornut, Picocli, Quarkus)가 GraalVM의 지원을 발표하거나 다양한 가능성을 제시하면서 최근에 GraalVM에 대한 관심이 점차 높아지고 있습니다. 또한 GraalVM 자체가 어떤 의미를 갖는지 궁금해 하시는 분들이 많아지고 있습니다. 최근에 GraalVM 세미나를 진행하면 다음과 같은 질문을 자주 받습니다.</p>
+
+<ul>
+<li>오라클에서 GraalVM이 갖는 포지션과 역할?</li>
+<li>오라클은 GraalVM을 계속 지원할 것인가?</li>
+<li>앞으로 GraalVM Enterprise Edition만 지원하는 것은 아닌가?</li>
+</ul>
+
+<p>이런 내용에 대한 공식적인 오라클의 답변은 현재까지는 없기 때문에 명확하게 답할 수는 없는 내용들 입니다. 그러나 GraalVM을 초기부터 봐온 엔지니어 입장에서, 개인적인 의견임을 전제로 이와 같은 질문을 정리해 보겠습니다.</p>
+
+<div class="notices warning" ><p>2019년 5월 현재 필자는 오라클 소속이지만, 이 저작물은 Oracle과 관계없이 개인으로서 개인의 시간을 할애하여 작성된 글 입니다. 본 글의 내용, 입장, 예측은 <font color='red'>Oracle</font>을 공식적으로 <font color='red'>절대</font> 대변하지 않습니다. 본 저작물은 전적으로 개인의 생각임을 다시한번 강조합니다.</p>
+</div>
+
+
+<h2 id="독특한-graalvm">독특한 GraalVM</h2>
+
+<p>위에서 언급한 질문을 바로 들어가기 전에 몇 가지 GraalVM의 특징을 살펴보면, GraalVM에 질문을 이해하고 향후 모습을 예측하는데 도움이 됩니다. 이러한 이유로 몇가지 특징을 정리해 보겠습니다. GraalVM에 익숙하시다면 다음 절로 바로 넘기셔도 좋습니다. 제가 생각하는 GraalVM의 특이점은 다음과 같습니다.</p>
+
+<ul>
+<li>Oracle Labs가 주도적으로 개발하는 Java</li>
+<li>Meta-circular Java에 대한 도전</li>
+<li>클라우드를 지향하는 다양성 자바</li>
+<li>개방성을 지향하는 개발 팀</li>
+</ul>
+
+<p>이와 같은 각 특징에 대하여 간략히 정리해 보겠습니다.</p>
+
+<h3 id="oracle-labs의-산학연의-협력-연구과제-graalvm">Oracle Labs의 산학연의 협력 연구과제: GraalVM</h3>
+
+<p>최근에 진행되는 개발자 컨퍼런스에서 GraalVM세션을 자주 접할 수 있습니다. GraalVM 세션을 진행하는 발표자들은 대부분 &ldquo;<strong>Oracle Labs</strong>&rdquo; 소속입니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2019/06/graalvm/020.jpg" alt="" /></p>
+
+<p>Oracle Labs는 외부에 자주 노출되는 않는 순수 R&amp;D 조직입니다. Oracle Labs는 시작점은 썬 마이크로시스템즈입니다. Sun Labs(Sun Microsystems Laboratories)는 1990년에 만들어졌고, 2010년에 썬 마이크로시스템즈가 오라클에 합병되면서 이름이 Oracle Labs로 변경되었습니다.</p>
+
+<p>GraalVM의 개발에는 Oracle Labs와 협력사, 여러 대학의 연구실이 참여합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2019/06/graalvm/010.jpg" alt="" /></p>
+
+<p>위 그림과 같이 Oracle Labs를 중심으로, Red Hat, Twitter, Intel이 참여하고 있고 9개 대학의 연구소가 GraalVM 개발에 참여하고 있습니다. 이 산학연 개발팀은 GraalVM을 주제로 7년간(2012~2019.06) 총 64편의 논문을 발표했습니다. (<a href="https://www.graalvm.org/community/publications/" target="_blank">전체 논문 목록[↗NW]</a>
+)</p>
+
+<h3 id="meta-circular-java에-대한-도전">Meta-circular Java에 대한 도전</h3>
+
+<p>GraalVM의 원류는 &ldquo;<strong><a href="https://en.wikipedia.org/wiki/Maxine_Virtual_Machine" target="_blank">Maxine Virtual Machine(Maxine VM)[↗NW]</a>
+</strong>&ldquo;입니다. Maxine VM은 meta-circular 스타일<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>의 자바에 대한 연구로, 2005년에 멘체스터 대학과 Sun Labs가 함께 시작한 자바 R&amp;D 주제였습니다. Java HotSpot 성능 개선이 한계점에 도달하면서 2005년 순수 연구 주제로 시작한 Maxine VM은 세상이 주목을 받게됩니다. C++로 개발된 자바 컴파일러(C2 JIT 컴파일러)의 대안이 요구되는 상황에서 세상의 큰 주목을 받았습니다.</p>
+
+<p>2012년에 GraalVM은 OpenJDK의 서브 프로젝트로 등록되었습니다. OpenJDK의 서브 프로젝트인 GraalVM의 목표는 Meta-Circular 자바의 구현과 C2 JIT 컴파일러 Graal로 대체하는 것입니다. 7년의 개발 기간을 거쳐 2019년 5월에 GraalVM 버전 1.0이 공개되었습니다. GraalVM의 역사는 프로젝트 명을 기준으로는 7년, 연구 과제의 시작점을 기준으로는 총 14년의 역사를 가집니다.</p>
+
+<h3 id="클라우드-지향-자바">클라우드 지향 자바</h3>
+
+<p>GraalVM의 3가지 특징은 Graal을 기반으로하는 고성능 자바, Polyglot을 기반으로 다양한 언어의 통합 기능, Native 자바의 특성을 통해서 빠른 startup time을 제공한다는 것입니다. 다양한 언어를 지원하고, 빠른 처리 능력과 빠른 시작은 클라우드와 Docker/Kubernetes의 시대에 필요한 기능입니다. 현재 GraalVM은 기존의 자바에 대한 호환성을 제공하면서, 새로운 언어적인 특징을 제공하고, 그 특징이 클라우드 환경에 적합하기 때문에 개발자 커뮤니티에서 관심이 높을 수 밖에 없습니다.</p>
+
+<p>GraalVM은 OpenJDK 8u212를 기반으로 제작되었습니다. GraalVM은 표준을 지향하는 시대(2000년대 초반에서 2010년대 초반)에 시작된 오픈소스 프로젝트 입니다. GraalVM의 다양한 시도와 도전은 최근 클라우드 시대에 IT환경에서 꼭 필요한 기능들 입니다. 이러한 이유로 GraalVM에 대한 관심과 인기가 급격히 증가하고 있습니다.</p>
+
+<h3 id="개방성을-지향하는-개발-팀">개방성을 지향하는 개발 팀</h3>
+
+<p>GraalVM은 여러 산학연 조직이 함께 개발하는 오픈소스 프로젝트이지만, 개발자 그룹의 목록을 보면 알 수 있듯이 주축은 오라클입니다. 올 초에 오라클 내부 GraalVM 메일링 리스트찾아서 구독을 신청했었습니다. Oracle Labs에 메일링 구독을 신청한 다음날 다음과 같은  답장을 받았습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2019/06/graalvm/040.jpg" alt="" /></p>
+
+<p>요약하면, GraalVM팀은 오라클 내부 메일링을 거의 사용하지 않으며, 주로 graalvm.org의 공개 메일링을 사용한다는 내용입니다. 여러 산학연이 오픈소스 형태로 개발하는 프로젝트이기에 이러한 행동은 자연스럽습니다. 그러나 Oracle Labs의 이러한 결정은 제게 신선한 충격이었습니다. 어찌보면 이것이 GraalVM 개발팀의 개방성을 가장 잘 보여주는 모습일 것 같습니다.</p>
+
+<h2 id="자주-듣는-질문">자주 듣는 질문</h2>
+
+<p>최근에 GraalVM에 대한 발표를 3-4차례 진행했습니다. 발표 현장에서 가장 많이 들었던 몇 가지 공통 질문이 있습니다. 이 질문에 답변을 드리기 위해서 공식적인 오라클 입장 및 발표를 찾아 보았지만 아직까지는 딱 맞는 자료나 문서는 찾지 못했습니다. 따라서 공식적인 답변은 아니지만 GraalVM을 조금 오래 지켜본 엔지니어 관점에서 이 질문에 대한 답변을 정리해 보았습니다. 이 부분은 전적으로 개인적인 견해임을 다시한번 말씀 드립니다.</p>
+
+<h3 id="질문1-왜-오라클은-graalvm을-만들었는가">질문1: 왜 오라클은 GraalVM을 만들었는가?</h3>
+
+<p>저는 개인적으로 오라클이 고성능 자바에 대한 필요성과 2006년 부터 진행해온 자바의 오픈소스화 과정 만들어 GraalVM을 만들었다고 생각합니다.</p>
+
+<p>1999년 4월 HotSpot이 공개된 이후, 20년동안 HotSpot은 Oracle JVM의 상징적인 존재였습니다. 지난 20년 동안 C++로 개발된 HotSpot은 최대한 자바 성능을 끌어 올렸다고 자부합니다. 그러나 이제는 C++ 코드가 너무 복잡해진 나머지 추가적인 성능 개선이 어렵운 상황입니다. Oracle Labs는 2010년 쯤에 HotSpot의 노후화에 대한 대안을 그 동안 R&amp;D로 개발해온 Maxine VM에서 찾았던 것 같습니다. 결과적으로 Maxine VM이 추구하던 Meta-Circular 자바의 구현체가 바로 GraalVM이 됩니다.</p>
+
+<p>2010년은 자바에게 여러가지 혼동기였습니다. Sun이 Oracle에 합병되었고(2010), 2011년 7월에 공개할 JDK 7을 OpenJDK에서 개발발하고 있었습니다. 2007년에 썬 마이크로 시스템즈는 OpenJDK을 만들었습니다. 그리고 JDK 7을 오픈소스로 개발하였습니다. 물론 Oracle JDK를 OpenJDK에서 개발한 것은 아닙니다. java.net에서 Oracle JDK7을 개발했고, 동시에 OpenJDK에서도 개발을 이원화하여 진행했습니다. 이 시기에 OpenJDK의 JDK7은 자바의 실제 코드를 확인할 수 있는 참조 구현체의 의미를 갖습니다.</p>
+
+<p>10년이 더 흘러 2019년이 된 지금, 이제 Java는 OpenJDK에서 개발하고, 새로운 자바가 공개 후 6개월이 지나면 자바를 지원하는 각 업체가 자체적으로 자바를 유지보수하는 형태로 변경되었습니다. 이제 자바를 개발하는 주체는 OpenJDK이며, 각 자바 지원사들이 OpenJDK에 참여하여 JDK를 오픈소스로 개발합니다.</p>
+
+<p>OpenJDK가 표준 자바 혹은 기반 자바(Base Java)의 의미를 갖게됩니다. 각 자바 지원 업체의 공개된 OpenJDK를 토대로 각자의 유지보수 자바를 운영할 수 있습니다. 또한 OpenJDK를 확장하여 다양한 자바를 만들 수 도 있습니다. 이제 다양한 업체와 조직이 자바를 유지보수하고 확장하고 변형체를 만드는 다양성 자바의 시대가 시작됩니다.</p>
+
+<p>오라클에서 OpenJDK를 유지보수하는 것과 확장하고 변형한 자바를 각각 만들었습니다. OpenJDK의 유지보수 자바가 Oracle Java이고  OpenJDK를 변형하여 클라우드라는 특정 목적을 위해 만든 다양성 자바의 첫 번째 축현체가 바로 GraalVM입니다.</p>
+
+<p>이렇게 GraalVM은 다양성 자바라는 새로운 시작입니다.</p>
+
+<h3 id="질문2-오라클은-graalvm의-포지션은">질문2: 오라클은 GraalVM의 포지션은?</h3>
+
+<p>다양성 자바가 GraalVM이라고 하지만, 아직 풀리지 않은 문제가 남아 있습니다. &ldquo;다양성 자바라는  GraalVM가 왜 필요했는가?&rdquo; 입니다. OpenJDK가 6개월마다 새로운 버전을 공개하여 Agile한 개발 프로세스로 전환했습니다. 이제 Big Bang 방식이 아닌 단위 기술로 효과적인 기능 개선이 가능한 개발 프로세스를 정챡시켰기 때문에, 많은 사람들이 이제 Java는 빠르게 변화하는 IT 환경에 효과적으로 대응할 수 있을 것으로 기대합니다.</p>
+
+<p>그러나 반대로 상항이 발생할 수 있습니다. OpenJDK가 이제 표준 자바 혹은 기반 자바라는 의미를 갖으며, OpenJDK는 개발 기간이 짥습니다. 따라서 OpenJDK에 새로 추가되는 기술은 이미 검증된 기술를 추가해야 한다는 부담도 생깁니다. 이제는 예전 처럼 자바 개발 과정에서 시행착오를 경험하고 검증할 시간이 없습니다. 따라서 OpenJDK에 추가되는 기술은 더 보수적으로 관리되어야 합니다.</p>
+
+<p>그럼 반대로 Oracle Java에 새로운 기술을 적용하고 검증하면 어떨까요? Oracle Java는 이제 OpenJDK의 유지보수 버전이라는 성격이 강하게 때문에, 새로운 기술을 Oracle Java에 추가하고 실험하는 어려 제약이 따릅니다. 또한 이렇게 할 경우 Oracle Java에 새로 추가된 기능을 OpenJDK에 적용하는 것이 상당히 이상한 프로세스가 되어 버립니다.</p>
+
+<p>자바 진영에서는 이와 유사한 문제를 예전에 경험하고 해결한적이 있습니다. Java EE 5를 기준으로 표준과 오픈소스 사이의 작업 흐름이 바뀐 경험을 알고 있을 겁니다. Java EE 5 이전에는 Java EE 스펙에 표준안을 먼저 정의하고, 그 표준안을 근거로 오픈소스나 상용 제품이 개발되었습니다. 이런 작업 방식은 Java EE 5를 기점으로 변경됩니다. Java EE 5 이후에는 SpringFramework와 Hibernate와 같은 유명 오픈소스에서 검증된 기술이 Java EE에 표준으로 들가는 방식으로 변경되었습니다. 그리고 이런 흐름은 기술 개발, 검증, 표준화의 순선환 구조를 만들고 확대되었습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2019/06/graalvm/060.jpg" alt="" /></p>
+
+<p>최근에 오라클은 이와 같은 선순환 구조를 만들어 가고 있다고 생각합니다. 오라클은 새로운 기술에 대한 연구, 실험 및 검증을 GraalVM에서 수행합니다. GraalVM은 OpenJDK를 기반으로 만든 새로운 자바입니다. 클라우드와 임베디드 환경에 적합하도록 다양한 시도와 실험이 이뤄지고 있는 자바입니다. Oracle은 GraalVM에서 실험하고 검증한 기술을 OpenJDK에 추가하는 모습을 계속 보이고 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2019/06/graalvm/030.jpg" alt="" /></p>
+
+<p>위 그림처럼, GraalVM의 JVMCI, AOT, Graal JIT이 위 그림과 같이 새로운 기법을 JEP-243, JEP-295, JEP-317로 정의하여  OpenJDK에 적용하고 있습니다. GraalVM에서 개발되고 검증된 이러한 기술은 OpenJDK에 적용되어 표준 자바에 추가됩니다. 그리고 OpenJDK에 적용된 기술은 결과적으로 Oracle Java에 유입되는 모습을 보입니다. 이렇게 오라클은 GraalVM, OpenJDK 및 Oracle Java를 신기술을 적용하는 다양성 자바, 표준화 자바, 그리고 안전하게 관리되는 오라클 관리형 자바로 포지션하고, 지속적으로 새로운 기술을 개발하고, 표준화하고 안정화하는 선순환 구조를 만들었다고 생각합니다.</p>
+
+<h3 id="질문4-그럼-graalvm은-불안정한-테스트용-jdk입니까">질문4: 그럼 GraalVM은 불안정한 테스트용 JDK입니까?</h3>
+
+<p>그렇다면 GraalVM은 신기술 개발을 위한 파일럿 소프트웨어일까요? 그렇지 않습니다. GraalVM이 새로운 기술을 적극적으로 수용하는 Agile한 방식으로 빠르게 진호하고 있한다는 것이 GraalVM은 파일럿이며 불안정하다는 것을 의미하지는 않습니다. GraalVM은 산학연의 여러 조직이 오픈소스 형태로 개발하고 있으며, 오라클의 개발 프로세스와 QA 프로세스를 통해서 관리되고 있습니다. 핸재 매월 1회 새로운 업데이트 버전을 공개하고 있습니다. 2019년 6월 현재 19.02 버전이 최신 버전입니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2019/06/graalvm/070.jpg" alt="" /></p>
+
+<p>GraalVM의 라이센스는 Community Edition과 Enterprise Edition으로 구분됩니다. Community Edition고 Enterprise Edition의 차이는 기술 지원과 성능입니다. GraalVM CE와 EE는 기능적으로 동일한 기능(지원 툴 제외)을 제공하지만 성능을 기준으로 볼 때, Enterprise Edition이 Community Edition보다 약 30% 정도 더 성능이 좋다고 보고되고 있습니다.</p>
+
+<p>오라클은 GraalVM Community Edition에 추가적인 개선을 적용하여 GraalVM Enterprise Edition 상용 솔루션으로 판매하고 있습니다. Oracle Java, OpenJDK, GraalVM은 어느것이 더 안정성을 기준으로하는 것이 아닌, 새로운 기능을 적용하는 방식과 관점에 따라서 다른 접근법을 가집니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>Java 유형</th>
+<th>성격</th>
+<th>신기술 적용 방식</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Oracle Java</td>
+<td>OpenJDK의 엔터프라이즈 유지보수 버전</td>
+<td>보수적이고 신중하게 버그 중심의 기슨 개선, 오류에 대한 Fix에 중심을 두고 있음</td>
+</tr>
+
+<tr>
+<td>OpenJDK</td>
+<td>표준 자바</td>
+<td>Java Spec과 JEP에 따른 표준화된 기능 추가 및 기능 개선에 중점을 두고 있음</td>
+</tr>
+
+<tr>
+<td>GraalVM</td>
+<td>다양성 자바</td>
+<td>신기술 및 새로운 개념 및 기법을 적용하고 검증하는 용도로, 새로운 변화를 적극적으로 반영, 빠르게 변화하는 업계의 요구 사항을 빠르게 수용</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="질문4-앞으로도-graalvm-ce를-지원할-것인가">질문4: 앞으로도 GraalVM CE를 지원할 것인가?</h3>
+
+<p>GraalVM의 Community Edition을 오라클이 과연 계속 유지할 것인지 궁금해 사시는 분들이 많습니다. GraalVM CE(Community Edition)을 도입했는데, 갑자기 GraalVM CE를 물론 이 부분에 대해 확실한 예측을 할 수는 없습니다. 그러나 GraalVM이 개발된 역사와 산학연으로 구성되고 오픈소스 형식으로 개발되는 것 그리고 GraalVM,  OpenJDK 그리고 Orale Java 각자의 역할과 선순환 구조를 생각할 때, 저는 GraalVM CE는 계속 유지될 것으로 예상합니다.</p>
+
+<p>오라클이 GraalVM Enterprise Edition로 수익을 올리는 것도 중요하지만, 이것 보다는 GraalVM CE를 활성화 시켜 자바에 대한 새로운 시도와 완성도에 대한 다양한 피드백 받고, 이 결과를 OpenJDK에 반영하고 지속적으로 효과적인 자바 개발의 선순환 구조를 유지하는 것이 오라클에 더 필요하다고 생각합니다. 이러한 이유로 오라클은 GraalVM CE를 없애기 보다는 더 많이 확산시키는 쪽으로 움직일 것이라고 생각합니다.</p>
+
+<h2 id="마치며">마치며&hellip;</h2>
+
+<p>GraalVM가 Oracle Labs를 중심으로 여러 산학연 조직이 참여하여 만드는 오픈소스 자바로 OpenJDK를 기반으로하는 다양성 자바의 한가지 유형입니다. GraalVM의 역사는 짧게는 7년 길게는 14년의 역사를 가집니다. 자바로 자바를 만드는 Meta-circular Java에 대산 R&amp;D로 시작하여 클라우드와 OpenJDK의 등장과 함께 클라우드 JDK로 각광을 받고 있습니다.</p>
+
+<p>오라클에서 GraalVM은 다양성 자바와 새로운 기술을 실험하고 적용하고 점증하는 역할을 담당합니다. GraalVM은 현장의 요구 사항을 빠르게 수용하고 새로운 개념을 적용하기 좋은 자바입니다. GraalVM에서 검증된 신기술은 OpenJDK에 전달되어 표준화됩니다. 이렇게 OpenJDK에서 표준화된 새로운 기능은 Oracle Java에 유입되고 안정화되고 유지보수 됩니다.</p>
+
+<p>GraalVM은 오라클에서 새로운 기능을 적용하고 실험하는 역할을 담당하고, 자바 기술 혁신이 근원이 됩니다. GraalVM에서 적용하고 안정화된 기능은 OpenJDK와 Oracle Java에 순차적으로 적용됩니다.</p>
+
+<p>오라클은 GraalVM, OpenJDK와 Oracle Java를 구조화하여, 새로운 기술을 개발하고 적용하고 표준화하고 안정화하는 기술 발전의 순순환 구조를 만들고 있습니다. GraalVM은 Community Edition과 Enterprise Edition으로 구분하여 확상되고 있습니다. 오라클은 GraalVM의 Community Edition을 통해서 새로 적용한 기술을 검증하고 피드백을 받을수 있게 되었고, 이 피드백을 통해서 업계에서 필요한 기능을 신속하게 적용하고 개선하는 환경을 만들었습니다.</p>
+
+<p>또한 이렇게 검증한 기술을 OpenJDK에 적용하고 표준화하여 안전화게 유지보수하는 Oracle Java에 반영하는 효율적인 체계를 갖추게 되었습니다.</p>
+
+<p>GraalVM은 오라클에서 다음과 같은 특징을 갖습니다.</p>
+
+<ul>
+<li>자바 개발의 선순환 체제의 시작점: 새로운 개념과 기술을 적용하는 자바 확장 및 실험 환경</li>
+<li>풍부한 피드백: 오픈소스와 GraalVM Communtiy Edition을 통한 활발한 피드백 수집과 개선</li>
+<li>고성능 자바: Graal JIT 컴파일러와 메모리 구조</li>
+<li>Native 특징을 이용한 효율적인 임베디드 자바</li>
+</ul>
+
+<p>현재 GraalVM은 Orace Labs를 중심으로 여러 산학연 참여 조직과 함께 오픈소스로 빠른 발전을 하고 있고, 오라클의 개발과 QA 프로세스를 통해서 높은 안전성과 품질로 관리되고 있습니다. 이렇게 GraalVM은 신 기술을 효과적으로 실험하고 검증하는 다양성 자바의 시작점의 역할과 함께 신기술을 개발하고 검증하여 표준 자바인 OpenJDK의 JEP에 제안하고 기술 확산 체계의 시작점 역할을 함께 수행하고 있습니다.</p>
+
+<h2 id="관련-문서">관련 문서</h2>
+
+<ul>
+<li><a href="/post/graalvm_seminar/" target="_blank">Cloud Native Java:GraalVM (@Oracle Developer Meetup)[↗NW]</a>
+ (세미나 발표 자료)</li>
+<li><a href="http://taewan.kim/post/oracle_java_subscription/">http://taewan.kim/post/oracle_java_subscription/</a> 오라클 자바 라이센스 정리: Oracle Java SE Subscription</li>
+<li><a href="http://taewan.kim/post/openjdk/">http://taewan.kim/post/openjdk/</a> 자바의 새로운 도약: OpenJDK(Feat. Oracle JDK Subscription)</li>
+</ul>
+
+<h2 id="참조-문서">참조 문서</h2>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Sun_Microsystems_Laboratories" target="_blank">Wikipedia: Sun Microsystems Laboratories[↗NW]</a>
+</li>
+<li><a href="https://en.wikipedia.org/wiki/Maxine_Virtual_Machine" target="_blank">Wikipedia: Maxine Virtual Machine[↗NW]</a>
+</li>
+<li><a href="https://openjdk.java.net/projects/graal/" target="_blank">OpenJDK, Graal 소개[↗NW]</a>
+</li>
+<li><a href="https://d2.naver.com/helloworld/1219" target="_blank">Naver D2: JDK7   [↗NW]</a>
+</li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">meta-circular 스타일이란 언어를 실행하는 환경과 코드를 개발하는 언어가 같은 스타일을 의미합니다. PyPy와 같이 파이썬으로 만든 파이썬이 meta-circular 구현체의 대표적인 예입니다.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/java/" rel="tag">java</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/graalvm/" rel="tag">graalvm</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/openjdk/" rel="tag">openjdk</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan2.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+	<div class="notices disclaimer"><p>이 저작물은 Oracle과 관계없이 개인으로서 개인의 시간을 할애하여 작성된 글 입니다. 본 글의 내용, 입장, 예측은 Oracle을 공식적으로 <font color="red"><bold>절대</bold></font> 대변하지 않습니다.</p></div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/post/graalvm_seminar/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Cloud Native Java:GraalVM (@Oracle Developer Meetup)</p></a>
+	</div>
+</nav>
+
+	
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/post/position_of_graalvm/"></div>
+
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		
+		<ins class="adsbygoogle"
+			 style="display:block"
+			 data-ad-client="ca-pub-8469722754608892"
+			 data-ad-slot="5594090168"
+			 data-ad-format="auto"
+			 data-full-width-responsive="true"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	
+
+<div class="widget-categories widget">	
+		<div class="fb-like" data-href="http://taewan.kim/post/position_of_graalvm/" 
+		data-layout="standard" data-action="like" 
+		data-size="small" 
+		data-show-faces="true" 
+		data-share="true"></div>
+</div>
+	
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#독특한-graalvm">독특한 GraalVM</a>
+<ul>
+<li><a href="#oracle-labs의-산학연의-협력-연구과제-graalvm">Oracle Labs의 산학연의 협력 연구과제: GraalVM</a></li>
+<li><a href="#meta-circular-java에-대한-도전">Meta-circular Java에 대한 도전</a></li>
+<li><a href="#클라우드-지향-자바">클라우드 지향 자바</a></li>
+<li><a href="#개방성을-지향하는-개발-팀">개방성을 지향하는 개발 팀</a></li>
+</ul></li>
+<li><a href="#자주-듣는-질문">자주 듣는 질문</a>
+<ul>
+<li><a href="#질문1-왜-오라클은-graalvm을-만들었는가">질문1: 왜 오라클은 GraalVM을 만들었는가?</a></li>
+<li><a href="#질문2-오라클은-graalvm의-포지션은">질문2: 오라클은 GraalVM의 포지션은?</a></li>
+<li><a href="#질문4-그럼-graalvm은-불안정한-테스트용-jdk입니까">질문4: 그럼 GraalVM은 불안정한 테스트용 JDK입니까?</a></li>
+<li><a href="#질문4-앞으로도-graalvm-ce를-지원할-것인가">질문4: 앞으로도 GraalVM CE를 지원할 것인가?</a></li>
+</ul></li>
+<li><a href="#마치며">마치며&hellip;</a></li>
+<li><a href="#관련-문서">관련 문서</a></li>
+<li><a href="#참조-문서">참조 문서</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	<div class="widget-categories widget">
+  <h4 class="widget__title">관련도서</h4>
+  <div class="widget__content" align="center">
+      <ul class="widget__list">
+          <li class="widget__item"><a href="http://www.yes24.com/Product/Goods/69335909" target="_blank"><img src="https://taewanmerepo.github.io/2019/02/pytorch/book200.jpg"/></a></li>
+      </ul>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/post/position_of_graalvm/" title="GraalVM의 오라클 포지션과 역할에 대하여..">
+							GraalVM의 오라클 포지션과 역할에 대하여..</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/days_of_searching_for_first_love/" title="[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기">
+							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
+							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
+							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/function_in_semicolon/" title="함수 표기법: 세미콜론으로 변수와 파라미터 구분">
+							함수 표기법: 세미콜론으로 변수와 파라미터 구분</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_connection_info/" title="Oracle OCI 접속 정보 수집">
+							Oracle OCI 접속 정보 수집</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/bigdata_is_bubble/" title="&#39;빅데이터는 거품이다&#39; 리뷰">
+							&#39;빅데이터는 거품이다&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/rsa_with_oci_cli/" title="OCI CLI로 RSA key pair 생성">
+							OCI CLI로 RSA key pair 생성</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/math">Math</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">Licesne</h4>
+	<div class="widget__content">
+		<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+	</div>
+	<div class="widget__content">
+		이 저작물은 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank>크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2019 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-72835175-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

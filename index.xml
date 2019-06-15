@@ -6,10 +6,20 @@
     <description>Recent content on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 08 Jun 2019 09:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 15 Jun 2019 08:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>GraalVM의 오라클 포지션과 역할에 대하여..</title>
+      <link>http://taewan.kim/post/position_of_graalvm/</link>
+      <pubDate>Sat, 15 Jun 2019 08:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/position_of_graalvm/</guid>
+      <description>2019년 4월에 GraalVM이 GA되었고, 여러 프레임워크(Spring, SpringFoo, Micornut, Picocli, Quarkus)가 GraalVM의 지원을 발표하거나 다양한 가능성을 제시하면서 최근에 GraalVM에 대한 관심이 점차 높아지고 있습니다. 또한 GraalVM 자체가 어떤 의미를 갖는지 궁금해 하시는 분들이 많아지고 있습니다. 최근에 GraalVM 세미나를 진행하면 다음과 같은 질문을 자주 받습니다.
+ 오라클에서 GraalVM이 갖는 포지션과 역할? 오라클은 GraalVM을 계속 지원할 것인가? 앞으로 GraalVM Enterprise Edition만 지원하는 것은 아닌가?  이런 내용에 대한 공식적인 오라클의 답변은 현재까지는 없기 때문에 명확하게 답할 수는 없는 내용들 입니다.</description>
+    </item>
     
     <item>
       <title>[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</title>
