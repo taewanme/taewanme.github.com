@@ -124,7 +124,7 @@
 <li>오라클은 GraalVM CE(Community Edition)을 계속 지원할 것인가?</li>
 </ul>
 
-<p>현재 이런 질의에 대한 오라클의 공식적인 발표는 없기에 명확하게 답할 수는 없습니다. 그러나 GraalVM을 초기부터 봐온 엔지니어 입장에서, 개인적인 의견임을 전제로 이와 같은 질문을 답변을 정리해 보겠습니다.</p>
+<p>현재 이와 같은 질의에 대한 오라클의 공식적인 발표는 없기에 명확하게 답할 수는 없습니다. 그러나 GraalVM을 초기부터 봐온 엔지니어로써 개인적인 의견임을 전제로 이 질문에 대해서 정리해 보겠습니다.</p>
 
 <div class="notices warning" ><p>2019년 5월 현재 필자는 오라클 소속이지만, 이 저작물은 Oracle과 관계없이 개인으로서 개인의 시간을 할애하여 작성된 글 입니다. 본 글의 내용, 입장, 예측은 <font color='red'>Oracle</font>을 공식적으로 <font color='red'>절대</font> 대변하지 않습니다. 본 저작물은 전적으로 개인의 생각임을 다시한번 강조합니다.</p>
 </div>
@@ -132,7 +132,7 @@
 
 <h2 id="독특한-graalvm">독특한 GraalVM</h2>
 
-<p>위에서 언급한 질문을 바로 들어가기 전에 몇 가지 GraalVM의 특징을 살펴보겠습니다. GraalVM에 특징을 이해한다면, 향후 모습을 예측하는데 도움이 될 것입니다. 제가 특이하다고 느끼는 몇가지 특징을 정리해 보겠습니다. GraalVM에 익숙하시다면 다음 절로 바로 넘기셔도 좋습니다. 제가 생각하는 GraalVM의 특이점은 다음과 같습니다.</p>
+<p>위에서 언급한 질문을 바로 들어가기 앞서, 몇 가지 GraalVM의 특징을 살펴보겠습니다. GraalVM에 익숙하시다면 다음 절로 바로 넘기셔도 좋습니다. GraalVM에 특징을 이해한다면, 향후 모습을 예측하는데 도움이 될 것입니다. 다음은 GraalVM의 주요 특징 중에서 제가 주목하는 항목입니다.</p>
 
 <ul>
 <li>Oracle Labs가 주도적으로 개발하는 Java</li>
@@ -141,7 +141,7 @@
 <li>개방성을 지향하는 개발 팀</li>
 </ul>
 
-<p>이와 같은 각 특징에 대하여 간략히 정리해 보겠습니다.</p>
+<p>이 특징에 대하여 간략히 정리해 보겠습니다.</p>
 
 <h3 id="oracle-labs의-산학연의-협력-연구과제-graalvm">Oracle Labs의 산학연의 협력 연구과제: GraalVM</h3>
 
@@ -149,19 +149,20 @@
 
 <p><img src="https://taewanmerepo.github.io/2019/06/graalvm/020.jpg" alt="" /></p>
 
-<p>Oracle Labs는 외부에 자주 노출되는 않는 순수 R&amp;D 조직입니다. Oracle Labs는 시작점은 썬 마이크로시스템즈입니다. Sun Labs(Sun Microsystems Laboratories)는 1990년에 만들어졌고, 2010년에 썬 마이크로시스템즈가 오라클에 합병되면서 이름이 Oracle Labs로 변경되었습니다.</p>
+<p>Oracle Labs는 외부에 자주 노출되는 않는 순수 R&amp;D 조직입니다. Oracle Labs는 시작점은 썬 마이크로시스템즈입니다. Sun Labs(Sun Microsystems Laboratories)는 1990년에 만들어졌고, 2010년에 썬 마이크로시스템즈가 오라클에 합병되면서 이름이 Oracle Labs로 변경되었습니다. 기존의 개발팀이 아닌 순수 R&amp;D 조직에서 Product을 개발한다는 것은 기존에 오라클에서 볼 수 없었던 모습입니다.</p>
 
-<p>GraalVM의 개발에는 Oracle Labs와 협력사, 여러 대학의 연구실이 참여합니다.</p>
+<p>GraalVM의 오라클이 개발을 전담하는 소프트웨어가 아닙니다. GraalVM 개발에는 Oracle Labs와 협력사, 여러 대학의 연구실이 참여합니다.</p>
 
-<p><img src="https://taewanmerepo.github.io/2019/06/graalvm/010.jpg" alt="" /></p>
+<p><img src="https://taewanmerepo.github.io/2019/06/graalvm/010.jpg" alt="" />
+- 그림 1. GraalVM 개발 조직과 개발자</p>
 
-<p>위 그림과 같이 Oracle Labs를 중심으로, Red Hat, Twitter, Intel이 참여하고 있고 9개 대학의 연구소가 GraalVM 개발에 참여하고 있습니다. 이 산학연 개발팀은 GraalVM을 주제로 7년간(2012~2019.06) 총 64편의 논문을 발표했습니다. (<a href="https://www.graalvm.org/community/publications/" target="_blank">전체 논문 목록[↗NW]</a>
-)</p>
+<p>그림 1과 같이 Oracle Labs를 중심으로, Red Hat, Twitter, Intel이 참여하고 있고 9개 대학의 연구소가 GraalVM 개발에 참여하고 있습니다. 이 산학연 개발팀은 GraalVM을 주제로 7년간(2012~2019.06) 총 64편의 논문을 발표했습니다. (<a href="https://www.graalvm.org/community/publications/" target="_blank">전체 논문 목록[↗NW]</a>
+)<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup></p>
 
 <h3 id="meta-circular-java에-대한-도전">Meta-circular Java에 대한 도전</h3>
 
 <p>GraalVM의 원류는 &ldquo;<strong><a href="https://en.wikipedia.org/wiki/Maxine_Virtual_Machine" target="_blank">Maxine Virtual Machine(Maxine VM)[↗NW]</a>
-</strong>&ldquo;입니다. Maxine VM은 meta-circular 스타일<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>의 자바에 대한 연구로, 2005년에 멘체스터 대학과 Sun Labs가 함께 시작한 자바 R&amp;D 주제였습니다. Java HotSpot 성능 개선이 한계점에 도달하면서 2005년 순수 연구 주제로 시작한 Maxine VM은 세상이 주목을 받게됩니다. C++로 개발된 자바 컴파일러(C2 JIT 컴파일러)의 대안이 요구되는 상황에서 세상의 큰 주목을 받았습니다.</p>
+</strong>&ldquo;입니다. Maxine VM은 meta-circular 스타일<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>의 자바에 대한 연구로, 2005년에 멘체스터 대학과 Sun Labs가 함께 시작한 자바 R&amp;D 주제였습니다. Java HotSpot 성능 개선이 한계점에 도달하면서 2005년 순수 연구 주제로 시작한 Maxine VM은 세상이 주목을 받게됩니다. C++로 개발된 자바 컴파일러(C2 JIT 컴파일러)의 대안이 요구되는 상황에서 세상의 큰 주목을 받았습니다.</p>
 
 <p>2012년에 GraalVM은 OpenJDK의 서브 프로젝트로 등록되었습니다. OpenJDK의 서브 프로젝트인 GraalVM의 목표는 Meta-Circular 자바의 구현과 C2 JIT 컴파일러 Graal로 대체하는 것입니다. 7년의 개발 기간을 거쳐 2019년 5월에 GraalVM 버전 1.0이 공개되었습니다. GraalVM의 역사는 프로젝트 명을 기준으로는 7년, 연구 과제의 시작점을 기준으로는 총 14년의 역사를 가집니다.</p>
 
@@ -285,7 +286,8 @@
 <ul>
 <li><a href="/post/graalvm_seminar/" target="_blank">Cloud Native Java:GraalVM (@Oracle Developer Meetup)[↗NW]</a>
  (세미나 발표 자료)</li>
-<li><a href="http://taewan.kim/post/oracle_java_subscription/">http://taewan.kim/post/oracle_java_subscription/</a> 오라클 자바 라이센스 정리: Oracle Java SE Subscription</li>
+<li><a href="/post/oracle_java_subscription/%20" target="_blank">오라클 자바 라이센스 정리: Oracle Java SE Subscription[↗NW]</a>
+ (세미나 발표 자료)<a href="http://taewan.kim/post/oracle_java_subscription/">http://taewan.kim/post/oracle_java_subscription/</a></li>
 <li><a href="http://taewan.kim/post/openjdk/">http://taewan.kim/post/openjdk/</a> 자바의 새로운 도약: OpenJDK(Feat. Oracle JDK Subscription)</li>
 </ul>
 
@@ -306,8 +308,10 @@
 <hr />
 
 <ol>
-<li id="fn:1">meta-circular 스타일이란 언어를 실행하는 환경과 코드를 개발하는 언어가 같은 스타일을 의미합니다. PyPy와 같이 파이썬으로 만든 파이썬이 meta-circular 구현체의 대표적인 예입니다.
+<li id="fn:1">2012년은 OpenJDK 프로젝트에 Graal 서브 프로젝트가 등록된 해입니다. GraalVM 개발이 외부에 공개된 시점입니다.
  <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">meta-circular 스타일이란 언어를 실행하는 환경과 코드를 개발하는 언어가 같은 스타일을 의미합니다. PyPy와 같이 파이썬으로 만든 파이썬이 meta-circular 구현체의 대표적인 예입니다.
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
 </ol>
 </div>
 
