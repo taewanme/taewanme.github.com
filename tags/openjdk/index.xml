@@ -6,7 +6,7 @@
     <description>Recent content in Openjdk on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 Jun 2019 08:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 16 Jun 2019 07:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/openjdk/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>GraalVM의 포지션과 역할에 대하여..</title>
       <link>http://taewan.kim/post/position_of_graalvm/</link>
-      <pubDate>Sat, 15 Jun 2019 08:28:14 +0900</pubDate>
+      <pubDate>Sun, 16 Jun 2019 07:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/post/position_of_graalvm/</guid>
       <description>2019년 5월에 GraalVM이 GA되었고, 여러 프레임워크(Spring, SpringFoo, Micornut, Picocli, Quarkus)가 GraalVM 지원을 발표하거나 다양한 가능성을 제시하면서 최근에 GraalVM에 대한 관심이 점차 높아지고 있습니다. 또한 GraalVM 자체가 어떤 의미를 갖는지 궁금해 하시는 분들이 많아지고 있습니다. 최근에 GraalVM을 주제로 세미나를 진행하면 다음과 같은 질문을 자주 받습니다.
