@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on taewan.kim 블로그</title>
+    <title>taewan.kim 블로그</title>
     <link>http://taewan.kim/categories/</link>
-    <description>Recent content in Categories on taewan.kim 블로그</description>
+    <description>Recent content on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 22 Aug 2018 23:28:14 +0900</lastBuildDate>
@@ -12,75 +12,28 @@
     
     
     <item>
-      <title></title>
-      <link>http://taewan.kim/categories/</link>
+      <title>다차원 텐서 Transpose와 Reshape</title>
+      <link>http://taewan.kim/post/transpose_reshape/</link>
       <pubDate>Wed, 22 Aug 2018 23:28:14 +0900</pubDate>
       
-      <guid>http://taewan.kim/categories/</guid>
-      <description></description>
+      <guid>http://taewan.kim/post/transpose_reshape/</guid>
+      <description>CNN과 같은 이미지 데이터를 다룰 때 입력 데이터로 4차원 텐서를 다룹니다. 이 4차원 데이터는 (image 수, channel 수, Height , Width)와 같은 구조를 갖습니다. 데이터를 전처리하는 과정에서 Channel First인 텐서를 Channel Last 텐서로 변형해야 하는 상황이 발생했습니다. 처음에 4차원 구조는 상상하기도 어려운데 4차원 텐서를 전치하라는 것은 어떤 의미인지 난감했습니다.
+문제의 시작: Channel First를 Channel Last로 변환 파이토치로 CIFAR10 데이터셋을 읽어와서 대상 이미지를 Mathplotlib의 plt.imshow() 함수로 출력하는 작업을 진행했습니다.
+# 변환기 파이프라인  transform = transforms.</description>
     </item>
     
     <item>
-      <title>Bigdata</title>
-      <link>http://taewan.kim/categories/bigdata/</link>
-      <pubDate>Sun, 15 Apr 2018 15:59:47 +0900</pubDate>
+      <title>Big Data Cloud Hands-on 세미나</title>
+      <link>http://taewan.kim/seminar/180516_bdc_handson/</link>
+      <pubDate>Wed, 16 May 2018 21:28:14 +0900</pubDate>
       
-      <guid>http://taewan.kim/categories/bigdata/</guid>
-      <description></description>
+      <guid>http://taewan.kim/seminar/180516_bdc_handson/</guid>
+      <description>세니마 정보  일시: 2018.05.16 13:30 ~ 18:00 장소: 아셈타워 15층 15008 관련 문서 다운로드:  notebook: https://drive.google.com/file/d/1-B814XXn1bbyQtEWbcbYSydZc13EewPt/view?usp=sharing pdf: https://drive.google.com/file/d/1iQBEZ28yWELC8YnyjoPZprcIxGwy6BTu/view?usp=sharing  출입관련 주의 사항  출입을 위해서 아셈타워 일층에서 출입 등록을 하셔야 합니다. (3-5 분 소요)   세미나 구성 Oracle Big Data Cloud Hands-on은 다음과 같은 세션으로 구성됩니다.
+ Preview of Today Course1: 데이터 정제하기 Course2: 데이터 그리기 Cousee3: 머신러닝 체험하  서버 접속 정보 Spark 클러스터 접속 정보는 참석자 등록 메일로 발송될 예정입니다.</description>
     </item>
     
-    <item>
-      <title>Blogs.oracle.com</title>
-      <link>http://taewan.kim/categories/blogs.oracle.com/</link>
-      <pubDate>Wed, 04 Oct 2017 21:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/categories/blogs.oracle.com/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Book</title>
-      <link>http://taewan.kim/categories/book/</link>
-      <pubDate>Sat, 08 Jun 2019 09:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/categories/book/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Cloud</title>
-      <link>http://taewan.kim/categories/cloud/</link>
-      <pubDate>Fri, 19 Apr 2019 09:17:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/categories/cloud/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>It Life</title>
-      <link>http://taewan.kim/categories/it-life/</link>
-      <pubDate>Fri, 30 Mar 2018 21:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/categories/it-life/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Java</title>
-      <link>http://taewan.kim/categories/java/</link>
-      <pubDate>Sat, 15 Jun 2019 08:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/categories/java/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Language</title>
-      <link>http://taewan.kim/categories/language/</link>
-      <pubDate>Sun, 07 Oct 2018 19:59:47 +0900</pubDate>
-      
-      <guid>http://taewan.kim/categories/language/</guid>
-      <description></description>
+  </channel>
+</rss>ion></description>
     </item>
     
     <item>
