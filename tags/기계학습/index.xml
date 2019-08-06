@@ -6,19 +6,10 @@
     <description>Recent content in 기계학습 on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Jun 2019 09:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 07 Oct 2018 19:59:47 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>[4/1000]&#39;백설공주 거울과 인공지은&#39; 책 후기</title>
-      <link>http://taewan.kim/book/whitesnow_princessdic_dl/</link>
-      <pubDate>Thu, 20 Jun 2019 09:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/book/whitesnow_princessdic_dl/</guid>
-      <description>&amp;ldquo;백설공주 거울과 인공지능 이야기(볼츠만 머신러닝과 딥러닝까지)&amp;ldquo;는 Jpub에서 2018년 10월 출간한 일본 번역서이다. 일본 저서 특유의 만화적인 요소를 가미한 기술서이다. 백설공주 동화의 왕비가 등장하고 왕비가 마법 거울과 대화하며 딥러닝을 이해해가는 과정을 큰 축으로 한다. 원서는 2018년 일본에서 우수 도서로 선정된 유명한 책이다.</description>
-    </item>
     
     <item>
       <title>Docker Image: 파이썬 기반 머신러닝 학습용 이미지</title>
@@ -94,6 +85,15 @@ Example과 Sample  The MNIST database of handwritten digits, available from this
       <description>파이썬을 기반으로 머신러닝이나 딥러닝 작업을 진행할 때 가장 귀찮고 꺼려지는 작업은 기본 환경을 준비하는 과정입니다. 파이썬 기본 환경을 효과적으로 관리하기 위해서 Docker Image 형태로 PYML을 만들었습니다. PYML은 텐서플로우, 파이토치, 케라스 및 Scikit-Learn을 활용하여 데이터를 분석할 수 있는 환경이며 UI로 IPython을 사용합니다.
 taewanme/pyml 컨테이너 이미지 pyml 더커 이미지는 docker hub에 자동 빌드 프로젝트 형태로 배포되어 있습니다. pyml을 관리하는 레파지토리 주소는 다음 URL과 같습니다.
  https://hub.docker.com/r/taewanme/pyml/  2018년 7월 5일 현재 최신 버전은 0.</description>
+    </item>
+    
+    <item>
+      <title>CNN, Convolutional Neural Network 요약</title>
+      <link>http://taewan.kim/graalvm/graalvm/</link>
+      <pubDate>Thu, 04 Jan 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/graalvm/graalvm/</guid>
+      <description>Fully Connected Layer1 만으로 구성된 인공 신경망의 입력 데이터는 1차원(배열) 형태로 한정됩니다. 한 장의 컬러 사진은 3차원 데이터입니다. 배치 모드에 사용되는 여러장의 사진은 4차원 데이터입니다. 사진 데이터로 전연결(FC, Fully Connected) 신경망을 학습시켜야 할 경우에, 3차원 사진 데이터를 1차원으로 평면화시켜야 합니다. 사진 데이터를 평면화 시키는 과정에서 공간 정보가 손실될 수밖에 없습니다. 결과적으로 이미지 공간 정보 유실로 인한 정보 부족으로 인공 신경망이 특징을 추출 및 학습이 비효율적이고 정확도를 높이는데 한계가 있습니다. 이미지의 공간 정보를 유지한 상태로 학습이 가능한 모델이 바로 CNN(Convolutional Neural Network)입니다.</description>
     </item>
     
     <item>

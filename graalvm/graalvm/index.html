@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>CNN, Convolutional Neural Network 요약</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.52" />
+<meta property="og:title" content="CNN, Convolutional Neural Network 요약" />
+<meta property="og:description" content="Convolutional Neural Network, CNN을 정리합니다. " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/graalvm/graalvm/" /><meta property="article:published_time" content="2018-01-04T21:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2018-01-04T21:28:14&#43;09:00"/>
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="http://taewan.kim/css/jupyter.css" type="text/css" media="all" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/graalvm/" title="GraalVM 관련 새소식 및 기술 문서를 담고 있습니다." >GRAALVM</a></li>
+		<li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Deep Learning 구현 기술에 대하여 정리합니다." >TUTORIAL &amp; MANUAL</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">CNN, Convolutional Neural Network 요약 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2018-01-04 21:28:14 &#43;0900 KST">January 04, 2018</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/machine-learning" rel="category">Machine Learning</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2018/01/cnn/head.png" alt="CNN, Convolutional Neural Network 요약">
+			</figure>
+			
+
+<p>Fully Connected Layer<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> 만으로 구성된 인공 신경망의 입력 데이터는 1차원(배열) 형태로 한정됩니다.
+한 장의 컬러 사진은 3차원 데이터입니다. 배치 모드에 사용되는 여러장의 사진은 4차원 데이터입니다.
+사진 데이터로 전연결(FC, Fully Connected) 신경망을 학습시켜야 할 경우에, 3차원 사진 데이터를 1차원으로 평면화시켜야 합니다.
+사진 데이터를 평면화 시키는 과정에서 공간 정보가 손실될 수밖에 없습니다.
+결과적으로 이미지 공간 정보 유실로 인한 정보 부족으로 인공 신경망이 특징을 추출 및 학습이 비효율적이고 정확도를 높이는데 한계가 있습니다.
+이미지의 공간 정보를 유지한 상태로 학습이 가능한 모델이 바로 CNN(Convolutional Neural Network)입니다.</p>
+
+<p>CNN(Convolutional Neural Network)은 기존 Fully Connected Neural Network와 비교하여 다음과 같은 차별성을 갖습니다.</p>
+
+<ul>
+<li>각 레이어의 입출력 데이터의 형상 유지</li>
+<li>이미지의 공간 정보를 유지하면서 인접 이미지와의 특징을 효과적으로 인식</li>
+<li>복수의 필터로 이미지의 특징 추출 및 학습</li>
+<li>추출한 이미지의 특징을 모으고 강화하는 Pooling 레이어</li>
+<li>필터를 공유 파라미터로 사용하기 때문에, 일반 인공 신경망과 비교하여 학습 파라미터가 매우 적음</li>
+</ul>
+
+<p>CNN은 위 이미지와 같이 이미지의 특징을 추출하는 부분과 클래스를 분류하는 부분으로 나눌 수 있습니다. 특징 추출 영역은 Convolution Layer와 Pooling Layer를 여러 겹 쌓는 형태로 구성됩니다.<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup> Convolution Layer는 입력 데이터에 필터를 적용 후 활성화 함수를 반영하는 필수 요소입니다. Convolution Layer 다음에 위치하는 Pooling Layer는 선택적인 레이어입니다. CNN 마지막 부분에는 이미지 분류를 위한 Fully Connected 레이어가 추가됩니다. 이미지의 특징을 추출하는 부분과 이미지를 분류하는 부분 사이에 이미지 형태의 데이터를 배열 형태로 만드는 Flatten 레이어가 위치 합니다.</p>
+
+<p>CNN은 이미지 특징 추출을 위하여 &lt;그림1&gt;과 같이 입력데이터를 필터가 순회하며 합성곱을 계산하고, 그 계산 결과를 이용하여 Feature map을 만듭니다. Convolution Layer는 Filter 크기, Stride, Padding 적용 여부, Max Pooling 크기에 따라서 출력 데이터의 Shape이 변경됩니다.</p>
+
+<h2 id="1-cnn의-주요-용어-정리">1. CNN의 주요 용어 정리</h2>
+
+<p>CNN에는 다음과 같은 용어들이 사용됩니다.</p>
+
+<ul>
+<li>Convolution(합성곱)</li>
+<li>채널(Channel)</li>
+<li>필터(Filter)</li>
+<li>커널(Kernel)</li>
+<li>스트라이드(Strid)</li>
+<li>패딩(Padding)</li>
+<li>피처 맵(Feature Map)</li>
+<li>액티베이션 맵(Activation Map)</li>
+<li>풀링(Pooling) 레이어</li>
+</ul>
+
+<p>간략하게 각 용어에 대해서 살펴 보겠습니다.</p>
+
+<h3 id="1-1-합성곱-convolution">1.1 합성곱, Convolution</h3>
+
+<p>합성곱, Convolution의 위키피디아 정의는 다음과 같습니다.</p>
+
+<blockquote>
+<p>합성곱 연산은 두 함수 f, g 가운데 하나의 함수를 반전(reverse), 전이(shift)시킨 다음, 다른 하나의 함수와 곱한 결과를 적분하는 것을 의미한다.
+출처: <a href="https://ko.wikipedia.org/wiki/%ED%95%A9%EC%84%B1%EA%B3%B1">https://ko.wikipedia.org/wiki/%ED%95%A9%EC%84%B1%EA%B3%B1</a></p>
+</blockquote>
+
+<p>위키피디아의 정의는 상당히 난해합니다. &lt;그림 1&gt;은 2차원 입력데이터(Shape: (5,5))를 1개의 필터로 합성곱 연산을 수행하는 과정을 소개합니다. 합성곱 처리 결과로 부터 Feature Map을 만듭니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="http://deeplearning.stanford.edu/wiki/images/6/6c/Convolution_schematic.gif" alt="합성곱 처리 절치, 출처: http://deeplearning.stanford.edu/wiki/index.php/Feature_extraction_using_convolution" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 1</strong>:
+        
+        합성곱 처리 절치, 출처: http://deeplearning.stanford.edu/wiki/index.php/Feature_extraction_using_convolution
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<h3 id="1-2-채널-channel">1.2 채널, Channel</h3>
+
+<p>이미지 픽셀 하나하나는 실수입니다. 컬러 사진은 천연색을 표현하기 위해서, 각 픽셀을 RGB 3개의 실수로 표현한 3차원 데이터입니다.(&lt;그림 2&gt; 참조) 컬러 이미지는 3개의 채널로 구성됩니다. 반면에 흑백 명암만을 표현하는 흑백 사진은 2차원 데이터로 1개 채널로 구성됩니다. 높이가 39 픽셀이고 폭이 31 픽셀인 컬러 사진 데이터의 shape은 (39, 31, 3)<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup>으로 표현합니다. 반면에 높이가 39픽셀이고 폭이 31픽셀인 흑백 사진 데이터의 shape은 (39, 31, 1)입니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/01/cnn/channel.jpg" alt="3개의 채널로 만들어진 컬러 사진" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 2</strong>:
+        
+        3개의 채널로 만들어진 컬러 사진
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>Convolution Layer에 유입되는 입력 데이터에는 한 개 이상의 필터가 적용됩니다. 1개 필터는 Feature Map의 채널이 됩니다. Convolution Layer에 <strong>n개</strong>의 필터가 적용된다면 출력 데이터는 <strong>n개</strong>의 채널을 갖게 됩니다.</p>
+
+<h3 id="1-3-필터-filter-stride">1.3 필터(Filter) &amp; Stride</h3>
+
+<p>필터는 이미지의 특징을 찾아내기 위한 공용 파라미터입니다. Filter를 Kernel이라고 하기도 합니다. CNN에서 Filter와 Kernel은 같은 의미입니다. 필터는 일반적으로 (4, 4)이나 (3, 3)과 같은 정사각 행렬로 정의됩니다. CNN에서 학습의 대상은 필터 파라미터 입니다. &lt;그림 1&gt;과 같이 입력 데이터를 지정된 간격으로 순회하며 채널별로 합성곱을 하고 모든 채널(컬러의 경우 3개)의 합성곱의 합을 Feature Map로 만듭니다. 필터는 지정된 간격으로 이동하면서 전체 입력데이터와 합성곱하여 Feature Map을 만듭니다. &lt;그림 3&gt;은 채널이 1개인 입력 데이터를 (3, 3) 크기의 필터로 합성곱하는 과정을 설명합니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/01/cnn/conv.png" alt="합성곱 계산 절차" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 3</strong>:
+        
+        합성곱 계산 절차
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>필터는 입력 데이터를 지정한 간격으로 순회하면서 합성곱을 계산합니다. 여기서 지정된 간격으로 필터를 순회하는 간격을 Stride라고 합니다. &lt;그림 4&gt;는 strid가 1로 필터를 입력 데이터에 순회하는 예제입니다. strid가 2로 설정되면 필터는 2칸씩 이동하면서 합성곱을 계산합니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/01/cnn/filter.jpg" alt="Feature Map 과정" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 4</strong>:
+        
+        Feature Map 과정
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>입력 데이터가 여러 채널을 갖을 경우 필터는 각 채널을 순회하며 합성곱을 계산한 후, 채널별 피처 맵을 만듭니다. 그리고 각 채널의 피처 맵을 합산하여 최종 피처 맵으로 반환합니다. 입력 데이터는 채널 수와 상관없이 필터 별로 1개의 피처 맵이 만들어 집니다. &lt;그림 5 참조&gt;</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/01/cnn/conv2.jpg" alt="멀티 채널 입력 데이터에 필터를 적용한 합성곱 계산 절차" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 5</strong>:
+        
+        멀티 채널 입력 데이터에 필터를 적용한 합성곱 계산 절차
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>하나의 Convolution Layer에 크기가 같은 여러 개의 필터를 적용할 수 있습니다. 이 경우에 Feature Map에는 필터 갯수 만큼의 채널이 만들어집니다. 입력데이터에 적용한 필터의 개수는 출력 데이터인 Feature Map의 채널이 됩니다.</p>
+
+<p>Convolution Layer의 입력 데이터를 필터가 순회하며 합성곱을 통해서 만든 출력을 Feature Map 또는 Activation Map이라고 합니다. Feature Map은 합성곱 계산으로 만들어진 행렬입니다. Activation Map은 Feature Map 행렬에 활성 함수를 적용한 결과입니다. 즉 Convolution 레이어의 최종 출력 결과가 Activation Map입니다.</p>
+
+<h3 id="1-4-패딩-padding">1.4 패딩(Padding)</h3>
+
+<p>Convolution 레이어에서 Filter와 Stride에 작용으로 Feature Map 크기는 입력데이터 보다 작습니다.
+Convolution 레이어의 출력 데이터가 줄어드는 것을 방지하는 방법이 패딩입니다.
+패딩은 입력 데이터의 외각에 지정된 픽셀만큼 특정 값으로 채워 넣는 것을 의미합니다. 보통 패딩 값으로 0으로 채워 넣습니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/01/cnn/padding.png" alt="padding 예제: 2pixel 추가" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 6</strong>:
+        
+        padding 예제: 2pixel 추가
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>&lt;그림 6&gt;은 (32, 32, 3) 데이터를 외각에 2 pixel을 추가하여 (36, 36, 3) 행렬을 만드는 예제입니다.
+Padding을 통해서 Convolution 레이어의 출력 데이터의 사이즈를 조절하는 기능이 외에, 외각을 &ldquo;0&rdquo;값으로 둘러싸는 특징으로 부터 인공 신경망이
+이미지의 외각을 인식하는 학습 효과도 있습니다.</p>
+
+<h3 id="1-5-pooling-레이어">1.5 Pooling 레이어</h3>
+
+<p>풀링 레이어는 컨볼류션 레이어의 출력 데이터를 입력으로 받아서 출력 데이터(Activation Map)의 크기를 줄이거나 특정 데이터를 강조하는 용도로 사용됩니다.
+플링 레이어를 처리하는 방법으로는 Max Pooling과 Average Pooning, Min Pooling이 있습니다.
+정사각 행렬의 특정 영역 안에 값의 최댓값을 모으거나 특정 영역의 평균을 구하는 방식으로 동작합니다.
+&lt;그림 7&gt;은 Max pooling과 Average Pooling의 동작 방식을 설명합니다.
+일반적으로 Pooing 크기와 Stride를 같은 크기로 설정하여 모든 원소가 한 번씩 처리 되도록 설정합니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/02/cnn/maxpulling.png" alt="Pooling 예제: Max Pooling, Average Pooling" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 7</strong>:
+        
+        Pooling 예제: Max Pooling, Average Pooling
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>Pooling 레이어는 Convolution 레이어와 비교하여 다음과 같은 특징이 있습니다.</p>
+
+<ul>
+<li>학습대상 파라미터가 없음</li>
+<li>Pooling 레이어를 통과하면 행렬의 크기 감소</li>
+<li>Pooling 레이어를 통해서 채널 수 변경 없음</li>
+</ul>
+
+<p>CNN에서는 주로 Max Pooling을 사용합니다.</p>
+
+<h2 id="2-레이어별-출력-데이터-산정">2. 레이어별 출력 데이터 산정</h2>
+
+<p>Convloution 레이어와 Pooling 레이버의 출력 데이터 크기를 계산하는 방법을 소개합니다.</p>
+
+<h3 id="2-1-convolution-레이어-출력-데이터-크기-산정">2.1 Convolution 레이어 출력 데이터 크기 산정</h3>
+
+<p>입력 데이터에 대한 필터의 크기와 Stride 크기에 따라서 Feature Map 크기가 결정됩니다. 공식은 다음과 같습니다.</p>
+
+<ul>
+<li>입력 데이터 높이: H</li>
+<li>입력 데이터 폭: W</li>
+<li>필터 높이: FH</li>
+<li>필터 폭: FW</li>
+<li>Strid 크기: S</li>
+<li>패딩 사이즈: P</li>
+</ul>
+
+<blockquote>
+<ul>
+<li>식 1. 출력 데이터 크기 계산
+$$
+\begin{align}
+OutputHeight &amp; = OH = \frac{(H + 2P - FH)}{S} + 1 \\<br />
+OutputWeight &amp; = OW = \frac{(W + 2P - FW)}{S} + 1
+\end{align}
+$$</li>
+</ul>
+</blockquote>
+
+<p>&lt;식 1&gt;의 결과는 자연수가 되어야 합니다. 또한 Convolution 레이어 다음에 Pooling 레이어가 온다면, Feature Map의 행과 열 크기는 Pooling 크기의 배수여야 합니다. 만약 Pooling 사이즈가 (3, 3)이라면 위 식의 결과는 자연수이고 3의 배수여야 합니다. 이 조건을 만족하도록 Filter의 크기, Stride의 간격, Pooling 크기 및 패딩 크기를 조절해야 합니다.</p>
+
+<h3 id="2-2-pooling-레이어-출력-데이터-크기-산정">2.2 Pooling 레이어 출력 데이터 크기 산정</h3>
+
+<p>Pooling 레이어에서 일반적인 Pooling 사이즈를 정사각형입니다. Pooling 사이즈를 Stride 같은 크기로 만들어서, 모든 요소가 한번씩 Pooling되도록 만듭니다.
+입력 데이터의 행 크기와 열 크기는 Pooling 사이즈의 배수(나누어 떨어지는 수)여야 합니다. 결과적으로 Pooling 레이어의 출력 데이터의 크기는 행과 열의 크기를 Pooling 사이즈로 나눈 몫입니다.
+Pooling 크기가 (2, 2) 라면 출력 데이터 크기는 입력 데이터의 행과 열 크기를 2로 나눈 몫입니다. pooling 크기가 (3, 3)이라면 입력데이터의 행과 크기를 3으로 나눈 몫이 됩니다. &lt;식 2 참조&gt;</p>
+
+<blockquote>
+<ul>
+<li>식 2. 출력 데이터 크기 계산
+$$
+\begin{align}
+OutputRowSize &amp; = \frac{InputRowSize}{PoolingSize} \\<br />
+OutputColumnSize &amp; = \frac{InputColumnSize}{PoolingSize}
+\end{align}
+$$</li>
+</ul>
+</blockquote>
+
+<h2 id="3-cnn-구성">3. CNN 구성</h2>
+
+<p>&lt;그림 8&gt;은 전형적인 CNN 구성입니다. CNN은 Convolution Layer와 Max Pooling 레이어를 반복적으로 stack을 쌓는 특징 추출(Feature Extraction) 부분과
+Fully Connected Layer를 구성하고 마지막 출력층에 Softmax를 적용한 분류 부분으로 나뉩니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/01/cnn/cnnexam.png" alt="전형적인 CNN, 출처: https://www.researchgate.net/figure/Architecture-of-our-unsupervised-CNN-Network-contains-three-stages-each-of-which_283433254" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 8</strong>:
+        
+        전형적인 CNN, 출처: https://www.researchgate.net/figure/Architecture-of-our-unsupervised-CNN-Network-contains-three-stages-each-of-which_283433254
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>CNN을 구성하면서 Filter, Stride, Padding을 조절하여 특징 추출(Feature Extraction) 부분의 입력과 출력 크기를 계산하고 맞추는 작업이 중요합니다.
+&lt;코드 1&gt;은 &lt;그림 8&gt;을 Keras로 CNN 모델로 구현한 코드입니다.</p>
+
+<blockquote>
+<p>코드 1. CNN 모델 예제 코드 (Keras)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> keras.models <span style="color:#f92672">import</span> Sequential
+<span style="color:#f92672">from</span> keras.layers.convolutional <span style="color:#f92672">import</span> Conv2D
+<span style="color:#f92672">from</span> keras.layers.convolutional <span style="color:#f92672">import</span> MaxPooling2D
+<span style="color:#f92672">from</span> keras.layers <span style="color:#f92672">import</span> Dense
+<span style="color:#f92672">from</span> keras.layers <span style="color:#f92672">import</span> Flatten
+
+model <span style="color:#f92672">=</span> Sequential()
+model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">12</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">5</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>, input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">120</span>, <span style="color:#ae81ff">60</span>, <span style="color:#ae81ff">1</span>)))
+model<span style="color:#f92672">.</span>add(MaxPooling2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)))
+model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">16</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">5</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
+model<span style="color:#f92672">.</span>add(MaxPooling2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)))
+model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">20</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
+model<span style="color:#f92672">.</span>add(MaxPooling2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)))
+model<span style="color:#f92672">.</span>add(Flatten())
+model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">128</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
+model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">4</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>))</code></pre></div></blockquote>
+
+<h2 id="4-cnn-입출력-파리미터-계산">4. CNN 입출력, 파리미터 계산</h2>
+
+<p>다음과 조건과 같은 이미지를 학습하는 CNN의 각 레이어별 입력 데이터와 출력 데이터의 Shape을 계산해 보고 네트워크가 학습시키는 파라미터의 개수를 계산해 보겠습니다.
+예제로 사용할 CNN 모델 정보는 다음과 같습니다.</p>
+
+<ul>
+<li>입력데이터 Shape: (39, 31, 1)</li>
+<li>분류 클래스: 100</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>layer</th>
+<th>Input Channel</th>
+<th>Filter</th>
+<th>Output Channel</th>
+<th>Stride</th>
+<th>Max Pooling</th>
+<th>activation function</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Convolution Layer 1</td>
+<td>1</td>
+<td>(4, 4)</td>
+<td>20</td>
+<td>1</td>
+<td>X</td>
+<td>relu</td>
+</tr>
+
+<tr>
+<td>Max Pooling Lyaer 1</td>
+<td>20</td>
+<td>X</td>
+<td>20</td>
+<td>2</td>
+<td>(2, 2)</td>
+<td>X</td>
+</tr>
+
+<tr>
+<td>Convolution Layer 2</td>
+<td>20</td>
+<td>(3, 3)</td>
+<td>40</td>
+<td>1</td>
+<td>X</td>
+<td>relu</td>
+</tr>
+
+<tr>
+<td>Max Pooling Lyaer 2</td>
+<td>40</td>
+<td>X</td>
+<td>40</td>
+<td>2</td>
+<td>(2, 2)</td>
+<td>X</td>
+</tr>
+
+<tr>
+<td>Convolution Layer 3</td>
+<td>40</td>
+<td>(2, 2)</td>
+<td>60</td>
+<td>1</td>
+<td>1</td>
+<td>relu</td>
+</tr>
+
+<tr>
+<td>Max Pooling Lyaer 3</td>
+<td>60</td>
+<td>X</td>
+<td>60</td>
+<td>2</td>
+<td>(2, 2)</td>
+<td>X</td>
+</tr>
+
+<tr>
+<td>Convolution Layer 4</td>
+<td>60</td>
+<td>(2, 2)</td>
+<td>80</td>
+<td>1</td>
+<td>1</td>
+<td>relu</td>
+</tr>
+
+<tr>
+<td>Flatten</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+
+<tr>
+<td>fully connected Layer</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>softmax</td>
+</tr>
+</tbody>
+</table>
+
+<p>컨볼루션 레이어의 학습 파라미터 수는 &ldquo;$ 입력채널수 X 필터폭 X 필터높이 X 출력채널수 $&ldquo;로 계산됩니다.<sup class="footnote-ref" id="fnref:4"><a href="#fn:4">4</a></sup></p>
+
+<h3 id="4-1-layer-1의-shape과-파라미터">4.1 Layer 1의 Shape과 파라미터</h3>
+
+<p>Layer 1은 1개의 Convolution Layer와 1개의 Pooling Layer로 구성됩니다. 두 레이어의 출력 데이터 shape과 파라미터는 다음과 같이 계산할 수 있습니다.</p>
+
+<h4 id="4-1-1-convolution-layer-1">4.1.1 Convolution Layer 1</h4>
+
+<p>Convolution Layer 1의 기본 정보는 다음과 같습니다.</p>
+
+<ul>
+<li>입력 데이터 Shape = (39, 31, 1)</li>
+<li>입력 채널=1</li>
+<li>필터=(4, 4)</li>
+<li>출력 채널=20</li>
+<li>Stride = 1</li>
+</ul>
+
+<p>입력 이미지에 Shape이 (4, 4)인 필터 20개를 적용할 경우에, 출력 데이터(Activation Map)의 Shape을 계산하는 과정은 &lt;식 3&gt;과 같습니다.</p>
+
+<blockquote>
+<ul>
+<li>식 3. Convolution Layer 1의 Activation Map 크기 계산
+$$
+\begin{align}
+Row Size &amp; = \frac{N-F}{Strid} + 1 = \frac{39-4}{1} + 1 = 36 \\<br />
+Column Size &amp; =  \frac{N-F}{Strid} + 1 = \frac{31-4}{1} + 1 = 28<br />
+\end{align}
+$$</li>
+</ul>
+</blockquote>
+
+<p>&lt;식 3&gt;로 계산된 출력 데이터(Activation Map)의 Shape은 (36, 28, 20) 입니다. Convolution Layer 1에서 학습시킬 대상은 입력 채널 1, 필터 사이즈 (4, 4), 출력 채널 20개 입니다. 따라서 이 레이어의 학습 파라미터는 320개 (4X4X20) 입니다.</p>
+
+<ul>
+<li>입력 채널: 1</li>
+<li>출력 데이터(Activation Map) Shape: (36, 28, 20)</li>
+<li>학습 파라미터: 320개 (1 X 4 X 4 X 20)</li>
+</ul>
+
+<h4 id="4-1-2-max-pooling-layer-1">4.1.2 Max Pooling Layer 1</h4>
+
+<p>Max Pooling Layer 1의 입력 데이터의 Shape은 (36, 28, 20)입니다. Max Pooling 크기가 (2, 2)이기 때문에 출력 데이터 크기는 &lt;식 4&gt;와 같이 계산될 수 있습니다.</p>
+
+<blockquote>
+<ul>
+<li>식 4. Max Pooling Layer 1의 출력 데이터 크기 계산
+$$
+\begin{align}
+Row Size &amp; = \frac{36}{2} = 18 \\<br />
+Column Size &amp; =  \frac{28}{2} = 14<br />
+\end{align}
+$$</li>
+</ul>
+</blockquote>
+
+<p>&lt;식 4&gt;으로 계산된 출력 데이터의 Shape은 (18, 14, 20) 입니다.
+Max Pooling Layer에서 학습 파라미터가 없습니다.</p>
+
+<ul>
+<li>입력 채널: 20</li>
+<li>출력 데이터 Shape: (18, 14, 20)</li>
+<li>학습 파라미터: 0</li>
+</ul>
+
+<h3 id="4-2-layer-2의-shape과-파라미터">4.2 Layer 2의 Shape과 파라미터</h3>
+
+<p>Layer 2는 1개의 Convolution Layer와 1개의 Pooling Layer로 구성됩니다. 두 레이어이 출력 데이터 shape과 파라미터는 다음과 같이 계산할 수 있습니다.</p>
+
+<h4 id="4-2-1-convolution-layer-2">4.2.1 Convolution Layer 2</h4>
+
+<p>Convolution Layer 2의 기본 정보는 다음과 같습니다.</p>
+
+<ul>
+<li>입력 데이터 Shape = (18, 14, 20)</li>
+<li>입력 채널 = 20</li>
+<li>필터 = (3, 3, 40)</li>
+<li>출력 채널 =  40</li>
+<li>Stride = 1</li>
+</ul>
+
+<p>입력 이미지에 Shape이 (3, 3)인 필터 40개를 적용할 경우 출력 데이터(Activation Map)의 Shape을 계산하는 과정은 &lt;식 5&gt;과 같습니다.</p>
+
+<blockquote>
+<ul>
+<li>식 5. Convolution Layer 2의 Activation Map 크기 계산
+$$
+\begin{align}
+Row Size &amp; = \frac{N-F}{Strid} + 1 = \frac{18-3}{1} + 1 = 16 \\<br />
+Column Size &amp; =  \frac{N-F}{Strid} + 1 = \frac{14-3}{1} + 1 = 12<br />
+\end{align}
+$$</li>
+</ul>
+</blockquote>
+
+<p>&lt;식 5&gt;로 계산된 출력 데이터(Activation Map)의 Shape은 (16, 12, 40)입니다. Convolution Layer 1에서 학습시킬 대상은 입력 채널 20, 필터 사이즈 (3, 3), 출력 필터 40개입니다. 따라서 이 레이어의 학습 파라미터는 7200개 (20 X 3 X 3 X 40) 입니다.</p>
+
+<ul>
+<li>입력 채널: 20</li>
+<li>출력 데이터(Activation Map) Shape: (16, 12, 40)</li>
+<li>학습 파라미터: 7,200개 (20X3X3X40)</li>
+</ul>
+
+<h4 id="4-2-2-max-pooling-layer-2">4.2.2 Max Pooling Layer 2</h4>
+
+<p>Max Pooling Layer 2의 입력 데이터의 Shape은 (16, 12, 40)입니다. Max Pooling 크기가 (2, 2)이기 때문에 출력 데이터 크기는 &lt;식 6&gt;와 같이 계산될 수 있습니다.</p>
+
+<blockquote>
+<ul>
+<li>식 6. Max Pooling Layer 2의 출력 데이터 크기 계산
+$$
+\begin{align}
+Row Size &amp; = \frac{16}{2} = 8 \\<br />
+Column Size &amp; =  \frac{12}{2} = 6<br />
+\end{align}
+$$</li>
+</ul>
+</blockquote>
+
+<p>&lt;식 6&gt;로 계산된 출력 데이터(Activation Map)의 Shape은 (8, 6, 40) 입니다.
+Max Pooling Layer에서 학습 파라미터가 없습니다.</p>
+
+<ul>
+<li>입력 채널: 40</li>
+<li>출력 데이터 Shape: (8, 6, 40)</li>
+<li>학습 파라미터: 0</li>
+</ul>
+
+<h3 id="4-3-layer-3의-shape과-파라미터">4.3 Layer 3의 Shape과 파라미터</h3>
+
+<p>Layer 3도 1개의 Convolution Layer와 1개의 Pooling Layer로 구성됩니다. 두 레이어이 출력 데이터 shape과 파라미터는 다음과 같이 계산할 수 있습니다.</p>
+
+<h4 id="4-3-1-convolution-layer-3">4.3.1 Convolution Layer 3</h4>
+
+<p>Convolution Layer 3의 기본 정보는 다음과 같습니다.</p>
+
+<ul>
+<li>입력 데이터 Shape = (8, 6, 40)</li>
+<li>입력 채널 =  40</li>
+<li>필터=(3, 3)</li>
+<li>출력 채널 = 60</li>
+<li>Stride = 1</li>
+</ul>
+
+<p>입력 이미지에 Shape이 (3, 3)인 필터 60개를 적용할 경우 출력 데이터(Activation Map)의 Shape을 계산하는 과정은 &lt;식 7&gt;과 같습니다.</p>
+
+<blockquote>
+<ul>
+<li>식 7. Convolution Layer 3의 Activation Map 크기 계산
+$$
+\begin{align}
+Row Size &amp; = \frac{N-F}{Strid} + 1 = \frac{8-3}{1} + 1 = 6 \\<br />
+Column Size &amp; =  \frac{N-F}{Strid} + 1 = \frac{6-3}{1} + 1 = 4<br />
+\end{align}
+$$</li>
+</ul>
+</blockquote>
+
+<p>&lt;식 7&gt;로 계산된 출력 데이터(Activation Map)의 Shape은 (6, 4, 60)입니다. Convolution Layer 1에서 학습시킬 대상은 (3, 3) 필터 60개입니다. 따라서 이 레이어의 학습 파라미터는 21,600개 (40X3X3X60) 입니다.</p>
+
+<ul>
+<li>입력 채널: 40</li>
+<li>출력 데이터(Activation Map) Shape: (6, 4, 60)</li>
+<li>학습 파라미터: 21,600개 (40X3X3X60)</li>
+</ul>
+
+<h4 id="4-3-2-max-pooling-layer-3">4.3.2 Max Pooling Layer 3</h4>
+
+<p>Max Pooling Layer 3의 입력 데이터의 Shape은 (6, 4, 60)입니다. Max Pooling 크기가 (2, 2)이기 때문에 출력 데이터 크기는 &lt;식 8&gt;과 같이 계산될 수 있습니다.</p>
+
+<blockquote>
+<ul>
+<li>식 8. Max Pooling Layer 3의 출력 데이터 크기 계산
+$$
+\begin{align}
+Row Size &amp; = \frac{6}{2} = 3 \\<br />
+Column Size &amp; =  \frac{4}{2} = 2<br />
+\end{align}
+$$</li>
+</ul>
+</blockquote>
+
+<p>&lt;식 8&gt;로 계산된 출력 데이터(Activation Map)의 Shape은 (3, 2, 60)입니다.
+Max Pooling Layer에서 학습 파라미터가 없습니다.</p>
+
+<ul>
+<li>입력 채널: 60</li>
+<li>출력 데이터 Shape: (3, 2, 60)</li>
+<li>학습 파라미터: 0</li>
+</ul>
+
+<h3 id="4-4-layer-4의-shape과-파라미터">4.4 Layer 4의 Shape과 파라미터</h3>
+
+<p>Layer 3도 1개의 Convolution Layer로 구성됩니다. 이 레이어의 출력 데이터 shape과 파라미터는 다음과 같이 계산할 수 있습니다.</p>
+
+<h4 id="4-4-1-convolution-layer-4">4.4.1 Convolution Layer 4</h4>
+
+<p>Convolution Layer 4의 기본 정보는 다음과 같습니다.</p>
+
+<ul>
+<li>입력 데이터 Shape = (3, 2, 60)</li>
+<li>입력 채널 = 60</li>
+<li>필터=(2, 2)</li>
+<li>출력 채널 = 80</li>
+<li>Stride = 1</li>
+</ul>
+
+<p>입력 이미지에 Shape이 (2, 2)인 필터 80개를 적용할 경우 출력 데이터(Activation Map)의 Shape을 계산하는 과정은 &lt;식 9&gt;과 같습니다.</p>
+
+<blockquote>
+<ul>
+<li>식 9. Convolution Layer 3의 Activation Map 크기 계산
+$$
+\begin{align}
+Row Size &amp; = \frac{N-F}{Strid} + 1 = \frac{3-2}{1} + 1 = 2 \\<br />
+Column Size &amp; =  \frac{N-F}{Strid} + 1 = \frac{2-2}{1} + 1 = 1<br />
+\end{align}
+$$</li>
+</ul>
+</blockquote>
+
+<p>&lt;식 9&gt;로 계산된 출력 데이터(Activation Map)의 Shape은 (2, 1, 80)입니다. Convolution Layer 1에서 학습시킬 대상은 입력 채널 60, 필터 사이즈 (2, 2), 출력 채널 80개입니다. 따라서 이 레이어의 학습 파라미터는 19,200개 (60X2X2X80)입니다.</p>
+
+<ul>
+<li>입력 채널: 60</li>
+<li>출력 데이터(Activation Map) Shape: (2, 1, 80)</li>
+<li>학습 파라미터: 19,200개 (2X2X80)</li>
+</ul>
+
+<h3 id="4-5-flatten-layer의-shape">4.5 Flatten Layer의 Shape</h3>
+
+<p>Flatten Layer는 CNN의 데이터 타입을 Fully Connected Neural Network의 형태로 변경하는 레이어입니다. Flatten 레이어에는 파라미터가 존재하지 않고, 입력 데이터의 Shape 변경만 수행합니다.</p>
+
+<ul>
+<li>입력 데이터 Shape =(2, 1, 80)</li>
+<li>출력 데이터 Shape =(160, 1)</li>
+</ul>
+
+<h3 id="4-6-softmax-layer">4.6 Softmax Layer</h3>
+
+<p>이 레이어의 입력 데이터 Shape은 (160, 1)입니다. 이 네트워크의 분류 클래스가 100개이기 때문에 최종 데이터의 Shape은 (100, 1)입니다.</p>
+
+<ul>
+<li>입력 데이터의 shape: (160, 1)</li>
+<li>출력 데이터의 shape: (100, 1)</li>
+</ul>
+
+<p>이때 Weight Shape은 (100, 160)입니다. Softmax 레이어이 파라미터는 160,000개 (100X160)입니다.</p>
+
+<h3 id="4-7-전체-파라미터-수와-레이어별-input-output-요약">4.7 전체 파라미터 수와 레이어별 Input/Output 요약</h3>
+
+<table>
+<thead>
+<tr>
+<th>layer</th>
+<th>input channel</th>
+<th>Filter</th>
+<th>output channel</th>
+<th>Stride</th>
+<th>Pooling</th>
+<th>활성함수</th>
+<th>Input Shape</th>
+<th>Output Shape</th>
+<th>파라미터 수</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Convolution<br/>Layer 1</td>
+<td>1</td>
+<td>(4, 4)</td>
+<td>20</td>
+<td>1</td>
+<td>X</td>
+<td>relu</td>
+<td>(39, 31, 1)</td>
+<td>(36, 28, 20)</td>
+<td>320</td>
+</tr>
+
+<tr>
+<td>Max Pooling<br/>Lyaer 1</td>
+<td>20</td>
+<td>X</td>
+<td>20</td>
+<td>2</td>
+<td>(2, 2)</td>
+<td>X</td>
+<td>(36, 28, 20)</td>
+<td>(18, 14, 20)</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>Convolution<br/>Layer 2</td>
+<td>20</td>
+<td>(3, 3)</td>
+<td>40</td>
+<td>1</td>
+<td>X</td>
+<td>relu</td>
+<td>(18, 14, 20)</td>
+<td>(16, 12, 40)</td>
+<td>7,200</td>
+</tr>
+
+<tr>
+<td>Max Pooling<br/>Lyaer 2</td>
+<td>40</td>
+<td>X</td>
+<td>40</td>
+<td>2</td>
+<td>(2,2)</td>
+<td>X</td>
+<td>(16, 12, 40)</td>
+<td>(8, 6, 40)</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>Convolution<br/>Layer 3</td>
+<td>40</td>
+<td>(2, 2)</td>
+<td>60</td>
+<td>1</td>
+<td>1</td>
+<td>relu</td>
+<td>(8, 6, 40)</td>
+<td>(6, 4, 60)</td>
+<td>21,600</td>
+</tr>
+
+<tr>
+<td>Max Pooling<br/>Lyaer 3</td>
+<td>60</td>
+<td>X</td>
+<td>60</td>
+<td>(2, 2)</td>
+<td>60</td>
+<td>X</td>
+<td>(6, 4, 60)</td>
+<td>(3, 2, 60)</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>Convolution<br/>Layer 4</td>
+<td>60</td>
+<td>(2, 2)</td>
+<td>80</td>
+<td>1</td>
+<td>1</td>
+<td>relu</td>
+<td>(3, 2, 60)</td>
+<td>(2, 1, 80)</td>
+<td>19,200</td>
+</tr>
+
+<tr>
+<td>Flatten</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>(2, 1, 80)</td>
+<td>(160, 1)</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>fully<br/>connected<br/>Layer</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>softmax</td>
+<td>(160, 1)</td>
+<td>(100, 1)</td>
+<td>160,000</td>
+</tr>
+
+<tr>
+<td>합계</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>softmax</td>
+<td>(160, 1)</td>
+<td>(100, 1)</td>
+<td>208,320</td>
+</tr>
+</tbody>
+</table>
+
+<p>이 CNN을 그림 9와 같이 표현할 수 있습니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/01/cnn/cnn.png" alt="예제 CNN 이미지" style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 9</strong>:
+        
+        예제 CNN 이미지
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<h2 id="5-cnn과-fc-neural-network-파라미터-비교">5. CNN과 FC Neural Network 파라미터 비교</h2>
+
+<p>앞에서 다룬 CNN의 총 파라미터 수는 208,320개입니다. 이 CNN과 유사한 4개의 은닉 레이어를 갖는 FC(Fully Connected) Neural Network을 &lt;그림 10&gt;과 같이 만들 수 있습니다.</p>
+
+
+<blockquote id="img">
+<figure >
+    
+        <img src="https://taewanmerepo.github.io/2018/01/cnn/nc.jpg" alt="FC 신경망 - 비교 " style="border:2px solid black"/>
+    
+    
+    <figcaption>
+        <strong>그림 10</strong>:
+        
+        FC 신경망 - 비교 
+        
+            
+        
+        
+    </figcaption>
+    
+</figure>
+</blockquote>
+
+
+
+<p>&lt;그림 10&gt;의 신경망을 계산하면 파라미터는 다음과 같이 계산 가능합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>레이어</th>
+<th>입력 노드</th>
+<th>출력 노드</th>
+<th>Weight Shape</th>
+<th>파라미터 수</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Layer 1</td>
+<td>1209</td>
+<td>600</td>
+<td>(1209,600)</td>
+<td>725,400</td>
+</tr>
+
+<tr>
+<td>Layer 2</td>
+<td>600</td>
+<td>300</td>
+<td>(600,300)</td>
+<td>180,000</td>
+</tr>
+
+<tr>
+<td>Layer 3</td>
+<td>300</td>
+<td>300</td>
+<td>(300,300)</td>
+<td>90,000</td>
+</tr>
+
+<tr>
+<td>Layer 4</td>
+<td>300</td>
+<td>150</td>
+<td>(300,150)</td>
+<td>45,000</td>
+</tr>
+
+<tr>
+<td>Output</td>
+<td>150</td>
+<td>100</td>
+<td>(150,100)</td>
+<td>15,000</td>
+</tr>
+
+<tr>
+<td>합계</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1,055,400</td>
+</tr>
+</tbody>
+</table>
+
+<p>&lt;그림 10&gt; 인공 신경망의 총 파라미터는 백만 개가 넘습니다. 예제 CNN 파라미터와 비교하면 10배 이상의 학습 파라미터를 갖습니다.
+은닉층을 더 깊게 만들 경우 Fully Connected Neural Network과 CNN과의 학습 파라미터의 차이는 더 급격하게 늘어납니다.
+CNN은 Fully Connected Neural Network과 비교하여 다음과 같은 특징을 갖습니다.</p>
+
+<ul>
+<li>CNN은 학습 파라미터 수가 매우 작음</li>
+<li>학습 파라미터가 작고, 학습이 쉽고 네트워크 처리 속도가 빠름</li>
+</ul>
+
+<h2 id="6-요약">6. 요약</h2>
+
+<p>CNN(Convolutional Neural Network)은 이미지의 공간 정보를 유지하면서 인접 이미지와의 특징을 효과적으로 인식하고 강조하는 방식으로 이미지의 특징을 추출하는 부분과 이미지를 분류하는 부분으로 구성됩니다. 특징 추출 영역은 Filter를 사용하여 공유 파라미터 수를 최소화하면서 이미지의 특징을 찾는 Convolution 레이어와 특징을 강화하고 모으는 Pooling 레이어로 구성됩니다.</p>
+
+<p>CNN은 Filter의 크기, Stride, Padding과 Pooling 크기로 출력 데이터 크기를 조절하고, 필터의 개수로 출력 데이터의 채널을 결정합니다.</p>
+
+<p>CNN는 같은 레이어 크기의 Fully Connected Neural Network와 비교해 볼 때, 학습 파라미터양은 20% 규모입니다. 은닉층이 깊어질 수록 학습 파라미터의 차이는 더 벌어집니다. CNN은 Fully Connected Neural Network와 비교하여 더 작은 학습 파라미터로 더 높은 인식률을 제공합니다.</p>
+
+<h2 id="7-참고자료">7. 참고자료</h2>
+
+<ul>
+<li>Title 이미지 출처: <a href="https://www.ibm.com/developerworks/library/cc-machine-learning-deep-learning-architectures/index.html">https://www.ibm.com/developerworks/library/cc-machine-learning-deep-learning-architectures/index.html</a></li>
+<li>Convolution(합성곱) 정의: <a href="https://ko.wikipedia.org/wiki/%ED%95%A9%EC%84%B1%EA%B3%B1">https://ko.wikipedia.org/wiki/%ED%95%A9%EC%84%B1%EA%B3%B1</a></li>
+<li><a href="http://deeplearning.stanford.edu/wiki/index.php/Feature_extraction_using_convolution">http://deeplearning.stanford.edu/wiki/index.php/Feature_extraction_using_convolution</a></li>
+<li><a href="http://neuralnetworksanddeeplearning.com/chap6.html">http://neuralnetworksanddeeplearning.com/chap6.html</a></li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">이전 레이어의 모든 노드가 다음 레이어의 모든 노드에 연결된 레이어를 Fully Connected Layer(FC Layer)라고 합니다. FC Layer를 Dense Layer라고도 합니다.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">이미지 특징을 추출하는 과정을 Feature Extraction이라고 합니다. Deep Learning은 이미지로부터 Filter 개수 등의 하이퍼파라미터(Hyperparameter)를 조절하여 특징 추출을 자동화 한 것이 강점입니다.
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:3">이 형태는 Channel-last 방식으로 표현한 예입니다. Keras에서는 channel-last가 기본 패턴입니다.
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+<li id="fn:4">학습 파라미터 수, 참고자료: <a href="https://stackoverflow.com/questions/28232235/how-to-calculate-the-number-of-parameters-of-convolutional-neural-networks?fbclid=IwAR1BD-ywFmzwY_Pbgzy88PAUOIRt2yFB8Ai7jE4_AUdqhnXFfjBPwPZRwTI" target="_blank">stackoverflow: How to calculate the number of parameters of convolutional neural networks?[↗NW]</a>
+
+ <a class="footnote-return" href="#fnref:4"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/deep-learning/" rel="tag">deep learning</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/machine-learning/" rel="tag">Machine Learning</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/" rel="tag">기계학습</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/" rel="tag">딥러닝</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/cnn/" rel="tag">CNN</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/convolutional-neural-network/" rel="tag">Convolutional Neural Network</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%ED%95%A9%EC%84%B1%EA%B3%B1/" rel="tag">합성곱</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EA%B9%80%ED%83%9C%EC%99%84/" rel="tag">김태완</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan2.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+
+	
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/graalvm/graalvm/"></div>
+
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		
+		<ins class="adsbygoogle"
+			 style="display:block"
+			 data-ad-client="ca-pub-8469722754608892"
+			 data-ad-slot="5594090168"
+			 data-ad-format="auto"
+			 data-full-width-responsive="true"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	
+
+<div class="widget-categories widget">	
+		<div class="fb-like" data-href="http://taewan.kim/graalvm/graalvm/" 
+		data-layout="standard" data-action="like" 
+		data-size="small" 
+		data-show-faces="true" 
+		data-share="true"></div>
+</div>
+	
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#1-cnn의-주요-용어-정리">1. CNN의 주요 용어 정리</a>
+<ul>
+<li><a href="#1-1-합성곱-convolution">1.1 합성곱, Convolution</a></li>
+<li><a href="#1-2-채널-channel">1.2 채널, Channel</a></li>
+<li><a href="#1-3-필터-filter-stride">1.3 필터(Filter) &amp; Stride</a></li>
+<li><a href="#1-4-패딩-padding">1.4 패딩(Padding)</a></li>
+<li><a href="#1-5-pooling-레이어">1.5 Pooling 레이어</a></li>
+</ul></li>
+<li><a href="#2-레이어별-출력-데이터-산정">2. 레이어별 출력 데이터 산정</a>
+<ul>
+<li><a href="#2-1-convolution-레이어-출력-데이터-크기-산정">2.1 Convolution 레이어 출력 데이터 크기 산정</a></li>
+<li><a href="#2-2-pooling-레이어-출력-데이터-크기-산정">2.2 Pooling 레이어 출력 데이터 크기 산정</a></li>
+</ul></li>
+<li><a href="#3-cnn-구성">3. CNN 구성</a></li>
+<li><a href="#4-cnn-입출력-파리미터-계산">4. CNN 입출력, 파리미터 계산</a>
+<ul>
+<li><a href="#4-1-layer-1의-shape과-파라미터">4.1 Layer 1의 Shape과 파라미터</a>
+<ul>
+<li><a href="#4-1-1-convolution-layer-1">4.1.1 Convolution Layer 1</a></li>
+<li><a href="#4-1-2-max-pooling-layer-1">4.1.2 Max Pooling Layer 1</a></li>
+</ul></li>
+<li><a href="#4-2-layer-2의-shape과-파라미터">4.2 Layer 2의 Shape과 파라미터</a>
+<ul>
+<li><a href="#4-2-1-convolution-layer-2">4.2.1 Convolution Layer 2</a></li>
+<li><a href="#4-2-2-max-pooling-layer-2">4.2.2 Max Pooling Layer 2</a></li>
+</ul></li>
+<li><a href="#4-3-layer-3의-shape과-파라미터">4.3 Layer 3의 Shape과 파라미터</a>
+<ul>
+<li><a href="#4-3-1-convolution-layer-3">4.3.1 Convolution Layer 3</a></li>
+<li><a href="#4-3-2-max-pooling-layer-3">4.3.2 Max Pooling Layer 3</a></li>
+</ul></li>
+<li><a href="#4-4-layer-4의-shape과-파라미터">4.4 Layer 4의 Shape과 파라미터</a>
+<ul>
+<li><a href="#4-4-1-convolution-layer-4">4.4.1 Convolution Layer 4</a></li>
+</ul></li>
+<li><a href="#4-5-flatten-layer의-shape">4.5 Flatten Layer의 Shape</a></li>
+<li><a href="#4-6-softmax-layer">4.6 Softmax Layer</a></li>
+<li><a href="#4-7-전체-파라미터-수와-레이어별-input-output-요약">4.7 전체 파라미터 수와 레이어별 Input/Output 요약</a></li>
+</ul></li>
+<li><a href="#5-cnn과-fc-neural-network-파라미터-비교">5. CNN과 FC Neural Network 파라미터 비교</a></li>
+<li><a href="#6-요약">6. 요약</a></li>
+<li><a href="#7-참고자료">7. 참고자료</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	<div class="widget-categories widget">
+  <h4 class="widget__title">관련도서</h4>
+  <div class="widget__content" align="center">
+      <ul class="widget__list">
+          <li class="widget__item"><a href="http://www.yes24.com/Product/Goods/69335909" target="_blank"><img src="https://taewanmerepo.github.io/2019/02/pytorch/book200.jpg"/></a></li>
+      </ul>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/post/position_of_graalvm/" title="GraalVM의 포지션과 역할에 대하여..">
+							GraalVM의 포지션과 역할에 대하여..</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/days_of_searching_for_first_love/" title="[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기">
+							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
+							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
+							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/function_in_semicolon/" title="함수 표기법: 세미콜론으로 변수와 파라미터 구분">
+							함수 표기법: 세미콜론으로 변수와 파라미터 구분</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_connection_info/" title="Oracle OCI 접속 정보 수집">
+							Oracle OCI 접속 정보 수집</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/bigdata_is_bubble/" title="&#39;빅데이터는 거품이다&#39; 리뷰">
+							&#39;빅데이터는 거품이다&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/rsa_with_oci_cli/" title="OCI CLI로 RSA key pair 생성">
+							OCI CLI로 RSA key pair 생성</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/math">Math</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">Licesne</h4>
+	<div class="widget__content">
+		<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+	</div>
+	<div class="widget__content">
+		이 저작물은 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank>크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2019 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-72835175-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+
