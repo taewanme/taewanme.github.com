@@ -6,10 +6,21 @@
     <description>Recent content in Graalvm on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 16 Jun 2019 07:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 06 Aug 2019 01:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/graalvm/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>GraalVM 관련 </title>
+      <link>http://taewan.kim/graalvm/graalvm/</link>
+      <pubDate>Tue, 06 Aug 2019 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/graalvm/graalvm/</guid>
+      <description>GraalVM 코너 소개 다양성 자바의 새로운 가능성을 보이는 GraalVM 관련 정보를 다루는 코너입니다.
+이 코너는 다음과 같은 내용으로 채워가겠습니다.
+ 주간 GraalVM 새 소식  주 단위로 다음과 같은 컨텐트의 요약 정보를 제공합니다. GraalVM 릴리즈 소식 GraalVM 발표 세션 문서 및 동영상 소개 GraalVM 관련 문서 링크  GraalVM 문서 번역 및 요약  주간 GraalVM 새 소식에서 소개한 주요 문서 번역 GraalVM 새 소식에서 소개한 문서 및 세미나 동영상 요약  GraalVM 기술 문서  GraalVM 관련된 여러 기술 문서 공유   GraalVM 관련 기존 문서 현재까지 다뤘던 GraalVM 관련 문서는 다음과 같습니다.</description>
+    </item>
     
     <item>
       <title>GraalVM의 포지션과 역할에 대하여..</title>
