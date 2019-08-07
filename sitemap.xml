@@ -3,13 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://taewan.kim/graalvm/graalvm_news_201907w4/</loc>
+    <lastmod>2019-08-07T01:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/graalvm/graalvm_news_201908w1/</loc>
     <lastmod>2019-08-07T01:28:14+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://taewan.kim/graalvm/graalvm_corner/</loc>
-    <lastmod>2019-08-06T01:28:14+09:00</lastmod>
+    <loc>http://taewan.kim/graalvm/position_of_graalvm/</loc>
+    <lastmod>2019-06-16T07:28:14+09:00</lastmod>
   </url>
   
   <url>
@@ -38,6 +43,11 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/graalvm/graalvm_corner/</loc>
+    <lastmod>2019-05-06T01:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tip/lauch_vscode_in_termial/</loc>
     <lastmod>2019-04-24T09:28:14+09:00</lastmod>
   </url>
@@ -60,6 +70,11 @@
   <url>
     <loc>http://taewan.kim/tutorial_manual/temp0004/</loc>
     <lastmod>2019-02-22T19:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/graalvm/graalvm_seminar/</loc>
+    <lastmod>2019-02-17T09:28:14+09:00</lastmod>
   </url>
   
   <url>
@@ -1761,7 +1776,7 @@
   
   <url>
     <loc>http://taewan.kim/categories/java/</loc>
-    <lastmod>2019-08-06T01:28:14+09:00</lastmod>
+    <lastmod>2019-06-16T07:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
