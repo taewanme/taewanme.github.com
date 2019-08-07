@@ -6,10 +6,20 @@
     <description>Recent content on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 06 Aug 2019 01:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 07 Aug 2019 01:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>GraalVM 새소식#1(201908, 첫 째주)</title>
+      <link>http://taewan.kim/graalvm/graalvm_news_201908w1/</link>
+      <pubDate>Wed, 07 Aug 2019 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/graalvm/graalvm_news_201908w1/</guid>
+      <description>GraalVM과 관련해 8월 첫 째주에 발표된 세미나 동영상, 주요 기술 문서 및 블로그 문서를 정리합니다.
+GraalVM 버전  2019년 8월 7일 현재 GraalVM 최신 버전: 19.1.1 () 19.1.1 릴리즈 상세 정보 페이지[↗NW]   GraalVM 세미나 발표 자료 QCon: Maximizing Performance with GraalVM QCon에서 2019년 7월 22일에 발표한 &amp;ldquo;Maximizing Performance with GraalVM&amp;rdquo; 세션의 동영상, 발표자료 및 영문 스크립트가 공개되었습니다. 이 세셔은 Oracle Labs 수석 연구실장(Senior Research Director)인 토마스 위싱어(Thomas Wuerthinger)님이 진행했습니다.</description>
+    </item>
     
     <item>
       <title>GraalVM 관련 코너를 새로 시작합니다.</title>

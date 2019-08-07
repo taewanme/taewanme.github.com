@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://taewan.kim/graalvm/graalvm_news_201908w1/</loc>
+    <lastmod>2019-08-07T01:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/graalvm/graalvm_corner/</loc>
     <lastmod>2019-08-06T01:28:14+09:00</lastmod>
   </url>
@@ -1684,13 +1689,25 @@
   
   <url>
     <loc>http://taewan.kim/tags/graalvm/</loc>
-    <lastmod>2019-08-06T01:28:14+09:00</lastmod>
+    <lastmod>2019-08-07T01:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/categories/graalvm/</loc>
+    <lastmod>2019-08-07T01:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/graalvm-weekly-news/</loc>
+    <lastmod>2019-08-07T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://taewan.kim/graalvm/</loc>
-    <lastmod>2019-08-06T01:28:14+09:00</lastmod>
+    <lastmod>2019-08-07T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2662,7 +2679,7 @@
   
   <url>
     <loc>http://taewan.kim/</loc>
-    <lastmod>2019-08-06T01:28:14+09:00</lastmod>
+    <lastmod>2019-08-07T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
