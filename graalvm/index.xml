@@ -32,6 +32,17 @@ GraalVM 버전  2019년 8월 7일 현재 GraalVM 최신 버전: 19.1.1 (2019.07.
     </item>
     
     <item>
+      <title>GraalVM 관련 코너를 새로 시작합니다.</title>
+      <link>http://taewan.kim/graalvm/graalvm_corner/</link>
+      <pubDate>Tue, 06 Aug 2019 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/graalvm/graalvm_corner/</guid>
+      <description>GraalVM 코너 소개 다양성 자바의 새로운 가능성을 보이는 GraalVM 관련 정보를 다루는 코너입니다.
+이 코너는 다음과 같은 내용으로 채워가겠습니다.
+ 주간 GraalVM 새 소식  주 단위로 다음과 같은 컨텐트의 요약 정보를 제공합니다. GraalVM 릴리즈 소식 GraalVM 발표 세션 문서 및 동영상 소개 GraalVM 관련 문서 링크  GraalVM 문서 번역 및 요약  주간 GraalVM 새 소식에서 소개한 주요 문서 번역 GraalVM 새 소식에서 소개한 문서 및 세미나 동영상 요약  GraalVM 기술 문서  GraalVM 관련된 여러 기술 문서 공유   GraalVM 관련 기존 문서 현재까지 다뤘던 GraalVM 관련 문서는 다음과 같습니다.</description>
+    </item>
+    
+    <item>
       <title>GraalVM의 포지션과 역할에 대하여..</title>
       <link>http://taewan.kim/graalvm/position_of_graalvm/</link>
       <pubDate>Sun, 16 Jun 2019 07:28:14 +0900</pubDate>
@@ -39,17 +50,6 @@ GraalVM 버전  2019년 8월 7일 현재 GraalVM 최신 버전: 19.1.1 (2019.07.
       <guid>http://taewan.kim/graalvm/position_of_graalvm/</guid>
       <description>2019년 5월에 GraalVM이 GA되었고, 여러 프레임워크(Spring, SpringFoo, Micornut, Picocli, Quarkus)가 GraalVM 지원을 발표하거나 다양한 가능성을 제시하면서 최근에 GraalVM에 대한 관심이 점차 높아지고 있습니다. 또한 GraalVM 자체가 어떤 의미를 갖는지 궁금해하시는 분들이 많아지고 있습니다. 최근에 GraalVM을 주제로 세미나를 진행하면 다음과 같은 질문을 자주 받습니다.
  오라클에서 GraalVM을 만든 이유? 오라클에서 GraalVM이 갖는 포지션과 역할 무엇인가? GraalVM은 파일럿 JDK인가? 운영 환경에 적용할 수 있는가? 오라클은 GraalVM CE(Community Edition)을 계속 지원할 것인가?  현재 이와 같은 질의에 대한 오라클의 공식적인 발표는 없기에 명확하게 답할 수는 없습니다.</description>
-    </item>
-    
-    <item>
-      <title>GraalVM 관련 코너를 새로 시작합니다.</title>
-      <link>http://taewan.kim/graalvm/graalvm_corner/</link>
-      <pubDate>Mon, 06 May 2019 01:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/graalvm/graalvm_corner/</guid>
-      <description>GraalVM 코너 소개 다양성 자바의 새로운 가능성을 보이는 GraalVM 관련 정보를 다루는 코너입니다.
-이 코너는 다음과 같은 내용으로 채워가겠습니다.
- 주간 GraalVM 새 소식  주 단위로 다음과 같은 컨텐트의 요약 정보를 제공합니다. GraalVM 릴리즈 소식 GraalVM 발표 세션 문서 및 동영상 소개 GraalVM 관련 문서 링크  GraalVM 문서 번역 및 요약  주간 GraalVM 새 소식에서 소개한 주요 문서 번역 GraalVM 새 소식에서 소개한 문서 및 세미나 동영상 요약  GraalVM 기술 문서  GraalVM 관련된 여러 기술 문서 공유   GraalVM 관련 기존 문서 현재까지 다뤘던 GraalVM 관련 문서는 다음과 같습니다.</description>
     </item>
     
     <item>
