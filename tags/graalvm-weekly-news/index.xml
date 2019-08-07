@@ -12,16 +12,6 @@
     
     
     <item>
-      <title>GraalVM 새소식#2(201907, 4주)</title>
-      <link>http://taewan.kim/graalvm/graalvm_news_201907w4/</link>
-      <pubDate>Wed, 07 Aug 2019 01:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/graalvm/graalvm_news_201907w4/</guid>
-      <description>GraalVM과 관련해 7월 넷 째주에 발표된 세미나 동영상, 주요 기술 문서 및 블로그 문서를 정리합니다.
-GraalVM 버전  2019년 8월 7일 현재 GraalVM 최신 버전: 19.1.1 (2019.07.16) 19.1.1 릴리즈 상세 정보 페이지[↗NW]   GraalVM 세미나 발표 자료 QCon: Maximizing Performance with GraalVM QCon에서 2019년 7월 22일에 발표한 &amp;ldquo;Maximizing Performance with GraalVM&amp;rdquo; 세션의 동영상, 발표자료 및 영문 스크립트가 공개되었습니다. 이 세셔은 Oracle Labs 수석 연구실장(Senior Research Director)인 토마스 위싱어(Thomas Wuerthinger)님이 진행했습니다.</description>
-    </item>
-    
-    <item>
       <title>GraalVM 새소식#2(201908, 첫 째주)</title>
       <link>http://taewan.kim/graalvm/graalvm_news_201908w1/</link>
       <pubDate>Wed, 07 Aug 2019 01:28:14 +0900</pubDate>
@@ -29,6 +19,17 @@ GraalVM 버전  2019년 8월 7일 현재 GraalVM 최신 버전: 19.1.1 (2019.07.
       <guid>http://taewan.kim/graalvm/graalvm_news_201908w1/</guid>
       <description>GraalVM과 관련해 8월 첫 째주에 발표된 세미나 동영상, 주요 기술 문서 및 블로그 문서를 정리합니다.
 GraalVM 버전  2019년 8월 7일 현재 GraalVM 최신 버전: 19.1.1 (2019.07.16) 19.1.1 릴리즈 상세 정보 페이지[↗NW]   GraalVM 세미나 발표 자료 QCon: Maximizing Performance with GraalVM QCon에서 2019년 7월 22일에 발표한 &amp;ldquo;Maximizing Performance with GraalVM&amp;rdquo; 세션의 동영상, 발표자료 및 영문 스크립트가 공개되었습니다. 이 세셔은 Oracle Labs 수석 연구실장(Senior Research Director)인 토마스 위싱어(Thomas Wuerthinger)님이 진행했습니다.</description>
+    </item>
+    
+    <item>
+      <title>GraalVM 새소식#2(201907, 4주)</title>
+      <link>http://taewan.kim/graalvm/graalvm_news_201907w4/</link>
+      <pubDate>Wed, 31 Jul 2019 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/graalvm/graalvm_news_201907w4/</guid>
+      <description>GraalVM과 관련해 7월 넷 째주에 발표된 세미나 동영상, 주요 기술 문서 및 블로그 문서를 정리합니다.
+GraalVM 버전  2019년 8월 7일 현재 GraalVM 최신 버전: 19.1.1 (2019.07.16) 19.1.1 릴리즈 상세 정보 페이지[↗NW]   19.1.1 버전은 CPU(Critical Patch Update)입니다. GraalVM 개발 팀은 19.1.0 GraalVM 사용할 경우 19.1.1로 업그레이드 할 것을 권고하고 있습니다.
+This is a Critical Patch Update (CPU) release for the 19.1.0 GraalVM release induced by the update to OracleJDK 8u221 and OpenJDK 8u222 as the base JDKs.</description>
     </item>
     
   </channel>
