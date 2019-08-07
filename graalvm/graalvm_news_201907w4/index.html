@@ -113,122 +113,51 @@
 
 <p>GraalVM과 관련해 7월 넷 째주에 발표된 세미나 동영상, 주요 기술 문서 및 블로그 문서를 정리합니다.</p>
 
+<h2 id="동영상">동영상</h2>
+
+<p><a href="https://www.youtube.com/watch?v=cdYmr_rQ94I">https://www.youtube.com/watch?v=cdYmr_rQ94I</a></p>
+
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/cdYmr_rQ94I" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+
 <h2 id="graalvm-버전">GraalVM 버전</h2>
 
 <ul>
 <li>2019년 8월 7일 현재 GraalVM 최신 버전: 19.1.1 (2019.07.16)</li>
-<li><a href="https://www.graalvm.org/docs/release-notes/#1911" target="_blank">19.1.1 릴리즈 상세 정보 페이지[↗NW]</a>
-</li>
 </ul>
 
 <p>19.1.1 버전은 CPU(Critical Patch Update)입니다. GraalVM 개발 팀은 19.1.0 GraalVM 사용할 경우 19.1.1로 업그레이드 할 것을 권고하고 있습니다.</p>
 
-<p>This is a Critical Patch Update (CPU) release for the 19.1.0 GraalVM release induced by the update to OracleJDK 8u221 and OpenJDK 8u222 as the base JDKs. More details can be found here and here. We recommend upgrading to it from the 19.1.x and older releases.</p>
-
-<h2 id="graalvm-세미나-발표-자료">GraalVM 세미나 발표 자료</h2>
-
-<h3 id="qcon-maximizing-performance-with-graalvm">QCon: Maximizing Performance with GraalVM</h3>
-
-<p><img src="https://taewanmerepo.github.io/2019/08/graalvm_news1908w1/010.jpg" alt="" /></p>
-
-<p>QCon에서 2019년 7월 22일에 발표한 &ldquo;Maximizing Performance with GraalVM&rdquo; 세션의 동영상, 발표자료 및 영문 스크립트가 공개되었습니다. 이 세셔은 Oracle Labs 수석 연구실장(Senior Research Director)인 토마스 위싱어(Thomas Wuerthinger)님이 진행했습니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2019/08/graalvm_news1908w1/020.jpg" alt="" /></p>
-
-<p>이 세션은 프로그래밍 언어의 관점에서 Performance가 무언인가에 대한 고민으로 시작합니다. GraalVM의 성능 고려사항을 소개합니다. 이 세션은 50분 동안 진행되었고 다음과 같은 내용을 다룹니다.</p>
+<p>19.1.1 버전은 OracleJDK 8u221과 OpenJDK 8u222의 업데이트가 반영되어 있습니다. OracleJDK 8u221와 OpenJDK 8u222를 기반 JDK로 합니다.</p>
 
 <ul>
-<li>주제
-
-<ul>
-<li>GraalVM으로 성능을 극대화하기 위한 Java 코드 및 컴파일러 구성의 모범 사례</li>
-<li>자바 성능 측정 방법</li>
-<li>GraalVM 네이티브 이미지의 바이너리 크기와 메모리 사이즈 최소화 방안</li>
-</ul></li>
+<li>GraalVM EE의 기반 JDK: OracleJDK 8u221</li>
+<li>GraalVM CE의 기반 JDK: OpenJDK 8u222</li>
 </ul>
 
-<p>발표 동영상과 Slide는 다음 링크에서 확인할 수 있습니다.</p>
+<p>상세 변경 사항은 다음 링크에서 확인할 수 있습니다.</p>
 
 <ul>
-<li><a href="https://www.infoq.com/presentations/graalvm-performance/" target="_blank">Maximizing Performance with GraalVM[↗NW]</a>
+<li><a href="https://www.graalvm.org/docs/release-notes/#1911" target="_blank">19.1.1 릴리즈 상세 정보 페이지[↗NW]</a>
 </li>
 </ul>
-
-<hr />
-
-<h3 id="qcon-improving-graalvm-native-image">QCon: Improving GraalVM Native Image</h3>
-
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/RMtukctD220" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-
-
-<p>위 동영상은 2019년 7월 30일 <strong>JVM Language Summit 2019</strong>에서 <strong>크리스찬 위머(Christian Wimmer)</strong>가 발표한 &ldquo;Improving GraalVM Native Image&rdquo; 세션입니다. 크리스찬 위머는 Oracle Labs에서 VM 및 컴파일러 개발자로 GraalVM Native Image 프로젝트(Substrage VM)를 이끌고 있습니다.</p>
-
-<p>크리스찬 위머가 생각하는 네이티브 이미지 생성의 주요 원칙과 세부 절차, 고려사항에 대해서 소개합니다. Native Image의 개념과 GraalVM의 Native Image 기능의 고려사항 및 특징을 이해하기 좋은 세션입니다. 추가로 현재 Native Image 기능의 이슈와 GraalVm 19.1에서 새로 추가된 Tracing 옵션에 대해서 설명합니다.</p>
-
-<p>AOT(ahead-of-time) 컴파일러를 통해 GraalVM이 지원하는 Native Image에 대한 이해를 원하시는 분들에게 적극 추천하는 동영상 입니다.</p>
-
-<ul>
-<li><a href="https://www.youtube.com/watch?v=RMtukctD220" target="_blank">Improving GraalVM Native Image with Christian Wimmer[↗NW]</a>
-</li>
-</ul>
-
-<hr />
 
 <h2 id="기술-문서-article-blog">기술 문서(Article &amp; Blog)</h2>
 
 <p><strong>1. Developing Microservices on Oracle Cloud with GraalVM and Micronaut</strong></p>
 
+<p><a href="https://medium.com/graalvm/libgraal-graalvm-compiler-as-a-precompiled-graalvm-native-image-26e354bee5c">https://medium.com/graalvm/libgraal-graalvm-compiler-as-a-precompiled-graalvm-native-image-26e354bee5c</a></p>
+
+<p>Our libgraal blog post is finally out:)</p>
+
+<p>libgraal is a shared library, produced by GraalVM Native Image, which contains a pre-compiled version of the GraalVM compiler. When you run Java applications on GraalVM it’s going to be used as the top tier JIT compiler. This has several advantages, libgraal improves startup times and completely avoids interfering with the heap usage and profiling of the application code.</p>
+
+<p>Libgraal is a shared library, containing a pre-compiled version of the GraalVM compiler. Using it provides benefits of improving startup, competitive peak performance and removes all interference with application profiles and the application’s use of the heap.</p>
+
 <p><img src="https://taewanmerepo.github.io/2019/08/graalvm_news1908w1/040.jpg" alt="" /></p>
-
-<p>오라클 블로그에 2019년 7월 29일에 공개된 문서입니다. 이 문서는 Oracle Cloud에서 GraalVm과 Micronaut을 이용하여 마이크로 서비스를 개발하는 과정을 소개하며 다음과 같은 내용을 다룹니다.</p>
-
-<ul>
-<li>Step 1: 윈도우에 관련 관련 소프트웨어 설치</li>
-<li>Step 2: ODCS(Oracle Developer Cloud Service)의 git에 프로젝트 생성</li>
-<li>Step 3: Hands-on을 위한 Intelli 설정</li>
-<li>Step 4: OCI Docker 레파지토리 설정</li>
-<li>Step 5: OKE(Oracle Kubernetes service) 인스턴스 생성</li>
-<li>Step 6: CI/CD를 위한 Wercker 설정</li>
-<li>Step 7: Wercker 파이프라인 구성</li>
-<li>Step 8: Wercker 환경 정의</li>
-<li>Step 9: Wercker 구동</li>
-<li>Step 10: 애플리케이션 접근</li>
-</ul>
-
-<p>OCI(Oracle Cloud Infrastructure)에서 Kubernetes를 구성한 후 Micronaut과 GraalVM으로 개발된 마이크로 서비스를 CI/CD로 배포하는 과정을 소개합니다. 이 문서의 내용은 Oracle cloud 무료 트라이얼 계정으로 실습할 수 있습니다.<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> 이 문서는 다음를 통해 접근할 수 있습니다.</p>
-
-<ul>
-<li><a href="https://blogs.oracle.com/graalvm/developing-microservices-with-graalvm-enterprise-edition-%2b-micronaut-on-oracle-cloud" target="_blank">Developing Microservices on Oracle Cloud with GraalVM and Micronaut[↗NW]</a>
-</li>
-</ul>
-
-<hr />
-
-<p><strong>2. GraalVM: Native Images in Containers</strong></p>
-
-<p><img src="https://taewanmerepo.github.io/2019/08/graalvm_news1908w1/050.jpg" alt="" /></p>
-
-<p>Java Magazin이 운영하는 블로그에 올라온 문서로 GraalVM의 네이티브 이미지를 더커 컨테이너에 배포하고 실행 속도를 높이는 과정을 소개합니다. GraalVM 네이티브 이미지가 런타임 로드를 하므로 시작 시간이 빠르고 매우 낮은 런타임 메모리 오버헤드를 제공하는 특성을 제공합니다. 이 기능은 Function as a Service와 같이 자동 확장하거나 컴퓨팅 및 메모리 제약이 있는 클라우드 구현에서 매우 적합하다고 설명하고 있습니다.</p>
-
-<p>GraalVM 네이티브 이미지를 Docker 이미지로 만드는 과정을 익히기에 좋은 문서입니다. 이 문서는 다음 링크에서 확인할 수 있습니다.</p>
-
-<ul>
-<li><a href="https://blogs.oracle.com/javamagazine/graalvm-native-images-in-containers" target="_blank">GraalVM: Native Images in Containers (Java Magazine)[↗NW]</a>
-</li>
-</ul>
-<div class="footnotes">
-
-<hr />
-
-<ol>
-<li id="fn:1">오라클 클라우드 트라이얼 계정 생성 참조 문서 - <a href="http://taewan.kim/cloud/oracle_cloud_trial/" target="_blank">오라클 클라우드 트라이얼 계정 생성 절차[↗NW]</a>
-
- <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
-</ol>
-</div>
 
 		</div>
 		
@@ -261,10 +190,10 @@
 	
 <nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	<div class="post-nav__item post-nav__item--prev col-1-2">
-		<a class="post-nav__link" href="http://taewan.kim/graalvm/position_of_graalvm/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">GraalVM의 포지션과 역할에 대하여..</p></a>
+		<a class="post-nav__link" href="http://taewan.kim/graalvm/graalvm_corner/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">GraalVM 관련 코너를 새로 시작합니다.</p></a>
 	</div>
 	<div class="post-nav__item post-nav__item--next col-1-2">
-		<a class="post-nav__link" href="http://taewan.kim/graalvm/graalvm_corner/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">GraalVM 관련 코너를 새로 시작합니다.</p></a>
+		<a class="post-nav__link" href="http://taewan.kim/graalvm/graalvm_news_201908w1/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">GraalVM 새소식#2(201908, 첫 째주)</p></a>
 	</div>
 </nav>
 
@@ -321,12 +250,8 @@
 <ul>
 <li>
 <ul>
+<li><a href="#동영상">동영상</a></li>
 <li><a href="#graalvm-버전">GraalVM 버전</a></li>
-<li><a href="#graalvm-세미나-발표-자료">GraalVM 세미나 발표 자료</a>
-<ul>
-<li><a href="#qcon-maximizing-performance-with-graalvm">QCon: Maximizing Performance with GraalVM</a></li>
-<li><a href="#qcon-improving-graalvm-native-image">QCon: Improving GraalVM Native Image</a></li>
-</ul></li>
 <li><a href="#기술-문서-article-blog">기술 문서(Article &amp; Blog)</a></li>
 </ul></li>
 </ul>
@@ -349,10 +274,6 @@
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/post/position_of_graalvm/" title="GraalVM의 포지션과 역할에 대하여..">
-							GraalVM의 포지션과 역할에 대하여..</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/book/days_of_searching_for_first_love/" title="[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기">
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
@@ -369,10 +290,6 @@
 							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/post/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
-							Cloud Native Java:GraalVM (@Oracle  ......</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/post/function_in_semicolon/" title="함수 표기법: 세미콜론으로 변수와 파라미터 구분">
 							함수 표기법: 세미콜론으로 변수와 파라미터 구분</a>
 		  </li>
@@ -387,6 +304,14 @@
 			<li class="widget__item">
 				<a class="widget__link" href="/cloud/rsa_with_oci_cli/" title="OCI CLI로 RSA key pair 생성">
 							OCI CLI로 RSA key pair 생성</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/installing_oci_cli/" title="OCI CLI 설치 (Window 10, 맥 OSX &amp; Linux)">
+							OCI CLI 설치 (Window 10, 맥 OSX &amp; Linux)</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/provisioning_adw/" title="Oracle ADW 인스턴스 프로비저닝">
+							Oracle ADW 인스턴스 프로비저닝</a>
 		  </li>
 		</ul>
 	</div>

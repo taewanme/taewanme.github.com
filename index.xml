@@ -22,9 +22,22 @@ GraalVM 버전  2019년 8월 7일 현재 GraalVM 최신 버전: 19.1.1 (2019.07.
     </item>
     
     <item>
+      <title>GraalVM 새소식#2(201907, 4주)</title>
+      <link>http://taewan.kim/graalvm/graalvm_news_201907w4/</link>
+      <pubDate>Wed, 31 Jul 2019 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/graalvm/graalvm_news_201907w4/</guid>
+      <description>GraalVM과 관련해 7월 넷 째주에 발표된 세미나 동영상, 주요 기술 문서 및 블로그 문서를 정리합니다.
+동영상 https://www.youtube.com/watch?v=cdYmr_rQ94I
+  GraalVM 버전  2019년 8월 7일 현재 GraalVM 최신 버전: 19.1.1 (2019.07.16)  19.1.1 버전은 CPU(Critical Patch Update)입니다. GraalVM 개발 팀은 19.1.0 GraalVM 사용할 경우 19.1.1로 업그레이드 할 것을 권고하고 있습니다.
+19.1.1 버전은 OracleJDK 8u221과 OpenJDK 8u222의 업데이트가 반영되어 있습니다. OracleJDK 8u221와 OpenJDK 8u222를 기반 JDK로 합니다.
+ GraalVM EE의 기반 JDK: OracleJDK 8u221 GraalVM CE의 기반 JDK: OpenJDK 8u222  상세 변경 사항은 다음 링크에서 확인할 수 있습니다.</description>
+    </item>
+    
+    <item>
       <title>GraalVM 관련 코너를 새로 시작합니다.</title>
       <link>http://taewan.kim/graalvm/graalvm_corner/</link>
-      <pubDate>Tue, 06 Aug 2019 01:28:14 +0900</pubDate>
+      <pubDate>Sun, 28 Jul 2019 01:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/graalvm/graalvm_corner/</guid>
       <description>GraalVM 코너 소개 다양성 자바의 새로운 가능성을 보이는 GraalVM 관련 정보를 다루는 코너입니다.
@@ -33,32 +46,11 @@ GraalVM 버전  2019년 8월 7일 현재 GraalVM 최신 버전: 19.1.1 (2019.07.
     </item>
     
     <item>
-      <title>GraalVM 새소식#2(201907, 4주)</title>
-      <link>http://taewan.kim/graalvm/graalvm_news_201907w4/</link>
-      <pubDate>Wed, 31 Jul 2019 01:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/graalvm/graalvm_news_201907w4/</guid>
-      <description>GraalVM과 관련해 7월 넷 째주에 발표된 세미나 동영상, 주요 기술 문서 및 블로그 문서를 정리합니다.
-GraalVM 버전  2019년 8월 7일 현재 GraalVM 최신 버전: 19.1.1 (2019.07.16) 19.1.1 릴리즈 상세 정보 페이지[↗NW]   19.1.1 버전은 CPU(Critical Patch Update)입니다. GraalVM 개발 팀은 19.1.0 GraalVM 사용할 경우 19.1.1로 업그레이드 할 것을 권고하고 있습니다.
-This is a Critical Patch Update (CPU) release for the 19.1.0 GraalVM release induced by the update to OracleJDK 8u221 and OpenJDK 8u222 as the base JDKs.</description>
-    </item>
-    
-    <item>
       <title>GraalVM의 포지션과 역할에 대하여..</title>
       <link>http://taewan.kim/graalvm/position_of_graalvm/</link>
       <pubDate>Sun, 16 Jun 2019 07:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/graalvm/position_of_graalvm/</guid>
-      <description>2019년 5월에 GraalVM이 GA되었고, 여러 프레임워크(Spring, SpringFoo, Micornut, Picocli, Quarkus)가 GraalVM 지원을 발표하거나 다양한 가능성을 제시하면서 최근에 GraalVM에 대한 관심이 점차 높아지고 있습니다. 또한 GraalVM 자체가 어떤 의미를 갖는지 궁금해하시는 분들이 많아지고 있습니다. 최근에 GraalVM을 주제로 세미나를 진행하면 다음과 같은 질문을 자주 받습니다.
- 오라클에서 GraalVM을 만든 이유? 오라클에서 GraalVM이 갖는 포지션과 역할 무엇인가? GraalVM은 파일럿 JDK인가? 운영 환경에 적용할 수 있는가? 오라클은 GraalVM CE(Community Edition)을 계속 지원할 것인가?  현재 이와 같은 질의에 대한 오라클의 공식적인 발표는 없기에 명확하게 답할 수는 없습니다.</description>
-    </item>
-    
-    <item>
-      <title>GraalVM의 포지션과 역할에 대하여..</title>
-      <link>http://taewan.kim/post/position_of_graalvm/</link>
-      <pubDate>Sun, 16 Jun 2019 07:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/post/position_of_graalvm/</guid>
       <description>2019년 5월에 GraalVM이 GA되었고, 여러 프레임워크(Spring, SpringFoo, Micornut, Picocli, Quarkus)가 GraalVM 지원을 발표하거나 다양한 가능성을 제시하면서 최근에 GraalVM에 대한 관심이 점차 높아지고 있습니다. 또한 GraalVM 자체가 어떤 의미를 갖는지 궁금해하시는 분들이 많아지고 있습니다. 최근에 GraalVM을 주제로 세미나를 진행하면 다음과 같은 질문을 자주 받습니다.
  오라클에서 GraalVM을 만든 이유? 오라클에서 GraalVM이 갖는 포지션과 역할 무엇인가? GraalVM은 파일럿 JDK인가? 운영 환경에 적용할 수 있는가? 오라클은 GraalVM CE(Community Edition)을 계속 지원할 것인가?  현재 이와 같은 질의에 대한 오라클의 공식적인 발표는 없기에 명확하게 답할 수는 없습니다.</description>
     </item>
@@ -167,17 +159,6 @@ Visual Sutdio Code 터미널 실행  Visual Studion Code 실행 파일 위치  $
       <pubDate>Sun, 17 Feb 2019 09:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/graalvm/graalvm_seminar/</guid>
-      <description>2019년 2월 16일에 8번째 &amp;ldquo;Oracle Developer Meetup&amp;rdquo; 세미나에서 GraalVM을 소개하는 세션을 진행했습니다. GraalVM은 고성능 JIT Compiler, Native 컴파일러 및 여러 언어를 통합하는 Polyglot 특징을 제공하는 새로운 Java 입니다. OpenJDK와 함께 다양성 자바의 시작을 알리는 기술이라고 생각합니다. 여기서 GraalVM을 소개하는 100분 세미나를 진행했습니다. 이 세미나의 발표 자료, 동영상 및 예제 코드를 공유합니다.
-세미나 동영상 세미나 동영상 입니다.
-  발표 자료 Cloud Native Java:GraalVM제 8회 Oracle Developer Meetup에서 발표한 &amp;ldquo;Cloud Native Java:GraalVM&amp;rdquo;의 장표입니다.</description>
-    </item>
-    
-    <item>
-      <title>Cloud Native Java:GraalVM (@Oracle Developer Meetup)</title>
-      <link>http://taewan.kim/post/graalvm_seminar/</link>
-      <pubDate>Sun, 17 Feb 2019 09:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/post/graalvm_seminar/</guid>
       <description>2019년 2월 16일에 8번째 &amp;ldquo;Oracle Developer Meetup&amp;rdquo; 세미나에서 GraalVM을 소개하는 세션을 진행했습니다. GraalVM은 고성능 JIT Compiler, Native 컴파일러 및 여러 언어를 통합하는 Polyglot 특징을 제공하는 새로운 Java 입니다. OpenJDK와 함께 다양성 자바의 시작을 알리는 기술이라고 생각합니다. 여기서 GraalVM을 소개하는 100분 세미나를 진행했습니다. 이 세미나의 발표 자료, 동영상 및 예제 코드를 공유합니다.
 세미나 동영상 세미나 동영상 입니다.
   발표 자료 Cloud Native Java:GraalVM제 8회 Oracle Developer Meetup에서 발표한 &amp;ldquo;Cloud Native Java:GraalVM&amp;rdquo;의 장표입니다.</description>
@@ -1046,6 +1027,16 @@ taewanme/pyml 컨테이너 이미지 pyml 더커 이미지는 docker hub에 자�
     </item>
     
     <item>
+      <title>GraalVM의 포지션과 역할에 대하여..</title>
+      <link>http://taewan.kim/post/position_of_graalvm/</link>
+      <pubDate>Sat, 16 Jun 2018 07:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/position_of_graalvm/</guid>
+      <description>2019년 5월에 GraalVM이 GA되었고, 여러 프레임워크(Spring, SpringFoo, Micornut, Picocli, Quarkus)가 GraalVM 지원을 발표하거나 다양한 가능성을 제시하면서 최근에 GraalVM에 대한 관심이 점차 높아지고 있습니다. 또한 GraalVM 자체가 어떤 의미를 갖는지 궁금해하시는 분들이 많아지고 있습니다. 최근에 GraalVM을 주제로 세미나를 진행하면 다음과 같은 질문을 자주 받습니다.
+ 오라클에서 GraalVM을 만든 이유? 오라클에서 GraalVM이 갖는 포지션과 역할 무엇인가? GraalVM은 파일럿 JDK인가? 운영 환경에 적용할 수 있는가? 오라클은 GraalVM CE(Community Edition)을 계속 지원할 것인가?  현재 이와 같은 질의에 대한 오라클의 공식적인 발표는 없기에 명확하게 답할 수는 없습니다.</description>
+    </item>
+    
+    <item>
       <title>Oracle Cloud 계정 만료 통지 메시지</title>
       <link>http://taewan.kim/oci/activity/expired_message/</link>
       <pubDate>Fri, 08 Jun 2018 17:28:14 +0900</pubDate>
@@ -1431,6 +1422,17 @@ torch와 torchvision 패키지가 모두 설치되어 있어야 합니다.
       
       <guid>http://taewan.kim/ml-translation/</guid>
       <description> PyTorch PyTorch 튜토리얼  PyTorch 튜토리얼 목차 01. PyTorch와 함께하는 딥러닝: 60분 리뷰  PyTorch는 무엇인가? Autograd: 미분 자동화 신경망   </description>
+    </item>
+    
+    <item>
+      <title>Cloud Native Java:GraalVM (@Oracle Developer Meetup)</title>
+      <link>http://taewan.kim/post/graalvm_seminar/</link>
+      <pubDate>Sat, 17 Feb 2018 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/graalvm_seminar/</guid>
+      <description>2019년 2월 16일에 8번째 &amp;ldquo;Oracle Developer Meetup&amp;rdquo; 세미나에서 GraalVM을 소개하는 세션을 진행했습니다. GraalVM은 고성능 JIT Compiler, Native 컴파일러 및 여러 언어를 통합하는 Polyglot 특징을 제공하는 새로운 Java 입니다. OpenJDK와 함께 다양성 자바의 시작을 알리는 기술이라고 생각합니다. 여기서 GraalVM을 소개하는 100분 세미나를 진행했습니다. 이 세미나의 발표 자료, 동영상 및 예제 코드를 공유합니다.
+세미나 동영상 세미나 동영상 입니다.
+  발표 자료 Cloud Native Java:GraalVM제 8회 Oracle Developer Meetup에서 발표한 &amp;ldquo;Cloud Native Java:GraalVM&amp;rdquo;의 장표입니다.</description>
     </item>
     
     <item>
