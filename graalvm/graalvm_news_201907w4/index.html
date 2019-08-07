@@ -9,10 +9,10 @@
 <META http-equiv="Cache-Control" content="No-Cache">
 <meta property="fb:admins" content="devtainer@gmail.com"/>
 
-<title>GraalVM 새소식#2(201907, 4주)</title>
+<title>GraalVM 새소식#1(201907, 4주)</title>
 <meta name="description" content="taewan.kim">
 <meta name="generator" content="Hugo 0.52" />
-<meta property="og:title" content="GraalVM 새소식#2(201907, 4주)" />
+<meta property="og:title" content="GraalVM 새소식#1(201907, 4주)" />
 <meta property="og:description" content="GraalVM 관련 지난 일주일간 발표된 자료를 정리합니다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/graalvm/graalvm_news_201907w4/" /><meta property="article:published_time" content="2019-07-31T01:28:14&#43;09:00"/>
@@ -97,7 +97,7 @@
 <div class="main-content content" role="main" itemprop="mainContentOfPage">
 	<article class="post">
 		<header class="post__header clearfix">
-			<h1 class="post__title">GraalVM 새소식#2(201907, 4주) </h1>
+			<h1 class="post__title">GraalVM 새소식#1(201907, 4주) </h1>
 			<p class="post__meta meta">
 				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
 				<time class="post__meta-date" datetime="2019-07-31 01:28:14 &#43;0900 KST">July 31, 2019</time>
@@ -111,17 +111,7 @@
 		<div class="post__content clearfix">
 			
 
-<p>GraalVM과 관련해 7월 넷 째주에 발표된 세미나 동영상, 주요 기술 문서 및 블로그 문서를 정리합니다.</p>
-
-<h2 id="동영상">동영상</h2>
-
-<p><a href="https://www.youtube.com/watch?v=cdYmr_rQ94I">https://www.youtube.com/watch?v=cdYmr_rQ94I</a></p>
-
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/cdYmr_rQ94I" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-
+<p>GraalVM과 관련해 7월에 발표된 세미나 동영상, 주요 기술 문서 및 블로그 문서를 정리합니다.</p>
 
 <h2 id="graalvm-버전">GraalVM 버전</h2>
 
@@ -147,17 +137,68 @@
 
 <h2 id="기술-문서-article-blog">기술 문서(Article &amp; Blog)</h2>
 
-<p><strong>1. Developing Microservices on Oracle Cloud with GraalVM and Micronaut</strong></p>
+<p><strong>1. libgraal: GraalVM compiler as a precompiled GraalVM native image</strong></p>
 
-<p><a href="https://medium.com/graalvm/libgraal-graalvm-compiler-as-a-precompiled-graalvm-native-image-26e354bee5c">https://medium.com/graalvm/libgraal-graalvm-compiler-as-a-precompiled-graalvm-native-image-26e354bee5c</a></p>
+<ul>
+<li>문서 공개: 2019.07.15</li>
+</ul>
 
-<p>Our libgraal blog post is finally out:)</p>
+<p>medium에서 운영되고 있는 graalvm 공식 블로그에 올라온 문서로 libgraal을 소개하는 문서입니다. libgraal을 소개하는 첫 번째 문서입니다. 이 문서의 내용을 요약하면 다음과 같습니다.</p>
 
-<p>libgraal is a shared library, produced by GraalVM Native Image, which contains a pre-compiled version of the GraalVM compiler. When you run Java applications on GraalVM it’s going to be used as the top tier JIT compiler. This has several advantages, libgraal improves startup times and completely avoids interfering with the heap usage and profiling of the application code.</p>
+<p>libgraal은 GraalVM 네이티브 이미지 만든 공유 라이브러리입니다. 이 공유 라이브러리에는 GraalVM 컴파일러의 사전 컴파일 버전이 포함됩니다. libgraal을 사용하면 실행 시간이 줄어들고, 최대 성능이 향상됩니다. 또한 힙 사용과 애플리케이션 코드 프로파일링에 대한 간섭을 제거할 수 있습니다.</p>
 
-<p>Libgraal is a shared library, containing a pre-compiled version of the GraalVM compiler. Using it provides benefits of improving startup, competitive peak performance and removes all interference with application profiles and the application’s use of the heap.</p>
+<p>libgraal은 &ldquo;코드는 자바처럼, 실행은 C++ 처럼(codes like Java, runs like C++)&ldquo;을 모토로 합니다.</p>
 
-<p><img src="https://taewanmerepo.github.io/2019/08/graalvm_news1908w1/040.jpg" alt="" /></p>
+<p>이 문서는 다음 링크에서 확인할 수 있습니다.</p>
+
+<ul>
+<li><a href="https://medium.com/graalvm/libgraal-graalvm-compiler-as-a-precompiled-graalvm-native-image-26e354bee5c" target="_blank">libgraal: GraalVM compiler as a precompiled GraalVM native image[↗NW]</a>
+</li>
+</ul>
+
+<hr />
+
+<p><strong>2. unleashing-predator-precomputed-data-repositories</strong></p>
+
+<ul>
+<li>문서 공개: 2019.07.18</li>
+</ul>
+
+<p>최근에 Miconaut Data로 이름이 변경된 Predator를 소개하는 문서입니다. Micronaut Data를 통해서 Data Access Repository 로직의 메모리 사용과 성능을 크게 향상할 수 있는 기술입니다. 이 기술과 GraalVM의 관계는 Native Image에서 그 연결 고리를 찾을 수 있습니다. 이 문서의 마지막에 &ldquo;GraalVM의 Native Image와 결합하여 더 큰 성능 개선을 이룰 수 있다&rdquo;고 소개합니다.</p>
+
+<p>이 문서를 통해서 Micronaut이 GraalVM 기술을 활용하는 관점을 엿볼 수 있습니다.</p>
+
+<p>이 문서는 다음 링크에서 확인할 수 있습니다.</p>
+
+<ul>
+<li><a href="https://objectcomputing.com/news/2019/07/18/" target="_blank">unleashing predator: precomputed data repositories[↗NW]</a>
+</li>
+</ul>
+
+<h2 id="동영상">동영상</h2>
+
+<h3 id="run-scala-faster-with-graalvm-on-any-platform">Run Scala Faster with GraalVM on any Platform</h3>
+
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/cdYmr_rQ94I" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+
+<ul>
+<li>동영상 공개: 2019.07.11</li>
+</ul>
+
+<p>이 동영상은 2019년 6월 11일 스위스 로잔(Lausanne)의 스위스텍 컨벤션 센터에서 진행된 Scala Day 컨퍼런스에서 발표된 세션입니다. 발표는 Oracle Labs의 &ldquo;Vojin Jovanovic&rdquo;이 진행했습니다.</p>
+
+<p>세션에서는 GraalVM의 기본적인 특징을 소개하고, GraalVM의 성능 개선 효과 특히 Native Image와 libgraal의 강점을 설명합니다. 이 특징은 Scala에서 사용할 경우 상당한 성능 개선 효과가 있음을 강조합니다. Quarkus Hibernate 성능 측정 자료를 통해서 Native Image의 성능 개선 효과와 특징을 소개합니다. 마지막으로 Scala의 기반 자바로 GraalVM을 사용할 때, 성능 개선 효과를 다룹니다.</p>
+
+<p>이 문서는 다음 링크에서 확인할 수 있습니다.</p>
+
+<ul>
+<li><a href="https://www.youtube.com/watch?v=cdYmr_rQ94I" target="_blank">Run Scala Faster with GraalVM on any Platform - Vojin Jovanovic[↗NW]</a>
+</li>
+</ul>
 
 		</div>
 		
@@ -250,9 +291,12 @@
 <ul>
 <li>
 <ul>
-<li><a href="#동영상">동영상</a></li>
 <li><a href="#graalvm-버전">GraalVM 버전</a></li>
 <li><a href="#기술-문서-article-blog">기술 문서(Article &amp; Blog)</a></li>
+<li><a href="#동영상">동영상</a>
+<ul>
+<li><a href="#run-scala-faster-with-graalvm-on-any-platform">Run Scala Faster with GraalVM on any Platform</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -274,6 +318,22 @@
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_news_201908w1/" title="GraalVM 새소식#2(201908, 첫 째주)">
+							GraalVM 새소식#2(201908, 첫 째주)</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_news_201907w4/" title="GraalVM 새소식#1(201907, 4주)">
+							GraalVM 새소식#1(201907, 4주)</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
+							GraalVM 관련 코너를 새로 시작합니다.</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/position_of_graalvm/" title="GraalVM의 포지션과 역할에 대하여..">
+							GraalVM의 포지션과 역할에 대하여..</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/book/days_of_searching_for_first_love/" title="[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기">
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
@@ -290,28 +350,12 @@
 							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/post/function_in_semicolon/" title="함수 표기법: 세미콜론으로 변수와 파라미터 구분">
 							함수 표기법: 세미콜론으로 변수와 파라미터 구분</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/cloud/oci_connection_info/" title="Oracle OCI 접속 정보 수집">
-							Oracle OCI 접속 정보 수집</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/book/bigdata_is_bubble/" title="&#39;빅데이터는 거품이다&#39; 리뷰">
-							&#39;빅데이터는 거품이다&#39; 리뷰</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/cloud/rsa_with_oci_cli/" title="OCI CLI로 RSA key pair 생성">
-							OCI CLI로 RSA key pair 생성</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/cloud/installing_oci_cli/" title="OCI CLI 설치 (Window 10, 맥 OSX &amp; Linux)">
-							OCI CLI 설치 (Window 10, 맥 OSX &amp; Linux)</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/cloud/provisioning_adw/" title="Oracle ADW 인스턴스 프로비저닝">
-							Oracle ADW 인스턴스 프로비저닝</a>
 		  </li>
 		</ul>
 	</div>
