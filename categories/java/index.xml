@@ -6,21 +6,10 @@
     <description>Recent content in Java on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 Jul 2019 01:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 16 Jun 2019 07:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/categories/java/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>GraalVM 관련 코너를 새로 시작합니다.</title>
-      <link>http://taewan.kim/graalvm/graalvm_corner/</link>
-      <pubDate>Sun, 28 Jul 2019 01:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/graalvm/graalvm_corner/</guid>
-      <description>GraalVM 코너 소개 다양성 자바의 새로운 가능성을 보이는 GraalVM 관련 정보를 다루는 코너입니다.
-이 코너는 다음과 같은 내용으로 채워가겠습니다.
- 주간 GraalVM 새 소식  주 단위로 다음과 같은 컨텐트의 요약 정보를 제공합니다. GraalVM 릴리즈 소식 GraalVM 발표 세션 문서 및 동영상 소개 GraalVM 관련 문서 링크  GraalVM 문서 번역 및 요약  주간 GraalVM 새 소식에서 소개한 주요 문서 번역 GraalVM 새 소식에서 소개한 문서 및 세미나 동영상 요약  GraalVM 기술 문서  GraalVM 관련된 여러 기술 문서 공유   GraalVM 관련 기존 문서 현재까지 다뤘던 GraalVM 관련 문서는 다음과 같습니다.</description>
-    </item>
     
     <item>
       <title>GraalVM의 포지션과 역할에 대하여..</title>
@@ -41,6 +30,17 @@
       <description>2019년 2월 16일에 8번째 &amp;ldquo;Oracle Developer Meetup&amp;rdquo; 세미나에서 GraalVM을 소개하는 세션을 진행했습니다. GraalVM은 고성능 JIT Compiler, Native 컴파일러 및 여러 언어를 통합하는 Polyglot 특징을 제공하는 새로운 Java 입니다. OpenJDK와 함께 다양성 자바의 시작을 알리는 기술이라고 생각합니다. 여기서 GraalVM을 소개하는 100분 세미나를 진행했습니다. 이 세미나의 발표 자료, 동영상 및 예제 코드를 공유합니다.
 세미나 동영상 세미나 동영상 입니다.
   발표 자료 Cloud Native Java:GraalVM제 8회 Oracle Developer Meetup에서 발표한 &amp;ldquo;Cloud Native Java:GraalVM&amp;rdquo;의 장표입니다.</description>
+    </item>
+    
+    <item>
+      <title>GraalVM 관련 코너를 새로 시작합니다.</title>
+      <link>http://taewan.kim/graalvm/graalvm_corner/</link>
+      <pubDate>Fri, 15 Feb 2019 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/graalvm/graalvm_corner/</guid>
+      <description>GraalVM 코너 소개 다양성 자바의 새로운 가능성을 보이는 GraalVM 관련 정보를 다루는 코너입니다.
+이 코너는 다음과 같은 내용으로 채워가겠습니다.
+ 주간 GraalVM 새 소식  주 단위로 다음과 같은 컨텐트의 요약 정보를 제공합니다. GraalVM 릴리즈 소식 GraalVM 발표 세션 문서 및 동영상 소개 GraalVM 관련 문서 링크  GraalVM 문서 번역 및 요약  주간 GraalVM 새 소식에서 소개한 주요 문서 번역 GraalVM 새 소식에서 소개한 문서 및 세미나 동영상 요약  GraalVM 기술 문서  GraalVM 관련된 여러 기술 문서 공유   GraalVM 관련 기존 문서 현재까지 다뤘던 GraalVM 관련 문서는 다음과 같습니다.</description>
     </item>
     
     <item>
