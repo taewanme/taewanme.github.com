@@ -106,7 +106,7 @@
 		<div class="post__content clearfix">
 			
 
-<p>오라클 데이터베이스의 SQL 툴로 Oracle SQLDeveloper를 사용할 때 빈번하게 커넥션이 닫치고, 재 접속을 요청하는 프롬프트가 뜰때가 있습니다. 이 현상은 일정 시간 사용되지 않는 세션을 데이터베이스가 정리하는 과정에서 발생합니다.</p>
+<p>오라클 데이터베이스의 SQL 툴로 Oracle SQLDeveloper를 사용할 때 빈번하게 커넥션이 닫치고, 재접속을 요청하는 프롬프트가 뜰때가 있습니다. 이 현상은 일정 시간 사용되지 않는 세션을 데이터베이스가 정리하는 과정에서 발생합니다.</p>
 
 <p>이런 문제를 Oracle SQLDeveloper 확장 플러그인인 Keepalive로 해결할 수 있습니다. Keepalive는 일정시간 마다 커넥션을 확인하고 자동 재접속하는 작업을 수행해서
 Oracle SQLDeveloper의 커넥션을 유지시켜 줍니다.</p>
@@ -156,7 +156,7 @@ Oracle SQLDeveloper의 커넥션을 유지시켜 줍니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2019/09/keepalive/070.jpg" alt="" /></p>
 
-<p>이 플러그인을 120초로 설정하면, 120초 단위로 커넥션을 확인하고 만약 종료되었다면 재접속합니다. 자동 재접속을 위해서는 커넥션 정보에 Password를 설정하고 저장하는 설정이 필요합니다. 커넥션 정보에서 다음과 같은 설정을 확인해야 합니다.</p>
+<p>이 플러그인을 120으로 설정하면, 120초 단위로 커넥션을 확인하고 만약 종료되었다면 재접속합니다. 자동 재접속을 위해서는 커넥션 정보에 Password를 저장/유지하는 설정이 필요합니다. 커넥션 정보에서 다음과 같은 패스워드 저장/유지 설정을 확인해야 합니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2019/09/keepalive/080.jpg" alt="" /></p>
 
