@@ -6,10 +6,21 @@
     <description>Recent content in Oracle on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 Dec 2018 05:17:05 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 04 Sep 2019 09:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/oracle/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Oracle SQLDeveloper 커넥션 관리: Keepalive 플러그인</title>
+      <link>http://taewan.kim/oratips/sqldeveloper-keepalive/</link>
+      <pubDate>Wed, 04 Sep 2019 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oratips/sqldeveloper-keepalive/</guid>
+      <description>오라클 데이터베이스의 SQL 툴로 Oracle SQLDeveloper를 사용할 때 빈번하게 커넥션이 닫치고, 재 접속을 요청하는 프롬프트가 뜰때가 있습니다. 이 현상은 일정 시간 사용되지 않는 세션을 데이터베이스가 정리하는 과정에서 발생합니다.
+이런 문제를 Oracle SQLDeveloper 확장 플러그인인 Keepalive로 해결할 수 있습니다. Keepalive는 일정시간 마다 커넥션을 확인하고 자동 재접속하는 작업을 수행해서 Oracle SQLDeveloper의 커넥션을 유지시켜 줍니다.
+이 기능을 사용하기 위해서는 우선 Oracle SQLDeveloper에 Keepalive 플러그인을 설치해야 합니다. 또한 데이터베이스 접속 정보에 패스워드를 저장하는 설정을 추가해야 합니다.</description>
+    </item>
     
     <item>
       <title>Oracle BDC 서비스 클러스터 관리 - 서비스 콘솔</title>

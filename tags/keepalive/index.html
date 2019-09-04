@@ -9,17 +9,17 @@
 <META http-equiv="Cache-Control" content="No-Cache">
 <meta property="fb:admins" content="devtainer@gmail.com"/>
 
-<title>Oracle SQLDeveloper 커넥션 관리: Keepalive 플러그인</title>
+<title>Keepalive</title>
 <meta name="description" content="taewan.kim">
 <meta name="generator" content="Hugo 0.52" />
-<meta property="og:title" content="Oracle SQLDeveloper 커넥션 관리: Keepalive 플러그인" />
-<meta property="og:description" content="SQLDeveloper의 빈번한 커넥션 에러를 Keepalive 플러그인을 이용하여 해결할 수 있습니다." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/oratips/sqldeveloper-keepalive/" /><meta property="article:published_time" content="2019-09-04T09:28:14&#43;09:00"/>
-<meta property="article:modified_time" content="2019-09-04T09:28:14&#43;09:00"/>
+<meta property="og:title" content="Keepalive" />
+<meta property="og:description" content="taewan.kim" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://taewan.kim/tags/keepalive/" />
+<meta property="og:updated_time" content="2019-09-04T09:28:14&#43;09:00"/>
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-
+<link rel="alternate" type="application/rss+xml" title="taewan.kim 블로그 Feed" href="http://taewan.kim/tags/keepalive/index.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
 <link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
 <link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
@@ -84,6 +84,7 @@
 		</header>
 		<div class="wrapper clearfix">
 
+
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -93,117 +94,15 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="main-content content" role="main" itemprop="mainContentOfPage">
-	<article class="post">
-		<header class="post__header clearfix">
-			<h1 class="post__title">Oracle SQLDeveloper 커넥션 관리: Keepalive 플러그인 </h1>
-			<p class="post__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="post__meta-date" datetime="2019-09-04 09:28:14 &#43;0900 KST">September 04, 2019</time>
-			</p>
-		</header>
-
-		<div class="post__content clearfix">
-			
-
-<p>오라클 데이터베이스의 SQL 툴로 Oracle SQLDeveloper를 사용할 때 빈번하게 커넥션이 닫치고, 재 접속을 요청하는 프롬프트가 뜰때가 있습니다. 이 현상은 일정 시간 사용되지 않는 세션을 데이터베이스가 정리하는 과정에서 발생합니다.</p>
-
-<p>이런 문제를 Oracle SQLDeveloper 확장 플러그인인 Keepalive로 해결할 수 있습니다. Keepalive는 일정시간 마다 커넥션을 확인하고 자동 재접속하는 작업을 수행해서
-Oracle SQLDeveloper의 커넥션을 유지시켜 줍니다.</p>
-
-<p>이 기능을 사용하기 위해서는 우선 Oracle SQLDeveloper에 Keepalive 플러그인을 설치해야 합니다. 또한 데이터베이스 접속 정보에 패스워드를 저장하는 설정을 추가해야 합니다.</p>
-
-<h2 id="keepalive-플러그인-설치">Keepalive 플러그인 설치</h2>
-
-<p>Keepalive 플로그인은 github 프로젝트로 제공되는 오픈소스입니다. 프로젝트 메인 페이지와 다운로드 페이지 주소는 다음과 같습니다.</p>
-
-<ul>
-<li>프로젝트 홈 페이지: <a href="https://scristalli.github.io/SQL-Developer-4-keepalive/">https://scristalli.github.io/SQL-Developer-4-keepalive/</a></li>
-<li>플러그인 다운로드 페이지: <a href="https://github.com/scristalli/SQL-Developer-4-keepalive/releases">https://github.com/scristalli/SQL-Developer-4-keepalive/releases</a></li>
-</ul>
-
-<h3 id="플러그인-다운로드">플러그인 다운로드</h3>
-
-<p>플러그인 다운로드 페이지는 다음 그림과 같습니다. 다음 그림에서 keepalive.zip 파일을 다운로드 합니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2019/09/keepalive/010.jpg" alt="" /></p>
-
-<h3 id="플로그인-설치">플로그인 설치</h3>
-
-<p>keepalive 플러그인 설치를 위해서 SQLDeveloper의 &ldquo;<strong>업데이트 확인</strong>&rdquo; 메뉴를 실행합니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2019/09/keepalive/020.jpg" alt="" /></p>
-
-<p>SQLDeveloper의 &ldquo;<strong>업데이트 확인</strong>&rdquo; 메뉴를 실행하는 다음 그림과 같이 &ldquo;<strong>업데이트 확인</strong>&rdquo; 창이 오픈됩니다. 여기에서 다음 그림과 같이 앞에서 다운로드한 zip 파일을 선택하고 &ldquo;다음&rdquo; 버튼을 클릭합니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2019/09/keepalive/030.jpg" alt="" /></p>
-
-<p>다음으로는 앞에서 선택한 설정을 확인하는 윈도우가 오픈됩니다. &ldquo;완료&rdquo; 버튼을 클릭합니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2019/09/keepalive/040.jpg" alt="" /></p>
-
-<p>설치가 완료되고, SQLDevelper를 재시작한다는 팝업이 오픈됩니다. 다음 그림과 같이 확인하고 SQLDevelper를 재시작합니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2019/09/keepalive/050.jpg" alt="" /></p>
-
-<h2 id="keepalive-설정">Keepalive 설정</h2>
-
-<p>SQLDevelper를 재시작하면 다음 그림과 같이 메뉴바에 Keepalive 아이콘이 추가된것을 확인할 수 있습니다. Keepalive 설정을 위해서 이 아이콘을 클릭합니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2019/09/keepalive/060.jpg" alt="" /></p>
-
-<p>Keepalive 아이콘을 클릭하면, 다음 그림과 같이 keepalive 확인 시간을 초 단위로 설정하는 팝업이 오픈됩니다. 일반적으로 &ldquo;120&rdquo;을 입력하고 확인합니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2019/09/keepalive/070.jpg" alt="" /></p>
-
-<p>이 플러그인을 120초로 설정하면, 120초 단위로 커넥션을 확인하고 만약 종료되었다면 재접속합니다. 자동 재접속을 위해서는 커넥션 정보에 Password를 설정하고 저장하는 설정이 필요합니다. 커넥션 정보에서 다음과 같은 설정을 확인해야 합니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2019/09/keepalive/080.jpg" alt="" /></p>
-
-<h2 id="관련-문서">관련 문서</h2>
-
-<ul>
-<li>{ {&lt; extlink
-link=&ldquo;/tip/sqldeveloper_error_unrecog_locale/&rdquo;
-desc=&ldquo;SQLDeveloper 오류: Locale not recoginized&rdquo;&gt;} }</li>
-</ul>
-
-		</div>
+	<hr/>
+	<div class="main-content loop content" role="main">
 		
-<div class="post__tags tags clearfix">
-	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
-	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link" href="/tags/oracle/" rel="tag">oracle</a></li>
-		<li class="tags__item"><a class="tags__link" href="/tags/sqldeveloper/" rel="tag">sqldeveloper</a></li>
-		<li class="tags__item"><a class="tags__link" href="/tags/keepalive/" rel="tag">keepalive</a></li>
-	</ul>
-</div>
-
-	</article>
-	
-
-	
-
-	
-
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oratips/sqldeveloper-keepalive/"></div>
-
-
-	<div>
-		<hr />
-		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		
-		<ins class="adsbygoogle"
-			 style="display:block"
-			 data-ad-client="ca-pub-8469722754608892"
-			 data-ad-slot="5594090168"
-			 data-ad-format="auto"
-			 data-full-width-responsive="true"></ins>
-		<script>
-		(adsbygoogle = window.adsbygoogle || []).push({});
-		</script>
-	</div>
-	
+
+		
+
+		
+		
 	</div>
 
 <aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
@@ -222,7 +121,7 @@ desc=&ldquo;SQLDeveloper 오류: Locale not recoginized&rdquo;&gt;} }</li>
 	
 
 <div class="widget-categories widget">	
-		<div class="fb-like" data-href="http://taewan.kim/oratips/sqldeveloper-keepalive/" 
+		<div class="fb-like" data-href="http://taewan.kim/tags/keepalive/" 
 		data-layout="standard" data-action="like" 
 		data-size="small" 
 		data-show-faces="true" 
@@ -230,25 +129,6 @@ desc=&ldquo;SQLDeveloper 오류: Locale not recoginized&rdquo;&gt;} }</li>
 </div>
 	
 	
-<div class="widget-categories widget">
-	<h4 class="widget__title">ToC (목차)</h4>
-	<div class="widget__content">
-	<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#keepalive-플러그인-설치">Keepalive 플러그인 설치</a>
-<ul>
-<li><a href="#플러그인-다운로드">플러그인 다운로드</a></li>
-<li><a href="#플로그인-설치">플로그인 설치</a></li>
-</ul></li>
-<li><a href="#keepalive-설정">Keepalive 설정</a></li>
-<li><a href="#관련-문서">관련 문서</a></li>
-</ul></li>
-</ul>
-</nav>
-  </div>
-</div>
 
 	<div class="widget-categories widget">
   <h4 class="widget__title">관련도서</h4>
