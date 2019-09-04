@@ -1088,6 +1088,16 @@ taewanme/pyml 컨테이너 이미지 pyml 더커 이미지는 docker hub에 자�
     
     <item>
       <title>Ubuntu 패키지 관리 툴: apt 사용법</title>
+      <link>http://taewan.kim/oratips/sqldeveloper-keepalive/</link>
+      <pubDate>Sat, 05 May 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oratips/sqldeveloper-keepalive/</guid>
+      <description>우분투에서 패키지를 관리하는 툴로 apt-get과 apt-cache를 주로 사용해 왔습니다. 요즘에는 두 명령을 결합한 명령이 apt를 주로 사용합니다. apt는 apt-get/apt-cache를 완전히 통합하는 툴은 아닌 것 같습니다. 사용자 편리성을 위해서 apt-get과 apt-cache의 주요 기능을 결합한 툴입니다. man에서는 apt를 다음과 같이 설명합니다.
+ apt provides a high-level commandline interface for the package management system. It is intended as an end user interface and enables some options better suited for interactive usage by default compared to more specialized APT tools like apt-get and apt-cache.</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu 패키지 관리 툴: apt 사용법</title>
       <link>http://taewan.kim/tip/apt-apt-get/</link>
       <pubDate>Sat, 05 May 2018 21:28:14 +0900</pubDate>
       

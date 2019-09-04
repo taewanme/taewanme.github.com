@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>Ubuntu 패키지 관리 툴: apt 사용법</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.52" />
+<meta property="og:title" content="Ubuntu 패키지 관리 툴: apt 사용법" />
+<meta property="og:description" content="우분투 패키지 관리 툴인 apt와 apt-get의 차이를 알아보고 사용법을 정리합니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/oratips/sqldeveloper-keepalive/" /><meta property="article:published_time" content="2018-05-05T21:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2018-05-05T21:28:14&#43;09:00"/>
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/graalvm/" title="GraalVM 관련 새소식 및 기술 문서를 담고 있습니다." >GRAALVM</a></li>
+		<li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Deep Learning 구현 기술에 대하여 정리합니다." >TUTORIAL &amp; MANUAL</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">Ubuntu 패키지 관리 툴: apt 사용법 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2018-05-05 21:28:14 &#43;0900 KST">May 05, 2018</time>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+			
+
+<p>우분투에서 패키지를 관리하는 툴로 apt-get과 apt-cache를 주로 사용해 왔습니다. 요즘에는 두 명령을 결합한 명령이 <strong>apt</strong>를 주로 사용합니다. apt는 apt-get/apt-cache를 완전히 통합하는 툴은 아닌 것 같습니다. 사용자 편리성을 위해서 apt-get과 apt-cache의 주요 기능을 결합한 툴입니다. man에서는 apt를 다음과 같이 설명합니다.</p>
+
+<blockquote>
+<p>apt provides a high-level commandline interface for the package management system. It is intended as an end user interface and enables some options better suited for interactive usage by default compared to more specialized APT tools like apt-get and apt-cache.</p>
+</blockquote>
+
+<p>사용자가 일반 리눅스 사용자라면 apt를 사용하는 것이 효과적이고, 패키지 관리의 세밀한 옵션을 주로 사용하는 스크립트 작업에서는 apt-get을 사용하는 것이 좋습니다.</p>
+
+<p>이제부터 기본적인 apt 명령 사용법을 정리하겠습니다.</p>
+
+<h2 id="apt-명령과-apt-get-apt-cache-명령-비교">apt 명령과 apt-get/apt-cache 명령 비교</h2>
+
+<p>다음은 apt 명령과 기존의 apt-get/apt-cache를 비교한 테이블입니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>apt 명령</th>
+<th>기존 명령</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>apt install</td>
+<td>apt-get install</td>
+<td>패키지 목록</td>
+</tr>
+
+<tr>
+<td>apt remove</td>
+<td>apt-get remove</td>
+<td>패키지 삭제</td>
+</tr>
+
+<tr>
+<td>apt purge</td>
+<td>apt-get purge</td>
+<td>패키지와 관련 설정 제거</td>
+</tr>
+
+<tr>
+<td>apt update</td>
+<td>apt-get update</td>
+<td>레파지토리 인덱스 갱신</td>
+</tr>
+
+<tr>
+<td>apt upgrade</td>
+<td>apt-get upgrade</td>
+<td>업그레이드 가능한 모든 패키지 업그레이드</td>
+</tr>
+
+<tr>
+<td>apt autoremove</td>
+<td>apt-get autoremove</td>
+<td>불필요한 패키지 제거</td>
+</tr>
+
+<tr>
+<td>apt full-upgrade</td>
+<td>apt-get dist-upgrade</td>
+<td>의존성 고려한 패키지 업그레이드</td>
+</tr>
+
+<tr>
+<td>apt search</td>
+<td>apt-cache search</td>
+<td>프로그램 검색</td>
+</tr>
+
+<tr>
+<td>apt show</td>
+<td>apt-cache show</td>
+<td>패키지 상세 정보 출력</td>
+</tr>
+</tbody>
+</table>
+
+<p>새로운 명령은 다음과 같습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>apt 명령</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>apt list</td>
+<td>apt-get install</td>
+</tr>
+
+<tr>
+<td>apt edit-sources</td>
+<td>소스 리스트 편집</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="주요-apt-명령-사용법">주요 apt 명령 사용법</h2>
+
+<p>권한 문제가 발생할 경우 sudo 명령을 붙여 root로 실행할 수 있습니다.</p>
+
+<h3 id="1-패키지-설치-삭제">1. 패키지 설치, 삭제</h3>
+
+<p><strong>1. 패키지 설치</strong></p>
+
+<blockquote>
+<pre><code>apt install &lt;package_name&gt;
+</code></pre>
+</blockquote>
+
+<ul>
+<li>패키지 명을 여러 게 지정하여 여러 패키지를 한꺼번에 설치할 수 있습니다. 이때 패지키 명은 공백으로 구분합니다.</li>
+</ul>
+
+<pre><code>$ sudo apt install docker.io
+# 로그 생략
+Do you want to continue? [Y/n] y
+Get:1 http://archive.ubuntu.com/ubuntu xenial/main i386 bridge-utils i386 1.5-9ubuntu1 [29.4 kB]
+Get:2 http://archive.ubuntu.com/ubuntu xenial/universe i386 cgroupfs-mount all 1.2 [4,970 B]
+Get:3 http://archive.ubuntu.com/ubuntu xenial-updates/universe i386 runc i386 1.0.0~rc2+docker1.13.1-0ubuntu1~16.04.1 [1,390 kB]
+Get:4 http://archive.ubuntu.com/ubuntu xenial-updates/universe i386 containerd i386 0.2.5-0ubuntu1~16.04.1 [2,750 kB]
+Get:5 http://archive.ubuntu.com/ubuntu xenial-updates/universe i386 docker.io i386 1.13.1-0ubuntu1~16.04.2 [11.1 MB]
+Get:6 http://archive.ubuntu.com/ubuntu xenial-updates/main i386 ubuntu-fan all 0.12.8~16.04.2 [35.6 kB]
+Fetched 15.3 MB in 11s (1,295 kB/s)
+# 로그 생략
+Setting up bridge-utils (1.5-9ubuntu1) ...
+Setting up cgroupfs-mount (1.2) ...
+Setting up runc (1.0.0~rc2+docker1.13.1-0ubuntu1~16.04.1) ...
+Setting up containerd (0.2.5-0ubuntu1~16.04.1) ...
+Setting up docker.io (1.13.1-0ubuntu1~16.04.2) ...
+Adding group `docker' (GID 117) ...
+Done.
+Setting up ubuntu-fan (0.12.8~16.04.2) ...
+Processing triggers for systemd (229-4ubuntu21.2) ...
+Processing triggers for ureadahead (0.100.0-19) ...
+vagrant@vagrant:~$
+</code></pre>
+
+<hr />
+
+<p><strong>2. 패키지 제거</strong></p>
+
+<blockquote>
+<pre><code>apt remove &lt;package_name&gt;
+</code></pre>
+</blockquote>
+
+<p>아래는 docker.io 패키지 제거 실행 예제입니다.</p>
+
+<pre><code>$ sudo apt remove docker.io
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  bridge-utils cgroupfs-mount containerd runc ubuntu-fan
+Use 'sudo apt autoremove' to remove them.
+The following packages will be REMOVED:
+  docker.io
+0 upgraded, 0 newly installed, 1 to remove and 51 not upgraded.
+After this operation, 50.4 MB disk space will be freed.
+Do you want to continue? [Y/n] Y
+(Reading database ... 38476 files and directories currently installed.)
+Removing docker.io (1.13.1-0ubuntu1~16.04.2) ...
+'/usr/share/docker.io/contrib/nuke-graph-directory.sh' -&gt; '/var/lib/docker/nuke-graph-directory.sh'
+Warning: Stopping docker.service, but it can still be activated by:
+  docker.socket
+Processing triggers for man-db (2.7.5-1) ...
+$
+</code></pre>
+
+<p>remove 명령은 저장한 패키지만을 제거합니다. 해당 패키지 설정 파일은 삭제되지 않습니다. 아래와 같이 관련 파일은 유지됩니다.</p>
+
+<pre><code>$ls -al /etc/docker/
+total 12
+drwxr-xr-x  2 root root 4096 May 26 08:15 .
+drwxr-xr-x 97 root root 4096 May 26 08:15 ..
+-rw-------  1 root root  244 May 26 08:15 key.json
+$
+</code></pre>
+
+<p><strong>3. 패키지와 설정 파일 제거</strong></p>
+
+<p>purge 명령은 패키지와 관련 파일을 모두 제거합니다.</p>
+
+<blockquote>
+<pre><code>apt purge &lt;package_name&gt;
+</code></pre>
+
+<p>아래는 wget 패키지 제거 실행 예제입니다.</p>
+</blockquote>
+
+<pre><code>$ sudo apt purge wget
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  bridge-utils cgroupfs-mount containerd python3-requests python3-urllib3 runc ubuntu-fan
+Use 'sudo apt autoremove' to remove them.
+The following packages will be REMOVED:
+  ssh-import-id* wget*
+0 upgraded, 0 newly installed, 2 to remove and 50 not upgraded.
+After this operation, 990 kB disk space will be freed.
+Do you want to continue? [Y/n] y
+(Reading database ... 38380 files and directories currently installed.)
+Removing ssh-import-id (5.5-0ubuntu1) ...
+Purging configuration files for ssh-import-id (5.5-0ubuntu1) ...
+Removing wget (1.17.1-1ubuntu1.3) ...
+Purging configuration files for wget (1.17.1-1ubuntu1.3) ...
+Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for install-info (6.1.0.dfsg.1-5) ...
+$
+</code></pre>
+
+<p>위 실행 로그에서 <code>Purging configuration files for ssh-import-id (5.5-0ubuntu1) ...</code>와 같이 설정 파일을 삭제한 것을 확인할 수 있습니다.</p>
+
+<hr />
+
+<p><strong>4. 사용하지 않는 패키지 제거</strong></p>
+
+<p>autoremove 명령을 사용하여 현재 사용되지 않는 패키지를 제거합니다.</p>
+
+<blockquote>
+<pre><code>apt autoremove
+</code></pre>
+</blockquote>
+
+<p>아래는 autoremove의 실행 예제입니다.</p>
+
+<pre><code>$ sudo apt autoremove
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+0 upgraded, 0 newly installed, 0 to remove and 51 not upgraded.
+$
+</code></pre>
+
+<p>실행 로그에서 업그레이드, 신규 설치 및 제거, 업그레이드 대상 패키지 등의 정보를 출력하고 있습니다. 위 실행 예제는 미사용 패키지가 없는 상태를 보입니다.</p>
+
+<hr />
+
+<h3 id="2-패키지-정보-조회">2. 패키지 정보 조회</h3>
+
+<p><strong>2.1. 패키지 목록 검색</strong></p>
+
+<p>패키지지 검색 명령은 다음과 같습니다.</p>
+
+<blockquote>
+<pre><code>$ apt search &lt;key word&gt;
+</code></pre>
+</blockquote>
+
+<p>아래는 docker 문자열의 검색 결과입니다.</p>
+
+<pre><code>$ apt search docker
+Sorting... Done
+Full Text Search... Done
+docker/trusty-updates 1.5-1 amd64
+  System tray for KDE3/GNOME2 docklet applications
+
+docker.io/trusty-updates 1.6.2~dfsg1-1ubuntu4~14.04.1 amd64
+  Linux container runtime
+
+golang-docker-dev/trusty-updates 1.6.2~dfsg1-1ubuntu4~14.04.1 all
+  Externally reusable Go packages included with Docker
+
+karbon/trusty 1:2.8.1-1-0ubuntu3 amd64
+  vector graphics application for the Calligra Suite
+
+kdocker/trusty 4.6-2 amd64
+  lets you dock any application into the system tray
+
+pidgin/trusty-updates,trusty-security 1:2.10.9-0ubuntu3.4 amd64
+  graphical multi-protocol instant messaging client for X
+
+vim-syntax-docker/trusty-updates 1.6.2~dfsg1-1ubuntu4~14.04.1 all
+  Docker container engine - Vim highlighting syntax files
+$
+</code></pre>
+
+<hr />
+
+<p><strong>2.2. 패키지 상세 정보 검색</strong></p>
+
+<p>패키지의 주요 정보를 출력합니다.</p>
+
+<ul>
+<li>버전</li>
+<li>분류</li>
+<li>의존성 패키지</li>
+<li>다운로드 위치</li>
+<li>사이트</li>
+</ul>
+
+<blockquote>
+<pre><code>$ apt show &lt;package_name&gt;
+</code></pre>
+</blockquote>
+
+<p>아래는 docker.io 패키지 정보 조회 결과 입니다.</p>
+
+<pre><code>$ apt show docker.io
+Package: docker.io
+Version: 1.13.1-0ubuntu1~16.04.2
+Built-Using: glibc (= 2.23-0ubuntu9)
+Priority: optional
+Section: universe/admin
+Origin: Ubuntu
+Maintainer: Ubuntu Developers &lt;ubuntu-devel-discuss@lists.ubuntu.com&gt;
+Original-Maintainer: Paul Tagliamonte &lt;paultag@debian.org&gt;
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Installed-Size: 50.4 MB
+Depends: adduser, containerd (&gt;= 0.2.5~), iptables, runc (&gt;= 1.0.0~rc2-0ubuntu1~), init-system-helpers (&gt;= 1.18~), lsb-base (&gt;= 4.1+Debian11ubuntu7), libapparmor1 (&gt;= 2.6~devel), libc6 (&gt;= 2.4), libdevmapper1.02.1 (&gt;= 2:1.02.97), libseccomp2 (&gt;= 2.1.0)
+Recommends: ca-certificates, cgroupfs-mount | cgroup-lite, git, ubuntu-fan, xz-utils, apparmor
+Suggests: aufs-tools, btrfs-tools, debootstrap, docker-doc, rinse, zfs-fuse | zfsutils
+Breaks: docker (&lt;&lt; 1.5~)
+Replaces: docker (&lt;&lt; 1.5~)
+Homepage: https://dockerproject.org
+Download-Size: 11.1 MB
+APT-Manual-Installed: yes
+APT-Sources: http://archive.ubuntu.com/ubuntu xenial-updates/universe i386 Packages
+Description: Linux container runtime
+ Docker complements kernel namespacing with a high-level API which operates at
+ the process level. It runs unix processes with strong guarantees of isolation
+ and repeatability across servers.
+ .
+ Docker is a great building block for automating distributed systems:
+ large-scale web deployments, database clusters, continuous deployment systems,
+ private PaaS, service-oriented architectures, etc.
+ .
+ This package contains the daemon and client. Using docker.io on non-amd64 hosts
+ is not supported at this time. Please be careful when using it on anything
+ besides amd64.
+ .
+ Also, note that kernel version 3.8 or above is required for proper operation of
+ the daemon process, and that any lower versions may have subtle and/or glaring
+ issues.
+
+N: There is 1 additional record. Please use the '-a' switch to see it
+$
+</code></pre>
+
+<hr />
+
+<p><strong>2.2. 패키지 목록 조회(상태별)</strong></p>
+
+<p>apt list는 레파지토리에 등록된 패키지 목록을 조회합니다.</p>
+
+<blockquote>
+<pre><code>$ apt list
+</code></pre>
+</blockquote>
+
+<p>다음은 apt list의 실행 결과입니다.</p>
+
+<pre><code>$ apt list
+## 로그 생략
+zynaddsubfx-dbg/xenial 2.5.2-2ubuntu1 i386
+zynaddsubfx-dssi/xenial 2.5.2-2ubuntu1 i386
+zyne/xenial 0.1.2-2 all
+zynjacku/xenial 6-4build1 i386
+zypper/xenial-updates 1.12.4-1build0.1 i386
+zypper-common/xenial-updates 1.12.4-1build0.1 all
+zypper-doc/xenial-updates 1.12.4-1build0.1 all
+zziplib-bin/xenial-updates,xenial-security 0.13.62-3ubuntu0.16.04.1 i386
+</code></pre>
+
+<p>apt list는 옵션을 지정하여 상태별 패키지 목록을 조회할 수 있습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>옵션</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>&ndash;installed</td>
+<td>설치된 패키지 목록 조회</td>
+</tr>
+
+<tr>
+<td>&ndash;upgradable</td>
+<td>설치된 패키지 중 업그레이드 대상 패키지 목록 조회</td>
+</tr>
+
+<tr>
+<td>&ndash;all-versions</td>
+<td>패키지의 모든 버전 목록 조회</td>
+</tr>
+</tbody>
+</table>
+
+<p>패키지 목록에 옵션을 지정하여 패키지 조회 목록의 수는 다음과 같습니다.</p>
+
+<pre><code>$ apt list |wc -l
+
+55384
+$ apt list --installed |wc -l
+
+481
+$ apt list --upgradable |wc -l
+
+51
+$ apt list --all-versions |wc -l
+
+118156
+$
+</code></pre>
+
+<p>패키지 조회 목록 결과는 다음과 같습니다.</p>
+
+<ul>
+<li>레파지토리에 등록된 패키지 수: 55,384개</li>
+<li>설치된 패키지 수: 481개</li>
+<li>업그레이드 대상 패키지 수: 51개</li>
+<li>레파지토리의 등록된 패키지의 모든 버전 수: 118,156개</li>
+</ul>
+
+<h3 id="3-패키지-업데이트">3. 패키지 업데이트</h3>
+
+<p><strong>3.1. 시스템 패키지 업데이트</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-/var/lib/apt/lists```에 패키지 목록을 업데이트 합니다. 레파지토리 목록은 ```/etc/apt/sources.list``` 파일에서 관리합니다." data-lang="/var/lib/apt/lists```에 패키지 목록을 업데이트 합니다. 레파지토리 목록은 ```/etc/apt/sources.list``` 파일에서 관리합니다.">&gt;```
+$ apt update</code></pre></div>
+<p>다음은 update 명령의 실행 결과입니다.</p>
+
+<pre><code>$ sudo apt update
+Get:1 http://security.ubuntu.com/ubuntu xenial-security InRelease [107 kB]
+Hit:2 http://archive.ubuntu.com/ubuntu xenial InRelease
+Get:3 http://archive.ubuntu.com/ubuntu xenial-updates InRelease [109 kB]
+Get:4 http://archive.ubuntu.com/ubuntu xenial-backports InRelease [107 kB]
+Get:5 http://archive.ubuntu.com/ubuntu xenial-updates/main i386 Packages [718 kB]
+Get:6 http://archive.ubuntu.com/ubuntu xenial-updates/universe i386 Packages [577 kB]
+Fetched 1,618 kB in 3s (410 kB/s)
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+50 packages can be upgraded. Run 'apt list --upgradable' to see them.
+$
+</code></pre>
+
+<p>다음은 현재 업그레이드 대상 패키지를 조회하는 <code>apt list --upgradable</code>의 실행 결과입니다.</p>
+
+<pre><code>$ apt list --upgradable
+Listing... Done
+apport/xenial-updates 2.20.1-0ubuntu2.17 all [upgradable from: 2.20.1-0ubuntu2.15]
+cloud-guest-utils/xenial-updates 0.27-0ubuntu25.1 all [upgradable from: 0.27-0ubuntu25]
+curl/xenial-updates,xenial-security 7.47.0-1ubuntu2.8 i386 [upgradable from: 7.47.0-1ubuntu2.7]
+## 로그 생략
+ubuntu-release-upgrader-core/xenial-updates,xenial-security 1:16.04.25 all [upgradable from: 1:16.04.24]
+update-manager-core/xenial-updates 1:16.04.13 all [upgradable from: 1:16.04.12]
+vlan/xenial-updates 1.9-3.2ubuntu1.16.04.5 i386 [upgradable from: 1.9-3.2ubuntu1.16.04.4]
+xdg-user-dirs/xenial-updates 0.15-2ubuntu6.16.04.1 i386 [upgradable from: 0.15-2ubuntu6]
+vagrant@vagrant:~$
+</code></pre>
+
+<hr />
+
+<p><strong>3.2. 시스템 업그레이드</strong></p>
+
+<p>전체 패키지를 최신 버전으로 업데이트합니다.</p>
+
+<blockquote>
+<pre><code>$ apt upgrade
+</code></pre>
+</blockquote>
+
+<p>다음은 apt upgrade의 실행로그입니다.</p>
+
+<pre><code>$ sudo apt upgrade
+#로그생략
+Installing new version of config file /etc/vmware-tools/suspend-vm-default ...
+Installing new version of config file /etc/vmware-tools/vm-support ...
+Setting up vlan (1.9-3.2ubuntu1.16.04.5) ...
+Installing new version of config file /etc/network/if-pre-up.d/vlan ...
+Setting up python3-distupgrade (1:16.04.25) ...
+Setting up python3-update-manager (1:16.04.13) ...
+Setting up ubuntu-release-upgrader-core (1:16.04.25) ...
+Setting up update-manager-core (1:16.04.13) ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Processing triggers for initramfs-tools (0.122ubuntu8.11) ...
+update-initramfs: Generating /boot/initrd.img-4.4.0-87-generic
+W: mdadm: /etc/mdadm/mdadm.conf defines no arrays.
+Processing triggers for systemd (229-4ubuntu21.2) ...
+Processing triggers for ureadahead (0.100.0-19) ...
+vagrant@vagrant:~$
+</code></pre>
+
+<p><strong>3.3. 시스템 업그레이드</strong></p>
+
+<p>전체 시스템을 새 버전으로 업그레이드합니다. 시스템 업그레이드가 필요할 경우 기존 패키지를 삭제하기도 합니다.</p>
+
+<blockquote>
+<pre><code>$ apt full-upgrade
+</code></pre>
+</blockquote>
+
+<p><code>sudo apt-get dist-upgrade</code>와 같은 기능을 제공합니다. 일반적인 업데이트 방법은 아닙니다.</p>
+
+<hr />
+
+<h2 id="apt-apt-get-aptitude-명령-비교">apt/apt-get/aptitude 명령 비교</h2>
+
+<p>apt, apt-get 및 aptitude의 명령 맵핑은 다음과 같습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>목록</th>
+<th>apt</th>
+<th>apt-get</th>
+<th>aptitude</th>
+<th>비고</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>패키지 설치</td>
+<td>apt install  {package_name}</td>
+<td>apt-get install  {package_name}</td>
+<td>aptitude install  {package_name}</td>
+<td></td>
+</tr>
+
+<tr>
+<td>패키지 삭제</td>
+<td>apt remove {package_name}</td>
+<td>apt-get remove {package_name}</td>
+<td>aptitude remove {package_name}</td>
+<td>패키지 파일 제거</td>
+</tr>
+
+<tr>
+<td>패키지 정보 확인</td>
+<td>apt show {package_name}</td>
+<td></td>
+<td>aptitude show {package_name}</td>
+<td></td>
+</tr>
+
+<tr>
+<td>패키지 검색</td>
+<td>apt search {package_name}</td>
+<td></td>
+<td>aptitude search {package_name}</td>
+<td></td>
+</tr>
+
+<tr>
+<td>전체 패키지 목록 조회</td>
+<td>apt list</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>설치된 패키지 목록 조회</td>
+<td>apt list –installed</td>
+<td></td>
+<td></td>
+<td>dpkg -l</td>
+</tr>
+
+<tr>
+<td>패키지 삭제2</td>
+<td>apt purge {package_name}</td>
+<td>apt-get purge {package_name}</td>
+<td>aptitude purge {package_name}</td>
+<td>패키지+설정파일 제거</td>
+</tr>
+
+<tr>
+<td>패키지 다운로드</td>
+<td></td>
+<td>apt-get download {package_name}</td>
+<td>aptitude download {package_name}</td>
+<td>패키지 .deb파일</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>위 테이블 인용: <a href="https://zetawiki.com/wiki/%EC%9A%B0%EB%B6%84%ED%88%AC_APT,_apt-get">https://zetawiki.com/wiki/%EC%9A%B0%EB%B6%84%ED%88%AC_APT,_apt-get</a></li>
+</ul>
+
+<h2 id="참고자료">참고자료</h2>
+
+<ul>
+<li><a href="https://itsfoss.com/apt-vs-apt-get-difference/">https://itsfoss.com/apt-vs-apt-get-difference/</a></li>
+<li><a href="https://www.tecmint.com/apt-advanced-package-command-examples-in-ubuntu/">https://www.tecmint.com/apt-advanced-package-command-examples-in-ubuntu/</a></li>
+<li><a href="https://zetawiki.com/wiki/%EC%9A%B0%EB%B6%84%ED%88%AC_APT,_apt-get">https://zetawiki.com/wiki/%EC%9A%B0%EB%B6%84%ED%88%AC_APT,_apt-get</a></li>
+</ul>
+
+		</div>
+		
+
+	</article>
+	
+
+	
+
+	
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oratips/sqldeveloper-keepalive/"></div>
+
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		
+		<ins class="adsbygoogle"
+			 style="display:block"
+			 data-ad-client="ca-pub-8469722754608892"
+			 data-ad-slot="5594090168"
+			 data-ad-format="auto"
+			 data-full-width-responsive="true"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	
+
+<div class="widget-categories widget">	
+		<div class="fb-like" data-href="http://taewan.kim/oratips/sqldeveloper-keepalive/" 
+		data-layout="standard" data-action="like" 
+		data-size="small" 
+		data-show-faces="true" 
+		data-share="true"></div>
+</div>
+	
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#apt-명령과-apt-get-apt-cache-명령-비교">apt 명령과 apt-get/apt-cache 명령 비교</a></li>
+<li><a href="#주요-apt-명령-사용법">주요 apt 명령 사용법</a>
+<ul>
+<li><a href="#1-패키지-설치-삭제">1. 패키지 설치, 삭제</a></li>
+<li><a href="#2-패키지-정보-조회">2. 패키지 정보 조회</a></li>
+<li><a href="#3-패키지-업데이트">3. 패키지 업데이트</a></li>
+</ul></li>
+<li><a href="#apt-apt-get-aptitude-명령-비교">apt/apt-get/aptitude 명령 비교</a></li>
+<li><a href="#참고자료">참고자료</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	<div class="widget-categories widget">
+  <h4 class="widget__title">관련도서</h4>
+  <div class="widget__content" align="center">
+      <ul class="widget__list">
+          <li class="widget__item"><a href="http://www.yes24.com/Product/Goods/69335909" target="_blank"><img src="https://taewanmerepo.github.io/2019/02/pytorch/book200.jpg"/></a></li>
+      </ul>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_news_201908w1/" title="GraalVM 새소식#2(201908, 첫 째주)">
+							GraalVM 새소식#2(201908, 첫 째주)</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_news_201907w4/" title="GraalVM 새소식#1(201907, 4주)">
+							GraalVM 새소식#1(201907, 4주)</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/position_of_graalvm/" title="GraalVM의 포지션과 역할에 대하여..">
+							GraalVM의 포지션과 역할에 대하여..</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/days_of_searching_for_first_love/" title="[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기">
+							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
+							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
+							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
+							GraalVM 관련 코너를 새로 시작합니다.</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/function_in_semicolon/" title="함수 표기법: 세미콜론으로 변수와 파라미터 구분">
+							함수 표기법: 세미콜론으로 변수와 파라미터 구분</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/graalvm">Graalvm</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/math">Math</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">Licesne</h4>
+	<div class="widget__content">
+		<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+	</div>
+	<div class="widget__content">
+		이 저작물은 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank>크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2019 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-72835175-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+
