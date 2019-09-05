@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://taewan.kim/tip/how_to_change_kernel_name_of_jupyter/</loc>
+    <lastmod>2019-09-06T01:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/oratips/sqldeveloper-keepalive/</loc>
     <lastmod>2019-09-04T09:28:14+09:00</lastmod>
   </url>
@@ -1853,7 +1858,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/jupyter/</loc>
-    <lastmod>2018-04-26T15:59:47+09:00</lastmod>
+    <lastmod>2019-09-06T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1866,6 +1871,12 @@
   <url>
     <loc>http://taewan.kim/tags/keepalive/</loc>
     <lastmod>2019-09-04T09:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/kernel/</loc>
+    <lastmod>2019-09-06T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2549,7 +2560,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/tip/</loc>
-    <lastmod>2016-04-04T13:47:07+09:00</lastmod>
+    <lastmod>2019-09-06T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2561,7 +2572,7 @@
   
   <url>
     <loc>http://taewan.kim/tip/</loc>
-    <lastmod>2019-04-24T09:28:14+09:00</lastmod>
+    <lastmod>2019-09-06T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2717,7 +2728,7 @@
   
   <url>
     <loc>http://taewan.kim/</loc>
-    <lastmod>2019-09-04T09:28:14+09:00</lastmod>
+    <lastmod>2019-09-06T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   

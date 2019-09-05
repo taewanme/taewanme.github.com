@@ -6,10 +6,22 @@
     <description>Recent content in Tip on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Apr 2016 13:47:07 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 06 Sep 2019 01:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/tip/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Jupyter Kernel 이름 변경</title>
+      <link>http://taewan.kim/tip/how_to_change_kernel_name_of_jupyter/</link>
+      <pubDate>Fri, 06 Sep 2019 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tip/how_to_change_kernel_name_of_jupyter/</guid>
+      <description>Jupyter UI에 출력되는 커널 명을 변경하는 방법을 소개합니다. Jupyter Kernel 이름을 변경하기 위해서는 Kernel 설정 파일의 위치를 파악하고, kernel.json 설정 파일의 &amp;ldquo;display&amp;rdquo; 속성을 변경해야 합니다. 마지막으로 Jupyter 데몬을 재시작하면 Kernel 이름이 변경된 것을 확인 할 수 있습니다.
+Jupyter를 기본 설치하면 다음 그림과 같이 &amp;ldquo;Python 3&amp;rdquo; 이라는 커널 이름이 UI에 출력됩니다.
+이 커널 이름 &amp;ldquo;Python 3&amp;ldquo;을 &amp;ldquo;changed name&amp;ldquo;으로 변경하는 방법을 정리합니다.
+Kernel 목록 및 설치 위치 학인 다음 명령을 이용하여 Jupyter에 설치된 Kernel 목록과 각 Kernel 설치 위치를 확인할 수 있습니다.</description>
+    </item>
     
     <item>
       <title>마크다운 사용법 - Quick Start</title>
