@@ -68,12 +68,22 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/graalvm/how_to_install_graalvm_with_brew/</loc>
+    <lastmod>2019-09-04T01:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tip/how_to_install_graalvm_with_brew/</loc>
     <lastmod>2019-09-04T01:28:14+09:00</lastmod>
   </url>
   
   <url>
     <loc>http://taewan.kim/tags/graalvm/</loc>
+    <lastmod>2019-09-04T01:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/graalvm/</loc>
     <lastmod>2019-09-04T01:28:14+09:00</lastmod>
   </url>
   
@@ -99,11 +109,6 @@
   
   <url>
     <loc>http://taewan.kim/graalvm/graalvm_news_201908w1/</loc>
-    <lastmod>2019-08-07T01:28:14+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/graalvm/</loc>
     <lastmod>2019-08-07T01:28:14+09:00</lastmod>
   </url>
   
@@ -138,12 +143,12 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/tags/book/</loc>
+    <loc>http://taewan.kim/categories/book/</loc>
     <lastmod>2019-06-08T09:28:14+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://taewan.kim/categories/book/</loc>
+    <loc>http://taewan.kim/tags/book/</loc>
     <lastmod>2019-06-08T09:28:14+09:00</lastmod>
   </url>
   
@@ -1778,12 +1783,12 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/tags/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</loc>
+    <loc>http://taewan.kim/categories/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</loc>
     <lastmod>2017-12-26T21:28:14+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://taewan.kim/categories/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</loc>
+    <loc>http://taewan.kim/tags/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</loc>
     <lastmod>2017-12-26T21:28:14+09:00</lastmod>
   </url>
   
