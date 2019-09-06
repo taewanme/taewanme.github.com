@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Bigdata on taewan.kim 블로그</title>
+    <title>bigdata on taewan.kim 블로그</title>
     <link>http://taewan.kim/tags/bigdata/</link>
-    <description>Recent content in Bigdata on taewan.kim 블로그</description>
+    <description>Recent content in bigdata on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 07 Dec 2018 05:17:05 +0900</lastBuildDate>

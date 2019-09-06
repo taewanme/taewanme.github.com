@@ -11,12 +11,13 @@
 
 <title>JUnit 4.x 어노테이션</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.52" />
+<meta name="generator" content="Hugo 0.58.1" />
 <meta property="og:title" content="JUnit 4.x 어노테이션" />
 <meta property="og:description" content="JUnit 4.x의 어노테이션" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/post/junit4_annotation/" /><meta property="article:published_time" content="2010-11-09T10:50:36&#43;09:00"/>
-<meta property="article:modified_time" content="2010-11-09T10:50:36&#43;09:00"/>
+<meta property="og:url" content="http://taewan.kim/post/junit4_annotation/" />
+<meta property="article:published_time" content="2010-11-09T10:50:36+09:00" />
+<meta property="article:modified_time" content="2010-11-09T10:50:36+09:00" />
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -127,8 +128,8 @@
 <ul>
 <li>@Test 어노테이션으로 단위 테스트 클래스정의</li>
 <li>@After, @Before 어네테이션을 사용하여 각 단위 테스트 메서드의 실행 앞뒤에서 초기화와 자원 정리 작업을 수행</li>
-<li>@AfterClass, @BeoreClass 어노테이션을 사용하여 각 단위 테스트 클래스 수행 전후에 초기화와 자원 정리 작업을 수행</li>
-</ul>
+
+<li><p>@AfterClass, @BeoreClass 어노테이션을 사용하여 각 단위 테스트 클래스 수행 전후에 초기화와 자원 정리 작업을 수행</p>
 
 <pre><code>package devtainer.demo.unitTest.junit4;
 
@@ -144,60 +145,61 @@ import org.slf4j.LoggerFactory;
 
 
 public class JunitTest {
-  static final Logger logger =
-    LoggerFactory.getLogger(JunitTest.class);
+static final Logger logger =
+LoggerFactory.getLogger(JunitTest.class);
 
-  @Before
-  public void setup(){
-    logger.info(&quot;@Before 메서드 실행&quot;);
-  }
-
-  @After
-  public void tearDown(){
-    logger.info(&quot;@After 메서드 실행&quot;);
-  }
-
-  @BeforeClass
-  public static void setupForClass(){
-    logger.info(&quot;@BeforeClass 메서드 실행&quot;);
-  }
-
-  @AfterClass
-  public static void tearDownForClass(){
-    logger.info(&quot;@AfterClass 메서드 실행&quot;);
-  }
-
-
-  @Test(expected=RuntimeException.class) //예외 발생을 예상
-  public void test1(){
-    logger.info(&quot;@Test 단위 테스트 메서드  메서드 실행&quot;);
-    throw new RuntimeException();
-  }
-
-  @Test(timeout=100) //100 millisecond 초과시 에러
-  public void test2(){
-    logger.info(&quot;@Test 단위 테스트 메서드  메서드 실행&quot;);
-
-    int a = 5;
-    int b = 5;
-
-    Assert.assertEquals(&quot;add 메서드 테스트&quot;, a+b, Calculator.add(a, b));
-    Assert.assertEquals(&quot;minus 메서드 테스트&quot;, a-b, Calculator.minus(a, b));
-    Assert.assertEquals(&quot;multiply 메서드 테스트&quot;, a*b, Calculator.multiply(a, b));
-    Assert.assertEquals(&quot;divide 메서드 테스트&quot;, (double)a/b, Calculator.divide(a, b));
-    // fail(String)
-    // assertTrue(true);
-    // assertsEquals([String message], expected, actual)
-    // assertsEquals([String message], expected, actual, tolerance)
-    // assertNull([message], object)
-    // assertNotNull([message], object)
-    // assertSame([String], expected, actual)
-    // assertNotSame([String], expected, actual)
-    // assertTrue([message], boolean condition)
-
-  }
+@Before
+public void setup(){
+logger.info(&quot;@Before 메서드 실행&quot;);
 }
-</code></pre>
+
+@After
+public void tearDown(){
+logger.info(&quot;@After 메서드 실행&quot;);
+}
+
+@BeforeClass
+public static void setupForClass(){
+logger.info(&quot;@BeforeClass 메서드 실행&quot;);
+}
+
+@AfterClass
+public static void tearDownForClass(){
+logger.info(&quot;@AfterClass 메서드 실행&quot;);
+}
+
+
+@Test(expected=RuntimeException.class) //예외 발생을 예상
+public void test1(){
+logger.info(&quot;@Test 단위 테스트 메서드  메서드 실행&quot;);
+throw new RuntimeException();
+}
+
+@Test(timeout=100) //100 millisecond 초과시 에러
+public void test2(){
+logger.info(&quot;@Test 단위 테스트 메서드  메서드 실행&quot;);
+
+int a = 5;
+int b = 5;
+
+Assert.assertEquals(&quot;add 메서드 테스트&quot;, a+b, Calculator.add(a, b));
+Assert.assertEquals(&quot;minus 메서드 테스트&quot;, a-b, Calculator.minus(a, b));
+Assert.assertEquals(&quot;multiply 메서드 테스트&quot;, a*b, Calculator.multiply(a, b));
+Assert.assertEquals(&quot;divide 메서드 테스트&quot;, (double)a/b, Calculator.divide(a, b));
+// fail(String)
+// assertTrue(true);
+// assertsEquals([String message], expected, actual)
+// assertsEquals([String message], expected, actual, tolerance)
+// assertNull([message], object)
+// assertNotNull([message], object)
+// assertSame([String], expected, actual)
+// assertNotSame([String], expected, actual)
+// assertTrue([message], boolean condition)
+
+}
+}
+</code></pre></li>
+</ul>
 
 <h2 id="단위테스트-클래스-수행-결과">단위테스트 클래스 수행 결과</h2>
 
@@ -260,13 +262,13 @@ INFO - Junit2Test  :  tearDownForClass  @AfterClass 메서드 실행
 <li>SVN URL: <a href="http://devtainer-demo.googlecode.com/svn/trunk/junit4">http://devtainer-demo.googlecode.com/svn/trunk/junit4</a></li>
 <li>프로젝트는 Maven 형태로 구성</li>
 <li>maven 2.2.x 설치가 필수</li>
-<li>실행방법
+
+<li><p>실행방법</p>
 
 <ul>
 <li>위치: 프로젝트 root</li>
-<li>command: mvn clean test</li>
-</ul></li>
-</ul>
+
+<li><p>command: mvn clean test</p>
 
 <pre><code>C:\test-cloud\workspace\archetype\junit4&gt;mvn clean test
 [INFO] Scanning for projects...
@@ -293,7 +295,7 @@ et\test-classes
 t\surefire-reports
 
 -------------------------------------------------------
- T E S T S
+T E S T S
 -------------------------------------------------------
 Running devtainer.demo.unitTest.junit4.JunitTest
 INFO - JunitTest  :  setupForClass  @BeforeClass 메서드 실행
@@ -346,7 +348,9 @@ Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
 [INFO] Final Memory: 13M/32M
 [INFO] ------------------------------------------------------------------------
 C:\test-cloud\workspace\archetype\junit4&gt;
-</code></pre>
+</code></pre></li>
+</ul></li>
+</ul>
 
 		</div>
 		
@@ -470,6 +474,10 @@ C:\test-cloud\workspace\archetype\junit4&gt;
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
 			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/" title="Graalvms">
+							Graalvms</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201907w4/" title="GraalVM 새소식#1(201907, 4주)">
 							GraalVM 새소식#1(201907, 4주)</a>
 		  </li>
@@ -482,8 +490,16 @@ C:\test-cloud\workspace\archetype\junit4&gt;
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
+				<a class="widget__link" href="/book/" title="Books">
+							Books</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/" title="Clouds">
+							Clouds</a>
 		  </li>
 			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
@@ -492,18 +508,6 @@ C:\test-cloud\workspace\archetype\junit4&gt;
 			<li class="widget__item">
 				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
 							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
-							Cloud Native Java:GraalVM (@Oracle  ......</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
-							GraalVM 관련 코너를 새로 시작합니다.</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/post/function_in_semicolon/" title="함수 표기법: 세미콜론으로 변수와 파라미터 구분">
-							함수 표기법: 세미콜론으로 변수와 파라미터 구분</a>
 		  </li>
 		</ul>
 	</div>

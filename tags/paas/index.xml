@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Paas on taewan.kim 블로그</title>
+    <title>paas on taewan.kim 블로그</title>
     <link>http://taewan.kim/tags/paas/</link>
-    <description>Recent content in Paas on taewan.kim 블로그</description>
+    <description>Recent content in paas on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 16 May 2018 15:59:47 +0900</lastBuildDate>

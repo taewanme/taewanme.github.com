@@ -35,6 +35,20 @@ Kernel 목록 및 설치 위치 학인 다음 명령을 이용하여 Jupyter에 
     </item>
     
     <item>
+      <title>brew로 GraalVM설치</title>
+      <link>http://taewan.kim/tip/how_to_install_graalvm_with_brew/</link>
+      <pubDate>Wed, 04 Sep 2019 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tip/how_to_install_graalvm_with_brew/</guid>
+      <description>graalvm팀이 최근에 brew[^1] 지원을 위한 github repository를 공개했습니다.
+ https://github.com/graalvm/homebrew-tap  Brew를 이용한 Graal 설치 이제 OS X에서 brew로 GraalVM CE버전을 설치할 수 있습니다. 설치 명령은 다음과 같습니다.
+brew cask install graalvm/tap/graalvm-ce  설치에는 약 5분 정도가 걸립니다.
+환경 변수 등록 다음과 같이 .bashrc 혹은 .zshrc에 다음과 같은 환경변수를 추가합니다.
+export GRAALVM_HOME=/Library/Java/JavaVirtualMachines/graalvm-ce-19.2.0/Contents/Home export JAVA_HOME=$GRAALVM_HOME export PATH=$GRAALVM_HOME/bin:$PATH  설치 확인 2019.09.04 현재 graalvm 19.2 버전이 설치됩니다.
+⚙ ~ &amp;gt; java -version openjdk version &amp;quot;1.</description>
+    </item>
+    
+    <item>
       <title>GraalVM 새소식#2(201908, 첫 째주)</title>
       <link>http://taewan.kim/graalvm/graalvm_news_201908w1/</link>
       <pubDate>Wed, 07 Aug 2019 01:28:14 +0900</pubDate>
@@ -113,7 +127,8 @@ GraalVM 버전  2019년 8월 7일 현재 GraalVM 최신 버전: 19.1.1 (2019.07.
       
       <guid>http://taewan.kim/tip/lauch_vscode_in_termial/</guid>
       <description>Visual Studion Code와 IntelliJ의 실행파일을 PATH 환경 변수에 추가하면 터미널에서 두 IDE를 실행할 수 있습니다.
-Visual Sutdio Code 터미널 실행  Visual Studion Code 실행 파일 위치  $ cd /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin /Applications/Visual Studio Code.app/Contents/Resources/app/bin $ pwd /Applications/Visual Studio Code.app/Contents/Resources/app/bin /Applications/Visual Studio Code.app/Contents/Resources/app/bin $ ls -al total 8 drwxr-xr-x 3 taewan staff 96 Apr 11 08:24 . drwxr-xr-x 13 taewan staff 416 Apr 11 08:25 .. -rwxr-xr-x 1 taewan staff 484 Apr 11 08:07 code /Applications/Visual Studio Code.</description>
+Visual Sutdio Code 터미널 실행  Visual Studion Code 실행 파일 위치
+$ cd /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin /Applications/Visual Studio Code.app/Contents/Resources/app/bin $ pwd /Applications/Visual Studio Code.app/Contents/Resources/app/bin /Applications/Visual Studio Code.app/Contents/Resources/app/bin $ ls -al total 8 drwxr-xr-x 3 taewan staff 96 Apr 11 08:24 . drwxr-xr-x 13 taewan staff 416 Apr 11 08:25 .. -rwxr-xr-x 1 taewan staff 484 Apr 11 08:07 code /Applications/Visual Studio Code.</description>
     </item>
     
     <item>
@@ -326,8 +341,7 @@ git push origin master -v Pushing to git@bitbucket.org:taewanme/hugo_tutorial_th
       
       <guid>http://taewan.kim/oc_bdc/provisioning_bdc_on_ocic/</guid>
       <description>Oracle Cloud는 빅데이터 서비스로 Oracle Big Data Cloud(이하 Oracle BDC)를 제공합니다. Oracle BDC는 Oracle Cloud의 OCI와 OCI-Classic에서 모두 만들 수 있습니다. 이 문서에서는 OCI-Classic에서 Oracle BDC의 클러스터 인스턴스를 생성하는 절차를 소개합니다.
-OCI와 OCI-Classic은 Oracle Cloud의 인프라스터럭처입니다. OCI와 OCI-Classic가 무엇인지 추가 설명이 필요하시다면, &amp;lsquo;Oracle Cloud IaaS: OCI vs OCI Classic[↗NW] &amp;lsquo; 문서를 참고하시기 바랍니다.
- 이 문서는 Oracle BDC의 18.4.2.1-20을 기준으로 2018년 12월 15일에 작성되었습니다.
+OCI와 OCI-Classic은 Oracle Cloud의 인프라스터럭처입니다. OCI와 OCI-Classic가 무엇인지 추가 설명이 필요하시다면, &#39;Oracle Cloud IaaS: OCI vs OCI Classic[↗NW] &#39; 문서를 참고하시기 바랍니다.  이 문서는 Oracle BDC의 18.4.2.1-20을 기준으로 2018년 12월 15일에 작성되었습니다.
 Oracle BDC 프로비저닝 준비사항 Oracle Cloud BDC 인스턴스를 생성하기 위해서는 Oracle Cloud 계정이 필요합니다.</description>
     </item>
     
@@ -481,7 +495,7 @@ SQLDeveloper에서 Locale를 인식하지 못하는 문제가 발생할 경우 �
       
       <guid>http://taewan.kim/book/memory_of_murder/</guid>
       <description>요즘 김영하 &amp;amp; 유시민 작가가 나오는 &amp;ldquo;알뜰신잡3&amp;rdquo;을 즐겨봅니다. 이분들이 복잡한 개념을 단순하고 이해하기 쉽게 설명하는 모습을 보고 있으면 정말 감동적입니다. 이 예능을 보면서 김영하 작가에 대해서 궁금해 졌습니다. 이런 사람은 어떤 소설을 쓰는지 알고 싶어졌습니다. 이참에 김영하 님의 대표작인 &amp;ldquo;살인자의 기억법&amp;rdquo;을 읽어봤습니다.
-&amp;ldquo;살인자의 기억법&amp;ldquo;의 마지막 반전은 제 경우에는 역대급이있습니다. &amp;ldquo;살인자의 기억법&amp;ldquo;의 결과에 대한 공개 혹은 암시는 &amp;ldquo;살인자의 기억법&amp;ldquo;의 미래 독자에게는 연쇄살인과 같은 범죄 행위라고 생각합니다. 이 문서는 &amp;ldquo;살인자의 기억법&amp;ldquo;에 대한 스포일러를 최대한 조심하겠습니다.</description>
+&#34;__살인자의 기억법__&#34;의 마지막 반전은 제 경우에는 역대급이있습니다. &#34;__살인자의 기억법__&#34;의 결과에 대한 공개 혹은 암시는 &#34;__살인자의 기억법__&#34;의 미래 독자에게는 연쇄살인과 같은 범죄 행위라고 생각합니다. 이 문서는 &#34;__살인자의 기억법__&#34;에 대한 스포일러를 최대한 조심하겠습니다.</description>
     </item>
     
     <item>
@@ -721,8 +735,7 @@ Sigma &amp;amp; Phi  1 부터 100까지 합산  $$ \sum_{i=1}^{100}i $$
       <pubDate>Mon, 06 Aug 2018 20:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/til/basic_statistics_09/</guid>
-      <description>01. 확률 변수, 확률 분포 확률변수, 확률 분포는 함수다.
-  Sample Space는 시행에서 얻어지는 모든 결과의 집합. Sample Space의 모든 원소를 실수로 대응하는 함수: 확률 변수 확률 변수로 얻어진 실수를 확률값으로 변화하는 함수: 확률 분포 확률 변수와 확률 분포를 이용하여 시행의 결과를 실수로 변환할 수 있고, 발생 확률로 변환할 수 있다.   그림 1: 확률 변수와 확률 분포는 함수다     최종 확률분포표로 제시  02.</description>
+      <description>01. 확률 변수, 확률 분포 확률변수, 확률 분포는 함수다.   Sample Space는 시행에서 얻어지는 모든 결과의 집합. Sample Space의 모든 원소를 실수로 대응하는 함수: 확률 변수 확률 변수로 얻어진 실수를 확률값으로 변화하는 함수: 확률 분포 확률 변수와 확률 분포를 이용하여 시행의 결과를 실수로 변환할 수 있고, 발생 확률로 변환할 수 있다.   그림 1: 확률 변수와 확률 분포는 함수다     최종 확률분포표로 제시  02.</description>
     </item>
     
     <item>
@@ -1110,16 +1123,6 @@ taewanme/pyml 컨테이너 이미지 pyml 더커 이미지는 docker hub에 자�
     </item>
     
     <item>
-      <title>Ubuntu 패키지 관리 툴: apt 사용법</title>
-      <link>http://taewan.kim/tip/apt-apt-get/</link>
-      <pubDate>Sat, 05 May 2018 21:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/tip/apt-apt-get/</guid>
-      <description>우분투에서 패키지를 관리하는 툴로 apt-get과 apt-cache를 주로 사용해 왔습니다. 요즘에는 두 명령을 결합한 명령이 apt를 주로 사용합니다. apt는 apt-get/apt-cache를 완전히 통합하는 툴은 아닌 것 같습니다. 사용자 편리성을 위해서 apt-get과 apt-cache의 주요 기능을 결합한 툴입니다. man에서는 apt를 다음과 같이 설명합니다.
- apt provides a high-level commandline interface for the package management system. It is intended as an end user interface and enables some options better suited for interactive usage by default compared to more specialized APT tools like apt-get and apt-cache.</description>
-    </item>
-    
-    <item>
       <title>argument와 parameter 차이점</title>
       <link>http://taewan.kim/tip/argument_parameter/</link>
       <pubDate>Sat, 05 May 2018 21:28:14 +0900</pubDate>
@@ -1132,14 +1135,23 @@ Parameter는 함수 혹은 메서드 정의에서 나열되는 변수 명입니�
     </item>
     
     <item>
+      <title>Ubuntu 패키지 관리 툴: apt 사용법</title>
+      <link>http://taewan.kim/tip/apt-apt-get/</link>
+      <pubDate>Sat, 05 May 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tip/apt-apt-get/</guid>
+      <description>우분투에서 패키지를 관리하는 툴로 apt-get과 apt-cache를 주로 사용해 왔습니다. 요즘에는 두 명령을 결합한 명령이 apt를 주로 사용합니다. apt는 apt-get/apt-cache를 완전히 통합하는 툴은 아닌 것 같습니다. 사용자 편리성을 위해서 apt-get과 apt-cache의 주요 기능을 결합한 툴입니다. man에서는 apt를 다음과 같이 설명합니다.
+ apt provides a high-level commandline interface for the package management system. It is intended as an end user interface and enables some options better suited for interactive usage by default compared to more specialized APT tools like apt-get and apt-cache.</description>
+    </item>
+    
+    <item>
       <title>Oracle Cloud IaaS: OCI vs OCI Classic</title>
       <link>http://taewan.kim/cloud/oci_and_oci_classic/</link>
       <pubDate>Thu, 03 May 2018 15:59:47 +0900</pubDate>
       
       <guid>http://taewan.kim/cloud/oci_and_oci_classic/</guid>
       <description>오라클 클라우드는 IaaS로 OCI(Oracle Cloud Infrastructure)와 OCI Classic(Oracle Cloud Infrastructure Classic) 서비스를 제공합니다. 오라클 클라우드를 처음 접할 때, 왜 두 개의 IaaS가 존재하는지 그리고 다른점이 뭔지 혼란스러운 것이 사실입니다. 이와 관련하여 OCI Classic과 OCI란 무엇이고 어떻게 다른지 간략하게 정리해 보겠습니다.
-이 문서에서 다루는 내용은 작성자의 개인적인 의견이며, 오라클의 공식적인 입장과 다를 수 있습니다.
- 오라클 클라우드 IaaS 서비스 오라클은 2013년 3월에 Nimbula를 인수했습니다. Nimbula는 Private과 Hybrid 클라우드 인프라 관리 기술로 유명한 회사였습니다.</description>
+이 문서에서 다루는 내용은 작성자의 개인적인 의견이며, 오라클의 공식적인 입장과 다를 수 있습니다.  오라클 클라우드 IaaS 서비스 오라클은 2013년 3월에 Nimbula를 인수했습니다. Nimbula는 Private과 Hybrid 클라우드 인프라 관리 기술로 유명한 회사였습니다.</description>
     </item>
     
     <item>
@@ -1163,6 +1175,20 @@ Parameter는 함수 혹은 메서드 정의에서 나열되는 변수 명입니�
     </item>
     
     <item>
+      <title>hugo markdown의 latex 사용 예제 모음</title>
+      <link>http://taewan.kim/tip/latex_on_hugo/</link>
+      <pubDate>Mon, 30 Apr 2018 10:50:36 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tip/latex_on_hugo/</guid>
+      <description>Latex 사용 예제를 정리합니다. Latex를 Hugo markdown에서 사용한 사례입니다.
+ 벡터 내적   $$ \begin{align} \vec{a} \cdot \vec{b} &amp;amp;= |\vec{a}||\vec{b}|cos\theta \\
+&amp;amp;= a_1b_1+a_2b_2 \end{align} $$
+ $$ \begin{align} \vec{a} \cdot \vec{b} &amp;amp;= |\vec{a}||\vec{b}|cos\theta \\\\\ &amp;amp;= a_1b_1+a_2b_2 \end{align} $$   Forward Propagation 주요 공식   $$ \begin{align} A^{[0]} &amp;amp; = Input Feature &amp;amp; (1) \\
+Z^{[1]} &amp;amp; = W^{[1]}A^{[0]} &amp;amp; (2) \\
+A^{[1]} &amp;amp; = g(Z^{[1]}) &amp;amp; (3) \\</description>
+    </item>
+    
+    <item>
       <title>Oracle Cloud 서비스 아이콘 이미지 모음</title>
       <link>http://taewan.kim/repo/ml_reference/</link>
       <pubDate>Mon, 30 Apr 2018 10:50:36 +0900</pubDate>
@@ -1179,20 +1205,6 @@ Parameter는 함수 혹은 메서드 정의에서 나열되는 변수 명입니�
       <guid>http://taewan.kim/repo/oracle_cloud_logo/</guid>
       <description>오라클 클라우드 주요 서비스 아이콘 이미지 모음입니다.
    아이콘 서비스명 분류 이미지 링크      Analytics PaaS: Business Analytics SVG 파일[↗NW] / PNG 파일[↗NW]     API Platform PaaS: Integration SVG 파일[↗NW] / PNG 파일[↗NW]     Application Runtime PaaS: Application Development SVG 파일[↗NW] / PNG 파일[↗NW]     Autonomous Data Warehouse PaaS: Data Management SVG 파일[↗NW] / PNG 파일[↗NW]     Autonomous Integration Cloud PaaS: Integration SVG 파일[↗NW] / PNG 파일[↗NW]     Autonomous Mobile PaaS: Application Development SVG 파일[↗NW] / PNG 파일[↗NW]     Big Data - Compute PaaS: Data Management SVG 파일[↗NW] / PNG 파일[↗NW]     CASB for SaaS PaaS: Security SVG 파일[↗NW] / PNG 파일[↗NW]     Compute IaaS: OCI&amp;amp;OCI-C SVG 파일[↗NW] / PNG 파일[↗NW]     Content and Experience Cloud PaaS: Content and Experience SVG 파일[↗NW] / PNG 파일[↗NW]     Container IaaS: OCI&amp;amp;OCI-C SVG 파일[↗NW] / PNG 파일[↗NW]     Database PaaS: Data Management SVG 파일[↗NW] / PNG 파일[↗NW]     Database Backup PaaS: Data Management SVG 파일[↗NW] / PNG 파일[↗NW]     Data Hub PaaS: Data Management SVG 파일[↗NW] / PNG 파일[↗NW]     Data Integration PaaS: Integration SVG 파일[↗NW] / PNG 파일[↗NW]     Developer Cloud PaaS: Application Development SVG 파일[↗NW] / PNG 파일[↗NW]     Event Hub PaaS: Data Management SVG 파일[↗NW] / PNG 파일[↗NW]     FastConnect IaaS: OCI&amp;amp;OCI-C SVG 파일[↗NW] / PNG 파일[↗NW]     Identity PaaS: Security SVG 파일[↗NW] / PNG 파일[↗NW]     Integration Cloud PaaS: Integration SVG 파일[↗NW] / PNG 파일[↗NW]     Internet of Things PaaS: Integration SVG 파일[↗NW] / PNG 파일[↗NW]     Java PaaS: Application Development SVG 파일[↗NW] / PNG 파일[↗NW]     GoldenGate PaaS: Integration SVG 파일[↗NW] / PNG 파일[↗NW]     Load Balancing IaaS: OCI&amp;amp;OCI-C SVG 파일[↗NW] / PNG 파일[↗NW]     Management Cloud PaaS: Management SVG 파일[↗NW] / PNG 파일[↗NW]     Messaging PaaS: Application Development SVG 파일[↗NW] / PNG 파일[↗NW]     MySQL PaaS: Data Management SVG 파일[↗NW] / PNG 파일[↗NW]     Ravello IaaS: Solutions SVG 파일[↗NW] / PNG 파일[↗NW]     SOA Suite PaaS: Integration SVG 파일[↗NW] / PNG 파일[↗NW]     Self-Service Integration PaaS: Integration SVG 파일[↗NW] / PNG 파일[↗NW]     Storage IaaS: OCI&amp;amp;OCI-C SVG 파일[↗NW] / PNG 파일[↗NW]     Visual Builder PaaS: Application Development SVG 파일[↗NW] / PNG 파일[↗NW]     WebCenter Portal Cloud PaaS: Content and Experience SVG 파일[↗NW] / PNG 파일[↗NW]      이미지 출처: https://cloud.</description>
-    </item>
-    
-    <item>
-      <title>hugo markdown의 latex 사용 예제 모음</title>
-      <link>http://taewan.kim/tip/latex_on_hugo/</link>
-      <pubDate>Mon, 30 Apr 2018 10:50:36 +0900</pubDate>
-      
-      <guid>http://taewan.kim/tip/latex_on_hugo/</guid>
-      <description>Latex 사용 예제를 정리합니다. Latex를 Hugo markdown에서 사용한 사례입니다.
- 벡터 내적   $$ \begin{align} \vec{a} \cdot \vec{b} &amp;amp;= |\vec{a}||\vec{b}|cos\theta \\
-&amp;amp;= a_1b_1+a_2b_2 \end{align} $$
- $$ \begin{align} \vec{a} \cdot \vec{b} &amp;amp;= |\vec{a}||\vec{b}|cos\theta \\\\\ &amp;amp;= a_1b_1+a_2b_2 \end{align} $$   Forward Propagation 주요 공식   $$ \begin{align} A^{[0]} &amp;amp; = Input Feature &amp;amp; (1) \\
-Z^{[1]} &amp;amp; = W^{[1]}A^{[0]} &amp;amp; (2) \\
-A^{[1]} &amp;amp; = g(Z^{[1]}) &amp;amp; (3) \\</description>
     </item>
     
     <item>
@@ -1362,8 +1374,8 @@ A  Accuracy: 정확도  분류 성능 모델 성능 지표 다중 클래스 분�
       
       <guid>http://taewan.kim/torchtrans/tutorial/blits/autograd/</guid>
       <description>원문: http://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html 원문 제목: Autograd: automatic differentiation?  PyTorch의 모든 신경 네트워크의 중심에는 autograd 패키지가 있습니다. 먼저 autograd에 대하여 간략히 살펴 보겠습니다. 그러나서 첫 번째 신경망을 훈련해 볼 것 입니다.
-몇 가지 예로 좀 더 간단한 용어를 살펴보겠습니다. ## Variable ## Gradients ### NumPy 배열을 Torch 텐서로 변환 ```Python import numpy as np a = np.ones(5) b = torch.from_numpy(a) np.add(a, 1, out=a) print(a) print(b)  출력:
-[ 2. 2. 2.</description>
+몇 가지 예로 좀 더 간단한 용어를 살펴보겠습니다. ## Variable ## Gradients ### NumPy 배열을 Torch 텐서로 변환 Python import numpy as np a = np.ones(5) b = torch.from_numpy(a) np.add(a, 1, out=a) print(a) print(b)
+ &amp;gt; 출력:  [ 2.</description>
     </item>
     
     <item>
@@ -1374,7 +1386,7 @@ A  Accuracy: 정확도  분류 성능 모델 성능 지표 다중 클래스 분�
       <guid>http://taewan.kim/trans/pytorch/tutorial/blits/02_autograd/</guid>
       <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt; PyTorch와 함께하는 딥러닝: 60분 리뷰 &amp;gt; Autograd: 미분 자동화
   원문: http://http://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html 원문 제목: Autograd: automatic differentiation   PyTorch으로 만든 모든 신경망의 중심에는 autograd 패키지가 있습니다. 먼저 autograd 패키지를 간략히 살펴보겠습니다. 그리구 다음 문서에서 첫 번째 신경망을 훈련해 보겠습니다.
-[^1]: 역자주 - Weight와 Bias가 업데이트 되는 단위 Mini-Batch를 의미합니다. 좀 더 간단한 용어로 몇 가지 예를 들어 보겠습니다. ## Variable ```autograd.</description>
+[^1]: 역자주 - Weight와 Bias가 업데이트 되는 단위 Mini-Batch를 의미합니다. 좀 더 간단한 용어로 몇 가지 예를 들어 보겠습니다. ## Variable autograd.</description>
     </item>
     
     <item>
@@ -1385,7 +1397,8 @@ A  Accuracy: 정확도  분류 성능 모델 성능 지표 다중 클래스 분�
       <guid>http://taewan.kim/torchtrans/tutorial/blits/pythorh_tutorial_01_what_is_pytorch/</guid>
       <description>원문: http://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-beginner-blitz-tensor-tutorial-py 원문 제목: What is PyTorch?  PyTorch란 무엇인가? PyTorch는 파이썬 기반의 과학 컴퓨팅 패키지로 두 집단을 대상으로 합니다.
  NumPy를 대체하고 GPU의 힘을 사용 최고의 유연성과 속도를 제공하는 딥러닝 연구 플래폼  시작하기 Tensors Tensors는 NumPy의 ndarrays와 유사하며, 차별점은 Tensors는 연산을 가속하는 GPU에서 사용될 수 있다는 점 입니다.
-from __future__ import print_function import torch  초기화 되지 않은 5X3 매트릭스 생성  x = torch.Tensor(5, 3) print(x)  출력:</description>
+from __future__ import print_function import torch  초기화 되지 않은 5X3 매트릭스 생성
+x = torch.Tensor(5, 3) print(x)   출력:</description>
     </item>
     
     <item>
@@ -1397,7 +1410,7 @@ from __future__ import print_function import torch  초기화 되지 않은 5X3 
       <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt; PyTorch와 함께하는 딥러닝: 60분 리뷰 &amp;gt; PyTorch는 무엇인가?
   원문: http://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-beginner-blitz-tensor-tutorial-py 원문 제목: What is PyTorch?   PyTorch란 무엇인가? PyTorch는 파이썬 기반의 과학 컴퓨팅 패키지로 두 집단을 대상으로 합니다.
  NumPy를 대체하고 GPU의 힘을 사용 최고의 유연성과 속도를 제공하는 딥러닝 연구 플랫폼  시작하기 Tensors Tensors는 NumPy의 ndarrays와 유사하며, 차별점은 Tensors는 연산을 가속하는 GPU에서 사용될 수 있다는 점입니다.
-from __future__ import print_function import torch  초기화되지 않은 5X3 매트릭스 생성  x = torch.</description>
+from __future__ import print_function import torch  초기화되지 않은 5X3 매트릭스 생성</description>
     </item>
     
     <item>
@@ -1408,8 +1421,7 @@ from __future__ import print_function import torch  초기화되지 않은 5X3 �
       <guid>http://taewan.kim/torchtrans/tutorial/main/pythorh_tutorial_01/</guid>
       <description> 원문: http://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html 작성자: Soumith Chintala 원문 제목: Deep Learning with PyTorch: A 60 Minute Blitz  튜토리얼 목적
  높은 수준에서 PyTorch의 텐서 라이브러리와 신경망을 이해할 수 있다. 이미지를 분류하는 작은 신경 네트워크를 학습시킬 수 있다.  이 튜토리얼에서는 numpy에 대한 기본적인 지식이 있다고 가정합니다.
-torch와 torchvision 패키지가 모두 설치되어 있어야 합니다.
-  What is PyTorch? Autograd: automatic differentiation Neural networks Training a classifier Optional: Data Parallelism  </description>
+[torch](https://github.com/pytorch/pytorch)와 [torchvision](https://github.com/pytorch/vision) 패키지가 모두 설치되어 있어야 합니다.   What is PyTorch? Autograd: automatic differentiation Neural networks Training a classifier Optional: Data Parallelism  </description>
     </item>
     
     <item>
@@ -1421,8 +1433,7 @@ torch와 torchvision 패키지가 모두 설치되어 있어야 합니다.
       <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt; PyTorch와 함께하는 딥러닝: 60분 리뷰
   원문: http://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html 작성자: Soumith Chintala 원문 제목: Deep Learning with PyTorch: A 60 Minute Blitz   튜토리얼 목적
  높은 수준에서 PyTorch의 텐서 라이브러리와 신경망을 이해할 수 있다. 이미지를 분류하는 작은 신경 네트워크를 학습시킬 수 있다.  이 튜토리얼에서는 numpy에 대한 기본적인 지식이 있다고 가정합니다.
-torch와 torchvision 패키지가 모두 설치되어 있어야 합니다.
-    원문제목 번역문서 제목     What is PyTorch?</description>
+[torch](https://github.com/pytorch/pytorch)와 [torchvision](https://github.com/pytorch/vision) 패키지가 모두 설치되어 있어야 합니다.     원문제목 번역문서 제목     What is PyTorch?</description>
     </item>
     
     <item>
@@ -1997,7 +2008,7 @@ Oracle PSM 지원 PaaS 서비스    Oracle PaaS 비고     Oracle Application Co
       <guid>http://taewan.kim/tip/shortcode_at_this_blog/</guid>
       <description>이미지 short code 이미지 및 캡션을 관리하기 위한 shortcode입니다.
  /layouts/shortcodes/img.html 파일에 저장됩니다. 코드는 다음과 같습니다.
-  &amp;lt;!-- image --&amp;gt; &amp;lt;blockquote id=&amp;quot;img&amp;quot;&amp;gt; &amp;lt;figure {{ with .Get &amp;quot;class&amp;quot; }}class=&amp;quot;{{.}}&amp;quot;{{ end }}&amp;gt; {{ with .Get &amp;quot;link&amp;quot;}}&amp;lt;a href=&amp;quot;{{.}}&amp;quot;&amp;gt;{{ end }} &amp;lt;img src=&amp;quot;{{ .Get &amp;quot;src&amp;quot; }}&amp;quot; {{ if or (.Get &amp;quot;alt&amp;quot;) (.Get &amp;quot;caption&amp;quot;) }}alt=&amp;quot;{{ with .Get &amp;quot;alt&amp;quot;}}{{.}}{{else}}{{ .Get &amp;quot;caption&amp;quot; }}{{ end }}&amp;quot;{{ end }} style=&amp;quot;border:2px solid black&amp;quot;/&amp;gt; {{ if .Get &amp;quot;link&amp;quot;}}&amp;lt;/a&amp;gt;{{ end }} {{ if or (or (.</description>
+&amp;lt;!-- image --&amp;gt; &amp;lt;blockquote id=&amp;quot;img&amp;quot;&amp;gt; &amp;lt;figure {{ with .Get &amp;quot;class&amp;quot; }}class=&amp;quot;{{.}}&amp;quot;{{ end }}&amp;gt; {{ with .Get &amp;quot;link&amp;quot;}}&amp;lt;a href=&amp;quot;{{.}}&amp;quot;&amp;gt;{{ end }} &amp;lt;img src=&amp;quot;{{ .Get &amp;quot;src&amp;quot; }}&amp;quot; {{ if or (.Get &amp;quot;alt&amp;quot;) (.Get &amp;quot;caption&amp;quot;) }}alt=&amp;quot;{{ with .Get &amp;quot;alt&amp;quot;}}{{.}}{{else}}{{ .Get &amp;quot;caption&amp;quot; }}{{ end }}&amp;quot;{{ end }} style=&amp;quot;border:2px solid black&amp;quot;/&amp;gt; {{ if .Get &amp;quot;link&amp;quot;}}&amp;lt;/a&amp;gt;{{ end }} {{ if or (or (.</description>
     </item>
     
     <item>
@@ -2216,7 +2227,7 @@ Oracle Cloud 계정 등록 절차 오라클 클라우드의 계정 등록 절차
       <guid>http://taewan.kim/post/markdown/</guid>
       <description>taewan.kim은 대부분의 내용을 markdown으로 관리하고 있습니다. markdown은 직관적이고 간단한 문법으로 컨텐츠 관리에 매우 효과적입니다. markdown에서 주로 이용되는 테그는 15개정도 입니다. 혼동되는 주요 테그를 정리하겠습니다.
  목차   헤더 수평선 텍스트 출력 텍스트 강조 인용 목록 코드 테이블 링크 이미지 주석 각주   헤더  (top) H1 ~ H6까지 테그를 #으로 표현
-# 헤더 스타일 (h1) ## 헤더 스타일 (h2) ### 헤더 스타일 (h3) #### 헤더 스타일 (h4) ##### 헤더 스타일 (h5) ###### 헤더 스타일 (h6)   출력 결과  헤더 스타일 (h1) 헤더 스타일 (h2) 헤더 스타일 (h3) 헤더 스타일 (h4) 헤더 스타일 (h5) 헤더 스타일 (h6)  효과: 다음과 같은 코드와 동일한 결과가 됨  &amp;lt;h1&amp;gt;헤더 스타일 (h1)&amp;lt;/h1&amp;gt; &amp;lt;h2&amp;gt;헤더 스타일 (h2)&amp;lt;/h2&amp;gt; &amp;lt;h3&amp;gt;헤더 스타일 (h3)&amp;lt;/h3&amp;gt; &amp;lt;h4&amp;gt;헤더 스타일 (h4)&amp;lt;/h4&amp;gt; &amp;lt;h5&amp;gt;헤더 스타일 (h5)&amp;lt;/h5&amp;gt; &amp;lt;h6&amp;gt;헤더 스타일 (h6)&amp;lt;/h6&amp;gt;  수평선  (top)  &amp;lt;hr /&amp;gt;와 동일한 결과를 출력 &amp;rsquo;-&amp;lsquo;, &amp;lsquo;*&amp;lsquo;, &amp;lsquo;_&amp;lsquo;을 세개 이상 나열하면 수평선을 만듦 단락 나누기 용도로 많이 사용.</description>
+# 헤더 스타일 (h1) ## 헤더 스타일 (h2) ### 헤더 스타일 (h3) #### 헤더 스타일 (h4) ##### 헤더 스타일 (h5) ###### 헤더 스타일 (h6)   출력 결과  헤더 스타일 (h1) 헤더 스타일 (h2) 헤더 스타일 (h3) 헤더 스타일 (h4) 헤더 스타일 (h5) 헤더 스타일 (h6)  효과: 다음과 같은 코드와 동일한 결과가 됨</description>
     </item>
     
     <item>
@@ -2433,7 +2444,7 @@ scott / tiger에 자원 사용 권한 설정을 해야 할 경우 설정 명령�
       <description>2011년 8월 1일에 devtainer.blogspot.kr 에서 섰던 글입니다. 추억 팔이로 옮겨 놓습니다. 2011년 추억 속으로&amp;hellip;. - 원문: http://devtainer.blogspot.kr/2011/08/tomcat-50-70.html
 한동안 Tomcat을 사용하지 않다가 오랜만에 사용했더니 인코딩 관련 착각을 해서 한참을 삽질 했습니다. 한글 인코딩에 대하여 간략하게 정리합니다.
 톰켓의 기본 인코딩은 ISO-8859-1 입니다. 따라서 한글을 정상적으로 처리하기 위해서는 추가적인 인코딩 설정이 필요합니다. 인코딩 설정은 http get 메서드와 http post 메서드를 개별적으로 설정합니다.
-HTTP Get 메서드 인코등 설정  [TOMCAT_HOME]/conf/server.xml 수정 Connector port=&amp;ldquo;8080&amp;rdquo; 엘레먼트에 URIEncoding=&amp;ldquo;UTF-8&amp;rdquo; 속성 추가  &amp;lt;connector port=&amp;quot;8080&amp;quot; protocol=&amp;quot;HTTP/1.</description>
+HTTP Get 메서드 인코등 설정  [TOMCAT_HOME]/conf/server.xml 수정 Connector port=&amp;ldquo;8080&amp;rdquo; 엘레먼트에 URIEncoding=&amp;ldquo;UTF-8&amp;rdquo; 속성 추가</description>
     </item>
     
     <item>

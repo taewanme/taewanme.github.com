@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cloud on taewan.kim 블로그</title>
+    <title>cloud on taewan.kim 블로그</title>
     <link>http://taewan.kim/categories/cloud/</link>
-    <description>Recent content in Cloud on taewan.kim 블로그</description>
+    <description>Recent content in cloud on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 19 Apr 2019 09:17:05 +0900</lastBuildDate>
@@ -51,8 +51,7 @@ Oracle Cloud에 로그인한 후, Oracle Cloud 대시보드에서 왼쪽 위에 
       
       <guid>http://taewan.kim/oc_bdc/provisioning_bdc_on_ocic/</guid>
       <description>Oracle Cloud는 빅데이터 서비스로 Oracle Big Data Cloud(이하 Oracle BDC)를 제공합니다. Oracle BDC는 Oracle Cloud의 OCI와 OCI-Classic에서 모두 만들 수 있습니다. 이 문서에서는 OCI-Classic에서 Oracle BDC의 클러스터 인스턴스를 생성하는 절차를 소개합니다.
-OCI와 OCI-Classic은 Oracle Cloud의 인프라스터럭처입니다. OCI와 OCI-Classic가 무엇인지 추가 설명이 필요하시다면, &amp;lsquo;Oracle Cloud IaaS: OCI vs OCI Classic[↗NW] &amp;lsquo; 문서를 참고하시기 바랍니다.
- 이 문서는 Oracle BDC의 18.4.2.1-20을 기준으로 2018년 12월 15일에 작성되었습니다.
+OCI와 OCI-Classic은 Oracle Cloud의 인프라스터럭처입니다. OCI와 OCI-Classic가 무엇인지 추가 설명이 필요하시다면, &#39;Oracle Cloud IaaS: OCI vs OCI Classic[↗NW] &#39; 문서를 참고하시기 바랍니다.  이 문서는 Oracle BDC의 18.4.2.1-20을 기준으로 2018년 12월 15일에 작성되었습니다.
 Oracle BDC 프로비저닝 준비사항 Oracle Cloud BDC 인스턴스를 생성하기 위해서는 Oracle Cloud 계정이 필요합니다.</description>
     </item>
     

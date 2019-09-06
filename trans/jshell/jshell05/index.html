@@ -11,12 +11,13 @@
 
 <title>JShell:5. 외부 코드</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.52" />
+<meta name="generator" content="Hugo 0.58.1" />
 <meta property="og:title" content="JShell:5. 외부 코드" />
 <meta property="og:description" content="java9의 신규 기능인 JShell 공식 문서의 한글화 입니다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/trans/jshell/jshell05/" /><meta property="article:published_time" content="2017-12-27T19:25:14&#43;09:00"/>
-<meta property="article:modified_time" content="2017-12-27T19:25:14&#43;09:00"/>
+<meta property="og:url" content="http://taewan.kim/trans/jshell/jshell05/" />
+<meta property="article:published_time" content="2017-12-27T19:25:14+09:00" />
+<meta property="article:modified_time" content="2017-12-27T19:25:14+09:00" />
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -170,10 +171,10 @@
 </code></pre>
 
 <p>접근해야 하는 패키지를 포함하는 디렉터리 혹은 JAR 파일을 클래스 패스로 지정합니다. 코드는 클래스 파일로 컴파일되어 있어야 합니다. 이름이 없는 패키지로 표현되는 디폴트 패키지에 코드는 JShell에서는 접근할 수 없습니다. 클래스 패스를 설정한 상태라면, 이 패스에 포함된 패키지들은 세션에서 임포트 가능합니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#f92672">import</span> my.cool.code.*</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">import</span> my.<span style="color:#a6e22e">cool</span>.<span style="color:#a6e22e">code</span>.<span style="color:#f92672">*</span></code></pre></div>
 <p>다음 예제와 같이 JShell 세션 아래에서 <strong>/env</strong> 명령을 사용하여 클래스 패스를 설정할 수 있습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#f92672">/</span>env <span style="color:#f92672">--</span>class<span style="color:#f92672">-</span>path myOwnClassPath
-<span style="color:#f92672">|</span>  Setting <span style="color:#66d9ef">new</span> options and restoring state<span style="color:#f92672">.</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#f92672">/</span>env <span style="color:#f92672">--</span>class<span style="color:#f92672">-</span>path <span style="color:#a6e22e">myOwnClassPath</span>
+<span style="color:#f92672">|</span>  Setting <span style="color:#a6e22e">new</span> options <span style="color:#a6e22e">and</span> restoring <span style="color:#a6e22e">state</span>.</code></pre></div>
 <p><strong>/env</strong> 명령은 실행 상태를 재설정하고, 명령으로 입력 한 새로운 클래스 패스 혹은 환경 설정으로 현재 코드 스니펫을 모두 다시 로드합니다.</p>
 
 <h2 id="모듈-옵션-설정">모듈 옵션 설정</h2>
@@ -187,11 +188,11 @@
 
 <p>현재 환경 설정은 옵션 없이 <strong>/env</strong> 명령을 사용하여 확인할 수 있습니다. 다음은 클래스 패스가 설정된 상황에서, 클래스 패스 정보를 출력하는 <strong>/env</strong> 명령의 사용 예제입니다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#f92672">/</span>env
-<span style="color:#f92672">|</span>     <span style="color:#f92672">--</span>add<span style="color:#f92672">-</span>modules my<span style="color:#f92672">.</span><span style="color:#a6e22e">module</span>
-<span style="color:#f92672">|</span>     <span style="color:#f92672">--</span>module<span style="color:#f92672">-</span>path myOwnModulePath
-<span style="color:#f92672">|</span>     <span style="color:#f92672">--</span>class<span style="color:#f92672">-</span>path myOwnClassPath</code></pre></div>
+<span style="color:#f92672">|</span>     <span style="color:#f92672">--</span>add<span style="color:#f92672">-</span>modules <span style="color:#a6e22e">my</span>.<span style="color:#a6e22e">module</span>
+<span style="color:#f92672">|</span>     <span style="color:#f92672">--</span>module<span style="color:#f92672">-</span>path <span style="color:#a6e22e">myOwnModulePath</span>
+<span style="color:#f92672">|</span>     <span style="color:#f92672">--</span>class<span style="color:#f92672">-</span>path <span style="color:#a6e22e">myOwnClassPath</span></code></pre></div>
 <p>옵션에 대한 자세한 내용을 보려면 다음 명령으로부터 확인할 수 있습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#f92672">/</span>help context</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#f92672">/</span>help <span style="color:#a6e22e">context</span></code></pre></div>
 		</div>
 		
 <div class="post__tags tags clearfix">
@@ -305,6 +306,10 @@
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
 			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/" title="Graalvms">
+							Graalvms</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201907w4/" title="GraalVM 새소식#1(201907, 4주)">
 							GraalVM 새소식#1(201907, 4주)</a>
 		  </li>
@@ -317,8 +322,16 @@
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
+				<a class="widget__link" href="/book/" title="Books">
+							Books</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/" title="Clouds">
+							Clouds</a>
 		  </li>
 			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
@@ -327,18 +340,6 @@
 			<li class="widget__item">
 				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
 							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
-							Cloud Native Java:GraalVM (@Oracle  ......</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
-							GraalVM 관련 코너를 새로 시작합니다.</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/post/function_in_semicolon/" title="함수 표기법: 세미콜론으로 변수와 파라미터 구분">
-							함수 표기법: 세미콜론으로 변수와 파라미터 구분</a>
 		  </li>
 		</ul>
 	</div>

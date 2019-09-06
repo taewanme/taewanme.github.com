@@ -11,12 +11,13 @@
 
 <title>Docker Image: 파이썬 기반 머신러닝 학습용 이미지 </title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.52" />
+<meta name="generator" content="Hugo 0.58.1" />
 <meta property="og:title" content="Docker Image: 파이썬 기반 머신러닝 학습용 이미지 " />
 <meta property="og:description" content="Python 기반으로 머신러닝을 학습할 때 사용할 목적으로 만든 docker 이미지입니다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/post/python_env_for_machine_learning/" /><meta property="article:published_time" content="2018-07-06T19:59:47&#43;09:00"/>
-<meta property="article:modified_time" content="2018-07-06T19:59:47&#43;09:00"/>
+<meta property="og:url" content="http://taewan.kim/post/python_env_for_machine_learning/" />
+<meta property="article:published_time" content="2018-07-06T19:59:47+09:00" />
+<meta property="article:modified_time" content="2018-07-06T19:59:47+09:00" />
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -235,24 +236,21 @@ Jupyter에 접속하면 패스워드 요청 페이지가 오픈됩니다. 패스
 
 ### 컨테이너의 jupyter 종료
 
-```docker stop``` 명령으로 컨테이너를 종료하고, ```docker ps``` 명령으로 컨테이너 프로세스 상태를 확인할 수 있습니다.
-
 </code></pre>
 
-<blockquote>
-<p>docker stop pyml
+<p>docker stop<code>명령으로 컨테이너를 종료하고,</code>docker ps``` 명령으로 컨테이너 프로세스 상태를 확인할 수 있습니다.</p>
+
+<pre><code>&gt; docker stop pyml
 pyml
-docker ps -all
+&gt; docker ps -all
 CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS                        PORTS               NAMES
-0b5ee2af902e        taewanme/pyml:0.1.07   &ldquo;/bin/bash start-not…&rdquo;   32 minutes ago      Exited (137) 11 seconds ago</p>
-
-<pre><code>
-### pyml 컨테이너의 삭제
-
-```docker rm``` 명령으로 컨테이너를 삭제하고, ```docker container ls``` 명령으로 컨테이너 목록을 확인할 수 있습니다.
-
+0b5ee2af902e        taewanme/pyml:0.1.07   &quot;/bin/bash start-not…&quot;   32 minutes ago      Exited (137) 11 seconds ago
+&gt;
 </code></pre>
 
+<h3 id="pyml-컨테이너의-삭제">pyml 컨테이너의 삭제</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker rm``` 명령으로 컨테이너를 삭제하고, ```docker container ls``` 명령으로 컨테이너 목록을 확인할 수 있습니다." data-lang="docker rm``` 명령으로 컨테이너를 삭제하고, ```docker container ls``` 명령으로 컨테이너 목록을 확인할 수 있습니다."></code></pre></div>
+<blockquote>
 <p>docker rm pyml
 pyml
 docker container ls -all
@@ -261,11 +259,11 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 <pre><code>
 ### PYML 더커 이미지 삭제
 
-```docker rmi``` 명령으로 이미지를 삭제하고, ```docker images``` 명령으로 더커 이미지을 확인할 수 있습니다.
-
 </code></pre>
 
-<p>docker images
+<p>docker rmi<code>명령으로 이미지를 삭제하고,</code>docker images``` 명령으로 더커 이미지을 확인할 수 있습니다.</p>
+
+<pre><code>docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 taewanme/pyml       0.1.07              823a55c894d0        20 hours ago        1.87GB
 docker rmi taewanme/pyml:0.1.07
@@ -285,17 +283,14 @@ Deleted: sha256:7b2cc05dfd889e28234f8831c80ac20cf299d5bbebbbac013f8f7d2b7abc0d65
 Deleted: sha256:6b0187d1cdff63eb5966ac72bf4ccd96150586c1409eb858bb98783f02018ee7
 Deleted: sha256:644879075e24394efef8a7dddefbc133aad42002df6223cacf98bd1e3d5ddde2
 docker images
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</p>
-
-<pre><code>
-## pyml 구성 라이브러리
-
-pyml에서는 다음과 같은 라이브러리가 설치됩니다.
-
-```pip freeze```로 설치된 라이브러리를 확인하면 120여개의 라이브러리가 설치됩니다. 주요 라이브러리 버전은 다음과 같습니다.
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 
 </code></pre>
 
+<h2 id="pyml-구성-라이브러리">pyml 구성 라이브러리</h2>
+
+<p>pyml에서는 다음과 같은 라이브러리가 설치됩니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-pip freeze```로 설치된 라이브러리를 확인하면 120여개의 라이브러리가 설치됩니다. 주요 라이브러리 버전은 다음과 같습니다." data-lang="pip freeze```로 설치된 라이브러리를 확인하면 120여개의 라이브러리가 설치됩니다. 주요 라이브러리 버전은 다음과 같습니다."></code></pre></div>
 <p>beautifulsoup4==4.6.0
 bokeh==0.13.0
 h5py==2.8.0
@@ -437,7 +432,9 @@ docker run -itd -p 8888:8888 -p 6006:6006 -v /devspace/pytorch:/root/ipython &nd
 <ul>
 <li><a href="#pyml-더커-이미지-설치">pyml 더커 이미지 설치</a></li>
 <li><a href="#pyml-컨테이어-실행">pyml 컨테이어 실행</a></li>
+<li><a href="#pyml-컨테이너의-삭제">pyml 컨테이너의 삭제</a></li>
 </ul></li>
+<li><a href="#pyml-구성-라이브러리">pyml 구성 라이브러리</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -463,6 +460,10 @@ docker run -itd -p 8888:8888 -p 6006:6006 -v /devspace/pytorch:/root/ipython &nd
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
 			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/" title="Graalvms">
+							Graalvms</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201907w4/" title="GraalVM 새소식#1(201907, 4주)">
 							GraalVM 새소식#1(201907, 4주)</a>
 		  </li>
@@ -475,8 +476,16 @@ docker run -itd -p 8888:8888 -p 6006:6006 -v /devspace/pytorch:/root/ipython &nd
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
+				<a class="widget__link" href="/book/" title="Books">
+							Books</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/" title="Clouds">
+							Clouds</a>
 		  </li>
 			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
@@ -485,18 +494,6 @@ docker run -itd -p 8888:8888 -p 6006:6006 -v /devspace/pytorch:/root/ipython &nd
 			<li class="widget__item">
 				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
 							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
-							Cloud Native Java:GraalVM (@Oracle  ......</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
-							GraalVM 관련 코너를 새로 시작합니다.</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/post/function_in_semicolon/" title="함수 표기법: 세미콜론으로 변수와 파라미터 구분">
-							함수 표기법: 세미콜론으로 변수와 파라미터 구분</a>
 		  </li>
 		</ul>
 	</div>

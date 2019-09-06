@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Javascript on taewan.kim 블로그</title>
+    <title>JavaScript on taewan.kim 블로그</title>
     <link>http://taewan.kim/tags/javascript/</link>
-    <description>Recent content in Javascript on taewan.kim 블로그</description>
+    <description>Recent content in JavaScript on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 18 Oct 2016 21:28:14 +0900</lastBuildDate>

@@ -11,12 +11,13 @@
 
 <title>Neural Networks</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.52" />
+<meta name="generator" content="Hugo 0.58.1" />
 <meta property="og:title" content="Neural Networks" />
 <meta property="og:description" content="pytorh- 신경망 만들기" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/trans/pytorch/tutorial/blits/03_neural_networks/" /><meta property="article:published_time" content="2018-03-27T03:05:14&#43;09:00"/>
-<meta property="article:modified_time" content="2018-03-27T03:05:14&#43;09:00"/>
+<meta property="og:url" content="http://taewan.kim/trans/pytorch/tutorial/blits/03_neural_networks/" />
+<meta property="article:published_time" content="2018-03-27T03:05:14+09:00" />
+<meta property="article:modified_time" content="2018-03-27T03:05:14+09:00" />
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -241,11 +242,11 @@ print(out)
 out.backward(torch.randn(1, 10))
 </code></pre>
 
-<div class="notices note" ><p><code>torch.nn</code>은 mini-batch만을 지원합니다. torch.nn 패키지 전체는 mini-batch 형태인 입력만을 지원합니다. 단일 데이터는 입력으로 취급하지 않습니다.
-예를 들어서, <code>nn.Conv2d</code>는 <code>데이터건수 x 채널수 x 높이 x 너비</code> 형식의 4D Tensor를 취합니다.
-1개 데이터를 네트웍에 입력해야 한다면, input.unsqueexe(0)을 이용하여 가짜 임시 배치 차원을 추가해서 사용합니다.</p>
+<div class="notices note" >
+```torch.nn```은 mini-batch만을 지원합니다. torch.nn 패키지 전체는 mini-batch 형태인 입력만을 지원합니다. 단일 데이터는 입력으로 취급하지 않습니다.
+예를 들어서, ```nn.Conv2d```는 ```데이터건수 x 채널수 x 높이 x 너비``` 형식의 4D Tensor를 취합니다.
+1개 데이터를 네트웍에 입력해야 한다면, input.unsqueexe(0)을 이용하여 가짜 임시 배치 차원을 추가해서 사용합니다.
 </div>
-
 
 <p>진도를 더 나가기 앞서, 지금까지 설명한 모든 절차를 요약하겠습니다.</p>
 
@@ -253,11 +254,11 @@ out.backward(torch.randn(1, 10))
 <li><p>요약</p>
 
 <ul>
-<li><code>torch.Tensor</code> - 다차원 배열</li>
-<li><code>augograde.Variable</code> - Tensor 클래스를 감싸고, Tensor에 적용되는 연산의 순서를 기록, <code>backward()</code>와 같은 추가적인 함수를 제공. Tensor에 대한 기울기를 보관</li>
-<li><code>nn.Module</code> - 신경망 모듈. 파라미터를 은닉하는 편리한 방법, 파라미터의 GPU로 이동, 내보내기 및 로딩 지원 기능 제공</li>
-<li><code>nn.Parameter</code> -  Variable의 한 유형으로 모듈의 속성으로 할당 될 때 매개 변수로 자등 등록됨.</li>
-<li><code>autograd.Function</code> - autograd 연산의 forward와 backward 정의를 구현. 모든 Variable 연산. 모든 Variable 연산은 Variable을 생성하고 그 히스토리를 인코딩하는 함수에 연결하는 적어도 하나의 Function 노드를 생성.</li>
+<li><code>torch.Tensor</code> - 다차원 배열
+- <code>augograde.Variable</code> - Tensor 클래스를 감싸고, Tensor에 적용되는 연산의 순서를 기록, <code>backward()</code>와 같은 추가적인 함수를 제공. Tensor에 대한 기울기를 보관
+- <code>nn.Module</code> - 신경망 모듈. 파라미터를 은닉하는 편리한 방법, 파라미터의 GPU로 이동, 내보내기 및 로딩 지원 기능 제공
+- <code>nn.Parameter</code> -  Variable의 한 유형으로 모듈의 속성으로 할당 될 때 매개 변수로 자등 등록됨.
+- <code>autograd.Function</code> - autograd 연산의 forward와 backward 정의를 구현. 모든 Variable 연산. 모든 Variable 연산은 Variable을 생성하고 그 히스토리를 인코딩하는 함수에 연결하는 적어도 하나의 Function 노드를 생성.</li>
 </ul></li>
 
 <li><p>지금 까지 학습한 것</p>
@@ -443,6 +444,10 @@ print(loss)
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
 			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/" title="Graalvms">
+							Graalvms</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201907w4/" title="GraalVM 새소식#1(201907, 4주)">
 							GraalVM 새소식#1(201907, 4주)</a>
 		  </li>
@@ -455,8 +460,16 @@ print(loss)
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
+				<a class="widget__link" href="/book/" title="Books">
+							Books</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/" title="Clouds">
+							Clouds</a>
 		  </li>
 			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
@@ -465,18 +478,6 @@ print(loss)
 			<li class="widget__item">
 				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
 							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
-							Cloud Native Java:GraalVM (@Oracle  ......</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
-							GraalVM 관련 코너를 새로 시작합니다.</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/post/function_in_semicolon/" title="함수 표기법: 세미콜론으로 변수와 파라미터 구분">
-							함수 표기법: 세미콜론으로 변수와 파라미터 구분</a>
 		  </li>
 		</ul>
 	</div>

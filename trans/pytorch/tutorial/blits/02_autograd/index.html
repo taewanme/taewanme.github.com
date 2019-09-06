@@ -11,12 +11,13 @@
 
 <title>Autograd: 미분 자동화</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.52" />
+<meta name="generator" content="Hugo 0.58.1" />
 <meta property="og:title" content="Autograd: 미분 자동화" />
 <meta property="og:description" content="&#39;" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/trans/pytorch/tutorial/blits/02_autograd/" /><meta property="article:published_time" content="2018-02-27T03:05:14&#43;09:00"/>
-<meta property="article:modified_time" content="2018-02-27T03:05:14&#43;09:00"/>
+<meta property="og:url" content="http://taewan.kim/trans/pytorch/tutorial/blits/02_autograd/" />
+<meta property="article:published_time" content="2018-02-27T03:05:14+09:00" />
+<meta property="article:modified_time" content="2018-02-27T03:05:14+09:00" />
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -123,29 +124,28 @@
 
 좀 더 간단한 용어로 몇 가지 예를 들어 보겠습니다.
 
-## Variable
+## Variable</code></pre></div>
+<p>autograd.Variable```은 autograd 패키지의 핵심 클래스입니다. Variable 클래스는 Tensor를 감싸고 있으며, Tensor에 정의된 거의 모든 연산을 지원합니다. 모든 계산을 마친 후에 .backward()를 호출하면, 자동으로 모든 기울기가 계산됩니다.</p>
 
-```autograd.Variable```은 autograd 패키지의 핵심 클래스입니다. Variable 클래스는 Tensor를 감싸고 있으며, Tensor에 정의된 거의 모든 연산을 지원합니다. 모든 계산을 마친 후에 .backward()를 호출하면, 자동으로 모든 기울기가 계산됩니다.
+<p>Variable 객체의 .data 속성으로 Tensor의 실제 데이터에 접근할 수 있습니다. Variable에 대한 기울기는 .grad 속성에 저장됩니다.</p>
 
-Variable 객체의 .data 속성으로 Tensor의 실제 데이터에 접근할 수 있습니다. Variable에 대한 기울기는 .grad 속성에 저장됩니다.
+<p><img src="http://pytorch.org/tutorials/_images/Variable.png" alt="" /></p>
 
-![](http://pytorch.org/tutorials/_images/Variable.png)  
+<p>autograd 구현에 있어서 중요한 클래스가 하나 더 있습니다. 바로 <code>Function</code> 입니다.</p>
 
-autograd 구현에 있어서 중요한 클래스가 하나 더 있습니다. 바로 ```Function``` 입니다.
+<p>Variable과 Function 클래스는 상호 연결되어 있고 비순환 그래프를 구성합니다. 연산을 위한 완전한 히스토리를 담고 있습니다. 각 Variable 객체에는 .grad_fn 속성이 있습니다. 이 속성은 해당 Variable 객체를 생성하는 Function 객체를 참조합니다. (예외 상황, Variable을 사용자가 직접 생성한 경우에는 grad_fn이 값은 <code>None</code>입니다.)</p>
 
-Variable과 Function 클래스는 상호 연결되어 있고 비순환 그래프를 구성합니다. 연산을 위한 완전한 히스토리를 담고 있습니다. 각 Variable 객체에는 .grad_fn 속성이 있습니다. 이 속성은 해당 Variable 객체를 생성하는 Function 객체를 참조합니다. (예외 상황, Variable을 사용자가 직접 생성한 경우에는 grad_fn이 값은 ```None```입니다.)
+<p>미분계수를 계산해야 한다면, Variable 객체의 .backward()를 호출합니다. Variable이 스칼라 일 경우(한 개의 요소만을 갖는 상황)에는, backward()에 별도 인자를 지정할 필요가 없습니다. 이와 다르게 여러 요소를 갖는다면, 텐서의 크기를 <code>gradient</code> 인수로 지정해야 합니다.</p>
 
-미분계수를 계산해야 한다면, Variable 객체의 .backward()를 호출합니다. Variable이 스칼라 일 경우(한 개의 요소만을 갖는 상황)에는, backward()에 별도 인자를 지정할 필요가 없습니다. 이와 다르게 여러 요소를 갖는다면, 텐서의 크기를 ```gradient``` 인수로 지정해야 합니다.</code></pre></div>
-<p>import torch
-from torch.autograd import Variable</p>
-
-<pre><code>
-- Variable 생성
-
-```python
-x = Variable(torch.ones(2, 2), requires_grad=True)
-print(x)
+<pre><code>import torch
+from torch.autograd import Variable
 </code></pre>
+
+<ul>
+<li><p>Variable 생성</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#f92672">=</span> Variable(torch<span style="color:#f92672">.</span>ones(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>), requires_grad<span style="color:#f92672">=</span>True)
+<span style="color:#66d9ef">print</span>(x)</code></pre></div></li>
+</ul>
 
 <blockquote>
 <p>출력:</p>
@@ -158,10 +158,11 @@ print(x)
 </blockquote>
 
 <ul>
-<li>Variable 연산 수행</li>
-</ul>
+<li><p>Variable 연산 수행</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">y <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>
-<span style="color:#66d9ef">print</span>(y)</code></pre></div>
+<span style="color:#66d9ef">print</span>(y)</code></pre></div></li>
+</ul>
+
 <blockquote>
 <p>출력:</p>
 
@@ -173,9 +174,10 @@ print(x)
 </blockquote>
 
 <ul>
-<li>앞의 연산으로 부터 <code>y</code> 객체가 생성되었습니다. 이 객체의 grad_fn 속성을 다음과 같이 확인할 수 있습니다.</li>
+<li><p>앞의 연산으로 부터 <code>y</code> 객체가 생성되었습니다. 이 객체의 grad_fn 속성을 다음과 같이 확인할 수 있습니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(y<span style="color:#f92672">.</span>grad_fn)</code></pre></div></li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(y<span style="color:#f92672">.</span>grad_fn)</code></pre></div>
+
 <blockquote>
 <p>출력:</p>
 
@@ -184,133 +186,156 @@ print(x)
 </blockquote>
 
 <ul>
-<li><code>y</code> 에 추가 연산을 적용합니다.</li>
+<li><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-y``` 에 추가 연산을 적용합니다." data-lang="y``` 에 추가 연산을 적용합니다."></code></pre></div>
+<p>python</p></li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">z <span style="color:#f92672">=</span> y <span style="color:#f92672">*</span> y <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>
-out <span style="color:#f92672">=</span> z<span style="color:#f92672">.</span>mean()
 
-<span style="color:#66d9ef">print</span>(z)
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;---&#34;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">5</span>)
-<span style="color:#66d9ef">print</span>(out)</code></pre></div>
-<blockquote>
-<p>출력:</p>
+<p>z = y * y * 3
+out = z.mean()</p>
 
-<pre><code>Variable containing:
+<p>print(z)
+print(&ldquo;&mdash;&rdquo;*5)
+print(out)</p>
+
+<pre><code>
+&gt; 출력:
+</code></pre>
+
+<p>Variable containing:
  27  27
  27  27
-[torch.FloatTensor of size 2x2]
+[torch.FloatTensor of size 2x2]</p>
 
----------------
-Variable containing:
+<hr />
+
+<p>Variable containing:
  27
-[torch.FloatTensor of size 1]
-</code></pre>
-</blockquote>
+[torch.FloatTensor of size 1]</p>
 
-<ul>
-<li><code>y</code> was created as a result of an operation, so it has a <code>grad_fn</code></li>
-</ul>
+<pre><code>
+- ```y``` was created as a result of an operation, so it has a ```grad_fn```
 
-<pre><code>print(y.grad_fn)
 </code></pre>
 
-<blockquote>
-<p>출력:</p>
+<p>print(y.grad_fn)</p>
 
-<pre><code>&lt;AddBackward0 object at 0x7f6fdf69f390&gt;
+<pre><code>
+&gt; 출력:
 </code></pre>
-</blockquote>
 
-<p>y에 추가 연산을 적용할 수 있습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">z <span style="color:#f92672">=</span> y <span style="color:#f92672">*</span> y <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>
-out <span style="color:#f92672">=</span> z<span style="color:#f92672">.</span>mean()
+<p><AddBackward0 object at 0x7f6fdf69f390></p>
 
-<span style="color:#66d9ef">print</span>(z, out)</code></pre></div>
-<blockquote>
-<p>출력:</p>
+<pre><code>
+y에 추가 연산을 적용할 수 있습니다.
 
-<pre><code>Variable containing:
+</code></pre>
+
+<p>python
+z = y * y * 3
+out = z.mean()</p>
+
+<p>print(z, out)</p>
+
+<pre><code>
+&gt; 출력:
+</code></pre>
+
+<p>Variable containing:
  27  27
  27  27
 [torch.FloatTensor of size 2x2]
  Variable containing:
  27
-[torch.FloatTensor of size 1]
+[torch.FloatTensor of size 1]</p>
+
+<pre><code>
+## Gradients
+
+역전파를 해보겠습니다. out.backward()과 out.backward(torch.Tensor([1.0]))은 동일하게 동작합니다.
 
 </code></pre>
-</blockquote>
 
-<h2 id="gradients">Gradients</h2>
+<p>python
+out.backward()</p>
 
-<p>역전파를 해보겠습니다. out.backward()과 out.backward(torch.Tensor([1.0]))은 동일하게 동작합니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">out<span style="color:#f92672">.</span>backward()</code></pre></div>
-<p>기울기 $ \frac{d(out)}{dx} $를 다음과 같이 출력할 수 있습니다.</p>
+<pre><code>
+기울기 $ \frac{d(out)}{dx} $를 다음과 같이 출력할 수 있습니다.
 
-<pre><code>print(x.grad)
 </code></pre>
 
-<blockquote>
-<p>출력:</p>
+<p>print(x.grad)</p>
 
-<pre><code>Variable containing:
+<pre><code>
+&gt; 출력:
+</code></pre>
+
+<p>Variable containing:
  4.5000  4.5000
  4.5000  4.5000
-[torch.FloatTensor of size 2x2]
+[torch.FloatTensor of size 2x2]</p>
+
+<pre><code>
+값이 4.5인 행렬이 출력됩니다. out Variable을 &quot;o&quot;로 부르겠습니다. &quot;0&quot;를 수식을 다음과 같이 정리할 수 있습니다.
+
+- $ o = \frac{1}{4} \sum_i z_i $
+- $ z_i = 3(x_i + 2)^2 $
+- $ z_i \rvert _{x_i=1} = 27 $
+
+따라서, 이 기울기는 다음과 같이 정리할 수 있습니다.
+
+- $ \frac{\partial o}{\partial x_i} = \frac{2}{3}(x_i + 2) $
+- $ \frac{\partial o}{\partial x_i} \rvert _{x_i=1} = \frac{9}{2} = 4.5 $
+
+자동 기울기 계산(autograd) 기능을 가지고 재미있는 일을 할 수 있습니다. [^2]
+
 </code></pre>
-</blockquote>
 
-<p>값이 4.5인 행렬이 출력됩니다. out Variable을 &ldquo;o&rdquo;로 부르겠습니다. &ldquo;0&rdquo;를 수식을 다음과 같이 정리할 수 있습니다.</p>
+<p>python
+x = torch.randn(3)
+x = Variable(x, requires_grad=True)</p>
 
-<ul>
-<li>$ o = \frac{1}{4} \sum_i z_i $</li>
-<li>$ z_i = 3(x_i + 2)^2 $</li>
-<li>$ z_i \rvert _{x_i=1} = 27 $</li>
-</ul>
+<p>y = x * 2
+while y.data.norm() &lt; 1000:
+    y = y * 2</p>
 
-<p>따라서, 이 기울기는 다음과 같이 정리할 수 있습니다.</p>
+<p>print(y)</p>
 
-<ul>
-<li>$ \frac{\partial o}{\partial x_i} = \frac{2}{3}(x_i + 2) $</li>
-<li>$ \frac{\partial o}{\partial x_i} \rvert _{x_i=1} = \frac{9}{2} = 4.5 $</li>
-</ul>
+<pre><code>
+&gt; 출력:
+</code></pre>
 
-<p>자동 기울기 계산(autograd) 기능을 가지고 재미있는 일을 할 수 있습니다. <sup class="footnote-ref" id="fnref:2"><a href="#fn:2">1</a></sup></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">3</span>)
-x <span style="color:#f92672">=</span> Variable(x, requires_grad<span style="color:#f92672">=</span>True)
-
-y <span style="color:#f92672">=</span> x <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>
-<span style="color:#66d9ef">while</span> y<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>norm() <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1000</span>:
-    y <span style="color:#f92672">=</span> y <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>
-
-<span style="color:#66d9ef">print</span>(y)</code></pre></div>
-<blockquote>
-<p>출력:</p>
-
-<pre><code>Variable containing:
+<p>Variable containing:
   864.9241
    13.0149
 -1114.6173
-[torch.FloatTensor of size 3]
+[torch.FloatTensor of size 3]</p>
+
+<pre><code>
 </code></pre>
-</blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">gradients <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>FloatTensor([<span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">0.0001</span>])
-y<span style="color:#f92672">.</span>backward(gradients)
 
-<span style="color:#66d9ef">print</span>(x<span style="color:#f92672">.</span>grad)</code></pre></div>
-<blockquote>
-<p>출력:</p>
+<p>python
+gradients = torch.FloatTensor([0.1, 1.0, 0.0001])
+y.backward(gradients)</p>
 
-<pre><code>Variable containing:
+<p>print(x.grad)</p>
+
+<pre><code>
+&gt; 출력:
+</code></pre>
+
+<p>Variable containing:
   102.4000
  1024.0000
     0.1024
-[torch.FloatTensor of size 3]
+[torch.FloatTensor of size 3]</p>
+
+<pre><code>
+
+## 다음에 읽어 볼거리
+
 </code></pre>
-</blockquote>
 
-<h2 id="다음에-읽어-볼거리">다음에 읽어 볼거리</h2>
-
-<p><code>Variable</code>과 <code>Function</code>에 대한 문서는 다음에서 찾을 수 있습니다.</p>
+<p>Variable<code>과</code>Function```에 대한 문서는 다음에서 찾을 수 있습니다.</p>
 
 <ul>
 <li><a href="http://pytorch.org/docs/autograd">http://pytorch.org/docs/autograd</a></li>
@@ -322,15 +347,6 @@ y<span style="color:#f92672">.</span>backward(gradients)
 <li>Python Code 다운로드: <a href="http://pytorch.org/tutorials/_downloads/autograd_tutorial.py">autograd_tutorial.py</a></li>
 <li>Jupyter Notebook 다운로드: <a href="http://pytorch.org/tutorials/_downloads/autograd_tutorial.ipynb">autograd_tutorial.ipynb</a></li>
 </ul>
-<div class="footnotes">
-
-<hr />
-
-<ol>
-<li id="fn:2">역자주 - 첫 번째 예제는 3개의 난수 배열을 만들고 L2 Norm이 1,000이 될 때 까지 y 값을 증가 시키는 코드입니다. 두 번째 예제는 3개의 난 수 배열을 만들고 각 요소의 기울기를 구하는 코드입니다.
- <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
-</ol>
-</div>
 
 		</div>
 		
@@ -412,8 +428,6 @@ y<span style="color:#f92672">.</span>backward(gradients)
 <ul>
 <li>
 <ul>
-<li><a href="#gradients">Gradients</a></li>
-<li><a href="#다음에-읽어-볼거리">다음에 읽어 볼거리</a></li>
 <li><a href="#코드-다운로드">코드 다운로드</a></li>
 </ul></li>
 </ul>
@@ -440,6 +454,10 @@ y<span style="color:#f92672">.</span>backward(gradients)
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
 			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/" title="Graalvms">
+							Graalvms</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201907w4/" title="GraalVM 새소식#1(201907, 4주)">
 							GraalVM 새소식#1(201907, 4주)</a>
 		  </li>
@@ -452,8 +470,16 @@ y<span style="color:#f92672">.</span>backward(gradients)
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
+				<a class="widget__link" href="/book/" title="Books">
+							Books</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/" title="Clouds">
+							Clouds</a>
 		  </li>
 			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
@@ -462,18 +488,6 @@ y<span style="color:#f92672">.</span>backward(gradients)
 			<li class="widget__item">
 				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
 							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
-							Cloud Native Java:GraalVM (@Oracle  ......</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
-							GraalVM 관련 코너를 새로 시작합니다.</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/post/function_in_semicolon/" title="함수 표기법: 세미콜론으로 변수와 파라미터 구분">
-							함수 표기법: 세미콜론으로 변수와 파라미터 구분</a>
 		  </li>
 		</ul>
 	</div>

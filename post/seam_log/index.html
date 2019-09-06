@@ -11,12 +11,13 @@
 
 <title>JBoss Seam 로고의 의미</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.52" />
+<meta name="generator" content="Hugo 0.58.1" />
 <meta property="og:title" content="JBoss Seam 로고의 의미" />
 <meta property="og:description" content="오픈소스의 이름과 로고의 의미를 파악하면 기술을 이해할 때 많은 도움이 됩니다. 2009년에 JBoss Framework인 Seam의 매력에 푹 빠져 있을때 작성했던 글입니다. Seam 로고에 담겨 있는 Seam 프레임웍의 사상을 정리해 보았습니다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/post/seam_log/" /><meta property="article:published_time" content="2016-01-27T10:50:36&#43;09:00"/>
-<meta property="article:modified_time" content="2016-01-27T10:50:36&#43;09:00"/>
+<meta property="og:url" content="http://taewan.kim/post/seam_log/" />
+<meta property="article:published_time" content="2016-01-27T10:50:36+09:00" />
+<meta property="article:modified_time" content="2016-01-27T10:50:36+09:00" />
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -137,13 +138,14 @@
 <p>이것은 다음과 같은 코드를 보시면 좋을 것 같습니다.</p>
 
 <ul>
-<li>JSP 코드 예제</li>
+<li><p>JSP 코드 예제</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsp" data-lang="jsp">&lt;h:form&gt;
+&lt;h:inputText value=&#34;#{person.name}&#34; /&gt;&lt;br/&gt;
+&lt;h:commandButton type=&#34;submit&#34;  value=&#34;submit&#34;
+    action=&#34;#{manager.sayHello}&#34; /&gt;
+&lt;/h:form&gt;</code></pre></div></li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsp" data-lang="jsp"> &lt;h:form&gt;
-    &lt;h:inputText value=&#34;#{person.name}&#34; /&gt;&lt;br/&gt;
-    &lt;h:commandButton type=&#34;submit&#34;  value=&#34;submit&#34;
-        action=&#34;#{manager.sayHello}&#34; /&gt;
-&lt;/h:form&gt;</code></pre></div>
+
 <p>위와 같은 JSP 코드가 존재한다고 생각해 보시기바랍니다.
 이코드를 보면 다음과 같은 것을 추측할 수 있습니다.</p>
 
@@ -156,17 +158,18 @@
 <p>person과 manager 객체의 실체는 무엇일까요? person 객체는 다음과 같을 수 있습니다.</p>
 
 <ul>
-<li>Person 객체</li>
-</ul>
+<li><p>Person 객체</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Entity</span>
-<span style="color:#a6e22e">@Name</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;person&#34;</span><span style="color:#f92672">)</span>
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span> <span style="color:#66d9ef">implements</span> Serializable<span style="color:#f92672">{</span>
-  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">long</span> id<span style="color:#f92672">;</span>
-  <span style="color:#66d9ef">private</span> String name<span style="color:#f92672">;</span>
-  <span style="color:#75715e">//이하 코드 생략
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">//getter-setter
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">//Annotation
-</span><span style="color:#75715e"></span><span style="color:#f92672">}</span></code></pre></div>
+<span style="color:#a6e22e">@Name</span>(<span style="color:#e6db74">&#34;person&#34;</span>)
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> Person <span style="color:#a6e22e">implements</span> Serializable{
+<span style="color:#66d9ef">private</span> <span style="color:#a6e22e">long</span> id;
+<span style="color:#66d9ef">private</span> <span style="color:#a6e22e">String</span> name;
+<span style="color:#75715e">//이하 코드 생략
+</span><span style="color:#75715e">//getter-setter
+</span><span style="color:#75715e">//Annotation
+</span><span style="color:#75715e"></span>}</code></pre></div></li>
+</ul>
+
 <p>person 객체의 실체는 위와 같을 수 있습니다. 실제 Person 객체는 Seam Person 컴포넌트라고 하는 것이 정확한 표현입니다. Person 객체를 person 이라는 이름으로 참조 할 수 있는 것은  바로 Seam이 제공하는 컴포넌트 관리 모델때문입니다.</p>
 
 <p>그런데 Person 객체는 실제로 Entity Bean입니다. JPA에서 ORM으로 사용하는 POJO 객체입니다. JPA는 Java SE에서도 구동되는 기술임을 감안하면 아직까지는 크게 이상할 것은 없는 코드 입니다.</p>
@@ -174,22 +177,23 @@
 <p>그렇다면 manager 객체, 더 정확히 말해서 manager 컴포넌트의 실체는 무엇일까요?</p>
 
 <ul>
-<li>manager 컴포넌트</li>
-</ul>
+<li><p>manager 컴포넌트</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Stateless</span>
-<span style="color:#a6e22e">@Name</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;manager&#34;</span><span style="color:#f92672">)</span>
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ManagerAction</span> <span style="color:#66d9ef">implements</span> Manager<span style="color:#f92672">{</span>
-    <span style="color:#a6e22e">@In</span> <span style="color:#a6e22e">@Out</span> Person person<span style="color:#f92672">;</span>
-    <span style="color:#a6e22e">@Out</span> List<span style="color:#f92672">&lt;</span>Person<span style="color:#f92672">&gt;</span> personList<span style="color:#f92672">;</span>
-    <span style="color:#a6e22e">@PersistenceContext</span> EntityManager em<span style="color:#f92672">;</span>
+<span style="color:#a6e22e">@Name</span>(<span style="color:#e6db74">&#34;manager&#34;</span>)
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> ManagerAction <span style="color:#a6e22e">implements</span> Manager{
+<span style="color:#a6e22e">@In</span> <span style="color:#a6e22e">@Out</span> Person <span style="color:#a6e22e">person</span>;
+<span style="color:#a6e22e">@Out</span> List<span style="color:#f92672">&lt;</span>Person<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">personList</span>;
+<span style="color:#a6e22e">@PersistenceContext</span> EntityManager <span style="color:#a6e22e">em</span>;
 
-    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">sayHello</span><span style="color:#f92672">(){</span>
-      em<span style="color:#f92672">.</span><span style="color:#a6e22e">persist</span><span style="color:#f92672">(</span>person<span style="color:#f92672">);</span>
-      person <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-   <span style="color:#75715e">//이하 코드 생략
-</span><span style="color:#75715e"></span><span style="color:#f92672">}</span></code></pre></div>
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">String</span> sayHello(){
+  em.<span style="color:#a6e22e">persist</span>(person);
+  person <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+}
+<span style="color:#75715e">//이하 코드 생략
+</span><span style="color:#75715e"></span>}</code></pre></div></li>
+</ul>
+
 <p>여러가지 manager 컴포넌트 스타일을 생각해 볼 수 있지만 위와 같은 코드가 일반적입니다. 놀라운 것은 manager 컴포넌트는 실제 무상태 세션 빈이라는 것입니다. JSP 페이지의 테그라이브러리의 Expression Language 형태로 설정한 형태는 실제 세션빈의 메서드를 호출하는 것이었습니다.</p>
 
 <p>JSP를 통하여 별다른 작업 없이 ejb를 직접 호출하는 형태 입니다. JSF에 익숙하신 분들에게는 이렇게 표현하실 수 있습니다. (위 JSP는 실제 JSF 페이지 코드의 일부 입니다. )</p>
@@ -339,6 +343,10 @@
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
 			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/" title="Graalvms">
+							Graalvms</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201907w4/" title="GraalVM 새소식#1(201907, 4주)">
 							GraalVM 새소식#1(201907, 4주)</a>
 		  </li>
@@ -351,8 +359,16 @@
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
+				<a class="widget__link" href="/book/" title="Books">
+							Books</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/" title="Clouds">
+							Clouds</a>
 		  </li>
 			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
@@ -361,18 +377,6 @@
 			<li class="widget__item">
 				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
 							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
-							Cloud Native Java:GraalVM (@Oracle  ......</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
-							GraalVM 관련 코너를 새로 시작합니다.</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/post/function_in_semicolon/" title="함수 표기법: 세미콜론으로 변수와 파라미터 구분">
-							함수 표기법: 세미콜론으로 변수와 파라미터 구분</a>
 		  </li>
 		</ul>
 	</div>

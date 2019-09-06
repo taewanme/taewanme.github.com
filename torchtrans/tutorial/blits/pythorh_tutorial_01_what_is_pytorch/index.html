@@ -11,12 +11,13 @@
 
 <title>PyTorch는 무엇인가?</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.52" />
+<meta name="generator" content="Hugo 0.58.1" />
 <meta property="og:title" content="PyTorch는 무엇인가?" />
 <meta property="og:description" content="&#39;" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/torchtrans/tutorial/blits/pythorh_tutorial_01_what_is_pytorch/" /><meta property="article:published_time" content="2018-02-27T03:05:14&#43;09:00"/>
-<meta property="article:modified_time" content="2018-02-27T03:05:14&#43;09:00"/>
+<meta property="og:url" content="http://taewan.kim/torchtrans/tutorial/blits/pythorh_tutorial_01_what_is_pytorch/" />
+<meta property="article:published_time" content="2018-02-27T03:05:14+09:00" />
+<meta property="article:modified_time" content="2018-02-27T03:05:14+09:00" />
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -129,10 +130,11 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> __future__ <span style="color:#f92672">import</span> print_function
 <span style="color:#f92672">import</span> torch</code></pre></div>
 <ul>
-<li>초기화 되지 않은 5X3 매트릭스 생성</li>
-</ul>
+<li><p>초기화 되지 않은 5X3 매트릭스 생성</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>Tensor(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">3</span>)
-<span style="color:#66d9ef">print</span>(x)</code></pre></div>
+<span style="color:#66d9ef">print</span>(x)</code></pre></div></li>
+</ul>
+
 <blockquote>
 <p>출력:</p>
 
@@ -146,10 +148,11 @@
 </blockquote>
 
 <ul>
-<li>임의로 초기화된 행렬 생성</li>
-</ul>
+<li><p>임의로 초기화된 행렬 생성</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">3</span>)
-<span style="color:#66d9ef">print</span>(x)</code></pre></div>
+<span style="color:#66d9ef">print</span>(x)</code></pre></div></li>
+</ul>
+
 <blockquote>
 <p>출력:</p>
 
@@ -163,9 +166,10 @@
 </blockquote>
 
 <ul>
-<li>Tensors 사이즈 확인</li>
+<li><p>Tensors 사이즈 확인</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(x<span style="color:#f92672">.</span>size())</code></pre></div></li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(x<span style="color:#f92672">.</span>size())</code></pre></div>
+
 <blockquote>
 <p>출력:</p>
 
@@ -173,20 +177,21 @@
 </code></pre>
 </blockquote>
 
-<div class="notices note" ><p><code>torch.Size</code>는 튜플이며, 모든 튜플 지능을 지원합니다.</p>
+<div class="notices note" >
+```torch.Size```는 튜플이며, 모든 튜플 지능을 지원합니다.
 </div>
-
 
 <h3 id="연산-operations">연산(Operations)</h3>
 
 <p>연산에 대한 복수의 문법을 제공합니다. 다음 예제에서, 더하기 연산을 하는 방법을 확인할 수 있습니다.</p>
 
 <ul>
-<li>더하기 연산: 문법 1</li>
-</ul>
+<li><p>더하기 연산: 문법 1</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">3</span>)
 y <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">3</span>)
-<span style="color:#66d9ef">print</span>(x <span style="color:#f92672">+</span> y)</code></pre></div>
+<span style="color:#66d9ef">print</span>(x <span style="color:#f92672">+</span> y)</code></pre></div></li>
+</ul>
+
 <blockquote>
 <p>출력:</p>
 
@@ -200,9 +205,10 @@ y <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>
 </blockquote>
 
 <ul>
-<li>더하기 연산: 문법 2</li>
+<li><p>더하기 연산: 문법 2</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(torch<span style="color:#f92672">.</span>add(x, y))</code></pre></div></li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(torch<span style="color:#f92672">.</span>add(x, y))</code></pre></div>
+
 <blockquote>
 <p>출력:</p>
 
@@ -216,11 +222,12 @@ y <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>
 </blockquote>
 
 <ul>
-<li>더하기 연산: 전달 인자로 출력 텐서 전달</li>
-</ul>
+<li><p>더하기 연산: 전달 인자로 출력 텐서 전달</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">result <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>Tensor(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">3</span>)
 torch<span style="color:#f92672">.</span>add(x, y, out<span style="color:#f92672">=</span>result)
-<span style="color:#66d9ef">print</span>(result)</code></pre></div>
+<span style="color:#66d9ef">print</span>(result)</code></pre></div></li>
+</ul>
+
 <blockquote>
 <p>출력:</p>
 
@@ -234,11 +241,12 @@ torch<span style="color:#f92672">.</span>add(x, y, out<span style="color:#f92672
 </blockquote>
 
 <ul>
-<li>더하기 연산: 객체 메서드(in-place)</li>
-</ul>
+<li><p>더하기 연산: 객체 메서드(in-place)</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#75715e"># x를 y에 더함</span>
 y<span style="color:#f92672">.</span>add_(x)
-<span style="color:#66d9ef">print</span>(y)</code></pre></div>
+<span style="color:#66d9ef">print</span>(y)</code></pre></div></li>
+</ul>
+
 <blockquote>
 <p>출력:</p>
 
@@ -251,9 +259,9 @@ y<span style="color:#f92672">.</span>add_(x)
 </code></pre>
 </blockquote>
 
-<div class="notices note" ><p>텐서를 수정하는 모든 in-place 연산자는 <code>_</code>로 끝난다. 예를 들어서 <code>x.copy_(y)</code>와 <code>x.t_()</code>는 x 텐서를 변경합니다.</p>
+<div class="notices note" >
+텐서를 수정하는 모든 in-place 연산자는 ```_```로 끝난다. 예를 들어서 ```x.copy_(y)```와 ```x.t_()```는 x 텐서를 변경합니다.
 </div>
-
 
 <p>NumPy와 같은 방식의 인덱싱 표기법을 사용할 수 있습니다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#66d9ef">print</span>(x[:, <span style="color:#ae81ff">1</span>])</code></pre></div>
@@ -270,12 +278,13 @@ y<span style="color:#f92672">.</span>add_(x)
 </blockquote>
 
 <ul>
-<li>크기 조정: torch.view를 사용하여 텐서의 사이즈를 변경하거나 Shape을 변경할 수 있습니다.</li>
-</ul>
+<li><p>크기 조정: torch.view를 사용하여 텐서의 사이즈를 변경하거나 Shape을 변경할 수 있습니다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">x <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>)
 y <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>view(<span style="color:#ae81ff">16</span>)
 z <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">8</span>)  <span style="color:#75715e"># 사이즈가 -1로 설정되면 다른 차원으로 부터 해당 값을 유추</span>
-<span style="color:#66d9ef">print</span>(x<span style="color:#f92672">.</span>size(), y<span style="color:#f92672">.</span>size(), z<span style="color:#f92672">.</span>size())</code></pre></div>
+<span style="color:#66d9ef">print</span>(x<span style="color:#f92672">.</span>size(), y<span style="color:#f92672">.</span>size(), z<span style="color:#f92672">.</span>size())</code></pre></div></li>
+</ul>
+
 <blockquote>
 <p>출력:</p>
 
@@ -506,6 +515,10 @@ if torch.cuda.is_available():
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
 			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/" title="Graalvms">
+							Graalvms</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201907w4/" title="GraalVM 새소식#1(201907, 4주)">
 							GraalVM 새소식#1(201907, 4주)</a>
 		  </li>
@@ -518,8 +531,16 @@ if torch.cuda.is_available():
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
+				<a class="widget__link" href="/book/" title="Books">
+							Books</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/" title="Clouds">
+							Clouds</a>
 		  </li>
 			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
@@ -528,18 +549,6 @@ if torch.cuda.is_available():
 			<li class="widget__item">
 				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
 							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
-							Cloud Native Java:GraalVM (@Oracle  ......</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
-							GraalVM 관련 코너를 새로 시작합니다.</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/post/function_in_semicolon/" title="함수 표기법: 세미콜론으로 변수와 파라미터 구분">
-							함수 표기법: 세미콜론으로 변수와 파라미터 구분</a>
 		  </li>
 		</ul>
 	</div>

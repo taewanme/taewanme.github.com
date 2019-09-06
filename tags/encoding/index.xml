@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Encoding on taewan.kim 블로그</title>
+    <title>encoding on taewan.kim 블로그</title>
     <link>http://taewan.kim/tags/encoding/</link>
-    <description>Recent content in Encoding on taewan.kim 블로그</description>
+    <description>Recent content in encoding on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 01 Aug 2011 10:50:36 +0900</lastBuildDate>
@@ -20,7 +20,7 @@
       <description>2011년 8월 1일에 devtainer.blogspot.kr 에서 섰던 글입니다. 추억 팔이로 옮겨 놓습니다. 2011년 추억 속으로&amp;hellip;. - 원문: http://devtainer.blogspot.kr/2011/08/tomcat-50-70.html
 한동안 Tomcat을 사용하지 않다가 오랜만에 사용했더니 인코딩 관련 착각을 해서 한참을 삽질 했습니다. 한글 인코딩에 대하여 간략하게 정리합니다.
 톰켓의 기본 인코딩은 ISO-8859-1 입니다. 따라서 한글을 정상적으로 처리하기 위해서는 추가적인 인코딩 설정이 필요합니다. 인코딩 설정은 http get 메서드와 http post 메서드를 개별적으로 설정합니다.
-HTTP Get 메서드 인코등 설정  [TOMCAT_HOME]/conf/server.xml 수정 Connector port=&amp;ldquo;8080&amp;rdquo; 엘레먼트에 URIEncoding=&amp;ldquo;UTF-8&amp;rdquo; 속성 추가  &amp;lt;connector port=&amp;quot;8080&amp;quot; protocol=&amp;quot;HTTP/1.</description>
+HTTP Get 메서드 인코등 설정  [TOMCAT_HOME]/conf/server.xml 수정 Connector port=&amp;ldquo;8080&amp;rdquo; 엘레먼트에 URIEncoding=&amp;ldquo;UTF-8&amp;rdquo; 속성 추가</description>
     </item>
     
     <item>

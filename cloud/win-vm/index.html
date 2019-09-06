@@ -11,12 +11,13 @@
 
 <title>오라클 클라우드에서 window VM 인스턴스 생성</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.52" />
+<meta name="generator" content="Hugo 0.58.1" />
 <meta property="og:title" content="오라클 클라우드에서 window VM 인스턴스 생성" />
 <meta property="og:description" content="오라클 클라우드의 IaaS(Oracle Compute Cloud Service)를 이용하여 Window 인스턴스를 생성하는 방법을 살펴보겠습니다. Step-By-Step 스타일로 Window VM 인스턴스 절차를 정리합니다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/cloud/win-vm/" /><meta property="article:published_time" content="2017-03-31T22:42:46&#43;09:00"/>
-<meta property="article:modified_time" content="2017-03-31T22:42:46&#43;09:00"/>
+<meta property="og:url" content="http://taewan.kim/cloud/win-vm/" />
+<meta property="article:published_time" content="2017-03-31T22:42:46+09:00" />
+<meta property="article:modified_time" content="2017-03-31T22:42:46+09:00" />
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -344,121 +345,91 @@ Orchestration의 상태는 <code>update Orchestration</code> 버튼을 클릭하
 [그림 22]는 App Store에서 <code>Microsoft Remote Desktop</code>을 검색한 결과입니다. 아래 <code>설치</code> 버튼을 클릭하여 프로그램을 설치할 수 있습니다.</p>
 
 <ul>
-<li>그림 22. <code>Microsoft Remote Desktop</code> 검색 결과 (@App Store)
-<img src="https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0220.jpg" alt="" /></li>
+<li><p>그림 22. <code>Microsoft Remote Desktop</code> 검색 결과 (@App Store)
+<img src="https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0220.jpg" alt="" /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Microsoft Remote Desktop```이 설치되면 spotlight에서 [그림 23]과 같이 RDP를 실행할 수 있습니다." data-lang="Microsoft Remote Desktop```이 설치되면 spotlight에서 [그림 23]과 같이 RDP를 실행할 수 있습니다.">- 그림 23. ```Microsoft Remote Desktop``` 실행
+![](https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0230.jpg)</code></pre></div>
+<p>Microsoft Remote Desktop```로 Window VM에 접속하기 위해서는 접속할 Window의 Public IP를 알아야 합니다.</p></li>
 </ul>
 
-<p><code>Microsoft Remote Desktop</code>이 설치되면 spotlight에서 [그림 23]과 같이 RDP를 실행할 수 있습니다.</p>
+<p>앞서 생성한 Window VM의 IP는 [그림 24]에서 확인할 수 있습니다.</p>
 
 <ul>
-<li>그림 23. <code>Microsoft Remote Desktop</code> 실행
-<img src="https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0230.jpg" alt="" /></li>
+<li><p>그림 24. Public IP이 확인
+<img src="https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0240.jpg" alt="" /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Microsoft Remote Desktop```에서 [그림 25]와 같이 ```+``` 버튼을 클릭하여 접속 정보를 설정합니다." data-lang="Microsoft Remote Desktop```에서 [그림 25]와 같이 ```+``` 버튼을 클릭하여 접속 정보를 설정합니다.">- 그림 25. ```Microsoft Remote Desktop```의 접속 정보 추가
+![](https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0250.jpg)
+
+접속 정보는 [그림 26]과 같이 설정됩니다. PC name에서는 접속할 Window의 Public IP를 입력합니다.
+Password 항목에는 [그림 12]에서 설정한 패스워드를 사용합니다. 설정이 완료되면 상단의 닫기 아이콘(red)을 클릭합니다.
+
+- 그림 26. RDP 접속 정보 설정
+![](https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0260.jpg)
+
+접속 정보가 설정완료되면 [그림 27]과 같이 출력됩니다. &#34;opc-windiw8&#34; 항목을 더블클릭하여 원격 윈도우 접속이 시작됩니다.
+
+- 그림 27. RDP 설정 결과 및 접속 시작
+![](https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0270.jpg)
+
+접속 과정에서 인증서 확인 절차가 [그림 28]과 같이 진행됩니다.
+
+- 그림 28. 접속 중 인증서 확인
+![](https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0280.jpg)
+
+[그림 29 ~ 32]는 원격 윈도우에 접속하여 Google에 접속하는 일련의 과정입니다.
+
+- 그림 29. 윈도우 접속 중
+![](https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0290.jpg)
+
+- 그림 30. 윈도우 접속 완료
+![](https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0300.jpg)
+
+- 그림 31. 원격 윈도우에서 브라우저 실행
+![](https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0310.jpg)
+
+- 그림 32. 원격 윈도우에서 구글 접속
+![](https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0320.jpg)
+
+### Step06. Window10에서 Window VM 접속하기
+
+윈도우에는 ```Microsoft Remote Desktop```이 기본적으로 설치되어 있습니다. [그림 33~37]은 &#39;&#39;&#39;원격 데스크톱 연결```을 실행하고
+원격 윈도우에 접속하는 일련의 절차입니다.
+
+- 그림 33. &#39;&#39;&#39;원격 데스크톱 연결``` 시작
+![](https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0330.jpg)
+
+대상 VM의 Public IP는 [그림 24]에서 확인할 수 있습니다. 이 IP를 [그림 34]에 입력합니다.
+
+- 그림 34. 접속 대상 Public IP 입력 및 연결
+![](https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0340.jpg)
+
+[그림 12]에서 설정한  RDP용 패스워드를 [그림 35]에 입력합니다.
+
+- 그림 35. 아이디/패스워드 입력
+![](https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0350.jpg)
+
+접속 과정에서 인증서 확인 절차가 [그림 36]과 같이 진행됩니다.
+
+- 그림 36. 접속 중 인증서 확인
+![](https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0360.jpg)
+
+접속이 완료되면 [그림 37]과 같은 화면이 출력됩니다. [그림 37]에서는 앞에서 오픈한 브라우저가 화면에 출력되어 있는 것을 확인할 수 있습니다.
+
+- 그림 37. 브라우저 오픈된 상태 확인
+![](https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0370.jpg)
+
+### Step07: VM 인스턴스 재시작
+
+OPC에 생성한 Window는 ```Compute Service Console```에서 [그림 38]과 같이 재시작할 수 있습니다.
+
+- 그림 38. 윈도우 VM 재시작
+![](https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0380.jpg)
+
+### Step08: VM 인스턴스 정지 및 제거</code></pre></div>
+<p>Compute Service Console```의 Orchestration 탭에서 생성한 VM을 정지 및 제거할 수 있습니다.</p></li>
 </ul>
 
-<p><code>Microsoft Remote Desktop</code>로 Window VM에 접속하기 위해서는 접속할 Window의 Public IP를 알아야 합니다.
-앞서 생성한 Window VM의 IP는 [그림 24]에서 확인할 수 있습니다.</p>
-
-<ul>
-<li>그림 24. Public IP이 확인
-<img src="https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0240.jpg" alt="" /></li>
-</ul>
-
-<p><code>Microsoft Remote Desktop</code>에서 [그림 25]와 같이 <code>+</code> 버튼을 클릭하여 접속 정보를 설정합니다.</p>
-
-<ul>
-<li>그림 25. <code>Microsoft Remote Desktop</code>의 접속 정보 추가
-<img src="https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0250.jpg" alt="" /></li>
-</ul>
-
-<p>접속 정보는 [그림 26]과 같이 설정됩니다. PC name에서는 접속할 Window의 Public IP를 입력합니다.
-Password 항목에는 [그림 12]에서 설정한 패스워드를 사용합니다. 설정이 완료되면 상단의 닫기 아이콘(red)을 클릭합니다.</p>
-
-<ul>
-<li>그림 26. RDP 접속 정보 설정
-<img src="https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0260.jpg" alt="" /></li>
-</ul>
-
-<p>접속 정보가 설정완료되면 [그림 27]과 같이 출력됩니다. &ldquo;opc-windiw8&rdquo; 항목을 더블클릭하여 원격 윈도우 접속이 시작됩니다.</p>
-
-<ul>
-<li>그림 27. RDP 설정 결과 및 접속 시작
-<img src="https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0270.jpg" alt="" /></li>
-</ul>
-
-<p>접속 과정에서 인증서 확인 절차가 [그림 28]과 같이 진행됩니다.</p>
-
-<ul>
-<li>그림 28. 접속 중 인증서 확인
-<img src="https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0280.jpg" alt="" /></li>
-</ul>
-
-<p>[그림 29 ~ 32]는 원격 윈도우에 접속하여 Google에 접속하는 일련의 과정입니다.</p>
-
-<ul>
-<li><p>그림 29. 윈도우 접속 중
-<img src="https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0290.jpg" alt="" /></p></li>
-
-<li><p>그림 30. 윈도우 접속 완료
-<img src="https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0300.jpg" alt="" /></p></li>
-
-<li><p>그림 31. 원격 윈도우에서 브라우저 실행
-<img src="https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0310.jpg" alt="" /></p></li>
-
-<li><p>그림 32. 원격 윈도우에서 구글 접속
-<img src="https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0320.jpg" alt="" /></p></li>
-</ul>
-
-<h3 id="step06-window10에서-window-vm-접속하기">Step06. Window10에서 Window VM 접속하기</h3>
-
-<p>윈도우에는 <code>Microsoft Remote Desktop</code>이 기본적으로 설치되어 있습니다. [그림 33~37]은 &ldquo;&lsquo;원격 데스크톱 연결```을 실행하고
-원격 윈도우에 접속하는 일련의 절차입니다.</p>
-
-<ul>
-<li>그림 33. &ldquo;&lsquo;원격 데스크톱 연결``` 시작
-<img src="https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0330.jpg" alt="" /></li>
-</ul>
-
-<p>대상 VM의 Public IP는 [그림 24]에서 확인할 수 있습니다. 이 IP를 [그림 34]에 입력합니다.</p>
-
-<ul>
-<li>그림 34. 접속 대상 Public IP 입력 및 연결
-<img src="https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0340.jpg" alt="" /></li>
-</ul>
-
-<p>[그림 12]에서 설정한  RDP용 패스워드를 [그림 35]에 입력합니다.</p>
-
-<ul>
-<li>그림 35. 아이디/패스워드 입력
-<img src="https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0350.jpg" alt="" /></li>
-</ul>
-
-<p>접속 과정에서 인증서 확인 절차가 [그림 36]과 같이 진행됩니다.</p>
-
-<ul>
-<li>그림 36. 접속 중 인증서 확인
-<img src="https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0360.jpg" alt="" /></li>
-</ul>
-
-<p>접속이 완료되면 [그림 37]과 같은 화면이 출력됩니다. [그림 37]에서는 앞에서 오픈한 브라우저가 화면에 출력되어 있는 것을 확인할 수 있습니다.</p>
-
-<ul>
-<li>그림 37. 브라우저 오픈된 상태 확인
-<img src="https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0370.jpg" alt="" /></li>
-</ul>
-
-<h3 id="step07-vm-인스턴스-재시작">Step07: VM 인스턴스 재시작</h3>
-
-<p>OPC에 생성한 Window는 <code>Compute Service Console</code>에서 [그림 38]과 같이 재시작할 수 있습니다.</p>
-
-<ul>
-<li>그림 38. 윈도우 VM 재시작
-<img src="https://oracloud-kr-teamrepo.github.io/2017/03/win-vm/0380.jpg" alt="" /></li>
-</ul>
-
-<h3 id="step08-vm-인스턴스-정지-및-제거">Step08: VM 인스턴스 정지 및 제거</h3>
-
-<p><code>Compute Service Console</code>의 Orchestration 탭에서 생성한 VM을 정지 및 제거할 수 있습니다.
-Orchestration을 통해서 VM을 제거할 때 약 5분 정도 소요됩니다.</p>
+<p>Orchestration을 통해서 VM을 제거할 때 약 5분 정도 소요됩니다.</p>
 
 <p>각 VM은 3개의 Orchestration으로 관리 됩니다. 3개 중에서 master가 대표 Orchestration입니다.
 [그림 39]과 같이 win-tw_master를 정지하면 모든 자원은 제거됩니다.</p>
@@ -595,9 +566,6 @@ Orchestration을 통해서 VM을 제거할 때 약 5분 정도 소요됩니다.<
 <li><a href="#step02-window-vm-instance-생성">Step02. Window VM Instance 생성</a></li>
 <li><a href="#step04-security-rule-등록-for-rdp">Step04. Security Rule 등록 (for RDP)</a></li>
 <li><a href="#step05-mac-os-x에서-window-vm-접속하기">Step05. Mac OS X에서 Window VM 접속하기</a></li>
-<li><a href="#step06-window10에서-window-vm-접속하기">Step06. Window10에서 Window VM 접속하기</a></li>
-<li><a href="#step07-vm-인스턴스-재시작">Step07: VM 인스턴스 재시작</a></li>
-<li><a href="#step08-vm-인스턴스-정지-및-제거">Step08: VM 인스턴스 정지 및 제거</a></li>
 </ul></li>
 <li><a href="#마치며">마치며</a></li>
 </ul></li>
@@ -625,6 +593,10 @@ Orchestration을 통해서 VM을 제거할 때 약 5분 정도 소요됩니다.<
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
 			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/" title="Graalvms">
+							Graalvms</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201907w4/" title="GraalVM 새소식#1(201907, 4주)">
 							GraalVM 새소식#1(201907, 4주)</a>
 		  </li>
@@ -637,8 +609,16 @@ Orchestration을 통해서 VM을 제거할 때 약 5분 정도 소요됩니다.<
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
+				<a class="widget__link" href="/book/" title="Books">
+							Books</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/" title="Clouds">
+							Clouds</a>
 		  </li>
 			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
@@ -647,18 +627,6 @@ Orchestration을 통해서 VM을 제거할 때 약 5분 정도 소요됩니다.<
 			<li class="widget__item">
 				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
 							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
-							Cloud Native Java:GraalVM (@Oracle  ......</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
-							GraalVM 관련 코너를 새로 시작합니다.</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/post/function_in_semicolon/" title="함수 표기법: 세미콜론으로 변수와 파라미터 구분">
-							함수 표기법: 세미콜론으로 변수와 파라미터 구분</a>
 		  </li>
 		</ul>
 	</div>
