@@ -139,9 +139,11 @@ export PATH=$GRAALVM_HOME/bin:$PATH
 
 <h2 id="설치-확인">설치 확인</h2>
 
-<p>2019.09.04 현재 graalvm 19.2 버전이 설치됩니다.</p>
+<p>2019.09.04 현재 graalvm 19.2 버전이 설치됩니다. 다음 코드로 GraalVM 설치 상황을 확인할 수 있습니다.</p>
 
-<pre><code>⚙ ~ &gt; java -version
+<pre><code>⚙ ~ &gt; which java
+/Library/Java/JavaVirtualMachines/graalvm-ce-19.2.0/Contents/Home/bin/java
+⚙ ~ &gt; java -version
 openjdk version &quot;1.8.0_222&quot;
 OpenJDK Runtime Environment (build 1.8.0_222-20190711112007.graal.jdk8u-src-tar-gz-b08)
 OpenJDK 64-Bit GraalVM CE 19.2.0 (build 25.222-b08-jvmci-19.2-b02, mixed mode)
