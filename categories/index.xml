@@ -6,31 +6,40 @@
     <description>Recent content in Categories on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Aug 2019 01:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 22 Aug 2018 23:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>graalvm</title>
-      <link>http://taewan.kim/categories/graalvm/</link>
-      <pubDate>Wed, 07 Aug 2019 01:28:14 +0900</pubDate>
+      <title></title>
+      <link>http://taewan.kim/categories/</link>
+      <pubDate>Wed, 22 Aug 2018 23:28:14 +0900</pubDate>
       
-      <guid>http://taewan.kim/categories/graalvm/</guid>
+      <guid>http://taewan.kim/categories/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>java</title>
-      <link>http://taewan.kim/categories/java/</link>
-      <pubDate>Sun, 16 Jun 2019 07:28:14 +0900</pubDate>
+      <title>Bigdata</title>
+      <link>http://taewan.kim/categories/bigdata/</link>
+      <pubDate>Sun, 15 Apr 2018 15:59:47 +0900</pubDate>
       
-      <guid>http://taewan.kim/categories/java/</guid>
+      <guid>http://taewan.kim/categories/bigdata/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>book</title>
+      <title>Blogs.oracle.com</title>
+      <link>http://taewan.kim/categories/blogs.oracle.com/</link>
+      <pubDate>Wed, 04 Oct 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/blogs.oracle.com/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Book</title>
       <link>http://taewan.kim/categories/book/</link>
       <pubDate>Sat, 08 Jun 2019 09:28:14 +0900</pubDate>
       
@@ -39,7 +48,7 @@
     </item>
     
     <item>
-      <title>cloud</title>
+      <title>Cloud</title>
       <link>http://taewan.kim/categories/cloud/</link>
       <pubDate>Fri, 19 Apr 2019 09:17:05 +0900</pubDate>
       
@@ -48,11 +57,29 @@
     </item>
     
     <item>
-      <title>math</title>
-      <link>http://taewan.kim/categories/math/</link>
-      <pubDate>Tue, 15 Jan 2019 09:28:14 +0900</pubDate>
+      <title>Graalvm</title>
+      <link>http://taewan.kim/categories/graalvm/</link>
+      <pubDate>Wed, 07 Aug 2019 01:28:14 +0900</pubDate>
       
-      <guid>http://taewan.kim/categories/math/</guid>
+      <guid>http://taewan.kim/categories/graalvm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>It Life</title>
+      <link>http://taewan.kim/categories/it-life/</link>
+      <pubDate>Fri, 30 Mar 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/it-life/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>http://taewan.kim/categories/java/</link>
+      <pubDate>Sun, 16 Jun 2019 07:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/java/</guid>
       <description></description>
     </item>
     
@@ -75,15 +102,6 @@
     </item>
     
     <item>
-      <title>tip</title>
-      <link>http://taewan.kim/categories/tip/</link>
-      <pubDate>Sat, 18 Aug 2018 16:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/categories/tip/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Machine Learning</title>
       <link>http://taewan.kim/categories/machine-learning/</link>
       <pubDate>Wed, 08 Aug 2018 16:28:14 +0900</pubDate>
@@ -93,47 +111,38 @@
     </item>
     
     <item>
-      <title>oracle</title>
+      <title>Math</title>
+      <link>http://taewan.kim/categories/math/</link>
+      <pubDate>Tue, 15 Jan 2019 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/math/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Minsu</title>
+      <link>http://taewan.kim/categories/minsu/</link>
+      <pubDate>Sat, 19 Mar 2016 01:50:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/minsu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mysql</title>
+      <link>http://taewan.kim/categories/mysql/</link>
+      <pubDate>Fri, 29 Sep 2017 17:17:35 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Oracle</title>
       <link>http://taewan.kim/categories/oracle/</link>
       <pubDate>Wed, 16 May 2018 15:59:47 +0900</pubDate>
       
       <guid>http://taewan.kim/categories/oracle/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>bigdata</title>
-      <link>http://taewan.kim/categories/bigdata/</link>
-      <pubDate>Sun, 15 Apr 2018 15:59:47 +0900</pubDate>
-      
-      <guid>http://taewan.kim/categories/bigdata/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>IT Life</title>
-      <link>http://taewan.kim/categories/it-life/</link>
-      <pubDate>Fri, 30 Mar 2018 21:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/categories/it-life/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>번역</title>
-      <link>http://taewan.kim/categories/%EB%B2%88%EC%97%AD/</link>
-      <pubDate>Wed, 27 Dec 2017 01:50:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/categories/%EB%B2%88%EC%97%AD/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>오라클 클라우드</title>
-      <link>http://taewan.kim/categories/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</link>
-      <pubDate>Tue, 26 Dec 2017 21:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/categories/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</guid>
       <description></description>
     </item>
     
@@ -143,24 +152,6 @@
       <pubDate>Sat, 16 Dec 2017 22:54:32 +0900</pubDate>
       
       <guid>http://taewan.kim/categories/seminar/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>blogs.oracle.com</title>
-      <link>http://taewan.kim/categories/blogs.oracle.com/</link>
-      <pubDate>Wed, 04 Oct 2017 21:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/categories/blogs.oracle.com/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>MySQL</title>
-      <link>http://taewan.kim/categories/mysql/</link>
-      <pubDate>Fri, 29 Sep 2017 17:17:35 +0900</pubDate>
-      
-      <guid>http://taewan.kim/categories/mysql/</guid>
       <description></description>
     </item>
     
@@ -183,29 +174,47 @@
     </item>
     
     <item>
+      <title>Tip</title>
+      <link>http://taewan.kim/categories/tip/</link>
+      <pubDate>Sat, 18 Aug 2018 16:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/tip/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Youtube</title>
+      <link>http://taewan.kim/categories/youtube/</link>
+      <pubDate>Sat, 19 Mar 2016 01:50:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/youtube/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>번역</title>
+      <link>http://taewan.kim/categories/%EB%B2%88%EC%97%AD/</link>
+      <pubDate>Wed, 27 Dec 2017 01:50:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/%EB%B2%88%EC%97%AD/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>오라클 클라우드</title>
+      <link>http://taewan.kim/categories/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</link>
+      <pubDate>Tue, 26 Dec 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>짜투리</title>
       <link>http://taewan.kim/categories/%EC%A7%9C%ED%88%AC%EB%A6%AC/</link>
       <pubDate>Fri, 25 Mar 2016 00:17:44 +0900</pubDate>
       
       <guid>http://taewan.kim/categories/%EC%A7%9C%ED%88%AC%EB%A6%AC/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>minsu</title>
-      <link>http://taewan.kim/categories/minsu/</link>
-      <pubDate>Sat, 19 Mar 2016 01:50:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/categories/minsu/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>youtube</title>
-      <link>http://taewan.kim/categories/youtube/</link>
-      <pubDate>Sat, 19 Mar 2016 01:50:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/categories/youtube/</guid>
       <description></description>
     </item>
     

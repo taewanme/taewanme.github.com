@@ -11,13 +11,26 @@
 
 <title>Sigmoid 함수 미분 정리</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.58.1" />
+<meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="Sigmoid 함수 미분 정리" />
 <meta property="og:description" content="Deep Learning을 이론적으로 접근할 때 가장 먼저 접하는 수식이 sigmoid입니다. sigmoid 함수의 미분 절차를 정리합니다. " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/post/sigmoid_diff/" />
-<meta property="article:published_time" content="2017-09-18T21:28:14+09:00" />
-<meta property="article:modified_time" content="2017-09-18T21:28:14+09:00" />
+
+
+
+<meta property="article:published_time" content="2017-09-18T21:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2017-09-18T21:28:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -118,7 +131,7 @@
 
 <p>Sigmoid 함수는 S자와 유사한 완만한 시그모이드 커브 형태를 보이는 함수입니다. Sigmoid는 대표적인 Logistic 함수입니다.
 Sigmoid 함수는 모든 실수 입력 값을 0보다 크고 1보다 작은 미분 가능한 수로 변환하는 특징을 갖습니다.
-모든 입력에 대하여 sigmoid는 S와 같은 형태로 미분 가능한 0~1 사이의 값을 반환하기에 Logistic Classification과 같은 분류 문제의 가설과 비용 함수(Cost Function)<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>에 많이 사용됩니다. sigmoid의 반환 값은 확률형태이기 때문에 결과를 확률로 해석할 때 유용합니다.</p>
+모든 입력에 대하여 sigmoid는 S와 같은 형태로 미분 가능한 0~1 사이의 값을 반환하기에 Logistic Classification과 같은 분류 문제의 가설과 비용 함수(Cost Function)<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>에 많이 사용됩니다. sigmoid의 반환 값은 확률형태이기 때문에 결과를 확률로 해석할 때 유용합니다.</p>
 
 <p>딥러닝에서는 노드에 임계값을 넘을 때만 출력하는 활성 함수로도 이용됩니다. Sigmoid 함수는 마이너스 값을 0에 가깝게 표현하기 때문에 입력값이 최종 계층에서 미치는 영향이 적어지는 <strong>Vanishing gradient problem</strong> 이 발생합니다. 이 문제 때문에 현재 딥러닝 실무에서 사용되지는 않지만, 딥러닝 입문 과정에서 꼭 다루는 함수입니다.</p>
 
@@ -356,10 +369,6 @@ def sigmoid(x: Double): Double = {
 							brew로 GraalVM설치</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/" title="Graalvms">
-							Graalvms</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201908w1/" title="GraalVM 새소식#2(201908, 첫 째주)">
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
@@ -376,20 +385,24 @@ def sigmoid(x: Double): Double = {
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/book/" title="Books">
-							Books</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/cloud/" title="Clouds">
-							Clouds</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
 							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
+							GraalVM 관련 코너를 새로 시작합니다.</a>
 		  </li>
 		</ul>
 	</div>
@@ -492,17 +505,14 @@ def sigmoid(x: Double): Double = {
 	});
 </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-72835175-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 

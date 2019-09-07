@@ -11,13 +11,26 @@
 
 <title>JShell: 2. 스니펫(Snippets)</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.58.1" />
+<meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="JShell: 2. 스니펫(Snippets)" />
 <meta property="og:description" content="java9의 신규 기능인 JShell 공식 문서의 한글화 입니다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/trans/jshell/jshell02/" />
-<meta property="article:published_time" content="2017-12-27T19:10:14+09:00" />
-<meta property="article:modified_time" content="2017-12-27T19:10:14+09:00" />
+
+
+
+<meta property="article:published_time" content="2017-12-27T19:10:14&#43;09:00"/>
+<meta property="article:modified_time" content="2017-12-27T19:10:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -180,52 +193,60 @@
 </code></pre>
 
 <p>프롬프트에 다음 예제의 문(statement)을 입력하고, 출력 결과를 확인해 보시기 바랍니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">int</span> x <span style="color:#f92672">=</span> 45
-<span style="color:#a6e22e">x</span> <span style="color:#f92672">==&gt;</span> 45
-<span style="color:#f92672">|</span>  created <span style="color:#a6e22e">variable</span> x <span style="color:#f92672">:</span> <span style="color:#66d9ef">int</span></code></pre></div>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">45</span>
+<span style="color: #f8f8f2">x</span> <span style="color: #f92672">==&gt;</span> <span style="color: #ae81ff">45</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">int</span>
+</pre></div>
+
 <p>문을 입력하며, 바로 결과가 출력됩니다. 이 결과를 다음과 같이 해석할 수 있니다. &ldquo;변수 x는 값 45를 갖는다.&rdquo; JShell이 verbose 모드로 실행되었기 때문에, 수행된 액션에 대한 부가 설명도 출력됩니다. 부가 정보 메시지는 수직 막대(|) 문자로 시작합니다. 이 메시지에서 생성된 변수명과 변수 타입 정보를 확인할 수 있습니다.</p>
 
-<div class="notices note" >
-입력 완료된 스니펫 끝에 세미콜론이 없다면, 내부적으로 문(statement) 종료를 표시하는 세미콜론(;) 문자가 자동 추가됩니다.
+<div class="notices note" ><p>입력 완료된 스니펫 끝에 세미콜론이 없다면, 내부적으로 문(statement) 종료를 표시하는 세미콜론(;) 문자가 자동 추가됩니다.</p>
 </div>
 
-<p>처리 결과를 저장할 변수를 지정하지 않은 식(expression)이 입력되면, 다음에 값을 참조하는 목적으로 스크래치 변수<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>가 생성됩니다. 그리고 그 스크래치 변수에 실행된 식의 결과가 저장됩니다. 다음 예제는 식과 메서드 실행 결과를 스크래치 변수에 저장하는 것을 설명합니다. 그리고 이 예제에서 하나의 스니펫이 여러줄로 완성할 때 사용되는 연속 프롬프트 (<strong>&hellip;&gt;</strong>)를 확인 할 수 있습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">2</span> <span style="color:#f92672">+</span> 2
-<span style="color:#a6e22e">$3</span> <span style="color:#f92672">==&gt;</span> 4
-<span style="color:#f92672">|</span>  created <span style="color:#a6e22e">scratch</span> variable <span style="color:#a6e22e">$3</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">int</span>
 
-<span style="color:#a6e22e">jshell</span><span style="color:#f92672">&gt;</span> String <span style="color:#a6e22e">twice</span>(String <span style="color:#a6e22e">s</span>) {
-   ...<span style="color:#f92672">&gt;</span>    <span style="color:#66d9ef">return</span> s <span style="color:#f92672">+</span> s;
-   ...<span style="color:#f92672">&gt;</span> }
-<span style="color:#f92672">|</span>  created <span style="color:#a6e22e">method</span> twice(String)
+<p>처리 결과를 저장할 변수를 지정하지 않은 식(expression)이 입력되면, 다음에 값을 참조하는 목적으로 스크래치 변수<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>가 생성됩니다. 그리고 그 스크래치 변수에 실행된 식의 결과가 저장됩니다. 다음 예제는 식과 메서드 실행 결과를 스크래치 변수에 저장하는 것을 설명합니다. 그리고 이 예제에서 하나의 스니펫이 여러줄로 완성할 때 사용되는 연속 프롬프트 (<strong>&hellip;&gt;</strong>)를 확인 할 수 있습니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #ae81ff">2</span> <span style="color: #f92672">+</span> <span style="color: #ae81ff">2</span>
+<span style="color: #f8f8f2">$3</span> <span style="color: #f92672">==&gt;</span> <span style="color: #ae81ff">4</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">scratch</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">$3</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">int</span>
 
-jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">twice</span>(<span style="color:#e6db74">&#34;Ocean&#34;</span>)
-$5 <span style="color:#f92672">==&gt;</span> <span style="color:#e6db74">&#34;OceanOcean&#34;</span>
-<span style="color:#f92672">|</span>  created <span style="color:#a6e22e">scratch</span> variable <span style="color:#a6e22e">$5</span> <span style="color:#f92672">:</span> String</code></pre></div>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">String</span> <span style="color: #a6e22e">twice</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+   <span style="color: #f92672">...&gt;</span>    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">s</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">;</span>
+   <span style="color: #f92672">...&gt;</span> <span style="color: #f92672">}</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">twice</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span><span style="color: #f92672">)</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">twice</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;Ocean&quot;</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">$5</span> <span style="color: #f92672">==&gt;</span> <span style="color: #e6db74">&quot;OceanOcean&quot;</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">scratch</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">$5</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">String</span>
+</pre></div>
+
 <h3 id="정의-변경">정의 변경</h3>
 
 <p>코드를 실행하다보면 변수, 메서드 및 클래스가 개발자의 의도와 다르게 잘못 정의될 수 있습니다. JShell에서 이런 문제는 정의를 새로 입력하는 것으로 쉽게 해결 됩니다. 새로 입력된 정의는 이전 정의를 덮어씁니다.</p>
 
 <p>변수, 메서드 및 클래스의 정의를 변경해야 한다면, 단순히 새로운 정의를 입력하면 됩니다. 예를 들어서 앞에 &ldquo;스니펫 실행하기&rdquo; 절에서 정의한 <strong>twice</strong> 메서드는 다음 예제를 실행하면 새로운 정의로 변경됩니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">String</span> twice(String <span style="color:#a6e22e">s</span>) {
-   ...<span style="color:#f92672">&gt;</span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Twice:&#34;</span> <span style="color:#f92672">+</span> s;
-   ...<span style="color:#f92672">&gt;</span> }
-<span style="color:#f92672">|</span>  modified <span style="color:#a6e22e">method</span> twice(String)
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">String</span> <span style="color: #a6e22e">twice</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+   <span style="color: #f92672">...&gt;</span>    <span style="color: #66d9ef">return</span> <span style="color: #e6db74">&quot;Twice:&quot;</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">;</span>
+   <span style="color: #f92672">...&gt;</span> <span style="color: #f92672">}</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">modified</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">twice</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span><span style="color: #f92672">)</span>
 
-jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">twice</span>(<span style="color:#e6db74">&#34;thing&#34;</span>)
-$7 <span style="color:#f92672">==&gt;</span> <span style="color:#e6db74">&#34;Twice:thing&#34;</span>
-<span style="color:#f92672">|</span>  created <span style="color:#a6e22e">scratch</span> variable <span style="color:#a6e22e">$7</span> <span style="color:#f92672">:</span> String</code></pre></div>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">twice</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;thing&quot;</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">$7</span> <span style="color: #f92672">==&gt;</span> <span style="color: #e6db74">&quot;Twice:thing&quot;</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">scratch</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">$7</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">String</span>
+</pre></div>
+
 <p>앞에서 &ldquo;<strong>생성된 메서드(created method)</strong>&ldquo;로 표시된 부분이 이번 피드백에서는 &ldquo;<strong>수정된 메서드(modified method)</strong>&ldquo;로 표시됩니다. 이 메시지는 정의는 변경되었지만, 변경된 메서드가 이전과 같은 서명(signature)을 가지므로, 기존의 메서드 사용법이 여전히 유효합니다.</p>
 
 <p>호화되지 않는 방식으로 정의를 변경할 수도 있습니다. 다음 예제에서 변수 <strong>x</strong> 타입이 <strong>int</strong>에서 <strong>String</strong> 으로 변경되었습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">int</span> x <span style="color:#f92672">=</span> 45
-<span style="color:#a6e22e">x</span> <span style="color:#f92672">==&gt;</span> 45
-<span style="color:#f92672">|</span>  created <span style="color:#a6e22e">variable</span> x <span style="color:#f92672">:</span> <span style="color:#66d9ef">int</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">45</span>
+<span style="color: #f8f8f2">x</span> <span style="color: #f92672">==&gt;</span> <span style="color: #ae81ff">45</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">int</span>
 
-<span style="color:#a6e22e">jshell</span><span style="color:#f92672">&gt;</span> String <span style="color:#a6e22e">x</span>
-x <span style="color:#f92672">==&gt;</span> <span style="color:#66d9ef">null</span>
-<span style="color:#f92672">|</span>  replaced <span style="color:#a6e22e">variable</span> x <span style="color:#f92672">:</span> String
-<span style="color:#f92672">|</span>    update <span style="color:#a6e22e">overwrote</span> variable <span style="color:#a6e22e">x</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">int</span></code></pre></div>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">x</span>
+<span style="color: #f8f8f2">x</span> <span style="color: #f92672">==&gt;</span> <span style="color: #66d9ef">null</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">replaced</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">String</span>
+<span style="color: #f92672">|</span>    <span style="color: #f8f8f2">update</span> <span style="color: #f8f8f2">overwrote</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">int</span>
+</pre></div>
+
 <p>위 예제에서 변수 x의 타입 변경에 대한 피드백 메시지가 &ldquo;<strong>replaced</strong>&ldquo;로 표현되어 있습니다.</p>
 
 <h4 id="피드백-레벨-변경">피드백 레벨 변경</h4>
@@ -237,153 +258,183 @@ x <span style="color:#f92672">==&gt;</span> <span style="color:#66d9ef">null</sp
 <p>JShell에서 메소드를 정의할 때 아직 정의하지 않은 메서드, 변수, 클래스를 참조할 수 있습니다. 이 기능은 탐색적인 프로그래밍을 지원하기 위해서 만들어졌습니다. 프로그래밍 과정에서 이런 기능이 필요할 때가 있습니다.</p>
 
 <p>예를 들어, 구의 볼륨을 구하는 메소드를 정의할 때, <strong>volume</strong> 메소드를 다음 예제와 같이 구현할 수 있습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">double</span> volume(<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">radius</span>) {
-   ...<span style="color:#f92672">&gt;</span>    <span style="color:#66d9ef">return</span> 4.<span style="color:#a6e22e">0</span> <span style="color:#f92672">/</span> 3.<span style="color:#a6e22e">0</span> <span style="color:#f92672">*</span> PI <span style="color:#f92672">*</span> cube(radius);
-   ...<span style="color:#f92672">&gt;</span> }
-<span style="color:#f92672">|</span>  created <span style="color:#a6e22e">method</span> volume(<span style="color:#66d9ef">double</span>), however, it <span style="color:#a6e22e">cannot</span> be <span style="color:#a6e22e">invoked</span> until <span style="color:#a6e22e">variable</span> PI, and <span style="color:#a6e22e">method</span> cube(<span style="color:#66d9ef">double</span>) are <span style="color:#a6e22e">declared</span></code></pre></div>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">double</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span> <span style="color: #f8f8f2">radius</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+   <span style="color: #f92672">...&gt;</span>    <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">4.0</span> <span style="color: #f92672">/</span> <span style="color: #ae81ff">3.0</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">cube</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">radius</span><span style="color: #f92672">);</span>
+   <span style="color: #f92672">...&gt;</span> <span style="color: #f92672">}</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">),</span> <span style="color: #f8f8f2">however</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">it</span> <span style="color: #f8f8f2">cannot</span> <span style="color: #f8f8f2">be</span> <span style="color: #f8f8f2">invoked</span> <span style="color: #f8f8f2">until</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">PI</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">and</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">cube</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">)</span> <span style="color: #f8f8f2">are</span> <span style="color: #f8f8f2">declared</span>
+</pre></div>
+
 <p>위 예제의 volume 메소드 정의는 JShell 세션에서 정상적으로 수행됩니다. 그러나, 아직은 volume 메서드가 완전하게 정의된 것이 아니라는 메시지가 출력됩니다. 이 메소드 정의는 참조될 수는 있있습니다. 그러나, 필요한 모든 요소를 정의하기 전에 이 메서드를 실행하면 실폐하고 에러 피드백을 출력합니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">double</span> PI <span style="color:#f92672">=</span> 3.<span style="color:#a6e22e">1415926535</span>
-<span style="color:#a6e22e">PI</span> <span style="color:#f92672">==&gt;</span> 3.<span style="color:#a6e22e">1415926535</span>
-<span style="color:#f92672">|</span>  created <span style="color:#a6e22e">variable</span> PI <span style="color:#f92672">:</span> <span style="color:#66d9ef">double</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">double</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">3.1415926535</span>
+<span style="color: #f8f8f2">PI</span> <span style="color: #f92672">==&gt;</span> <span style="color: #ae81ff">3.1415926535</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">double</span>
 
-<span style="color:#a6e22e">jshell</span><span style="color:#f92672">&gt;</span> volume(2)
-<span style="color:#f92672">|</span>  attempted <span style="color:#a6e22e">to</span> call <span style="color:#a6e22e">method</span> volume(<span style="color:#66d9ef">double</span>) which <span style="color:#a6e22e">cannot</span> be <span style="color:#a6e22e">invoked</span> until <span style="color:#a6e22e">method</span> cube(<span style="color:#66d9ef">double</span>) is <span style="color:#a6e22e">declared</span>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #ae81ff">2</span><span style="color: #f92672">)</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">attempted</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">call</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">)</span> <span style="color: #f8f8f2">which</span> <span style="color: #f8f8f2">cannot</span> <span style="color: #f8f8f2">be</span> <span style="color: #f8f8f2">invoked</span> <span style="color: #f8f8f2">until</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">cube</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">)</span> <span style="color: #f8f8f2">is</span> <span style="color: #f8f8f2">declared</span>
 
-jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">double</span> cube(<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">x</span>) { <span style="color:#66d9ef">return</span> x <span style="color:#f92672">*</span> x <span style="color:#f92672">*</span> x; }
-<span style="color:#f92672">|</span>  created <span style="color:#a6e22e">method</span> cube(<span style="color:#66d9ef">double</span>)
-<span style="color:#f92672">|</span>    update <span style="color:#a6e22e">modified</span> method <span style="color:#a6e22e">volume</span>(<span style="color:#66d9ef">double</span>)
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">double</span> <span style="color: #a6e22e">cube</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span> <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">;</span> <span style="color: #f92672">}</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">cube</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">)</span>
+<span style="color: #f92672">|</span>    <span style="color: #f8f8f2">update</span> <span style="color: #f8f8f2">modified</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">)</span>
 
-jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">volume</span>(2)
-$5 <span style="color:#f92672">==&gt;</span> 33.<span style="color:#a6e22e">510321637333334</span>
-<span style="color:#f92672">|</span>  created <span style="color:#a6e22e">scratch</span> variable <span style="color:#a6e22e">$5</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">double</span></code></pre></div>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #ae81ff">2</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">$5</span> <span style="color: #f92672">==&gt;</span> <span style="color: #ae81ff">33.510321637333334</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">scratch</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">$5</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">double</span>
+</pre></div>
+
 <p>필요한 모든 정의가 완료되면, <strong>volume</strong> 메서드는 정상적으로 작동합니다.</p>
 
-<p>이 volume 메서드를 이용하여 &ldquo;비호환 교체&rdquo;를 설명하겠습니다. 다음 예제에서는 <strong>PI</strong>의 정밀도를 변경<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>하고, PI 객체에 새로운 값을 입력하였습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">BigDecimal</span> PI <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BigDecimal(<span style="color:#e6db74">&#34;3.141592653589793238462643383&#34;</span>)
-PI <span style="color:#f92672">==&gt;</span> 3.<span style="color:#a6e22e">141592653589793238462643383</span>
-<span style="color:#f92672">|</span>  replaced <span style="color:#a6e22e">variable</span> PI <span style="color:#f92672">:</span> BigDecimal
-<span style="color:#f92672">|</span>    update <span style="color:#a6e22e">modified</span> method <span style="color:#a6e22e">volume</span>(<span style="color:#66d9ef">double</span>) which <span style="color:#a6e22e">cannot</span> be <span style="color:#a6e22e">invoked</span> until <span style="color:#a6e22e">this</span> error <span style="color:#a6e22e">is</span> corrected<span style="color:#f92672">:</span>
-<span style="color:#f92672">|</span>      bad <span style="color:#a6e22e">operand</span> types <span style="color:#a6e22e">for</span> binary <span style="color:#a6e22e">operator</span> <span style="color:#e6db74">&#39;*&#39;</span>
-<span style="color:#f92672">|</span>        first <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span>  <span style="color:#66d9ef">double</span>
-<span style="color:#f92672">|</span>        second <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> java.<span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">BigDecimal</span>
-<span style="color:#f92672">|</span>          <span style="color:#66d9ef">return</span> 4.<span style="color:#a6e22e">0</span> <span style="color:#f92672">/</span> 3.<span style="color:#a6e22e">0</span> <span style="color:#f92672">*</span> PI <span style="color:#f92672">*</span> cube(radius);
-<span style="color:#f92672">|</span>                 <span style="color:#f92672">^------------^</span>
-<span style="color:#f92672">|</span>    update <span style="color:#a6e22e">overwrote</span> variable <span style="color:#a6e22e">PI</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">double</span></code></pre></div>
+<p>이 volume 메서드를 이용하여 &ldquo;비호환 교체&rdquo;를 설명하겠습니다. 다음 예제에서는 <strong>PI</strong>의 정밀도를 변경<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup>하고, PI 객체에 새로운 값을 입력하였습니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">BigDecimal</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">BigDecimal</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;3.141592653589793238462643383&quot;</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">PI</span> <span style="color: #f92672">==&gt;</span> <span style="color: #ae81ff">3.141592653589793238462643383</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">replaced</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">BigDecimal</span>
+<span style="color: #f92672">|</span>    <span style="color: #f8f8f2">update</span> <span style="color: #f8f8f2">modified</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">)</span> <span style="color: #f8f8f2">which</span> <span style="color: #f8f8f2">cannot</span> <span style="color: #f8f8f2">be</span> <span style="color: #f8f8f2">invoked</span> <span style="color: #f8f8f2">until</span> <span style="color: #66d9ef">this</span> <span style="color: #f8f8f2">error</span> <span style="color: #f8f8f2">is</span> <span style="color: #f8f8f2">corrected</span><span style="color: #f92672">:</span>
+<span style="color: #f92672">|</span>      <span style="color: #f8f8f2">bad</span> <span style="color: #f8f8f2">operand</span> <span style="color: #f8f8f2">types</span> <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">binary</span> <span style="color: #f8f8f2">operator</span> <span style="color: #e6db74">&#39;*&#39;</span>
+<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">first</span> <span style="color: #f8f8f2">type</span><span style="color: #f92672">:</span>  <span style="color: #66d9ef">double</span>
+<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">second</span> <span style="color: #f8f8f2">type</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">java</span><span style="color: #f92672">.</span><span style="color: #a6e22e">math</span><span style="color: #f92672">.</span><span style="color: #a6e22e">BigDecimal</span>
+<span style="color: #f92672">|</span>          <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">4.0</span> <span style="color: #f92672">/</span> <span style="color: #ae81ff">3.0</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">cube</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">radius</span><span style="color: #f92672">);</span>
+<span style="color: #f92672">|</span>                 <span style="color: #f92672">^------------^</span>
+<span style="color: #f92672">|</span>    <span style="color: #f8f8f2">update</span> <span style="color: #f8f8f2">overwrote</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">double</span>
+</pre></div>
+
 <p>새롭게 정의된 <strong>PI</strong> 타입은 <strong>volume</strong> 메서드 정의에 사용된 타입과 호환되지 않습니다. 현재 JShell은 verbose 모드로 동작하기 때문에,  PI 타입 변경에 영향을 받는 다른 요소 정보를 출력합니다. 이 예제는 비호환성을 설명하는 대표적인 사례입니다. verbose 모드는 업데이트 정보를 출력하는 유일한 사전 정의 피드백 모드(Predefined feedback mode)입니다. 다른 피드백 모드에서는 해당 코드가 실행될 때까지 어떠한 경고도 출력하지 않습니다. verbose 모드를 제외한 다른 사전 정의 피드백 모드는 실행 부하를 줄이기 위해서 업데이트 경고를 제공하지 않습니다. 모든 사전 정의 피드백 모드에서 <strong>volume</strong> 메서드를 실행하면, 다음과 같은 이슈를 출력합니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">volume</span>(2)
-<span style="color:#f92672">|</span>  attempted <span style="color:#a6e22e">to</span> call <span style="color:#a6e22e">method</span> volume(<span style="color:#66d9ef">double</span>) which <span style="color:#a6e22e">cannot</span> be <span style="color:#a6e22e">invoked</span> until <span style="color:#a6e22e">this</span> error <span style="color:#a6e22e">is</span> corrected<span style="color:#f92672">:</span>
-<span style="color:#f92672">|</span>      bad <span style="color:#a6e22e">operand</span> types <span style="color:#a6e22e">for</span> binary <span style="color:#a6e22e">operator</span> <span style="color:#e6db74">&#39;*&#39;</span>
-<span style="color:#f92672">|</span>        first <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span>  <span style="color:#66d9ef">double</span>
-<span style="color:#f92672">|</span>        second <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> java.<span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">BigDecimal</span>
-<span style="color:#f92672">|</span>          <span style="color:#66d9ef">return</span> 4.<span style="color:#a6e22e">0</span> <span style="color:#f92672">/</span> 3.<span style="color:#a6e22e">0</span> <span style="color:#f92672">*</span> PI <span style="color:#f92672">*</span> cube(radius);
-<span style="color:#f92672">|</span>                 <span style="color:#f92672">^------------^</span></code></pre></div>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #ae81ff">2</span><span style="color: #f92672">)</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">attempted</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">call</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">)</span> <span style="color: #f8f8f2">which</span> <span style="color: #f8f8f2">cannot</span> <span style="color: #f8f8f2">be</span> <span style="color: #f8f8f2">invoked</span> <span style="color: #f8f8f2">until</span> <span style="color: #66d9ef">this</span> <span style="color: #f8f8f2">error</span> <span style="color: #f8f8f2">is</span> <span style="color: #f8f8f2">corrected</span><span style="color: #f92672">:</span>
+<span style="color: #f92672">|</span>      <span style="color: #f8f8f2">bad</span> <span style="color: #f8f8f2">operand</span> <span style="color: #f8f8f2">types</span> <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">binary</span> <span style="color: #f8f8f2">operator</span> <span style="color: #e6db74">&#39;*&#39;</span>
+<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">first</span> <span style="color: #f8f8f2">type</span><span style="color: #f92672">:</span>  <span style="color: #66d9ef">double</span>
+<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">second</span> <span style="color: #f8f8f2">type</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">java</span><span style="color: #f92672">.</span><span style="color: #a6e22e">math</span><span style="color: #f92672">.</span><span style="color: #a6e22e">BigDecimal</span>
+<span style="color: #f92672">|</span>          <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">4.0</span> <span style="color: #f92672">/</span> <span style="color: #ae81ff">3.0</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">cube</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">radius</span><span style="color: #f92672">);</span>
+<span style="color: #f92672">|</span>                 <span style="color: #f92672">^------------^</span>
+</pre></div>
+
 <h3 id="예외-exceptions">예외(Exceptions)</h3>
 
 <p>예외 역추적(Backtrace)에서, 피드백은 예외가 발생한 스니펫과 해당 스니펫 내부의 위치를 출력합니다.</p>
 
 <p>JShell에 입력된 코드의 위치는 &ldquo;<strong>#ID:line-number</strong>&rdquo; 형식으로 출력됩니다. 여기서 스니펫 ID는 &ldquo;<strong>/list</strong>&rdquo; 명령이 제공하는 숫자입니다. &ldquo;<strong>line-number</strong>&ldquo;는 스니펫의 행 번호입니다. 다음 예제에서 예외가 발생한 위치는 스니펫 넘버 #1(devide 메서드)의 두 번째 행입니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">int</span> divide(<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">x</span>, <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">y</span>) {
-   ...<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">return</span> x <span style="color:#f92672">/</span> y;
-   ...<span style="color:#f92672">&gt;</span> }
-<span style="color:#f92672">|</span>  created <span style="color:#a6e22e">method</span> divide(<span style="color:#66d9ef">int</span>,<span style="color:#66d9ef">int</span>)
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">int</span> <span style="color: #a6e22e">divide</span><span style="color: #f92672">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">y</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+   <span style="color: #f92672">...&gt;</span> <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">/</span> <span style="color: #f8f8f2">y</span><span style="color: #f92672">;</span>
+   <span style="color: #f92672">...&gt;</span> <span style="color: #f92672">}</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">divide</span><span style="color: #f92672">(</span><span style="color: #66d9ef">int</span><span style="color: #f92672">,</span><span style="color: #66d9ef">int</span><span style="color: #f92672">)</span>
 
-jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">divide</span>(5, 0)
-<span style="color:#f92672">|</span>  java.<span style="color:#a6e22e">lang</span>.<span style="color:#a6e22e">ArithmeticException</span> <span style="color:#a6e22e">thrown</span><span style="color:#f92672">:</span> <span style="color:#f92672">/</span> by <span style="color:#a6e22e">zero</span>
-<span style="color:#f92672">|</span>        at <span style="color:#a6e22e">divide</span> (<span style="color:#960050;background-color:#1e0010">#</span>1<span style="color:#f92672">:</span>2)
-<span style="color:#f92672">|</span>        at (<span style="color:#960050;background-color:#1e0010">#</span>2<span style="color:#f92672">:</span>1)
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">divide</span><span style="color: #f92672">(</span><span style="color: #ae81ff">5</span><span style="color: #f92672">,</span> <span style="color: #ae81ff">0</span><span style="color: #f92672">)</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">java</span><span style="color: #f92672">.</span><span style="color: #a6e22e">lang</span><span style="color: #f92672">.</span><span style="color: #a6e22e">ArithmeticException</span> <span style="color: #f8f8f2">thrown</span><span style="color: #f92672">:</span> <span style="color: #f92672">/</span> <span style="color: #f8f8f2">by</span> <span style="color: #f8f8f2">zero</span>
+<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">at</span> <span style="color: #a6e22e">divide</span> <span style="color: #f92672">(</span><span style="color: #960050; background-color: #1e0010">#</span><span style="color: #ae81ff">1</span><span style="color: #f92672">:</span><span style="color: #ae81ff">2</span><span style="color: #f92672">)</span>
+<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">at</span> <span style="color: #f92672">(</span><span style="color: #960050; background-color: #1e0010">#</span><span style="color: #ae81ff">2</span><span style="color: #f92672">:</span><span style="color: #ae81ff">1</span><span style="color: #f92672">)</span>
 
-jshell<span style="color:#f92672">&gt;</span> <span style="color:#f92672">/</span>list
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span>
 
-   <span style="color:#a6e22e">1</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">divide</span>(<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">x</span>, <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">y</span>) {
-           <span style="color:#66d9ef">return</span> x <span style="color:#f92672">/</span> y;
-       }
-   2 <span style="color:#f92672">:</span> divide(5, 0)</code></pre></div>
+   <span style="color: #ae81ff">1</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">int</span> <span style="color: #a6e22e">divide</span><span style="color: #f92672">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">y</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+           <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">/</span> <span style="color: #f8f8f2">y</span><span style="color: #f92672">;</span>
+       <span style="color: #f92672">}</span>
+   <span style="color: #ae81ff">2</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">divide</span><span style="color: #f92672">(</span><span style="color: #ae81ff">5</span><span style="color: #f92672">,</span> <span style="color: #ae81ff">0</span><span style="color: #f92672">)</span>
+</pre></div>
+
 <h3 id="스니펫-텝-자동-완성">스니펫 텝 자동 완성</h3>
 
 <p>스니펫을 입력할 때, 텝 키를 이용하여 코드를 자동 완성할 수 있습니다. 현재까지 입력으로 코드를 결정할 수 없는 상황에서는, 가능한 옵션을 모두 제공합니다.</p>
 
 <p>다음 예제는 volume 메서드가 정의된 상태에서, 메서드 명의 첫 번째 3 개 문자(vol)를 입력한 후에 텝 키를 입력한 상태를 설명합니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">vol</span><span style="color:#f92672">&lt;</span>Tab<span style="color:#f92672">&gt;</span></code></pre></div>
-<p>탭 키를 입력하면 입력값이 다음과 같이 변경됩니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">volume</span>(</code></pre></div>
-<p>자동 완성 기능을 사용할 때 현재 입력 값을 기준으로 한 개 이상의 경우의 수를 갖는다면, 가능한 모든 코드를 출력합니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">System</span>.<span style="color:#a6e22e">c</span><span style="color:#f92672">&lt;</span>Tab<span style="color:#f92672">&gt;</span>
-<span style="color:#a6e22e">class</span>                 clearProperty(        console()             currentTimeMillis()
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">vol</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
+</pre></div>
 
-jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">System</span>.<span style="color:#a6e22e">c</span></code></pre></div>
+<p>탭 키를 입력하면 입력값이 다음과 같이 변경됩니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span>
+</pre></div>
+
+<p>자동 완성 기능을 사용할 때 현재 입력 값을 기준으로 한 개 이상의 경우의 수를 갖는다면, 가능한 모든 코드를 출력합니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">System</span><span style="color: #f92672">.</span><span style="color: #a6e22e">c</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
+<span style="color: #66d9ef">class</span>                 <span style="color: #a6e22e">clearProperty</span><span style="color: #f92672">(</span>        <span style="color: #f8f8f2">console</span><span style="color: #f92672">()</span>             <span style="color: #f8f8f2">currentTimeMillis</span><span style="color: #f92672">()</span>
+
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">System</span><span style="color: #f92672">.</span><span style="color: #a6e22e">c</span>
+</pre></div>
+
 <p>입력한 코드에 공통 문자가 추가되고 커서는 입력 끝부분으로 이동합니다. 아이템을 완성하기 위해 추가 문자를 입력할 수 있습니다.</p>
 
 <p>메소드의 열린 괄호에서 텝 키를 입력하면 매개 변수 유형으로 완료 가능한 형태를 출력합니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;hello&#34;</span>.<span style="color:#a6e22e">startsWith</span>(<span style="color:#f92672">&lt;</span>Tab<span style="color:#f92672">&gt;</span>
-<span style="color:#a6e22e">Signatures</span><span style="color:#f92672">:</span>
-<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">String</span>.<span style="color:#a6e22e">startsWith</span>(String <span style="color:#a6e22e">prefix</span>, <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">toffset</span>)
-<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">String</span>.<span style="color:#a6e22e">startsWith</span>(String <span style="color:#a6e22e">prefix</span>)
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #e6db74">&quot;hello&quot;</span><span style="color: #f92672">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
+<span style="color: #f8f8f2">Signatures:</span>
+<span style="color: #66d9ef">boolean</span> <span style="color: #f8f8f2">String</span><span style="color: #f92672">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">prefix</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">toffset</span><span style="color: #f92672">)</span>
+<span style="color: #66d9ef">boolean</span> <span style="color: #f8f8f2">String</span><span style="color: #f92672">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">prefix</span><span style="color: #f92672">)</span>
 
-<span style="color:#f92672">&lt;</span>press <span style="color:#a6e22e">tab</span> again <span style="color:#a6e22e">to</span> see <span style="color:#a6e22e">documentation</span><span style="color:#f92672">&gt;</span>
+<span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">press</span> <span style="color: #f8f8f2">tab</span> <span style="color: #f8f8f2">again</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">see</span> <span style="color: #f8f8f2">documentation</span><span style="color: #f92672">&gt;</span>
 
-jshell<span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;hello&#34;</span>.<span style="color:#a6e22e">startsWith</span>(</code></pre></div>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #e6db74">&quot;hello&quot;</span><span style="color: #f92672">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(</span>
+</pre></div>
+
 <p>텝 키를 다시 입력하면 첫 번째 메서드의 텍스트 버전 문서가 출력됩니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;hello&#34;</span>.<span style="color:#a6e22e">startsWith</span>(<span style="color:#f92672">&lt;</span>Tab<span style="color:#f92672">&gt;</span>
-<span style="color:#a6e22e">boolean</span> String.<span style="color:#a6e22e">startsWith</span>(String <span style="color:#a6e22e">prefix</span>, <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">toffset</span>)
-Tests <span style="color:#a6e22e">if</span> the <span style="color:#a6e22e">substring</span> of <span style="color:#a6e22e">this</span> string <span style="color:#a6e22e">beginning</span> at <span style="color:#a6e22e">the</span> specified <span style="color:#a6e22e">index</span> starts <span style="color:#a6e22e">with</span> the
-<span style="color:#a6e22e">specified</span> prefix.
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #e6db74">&quot;hello&quot;</span><span style="color: #f92672">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
+<span style="color: #66d9ef">boolean</span> <span style="color: #f8f8f2">String</span><span style="color: #f92672">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">prefix</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">toffset</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">Tests</span> <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">substring</span> <span style="color: #f8f8f2">of</span> <span style="color: #66d9ef">this</span> <span style="color: #f8f8f2">string</span> <span style="color: #f8f8f2">beginning</span> <span style="color: #f8f8f2">at</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">specified</span> <span style="color: #f8f8f2">index</span> <span style="color: #f8f8f2">starts</span> <span style="color: #f8f8f2">with</span> <span style="color: #f8f8f2">the</span>
+<span style="color: #f8f8f2">specified</span> <span style="color: #f8f8f2">prefix</span><span style="color: #f92672">.</span>
 
-<span style="color:#a6e22e">Parameters</span><span style="color:#f92672">:</span>
-prefix <span style="color:#f92672">-</span> the <span style="color:#a6e22e">prefix</span>.
-toffset <span style="color:#f92672">-</span> where <span style="color:#a6e22e">to</span> begin <span style="color:#a6e22e">looking</span> in <span style="color:#a6e22e">this</span> string.
+<span style="color: #f8f8f2">Parameters:</span>
+<span style="color: #f8f8f2">prefix</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">prefix</span><span style="color: #f92672">.</span>
+<span style="color: #f8f8f2">toffset</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">where</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">begin</span> <span style="color: #f8f8f2">looking</span> <span style="color: #f8f8f2">in</span> <span style="color: #66d9ef">this</span> <span style="color: #f8f8f2">string</span><span style="color: #f92672">.</span>
 
-<span style="color:#a6e22e">Returns</span><span style="color:#f92672">:</span>
-<span style="color:#66d9ef">true</span> <span style="color:#a6e22e">if</span> the <span style="color:#a6e22e">character</span> sequence <span style="color:#a6e22e">represented</span> by <span style="color:#a6e22e">the</span> argument <span style="color:#a6e22e">is</span> a <span style="color:#a6e22e">prefix</span> of <span style="color:#a6e22e">the</span> substring <span style="color:#a6e22e">of</span> <span style="color:#66d9ef">this</span>
-          object <span style="color:#a6e22e">starting</span> at <span style="color:#a6e22e">index</span> toffset ; <span style="color:#66d9ef">false</span> <span style="color:#a6e22e">otherwise</span>. The <span style="color:#a6e22e">result</span> is <span style="color:#a6e22e">false</span> <span style="color:#66d9ef">if</span> toffset <span style="color:#a6e22e">is</span>
-          negative <span style="color:#a6e22e">or</span> greater <span style="color:#a6e22e">than</span> the <span style="color:#a6e22e">length</span> of <span style="color:#a6e22e">this</span> String <span style="color:#a6e22e">object</span>; otherwise <span style="color:#a6e22e">the</span> result <span style="color:#a6e22e">is</span>
-          the <span style="color:#a6e22e">same</span> as <span style="color:#a6e22e">the</span> result <span style="color:#a6e22e">of</span> the <span style="color:#a6e22e">expression</span>
-                    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">substring</span>(toffset).<span style="color:#a6e22e">startsWith</span>(prefix)
+<span style="color: #f8f8f2">Returns:</span>
+<span style="color: #66d9ef">true</span> <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">character</span> <span style="color: #f8f8f2">sequence</span> <span style="color: #f8f8f2">represented</span> <span style="color: #f8f8f2">by</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">argument</span> <span style="color: #f8f8f2">is</span> <span style="color: #f8f8f2">a</span> <span style="color: #f8f8f2">prefix</span> <span style="color: #f8f8f2">of</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">substring</span> <span style="color: #f8f8f2">of</span> <span style="color: #66d9ef">this</span>
+          <span style="color: #f8f8f2">object</span> <span style="color: #f8f8f2">starting</span> <span style="color: #f8f8f2">at</span> <span style="color: #f8f8f2">index</span> <span style="color: #f8f8f2">toffset</span> <span style="color: #f92672">;</span> <span style="color: #66d9ef">false</span> <span style="color: #f8f8f2">otherwise</span><span style="color: #f92672">.</span> <span style="color: #f8f8f2">The</span> <span style="color: #f8f8f2">result</span> <span style="color: #f8f8f2">is</span> <span style="color: #66d9ef">false</span> <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">toffset</span> <span style="color: #f8f8f2">is</span>
+          <span style="color: #f8f8f2">negative</span> <span style="color: #f8f8f2">or</span> <span style="color: #f8f8f2">greater</span> <span style="color: #f8f8f2">than</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">length</span> <span style="color: #f8f8f2">of</span> <span style="color: #66d9ef">this</span> <span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">object</span><span style="color: #f92672">;</span> <span style="color: #f8f8f2">otherwise</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">result</span> <span style="color: #f8f8f2">is</span>
+          <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">same</span> <span style="color: #f8f8f2">as</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">result</span> <span style="color: #f8f8f2">of</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">expression</span>
+                    <span style="color: #66d9ef">this</span><span style="color: #f92672">.</span><span style="color: #a6e22e">substring</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">toffset</span><span style="color: #f92672">).</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">prefix</span><span style="color: #f92672">)</span>
 
 
-<span style="color:#f92672">&lt;</span>press <span style="color:#a6e22e">tab</span> to <span style="color:#a6e22e">see</span> next <span style="color:#a6e22e">documentation</span><span style="color:#f92672">&gt;</span>
+<span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">press</span> <span style="color: #f8f8f2">tab</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">see</span> <span style="color: #f8f8f2">next</span> <span style="color: #f8f8f2">documentation</span><span style="color: #f92672">&gt;</span>
 
-jshell<span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;hello&#34;</span>.<span style="color:#a6e22e">startsWith</span>(</code></pre></div>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #e6db74">&quot;hello&quot;</span><span style="color: #f92672">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(</span>
+</pre></div>
+
 <h3 id="스니펫-변환">스니펫 변환</h3>
 
 <p>JShell은 클래스를 처음 참조할 때 필요한 클래스 임포트(import)를 쉽게 할 수 있습니다. 또한 단축키를 사용하여 식(Expression)을 변수 선언으로 간단하게 변환할 수 있습니다.</p>
 
 <p>아직 가져 오지 않은 식별자를 입력한 다음에 바로 &ldquo;<strong>Shift + Tab i</strong>&ldquo;를 누르면 세션에 import문을 추가하는 옵션이 출력됩니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">new</span> JFrame<span style="color:#f92672">&lt;</span>Shift<span style="color:#f92672">+</span>Tab <span style="color:#a6e22e">i</span><span style="color:#f92672">&gt;</span>
-0: Do <span style="color:#a6e22e">nothing</span>
-1: import<span style="color:#f92672">:</span> javax.<span style="color:#a6e22e">swing</span>.<span style="color:#a6e22e">JFrame</span>
-<span style="color:#a6e22e">Choice</span><span style="color:#f92672">:</span> 1
-<span style="color:#a6e22e">Imported</span><span style="color:#f92672">:</span> javax.<span style="color:#a6e22e">swing</span>.<span style="color:#a6e22e">JFrame</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">JFrame</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Shift</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">Tab</span> <span style="color: #f8f8f2">i</span><span style="color: #f92672">&gt;</span>
+<span style="color: #ae81ff">0</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">Do</span> <span style="color: #f8f8f2">nothing</span>
+<span style="color: #ae81ff">1</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">import</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">javax</span><span style="color: #f92672">.</span><span style="color: #a6e22e">swing</span><span style="color: #f92672">.</span><span style="color: #a6e22e">JFrame</span>
+<span style="color: #f8f8f2">Choice:</span> <span style="color: #ae81ff">1</span>
+<span style="color: #f8f8f2">Imported:</span> <span style="color: #f8f8f2">javax</span><span style="color: #f92672">.</span><span style="color: #a6e22e">swing</span><span style="color: #f92672">.</span><span style="color: #a6e22e">JFrame</span>
 
-<span style="color:#a6e22e">jshell</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">new</span> JFrame</code></pre></div>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">JFrame</span>
+</pre></div>
+
 <p>임포트 추가 옵션이 출력되면 사용할 옵션 번호를 입력하면 됩니다. 복수의 import 옵션이 제시될 수 있습니다.</p>
 
 <p>식(Expression)을  입력한 후 &ldquo;<strong>Shift+Tab v</strong>&ldquo;를 눌러 식(Expression) 변수 선언으로 변환할 수 있습니다. 앞에서 입력한 식은 변수 선언의 초기값이 되고, 식의 반환 타입은 변수의 타입으로 선언됩니다. 다음 예제에서 &ldquo;<strong>Shift+Tab v</strong>&ldquo;를 누르면, 세로 막대 (|)로 표시된 커서는 변수 이름을 입력해야 하는 곳에 위치하게 됩니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">new</span> JFrame(<span style="color:#e6db74">&#34;Demo&#34;</span>) <span style="color:#f92672">&lt;</span>Shift<span style="color:#f92672">+</span>Tab <span style="color:#a6e22e">v</span><span style="color:#f92672">&gt;</span>
-jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">JFrame</span> <span style="color:#f92672">|</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> JFrame(<span style="color:#e6db74">&#34;Demo&#34;</span>)</code></pre></div>
-<div class="notices note" >
-식(Expression)은 유효해야 하며 그렇지 않으면 변환 요청은 무시됩니다. 이 예제에서 변수를 변환하기 전에 JFrame의 import가 선행되어야 합니다.
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">new</span> <span style="color: #a6e22e">JFrame</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;Demo&quot;</span><span style="color: #f92672">)</span> <span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Shift</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">Tab</span> <span style="color: #f8f8f2">v</span><span style="color: #f92672">&gt;</span>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">JFrame</span> <span style="color: #f92672">|</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">JFrame</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;Demo&quot;</span><span style="color: #f92672">)</span>
+</pre></div>
+
+<div class="notices note" ><p>식(Expression)은 유효해야 하며 그렇지 않으면 변환 요청은 무시됩니다. 이 예제에서 변수를 변환하기 전에 JFrame의 import가 선행되어야 합니다.</p>
 </div>
 
+
 <p>앞 예제를 완료하기 위해서, 커서가 위치한 곳에 변수명 frame을 입력하고 <strong>Enter</strong> 키를 누릅니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">JFrame</span> frame <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> JFrame(<span style="color:#e6db74">&#34;Demo&#34;</span>)
-frame <span style="color:#f92672">==&gt;</span> javax.<span style="color:#a6e22e">swing</span>.<span style="color:#a6e22e">JFrame</span>[frame0,0,0,0x0,invalid,hidden, ... tPaneCheckingEnabled<span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>]
-<span style="color:#f92672">|</span>  created <span style="color:#a6e22e">variable</span> frame <span style="color:#f92672">:</span> JFrame
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">JFrame</span> <span style="color: #f8f8f2">frame</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">JFrame</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;Demo&quot;</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">frame</span> <span style="color: #f92672">==&gt;</span> <span style="color: #f8f8f2">javax</span><span style="color: #f92672">.</span><span style="color: #a6e22e">swing</span><span style="color: #f92672">.</span><span style="color: #a6e22e">JFrame</span><span style="color: #f92672">[</span><span style="color: #f8f8f2">frame0</span><span style="color: #f92672">,</span><span style="color: #ae81ff">0</span><span style="color: #f92672">,</span><span style="color: #ae81ff">0</span><span style="color: #f92672">,</span><span style="color: #ae81ff">0x0</span><span style="color: #f92672">,</span><span style="color: #f8f8f2">invalid</span><span style="color: #f92672">,</span><span style="color: #f8f8f2">hidden</span><span style="color: #f92672">,</span> <span style="color: #f92672">...</span> <span style="color: #f8f8f2">tPaneCheckingEnabled</span><span style="color: #f92672">=</span><span style="color: #66d9ef">true</span><span style="color: #f92672">]</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">frame</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">JFrame</span>
 
-<span style="color:#a6e22e">jshell</span><span style="color:#f92672">&gt;</span></code></pre></div>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span>
+</pre></div>
+
 <p>식(Expression)의 반환 타입이 아직 import 되지 않은 경우가 있습니다. 이런 상황에서, &ldquo;<strong>Shift+Tab v</strong>&ldquo;을 누르면 import 옵션과 변수 생성 기능 모두가 제공됩니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">frame</span>.<span style="color:#a6e22e">getGraphics</span>() <span style="color:#f92672">&lt;</span>Shift<span style="color:#f92672">+</span>Tab <span style="color:#a6e22e">v</span><span style="color:#f92672">&gt;</span>
-0: Do <span style="color:#a6e22e">nothing</span>
-1: Create <span style="color:#a6e22e">variable</span>
-2: import<span style="color:#f92672">:</span> java.<span style="color:#a6e22e">awt</span>.<span style="color:#a6e22e">Graphics</span>. <span style="color:#a6e22e">Create</span> variable
-<span style="color:#a6e22e">Choice</span><span style="color:#f92672">:</span> 2
-<span style="color:#a6e22e">Imported</span><span style="color:#f92672">:</span> java.<span style="color:#a6e22e">awt</span>.<span style="color:#a6e22e">Graphics</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">frame</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getGraphics</span><span style="color: #f92672">()</span> <span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Shift</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">Tab</span> <span style="color: #f8f8f2">v</span><span style="color: #f92672">&gt;</span>
+<span style="color: #ae81ff">0</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">Do</span> <span style="color: #f8f8f2">nothing</span>
+<span style="color: #ae81ff">1</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">Create</span> <span style="color: #f8f8f2">variable</span>
+<span style="color: #ae81ff">2</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">import</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">java</span><span style="color: #f92672">.</span><span style="color: #a6e22e">awt</span><span style="color: #f92672">.</span><span style="color: #a6e22e">Graphics</span><span style="color: #f92672">.</span> <span style="color: #f8f8f2">Create</span> <span style="color: #f8f8f2">variable</span>
+<span style="color: #f8f8f2">Choice:</span> <span style="color: #ae81ff">2</span>
+<span style="color: #f8f8f2">Imported:</span> <span style="color: #f8f8f2">java</span><span style="color: #f92672">.</span><span style="color: #a6e22e">awt</span><span style="color: #f92672">.</span><span style="color: #a6e22e">Graphics</span>
 
-<span style="color:#a6e22e">jshell</span><span style="color:#f92672">&gt;</span> Graphics <span style="color:#f92672">|</span> <span style="color:#f92672">=</span> frame.<span style="color:#a6e22e">getGraphics</span>()</code></pre></div>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">Graphics</span> <span style="color: #f92672">|</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">frame</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getGraphics</span><span style="color: #f92672">()</span>
+</pre></div>
+
 <p>위 예제를 완료하려면, 커서가 위치한 곳에 변수 이름 <strong>gc</strong>를 입력하고 <strong>Enter</strong> 키를 누릅니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">jshell<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">Graphics</span> gc <span style="color:#f92672">=</span> frame.<span style="color:#a6e22e">getGraphics</span>()
-<span style="color:#f92672">|</span>  created <span style="color:#a6e22e">variable</span> gc <span style="color:#f92672">:</span> JFrame
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">Graphics</span> <span style="color: #f8f8f2">gc</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">frame</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getGraphics</span><span style="color: #f92672">()</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">gc</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">JFrame</span>
 
-<span style="color:#a6e22e">jshell</span><span style="color:#f92672">&gt;</span></code></pre></div><div class="footnotes">
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span>
+</pre></div>
+<div class="footnotes">
 
 <hr />
 
@@ -516,10 +567,6 @@ frame <span style="color:#f92672">==&gt;</span> javax.<span style="color:#a6e22e
 							brew로 GraalVM설치</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/" title="Graalvms">
-							Graalvms</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201908w1/" title="GraalVM 새소식#2(201908, 첫 째주)">
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
@@ -536,20 +583,24 @@ frame <span style="color:#f92672">==&gt;</span> javax.<span style="color:#a6e22e
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/book/" title="Books">
-							Books</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/cloud/" title="Clouds">
-							Clouds</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
 							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
+							GraalVM 관련 코너를 새로 시작합니다.</a>
 		  </li>
 		</ul>
 	</div>
@@ -652,17 +703,14 @@ frame <span style="color:#f92672">==&gt;</span> javax.<span style="color:#a6e22e
 	});
 </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-72835175-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 

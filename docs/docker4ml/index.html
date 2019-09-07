@@ -11,13 +11,26 @@
 
 <title>Docker Image: 파이썬 기반 머신러닝 학습용 이미지</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.58.1" />
+<meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="Docker Image: 파이썬 기반 머신러닝 학습용 이미지" />
 <meta property="og:description" content="MLPY는 Python 기반으로 머신러닝을 지원하는 docker 이미지입니다. MLPY에 대한 주요 특징과 설치 정보를 소개합니다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/docs/docker4ml/" />
-<meta property="article:published_time" content="2018-10-07T19:59:47+09:00" />
-<meta property="article:modified_time" content="2018-10-07T19:59:47+09:00" />
+
+
+
+<meta property="article:published_time" content="2018-10-07T19:59:47&#43;09:00"/>
+<meta property="article:modified_time" content="2018-10-07T19:59:47&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -250,42 +263,70 @@ taewanme/pyml:latest
 
 &gt;0b5ee2af902ea823ff0372a9ccc0fbe194eb1c52152de14933da8bce0d0da241
 </code></pre>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker run -idt``` 명령으로 데몬 형태로 더커 컨테이너를 실행합니다. ```-p````, ```-v````, ```--name```` 옵션으로 포토 설정, 디텍러티 볼륨 마운트 및 컨테이너 명을 설정합니다." data-lang="docker run -idt``` 명령으로 데몬 형태로 더커 컨테이너를 실행합니다. ```-p````, ```-v````, ```--name```` 옵션으로 포토 설정, 디텍러티 볼륨 마운트 및 컨테이너 명을 설정합니다.">|옵션|옵션 설명|현제 설정값|설정값 섦명|
-|----|----|----|----|
-|-p|포트 설정, 호스트 컴퓨터 포트와 더커 컨테이너의 포트 포워드 설정|-p 8888:8888&lt;br/&gt; -p 6006:6006|호스트 8888 포트를 컨테이너 8888에 연결(jupyter 접속 용)&lt;/br&gt;호스트 6666 포트를 컨테이너 6666에 연결(tensorboard 접속 용)&lt;/br&gt; |
-|-v|볼륨 설정, 호스트 컴퓨터 디텍터리를 더커 컨테이너에 마운트|-v /devspace/pytorch:/root/ipython|호스트 /devspace/pytorch를 컨테이너 /root/ipython에 마운트 |
-|--name|컨테이너 이름 설정|--name pyml |컨테이너 명 pyml로 설정 |
 
-컨테이너가 실행되면 다음 명령으로 컨테이너 실행 상태를 확인할 수 있습니다.</code></pre></div>
-<blockquote>
-<p>docker ps &ndash;all</p>
-</blockquote>
+<p><code>docker run -idt</code> 명령으로 데몬 형태로 더커 컨테이너를 실행합니다. <code>-p</code><code>,</code><code>-v</code><code>,</code><code>--name</code>``` 옵션으로 포토 설정, 디텍러티 볼륨 마운트 및 컨테이너 명을 설정합니다.</p>
 
-<p>CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS              PORTS                                            NAMES
-0b5ee2af902e        taewanme/pyml:latest   &ldquo;/bin/bash start-not…&rdquo;   3 minutes ago       Up 3 minutes        0.0.0.0:6006-&gt;6006/tcp, 0.0.0.0:8888-&gt;8888/tcp   pyml
-&gt;</p>
+<table>
+<thead>
+<tr>
+<th>옵션</th>
+<th>옵션 설명</th>
+<th>현제 설정값</th>
+<th>설정값 섦명</th>
+</tr>
+</thead>
 
-<pre><code>
-### 컨테이너의 jupyter 서비스 접속 및 활용
+<tbody>
+<tr>
+<td>-p</td>
+<td>포트 설정, 호스트 컴퓨터 포트와 더커 컨테이너의 포트 포워드 설정</td>
+<td>-p 8888:8888<br/> -p 6006:6006</td>
+<td>호스트 8888 포트를 컨테이너 8888에 연결(jupyter 접속 용)</br>호스트 6666 포트를 컨테이너 6666에 연결(tensorboard 접속 용)</br></td>
+</tr>
 
-컨테이너가 실행되면 ```http://localhsot:8888``` 주소로 jupyter에 접속할 수 있습니다.
-Jupyter에 접속하면 패스워드 요청 페이지가 오픈됩니다. 패스워드는 ```Welcome1```입니다.
+<tr>
+<td>-v</td>
+<td>볼륨 설정, 호스트 컴퓨터 디텍터리를 더커 컨테이너에 마운트</td>
+<td>-v /devspace/pytorch:/root/ipython</td>
+<td>호스트 /devspace/pytorch를 컨테이너 /root/ipython에 마운트</td>
+</tr>
 
-![](https://taewanmerepo.github.io/2018/07/pyml/030.jpg)
+<tr>
+<td>&ndash;name</td>
+<td>컨테이너 이름 설정</td>
+<td>&ndash;name pyml</td>
+<td>컨테이너 명 pyml로 설정</td>
+</tr>
+</tbody>
+</table>
 
-패스워드를 입력하고 이동한 페이지에서 노트북을 만들고 파이썬 코드르 수행할 수 있습니다.
+<p>컨테이너가 실행되면 다음 명령으로 컨테이너 실행 상태를 확인할 수 있습니다.</p>
 
-![](https://taewanmerepo.github.io/2018/07/pyml/040.jpg)
+<pre><code>&gt; docker ps --all
 
-노크북을 만들면 다음과 같이 코드를 입력하고 수행할 수 있습니다.
-
-![](https://taewanmerepo.github.io/2018/07/pyml/050.jpg)
-
-### 컨테이너의 jupyter 종료
-
+CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS              PORTS                                            NAMES
+0b5ee2af902e        taewanme/pyml:latest   &quot;/bin/bash start-not…&quot;   3 minutes ago       Up 3 minutes        0.0.0.0:6006-&gt;6006/tcp, 0.0.0.0:8888-&gt;8888/tcp   pyml
+&gt;
 </code></pre>
 
-<p>docker stop<code>명령으로 컨테이너를 종료하고,</code>docker ps``` 명령으로 컨테이너 프로세스 상태를 확인할 수 있습니다.</p>
+<h3 id="컨테이너의-jupyter-서비스-접속-및-활용">컨테이너의 jupyter 서비스 접속 및 활용</h3>
+
+<p>컨테이너가 실행되면 <code>http://localhsot:8888</code> 주소로 jupyter에 접속할 수 있습니다.
+Jupyter에 접속하면 패스워드 요청 페이지가 오픈됩니다. 패스워드는 <code>Welcome1</code>입니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2018/07/pyml/030.jpg" alt="" /></p>
+
+<p>패스워드를 입력하고 이동한 페이지에서 노트북을 만들고 파이썬 코드르 수행할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2018/07/pyml/040.jpg" alt="" /></p>
+
+<p>노크북을 만들면 다음과 같이 코드를 입력하고 수행할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2018/07/pyml/050.jpg" alt="" /></p>
+
+<h3 id="컨테이너의-jupyter-종료">컨테이너의 jupyter 종료</h3>
+
+<p><code>docker stop</code> 명령으로 컨테이너를 종료하고, <code>docker ps</code> 명령으로 컨테이너 프로세스 상태를 확인할 수 있습니다.</p>
 
 <pre><code>&gt; docker stop pyml
 pyml
@@ -296,22 +337,22 @@ CONTAINER ID        IMAGE                  COMMAND                  CREATED     
 </code></pre>
 
 <h3 id="pyml-컨테이너와-이미지-삭제">pyml 컨테이너와 이미지 삭제</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker rm``` 명령으로 컨테이너를 삭제하고, ```docker container ls``` 명령으로 컨테이너 목록을 확인할 수 있습니다." data-lang="docker rm``` 명령으로 컨테이너를 삭제하고, ```docker container ls``` 명령으로 컨테이너 목록을 확인할 수 있습니다."></code></pre></div>
-<blockquote>
-<p>docker rm pyml
-pyml
-docker container ls -all
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</p>
 
-<pre><code>
+<p><code>docker rm</code> 명령으로 컨테이너를 삭제하고, <code>docker container ls</code> 명령으로 컨테이너 목록을 확인할 수 있습니다.</p>
+
+<pre><code>&gt; docker rm pyml
+pyml
+&gt; docker container ls -all
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+&gt;
 </code></pre>
 
-<p>docker rmi<code>명령으로 이미지를 삭제하고,</code>docker images``` 명령으로 더커 이미지을 확인할 수 있습니다.</p>
+<p><code>docker rmi</code> 명령으로 이미지를 삭제하고, <code>docker images</code> 명령으로 더커 이미지을 확인할 수 있습니다.</p>
 
-<pre><code>docker images
+<pre><code>&gt; docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 taewanme/pyml       latest              823a55c894d0        20 hours ago        2.88GB
-docker rmi taewanme/pyml:latest
+&gt; docker rmi taewanme/pyml:latest
 Untagged: taewanme/pyml:latest
 Untagged: taewanme/pyml@sha256:c02dc2009b3bc20cb952fa27bfde64acf200acca75c250da97593c8c2b0ba83e
 Deleted: sha256:823a55c894d003b985736164a0e2753f3679c259f52031bc1fa0a33bf5bb204d
@@ -327,11 +368,10 @@ Deleted: sha256:98fc4d5421178c7be7d5718d2d44abba8053dc5c712e51658fe5b872675b4f7a
 Deleted: sha256:7b2cc05dfd889e28234f8831c80ac20cf299d5bbebbbac013f8f7d2b7abc0d65
 Deleted: sha256:6b0187d1cdff63eb5966ac72bf4ccd96150586c1409eb858bb98783f02018ee7
 Deleted: sha256:644879075e24394efef8a7dddefbc133aad42002df6223cacf98bd1e3d5ddde2
-docker images
+&gt; docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-
+&gt;
 </code></pre>
-</blockquote>
 
 		</div>
 		
@@ -437,6 +477,8 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 <li><a href="#pyml-컨테이너-관리">pyml 컨테이너 관리</a>
 <ul>
 <li><a href="#pyml-더커-이미지-설치">pyml 더커 이미지 설치</a></li>
+<li><a href="#컨테이너의-jupyter-서비스-접속-및-활용">컨테이너의 jupyter 서비스 접속 및 활용</a></li>
+<li><a href="#컨테이너의-jupyter-종료">컨테이너의 jupyter 종료</a></li>
 <li><a href="#pyml-컨테이너와-이미지-삭제">pyml 컨테이너와 이미지 삭제</a></li>
 </ul></li>
 </ul></li>
@@ -464,10 +506,6 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 							brew로 GraalVM설치</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/" title="Graalvms">
-							Graalvms</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201908w1/" title="GraalVM 새소식#2(201908, 첫 째주)">
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
@@ -484,20 +522,24 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/book/" title="Books">
-							Books</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/cloud/" title="Clouds">
-							Clouds</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
 							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
+							GraalVM 관련 코너를 새로 시작합니다.</a>
 		  </li>
 		</ul>
 	</div>
@@ -600,17 +642,14 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 	});
 </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-72835175-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 

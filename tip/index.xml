@@ -43,8 +43,7 @@ export GRAALVM_HOME=/Library/Java/JavaVirtualMachines/graalvm-ce-19.2.0/Contents
       
       <guid>http://taewan.kim/tip/lauch_vscode_in_termial/</guid>
       <description>Visual Studion Code와 IntelliJ의 실행파일을 PATH 환경 변수에 추가하면 터미널에서 두 IDE를 실행할 수 있습니다.
-Visual Sutdio Code 터미널 실행  Visual Studion Code 실행 파일 위치
-$ cd /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin /Applications/Visual Studio Code.app/Contents/Resources/app/bin $ pwd /Applications/Visual Studio Code.app/Contents/Resources/app/bin /Applications/Visual Studio Code.app/Contents/Resources/app/bin $ ls -al total 8 drwxr-xr-x 3 taewan staff 96 Apr 11 08:24 . drwxr-xr-x 13 taewan staff 416 Apr 11 08:25 .. -rwxr-xr-x 1 taewan staff 484 Apr 11 08:07 code /Applications/Visual Studio Code.</description>
+Visual Sutdio Code 터미널 실행  Visual Studion Code 실행 파일 위치  $ cd /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin /Applications/Visual Studio Code.app/Contents/Resources/app/bin $ pwd /Applications/Visual Studio Code.app/Contents/Resources/app/bin /Applications/Visual Studio Code.app/Contents/Resources/app/bin $ ls -al total 8 drwxr-xr-x 3 taewan staff 96 Apr 11 08:24 . drwxr-xr-x 13 taewan staff 416 Apr 11 08:25 .. -rwxr-xr-x 1 taewan staff 484 Apr 11 08:07 code /Applications/Visual Studio Code.</description>
     </item>
     
     <item>
@@ -202,7 +201,7 @@ c &amp;amp; = bcosA + acosB \end{align} $$
       
       <guid>http://taewan.kim/tip/dimmension/</guid>
       <description> 차원에 대한 이해를 돕는 동영상입니다. 3차원을 인식하는 인간이 세상을 입체적으로 인식하는 이유를 소개합니다.
-차원에 대하여   우리는 이미 5차원의 존재?   </description>
+차원에 대하여   우리는 이미 5차원의 존재?    </description>
     </item>
     
     <item>
@@ -215,6 +214,16 @@ c &amp;amp; = bcosA + acosB \end{align} $$
     </item>
     
     <item>
+      <title>Ubuntu 패키지 관리 툴: apt 사용법</title>
+      <link>http://taewan.kim/tip/apt-apt-get/</link>
+      <pubDate>Sat, 05 May 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tip/apt-apt-get/</guid>
+      <description>우분투에서 패키지를 관리하는 툴로 apt-get과 apt-cache를 주로 사용해 왔습니다. 요즘에는 두 명령을 결합한 명령이 apt를 주로 사용합니다. apt는 apt-get/apt-cache를 완전히 통합하는 툴은 아닌 것 같습니다. 사용자 편리성을 위해서 apt-get과 apt-cache의 주요 기능을 결합한 툴입니다. man에서는 apt를 다음과 같이 설명합니다.
+ apt provides a high-level commandline interface for the package management system. It is intended as an end user interface and enables some options better suited for interactive usage by default compared to more specialized APT tools like apt-get and apt-cache.</description>
+    </item>
+    
+    <item>
       <title>argument와 parameter 차이점</title>
       <link>http://taewan.kim/tip/argument_parameter/</link>
       <pubDate>Sat, 05 May 2018 21:28:14 +0900</pubDate>
@@ -224,16 +233,6 @@ c &amp;amp; = bcosA + acosB \end{align} $$
 Parameter는 함수 혹은 메서드 정의에서 나열되는 변수 명입니다. 반면 Argument는 함수 혹은 메서드를 호출할 때, 전달 혹은 입력되는 실제 값입니다. Argument의 실체는 변수이고 Argument의 실체는 값입니다.
 따라서 두 단어는 명확하게 구분해야 합니다.
    단어 번역 의미     Parameter 매개변수 함수와 메서드 입력 변수(Variable) 명   Argument 전달인자, 인자 함수와 메서드의 입력 값(Value)    명시된 변</description>
-    </item>
-    
-    <item>
-      <title>Ubuntu 패키지 관리 툴: apt 사용법</title>
-      <link>http://taewan.kim/tip/apt-apt-get/</link>
-      <pubDate>Sat, 05 May 2018 21:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/tip/apt-apt-get/</guid>
-      <description>우분투에서 패키지를 관리하는 툴로 apt-get과 apt-cache를 주로 사용해 왔습니다. 요즘에는 두 명령을 결합한 명령이 apt를 주로 사용합니다. apt는 apt-get/apt-cache를 완전히 통합하는 툴은 아닌 것 같습니다. 사용자 편리성을 위해서 apt-get과 apt-cache의 주요 기능을 결합한 툴입니다. man에서는 apt를 다음과 같이 설명합니다.
- apt provides a high-level commandline interface for the package management system. It is intended as an end user interface and enables some options better suited for interactive usage by default compared to more specialized APT tools like apt-get and apt-cache.</description>
     </item>
     
     <item>
@@ -277,7 +276,7 @@ Oracle Cloud: IaaS  Compute Classic: 기능 업데이트 목록[↗NW]  Containe
       <guid>http://taewan.kim/tip/shortcode_at_this_blog/</guid>
       <description>이미지 short code 이미지 및 캡션을 관리하기 위한 shortcode입니다.
  /layouts/shortcodes/img.html 파일에 저장됩니다. 코드는 다음과 같습니다.
-&amp;lt;!-- image --&amp;gt; &amp;lt;blockquote id=&amp;quot;img&amp;quot;&amp;gt; &amp;lt;figure {{ with .Get &amp;quot;class&amp;quot; }}class=&amp;quot;{{.}}&amp;quot;{{ end }}&amp;gt; {{ with .Get &amp;quot;link&amp;quot;}}&amp;lt;a href=&amp;quot;{{.}}&amp;quot;&amp;gt;{{ end }} &amp;lt;img src=&amp;quot;{{ .Get &amp;quot;src&amp;quot; }}&amp;quot; {{ if or (.Get &amp;quot;alt&amp;quot;) (.Get &amp;quot;caption&amp;quot;) }}alt=&amp;quot;{{ with .Get &amp;quot;alt&amp;quot;}}{{.}}{{else}}{{ .Get &amp;quot;caption&amp;quot; }}{{ end }}&amp;quot;{{ end }} style=&amp;quot;border:2px solid black&amp;quot;/&amp;gt; {{ if .Get &amp;quot;link&amp;quot;}}&amp;lt;/a&amp;gt;{{ end }} {{ if or (or (.</description>
+  &amp;lt;!-- image --&amp;gt; &amp;lt;blockquote id=&amp;quot;img&amp;quot;&amp;gt; &amp;lt;figure {{ with .Get &amp;quot;class&amp;quot; }}class=&amp;quot;{{.}}&amp;quot;{{ end }}&amp;gt; {{ with .Get &amp;quot;link&amp;quot;}}&amp;lt;a href=&amp;quot;{{.}}&amp;quot;&amp;gt;{{ end }} &amp;lt;img src=&amp;quot;{{ .Get &amp;quot;src&amp;quot; }}&amp;quot; {{ if or (.Get &amp;quot;alt&amp;quot;) (.Get &amp;quot;caption&amp;quot;) }}alt=&amp;quot;{{ with .Get &amp;quot;alt&amp;quot;}}{{.}}{{else}}{{ .Get &amp;quot;caption&amp;quot; }}{{ end }}&amp;quot;{{ end }} style=&amp;quot;border:2px solid black&amp;quot;/&amp;gt; {{ if .Get &amp;quot;link&amp;quot;}}&amp;lt;/a&amp;gt;{{ end }} {{ if or (or (.</description>
     </item>
     
     <item>

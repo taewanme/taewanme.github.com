@@ -11,13 +11,26 @@
 
 <title>다차원 텐서 Transpose와 Reshape</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.58.1" />
+<meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="다차원 텐서 Transpose와 Reshape" />
 <meta property="og:description" content="Data Representation은 머신러닝에서 가장 중요한 요소입니다. Data Representation 과정에서 다차원 텐서의 형태를 변형하는 Reshape과 Transpose는 빈번하게 수행하는 작업이지만, 대상 데이터가 N 차원 텐서일 경우에 이해하기 어려운 개념입니다. 머신러닝의 다차원 텐서의 Reshape과 Tranpose에 대하여 정리합니다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/post/transpose_reshape/" />
-<meta property="article:published_time" content="2018-08-22T23:28:14+09:00" />
-<meta property="article:modified_time" content="2018-08-22T23:28:14+09:00" />
+
+
+
+<meta property="article:published_time" content="2018-08-22T23:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2018-08-22T23:28:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -121,24 +134,28 @@
 <h2 id="문제의-시작-channel-first를-channel-last로-변환">문제의 시작: Channel First를 Channel Last로 변환</h2>
 
 <p>파이토치로 CIFAR10 데이터셋을 읽어와서 대상 이미지를 Mathplotlib의 plt.imshow() 함수로 출력하는 작업을 진행했습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 변환기 파이프라인 </span>
-transform <span style="color:#f92672">=</span> transforms<span style="color:#f92672">.</span>Compose(
-    [transforms<span style="color:#f92672">.</span>ToTensor(),
-     transforms<span style="color:#f92672">.</span>Normalize((<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.5</span>), (<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.5</span>))])
-<span style="color:#75715e"># CIFAR10 데이터셋 로딩 및 변환</span>
-trainset <span style="color:#f92672">=</span> torchvision<span style="color:#f92672">.</span>datasets<span style="color:#f92672">.</span>CIFAR10(root<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;./data&#39;</span>, train<span style="color:#f92672">=</span>True,
-                                        download<span style="color:#f92672">=</span>True, transform<span style="color:#f92672">=</span>transform)
-<span style="color:#75715e"># 미니배치 처리를 위한 데이터로더 생성</span>
-trainloader <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>DataLoader(trainset, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>,
-                                          shuffle<span style="color:#f92672">=</span>True, num_workers<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
-dataiter <span style="color:#f92672">=</span> iter(trainloader)
-<span style="color:#75715e">#첫번째 그룹 4개 이미지 데이터 획득</span>
-train, label <span style="color:#f92672">=</span> dataiter<span style="color:#f92672">.</span>next()
-<span style="color:#75715e"># 첫번째 4개 이미지의 데이터 Shape 확인</span>
-<span style="color:#66d9ef">print</span>(train<span style="color:#f92672">.</span>shape)</code></pre></div>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e"># 변환기 파이프라인 </span>
+<span style="color: #f8f8f2">transform</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">transforms</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">Compose(</span>
+    <span style="color: #f8f8f2">[transforms</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">ToTensor(),</span>
+     <span style="color: #f8f8f2">transforms</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">Normalize((</span><span style="color: #ae81ff">0.5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.5</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">(</span><span style="color: #ae81ff">0.5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.5</span><span style="color: #f8f8f2">))])</span>
+<span style="color: #75715e"># CIFAR10 데이터셋 로딩 및 변환</span>
+<span style="color: #f8f8f2">trainset</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torchvision</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">datasets</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">CIFAR10(root</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;./data&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">train</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">True,</span>
+                                        <span style="color: #f8f8f2">download</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">True,</span> <span style="color: #f8f8f2">transform</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">transform)</span>
+<span style="color: #75715e"># 미니배치 처리를 위한 데이터로더 생성</span>
+<span style="color: #f8f8f2">trainloader</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">utils</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">data</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">DataLoader(trainset,</span> <span style="color: #f8f8f2">batch_size</span><span style="color: #f92672">=</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span>
+                                          <span style="color: #f8f8f2">shuffle</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">True,</span> <span style="color: #f8f8f2">num_workers</span><span style="color: #f92672">=</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">dataiter</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">iter(trainloader)</span>
+<span style="color: #75715e">#첫번째 그룹 4개 이미지 데이터 획득</span>
+<span style="color: #f8f8f2">train,</span> <span style="color: #f8f8f2">label</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">dataiter</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">next()</span>
+<span style="color: #75715e"># 첫번째 4개 이미지의 데이터 Shape 확인</span>
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(train</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">shape)</span>
+</pre></div>
+
 <blockquote>
 <p>출력:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">torch<span style="color:#f92672">.</span>Size([<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">32</span>])</code></pre></div></blockquote>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">Size([</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">32</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">32</span><span style="color: #f8f8f2">])</span>
+</pre></div>
+</blockquote>
 
 <p>위 코드로 데이터의 첫 번째 그룹을 획득하고, 데이터의 Shape을 확인했습니다. 획득한 데이터의 Shape은 [4, 3, 32, 32]입니다.</p>
 
@@ -326,7 +343,7 @@ train_t.shape
 
 <p>텐서의 전치는 행렬의 위치를 나타내는 인덱스 순열 중 하나의 기준으로 요소의 위치를 변경하는 일련의 과정입니다.</p>
 
-<p>&lt;그림 4&gt;의 2차원 행렬에서 요소의 위치를 나타내는 인덱스는 i와 j였습니다. i와 j의 순열은 총 2가지이며, 현재 인덱스 형태를 제외하면 1개만 남습니다.<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> 즉 전치에 따른 요소 이동의 기준은 (j, i) 1개 뿐입니다. 행렬의 전치의 기준이 되는 인덱스 형태는 (j, i) 1개뿐입니다. 결과적으로 2차원 행렬의 전치는 i와 j를 뒤바꾼 (j, i)를 기준으로 요소의 위치를 변경하는 것이 전부입니다.</p>
+<p>&lt;그림 4&gt;의 2차원 행렬에서 요소의 위치를 나타내는 인덱스는 i와 j였습니다. i와 j의 순열은 총 2가지이며, 현재 인덱스 형태를 제외하면 1개만 남습니다.<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup> 즉 전치에 따른 요소 이동의 기준은 (j, i) 1개 뿐입니다. 행렬의 전치의 기준이 되는 인덱스 형태는 (j, i) 1개뿐입니다. 결과적으로 2차원 행렬의 전치는 i와 j를 뒤바꾼 (j, i)를 기준으로 요소의 위치를 변경하는 것이 전부입니다.</p>
 
 <p>3차원 텐서부터는 전치가 간단하지 않습니다. 3차원 텐서의 경우 요소의 위치를 결정하는 인덱스는 i, j, k 3개로 구성됩니다. 3개 인덱스의 순열 수는 총 (3!)입니다. 즉 순열 수는 총 6개이며, 현재 인덱스를 제외하면 5가지 유형의 인덱스가 만들어집니다. 현재 (i, j, k)를 제외하고 (i, k, j), (j, i, k), (j, k, i), (k, i, j), (k, j, i) 5개의 인덱스 형태를 기준으로 3차원 텐서는 전치할 수 있습니다.</p>
 
@@ -359,14 +376,18 @@ train_t.shape
 <p>&lt;그림 5&gt;는 3차원 텐서를 준비하는 과정입니다. 12개의 요소로 Shape이 (2, 2, 3)인 3차원 텐서를 준비했습니다.</p>
 
 <p>다차원 텐서의 전치는 numpy.transpose 함수로 처리됩니다. transpose 함수는 2개의 입력 파라미터를 취합니다. 첫 번째 파라미터는 전치할 대상 텐서 객체를 취하고, 두 번째 파라미터로는 전치의 기준이 되는 axis입니다. axis에는 튜플 형태로 전치의 기준을 설정합니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">np<span style="color:#f92672">.</span>transpose(a, axes<span style="color:#f92672">=</span>None)</code></pre></div>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">np</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">transpose(a,</span> <span style="color: #f8f8f2">axes</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">None)</span>
+</pre></div>
+
 <p>axis에는 두 가지 의미가 있습니다. 하나는 입력된 텐서(a)의 Shape을 변경하는 기준이며, 두 번째는 입력 텐서의 요소를 어떤 기준으로 이동시킬지를 결정하는 기준입니다. n 차원 텐서는 n개의 인덱스를 갖고 있습니다. n개의 인덱스를 순서대로 숫자로 지정했습니다. 첫 번째 인덱스는 0이고, 두 번째 인덱스는 1입니다. 마지막 n번째 인덱스는 (n-1)이 됩니다.</p>
 
 <h3 id="shape-변환">Shape 변환</h3>
 
 <p>Shape이 (2, 2, 3)인 텐서를 (1, 2, 0)으로 전치(Transpose)하면 새로운 텐서의 Shape은 (2, 3, 2) 형태로 변경됩니다. 0은 첫 번째 shape(a.shape[0]), 1은 두 번째 shape(a.shape<a href="1" title="n차원의 텐서에서 변경 가능한 순열의 수는 (n!-1)개 입니다. 
 ">1</a>), 2는 세 번째 shape(a.shape[2])를 나타냅니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">np<span style="color:#f92672">.</span>transpose(a, axes<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0</span>))</code></pre></div>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">np</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">transpose(a,</span> <span style="color: #f8f8f2">axes</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">))</span>
+</pre></div>
+
 <p>위 코드는 a 텐서의 shape은 <code>(a.shape[0], a.shape[1], a.shape[2])</code> 입니다. 이 shape을 axes 기준에 따라 (a.shape<a href="1" title="n차원의 텐서에서 변경 가능한 순열의 수는 (n!-1)개 입니다. 
 ">1</a>, a.shape[2], a.shape[0])으로 변환합니다.</p>
 
@@ -449,19 +470,21 @@ train_t.shape
 <h2 id="np-tranpose-함수의-axis-설정이-이해">np.tranpose 함수의 axis 설정이 이해</h2>
 
 <p>다음은 CIFAR10 데이터 셋을  Pytorch로 로딩한 후, 첫 번째 데이터에 대한 Shape을 확인하느 코드입니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># CIFAR10 데이터셋 로딩 및 변환</span>
-trainset <span style="color:#f92672">=</span> torchvision<span style="color:#f92672">.</span>datasets<span style="color:#f92672">.</span>CIFAR10(root<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;./data&#39;</span>, 
-    train<span style="color:#f92672">=</span>True, download<span style="color:#f92672">=</span>True, transform<span style="color:#f92672">=</span>transform)
-<span style="color:#75715e"># 미니배치 처리를 위한 데이터로더 생성</span>
-trainloader <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>DataLoader(trainset,    
-    batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>, shuffle<span style="color:#f92672">=</span>True, num_workers<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
-dataiter <span style="color:#f92672">=</span> iter(trainloader)
-<span style="color:#75715e">#첫번째 그룹 4개 이미지 데이터 획득</span>
-train, label <span style="color:#f92672">=</span> dataiter<span style="color:#f92672">.</span>next()
-<span style="color:#75715e"># 첫번째 4개 이미지의 데이터 Shape 확인</span>
-dataiter <span style="color:#f92672">=</span> iter(trainloader)
-train, test <span style="color:#f92672">=</span> dataiter<span style="color:#f92672">.</span>next()
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;trains의 Shape: {}&#39;</span><span style="color:#f92672">.</span>format(train<span style="color:#f92672">.</span>shape))</code></pre></div>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e"># CIFAR10 데이터셋 로딩 및 변환</span>
+<span style="color: #f8f8f2">trainset</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torchvision</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">datasets</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">CIFAR10(root</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;./data&#39;</span><span style="color: #f8f8f2">,</span> 
+    <span style="color: #f8f8f2">train</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">True,</span> <span style="color: #f8f8f2">download</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">True,</span> <span style="color: #f8f8f2">transform</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">transform)</span>
+<span style="color: #75715e"># 미니배치 처리를 위한 데이터로더 생성</span>
+<span style="color: #f8f8f2">trainloader</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">utils</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">data</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">DataLoader(trainset,</span>    
+    <span style="color: #f8f8f2">batch_size</span><span style="color: #f92672">=</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">shuffle</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">True,</span> <span style="color: #f8f8f2">num_workers</span><span style="color: #f92672">=</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">dataiter</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">iter(trainloader)</span>
+<span style="color: #75715e">#첫번째 그룹 4개 이미지 데이터 획득</span>
+<span style="color: #f8f8f2">train,</span> <span style="color: #f8f8f2">label</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">dataiter</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">next()</span>
+<span style="color: #75715e"># 첫번째 4개 이미지의 데이터 Shape 확인</span>
+<span style="color: #f8f8f2">dataiter</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">iter(trainloader)</span>
+<span style="color: #f8f8f2">train,</span> <span style="color: #f8f8f2">test</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">dataiter</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">next()</span>
+<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;trains의 Shape: {}&#39;</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">format(train</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">shape))</span>
+</pre></div>
+
 <blockquote>
 <p>출력:</p>
 
@@ -636,10 +659,6 @@ train_t.shape
 							brew로 GraalVM설치</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/" title="Graalvms">
-							Graalvms</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201908w1/" title="GraalVM 새소식#2(201908, 첫 째주)">
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
@@ -656,20 +675,24 @@ train_t.shape
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/book/" title="Books">
-							Books</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/cloud/" title="Clouds">
-							Clouds</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
 							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
+							GraalVM 관련 코너를 새로 시작합니다.</a>
 		  </li>
 		</ul>
 	</div>
@@ -772,17 +795,14 @@ train_t.shape
 	});
 </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-72835175-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 

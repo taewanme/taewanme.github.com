@@ -11,13 +11,26 @@
 
 <title>Oracle Storage Cloud Service 활성화</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.58.1" />
+<meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="Oracle Storage Cloud Service 활성화" />
 <meta property="og:description" content="오라클 클라우드 계정을 생성한 후 Oracle Storage Cloud Service의 기본 복제 정책을 설정해야 합닏. " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/cloud/objest-storage-replication/" />
-<meta property="article:published_time" content="2017-03-06T08:54:32+09:00" />
-<meta property="article:modified_time" content="2017-03-06T08:54:32+09:00" />
+
+
+
+<meta property="article:published_time" content="2017-03-06T08:54:32&#43;09:00"/>
+<meta property="article:modified_time" content="2017-03-06T08:54:32&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -193,7 +206,7 @@ Storage Cloud 복제 정책을 설정한다는 것은 Storage Cloud 서비스를
 
 <p>데이터는 Primary DC와 Georeplication DC에 모두 데이터가 저장됩니다. 모든 요청은 Global Namespace URL에 요청되고,
 데이터 저장 요청은 Primary DC에 전달됩니다. 저장된 데이터는 비동기 적으로 Georeplication DC에 저장됩니다.
-Primary DC와 Georeplication DC의 데이터 동기화는 Eventual Consistency<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>입니다.</p>
+Primary DC와 Georeplication DC의 데이터 동기화는 Eventual Consistency<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>입니다.</p>
 
 <p>Primary DC에 장애가 발생하면 쓰기 요청에 대해서는 403 에러가 발생하지만, 읽기 요청은 Georeplication DC에서 처리되어 정상적으로 처리 됩니다. Primary DC가 복구되면 Global Namespace URL은 쓰기 요청을 다시 Primary DC에 전달하고 정상적으로 처리됩니다.</p>
 
@@ -388,10 +401,6 @@ Primary DC는 계정이 사용하는 데이터 센터와 같은 DC를 선택하�
 							brew로 GraalVM설치</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/" title="Graalvms">
-							Graalvms</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201908w1/" title="GraalVM 새소식#2(201908, 첫 째주)">
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
@@ -408,20 +417,24 @@ Primary DC는 계정이 사용하는 데이터 센터와 같은 DC를 선택하�
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/book/" title="Books">
-							Books</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/cloud/" title="Clouds">
-							Clouds</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
 							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
+							GraalVM 관련 코너를 새로 시작합니다.</a>
 		  </li>
 		</ul>
 	</div>
@@ -524,17 +537,14 @@ Primary DC는 계정이 사용하는 데이터 센터와 같은 DC를 선택하�
 	});
 </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-72835175-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 

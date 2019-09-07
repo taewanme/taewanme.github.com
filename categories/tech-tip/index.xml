@@ -53,7 +53,7 @@ SSH 프로토콜에 대한 자세한 내용은 다음 문서를 참조하시기 
       <guid>http://taewan.kim/post/markdown/</guid>
       <description>taewan.kim은 대부분의 내용을 markdown으로 관리하고 있습니다. markdown은 직관적이고 간단한 문법으로 컨텐츠 관리에 매우 효과적입니다. markdown에서 주로 이용되는 테그는 15개정도 입니다. 혼동되는 주요 테그를 정리하겠습니다.
  목차   헤더 수평선 텍스트 출력 텍스트 강조 인용 목록 코드 테이블 링크 이미지 주석 각주   헤더  (top) H1 ~ H6까지 테그를 #으로 표현
-# 헤더 스타일 (h1) ## 헤더 스타일 (h2) ### 헤더 스타일 (h3) #### 헤더 스타일 (h4) ##### 헤더 스타일 (h5) ###### 헤더 스타일 (h6)   출력 결과  헤더 스타일 (h1) 헤더 스타일 (h2) 헤더 스타일 (h3) 헤더 스타일 (h4) 헤더 스타일 (h5) 헤더 스타일 (h6)  효과: 다음과 같은 코드와 동일한 결과가 됨</description>
+# 헤더 스타일 (h1) ## 헤더 스타일 (h2) ### 헤더 스타일 (h3) #### 헤더 스타일 (h4) ##### 헤더 스타일 (h5) ###### 헤더 스타일 (h6)   출력 결과  헤더 스타일 (h1) 헤더 스타일 (h2) 헤더 스타일 (h3) 헤더 스타일 (h4) 헤더 스타일 (h5) 헤더 스타일 (h6)  효과: 다음과 같은 코드와 동일한 결과가 됨  &amp;lt;h1&amp;gt;헤더 스타일 (h1)&amp;lt;/h1&amp;gt; &amp;lt;h2&amp;gt;헤더 스타일 (h2)&amp;lt;/h2&amp;gt; &amp;lt;h3&amp;gt;헤더 스타일 (h3)&amp;lt;/h3&amp;gt; &amp;lt;h4&amp;gt;헤더 스타일 (h4)&amp;lt;/h4&amp;gt; &amp;lt;h5&amp;gt;헤더 스타일 (h5)&amp;lt;/h5&amp;gt; &amp;lt;h6&amp;gt;헤더 스타일 (h6)&amp;lt;/h6&amp;gt;  수평선  (top)  &amp;lt;hr /&amp;gt;와 동일한 결과를 출력 &amp;rsquo;-&amp;lsquo;, &amp;lsquo;*&amp;lsquo;, &amp;lsquo;_&amp;lsquo;을 세개 이상 나열하면 수평선을 만듦 단락 나누기 용도로 많이 사용.</description>
     </item>
     
     <item>
@@ -153,7 +153,7 @@ Log4J를 사용하면 OutputStream에서 발생하는 자원독점 문제 해결
       <description>2011년 8월 1일에 devtainer.blogspot.kr 에서 섰던 글입니다. 추억 팔이로 옮겨 놓습니다. 2011년 추억 속으로&amp;hellip;. - 원문: http://devtainer.blogspot.kr/2011/08/tomcat-50-70.html
 한동안 Tomcat을 사용하지 않다가 오랜만에 사용했더니 인코딩 관련 착각을 해서 한참을 삽질 했습니다. 한글 인코딩에 대하여 간략하게 정리합니다.
 톰켓의 기본 인코딩은 ISO-8859-1 입니다. 따라서 한글을 정상적으로 처리하기 위해서는 추가적인 인코딩 설정이 필요합니다. 인코딩 설정은 http get 메서드와 http post 메서드를 개별적으로 설정합니다.
-HTTP Get 메서드 인코등 설정  [TOMCAT_HOME]/conf/server.xml 수정 Connector port=&amp;ldquo;8080&amp;rdquo; 엘레먼트에 URIEncoding=&amp;ldquo;UTF-8&amp;rdquo; 속성 추가</description>
+HTTP Get 메서드 인코등 설정  [TOMCAT_HOME]/conf/server.xml 수정 Connector port=&amp;ldquo;8080&amp;rdquo; 엘레먼트에 URIEncoding=&amp;ldquo;UTF-8&amp;rdquo; 속성 추가  &amp;lt;connector port=&amp;quot;8080&amp;quot; protocol=&amp;quot;HTTP/1.</description>
     </item>
     
     <item>

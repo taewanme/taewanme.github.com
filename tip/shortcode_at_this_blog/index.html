@@ -11,13 +11,26 @@
 
 <title>블로그 적용 hugo의 shortcode 정리</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.58.1" />
+<meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="블로그 적용 hugo의 shortcode 정리" />
 <meta property="og:description" content="http://taewan.kim에 적용된 hugo의 shortcode 유형을 정리합니다. " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/tip/shortcode_at_this_blog/" />
-<meta property="article:published_time" content="2017-05-28T21:28:14+09:00" />
-<meta property="article:modified_time" content="2017-05-28T21:28:14+09:00" />
+
+
+
+<meta property="article:published_time" content="2017-05-28T21:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2017-05-28T21:28:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -113,38 +126,39 @@
 
 <ul>
 <li><hubo_blog_home>/layouts/shortcodes/img.html 파일에 저장됩니다.</li>
-
-<li><p>코드는 다음과 같습니다.</p>
+<li>코드는 다음과 같습니다.<br /></li>
+</ul>
 
 <pre><code>&lt;!-- image --&gt;
 &lt;blockquote id=&quot;img&quot;&gt;
 &lt;figure {{ with .Get &quot;class&quot; }}class=&quot;{{.}}&quot;{{ end }}&gt;
-{{ with .Get &quot;link&quot;}}&lt;a href=&quot;{{.}}&quot;&gt;{{ end }}
-    &lt;img src=&quot;{{ .Get &quot;src&quot; }}&quot; {{ if or (.Get &quot;alt&quot;) (.Get &quot;caption&quot;) }}alt=&quot;{{ with .Get &quot;alt&quot;}}{{.}}{{else}}{{ .Get &quot;caption&quot; }}{{ end }}&quot;{{ end }} style=&quot;border:2px solid black&quot;/&gt;
-{{ if .Get &quot;link&quot;}}&lt;/a&gt;{{ end }}
-{{ if or (or (.Get &quot;title&quot;) (.Get &quot;caption&quot;)) (.Get &quot;attr&quot;)}}
-&lt;figcaption&gt;{{ if isset .Params &quot;title&quot; }}
-    &lt;strong&gt;{{ .Get &quot;title&quot; }}&lt;/strong&gt;:{{ end }}
-    {{ if or (.Get &quot;caption&quot;) (.Get &quot;attr&quot;)}}
-    {{ .Get &quot;caption&quot; }}
-    {{ with .Get &quot;attrlink&quot;}}&lt;a href=&quot;{{.}}&quot;&gt; {{ end }}
-        {{ .Get &quot;attr&quot; }}
-    {{ if .Get &quot;attrlink&quot;}}&lt;/a&gt; {{ end }}
+    {{ with .Get &quot;link&quot;}}&lt;a href=&quot;{{.}}&quot;&gt;{{ end }}
+        &lt;img src=&quot;{{ .Get &quot;src&quot; }}&quot; {{ if or (.Get &quot;alt&quot;) (.Get &quot;caption&quot;) }}alt=&quot;{{ with .Get &quot;alt&quot;}}{{.}}{{else}}{{ .Get &quot;caption&quot; }}{{ end }}&quot;{{ end }} style=&quot;border:2px solid black&quot;/&gt;
+    {{ if .Get &quot;link&quot;}}&lt;/a&gt;{{ end }}
+    {{ if or (or (.Get &quot;title&quot;) (.Get &quot;caption&quot;)) (.Get &quot;attr&quot;)}}
+    &lt;figcaption&gt;{{ if isset .Params &quot;title&quot; }}
+        &lt;strong&gt;{{ .Get &quot;title&quot; }}&lt;/strong&gt;:{{ end }}
+        {{ if or (.Get &quot;caption&quot;) (.Get &quot;attr&quot;)}}
+        {{ .Get &quot;caption&quot; }}
+        {{ with .Get &quot;attrlink&quot;}}&lt;a href=&quot;{{.}}&quot;&gt; {{ end }}
+            {{ .Get &quot;attr&quot; }}
+        {{ if .Get &quot;attrlink&quot;}}&lt;/a&gt; {{ end }}
+        {{ end }}
+    &lt;/figcaption&gt;
     {{ end }}
-&lt;/figcaption&gt;
-{{ end }}
 &lt;/figure&gt;
 &lt;/blockquote&gt;
 &lt;!-- image --&gt;
-</code></pre></li>
+</code></pre>
 
-<li><p>사용예</p>
+<ul>
+<li>사용예</li>
+</ul>
 
 <pre><code>{ {&lt; img src=&quot;https://taewanmerepo.github.io/2018/01/cnn/filter.jpg&quot;
 title=&quot;그림 4&quot;
 caption=&quot;Feature Map 과정&quot; &gt;} }
-</code></pre></li>
-</ul>
+</code></pre>
 
 <p>위 사용예에서 앞뒤의 연속된 두 Curly bracket({ 혹은 }) 사이에는 공백이 없어야 합니다. 블로그 템플릿의 제약으로 의도적으로 공백을 추가한 것입니다.</p>
 
@@ -178,19 +192,20 @@ caption=&quot;Feature Map 과정&quot; &gt;} }
 
 <ul>
 <li><hubo_blog_home>/layouts/shortcodes/extlink.html 파일에 저장됩니다.</li>
-
-<li><p>코드는 다음과 같습니다.</p>
+<li>코드는 다음과 같습니다.</li>
+</ul>
 
 <pre><code>&lt;a href=&quot;{{ .Get &quot;link&quot; }}&quot; target=&quot;_blank&quot;&gt;{{ .Get &quot;desc&quot; }}&lt;/a&gt;
-</code></pre></li>
+</code></pre>
 
-<li><p>사용예</p>
+<ul>
+<li>사용예</li>
+</ul>
 
 <pre><code>{ {&lt; extlink
-link=&quot;https://docs.oracle.com/en/cloud/iaas/compute-iaas-cloud/stnew/whats-new-oracle-cloud-infrastructure-compute-classic.html&quot;
-desc=&quot;Compute Classic: 기능 업데이트 목록&quot;&gt;} }
-</code></pre></li>
-</ul>
+  link=&quot;https://docs.oracle.com/en/cloud/iaas/compute-iaas-cloud/stnew/whats-new-oracle-cloud-infrastructure-compute-classic.html&quot;
+  desc=&quot;Compute Classic: 기능 업데이트 목록&quot;&gt;} }
+</code></pre>
 
 <p>위 사용예에서 앞뒤의 연속된 두 Curly bracket({ 혹은 }) 사이에는 공백이 없어야 합니다. 블로그 템플릿의 제약으로 의도적으로 공백을 추가한 것입니다.</p>
 
@@ -205,27 +220,28 @@ desc=&quot;Compute Classic: 기능 업데이트 목록&quot;&gt;} }
 
 <ul>
 <li><hubo_blog_home>/layouts/shortcodes/notice.html 파일에 저장됩니다.</li>
-
-<li><p>코드는 다음과 같습니다.</p>
+<li>코드는 다음과 같습니다.</li>
+</ul>
 
 <pre><code>&lt;div class=&quot;notices {{ .Get 0 }}&quot; {{ if len .Params | eq 2 }} id=&quot;{{ .Get 1 }}&quot; {{ end }}&gt;{{ .Inner }}&lt;/div&gt;
-</code></pre></li>
+</code></pre>
 
-<li><p>사용예</p>
+<ul>
+<li>사용예</li>
+</ul>
 
 <pre><code>{ {% notice note %} }
 이 문서에서 다루는 내용은 작성자의 개인적인 의견이며, 오라클의 공식적인 입장과 다를 수 있습니다.
 { {% /notice %} }
-</code></pre></li>
-</ul>
+</code></pre>
 
 <p>위 사용예에서 앞뒤의 연속된 두 Curly bracket({ 혹은 }) 사이에는 공백이 없어야 합니다. 블로그 템플릿의 제약으로 의도적으로 공백을 추가한 것입니다.</p>
 
 <p>위 코드는 다음과 같이 출력됩니다.</p>
 
-<div class="notices note" >
-이 문서에서 다루는 내용은 작성자의 개인적인 의견이며, 오라클의 공식적인 입장과 다를 수 있습니다.
+<div class="notices note" ><p>이 문서에서 다루는 내용은 작성자의 개인적인 의견이며, 오라클의 공식적인 입장과 다를 수 있습니다.</p>
 </div>
+
 
 		</div>
 		
@@ -324,10 +340,6 @@ desc=&quot;Compute Classic: 기능 업데이트 목록&quot;&gt;} }
 							brew로 GraalVM설치</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/" title="Graalvms">
-							Graalvms</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201908w1/" title="GraalVM 새소식#2(201908, 첫 째주)">
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
@@ -344,20 +356,24 @@ desc=&quot;Compute Classic: 기능 업데이트 목록&quot;&gt;} }
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/book/" title="Books">
-							Books</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/cloud/" title="Clouds">
-							Clouds</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
 							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
+							GraalVM 관련 코너를 새로 시작합니다.</a>
 		  </li>
 		</ul>
 	</div>
@@ -460,17 +476,14 @@ desc=&quot;Compute Classic: 기능 업데이트 목록&quot;&gt;} }
 	});
 </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-72835175-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 

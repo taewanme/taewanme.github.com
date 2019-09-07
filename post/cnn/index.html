@@ -11,13 +11,26 @@
 
 <title>CNN, Convolutional Neural Network 요약</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.58.1" />
+<meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="CNN, Convolutional Neural Network 요약" />
 <meta property="og:description" content="Convolutional Neural Network, CNN을 정리합니다. " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/post/cnn/" />
-<meta property="article:published_time" content="2018-01-04T21:28:14+09:00" />
-<meta property="article:modified_time" content="2018-01-04T21:28:14+09:00" />
+
+
+
+<meta property="article:published_time" content="2018-01-04T21:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2018-01-04T21:28:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -116,7 +129,7 @@
 			</figure>
 			
 
-<p>Fully Connected Layer<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> 만으로 구성된 인공 신경망의 입력 데이터는 1차원(배열) 형태로 한정됩니다.
+<p>Fully Connected Layer<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup> 만으로 구성된 인공 신경망의 입력 데이터는 1차원(배열) 형태로 한정됩니다.
 한 장의 컬러 사진은 3차원 데이터입니다. 배치 모드에 사용되는 여러장의 사진은 4차원 데이터입니다.
 사진 데이터로 전연결(FC, Fully Connected) 신경망을 학습시켜야 할 경우에, 3차원 사진 데이터를 1차원으로 평면화시켜야 합니다.
 사진 데이터를 평면화 시키는 과정에서 공간 정보가 손실될 수밖에 없습니다.
@@ -133,7 +146,7 @@
 <li>필터를 공유 파라미터로 사용하기 때문에, 일반 인공 신경망과 비교하여 학습 파라미터가 매우 적음</li>
 </ul>
 
-<p>CNN은 위 이미지와 같이 이미지의 특징을 추출하는 부분과 클래스를 분류하는 부분으로 나눌 수 있습니다. 특징 추출 영역은 Convolution Layer와 Pooling Layer를 여러 겹 쌓는 형태로 구성됩니다.<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup> Convolution Layer는 입력 데이터에 필터를 적용 후 활성화 함수를 반영하는 필수 요소입니다. Convolution Layer 다음에 위치하는 Pooling Layer는 선택적인 레이어입니다. CNN 마지막 부분에는 이미지 분류를 위한 Fully Connected 레이어가 추가됩니다. 이미지의 특징을 추출하는 부분과 이미지를 분류하는 부분 사이에 이미지 형태의 데이터를 배열 형태로 만드는 Flatten 레이어가 위치 합니다.</p>
+<p>CNN은 위 이미지와 같이 이미지의 특징을 추출하는 부분과 클래스를 분류하는 부분으로 나눌 수 있습니다. 특징 추출 영역은 Convolution Layer와 Pooling Layer를 여러 겹 쌓는 형태로 구성됩니다.<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup> Convolution Layer는 입력 데이터에 필터를 적용 후 활성화 함수를 반영하는 필수 요소입니다. Convolution Layer 다음에 위치하는 Pooling Layer는 선택적인 레이어입니다. CNN 마지막 부분에는 이미지 분류를 위한 Fully Connected 레이어가 추가됩니다. 이미지의 특징을 추출하는 부분과 이미지를 분류하는 부분 사이에 이미지 형태의 데이터를 배열 형태로 만드는 Flatten 레이어가 위치 합니다.</p>
 
 <p>CNN은 이미지 특징 추출을 위하여 &lt;그림1&gt;과 같이 입력데이터를 필터가 순회하며 합성곱을 계산하고, 그 계산 결과를 이용하여 Feature map을 만듭니다. Convolution Layer는 Filter 크기, Stride, Padding 적용 여부, Max Pooling 크기에 따라서 출력 데이터의 Shape이 변경됩니다.</p>
 
@@ -190,7 +203,7 @@
 
 <h3 id="1-2-채널-channel">1.2 채널, Channel</h3>
 
-<p>이미지 픽셀 하나하나는 실수입니다. 컬러 사진은 천연색을 표현하기 위해서, 각 픽셀을 RGB 3개의 실수로 표현한 3차원 데이터입니다.(&lt;그림 2&gt; 참조) 컬러 이미지는 3개의 채널로 구성됩니다. 반면에 흑백 명암만을 표현하는 흑백 사진은 2차원 데이터로 1개 채널로 구성됩니다. 높이가 39 픽셀이고 폭이 31 픽셀인 컬러 사진 데이터의 shape은 (39, 31, 3)<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup>으로 표현합니다. 반면에 높이가 39픽셀이고 폭이 31픽셀인 흑백 사진 데이터의 shape은 (39, 31, 1)입니다.</p>
+<p>이미지 픽셀 하나하나는 실수입니다. 컬러 사진은 천연색을 표현하기 위해서, 각 픽셀을 RGB 3개의 실수로 표현한 3차원 데이터입니다.(&lt;그림 2&gt; 참조) 컬러 이미지는 3개의 채널로 구성됩니다. 반면에 흑백 명암만을 표현하는 흑백 사진은 2차원 데이터로 1개 채널로 구성됩니다. 높이가 39 픽셀이고 폭이 31 픽셀인 컬러 사진 데이터의 shape은 (39, 31, 3)<sup class="footnote-ref" id="fnref:3"><a rel="footnote" href="#fn:3">3</a></sup>으로 표현합니다. 반면에 높이가 39픽셀이고 폭이 31픽셀인 흑백 사진 데이터의 shape은 (39, 31, 1)입니다.</p>
 
 
 <blockquote id="img">
@@ -447,22 +460,24 @@ Fully Connected Layer를 구성하고 마지막 출력층에 Softmax를 적용�
 
 <blockquote>
 <p>코드 1. CNN 모델 예제 코드 (Keras)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> keras.models <span style="color:#f92672">import</span> Sequential
-<span style="color:#f92672">from</span> keras.layers.convolutional <span style="color:#f92672">import</span> Conv2D
-<span style="color:#f92672">from</span> keras.layers.convolutional <span style="color:#f92672">import</span> MaxPooling2D
-<span style="color:#f92672">from</span> keras.layers <span style="color:#f92672">import</span> Dense
-<span style="color:#f92672">from</span> keras.layers <span style="color:#f92672">import</span> Flatten
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">from</span> <span style="color: #f8f8f2">keras.models</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">Sequential</span>
+<span style="color: #f92672">from</span> <span style="color: #f8f8f2">keras.layers.convolutional</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">Conv2D</span>
+<span style="color: #f92672">from</span> <span style="color: #f8f8f2">keras.layers.convolutional</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">MaxPooling2D</span>
+<span style="color: #f92672">from</span> <span style="color: #f8f8f2">keras.layers</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">Dense</span>
+<span style="color: #f92672">from</span> <span style="color: #f8f8f2">keras.layers</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">Flatten</span>
 
-model <span style="color:#f92672">=</span> Sequential()
-model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">12</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">5</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>, input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">120</span>, <span style="color:#ae81ff">60</span>, <span style="color:#ae81ff">1</span>)))
-model<span style="color:#f92672">.</span>add(MaxPooling2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)))
-model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">16</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">5</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
-model<span style="color:#f92672">.</span>add(MaxPooling2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)))
-model<span style="color:#f92672">.</span>add(Conv2D(<span style="color:#ae81ff">20</span>, kernel_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
-model<span style="color:#f92672">.</span>add(MaxPooling2D(pool_size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)))
-model<span style="color:#f92672">.</span>add(Flatten())
-model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">128</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
-model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">4</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;softmax&#39;</span>))</code></pre></div></blockquote>
+<span style="color: #f8f8f2">model</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">Sequential()</span>
+<span style="color: #f8f8f2">model</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add(Conv2D(</span><span style="color: #ae81ff">12</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">kernel_size</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">activation</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;relu&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">input_shape</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">120</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">60</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)))</span>
+<span style="color: #f8f8f2">model</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add(MaxPooling2D(pool_size</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">)))</span>
+<span style="color: #f8f8f2">model</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add(Conv2D(</span><span style="color: #ae81ff">16</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">kernel_size</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">activation</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;relu&#39;</span><span style="color: #f8f8f2">))</span>
+<span style="color: #f8f8f2">model</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add(MaxPooling2D(pool_size</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">)))</span>
+<span style="color: #f8f8f2">model</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add(Conv2D(</span><span style="color: #ae81ff">20</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">kernel_size</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">activation</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;relu&#39;</span><span style="color: #f8f8f2">))</span>
+<span style="color: #f8f8f2">model</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add(MaxPooling2D(pool_size</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">)))</span>
+<span style="color: #f8f8f2">model</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add(Flatten())</span>
+<span style="color: #f8f8f2">model</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add(Dense(</span><span style="color: #ae81ff">128</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">activation</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;relu&#39;</span><span style="color: #f8f8f2">))</span>
+<span style="color: #f8f8f2">model</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add(Dense(</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">activation</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;softmax&#39;</span><span style="color: #f8f8f2">))</span>
+</pre></div>
+</blockquote>
 
 <h2 id="4-cnn-입출력-파리미터-계산">4. CNN 입출력, 파리미터 계산</h2>
 
@@ -580,7 +595,7 @@ model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">4
 </tbody>
 </table>
 
-<p>컨볼루션 레이어의 학습 파라미터 수는 &ldquo;$ 입력채널수 X 필터폭 X 필터높이 X 출력채널수 $&ldquo;로 계산됩니다.<sup class="footnote-ref" id="fnref:4"><a href="#fn:4">4</a></sup></p>
+<p>컨볼루션 레이어의 학습 파라미터 수는 &ldquo;$ 입력채널수 X 필터폭 X 필터높이 X 출력채널수 $&ldquo;로 계산됩니다.<sup class="footnote-ref" id="fnref:4"><a rel="footnote" href="#fn:4">4</a></sup></p>
 
 <h3 id="4-1-layer-1의-shape과-파라미터">4.1 Layer 1의 Shape과 파라미터</h3>
 
@@ -1299,10 +1314,6 @@ CNN은 Fully Connected Neural Network과 비교하여 다음과 같은 특징을
 							brew로 GraalVM설치</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/" title="Graalvms">
-							Graalvms</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201908w1/" title="GraalVM 새소식#2(201908, 첫 째주)">
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
@@ -1319,20 +1330,24 @@ CNN은 Fully Connected Neural Network과 비교하여 다음과 같은 특징을
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/book/" title="Books">
-							Books</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/cloud/" title="Clouds">
-							Clouds</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
 							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
+							GraalVM 관련 코너를 새로 시작합니다.</a>
 		  </li>
 		</ul>
 	</div>
@@ -1435,17 +1450,14 @@ CNN은 Fully Connected Neural Network과 비교하여 다음과 같은 특징을
 	});
 </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-72835175-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 

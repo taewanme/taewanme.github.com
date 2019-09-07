@@ -11,13 +11,26 @@
 
 <title>우분투 17.04 가상머신 만들기</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.58.1" />
+<meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="우분투 17.04 가상머신 만들기" />
 <meta property="og:description" content="오라클 클라우드의 Compute 서비스는 최근에 업그레이드가 적용되었고, 가상 머신 인스턴스를 UI가 일정부분 변경되었습니다. 변경된 UI상에서 가상머신을 생성하는 방법에 대하여 알아보겠습니다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/cloud/compute_instance/" />
-<meta property="article:published_time" content="2017-05-02T11:59:47+09:00" />
-<meta property="article:modified_time" content="2017-05-02T11:59:47+09:00" />
+
+
+
+<meta property="article:published_time" content="2017-05-02T11:59:47&#43;09:00"/>
+<meta property="article:modified_time" content="2017-05-02T11:59:47&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -112,7 +125,7 @@
 		<div class="post__content clearfix">
 			
 
-<p>2017년 04월 오라클 클라우드 Compute Service에는 17.1.2 버전<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>이 적용되었습니다.
+<p>2017년 04월 오라클 클라우드 Compute Service에는 17.1.2 버전<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>이 적용되었습니다.
 17.1.2 버전에는 네트워크 구성에 대한 새로운 기능이 추가되었습니다.
 기존의 Shared Network와 별개로 IPNetwork를 이용하여 서브넷을 구성할 수 있습니다.
 새로운 기능 추가와 함께, 가상머신을 만드는 UI와 가상머신을 생성하는 오케스트레이션에 변경된 부분이 있습니다.</p>
@@ -456,7 +469,7 @@ Ubuntu_17_04_amd64에 설정된 공개 IP는 129.144.12.116입니다.</p>
 <p>본 문서에서는 SSH 보안 접근을 처리하는 부분만을 설명하겠습니다. 보안 설정에 대한 정의와 의미는 별도 문서로 다루겠습니다.</p>
 
 <p>Compute CS의 서비스 콘솔 메인 페이지에서 <code>Network</code> 탭을 클릭하고 왼쪽 메뉴 중에 <code>Security Rule</code>을 클릭한 후,
-Security Rule 페이지에서 <code>Create Security Rule</code><sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>을 클릭하여 보안 룰을 생성합니다.</p>
+Security Rule 페이지에서 <code>Create Security Rule</code><sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup>을 클릭하여 보안 룰을 생성합니다.</p>
 
 <ul>
 <li>그림 22. Security Rule 생성 시작
@@ -744,10 +757,6 @@ Orchestration 종료 방법을 살펴보았습니다.</p>
 							brew로 GraalVM설치</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/" title="Graalvms">
-							Graalvms</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201908w1/" title="GraalVM 새소식#2(201908, 첫 째주)">
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
@@ -764,20 +773,24 @@ Orchestration 종료 방법을 살펴보았습니다.</p>
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/book/" title="Books">
-							Books</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/cloud/" title="Clouds">
-							Clouds</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
 							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
+							GraalVM 관련 코너를 새로 시작합니다.</a>
 		  </li>
 		</ul>
 	</div>
@@ -880,17 +893,14 @@ Orchestration 종료 방법을 살펴보았습니다.</p>
 	});
 </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-72835175-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 

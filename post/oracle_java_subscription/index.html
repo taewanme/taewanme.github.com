@@ -11,13 +11,26 @@
 
 <title>오라클 자바 라이센스 정리: Oracle Java SE Subscription</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.58.1" />
+<meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="오라클 자바 라이센스 정리: Oracle Java SE Subscription" />
 <meta property="og:description" content="2019년 1월에 시행되는 Oracle Java SE Subscription에 대하여 기본적인 고려사항을 정리합니다. 오라클 자바 서브스크립션이 어떻게 구성되어있고, 무엇을 고려하고, 어떻게 대응해야 하는지를 소개합니다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/post/oracle_java_subscription/" />
-<meta property="article:published_time" content="2018-11-15T09:28:14+09:00" />
-<meta property="article:modified_time" content="2018-11-15T09:28:14+09:00" />
+
+
+
+<meta property="article:published_time" content="2018-11-15T09:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2018-11-15T09:28:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -134,9 +147,9 @@
 
 <p>실무에서 Oracle Java SE(이하 Oracle Java)를 사용하시는 분들께서 물어보시는 항목은 대략 이 정도입니다. 위 질문 사항을 인터넷에 공개된 오라클 문서를 기준으로 정리해 보겠습니다. 이 글은 오라클의 공개 문서를 근거로 각 항목을 정리하는 것을 목표로 합니다. 그러나 문서를 작성하는 과정에서 작성자의 주관적 판단과 해석이 포함될 수 있습니다. 이런 이유로 본문은 오라클의 공식적인 입장과 다를 수 있습니다. 이 글은  &ldquo;Oracle Java SE Subscription&rdquo;에 대해서 고민하실 때, 참고 문서 정도로 봐주셨으면 합니다.</p>
 
-<div class="notices note" >
-자바 버전 표기법은 과거에 Java 1.5, Java 1.6 등 1.x 방식에서 Java 7, Java 8과 같은 방식으로 변경되었고 최근에 Java 11을 Java 18.9로 출시월을 기준으로 표현하는 방식으로 변경되었습니다. 이 문서에서는 자바 버전을 표현하는 일관성을 위해서 Java 6, Java 7, Java 8, Java 11 형식을 일괄적으로 사용하겠습니다.
+<div class="notices note" ><p>자바 버전 표기법은 과거에 Java 1.5, Java 1.6 등 1.x 방식에서 Java 7, Java 8과 같은 방식으로 변경되었고 최근에 Java 11을 Java 18.9로 출시월을 기준으로 표현하는 방식으로 변경되었습니다. 이 문서에서는 자바 버전을 표현하는 일관성을 위해서 Java 6, Java 7, Java 8, Java 11 형식을 일괄적으로 사용하겠습니다.</p>
 </div>
+
 
 <h2 id="oracle-java-se의-서포트-로드맵과-관련-용어">Oracle Java SE의 서포트 로드맵과 관련 용어</h2>
 
@@ -297,7 +310,7 @@
 
 <p>기술 지원을 받는 &lsquo;서비스 2&rsquo;와 새로운 소프트웨어 사용의 &lsquo;서비스 3&rsquo;은 명확한 것 같습니다. 그러나 &lsquo;서비스 1&rsquo;은 이해하기 조금 어렵습니다. 실제로 많은 분이 혼란스러워하는 부분입니다.</p>
 
-<p>공개 버전 Oracle Java는 GA 릴리즈 이후에 EoPU 전까지 OTN(Oracle Technical Network, <a href="http://www.oracle.com">http://www.oracle.com</a>)에 &ldquo;public release&rdquo; 라벨을 달고 배포된 버전을 의미합니다. 이 정보는 Oracle Java의 Release Note 페이지에서 확인할 수 있습니다. (버전별로 공개 버전을 확인하는 방법을 별로도 다루겠습니다.) 이제부터 공개 버전 Oracle Java가 아닌 모든 것을 &lsquo;비공개 Oracle Java&rsquo;라고 표현하겠습니다.<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup></p>
+<p>공개 버전 Oracle Java는 GA 릴리즈 이후에 EoPU 전까지 OTN(Oracle Technical Network, <a href="http://www.oracle.com">http://www.oracle.com</a>)에 &ldquo;public release&rdquo; 라벨을 달고 배포된 버전을 의미합니다. 이 정보는 Oracle Java의 Release Note 페이지에서 확인할 수 있습니다. (버전별로 공개 버전을 확인하는 방법을 별로도 다루겠습니다.) 이제부터 공개 버전 Oracle Java가 아닌 모든 것을 &lsquo;비공개 Oracle Java&rsquo;라고 표현하겠습니다.<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup></p>
 
 <p>2019년 1월부터 OTN(<a href="http://www.oracle.com">http://www.oracle.com</a>)에서는 새로운 Oracle Java 공개 버전(Public Release)을 발표하지 않을 것입니다. 2019년 1월부터 오라클은 모든 Oracle Java를 &lsquo;비공개 Oracle Java&rsquo; 형태로 릴리즈 하겠다고 발표했습니다. 따라서 2019년 이후에 발표되는 모든 Oracle Java는 &lsquo;비공개 Oracle Java&rsquo;이며 Oracle Java 최신 버전을 사용하기 위해서는 Java Subscription이 필요합니다.</p>
 
@@ -329,7 +342,7 @@
 </ul>
 </blockquote>
 
-<p>가격 모델은 데스크톱과 서버로 나뉘며, 데스크톱은 사용자 수 단위이고 서버는 프로세스(core) 단위로 가격이 책정되어 있습니다. 위에서 책정된 가격은 월 단위 가격이며 단위는 달러입니다. 수량<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>에 따라서 사용량이 많을 경우 가격은 50%까지 내려갑니다. 또한 이 라이센스는 컴퓨터의 CPU가 x86인 경우 Core Factor 0.5가 적용됩니다. 여기서 Core Factor는 CPU 유형에 따라서 기존 라이센스 비용에 적용되는 비율입니다. 컴퓨터가 x86 프로세스에 Core Factor 0.5가 적용된다는 의미는, 대상 서버의 CPU가 x86일 경우 Oracle Java SE Subscription 가격을 50% 할인한다는 의미입니다. 계약 기간은 1년과 3년 단위로 계약을 합니다.</p>
+<p>가격 모델은 데스크톱과 서버로 나뉘며, 데스크톱은 사용자 수 단위이고 서버는 프로세스(core) 단위로 가격이 책정되어 있습니다. 위에서 책정된 가격은 월 단위 가격이며 단위는 달러입니다. 수량<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup>에 따라서 사용량이 많을 경우 가격은 50%까지 내려갑니다. 또한 이 라이센스는 컴퓨터의 CPU가 x86인 경우 Core Factor 0.5가 적용됩니다. 여기서 Core Factor는 CPU 유형에 따라서 기존 라이센스 비용에 적용되는 비율입니다. 컴퓨터가 x86 프로세스에 Core Factor 0.5가 적용된다는 의미는, 대상 서버의 CPU가 x86일 경우 Oracle Java SE Subscription 가격을 50% 할인한다는 의미입니다. 계약 기간은 1년과 3년 단위로 계약을 합니다.</p>
 
 <blockquote>
 <p><img src="https://taewanmerepo.github.io/2018/11/oraclejdk/020.jpg" alt="" /></p>
@@ -494,7 +507,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)
 
 <p>일반적으로 임베디드 소프트웨어는 본래의 목적으로만 사용해야 합니다. 본래의 의도와 다르게 사용될 경우 라이센스 위반이 될 수 있습니다. 예를 들어서 WebLogic을 운영하는 서버에 Oracle Java가 임베디드 형태로 WebLogic과 Oracle Java가 함께 설치되어 있습니다. 이 서버에서 어떤 목적으로 Tomcat을 실행해야 하는 상황이 발생했습니다. 이 Tomcat 서버를 WebLogic에 포함된 Oracle Java로 실행하는 경우를 가정해 보겠습니다.</p>
 
-<p>이 경우에 Tomcat이 WebLogic에 포함된 자바를 사용하는 것은 임베디드된 Oracle Java를 다른 목적<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup>으로 사용한 것이기 때문에 라이센스 위반이 될 수 있습니다.</p>
+<p>이 경우에 Tomcat이 WebLogic에 포함된 자바를 사용하는 것은 임베디드된 Oracle Java를 다른 목적<sup class="footnote-ref" id="fnref:3"><a rel="footnote" href="#fn:3">3</a></sup>으로 사용한 것이기 때문에 라이센스 위반이 될 수 있습니다.</p>
 
 <p>위와 같은 상황에서 Tomcat을 돌리기 위해서는 별도로 공개 버전 Oracle Java 혹은 OpenJDK를 설치하고 이것을 이용해야 합니다. WebLogic에 설치된 내장된 Oracle Java를 사용하기 위해서는 Java Subscription을 별도로 구독해야 합니다.</p>
 
@@ -964,10 +977,6 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)
 							brew로 GraalVM설치</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/" title="Graalvms">
-							Graalvms</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201908w1/" title="GraalVM 새소식#2(201908, 첫 째주)">
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
@@ -984,20 +993,24 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/book/" title="Books">
-							Books</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/cloud/" title="Clouds">
-							Clouds</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
 							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
+							GraalVM 관련 코너를 새로 시작합니다.</a>
 		  </li>
 		</ul>
 	</div>
@@ -1100,17 +1113,14 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)
 	});
 </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-72835175-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 

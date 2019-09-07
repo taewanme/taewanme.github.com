@@ -11,13 +11,26 @@
 
 <title>Seam - 사용자 IPAddress 확인</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.58.1" />
+<meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="Seam - 사용자 IPAddress 확인" />
 <meta property="og:description" content="Seam - 사용자 IPAddress 확인" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/post/seam_ip_address/" />
-<meta property="article:published_time" content="2011-03-30T10:50:36+09:00" />
-<meta property="article:modified_time" content="2011-03-30T10:50:36+09:00" />
+
+
+
+<meta property="article:published_time" content="2011-03-30T10:50:36&#43;09:00"/>
+<meta property="article:modified_time" content="2011-03-30T10:50:36&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -147,23 +160,27 @@
 <p>위 3개의 메서드를 이용하여 추출한 정보를 컴포넌트로 사용하기 위해서는components.xml에 등록하는 방법이 있습니다. 이 방법을 사용하는 이유는 이 API를 사용하는 어노테이션을 마땅히 설정할 클래스가 없기 때문입니다. components.xml에 다음과 같이 등록하여 사용할 수 있습니다.</p>
 
 <ul>
-<li><p><strong>설정 대상 파일: {SEAM_GEN_PROJECT}/resoueces/WEB-INF/components.xml</strong></p>
+<li><strong>설정 대상 파일: {SEAM_GEN_PROJECT}/resoueces/WEB-INF/components.xml</strong></li>
+</ul>
 
 <pre><code>&lt;factory name=&quot;clientAddr&quot; value=&quot;#{request.remoteAddr}&quot; scope=&quot;EVENT&quot;/&gt;
 &lt;factory name=&quot;clientHost&quot; value=&quot;#{request.remoteHost}&quot; scope=&quot;EVENT&quot;/&gt;
 &lt;factory name=&quot;clientPort&quot; value=&quot;#{request.remotePort}&quot; scope=&quot;EVENT&quot;/&gt;
-</code></pre></li>
+</code></pre>
 
-<li><p><strong>Seam 페이지 컴포넌트 사용 코드: {SEAM_GEN_PROJECT}/view/layout/menu.xhtml</strong></p>
+<ul>
+<li><strong>Seam 페이지 컴포넌트 사용 코드: {SEAM_GEN_PROJECT}/view/layout/menu.xhtml</strong></li>
+</ul>
 
 <pre><code>&lt;rich:toolBarGroup&gt;
-&lt;h:outputText value=&quot;#{projectName}:&quot;/&gt;
-&lt;s:link id=&quot;menuHomeId&quot; view=&quot;/home.xhtml&quot; value=&quot;Home&quot; propagation=&quot;none&quot;/&gt;
-Client Info: IP: #{clientAddr}, Host: #{clientHost}, Port: #{clientPort}
+    &lt;h:outputText value=&quot;#{projectName}:&quot;/&gt;
+    &lt;s:link id=&quot;menuHomeId&quot; view=&quot;/home.xhtml&quot; value=&quot;Home&quot; propagation=&quot;none&quot;/&gt;
+    Client Info: IP: #{clientAddr}, Host: #{clientHost}, Port: #{clientPort}
 &lt;/rich:toolBarGroup&gt;
-</code></pre></li>
+</code></pre>
 
-<li><p><strong>facesContext Injection 하는 컴포넌트 만들기</strong></p></li>
+<ul>
+<li><strong>facesContext Injection 하는 컴포넌트 만들기</strong></li>
 </ul>
 
 <p>JSF는 UI 디바이스 독립적인 프레임웍입니다. 따라서 프로토콜을 추상화하는 형태로 디자인 되어 있습니다. 웹 상에서 모든 요청은 HttpServletRequest로 유입이 되고 JSF는 이것은 FacesContext라는 객체 형태로 변형하여 프레임웍에서 사용합니다. 또한 FacesContext로 부터 HttpServletRequest를 접근할 수 있습니다.</p>
@@ -329,10 +346,6 @@ public class ClientInfo {
 							brew로 GraalVM설치</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/" title="Graalvms">
-							Graalvms</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201908w1/" title="GraalVM 새소식#2(201908, 첫 째주)">
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
@@ -349,20 +362,24 @@ public class ClientInfo {
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/book/" title="Books">
-							Books</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/cloud/" title="Clouds">
-							Clouds</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
 							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
+							GraalVM 관련 코너를 새로 시작합니다.</a>
 		  </li>
 		</ul>
 	</div>
@@ -465,17 +482,14 @@ public class ClientInfo {
 	});
 </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-72835175-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 

@@ -11,13 +11,26 @@
 
 <title>신경망 W 행렬 표기법: &#39;ij&#39;/&#39;ji&#39; 의 차이점?</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.58.1" />
+<meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="신경망 W 행렬 표기법: &#39;ij&#39;/&#39;ji&#39; 의 차이점?" />
 <meta property="og:description" content="GPU Performance" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/post/wij_and_wji/" />
-<meta property="article:published_time" content="2017-12-23T21:28:14+09:00" />
-<meta property="article:modified_time" content="2017-12-23T21:28:14+09:00" />
+
+
+
+<meta property="article:published_time" content="2017-12-23T21:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2017-12-23T21:28:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -566,7 +579,7 @@ $$</li>
 <h4 id="case-1-ij-방식-사용-시">Case 1. <strong>ij 방식</strong> 사용 시</h4>
 
 <p>ij 방식을 사용할 경우 forward propagation에서 Z를 계산할 때 W의 전치(transpose)가 발생합니다.
-반면에 Backpropagation의 Hidden Layer의 오차 계산<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>에는 W를 전치할 필요가 없습니다.</p>
+반면에 Backpropagation의 Hidden Layer의 오차 계산<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>에는 W를 전치할 필요가 없습니다.</p>
 
 <blockquote>
 <ul>
@@ -833,10 +846,6 @@ model.add(Dense(units=2, input_dim=3, activation='relu'))
 							brew로 GraalVM설치</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/" title="Graalvms">
-							Graalvms</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201908w1/" title="GraalVM 새소식#2(201908, 첫 째주)">
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
@@ -853,20 +862,24 @@ model.add(Dense(units=2, input_dim=3, activation='relu'))
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/book/" title="Books">
-							Books</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/cloud/" title="Clouds">
-							Clouds</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
 							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
+							GraalVM 관련 코너를 새로 시작합니다.</a>
 		  </li>
 		</ul>
 	</div>
@@ -969,17 +982,14 @@ model.add(Dense(units=2, input_dim=3, activation='relu'))
 	});
 </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-72835175-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>markdown on taewan.kim 블로그</title>
+    <title>Markdown on taewan.kim 블로그</title>
     <link>http://taewan.kim/tags/markdown/</link>
-    <description>Recent content in markdown on taewan.kim 블로그</description>
+    <description>Recent content in Markdown on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 04 Apr 2016 13:47:07 +0900</lastBuildDate>
@@ -19,7 +19,7 @@
       <guid>http://taewan.kim/post/markdown/</guid>
       <description>taewan.kim은 대부분의 내용을 markdown으로 관리하고 있습니다. markdown은 직관적이고 간단한 문법으로 컨텐츠 관리에 매우 효과적입니다. markdown에서 주로 이용되는 테그는 15개정도 입니다. 혼동되는 주요 테그를 정리하겠습니다.
  목차   헤더 수평선 텍스트 출력 텍스트 강조 인용 목록 코드 테이블 링크 이미지 주석 각주   헤더  (top) H1 ~ H6까지 테그를 #으로 표현
-# 헤더 스타일 (h1) ## 헤더 스타일 (h2) ### 헤더 스타일 (h3) #### 헤더 스타일 (h4) ##### 헤더 스타일 (h5) ###### 헤더 스타일 (h6)   출력 결과  헤더 스타일 (h1) 헤더 스타일 (h2) 헤더 스타일 (h3) 헤더 스타일 (h4) 헤더 스타일 (h5) 헤더 스타일 (h6)  효과: 다음과 같은 코드와 동일한 결과가 됨</description>
+# 헤더 스타일 (h1) ## 헤더 스타일 (h2) ### 헤더 스타일 (h3) #### 헤더 스타일 (h4) ##### 헤더 스타일 (h5) ###### 헤더 스타일 (h6)   출력 결과  헤더 스타일 (h1) 헤더 스타일 (h2) 헤더 스타일 (h3) 헤더 스타일 (h4) 헤더 스타일 (h5) 헤더 스타일 (h6)  효과: 다음과 같은 코드와 동일한 결과가 됨  &amp;lt;h1&amp;gt;헤더 스타일 (h1)&amp;lt;/h1&amp;gt; &amp;lt;h2&amp;gt;헤더 스타일 (h2)&amp;lt;/h2&amp;gt; &amp;lt;h3&amp;gt;헤더 스타일 (h3)&amp;lt;/h3&amp;gt; &amp;lt;h4&amp;gt;헤더 스타일 (h4)&amp;lt;/h4&amp;gt; &amp;lt;h5&amp;gt;헤더 스타일 (h5)&amp;lt;/h5&amp;gt; &amp;lt;h6&amp;gt;헤더 스타일 (h6)&amp;lt;/h6&amp;gt;  수평선  (top)  &amp;lt;hr /&amp;gt;와 동일한 결과를 출력 &amp;rsquo;-&amp;lsquo;, &amp;lsquo;*&amp;lsquo;, &amp;lsquo;_&amp;lsquo;을 세개 이상 나열하면 수평선을 만듦 단락 나누기 용도로 많이 사용.</description>
     </item>
     
     <item>

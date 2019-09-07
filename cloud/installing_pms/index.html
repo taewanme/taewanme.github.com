@@ -11,13 +11,26 @@
 
 <title>Oracle PaaS Service Manager 소개 및 설치</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.58.1" />
+<meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="Oracle PaaS Service Manager 소개 및 설치" />
 <meta property="og:description" content="Oracle PaaS Service Manager(이하 PSM)는 오라클 클라우드의 PaaS 서비스 관리에 사용되는 CLI(Command Line Interface)입니다. Oracle PSM을 설치하는 절차를 소개합니다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/cloud/installing_pms/" />
-<meta property="article:published_time" content="2017-08-06T22:20:25+09:00" />
-<meta property="article:modified_time" content="2017-08-06T22:20:25+09:00" />
+
+
+
+<meta property="article:published_time" content="2017-08-06T22:20:25&#43;09:00"/>
+<meta property="article:modified_time" content="2017-08-06T22:20:25&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -264,79 +277,119 @@ REST API로 직접 내려받을 수 있습니다.</p>
 <p>위 패턴에서 URL과 IDENTITY_DOMAIN은 다음과 같은 값으로 대치됩니다.</p>
 
 <ul>
-<li><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-<URL>```" data-lang="<URL>```">- 데이터 센터의 위치에 따라서 다음 URL 중 하나를 선택합니다.
-- 북미 데이터 센터: psm.us.oraclecloud.com
-- 유럽 데이터 센터: psm.europe.oraclecloud.com
-- Trial 계정은 북미 데이터 센터를 사용
-- ```&lt;IDENTITY_DOMAIN&gt;```
-- 사용중인 계정의 Identity domain을 사용합니다.
+<li><code>&lt;URL&gt;</code>
 
-curl[^1]로 PSM 다운로드 REST API를 호출할 경우, 다음과 같은 형태로 호출합니다.</code></pre></div></li>
+<ul>
+<li>데이터 센터의 위치에 따라서 다음 URL 중 하나를 선택합니다.</li>
+<li>북미 데이터 센터: psm.us.oraclecloud.com</li>
+<li>유럽 데이터 센터: psm.europe.oraclecloud.com</li>
+<li>Trial 계정은 북미 데이터 센터를 사용</li>
+</ul></li>
+<li><code>&lt;IDENTITY_DOMAIN&gt;</code>
+
+<ul>
+<li>사용중인 계정의 Identity domain을 사용합니다.</li>
+</ul></li>
 </ul>
 
-<p>curl -X GET -u <ACCOUNT_ID>:<PASSWORD> <br />
--H X-ID-TENANT-NAME:<IDENTITY_DOMAIN> <br />
-https://<URL>/paas/core/api/v1.1/cli/<IDENTITY_DOMAIN>/client <br />
--o psmcli.zip</p>
+<p>curl<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>로 PSM 다운로드 REST API를 호출할 경우, 다음과 같은 형태로 호출합니다.</p>
 
-<pre><code>
-위 curl 호출 형식에서 ```&lt;VARIALE&gt;```로 표시된 부분은 변수입니다.
-위에서 사용한 각 변수(```&lt;VARIALE&gt;```)는 다음 값으로 대치됩니다.
-
-|변수|설정값|
-|---|---|
-|```&lt;ACCOUNT_ID&gt;```|Oracle Cloud 계정 ID (예: tw01@plustv.io)|
-|```&lt;PASSWORD&gt;```|Oracle Cloud 계정의 로그인 패스워드|
-|```&lt;IDENTITY_DOMAIN&gt;```|Oracle Cloud 계정의 Identity Domain(예:krplustvio)|
-|```&lt;URL&gt;```|psm.us.oraclecloud.com|
-
-위 명령에서 각 행 마지막에 ```\```은 콘솔에서 명령이 끝나지 않고 다음 행으로 연속된다는 의미입니다.
-위 명령은 한 줄로 처리됩니다.
-
-- 그림 6. PSM 다운로드 REST API 호출 및 다운로드 결과 확인
-![](https://oracloud-kr-teamrepo.github.io/2017/08/psm/psm06.jpg)
-
-## Oracle PSM 설치
-
-Oracle PSM은 파이썬3가 설치된 모든 운영체제에 설치 가능합니다. 본 문서에서는 window와  리눅스(Mac OS)를 대상으로 설명하겠습니다.
-
-### 환경변수 설정
-
-현재 프록시 서버를 사용하고 있는 경우에는 Oracle PSM 설치에 앞서 환경변수를 설정해야 합니다.
-운영체제별 환경 설정 방법은 다음과 같습니다.
-
-프록시 서버 주소는 http://myproxy.server.com:80 / https://myproxy.server.com:80 로 가정합니다.
-
-- Window 환경 변수 설정
-
+<pre><code>curl -X GET -u &lt;ACCOUNT_ID&gt;:&lt;PASSWORD&gt; \
+-H X-ID-TENANT-NAME:&lt;IDENTITY_DOMAIN&gt; \
+https://&lt;URL&gt;/paas/core/api/v1.1/cli/&lt;IDENTITY_DOMAIN&gt;/client \
+-o psmcli.zip
 </code></pre>
 
-<p>set http_proxy=<a href="http://myproxy.server.com:80">http://myproxy.server.com:80</a><br />
-set https_proxy=<a href="https://myproxy.server.com:80">https://myproxy.server.com:80</a></p>
+<p>위 curl 호출 형식에서 <code>&lt;VARIALE&gt;</code>로 표시된 부분은 변수입니다.
+위에서 사용한 각 변수(<code>&lt;VARIALE&gt;</code>)는 다음 값으로 대치됩니다.</p>
 
-<pre><code>
-- Linux / Mac OS 환경 변수 설정
+<table>
+<thead>
+<tr>
+<th>변수</th>
+<th>설정값</th>
+</tr>
+</thead>
 
+<tbody>
+<tr>
+<td><code>&lt;ACCOUNT_ID&gt;</code></td>
+<td>Oracle Cloud 계정 ID (예: tw01@plustv.io)</td>
+</tr>
+
+<tr>
+<td><code>&lt;PASSWORD&gt;</code></td>
+<td>Oracle Cloud 계정의 로그인 패스워드</td>
+</tr>
+
+<tr>
+<td><code>&lt;IDENTITY_DOMAIN&gt;</code></td>
+<td>Oracle Cloud 계정의 Identity Domain(예:krplustvio)</td>
+</tr>
+
+<tr>
+<td><code>&lt;URL&gt;</code></td>
+<td>psm.us.oraclecloud.com</td>
+</tr>
+</tbody>
+</table>
+
+<p>위 명령에서 각 행 마지막에 <code>\</code>은 콘솔에서 명령이 끝나지 않고 다음 행으로 연속된다는 의미입니다.
+위 명령은 한 줄로 처리됩니다.</p>
+
+<ul>
+<li>그림 6. PSM 다운로드 REST API 호출 및 다운로드 결과 확인
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/psm/psm06.jpg" alt="" /></li>
+</ul>
+
+<h2 id="oracle-psm-설치">Oracle PSM 설치</h2>
+
+<p>Oracle PSM은 파이썬3가 설치된 모든 운영체제에 설치 가능합니다. 본 문서에서는 window와  리눅스(Mac OS)를 대상으로 설명하겠습니다.</p>
+
+<h3 id="환경변수-설정">환경변수 설정</h3>
+
+<p>현재 프록시 서버를 사용하고 있는 경우에는 Oracle PSM 설치에 앞서 환경변수를 설정해야 합니다.
+운영체제별 환경 설정 방법은 다음과 같습니다.</p>
+
+<p>프록시 서버 주소는 <a href="http://myproxy.server.com:80">http://myproxy.server.com:80</a> / <a href="https://myproxy.server.com:80">https://myproxy.server.com:80</a> 로 가정합니다.</p>
+
+<ul>
+<li>Window 환경 변수 설정</li>
+</ul>
+
+<pre><code>set http_proxy=http://myproxy.server.com:80      
+set https_proxy=https://myproxy.server.com:80     
 </code></pre>
 
-<p>export http_proxy=<a href="http://myproxy.server.com:80">http://myproxy.server.com:80</a>
-export https_proxy=<a href="https://myproxy.server.com:80">https://myproxy.server.com:80</a></p>
+<ul>
+<li>Linux / Mac OS 환경 변수 설정</li>
+</ul>
 
-<pre><code>
-### Oracle PSM 설치
-
-Oracle PSM 설치 명령은 운영체제별로 다음과 같습니다. 다음 명령은 psmcli.zip파일이 위치한 디렉터리에서 실행해야 합니다.
-
-- Window
-  - ```pip3 install -U psmcli.zip```
-- Linux, Mac OS
-  - ```sudo pip3 -H install -U psmcli.zip```
-
-다음은 Ubuntu에서 위 명령을 수행한 결과입니다.
+<pre><code>export http_proxy=http://myproxy.server.com:80
+export https_proxy=https://myproxy.server.com:80
 </code></pre>
 
-<p>[opc@e25327 ~]$ ls -al *.zip
--rw-rw-r&ndash; 1 opc opc 69104 Aug  5 13:08 psmcli.zip
+<h3 id="oracle-psm-설치-1">Oracle PSM 설치</h3>
+
+<p>Oracle PSM 설치 명령은 운영체제별로 다음과 같습니다. 다음 명령은 psmcli.zip파일이 위치한 디렉터리에서 실행해야 합니다.</p>
+
+<ul>
+<li>Window
+
+<ul>
+<li><code>pip3 install -U psmcli.zip</code></li>
+</ul></li>
+<li>Linux, Mac OS
+
+<ul>
+<li><code>sudo pip3 -H install -U psmcli.zip</code></li>
+</ul></li>
+</ul>
+
+<p>다음은 Ubuntu에서 위 명령을 수행한 결과입니다.</p>
+
+<pre><code>[opc@e25327 ~]$ ls -al *.zip
+-rw-rw-r-- 1 opc opc 69104 Aug  5 13:08 psmcli.zip
 [opc@e25327 ~]$ sudo pip3 install -U psmcli.zip
 Processing ./psmcli.zip
 Collecting requests&lt;=2.8.1,&gt;=2.7.0 (from psmcli==1.1.15)
@@ -357,85 +410,78 @@ Installing collected packages: requests, keyring, colorama, PyYAML, psmcli
   Running setup.py install for psmcli
 Successfully installed PyYAML-3.11 colorama-0.3.3 keyring-5.6 psmcli-1.1.15 requests-2.8.1
 You are using pip version 7.1.2, however version 9.0.1 is available.
-You should consider upgrading via the &lsquo;pip install &ndash;upgrade pip&rsquo; command.
-[opc@e25327 ~]$</p>
-
-<pre><code>
-### Oracle PSM 설치 확인
-
-다음 명령으로 PSM 설치 상태를 확인할 수 있습니다. 다음과 같은 메시지가 출력된다면 설치가 완료된 상태입니다.
-
+You should consider upgrading via the 'pip install --upgrade pip' command.
+[opc@e25327 ~]$
 </code></pre>
 
-<p>[opc@e25327 ~]$ psm
-usage: psm <service> <command> [parameters]
+<h3 id="oracle-psm-설치-확인">Oracle PSM 설치 확인</h3>
+
+<p>다음 명령으로 PSM 설치 상태를 확인할 수 있습니다. 다음과 같은 메시지가 출력된다면 설치가 완료된 상태입니다.</p>
+
+<pre><code>[opc@e25327 ~]$ psm
+usage: psm &lt;service&gt; &lt;command&gt; [parameters]
 psm: error: the following arguments are required: service
-[opc@e25327 ~]$</p>
-
-<pre><code>
-### Oracle PSM 설정
-
-Oracle PSM을 사용하기 전에, Oracle PSM이 Oracle Cloud에 접속하는 데 필요한 정보를 설정하는 절차를 수행해야 합니다.
-
-다음과 같이 ```psm setup```을 실행하면 사용자명, 패스워드, Identity Domain, 데이터 센터 지역, 출력 형식을 선택 항목을 입력해야 합니다. ```[value]```는 기본값입니다. 기본값이 맞다면 추가입력 없이 &quot;__Enter__&quot;를 치시면 됩니다.
-출력 형태는 json, html을 선택할 수 있습니다.
-
+[opc@e25327 ~]$
 </code></pre>
 
-<p>[opc@e25327 ~]$ psm setup
+<h3 id="oracle-psm-설정">Oracle PSM 설정</h3>
+
+<p>Oracle PSM을 사용하기 전에, Oracle PSM이 Oracle Cloud에 접속하는 데 필요한 정보를 설정하는 절차를 수행해야 합니다.</p>
+
+<p>다음과 같이 <code>psm setup</code>을 실행하면 사용자명, 패스워드, Identity Domain, 데이터 센터 지역, 출력 형식을 선택 항목을 입력해야 합니다. <code>[value]</code>는 기본값입니다. 기본값이 맞다면 추가입력 없이 &ldquo;<strong>Enter</strong>&ldquo;를 치시면 됩니다.
+출력 형태는 json, html을 선택할 수 있습니다.</p>
+
+<pre><code>[opc@e25327 ~]$ psm setup
 Username: tw01@plustv.io
 Password:
 Retype Password:
 Identity domain: krplustvio
 Region [us]: us
-Output format [short]:</p>
-
-<pre><code>
-&lt;그림 7&gt;은 ```psm setup```의 실행 예입니다. 입력이 완료되면
-&lt;그림 7&gt;과 같이 지원 클라우드 서비스 목록이 출력됩니다.
-2017년 8월 5일 현재 21개 서비스를 지원합니다.
-Oracle PSM의 PaaS 지원 목록은 지속해서 추가되고 있습니다.
-
-- 그림 7. psm setup 실행 예제
-![](https://oracloud-kr-teamrepo.github.io/2017/08/psm/psm07.jpg)
-
-### Oracle PSM 업데이트
-
-Oracle PSM의 PaaS 지원 목록이 주기적으로 추가되기 때문에, Oracle PSM은 주기적으로 업데이트 됩니다.
-다음 명령으로 Oracle PSM 버전 확인 및 업그레이드를 할 수 있습니다.
-
+Output format [short]:
 </code></pre>
 
-<p>[opc@e25327 ~]$ psm &ndash;version
+<p>&lt;그림 7&gt;은 <code>psm setup</code>의 실행 예입니다. 입력이 완료되면
+&lt;그림 7&gt;과 같이 지원 클라우드 서비스 목록이 출력됩니다.
+2017년 8월 5일 현재 21개 서비스를 지원합니다.
+Oracle PSM의 PaaS 지원 목록은 지속해서 추가되고 있습니다.</p>
+
+<ul>
+<li>그림 7. psm setup 실행 예제
+<img src="https://oracloud-kr-teamrepo.github.io/2017/08/psm/psm07.jpg" alt="" /></li>
+</ul>
+
+<h3 id="oracle-psm-업데이트">Oracle PSM 업데이트</h3>
+
+<p>Oracle PSM의 PaaS 지원 목록이 주기적으로 추가되기 때문에, Oracle PSM은 주기적으로 업데이트 됩니다.
+다음 명령으로 Oracle PSM 버전 확인 및 업그레이드를 할 수 있습니다.</p>
+
+<pre><code>[opc@e25327 ~]$ psm --version
 PSM CLI Client - version 1.1.15
 [opc@e25327 ~]$ psm update
 INFO: You already have the most up-to-date version of psm client installed on the system
-[opc@e25327 ~]$</p>
-
-<pre><code>
-## Oracle PSM 데모
-기본적인 명령 구문은 다음과 같습니다.
-
+[opc@e25327 ~]$
 </code></pre>
 
-<p>psm [ 클라우드 서비스 이름 ]  <a href="help"> 명령 </a></p>
+<h2 id="oracle-psm-데모">Oracle PSM 데모</h2>
 
-<pre><code>
-Oracle PSM을 사용하는 간단한 방법을 소개합니다. Oracle BDCSCE 서비스를 Oracle PSM으로 조작하는 데모를 다음과 같은 순서로 진행하겠습니다.
+<p>기본적인 명령 구문은 다음과 같습니다.</p>
 
-- BDCSCE 서비스 목록 조회: ```psm bdcsce services```
-- BDCSCE sparkdemo 인스턴스 상세 정보 조회: ```psm bdcsce service -s sparkdemo```
-- BDCSCE 서비스 제거: ```psm bdcsce delete-service -s sparkdemo```
-- BDCSCE 서비스 목록 조회: ```psm bdcsce services```
-
+<pre><code>psm [ 클라우드 서비스 이름 ]  [ 명령 ]  ( help )
 </code></pre>
 
-<p>[opc@e25327 ~]$ psm bdcsce services
- Service    Status</p>
+<p>Oracle PSM을 사용하는 간단한 방법을 소개합니다. Oracle BDCSCE 서비스를 Oracle PSM으로 조작하는 데모를 다음과 같은 순서로 진행하겠습니다.</p>
 
-<hr />
+<ul>
+<li>BDCSCE 서비스 목록 조회: <code>psm bdcsce services</code></li>
+<li>BDCSCE sparkdemo 인스턴스 상세 정보 조회: <code>psm bdcsce service -s sparkdemo</code></li>
+<li>BDCSCE 서비스 제거: <code>psm bdcsce delete-service -s sparkdemo</code></li>
+<li>BDCSCE 서비스 목록 조회: <code>psm bdcsce services</code></li>
+</ul>
 
-<p>sparkdemo  Ready
+<pre><code>[opc@e25327 ~]$ psm bdcsce services
+ Service    Status
+ ---------- --------
+ sparkdemo  Ready
 [opc@e25327 ~]$ psm bdcsce service -s sparkdemo
  Service:                    sparkdemo
  Status:                     Ready
@@ -448,15 +494,13 @@ Oracle PSM을 사용하는 간단한 방법을 소개합니다. Oracle BDCSCE �
  Message:    Submitted job to delete service [sparkdemo] in domain [krplustvio].
  Job ID:     14151120
 [opc@e25327 ~]$ psm bdcsce services
- Service    Status</p>
-
-<hr />
-
-<p>sparkdemo  Terminating Service &hellip;
+ Service    Status
+ ---------- -------------------------
+ sparkdemo  Terminating Service ...
  [opc@e25327 ~]$ psm bdcsce services
  No data found
  [opc@e25327 ~]$
-```</p>
+</code></pre>
 
 <h2 id="요약">요약</h2>
 
@@ -475,6 +519,15 @@ Oracle PSM을 이용하여 Oracle Cloud의 PaaS 서비스를 효과적으로 관
 <li><a href="https://technology.amis.nl/2017/03/07/getting-started-with-oracle-paas-service-manager-command-line-interface-psm/">Getting started with Oracle PaaS Service Manager Command Line Interface (PSM)</a></li>
 <li><a href="http://qiita.com/shinyay/items/a3773b37fdbb677e52b1">Oracle Cloud의 명령 줄 인터페이스 (CLI)</a></li>
 </ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">curl 은 command line 용 data transfer tool입니다. HTTP/HTTPS/FTP/LDAP/SCP/TELNET/SMTP/POP3 등 주요한 프로토콜을 지원하며 Linux/Unix 계열 및 Windows 등 주요한 OS 에서 구동됩니다. REST API 테스트용도로 광범위하게 사용되는 툴입니다.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+</ol>
+</div>
 
 		</div>
 		
@@ -579,6 +632,15 @@ Oracle PSM을 이용하여 Oracle Cloud의 PaaS 서비스를 효과적으로 관
 <li><a href="#오라클-클라우드-웹-사이트-다운로드">오라클 클라우드 웹 사이트 다운로드</a></li>
 <li><a href="#oracle-psm-다운로드-rest-api">Oracle PSM 다운로드 REST API</a></li>
 </ul></li>
+<li><a href="#oracle-psm-설치">Oracle PSM 설치</a>
+<ul>
+<li><a href="#환경변수-설정">환경변수 설정</a></li>
+<li><a href="#oracle-psm-설치-1">Oracle PSM 설치</a></li>
+<li><a href="#oracle-psm-설치-확인">Oracle PSM 설치 확인</a></li>
+<li><a href="#oracle-psm-설정">Oracle PSM 설정</a></li>
+<li><a href="#oracle-psm-업데이트">Oracle PSM 업데이트</a></li>
+</ul></li>
+<li><a href="#oracle-psm-데모">Oracle PSM 데모</a></li>
 <li><a href="#요약">요약</a></li>
 <li><a href="#참고자료">참고자료</a></li>
 </ul></li>
@@ -606,10 +668,6 @@ Oracle PSM을 이용하여 Oracle Cloud의 PaaS 서비스를 효과적으로 관
 							brew로 GraalVM설치</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/" title="Graalvms">
-							Graalvms</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201908w1/" title="GraalVM 새소식#2(201908, 첫 째주)">
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
@@ -626,20 +684,24 @@ Oracle PSM을 이용하여 Oracle Cloud의 PaaS 서비스를 효과적으로 관
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/book/" title="Books">
-							Books</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/cloud/" title="Clouds">
-							Clouds</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
 							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
+							GraalVM 관련 코너를 새로 시작합니다.</a>
 		  </li>
 		</ul>
 	</div>
@@ -742,17 +804,14 @@ Oracle PSM을 이용하여 Oracle Cloud의 PaaS 서비스를 효과적으로 관
 	});
 </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-72835175-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 

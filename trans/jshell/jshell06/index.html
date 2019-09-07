@@ -11,13 +11,26 @@
 
 <title>JShell:6. 피드백 모드</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.58.1" />
+<meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="JShell:6. 피드백 모드" />
 <meta property="og:description" content="java9의 신규 기능인 JShell 공식 문서의 한글화 입니다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/trans/jshell/jshell06/" />
-<meta property="article:published_time" content="2017-12-27T19:30:14+09:00" />
-<meta property="article:modified_time" content="2017-12-27T19:30:14+09:00" />
+
+
+
+<meta property="article:published_time" content="2017-12-27T19:30:14&#43;09:00"/>
+<meta property="article:modified_time" content="2017-12-27T19:30:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -295,7 +308,7 @@ jshell&gt;
 <p>피드백 모드는 다음을 설정을 갖습니다.</p>
 
 <ul>
-<li>Prompts: regular 프롬프트 문자, continuation 프롬프트 문자<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup></li>
+<li>Prompts: regular 프롬프트 문자, continuation 프롬프트 문자<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup></li>
 <li>Truncation: 출력할 값의 최대 길이</li>
 <li>Format: 제공할 피드백의 포멧</li>
 </ul>
@@ -370,7 +383,7 @@ big ==&gt; &quot;abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuv ... fghijklmno
 
 <p>센렉터에 대한 자세한 설명은 <strong>/help /set truncation</strong> 명령으로 확인할 수 있습니다.</p>
 
-<p>이전 예제에서의 식의 결과 값(expression case selector) 혹은 변수의 값이 아닌, 변수 명을 입력하여 명시적으로 요청하는 것과 같은 상황이라면, 처럼 값이 식의 값(expression case selector)이거나 변수의 값이 아니라면, 변수 명(varvalue case selector)을 입력하여 명시적으로 출력을 요청할 때 80개 문자로 절단하라는 의미입니다. 이 순서는 중요합니다. 마지막 것이 사용됩니다. 만약에 순서가 반대라면, 모든 값은 80 개 문자에서 절달될 것입니다.<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup></p>
+<p>이전 예제에서의 식의 결과 값(expression case selector) 혹은 변수의 값이 아닌, 변수 명을 입력하여 명시적으로 요청하는 것과 같은 상황이라면, 처럼 값이 식의 값(expression case selector)이거나 변수의 값이 아니라면, 변수 명(varvalue case selector)을 입력하여 명시적으로 출력을 요청할 때 80개 문자로 절단하라는 의미입니다. 이 순서는 중요합니다. 마지막 것이 사용됩니다. 만약에 순서가 반대라면, 모든 값은 80 개 문자에서 절달될 것입니다.<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup></p>
 
 <p>다음 예제에서 기본 Truncation(절단)을 100으로 설정합니다. 그리고 명시적으로 요청할 때에만 실제 전체 값을 출력합니다.</p>
 
@@ -436,9 +449,9 @@ my mode: /set truncation mine
 /set truncation mine 300 varvalue
 </code></pre>
 
-<div class="notices note" >
-접두 문자 변경은 명령 피드백을 포함한 모든 피디백에 영향을 미칩니다.
+<div class="notices note" ><p>접두 문자 변경은 명령 피드백을 포함한 모든 피디백에 영향을 미칩니다.</p>
 </div>
+
 
 <p>값을 표시 할 때 타입을 표시하려면, 사전 정의 모드에서 정의 된 결과 필드를 변경하십시오.</p>
 
@@ -590,10 +603,6 @@ jshell&gt; /set mode mine -delete -retain
 							brew로 GraalVM설치</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/" title="Graalvms">
-							Graalvms</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201908w1/" title="GraalVM 새소식#2(201908, 첫 째주)">
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
@@ -610,20 +619,24 @@ jshell&gt; /set mode mine -delete -retain
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/book/" title="Books">
-							Books</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/cloud/" title="Clouds">
-							Clouds</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
 							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
+							GraalVM 관련 코너를 새로 시작합니다.</a>
 		  </li>
 		</ul>
 	</div>
@@ -726,17 +739,14 @@ jshell&gt; /set mode mine -delete -retain
 	});
 </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-72835175-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 

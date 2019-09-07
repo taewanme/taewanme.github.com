@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>serverless on taewan.kim 블로그</title>
+    <title>Serverless on taewan.kim 블로그</title>
     <link>http://taewan.kim/tags/serverless/</link>
-    <description>Recent content in serverless on taewan.kim 블로그</description>
+    <description>Recent content in Serverless on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 25 Dec 2017 21:28:14 +0900</lastBuildDate>

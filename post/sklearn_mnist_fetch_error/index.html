@@ -11,13 +11,26 @@
 
 <title>scikit-learn의 fetch_mldata(&#39;MNIST original&#39;) 에러</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.58.1" />
+<meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="scikit-learn의 fetch_mldata(&#39;MNIST original&#39;) 에러" />
 <meta property="og:description" content="Sklearn의 mnist 데이터 패치 오류를 해결하는 방법입니다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/post/sklearn_mnist_fetch_error/" />
-<meta property="article:published_time" content="2018-08-04T19:59:47+09:00" />
-<meta property="article:modified_time" content="2018-08-04T19:59:47+09:00" />
+
+
+
+<meta property="article:published_time" content="2018-08-04T19:59:47&#43;09:00"/>
+<meta property="article:modified_time" content="2018-08-04T19:59:47&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -206,11 +219,13 @@ def fetch_mldata(dataname, target_name='label', data_name='data',
     ## 코드 생략
 </code></pre>
 
-<p>fetch_mldata 함수의 구현 부에서 <code>151라인</code>은 <strong>data_home</strong> 디렉터리에 데이터 파일(mat 파일<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>)이 없으면 <code>MLDATA_BASE_URL</code>에서 파일을 다운로드하도록 구현되어 있습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fetch_mldata("MNIST original")```은 matlab 파일 포맷인 mnist_original.mat 파일을 다운로드 하고 로딩하는 함수입니다. 이 함수를 실행할 때 오류가 발생하는 이유는 mnist_original.mat[^2] 파일을 mldata.org에서 다운받을 수 없기 때문입니다." data-lang="fetch_mldata("MNIST original")```은 matlab 파일 포맷인 mnist_original.mat 파일을 다운로드 하고 로딩하는 함수입니다. 이 함수를 실행할 때 오류가 발생하는 이유는 mnist_original.mat[^2] 파일을 mldata.org에서 다운받을 수 없기 때문입니다.">[^2]: 전체 URL =&gt; http://mldata.org/repository/data/download/matlab/mnist_original.mat
+<p>fetch_mldata 함수의 구현 부에서 <code>151라인</code>은 <strong>data_home</strong> 디렉터리에 데이터 파일(mat 파일<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>)이 없으면 <code>MLDATA_BASE_URL</code>에서 파일을 다운로드하도록 구현되어 있습니다.</p>
 
-## 오류 해결 방법</code></pre></div>
-<p>fetch_mldata(&ldquo;MNIST original&rdquo;)``` 실행 오류는 해결하는 방법은 다음과 같이 2가지가 있습니다.</p>
+<p><code>fetch_mldata(&quot;MNIST original&quot;)</code>은 matlab 파일 포맷인 mnist_original.mat 파일을 다운로드 하고 로딩하는 함수입니다. 이 함수를 실행할 때 오류가 발생하는 이유는 mnist_original.mat<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup> 파일을 mldata.org에서 다운받을 수 없기 때문입니다.</p>
+
+<h2 id="오류-해결-방법">오류 해결 방법</h2>
+
+<p><code>fetch_mldata(&quot;MNIST original&quot;)</code> 실행 오류는 해결하는 방법은 다음과 같이 2가지가 있습니다.</p>
 
 <ul>
 <li>data_home 디렉터리에 mnist_original.mat 다운로드한 다음에 함수 실행</li>
@@ -255,8 +270,10 @@ sklearn.datasets의 데이터 파일 기본 위치를 get_data_home 함수로 �
 <p>&lt;그림 4&gt;는 다음과 같은 절차를 진행합니다.</p>
 
 <ol>
-<li><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-/root/scikit_learn_data/mldata```에 데이터 파일 다운로드" data-lang="/root/scikit_learn_data/mldata```에 데이터 파일 다운로드">1. ```/root/scikit_learn_data/mldata```에 파일 목록 확인
-1. sklearn의 fetch_mldata로 데이터 로딩
+<li><code>/root/scikit_learn_data/mldata</code>에 데이터 파일 다운로드</li>
+<li><code>/root/scikit_learn_data/mldata</code>에 파일 목록 확인</li>
+<li>sklearn의 fetch_mldata로 데이터 로딩</li>
+</ol>
 
 
 <blockquote id="img">
@@ -280,9 +297,9 @@ sklearn.datasets의 데이터 파일 기본 위치를 get_data_home 함수로 �
 
 
 
-### Solution2: 데이터파일 다운로드 및 data_home를 매개변수로 지정
+<h3 id="solution2-데이터파일-다운로드-및-data-home를-매개변수로-지정">Solution2: 데이터파일 다운로드 및 data_home를 매개변수로 지정</h3>
 
-fetch_mldata는 data_home을 지정하는 방법을 제공합니다. &lt;그림 5&gt;는 현재 디렉터리에 mldata 디레터리를 생성 후, mldata에 데이터파일을 다운로드하는 과정을 설명합니다.  
+<p>fetch_mldata는 data_home을 지정하는 방법을 제공합니다. &lt;그림 5&gt;는 현재 디렉터리에 mldata 디레터리를 생성 후, mldata에 데이터파일을 다운로드하는 과정을 설명합니다.</p>
 
 
 <blockquote id="img">
@@ -306,8 +323,8 @@ fetch_mldata는 data_home을 지정하는 방법을 제공합니다. &lt;그림 
 
 
 
-&lt;그림 6&gt;은 data_home을 지정하여 MNIST 데이터 파일을 로딩하는 코드입니다. 앞에서 데이터파일을 mldata 디렉터리에 다운로드 했습니다. 
-mldata의 상위 디렉터리를 ```data_home```으로 지정합니다. 
+<p>&lt;그림 6&gt;은 data_home을 지정하여 MNIST 데이터 파일을 로딩하는 코드입니다. 앞에서 데이터파일을 mldata 디렉터리에 다운로드 했습니다.
+mldata의 상위 디렉터리를 <code>data_home</code>으로 지정합니다.</p>
 
 
 <blockquote id="img">
@@ -331,18 +348,19 @@ mldata의 상위 디렉터리를 ```data_home```으로 지정합니다.
 
 
 
-솔루션 2의 실행 코드는 다음과 같습니다. </code></pre></div></li>
-</ol>
+<p>솔루션 2의 실행 코드는 다음과 같습니다.</p>
 
-<p>from sklearn.datasets import fetch_mldata
-mnist = fetch_mldata(&ldquo;MNIST original&rdquo;, data_home=&ldquo;./&rdquo;)
+<pre><code>from sklearn.datasets import fetch_mldata
+mnist = fetch_mldata(&quot;MNIST original&quot;, data_home=&quot;./&quot;)
 x = mnist.data
 y = mnist.target
-print(x.shape, y.shape)</p>
-
-<pre><code>&gt; ```
-(70000, 784) (70000,)
+print(x.shape, y.shape)
 </code></pre>
+
+<blockquote>
+<pre><code>(70000, 784) (70000,)
+</code></pre>
+</blockquote>
 
 <h2 id="요약">요약</h2>
 
@@ -361,6 +379,8 @@ print(x.shape, y.shape)</p>
 <ol>
 <li id="fn:1">mat 파일은 Matlab 파일 포맷입니다. 머신러닝의 많은 데이터셋이 mat 파일로 공개되어 있습니다. SciPy는 mat 파일을 읽어서 Numpy 객체로 변환하는 기능을 제공합니다.
  <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">전체 URL =&gt; <a href="http://mldata.org/repository/data/download/matlab/mnist_original.mat">http://mldata.org/repository/data/download/matlab/mnist_original.mat</a>
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
 </ol>
 </div>
 
@@ -454,9 +474,11 @@ print(x.shape, y.shape)</p>
 <ul>
 <li>
 <ul>
-<li><a href="#무엇이-문제인가">무엇이 문제인가?</a>
+<li><a href="#무엇이-문제인가">무엇이 문제인가?</a></li>
+<li><a href="#오류-해결-방법">오류 해결 방법</a>
 <ul>
 <li><a href="#solution1-data-home-mldata에-데이터파일-다운로드">Solution1: {data_home}/mldata에 데이터파일 다운로드</a></li>
+<li><a href="#solution2-데이터파일-다운로드-및-data-home를-매개변수로-지정">Solution2: 데이터파일 다운로드 및 data_home를 매개변수로 지정</a></li>
 </ul></li>
 <li><a href="#요약">요약</a></li>
 </ul></li>
@@ -484,10 +506,6 @@ print(x.shape, y.shape)</p>
 							brew로 GraalVM설치</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/" title="Graalvms">
-							Graalvms</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201908w1/" title="GraalVM 새소식#2(201908, 첫 째주)">
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
@@ -504,20 +522,24 @@ print(x.shape, y.shape)</p>
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/book/" title="Books">
-							Books</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/cloud/" title="Clouds">
-							Clouds</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
 							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
+							GraalVM 관련 코너를 새로 시작합니다.</a>
 		  </li>
 		</ul>
 	</div>
@@ -620,17 +642,14 @@ print(x.shape, y.shape)</p>
 	});
 </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-72835175-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 

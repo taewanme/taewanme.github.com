@@ -11,13 +11,26 @@
 
 <title>Apache Kafka PaaS: Oracle Event Hub CS 소개..</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.58.1" />
+<meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="Apache Kafka PaaS: Oracle Event Hub CS 소개.." />
 <meta property="og:description" content="Oracle Public Cloud에서 Apache Kafka를 클라우드 관리 서비스(PaaS)로 제공합니다. 서비스 명은 Oracle Event Hub Cloud Service입니다. Oracle Event Hub Cloud Service를 소개하고, Kafka 서비스를 생성하는 방법을 소개합니다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/cloud/kafka_paas_eventhub_cs/" />
-<meta property="article:published_time" content="2017-08-14T23:20:25+09:00" />
-<meta property="article:modified_time" content="2017-08-14T23:20:25+09:00" />
+
+
+
+<meta property="article:published_time" content="2017-08-14T23:20:25&#43;09:00"/>
+<meta property="article:modified_time" content="2017-08-14T23:20:25&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -154,9 +167,9 @@
 <li>소프트웨어 패치 관리 &lt;그림 2 참조&gt;</li>
 <li>Oracle Event Hub CS의 클러스터 VM 접근 허용 (ssh)</li>
 <li>Oracle Big Data CS-CE 클라우드 서비스에 최적화 구성</li>
-<li>Oracle Event Hub CS 클러스터의 라이프사이클 관리 CLI<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> 제공: PaaS Service Manager(PSM)</li>
+<li>Oracle Event Hub CS 클러스터의 라이프사이클 관리 CLI<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup> 제공: PaaS Service Manager(PSM)</li>
 
-<li><p>Oracle Cloud의 보안체계에 따른 세밀한 보안 설정<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup></p></li>
+<li><p>Oracle Cloud의 보안체계에 따른 세밀한 보안 설정<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup></p></li>
 
 <li><p>&lt;그림 1&gt;. Oracle Event Hub CS 클러스터의 Scale-out
 <img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/eventhub20.jpg" alt="" /></p></li>
@@ -197,7 +210,7 @@
 <tr>
 <td>Basic</td>
 <td>ZooKeeper와 Kafka가 같은 VM에 설치 되는 방식입니다. <br /> 클러스터 사이즈로 VM 1개와 3개 중 하나를 선택할 수 합니다.</td>
-<td>- 고가성 지원 불가<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup><br />- 테스트 용도에 적합</td>
+<td>- 고가성 지원 불가<sup class="footnote-ref" id="fnref:3"><a rel="footnote" href="#fn:3">3</a></sup><br />- 테스트 용도에 적합</td>
 </tr>
 
 <tr>
@@ -394,7 +407,7 @@
 <img src="https://oracloud-kr-teamrepo.github.io/2017/08/eventhub/eventhub08.jpg" alt="" /></li>
 </ul>
 
-<p>앞에서 생성한 KafkaDemo 클러스터는 5개 VM으로 구성됩니다. 전체 CPU는 5 OCPU<sup class="footnote-ref" id="fnref:4"><a href="#fn:4">4</a></sup>이며 75GB 메모리, 435GB 블록스토리지, 6000개 파티션 용량으로 만들어 졌습니다. &lt;그림 10 참조&gt;</p>
+<p>앞에서 생성한 KafkaDemo 클러스터는 5개 VM으로 구성됩니다. 전체 CPU는 5 OCPU<sup class="footnote-ref" id="fnref:4"><a rel="footnote" href="#fn:4">4</a></sup>이며 75GB 메모리, 435GB 블록스토리지, 6000개 파티션 용량으로 만들어 졌습니다. &lt;그림 10 참조&gt;</p>
 
 <p>&lt;그림 10&gt;의 클러스터 명을 클릭하면 &lt;그림 11&gt;과 같이 클러스터 상세 정보 페이지로 이동합니다. 외부 네트워크에서 클러스터에 접근을 허용하기 위해서, 페이지 상단 메뉴 아이콘을 클릭한 후 &ldquo;Access Rules&rdquo; 메뉴를 선택합니다.</p>
 
@@ -528,10 +541,11 @@ drwxr-xr-x   3 taewan  staff    102  4 22 01:27 site-docs
 
 <h3 id="oracle-event-hub-cs-클러스터-테스트">Oracle Event Hub CS 클러스터 테스트</h3>
 
-<p>현재 Kafka 브로커 서버 및 ZooKeeper가 설치된 서버의 Public IP는 129.157.161.106이고 Zookeeper 포트 번호는 2181, Kafka 브로커 포트 번호는 6667입니다.<sup class="footnote-ref" id="fnref:5"><a href="#fn:5">5</a></sup> Kafka 클러스터에 생성된 topic 목록은 다음 명령을 이용하여 확인 할 수 있습니다.</p>
+<p>현재 Kafka 브로커 서버 및 ZooKeeper가 설치된 서버의 Public IP는 129.157.161.106이고 Zookeeper 포트 번호는 2181, Kafka 브로커 포트 번호는 6667입니다.<sup class="footnote-ref" id="fnref:5"><a rel="footnote" href="#fn:5">5</a></sup> Kafka 클러스터에 생성된 topic 목록은 다음 명령을 이용하여 확인 할 수 있습니다.</p>
 
 <ul>
-<li><p>현재 Kafka가 설치된 위치: ~/demo/kafka_2.12-0.10.2.1</p>
+<li>현재 Kafka가 설치된 위치: ~/demo/kafka_2.12-0.10.2.1</li>
+</ul>
 
 <pre><code>&gt; bin/kafka-topics.sh --list \
 --zookeeper  129.157.161.106:2181
@@ -540,8 +554,7 @@ KafkaDemo
 __consumer_offsets
 krplustvio-twTopic
 &gt;
-</code></pre></li>
-</ul>
+</code></pre>
 
 <p>위 명령에서 &ldquo;_<em>_</em>&ldquo;는 콘솔에서 명령이 끊어지지 않고 연결된 라인임을 의미합니다. 위 명령은 한 줄로 처리됩니다.</p>
 
@@ -733,10 +746,6 @@ krplustvio-twTopic
 							brew로 GraalVM설치</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/" title="Graalvms">
-							Graalvms</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201908w1/" title="GraalVM 새소식#2(201908, 첫 째주)">
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
@@ -753,20 +762,24 @@ krplustvio-twTopic
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/book/" title="Books">
-							Books</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/cloud/" title="Clouds">
-							Clouds</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
 							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
+							GraalVM 관련 코너를 새로 시작합니다.</a>
 		  </li>
 		</ul>
 	</div>
@@ -869,17 +882,14 @@ krplustvio-twTopic
 	});
 </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-72835175-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 

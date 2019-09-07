@@ -11,13 +11,26 @@
 
 <title>Ubuntu 패키지 관리 툴: apt 사용법</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.58.1" />
+<meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="Ubuntu 패키지 관리 툴: apt 사용법" />
 <meta property="og:description" content="우분투 패키지 관리 툴인 apt와 apt-get의 차이를 알아보고 사용법을 정리합니다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/tip/apt-apt-get/" />
-<meta property="article:published_time" content="2018-05-05T21:28:14+09:00" />
-<meta property="article:modified_time" content="2018-05-05T21:28:14+09:00" />
+
+
+
+<meta property="article:published_time" content="2018-05-05T21:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2018-05-05T21:28:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -224,7 +237,8 @@
 </blockquote>
 
 <ul>
-<li><p>패키지 명을 여러 게 지정하여 여러 패키지를 한꺼번에 설치할 수 있습니다. 이때 패지키 명은 공백으로 구분합니다.</p>
+<li>패키지 명을 여러 게 지정하여 여러 패키지를 한꺼번에 설치할 수 있습니다. 이때 패지키 명은 공백으로 구분합니다.</li>
+</ul>
 
 <pre><code>$ sudo apt install docker.io
 # 로그 생략
@@ -248,8 +262,7 @@ Setting up ubuntu-fan (0.12.8~16.04.2) ...
 Processing triggers for systemd (229-4ubuntu21.2) ...
 Processing triggers for ureadahead (0.100.0-19) ...
 vagrant@vagrant:~$
-</code></pre></li>
-</ul>
+</code></pre>
 
 <hr />
 
@@ -536,8 +549,14 @@ $
 <h3 id="3-패키지-업데이트">3. 패키지 업데이트</h3>
 
 <p><strong>3.1. 시스템 패키지 업데이트</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-/var/lib/apt/lists```에 패키지 목록을 업데이트 합니다. 레파지토리 목록은 ```/etc/apt/sources.list``` 파일에서 관리합니다." data-lang="/var/lib/apt/lists```에 패키지 목록을 업데이트 합니다. 레파지토리 목록은 ```/etc/apt/sources.list``` 파일에서 관리합니다.">&gt;```
-$ apt update</code></pre></div>
+
+<p><code>/var/lib/apt/lists</code>에 패키지 목록을 업데이트 합니다. 레파지토리 목록은 <code>/etc/apt/sources.list</code> 파일에서 관리합니다.</p>
+
+<blockquote>
+<pre><code>$ apt update
+</code></pre>
+</blockquote>
+
 <p>다음은 update 명령의 실행 결과입니다.</p>
 
 <pre><code>$ sudo apt update
@@ -718,10 +737,10 @@ vagrant@vagrant:~$
 	
 <nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	<div class="post-nav__item post-nav__item--prev col-1-2">
-		<a class="post-nav__link" href="http://taewan.kim/tip/latex_on_hugo/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">hugo markdown의 latex 사용 예제 모음</p></a>
+		<a class="post-nav__link" href="http://taewan.kim/tip/argument_parameter/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">argument와 parameter 차이점</p></a>
 	</div>
 	<div class="post-nav__item post-nav__item--next col-1-2">
-		<a class="post-nav__link" href="http://taewan.kim/tip/argument_parameter/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">argument와 parameter 차이점</p></a>
+		<a class="post-nav__link" href="http://taewan.kim/tip/gif_animation/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">GIF 애니메이션 서비스</p></a>
 	</div>
 </nav>
 
@@ -812,10 +831,6 @@ vagrant@vagrant:~$
 							brew로 GraalVM설치</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/" title="Graalvms">
-							Graalvms</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201908w1/" title="GraalVM 새소식#2(201908, 첫 째주)">
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
@@ -832,20 +847,24 @@ vagrant@vagrant:~$
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/book/" title="Books">
-							Books</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/cloud/" title="Clouds">
-							Clouds</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
 							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
+							GraalVM 관련 코너를 새로 시작합니다.</a>
 		  </li>
 		</ul>
 	</div>
@@ -948,17 +967,14 @@ vagrant@vagrant:~$
 	});
 </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-72835175-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 

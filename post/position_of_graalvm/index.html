@@ -11,13 +11,26 @@
 
 <title>GraalVM의 포지션과 역할에 대하여..</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.58.1" />
+<meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="GraalVM의 포지션과 역할에 대하여.." />
 <meta property="og:description" content="GraalVM의 포지션에 대하여 제 개인적인 생각을 정리합니다. " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/post/position_of_graalvm/" />
-<meta property="article:published_time" content="2018-06-16T07:28:14+09:00" />
-<meta property="article:modified_time" content="2018-06-16T07:28:14+09:00" />
+
+
+
+<meta property="article:published_time" content="2018-06-16T07:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2018-06-16T07:28:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -127,9 +140,9 @@
 
 <p>현재 이와 같은 질의에 대한 오라클의 공식적인 발표는 없기에 명확하게 답할 수는 없습니다. 그러나 GraalVM을 초기부터 봐온 엔지니어로써 개인적인 의견임을 전제로 이 질문에 대해서 정리해 보겠습니다.</p>
 
-<div class="notices warning" >
-2019년 5월 현재 필자는 오라클 소속이지만, 이 저작물은 Oracle과 관계없이 개인으로서 개인의 시간을 할애하여 작성된 글입니다. 본 글의 내용, 입장, 예측은 <font color='red'>Oracle</font>을 공식적으로 <font color='red'>절대</font> 대변하지 않습니다. 본 저작물은 전적으로 개인의 생각임을 다시한번 강조합니다.
+<div class="notices warning" ><p>2019년 5월 현재 필자는 오라클 소속이지만, 이 저작물은 Oracle과 관계없이 개인으로서 개인의 시간을 할애하여 작성된 글입니다. 본 글의 내용, 입장, 예측은 <font color='red'>Oracle</font>을 공식적으로 <font color='red'>절대</font> 대변하지 않습니다. 본 저작물은 전적으로 개인의 생각임을 다시한번 강조합니다.</p>
 </div>
+
 
 <h2 id="독특한-graalvm">독특한 GraalVM</h2>
 
@@ -159,12 +172,12 @@
 - 그림 2. GraalVM 개발 조직과 개발자</p>
 
 <p>&lt;그림 2&gt;와 같이 Oracle Labs를 중심으로, Red Hat, Twitter, Intel이 참여하고 있고 9개 대학의 연구소가 GraalVM 개발에 참여하고 있습니다. 이 산학연 개발팀은 GraalVM을 주제로 7년간(2012~2019.06) 총 64편의 논문을 발표했습니다. (<a href="https://www.graalvm.org/community/publications/" target="_blank">전체 논문 목록[↗NW]</a>
-)<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup></p>
+)<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup></p>
 
 <h3 id="meta-circular-java에-대한-도전">Meta-circular Java에 대한 도전</h3>
 
 <p>GraalVM의 원류는 &ldquo;<strong><a href="https://en.wikipedia.org/wiki/Maxine_Virtual_Machine" target="_blank">Maxine Virtual Machine(Maxine VM)[↗NW]</a>
-</strong>&ldquo;입니다. Maxine VM은 meta-circular 스타일<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>의 자바에 대한 연구로, 2005년에 멘체스터 대학과 Sun Labs가 함께 시작한 자바 R&amp;D 주제였습니다. Java HotSpot 성능 개선이 한계점에 도달하면서 2005년 순수 연구 주제로 시작한 Maxine VM은 세상이 주목을 받게됩니다. C++로 개발된 자바 컴파일러(C2 JIT 컴파일러)의 대안이 요구되는 상황에서 세상의 큰 주목을 받았습니다.</p>
+</strong>&ldquo;입니다. Maxine VM은 meta-circular 스타일<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup>의 자바에 대한 연구로, 2005년에 멘체스터 대학과 Sun Labs가 함께 시작한 자바 R&amp;D 주제였습니다. Java HotSpot 성능 개선이 한계점에 도달하면서 2005년 순수 연구 주제로 시작한 Maxine VM은 세상이 주목을 받게됩니다. C++로 개발된 자바 컴파일러(C2 JIT 컴파일러)의 대안이 요구되는 상황에서 세상의 큰 주목을 받았습니다.</p>
 
 <p>2012년에 GraalVM은 OpenJDK의 서브 프로젝트로 등록되었습니다. OpenJDK의 서브 프로젝트인 GraalVM의 목표는 Meta-Circular 자바의 구현과 C2 JIT 컴파일러 Graal로 대체하는 것입니다. 7년의 개발 기간을 거쳐 2019년 5월에 GraalVM 버전 1.0이 공개되었습니다. GraalVM의 역사는 프로젝트 명을 기준으로는 7년, 연구 과제의 시작점을 기준으로는 총 14년의 역사를 가집니다.</p>
 
@@ -455,10 +468,6 @@
 							brew로 GraalVM설치</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/" title="Graalvms">
-							Graalvms</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201908w1/" title="GraalVM 새소식#2(201908, 첫 째주)">
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
@@ -475,20 +484,24 @@
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/book/" title="Books">
-							Books</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/cloud/" title="Clouds">
-							Clouds</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
 							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
+							GraalVM 관련 코너를 새로 시작합니다.</a>
 		  </li>
 		</ul>
 	</div>
@@ -591,17 +604,14 @@
 	});
 </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-72835175-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 

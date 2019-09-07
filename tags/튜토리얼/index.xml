@@ -32,8 +32,9 @@ convnet1
       
       <guid>http://taewan.kim/torchtrans/tutorial/blits/autograd/</guid>
       <description>원문: http://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html 원문 제목: Autograd: automatic differentiation?  PyTorch의 모든 신경 네트워크의 중심에는 autograd 패키지가 있습니다. 먼저 autograd에 대하여 간략히 살펴 보겠습니다. 그러나서 첫 번째 신경망을 훈련해 볼 것 입니다.
-몇 가지 예로 좀 더 간단한 용어를 살펴보겠습니다. ## Variable ## Gradients ### NumPy 배열을 Torch 텐서로 변환 Python import numpy as np a = np.ones(5) b = torch.from_numpy(a) np.add(a, 1, out=a) print(a) print(b)
- &amp;gt; 출력:  [ 2.</description>
+autograd 패키지는 오든 텐서 연산에 대해 미분 자동화 기능을 제공합니다. 실행 정의(define-by-run) 프레임웍입니다. 실행 정의란 역전파는 코드가 실행되는 방식에 이해 정이됨을 의미합니다. 모든 반복마다 달라질 수 있습니다.
+몇 가지 예로 좀 더 간단한 용어를 살펴보겠습니다.
+Variable Gradients NumPy 배열을 Torch 텐서로 변환 import numpy as np a = np.</description>
     </item>
     
     <item>
@@ -44,7 +45,7 @@ convnet1
       <guid>http://taewan.kim/trans/pytorch/tutorial/blits/02_autograd/</guid>
       <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt; PyTorch와 함께하는 딥러닝: 60분 리뷰 &amp;gt; Autograd: 미분 자동화
   원문: http://http://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html 원문 제목: Autograd: automatic differentiation   PyTorch으로 만든 모든 신경망의 중심에는 autograd 패키지가 있습니다. 먼저 autograd 패키지를 간략히 살펴보겠습니다. 그리구 다음 문서에서 첫 번째 신경망을 훈련해 보겠습니다.
-[^1]: 역자주 - Weight와 Bias가 업데이트 되는 단위 Mini-Batch를 의미합니다. 좀 더 간단한 용어로 몇 가지 예를 들어 보겠습니다. ## Variable autograd.</description>
+autograd 패키지는 Tensor로 수행한 모든 연산에 대하여 자동-미분(Autimatic differentiation) 기능을 제공합니다. autograd는 실행 시점에 정의되는(define-by-run) 프레임워크입니다. 이것은 코드가 어떻게 실행되는가에 따라서 역전파(backprop)가 정의됨을 의미합니다.</description>
     </item>
     
     <item>
@@ -55,8 +56,7 @@ convnet1
       <guid>http://taewan.kim/torchtrans/tutorial/blits/pythorh_tutorial_01_what_is_pytorch/</guid>
       <description>원문: http://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-beginner-blitz-tensor-tutorial-py 원문 제목: What is PyTorch?  PyTorch란 무엇인가? PyTorch는 파이썬 기반의 과학 컴퓨팅 패키지로 두 집단을 대상으로 합니다.
  NumPy를 대체하고 GPU의 힘을 사용 최고의 유연성과 속도를 제공하는 딥러닝 연구 플래폼  시작하기 Tensors Tensors는 NumPy의 ndarrays와 유사하며, 차별점은 Tensors는 연산을 가속하는 GPU에서 사용될 수 있다는 점 입니다.
-from __future__ import print_function import torch  초기화 되지 않은 5X3 매트릭스 생성
-x = torch.Tensor(5, 3) print(x)   출력:</description>
+from __future__ import print_function import torch   초기화 되지 않은 5X3 매트릭스 생성  x = torch.Tensor(5, 3) print(x)   출력:</description>
     </item>
     
     <item>
@@ -68,7 +68,7 @@ x = torch.Tensor(5, 3) print(x)   출력:</description>
       <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt; PyTorch와 함께하는 딥러닝: 60분 리뷰 &amp;gt; PyTorch는 무엇인가?
   원문: http://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-beginner-blitz-tensor-tutorial-py 원문 제목: What is PyTorch?   PyTorch란 무엇인가? PyTorch는 파이썬 기반의 과학 컴퓨팅 패키지로 두 집단을 대상으로 합니다.
  NumPy를 대체하고 GPU의 힘을 사용 최고의 유연성과 속도를 제공하는 딥러닝 연구 플랫폼  시작하기 Tensors Tensors는 NumPy의 ndarrays와 유사하며, 차별점은 Tensors는 연산을 가속하는 GPU에서 사용될 수 있다는 점입니다.
-from __future__ import print_function import torch  초기화되지 않은 5X3 매트릭스 생성</description>
+from __future__ import print_function import torch   초기화되지 않은 5X3 매트릭스 생성  x = torch.</description>
     </item>
     
     <item>
@@ -79,7 +79,8 @@ from __future__ import print_function import torch  초기화되지 않은 5X3 �
       <guid>http://taewan.kim/torchtrans/tutorial/main/pythorh_tutorial_01/</guid>
       <description> 원문: http://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html 작성자: Soumith Chintala 원문 제목: Deep Learning with PyTorch: A 60 Minute Blitz  튜토리얼 목적
  높은 수준에서 PyTorch의 텐서 라이브러리와 신경망을 이해할 수 있다. 이미지를 분류하는 작은 신경 네트워크를 학습시킬 수 있다.  이 튜토리얼에서는 numpy에 대한 기본적인 지식이 있다고 가정합니다.
-[torch](https://github.com/pytorch/pytorch)와 [torchvision](https://github.com/pytorch/vision) 패키지가 모두 설치되어 있어야 합니다.   What is PyTorch? Autograd: automatic differentiation Neural networks Training a classifier Optional: Data Parallelism  </description>
+torch와 torchvision 패키지가 모두 설치되어 있어야 합니다.
+  What is PyTorch? Autograd: automatic differentiation Neural networks Training a classifier Optional: Data Parallelism  </description>
     </item>
     
     <item>
@@ -91,7 +92,8 @@ from __future__ import print_function import torch  초기화되지 않은 5X3 �
       <description>ML 문서 번역 &amp;gt; PyTorch Tutorial &amp;gt; PyTorch와 함께하는 딥러닝: 60분 리뷰
   원문: http://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html 작성자: Soumith Chintala 원문 제목: Deep Learning with PyTorch: A 60 Minute Blitz   튜토리얼 목적
  높은 수준에서 PyTorch의 텐서 라이브러리와 신경망을 이해할 수 있다. 이미지를 분류하는 작은 신경 네트워크를 학습시킬 수 있다.  이 튜토리얼에서는 numpy에 대한 기본적인 지식이 있다고 가정합니다.
-[torch](https://github.com/pytorch/pytorch)와 [torchvision](https://github.com/pytorch/vision) 패키지가 모두 설치되어 있어야 합니다.     원문제목 번역문서 제목     What is PyTorch?</description>
+torch와 torchvision 패키지가 모두 설치되어 있어야 합니다.
+    원문제목 번역문서 제목     What is PyTorch?</description>
     </item>
     
     <item>

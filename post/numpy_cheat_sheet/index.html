@@ -11,13 +11,26 @@
 
 <title>파이썬 데이터 사이언스 Cheat Sheet: NumPy 기초, 기본</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.58.1" />
+<meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="파이썬 데이터 사이언스 Cheat Sheet: NumPy 기초, 기본" />
 <meta property="og:description" content="NumPy 기본 사용법을 정리합니다. 사용법, 가이드, 문서, 메뉴얼, 기본 문서" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/post/numpy_cheat_sheet/" />
-<meta property="article:published_time" content="2018-01-16T21:28:14+09:00" />
-<meta property="article:modified_time" content="2018-01-16T21:28:14+09:00" />
+
+
+
+<meta property="article:published_time" content="2018-01-16T21:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2018-01-16T21:28:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -116,7 +129,7 @@
 			</figure>
 			
 
-<p>파이썬 기반 데이터 분석 환경에서 NumPy<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>는 행렬 연산을 위한 핵심 라이브러리입니다.
+<p>파이썬 기반 데이터 분석 환경에서 NumPy<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>는 행렬 연산을 위한 핵심 라이브러리입니다.
 NumPy는 &ldquo;<strong>Numerical Python</strong>&ldquo;의 약자로 대규모 다차원 배열과 행렬 연산에 필요한 다양한 함수를 제공합니다.
 특히 메모리 버퍼에 배열 데이터를 저장하고 처리하는 효율적인 인터페이스를 제공합니다.
 파이썬 list 객체를 개선한 NumPy의 ndarray 객체를 사용하면 더 많은 데이터를 더 빠르게 처리할 수 있습니다.</p>
@@ -140,7 +153,9 @@ NumPy Basics</a></strong> 문서를 참조하여 작성하였습니다.</p>
 NumPy는 고성능 다차원 배열과 이런 배열을 처리하는 다양한 함수와 툴을 제공합니다.</p>
 
 <p>파이썬에서 NumPy를 사용할 때, 다음과 같이 numpy 모듈을 &ldquo;np&rdquo;로 임포트하여 사용합니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np</code></pre></div>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">import</span> <span style="color: #f8f8f2">numpy</span> <span style="color: #f92672">as</span> <span style="color: #f8f8f2">np</span>
+</pre></div>
+
 <p>NumPy 라이브러리 버전은 다음과 같이 확인 할 수 있습니다.</p>
 
 <div tabindex="-1" id="notebook" class="border-box-sizing">
@@ -194,10 +209,12 @@ NumPy는 고성능 다차원 배열과 이런 배열을 처리하는 다양한 �
 <p>NumPy 배열의 axis와 관련해서는 &ldquo;<a href="http://taewan.kim/post/numpy_sum_axis/">Numpy에서 np.sum 함수의 axis 이해</a>&rdquo; 문서를 참조하시기 바랍니다.</p>
 
 <p>본 문서에서는 NumPy 객체의 정보를 출력하는 용도로 다음 pprint 함수를 공통으로 사용합니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">pprint</span>(arr):
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;type:{}&#34;</span><span style="color:#f92672">.</span>format(type(arr)))
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;shape: {}, dimension: {}, dtype:{}&#34;</span><span style="color:#f92672">.</span>format(arr<span style="color:#f92672">.</span>shape, arr<span style="color:#f92672">.</span>ndim, arr<span style="color:#f92672">.</span>dtype))
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Array&#39;s Data:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, arr)</code></pre></div>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">def</span> <span style="color: #a6e22e">pprint</span><span style="color: #f8f8f2">(arr):</span>
+    <span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;type:{}&quot;</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">format(type(arr)))</span>
+    <span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;shape: {}, dimension: {}, dtype:{}&quot;</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">format(arr</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">shape,</span> <span style="color: #f8f8f2">arr</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">ndim,</span> <span style="color: #f8f8f2">arr</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">dtype))</span>
+    <span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Array&#39;s Data:</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">arr)</span>
+</pre></div>
+
 <h2 id="2-배열-생성">2. 배열 생성</h2>
 
 <p>NumPy 배열은 numpy.ndarray 객체입니다. 이 절에서는 NumPy 배열(numpy.ndarray 객체) 생성 방법을 소개합니다.</p>
@@ -6220,10 +6237,6 @@ NumPy Basics by DataCamp</a></li>
 							brew로 GraalVM설치</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/" title="Graalvms">
-							Graalvms</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201908w1/" title="GraalVM 새소식#2(201908, 첫 째주)">
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
@@ -6240,20 +6253,24 @@ NumPy Basics by DataCamp</a></li>
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/book/" title="Books">
-							Books</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/cloud/" title="Clouds">
-							Clouds</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
 							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
+							GraalVM 관련 코너를 새로 시작합니다.</a>
 		  </li>
 		</ul>
 	</div>
@@ -6356,17 +6373,14 @@ NumPy Basics by DataCamp</a></li>
 	});
 </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-72835175-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 

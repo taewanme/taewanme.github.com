@@ -11,13 +11,26 @@
 
 <title>선형회귀 MSE 오차함수 미분 및 코드 구현</title>
 <meta name="description" content="taewan.kim">
-<meta name="generator" content="Hugo 0.58.1" />
+<meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="선형회귀 MSE 오차함수 미분 및 코드 구현" />
 <meta property="og:description" content="지도학습의 선형회귀를 기초로 머신러닝의 학습이 수행되는 과정에 대한 기초 사항을 정리합니다. 선형회귀, MSE, 오차함수, 미분, 비용함수 편미분 및 코드 구현으로 구성됩니다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/post/cost_function_derivation/" />
-<meta property="article:published_time" content="2016-08-09T16:28:14+09:00" />
-<meta property="article:modified_time" content="2016-08-09T16:28:14+09:00" />
+
+
+
+<meta property="article:published_time" content="2016-08-09T16:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2016-08-09T16:28:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
@@ -249,7 +262,7 @@ $$</font></p>
 <ul>
 <li>오차가 큰 경우에 더 큰 가중치를 주어 학습을 빠르게 처리</li>
 <li>MSE를 볼록함수(Convex Function)로 만들어 최적의 가중치를 효과적으로 찾기 위함</li>
-<li>절대값은 미분불가능 수식<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup></li>
+<li>절대값은 미분불가능 수식<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup></li>
 </ul>
 
 <p>&lt;수식 4&gt;의 MSE(Mean squared error, 평균 제곱 오차)는 m개의 사례에 대한 개별적인 오차의 제곱의 평균을 계산하는 비용함수입니다. 일반적으로 머신러닝에서 m은 한번에 처리하는 사례의 단위이며, m개 사례 단위로 비용 함수를 처리하고 그 결과를 기준으로 기중치를 조정합니다.</p>
@@ -284,7 +297,7 @@ $$</font></p>
 
 <p>&lt;그림 2&gt;는 가중치가 3개일 때의 MSE의 그래프를 시작화한 것입니다. 특성이 4개 이상이 되면, 가중치가 4개 이상이돼기 때문에 그래프를 시작화할 수 없습니다. 결과적으로 4차원 이상의 MSE에서는 현재 가중치가 비용함수에 미치는 경향을 파악하기 어렵습니다.</p>
 
-<p>현재 가중치가 비용함수에 미치는 경향을 파악하기 위해서 미분<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>을 사용합니다. MSE 비용함수를 미분함하여 도함수를 구하고, 현재 사용중인 가중치를 입력하여 미분 계수를 구합니다. 이 미분 계수를 통해서 현재 가중치가 MSE에 어떤 영향을 미치는지 확인할 수 있습니다. 특정 가중치에 대하여 미분 계수가 양수가 나온다면, 해당 가중치는 오차가 양의 방향으로 증가하는 경향을 보인다는 의미입니다. 반대로 특정 가중치에 대한 미분 계수가 음수가 나온다면, 해당 가중치는 음의 방향으로 오차가 증가하는 경향을 보인다는 의미입니다. 마지막으로 미분계수가 0이면 현재 가중치가 오차가 최소가 되면 최적의 값이라는 의미입니다. &lt;그림 3&gt;과 같이 미분의 극대극소의 개념을 사용하는 것 입니다.</p>
+<p>현재 가중치가 비용함수에 미치는 경향을 파악하기 위해서 미분<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup>을 사용합니다. MSE 비용함수를 미분함하여 도함수를 구하고, 현재 사용중인 가중치를 입력하여 미분 계수를 구합니다. 이 미분 계수를 통해서 현재 가중치가 MSE에 어떤 영향을 미치는지 확인할 수 있습니다. 특정 가중치에 대하여 미분 계수가 양수가 나온다면, 해당 가중치는 오차가 양의 방향으로 증가하는 경향을 보인다는 의미입니다. 반대로 특정 가중치에 대한 미분 계수가 음수가 나온다면, 해당 가중치는 음의 방향으로 오차가 증가하는 경향을 보인다는 의미입니다. 마지막으로 미분계수가 0이면 현재 가중치가 오차가 최소가 되면 최적의 값이라는 의미입니다. &lt;그림 3&gt;과 같이 미분의 극대극소의 개념을 사용하는 것 입니다.</p>
 
 
 <blockquote id="img">
@@ -406,9 +419,9 @@ $$</font></p>
 <li>$\frac{d}{dx}f(g(x)) = f&rsquo;(g(x))g&rsquo;(x)$  : 체인 룰</li>
 </ul>
 
-<div class="notices note" >
-MSE는 현재 가중치와 편차 두 개의 변수를 갖습니다. 따라서 편미분이 수행됩니다. 편미분시 목적 변수외에는 모두 상수 취급로 취급합니다. $h(x_1, x_2)= x_1^2+x_2^3$에 대하여 $\frac{\partial}{\partial x_1} h(x_1, x_2)=2x_1$와 $\frac{\partial}{\partial x_2} h(x_1, x_2)=3x_2^2$를 결과로 갖습니다.
+<div class="notices note" ><p>MSE는 현재 가중치와 편차 두 개의 변수를 갖습니다. 따라서 편미분이 수행됩니다. 편미분시 목적 변수외에는 모두 상수 취급로 취급합니다. $h(x_1, x_2)= x_1^2+x_2^3$에 대하여 $\frac{\partial}{\partial x_1} h(x_1, x_2)=2x_1$와 $\frac{\partial}{\partial x_2} h(x_1, x_2)=3x_2^2$를 결과로 갖습니다.</p>
 </div>
+
 
 <h3 id="4-2-mse-편미분">4.2 MSE 편미분</h3>
 
@@ -633,10 +646,6 @@ $$</p>
 							brew로 GraalVM설치</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/graalvm/" title="Graalvms">
-							Graalvms</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/graalvm/graalvm_news_201908w1/" title="GraalVM 새소식#2(201908, 첫 째주)">
 							GraalVM 새소식#2(201908, 첫 째주)</a>
 		  </li>
@@ -653,20 +662,24 @@ $$</p>
 							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/book/" title="Books">
-							Books</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
 							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/cloud/" title="Clouds">
-							Clouds</a>
-		  </li>
-			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
 							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_seminar/" title="Cloud Native Java:GraalVM (@Oracle Developer Meetup)">
+							Cloud Native Java:GraalVM (@Oracle  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_corner/" title="GraalVM 관련 코너를 새로 시작합니다.">
+							GraalVM 관련 코너를 새로 시작합니다.</a>
 		  </li>
 		</ul>
 	</div>
@@ -769,17 +782,14 @@ $$</p>
 	});
 </script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-72835175-1', 'auto');
-	
-	ga('send', 'pageview');
-}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 
