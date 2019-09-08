@@ -19,7 +19,12 @@
   
   <url>
     <loc>http://taewan.kim/tip/how_to_install_graalvm_with_brew/</loc>
-    <lastmod>2019-09-04T01:28:14+09:00</lastmod>
+    <lastmod>2019-08-28T01:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/graalvm/how_to_manage_graalvmee_with_sdk/</loc>
+    <lastmod>2019-08-25T01:28:14+09:00</lastmod>
   </url>
   
   <url>
@@ -1597,6 +1602,12 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/tags/ee/</loc>
+    <lastmod>2019-08-25T01:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tags/encoding/</loc>
     <lastmod>2011-08-01T10:50:36+09:00</lastmod>
     <priority>0</priority>
@@ -2421,6 +2432,12 @@
   <url>
     <loc>http://taewan.kim/tags/script/</loc>
     <lastmod>2017-12-27T19:35:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/sdkman/</loc>
+    <lastmod>2019-08-25T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
