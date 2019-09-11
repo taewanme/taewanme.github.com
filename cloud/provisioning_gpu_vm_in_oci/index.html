@@ -304,9 +304,9 @@
 
 <h3 id="3-gpu-인스턴스를-compartment-선정">3. GPU 인스턴스를 Compartment 선정</h3>
 
-<p>Compartment는 자원을 쉽게 관리하는 논리적인 묶음입니다. Tenancy가 생성되면 Root Compartment 하나가 만들어지며  관리자가 Root Compartment 아래에 새로운 Compartment를 디렉토리 구조로 추가할 수 있습니다. 인스턴스, 블록 스토리지, VCN, 서브넷 등 모든 OIC 자원을 생성할 때 반드시 Compartment를 지정해야 합니다. OCI는 Compartment 단위로 사용자 접근 정책을 관리합니다.</p>
+<p>Compartment는 자원을 쉽게 관리하는 논리적인 묶음입니다. Tenancy가 생성되면 Root Compartment 하나가 만들어집니다. 관리자는 Root Compartment 아래에 새로운 Compartment를 디렉토리 구조로 추가할 수 있습니다. 인스턴스, 블록 스토리지, VCN, 서브넷 등 모든 OCI 자원을 생성할 때 반드시 Compartment를 지정해야 합니다. OCI는 Compartment 단위로 사용자 접근 정책을 관리합니다.</p>
 
-<p>Root Compartment를 사용하는 것은, 관리적인 측면을 고려할 때 바람직하지 않습니다. 별로 Compartment를 만들어 사용하는 것이 좋습니다.</p>
+<p>&ldquo;<strong>Root Compartment</strong>&ldquo;를 사용하는 것은, 관리적인 측면을 고려할 때 바람직하지 않습니다. 별도로 Compartment를 만들어 사용하는 것이 좋습니다.</p>
 
 <p>Compartment를 새로 만들어야 한다면 다음 그림과 같이 새로운 Compartment를 생성합니다. OCI 메인 페이지의 햄버거 아이콘 -&gt; Identity -&gt; Compartments 메뉴를 통해서 Compartment 관리 페이지 이동합니다. 아래 그림에서는 &ldquo;sandbox&rdquo; Compartment를 만들었습니다. 본 문서에서는 &ldquo;sandbox&rdquo; Compartment에 모든 OCI 자원을 만들 것입니다.</p>
 
