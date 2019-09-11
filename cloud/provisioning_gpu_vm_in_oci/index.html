@@ -308,7 +308,7 @@
 
 <p>&ldquo;<strong>Root Compartment</strong>&ldquo;를 사용하는 것은, 관리적인 측면을 고려할 때 바람직하지 않습니다. 별도로 Compartment를 만들어 사용하는 것이 좋습니다.</p>
 
-<p>Compartment를 새로 만들어야 한다면 다음 그림과 같이 새로운 Compartment를 생성합니다. OCI 메인 페이지의 햄버거 아이콘 -&gt; Identity -&gt; Compartments 메뉴를 통해서 Compartment 관리 페이지 이동합니다. 아래 그림에서는 &ldquo;sandbox&rdquo; Compartment를 만들었습니다. 본 문서에서는 &ldquo;sandbox&rdquo; Compartment에 모든 OCI 자원을 만들 것입니다.</p>
+<p>Compartment를 새로 만들어야 한다면 다음 그림과 같이 새로운 Compartment를 생성합니다. OCI 메인 페이지의 &ldquo;<strong>햄버거 아이콘 -&gt; Identity -&gt; Compartments</strong>&rdquo; 메뉴를 통해서 Compartments 관리 페이지로 이동합니다. 아래 그림에서는 &ldquo;sandbox&rdquo; Compartment를 만들었습니다. 본 문서에서는 &ldquo;sandbox&rdquo; Compartment에 모든 OCI 자원을 만들 것입니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2019/09/gpu/040.jpg" alt="" /></p>
 
@@ -320,7 +320,7 @@
 
 <p><img src="https://taewanmerepo.github.io/2019/09/gpu/050.jpg" alt="" /></p>
 
-<p>다음 그림과 같이 &ldquo;Create Virtual Cloud Network&rdquo; 생성 팝업에서 VCN 명과 Compartment를 지정하고, &ldquo;CREATE VIRTUAL CLOUD NETWORK PLUS RELATED RESOURCES&rdquo;를 선택합니다. 이 옵션을 선택하면 VCN과 함께 Internet Gateway, Route Table, AD 별 서브넷이 모두 생성됩니다.</p>
+<p>다음 그림과 같이 &ldquo;Create Virtual Cloud Network&rdquo; 생성 팝업에서 VCN 이름을 입력하고  사용할 Compartment를 지정합니다. 그리고 &ldquo;CREATE VIRTUAL CLOUD NETWORK PLUS RELATED RESOURCES&rdquo;를 선택합니다. 이 옵션을 선택하면 VCN을 만들 때, 이 VCN과 관련된  Internet Gateway, Route Table, AD 별 서브넷이 한꺼번에 생성됩니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2019/09/gpu/060.jpg" alt="" /></p>
 
@@ -337,15 +337,15 @@
 
 <p><img src="https://taewanmerepo.github.io/2019/09/gpu/100.jpg" alt="" /></p>
 
-<p>위 그림과 같이 Ingress Rule이 정상적으로 등록되면, 다음과 같이 &ldquo;Security List&rdquo;에 Ingress Rule이 출력됩니다. 위 결과로부터 Jupyter를 위한 8888 포트와 ssh 접속을 위한 22번 포트가 오픈된 것을 확인 할 수 있습니다.</p>
+<p>위 그림과 같이 Ingress Rule이 정상적으로 등록되면, 다음과 같이 &ldquo;Security List&rdquo;에 새로 등록된 Ingress Rule이 출력됩니다. 위 그림에서 Jupyter를 위한 8888 포트와 ssh 접속을 위한 22번 포트가 오픈된 것을 확인 할 수 있습니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2019/09/gpu/110.jpg" alt="" /></p>
 
-<p>이것으로 GPU VM 생성을 위한 준비 작업이 완료되었습니다. 이제 GPU VM을 만들고 관련 개발 환경을 구성해볼 것입니다.</p>
+<p>이것으로 GPU VM 인스턴스 생성을 위한 준비 작업이 완료되었습니다. 이제 GPU VM을 만들고 관련 개발 환경을 구성해볼 것입니다.</p>
 
 <h2 id="gpu-vm-인스턴스-생성">GPU VM 인스턴스 생성</h2>
 
-<p>다음 그림과 같이 햄버거 메뉴 버튼 -&gt; Compute -&gt; Instance 메뉴 패스로 VM 인스턴스 관리 페이지로 이동합니다. 이 페이지에서 sand 컴파트먼트를 선택하고 &ldquo;Create Instance&rdquo; 버튼을 클릭하면 &ldquo;Create Compute Instance&rdquo; 페이지로 이동합니다.</p>
+<p>다음 그림과 같이 &ldquo;<strong>햄버거 메뉴 버튼 -&gt; Compute -&gt; Instance</strong>&rdquo; 메뉴 패스로 VM 인스턴스 관리 페이지로 이동합니다. 이 페이지에서 sandbox 컴파트먼트를 선택하고 &ldquo;Create Instance&rdquo; 버튼을 클릭하면 &ldquo;Create Compute Instance&rdquo; 페이지로 이동합니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2019/09/gpu/120.jpg" alt="" /></p>
 
@@ -465,7 +465,7 @@ OpenJDK 64-Bit Server VM (build 25.222-b10, mixed mode)
 
 <h3 id="방화벽-포트-오픈">방화벽 포트 오픈</h3>
 
-<p>운영체제에 8888 포트를 오픈합니다. Oracle Linux 7.x를 사용하는 VM 인스턴스는 방화벽을 관리하는 firewalld 데몬을 사용합니다. firewall-cmd 명령으로 방화벽을 관리합니다. Oracle Linux 7.x를 사용하는 VM에서 8888 포트 오픈하기 위해서 다음 명령으로 사용합니다.</p>
+<p>이제 운영체제가 관리하는 방화벽에 8888 포트를 오픈합니다. Oracle Linux 7.x를 사용하는 VM 인스턴스는 방화벽을 관리하는 firewalld 데몬을 사용합니다. 그릭고 firewall-cmd 명령으로 방화벽을 관리합니다. Oracle Linux 7.x를 사용하는 VM에서는 다음 명령을 사용하여 8888 포트를 오픈합니다.</p>
 
 <blockquote>
 <pre><code>sudo firewall-cmd --zone=public --add-port=8888/tcp --permanent
@@ -526,7 +526,7 @@ Saving to: 'Anaconda3-2019.07-Linux-x86_64.sh'
 [opc@gpuvm01 ~]$
 </code></pre>
 
-<p>다운드로한 스크립트를 다음 명령으로 실행하여, Anaconda를 설치하고 PATH 환경변수 수정 및 활성화합니다.</p>
+<p>다운드로한 스크립트를 다음 명령으로 실행하여 Anaconda를 설치합니다. 그리고 PATH 환경변수를 수정하고 활성화합니다.</p>
 
 <blockquote>
 <pre><code>bash ./Anaconda3-2019.07-Linux-x86_64.sh -b
@@ -535,7 +535,7 @@ source ~/.bashrc
 </code></pre>
 </blockquote>
 
-<p>다음 명령을 실행하여 conda를 최신 버전으로 업데이트합니다.</p>
+<p>다음 명령을 실행하여 conda가 최신 버전으로 업데이트됩니다.</p>
 
 <blockquote>
 <pre><code>conda update -n base -c defaults conda
@@ -586,7 +586,7 @@ conda 4.7.11
 [opc@gpuvm01 ~]$
 </code></pre>
 
-<p><code>conda activate</code> 명령을 사용하기 위해서 다음 명령을 실행하여 <code>.bashrc</code>를 업데이트합니다. 그리고 source 명령을 실행하여 .bashrc 설정을 활성화합니다.</p>
+<p><code>conda activate</code> 명령을 사용하기 위해서 다음 명령을 실행하여 <code>.bashrc</code> 파일을 업데이트합니다. 그리고 source 명령을 실행하여 .bashrc 설정을 현재 세션에 반영합니다.</p>
 
 <blockquote>
 <pre><code>conda init bash
@@ -724,7 +724,7 @@ Installed kernelspec python3.6 in /home/opc/anaconda3/envs/sandbox/share/jupyter
 
 <h3 id="jupyter-설정">Jupyter 설정</h3>
 
-<p>Jupyter에 설정 파일을 생성하고 기본 설정을 합니다. 그리고 패스워드를 등록할 것입니다. 다음 명령을 실행하여 설정 파일을 생성합니다.</p>
+<p>다음 명령으로 Jupyter에 설정 파일을 생성합니다. 그리고 몇 가지 간단한 설정을 추가합니다. 그 다음 Jupyter 로그인에 사용할 패스워드를 등록할 것입니다. 다음 명령을 실행하여 Jupyter 설정 파일을 생성합니다.</p>
 
 <blockquote>
 <pre><code>jupyter notebook --generate-config
