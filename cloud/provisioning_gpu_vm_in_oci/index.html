@@ -144,7 +144,7 @@
 
 <h2 id="oci-gpu-지원-shape">OCI GPU 지원 Shape</h2>
 
-<p>OCI에서 제공하는 GPU Shape을 다음 테이블과 같이 정리할 수 있습니다.</p>
+<p>OCI에서 제공하는 GPU Shape은 다음 테이블과 같이 정리할 수 있습니다.</p>
 
 <table>
 <thead>
@@ -236,13 +236,13 @@
 </tbody>
 </table>
 
-<p>Shape 이름에서 VM은 가상 머신을 의미하고 BM은 Baremetal 서버를 의미입니다. BM은 서버 1대를 전용으로 사용하는 서비스 입니다. 또한 GPUX.Y에서 X는 GPU 타입을 의미입니다. 1은 Tesla P100이고 2는 Tesa V100을 나타냅니다. Y는 GPU 수입니다. GPU는 최소 1개에서 8개까지 사용할 수 있습니다.</p>
+<p>Shape 이름에서 &ldquo;<strong>VM</strong>&ldquo;은 가상 머신을 의미하고 &ldquo;<strong>BM</strong>&ldquo;은 Baremetal 서버를 의미입니다. BM은 사용자에게 서버 1대를 전용으로 제공하는 서비스입니다. 또한 &ldquo;<strong>GPUX.Y</strong>&ldquo;에서 X는 GPU 타입을 의미입니다. 1은 Tesla P100이고 2는 Tesa V100을 나타냅니다. Y는 GPU 수입니다. GPU는 최소 1개에서 8개까지 사용할 수 있습니다.</p>
 
 <p>이 표에서 네트워크는 사용가능한 Network Bendwidth입니다. BM의 경우 25Gbps 2개를 지원합니다. 1개는 Storage  Network에 전용으로 할당되고 나머지 1개가 일반 네트워크에 할당됩니다.</p>
 
-<p>VM.GPU3.2, VM.GPU3.4 및 BM.GPU3.8은 &ldquo;GPU Interconnect&rdquo;로 NVLINK를 제공합니다. 여러 GPU를 사용하는  시스템 PCIe 대역폭이 병목 지점이 되는 경우가 발생합니다. 이런 문제를 해결하고 더 빠르고 더 확장 가능한 다중 프로세서 상호 연결을 지원하는 것이 VNLINK입니다. VNLIKN는 GPU간 브릿지 역할을 하는 고속의 링크로 병렬 처리 성능을 높임니다.</p>
+<p>VM.GPU3.2, VM.GPU3.4 및 BM.GPU3.8은 &ldquo;GPU Interconnect&rdquo;로 NVLINK를 제공합니다. 여러 GPU를 사용하는 시스템은 PCIe 대역폭이 병목 지점이 되는 경우가 발생합니다. 이런 문제를 해결하고 더 빠르고 더 확장 가능한 다중 프로세서 상호 연결을 지원하는 것이 VNLINK입니다. VNLIKN는 GPU간 브릿지 역할을 하는 고속의 링크로 병렬 처리 성능을 높임니다.</p>
 
-<p>사용 비용은 사용한 GPU 갯수 X 사용 시간을 기준으로 책정됩니다. P100 사용료는 GPU 1장당 1시간 기준 1.25달러입니다. V100 사용료는 GPU 1장당 1시간 기준 2.95달러입니다.</p>
+<p>사용 비용은 &ldquo;사용한 GPU 갯수 X 사용 시간&rdquo;을 기준으로 책정됩니다. P100 사용료는 GPU 1장당 1시간 기준 1.25달러입니다. V100 사용료는 GPU 1장당 1시간 기준 2.95달러입니다.</p>
 
 <div class="notices note" ><p>이 가격은 List Price이며, 결재 방식 및 계약 기간에 따라서 할인률이 적용됩니다.</p>
 </div>
