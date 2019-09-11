@@ -129,7 +129,7 @@
 			</figure>
 			
 
-<p>Oracle Cloud Infrastructure(OCI)에서는 NVIDIA Tesla P100과 V100 두 가지 GPU를 지원하는 6개<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>의 Shape을 제공합니다. 이 문서에서는 OCI GPU에 대한 소개와 사용법을 정리하며 다음과 같은 내용을 다룹니다.</p>
+<p>Oracle Cloud Infrastructure(OCI)에서는 NVIDIA Tesla P100과 V100 두 가지 GPU를 지원합니다. 이 두 GPU를 기반으로 6개<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>의 Shape을 제공합니다. 이 문서에서는 OCI GPU에 대한 소개와 사용법을 정리하며 다음과 같은 내용을 다룹니다.</p>
 
 <ul>
 <li>OCI에서 GPU를 제공하는 Shape에 대한 소개</li>
@@ -139,7 +139,7 @@
 <li>인스턴스 생성</li>
 <li>보안 설정</li>
 </ul></li>
-<li>Jupyter로 Machine Learning/Deep Learning 개발 환경 구성</li>
+<li>Jupyter로 ML(Machine Learning)/DL(Deep Learning) 개발 환경 구성</li>
 </ul>
 
 <h2 id="oci-gpu-지원-shape">OCI GPU 지원 Shape</h2>
@@ -236,21 +236,21 @@
 </tbody>
 </table>
 
-<p>Shape 이름에서 &ldquo;<strong>VM</strong>&ldquo;은 가상 머신을 나타내고 &ldquo;<strong>BM</strong>&ldquo;은 Bare metal 서버를 의미합니다. BM은 사용자에게 서버 1대를 전용으로 제공하는 서비스입니다. 또한 &ldquo;<strong>GPUX.Y</strong>&ldquo;에서 X는 GPU 타입을 의미합니다. 1은 Tesla P100이고 2는 Tesa V100을 나타냅니다. Y는 GPU 수입니다. GPU는 최소 1개에서 8개까지 사용할 수 있습니다.</p>
+<p>Shape 이름에서 &ldquo;<strong>VM</strong>&ldquo;은 가상 머신을 나타내고 &ldquo;<strong>BM</strong>&ldquo;은 Bare metal 서버를 의미합니다. Bare metal 서버는 사용자에게 서버 1대를 전용으로 제공하는 서비스입니다. 또한 &ldquo;<strong>GPUX.Y</strong>&ldquo;에서 X는 GPU 타입을 의미합니다. &ldquo;<strong>1</strong>&ldquo;은 Tesla P100이고 &ldquo;<strong>2</strong>&ldquo;는 Tesa V100을 나타냅니다. Y는 GPU 수입니다. 각 Shape은 GPU를 최소 1개에서 8개까지 사용합니다.</p>
 
-<p>이 표에서 네트워크는 사용 가능한 Network Bandwidth입니다. BM의 경우 25Gbps 2개를 지원합니다. 1개는 Storage  Network에 전용으로 할당되고 나머지 1개가 일반 네트워크에 할당됩니다.</p>
+<p>이 표에서 네트워크는 각 Shape이 사용 가능한 Network Bandwidth입니다. BM의 경우 25Gbps 2개를 지원합니다. 1개는 Storage  Network에 전용으로 할당되고 나머지 1개가 일반 네트워크에 할당됩니다.</p>
 
-<p>VM.GPU3.2, VM.GPU3.4 및 BM.GPU3.8은 &ldquo;GPU Interconnect&rdquo;로 NVLINK를 제공합니다. 여러 GPU를 사용하는 시스템은 PCIe 대역폭이 병목 지점이 되는 경우가 발생합니다. 이런 문제를 해결하고 더 빠르고 더 확장 가능한 다중 프로세서 상호 연결을 지원하는 것이 VNLINK입니다. VNLIKN는 여러 GPU 사이에 브릿지 역할을 하는 고속의 링크로 병렬 처리 성능을 높입니다.</p>
+<p>VM.GPU3.2, VM.GPU3.4 및 BM.GPU3.8은 &ldquo;GPU Interconnect&rdquo;로 NVLINK를 제공합니다. 여러 GPU를 사용하는 시스템은 PCIe 대역폭이 병목 지점이 될 수 있습니다. 이런 문제를 해결하고 더 빠르고, 더 확장 가능한 다중 프로세서 상호 연결을 지원하는 기술이 VNLINK입니다. VNLIKN는 여러 GPU 사이에 브릿지 역할을 하는 고속의 링크로 병렬 처리 성능을 높입니다.</p>
 
-<p>사용 비용은 &ldquo;사용한 GPU 개수 X 사용 시간&rdquo;을 기준으로 책정됩니다. P100 사용료는 GPU 1장당 1시간 기준 1.25달러입니다. V100 사용료는 GPU 1장당 1시간 기준 2.95달러입니다.</p>
+<p>GPU 사용 비용은 &ldquo;사용한 GPU 개수 X 사용 시간&rdquo;을 기준으로 책정됩니다. P100 사용료는 GPU 1장당 1시간 기준 1.25달러입니다. V100 사용료는 GPU 1장당 1시간 기준 2.95달러입니다.</p>
 
-<div class="notices note" ><p>이 가격은 List Price이며, 결재 방식 및 계약 기간에 따라서 할인율이 적용됩니다.</p>
+<div class="notices note" ><p>이 가격은 List Price이며, 결재 방식 및 계약 기간에 따라서 별도 할인율이 적용됩니다.</p>
 </div>
 
 
-<p>OCI는 GPU Shape 6개를 제공합니다. 이 Shape은 운영체제로 Oracle Linux 7.x와 Ubuntu 16.4를 사용할 수 있습니다.</p>
+<p>OCI가 제공하는 6개 GPU Shape은 운영체제로 Oracle Linux 7.x와 Ubuntu 16.4를 사용할 수 있습니다.</p>
 
-<div class="notices note" ><p>Oracle Linux 7.6, Oracle Linux 7.7 및 Ubuntu 16.4로 VM 인스턴스를 생성하면 NVIDIA와 CUDA 드라이버가 기본 설치되어 있습니다. Ubuntu 18.4와 같은 다른 OS로 VM을 생성하면 GPU는 마운트 되지만 NVIDA 드라이버와  CUDA 드라이버는 직접 설치해야 합니다.</p>
+<div class="notices note" ><p>Oracle Linux 7.6, Oracle Linux 7.7 및 Ubuntu 16.4로 VM 인스턴스를 생성하면 NVIDIA와 CUDA 드라이버가 기본적으로 설치되어 있습니다. Ubuntu 18.4와 같은 다른 OS로 VM을 생성하면 GPU는 마운트 되지만, NVIDIA와 CUDA 드라이버는 설치되어 있지 않습니다. 사용자가 직접 NVIDA 드라이버와 CUDA 드라이버를 설치해야 합니다.</p>
 </div>
 
 
@@ -267,11 +267,11 @@
 
 <h3 id="1-gpu-자원-할당-상태-확인">1. GPU 자원 할당 상태 확인</h3>
 
-<p>GPU VM 인스턴스를 만들기 전에 현재 사용하는 계정이 GPU Shape을 사용할 수 있는지 확인해야 합니다. OCI 메인 페이지에서 다음 그림과 같이 햄버거 메뉴 버튼을 통해서 &ldquo;Limits, Quotas and Limits&rdquo;를 실행합니다. 이 메뉴로 이동한 페이지에서는 현재 리전에서 사용 가능한 리소스 목록이 출력됩니다. 다음 그림과 같은 목록에서 6개 GPU Shape 대한 리소스 할당 상태를 확인 할 수 있습니다.</p>
+<p>GPU VM 인스턴스를 만들기 전에 현재 사용하는 계정이 GPU Shape을 사용할 수 있는지 확인해야 합니다. OCI 메인 페이지에서 다음 그림과 같이 햄버거 메뉴 버튼을 통해서 &ldquo;Limits, Quotas and Limits&rdquo;를 실행합니다. 이 메뉴로 이동한 페이지에서는 현재 리전(데이터 센터)에서 사용 가능한 자원 목록이 출력됩니다. 다음 그림과 같은 자원 목록에서 6개 GPU Shape의 자원 할당 상태를 확인 할 수 있습니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2019/09/gpu/010.jpg" alt="" /></p>
 
-<p>위 그림의 목록을 보면 다음 목록과 같은 자원이 현재 사용하는 계정에 할당된 것을 확인 할 수 있습니다.</p>
+<p>위 그림의 자원 목록을 보면 현재 계정에 다음과 같은 자원이 할당되어 있는 것을 확인 할 수 있습니다.</p>
 
 <ul>
 <li>BM.GPU3.8: 2개</li>
@@ -280,7 +280,7 @@
 <li>VM.GPU3.4: 4개</li>
 </ul>
 
-<p>&ldquo;Limits, Quotas and Limits&rdquo; 목록에 자원 할당이 없는 것으로 출력되면, 다음 그림과 같이 &ldquo;Request a Service Limit Increase&rdquo;를 이용하여 자원 추가 할당을 요청할 수 있습니다.</p>
+<p>&ldquo;Limits, Quotas and Limits&rdquo; 목록에 GPU 자원 할당이 없는 것으로 출력되면, 다음 그림과 같이 &ldquo;Request a Service Limit Increase&rdquo;를 이용하여 추가 자원 할당을 요청할 수 있습니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2019/09/gpu/020.jpg" alt="" /></p>
 
@@ -847,7 +847,7 @@ check()
 <hr />
 
 <ol>
-<li id="fn:1">2019년 9월 10일 기준으로 총 6개의 shape을 제공합니다.
+<li id="fn:1">OCI는 2019년 9월 10일 기준으로 6개의 shape을 제공합니다.
  <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
 <li id="fn:2">8888 포트는 Jupyter가 사용하는 기본 포트입니다.
  <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
