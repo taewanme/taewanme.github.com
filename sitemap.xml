@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://taewan.kim/cloud/provisioning_gpu_vm_in_oci/</loc>
+    <lastmod>2019-09-10T01:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tip/how_to_change_kernel_name_of_jupyter/</loc>
     <lastmod>2019-09-06T01:28:14+09:00</lastmod>
   </url>
@@ -1435,13 +1440,13 @@
   
   <url>
     <loc>http://taewan.kim/tags/cloud/</loc>
-    <lastmod>2018-11-28T09:17:05+09:00</lastmod>
+    <lastmod>2019-09-10T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://taewan.kim/categories/cloud/</loc>
-    <lastmod>2019-04-19T09:17:05+09:00</lastmod>
+    <lastmod>2019-09-10T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1453,7 +1458,7 @@
   
   <url>
     <loc>http://taewan.kim/cloud/</loc>
-    <lastmod>2019-04-19T09:17:05+09:00</lastmod>
+    <lastmod>2019-09-10T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1736,6 +1741,12 @@
   <url>
     <loc>http://taewan.kim/tags/google/</loc>
     <lastmod>2018-03-29T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/gpu/</loc>
+    <lastmod>2019-09-10T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2167,7 +2178,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/oci/</loc>
-    <lastmod>2019-04-19T09:17:05+09:00</lastmod>
+    <lastmod>2019-09-10T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2215,7 +2226,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/oracle/</loc>
-    <lastmod>2019-09-04T09:28:14+09:00</lastmod>
+    <lastmod>2019-09-10T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2767,7 +2778,7 @@
   
   <url>
     <loc>http://taewan.kim/</loc>
-    <lastmod>2019-09-06T01:28:14+09:00</lastmod>
+    <lastmod>2019-09-10T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   

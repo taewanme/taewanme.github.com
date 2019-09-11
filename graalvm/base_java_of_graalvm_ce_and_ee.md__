@@ -1,7 +1,7 @@
 +++
-date = "2019-09-04T01:28:14+09:00"
-description = "OS X에서 brew로 GraalVM을 설치하는 방법을 소개합니다. "
-title = "brew로 GraalVM설치"
+date = "2019-08-0T01:28:14+09:00"
+description = "GraalVM의 CE(Community Edtion)과 EE(Enterprise Edition)의 차이점은 Base Java가 다릅니다."
+title = "GraalVM의 CE과 EE의 Base Java"
 thumbnailInList = "https://taewanmerepo.github.io/2019/09/graamvmbrew/list.jpg"
 thumbnailInPost = "https://taewanmerepo.github.io/2019/09/graamvmbrew/010.jpg"
 tags = ["GraalVM", "OS X", "brew"]

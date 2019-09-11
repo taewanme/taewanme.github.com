@@ -6,10 +6,21 @@
     <description>Recent content in Clouds on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Apr 2019 09:17:05 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 10 Sep 2019 01:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/cloud/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OCI(Oracle Cloud Infrastructure) GPU VM 구성</title>
+      <link>http://taewan.kim/cloud/provisioning_gpu_vm_in_oci/</link>
+      <pubDate>Tue, 10 Sep 2019 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/provisioning_gpu_vm_in_oci/</guid>
+      <description>Oracle Cloud Infrastructure(OCI)에서는 Nvidia Tesla P100과 V100 두 가지 GPU를 지원하는 6개1의 Shape을 제공합니다. 이 문서에서는 OCI GPU에 대한 소개와 사용법을 정리하며 다음과 같은 내용을 다룹니다.
+ OCI에서 GPU를 제공하는 Shape에 대한 소개 GPU Shape을 선택하여 VM을 생성  인스턴스 생성 보안 설정  Jupyter로 Machine Learning/Deep Learning 개발 환경 구성  OCI GPU 지원 Shape OCI에서 제공하는 GPU Shape을 다음 테이블과 같이 정리할 수 있습니다.
+   Shape GPU 유형 CPU 유형 GPU 수 OCPU 수 블록 스토리지 메모리(GB) 네트워크 GPU당 비용(Hr)     VM.</description>
+    </item>
     
     <item>
       <title>Oracle OCI에서 &#39;Oracle Java SE is free&#39;</title>

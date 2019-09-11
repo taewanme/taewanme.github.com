@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>OCI(Oracle Cloud Infrastructure) GPU VM 구성</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.27.1" />
+<meta property="og:title" content="OCI(Oracle Cloud Infrastructure) GPU VM 구성" />
+<meta property="og:description" content="OCI에서 지원하는 GPU Shape과 환경 구성 방법을 소개합니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/cloud/provisioning_gpu_vm_in_oci/" />
+
+
+
+<meta property="article:published_time" content="2019-09-10T01:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2019-09-10T01:28:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="http://taewan.kim/css/jupyter.css" type="text/css" media="all" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/graalvm/" title="GraalVM 관련 새소식 및 기술 문서를 담고 있습니다." >GRAALVM</a></li>
+		<li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Deep Learning 구현 기술에 대하여 정리합니다." >TUTORIAL &amp; MANUAL</a></li>
+		<li class="menu__item "><a class="menu__link" href="/docs/" title="프로젝트 문서로 작업중인 문서 목록" >SPECIAL DOCS</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">OCI(Oracle Cloud Infrastructure) GPU VM 구성 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2019-09-10 01:28:14 &#43;0900 KST">September 10, 2019</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/cloud" rel="category">cloud</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2019/09/gpu/post.jpg" alt="OCI(Oracle Cloud Infrastructure) GPU VM 구성">
+			</figure>
+			
+
+<p>Oracle Cloud Infrastructure(OCI)에서는 Nvidia Tesla P100과 V100 두 가지 GPU를 지원하는 6개<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>의 Shape을 제공합니다. 이 문서에서는 OCI GPU에 대한 소개와 사용법을 정리하며 다음과 같은 내용을 다룹니다.</p>
+
+<ul>
+<li>OCI에서 GPU를 제공하는 Shape에 대한 소개</li>
+<li>GPU Shape을 선택하여 VM을 생성
+
+<ul>
+<li>인스턴스 생성</li>
+<li>보안 설정</li>
+</ul></li>
+<li>Jupyter로 Machine Learning/Deep Learning 개발 환경 구성</li>
+</ul>
+
+<h2 id="oci-gpu-지원-shape">OCI GPU 지원 Shape</h2>
+
+<p>OCI에서 제공하는 GPU Shape을 다음 테이블과 같이 정리할 수 있습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>Shape</th>
+<th>GPU 유형</th>
+<th>CPU 유형</th>
+<th>GPU 수</th>
+<th>OCPU 수</th>
+<th>블록 스토리지</th>
+<th>메모리(GB)</th>
+<th>네트워크</th>
+<th>GPU당 비용(Hr)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>VM.GPU2.1</td>
+<td>NVIDIA Tesla P100</td>
+<td>1</td>
+<td>12</td>
+<td>104</td>
+<td>최대 1PB</td>
+<td>8 Gbps</td>
+<td>8 Gbps</td>
+<td>$1.275</td>
+</tr>
+
+<tr>
+<td>BM.GPU2.2</td>
+<td>NVIDIA Tesla P100</td>
+<td>2</td>
+<td>28</td>
+<td>192</td>
+<td>최대 1PB</td>
+<td>8 Gbps</td>
+<td>2 x 25 Gbps</td>
+<td>$1.275</td>
+</tr>
+
+<tr>
+<td>VM.GPU3.1</td>
+<td>NVIDIA Tesla V100</td>
+<td>1</td>
+<td>6</td>
+<td>90</td>
+<td>최대 1PB</td>
+<td>8 Gbps</td>
+<td>4 Gbps</td>
+<td>$2.95</td>
+</tr>
+
+<tr>
+<td>VM.GPU3.2</td>
+<td>NVIDIA Tesla V100</td>
+<td>2</td>
+<td>12</td>
+<td>180</td>
+<td>최대 1PB</td>
+<td>8 Gbps</td>
+<td>8 Gbps</td>
+<td>$2.95</td>
+</tr>
+
+<tr>
+<td>VM.GPU3.4</td>
+<td>NVIDIA Tesla V100</td>
+<td>4</td>
+<td>24</td>
+<td>360</td>
+<td>최대 1PB</td>
+<td>8 Gbps</td>
+<td>24.6 Gbps</td>
+<td>$2.95</td>
+</tr>
+
+<tr>
+<td>BM.GPU3.8</td>
+<td>NVIDIA Tesla V100</td>
+<td>8</td>
+<td>52</td>
+<td>768</td>
+<td>최대 1PB</td>
+<td>8 Gbps</td>
+<td>2 x 25 Gbps</td>
+<td>$2.95</td>
+</tr>
+</tbody>
+</table>
+
+<p>Shape 이름에서 VM은 가상 머신을 의미하고 BM은 Baremetal 서버를 의미입니다. BM은 서버 1대를 전용으로 사용하는 서비스 입니다. 또한 GPUX.Y에서 X는 GPU 타입을 의미입니다. 1은 Tesla P100이고 2는 Tesa V100을 나타냅니다. Y는 GPU 수입니다. GPU는 최소 1개에서 8개까지 사용할 수 있습니다.</p>
+
+<p>이 표에서 네트워크는 사용가능한 Network Bendwidth입니다. BM의 경우 25Gbps 2개를 지원합니다. 1개는 Storage  Network에 전용으로 할당되고 나머지 1개가 일반 네트워크에 할당됩니다.</p>
+
+<p>VM.GPU3.2, VM.GPU3.4 및 BM.GPU3.8은 &ldquo;GPU Interconnect&rdquo;로 NVLINK를 제공합니다. 여러 GPU를 사용하는  시스템 PCIe 대역폭이 병목 지점이 되는 경우가 발생합니다. 이런 문제를 해결하고 더 빠르고 더 확장 가능한 다중 프로세서 상호 연결을 지원하는 것이 VNLINK입니다. VNLIKN는 GPU간 브릿지 역할을 하는 고속의 링크로 병렬 처리 성능을 높임니다.</p>
+
+<p>사용 비용은 사용한 GPU 갯수 X 사용 시간을 기준으로 책정됩니다. P100 사용료는 GPU 1장당 1시간 기준 1.25달러입니다. V100 사용료는 GPU 1장당 1시간 기준 2.95달러입니다.</p>
+
+<div class="notices note" ><p>이 가격은 List Price이며, 결재 방식 및 계약 기간에 따라서 할인률이 적용됩니다.</p>
+</div>
+
+
+<p>OCI는 GPU Shape 6개를 제공합니다. 이 Shape은 운영체제로 Oracle Linux 7.x와 Ubuntu 16.4를 사용할 수 있습니다.</p>
+
+<div class="notices note" ><p>Oracle Linux 7.4, Oracle Linux 7.x 및 Ubuntu 16.4로 VM 인스턴스를 생성하면 Nvidia와 CUDA 드라이버가 기본 설치되어 있습니다. Ubuntu 18.4와 같은 다른 OS로 VM을 생성하면 GPU는 마운트 되지만 NVIDA 드라이버와  CUDA 드라이버는 직접 설치해야 합니다.</p>
+</div>
+
+
+<h2 id="oci-gpu-vm-생성-사전-준비">OCI GPU VM 생성: 사전 준비</h2>
+
+<p>OCI GPU VM을 만들기 위해서는 다음과 같은 사전 준비가 필요합니다.</p>
+
+<ol>
+<li>GPU 자원 할당 상태 확인</li>
+<li>SSH 접속을 위한 Key Pair 준비<br /></li>
+<li>GPU VM을 프로비저닝할 Compartment 선정</li>
+<li>VCN(Virtual Cloud Network) 생성</li>
+</ol>
+
+<h3 id="1-gpu-자원-할당-상태-확인">1. GPU 자원 할당 상태 확인</h3>
+
+<p>GPU VM을 만들기 전에 현재 GPU Shape을 사용할 수 있는지 확인해야 합니다. OCI 메일 페이지에서 다음 그림과 같이 햄버거 메뉴 버튼을 클릭하여 &ldquo;Limits, Quotas and Limits&rdquo;를 실행합니다. 이 메뉴는 현재 리전에서 사용 가능한 리소스 목록이 출력됩니다. 다음 그림과 같은 목록에서 6개 GPU Shape 대한 리소스 할당 상태를 확인 할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2019/09/gpu/010.jpg" alt="" /></p>
+
+<p>위 그림 상태를 보면 BM.GPU3.8 2개, VM.GPU3.1 5개, VM.GPU3.2 5개 및 VM.GPU3.4 4개개 자원이 현재 계정에 할당되어 있는 것을 확인 할 수 있습니다.</p>
+
+<p>&ldquo;Limits, Quotas and Limits&rdquo; 목록에 자원 할당이 없는 것으로 출력된면, 다음 그림과 같이 &ldquo;Request a Service Limit Increase&rdquo;을 이용하여 자원 추가 할당을 요청할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2019/09/gpu/020.jpg" alt="" /></p>
+
+<h3 id="2-ssh-접속을-위한-key-pair-준비">2. SSH 접속을 위한 Key Pair 준비</h3>
+
+<p>OIC VM 인스턴스를 만든 후, 터미널 접근을 할 때 패스워드가 아닌 SSH Key Pair를 사용합니다. SSH Key Pair는 개인키 (Private Key)와 공개키(Public Key)로 구성됩니다. 개인키는 사용자가 사용자의 컴퓨터에 보관하고 공개키는 VM 인스턴스를 생성할 때 등록합니다.</p>
+
+<p>SSH 접속을 위한 Key Pair에 사용할 보안키를 생성해야 한다면 다음 문서를 참조하여 준비하시기 바랍니다.</p>
+
+<ul>
+<li><a href="/post/ssh_key/" target="_blank">윈도우, 리눅스, 맥에서 ssh 보안키 생성: http://taewan.kim/post/ssh_key/[↗NW]</a>
+</li>
+</ul>
+
+<p>위 문서를 참조하여 다음 두 개 파일을 준비합니다.</p>
+
+<ul>
+<li>개인키 파일: oracloud_rsa</li>
+<li>공개키 파일: oracloud_rsa.pub</li>
+</ul>
+
+<h3 id="3-gpu-인스턴스를-compartment-선정">3. GPU 인스턴스를 Compartment 선정</h3>
+
+<p>Compartment는 자원을 쉽게 관리하는 논리적인 묶음입니다. Tenancy가 생성되면 Root Compartment 하나가 만들어지며  관리자가 Root Compartment 아래에 새로운 Compartment를 디렉토리 구조로 추가할 수 있습니다. 인스턴스, 블록 스토리지, VCN, 서브넷 등 모든 OIC 자원을 생성할 때 반드시 Compartment를 지정해야 합니다. OCI는 Compartment 단위로 사용자 접근 정책을 관리합니다.</p>
+
+<p>Root Compartmant를 사용하는 것은, 관리적인 측면을 고려할 때 바람직하지 않습니다. 별로 Compartment를 만들어 사용하는 것을 좋습니다.</p>
+
+<p>Compartmant를 새로 만들어야 한다면 다음 그림과 같이 새로운 Compartment를 생성합니다. OCI 메인 페이지의 햄버그 아이콘 -&gt; Identity -&gt; Compartments 메뉴를 통해서 Compartment 관리 페이지 이동합니다. 아래 그림에서는 &ldquo;sandbox&rdquo; Compartment를 만들었습니다. 본 문서에서는 &ldquo;sandbox&rdquo; Compartment에 모든 OCI 자원을 만들 것입니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2019/09/gpu/040.jpg" alt="" /></p>
+
+<h3 id="4-vcn-virtual-cloud-network-생성">4. VCN(Virtual Cloud Network) 생성</h3>
+
+<p>이 절에서는 GPU 인스턴스를 위한 VCN을 만들고, 외부에서 접속할 수 있도록 8888 포트<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>를 외부에 공개하는 설정을 추가할 것입니다.</p>
+
+<p>다음 그림의 메뉴 패스로 VCN 관리 페이지로 이동하고 새로운 VCN을 만들 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2019/09/gpu/050.jpg" alt="" /></p>
+
+<p>다음 그림과 같이 &ldquo;Create Virtual Cloud Network&rdquo; 생성 팝업에서 VCN 명과 Compartment를 지정하고, &ldquo;CREATE VIRTUAL CLOUD NETWORK PLUS RELATED RESOURCES&rdquo;를 선택합니다. 이 옵션을 선택하면 VCN과 함께 Internet Gateway, Route Table, AD별 서브넷이 모두 생성됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2019/09/gpu/060.jpg" alt="" /></p>
+
+<p>&ldquo;CREATE VIRTUAL CLOUD NETWORK PLUS RELATED RESOURCES&rdquo;을 선택하면 &ldquo;Create Virtual Cloud Network&rdquo; 생성 팝업에 다음과 같은 내용이 출력됩니다. 아래의 &ldquo;create virtual cloud network&rdquo; 버튼을 클릭하면 VCN이 생성됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2019/09/gpu/070.jpg" alt="" />
+<img src="https://taewanmerepo.github.io/2019/09/gpu/080.jpg" alt="" /></p>
+
+<p>앞에서 만든 gpuvcn에 8888 포트를 오픈하는 Ingress Rule을 추가해야 합니다. 이 설정을 위해서 Network의 Virtual Cloud Network의 상세 페이지에서 gpuvcn을 선택한 후, 해당 VCN의 &ldquo;default security list&rdquo;에 Ingress Rule을 추가합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2019/09/gpu/090.jpg" alt="" /></p>
+
+<p>위 그림에서 &ldquo;Add Ingress Rule&rdquo; 클릭하면 다음과 같은 &ldquo;Add Ingress Rule&rdquo; 생성 팝업이 나타납니다. 이 팝업에 다음과 같이 &ldquo;Source CIDR&rdquo;과 &ldquo;Destination Port Range&rdquo;를 설정하고 &ldquo;Add Ingress Rule&rdquo; 버튼을 클립하면 Ingress Rule이 생성됩니다. 이 Ingress Rule을 통해서 외부 컴퓨터가 앞으로 생성할 GPU VM에 접속할 수 있게됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2019/09/gpu/100.jpg" alt="" /></p>
+
+<p>위 그림과 같이 Ingress Rule이 정상적으로 등록되면, 다음과 같이 &ldquo;Security List&rdquo;에 Ingress Rule이 출력됩니다. 위 결과로 부터 Jupyter를 위한 8888 포트와 ssh 접속을 위한 22번 포트가 오픈된 것을 확인 할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2019/09/gpu/110.jpg" alt="" /></p>
+
+<p>이것으로 GPU VM 생성을 위한 준비 작업이 완료되었습니다. 이제 GPU VM을 만들고 관련 개발 환경을 구성해볼 것 입니다.</p>
+
+<h2 id="gpu-vm-인스턴스-생성">GPU VM 인스턴스 생성</h2>
+
+<p>다음 그림과 같이 햄버거 메뉴 버튼 -&gt; Compute -&gt; Instance 메뉴 패스로 VM 인스턴스 관리 페이지로 이동합니다. 이 페이지에서 sand 컴파트먼트를 선택하고 &ldquo;Create Instance&rdquo; 버튼을 클릭하면 &ldquo;Create Compute Instance&rdquo; 페이지로 이동합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2019/09/gpu/120.jpg" alt="" /></p>
+
+<p>앞으로 다음과 같은 환경에서 GPU VM 인스턴스를 만들 것입니다.</p>
+
+<ul>
+<li>리전: Asburn</li>
+<li>AD: AD 2</li>
+<li>Shape: VM.GPU3.2</li>
+<li>운영체제: Oracle Linux 7.6</li>
+<li>VCN: gpuvcn</li>
+<li>Compartment: sandbox</li>
+</ul>
+
+<p>다음 그림과 같이 각 항목을 설정하고 &ldquo;create&rdquo; 버튼을 클릭하면 인스턴스가 생성됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2019/09/gpu/130.jpg" alt="" />
+<img src="https://taewanmerepo.github.io/2019/09/gpu/150.jpg" alt="" />
+<img src="https://taewanmerepo.github.io/2019/09/gpu/160.jpg" alt="" /></p>
+
+<p>VM 인스턴스 생성 시간은 약 1분 정도 소요됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2019/09/gpu/170.jpg" alt="" /></p>
+
+<p>위 그림의 &ldquo;Primary VNIC Information&rdquo; 섹션에서 &ldquo;Public IP Address&rdquo;로 부터 공개 IP를 확인할 수 있습니다.</p>
+
+<ul>
+<li>Puboic IP: 132.145.209.180</li>
+</ul>
+
+<h2 id="ssh-접근">SSH 접근</h2>
+
+<p>이제 GPU VM 인스턴스는 생성되었습니다. 앞에서 준비한 SSH Key pair의 개인키를 이용하여 VM에 접근할 수 있습니다.</p>
+
+<blockquote>
+<pre><code>ssh -i &lt;private key 파일 위치&gt; opc@&lt;Puboic IP&gt;
+</code></pre>
+</blockquote>
+
+<p>public ip가 &ldquo;132.145.209.180&rdquo; 일때, 다음 그림과 같이 ssh로 접속할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2019/09/gpu/180.jpg" alt="" /></p>
+
+<div class="notices note" ><p>OCI에서 Oracle Linux의 기본 User는 &ldquo;<strong>opc</strong>&ldquo;이고 Ubuntu의 기본 User는 &ldquo;<strong>ubuntu</strong>&ldquo;입니다. VM의 운영체제로 Ubuntu 16.04 선택했다면 <code>ssh -i &lt;private key 파일 위치&gt; ubuntu@&lt;Puboic IP&gt;</code> 명령으로  접속하면 됩니다.</p>
+</div>
+
+
+<h3 id="gpu-vm-인스턴스-둘러보기">GPU VM 인스턴스 둘러보기</h3>
+
+<p>GPU VM 인스턴스에는 디폴트로 nvidia 드라이버와 CUDA 드라이버가 설치되어 있습니다.</p>
+
+<p>다음 명령으로 nvidia GUP 마운트 상태를 확인 할 수 있습니다.</p>
+
+<pre><code>[opc@gpuvm01 ~]$ lspci | grep -i nvidia
+00:04.0 3D controller: NVIDIA Corporation GV100GL [Tesla V100 SXM2 16GB] (rev a1)
+00:05.0 3D controller: NVIDIA Corporation GV100GL [Tesla V100 SXM2 16GB] (rev a1)
+[opc@gpuvm01 ~]$
+</code></pre>
+
+<p>다음 명령으로 설치된 nvidia 드라이버 버전을 확인 할 수 있습니다.</p>
+
+<pre><code>[opc@gpuvm01 ~]$ cat /proc/driver/nvidia/version
+NVRM version: NVIDIA UNIX x86_64 Kernel Module  418.67  Sat Apr  6 03:07:24 CDT 2019
+GCC version:  gcc version 4.8.5 20150623 (Red Hat 4.8.5-36.0.1) (GCC)
+[opc@gpuvm01 ~]$
+</code></pre>
+
+<p>다음 명령으로 설치된 CUDA 드라이버 버전을 확인 할 수 있습니다.</p>
+
+<pre><code>[opc@gpuvm01 ~]$ cat /usr/local/cuda/version.txt
+CUDA Version 10.1.168
+[opc@gpuvm01 ~]$
+</code></pre>
+
+<p>또한 <code>nvidia-smi</code> 도 기본 설치되어 제공됩니다.</p>
+
+<pre><code>[opc@gpuvm01 ~]$ nvidia-smi
+Wed Sep 11 07:59:18 2019
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 418.67       Driver Version: 418.67       CUDA Version: 10.1     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  Tesla V100-SXM2...  Off  | 00000000:00:04.0 Off |                    0 |
+| N/A   45C    P0    41W / 300W |      0MiB / 16130MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+|   1  Tesla V100-SXM2...  Off  | 00000000:00:05.0 Off |                    0 |
+| N/A   43C    P0    40W / 300W |      0MiB / 16130MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID   Type   Process name                             Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+[opc@gpuvm01 ~]$
+</code></pre>
+
+<p>마지막으로 OpenJDK 1.8.0_222 버전과 Python 2.7 버전이 설치되어 있습니다.</p>
+
+<pre><code>[opc@gpuvm01 ~]$ java -version
+openjdk version &quot;1.8.0_222&quot;
+OpenJDK Runtime Environment (build 1.8.0_222-b10)
+OpenJDK 64-Bit Server VM (build 25.222-b10, mixed mode)
+[opc@gpuvm01 ~]$
+</code></pre>
+
+<div class="notices note" ><p>OCI IaaS의 모든 VM에서는 Oracle Java와 GraalVM Enterprise Edition을 자유롭게 사용할 수 있습니다. 필요할 경우 Oracle Java와 GraalVM EE를 설치 및 사용이 가능하고 정식 서포트를 받을 수 있습니다.</p>
+</div>
+
+
+<h2 id="머신러닝-환경-구성">머신러닝 환경 구성</h2>
+
+<p>이제 부터 ssh로 VM 인스턴스에 접근한 상태에서 Jupyter 기반 머신러밍 환경을 구성합니다.</p>
+
+<h3 id="방화벽-포트-오픈">방화벽 포트 오픈</h3>
+
+<p>운영체제에 8888포트를 오픈합니다. Oracle Linux 7.x를 사용하는 VM 인스턴스는 방화벽을 관리하는 firewalld 데몬을 사용합니다. firewall-cmd 명령으로 방화벽을 관리합니다. Oracle Linux 7.x를 사용하는 VM에서 8888 포트 오픈하기 위해서 다음 명령으로 사용합니다.</p>
+
+<blockquote>
+<pre><code>sudo firewall-cmd --zone=public --add-port=8888/tcp --permanent
+sudo firewall-cmd --reload
+</code></pre>
+</blockquote>
+
+<p>ssh로 접속한 VM에서 실행한 명령은 다음과 같습니다.</p>
+
+<pre><code>[opc@gpuvm01 ~]$ sudo firewall-cmd --zone=public --add-port=8888/tcp --permanent
+success
+[opc@gpuvm01 ~]$ sudo firewall-cmd --reload
+success
+[opc@gpuvm01 ~]$
+</code></pre>
+
+<h3 id="python-3-6-설치">python 3.6 설치</h3>
+
+<p>Oracle Linux 7.x에서는 다음 명령을 실행하여 python 3.6을 설치합니다.</p>
+
+<blockquote>
+<pre><code>sudo yum install -y oracle-epel-release-el7
+sudo yum install -y python36
+</code></pre>
+</blockquote>
+
+<h3 id="anaconda-설치">Anaconda 설치</h3>
+
+<p>다음 URL에서 제공하는 Anaconda 최신 버전을 다운로드 받고 설치합니다.</p>
+
+<ul>
+<li><a href="https://repo.continuum.io/archive/">https://repo.continuum.io/archive/</a></li>
+</ul>
+
+<p>2019년 9월 현재 최신 버전은 &ldquo;Anaconda2-2019.07-Linux-x86_64.sh&rdquo; 입니다. 이 파일을 다운로드하고 설치합니다.</p>
+
+<p>다음 wget 명령을 수행하여 최신 Anaconda 배포본을 다운로드 합니다.</p>
+
+<blockquote>
+<pre><code>wget https://repo.continuum.io/archive/Anaconda3-2019.07-Linux-x86_64.sh
+</code></pre>
+</blockquote>
+
+<p>실제 실행한 로그는 다음과 같습니다.</p>
+
+<pre><code>[opc@gpuvm01 ~]$ wget https://repo.continuum.io/archive/Anaconda3-2019.07-Linux-x86_64.sh
+--2019-09-11 11:59:11--  https://repo.continuum.io/archive/Anaconda3-2019.07-Linux-x86_64.sh
+Resolving repo.continuum.io (repo.continuum.io)... 104.18.200.79, 104.18.201.79, 2606:4700::6812:c84f, ...
+Connecting to repo.continuum.io (repo.continuum.io)|104.18.200.79|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 541906131 (517M) [application/x-sh]
+Saving to: 'Anaconda3-2019.07-Linux-x86_64.sh'
+
+100%[============================================&gt;] 499,266,771  105MB/s   in 4.7s
+
+2019-09-11 11:41:07 (101 MB/s) - 'Anaconda3-2019.07-Linux-x86_64.sh' saved [499266771/499266771]
+
+[opc@gpuvm01 ~]$
+</code></pre>
+
+<p>다운드로한 스크립트를 다음 명령으로 실행하여, Anaconda를 설치하고 PATH 환경변수 수정 및 활성화 시킵니다.</p>
+
+<blockquote>
+<pre><code>bash ./Anaconda3-2019.07-Linux-x86_64.sh -b
+echo 'export PATH=&quot;$HOME/anaconda3/bin:$PATH&quot;' &gt;&gt; $HOME/.bashrc
+source ~/.bashrc
+</code></pre>
+</blockquote>
+
+<p>다음 명령을 실행하여 conda를 최신 버전으로 업데이트 합니다.</p>
+
+<blockquote>
+<pre><code>conda update -n base -c defaults conda
+</code></pre>
+</blockquote>
+
+<p>실제 실행한 결과는 다음과 같습니다.</p>
+
+<pre><code>[opc@gpuvm01 ~]$ conda --version
+conda 4.7.10
+[opc@gpuvm01 ~]$ conda update -n base -c defaults conda
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /home/opc/anaconda3
+
+  added / updated specs:
+    - conda
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    conda-4.7.11               |           py37_0         2.8 MB
+    ------------------------------------------------------------
+                                           Total:         2.8 MB
+
+The following packages will be UPDATED:
+
+  conda                                       4.7.10-py37_0 --&gt; 4.7.11-py37_0
+
+
+Proceed ([y]/n)? yn
+Invalid choice: yn
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages
+conda-4.7.11         | 2.8 MB    | ############################################### | 100%
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+[opc@gpuvm01 ~]$ conda --version
+conda 4.7.11
+[opc@gpuvm01 ~]$
+</code></pre>
+
+<p><code>conda activate</code> 명령을 사용하기 위해서 다음 명령을 실행하여 .bashrc를 업데이트 합니다. 그리고 source 명령을 실행하여 .bashrc 설정을 활성화합니다.</p>
+
+<blockquote>
+<pre><code>conda init bash
+source ~/.bashrc
+</code></pre>
+</blockquote>
+
+<p>위 명령의 실제 실행한 결과는 다음과 같습니다.</p>
+
+<pre><code>[opc@gpuvm01 ~]$ conda init bash
+no change     /home/opc/anaconda3/condabin/conda
+no change     /home/opc/anaconda3/bin/conda
+no change     /home/opc/anaconda3/bin/conda-env
+no change     /home/opc/anaconda3/bin/activate
+no change     /home/opc/anaconda3/bin/deactivate
+no change     /home/opc/anaconda3/etc/profile.d/conda.sh
+no change     /home/opc/anaconda3/etc/fish/conf.d/conda.fish
+no change     /home/opc/anaconda3/shell/condabin/Conda.psm1
+no change     /home/opc/anaconda3/shell/condabin/conda-hook.ps1
+no change     /home/opc/anaconda3/lib/python3.7/site-packages/xontrib/conda.xsh
+no change     /home/opc/anaconda3/etc/profile.d/conda.csh
+modified      /home/opc/.bashrc
+
+==&gt; For changes to take effect, close and re-open your current shell. &lt;==
+
+[opc@gpuvm01 ~]$ source ~/.bashrc
+(base) [opc@gpuvm01 ~]$
+</code></pre>
+
+<h3 id="새로운-가상환경-만들기">새로운 가상환경 만들기</h3>
+
+<p>다음 명령을 실행하여 &lsquo;<strong>sandbox</strong>&rsquo; 가상 환경을 만듭니다.</p>
+
+<blockquote>
+<pre><code>conda create --name sandbox
+</code></pre>
+</blockquote>
+
+<p>위 명령의 실제 실행한 결과는 다음과 같습니다.</p>
+
+<pre><code>(base) [opc@gpuvm01 ~]$ conda create --name sandbox
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /home/opc/anaconda3/envs/sandbox
+
+
+
+Proceed ([y]/n)?  y
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+#
+# To activate this environment, use
+#
+#     $ conda activate sandbox
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+(base) [opc@gpuvm01 ~]$
+</code></pre>
+
+<p>sandbox 가상환경을 활성화 시킬 때는 다음 명령을 사용합니다.</p>
+
+<blockquote>
+<pre><code>conda activate sandbox
+</code></pre>
+</blockquote>
+
+<p>sandbox 가상환경을 비활성화 시킬 때는 다음 명령을 사용합니다.</p>
+
+<blockquote>
+<pre><code>conda deactivate
+</code></pre>
+</blockquote>
+
+<pre><code>(base) [opc@gpuvm01 ~]$ conda activate sandbox
+(sandbox) [opc@gpuvm01 ~]$ conda deactivate
+(base) [opc@gpuvm01 ~]$
+</code></pre>
+
+<h3 id="jupyter-설치">Jupyter 설치</h3>
+
+<p>sandbox 가상 환경을 활성화하고 다음 명령을 실행하여 Jupyter를 설치합니다.</p>
+
+<blockquote>
+<pre><code>conda activate sandbox
+conda install notebook
+</code></pre>
+</blockquote>
+
+<h3 id="jupyter-kernel-설치">Jupyter kernel 설치</h3>
+
+<p>다음 명령을 실행하여 ipykernel을 설치하고 Python 3.6 커널을 생성합니다.</p>
+
+<blockquote>
+<pre><code>sudo python3.6 -m pip install ipykernel
+sudo python3.6 -m ipykernel install \
+  --name python3.6 --display-name &quot;Python 3.6&quot; \
+  --prefix /home/opc/anaconda3/envs/sandbox
+</code></pre>
+</blockquote>
+
+<p>위 명령에서 &ldquo;_<em>_</em>&rdquo; 문자는 명령이 종료되지 않고 다음 줄로 연결된다는 의미입니다. 위 명령은 2개의 명령입니다. 위 명령은 다음과 같이 실행됩니다.</p>
+
+<pre><code>(sandbox) [opc@gpuvm01 ~]$ sudo python3.6 -m pip install ipykernel
+WARNING: Running pip install with root privileges is generally not a good idea. Try `__main__.py install --user` instead.
+Collecting ipykernel
+  Downloading https://files.pythonhosted.org/packages/d4/16/43f51f65a8a08addf04f909a0938b06ba1ee1708b398a9282474531bd893/ipykernel-5.1.2-py3-none-any.whl (116kB)
+    100% |################################| 122kB 7.1MB/s
+//로그 생략
+Successfully installed backcall-0.1.0 decorator-4.4.0 ipykernel-5.1.2 ipython-7.8.0 ipython-genutils-0.2.0 jedi-0.15.1 jupyter-client-5.3.1 jupyter-core-4.5.0 parso-0.5.1 pexpect-4.7.0 pickleshare-0.7.5 prompt-toolkit-2.0.9 ptyprocess-0.6.0 pygments-2.4.2 python-dateutil-2.8.0 pyzmq-18.1.0 six-1.12.0 tornado-6.0.3 traitlets-4.3.2 wcwidth-0.1.7
+(sandbox) [opc@gpuvm01 ~]$
+(sandbox) [opc@gpuvm01 ~]$ sudo python3.6 -m ipykernel install \
+&gt;   --name python3.6 --display-name &quot;Python 3.6&quot; \
+&gt;   --prefix /home/opc/anaconda3/envs/sandbox
+[InstallIPythonKernelSpecApp] WARNING | Installing to /home/opc/anaconda3/envs/sandbox/share/jupyter/kernels, which is not in ['/root/.local/share/jupyter/kernels', '/usr/local/share/jupyter/kernels', '/usr/share/jupyter/kernels', '/root/.ipython/kernels']. The kernelspec may not be found.
+Installed kernelspec python3.6 in /home/opc/anaconda3/envs/sandbox/share/jupyter/kernels/python3.6
+(sandbox) [opc@gpuvm01 ~]$
+</code></pre>
+
+<h3 id="tensorflow-gpu-버전-설치">Tensorflow GPU 버전 설치</h3>
+
+<p>다음 명령을 수행하여 Tensorflow GPU 버전을 설치합니다.</p>
+
+<blockquote>
+<pre><code>sudo python3.6 -m pip install tensorflow-gpu
+</code></pre>
+</blockquote>
+
+<h3 id="jupyter-설정">Jupyter 설정</h3>
+
+<p>Jupyter에 설정 파일을 생성하고 기본 설정을 합니다. 그리고 패스워드를 등록할 것 입니다. 다음 명령을 실행하여 설정 파일을 생성합니다.</p>
+
+<blockquote>
+<pre><code>jupyter notebook --generate-config
+</code></pre>
+</blockquote>
+
+<p>위 명령을 실행하면 다음 파일이 만들어 집니다.</p>
+
+<ul>
+<li>/home/opc/.jupyter/jupyter_notebook_config.py</li>
+</ul>
+
+<p>위 명령은 다음과 같이 실행됩니다.</p>
+
+<pre><code>(sandbox) [opc@gpuvm01 ~]$ jupyter notebook --generate-config
+Writing default config to: /home/opc/.jupyter/jupyter_notebook_config.py
+(sandbox) [opc@gpuvm01 ~]$
+</code></pre>
+
+<p><code>/home/opc/.jupyter/jupyter_notebook_config.py</code> 파일을 열고 다음 코드를 마지막에 추가합니다.</p>
+
+<blockquote>
+<pre><code>c = get_config()
+c.NotebookApp.ip = '0.0.0.0'
+c.NotebookApp.open_browser = False
+c.NotebookApp.port = 8888
+</code></pre>
+</blockquote>
+
+<p>다음 명령을 입력하여 Jupyter 로그인 패스워드를 설정합니다.</p>
+
+<blockquote>
+<pre><code>jupyter notebook password
+</code></pre>
+</blockquote>
+
+<p>위 명령은 다음과 같이 실행됩니다. 아래 실행에서는 패스워드로 &ldquo;<strong>Welcome1</strong>&ldquo;을 설정했습니다.</p>
+
+<pre><code>(sandbox) [opc@gpuvm01 ~]$ jupyter notebook password
+Enter password:
+Verify password:
+[NotebookPasswordApp] Wrote hashed password to /home/opc/.jupyter/jupyter_notebook_config.json
+(sandbox) [opc@gpuvm01 ~]$
+</code></pre>
+
+<h3 id="jupyter-실행-및-테스트-코드-실행">Jupyter 실행 및 테스트 코드 실행</h3>
+
+<p>다음 명령을 입력하여 Jupyter를 실행합니다.</p>
+
+<blockquote>
+<pre><code>jupyter notebook
+</code></pre>
+</blockquote>
+
+<p>위 명령은 다음과 같이 실행됩니다.</p>
+
+<pre><code>(sandbox) [opc@gpuvm01 ~]$ jupyter notebook
+[I 14:22:16.346 NotebookApp] Writing notebook server cookie secret to /home/opc/.local/share/jupyter/runtime/notebook_cookie_secret
+[I 14:22:16.548 NotebookApp] Serving notebooks from local directory: /home/opc
+[I 14:22:16.548 NotebookApp] The Jupyter Notebook is running at:
+[I 14:22:16.548 NotebookApp] http://gpuvm01:8888/
+[I 14:22:16.548 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+</code></pre>
+
+<p>위에서 Jupyter Notebook을 실행하면, 브라우저에서 VM의 Public IP의 8888포트로 접근하여 앞에서 설정한 패스워드로 로그인 합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2019/09/gpu/190.jpg" alt="" /></p>
+
+<p>Jupyter에 로그인 했으면 Notebook을 하나 만들고 다음 코드를 실행합니다.</p>
+
+<blockquote>
+<pre><code>import tensorflow as tf
+from time import strftime, localtime, time
+
+tf.set_random_seed(42)
+A = tf.random_normal([10000,10000])
+B = tf.random_normal([10000,10000])
+
+def check():
+    start_time = time()
+    print('Starting at {}...'.format(strftime('%H:%M:%S', localtime(start_time))))
+    with tf.Session() as sess:
+        sess.run(tf.reduce_sum(tf.matmul(A,B)))
+    finish_time = time()
+    elapsed_time = finish_time - start_time
+    print('Done! It took {:.3f} seconds'.format(elapsed_time))
+
+check()
+</code></pre>
+</blockquote>
+
+<p>위 코드는 10,000 X 10,000 인 행렬 (요소가 1억개인 행렬)의 행렬 곱을 수행한 후 포함하는 모든 요소를 합하는 코드입니다. 이 코드를 Tesla P100 GPU 1장을 사용하는 VM.GPU3.1에서 실행하면 약 3~4초가 소요됩니다.</p>
+
+<p>위 코드를 VM.GPU3.2 VM (Tesla P100 GPU 2개)에서 실행하면 다음과 결과는 1.98초에 실행됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2019/09/gpu/200.jpg" alt="" /></p>
+
+<h2 id="참고-자료">참고 자료</h2>
+
+<ul>
+<li><a href="https://thekoguryo.github.io/oci/chapter06/1/" target="_blank">thekoguryo.github.io 블로그: OCI Compartment[↗NW]</a>
+</li>
+<li><a href="https://docs.oracle.com/en/solutions/machine-learning-sandbox/index.html" target="_blank">Build a machine learning sandbox on Oracle Cloud[↗NW]</a>
+</li>
+<li><a href="https://docs.cloud.oracle.com/iaas/Content/Compute/References/ngcimage.htm" target="_blank">Using NVIDIA GPU Cloud with Oracle Cloud Infrastructure[↗NW]</a>
+</li>
+<li><a href="https://waslleysouza.com.br/2019/01/installing-anaconda-in-oci-gpu-instance/" target="_blank">Installing Anaconda in OCI GPU instance[↗NW]</a>
+</li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">8888 포트는 Jupyter가 사용하는 기본 포트입니다. 8888 포트를 사용하는 Jupyter로 딥러닝 개발환경을 만들것 입니다.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/oci/" rel="tag">OCI</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/gpu/" rel="tag">GPU</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/oracle/" rel="tag">oracle</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/cloud/" rel="tag">cloud</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan2.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+	<div class="notices disclaimer"><p>이 저작물은 Oracle과 관계없이 개인으로서 개인의 시간을 할애하여 작성된 글 입니다. 본 글의 내용, 입장, 예측은 Oracle을 공식적으로 <font color="red"><bold>절대</bold></font> 대변하지 않습니다.</p></div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/oracle_java_on_oci/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Oracle OCI에서 &#39;Oracle Java SE is free&#39;</p></a>
+	</div>
+</nav>
+
+	
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/cloud/provisioning_gpu_vm_in_oci/"></div>
+
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		
+		<ins class="adsbygoogle"
+			 style="display:block"
+			 data-ad-client="ca-pub-8469722754608892"
+			 data-ad-slot="5594090168"
+			 data-ad-format="auto"
+			 data-full-width-responsive="true"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	
+
+<div class="widget-categories widget">	
+		<div class="fb-like" data-href="http://taewan.kim/cloud/provisioning_gpu_vm_in_oci/" 
+		data-layout="standard" data-action="like" 
+		data-size="small" 
+		data-show-faces="true" 
+		data-share="true"></div>
+</div>
+	
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#oci-gpu-지원-shape">OCI GPU 지원 Shape</a></li>
+<li><a href="#oci-gpu-vm-생성-사전-준비">OCI GPU VM 생성: 사전 준비</a>
+<ul>
+<li><a href="#1-gpu-자원-할당-상태-확인">1. GPU 자원 할당 상태 확인</a></li>
+<li><a href="#2-ssh-접속을-위한-key-pair-준비">2. SSH 접속을 위한 Key Pair 준비</a></li>
+<li><a href="#3-gpu-인스턴스를-compartment-선정">3. GPU 인스턴스를 Compartment 선정</a></li>
+<li><a href="#4-vcn-virtual-cloud-network-생성">4. VCN(Virtual Cloud Network) 생성</a></li>
+</ul></li>
+<li><a href="#gpu-vm-인스턴스-생성">GPU VM 인스턴스 생성</a></li>
+<li><a href="#ssh-접근">SSH 접근</a>
+<ul>
+<li><a href="#gpu-vm-인스턴스-둘러보기">GPU VM 인스턴스 둘러보기</a></li>
+</ul></li>
+<li><a href="#머신러닝-환경-구성">머신러닝 환경 구성</a>
+<ul>
+<li><a href="#방화벽-포트-오픈">방화벽 포트 오픈</a></li>
+<li><a href="#python-3-6-설치">python 3.6 설치</a></li>
+<li><a href="#anaconda-설치">Anaconda 설치</a></li>
+<li><a href="#새로운-가상환경-만들기">새로운 가상환경 만들기</a></li>
+<li><a href="#jupyter-설치">Jupyter 설치</a></li>
+<li><a href="#jupyter-kernel-설치">Jupyter kernel 설치</a></li>
+<li><a href="#tensorflow-gpu-버전-설치">Tensorflow GPU 버전 설치</a></li>
+<li><a href="#jupyter-설정">Jupyter 설정</a></li>
+<li><a href="#jupyter-실행-및-테스트-코드-실행">Jupyter 실행 및 테스트 코드 실행</a></li>
+</ul></li>
+<li><a href="#참고-자료">참고 자료</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	<div class="widget-categories widget">
+  <h4 class="widget__title">관련도서</h4>
+  <div class="widget__content" align="center">
+      <ul class="widget__list">
+          <li class="widget__item"><a href="http://www.yes24.com/Product/Goods/69335909" target="_blank"><img src="https://taewanmerepo.github.io/2019/02/pytorch/book200.jpg"/></a></li>
+      </ul>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/provisioning_gpu_vm_in_oci/" title="OCI(Oracle Cloud Infrastructure) GPU VM 구성">
+							OCI(Oracle Cloud Infrastructure) GP ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/how_to_install_graalvm_with_brew/" title="brew로 GraalVM설치">
+							brew로 GraalVM설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/how_to_manage_graalvmee_with_sdk/" title="sdkman으로 GraalVM Enterprise Edition 관리">
+							sdkman으로 GraalVM Enterprise Edition 관리</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_news_201908w1/" title="GraalVM 새소식#2(201908, 첫 째주)">
+							GraalVM 새소식#2(201908, 첫 째주)</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/graalvm_news_201907w4/" title="GraalVM 새소식#1(201907, 4주)">
+							GraalVM 새소식#1(201907, 4주)</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/graalvm/position_of_graalvm/" title="GraalVM의 포지션과 역할에 대하여..">
+							GraalVM의 포지션과 역할에 대하여..</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/days_of_searching_for_first_love/" title="[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기">
+							[3/1000]&#39;스테파네트 아가씨를 찾아 헤맨 나날들&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/only_book_deep_learning/" title="[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기">
+							[2/1000]&#39;실체가 손에 잡히는 딥러닝&#39; 책 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oracle_java_on_oci/" title="Oracle OCI에서 &#39;Oracle Java SE is free&#39;">
+							Oracle OCI에서 &#39;Oracle Java SE is free&#39;</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/kubernetes_up_and_running/" title="[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기">
+							[1/1000]&#39;쿠버네티스 시작하기&#39; 책 후기</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/graalvm">Graalvm</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/math">Math</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">Licesne</h4>
+	<div class="widget__content">
+		<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+	</div>
+	<div class="widget__content">
+		이 저작물은 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank>크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2019 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+
