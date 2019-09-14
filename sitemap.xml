@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://taewan.kim/tip/how_to_install_python36_in_oel7/</loc>
+    <lastmod>2019-09-13T09:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/cloud/provisioning_gpu_vm_in_oci/</loc>
     <lastmod>2019-09-10T01:28:14+09:00</lastmod>
   </url>
@@ -1625,6 +1630,12 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/tags/epel/</loc>
+    <lastmod>2019-09-13T09:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tags/erd/</loc>
     <lastmod>2018-11-11T09:00:14+09:00</lastmod>
     <priority>0</priority>
@@ -1992,7 +2003,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/linux/</loc>
-    <lastmod>2011-03-16T14:01:55+09:00</lastmod>
+    <lastmod>2019-09-13T09:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2207,6 +2218,12 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/tags/oel/</loc>
+    <lastmod>2019-09-13T09:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tags/openjdk/</loc>
     <lastmod>2019-06-16T07:28:14+09:00</lastmod>
     <priority>0</priority>
@@ -2226,7 +2243,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/oracle/</loc>
-    <lastmod>2019-09-10T01:28:14+09:00</lastmod>
+    <lastmod>2019-09-13T09:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2371,6 +2388,12 @@
   <url>
     <loc>http://taewan.kim/tags/python/</loc>
     <lastmod>2018-10-07T19:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/python3/</loc>
+    <lastmod>2019-09-13T09:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2622,7 +2645,7 @@
   
   <url>
     <loc>http://taewan.kim/tip/</loc>
-    <lastmod>2019-09-06T01:28:14+09:00</lastmod>
+    <lastmod>2019-09-13T09:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2778,7 +2801,7 @@
   
   <url>
     <loc>http://taewan.kim/</loc>
-    <lastmod>2019-09-10T01:28:14+09:00</lastmod>
+    <lastmod>2019-09-13T09:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   

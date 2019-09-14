@@ -6,10 +6,22 @@
     <description>Recent content on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Sep 2019 01:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 13 Sep 2019 09:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Oracle Linux 7.X에 Python 3.6 설치 방법</title>
+      <link>http://taewan.kim/tip/how_to_install_python36_in_oel7/</link>
+      <pubDate>Fri, 13 Sep 2019 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tip/how_to_install_python36_in_oel7/</guid>
+      <description>Oracle Linux 7.X를 설치하면 Python 2.7이 기본 설치됩니다. Python3.6 버전을 설치하는 방법은 다음과 같습니다.
+EPEL 설치 &amp;amp; 확인 Oracle은 Oracle EPEL(Extra Packages for Enterprise Linux) yum 레파지토리를 운영합니다. 이 yum 레파지토리 Oracle Linux 서버에 python3.6 패키지가 포함되어 있습니다.1 Oracle EPEL 레파지토리의 설치 여부를 다음 명령을 통해서 확인할 수 있습니다.
+다음 명령을 통해서 Oracle EPEL(Extra Packages for Enterprise Linux) yum 레파지토리 서버에 등록할 수 있습니다.
+ sudo yum install -y oracle-epel-release-el7   위 명령을 실행하면 다음과 같이 실행됩니다.</description>
+    </item>
     
     <item>
       <title>OCI(Oracle Cloud Infrastructure) GPU VM 구성</title>
