@@ -9,18 +9,18 @@
 <META http-equiv="Cache-Control" content="No-Cache">
 <meta property="fb:admins" content="devtainer@gmail.com"/>
 
-<title>vanilla version의 의미</title>
+<title>쉡 스크립트 디렉터리 존재 확인 방법</title>
 <meta name="description" content="taewan.kim">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="vanilla version의 의미" />
-<meta property="og:description" content="IT 관련 문서에서 등장하는 vanilla의 의미" />
+<meta property="og:title" content="쉡 스크립트 디렉터리 존재 확인 방법" />
+<meta property="og:description" content="Bash에서 디렉터리 확인 방법" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/tip/vanilla/" />
+<meta property="og:url" content="http://taewan.kim/tip/how_to_check_directory_in_bash/" />
 
 
 
-<meta property="article:published_time" content="2018-12-30T09:28:14&#43;09:00"/>
-<meta property="article:modified_time" content="2018-12-30T09:28:14&#43;09:00"/>
+<meta property="article:published_time" content="2019-01-14T21:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2019-01-14T21:28:14&#43;09:00"/>
 
 
 
@@ -110,42 +110,79 @@
 <div class="main-content content" role="main" itemprop="mainContentOfPage">
 	<article class="post">
 		<header class="post__header clearfix">
-			<h1 class="post__title">vanilla version의 의미 </h1>
+			<h1 class="post__title">쉡 스크립트 디렉터리 존재 확인 방법 </h1>
 			<p class="post__meta meta">
 				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="post__meta-date" datetime="2018-12-30 09:28:14 &#43;0900 KST">December 30, 2018</time>
+				<time class="post__meta-date" datetime="2019-01-14 21:28:14 &#43;0900 KST">January 14, 2019</time>
 			</p>
 		</header>
 
 		<div class="post__content clearfix">
-			<p>IT 원문을 보다보면 vanilla version, vanilla software와 같은 단어가 등장합니다. 의미가 잘 와 닿지 않습니다.</p>
+			
 
-<p>vanilla의 의미를 다음에서 확인할 수 있습니다.</p>
+<p>쉴 스크립트에서 디렉터리와 파일가 존재하는지 혹은 존재하지 않는지를 확인하는 방법은 다음과 같습니다.</p>
 
-<blockquote>
-<p>In information technology, vanilla (pronounced vah-NIHL-uh ) is an adjective meaning plain or basic. The unfeatured version of a product is sometimes referred to as the vanilla version. The term is based on the fact that vanilla is the most popular or at least the most commonly served flavor of ice cream. Or, as Eric Raymond, editor of The New Hacker&rsquo;s Dictionary , puts it, the default ice cream.</p>
+<h2 id="디렉터리-관련-조건문">디렉터리 관련 조건문</h2>
 
-<ul>
-<li>출처: <a href="https://whatis.techtarget.com/definition/vanilla">https://whatis.techtarget.com/definition/vanilla</a></li>
-</ul>
-</blockquote>
+<p>특정 디렉터리의 존재 여부에 따라 실행되는 로직은 다음과 같은 조건문으로 처리할 수 있습니다.</p>
 
-<p>vanilla는 <strong>기본</strong>, <strong>날것</strong>, <strong>평범한</strong> 등의 의미로 갖습니다. 아이스크림의 기본은 바닐라 아이스크림이죠. 이 의미를 형용사로 차용한 표현입니다.</p>
+<h2 id="특정-디렉터리-존재-확인">특정 디렉터리 존재 확인</h2>
 
-<p>아래와 같은 표현으로 사용됩니다.</p>
+<p>&ldquo;<strong>DIRECTORY</strong>&ldquo;변수에 설정한 디렉터리가 기존에 존재할 경우에 실행되는 조건문은 다음과 같습니다.</p>
 
-<blockquote>
-<p>we rarely would use a vanilla version of RNN which we saw in the previous section.</p>
-</blockquote>
+<pre><code>DIRECTORY=~/temp
 
-<hr />
+if [ -d $DIRECTORY ]; then
+  # 디렉터리가 존재할때 실행 로직 추가
+fi
+</code></pre>
 
-<blockquote>
-<p><img src="https://taewanmerepo.github.io/2018/12/vanilla/010.jpg" alt="" /></p>
-</blockquote>
+<h2 id="특정-디렉터리가-존재하지-않음-확인">특정 디렉터리가 존재하지 않음 확인</h2>
+
+<p>&ldquo;<strong>DIRECTORY</strong>&ldquo;변수에 설정한 디렉터리가 존재하지 않는 경우에 실행되는 조건문은 다음과 같습니다.</p>
+
+<pre><code>DIRECTORY=~/temp
+
+if [ ! -d $DIRECTORY ]; then
+  # 디렉터리가 없을 때 실행 로직 추가
+fi
+</code></pre>
+
+<h2 id="파일-관련-조건문">파일 관련 조건문</h2>
+
+<p>특정 파일의 존재 여부에 따라 실행되는 로직은 다음과 같은 조건문으로 처리할 수 있습니다.</p>
+
+<h2 id="특정-파일-존재-여부-확인">특정 파일 존재 여부 확인</h2>
+
+<p>&ldquo;<strong>file_name</strong>&ldquo;변수에 설정한 파일이 존재할 경우에 실행되는 조건문은 다음과 같습니다.</p>
+
+<pre><code>file_name=~/temp/ps.json
+
+if [ -d $file_name ]; then
+  # 파일이 존재할 때 실행 로직 추가
+fi
+</code></pre>
+
+<h2 id="특정-디렉터리가-존재하지-않음-확인-1">특정 디렉터리가 존재하지 않음 확인</h2>
+
+<p>&ldquo;<strong>file_name</strong>&ldquo;변수에 설정한 파일이 존재하지 않을 경우에 실행되는 조건문은 다음과 같습니다.</p>
+
+<pre><code>file_name=~/temp/ps.json
+
+if [ ! -d $file_name ]; then
+  # 파일이 없을 때 실행 로직 추가
+fi
+</code></pre>
 
 		</div>
 		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/bash/" rel="tag">bash</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/directory/" rel="tag">directory</a></li>
+	</ul>
+</div>
 
 	</article>
 	
@@ -153,16 +190,16 @@
 	
 <nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	<div class="post-nav__item post-nav__item--prev col-1-2">
-		<a class="post-nav__link" href="http://taewan.kim/tip/online_shopping/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">온라인 구매 사이트 모음</p></a>
+		<a class="post-nav__link" href="http://taewan.kim/tip/vanilla/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">vanilla version의 의미</p></a>
 	</div>
 	<div class="post-nav__item post-nav__item--next col-1-2">
-		<a class="post-nav__link" href="http://taewan.kim/tip/how_to_check_directory_in_bash/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">쉡 스크립트 디렉터리 존재 확인 방법</p></a>
+		<a class="post-nav__link" href="http://taewan.kim/tip/slideshare_embedded_code/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">slideshare 문서 임베디드 코드 서비스</p></a>
 	</div>
 </nav>
 
 	
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tip/vanilla/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tip/how_to_check_directory_in_bash/"></div>
 
 
 	<div>
@@ -198,7 +235,7 @@
 	
 
 <div class="widget-categories widget">	
-		<div class="fb-like" data-href="http://taewan.kim/tip/vanilla/" 
+		<div class="fb-like" data-href="http://taewan.kim/tip/how_to_check_directory_in_bash/" 
 		data-layout="standard" data-action="like" 
 		data-size="small" 
 		data-show-faces="true" 
@@ -206,6 +243,24 @@
 </div>
 	
 	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#디렉터리-관련-조건문">디렉터리 관련 조건문</a></li>
+<li><a href="#특정-디렉터리-존재-확인">특정 디렉터리 존재 확인</a></li>
+<li><a href="#특정-디렉터리가-존재하지-않음-확인">특정 디렉터리가 존재하지 않음 확인</a></li>
+<li><a href="#파일-관련-조건문">파일 관련 조건문</a></li>
+<li><a href="#특정-파일-존재-여부-확인">특정 파일 존재 여부 확인</a></li>
+<li><a href="#특정-디렉터리가-존재하지-않음-확인-1">특정 디렉터리가 존재하지 않음 확인</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
 
 	<div class="widget-categories widget">
   <h4 class="widget__title">관련도서</h4>
