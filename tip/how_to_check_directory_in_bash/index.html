@@ -129,13 +129,12 @@
 <h3 id="특정-디렉터리-존재-확인">특정 디렉터리 존재 확인</h3>
 
 <p>&ldquo;<strong>DIRECTORY</strong>&ldquo;변수에 설정한 디렉터리가 기존에 존재할 경우에 실행되는 조건문은 다음과 같습니다.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">DIRECTORY</span><span style="color: #f92672">=</span>~/temp.
 
-<pre><code>DIRECTORY=~/temp
-
-if [ -d $DIRECTORY ]; then
-  # 디렉터리가 존재할때 실행 로직 추가
-fi
-</code></pre>
+<span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> -d <span style="color: #f8f8f2">$DIRECTORY</span> <span style="color: #f92672">]</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">then</span>
+  <span style="color: #75715e"># 디렉터리가 존재할때 실행 로직 추가</span>
+<span style="color: #66d9ef">fi</span>
+</pre></div>
 
 <h3 id="특정-디렉터리가-존재하지-않음-확인">특정 디렉터리가 존재하지 않음 확인</h3>
 

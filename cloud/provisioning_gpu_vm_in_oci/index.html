@@ -150,9 +150,9 @@
 <tr>
 <th>Shape</th>
 <th>GPU 유형</th>
-<th>CPU 유형</th>
 <th>GPU 수</th>
 <th>OCPU 수</th>
+<th>메모리(GB)</th>
 <th>블록 스토리지</th>
 <th>메모리(GB)</th>
 <th>네트워크</th>
@@ -237,7 +237,7 @@
 
 <p>Shape 이름에서 &ldquo;<strong>VM</strong>&ldquo;은 가상 머신을 나타내고 &ldquo;<strong>BM</strong>&ldquo;은 Bare metal 서버를 의미합니다. Bare metal 서버는 사용자에게 서버 1대를 전용으로 제공하는 서비스입니다. 또한 &ldquo;<strong>GPUX.Y</strong>&ldquo;에서 X는 GPU 타입을 의미합니다. &ldquo;<strong>1</strong>&ldquo;은 Tesla P100이고 &ldquo;<strong>2</strong>&ldquo;는 Tesa V100을 나타냅니다. Y는 GPU 수입니다. 각 Shape은 GPU를 최소 1개에서 8개까지 사용합니다.</p>
 
-<p>이 표에서 네트워크는 각 Shape이 사용 가능한 Network Bandwidth입니다. BM의 경우 25Gbps 2개를 지원합니다. 1개는 Storage  Network에 전용으로 할당되고 나머지 1개가 일반 네트워크에 할당됩니다.</p>
+<p>이 표에서 네트워크는 각 Shape이 사용 가능한 Network Bandwidth입니다. BM의 경우 25Gbps 2개를 지원합니다.</p>
 
 <p>VM.GPU3.2, VM.GPU3.4 및 BM.GPU3.8은 &ldquo;GPU Interconnect&rdquo;로 NVLINK를 제공합니다. 여러 GPU를 사용하는 시스템은 PCIe 대역폭이 병목 지점이 될 수 있습니다. 이런 문제를 해결하고 더 빠르고, 더 확장 가능한 다중 프로세서 상호 연결을 지원하는 기술이 VNLINK입니다. VNLIKN는 여러 GPU 사이에 브릿지 역할을 하는 고속의 링크로 병렬 처리 성능을 높입니다.</p>
 
