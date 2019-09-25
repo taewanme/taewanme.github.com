@@ -6,10 +6,21 @@
     <description>Recent content in Gpu on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Sep 2019 01:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 24 Sep 2019 01:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/gpu/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Oracle Cloud 새로운 프로모션: Free Tier </title>
+      <link>http://taewan.kim/cloud/how_to_register_free_tier_account/</link>
+      <pubDate>Tue, 24 Sep 2019 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/how_to_register_free_tier_account/</guid>
+      <description>2019년 9월 16일부터 19일까지 4일간 샌프란시스스코에서 Oracle Open World 2019(이하 OOW 2019)가 진행됐습니다. 이번 OOW 2019 첫째 날 기조연설에서 오라클의 CTO 레리 엘리슨은 오라클 클라우드의 주요 전략을 발표했습니다.
+그 중에서 가장 큰 주목을 받은 부분은 다음의 두 가지입니다.
+ &amp;ldquo;현재 16개인 클라우드 데이터센터(리전)를 2020년까지 36개로 확대&amp;ldquo; 새로운 클라우드 프로모션 &amp;ldquo;Free Tire&amp;rdquo; 공개  레리 엘리슨이 발표한 클라우드 데이터센터 증설 계획안에는 한국의 두 번째 구축 계획이 포함되어 있어 많은 관심을 받았습니다.</description>
+    </item>
     
     <item>
       <title>OCI(Oracle Cloud Infrastructure) GPU VM 구성</title>
