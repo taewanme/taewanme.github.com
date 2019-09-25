@@ -1275,6 +1275,12 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/tags/always-free/</loc>
+    <lastmod>2019-09-24T01:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tags/amabari/</loc>
     <lastmod>2018-05-31T23:20:25+09:00</lastmod>
     <priority>0</priority>
@@ -1713,6 +1719,12 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/tags/free-tier/</loc>
+    <lastmod>2019-09-24T01:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tags/functioal-programming/</loc>
     <lastmod>2016-10-18T21:28:14+09:00</lastmod>
     <priority>0</priority>
@@ -1774,7 +1786,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/gpu/</loc>
-    <lastmod>2019-09-24T01:28:14+09:00</lastmod>
+    <lastmod>2019-09-10T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
