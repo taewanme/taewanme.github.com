@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://taewan.kim/enjoy-life/%EC%B2%AD%EC%9A%B4%EC%8B%9D%EB%8B%B9/</loc>
+    <lastmod>2019-10-09T07:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/cloud/how_to_register_free_tier_account/</loc>
     <lastmod>2019-09-24T01:28:14+09:00</lastmod>
   </url>
@@ -1647,6 +1652,12 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/enjoy-life/</loc>
+    <lastmod>2019-10-09T07:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/entertain/</loc>
     <lastmod>2018-12-24T05:28:14+09:00</lastmod>
     <priority>0</priority>
@@ -2830,7 +2841,7 @@
   
   <url>
     <loc>http://taewan.kim/</loc>
-    <lastmod>2019-09-24T01:28:14+09:00</lastmod>
+    <lastmod>2019-10-09T07:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2843,6 +2854,12 @@
   <url>
     <loc>http://taewan.kim/tags/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%B2%95/</loc>
     <lastmod>2018-04-21T15:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EA%B3%B5%EC%A3%BC/</loc>
+    <lastmod>2019-10-09T07:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2943,6 +2960,12 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/categories/%EB%A7%9B%EC%A7%91/</loc>
+    <lastmod>2019-10-09T07:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tags/%EB%A7%A5/</loc>
     <lastmod>2018-11-21T15:00:14+09:00</lastmod>
     <priority>0</priority>
@@ -2951,6 +2974,12 @@
   <url>
     <loc>http://taewan.kim/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/</loc>
     <lastmod>2018-08-08T16:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EB%A8%B9%EB%B0%A9/</loc>
+    <lastmod>2019-10-09T07:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -3125,6 +3154,18 @@
   <url>
     <loc>http://taewan.kim/categories/%EC%A7%9C%ED%88%AC%EB%A6%AC/</loc>
     <lastmod>2016-03-25T00:17:44+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EC%A7%AC%EB%BD%95/</loc>
+    <lastmod>2019-10-09T07:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EC%B2%AD%EC%9A%B4%EC%8B%9D%EB%8B%B9/</loc>
+    <lastmod>2019-10-09T07:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
