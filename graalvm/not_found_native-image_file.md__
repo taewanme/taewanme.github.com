@@ -1,0 +1,16 @@
++++
+date = "2019-11-17T01:28:14+09:00"
+description = "GraalVM에 native-image 실행 파일 설치하기."
+title = "graalvm에 native-image 파일 추가 설치"
+thumbnailInList = "https://taewanmerepo.github.io/2019/08/graalvm_news1908w1/030.jpg"
+thumbnailInPost = "https://taewanmerepo.github.io/2019/06/graalvm/000.jpg"
+tags = ["graalvm", "graalvm weekly news"]
+categories = ["graalvm"]
+author = "taewan.kim"
+language = ""  
+jupyter = "false"
+adsense = "true"
+autoadsense = "true"
+disclaimer = "true"
++++
+

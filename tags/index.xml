@@ -111,6 +111,15 @@
     </item>
     
     <item>
+      <title>Aot</title>
+      <link>http://taewan.kim/tags/aot/</link>
+      <pubDate>Sun, 17 Nov 2019 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/aot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Autoenv</title>
       <link>http://taewan.kim/tags/autoenv/</link>
       <pubDate>Sat, 09 Sep 2017 10:50:36 +0900</pubDate>
@@ -743,7 +752,7 @@
     <item>
       <title>Graalvm</title>
       <link>http://taewan.kim/tags/graalvm/</link>
-      <pubDate>Wed, 04 Sep 2019 01:28:14 +0900</pubDate>
+      <pubDate>Sun, 17 Nov 2019 01:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/graalvm/</guid>
       <description></description>
@@ -1128,6 +1137,15 @@
     </item>
     
     <item>
+      <title>Mcd2019</title>
+      <link>http://taewan.kim/tags/mcd2019/</link>
+      <pubDate>Sun, 17 Nov 2019 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/mcd2019/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Ml</title>
       <link>http://taewan.kim/tags/ml/</link>
       <pubDate>Mon, 16 Jul 2018 09:28:14 +0900</pubDate>
@@ -1160,6 +1178,15 @@
       <pubDate>Sun, 24 Sep 2017 21:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/mysql-cs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Native Image</title>
+      <link>http://taewan.kim/tags/native-image/</link>
+      <pubDate>Sun, 17 Nov 2019 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/native-image/</guid>
       <description></description>
     </item>
     
