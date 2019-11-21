@@ -22,6 +22,16 @@
     </item>
     
     <item>
+      <title>GraalVM 버전 공개 및 버전 관리 원칙</title>
+      <link>http://taewan.kim/graalvm/graal_version_management/</link>
+      <pubDate>Fri, 15 Nov 2019 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/graalvm/graal_version_management/</guid>
+      <description>GraalVM은 분기별로 새로운 버전을 공개하는 버전 관리 체계를 운영합니다. GraalVM은 새로운 버전을 공개하는 릴리즈 타입으로 Major Release, CPU(Critical Patch Update) Release, CPU LTS Release 3가지가 있습니다. 각 유형별로 버전 발표 주기를 달리하여 3개월 단위와 1년 단위의 버전 관리 체계를 제공합니다. 모든 새로운 버전은 github의 graalvm 계정에 포함된 graalvm-ce-builds 레파지터리(GraalVM CE)와 oracle.com(GraalVM EE)에서 공개됩니다.
+ GraalVM CE 버전 다운로드: https://github.com/graalvm/graalvm-ce-builds/releases GraalVM EE 버전 다운로드: https://www.oracle.com/downloads/graalvm-downloads.html  Major Release Major Release는 3개월 단위로 새로운 버전을 제공합니다.</description>
+    </item>
+    
+    <item>
       <title>GraalVM 새소식#2(201908, 첫 째주)</title>
       <link>http://taewan.kim/graalvm/graalvm_news_201908w1/</link>
       <pubDate>Wed, 07 Aug 2019 01:28:14 +0900</pubDate>
