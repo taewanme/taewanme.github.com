@@ -129,7 +129,9 @@
 			</figure>
 			
 
-<p>GraalVM은 분기별로 새로운 버전을 공개하는 버전 관리 체계를 운영합니다. GraalVM은 새로운 버전을 공개하는 릴리즈 타입으로 Major Release, CPU(Critical Patch Update) Release,  CPU LTS Release 3가지가 있습니다. 각 유형별로 버전 발표 주기를 달리하여 3개월 단위와 1년 단위의 버전 관리 체계를 제공합니다. 모든 새로운 버전은 github의 graalvm 계정에 포함된 graalvm-ce-builds 레파지터리(GraalVM CE)와 oracle.com(GraalVM EE)에서 공개됩니다.</p>
+<p>GraalVM은 표준 자바인 OpenJDK와 Oracle Java를 확장하여 자바의 새로운 가능성을 만드는 기술 체계입니다. GraalVM은 정해진 패턴과 일정으로 새로운 버전을 공개하는 GraalVM 버전 공개 체계를 갖고 있습니다. 따라서 새로운 버전 공개와 향후 작업 일정을 계획하기 좋습니다. GraalVM이 제공하는 버전 체계와 신규 버전 배포 주기 및 정책을 정리합니다.</p>
+
+<p>GraalVM은 분기별로 새로운 버전을 공개합니다. GraalVM이 새로운 버전을 공개하는 릴리즈 타입으로는 Major Release, CPU(Critical Patch Update) Release,  CPU LTS Release 3 가지가 있습니다. 각 유형별로 버전 발표 주기를 달리하며, 3개월 단위와 1년 단위 버전 관리 체계를 제공합니다. 모든 새로운 버전은 github의 graalvm 계정에 포함된 graalvm-ce-builds 레파지터리(GraalVM CE)와 oracle.com(GraalVM EE)에서 공개됩니다.</p>
 
 <ul>
 <li>GraalVM CE 버전 다운로드: <a href="https://github.com/graalvm/graalvm-ce-builds/releases">https://github.com/graalvm/graalvm-ce-builds/releases</a></li>
@@ -140,11 +142,11 @@
 
 <h2 id="major-release">Major Release</h2>
 
-<p>Major Release는 3개월 단위로 새로운 버전을 제공합니다. 매년 2월, 5월, 8월, 11월에 17일과 가장 가까운 화요일에 새로운 Major 버전을 공개합니다.</p>
+<p>Major Release는 3개월 단위로 새로운 버전이 공개됩니다. 매년 2월, 5월, 8월, 11월의 17일과 가장 가까운 화요일에 새 Major 버전이 발표됩니다.</p>
 
-<p>Major Release는 YY.[0-3]과 같은 버전 체계를 갖습니다. 예를 들어서 19년도 2월(1분기)에 공개한 버전은 19.0입니다. 19년도 4월(11분기)에서 공개한 버전은 19.4입니다.</p>
+<p>Major Release는 YY.[0-3]과 같은 버전 체계를 갖습니다. 예를 들어서 19년도 2월(1분기)에 공개한 버전은 19.0입니다. 19년도 4월(11분기)에서 공개한 버전은 19.3입니다.</p>
 
-<p>매년 4개 버전의 Major Release를 공개합니다. 매년 공개되는 4개의 Major Release 중 1분기에서 3분기에 공개되는 3개의 Major Release의 유지보수 기간은 3개월입니다. 2월에 공개되는 그 해의 첫 번째 Major Release는 다음 Major Release 버전이 공개되는 5월까지 유지보수 됩니다. 11월에 공개되는 그해의 4번째 Major Release는 LTS(Long Term Support)버전으로 분류되어 특별 관리됩니다. 이 Major Release는 다음 해의 LTS 버전이 공개되기 전까지 1년간 유지 보수됩니다.</p>
+<p>GraalVM 개발 팀은 매년 4개 Major Release를 공개합니다. 이렇게 공개되는 4개 Major Release 중에서 1분기에서 3분기에 공개되는 3개 Major Release의 유지보수 기간은 3개월입니다. 2월에 공개되는 그 해의 첫 번째 Major Release는 다음 Major Release 버전이 공개되는 5월까지 유지보수 됩니다. 11월에 공개되는 그해의 4번째 Major Release는 LTS(Long Term Support)버전으로 분류되어 특별 관리됩니다. 이 Major Release는 다음 해 10월 새로운 LTS 버전이 공개되기 전까지 1년간 유지 보수됩니다.</p>
 
 <table>
 <thead>
