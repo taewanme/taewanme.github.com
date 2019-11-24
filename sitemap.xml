@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://taewan.kim/graalvm/not_found_native-image_graalvm/</loc>
+    <lastmod>2019-11-22T01:28:14+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/graalvm/mcd2019_presentation/</loc>
     <lastmod>2019-11-17T01:28:14+09:00</lastmod>
   </url>
@@ -1819,13 +1824,13 @@
   
   <url>
     <loc>http://taewan.kim/tags/graalvm/</loc>
-    <lastmod>2019-11-17T01:28:14+09:00</lastmod>
+    <lastmod>2019-11-22T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://taewan.kim/categories/graalvm/</loc>
-    <lastmod>2019-11-17T01:28:14+09:00</lastmod>
+    <lastmod>2019-11-22T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1837,7 +1842,7 @@
   
   <url>
     <loc>http://taewan.kim/graalvm/</loc>
-    <lastmod>2019-11-17T01:28:14+09:00</lastmod>
+    <lastmod>2019-11-22T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2185,7 +2190,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/native-image/</loc>
-    <lastmod>2019-11-17T01:28:14+09:00</lastmod>
+    <lastmod>2019-11-22T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2222,6 +2227,12 @@
   <url>
     <loc>http://taewan.kim/tags/nosql/</loc>
     <lastmod>2017-12-26T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/not-found/</loc>
+    <lastmod>2019-11-22T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2875,7 +2886,7 @@
   
   <url>
     <loc>http://taewan.kim/</loc>
-    <lastmod>2019-11-17T01:28:14+09:00</lastmod>
+    <lastmod>2019-11-22T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   

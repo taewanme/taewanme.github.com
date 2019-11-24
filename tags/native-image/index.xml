@@ -6,10 +6,20 @@
     <description>Recent content in Native Image on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 17 Nov 2019 01:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 22 Nov 2019 01:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/native-image/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>command not found: native-image</title>
+      <link>http://taewan.kim/graalvm/not_found_native-image_graalvm/</link>
+      <pubDate>Fri, 22 Nov 2019 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/graalvm/not_found_native-image_graalvm/</guid>
+      <description>GraalVM이 대중의 관심을 갖는 이유 중에 하나는 아마도 Native Image 컴파일 기능일 것 입니다. GraalVM이 제공하는 Native Image는 javac로 컴파일된 클래스 파일 혹은 JAR 파일을 입력받아 실행 파일을 만드는 Native Image Generator입니다. GraalVM의 Native Image Generator는 컴파일러 유틸리티는 native-image 입니다. native-image의 실체는 실행 파일입니다.
+Oracle GraalVM에는 향후 버전을 위한 실험 기능이 포함되어 있다. 2019년 11월 현재 Native Image는 실험적인 기능인 Early Adopter technology로 분류되어 있습니다. 이러한 이유로 native-image 실행 파일은 GraalVM CE와 GraalVM EE의 기본 배포본에는 포함도 있지 않습니다.</description>
+    </item>
     
     <item>
       <title>Oracle MCD 2019 발표문서: Cloud Native Java: GraalVM</title>
