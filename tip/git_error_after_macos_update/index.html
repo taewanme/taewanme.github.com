@@ -120,19 +120,19 @@
 		<div class="post__content clearfix">
 			
 
-<p>macOS를 10.15 catalina로 업그레이드 후에 git을 실행이 오류가 발생했습니다.</p>
+<p>macOS를 10.15 catalina로 업그레이드 후에 git을 실행하면 오류가 발생했습니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2019/12/giterror/img02.png" alt="" />
 <img src="https://taewanmerepo.github.io/2019/12/giterror/img03.jpg" alt="" /></p>
 
-<p>에러 메시지를 통해서 OS 업데이트 후 <strong>Xcode Command Line Tools</strong>에 이슈가 있음을 확인할 수 있습니다.</p>
+<p>git 에러 메시지에서 OS 업데이트 후 <strong>Xcode Command Line Tools</strong>에 이슈가 있음을 확인할 수 있습니다.</p>
 
 <pre><code>$ git
 xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
 $
 </code></pre>
 
-<p>이 문제는 <strong>xcode-select</strong>을 새로 설치하면 해결됩니다. <strong>xcode-select</strong> 설치는 콘솔에서 다음 명령으로 설치할 수 있습니다.</p>
+<p>이 문제는 <strong>xcode-select</strong>을 새로 설치하면 해결됩니다. <strong>xcode-select</strong> 는 콘솔에서 다음 명령을 실행하면 설치할 수 있습니다.</p>
 
 <pre><code>$ xcode-select --install
 </code></pre>
