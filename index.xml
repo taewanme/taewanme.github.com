@@ -52,6 +52,19 @@ GraalVM은 분기별로 새로운 버전을 공개합니다. GraalVM이 새로�
     </item>
     
     <item>
+      <title>macOS 업데이트 이후 git 실행시 &#39;xcrun: error&#39; 해결 방법</title>
+      <link>http://taewan.kim/tip/git_error_after_macos_update/</link>
+      <pubDate>Sat, 05 Oct 2019 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tip/git_error_after_macos_update/</guid>
+      <description>macOS를 10.15 catalina로 업그레이드 후에 git을 실행이 오류가 발생했습니다.
+에러 메시지를 통해서 OS 업데이트 후 Xcode Command Line Tools에 이슈가 있음을 확인할 수 있습니다.
+$ git xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun $  이 문제는 xcode-select을 새로 설치하면 해결됩니다. xcode-select 설치는 콘솔에서 다음 명령으로 설치할 수 있습니다.
+$ xcode-select --install  위 명령을 입력하면 설치 확인 팝업이 나타납니다.
+팝업의 설치 번튼을 클릭하면 설치가 진행됩니다.</description>
+    </item>
+    
+    <item>
       <title>새로운 Oracle Cloud 프로모션: Free Tier</title>
       <link>http://taewan.kim/cloud/how_to_register_free_tier_account/</link>
       <pubDate>Tue, 24 Sep 2019 01:28:14 +0900</pubDate>
