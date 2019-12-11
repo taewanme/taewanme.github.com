@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/tutorial_manual/apex_docs/apex_docs/overview/</loc>
+  </url>
+  
+  <url>
+    <loc>/tutorial_manual/apex_docs/apex_docs/</loc>
+  </url>
+  
+  <url>
+    <loc>/tutorial_manual/apex_docs/apex_docs/resources/</loc>
+  </url>
+  
+  <url>
+    <loc>/tutorial_manual/apex_docs/overview/</loc>
+  </url>
+  
+  <url>
+    <loc>/tutorial_manual/apex_docs/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tutorial_manual/apex_docs/</loc>
+  </url>
+  
+  <url>
+    <loc>/tutorial_manual/apex_docs/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>
