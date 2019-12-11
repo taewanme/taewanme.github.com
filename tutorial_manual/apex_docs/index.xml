@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DocDock Theme for Hugo on Oracle APEX 문서 모음</title>
+    <link>/tutorial_manual/apex_docs/</link>
+    <description>Recent content in DocDock Theme for Hugo on Oracle APEX 문서 모음</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="/tutorial_manual/apex_docs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Oracle APEX 관련 문서 모음</title>
+      <link>/tutorial_manual/apex_docs/apex_docs/overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tutorial_manual/apex_docs/apex_docs/overview/</guid>
+      <description>온라인에서 이용할 수 있는 Oracle APEX 관련 사이트를 정리합니다. Oracle APEX 관련 공식 사이트와 핸드온 문서 등을 확인할 수 있습니다.
+오라클이 운영하는 Oracle APEX 사이트  Oracle APEX 공식 사이트  
+ Oracle APEX 튜토리얼 사이트 한글 지원 Oracle APEX 소개 및 학습 자료 제공  Oracle APEX 공식 사이트 튜토리얼  
+ 6개 핸드온 문서 제공 (한글 지원) 6개 핸드온 구성     제목 대상 소요시간     스프레드시트 랩 초급 1시간   기존 테이블 랩 초급 1.</description>
+    </item>
+    
+    <item>
+      <title>Oracle APEX 관련 문서 모음</title>
+      <link>/tutorial_manual/apex_docs/apex_docs/resources/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tutorial_manual/apex_docs/apex_docs/resources/</guid>
+      <description>온라인에서 이용할 수 있는 Oracle APEX 관련 사이트를 정리합니다. Oracle APEX 관련 공식 사이트와 핸드온 문서 등을 확인할 수 있습니다.
+오라클이 운영하는 Oracle APEX 사이트  Oracle APEX 공식 사이트  
+ Oracle APEX 튜토리얼 사이트 한글 지원 Oracle APEX 소개 및 학습 자료 제공  Oracle APEX 공식 사이트 튜토리얼  
+ 6개 핸드온 문서 제공 (한글 지원) 6개 핸드온 구성     제목 대상 소요시간     스프레드시트 랩 초급 1시간   기존 테이블 랩 초급 1.</description>
+    </item>
+    
+    <item>
+      <title>Oracle APEX 관련 문서 모음</title>
+      <link>/tutorial_manual/apex_docs/overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tutorial_manual/apex_docs/overview/</guid>
+      <description>온라인에서 이용할 수 있는 Oracle APEX 관련 사이트를 정리합니다. Oracle APEX 관련 공식 사이트와 핸드온 문서 등을 확인할 수 있습니다.
+오라클이 운영하는 Oracle APEX 사이트  Oracle APEX 공식 사이트  
+ Oracle APEX 튜토리얼 사이트 한글 지원 Oracle APEX 소개 및 학습 자료 제공  Oracle APEX 공식 사이트 튜토리얼  
+ 6개 핸드온 문서 제공 (한글 지원) 6개 핸드온 구성     제목 대상 소요시간     스프레드시트 랩 초급 1시간   기존 테이블 랩 초급 1.</description>
+    </item>
+    
+  </channel>
+</rss>
