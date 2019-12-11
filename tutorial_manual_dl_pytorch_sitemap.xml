@@ -13,49 +13,98 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/ml/dl_pytorch/02/install/linux_env/</loc>
+    <lastmod>2019-02-19T08:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/ml/dl_pytorch/02/02.practice_env/</loc>
+    <lastmod>2019-02-19T08:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/ml/dl_pytorch/02/03.practice01/</loc>
+    <lastmod>2019-02-19T08:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/ml/dl_pytorch/03/01.pytorch_building_block/</loc>
+    <lastmod>2019-02-19T08:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/ml/dl_pytorch/03/02.image_claasification/</loc>
+    <lastmod>2019-02-19T08:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/ml/dl_pytorch/05/01.mnist/</loc>
+    <lastmod>2019-02-19T08:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/ml/dl_pytorch/06/01.embedding/</loc>
+    <lastmod>2019-02-19T08:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/ml/dl_pytorch/07/01.style_transfer/</loc>
+    <lastmod>2019-02-19T08:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/ml/dl_pytorch/08/01.resnet/</loc>
+    <lastmod>2019-02-19T08:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/ml/dl_pytorch/02/</loc>
     <lastmod>2017-12-27T19:05:14+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/02/install/linux_env/</loc>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/02/02.practice_env/</loc>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/02/03.practice01/</loc>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/03/01.pytorch_building_block/</loc>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/03/02.image_claasification/</loc>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/05/01.mnist/</loc>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/06/01.embedding/</loc>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/07/01.style_transfer/</loc>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/08/01.resnet/</loc>
-  </url>
-  
-  <url>
     <loc>http://taewan.kim/ml/dl_pytorch/03/</loc>
     <lastmod>2017-12-27T19:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/ml/dl_pytorch/05/02.vgg16/</loc>
+    <lastmod>2019-02-19T08:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/ml/dl_pytorch/06/02.lstm/</loc>
+    <lastmod>2019-02-19T08:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/ml/dl_pytorch/06/03.conv1/</loc>
+    <lastmod>2019-02-19T08:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/ml/dl_pytorch/07/02.gan/</loc>
+    <lastmod>2019-02-19T08:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/ml/dl_pytorch/07/03.language_model/</loc>
+    <lastmod>2019-02-19T08:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/ml/dl_pytorch/08/02.inception/</loc>
+    <lastmod>2019-02-19T08:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/ml/dl_pytorch/08/03.densenet/</loc>
+    <lastmod>2019-02-19T08:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/ml/dl_pytorch/08/04.emsemble/</loc>
+    <lastmod>2019-02-19T08:05:14+09:00</lastmod>
   </url>
   
   <url>
@@ -69,40 +118,13 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/05/02.vgg16/</loc>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/06/02.lstm/</loc>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/06/03.conv1/</loc>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/07/02.gan/</loc>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/07/03.language_model/</loc>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/08/02.inception/</loc>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/08/03.densenet/</loc>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/08/04.emsemble/</loc>
-  </url>
-  
-  <url>
     <loc>http://taewan.kim/ml/dl_pytorch/05/</loc>
     <lastmod>2017-12-27T19:05:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/ml/dl_pytorch/02/install/linux_gpu_env/</loc>
+    <lastmod>2019-02-19T08:05:14+09:00</lastmod>
   </url>
   
   <url>
@@ -111,21 +133,18 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/02/install/linux_gpu_env/</loc>
-  </url>
-  
-  <url>
     <loc>http://taewan.kim/ml/dl_pytorch/07/</loc>
     <lastmod>2017-12-27T19:05:14+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/08/</loc>
-    <lastmod>2017-12-27T19:05:14+09:00</lastmod>
+    <loc>http://taewan.kim/ml/dl_pytorch/02/install/mac_env/</loc>
+    <lastmod>2019-02-19T08:05:14+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://taewan.kim/ml/dl_pytorch/02/install/mac_env/</loc>
+    <loc>http://taewan.kim/ml/dl_pytorch/08/</loc>
+    <lastmod>2017-12-27T19:05:14+09:00</lastmod>
   </url>
   
   <url>
@@ -135,6 +154,7 @@
   
   <url>
     <loc>http://taewan.kim/ml/dl_pytorch/02/install/window_env/</loc>
+    <lastmod>2019-02-19T08:05:14+09:00</lastmod>
   </url>
   
   <url>
@@ -149,6 +169,7 @@
   
   <url>
     <loc>http://taewan.kim/ml/</loc>
+    <lastmod>2019-02-19T08:05:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   

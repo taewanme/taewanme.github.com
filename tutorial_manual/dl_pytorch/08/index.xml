@@ -14,7 +14,7 @@
     <item>
       <title>8.1 ResNet</title>
       <link>http://taewan.kim/dl_pytorch/08/01.resnet/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 19 Feb 2019 08:05:14 +0900</pubDate>
       
       <guid>http://taewan.kim/dl_pytorch/08/01.resnet/</guid>
       <description>데모 환경 Demo 환경 Ubuntu 18.04 GPU: Nvidia GTX 1080 Data Platform: Anaconda 가상환경: pytorch_env2 Python: 3.7 PyTorch: 1.0 ResNet 사전 학습된 ResNet을 다운받고 로딩하여, 강아지/고양이 이미지 분류기를 만드는 과정을 소개</description>
@@ -23,7 +23,7 @@
     <item>
       <title>8.2 Inception 모델</title>
       <link>http://taewan.kim/dl_pytorch/08/02.inception/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 19 Feb 2019 08:05:14 +0900</pubDate>
       
       <guid>http://taewan.kim/dl_pytorch/08/02.inception/</guid>
       <description>데모 환경 Demo 환경 Ubuntu 18.04 GPU: Nvidia GTX 1080 Data Platform: Anaconda 가상환경: pytorch_env2 Python: 3.7 PyTorch: 1.0 Inception 사전 학습된 Inception을 다운받고 로딩하여, 강아지/고양이 이미지 분류기를 만드는 과정</description>
@@ -32,7 +32,7 @@
     <item>
       <title>8.3 DenseNet</title>
       <link>http://taewan.kim/dl_pytorch/08/03.densenet/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 19 Feb 2019 08:05:14 +0900</pubDate>
       
       <guid>http://taewan.kim/dl_pytorch/08/03.densenet/</guid>
       <description>데모 환경 Demo 환경 Ubuntu 18.04 GPU: Nvidia GTX 1080 Data Platform: Anaconda 가상환경: pytorch_env2 Python: 3.7 PyTorch: 1.0 DensNet 사전 학습된 DenseNet을 다운받고 로딩하여, 강아지/고양이 이미지 분류기를 만드는 과정을</description>
@@ -41,7 +41,7 @@
     <item>
       <title>8.4 앙상블 모델</title>
       <link>http://taewan.kim/dl_pytorch/08/04.emsemble/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 19 Feb 2019 08:05:14 +0900</pubDate>
       
       <guid>http://taewan.kim/dl_pytorch/08/04.emsemble/</guid>
       <description>데모 환경 Demo 환경 Ubuntu 18.04 GPU: Nvidia GTX 1080 Data Platform: Anaconda 가상환경: pytorch_env2 Python: 3.7 PyTorch: 1.0 Ensemble 모델 사전 학습된 ResNet, Inception, DensNet을 앙상블 모델로 만들어 이미지 분류의 성능을 높이는 방법을 소개</description>
