@@ -13,10 +13,10 @@
     
     <item>
       <title>Docker Image: 파이썬 기반 머신러닝 학습용 이미지</title>
-      <link>http://taewan.kim/docs/docker4ml/</link>
+      <link>http://taewan.kim/special-docs/docker4ml/</link>
       <pubDate>Sun, 07 Oct 2018 19:59:47 +0900</pubDate>
       
-      <guid>http://taewan.kim/docs/docker4ml/</guid>
+      <guid>http://taewan.kim/special-docs/docker4ml/</guid>
       <description>파이썬으로 데이터를 분석하고 머신러닝을 수행하기 위해서 필요한 환경을 Docker 이미지 &amp;lsquo;pyml&amp;lsquo;을 만들어 운영하고 있습니다. 컴퓨터에 Docker가 설치되어 있다면 바로 Docker 이미지를 다운받아 사용할 수 있습니다.
 &amp;lsquo;pyml&amp;rsquo; 더커 이미지는 주기적으로 업데이트되며 docker hub 레파지토리에서 운영됩니다.
  https://hub.docker.com/r/taewanme/pyml/  이 문서에서는 &amp;lsquo;pyml&amp;rsquo; 더커 이미지의 주요 정보와 설치 방법에 대한 최신 정보를 제공하겠습니다.

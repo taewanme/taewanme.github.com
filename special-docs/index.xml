@@ -1,34 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ml on taewan.kim 블로그</title>
-    <link>http://taewan.kim/tags/ml/</link>
-    <description>Recent content in Ml on taewan.kim 블로그</description>
+    <title>Special-docs on taewan.kim 블로그</title>
+    <link>http://taewan.kim/special-docs/</link>
+    <description>Recent content in Special-docs on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Jul 2018 09:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 07 Oct 2018 19:59:47 +0900</lastBuildDate>
     
-	<atom:link href="http://taewan.kim/tags/ml/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://taewan.kim/special-docs/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>MLY:15. 오류 분석 과정에서 동시에 여러 아이디어 평가</title>
-      <link>http://taewan.kim/trans_docs/t_mly_15/</link>
-      <pubDate>Mon, 16 Jul 2018 09:28:14 +0900</pubDate>
-      
-      <guid>http://taewan.kim/trans_docs/t_mly_15/</guid>
-      <description>원문제목: 15 Evaluating multiple ideas in parallel during error analysis 최종 업데이트: 2018년 07월 17일 목차이동: Machine Learning Yearning 목차 저자: Andrew NG 원문: http://www.mlyearning.org 분류: Basic Error Analysis  Your team has several ideas for improving the cat detector:
- Fix the problem of your algorithm recognizing dogs as cats. Fix the problem of your algorithm recognizing great cats (lions, panthers, etc.) as house cats (pets). Improve the system’s performance on blurry images.</description>
-    </item>
     
     <item>
-      <title>MLY:15. 오류 분석 과정에서 동시에 여러 아이디어 평가</title>
-      <link>http://taewan.kim/trans_docs/t_mly_16/</link>
-      <pubDate>Mon, 16 Jul 2018 09:28:14 +0900</pubDate>
+      <title>Docker Image: 파이썬 기반 머신러닝 학습용 이미지</title>
+      <link>http://taewan.kim/special-docs/docker4ml/</link>
+      <pubDate>Sun, 07 Oct 2018 19:59:47 +0900</pubDate>
       
-      <guid>http://taewan.kim/trans_docs/t_mly_16/</guid>
-      <description>원문제목: 15 Evaluating multiple ideas in parallel during error analysis 최종 업데이트: 2018년 07월 17일 목차이동: Machine Learning Yearning 목차 저자: Andrew NG 원문: http://www.mlyearning.org 분류: Basic Error Analysis  Your team has several ideas for improving the cat detector:
- Fix the problem of your algorithm recognizing dogs as cats. Fix the problem of your algorithm recognizing great cats (lions, panthers, etc.) as house cats (pets). Improve the system’s performance on blurry images.</description>
+      <guid>http://taewan.kim/special-docs/docker4ml/</guid>
+      <description>파이썬으로 데이터를 분석하고 머신러닝을 수행하기 위해서 필요한 환경을 Docker 이미지 &amp;lsquo;pyml&amp;lsquo;을 만들어 운영하고 있습니다. 컴퓨터에 Docker가 설치되어 있다면 바로 Docker 이미지를 다운받아 사용할 수 있습니다.
+&amp;lsquo;pyml&amp;rsquo; 더커 이미지는 주기적으로 업데이트되며 docker hub 레파지토리에서 운영됩니다.
+ https://hub.docker.com/r/taewanme/pyml/  이 문서에서는 &amp;lsquo;pyml&amp;rsquo; 더커 이미지의 주요 정보와 설치 방법에 대한 최신 정보를 제공하겠습니다.
+pyml Docker 최신 정보 pyml Docker 이미지 버전 pyml Docker 이미지 버전은 다음 URL의 Tags 페이지에서 확인 할 수 있습니다.</description>
     </item>
     
     <item>
