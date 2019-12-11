@@ -283,7 +283,7 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/special-docs/docker4ml/</loc>
+    <loc>http://taewan.kim/post/docker4ml/</loc>
     <lastmod>2018-10-07T19:59:47+09:00</lastmod>
   </url>
   
@@ -688,7 +688,7 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/special-docs/ml_glossary/</loc>
+    <loc>http://taewan.kim/post/ml_glossary/</loc>
     <lastmod>2018-03-20T21:28:14+09:00</lastmod>
   </url>
   
@@ -2616,12 +2616,6 @@
   <url>
     <loc>http://taewan.kim/tags/spark/</loc>
     <lastmod>2018-04-13T21:59:47+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/special-docs/</loc>
-    <lastmod>2018-10-07T19:59:47+09:00</lastmod>
     <priority>0</priority>
   </url>
   
