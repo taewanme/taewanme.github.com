@@ -3,19 +3,19 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/tutorial_manual/apex_docs/apex_docs/overview/</loc>
-  </url>
-  
-  <url>
-    <loc>/tutorial_manual/apex_docs/apex_docs/</loc>
-  </url>
-  
-  <url>
-    <loc>/tutorial_manual/apex_docs/apex_docs/resources/</loc>
+    <loc>/tutorial_manual/apex_docs/overview/overview/</loc>
   </url>
   
   <url>
     <loc>/tutorial_manual/apex_docs/overview/</loc>
+  </url>
+  
+  <url>
+    <loc>/tutorial_manual/apex_docs/overview/resources/</loc>
+  </url>
+  
+  <url>
+    <loc>/tutorial_manual/apex_docs/quick_start/</loc>
   </url>
   
   <url>

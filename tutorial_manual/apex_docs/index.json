@@ -1,20 +1,6 @@
 [
 {
-	"uri": "/tutorial_manual/apex_docs/apex_docs/overview/",
-	"title": "Oracle APEX 관련 문서 모음",
-	"tags": [],
-	"description": "APEX 학습 관련 사이트를 정리합니다.",
-	"content": " 온라인에서 이용할 수 있는 Oracle APEX 관련 사이트를 정리합니다. Oracle APEX 관련 공식 사이트와 핸드온 문서 등을 확인할 수 있습니다.\n오라클이 운영하는 Oracle APEX 사이트  Oracle APEX 공식 사이트  \n Oracle APEX 튜토리얼 사이트 한글 지원 Oracle APEX 소개 및 학습 자료 제공  Oracle APEX 공식 사이트 튜토리얼  \n 6개 핸드온 문서 제공 (한글 지원) 6개 핸드온 구성     제목 대상 소요시간     스프레드시트 랩 초급 1시간   기존 테이블 랩 초급 1.5시간   POC(Proof-of-Concept) 랩 초급 1시간   REST 랩 초급 1.5시간   원격 테이블 랩 중급 1.5시간   데모 프로젝트 애플리케이션 구축 초급 3시    Oracle Application Express Office Hours  \n 매달 2회 Oracle APEX 온라인 세미나 진행 기존 세미나 동영상 제공  Oracle Application Express 공식 문서  \n  Hands-on 문서 모음  Oracle APEX 기초 핸즈-온   \n Oracle APEX 입문자를 위한 핸즈온 문서 Github에 구성 구성  16개 랩으로 구성 신규 사용자를 위한 따라하기식 구성   ATP 기반 APEX 핸즈-온   \n Cloud Test Drive의 핸즈온 문서 대상: 초급 핸즈온 환경: OCI(Oracle Cloud Infrastructure) Autonomous DB 구성  Lab 100: ATP 서비스 준비 및 APEX 개발 환경 준비 Lab 200: APEX 앱에 Spatial 추가 Lab 300: APEX 앱에 머신러닝 기능 추가 Lab 400: APEX 앱에 보안 옵션 적용 Lab 500: APEX 앱에 OCA 컴포넌트 추가    "
-},
-{
-	"uri": "/tutorial_manual/apex_docs/apex_docs/",
-	"title": "Oracle APEX",
-	"tags": [],
-	"description": "Oracle APEX 입문자를 대상으로 Oracle APEX의 특징을 소개합니다.",
-	"content": "Oracle APEX 소개합니다. 이 문서는 Oracle APEX 입문자를 대상으로 진행됩니다.\n Oracle APEX 관련 문서 모음 APEX 학습 관련 사이트를 정리합니다.\n  Oracle APEX 관련 문서 모음 APEX 학습 관련 사이트를 정리합니다.\n  "
-},
-{
-	"uri": "/tutorial_manual/apex_docs/apex_docs/resources/",
+	"uri": "/tutorial_manual/apex_docs/overview/overview/",
 	"title": "Oracle APEX 관련 문서 모음",
 	"tags": [],
 	"description": "APEX 학습 관련 사이트를 정리합니다.",
@@ -22,10 +8,24 @@
 },
 {
 	"uri": "/tutorial_manual/apex_docs/overview/",
+	"title": "Oracle APEX",
+	"tags": [],
+	"description": "Oracle APEX 입문자를 대상으로 Oracle APEX의 특징을 소개합니다.",
+	"content": "Oracle APEX 소개합니다. 이 문서는 Oracle APEX 입문자를 대상으로 진행됩니다.\n Oracle APEX 관련 문서 모음 APEX 학습 관련 사이트를 정리합니다.\n  Oracle APEX 관련 문서 모음 APEX 학습 관련 사이트를 정리합니다.\n  "
+},
+{
+	"uri": "/tutorial_manual/apex_docs/overview/resources/",
 	"title": "Oracle APEX 관련 문서 모음",
 	"tags": [],
 	"description": "APEX 학습 관련 사이트를 정리합니다.",
 	"content": " 온라인에서 이용할 수 있는 Oracle APEX 관련 사이트를 정리합니다. Oracle APEX 관련 공식 사이트와 핸드온 문서 등을 확인할 수 있습니다.\n오라클이 운영하는 Oracle APEX 사이트  Oracle APEX 공식 사이트  \n Oracle APEX 튜토리얼 사이트 한글 지원 Oracle APEX 소개 및 학습 자료 제공  Oracle APEX 공식 사이트 튜토리얼  \n 6개 핸드온 문서 제공 (한글 지원) 6개 핸드온 구성     제목 대상 소요시간     스프레드시트 랩 초급 1시간   기존 테이블 랩 초급 1.5시간   POC(Proof-of-Concept) 랩 초급 1시간   REST 랩 초급 1.5시간   원격 테이블 랩 중급 1.5시간   데모 프로젝트 애플리케이션 구축 초급 3시    Oracle Application Express Office Hours  \n 매달 2회 Oracle APEX 온라인 세미나 진행 기존 세미나 동영상 제공  Oracle Application Express 공식 문서  \n  Hands-on 문서 모음  Oracle APEX 기초 핸즈-온   \n Oracle APEX 입문자를 위한 핸즈온 문서 Github에 구성 구성  16개 랩으로 구성 신규 사용자를 위한 따라하기식 구성   ATP 기반 APEX 핸즈-온   \n Cloud Test Drive의 핸즈온 문서 대상: 초급 핸즈온 환경: OCI(Oracle Cloud Infrastructure) Autonomous DB 구성  Lab 100: ATP 서비스 준비 및 APEX 개발 환경 준비 Lab 200: APEX 앱에 Spatial 추가 Lab 300: APEX 앱에 머신러닝 기능 추가 Lab 400: APEX 앱에 보안 옵션 적용 Lab 500: APEX 앱에 OCA 컴포넌트 추가    "
+},
+{
+	"uri": "/tutorial_manual/apex_docs/quick_start/",
+	"title": "Quick Start",
+	"tags": [],
+	"description": "Oracle APEX 입문자를 대상으로 Oracle APEX의 특징을 소개합니다.",
+	"content": "Oracle APEX 소개합니다. 이 문서는 Oracle APEX 입문자를 대상으로 진행됩니다.\n "
 },
 {
 	"uri": "/tutorial_manual/apex_docs/categories/",
@@ -36,10 +36,10 @@
 },
 {
 	"uri": "/tutorial_manual/apex_docs/",
-	"title": "DocDock Theme for Hugo",
+	"title": "Oracle APEX 기술 문서",
 	"tags": [],
 	"description": "",
-	"content": " Hugo docDock theme "
+	"content": " Oracle APEX Oracle APEX 관련 사이트를 정리합니다.\n"
 },
 {
 	"uri": "/tutorial_manual/apex_docs/tags/",
