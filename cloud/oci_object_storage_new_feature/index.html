@@ -128,9 +128,9 @@
 			</figure>
 			
 
-<p>2019년 12월 10일에 OCI Object Storage에 몇 가지 아기 자기한 기능이 추가되었습니다. 이번에 새로 추가된 기능은 주로 OCI Object Storage의 웹 리소스 사용성과 관련 기능입니다. OCI Object Storage에는 파일 크기와 형식에 제약없는 클라우드 데이터 저장소입니다. 따라서 실행 파일, 대용량 데이터 파일, javascript 파일, css 파일, 이미지 파일 등 다양한 파일을 안전하고 저렴하게 저장할 수 있습니다. OCI Object Storage에 저장된 javascript 파일, css 파일, 이미지 파일 등을 웹 애플리케이션에서 자원으로 사용할 수 있습니다. OCI Object Storage 저장 파일을 웹 애플리케이션에서 자원으로 사용할 때 유용한 기능을 포함합니다.</p>
+<p>2019년 12월 10일에 OCI Object Storage에 몇 가지 아기자기한 기능이 추가되었습니다. 이번에 새로 추가된 기능은 주로 OCI Object Storage의 웹 리소스 사용성과 관련 기능입니다. OCI Object Storage에는 파일 크기와 형식에 제약 없는 클라우드 데이터 저장소입니다. 따라서 실행 파일, 대용량 데이터 파일, javascript 파일, css 파일, 이미지 파일 등 다양한 파일을 안전하고 저렴하게 저장할 수 있습니다. OCI Object Storage에 저장된 javascript 파일, css 파일, 이미지 파일 등을 웹 애플리케이션에서 자원으로 사용할 수 있습니다. OCI Object Storage 저장 파일을 웹 애플리케이션에서 자원으로 사용할 때 유용한 기능을 포함합니다.</p>
 
-<p>이번에 추가된 변경은 총 4가지 입니다.</p>
+<p>이번에 추가된 변경은 총 4가지입니다.</p>
 
 <ul>
 <li>OCI Console에서 Bucket의 ocid 제공</li>
@@ -141,7 +141,7 @@
 
 <h2 id="bucket의-ocid-지원">Bucket의 ocid 지원</h2>
 
-<p>그 동안 Object Storage의 Bucket은 이름으로만 참조했습니다. OCI의 Bucket을 제외한 모든 자원은 OCID로 관리합니다. 이제 OCI Console에서 Bucket의 OCID를 제공합니다.</p>
+<p>그동안 Object Storage의 Bucket은 이름으로만 참조했습니다. OCI의 Bucket을 제외한 모든 자원은 OCID로 관리합니다. 이제 OCI Console에서 Bucket의 OCID를 제공합니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2019/12/os/010.jpg" alt="" /></p>
 
@@ -186,7 +186,7 @@ print(buckets.data)
 
 <p>이 두 옵션은 Object Storage에서 활용되는 http header가 아니라 Object Storage에 저장된 파일을 웹 리소스로 사용하는 브라우저에 영향을 미치는 옵션입니다.</p>
 
-<p>HTTP URL로 Object Storage에 저장된 파일을 요청할 경우 OCI Object Storage는 HTTP 응답 헤더로 설정된 Content-Disposition와 Cache-Control 헤더를 함께 제공합니다.</p>
+<p>HTTP URL로 Object Storage에 저장된 파일을 요청할 경우 OCI Object Storage는 HTTP 응답 헤더로 설정된 Content-Disposition과 Cache-Control 헤더를 함께 제공합니다.</p>
 
 <p>Content-Disposition에 파일명이 설정될 경우 브라우저는 실제 파일명이 아닌 이 헤더에 설정된 파일명으로 파일을 저장합니다. 또한 Cache-Control은 브라우저의 캐쉬 설정에 영향을 줍니다.</p>
 
@@ -194,7 +194,7 @@ print(buckets.data)
 
 <p><img src="https://taewanmerepo.github.io/2019/12/os/040.jpg" alt="" /></p>
 
-<p>위 이미지에서 업로드되는 파일은 브라우저로 파일을 다운로드 받을 때 파일명이 demo.jpeg로 다운로드되고, 해당 파일은 브라우저에서 5분간 캐쉬되도록 설정된 예입니다. 이 파일의 설정 정보는 다음과 같이 확인할 수 있습니다.</p>
+<p>위 이미지에서 업로드되는 파일은 브라우저로 파일을 다운로드 할 때 파일명이 demo.jpeg로 다운로드하고, 해당 파일을 브라우저에서 5분간 캐시 하도록 설정된 예입니다. 이 파일의 설정 정보는 다음과 같이 확인할 수 있습니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2019/12/os/050.jpg" alt="" /></p>
 
@@ -213,12 +213,12 @@ print(buckets.data)
 <pre><code>attachment; filename=&quot;demo.jpg&quot;
 </code></pre>
 
-<p>브라우저를 위한 캐쉬 설정은 cache-control에 다음과 같이 지정할 수 있습니다.</p>
+<p>브라우저를 위한 캐시 설정은 cache-control에 다음과 같이 지정할 수 있습니다.</p>
 
 <table>
 <thead>
 <tr>
-<th>설정 값</th>
+<th>설정값</th>
 <th>설명</th>
 </tr>
 </thead>
@@ -226,37 +226,37 @@ print(buckets.data)
 <tbody>
 <tr>
 <td>no-store</td>
-<td>캐쉬하지 말것</td>
+<td>캐시하지 말 것</td>
 </tr>
 
 <tr>
 <td>no-cache</td>
-<td>캐쉬를 사영하기 전에 서버에 문의(존재 여부, 변경 여부)</td>
+<td>캐시를 사영하기 전에 서버에 문의(존재 여부, 변경 여부)</td>
 </tr>
 
 <tr>
 <td>must-revalidate</td>
-<td>만료된 캐쉬만 서버에 문의(존재 여부, 변경 여부)</td>
+<td>만료된 캐시만 서버에 문의(존재 여부, 변경 여부)</td>
 </tr>
 
 <tr>
 <td>public</td>
-<td>공유 캐쉬에 저장</td>
+<td>공유 캐시에 저장</td>
 </tr>
 
 <tr>
 <td>private</td>
-<td>특정 사용자에게만 저장</td>
+<td>특정 사용자 영역에 저장</td>
 </tr>
 
 <tr>
 <td>public, max-age=600</td>
-<td>공유 캐쉬에 저장, 저장 기간 600초)</td>
+<td>공유 캐시에 저장, 저장 기간 600초)</td>
 </tr>
 </tbody>
 </table>
 
-<p>이 두 설정으로 OCI Object Storage에 저장된 파일을 웹 리소스로 조금더 효율적으로 사용할 수있습니다.</p>
+<p>이 두 설정으로 OCI Object Storage에 저장된 파일을 웹 리소스로 더 효율적으로 사용할 수 있습니다.</p>
 
 <h2 id="listobject-api에-etag-지-원">ListObject API에 etag 지원</h2>
 
@@ -273,6 +273,7 @@ print(buckets.data)
 <ul>
 <li><a href="https://docs.cloud.oracle.com/iaas/Content/Object/Tasks/managingobjects.htm">https://docs.cloud.oracle.com/iaas/Content/Object/Tasks/managingobjects.htm</a></li>
 <li><a href="https://tools.ietf.org/html/rfc2616#section-14.9">https://tools.ietf.org/html/rfc2616#section-14.9</a></li>
+<li><a href="https://www.zerocho.com/category/HTTP/post/5b594dd3c06fa2001b89feb9">https://www.zerocho.com/category/HTTP/post/5b594dd3c06fa2001b89feb9</a></li>
 </ul>
 
 		</div>
