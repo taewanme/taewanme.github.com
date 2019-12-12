@@ -302,7 +302,7 @@
     <item>
       <title>Cloud</title>
       <link>http://taewan.kim/tags/cloud/</link>
-      <pubDate>Tue, 24 Sep 2019 01:28:14 +0900</pubDate>
+      <pubDate>Wed, 11 Dec 2019 01:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/cloud/</guid>
       <description></description>
@@ -1274,7 +1274,7 @@
     <item>
       <title>Object Storage</title>
       <link>http://taewan.kim/tags/object-storage/</link>
-      <pubDate>Mon, 18 Jun 2018 01:09:25 +0900</pubDate>
+      <pubDate>Wed, 11 Dec 2019 01:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/object-storage/</guid>
       <description></description>
@@ -1292,7 +1292,7 @@
     <item>
       <title>Oci</title>
       <link>http://taewan.kim/tags/oci/</link>
-      <pubDate>Tue, 24 Sep 2019 01:28:14 +0900</pubDate>
+      <pubDate>Wed, 11 Dec 2019 01:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/oci/</guid>
       <description></description>
@@ -1364,7 +1364,7 @@
     <item>
       <title>Oracle</title>
       <link>http://taewan.kim/tags/oracle/</link>
-      <pubDate>Tue, 24 Sep 2019 01:28:14 +0900</pubDate>
+      <pubDate>Wed, 11 Dec 2019 01:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/oracle/</guid>
       <description></description>
@@ -1592,6 +1592,15 @@
       <pubDate>Fri, 15 Dec 2017 21:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/regularization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Release Note</title>
+      <link>http://taewan.kim/tags/release-note/</link>
+      <pubDate>Wed, 11 Dec 2019 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/release-note/</guid>
       <description></description>
     </item>
     

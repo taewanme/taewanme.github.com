@@ -6,10 +6,19 @@
     <description>Recent content in Cloud on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 24 Sep 2019 01:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 11 Dec 2019 01:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/categories/cloud/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[OCI Release Note]Object Storage 새기능</title>
+      <link>http://taewan.kim/cloud/oci_object_storage_new_feature/</link>
+      <pubDate>Wed, 11 Dec 2019 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_object_storage_new_feature/</guid>
+      <description>2019년 12월 10일에 OCI Object Storage에 몇 가지 아기 자기한 기능이 추가되었습니다. 이번에 새로 추가된 기능은 주로 OCI Object Storage의 웹 리소스 사용성과 관련 기능입니다. OCI Object Storage에는 파일 크기와 형식에 제약없는 클라우드 데이터 저장소입니다. 따라서 실행 파일, 대용량 데이터 파일, javascript 파일, css 파일, 이미지 파일 등 다양한 파일을 안전하고 저렴하게 저장할 수 있습니다. OCI Object Storage에 저장된 javascript 파일, css 파일, 이미지 파일 등을 웹 애플리케이션에서 자원으로 사용할 수 있습니다.</description>
+    </item>
     
     <item>
       <title>새로운 Oracle Cloud 프로모션: Free Tier</title>
