@@ -1,0 +1,22 @@
+[
+{
+	"uri": "/oci_docs/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/oci_docs/",
+	"title": "OCI Dcos",
+	"tags": [],
+	"description": "",
+	"content": " OCI Docs OCI Docs는 OCI(Oracle Cloud Infrastructure) 관련 문서를 정리하는 페이지입니다. OCI에 새로 입문하시는 분들을 위해서 체계적으로 문서를 정리할 것입니다.\nOCIDocs는 다음과 같은 문서를 만들고 지속적으로 업데이트하여 가능한 최신 상태를 유지할 예정입니다.\n OCI 기본 개념 OCI 서비스 개념 OCI 각 서비스 사용법 Tutorial OCI 최신 정보  Change Log    일자 변경내역 URL     2020.01.29 Oradocs 페이지 오픈 https://taewan.kim/oradocs    "
+},
+{
+	"uri": "/oci_docs/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
