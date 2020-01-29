@@ -3,12 +3,20 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/oci_docs/00_quickstart/terminologies/</loc>
+  </url>
+  
+  <url>
     <loc>/oci_docs/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/oci_docs/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/00_quickstart/</loc>
   </url>
   
   <url>

@@ -10,5 +10,15 @@
 	<atom:link href="/oci_docs/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>OCI 기본 용어 정리</title>
+      <link>/oci_docs/00_quickstart/terminologies/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/oci_docs/00_quickstart/terminologies/</guid>
+      <description>Oracle Cloud를 새로 접하시는 분들을 위하여 Oracle Cloud에서 자주 사용하는 Oracle Cloud 핵심 용어를 간단하게 정리합니다.
+Oracle Cloud Infrastructure Orale Cloud Infrasturcture는 2018년부터 사용하기 시작한 Oracle Cloud의 새로운 브랜드명입니다. 초기에 오라클은 Nimbula를 인수하여 클라우드 서비스를 개발하였고, 2014년 Oracle은 OPC(Oracle Public Cloud)라는 브랜드로 클라우드 서비스를 시작했습니다. 이 시점부터 오라클은 새로운 2세대 클라우드 아키텍처를 개발하기 시작했습니다. 오라클의 2세대 클라우드 아키텍처로 개발된 오라클 클라우드 서비스가 바로 Oracle Cloud Infrastructure(이하 OCI)입니다. 2018년 Oracle Cloud 인프라 구현 기술은 OCI로 전면 교체되었고, 동시에 오라클 클라우드 브랜드명도 OPC(Oracle Public Cloud)에서 OCI(Oracle Cloud Infrastructure)로 변경되었습니다.</description>
+    </item>
+    
   </channel>
 </rss>
