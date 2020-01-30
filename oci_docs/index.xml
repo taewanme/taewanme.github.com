@@ -31,6 +31,17 @@ Oracle Cloud Infrastructure Orale Cloud Infrasturcture는 2018년부터 사용�
     </item>
     
     <item>
+      <title>OCI 기본 정보 확인법</title>
+      <link>/oci_docs/99_misc_tips/how_to_collect_basic_info_of_oci/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/oci_docs/99_misc_tips/how_to_collect_basic_info_of_oci/</guid>
+      <description>다음은 OCI 명령어 툴인 OCI CLI의 설정 파일(~/.oci/config) 실제 설정입니다.
+&amp;gt; cat ~/.oci/config [DEFAULT] user=ocid1.user.oc1..aaaaaaaafordemop4tprzfordemoyg3zebqgqgpfordemopyzcluzi2yndna fingerprint=52:02:51:de:b4:2c:fd:96:57:5f:4c:fd:dc:bf:e4:1c key_file=/Users/taewan/.oci/oci_api_key.pem tenancy=ocid1.tenancy.oc1..aaaaaaaa6ma7kq3bsif76uzqidv22cajs3fpesgpqmmsgxihlbcemkklrsqa region=us-phoenix-1  위 OCI CLI 설정 예제에서 OCI User OCID, Tenancy OCID, 리전 ID가 사용된 것을 확인할 수 있습니다. Oracle Cloud Infrastructure 서비스 프로비저닝, 서비스 연동 설정, OCI CLI 설정, OCI SDK 설정과 같은 OCI 설정 작업을 할 때 다음과 같은 OCI 환경 정보가 자주 사용됩니다.
+ OCI User 정보 (이름, OCID) OCI Tenancy (이름, OCID) OCI Region ID Compartment ID  OCI 계정을 처음 만들고 필요한 환경 정보를 OCI Console에서 확인하는 방법을 소개합니다.</description>
+    </item>
+    
+    <item>
       <title>Free Tier 계정 첫 번째 로그인</title>
       <link>/oci_docs/00_quickstart/first_sign_in_oci/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
