@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Oracle Cloud Infrastructure</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2020-01-30T20:38:01 KST">
+<title>Free Tier 계정 첫 번째 로그인 :: Oracle Cloud Infrastructure</title>
+
+<link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
+
+http://taewan.kim/img/icon/oracle.png
+<link href="/oci_docs/css/font-awesome.min.css" rel="stylesheet">
+<link href="/oci_docs/css/nucleus.css" rel="stylesheet">
+<link href="/oci_docs/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/oci_docs/css/bootstrap.min.css">
+<script src="/oci_docs/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "\/oci_docs";
+</script>
+<meta name="description" content="">
+
+
+<link href='/oci_docs/css/railload.css' rel="stylesheet">
+
+
+    
+  </head>
+  <body data-url="/oci_docs/00_quickstart/first_sign_in_oci/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="/oci_docs">Oracle Cloud Infrastructure</a>
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="http://taewan.kim/"  rel="noopener">
+                  <i class='fa fa-file-o'></i> <label>Taewan.kim Blog</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="http://taewan.kim/cloud/"  rel="noopener">
+                  <i class='fa fa-cloud'></i> <label>Oracle Cloud</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="http://taewan.kim/graalvm/"  rel="noopener">
+                  <i class='fa fa-send'></i> <label>GraalVM</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://gohugo.io/"  rel="noopener">
+                  <i class='fa fa-folder'></i> <label>tutorial_manual</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://gohugo.io/"  rel="noopener">
+                  <i class='fa fa-folder'></i> <label>Special Docs</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://gohugo.io/"  rel="noopener">
+                  <i class='fa fa-book'></i> <label>Books</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+    <li data-nav-id="/oci_docs/00_quickstart/" class="dd-item parent alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/00_quickstart/">OCI 퀵 스타트</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/00_quickstart/terminologies/" class="dd-item">
+        <div>
+          <a href="/oci_docs/00_quickstart/terminologies/">
+            OCI 기본 용어 정리
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/00_quickstart/how_to_sign_up_oci/" class="dd-item">
+        <div>
+          <a href="/oci_docs/00_quickstart/how_to_sign_up_oci/">
+            OCI Free Tier 계정 등록
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/00_quickstart/first_sign_in_oci/" class="dd-item active">
+        <div>
+          <a href="/oci_docs/00_quickstart/first_sign_in_oci/">
+            Free Tier 계정 첫 번째 로그인
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/oci_docs/00_quickstart/" >
+   OCI 퀵 스타트</option> 
+      <option value="/oci_docs/00_quickstart/terminologies/" >- OCI 기본 용어 정리</option>
+      <option value="/oci_docs/00_quickstart/how_to_sign_up_oci/" >- OCI Free Tier 계정 등록</option>
+      <option value="/oci_docs/00_quickstart/first_sign_in_oci/"  selected>- Free Tier 계정 첫 번째 로그인</option>
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/oci_docs/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/oci_docs/js/auto-complete.js"></script>
+        <link href="/oci_docs/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "\/oci_docs";
+          
+        </script>
+        <script type="text/javascript" src="/oci_docs/js/search.js"></script>
+      </div>
+    
+
+    <h1>Free Tier 계정 첫 번째 로그인</h1>
+    
+    
+    
+    
+
+<p>이번 문서는 오라클 클라우드 Free Tier 계정이 생성된 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 진행하시기 바랍니다.</p>
+
+<ul>
+<li><a href="./how_to_sign_up_in_oci/">OCI FREE TIER 계정 등록</a></li>
+</ul>
+
+<hr />
+
+<p>이 문서에는 다음과 같은 내용을 다룹니다.</p>
+
+<ul>
+<li>OCI Console에 로그인하기</li>
+<li>현재 사용 중인 OCI 사용자 정보 확인</li>
+<li>현재 사용 중인 Oracle Cloud 계정의 홈 리전(Home Region) 확인</li>
+</ul>
+
+<hr />
+
+<h2 id="oci-콘솔-console-로그인">OCI 콘솔(Console) 로그인</h2>
+
+<p>OCI 콘솔 로그인 방법을 소개합니다. OCI 콘솔 로그인을 위해서는 사용할 다음과 같은 정보가 필요합니다.</p>
+
+<ul>
+<li>오라클 클라우드 계정(Account)</li>
+<li>사용자 이름</li>
+<li>비밀번호</li>
+</ul>
+
+<p>OCI 로그인에 필요한 정보는 <strong>OCI FREE TIER 계정 등록</strong>에서 다음과 같이 설정되었습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/620.jpg?classes=border,shadow" alt="" /></p>
+
+<p>OCI 콘솔 로그인을 위해서는 <a href="https://www.oracle.com" target="_blank">www.oracle.com</a>
+에서 다음과 같은 패스로 이동합니다.</p>
+
+<ul>
+<li><strong>View Account</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> <strong>Sign-in to Cloud</strong></li>
+</ul>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/630.jpg?classes=border,shadow" alt="" /></p>
+
+<p>Oracle Cloud Account에 클라우드 계정명(meetup101)을 입력합니다. 그리고 &ldquo;<strong>Next</strong>&rdquo; 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/640.jpg?classes=border,shadow" alt="" /></p>
+
+<p>다음 페이지에서 사용자 명과 비밀번호에 앞에서 등록한 Email과 패스워드를 입력합니다. 그리고 &ldquo;<strong>사인인(Sign-in)</strong>&rdquo; 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/650.jpg?classes=border,shadow" alt="" /></p>
+
+<p>정상적으로 로그인 정보가 인증되면 다음과 같이 OCI 콘솔로 이동합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/660.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="현재-사용-중인-oci-사용자-정보-확인">현재 사용 중인 OCI 사용자 정보 확인</h2>
+
+<div class="notices note" ><p><p>2020년 현재 오라클 클라우드의 공식 브랜드 명은 <strong>OCI(Oracle Cloud Infrastructure)</strong>입니다. 오라클 클라우드는 처음에 OPC(Oracle Public Cloud)라는 브랜드 명으로 시작했습니다. 오라클 클라우드 브랜드 명을 OPC로 사용하던 시기에 클라우드 인프라스트럭처 서비스는 두 가지로 제공되었습니다.</p>
+
+<p>처음에는 제공된 오라클 클라우드 인프라스트럭처 서비스는 Oracle Computing Cloud Service였습니다. 그리고 2세대 클라우드 기술로 OCI(Oracle Cloud Infrastructure)를 개발한 이후에 오라클 클라우드 인프라스트럭처 서비스는 OCI로 변경되었습니다. 그리고 2018년에 오라클 클래우드 브랜드 명을 OPC에서 OCI로 변경했습니다.</p>
+
+<p>따라서 OCI라는 이름이 때로은 Oracle Cloud의 브랜드 명으로 사용되기도 하고 때로는 Oracle Cloud의 인프라스트럭처 서비스명으로 사용되기도 합니다. 이 문서에서는 OCI는 Oracle Cloud의 인프라스트럭처 서비스명을 의미합니다.</p>
+</p></div>
+
+
+<p>OCI 콘솔 위 오른쪽 메뉴에서 사용자 아이콘을 클릭하면 다음 그림과 같이 사용자 프로파일이 출력됩니다. 사용자 프로파일로부터 다음 그림과 같은 정보를 확인할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/700.jpg?classes=border,shadow" alt="" /></p>
+
+<ul>
+<li>사용자 ID: oracleidentitycloudservice/oracle.testa1@gmail.com</li>
+<li>테넌시: meetup101</li>
+</ul>
+
+<p>위 그림에서 사용자 ID(oracleidentitycloudservice/oracle.testa1@gmail.com)는 oracle cloud의 IDCS(IDentty Cloud Service)를 통해서 만들어지고 OCI에 Fedaration된 사용자 ID입니다. 여기서 Federation이란 통합된다는 의미입니다. 즉 IDCS에서 만들어진 사용자 ID가 OCI의 계정 관리 기능인 IAM에 적용된다는 의미입니다. 오라클 클라우드 사용자 ID 관리 방식에 대해서는 별도 문서로 정리하겠습니다. Oracle Cloud 계정 생성 과정에서 IDCS(IDentty Cloud Service)가 만든 사용자 ID는 다음과 같은 형식으로 OCI에 Fedaration됩니다.</p>
+
+<ul>
+<li>oracleidentitycloudservice/&lt;등록 email&gt;</li>
+</ul>
+
+<p>Oracle Cloud 계정 생성 과정에서 IDCS(IDentty Cloud Service)가 만든 사용자 ID는 Oracle Cloud 계정이 사용하는 모든 오라클 클라우드 서비스에 대하여 관리자 권한을 갖습니다.</p>
+
+<p>사용자 프로파일에서는 테넌시 명이 출력됩니다. 오라클 클라우드 계정명(Account)과 Tenancy(테넌시)는 같은 의미로 사용됩니다. 위 메뉴에서 사용자 ID를 클릭하면 사용자 ID 상세 페이지로 이동합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/710.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="oci-홈-리전-확인">OCI 홈 리전 확인</h2>
+
+<p>OCI 콘솔 위 오른쪽 메뉴에서 현재 오라클 클라우드 계정(Tenancy)이 사용 중인 리전을 확인할 수 있습니다. 현재 사용 중인 리전을 클릭하면, Oracle Cloud 계정에 설정된 홈 리전 정보가  출력됩니다. OCI 홈 리전은 OCI Free Tier 계정을 생성할 때 설정한 정보입니다. Oracle Cloud 계정이 사용하는 홈 리전은 변경할 수 없습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/680.jpg?classes=border,shadow" alt="" /></p>
+
+<p>그리고 홈 리전 아래 &ldquo;영역 관리(Region managment)&ldquo;메뉴를 클릭하면 아래와 같은 리전 관리 페이지로 이동합니다. 리전 관리 페이지에서 새로운 리전을 구독하고 해당 리전으로 이동할 수 있습니다. OCI Free Tier 계정은 홈 리전만을 사용하는 제약이 있습니다. 홈 리전 이외의 리전을 구독하고 이동하는 것을 제한하고 있습니다. 이 제한을 풀고자 한다면, 오라클 클라우드에 SR(Service Request)을 요청해야 합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/690.jpg?classes=border,shadow" alt="" /></p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/oci_docs/00_quickstart/how_to_sign_up_oci/" title="OCI Free Tier 계정 등록"> <i class="fa fa-chevron-left"></i><label>OCI Free Tier 계정 등록</label></a>
+    <a class="nav nav-next" href="/oci_docs/00_quickstart/terminologies/" title="OCI 기본 용어 정리" style="margin-right: 0px;"><label>OCI 기본 용어 정리</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+  <div class="chevrons">
+      <div class="row">
+    <div class="author left">
+        <img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan2.jpg" height="90" width="90">
+    </div>
+    <div class="author right">
+		<li><b>작성자: 김태완</b></li>
+        <li>1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다.</li>
+        <li>E-mail: taewanme@gmail.com</li>
+    </div>
+</div><div class="panel panel-danger">
+<div class="panel-heading">Disclaimer</div>
+<div class="panel-body">이 저작물은 Oracle과 관계없이 개인으로서 개인의 시간을 할애하여 작성된 글 입니다. 본 글의 내용, 입장, 예측은 Oracle을 공식적으로 <font color="red"><bold>절대</bold></font> 대변하지 않습니다.</div>
+</div>
+<hr />
+
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/00_quickstart/first_sign_in_oci/"></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+  </div>
+
+
+	<div>
+
+
+  
+
+
+
+  </div>
+  
+  
+</footer>
+
+<script src="/oci_docs/js/clipboard.min.js"></script>
+
+<link href="/oci_docs/css/featherlight.min.css" rel="stylesheet">
+<script src="/oci_docs/js/featherlight.min.js"></script>
+
+
+
+<script src="/oci_docs/theme-flex/script.js"></script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        
+        ga('create', 'UA-72835175-1', 'auto');
+        ga('send', 'pageview');
+</script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2&appId=404519239985000&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+    
+
+    
+    
+
+    
+
+
+  </body>
+</html>
