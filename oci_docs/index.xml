@@ -11,6 +11,15 @@
     
     
     <item>
+      <title>OCI 관련 사이트&amp;블로그</title>
+      <link>/oci_docs/99.oci_sites/oci_sites/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/oci_docs/99.oci_sites/oci_sites/</guid>
+      <description>국내 OCI 관련 사이트&amp;amp;블로그  오라클 클라우드 사용자 그룹 (Oracle Cloud KR User Group)  Facebook에서 운영하는 오라클 클라우드 사용자 그룹 커뮤니티 사이트입니다.  Taewan.kim 오라클 문서 모음  Oracle Cloud 관련 문서를 제공합니다.  TheKoguryo&amp;#39;s 기술 블로그  Oracle Cloud Infrastructure 입문자를 위한 체계적인 문서를 정리한 블로그입니다.  Oracle Cloud Infastructure 블로그  OCI를 중심으로 AWS, Azure과 통합 관련 문서가 잘 정리되어 있습니다.  Dan의 기술 블로그  Oracle Cloud Infrastructure를 중심으로 다양한 DevOps 문서를 제공합니다.</description>
+    </item>
+    
+    <item>
       <title>OCI 기본 용어 정리</title>
       <link>/oci_docs/00_quickstart/terminologies/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -18,6 +27,16 @@
       <guid>/oci_docs/00_quickstart/terminologies/</guid>
       <description>Oracle Cloud를 새로 접하시는 분들을 위하여 Oracle Cloud에서 자주 사용하는 Oracle Cloud 핵심 용어를 간단하게 정리합니다.
 Oracle Cloud Infrastructure Orale Cloud Infrasturcture는 2018년부터 사용하기 시작한 Oracle Cloud의 새로운 브랜드명입니다. 초기에 오라클은 Nimbula를 인수하여 클라우드 서비스를 개발하였고, 2014년 Oracle은 OPC(Oracle Public Cloud)라는 브랜드로 클라우드 서비스를 시작했습니다. 이 시점부터 오라클은 새로운 2세대 클라우드 아키텍처를 개발하기 시작했습니다. 오라클의 2세대 클라우드 아키텍처로 개발된 오라클 클라우드 서비스가 바로 Oracle Cloud Infrastructure(이하 OCI)입니다. 2018년 Oracle Cloud 인프라 구현 기술은 OCI로 전면 교체되었고, 동시에 오라클 클라우드 브랜드명도 OPC(Oracle Public Cloud)에서 OCI(Oracle Cloud Infrastructure)로 변경되었습니다.</description>
+    </item>
+    
+    <item>
+      <title>운영체제별 SSH Key Pair 준비</title>
+      <link>/oci_docs/99_misc_tips/ssh_key_pairs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/oci_docs/99_misc_tips/ssh_key_pairs/</guid>
+      <description>Oracle Cloud Infrastructure(OCI)의 VM 인스턴스에서는 SSH가 기본 원격 접속 프로토콜은입니다. OCI VM 인스턴스의 SSH 서버 데몬의 기본 인증 설정은 SSH Key Pair입니다. 패스워드 인증 방식은 기본 설정에서 지원하지 않습니다. OCI VM 인스턴스를 생성때 SSH 공개키 등록은 필수 항목입니다. 따라서 VM을 생성하기 전에 SSH key를 만들어야 합니다. SSH key는 개인키(private key)와 공개키(public key)로 구성됩니다. 두 개의 ssh key를 합쳐서 SSH Key Pair라고 부릅니다.
+오라클이 제공하는 VM 이미지는 다음과 같은 암호화 알고리즘 유형을 지원합니다.</description>
     </item>
     
     <item>
@@ -37,7 +56,7 @@ Oracle Cloud Infrastructure Orale Cloud Infrasturcture는 2018년부터 사용�
       
       <guid>/oci_docs/99_misc_tips/how_to_collect_basic_info_of_oci/</guid>
       <description>다음은 OCI 명령어 툴인 OCI CLI의 설정 파일(~/.oci/config) 실제 설정입니다.
-&amp;gt; cat ~/.oci/config [DEFAULT] user=ocid1.user.oc1..aaaaaaaafordemop4tprzfordemoyg3zebqgqgpfordemopyzcluzi2yndna fingerprint=52:02:51:de:b4:2c:fd:96:57:5f:4c:fd:dc:bf:e4:1c key_file=/Users/taewan/.oci/oci_api_key.pem tenancy=ocid1.tenancy.oc1..aaaaaaaa6ma7kq3bsif76uzqidv22cajs3fpesgpqmmsgxihlbcemkklrsqa region=us-phoenix-1  위 OCI CLI 설정 예제에서 OCI User OCID, Tenancy OCID, 리전 ID가 사용된 것을 확인할 수 있습니다. Oracle Cloud Infrastructure 서비스 프로비저닝, 서비스 연동 설정, OCI CLI 설정, OCI SDK 설정과 같은 OCI 설정 작업을 할 때 다음과 같은 OCI 환경 정보가 자주 사용됩니다.
+&amp;gt; cat ~/.oci/config [DEFAULT] user=ocid1.user.oc1..aaaaaaaafordemop4tprzfordemoyg3zebqgqgpfordemopyzcluzi2yndna fingerprint=52:02:51:de:b4:2c:fd:96:57:5f:4c:fd:dc:bf:e4:1c key_file=/Users/taewan/.oci/oci_api_key.pem tenancy=ocid1.tenancy.oc1..aaaaaaaa6ma7kq3bsif76uzqidv22cajs3fpesgpqmmsgxihlbcemkklrsqa region=us-phoenix-1  위 OCI CLI 설정 예제에서 OCI User OCID, Tenancy OCID, 리전 ID가 사용된 것을 확인할 수 있습니다. Oracle Cloud Infrastructure 서비스 프로비저닝, 서비스 연동 설정, OCI CLI 설정, OCI SDK 설정과 같은 여러 OCI 설정 작업을 할 때 다음과 같은 OCI 환경 정보가 자주 사용됩니다.
  OCI User 정보 (이름, OCID) OCI Tenancy (이름, OCID) OCI Region ID Compartment ID  OCI 계정을 처음 만들고 필요한 환경 정보를 OCI Console에서 확인하는 방법을 소개합니다.</description>
     </item>
     
@@ -59,18 +78,8 @@ Oracle Cloud Infrastructure Orale Cloud Infrasturcture는 2018년부터 사용�
       
       <guid>/oci_docs/00_quickstart/create_compartment/</guid>
       <description>이번 문서는 오라클 클라우드 Free Tier 계정이 생성된 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 진행하시기 바랍니다.
- OCI FREE TIER 계정 등록  이 문서에는 다음과 같은 내용을 다룹니다.
- OCI Console에 로그인하기 OCI Console 언어 설정 현재 사용 중인 OCI 사용자 정보 확인 현재 사용 중인 Oracle Cloud 계정의 홈 리전(Home Region) 확인  OCI 콘솔(Console) 로그인 OCI 콘솔 로그인 방법을 소개합니다.</description>
-    </item>
-    
-    <item>
-      <title>운영체제별 SSH Key Pair 준비</title>
-      <link>/oci_docs/99_misc_tips/ssh_key_pairs/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/oci_docs/99_misc_tips/ssh_key_pairs/</guid>
-      <description>Oracle Cloud Infrastructure(OCI)의 VM 인스턴스에서는 SSH가 기본 원격 접속 프로토콜은입니다. OCI VM 인스턴스의 SSH 서버 데몬의 기본 인증 설정은 SSH Key Pair입니다. 패스워드 인증 방식은 기본 설정에서 지원하지 않습니다. OCI VM 인스턴스를 생성때 SSH 공개키 등록은 필수 항목입니다. 따라서 VM을 생성하기 전에 SSH key를 만들어야 합니다. SSH key는 개인키(private key)와 공개키(public key)로 구성됩니다. 두 개의 ssh key를 합쳐서 SSH Key Pair라고 부릅니다.
-오라클이 제공하는 VM 이미지는 다음과 같은 암호화 알고리즘 유형을 지원합니다.</description>
+ OCI FREE TIER 계정 등록  OCI 사용자가 OCI에서 만드는 대부분의 자원을 생성할 때, 자원을 논리적으로 묶는 컴파트먼트를 지정해야 합니다. Compartment를 통해서 논리적으로 묶인 자원은 모니터링하고 과금하고 청구하고 접근 권한을 설정할 수 있습니다.
+이번 문서에서는 OCI 콘솔에서 컴파트먼트를 등록하는 과정을 소개합니다.</description>
     </item>
     
   </channel>

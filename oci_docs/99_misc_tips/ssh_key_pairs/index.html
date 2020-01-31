@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-01-31T00:15:42 KST">
+<meta name="revised" content="2020-01-31T09:53:39 KST">
 <title>운영체제별 SSH Key Pair 준비 :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
@@ -121,6 +121,13 @@ http://taewan.kim/img/icon/oracle.png
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+      <li data-nav-id="/oci_docs/99_misc_tips/ssh_key_pairs/" class="dd-item active">
+        <div>
+          <a href="/oci_docs/99_misc_tips/ssh_key_pairs/">
+            운영체제별 SSH Key Pair 준비
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
       <li data-nav-id="/oci_docs/99_misc_tips/how_to_collect_basic_info_of_oci/" class="dd-item">
         <div>
           <a href="/oci_docs/99_misc_tips/how_to_collect_basic_info_of_oci/">
@@ -128,10 +135,19 @@ http://taewan.kim/img/icon/oracle.png
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/oci_docs/99_misc_tips/ssh_key_pairs/" class="dd-item active">
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/99.oci_sites/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/99.oci_sites/">OCI 관련 사이트 및 문서</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/99.oci_sites/oci_sites/" class="dd-item">
         <div>
-          <a href="/oci_docs/99_misc_tips/ssh_key_pairs/">
-            운영체제별 SSH Key Pair 준비
+          <a href="/oci_docs/99.oci_sites/oci_sites/">
+            OCI 관련 사이트&amp;블로그
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -160,8 +176,12 @@ http://taewan.kim/img/icon/oracle.png
   
     <option value="/oci_docs/99_misc_tips/" >
    Miscellaneous Tips</option> 
-      <option value="/oci_docs/99_misc_tips/how_to_collect_basic_info_of_oci/" >- OCI 기본 정보 확인법</option>
       <option value="/oci_docs/99_misc_tips/ssh_key_pairs/"  selected>- 운영체제별 SSH Key Pair 준비</option>
+      <option value="/oci_docs/99_misc_tips/how_to_collect_basic_info_of_oci/" >- OCI 기본 정보 확인법</option>
+  
+    <option value="/oci_docs/99.oci_sites/" >
+   OCI 관련 사이트 및 문서</option> 
+      <option value="/oci_docs/99.oci_sites/oci_sites/" >- OCI 관련 사이트&amp;블로그</option>
   
 
 
@@ -344,28 +364,28 @@ SSH key pair를 생성할 수 있습니다. ssh-keygen은 git-bash에서 실행�
 <p><a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">putty</a>를 내려받아 설치하면 puttygen도 함께 설치됩니다.
 puttygen을 실행하면 &lt;그림 1&gt;과 같은 모습으로 실행됩니다. &lt;그림 1&gt;과 같이 puttygen에서 키 타입으로 RSA와 키 생성의 비트 수를 2048로 설정한 후 &ldquo;Generate&rdquo; 버튼을 클릭합니다.</p>
 
-<p><img src="https://oracloud-kr-teamrepo.github.io/2017/03/ssh_key/window010.jpg" alt="" />
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/03/ssh_key/window010.jpg?width=600" alt="" />
 - 그림 1. puttygen(Putty Key Generator) 모습</p>
 
 <p>PuttyGen은 키를 생성할 때  마우스 위치 값을 키 생성 초깃값으로 활용합니다.
 따라서 키를 생성이 완료할 때까지 &lt;그림 2&gt;의 빨간색 영역에서 마우스를 움직여야 합니다.</p>
 
-<p><img src="https://oracloud-kr-teamrepo.github.io/2017/03/ssh_key/window020.jpg" alt="" />
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/03/ssh_key/window020.jpg?width=600" alt="" />
 - 그림 2. RSA 키 생성 진행 중</p>
 
 <p>RSA 키 생성이 완료되면 &lt;그림 3&gt;과 같이 UI가 변경됩니다. 이제 &lt;그림 3&gt;과 같이 <code>Save Private Key</code> 버튼을 클릭해서 개인키(Private Key)를 저장합니다. 프롬프트가 뜨면 passphrase 없이 키가  저장되도록 Yes 선택 후 저장합니다.</p>
 
-<p><img src="https://oracloud-kr-teamrepo.github.io/2017/03/ssh_key/window050.jpg" alt="" />
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/03/ssh_key/window050.jpg?width=600" alt="" />
 - 그림 3. 개인 키 저장</p>
 
 <p>&lt;그림 4&gt;와 같이 개인 키를 저장합니다. 여기에서 저장된 개인키(Private Key)는 PuTTY Private Key(PPK) 형식으로 저장되며, 이 PPK 파일은 PuTTY에서만 사용 가능합니다.</p>
 
-<p><img src="https://oracloud-kr-teamrepo.github.io/2017/03/ssh_key/window060.jpg" alt="" />
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/03/ssh_key/window060.jpg?width=600" alt="" />
 - 그림 4. 개인 키 저장</p>
 
 <p>Putty Key Generator는 공개키를 저장할 때, OpenSSH 형식이 아닌 자체 형식으로 저장합니다. 따라서 Putty Key Generator가 제공하는 공개키 저장 기능을 사용하지 않습니다. &lt;그림 5&gt;에서 공개키 문자열을 모두 복사하여 별도의 파일에 붙여넣고 저장합니다. 새로 만든 파일은 앞에서 만든 개인키와 같은 폴더에 저장합니다. 파일명은 개인키 파일명과 동일하게 하고 확장자는 pub로 설정합니다.</p>
 
-<p><img src="https://thekoguryo.github.io/oci/chapter03/images/puttygen4.png" alt="" />
+<p><img src="https://thekoguryo.github.io/oci/chapter03/images/puttygen4.png?width=600" alt="" />
 - 그림 5. 공개 키 저장</p>
 
 <h4 id="ppk-형식-개인키를-pem-형식으로-변환">PPK 형식 개인키를 PEM 형식으로 변환</h4>
@@ -384,7 +404,7 @@ puttygen을 실행하면 &lt;그림 1&gt;과 같은 모습으로 실행됩니다
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/99_misc_tips/how_to_collect_basic_info_of_oci/" title="OCI 기본 정보 확인법"> <i class="fa fa-chevron-left"></i><label>OCI 기본 정보 확인법</label></a>
+<a class="nav nav-prev" href="/oci_docs/99_misc_tips/" title="Miscellaneous Tips"> <i class="fa fa-chevron-left"></i><label>Miscellaneous Tips</label></a>
     <a class="nav nav-next" href="/oci_docs/99_misc_tips/how_to_collect_basic_info_of_oci/" title="OCI 기본 정보 확인법" style="margin-right: 0px;"><label>OCI 기본 정보 확인법</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">

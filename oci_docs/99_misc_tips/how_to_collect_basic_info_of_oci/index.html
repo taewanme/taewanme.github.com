@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-01-31T00:15:42 KST">
+<meta name="revised" content="2020-01-31T09:53:39 KST">
 <title>OCI 기본 정보 확인법 :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
@@ -121,6 +121,13 @@ http://taewan.kim/img/icon/oracle.png
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+      <li data-nav-id="/oci_docs/99_misc_tips/ssh_key_pairs/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_misc_tips/ssh_key_pairs/">
+            운영체제별 SSH Key Pair 준비
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
       <li data-nav-id="/oci_docs/99_misc_tips/how_to_collect_basic_info_of_oci/" class="dd-item active">
         <div>
           <a href="/oci_docs/99_misc_tips/how_to_collect_basic_info_of_oci/">
@@ -128,10 +135,19 @@ http://taewan.kim/img/icon/oracle.png
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/oci_docs/99_misc_tips/ssh_key_pairs/" class="dd-item">
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/99.oci_sites/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/99.oci_sites/">OCI 관련 사이트 및 문서</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/99.oci_sites/oci_sites/" class="dd-item">
         <div>
-          <a href="/oci_docs/99_misc_tips/ssh_key_pairs/">
-            운영체제별 SSH Key Pair 준비
+          <a href="/oci_docs/99.oci_sites/oci_sites/">
+            OCI 관련 사이트&amp;블로그
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -160,8 +176,12 @@ http://taewan.kim/img/icon/oracle.png
   
     <option value="/oci_docs/99_misc_tips/" >
    Miscellaneous Tips</option> 
-      <option value="/oci_docs/99_misc_tips/how_to_collect_basic_info_of_oci/"  selected>- OCI 기본 정보 확인법</option>
       <option value="/oci_docs/99_misc_tips/ssh_key_pairs/" >- 운영체제별 SSH Key Pair 준비</option>
+      <option value="/oci_docs/99_misc_tips/how_to_collect_basic_info_of_oci/"  selected>- OCI 기본 정보 확인법</option>
+  
+    <option value="/oci_docs/99.oci_sites/" >
+   OCI 관련 사이트 및 문서</option> 
+      <option value="/oci_docs/99.oci_sites/oci_sites/" >- OCI 관련 사이트&amp;블로그</option>
   
 
 
@@ -202,7 +222,7 @@ tenancy=ocid1.tenancy.oc1..aaaaaaaa6ma7kq3bsif76uzqidv22cajs3fpesgpqmmsgxihlbcem
 region=us-phoenix-1
 </code></pre>
 
-<p>위 <strong>OCI CLI</strong> 설정 예제에서 OCI User OCID, Tenancy OCID, 리전 ID가 사용된 것을 확인할 수 있습니다. Oracle Cloud Infrastructure 서비스 프로비저닝, 서비스 연동 설정, OCI CLI 설정, OCI SDK 설정과 같은 OCI 설정 작업을 할 때 다음과 같은 OCI 환경 정보가 자주 사용됩니다.</p>
+<p>위 <strong>OCI CLI</strong> 설정 예제에서 OCI User OCID, Tenancy OCID, 리전 ID가 사용된 것을 확인할 수 있습니다. Oracle Cloud Infrastructure 서비스 프로비저닝, 서비스 연동 설정, OCI CLI 설정, OCI SDK 설정과 같은 여러 OCI 설정 작업을 할 때 다음과 같은 OCI 환경 정보가 자주 사용됩니다.</p>
 
 <ol>
 <li><strong>OCI User</strong> 정보 (이름, OCID)</li>
@@ -228,7 +248,7 @@ region=us-phoenix-1
 
 <p>두 가지 상황에서 OCI User OCID를 확인하는 방법을 소개합니다.</p>
 
-<h3 id="1-1-현재-oci-콘솔-로그인-사용자-ocid">1.1 현재 OCI 콘솔 로그인 사용자 OCID</h3>
+<h3 id="1-1-oci-콘솔-로그인-사용자-ocid">1.1 OCI 콘솔 로그인 사용자 OCID</h3>
 
 <p>OCI Console의 메인 페이지에서 왼쪽 위에 위치하는 사용자 아이콘을 클릭하면, 현재 로그인 사용자의 몇 가지 프로파일 정보가 출력됩니다. 프로파일 아래 첫 번째 줄에 출력되는 것이 현재 로그인 사용자의 <strong>OCI User 명</strong>입니다. <strong>OCI User 명</strong>은 <strong>oracleidentitycloudservice/&lt;로그인 email&gt;</strong>의 형식을 갖습니다.</p>
 
@@ -350,8 +370,8 @@ region=us-phoenix-1
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/99_misc_tips/" title="Miscellaneous Tips"> <i class="fa fa-chevron-left"></i><label>Miscellaneous Tips</label></a>
-    <a class="nav nav-next" href="/oci_docs/99_misc_tips/ssh_key_pairs/" title="운영체제별 SSH Key Pair 준비" style="margin-right: 0px;"><label>운영체제별 SSH Key Pair 준비</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/99_misc_tips/ssh_key_pairs/" title="운영체제별 SSH Key Pair 준비"> <i class="fa fa-chevron-left"></i><label>운영체제별 SSH Key Pair 준비</label></a>
+    <a class="nav nav-next" href="/oci_docs/99.oci_sites/" title="OCI 관련 사이트 및 문서" style="margin-right: 0px;"><label>OCI 관련 사이트 및 문서</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
