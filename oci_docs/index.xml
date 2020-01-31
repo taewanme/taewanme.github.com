@@ -61,6 +61,15 @@ Oracle Cloud Infrastructure Orale Cloud Infrasturcture는 2018년부터 사용�
     </item>
     
     <item>
+      <title>OCI 서비스 튜토리얼 사이트 모음</title>
+      <link>/oci_docs/99.oci_sites/tutorials/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/oci_docs/99.oci_sites/tutorials/</guid>
+      <description> OCI Service 튜토리얼 사이트 OCI Function  fn 프로젝트 튜토리얼: https://fnproject.io/tutorials/  </description>
+    </item>
+    
+    <item>
       <title>Free Tier 계정 첫 번째 로그인</title>
       <link>/oci_docs/00_quickstart/first_sign_in_oci/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
