@@ -11,12 +11,12 @@
     
     
     <item>
-      <title>OCI 관련 사이트&amp;블로그</title>
+      <title>OCI 관련 사이트 모음</title>
       <link>/oci_docs/99.oci_sites/oci_sites/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/oci_docs/99.oci_sites/oci_sites/</guid>
-      <description>국내 OCI 관련 사이트&amp;amp;블로그  {{}}  Facebook에서 운영하는 오라클 클라우드 사용자 그룹 커뮤니티 사이트입니다.  {{}}  Oracle Cloud 관련 문서를 제공합니다.  {{}}  Oracle Cloud Infrastructure 입문자를 위한 체계적인 문서를 정리한 블로그입니다.  {{}}  OCI를 중심으로 AWS, Azure과 통합 관련 문서가 잘 정리되어 있습니다.  {{}}  Oracle Cloud Infrastructure를 중심으로 다양한 DevOps 문서를 제공합니다. Terraform, Kubernetes, Serverless 관련 잘 정리된 문서를 강점입니다.  {{}}  Oracle Cloud Database를 중심으로 클라우드 인프라를 구성하는 다수의 문서를 제공합니다.</description>
+      <description>국내 OCI 관련 사이트&amp;amp;블로그    유형 사이트 명 키워드 설명/특징     커뮤니티 오라클 클라우드 사용자 그룹 (Oracle Cloud KR User Group)    User Group Facebook에서 운영하는 오라클 클라우드 사용자 그룹 커뮤니티 사이트입니다.   블로그 Taewan.kim 오라클 문서 모음    OCI, AI/ML, BigData Oracle Cloud와 빅데이터, AI/ML을 주제로 운영하는 블로그입니다.   메뉴얼사이트 TheKoguryo&amp;#39;s 기술 블로그    OCI Oracle Cloud Infrastructure 입문자를 위한 체계적인 문서를 제공합니다.</description>
     </item>
     
     <item>
@@ -68,7 +68,7 @@ Oracle Cloud Infrastructure Orale Cloud Infrasturcture는 2018년부터 사용�
       <guid>/oci_docs/00_quickstart/first_sign_in_oci/</guid>
       <description>이번 문서는 오라클 클라우드 Free Tier 계정이 생성된 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 진행하시기 바랍니다.
  OCI FREE TIER 계정 등록  이 문서에는 다음과 같은 내용을 다룹니다.
- OCI Console에 로그인하기 현재 사용 중인 OCI 사용자 정보 확인 현재 사용 중인 Oracle Cloud 계정의 홈 리전(Home Region) 확인  OCI 콘솔(Console) 로그인 OCI 콘솔 로그인 방법을 소개합니다.</description>
+ OCI Console에 로그인하기 OCI Console 언어 설정 현재 사용 중인 OCI 사용자 정보 확인 현재 사용 중인 Oracle Cloud 계정의 홈 리전(Home Region) 확인  OCI 콘솔(Console) 로그인 OCI 콘솔 로그인 방법을 소개합니다.</description>
     </item>
     
     <item>
