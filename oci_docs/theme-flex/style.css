@@ -309,11 +309,12 @@ article section.page {
     margin: 3rem 0rem;
     font-family: "Novacento Sans Wide", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
     text-align: center;
-    text-transform: uppercase;
-    color: #060606;
-    font-weight: 200;
-    font-size: 3.25rem;
-    line-height: 2.7rem; }
+/*    text-transform: uppercase; */
+color: #060606;
+font-weight: 200;
+font-size: 3.25rem;
+/*    line-height: 2.7rem; }  원본*/
+  line-height: 1.2; } 
   article section.page h1 {
     margin-top: 4rem; }
   article section.page h2 {
