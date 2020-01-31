@@ -313,6 +313,7 @@ article section.page {
 color: #060606; 
 font-weight: 200;
 font-size: 3.25rem;
+font-weight: bold;
 /*    line-height: 2.7rem; }  원본*/
   line-height: 1.2; } 
   article section.page h1 {
