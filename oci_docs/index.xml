@@ -66,7 +66,7 @@ Oracle Cloud Infrastructure Orale Cloud Infrasturcture는 2018년부터 사용�
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/oci_docs/99.oci_sites/tutorials/</guid>
-      <description> OCI Service 튜토리얼 사이트 OCI Function  fn 프로젝트 튜토리얼: https://fnproject.io/tutorials/  </description>
+      <description> OCI Service 튜토리얼 사이트 OCI Core  https://oracle.github.io/learning-library/oci-library/  OCI Function  fn 프로젝트 튜터리얼: https://fnproject.io/tutorials/ OCI Function 튜터리얼: https://oci-tutorials.github.io/  </description>
     </item>
     
     <item>
@@ -88,7 +88,7 @@ Oracle Cloud Infrastructure Orale Cloud Infrasturcture는 2018년부터 사용�
       <guid>/oci_docs/00_quickstart/create_compartment/</guid>
       <description>이번 문서는 오라클 클라우드 Free Tier 계정이 생성된 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 진행하시기 바랍니다.
  OCI FREE TIER 계정 등록  OCI 사용자가 OCI에서 만드는 대부분의 자원을 생성할 때, 자원을 논리적으로 묶는 컴파트먼트를 지정해야 합니다. Compartment를 통해서 논리적으로 묶인 자원은 모니터링하고 과금하고 청구하고 접근 권한을 설정할 수 있습니다.
-이번 문서에서는 OCI 콘솔에서 컴파트먼트를 등록하는 과정을 소개합니다.</description>
+이번 문서에서는 OCI 콘솔에서 컴파트먼트를 등록하는 과정을 소개하며 다음과 같은 목차로 구성됩니다.</description>
     </item>
     
   </channel>
