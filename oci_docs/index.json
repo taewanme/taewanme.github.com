@@ -21,6 +21,13 @@
 	"content": "Oracle Cloud 신규 입문자를 대상으로 OCI의 빠른 리뷰와 실습을 목적으로 합니다. Oracle Cloud을 처음 살펴 보시는 분들을 위하여 주요 서비스를 경험하는 시나리오를 다룹니다. 다음과 같은 목차로 진행할 예정입니다.\n OCI 기본 용어 정리: OCI 주요 용어를 정리합니다. OCI FREE TIER 계정 등록: Oracle Cloud의 Free Tier 등록 방법을 소개합니다. OCI 콘솔 로그인: 오라클 클라우드 콘솔 로그인 방법을 소개합니다. OCI 사용자 / 그룹 관리 (With IDCS) OCI 사용자 / 그룹 관리 (OCI User) OCI VCN 만들기 리눅스 VM 생성하기 Developer VM 생성하기 Autonomous 인스턴스 프로비저닝 Load Balancer 서버 구성 Auto Scale-out 구성하기 모니터링 환경 구성하기 서버리스 Function 실습  "
 },
 {
+	"uri": "/oci_docs/60_solutions/functions/",
+	"title": "Oracle Functions",
+	"tags": [],
+	"description": "Oracle Functions 관련 정보를 정리합니다.",
+	"content": "Oracle Functions는 OCI(Oracle Cloud Infrastructure)의 서버리스 서비스입니다. Oracle Functions는 다음과 같은 특징을 갖습니다.\n 완전 관리형 서비스 높은 확장성 온디멘드(On-Demand)형 서비스 효올적인 비용 체계  월간 200만번 호출: 무료 월간 200만번 이상 호출: 호출당 입니다. Oracle Functions는 OCI의 FaaS(Functions-as-a-Service) 플랫폼입니다.   Oracle Functions은 Fn Project를 기반으로 개발되었습니다. 비지니스에 집중하고 코드를\nUse Oracle Functions (sometimes abbreviated to just Functions) when you want to focus on writing code to meet business needs. You don\u0026rsquo;t have to worry about the underlying infrastructure because Oracle Functions will ensure your app is highly-available, scalable, secure, and monitored. With Oracle Functions, you can deploy your code, call it directly or trigger it in response to events, and get billed only for the resources consumed during the execution.\nOracle Functions is based on Fn Project. Fn Project is an open source, container native, serverless platform that can be run anywhere - any cloud or on-premises. Fn Project is easy to use, supports every programming language, and is extensible and performant. You can download and install the open source distribution of Fn Project, develop and test a function locally, and then use the same tooling to deploy that function to Oracle Functions.\nYou can access Oracle Functions using the Console, a CLI, and a REST API. You can invoke the functions you deploy to Oracle Functions using the CLI or by making signed HTTP requests.\nOracle Functions is integrated with Oracle Cloud Infrastructure Identity and Access Management (IAM), which provides easy authentication with native Oracle Cloud Infrastructure identity functionality. See Overview of Oracle Cloud Infrastructure Identity and Access Management.\nTo get set up and running quickly with Oracle Functions, see the Quick Start Guide.\n"
+},
+{
 	"uri": "/oci_docs/00_quickstart/vcn/simple_vcn/",
 	"title": "간편 VCN 만들기",
 	"tags": [],
@@ -33,6 +40,13 @@
 	"tags": [],
 	"description": "",
 	"content": " Oracle Cloud Infrastructure(OCI)의 VM 인스턴스가 지원하는 접속 프로토콜은 SSH입니다. OCI VM 인스턴스 SSH 서버의 기본 사용자 인증 방식은 Key Pair입니다. 따라서 OCI VM 인스턴스를 생성때 SSH 공개키를 등록해야 합니다. 이 문서에서는 SSH 접속에 사용할 Key Pair(SSH-2 RSA 타입)를 만드는 방법을 정리합니다.\n이번 문서는 다음과 같은 목차로 구성됩니다.\n문서 목차 Key Pair란? SSH 키 생성  ssh-keygen을 이용한 ssh key 생성 window 10 아래 버전에서 ssh key 생성  PPK 형식 개인키를 PEM 형식으로 변환   참고 문서    Key Pair란? SSH Key는 개인키(private key)와 공개키(public key)로 구성됩니다. 두 개의 ssh key를 합쳐서 SSH Key Pair라고 부릅니다.\n오라클이 제공하는 VM 이미지는 다음과 같은 암호화 알고리즘 유형을 지원합니다.\n RSA DSA DSS ECDSA Ed25519  OCI VM 인스턴스를 만들기 전에 앞에서 열거한 암호화 알고리즘을 사용하여 SSH key Pair를 준비해야 합니다. 사용자가 정의한 Custom VM 이미지에서는 지원하는 SSH key 유형이 다를 수 있습니다. 이 경우에 해당 Custom 이미지가 지원하는 ssh key 타입에 확인하고 작업해야 합니다. OCI가 제공하는 VM 이미지에 사용할 ssh Key Pair를 RSA, DSS, DSA와 같은 암호화 알고리즘으로 만든다면, 최소 2048 비트를 사용을 권장합니다. 반면 ECDSA 암호화 알고리즘으로 ssh Key Pair를 만든다면, 최소 256 비트 사용을 권장합니다.\nSSH 키 생성 각 운영체제(Linux, OSX, Window)별로 SSH 키를 생성 생성하는 방법은 다음과 같습니다.\n   운영체제 SSH 키 생성 툴     Linus ssh-keygen   OS X ssh-keygen   Windows 10 이상 ssh-keygen   Windows 10 아래 버전 puttygen    리눅스, 맥 OS(OS X), Window 10을 사용할 경우에 ssh-keygen 사용하여 ssh key를 생성합니다. ssh-keygen이 설치되어 있지 않다면, 각 운영체제에 맞는 OpenSSH(http://www.openssh.com/portable.html)를 설치합니다. Windows 10 아래 버전에서는 PuTTY를 설치하고 PuTTY의 구성 컴포넌트인 PuTTY Key Generator(puttygen)을 사용하여 ssh key를 생성합니다.\nssh-keygen을 이용한 ssh key 생성 리눅스, Mac OS 및 Window 10에서는 ssh-keygen을 이용하여 ssh key pair를 생성합니다. 이때 아래와 같은 형식의 옵션으로 ssh-keygen 명령을 실행합니다.\nssh-keygen -t rsa -N \u0026quot;\u0026quot; -b 2048 -C \u0026quot;comment\u0026quot; -f \u0026lt;path/KeyFileName\u0026gt;  위와 같은 형식의 명령에서 각 옵션은 다음과 같은 의미를 갖습니다.\n   옵션 설명 예제 입력 비고     -t 생성 key 유형 지정 -t rsa 기본값이 rsa, 생략 가능   -b 암호화 비트수 -b 2048 최소 2048을 권장   -C 커맨트 입력 -C \u0026ldquo;ssh key for demo\u0026rdquo; 인증서 구분을 위해서 사용자 email을 주로 사용   -N new_passphrase 입력 -N \u0026ldquo;\u0026rdquo; 공백 문자열 입력   -f 출력 파일명, 위치 포함 -f ./id_rsa     ssh key를 생성하는 명령을 앞에서 설정한 입력 값으로 다음과 같이 실행할 수 있습니다.\n\u0026gt; ssh-keygen -t rsa -N \u0026quot;\u0026quot; -b 2048 -C \u0026quot;ssh key for demo\u0026quot; -f ./id_rsa Generating public/private rsa key pair. Your identification has been saved in ./id_rsa. Your public key has been saved in ./id_rsa.pub. The key fingerprint is: SHA256:SFo9Bzyr8dzoANqGZZ9oxwdZIBo+TCsJ9b8Ed5I8OlY ssh key for demo The key's randomart image is: +---[RSA 2048]----+ |..+ . .o. | |.= = o o+. | |o * o Eo+o. | | . .+X+=.o | | *==+BSo | | o.=oB.= . | | o ..+ | | . | | | +----[SHA256]-----+ \u0026gt;  앞에서 f 옵션으로 지정한 위치에 다음과 같은 파일이 생성된 것을 확인할 수 있습니다.\n \u0026gt; ls -al id_rsa* -rw------- 1 taewan staff 1823 1 17 15:25 id_rsa -rw-r--r-- 1 taewan staff 398 1 17 15:25 id_rsa.pub \u0026gt;  window 10 아래 버전에서 ssh key 생성 window 10 아래에서는 putty에 포함된 puttygen을 이용하여 SSH 키를 생성할 수 있습니다.\nWindows 10 아래 버전에서 git을 설치하면, git과 함께 설치되는 MINGW32가 제공하는 ssh-keygen이 설치됩니다. ssh-keygen을 이용하여 SSH key pair를 생성할 수 있습니다. ssh-keygen은 git-bash에서 실행되어야 합니다.\n putty를 내려받아 설치하면 puttygen도 함께 설치됩니다. puttygen을 실행하면 \u0026lt;그림 1\u0026gt;과 같은 모습으로 실행됩니다. \u0026lt;그림 1\u0026gt;과 같이 puttygen에서 키 타입으로 RSA와 키 생성의 비트 수를 2048로 설정한 후 \u0026ldquo;Generate\u0026rdquo; 버튼을 클릭합니다.\n- 그림 1. puttygen(Putty Key Generator) 모습\nPuttyGen은 키를 생성할 때 마우스 위치 값을 키 생성 초깃값으로 활용합니다. 따라서 키를 생성이 완료할 때까지 \u0026lt;그림 2\u0026gt;의 빨간색 영역에서 마우스를 움직여야 합니다.\n- 그림 2. RSA 키 생성 진행 중\nRSA 키 생성이 완료되면 \u0026lt;그림 3\u0026gt;과 같이 UI가 변경됩니다. 이제 \u0026lt;그림 3\u0026gt;과 같이 Save Private Key 버튼을 클릭해서 개인키(Private Key)를 저장합니다. 프롬프트가 뜨면 passphrase 없이 키가 저장되도록 Yes 선택 후 저장합니다.\n- 그림 3. 개인 키 저장\n\u0026lt;그림 4\u0026gt;와 같이 개인 키를 저장합니다. 여기에서 저장된 개인키(Private Key)는 PuTTY Private Key(PPK) 형식으로 저장되며, 이 PPK 파일은 PuTTY에서만 사용 가능합니다.\n- 그림 4. 개인 키 저장\nPutty Key Generator는 공개키를 저장할 때, OpenSSH 형식이 아닌 자체 형식으로 저장합니다. 따라서 Putty Key Generator가 제공하는 공개키 저장 기능을 사용하지 않습니다. \u0026lt;그림 5\u0026gt;에서 공개키 문자열을 모두 복사하여 별도의 파일에 붙여넣고 저장합니다. 새로 만든 파일은 앞에서 만든 개인키와 같은 폴더에 저장합니다. 파일명은 개인키 파일명과 동일하게 하고 확장자는 pub로 설정합니다.\n- 그림 5. 공개 키 저장\nPPK 형식 개인키를 PEM 형식으로 변환 Putty Key Generator는 개인키를 PPK 형식으로 저장합니다. 이 개인키를 Putty가 아닌 일반 SSH의 개인키로 사용할 수 없습니다. PPK 형식의 개인키를 PEM 형식으로 변환하는 기능을 Putty Key Generator에서 제공합니다. Putty Key Generator의 메뉴에서 Conversions을 선택하고 Export OpenSSH Key를 선택합니다. 프롬프트가 뜨면 passphrase 없이 키 저장하기 위해서 Yes 선택 후 파일을 저장합니다.\n참고 문서  http://taewan.kim/post/ssh_key/ https://www.onmsft.com/how-to/how-to-generate-an-ssh-key-in-windows-10 https://www.youtube.com/watch?v=Y0e1mMl0D1g  Generate SSH Key Pairs to Access Linux instances in the Oracle Cloud Infrastructure   "
+},
+{
+	"uri": "/oci_docs/60_solutions/data_catalog/",
+	"title": "OCI Data Catalog",
+	"tags": [],
+	"description": "OCI에서 제공하는 관리형 데이터 디스커버리 및 거버닝 서비스입니다.",
+	"content": "OCI Data Catalog는 오라클 클라우드의 데이터 거버넌스(Data Govenrance) 서비스 입니다. 데이터 거버넌스(data governance)는 기업에서 사용하는 데이터의 가용성, 유용성, 통합성, 보안성을 관리하기 위한 정책과 프로세스입니다. OCI Data Catalog는 OCI에서 신뢰도 높은 데이터 자산을 관리하고 유지하는 거버넌스를 위해서 만들어진 서비스입니다.\n데이터 전문가는 OCI Data Catalog를 이용하여 비지니스 데이터, 운영 데이터, 기술 데이터의 메타 데이터를 수집하고, 구조화하고, 검색/접근 및 보강할 수 있습니다. OCI Data Catalog가 관리하는 데이터는 데이터 디스커버리, 고급 분석 및 거버넌스에 활용됩니다.\n"
 },
 {
 	"uri": "/oci_docs/00_quickstart/how_to_sign_up_oci/",
@@ -53,7 +67,7 @@
 	"title": "OCI 서비스 튜토리얼 사이트 모음",
 	"tags": [],
 	"description": "",
-	"content": " OCI Service 튜토리얼 사이트 OCI Core  https://oracle.github.io/learning-library/oci-library/  OCI Function  fn 프로젝트 튜터리얼: https://fnproject.io/tutorials/ OCI Function 튜터리얼: https://oci-tutorials.github.io/  "
+	"content": " OCI Service 튜토리얼 사이트 OCI Core  https://oracle.github.io/learning-library/oci-library/  OCI Function  OCI Function 퀵스타트: Oracle Functions: https://www.oracle.com/webfolder/technetwork/tutorials/infographics/oci_faas_gettingstarted_quickview/functions_quickview_top/functions_quickview/index.html\n fn 프로젝트 튜터리얼: https://fnproject.io/tutorials/\n OCI Function 튜터리얼: https://oci-tutorials.github.io/\n  "
 },
 {
 	"uri": "/oci_docs/00_quickstart/vcn/manual_vcn/",
@@ -89,6 +103,13 @@
 	"tags": [],
 	"description": "OCI REST API 인터페이스를 사용하는 방법을 소개합니다.",
 	"content": "Oracle Cloud Interface(OCI)는 모든 기능을 제어하는 REST API로 제공합니다. 이 REST API를 근간으로 다양한 인터페이스가 제공됩니다.\nOCI의 모든 기능은 API로 제어할 수 있습니다. OCI를 관리하고 제어하는 API는 여러 가지 형태로 제공하고 있습니다.\nSDKSoftware Development Kits : OCI 서비스와 연계하여 애플리케이션을 개발할 때 사용할 수 있는 SDK를 언어별로 제공합니다. SDK, 관련 문서, 코드 샘플 등을 제공합니다. SDK for Java Python SDK Ruby SDK Go SDK CLICommand Line Interface : OCI 서비스 제어를 명령행에서 할 수 있는 CLI를 제공합니다. Tools : 여러가지 DevOps 에서 OCI와 연계할 수 있도록 플러그인을 제공하고 있습니다. Terraform, Ansible, Chef 등등 REST API : OCI를 제어하는 API로 HTTPS을 기반으로 하는 REST API를 제공합니다.\n 운영체제 별 SSH Key Pair 준비   "
+},
+{
+	"uri": "/oci_docs/60_solutions/",
+	"title": "Miscellaneous Tips",
+	"tags": [],
+	"description": "Miscellaneous Tips",
+	"content": "Oracle Cloud를 사용하면서 자주 사용되는 다양한 주제를 정리합니다.\n 운영체제 별 SSH Key Pair 준비   "
 },
 {
 	"uri": "/oci_docs/99_misc_tips/",

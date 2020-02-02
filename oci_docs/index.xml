@@ -81,7 +81,10 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/oci_docs/99.oci_sites/tutorials/</guid>
-      <description> OCI Service 튜토리얼 사이트 OCI Core  https://oracle.github.io/learning-library/oci-library/  OCI Function  fn 프로젝트 튜터리얼: https://fnproject.io/tutorials/ OCI Function 튜터리얼: https://oci-tutorials.github.io/  </description>
+      <description> OCI Service 튜토리얼 사이트 OCI Core  https://oracle.github.io/learning-library/oci-library/  OCI Function  OCI Function 퀵스타트: Oracle Functions: https://www.oracle.com/webfolder/technetwork/tutorials/infographics/oci_faas_gettingstarted_quickview/functions_quickview_top/functions_quickview/index.html
+ fn 프로젝트 튜터리얼: https://fnproject.io/tutorials/
+ OCI Function 튜터리얼: https://oci-tutorials.github.io/
+  </description>
     </item>
     
     <item>
