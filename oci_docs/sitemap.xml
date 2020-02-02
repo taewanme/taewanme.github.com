@@ -15,6 +15,10 @@
   </url>
   
   <url>
+    <loc>/oci_docs/00_quickstart/vcn/simple_vcn/</loc>
+  </url>
+  
+  <url>
     <loc>/oci_docs/99_misc_tips/ssh_key_pairs/</loc>
   </url>
   
@@ -31,11 +35,19 @@
   </url>
   
   <url>
+    <loc>/oci_docs/00_quickstart/vcn/manual_vcn/</loc>
+  </url>
+  
+  <url>
     <loc>/oci_docs/00_quickstart/first_sign_in_oci/</loc>
   </url>
   
   <url>
     <loc>/oci_docs/00_quickstart/create_compartment/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/00_quickstart/vcn/</loc>
   </url>
   
   <url>

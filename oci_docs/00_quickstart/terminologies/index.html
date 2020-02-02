@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-02-01T18:58:07 KST">
+<meta name="revised" content="2020-02-02T11:01:28 KST">
 <title>OCI 기본 용어 정리 :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
@@ -97,6 +97,29 @@ http://taewan.kim/img/icon/oracle.png
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+    <li data-nav-id="/oci_docs/00_quickstart/vcn/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/00_quickstart/vcn/">VCN(Virtual Cloud Network) 생성</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/00_quickstart/vcn/simple_vcn/" class="dd-item">
+        <div>
+          <a href="/oci_docs/00_quickstart/vcn/simple_vcn/">
+            간편 VCN 만들기
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/00_quickstart/vcn/manual_vcn/" class="dd-item">
+        <div>
+          <a href="/oci_docs/00_quickstart/vcn/manual_vcn/">
+            메뉴얼 VCN 만들기
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
         </ul>
     </li>
     <li data-nav-id="/oci_docs/80_api_interface/" class="dd-item alwaysopen
@@ -171,6 +194,12 @@ http://taewan.kim/img/icon/oracle.png
       <option value="/oci_docs/00_quickstart/how_to_sign_up_oci/" >- OCI Free Tier 계정 등록</option>
       <option value="/oci_docs/00_quickstart/first_sign_in_oci/" >- Free Tier 계정 첫 번째 로그인</option>
       <option value="/oci_docs/00_quickstart/create_compartment/" >- 컴파트먼트(Compartment) 추가</option>
+    <option value="/oci_docs/00_quickstart/vcn/" >
+  - 
+   VCN(Virtual Cloud Network) 생성</option> 
+      <option value="/oci_docs/00_quickstart/vcn/simple_vcn/" >-- 간편 VCN 만들기</option>
+      <option value="/oci_docs/00_quickstart/vcn/manual_vcn/" >-- 메뉴얼 VCN 만들기</option>
+  
   
     <option value="/oci_docs/80_api_interface/" >
    OCI REST API 인터페이스</option> 
@@ -215,6 +244,43 @@ http://taewan.kim/img/icon/oracle.png
 
 <p>Oracle Cloud를 새로 접하시는 분들을 위하여 Oracle Cloud에서 자주 사용하는 Oracle Cloud 핵심 용어를 간단하게 정리합니다.</p>
 
+<hr />
+
+<p>이번 문서는 다음과 같은 목차로 구성됩니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-body"><nav id="TableOfContents">
+<ul>
+<li><a href="#oci-주요-용어">OCI 주요 용어</a>
+<ul>
+<li><a href="#oracle-cloud-infrastructure">Oracle Cloud Infrastructure</a></li>
+<li><a href="#리전-region-과-ad-availability-domains">리전(Region)과 AD(Availability Domains)</a></li>
+<li><a href="#oci-콘솔-console">OCI 콘솔(Console)</a></li>
+<li><a href="#tenancy-테넌시">Tenancy(테넌시)</a></li>
+<li><a href="#compartment-컴파트먼트">Compartment(컴파트먼트)</a></li>
+<li><a href="#virtual-cloud-network-vcn">Virtual Cloud Network(VCN)</a></li>
+<li><a href="#bare-metal-host">Bare Metal Host</a></li>
+<li><a href="#instance-인스턴스">Instance(인스턴스)</a></li>
+<li><a href="#image-이미지">Image(이미지)</a></li>
+<li><a href="#shape">Shape</a></li>
+<li><a href="#key-pair">Key Pair</a></li>
+<li><a href="#블록-볼륨-block-volume">블록 볼륨(BLOCK VOLUME)</a></li>
+<li><a href="#object-storage">Object Storage</a></li>
+<li><a href="#버킷-bucket">버킷(BUCKET)</a></li>
+<li><a href="#ocid-oracle-cloud-identifier">OCID(ORACLE CLOUD IDENTIFIER)</a></li>
+</ul></li>
+<li><a href="#참고-문서">참고 문서</a></li>
+</ul>
+</nav>
+</div></div>
+
+
+<hr />
+
+<h1 id="oci-주요-용어">OCI 주요 용어</h1>
+
+<p>OCI이 완전 입문자를 위하여 Oracle Cloud에서 자주 사용되는 용어를 정리합니다.</p>
+
 <h2 id="oracle-cloud-infrastructure">Oracle Cloud Infrastructure</h2>
 
 <p><strong>Orale Cloud Infrasturcture</strong>는 2018년부터 사용하기 시작한 Oracle Cloud의 새로운 브랜드명입니다. 초기에 오라클은 Nimbula를 인수하여 클라우드 서비스를 개발하였고, 2014년 Oracle은 OPC(Oracle Public Cloud)라는 브랜드로 클라우드 서비스를 시작했습니다. 이 시점부터 오라클은 새로운 2세대 클라우드 아키텍처를 개발하기 시작했습니다. 오라클의 2세대 클라우드 아키텍처로 개발된 오라클 클라우드 서비스가 바로 Oracle Cloud Infrastructure(이하 OCI)입니다. 2018년 Oracle Cloud 인프라 구현 기술은 OCI로 전면 교체되었고, 동시에 오라클 클라우드 브랜드명도 OPC(Oracle Public Cloud)에서 OCI(Oracle Cloud Infrastructure)로 변경되었습니다.</p>
@@ -231,7 +297,7 @@ http://taewan.kim/img/icon/oracle.png
 
 <p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/040.jpg?classes=border,shadow" alt="" /></p>
 
-<h2 id="console">Console</h2>
+<h2 id="oci-콘솔-console">OCI 콘솔(Console)</h2>
 
 <p>OCI 자원을 관리하고 접근하기 위해서 제공하는 웹 기반 UI입니다.</p>
 
@@ -249,7 +315,7 @@ http://taewan.kim/img/icon/oracle.png
 
 <p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/510.jpg?classes=border,shadow" alt="" /></p>
 
-<h2 id="virtual-cloud-network-vcn">Virtual Cloud Network (VCN)</h2>
+<h2 id="virtual-cloud-network-vcn">Virtual Cloud Network(VCN)</h2>
 
 <p>Virtual Cloud Network (VCN)은 서브넷, 라우트 테이블과 게이트웨이로 구성되는 전통적인 네트워크의 가상화 버전입니다. VCN은 리전 범위의 자원입니다. VCN은 특정 리전에 종속됩니다. VCN을 구성하는 서브넷(Subnet)을 만들 때, 리전 범위와 AD 범위를 선택할 수 있습니다. 리전 범위로 지정하면 리전을 구성하는 모든 AD에 걸쳐 서브넷이 구성됩니다. AD 범위를 지정하면 특정 AD에 위치합니다.</p>
 
@@ -273,11 +339,11 @@ http://taewan.kim/img/icon/oracle.png
 
 <p>OCI가 제공하는 사용자가 직접 제어 가능한 물리적인 서버가 <strong>Bare Metal Host</strong>입니다. <strong>Bare Metal Host</strong>에 하이퍼바이저 없이 Bere Metal 서버를 돌릴 수 있습니다. 이렇게 동작하는 서버를 <strong>Bare metal compute instances</strong>라고 합니다. OCI 사용자가 직접 물리적 CPU, 메모리, NIC(Network Interface Card)를 관리 할 수 있습니다. 이렇게 관리하는 자원은 다른 테넌트와 어떠한 자원도 공유하지 않습니다.</p>
 
-<h2 id="instance-인스턴스">INSTANCE(인스턴스)</h2>
+<h2 id="instance-인스턴스">Instance(인스턴스)</h2>
 
 <p>OCI에서 동작하는 VM을 인스턴스라고 합니다.</p>
 
-<h2 id="image-이미지">IMAGE(이미지)</h2>
+<h2 id="image-이미지">Image(이미지)</h2>
 
 <p>Image는 인스턴스를 위해서 운영체제와 여러 소프트웨어를 정의하는 가상 하드웨어 드라이브 템플릿입니다. OCI에서 인스턴스를 구동시킬 때, 이미지를 선택합니다. OCI는 다양한 이미지를 제공하며, OCI 사용자는 추가로 사용자 정의 이미지를 등록하고 사용할 수 있습니다.</p>
 
@@ -345,7 +411,7 @@ http://taewan.kim/img/icon/oracle.png
 
 <p>모든 OCI 자원은 유일한 ID를 갖습니다. 이 ID가 Oracle Cloud Identifier(OCID)입니다. 이 ID에는 자원 정보가 포함됩니다.</p>
 
-<h2 id="참고-문서">참고 문서</h2>
+<h1 id="참고-문서">참고 문서</h1>
 
 <ul>
 <li><a href="https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/concepts.htm" target="_blank">[OCI Official Documentation 사이트] Key Concepts and Terminology <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>

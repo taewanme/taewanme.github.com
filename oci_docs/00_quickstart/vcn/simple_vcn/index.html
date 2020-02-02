@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<meta name="generator" content="Hugo 0.27.1" />
     <title>Oracle Cloud Infrastructure</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2020-02-02T11:01:28 KST">
-<title>OCI Dcos :: Oracle Cloud Infrastructure</title>
+<title>간편 VCN 만들기 :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 
@@ -29,7 +28,7 @@ http://taewan.kim/img/icon/oracle.png
 
     
   </head>
-  <body data-url="/oci_docs/">
+  <body data-url="/oci_docs/00_quickstart/vcn/simple_vcn/">
     
       <header>
   <div class="logo">
@@ -63,7 +62,7 @@ http://taewan.kim/img/icon/oracle.png
 <article>
   <aside>
     <ul class="menu">
-    <li data-nav-id="/oci_docs/00_quickstart/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/00_quickstart/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/00_quickstart/">OCI 퀵 스타트</a>
@@ -98,14 +97,14 @@ http://taewan.kim/img/icon/oracle.png
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-    <li data-nav-id="/oci_docs/00_quickstart/vcn/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/00_quickstart/vcn/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/00_quickstart/vcn/">VCN(Virtual Cloud Network) 생성</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/oci_docs/00_quickstart/vcn/simple_vcn/" class="dd-item">
+      <li data-nav-id="/oci_docs/00_quickstart/vcn/simple_vcn/" class="dd-item active">
         <div>
           <a href="/oci_docs/00_quickstart/vcn/simple_vcn/">
             간편 VCN 만들기
@@ -198,7 +197,7 @@ http://taewan.kim/img/icon/oracle.png
     <option value="/oci_docs/00_quickstart/vcn/" >
   - 
    VCN(Virtual Cloud Network) 생성</option> 
-      <option value="/oci_docs/00_quickstart/vcn/simple_vcn/" >-- 간편 VCN 만들기</option>
+      <option value="/oci_docs/00_quickstart/vcn/simple_vcn/"  selected>-- 간편 VCN 만들기</option>
       <option value="/oci_docs/00_quickstart/vcn/manual_vcn/" >-- 메뉴얼 VCN 만들기</option>
   
   
@@ -237,77 +236,118 @@ http://taewan.kim/img/icon/oracle.png
       </div>
     
 
+    <h1>간편 VCN 만들기</h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
- 
 
-
-<h1 id="oci-docs">OCI Docs</h1>
-
-<p>OCI(Oracle Cloud Infrastructure)는 오라클이 제공하는 클라우드 서비스입니다. <strong>OCI Docs</strong>는 오라클 클라우드 입문자와 사용자를 위하여 OCI 관련 문서를 정리하는 페이지입니다. OCI는 매주 신규 기능을 공개하고 있습니다. OCI 서비스 변경에 맞춰 다양한 서비스에 대한 문서를 정리하겠습니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2019/09/freetier/005.jpg" alt="" /></p>
-
-<p>OCIDocs는 다음과 같은 문서를 만들고 지속적으로 업데이트하여 가능한 최신 상태를 유지할 예정입니다.</p>
+<p>이번 문서는 오라클 클라우드 Free Tier 계정이 생성된 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 진행하시기 바랍니다.</p>
 
 <ul>
-<li>OCI 기본 개념</li>
-<li>OCI 서비스 개념</li>
-<li>OCI 각 서비스 사용법 Tutorial</li>
-<li>OCI 최신 정보</li>
+<li><a href="../how_to_sign_up_in_oci/">OCI FREE TIER 계정 등록</a></li>
 </ul>
 
-<h2 id="change-log">Change Log</h2>
+<hr />
 
-<table>
-<thead>
-<tr>
-<th>일자</th>
-<th>변경내역</th>
-<th>URL</th>
-</tr>
-</thead>
+<p>OCI 사용자가 OCI에서 만드는 대부분의 자원을 생성할 때, 자원을 논리적으로 묶는 컴파트먼트를 지정해야 합니다. Compartment를 통해서 논리적으로 묶인 자원은 모니터링하고 과금하고 청구하고 접근 권한을 설정할 수 있습니다.</p>
 
-<tbody>
-<tr>
-<td>2020.01.30</td>
-<td>FREE TIER 계정 첫 번째 로그인</td>
-<td><a href="http://taewan.kim/oci_docs/00_quickstart/first_sign_in_oci/">http://taewan.kim/oci_docs/00_quickstart/first_sign_in_oci/</a></td>
-</tr>
-
-<tr>
-<td>2020.01.30</td>
-<td>OCI 계정 등록</td>
-<td><a href="http://taewan.kim/oci_docs/00_quickstart/how_to_sign_up_in_oci/">http://taewan.kim/oci_docs/00_quickstart/how_to_sign_up_in_oci/</a></td>
-</tr>
-
-<tr>
-<td>2020.01.29</td>
-<td>OCI 기본 용어 정리</td>
-<td><a href="http://taewan.kim/oci_docs/00_quickstart/terminologies/">http://taewan.kim/oci_docs/00_quickstart/terminologies/</a></td>
-</tr>
-
-<tr>
-<td>2020.01.29</td>
-<td>Oradocs 페이지 오픈</td>
-<td><a href="https://taewan.kim/oradocs">https://taewan.kim/oradocs</a></td>
-</tr>
-</tbody>
-</table>
+<p>이번 문서에서는 OCI 콘솔에서 컴파트먼트를 등록하는 과정을 소개하며 다음과 같은 목차로 구성됩니다.</p>
 
 
+<div class="panel panel-primary"><div class="panel-body"><p><nav id="TableOfContents">
+<ul>
+<li><a href="#compartment란">Compartment란?</a></li>
+<li><a href="#compartment-추가">Compartment 추가</a></li>
+<li><a href="#참고문서">참고문서</a></li>
+</ul>
+</nav></p>
+</div></div>
+
+
+<div class="notices info" ><p><ul>
+<li>Compartment 한글화
+
+<ul>
+<li>컴파트먼트를 OCI 콘솔에서는 &ldquo;<strong>구획</strong>&ldquo;으로 번역합니다.</li>
+</ul></li>
+</ul>
+</p></div>
+
+
+<hr />
+
+<h1 id="compartment란">Compartment란?</h1>
+
+<p>컴파트먼트는 OCI 보안과 접근 제어에 기반이 됩니다. 컴파트먼트는 논리적으로 자원을 묶는 OCI IAM(Identity and Access Management)의 핵심 컴포넌트 입니다. 컴파트먼트는 중첩 디렉터리 구조를 갖습니다. Oracle Cloud 계정인 테넌시(Tenancy)가 만들어지면, 관리자 컴파트먼트인 Root Compartment가 만들어 집니다. Administrator 사용자 그룹에 포함된 OCI User는 Root 컴파트먼트 아래에 컴포넌트를 만들 수 있습니다. 컴파트먼트는 파일시스템의 폴더와 완전히 같은 형태를 갖습니다. OCI에서 모든 자원은 특정 컴파트먼트에 소속됩니다. 사용자 그룹에 컴파트먼트 단위로 접근과 권한 정책을 설정합니다.</p>
+
+<p>컴파트먼트는 OCI 글루벌 범위를 갖습니다. 컴파트먼트는 특정 리전에 종속적이지 않습니다. 특정 리전에서 만든 컴파트먼트는 모든 리전에서 사용 가능합니다.</p>
+
+<ul>
+<li>사용자 그룹: HR-Admins</li>
+<li>Compartment: HR</li>
+<li>정책: HR-Admins 사용자 그룹에 포함된 모든 사람에게 HR 컴파트먼트에 포함된 모든 자원의 관리 기능을 부여</li>
+</ul>
+
+<p>다음과 같은 Policy로 위와 같은 접근제어 권한을 설정할 수 있습니다.</p>
+
+<pre><code>allow group HR-Admins to manage all-resources in compartment HR
+</code></pre>
+
+<h1 id="compartment-추가">Compartment 추가</h1>
+
+<p>Root 컴파트먼트 아래에 <strong>demo</strong> 컴파트먼트를 추가할 것입니다. 예제로 사용할 Oracle Cloud의 계정(테넌시, Tenancy), OCI User 및 리전은  다음과 같습니다.</p>
+
+<ul>
+<li>테넌시: meetup101</li>
+<li>OCI 사용자 ID: oracle.testa1@gmail.com</li>
+<li>OCI 사용자 그룹: Administrator</li>
+<li>리전: 서울(ap-seoul-1)</li>
+</ul>
+
+<div class="notices note" ><p><p>현재 사용하는 OCI 사용자는 Administrator 그룹에 소속된 상태입니다. Administrator 그룹에 소속된 사용자 ID는 관리자권한을 갖고 있습니다. 따라서 meetup101 테넌시의 모든 자원과 컴파트먼트에 대한 접근 및 관리 권한을 갖고 있습니다. 따라서 컴파트먼트를 만든 후 별도의 Policy 설정 작업을 하지 않습니다.</p>
+
+<p>이것은 처음에 빠른 실습과 절차를 단순하게 만들기 위한 조치입니다. 실제 환경에서는 관리자 사용자 ID를 사용하면 않됩니다. 따라서 실무에서는 컴파트먼트를 만들고, 컴파트먼트를 사용하는 사용자에게 적절한 권한 설정을 먼저 해야 합니다.</p>
+</p></div>
+
+
+<p>Root 컴파트먼트 아래에 <strong>demo</strong> 컴파트먼트를 생성합니다. 컴파트먼트 관리 페이지 이동 메뉴는 다음과 같습니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-body"><span class="glyphicon glyphicon-menu-hamburger" style="font-size:medium" aria-hidden="true"></span> (<strong>OCI 콘솔 왼쪽 위 햄버그 버튼</strong>) <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span>  <strong>Identity</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> Compartments</div></div>
+
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/920.jpg?classes=border,shadow" alt="" /></p>
+
+<p>컴파트먼트 관리 페이지에서 <strong>생성</strong> 버튼을 클릭하여 다음 그림과 같이 <strong>root</strong> 컴파트먼트 아래에 <strong>demo</strong> 컴파트먼트를 생성합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/940.jpg?classes=border,shadow" alt="" /></p>
+
+<p>위 그림을 통애서 다음과 같이 <strong>root</strong> 컴파트먼트 아래에 <strong>demo</strong>  컴파트먼트가 생성된 것을 확인 할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/970.jpg?classes=border,shadow" alt="" /></p>
+
+<h1 id="참고문서">참고문서</h1>
+
+<ul>
+<li><a href="https://k21academy.com/1z0-932/compartment-in-oracle-cloud-infrastructure-oci-everything-you-must-know/" target="_blank">Compartment &amp; Policy In Oracle Cloud Infrastructure <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+<li><a href="https://docs.cloud.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcompartments.htm" target="_blank">[Official OCI Docs]Managing Compartments <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+<li><a href="https://www.ateam-oracle.com/oracle-cloud-infrastructure-compartments" target="_blank">[A-Team Chronicles]Oracle Cloud Infrastructure Compartments <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+</ul>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/oci_docs/00_quickstart/" title="OCI 퀵 스타트" style="margin-right: 0px;"><label>OCI 퀵 스타트</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/00_quickstart/vcn/" title="VCN(Virtual Cloud Network) 생성"> <i class="fa fa-chevron-left"></i><label>VCN(Virtual Cloud Network) 생성</label></a>
+    <a class="nav nav-next" href="/oci_docs/00_quickstart/vcn/manual_vcn/" title="메뉴얼 VCN 만들기" style="margin-right: 0px;"><label>메뉴얼 VCN 만들기</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -326,7 +366,7 @@ http://taewan.kim/img/icon/oracle.png
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/00_quickstart/vcn/simple_vcn/"></div>
   </div>
 
   </section>

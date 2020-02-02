@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<meta name="generator" content="Hugo 0.27.1" />
     <title>Oracle Cloud Infrastructure</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2020-02-02T11:01:28 KST">
-<title>OCI Dcos :: Oracle Cloud Infrastructure</title>
+<title>VCN(Virtual Cloud Network) 생성 :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 
@@ -29,7 +28,7 @@ http://taewan.kim/img/icon/oracle.png
 
     
   </head>
-  <body data-url="/oci_docs/">
+  <body data-url="/oci_docs/00_quickstart/vcn/">
     
       <header>
   <div class="logo">
@@ -63,7 +62,7 @@ http://taewan.kim/img/icon/oracle.png
 <article>
   <aside>
     <ul class="menu">
-    <li data-nav-id="/oci_docs/00_quickstart/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/00_quickstart/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/00_quickstart/">OCI 퀵 스타트</a>
@@ -98,7 +97,7 @@ http://taewan.kim/img/icon/oracle.png
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-    <li data-nav-id="/oci_docs/00_quickstart/vcn/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/00_quickstart/vcn/" class="dd-item parent active alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/00_quickstart/vcn/">VCN(Virtual Cloud Network) 생성</a>
@@ -195,7 +194,7 @@ http://taewan.kim/img/icon/oracle.png
       <option value="/oci_docs/00_quickstart/how_to_sign_up_oci/" >- OCI Free Tier 계정 등록</option>
       <option value="/oci_docs/00_quickstart/first_sign_in_oci/" >- Free Tier 계정 첫 번째 로그인</option>
       <option value="/oci_docs/00_quickstart/create_compartment/" >- 컴파트먼트(Compartment) 추가</option>
-    <option value="/oci_docs/00_quickstart/vcn/" >
+    <option value="/oci_docs/00_quickstart/vcn/"  selected>
   - 
    VCN(Virtual Cloud Network) 생성</option> 
       <option value="/oci_docs/00_quickstart/vcn/simple_vcn/" >-- 간편 VCN 만들기</option>
@@ -237,69 +236,21 @@ http://taewan.kim/img/icon/oracle.png
       </div>
     
 
+    <h1>VCN(Virtual Cloud Network) 생성</h1>
     
     
     
-    
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
- 
 
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/990.jpg?width=900" alt="" /></p>
 
-<h1 id="oci-docs">OCI Docs</h1>
-
-<p>OCI(Oracle Cloud Infrastructure)는 오라클이 제공하는 클라우드 서비스입니다. <strong>OCI Docs</strong>는 오라클 클라우드 입문자와 사용자를 위하여 OCI 관련 문서를 정리하는 페이지입니다. OCI는 매주 신규 기능을 공개하고 있습니다. OCI 서비스 변경에 맞춰 다양한 서비스에 대한 문서를 정리하겠습니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2019/09/freetier/005.jpg" alt="" /></p>
-
-<p>OCIDocs는 다음과 같은 문서를 만들고 지속적으로 업데이트하여 가능한 최신 상태를 유지할 예정입니다.</p>
+<p>OCI VM 인스턴스를 생성하기 앞서, VM 인스턴스가 위치할 VCN(Virtural Cloud Intance)을 만들어야 합니다. OCI VCN을 만드는 방법은 두 가지가 있습니다.</p>
 
 <ul>
-<li>OCI 기본 개념</li>
-<li>OCI 서비스 개념</li>
-<li>OCI 각 서비스 사용법 Tutorial</li>
-<li>OCI 최신 정보</li>
+<li>간편 모드 VCN 만들기</li>
+<li>메뉴얼 모드 VCN 만들기</li>
 </ul>
 
-<h2 id="change-log">Change Log</h2>
-
-<table>
-<thead>
-<tr>
-<th>일자</th>
-<th>변경내역</th>
-<th>URL</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>2020.01.30</td>
-<td>FREE TIER 계정 첫 번째 로그인</td>
-<td><a href="http://taewan.kim/oci_docs/00_quickstart/first_sign_in_oci/">http://taewan.kim/oci_docs/00_quickstart/first_sign_in_oci/</a></td>
-</tr>
-
-<tr>
-<td>2020.01.30</td>
-<td>OCI 계정 등록</td>
-<td><a href="http://taewan.kim/oci_docs/00_quickstart/how_to_sign_up_in_oci/">http://taewan.kim/oci_docs/00_quickstart/how_to_sign_up_in_oci/</a></td>
-</tr>
-
-<tr>
-<td>2020.01.29</td>
-<td>OCI 기본 용어 정리</td>
-<td><a href="http://taewan.kim/oci_docs/00_quickstart/terminologies/">http://taewan.kim/oci_docs/00_quickstart/terminologies/</a></td>
-</tr>
-
-<tr>
-<td>2020.01.29</td>
-<td>Oradocs 페이지 오픈</td>
-<td><a href="https://taewan.kim/oradocs">https://taewan.kim/oradocs</a></td>
-</tr>
-</tbody>
-</table>
-
+<p>두 가지 방식으로 VCN을 만드는 절차를 소개합니다.</p>
 
 
 
@@ -307,7 +258,8 @@ http://taewan.kim/img/icon/oracle.png
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/oci_docs/00_quickstart/" title="OCI 퀵 스타트" style="margin-right: 0px;"><label>OCI 퀵 스타트</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/00_quickstart/create_compartment/" title="컴파트먼트(Compartment) 추가"> <i class="fa fa-chevron-left"></i><label>컴파트먼트(Compartment) 추가</label></a>
+    <a class="nav nav-next" href="/oci_docs/00_quickstart/vcn/simple_vcn/" title="간편 VCN 만들기" style="margin-right: 0px;"><label>간편 VCN 만들기</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -326,7 +278,7 @@ http://taewan.kim/img/icon/oracle.png
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/00_quickstart/vcn/"></div>
   </div>
 
   </section>
