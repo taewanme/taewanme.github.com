@@ -28,6 +28,13 @@
 	"content": "Oracle Functions는 OCI(Oracle Cloud Infrastructure)의 서버리스 서비스입니다. Oracle Functions는 다음과 같은 특징을 갖습니다.\n 완전 관리형 서비스 높은 확장성 온디멘드(On-Demand)형 서비스 효올적인 비용 체계  월간 200만번 호출: 무료 월간 200만번 이상 호출: 호출당 입니다. Oracle Functions는 OCI의 FaaS(Functions-as-a-Service) 플랫폼입니다.   Oracle Functions은 Fn Project를 기반으로 개발되었습니다. 비지니스에 집중하고 코드를\nUse Oracle Functions (sometimes abbreviated to just Functions) when you want to focus on writing code to meet business needs. You don\u0026rsquo;t have to worry about the underlying infrastructure because Oracle Functions will ensure your app is highly-available, scalable, secure, and monitored. With Oracle Functions, you can deploy your code, call it directly or trigger it in response to events, and get billed only for the resources consumed during the execution.\nOracle Functions is based on Fn Project. Fn Project is an open source, container native, serverless platform that can be run anywhere - any cloud or on-premises. Fn Project is easy to use, supports every programming language, and is extensible and performant. You can download and install the open source distribution of Fn Project, develop and test a function locally, and then use the same tooling to deploy that function to Oracle Functions.\nYou can access Oracle Functions using the Console, a CLI, and a REST API. You can invoke the functions you deploy to Oracle Functions using the CLI or by making signed HTTP requests.\nOracle Functions is integrated with Oracle Cloud Infrastructure Identity and Access Management (IAM), which provides easy authentication with native Oracle Cloud Infrastructure identity functionality. See Overview of Oracle Cloud Infrastructure Identity and Access Management.\nTo get set up and running quickly with Oracle Functions, see the Quick Start Guide.\n"
 },
 {
+	"uri": "/oci_docs/99.oci_sites/useful_sites_for_oci/oci_status/",
+	"title": "ocistatus.oraclecloud.com",
+	"tags": [],
+	"description": "",
+	"content": "\u0026lsquo;Oracle Cloud Infrastructure\u0026#39;s Status   \u0026rsquo;는 Oracle Cloud의 각 리전에서 운영하는 세부 서비스의 현재 운영 상태와 과거 장애 이력 정보를 제공하는 사이트입니다.\n다음 그림과 같이 각 리전 세부 서비스의 현재 상태 정보를 4개 분류(Normal Performance, Degraded Performance, Partial Outage, Major Outage)로 제공합니다.\n\u0026lsquo;Oracle Cloud Infrastructure\u0026#39;s Status   \u0026rsquo; 페이지를 이용하여 다음과 같은 정보를 확인할 수 있습니다.\n OCI 전체 리전 목록 각 리전에서 운영 중인 OCI 세부 서비스 세부 서비스 현재 운영 상태  또한 이 페이지는 과거 OCI 장애 이력 정보를 제공하는 \u0026lsquo;Incident History   \u0026rsquo;페이지 링크를 제공합니다.\n여기에서 제공하는 OCI 장애 기록을 클릭하면, 각 OCI 장애에 대한 상제 정보 페이지가 오픈됩니다. 이 페이지에서 장애 발생 시간, 처리 완료 시간, 장애 유형과 원인, 사용자 영향도와 같은 상세 정보를 확인할 수 있습니다.\n"
+},
+{
 	"uri": "/oci_docs/00_quickstart/vcn/simple_vcn/",
 	"title": "간편 VCN 만들기",
 	"tags": [],
@@ -105,6 +112,13 @@
 	"content": "Oracle Cloud Interface(OCI)는 모든 기능을 제어하는 REST API로 제공합니다. 이 REST API를 근간으로 다양한 인터페이스가 제공됩니다.\nOCI의 모든 기능은 API로 제어할 수 있습니다. OCI를 관리하고 제어하는 API는 여러 가지 형태로 제공하고 있습니다.\nSDKSoftware Development Kits : OCI 서비스와 연계하여 애플리케이션을 개발할 때 사용할 수 있는 SDK를 언어별로 제공합니다. SDK, 관련 문서, 코드 샘플 등을 제공합니다. SDK for Java Python SDK Ruby SDK Go SDK CLICommand Line Interface : OCI 서비스 제어를 명령행에서 할 수 있는 CLI를 제공합니다. Tools : 여러가지 DevOps 에서 OCI와 연계할 수 있도록 플러그인을 제공하고 있습니다. Terraform, Ansible, Chef 등등 REST API : OCI를 제어하는 API로 HTTPS을 기반으로 하는 REST API를 제공합니다.\n 운영체제 별 SSH Key Pair 준비   "
 },
 {
+	"uri": "/oci_docs/99.oci_sites/useful_sites_for_oci/",
+	"title": "OCI 관련 유용한 리소스",
+	"tags": [],
+	"description": "OCI와 관련하여 당야한 정보를 제공하는 페이지와 사이트를 정리합니다.",
+	"content": "OCI 관련 유용한 정보를 제공하는 사이트와 페이지를 정리합니다.\n"
+},
+{
 	"uri": "/oci_docs/60_solutions/",
 	"title": "Miscellaneous Tips",
 	"tags": [],
@@ -120,7 +134,7 @@
 },
 {
 	"uri": "/oci_docs/99.oci_sites/",
-	"title": "OCI 관련 사이트 및 문서",
+	"title": "OCI 관련 문서 사이트",
 	"tags": [],
 	"description": "OCI를 주제로하는 사이트와 관련 외부 문서 목록을 정리합니다.",
 	"content": "Oracle Cloud 관련 사이트, 블로그 및 문서를 다음과 구조로 정리합니다.\n Oracle Cloud 관련 사이트 및 블로그  한글 사이트 해외 사이트  Oracle Cloud 관련 문서  Computing 관련 문서 Networking 관련 문서 DevOps 관련 문서 \u0026hellip;  Github 레파지토리  "

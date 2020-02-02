@@ -33,6 +33,18 @@
     </item>
     
     <item>
+      <title>ocistatus.oraclecloud.com</title>
+      <link>/oci_docs/99.oci_sites/useful_sites_for_oci/oci_status/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/oci_docs/99.oci_sites/useful_sites_for_oci/oci_status/</guid>
+      <description>&amp;lsquo;Oracle Cloud Infrastructure&amp;#39;s Status   &amp;rsquo;는 Oracle Cloud의 각 리전에서 운영하는 세부 서비스의 현재 운영 상태와 과거 장애 이력 정보를 제공하는 사이트입니다.
+다음 그림과 같이 각 리전 세부 서비스의 현재 상태 정보를 4개 분류(Normal Performance, Degraded Performance, Partial Outage, Major Outage)로 제공합니다.
+&amp;lsquo;Oracle Cloud Infrastructure&amp;#39;s Status   &amp;rsquo; 페이지를 이용하여 다음과 같은 정보를 확인할 수 있습니다.
+ OCI 전체 리전 목록 각 리전에서 운영 중인 OCI 세부 서비스 세부 서비스 현재 운영 상태  또한 이 페이지는 과거 OCI 장애 이력 정보를 제공하는 &amp;lsquo;Incident History   &amp;rsquo;페이지 링크를 제공합니다.</description>
+    </item>
+    
+    <item>
       <title>간편 VCN 만들기</title>
       <link>/oci_docs/00_quickstart/vcn/simple_vcn/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

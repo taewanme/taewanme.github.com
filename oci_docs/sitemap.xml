@@ -19,6 +19,10 @@
   </url>
   
   <url>
+    <loc>/oci_docs/99.oci_sites/useful_sites_for_oci/oci_status/</loc>
+  </url>
+  
+  <url>
     <loc>/oci_docs/00_quickstart/vcn/simple_vcn/</loc>
   </url>
   
@@ -60,6 +64,10 @@
   
   <url>
     <loc>/oci_docs/80_api_interface/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/99.oci_sites/useful_sites_for_oci/</loc>
   </url>
   
   <url>
