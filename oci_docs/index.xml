@@ -11,11 +11,23 @@
     
     
     <item>
-      <title>OCI 관련 사이트 모음</title>
-      <link>/oci_docs/99.oci_sites/oci_sites/</link>
+      <title>OCI Python SDK 설치</title>
+      <link>/oci_docs/80_api_interface/sdk/python_sdk/installation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/oci_docs/99.oci_sites/oci_sites/</guid>
+      <guid>/oci_docs/80_api_interface/sdk/python_sdk/installation/</guid>
+      <description>Oracle Cloud Infrastructure가 제공하는 OCI REST API를 파이썬 랩핑 SDK인 OCI Python SDK를 설치하는 방법을 소개합니다.
+이번 문서는 다음과 같은 목차로 구성됩니다.
+ OCI Python SDK 설치 사전 준비할 사항    OCI Python SDK 설치 사전 준비할 사항 OCI Python SDK를 설치하기 위해서는 다음과 같은 사항이 선행되어야 합니다.
+ Python 3.5 혹은 3.6 설치 및 사용 OpenSSL 버전 1.0.1 이후 버전 설치 Cryptography.io 라이브러리  OpenSSL의 필수 라이브러리   리눅스와 맥에서 다음과 같이 openssl version 명령으로 설치된 버전을 확인할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI 관련 사이트 모음</title>
+      <link>/oci_docs/99_oci_sites/oci_sites/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/oci_docs/99_oci_sites/oci_sites/</guid>
       <description>이번 문서에서는 오라클 클라우드를 주제로하는 국내와 주요 사이트와 블로그를 정리합니다.
 이번 문서는 다음과 같은 목차로 구성됩니다.
  국내 OCI 관련 사이트&amp;amp;블로그 [해외] Oracle 공식 사이트 [해외] OCI 관련 사이트    국내 OCI 관련 사이트&amp;amp;블로그    유형 사이트 명 키워드 설명/특징     커뮤니티 오라클 클라우드 사용자 그룹 (Oracle Cloud KR User Group)    User Group Facebook에서 운영하는 오라클 클라우드 사용자 그룹 커뮤니티 사이트입니다.</description>
@@ -34,10 +46,10 @@
     
     <item>
       <title>ocistatus.oraclecloud.com</title>
-      <link>/oci_docs/99.oci_sites/useful_sites_for_oci/oci_status/</link>
+      <link>/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/oci_docs/99.oci_sites/useful_sites_for_oci/oci_status/</guid>
+      <guid>/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/</guid>
       <description>&amp;lsquo;Oracle Cloud Infrastructure&amp;#39;s Status   &amp;rsquo;는 Oracle Cloud의 각 리전에서 운영하는 세부 서비스의 현재 운영 상태와 과거 장애 이력 정보를 제공하는 사이트입니다.
 다음 그림과 같이 각 리전 세부 서비스의 현재 상태 정보를 4개 분류(Normal Performance, Degraded Performance, Partial Outage, Major Outage)로 제공합니다.
 &amp;lsquo;Oracle Cloud Infrastructure&amp;#39;s Status   &amp;rsquo; 페이지를 이용하여 다음과 같은 정보를 확인할 수 있습니다.
@@ -57,13 +69,25 @@
     
     <item>
       <title>운영체제별 SSH Key Pair 준비</title>
-      <link>/oci_docs/99_misc_tips/ssh_key_pairs/</link>
+      <link>/oci_docs/98_misc_tips/ssh_key_pairs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/oci_docs/99_misc_tips/ssh_key_pairs/</guid>
+      <guid>/oci_docs/98_misc_tips/ssh_key_pairs/</guid>
       <description>Oracle Cloud Infrastructure(OCI)의 VM 인스턴스가 지원하는 접속 프로토콜은 SSH입니다. OCI VM 인스턴스 SSH 서버의 기본 사용자 인증 방식은 Key Pair입니다. 따라서 OCI VM 인스턴스를 생성때 SSH 공개키를 등록해야 합니다. 이 문서에서는 SSH 접속에 사용할 Key Pair(SSH-2 RSA 타입)를 만드는 방법을 정리합니다.
 이번 문서는 다음과 같은 목차로 구성됩니다.
 문서 목차 Key Pair란? SSH 키 생성  ssh-keygen을 이용한 ssh key 생성 window 10 아래 버전에서 ssh key 생성  PPK 형식 개인키를 PEM 형식으로 변환   참고 문서    Key Pair란?</description>
+    </item>
+    
+    <item>
+      <title>CloudHarmondy: 네트웍 테스트</title>
+      <link>/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/</guid>
+      <description>클라우드 서비스를 사용하다 보면 현재 위치에서 사용하는 클라우드 센터까지 네트워크 속도가 얼마나
+&amp;lsquo;CloudHarmony 서비스(https://cloudharmony.com)   &amp;rsquo;는 클라우드 서비스이 네트워크 속도 테스트 서비스를 제공합니다. 사용자 브라우저에서 지정한 클라우드 데이터센터까지 지정한 서비스의 업 링크, 다운로드 링크 속도를 측정할 수 있습니다.
+CloudHarmony 서비스는 사용자 브라우저에서 지정한 클러우드 데이터센터까지 구간 속도를 측정합니다. CloudHarmony 서비스 결과는 사용자가 사용하는 컴퓨터와 네트워크 상태에 영향을 받습니다. 아래 그림은 핸드폰 테더링을 연결한 노트북에서 측정한 결과입니다.
+ 다음 그림은 CloudHarmony 서비스   에서 Oracle Cloud Infrastructure의 31개 서비스 테스트를 진행한 결과입니다.</description>
     </item>
     
     <item>
@@ -79,20 +103,20 @@
     
     <item>
       <title>OCI 기본 정보 확인법</title>
-      <link>/oci_docs/99_misc_tips/how_to_collect_basic_info_of_oci/</link>
+      <link>/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/oci_docs/99_misc_tips/how_to_collect_basic_info_of_oci/</guid>
+      <guid>/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/</guid>
       <description>다음은 OCI 명령어 툴인 OCI CLI을 사용하기 위해서는 다음과 같은 설정 파일(~/.oci/config)이 필요합니다.
 &amp;gt; cat ~/.oci/config [DEFAULT] user=ocid1.user.oc1..aaaaaaaafordemop4tprzfordemoyg3zebqgqgpfordemopyzcluzi2yndna fingerprint=52:02:51:de:b4:2c:fd:96:57:5f:4c:fd:dc:bf:e4:1c key_file=/Users/taewan/.oci/oci_api_key.pem tenancy=ocid1.tenancy.oc1..aaaaaaaa6ma7kq3bsif76uzqidv22cajs3fpesgpqmmsgxihlbcemkklrsqa region=us-phoenix-1  위 OCI CLI 설정 내용을 보면 OCI User OCID, Tenancy OCID, 리전 ID가 사용된 것을 확인할 수 있습니다. Oracle Cloud Infrastructure 서비스 프로비저닝, 서비스 연동 설정, OCI CLI 설정, OCI SDK 설정과 같은 여러 OCI 설정 작업을 할 때 다음과 같은 OCI 환경 정보가 자주 사용됩니다.</description>
     </item>
     
     <item>
       <title>OCI 서비스 튜토리얼 사이트 모음</title>
-      <link>/oci_docs/99.oci_sites/tutorials/</link>
+      <link>/oci_docs/99_oci_sites/tutorials/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/oci_docs/99.oci_sites/tutorials/</guid>
+      <guid>/oci_docs/99_oci_sites/tutorials/</guid>
       <description> OCI Service 튜토리얼 사이트 OCI Core  https://oracle.github.io/learning-library/oci-library/  OCI Function  OCI Function 퀵스타트: Oracle Functions: https://www.oracle.com/webfolder/technetwork/tutorials/infographics/oci_faas_gettingstarted_quickview/functions_quickview_top/functions_quickview/index.html
  fn 프로젝트 튜터리얼: https://fnproject.io/tutorials/
  OCI Function 튜터리얼: https://oci-tutorials.github.io/
@@ -108,6 +132,16 @@
       <description>이번 문서는 오라클 클라우드 Free Tier 계정이 생성된 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 진행하시기 바랍니다.
  OCI FREE TIER 계정 등록  OCI 사용자가 OCI에서 만드는 대부분의 자원을 생성할 때, 자원을 논리적으로 묶는 컴파트먼트를 지정해야 합니다. Compartment를 통해서 논리적으로 묶인 자원은 모니터링하고 과금하고 청구하고 접근 권한을 설정할 수 있습니다.
 이번 문서에서는 OCI 콘솔에서 컴파트먼트를 등록하는 과정을 소개하며 다음과 같은 목차로 구성됩니다.</description>
+    </item>
+    
+    <item>
+      <title>용어정리</title>
+      <link>/oci_docs/60_solutions/data_catalog/glossary/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/oci_docs/60_solutions/data_catalog/glossary/</guid>
+      <description>Data Catalog는 데이터 거버넌스(Data Governance)를 지원하는 서비스입니다. 따라서 데이터 거버넌스 분야에 사용되는 용어가 다수 사용됩니다. 이 문서에서는 다음과 같은 데이터 거버넌스(Data Governance)와 Data Catalog 서비스에서 사용되는 용어를 먼저 정리힙니다.
+ Data Governance Data Havest(Data Havesting) Data Steward Technical Metadata     Data Governance 용어 참조  http://www.datagovernance.com/glossary-governance/   Data Governance Data Governance란 기업에서 가치 있는 양질의 데이터를 지속적으로 발굴하고 관리하여 비즈니스 자산으로 활용하기 위한 데이터 통합 관리 체계다.</description>
     </item>
     
     <item>

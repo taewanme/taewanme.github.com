@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2020-02-06T17:35:09 KST">
-<title>OCI Functions :: Oracle Cloud Infrastructure</title>
+<title>용어정리 :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 
@@ -20,7 +20,7 @@ http://taewan.kim/img/icon/oracle.png
 <script type="text/javascript">
       var baseurl = "\/oci_docs";
 </script>
-<meta name="description" content="OCI Functions 관련 정보를 정리합니다.">
+<meta name="description" content="">
 
 
 <link href='/oci_docs/css/railload.css' rel="stylesheet">
@@ -28,7 +28,7 @@ http://taewan.kim/img/icon/oracle.png
 
     
   </head>
-  <body data-url="/oci_docs/60_solutions/">
+  <body data-url="/oci_docs/60_solutions/data_catalog/glossary/">
     
       <header>
   <div class="logo">
@@ -97,6 +97,29 @@ http://taewan.kim/img/icon/oracle.png
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+    <li data-nav-id="/oci_docs/00_quickstart/vcn/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/00_quickstart/vcn/">VCN(Virtual Cloud Network) 생성</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/00_quickstart/vcn/simple_vcn/" class="dd-item">
+        <div>
+          <a href="/oci_docs/00_quickstart/vcn/simple_vcn/">
+            간편 VCN 만들기
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/00_quickstart/vcn/manual_vcn/" class="dd-item">
+        <div>
+          <a href="/oci_docs/00_quickstart/vcn/manual_vcn/">
+            메뉴얼 VCN 만들기
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
         </ul>
     </li>
     <li data-nav-id="/oci_docs/80_api_interface/" class="dd-item alwaysopen haschildren
@@ -156,7 +179,7 @@ http://taewan.kim/img/icon/oracle.png
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/60_solutions/" class="dd-item parent active alwaysopen haschildren
+    <li data-nav-id="/oci_docs/60_solutions/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/60_solutions/">OCI Functions</a>
@@ -169,14 +192,14 @@ http://taewan.kim/img/icon/oracle.png
       <a href="/oci_docs/60_solutions/functions/">Oracle Functions</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/oci_docs/60_solutions/data_catalog/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/60_solutions/data_catalog/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/60_solutions/data_catalog/">OCI Data Catalog</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/oci_docs/60_solutions/data_catalog/glossary/" class="dd-item">
+      <li data-nav-id="/oci_docs/60_solutions/data_catalog/glossary/" class="dd-item active">
         <div>
           <a href="/oci_docs/60_solutions/data_catalog/glossary/">
             용어정리
@@ -265,6 +288,11 @@ http://taewan.kim/img/icon/oracle.png
     <option value="/oci_docs/80_api_interface/sdk/" >
   - 
    OCI SDK</option> 
+    <option value="/oci_docs/80_api_interface/sdk/python_sdk/" >
+  -- 
+   OCI Python SDK</option> 
+      <option value="/oci_docs/80_api_interface/sdk/python_sdk/installation/" >--- OCI Python SDK 설치</option>
+  
   
   
     <option value="/oci_docs/98_misc_tips/" >
@@ -272,7 +300,7 @@ http://taewan.kim/img/icon/oracle.png
       <option value="/oci_docs/98_misc_tips/ssh_key_pairs/" >- 운영체제별 SSH Key Pair 준비</option>
       <option value="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/" >- OCI 기본 정보 확인법</option>
   
-    <option value="/oci_docs/60_solutions/"  selected>
+    <option value="/oci_docs/60_solutions/" >
    OCI Functions</option> 
     <option value="/oci_docs/60_solutions/functions/" >
   - 
@@ -281,7 +309,7 @@ http://taewan.kim/img/icon/oracle.png
     <option value="/oci_docs/60_solutions/data_catalog/" >
   - 
    OCI Data Catalog</option> 
-      <option value="/oci_docs/60_solutions/data_catalog/glossary/" >-- 용어정리</option>
+      <option value="/oci_docs/60_solutions/data_catalog/glossary/"  selected>-- 용어정리</option>
   
   
     <option value="/oci_docs/99_oci_sites/" >
@@ -317,31 +345,108 @@ http://taewan.kim/img/icon/oracle.png
       </div>
     
 
-    <h1>OCI Functions</h1>
+    <h1>용어정리</h1>
     
     
     
+    
 
-<p>![]()2020/ocidocs/teminology/992.jpg
-<img src="https://taewanmerepo.github.io/2020/ocidocs/etc/992.jpg?classes=border,shadow" alt="" />
-Oracle Functions is a fully managed, highly scalable, on-demand, Functions-as-a-Service platform, built on enterprise-grade Oracle Cloud Infrastructure and powered by the Fn Project open source engine. Use Oracle Functions (sometimes abbreviated to just Functions) when you want to focus on writing code to meet business needs. You don&rsquo;t have to worry about the underlying infrastructure because Oracle Functions will ensure your app is highly-available, scalable, secure, and monitored. With Oracle Functions, you can deploy your code, call it directly or trigger it in response to events, and get billed only for the resources consumed during the execution.</p>
+<p>Data Catalog는 데이터 거버넌스(Data Governance)를 지원하는 서비스입니다. 따라서 데이터 거버넌스 분야에 사용되는 용어가 다수 사용됩니다. 이 문서에서는 다음과 같은 데이터 거버넌스(Data Governance)와 Data Catalog 서비스에서 사용되는 용어를 먼저 정리힙니다.</p>
 
-<p>Oracle Functions is based on Fn Project. Fn Project is an open source, container native, serverless platform that can be run anywhere - any cloud or on-premises. Fn Project is easy to use, supports every programming language, and is extensible and performant. You can download and install the open source distribution of Fn Project, develop and test a function locally, and then use the same tooling to deploy that function to Oracle Functions.</p>
 
-<p>You can access Oracle Functions using the Console, a CLI, and a REST API. You can invoke the functions you deploy to Oracle Functions using the CLI or by making signed HTTP requests.</p>
+<div class="panel panel-primary"><div class="panel-body"><nav id="TableOfContents">
+<ul>
+<li><a href="#data-governance">Data Governance</a></li>
+<li><a href="#data-havest-data-havesting">Data Havest(Data Havesting)</a></li>
+<li><a href="#data-steward">Data Steward</a></li>
+<li><a href="#technical-metadata">Technical Metadata</a></li>
+</ul>
+</nav>
+</div></div>
 
-<p>Oracle Functions is integrated with Oracle Cloud Infrastructure Identity and Access Management (IAM), which provides easy authentication with native Oracle Cloud Infrastructure identity functionality. See Overview of Oracle Cloud Infrastructure Identity and Access Management.</p>
 
-<p>To get set up and running quickly with Oracle Functions, see the Quick Start Guide.</p>
+<ul>
+<li>Data Governance 용어 참조
 
+<ul>
+<li><a href="http://www.datagovernance.com/glossary-governance/">http://www.datagovernance.com/glossary-governance/</a></li>
+</ul></li>
+</ul>
+
+<hr />
+
+<h1 id="data-governance">Data Governance</h1>
+
+<p><strong>Data Governance</strong>란 기업에서 가치 있는 양질의 데이터를 지속적으로 발굴하고 관리하여 비즈니스 자산으로 활용하기 위한 데이터 통합 관리 체계다.</p>
+
+<ul>
+<li>동의어: 데이터 거버넌스, 데이터 통합 관리</li>
+</ul>
+
+<p>데이터가 다양한 저장소 분산고 데이터 양이 급증하면 다음과 같은 상황이 발생할 수데이터가 통합되기 어렵되고 결과적으로 사용빈도가 없는 다크 데이터가 증가하게 된다.
+데이터 통합 및 관리 부족으로 발생할 수있는 의도하지 않는 정보 노출과 관리 비용을 줄이고, 고품질의 데이터를 발굴하여  데이터를 높이는 지속적인 프로세스를 데이터를 Data Governance리고 한다.</p>
+
+<p><img src="http://terms.tta.or.kr/upload/image/TTA_07DataGovernance.jpg?width=400" alt="" /></p>
+
+<ul>
+<li>출처: <a href="http://terms.tta.or.kr/dictionary/dictionaryView.do?word_seq=137417-6">http://terms.tta.or.kr/dictionary/dictionaryView.do?word_seq=137417-6</a></li>
+</ul>
+
+<h1 id="data-havest-data-havesting">Data Havest(Data Havesting)</h1>
+
+<ul>
+<li>유사 용어: Information Havesting</li>
+</ul>
+
+<p>data harvesting in the online world refers to gathering user information (by way of email addresses, IM handles, social media sites, surfing behaviors, online ads clicked on, etc.) from the Internet. Data harvesting is the leading method spammers use to acquire new addresses.</p>
+
+<p>Historical perspective: In March, 2018 The New York Times reported that 50 million Facebook users had their profile information harvested by a Trump-connected data analytics firm Cambridge Analytica via a personality app on the site, later prompting a #DeleteFacebook movement.</p>
+
+<p>To see what’s connected to your Facebook account, login to Facebook and go to your Settings. From there, check the Active tab under the Apps and Websites. The panel will show you all the apps that have access to your Facebook account.</p>
+
+<p>To see what’s connected to your Google account, go to myaccount.google.com and from there, go to Apps with account access under the Sign-in &amp; security. The next page will show you all the apps that have access to your Google account as well as all the sites you have saved passwords for using Google Smart Lock.</p>
+
+<ul>
+<li>출처
+
+<ul>
+<li><a href="https://www.netlingo.com/word/harvest-or-harvesting.php">https://www.netlingo.com/word/harvest-or-harvesting.php</a></li>
+<li><a href="https://hirinfotech.com/data-mining-vs-data-harvesting/">https://hirinfotech.com/data-mining-vs-data-harvesting/</a></li>
+</ul></li>
+</ul>
+
+<h1 id="data-steward">Data Steward</h1>
+
+<ul>
+<li>동의어: 데이터 관리자</li>
+</ul>
+
+<p>데이터 거버넌스 또는 데이터 책임 프로그램에 의해 설정된 데이터 관련 책임을 갖는 사람을 의미한다. <strong>Data Steward</strong>의 역할에 따라 다음과 같이 여러가지 유형으로 구분할 수있다.</p>
+
+<ul>
+<li>Data Quality Steward(데이터 품질 관리자)</li>
+<li>Data Definition Steward(데이터 정의 관리자)</li>
+
+<li><p>Data Usage Steward(데이터 사용 관리자)</p></li>
+
+<li><p>참고: <a href="http://www.ciokorea.com/news/26284">http://www.ciokorea.com/news/26284</a></p></li>
+</ul>
+
+<h1 id="technical-metadata">Technical Metadata</h1>
+
+<p>&ldquo;<strong>Technical metadata</strong>&ldquo;는 데이터 변환 룰, 데이터 스토리지 구조(Data Storage Structure), 시멘틱 레이어와 인터페이스 레이어에 대한 메타 정보를 의미한다.</p>
+
+<ul>
+<li>출처: <a href="https://www.sciencedirect.com/topics/computer-science/technical-metadata">https://www.sciencedirect.com/topics/computer-science/technical-metadata</a></li>
+</ul>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/" title="OCI 기본 정보 확인법"> <i class="fa fa-chevron-left"></i><label>OCI 기본 정보 확인법</label></a>
-    <a class="nav nav-next" href="/oci_docs/60_solutions/functions/" title="Oracle Functions" style="margin-right: 0px;"><label>Oracle Functions</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/60_solutions/data_catalog/" title="OCI Data Catalog"> <i class="fa fa-chevron-left"></i><label>OCI Data Catalog</label></a>
+    <a class="nav nav-next" href="/oci_docs/99_oci_sites/" title="OCI 관련 문서 사이트" style="margin-right: 0px;"><label>OCI 관련 문서 사이트</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -360,7 +465,7 @@ Oracle Functions is a fully managed, highly scalable, on-demand, Functions-as-a-
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/60_solutions/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/60_solutions/data_catalog/glossary/"></div>
   </div>
 
   </section>

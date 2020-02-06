@@ -5,8 +5,8 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-02-03T08:38:58 KST">
-<title>OCI 관련 유용한 리소스 :: Oracle Cloud Infrastructure</title>
+<meta name="revised" content="2020-02-06T17:35:09 KST">
+<title>OCI Python SDK :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 
@@ -20,7 +20,7 @@ http://taewan.kim/img/icon/oracle.png
 <script type="text/javascript">
       var baseurl = "\/oci_docs";
 </script>
-<meta name="description" content="OCI와 관련하여 당야한 정보를 제공하는 페이지와 사이트를 정리합니다.">
+<meta name="description" content="OCI Python SDK를 설치하고 사용하는 방법을 소개합니다. ">
 
 
 <link href='/oci_docs/css/railload.css' rel="stylesheet">
@@ -28,7 +28,7 @@ http://taewan.kim/img/icon/oracle.png
 
     
   </head>
-  <body data-url="/oci_docs/99.oci_sites/useful_sites_for_oci/">
+  <body data-url="/oci_docs/80_api_interface/sdk/python_sdk/">
     
       <header>
   <div class="logo">
@@ -122,16 +122,42 @@ http://taewan.kim/img/icon/oracle.png
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/80_api_interface/" class="dd-item alwaysopen
+    <li data-nav-id="/oci_docs/80_api_interface/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
-      <a href="/oci_docs/80_api_interface/">OCI REST API 인터페이스</a><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/80_api_interface/">OCI REST API 인터페이스</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
+        <ul>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/98_misc_tips/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/98_misc_tips/">Miscellaneous Tips</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/98_misc_tips/ssh_key_pairs/" class="dd-item">
+        <div>
+          <a href="/oci_docs/98_misc_tips/ssh_key_pairs/">
+            운영체제별 SSH Key Pair 준비
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/" class="dd-item">
+        <div>
+          <a href="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/">
+            OCI 기본 정보 확인법
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
     </li>
     <li data-nav-id="/oci_docs/60_solutions/" class="dd-item alwaysopen haschildren
         ">
       <div>
-      <a href="/oci_docs/60_solutions/">Miscellaneous Tips</a>
+      <a href="/oci_docs/60_solutions/">OCI Functions</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
@@ -141,69 +167,63 @@ http://taewan.kim/img/icon/oracle.png
       <a href="/oci_docs/60_solutions/functions/">Oracle Functions</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/oci_docs/60_solutions/data_catalog/" class="dd-item alwaysopen
+    <li data-nav-id="/oci_docs/60_solutions/data_catalog/" class="dd-item alwaysopen haschildren
         ">
       <div>
-      <a href="/oci_docs/60_solutions/data_catalog/">OCI Data Catalog</a><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-    </li>
-        </ul>
-    </li>
-    <li data-nav-id="/oci_docs/99_misc_tips/" class="dd-item alwaysopen haschildren
-        ">
-      <div>
-      <a href="/oci_docs/99_misc_tips/">Miscellaneous Tips</a>
+      <a href="/oci_docs/60_solutions/data_catalog/">OCI Data Catalog</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/oci_docs/99_misc_tips/ssh_key_pairs/" class="dd-item">
+      <li data-nav-id="/oci_docs/60_solutions/data_catalog/glossary/" class="dd-item">
         <div>
-          <a href="/oci_docs/99_misc_tips/ssh_key_pairs/">
-            운영체제별 SSH Key Pair 준비
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/oci_docs/99_misc_tips/how_to_collect_basic_info_of_oci/" class="dd-item">
-        <div>
-          <a href="/oci_docs/99_misc_tips/how_to_collect_basic_info_of_oci/">
-            OCI 기본 정보 확인법
+          <a href="/oci_docs/60_solutions/data_catalog/glossary/">
+            용어정리
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/99.oci_sites/" class="dd-item parent alwaysopen haschildren
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/99_oci_sites/" class="dd-item alwaysopen haschildren
         ">
       <div>
-      <a href="/oci_docs/99.oci_sites/">OCI 관련 문서 사이트</a>
+      <a href="/oci_docs/99_oci_sites/">OCI 관련 문서 사이트</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/oci_docs/99.oci_sites/oci_sites/" class="dd-item">
+      <li data-nav-id="/oci_docs/99_oci_sites/oci_sites/" class="dd-item">
         <div>
-          <a href="/oci_docs/99.oci_sites/oci_sites/">
+          <a href="/oci_docs/99_oci_sites/oci_sites/">
             OCI 관련 사이트 모음
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/oci_docs/99.oci_sites/tutorials/" class="dd-item">
+      <li data-nav-id="/oci_docs/99_oci_sites/tutorials/" class="dd-item">
         <div>
-          <a href="/oci_docs/99.oci_sites/tutorials/">
+          <a href="/oci_docs/99_oci_sites/tutorials/">
             OCI 서비스 튜토리얼 사이트 모음
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-    <li data-nav-id="/oci_docs/99.oci_sites/useful_sites_for_oci/" class="dd-item parent active alwaysopen haschildren
+    <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/" class="dd-item alwaysopen haschildren
         ">
       <div>
-      <a href="/oci_docs/99.oci_sites/useful_sites_for_oci/">OCI 관련 유용한 리소스</a>
+      <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/">클라우드 관련 유용한 서비스</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/oci_docs/99.oci_sites/useful_sites_for_oci/oci_status/" class="dd-item">
+      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/" class="dd-item">
         <div>
-          <a href="/oci_docs/99.oci_sites/useful_sites_for_oci/oci_status/">
+          <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/">
             ocistatus.oraclecloud.com
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/">
+            CloudHarmondy: 네트웍 테스트
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -240,9 +260,23 @@ http://taewan.kim/img/icon/oracle.png
   
     <option value="/oci_docs/80_api_interface/" >
    OCI REST API 인터페이스</option> 
+    <option value="/oci_docs/80_api_interface/sdk/" >
+  - 
+   OCI SDK</option> 
+    <option value="/oci_docs/80_api_interface/sdk/python_sdk/"  selected>
+  -- 
+   OCI Python SDK</option> 
+      <option value="/oci_docs/80_api_interface/sdk/python_sdk/installation/" >--- OCI Python SDK 설치</option>
+  
+  
+  
+    <option value="/oci_docs/98_misc_tips/" >
+   Miscellaneous Tips</option> 
+      <option value="/oci_docs/98_misc_tips/ssh_key_pairs/" >- 운영체제별 SSH Key Pair 준비</option>
+      <option value="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/" >- OCI 기본 정보 확인법</option>
   
     <option value="/oci_docs/60_solutions/" >
-   Miscellaneous Tips</option> 
+   OCI Functions</option> 
     <option value="/oci_docs/60_solutions/functions/" >
   - 
    Oracle Functions</option> 
@@ -250,21 +284,18 @@ http://taewan.kim/img/icon/oracle.png
     <option value="/oci_docs/60_solutions/data_catalog/" >
   - 
    OCI Data Catalog</option> 
+      <option value="/oci_docs/60_solutions/data_catalog/glossary/" >-- 용어정리</option>
   
   
-    <option value="/oci_docs/99_misc_tips/" >
-   Miscellaneous Tips</option> 
-      <option value="/oci_docs/99_misc_tips/ssh_key_pairs/" >- 운영체제별 SSH Key Pair 준비</option>
-      <option value="/oci_docs/99_misc_tips/how_to_collect_basic_info_of_oci/" >- OCI 기본 정보 확인법</option>
-  
-    <option value="/oci_docs/99.oci_sites/" >
+    <option value="/oci_docs/99_oci_sites/" >
    OCI 관련 문서 사이트</option> 
-      <option value="/oci_docs/99.oci_sites/oci_sites/" >- OCI 관련 사이트 모음</option>
-      <option value="/oci_docs/99.oci_sites/tutorials/" >- OCI 서비스 튜토리얼 사이트 모음</option>
-    <option value="/oci_docs/99.oci_sites/useful_sites_for_oci/"  selected>
+      <option value="/oci_docs/99_oci_sites/oci_sites/" >- OCI 관련 사이트 모음</option>
+      <option value="/oci_docs/99_oci_sites/tutorials/" >- OCI 서비스 튜토리얼 사이트 모음</option>
+    <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/" >
   - 
-   OCI 관련 유용한 리소스</option> 
-      <option value="/oci_docs/99.oci_sites/useful_sites_for_oci/oci_status/" >-- ocistatus.oraclecloud.com</option>
+   클라우드 관련 유용한 서비스</option> 
+      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/" >-- ocistatus.oraclecloud.com</option>
+      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/" >-- CloudHarmondy: 네트웍 테스트</option>
   
   
 
@@ -289,12 +320,14 @@ http://taewan.kim/img/icon/oracle.png
       </div>
     
 
-    <h1>OCI 관련 유용한 리소스</h1>
+    <h1>OCI Python SDK</h1>
     
     
     
 
-<p>OCI 관련 유용한 정보를 제공하는 사이트와 페이지를 정리합니다.</p>
+<p>Oracle Cloud Infrastructure는 OCI REST API를 랩핑하는 OCI Python SDK를 제공합니다. OCI REST API를 파이썬 프로그램에서 사용할 때, OCI Python SDK를 이용하면 편의성이 향상됩니다.</p>
+
+<p>다음 문서에서 OCI Python SDK를 설치하는 벙법을 소개하고, 각 OCI 서비스 별로 Python SDK를 사용하는 예제 코드를 정리합나다.</p>
 
 
 
@@ -302,8 +335,8 @@ http://taewan.kim/img/icon/oracle.png
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/99.oci_sites/tutorials/" title="OCI 서비스 튜토리얼 사이트 모음"> <i class="fa fa-chevron-left"></i><label>OCI 서비스 튜토리얼 사이트 모음</label></a>
-    <a class="nav nav-next" href="/oci_docs/99.oci_sites/useful_sites_for_oci/oci_status/" title="ocistatus.oraclecloud.com" style="margin-right: 0px;"><label>ocistatus.oraclecloud.com</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/80_api_interface/sdk/" title="OCI SDK"> <i class="fa fa-chevron-left"></i><label>OCI SDK</label></a>
+    <a class="nav nav-next" href="/oci_docs/80_api_interface/sdk/python_sdk/installation/" title="OCI Python SDK 설치" style="margin-right: 0px;"><label>OCI Python SDK 설치</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -322,7 +355,7 @@ http://taewan.kim/img/icon/oracle.png
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/99.oci_sites/useful_sites_for_oci/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/80_api_interface/sdk/python_sdk/"></div>
   </div>
 
   </section>

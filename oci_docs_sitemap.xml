@@ -3,7 +3,15 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/oci_docs/99.oci_sites/oci_sites/</loc>
+    <loc>/oci_docs/80_api_interface/sdk/python_sdk/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/80_api_interface/sdk/python_sdk/installation/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/99_oci_sites/oci_sites/</loc>
   </url>
   
   <url>
@@ -19,7 +27,7 @@
   </url>
   
   <url>
-    <loc>/oci_docs/99.oci_sites/useful_sites_for_oci/oci_status/</loc>
+    <loc>/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/</loc>
   </url>
   
   <url>
@@ -27,7 +35,11 @@
   </url>
   
   <url>
-    <loc>/oci_docs/99_misc_tips/ssh_key_pairs/</loc>
+    <loc>/oci_docs/98_misc_tips/ssh_key_pairs/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/</loc>
   </url>
   
   <url>
@@ -39,15 +51,19 @@
   </url>
   
   <url>
-    <loc>/oci_docs/99_misc_tips/how_to_collect_basic_info_of_oci/</loc>
+    <loc>/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/</loc>
   </url>
   
   <url>
-    <loc>/oci_docs/99.oci_sites/tutorials/</loc>
+    <loc>/oci_docs/99_oci_sites/tutorials/</loc>
   </url>
   
   <url>
     <loc>/oci_docs/00_quickstart/vcn/manual_vcn/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/60_solutions/data_catalog/glossary/</loc>
   </url>
   
   <url>
@@ -67,7 +83,15 @@
   </url>
   
   <url>
-    <loc>/oci_docs/99.oci_sites/useful_sites_for_oci/</loc>
+    <loc>/oci_docs/80_api_interface/sdk/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/99_oci_sites/useful_sites_for_oci/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/98_misc_tips/</loc>
   </url>
   
   <url>
@@ -75,11 +99,7 @@
   </url>
   
   <url>
-    <loc>/oci_docs/99_misc_tips/</loc>
-  </url>
-  
-  <url>
-    <loc>/oci_docs/99.oci_sites/</loc>
+    <loc>/oci_docs/99_oci_sites/</loc>
   </url>
   
   <url>
