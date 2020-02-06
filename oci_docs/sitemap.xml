@@ -79,6 +79,10 @@
   </url>
   
   <url>
+    <loc>/oci_docs/60_solutions/</loc>
+  </url>
+  
+  <url>
     <loc>/oci_docs/80_api_interface/</loc>
   </url>
   
@@ -92,10 +96,6 @@
   
   <url>
     <loc>/oci_docs/98_misc_tips/</loc>
-  </url>
-  
-  <url>
-    <loc>/oci_docs/60_solutions/</loc>
   </url>
   
   <url>
