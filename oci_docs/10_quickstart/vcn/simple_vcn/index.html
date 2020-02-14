@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-02-14T21:45:04 KST">
+<meta name="revised" content="2020-02-14T21:54:05 KST">
 <title>간편 VCN 만들기 :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
@@ -406,7 +406,7 @@ http://taewan.kim/img/icon/oracle.png
 
 <hr />
 
-<p>이번 문서에서는 OCI 콘솔에서 간편 모드로 VCN(Virtual Cloud Network)을 생성하고 외부에서 80포트 접근을 허용하는 Security Rule을 설정하는 방법을 소개합니다. 다음과 같은 목차로 진행됩니다.</p>
+<p>이번 문서에서는 OCI 콘솔에서 간편 모드로 VCN(Virtual Cloud Network)을 생성하고 외부에서 80 포트 접근을 허용하는 Security Rule을 설정하는 방법을 소개합니다. 다음과 같은 목차로 진행됩니다.</p>
 
 
 <div class="panel panel-primary"><div class="panel-body"><p><nav id="TableOfContents">
@@ -427,7 +427,7 @@ http://taewan.kim/img/icon/oracle.png
 
 <h1 id="간편모드-vcn-생성">간편모드 VCN 생성</h1>
 
-<p>이제 부터 다음과 같은 VCN을 만들고 Security List를 생성한 후, 80포트 접근을 허용하는 Secutiry Rule을 설정하는 과정을 살펴 보겠습니다. 앞으로 만들 VCN은 다음과 같습니다.</p>
+<p>이제부터 다음과 같은 VCN을 만들고 Security List를 생성한 후, 80 포트 접근을 허용하는 Secutiry Rule을 설정하는 과정을 살펴보겠습니다. 앞으로 만들 VCN은 다음과 같습니다.</p>
 
 <ul>
 <li>VCN이름: ds_vcn</li>
@@ -456,7 +456,7 @@ http://taewan.kim/img/icon/oracle.png
 
 <h2 id="compartment-준비">Compartment 준비</h2>
 
-<p>VCN을 만들 때, VCN 자원을 관리할 Compartment가 필요합니다. 새로 만든 VCN에 할당할 Comppartment가 없는 상태라면 다음 문서를 참조하여 Compartment를 만드시기 바랍니다.</p>
+<p>VCN을 만들 때, VCN 자원을 관리할 Compartment가 필요합니다. 새로 만든 VCN에 할당할 Compartment가 없는 상태라면 다음 문서를 참조하여 Compartment를 만드시기 바랍니다.</p>
 
 <p>현재 문서에서는 생성할 모든 자원은 <font color="red"><strong>taewan.kim</strong></font> Compartment에 할당됩니다.</p>
 
@@ -466,7 +466,7 @@ http://taewan.kim/img/icon/oracle.png
 <li><a href="../how_to_sign_up_in_oci" target="_blank">Comparemtnt 추가 등록 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a></li>
 </ul>
 
-<p>Compartment 이름으로 <strong>taewan.kim</strong>이 아닌 다른 이름 Compartment를 만들 수 있습니다. 다른 이름의 Compartment를 사용할 경우, 각 자원 생성 단계에서 설정하는 Compartment를 여러분이 사용한 Compartment 이름으로 대체합니다.</p>
+<p>Compartment 이름으로 <strong>taewan.kim</strong>이 아닌 다른 이름 Compartment를 만들 수 있습니다. 다른 이름의 Compartment를 사용할 경우, 각 자원 생성 단계에서 Compartment를 여러분이 사용한 Compartment 이름으로 설정합니다.</p>
 </p></div>
 
 
@@ -548,13 +548,13 @@ http://taewan.kim/img/icon/oracle.png
 
 <hr />
 
-<p>&ldquo;<strong>View Virtual Cloud Network</strong>&rdquo; 버튼을 클릭하면 지금 생성된 VCN(ds_vcn)의 상세 페이지로 이동합니다. 이 페이지에서 ds_vcn의 상세정보를 확인하고, 필요한 경우에 서브넷과 같은 관련 자원을 관리할 수 있습니다. ds_vcn에 Private_Subnet-ds_vcn과 Public_Subnet-ds_vcn 2개가 만들어 진것을 확인할 수 있습니다.</p>
+<p>&ldquo;<strong>View Virtual Cloud Network</strong>&rdquo; 버튼을 클릭하면 지금 생성된 VCN(ds_vcn)의 상세 페이지로 이동합니다. 이 페이지에서 ds_vcn의 상세정보를 확인하고, 필요한 경우에 서브넷과 같은 관련 자원을 관리할 수 있습니다. ds_vcn에 Private_Subnet-ds_vcn과 Public_Subnet-ds_vcn 2개가 만들어진 것을 확인할 수 있습니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2020/ocidocs/vcn/080.jpg?classes=border,shadow" alt="" /></p>
 
 <h2 id="security-list에-secury-rule추가">Security List에 Secury Rule추가</h2>
 
-<p>앞에서 생성한 ds_vcn의 상세페이지에서 &ldquo;Security List&rdquo; 관리 페이지로 이동한 다음에 새로운 Security List를 만들고 80포트를 오픈하는 설정을 진행하겠습니다.</p>
+<p>앞에서 생성한 ds_vcn의 상세페이지에서 &ldquo;Security List&rdquo; 관리 페이지로 이동한 다음에 새로운 Security List를 만들고 80 포트를 오픈하는 설정을 진행하겠습니다.</p>
 
 <p>ds_vcn 상세 페이지의 왼쪽 메뉴에서 &ldquo;<strong>Security List</strong>&ldquo;를 클릭하면, ds_vcn의 Security List 관리 페이지로 이동합니다. 이 페이지에서 &ldquo;<strong>create Security List</strong>&ldquo;를 클릭합니다.</p>
 
