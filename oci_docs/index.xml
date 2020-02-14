@@ -50,7 +50,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/</guid>
-      <description>오라클 홈페이지에서는 Oracle Cloud Infrastructure(OCI) 서비스 비용 계산 툴을 제공합니다. 이 서비스를 이용하여 OCI 서비스 사용 금액을 계산해 볼수 있습니다. OCI 서비스 별로 주요 과금 기준과 입력 항목을 제공하기 때문에 서비스 별로 고려해야 하는 항목을 간편하고 고려할 수 있습니다.</description>
+      <description>오라클 홈페이지에서는 Oracle Cloud Infrastructure(OCI) 서비스 비용 계산 툴을 제공합니다. 이 서비스를 이용하여 OCI 서비스 사용 금액을 계산해 볼수 있습니다. OCI 서비스 별로 주요 과금 기준과 입력 항목을 제공하기 때문에 서비스 별로 고려해야 하는 항목을 간편하고 고려할 수 있습니다.
+ OCI 비용 계산기: https://www.oracle.com/cloud/cost-estimator.html     관련 OCI 서비스를 선택하면, 해당 서비스의 사용 금액을 결정짓는 주요 인자가 출력됩니다. 이 주요 인자 조정을 통해서 실제 서비스 이용 금액을 예측할 수 있습니다.</description>
     </item>
     
     <item>
