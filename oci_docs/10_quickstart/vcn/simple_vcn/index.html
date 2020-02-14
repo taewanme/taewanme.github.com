@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-02-14T21:23:59 KST">
+<meta name="revised" content="2020-02-14T21:41:13 KST">
 <title>간편 VCN 만들기 :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
@@ -396,7 +396,7 @@ http://taewan.kim/img/icon/oracle.png
     
     
 
-<p>이번 문서에서는 오라클 클라우드 Free Tier 계정이 생성되고, VCN이 사용할 Compartment가 준비된 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만드시기 바랍니다.</p>
+<p>이번 문서의 내용을 실습하기 위해서는 오라클 클라우드 Free Tier 계정이 필요합니다. 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만드시기 바랍니다.</p>
 
 <ul>
 <li><a href="../how_to_sign_up_in_oci/" target="_blank">OCI FREE TIER 계정 등록 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
@@ -406,7 +406,7 @@ http://taewan.kim/img/icon/oracle.png
 
 <hr />
 
-<p>이번 문서에서는 OCI 콘솔에서 간편 모드로 VCN(Virtual Cloud Network)을 생성하는 과정을 따라하기 방식으로 소개하며, 다음과 같은 목차로 구성됩니다.</p>
+<p>이번 문서에서는 OCI 콘솔에서 간편 모드로 VCN(Virtual Cloud Network)을 생성하고 외부에서 80포트 접근을 허용하는 Security Rule을 설정하는 방법을 소개합니다. 다음과 같은 목차로 진행됩니다.</p>
 
 
 <div class="panel panel-primary"><div class="panel-body"><p><nav id="TableOfContents">
@@ -427,11 +427,25 @@ http://taewan.kim/img/icon/oracle.png
 
 <h1 id="간편모드-vcn-생성">간편모드 VCN 생성</h1>
 
-<p>이제 다음과 같은 VCN을 만들고 Security List에서 80포트를 오픈하는 설정하는  과정을 소개합니다.</p>
+<p>이제 부터 다음과 같은 VCN을 만들고 Security List를 생성한 후, 80포트 접근을 허용하는 Secutiry Rule을 설정하는 과정을 살펴 보겠습니다. 앞으로 만들 VCN은 다음과 같습니다.</p>
 
 <ul>
 <li>VCN이름: ds_vcn</li>
 <li>Compartemnt: taewan.kim</li>
+<li>Subnet
+
+<ul>
+<li>Private Subnet-ds_vcn
+
+<ul>
+<li>CIDR Block: 10.0.0.0/24</li>
+</ul></li>
+<li>Public Subnet-ds_vcn
+
+<ul>
+<li>CIDR Block: 10.0.1.0/24<br /></li>
+</ul></li>
+</ul></li>
 <li>Security List 생성
 
 <ul>
@@ -444,13 +458,17 @@ http://taewan.kim/img/icon/oracle.png
 
 <p>VCN을 만들 때, VCN 자원을 관리할 Compartment가 필요합니다. 새로 만든 VCN에 할당할 Comppartment가 없는 상태라면 다음 문서를 참조하여 Compartment를 만드시기 바랍니다.</p>
 
-<p>현재 문서에서는 Compartment 명이 <font color="red"><strong>taewan.kim</strong></font>이라고 가정하고 진행합니다.</p>
+<p>현재 문서에서는 생성할 모든 자원은 <font color="red"><strong>taewan.kim</strong></font> Compartment에 할당됩니다.</p>
+
+<div class="notices note" ><p><p>이 문서를 실습하는 과정에서, 여러분의 OCI Tenancy에 앞으로 생성할 자원(VCN, Security List)을 할당할 적당한 Compartment가 없다면, 다음 문서를 참조하여 새로운 Compartment를 만드시기 바랍니다.</p>
 
 <ul>
-<li><a href="../how_to_sign_up_in_oci" target="_blank">Comparemtnt 추가 등록 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
-
-</li>
+<li><a href="../how_to_sign_up_in_oci" target="_blank">Comparemtnt 추가 등록 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a></li>
 </ul>
+
+<p>Compartment 이름으로 <strong>taewan.kim</strong>이 아닌 다른 Compartment 이름을 사용할 경우에, 모든 자원 설정의 <strong>taewan.kim</strong> Compartment를 여러분이 사용할  Compartment로 대체하시면 됩니다.</p>
+</p></div>
+
 
 <h2 id="vcn-프로비저닝">VCN 프로비저닝</h2>
 
