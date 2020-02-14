@@ -3,11 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/oci_docs/80_api_interface/sdk/python_sdk/</loc>
+    <loc>/oci_docs/80_dev_tools/sdk/python_sdk/</loc>
   </url>
   
   <url>
-    <loc>/oci_docs/80_api_interface/sdk/python_sdk/installation/</loc>
+    <loc>/oci_docs/80_dev_tools/sdk/python_sdk/installation/</loc>
   </url>
   
   <url>
@@ -15,11 +15,15 @@
   </url>
   
   <url>
-    <loc>/oci_docs/00_quickstart/terminologies/</loc>
+    <loc>/oci_docs/10_quickstart/terminologies/</loc>
   </url>
   
   <url>
-    <loc>/oci_docs/00_quickstart/</loc>
+    <loc>/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/10_quickstart/</loc>
   </url>
   
   <url>
@@ -27,11 +31,7 @@
   </url>
   
   <url>
-    <loc>/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/</loc>
-  </url>
-  
-  <url>
-    <loc>/oci_docs/00_quickstart/vcn/simple_vcn/</loc>
+    <loc>/oci_docs/10_quickstart/vcn/simple_vcn/</loc>
   </url>
   
   <url>
@@ -39,15 +39,11 @@
   </url>
   
   <url>
-    <loc>/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/</loc>
-  </url>
-  
-  <url>
     <loc>/oci_docs/60_solutions/data_catalog/</loc>
   </url>
   
   <url>
-    <loc>/oci_docs/00_quickstart/how_to_sign_up_oci/</loc>
+    <loc>/oci_docs/10_quickstart/how_to_sign_up_oci/</loc>
   </url>
   
   <url>
@@ -55,11 +51,19 @@
   </url>
   
   <url>
+    <loc>/oci_docs/20_identity_and_access_management/</loc>
+  </url>
+  
+  <url>
     <loc>/oci_docs/99_oci_sites/tutorials/</loc>
   </url>
   
   <url>
-    <loc>/oci_docs/00_quickstart/vcn/manual_vcn/</loc>
+    <loc>/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/10_quickstart/vcn/manual_vcn/</loc>
   </url>
   
   <url>
@@ -67,15 +71,19 @@
   </url>
   
   <url>
-    <loc>/oci_docs/00_quickstart/first_sign_in_oci/</loc>
+    <loc>/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/</loc>
   </url>
   
   <url>
-    <loc>/oci_docs/00_quickstart/create_compartment/</loc>
+    <loc>/oci_docs/10_quickstart/first_sign_in_oci/</loc>
   </url>
   
   <url>
-    <loc>/oci_docs/00_quickstart/vcn/</loc>
+    <loc>/oci_docs/10_quickstart/cloudshell/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/10_quickstart/create_compartment/</loc>
   </url>
   
   <url>
@@ -83,11 +91,23 @@
   </url>
   
   <url>
-    <loc>/oci_docs/80_api_interface/</loc>
+    <loc>/oci_docs/10_quickstart/vcn/</loc>
   </url>
   
   <url>
-    <loc>/oci_docs/80_api_interface/sdk/</loc>
+    <loc>/oci_docs/80_dev_tools/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/80_dev_tools/cloud_shell/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/80_dev_tools/oci_rest_api/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/80_dev_tools/sdk/</loc>
   </url>
   
   <url>

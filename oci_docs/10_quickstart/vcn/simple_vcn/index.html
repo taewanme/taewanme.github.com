@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2020-02-14T21:23:59 KST">
-<title>CloudHarmondy: 네트웍 테스트 :: Oracle Cloud Infrastructure</title>
+<title>간편 VCN 만들기 :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 
@@ -28,7 +28,7 @@ http://taewan.kim/img/icon/oracle.png
 
     
   </head>
-  <body data-url="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/">
+  <body data-url="/oci_docs/10_quickstart/vcn/simple_vcn/">
     
       <header>
   <div class="logo">
@@ -62,7 +62,7 @@ http://taewan.kim/img/icon/oracle.png
 <article>
   <aside>
     <ul class="menu">
-    <li data-nav-id="/oci_docs/10_quickstart/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/10_quickstart/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/10_quickstart/">OCI 퀵 스타트</a>
@@ -104,14 +104,14 @@ http://taewan.kim/img/icon/oracle.png
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-    <li data-nav-id="/oci_docs/10_quickstart/vcn/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/10_quickstart/vcn/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/10_quickstart/vcn/">VCN(Virtual Cloud Network) 생성</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/oci_docs/10_quickstart/vcn/simple_vcn/" class="dd-item">
+      <li data-nav-id="/oci_docs/10_quickstart/vcn/simple_vcn/" class="dd-item active">
         <div>
           <a href="/oci_docs/10_quickstart/vcn/simple_vcn/">
             간편 VCN 만들기
@@ -235,7 +235,7 @@ http://taewan.kim/img/icon/oracle.png
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/99_oci_sites/" class="dd-item parent alwaysopen haschildren
+    <li data-nav-id="/oci_docs/99_oci_sites/" class="dd-item alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/99_oci_sites/">OCI 관련 문서 사이트</a>
@@ -256,7 +256,7 @@ http://taewan.kim/img/icon/oracle.png
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-    <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/" class="dd-item parent alwaysopen haschildren
+    <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/" class="dd-item alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/">클라우드 관련 유용한 서비스</a>
@@ -277,7 +277,7 @@ http://taewan.kim/img/icon/oracle.png
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/" class="dd-item active">
+      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/" class="dd-item">
         <div>
           <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/">
             CloudHarmondy: 네트웍 테스트
@@ -312,7 +312,7 @@ http://taewan.kim/img/icon/oracle.png
     <option value="/oci_docs/10_quickstart/vcn/" >
   - 
    VCN(Virtual Cloud Network) 생성</option> 
-      <option value="/oci_docs/10_quickstart/vcn/simple_vcn/" >-- 간편 VCN 만들기</option>
+      <option value="/oci_docs/10_quickstart/vcn/simple_vcn/"  selected>-- 간편 VCN 만들기</option>
       <option value="/oci_docs/10_quickstart/vcn/manual_vcn/" >-- 메뉴얼 VCN 만들기</option>
   
   
@@ -365,7 +365,7 @@ http://taewan.kim/img/icon/oracle.png
    클라우드 관련 유용한 서비스</option> 
       <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/" >-- OCI 비용 시뮬레이터</option>
       <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/" >-- ocistatus.oraclecloud.com</option>
-      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/"  selected>-- CloudHarmondy: 네트웍 테스트</option>
+      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/" >-- CloudHarmondy: 네트웍 테스트</option>
   
   
 
@@ -390,49 +390,254 @@ http://taewan.kim/img/icon/oracle.png
       </div>
     
 
-    <h1>CloudHarmondy: 네트웍 테스트</h1>
+    <h1>간편 VCN 만들기</h1>
     
     
     
-    <p>클라우드 서비스를 사용하다 보면 현재 위치에서 사용하는 클라우드 센터까지 네트워크 속도가 얼마나</p>
+    
 
-<p>&lsquo;<a href="https://cloudharmony.com/speedtest" target="_blank">CloudHarmony 서비스(https://cloudharmony.com) <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
-
-&rsquo;는 클라우드 서비스이 네트워크 속도 테스트 서비스를 제공합니다. 사용자 브라우저에서 지정한 클라우드 데이터센터까지 지정한 서비스의 업 링크, 다운로드 링크 속도를 측정할 수 있습니다.</p>
-
-<div class="notices note" ><p><p><font color='red'><strong>CloudHarmony 서비스</strong></font>는 사용자 브라우저에서 지정한 클러우드 데이터센터까지 구간 속도를 측정합니다. <strong>CloudHarmony 서비스</strong> 결과는 사용자가 사용하는 컴퓨터와 네트워크 상태에 영향을 받습니다. 아래 그림은 핸드폰 테더링을 연결한 노트북에서 측정한 결과입니다.</p>
-</p></div>
-
-
-<p>다음 그림은 <a href="https://cloudharmony.com/speedtest" target="_blank">CloudHarmony 서비스 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
-
-에서 Oracle Cloud Infrastructure의 31개 서비스 테스트를 진행한 결과입니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/tools/010.jpg?classes=border,shadow" alt="" /></p>
-
-<p>아래 그림과 같이 <strong>CloudHarmony 서비스</strong>는 클라우드 프로바이더 데이터 센터와 서비스 유형을 선택할 수 있습니다. 또한 다음과 같은 속성을 지정할 수 있습니다.</p>
+<p>이번 문서에서는 오라클 클라우드 Free Tier 계정이 생성되고, VCN이 사용할 Compartment가 준비된 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만드시기 바랍니다.</p>
 
 <ul>
-<li>Uplink</li>
-<li>downlonk</li>
-<li>Latency</li>
-<li>DNS</li>
-<li>Protocol</li>
+<li><a href="../how_to_sign_up_in_oci/" target="_blank">OCI FREE TIER 계정 등록 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
 </ul>
 
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/tools/020.jpg?classes=border,shadow" alt="" /></p>
+<hr />
 
-<p>위 설정을 하고 네트워크 속도를 측정하면 다음과 같은 결과가 출력됩니다.</p>
+<p>이번 문서에서는 OCI 콘솔에서 간편 모드로 VCN(Virtual Cloud Network)을 생성하는 과정을 따라하기 방식으로 소개하며, 다음과 같은 목차로 구성됩니다.</p>
 
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/tools/030.jpg?classes=border,shadow" alt="" /></p>
+
+<div class="panel panel-primary"><div class="panel-body"><p><nav id="TableOfContents">
+<ul>
+<li><a href="#간편모드-vcn-생성">간편모드 VCN 생성</a>
+<ul>
+<li><a href="#compartment-준비">Compartment 준비</a></li>
+<li><a href="#vcn-프로비저닝">VCN 프로비저닝</a></li>
+<li><a href="#security-list에-secury-rule추가">Security List에 Secury Rule추가</a></li>
+</ul></li>
+<li><a href="#참고문서">참고문서</a></li>
+</ul>
+</nav></p>
+</div></div>
+
+
+<hr />
+
+<h1 id="간편모드-vcn-생성">간편모드 VCN 생성</h1>
+
+<p>이제 다음과 같은 VCN을 만들고 Security List에서 80포트를 오픈하는 설정하는  과정을 소개합니다.</p>
+
+<ul>
+<li>VCN이름: ds_vcn</li>
+<li>Compartemnt: taewan.kim</li>
+<li>Security List 생성
+
+<ul>
+<li>이름: custom_security_list</li>
+<li>공개 포트: 80</li>
+</ul></li>
+</ul>
+
+<h2 id="compartment-준비">Compartment 준비</h2>
+
+<p>VCN을 만들 때, VCN 자원을 관리할 Compartment가 필요합니다. 새로 만든 VCN에 할당할 Comppartment가 없는 상태라면 다음 문서를 참조하여 Compartment를 만드시기 바랍니다.</p>
+
+<p>현재 문서에서는 Compartment 명이 <font color="red"><strong>taewan.kim</strong></font>이라고 가정하고 진행합니다.</p>
+
+<ul>
+<li><a href="../how_to_sign_up_in_oci" target="_blank">Comparemtnt 추가 등록 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+</ul>
+
+<h2 id="vcn-프로비저닝">VCN 프로비저닝</h2>
+
+<p>OCI Console에 로그인한 다음에 VCN을 생성하기 위해서 다음과 같은 메뉴 패스로 이동합니다.</p>
+
+<p>
+<div class="panel panel-primary"><div class="panel-body"><span class="glyphicon glyphicon-menu-hamburger" style="font-size:medium" aria-hidden="true"></span> (<strong>OCI 콘솔 왼쪽 위 햄버그 버튼</strong>) <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span>  <strong>Networking</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> <strong>Virutla Cloud Network</strong></div></div>
+
+<img src="https://taewanmerepo.github.io/2020/ocidocs/vcn/020.jpg?classes=border,shadow" alt="" /></p>
+
+<hr />
+
+<p>Networking 페이지에서 <strong>&ldquo;Networking Quickstart&rdquo;</strong> 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vcn/030.jpg?classes=border,shadow" alt="" /></p>
+
+<hr />
+
+<p>위 페이지에서 <strong>&ldquo;Networking Quickstart&rdquo;</strong> 버튼을 클릭하면, &ldquo;<font color="red"><strong>VCN with Internet Connectivity</strong></font>&ldquo;를 선택하고 <font color="red"><strong>Start Workflow</strong></font> 버튼을 클릭합니다.
+<img src="https://taewanmerepo.github.io/2020/ocidocs/vcn/040.jpg?classes=border,shadow" alt="" /></p>
+
+<hr />
+
+<p>다음과 같이 2단계 VCN을 만드는 Workflow가 시작됩니다. Workflow 1단계에서 VCN 생성 정보를 다음과 같이 입력 합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>설정 항목</th>
+<th>설정 값</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>VCN name</td>
+<td>ds_vcn</td>
+</tr>
+
+<tr>
+<td>Compartment</td>
+<td>taewan.kim</td>
+</tr>
+
+<tr>
+<td>VCN CIDR BLOCK</td>
+<td>10.0.0.0/16</td>
+</tr>
+
+<tr>
+<td>Public Subnet CIDR BLOCK</td>
+<td>10.0.0.0/24</td>
+</tr>
+
+<tr>
+<td>Private Subnet CIDR BLOCK</td>
+<td>10.0.1.0/24</td>
+</tr>
+</tbody>
+</table>
+
+<p>그리고 &ldquo;<strong>Next</strong>&rdquo; 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vcn/050.jpg?classes=border,shadow" alt="" /></p>
+
+<hr />
+
+<p>Workflow 2단계에서는 앞에서 설정한 정보를 확인하고 이상이 없으면 &ldquo;<strong>Next</strong>&rdquo; 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vcn/060.jpg?classes=border,shadow" alt="" /></p>
+
+<hr />
+
+<p>앞에서 입력한 VCN 정보로 VCN을 구성하는 자원이 생성됩니다. 모든 자원이 정상적으로 생성되면 각 항목 상태 표시는 초록색으로 변경됩니다. 모든 항목이 초록색이 되면 &ldquo;<strong>View Virtual Cloud Network</strong>&rdquo; 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vcn/070.jpg?classes=border,shadow" alt="" /></p>
+
+<hr />
+
+<p>&ldquo;<strong>View Virtual Cloud Network</strong>&rdquo; 버튼을 클릭하면 지금 생성된 VCN(ds_vcn)의 상세 페이지로 이동합니다. 이 페이지에서 ds_vcn의 상세정보를 확인하고, 필요한 경우에 서브넷과 같은 관련 자원을 관리할 수 있습니다. ds_vcn에 Private_Subnet-ds_vcn과 Public_Subnet-ds_vcn 2개가 만들어 진것을 확인할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vcn/080.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="security-list에-secury-rule추가">Security List에 Secury Rule추가</h2>
+
+<p>앞에서 생성한 ds_vcn의 상세페이지에서 &ldquo;Security List&rdquo; 관리 페이지로 이동한 다음에 새로운 Security List를 만들고 80포트를 오픈하는 설정을 진행하겠습니다.</p>
+
+<p>ds_vcn 상세 페이지의 왼쪽 메뉴에서 &ldquo;<strong>Security List</strong>&ldquo;를 클릭하면, ds_vcn의 Security List 관리 페이지로 이동합니다. 이 페이지에서 &ldquo;<strong>create Security List</strong>&ldquo;를 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vcn/090.jpg?classes=border,shadow" alt="" /></p>
+
+<p>&ndash;</p>
+
+<p>Security List 추가 페이지에서 다음과 같이 Security List 이름과 할당 Compartment를 설정합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>설정항목</th>
+<th>설정 값</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Name</td>
+<td>Custom_Security_List</td>
+</tr>
+
+<tr>
+<td>Create In Compartment</td>
+<td>TAEWAN.KIM</td>
+</tr>
+</tbody>
+</table>
+
+<p>그리고 &ldquo;<strong>Allow Rules for Ingress</strong>&rdquo; 버튼을 클릭하고 새로운 Ingress 룰을 추가합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vcn/100.jpg?classes=border,shadow" alt="" /></p>
+
+<hr />
+
+<p>VCN 외부에서 80 포트로 유입되는 네트워크 연결을 허용하기 위하여 다음과 같은 <strong>Security Rule</strong>을 추가합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>설정 항목</th>
+<th>설정 값</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Source Type</td>
+<td>CIDR</td>
+</tr>
+
+<tr>
+<td>Source CIDR</td>
+<td>0.0.0.0/0</td>
+</tr>
+
+<tr>
+<td>IP Protocol</td>
+<td>TCP</td>
+</tr>
+
+<tr>
+<td>Source Port Range</td>
+<td>80</td>
+</tr>
+
+<tr>
+<td>Destination Port Range</td>
+<td>80</td>
+</tr>
+</tbody>
+</table>
+
+<p>설정이 완료되면 &ldquo;<strong>Create Security List</strong>&rdquo; 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vcn/120.jpg?classes=border,shadow" alt="" /></p>
+
+<hr />
+
+<p>&ldquo;<strong>Custom Security List</strong>&ldquo;이 정상적으로 등록되면 다음과 같은 화면이 출력됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vcn/130.jpg?classes=border,shadow" alt="" /></p>
+
+<p>지금까지 간편 모드로 VCN을 생성하고 Security List에 새로운 Security Rule을 등록하는 방법을 삺펴 보았습니다.</p>
+
+<h1 id="참고문서">참고문서</h1>
+
+<ul>
+<li><a href="https://docs.cloud.oracle.com/en-us/iaas/Content/Network/Tasks/quickstartnetworking.htm" target="_blank">[Official OCI Docs]Virtual Networking Quickstart <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+</ul>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/" title="ocistatus.oraclecloud.com"> <i class="fa fa-chevron-left"></i><label>ocistatus.oraclecloud.com</label></a>
-    <a class="nav nav-next" href="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/" title="OCI 비용 시뮬레이터" style="margin-right: 0px;"><label>OCI 비용 시뮬레이터</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/10_quickstart/vcn/" title="VCN(Virtual Cloud Network) 생성"> <i class="fa fa-chevron-left"></i><label>VCN(Virtual Cloud Network) 생성</label></a>
+    <a class="nav nav-next" href="/oci_docs/10_quickstart/vcn/manual_vcn/" title="메뉴얼 VCN 만들기" style="margin-right: 0px;"><label>메뉴얼 VCN 만들기</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -451,7 +656,7 @@ http://taewan.kim/img/icon/oracle.png
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/10_quickstart/vcn/simple_vcn/"></div>
   </div>
 
   </section>

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2020-02-14T21:23:59 KST">
-<title>CloudHarmondy: 네트웍 테스트 :: Oracle Cloud Infrastructure</title>
+<title>OCI Cloud Shell 사용하기 :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 
@@ -28,7 +28,7 @@ http://taewan.kim/img/icon/oracle.png
 
     
   </head>
-  <body data-url="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/">
+  <body data-url="/oci_docs/10_quickstart/cloudshell/">
     
       <header>
   <div class="logo">
@@ -62,7 +62,7 @@ http://taewan.kim/img/icon/oracle.png
 <article>
   <aside>
     <ul class="menu">
-    <li data-nav-id="/oci_docs/10_quickstart/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/10_quickstart/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/10_quickstart/">OCI 퀵 스타트</a>
@@ -90,7 +90,7 @@ http://taewan.kim/img/icon/oracle.png
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/oci_docs/10_quickstart/cloudshell/" class="dd-item">
+      <li data-nav-id="/oci_docs/10_quickstart/cloudshell/" class="dd-item active">
         <div>
           <a href="/oci_docs/10_quickstart/cloudshell/">
             OCI Cloud Shell 사용하기
@@ -235,7 +235,7 @@ http://taewan.kim/img/icon/oracle.png
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/99_oci_sites/" class="dd-item parent alwaysopen haschildren
+    <li data-nav-id="/oci_docs/99_oci_sites/" class="dd-item alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/99_oci_sites/">OCI 관련 문서 사이트</a>
@@ -256,7 +256,7 @@ http://taewan.kim/img/icon/oracle.png
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-    <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/" class="dd-item parent alwaysopen haschildren
+    <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/" class="dd-item alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/">클라우드 관련 유용한 서비스</a>
@@ -277,7 +277,7 @@ http://taewan.kim/img/icon/oracle.png
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/" class="dd-item active">
+      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/" class="dd-item">
         <div>
           <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/">
             CloudHarmondy: 네트웍 테스트
@@ -307,7 +307,7 @@ http://taewan.kim/img/icon/oracle.png
       <option value="/oci_docs/10_quickstart/terminologies/" >- OCI 기본 용어 정리</option>
       <option value="/oci_docs/10_quickstart/how_to_sign_up_oci/" >- OCI Free Tier 계정 등록</option>
       <option value="/oci_docs/10_quickstart/first_sign_in_oci/" >- Free Tier 계정 첫 번째 로그인</option>
-      <option value="/oci_docs/10_quickstart/cloudshell/" >- OCI Cloud Shell 사용하기</option>
+      <option value="/oci_docs/10_quickstart/cloudshell/"  selected>- OCI Cloud Shell 사용하기</option>
       <option value="/oci_docs/10_quickstart/create_compartment/" >- 컴파트먼트(Compartment) 추가</option>
     <option value="/oci_docs/10_quickstart/vcn/" >
   - 
@@ -365,7 +365,7 @@ http://taewan.kim/img/icon/oracle.png
    클라우드 관련 유용한 서비스</option> 
       <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/" >-- OCI 비용 시뮬레이터</option>
       <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/" >-- ocistatus.oraclecloud.com</option>
-      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/"  selected>-- CloudHarmondy: 네트웍 테스트</option>
+      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/" >-- CloudHarmondy: 네트웍 테스트</option>
   
   
 
@@ -390,49 +390,134 @@ http://taewan.kim/img/icon/oracle.png
       </div>
     
 
-    <h1>CloudHarmondy: 네트웍 테스트</h1>
+    <h1>OCI Cloud Shell 사용하기</h1>
     
     
     
-    <p>클라우드 서비스를 사용하다 보면 현재 위치에서 사용하는 클라우드 센터까지 네트워크 속도가 얼마나</p>
+    
 
-<p>&lsquo;<a href="https://cloudharmony.com/speedtest" target="_blank">CloudHarmony 서비스(https://cloudharmony.com) <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+<p>이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.</p>
 
-&rsquo;는 클라우드 서비스이 네트워크 속도 테스트 서비스를 제공합니다. 사용자 브라우저에서 지정한 클라우드 데이터센터까지 지정한 서비스의 업 링크, 다운로드 링크 속도를 측정할 수 있습니다.</p>
+<ul>
+<li><a href="./how_to_sign_up_in_oci/">OCI FREE TIER 계정 등록</a></li>
+<li><a href="./first_sign_in_oci/">Free Tier 계정 로그인</a></li>
+</ul>
 
-<div class="notices note" ><p><p><font color='red'><strong>CloudHarmony 서비스</strong></font>는 사용자 브라우저에서 지정한 클러우드 데이터센터까지 구간 속도를 측정합니다. <strong>CloudHarmony 서비스</strong> 결과는 사용자가 사용하는 컴퓨터와 네트워크 상태에 영향을 받습니다. 아래 그림은 핸드폰 테더링을 연결한 노트북에서 측정한 결과입니다.</p>
+<hr />
+
+<p>이 문서에는 다음과 같은 내용을 다룹니다.</p>
+
+<ul>
+<li>Cloud Shell이란?</li>
+<li>Cloud Shell 사용하기</li>
+</ul>
+
+<p>이번 문서는 다음과 같은 목차로 구성됩니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-body"><nav id="TableOfContents">
+<ul>
+<li><a href="#oci-cloud-shell이란">OCI Cloud Shell이란?</a></li>
+<li><a href="#oci-콘솔-언어-설정">OCI 콘솔 언어 설정</a></li>
+<li><a href="#현재-사용-중인-oci-사용자-정보-확인">현재 사용 중인 OCI 사용자 정보 확인</a></li>
+<li><a href="#oci-홈-리전-확인">OCI 홈 리전 확인</a></li>
+</ul>
+</nav>
+</div></div>
+
+
+<hr />
+
+<h1 id="oci-cloud-shell이란">OCI Cloud Shell이란?</h1>
+
+<p>OCI Cloud Shell이란 오라클 클라우드의 웸 관리 툴인 OCI Console에서 제공하는 브라우저 VM 터미널입니다. OCI Cloud Shell은</p>
+
+<p>OCI 콘솔 로그인 방법을 소개합니다. OCI 콘솔 로그인을 위해서는 사용할 다음과 같은 정보가 필요합니다.</p>
+
+<ul>
+<li>오라클 클라우드 계정(Account)</li>
+<li>사용자 이름</li>
+<li>비밀번호</li>
+</ul>
+
+<p>OCI 로그인에 필요한 정보는 <strong>OCI FREE TIER 계정 등록</strong>에서 다음과 같이 설정되었습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/620.jpg?classes=border,shadow" alt="" /></p>
+
+<p>OCI 콘솔 로그인을 위해서는 <a href="https://www.oracle.com" target="_blank">www.oracle.com <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+에서 다음과 같은 패스로 이동합니다.</p>
+
+<ul>
+<li><strong>View Account</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> <strong>Sign-in to Cloud</strong></li>
+</ul>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/630.jpg?classes=border,shadow" alt="" /></p>
+
+<p>Oracle Cloud Account에 클라우드 계정명(meetup101)을 입력합니다. 그리고 &ldquo;<strong>Next</strong>&rdquo; 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/640.jpg?classes=border,shadow" alt="" /></p>
+
+<p>다음 페이지에서 사용자 명과 비밀번호에 앞에서 등록한 Email과 패스워드를 입력합니다. 그리고 &ldquo;<strong>사인인(Sign-in)</strong>&rdquo; 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/650.jpg?classes=border,shadow" alt="" /></p>
+
+<p>정상적으로 로그인 정보가 인증되면 다음과 같이 OCI 콘솔로 이동합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/660.jpg?classes=border,shadow" alt="" /></p>
+
+<h1 id="oci-콘솔-언어-설정">OCI 콘솔 언어 설정</h1>
+
+<p>OCI 콘솔은 30개 언어를 지원합니다. OCI 콘솔의 지구본 아이콘을 클릭하여고 원하는 언어를 선택할 수 있습니다.</p>
+
+<h1 id="현재-사용-중인-oci-사용자-정보-확인">현재 사용 중인 OCI 사용자 정보 확인</h1>
+
+<div class="notices note" ><p><p>2020년 현재 오라클 클라우드의 공식 브랜드 명은 <strong>OCI(Oracle Cloud Infrastructure)</strong>입니다. 오라클 클라우드는 처음에 OPC(Oracle Public Cloud)라는 브랜드 명으로 시작했습니다. 오라클 클라우드 브랜드 명을 OPC로 사용하던 시기에 클라우드 인프라스트럭처 서비스는 두 가지로 제공되었습니다.</p>
+
+<p>처음에는 제공된 오라클 클라우드 인프라스트럭처 서비스는 Oracle Computing Cloud Service였습니다. 그리고 2세대 클라우드 기술로 OCI(Oracle Cloud Infrastructure)를 개발한 이후에 오라클 클라우드 인프라스트럭처 서비스는 OCI로 변경되었습니다. 그리고 2018년에 오라클 클래우드 브랜드 명을 OPC에서 OCI로 변경했습니다.</p>
+
+<p>따라서 OCI라는 이름이 때로은 Oracle Cloud의 브랜드 명으로 사용되기도 하고 때로는 Oracle Cloud의 인프라스트럭처 서비스명으로 사용되기도 합니다. 이 문서에서는 OCI는 Oracle Cloud의 인프라스트럭처 서비스명을 의미합니다.</p>
 </p></div>
 
 
-<p>다음 그림은 <a href="https://cloudharmony.com/speedtest" target="_blank">CloudHarmony 서비스 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+<p>OCI 콘솔 위 오른쪽 메뉴에서 사용자 아이콘을 클릭하면 다음 그림과 같이 사용자 프로파일이 출력됩니다. 사용자 프로파일로부터 다음 그림과 같은 정보를 확인할 수 있습니다.</p>
 
-에서 Oracle Cloud Infrastructure의 31개 서비스 테스트를 진행한 결과입니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/tools/010.jpg?classes=border,shadow" alt="" /></p>
-
-<p>아래 그림과 같이 <strong>CloudHarmony 서비스</strong>는 클라우드 프로바이더 데이터 센터와 서비스 유형을 선택할 수 있습니다. 또한 다음과 같은 속성을 지정할 수 있습니다.</p>
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/700.jpg?classes=border,shadow" alt="" /></p>
 
 <ul>
-<li>Uplink</li>
-<li>downlonk</li>
-<li>Latency</li>
-<li>DNS</li>
-<li>Protocol</li>
+<li>사용자 ID: oracleidentitycloudservice/oracle.testa1@gmail.com</li>
+<li>테넌시: meetup101</li>
 </ul>
 
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/tools/020.jpg?classes=border,shadow" alt="" /></p>
+<p>위 그림에서 사용자 ID(oracleidentitycloudservice/oracle.testa1@gmail.com)는 oracle cloud의 IDCS(IDentty Cloud Service)를 통해서 만들어지고 OCI에 Fedaration된 사용자 ID입니다. 여기서 Federation이란 통합된다는 의미입니다. 즉 IDCS에서 만들어진 사용자 ID가 OCI의 계정 관리 기능인 IAM에 적용된다는 의미입니다. 오라클 클라우드 사용자 ID 관리 방식에 대해서는 별도 문서로 정리하겠습니다. Oracle Cloud 계정 생성 과정에서 IDCS(IDentty Cloud Service)가 만든 사용자 ID는 다음과 같은 형식으로 OCI에 Fedaration됩니다.</p>
 
-<p>위 설정을 하고 네트워크 속도를 측정하면 다음과 같은 결과가 출력됩니다.</p>
+<ul>
+<li>oracleidentitycloudservice/&lt;등록 email&gt;</li>
+</ul>
 
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/tools/030.jpg?classes=border,shadow" alt="" /></p>
+<p>Oracle Cloud 계정 생성 과정에서 IDCS(IDentty Cloud Service)가 만든 사용자 ID는 Oracle Cloud 계정이 사용하는 모든 오라클 클라우드 서비스에 대하여 관리자 권한을 갖습니다.</p>
+
+<p>사용자 프로파일에서는 테넌시 명이 출력됩니다. 오라클 클라우드 계정명(Account)과 Tenancy(테넌시)는 같은 의미로 사용됩니다. 위 메뉴에서 사용자 ID를 클릭하면 사용자 ID 상세 페이지로 이동합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/710.jpg?classes=border,shadow" alt="" /></p>
+
+<h1 id="oci-홈-리전-확인">OCI 홈 리전 확인</h1>
+
+<p>OCI 콘솔 위 오른쪽 메뉴에서 현재 오라클 클라우드 계정(Tenancy)이 사용 중인 리전을 확인할 수 있습니다. 현재 사용 중인 리전을 클릭하면, Oracle Cloud 계정에 설정된 홈 리전 정보가  출력됩니다. OCI 홈 리전은 OCI Free Tier 계정을 생성할 때 설정한 정보입니다. Oracle Cloud 계정이 사용하는 홈 리전은 변경할 수 없습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/680.jpg?classes=border,shadow" alt="" /></p>
+
+<p>그리고 홈 리전 아래 &ldquo;영역 관리(Region managment)&ldquo;메뉴를 클릭하면 아래와 같은 리전 관리 페이지로 이동합니다. 리전 관리 페이지에서 새로운 리전을 구독하고 해당 리전으로 이동할 수 있습니다. OCI Free Tier 계정은 홈 리전만을 사용하는 제약이 있습니다. 홈 리전 이외의 리전을 구독하고 이동하는 것을 제한하고 있습니다. 이 제한을 풀고자 한다면, 오라클 클라우드에 SR(Service Request)을 요청해야 합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/690.jpg?classes=border,shadow" alt="" /></p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/" title="ocistatus.oraclecloud.com"> <i class="fa fa-chevron-left"></i><label>ocistatus.oraclecloud.com</label></a>
-    <a class="nav nav-next" href="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/" title="OCI 비용 시뮬레이터" style="margin-right: 0px;"><label>OCI 비용 시뮬레이터</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/10_quickstart/first_sign_in_oci/" title="Free Tier 계정 첫 번째 로그인"> <i class="fa fa-chevron-left"></i><label>Free Tier 계정 첫 번째 로그인</label></a>
+    <a class="nav nav-next" href="/oci_docs/10_quickstart/create_compartment/" title="컴파트먼트(Compartment) 추가" style="margin-right: 0px;"><label>컴파트먼트(Compartment) 추가</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -451,7 +536,7 @@ http://taewan.kim/img/icon/oracle.png
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/10_quickstart/cloudshell/"></div>
   </div>
 
   </section>
