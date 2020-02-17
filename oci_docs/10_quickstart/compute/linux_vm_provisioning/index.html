@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2020-02-17T21:14:03 KST">
-<title>OCI 비용 시뮬레이터 :: Oracle Cloud Infrastructure</title>
+<title>Oracle Linux VM 인스턴스 생성 :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 
@@ -28,7 +28,7 @@ http://taewan.kim/img/icon/oracle.png
 
     
   </head>
-  <body data-url="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/">
+  <body data-url="/oci_docs/10_quickstart/compute/linux_vm_provisioning/">
     
       <header>
   <div class="logo">
@@ -62,7 +62,7 @@ http://taewan.kim/img/icon/oracle.png
 <article>
   <aside>
     <ul class="menu">
-    <li data-nav-id="/oci_docs/10_quickstart/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/10_quickstart/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/10_quickstart/">OCI 퀵 스타트</a>
@@ -127,14 +127,14 @@ http://taewan.kim/img/icon/oracle.png
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/10_quickstart/compute/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/10_quickstart/compute/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/10_quickstart/compute/">VM 인스턴스 프로비저닝</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/oci_docs/10_quickstart/compute/linux_vm_provisioning/" class="dd-item">
+      <li data-nav-id="/oci_docs/10_quickstart/compute/linux_vm_provisioning/" class="dd-item active">
         <div>
           <a href="/oci_docs/10_quickstart/compute/linux_vm_provisioning/">
             Oracle Linux VM 인스턴스 생성
@@ -263,7 +263,7 @@ http://taewan.kim/img/icon/oracle.png
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/99_oci_sites/" class="dd-item parent alwaysopen haschildren
+    <li data-nav-id="/oci_docs/99_oci_sites/" class="dd-item alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/99_oci_sites/">OCI 관련 문서 사이트</a>
@@ -284,14 +284,14 @@ http://taewan.kim/img/icon/oracle.png
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-    <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/" class="dd-item parent alwaysopen haschildren
+    <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/" class="dd-item alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/">클라우드 관련 유용한 서비스</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/" class="dd-item active">
+      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/" class="dd-item">
         <div>
           <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/">
             OCI 비용 시뮬레이터
@@ -346,7 +346,7 @@ http://taewan.kim/img/icon/oracle.png
     <option value="/oci_docs/10_quickstart/compute/" >
   - 
    VM 인스턴스 프로비저닝</option> 
-      <option value="/oci_docs/10_quickstart/compute/linux_vm_provisioning/" >-- Oracle Linux VM 인스턴스 생성</option>
+      <option value="/oci_docs/10_quickstart/compute/linux_vm_provisioning/"  selected>-- Oracle Linux VM 인스턴스 생성</option>
   
   
     <option value="/oci_docs/20_identity_and_access_management/" >
@@ -404,7 +404,7 @@ http://taewan.kim/img/icon/oracle.png
     <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/" >
   - 
    클라우드 관련 유용한 서비스</option> 
-      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/"  selected>-- OCI 비용 시뮬레이터</option>
+      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/" >-- OCI 비용 시뮬레이터</option>
       <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/" >-- ocistatus.oraclecloud.com</option>
       <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/" >-- CloudHarmondy: 네트웍 테스트</option>
   
@@ -431,33 +431,142 @@ http://taewan.kim/img/icon/oracle.png
       </div>
     
 
-    <h1>OCI 비용 시뮬레이터</h1>
+    <h1>Oracle Linux VM 인스턴스 생성</h1>
     
     
     
-    <p>오라클 홈페이지에서는 Oracle Cloud Infrastructure(OCI) 서비스 비용 계산 툴을 제공합니다. 이 서비스를 이용하여 OCI 서비스 사용 금액을 계산해 볼수 있습니다. OCI 서비스 별로 주요 과금 기준과 입력 항목을 제공하기 때문에 서비스 별로 고려해야 하는 항목을 간편하고 고려할 수 있습니다.</p>
+    
+
+<p>이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.</p>
 
 <ul>
-<li><a href="https://www.oracle.com/cloud/cost-estimator.html" target="_blank">OCI 비용 계산기: https://www.oracle.com/cloud/cost-estimator.html <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
-
-</li>
+<li><a href="./how_to_sign_up_in_oci/">OCI FREE TIER 계정 등록</a></li>
+<li><a href="./first_sign_in_oci/">Free Tier 계정 로그인</a></li>
 </ul>
-
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/cost/010.jpg?classes=border,shadow" alt="" /></p>
 
 <hr />
 
-<p>관련 OCI 서비스를 선택하면, 해당 서비스의 사용 금액을 결정짓는 주요 인자가 출력됩니다. 이 주요 인자 조정을 통해서 실제 서비스 이용 금액을 예측할 수 있습니다.</p>
+<p>이번 문서에서는 OCI 콘솔에서 OCI Linux VM 인스턴스를 생성하는 절차를 소개합니다. OCI Linux VM 인스턴스 생성 문서는 다음과 같은 목차로 진행 됩니다.</p>
 
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/cost/020.jpg?classes=border,shadow" alt="" /></p>
+
+<div class="panel panel-primary"><div class="panel-body"><p><nav id="TableOfContents">
+<ul>
+<li><a href="#1-사전-준비">1. 사전 준비</a>
+<ul>
+<li><a href="#1-1-oci-자원-준비">1.1 OCI 자원 준비</a></li>
+<li><a href="#1-2-준비-파일">1.2 준비 파일</a></li>
+</ul></li>
+<li><a href="#2-oci-linux-vm-인스턴스-생성">2. OCI Linux VM 인스턴스 생성</a></li>
+<li><a href="#참고문서">참고문서</a></li>
+</ul>
+</nav></p>
+</div></div>
+
+
+<hr />
+
+<h1 id="1-사전-준비">1. 사전 준비</h1>
+
+<p>OCI Linux VM 인스턴스를 생성 문서는 다음과 같은 자원과 파일이 이미 만들어져 있다는 것을 가정하고 진행합니다.</p>
+
+<h2 id="1-1-oci-자원-준비">1.1 OCI 자원 준비</h2>
+
+<p>다음 자원이 없다면 &ldquo;<strong>자원 생성 참조 문서</strong>&ldquo;를 참조하여 해당 자원을 생성하시기 바랍니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>자원 유형</th>
+<th>자원 이름</th>
+<th>소속 Compartment</th>
+<th>추가 설명</th>
+<th>자원 생성 참조 문서</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Compartment</td>
+<td>sanbox</td>
+<td>root &gt; sandbox</td>
+<td>.</td>
+<td><a href="../../create_compartment/" target="_blank">Compartment 추가 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</td>
+</tr>
+
+<tr>
+<td>VCN</td>
+<td>demo_vcn</td>
+<td>root &gt; sandbox</td>
+<td>80포트를 공개하는 Custom_Security_List를 포함할 것</td>
+<td><a href="../../vcn/simple_vcn/" target="_blank">간편 VCN 만들기 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="1-2-준비-파일">1.2 준비 파일</h2>
+
+<p>OCI Linux VM 인스턴스을 생성하기 위해서는 SSH 접속에 사용할 공개키 등록해야 합니다. 다음과 같은 RSA 공개키를 준비해야 합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>파일 유형</th>
+<th>파일명</th>
+<th>파일 생성 참조 문서</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Key Paring RSA 공개키</td>
+<td>id_rsa.pub</td>
+<td><a href="/98_misc_tips/ssh_key_pairs/" target="_blank">운영체제별 SSH Key Pair 준비 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="2-oci-linux-vm-인스턴스-생성">2. OCI Linux VM 인스턴스 생성</h1>
+
+<p>OCI Linux VM은 다음과 같은 절차로 진행합니다.</p>
+
+<ol>
+<li>Oralce Linxu 7.7 이미지로 VM 생성</li>
+<li>SSH 접속</li>
+<li>80 포트 방화벽 오픈</li>
+<li>웹 서버 설치</li>
+<li>브라우저 접속</li>
+<li>Block Storage 추가</li>
+<li>Oracle Linux VM 제거</li>
+</ol>
+
+<p>사전 준비 사항인 Compartment와 VCN을 만들었고 다음과 같이 id_rsa.pub 파일을 생성했다고 가정하고 진행하겠습니다.</p>
+
+<pre><code>~ &gt; cat id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGY37KCYmS7bE72rHskoiwEGoG6xK1+fgDKKXccYdZS24VuxXYsi4b6YC3yCFPxIgvNGankDas0Vf80YuMi3cPwM+/UamM14FC3N/57CJcsXi1+fv24K9LtIpby2wkSenxMAwMnhoMzMWyDxr2rWvqOz30rbDrw8cc2G5l7aZ/5tMQFj3SRk/bRSOrrBxZ/gDMhLKhvAxQ/B0cFVNicDPg2kD7ghpZDdBVoZHiuKihlv+ycsEp/CjHBvUJFKBqQ3fkaJtcBjYXNgASv0TCaP4Kh02KrwiwU9seg53TbqPvS/NIA8Jj6jew4FLvdrn6JOOxhNIaP8ry2ukna3r2m2C/ taewan@taewanui-MacBook-Pro.local
+ ~ &gt;
+</code></pre>
+
+<h1 id="참고문서">참고문서</h1>
+
+<ul>
+<li><a href="https://docs.cloud.oracle.com/en-us/iaas/Content/Network/Tasks/quickstartnetworking.htm" target="_blank">[Official OCI Docs] Virtual Networking Quickstart <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+</ul>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/99_oci_sites/useful_sites_for_oci/" title="클라우드 관련 유용한 서비스"> <i class="fa fa-chevron-left"></i><label>클라우드 관련 유용한 서비스</label></a>
-    <a class="nav nav-next" href="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/" title="ocistatus.oraclecloud.com" style="margin-right: 0px;"><label>ocistatus.oraclecloud.com</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/10_quickstart/compute/" title="VM 인스턴스 프로비저닝"> <i class="fa fa-chevron-left"></i><label>VM 인스턴스 프로비저닝</label></a>
+    <a class="nav nav-next" href="/oci_docs/20_identity_and_access_management/" title="OCI 사용자 및 권한 관리" style="margin-right: 0px;"><label>OCI 사용자 및 권한 관리</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -476,7 +585,7 @@ http://taewan.kim/img/icon/oracle.png
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/10_quickstart/compute/linux_vm_provisioning/"></div>
   </div>
 
   </section>

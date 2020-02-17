@@ -5,8 +5,8 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-02-14T23:30:34 KST">
-<title>OCI Python SDK 설치 :: Oracle Cloud Infrastructure</title>
+<meta name="revised" content="2020-02-17T21:14:03 KST">
+<title>VM 인스턴스 프로비저닝 :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 
@@ -28,7 +28,7 @@ http://taewan.kim/img/icon/oracle.png
 
     
   </head>
-  <body data-url="/oci_docs/80_dev_tools/sdk/python_sdk/installation/">
+  <body data-url="/oci_docs/10_quickstart/compute/">
     
       <header>
   <div class="logo">
@@ -62,7 +62,7 @@ http://taewan.kim/img/icon/oracle.png
 <article>
   <aside>
     <ul class="menu">
-    <li data-nav-id="/oci_docs/10_quickstart/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/10_quickstart/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/10_quickstart/">OCI 퀵 스타트</a>
@@ -100,7 +100,7 @@ http://taewan.kim/img/icon/oracle.png
       <li data-nav-id="/oci_docs/10_quickstart/create_compartment/" class="dd-item">
         <div>
           <a href="/oci_docs/10_quickstart/create_compartment/">
-            컴파트먼트(Compartment) 추가
+            Compartment 추가
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -127,6 +127,22 @@ http://taewan.kim/img/icon/oracle.png
     </li>
         </ul>
     </li>
+    <li data-nav-id="/oci_docs/10_quickstart/compute/" class="dd-item parent active alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/compute/">VM 인스턴스 프로비저닝</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/compute/linux_vm_provisioning/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/compute/linux_vm_provisioning/">
+            Oracle Linux VM 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
         </ul>
     </li>
     <li data-nav-id="/oci_docs/20_identity_and_access_management/" class="dd-item alwaysopen
@@ -142,10 +158,16 @@ http://taewan.kim/img/icon/oracle.png
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+    <li data-nav-id="/oci_docs/60_solutions/data_flow/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/60_solutions/data_flow/">OCI Data Flow</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
     <li data-nav-id="/oci_docs/60_solutions/functions/" class="dd-item alwaysopen
         ">
       <div>
-      <a href="/oci_docs/60_solutions/functions/">Oracle Functions</a><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/60_solutions/functions/">OCI Functions</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
     <li data-nav-id="/oci_docs/60_solutions/data_catalog/" class="dd-item alwaysopen haschildren
@@ -166,42 +188,42 @@ http://taewan.kim/img/icon/oracle.png
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/80_dev_tools/" class="dd-item parent alwaysopen haschildren
+    <li data-nav-id="/oci_docs/80_oci_tools/" class="dd-item alwaysopen haschildren
         ">
       <div>
-      <a href="/oci_docs/80_dev_tools/">OCI REST API 인터페이스</a>
+      <a href="/oci_docs/80_oci_tools/">OCI 도구(Tool)</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/oci_docs/80_dev_tools/cloud_shell/" class="dd-item alwaysopen
+    <li data-nav-id="/oci_docs/80_oci_tools/cloud_shell/" class="dd-item alwaysopen
         ">
       <div>
-      <a href="/oci_docs/80_dev_tools/cloud_shell/">OCI REST API 인터페이스</a><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/80_oci_tools/cloud_shell/">OCI Cloud Shell</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/oci_docs/80_dev_tools/oci_rest_api/" class="dd-item alwaysopen
+    <li data-nav-id="/oci_docs/80_oci_tools/oci_rest_api/" class="dd-item alwaysopen
         ">
       <div>
-      <a href="/oci_docs/80_dev_tools/oci_rest_api/">OCI REST API 인터페이스</a><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/80_oci_tools/oci_rest_api/">OCI REST API</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/oci_docs/80_dev_tools/sdk/" class="dd-item parent alwaysopen haschildren
+    <li data-nav-id="/oci_docs/80_oci_tools/sdk/" class="dd-item alwaysopen haschildren
         ">
       <div>
-      <a href="/oci_docs/80_dev_tools/sdk/">OCI SDK</a>
+      <a href="/oci_docs/80_oci_tools/sdk/">OCI SDK</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/oci_docs/80_dev_tools/sdk/python_sdk/" class="dd-item parent alwaysopen haschildren
+    <li data-nav-id="/oci_docs/80_oci_tools/sdk/python_sdk/" class="dd-item alwaysopen haschildren
         ">
       <div>
-      <a href="/oci_docs/80_dev_tools/sdk/python_sdk/">OCI Python SDK</a>
+      <a href="/oci_docs/80_oci_tools/sdk/python_sdk/">OCI Python SDK</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/oci_docs/80_dev_tools/sdk/python_sdk/installation/" class="dd-item active">
+      <li data-nav-id="/oci_docs/80_oci_tools/sdk/python_sdk/installation/" class="dd-item">
         <div>
-          <a href="/oci_docs/80_dev_tools/sdk/python_sdk/installation/">
+          <a href="/oci_docs/80_oci_tools/sdk/python_sdk/installation/">
             OCI Python SDK 설치
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
@@ -209,6 +231,12 @@ http://taewan.kim/img/icon/oracle.png
         </ul>
     </li>
         </ul>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/external_useful_tools/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/external_useful_tools/">OCI에 유용한 써드파티 툴</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
     </li>
         </ul>
     </li>
@@ -308,12 +336,17 @@ http://taewan.kim/img/icon/oracle.png
       <option value="/oci_docs/10_quickstart/how_to_sign_up_oci/" >- OCI Free Tier 계정 등록</option>
       <option value="/oci_docs/10_quickstart/first_sign_in_oci/" >- Free Tier 계정 첫 번째 로그인</option>
       <option value="/oci_docs/10_quickstart/cloudshell/" >- OCI Cloud Shell 사용하기</option>
-      <option value="/oci_docs/10_quickstart/create_compartment/" >- 컴파트먼트(Compartment) 추가</option>
+      <option value="/oci_docs/10_quickstart/create_compartment/" >- Compartment 추가</option>
     <option value="/oci_docs/10_quickstart/vcn/" >
   - 
    VCN(Virtual Cloud Network) 생성</option> 
       <option value="/oci_docs/10_quickstart/vcn/simple_vcn/" >-- 간편 VCN 만들기</option>
       <option value="/oci_docs/10_quickstart/vcn/manual_vcn/" >-- 메뉴얼 VCN 만들기</option>
+  
+    <option value="/oci_docs/10_quickstart/compute/"  selected>
+  - 
+   VM 인스턴스 프로비저닝</option> 
+      <option value="/oci_docs/10_quickstart/compute/linux_vm_provisioning/" >-- Oracle Linux VM 인스턴스 생성</option>
   
   
     <option value="/oci_docs/20_identity_and_access_management/" >
@@ -321,9 +354,13 @@ http://taewan.kim/img/icon/oracle.png
   
     <option value="/oci_docs/60_solutions/" >
    OCI Services</option> 
+    <option value="/oci_docs/60_solutions/data_flow/" >
+  - 
+   OCI Data Flow</option> 
+  
     <option value="/oci_docs/60_solutions/functions/" >
   - 
-   Oracle Functions</option> 
+   OCI Functions</option> 
   
     <option value="/oci_docs/60_solutions/data_catalog/" >
   - 
@@ -331,24 +368,28 @@ http://taewan.kim/img/icon/oracle.png
       <option value="/oci_docs/60_solutions/data_catalog/glossary/" >-- 용어정리</option>
   
   
-    <option value="/oci_docs/80_dev_tools/" >
-   OCI REST API 인터페이스</option> 
-    <option value="/oci_docs/80_dev_tools/cloud_shell/" >
+    <option value="/oci_docs/80_oci_tools/" >
+   OCI 도구(Tool)</option> 
+    <option value="/oci_docs/80_oci_tools/cloud_shell/" >
   - 
-   OCI REST API 인터페이스</option> 
+   OCI Cloud Shell</option> 
   
-    <option value="/oci_docs/80_dev_tools/oci_rest_api/" >
+    <option value="/oci_docs/80_oci_tools/oci_rest_api/" >
   - 
-   OCI REST API 인터페이스</option> 
+   OCI REST API</option> 
   
-    <option value="/oci_docs/80_dev_tools/sdk/" >
+    <option value="/oci_docs/80_oci_tools/sdk/" >
   - 
    OCI SDK</option> 
-    <option value="/oci_docs/80_dev_tools/sdk/python_sdk/" >
+    <option value="/oci_docs/80_oci_tools/sdk/python_sdk/" >
   -- 
    OCI Python SDK</option> 
-      <option value="/oci_docs/80_dev_tools/sdk/python_sdk/installation/"  selected>--- OCI Python SDK 설치</option>
+      <option value="/oci_docs/80_oci_tools/sdk/python_sdk/installation/" >--- OCI Python SDK 설치</option>
   
+  
+    <option value="/oci_docs/80_oci_tools/external_useful_tools/" >
+  - 
+   OCI에 유용한 써드파티 툴</option> 
   
   
     <option value="/oci_docs/98_misc_tips/" >
@@ -390,55 +431,32 @@ http://taewan.kim/img/icon/oracle.png
       </div>
     
 
-    <h1>OCI Python SDK 설치</h1>
-    
+    <h1>VM 인스턴스 프로비저닝</h1>
     
     
     
 
-<p>Oracle Cloud Infrastructure가 제공하는 OCI REST API를 파이썬 랩핑 SDK인 OCI Python SDK를 설치하는 방법을 소개합니다.</p>
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vm/000.png?width=900" alt="" /></p>
 
 <hr />
 
-<p>이번 문서는 다음과 같은 목차로 구성됩니다.</p>
-
-
-<div class="panel panel-primary"><div class="panel-body"><nav id="TableOfContents">
-<ul>
-<li><a href="#oci-python-sdk-설치-사전-준비할-사항">OCI Python SDK 설치 사전 준비할 사항</a></li>
-</ul>
-</nav>
-</div></div>
-
-
-<hr />
-
-<h1 id="oci-python-sdk-설치-사전-준비할-사항">OCI Python SDK 설치 사전 준비할 사항</h1>
-
-<p>OCI Python SDK를 설치하기 위해서는 다음과 같은 사항이 선행되어야 합니다.</p>
+<p>OCI에 Compute VM(Virtual Machine)을 프로비저닝하는 절차를 유형별로 소개합니다. 다음과 같은 유형의 VM 인스턴스 생성 절차를 다룰것 입니다.</p>
 
 <ul>
-<li>Python 3.5 혹은 3.6 설치 및 사용</li>
-<li>OpenSSL 버전 1.0.1 이후 버전 설치</li>
-<li>Cryptography.io 라이브러리
-
-<ul>
-<li>OpenSSL의 필수 라이브러리</li>
-</ul></li>
+<li>Oracle Linux 7.7 인스턴스 프로비저닝</li>
+<li>Window VM 프로비저닝</li>
+<li>Developer Image로 인스턴스 프로비저닝</li>
+<li>GPU Image 인스턴스 프로비저닝</li>
 </ul>
 
-<p>리눅스와 맥에서 다음과 같이 <strong>openssl version</strong> 명령으로 설치된 버전을 확인할 수 있습니다.
-<img src="https://taewanmerepo.github.io/2020/ocidocs/pythonsdk/010.jpg?classes=border,shadow" alt="" /></p>
-
-<p>OpenSSL version 1.0.1 or later. The Python SDK uses the Cryptography.io library which requires OpenSSL. For details on all Cryptography.io prerequisites, see Cryptography.io Installation.</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/80_dev_tools/sdk/python_sdk/" title="OCI Python SDK"> <i class="fa fa-chevron-left"></i><label>OCI Python SDK</label></a>
-    <a class="nav nav-next" href="/oci_docs/98_misc_tips/" title="OCI 알아두면 유용한 팁" style="margin-right: 0px;"><label>OCI 알아두면 유용한 팁</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/10_quickstart/vcn/manual_vcn/" title="메뉴얼 VCN 만들기"> <i class="fa fa-chevron-left"></i><label>메뉴얼 VCN 만들기</label></a>
+    <a class="nav nav-next" href="/oci_docs/10_quickstart/compute/linux_vm_provisioning/" title="Oracle Linux VM 인스턴스 생성" style="margin-right: 0px;"><label>Oracle Linux VM 인스턴스 생성</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -457,7 +475,7 @@ http://taewan.kim/img/icon/oracle.png
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/80_dev_tools/sdk/python_sdk/installation/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/10_quickstart/compute/"></div>
   </div>
 
   </section>

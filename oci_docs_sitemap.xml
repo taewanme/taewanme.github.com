@@ -3,11 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/oci_docs/80_dev_tools/sdk/python_sdk/</loc>
+    <loc>/oci_docs/80_oci_tools/cloud_shell/</loc>
   </url>
   
   <url>
-    <loc>/oci_docs/80_dev_tools/sdk/python_sdk/installation/</loc>
+    <loc>/oci_docs/60_solutions/data_flow/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/60_solutions/functions/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/80_oci_tools/sdk/python_sdk/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/80_oci_tools/sdk/python_sdk/installation/</loc>
   </url>
   
   <url>
@@ -27,7 +39,7 @@
   </url>
   
   <url>
-    <loc>/oci_docs/60_solutions/functions/</loc>
+    <loc>/oci_docs/10_quickstart/compute/linux_vm_provisioning/</loc>
   </url>
   
   <url>
@@ -95,19 +107,23 @@
   </url>
   
   <url>
-    <loc>/oci_docs/80_dev_tools/</loc>
+    <loc>/oci_docs/10_quickstart/compute/</loc>
   </url>
   
   <url>
-    <loc>/oci_docs/80_dev_tools/cloud_shell/</loc>
+    <loc>/oci_docs/80_oci_tools/oci_rest_api/</loc>
   </url>
   
   <url>
-    <loc>/oci_docs/80_dev_tools/oci_rest_api/</loc>
+    <loc>/oci_docs/80_oci_tools/sdk/</loc>
   </url>
   
   <url>
-    <loc>/oci_docs/80_dev_tools/sdk/</loc>
+    <loc>/oci_docs/80_oci_tools/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/80_oci_tools/external_useful_tools/</loc>
   </url>
   
   <url>

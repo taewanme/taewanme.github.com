@@ -12,10 +12,10 @@
     
     <item>
       <title>OCI Python SDK 설치</title>
-      <link>/oci_docs/80_dev_tools/sdk/python_sdk/installation/</link>
+      <link>/oci_docs/80_oci_tools/sdk/python_sdk/installation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/oci_docs/80_dev_tools/sdk/python_sdk/installation/</guid>
+      <guid>/oci_docs/80_oci_tools/sdk/python_sdk/installation/</guid>
       <description>Oracle Cloud Infrastructure가 제공하는 OCI REST API를 파이썬 랩핑 SDK인 OCI Python SDK를 설치하는 방법을 소개합니다.
 이번 문서는 다음과 같은 목차로 구성됩니다.
  OCI Python SDK 설치 사전 준비할 사항    OCI Python SDK 설치 사전 준비할 사항 OCI Python SDK를 설치하기 위해서는 다음과 같은 사항이 선행되어야 합니다.
@@ -55,14 +55,25 @@
     </item>
     
     <item>
+      <title>Oracle Linux VM 인스턴스 생성</title>
+      <link>/oci_docs/10_quickstart/compute/linux_vm_provisioning/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/oci_docs/10_quickstart/compute/linux_vm_provisioning/</guid>
+      <description>이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.
+ OCI FREE TIER 계정 등록 Free Tier 계정 로그인  이번 문서에서는 OCI 콘솔에서 OCI Linux VM 인스턴스를 생성하는 절차를 소개합니다. OCI Linux VM 인스턴스 생성 문서는 다음과 같은 목차로 진행 됩니다.
+ 1. 사전 준비  1.1 OCI 자원 준비 1.</description>
+    </item>
+    
+    <item>
       <title>간편 VCN 만들기</title>
       <link>/oci_docs/10_quickstart/vcn/simple_vcn/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/oci_docs/10_quickstart/vcn/simple_vcn/</guid>
-      <description>이번 문서의 내용을 실습하기 위해서는 오라클 클라우드 Free Tier 계정이 필요합니다. 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만드시기 바랍니다.
- OCI FREE TIER 계정 등록     이번 문서에서는 OCI 콘솔에서 간편 모드로 VCN(Virtual Cloud Network)을 생성하고 외부에서 80 포트 접근을 허용하는 Security Rule을 설정하는 방법을 소개합니다. 다음과 같은 목차로 진행됩니다.
- 간편모드 VCN 생성  Compartment 준비 VCN 프로비저닝 Security List에 Secury Rule추가  참고문서</description>
+      <description>이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.
+ OCI FREE TIER 계정 등록 Free Tier 계정 로그인  이번 문서에서는 OCI 콘솔에서 간편 모드로 VCN(Virtual Cloud Network)을 생성하고 외부에서 80 포트 접근을 허용하는 Security Rule을 설정하는 방법을 소개합니다. 다음과 같은 목차로 진행됩니다.
+ 1. 간편모드 VCN 생성  1.</description>
     </item>
     
     <item>
@@ -171,20 +182,17 @@ CloudHarmony 서비스는 사용자 브라우저에서 지정한 클러우드 �
       
       <guid>/oci_docs/10_quickstart/cloudshell/</guid>
       <description>이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.
- OCI FREE TIER 계정 등록 Free Tier 계정 로그인  이 문서에는 다음과 같은 내용을 다룹니다.
- Cloud Shell이란? Cloud Shell 사용하기  이번 문서는 다음과 같은 목차로 구성됩니다.
- OCI Cloud Shell이란? OCI 콘솔 언어 설정 현재 사용 중인 OCI 사용자 정보 확인 OCI 홈 리전 확인    OCI Cloud Shell이란?</description>
+ OCI FREE TIER 계정 등록 Free Tier 계정 로그인  작성중</description>
     </item>
     
     <item>
-      <title>컴파트먼트(Compartment) 추가</title>
+      <title>Compartment 추가</title>
       <link>/oci_docs/10_quickstart/create_compartment/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/oci_docs/10_quickstart/create_compartment/</guid>
-      <description>이번 문서는 오라클 클라우드 Free Tier 계정이 생성된 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 진행하시기 바랍니다.
- OCI FREE TIER 계정 등록  OCI 사용자가 OCI에서 만드는 대부분의 자원을 생성할 때, 자원을 논리적으로 묶는 컴파트먼트를 지정해야 합니다. Compartment를 통해서 논리적으로 묶인 자원은 모니터링하고 과금하고 청구하고 접근 권한을 설정할 수 있습니다.
-이번 문서에서는 OCI 콘솔에서 컴파트먼트를 등록하는 과정을 소개하며 다음과 같은 목차로 구성됩니다.</description>
+      <description>이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.
+ OCI FREE TIER 계정 등록 Free Tier 계정 로그인  OCI에서 자원(VCN, VM, Database, Storage 및 여러 서비스)을 만들 때, Compartment는 필수 설정 항목입니다. Compartment는 OCI 자원을 논리적으로 묶는 역할을 담당합니다. 다양한 OCI 자원의 논리 그룹을 Compartment로 만들고 이 단위로 자원 모니터링, 과금 및 권한을 설정 합니다.</description>
     </item>
     
   </channel>
