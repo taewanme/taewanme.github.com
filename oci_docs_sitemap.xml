@@ -15,6 +15,10 @@
   </url>
   
   <url>
+    <loc>/oci_docs/10_quickstart/compute/basic_linux_vm/</loc>
+  </url>
+  
+  <url>
     <loc>/oci_docs/80_oci_tools/sdk/python_sdk/</loc>
   </url>
   
@@ -39,7 +43,7 @@
   </url>
   
   <url>
-    <loc>/oci_docs/10_quickstart/compute/linux_vm_provisioning/</loc>
+    <loc>/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/</loc>
   </url>
   
   <url>

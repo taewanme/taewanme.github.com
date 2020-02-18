@@ -56,10 +56,10 @@
     
     <item>
       <title>Oracle Linux VM 인스턴스 생성</title>
-      <link>/oci_docs/10_quickstart/compute/linux_vm_provisioning/</link>
+      <link>/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/oci_docs/10_quickstart/compute/linux_vm_provisioning/</guid>
+      <guid>/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/</guid>
       <description>이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.
  OCI FREE TIER 계정 등록 Free Tier 계정 로그인  이번 문서에서는 OCI 콘솔에서 OCI Linux VM 인스턴스를 생성하는 절차를 소개합니다. OCI Linux VM 인스턴스 생성 문서는 다음과 같은 목차로 진행 됩니다.
  1. 사전 준비  1.1 OCI 자원 준비 1.</description>

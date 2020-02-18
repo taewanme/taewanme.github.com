@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-02-17T21:14:03 KST">
+<meta name="revised" content="2020-02-18T16:59:37 KST">
 <title>Oracle Linux VM 인스턴스 생성 :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
@@ -28,7 +28,7 @@ http://taewan.kim/img/icon/oracle.png
 
     
   </head>
-  <body data-url="/oci_docs/10_quickstart/compute/linux_vm_provisioning/">
+  <body data-url="/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/">
     
       <header>
   <div class="logo">
@@ -134,12 +134,21 @@ http://taewan.kim/img/icon/oracle.png
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/oci_docs/10_quickstart/compute/linux_vm_provisioning/" class="dd-item active">
+    <li data-nav-id="/oci_docs/10_quickstart/compute/basic_linux_vm/" class="dd-item parent alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/compute/basic_linux_vm/">OCI Linux VM 프로비저닝</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/" class="dd-item active">
         <div>
-          <a href="/oci_docs/10_quickstart/compute/linux_vm_provisioning/">
+          <a href="/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/">
             Oracle Linux VM 인스턴스 생성
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -346,7 +355,11 @@ http://taewan.kim/img/icon/oracle.png
     <option value="/oci_docs/10_quickstart/compute/" >
   - 
    VM 인스턴스 프로비저닝</option> 
-      <option value="/oci_docs/10_quickstart/compute/linux_vm_provisioning/"  selected>-- Oracle Linux VM 인스턴스 생성</option>
+    <option value="/oci_docs/10_quickstart/compute/basic_linux_vm/" >
+  -- 
+   OCI Linux VM 프로비저닝</option> 
+      <option value="/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/"  selected>--- Oracle Linux VM 인스턴스 생성</option>
+  
   
   
     <option value="/oci_docs/20_identity_and_access_management/" >
@@ -456,8 +469,15 @@ http://taewan.kim/img/icon/oracle.png
 <li><a href="#1-1-oci-자원-준비">1.1 OCI 자원 준비</a></li>
 <li><a href="#1-2-준비-파일">1.2 준비 파일</a></li>
 </ul></li>
-<li><a href="#2-oci-linux-vm-인스턴스-생성">2. OCI Linux VM 인스턴스 생성</a></li>
-<li><a href="#참고문서">참고문서</a></li>
+<li><a href="#2-oci-linux-vm-인스턴스-생성">2. OCI Linux VM 인스턴스 생성</a>
+<ul>
+<li><a href="#2-1-사용-가능한-자원-확인">2.1 사용 가능한 자원 확인</a></li>
+<li><a href="#2-2-oralce-linxu-7-7-이미지로-vm-생성">2.2 Oralce Linxu 7.7 이미지로 VM 생성</a></li>
+<li><a href="#2-3-ssh-접속">2.3 SSH 접속</a></li>
+<li><a href="#2-4-웹-서버-설치">2.4 웹 서버 설치</a></li>
+<li><a href="#2-5-os-방화벽-오픈">2.5 OS 방화벽 오픈</a></li>
+<li><a href="#참고-문서">참고 문서</a></li>
+</ul></li>
 </ul>
 </nav></p>
 </div></div>
@@ -536,26 +556,219 @@ http://taewan.kim/img/icon/oracle.png
 <p>OCI Linux VM은 다음과 같은 절차로 진행합니다.</p>
 
 <ol>
+<li>자원 제한(Resource Limit) 상황 파악</li>
 <li>Oralce Linxu 7.7 이미지로 VM 생성</li>
 <li>SSH 접속</li>
-<li>80 포트 방화벽 오픈</li>
 <li>웹 서버 설치</li>
-<li>브라우저 접속</li>
+<li>방화벽 오픈 80포트</li>
 <li>Block Storage 추가</li>
 <li>Oracle Linux VM 제거</li>
 </ol>
 
-<p>사전 준비 사항인 Compartment와 VCN을 만들었고 다음과 같이 id_rsa.pub 파일을 생성했다고 가정하고 진행하겠습니다.</p>
+<p>사전 준비 사항인 Compartment(sandbox)와 VCN(demo_vcn)을 만들었고 다음과 같이 id_rsa.pub 파일을 생성했다고 가정하고 진행하겠습니다.</p>
 
 <pre><code>~ &gt; cat id_rsa.pub
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGY37KCYmS7bE72rHskoiwEGoG6xK1+fgDKKXccYdZS24VuxXYsi4b6YC3yCFPxIgvNGankDas0Vf80YuMi3cPwM+/UamM14FC3N/57CJcsXi1+fv24K9LtIpby2wkSenxMAwMnhoMzMWyDxr2rWvqOz30rbDrw8cc2G5l7aZ/5tMQFj3SRk/bRSOrrBxZ/gDMhLKhvAxQ/B0cFVNicDPg2kD7ghpZDdBVoZHiuKihlv+ycsEp/CjHBvUJFKBqQ3fkaJtcBjYXNgASv0TCaP4Kh02KrwiwU9seg53TbqPvS/NIA8Jj6jew4FLvdrn6JOOxhNIaP8ry2ukna3r2m2C/ taewan@taewanui-MacBook-Pro.local
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGY37KCYmS7bE72rHskoiwEGoG6xK1
++fgDKKXccYdZS24VuxXYsi4b6YC3yCFPxIgvNGankDas0Vf80YuMi3cPwM+/UamM14FC
+3N/57CJcsXi1+fv24K9LtIpby2wkSenxMAwMnhoMzMWyDxr2rWvqOz30rbDrw8cc2G5l
+7aZ/5tMQFj3SRk/bRSOrrBxZ/gDMhLKhvAxQ/B0cFVNicDPg2kD7ghpZDdBVoZHiuKih
+lv+ycsEp/CjHBvUJFKBqQ3fkaJtcBjYXNgASv0TCaP4Kh02KrwiwU9seg53TbqPvS/NI
+A8Jj6jew4FLvdrn6JOOxhNIaP8ry2ukna3r2m2C/
+taewan@taewanui-MacBook-Pro.local
  ~ &gt;
 </code></pre>
 
-<h1 id="참고문서">참고문서</h1>
+<p>위 절차를 모두 마치면 다음과 같은 상태가 만들어집니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vm/220.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="2-1-사용-가능한-자원-확인">2.1 사용 가능한 자원 확인</h2>
+
+<p>현재 Tenancy에 할당된 사용 가능한 자원을 확인 합니다. Tenancy에 할당된 자원량을 확인하는 <strong>Limits, Quotas and Uasge(제한, 할당량 및 사용량)</strong> 페이지는 다음과 같은 메뉴 패스로 이동할 수 있습니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-body"><span class="glyphicon glyphicon-menu-hamburger" style="font-size:medium" aria-hidden="true"></span> (<strong>OCI 콘솔 왼쪽 위 햄버그 버튼</strong>) <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span>  <strong>Governance</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> <strong>Limits, Quotas and Uasge(제한, 할당량 및 사용량)</strong></div></div>
+
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vm/030.jpg?classes=border,shadow" alt="" /></p>
+
+<hr />
+
+<p><strong>Limits, Quotas and Uasge(제한, 할당량 및 사용량)</strong> 페이지에서 리전의 AD(Available Domain)에서 서비스 별로 Tenancy에 할당된 자원 크기와 현재 사용중인 자원 크기 및 사용 가능한 자원 크기를 확인할 수 있습니다. 또한 <strong>Request a services limit increase</strong>에서 자원 할당 증설을 요청할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vm/060.jpg?classes=border,shadow" alt="" /></p>
+
+<p>위 페이지에서 사용 가능한 Shape인 <strong>VM.Standard2.1</strong>으로 리눅스 VM 인스턴스를 생성할 것입니다.</p>
+
+<h2 id="2-2-oralce-linxu-7-7-이미지로-vm-생성">2.2 Oralce Linxu 7.7 이미지로 VM 생성</h2>
+
+<p>이제 부터 Oracle Linux 7.7을 이미지하고 Shape <strong>VM.Standard2.1</strong>으로 리눅스 VM 인스턴스를 만들겠습니다. OCI</p>
+
+
+<div class="panel panel-primary"><div class="panel-body"><span class="glyphicon glyphicon-menu-hamburger" style="font-size:medium" aria-hidden="true"></span> (<strong>OCI 콘솔 왼쪽 위 햄버그 버튼</strong>) <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span>  <strong>Compute</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> <strong>Instance</strong></div></div>
+
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vm/070.jpg?classes=border,shadow" alt="" /></p>
+
+<p>OCI Compute의 Instance관리 페이지에서 앞으로 생성할 VM을 할당할 Compartment인 sandbox를 선택합니다. &ldquo;<strong>create instance</strong>&rdquo; 버튼을 클릭하여 &ldquo;<strong>Create Compute Instance</strong>&rdquo; 페이지로 이동합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vm/080.jpg?classes=border,shadow" alt="" /></p>
+
+<p>&ldquo;<strong>Create Compute Instance</strong>&rdquo; 페이지에서 입력 폼 각 항목에 다음과 같이 입력합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>설정 항목</th>
+<th>설정값</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Name your instance</td>
+<td>demo_linux_vm</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Operating System or Image Source</td>
+<td>Oracle Linux 7.7</td>
+<td>오라클 리눅스 7.X는 CentOs7.x/RedHat7.x와 완전한 호환성 제공</td>
+</tr>
+
+<tr>
+<td>Availability Domain</td>
+<td>AD 1</td>
+<td>현제 데모는 3AD 리전인 Ashburn에서 진행하고 있음</td>
+</tr>
+
+<tr>
+<td>Instance Type</td>
+<td>Virtual Machine</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Instance Shape</td>
+<td>VM.Stanndard2.1</td>
+<td>1 Core OCPU, 15GB Memory</td>
+</tr>
+
+<tr>
+<td>Virtaul cloud network compartment</td>
+<td>sandbox</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Virtaul cloud network</td>
+<td>demo_vcn</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Subnet Compartment</td>
+<td>sandbox</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Subnet</td>
+<td>Public Subnet-demo_vcn</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Assign a public IP address</td>
+<td>체크</td>
+<td>공개 IP를 설정하기 위해서 체크</td>
+</tr>
+
+<tr>
+<td>Choose SSH Key file</td>
+<td>체크</td>
+<td>아래 <strong>Choose Files</strong>를 클릭하고 미리 준비한 id_rsa.pub 파일을 업로드</td>
+</tr>
+</tbody>
+</table>
+
+<p>다음 이미지와 같이 입력을 완료한 후 &ldquo;<strong>Create</strong>&rdquo; 버튼을 클릭하여 인스턴스 생성을 시작합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vm/100.jpg?classes=border,shadow" alt="" /></p>
+
+<p>인스턴스 생성이 시작되면 Compute Instance 상세 페이지로 이동합니다. 처음에 Compute Instance 아이콘 색깔은 주황색(생성중)입니다. Compute Instance 생성이 완료되면  아이콘이 색이 초록색으로 변경됩니다. 그리고 <strong>Public IP Address</strong>에 IP <font color='red'><strong>150.136.254.123</strong></font>가 할당되어 있는것을 확인할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vm/130.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="2-3-ssh-접속">2.3 SSH 접속</h2>
+
+<p>앞에서 확인한 공개 IP로 ssh 접근을 할 수 있습니다. 리눅스/맥의 터머널로 ssh 접근하는 명령의 형식은 다음과 같습니다.</p>
+
+<pre><code>ssh -i &lt;id_rsa파일&gt; opc@&lt;공개 IP&gt;
+</code></pre>
+
+<p>여기서 id_rsa는 앞에서 Compute Instance를 생성할 때 업로드한 공개키(id_rsa.pub)의 key pair 파일이고 opc는 오라클이 배포하는 VM 이미지의 기본 OS 사용자 계정입니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vm/140.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="2-4-웹-서버-설치">2.4 웹 서버 설치</h2>
+
+<p>SSH 접속을 한 상태에서 다음 명령을 입력하여 웹 서버 Nginx를 설치합니다.</p>
+
+<p>Nginx를 설치하는 명령은 다음과 같습니다.</p>
+
+<pre><code>sudo yum install nginx
+</code></pre>
+
+<p>이 명령을 수행하면 다음과 같이 Nginx가 설치됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vm/150.jpg?classes=border,shadow" alt="" /></p>
+
+<p>설치가 완료되면 다음 명령으로 Nginx를 시작하고 상태를 확인합니다.</p>
+
+<pre><code>sudo systemctl start nginx
+sudo systemctl status nginx
+</code></pre>
+
+<p>위 명령을 실행한 결과는 다음 이미지와 같습니다. 다음 이미지를 보면 Nginx가 작동하는 상태임을 확인할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vm/160.jpg?classes=border,shadow" alt="" /></p>
+
+<p>추가로 Nginx가 실행된 상태를 curl 명령으로도 확인할 수 있습니다.</p>
+
+<pre><code>curl localhost | head
+</code></pre>
+
+<p>Nginx가 정상적으로 실행되는 상태에서는 다음 이미지와 같이 html 코드 일부가 출력됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vm/180.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="2-5-os-방화벽-오픈">2.5 OS 방화벽 오픈</h2>
+
+<p>현재 사용하는 VCN(demo_vcn)의 Public Subnet-demo_vcn 서브넷 Security List에 22번 포트와 80 포트 오픈 룰이 적용되어 있습니다. 그러나 현재 Nginx 웹 서버에 브라우저 접근이 블가능합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vm/200.jpg?classes=border,shadow" alt="" /></p>
+
+<p>이유는 OCI의 Oracle Linux 7.7 이미지로 만든 Compute Instance에는 방화벽이 활성화되어 있습니다. 따라서 OS 방화벽에 해당 포트를 오픈해야 합니다. Oracle Linux에서 80포트를 오픈하는 명령은 다음과 같습니다.</p>
+
+<pre><code>sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
+sudo firewall-cmd --reload
+</code></pre>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vm/190.jpg?classes=border,shadow" alt="" /></p>
+
+<p>OS 방화벽에 80 포트를 오픈하면 다음가 같이 Nginx 웹 서버에 브라우저 접근이 가능합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vm/210.jpg?classes=border,shadow" alt="" /></p>
+
+<p>지금까지 OCI에서 Oracle Linux Compute VM 인스턴스를 만드는 과정을 살펴보았습니다. 다음 문서에서는 Block Storage를 VM 인스턴스에 추가하는 과정을 살펴보겠습니다.</p>
+
+<h2 id="참고-문서">참고 문서</h2>
 
 <ul>
-<li><a href="https://docs.cloud.oracle.com/en-us/iaas/Content/Network/Tasks/quickstartnetworking.htm" target="_blank">[Official OCI Docs] Virtual Networking Quickstart <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+<li><a href="https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Reference/overviewworkflow.htm" target="_blank">[Official OCI Docs] Tutorial - Launching Your First Linux Instance <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
 
 </li>
 </ul>
@@ -565,7 +778,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGY37KCYmS7bE72rHskoiwEGoG6xK1+fgDKKXccYdZ
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/10_quickstart/compute/" title="VM 인스턴스 프로비저닝"> <i class="fa fa-chevron-left"></i><label>VM 인스턴스 프로비저닝</label></a>
+<a class="nav nav-prev" href="/oci_docs/10_quickstart/compute/basic_linux_vm/" title="OCI Linux VM 프로비저닝"> <i class="fa fa-chevron-left"></i><label>OCI Linux VM 프로비저닝</label></a>
     <a class="nav nav-next" href="/oci_docs/20_identity_and_access_management/" title="OCI 사용자 및 권한 관리" style="margin-right: 0px;"><label>OCI 사용자 및 권한 관리</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
@@ -585,7 +798,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGY37KCYmS7bE72rHskoiwEGoG6xK1+fgDKKXccYdZ
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/10_quickstart/compute/linux_vm_provisioning/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/"></div>
   </div>
 
   </section>
