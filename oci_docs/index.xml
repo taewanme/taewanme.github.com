@@ -88,6 +88,17 @@
     </item>
     
     <item>
+      <title>Block Storage 추가</title>
+      <link>/oci_docs/10_quickstart/compute/basic_linux_vm/adding_block_stoage/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/oci_docs/10_quickstart/compute/basic_linux_vm/adding_block_stoage/</guid>
+      <description>이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.
+ OCI FREE TIER 계정 등록 Free Tier 계정 로그인  이번 문서에서는 OCI 콘솔에서 OCI Linux VM 인스턴스를 생성하는 절차를 소개합니다. OCI Linux VM 인스턴스 생성 문서는 다음과 같은 목차로 진행 됩니다.
+ 1. 사전 준비  1.1 OCI 자원 준비  2.</description>
+    </item>
+    
+    <item>
       <title>OCI Free Tier 계정 등록</title>
       <link>/oci_docs/10_quickstart/how_to_sign_up_oci/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -183,6 +194,17 @@ CloudHarmony 서비스는 사용자 브라우저에서 지정한 클러우드 �
       <guid>/oci_docs/10_quickstart/cloudshell/</guid>
       <description>이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.
  OCI FREE TIER 계정 등록 Free Tier 계정 로그인  작성중</description>
+    </item>
+    
+    <item>
+      <title>OCI 비쥬얼 다이어그램</title>
+      <link>/oci_docs/99_oci_sites/useful_sites_for_oci/oci_archi_diagram/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/oci_docs/99_oci_sites/useful_sites_for_oci/oci_archi_diagram/</guid>
+      <description>&amp;lsquo;https://online.visual-paradigm.com/   &amp;rsquo;는 다양한 다이아그램을 그리고 시각화하는 온라인 서비스입니다. &amp;ldquo;visual-paradigm.com&amp;ldquo;에서는 OCI 다이아그램으로 8개 템플릿을 지원합니다.
+다음과 같이 편집 기능을 제공합니다.
+&amp;ldquo;visual-paradigm.com&amp;ldquo;는 유료 서비스이지만 Free 라이센스로 사용할 수 있습니다.</description>
     </item>
     
     <item>
