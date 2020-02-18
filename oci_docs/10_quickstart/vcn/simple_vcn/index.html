@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-02-18T18:07:44 KST">
+<meta name="revised" content="2020-02-18T22:16:04 KST">
 <title>간편 VCN 만들기 :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
@@ -619,48 +619,23 @@ http://taewan.kim/img/icon/oracle.png
 
 <p>&ldquo;<strong>View Virtual Cloud Network</strong>&rdquo; 버튼을 클릭하면 지금 생성된 VCN(demo_vcn)의 상세 페이지로 이동합니다. 이 페이지에서 demo_vcn의 상세정보를 확인하고, 필요한 경우에 서브넷과 같은 관련 자원을 관리할 수 있습니다. demo_vcn에 Private_Subnet-demo_vcn과 Public_Subnet-demo_vcn 2개가 만들어진 것을 확인할 수 있습니다.</p>
 
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/quickstart/vcn/simple/050.jpg" alt="" /></p>
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/quickstart/vcn/simple/050.jpg?classes=border,shadow" alt="" /></p>
 
 <h2 id="1-3-security-list에-secury-rule추가">1.3 Security List에 Secury Rule추가</h2>
 
-<p>앞에서 생성한 ds_vcn의 상세페이지에서 &ldquo;Security List&rdquo; 관리 페이지로 이동한 다음에 새로운 Security List를 만들고 80 포트를 오픈하는 설정을 진행하겠습니다.</p>
+<p>앞에서 생성한 ds_vcn의 Public Subnet-demo_vcn에 80 포트를 오픈하는 설정을 해야 합니다. Public Subnet-demo_vcn 서브넷의 &ldquo;Security List&rdquo;에 80 포트를 오픈하는 Ingress Rule을 추가하는 작업을 진행하겠습니다. demo_vcn 상세 페이지 왼쪽 메뉴에서 공개 서브넷인 &ldquo;Public Subnet-demo_vcn&rdquo;을 클릭하고, &ldquo;Public Subnet-demo_vcn&rdquo;의 상세 페이지로 이동합니다.</p>
 
-<p>demo_vcn 상세 페이지 왼쪽 메뉴에서 &ldquo;<strong>Security List</strong>&ldquo;를 클릭하면, ds_vcn의 Security List 관리 페이지로 이동합니다. 이 페이지에서 &ldquo;<strong>create Security List</strong>&ldquo;를 클릭합니다.</p>
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vcn/200.jpg?classes=border,shadow" alt="" /></p>
 
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/quickstart/vcn/simple/060.jpg" alt="" /></p>
+<p>공개 서브넷 상세 페이지에서 디폴트 보안 목록인 &ldquo;<strong>Default Security List for demo_vcn</strong>&ldquo;을 클릭합니다.</p>
 
-<p>&ndash;</p>
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vcn/210.jpg?classes=border,shadow" alt="" /></p>
 
-<p>Security List 추가 페이지에서 다음과 같이 Security List 이름과 할당 Compartment를 설정합니다.</p>
+<p>&ldquo;<strong>Default Security List for demo_vcn</strong>&rdquo; 링크를 클릭하면 보안 목록 상세 페이지로 이동합니다. 그리고 &ldquo;<strong>Add Ingress Rules</strong>&rdquo; 버튼을 클릭합니다.</p>
 
-<table>
-<thead>
-<tr>
-<th>설정항목</th>
-<th>설정 값</th>
-</tr>
-</thead>
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vcn/220.jpg?classes=border,shadow" alt="" /></p>
 
-<tbody>
-<tr>
-<td>Name</td>
-<td>Custom_Security_List</td>
-</tr>
-
-<tr>
-<td>Create In Compartment</td>
-<td>sandbox</td>
-</tr>
-</tbody>
-</table>
-
-<p>그리고 &ldquo;<strong>Allow Rules for Ingress</strong>&rdquo; 버튼을 클릭하고 새로운 Ingress 룰을 추가합니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/quickstart/vcn/simple/070.jpg" alt="" /></p>
-
-<hr />
-
-<p>VCN 외부에서 80 포트로 유입되는 네트워크 연결을 허용하기 위하여 다음과 같은 <strong>Security Rule</strong>을 추가합니다.</p>
+<p>&ldquo;<strong>Add Ingress Rules</strong>&rdquo; 버튼을 클릭하면, Ingress Rule 등록 폼이 출력됩니다. 공개 서브넷에 80 포트 유입을 허용하는 보안 룰을 다음과 같이 설정하고 &ldquo;<strong>Add Ingress Rules</strong>&rdquo; 버튼을 클릭합니다.</p>
 
 <table>
 <thead>
@@ -672,8 +647,8 @@ http://taewan.kim/img/icon/oracle.png
 
 <tbody>
 <tr>
-<td>Source Type</td>
-<td>CIDR</td>
+<td>Stateless 체크박스</td>
+<td>체크 하지 않음</td>
 </tr>
 
 <tr>
@@ -695,20 +670,23 @@ http://taewan.kim/img/icon/oracle.png
 <td>Destination Port Range</td>
 <td>80</td>
 </tr>
+
+<tr>
+<td>Description</td>
+<td>Open 80 port for Web Servers</td>
+</tr>
 </tbody>
 </table>
 
-<p>설정이 완료되면 &ldquo;<strong>Create Security List</strong>&rdquo; 버튼을 클릭합니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/quickstart/vcn/simple/080.jpg" alt="" /></p>
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vcn/230.jpg?classes=border,shadow" alt="" /></p>
 
 <hr />
 
-<p>&ldquo;<strong>Custom_Security_List</strong>&ldquo;가 정상적으로 등록되면 다음과 같은 화면이 출력됩니다.</p>
+<p>&ldquo;<strong>Ingress Rules</strong>&ldquo;가 정상적으로 등록되면 다음과 같은 화면이 출력됩니다.</p>
 
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/quickstart/vcn/simple/100.jpg" alt="" /></p>
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vcn/240.jpg?classes=border,shadow" alt="" /></p>
 
-<p>지금까지 간편 모드로 VCN을 생성하고 Security List에 새로운 Security Rule을 등록하는 방법을 삺펴 보았습니다.</p>
+<p>지금까지 간편 모드로 VCN을 생성하고 공개 서브넷에 80 포트를 공개하는 Security Rule을 등록하는 방법에 대하여 살펴 보았습니다.</p>
 
 <h1 id="2-참고문서">2. 참고문서</h1>
 

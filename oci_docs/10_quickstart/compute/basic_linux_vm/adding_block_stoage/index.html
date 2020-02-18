@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-02-18T18:07:44 KST">
+<meta name="revised" content="2020-02-18T22:16:04 KST">
 <title>Block Storage 추가 :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
@@ -484,7 +484,14 @@ http://taewan.kim/img/icon/oracle.png
 <ul>
 <li><a href="#1-1-oci-자원-준비">1.1 OCI 자원 준비</a></li>
 </ul></li>
-<li><a href="#2-oci-vm에-block-storage-추가">2. OCI VM에 Block Storage 추가</a></li>
+<li><a href="#2-oci-vm에-block-volume-추가">2. OCI VM에 Block Volume 추가</a>
+<ul>
+<li><a href="#2-1-block-volume-생성">2.1 Block Volume 생성</a></li>
+<li><a href="#2-1-block-volume을-인스턴스에-추가">2.1 Block Volume을 인스턴스에 추가</a></li>
+<li><a href="#2-1-block-volume을-인스턴스에-연결">2.1 Block Volume을 인스턴스에 연결</a></li>
+<li><a href="#2-1-block-volume-포멧">2.1 Block Volume 포멧</a></li>
+<li><a href="#2-1-block-volume-마운트">2.1 Block Volume 마운트</a></li>
+</ul></li>
 <li><a href="#3-참고-문서">3. 참고 문서</a></li>
 </ul>
 </nav></p>
@@ -523,9 +530,20 @@ http://taewan.kim/img/icon/oracle.png
 </tbody>
 </table>
 
-<h1 id="2-oci-vm에-block-storage-추가">2. OCI VM에 Block Storage 추가</h1>
+<h1 id="2-oci-vm에-block-volume-추가">2. OCI VM에 Block Volume 추가</h1>
 
-<p>OCI Linux VM에 Block Storage를 추가하는 절차는 다음과 같습니다.</p>
+<p>Block Volume 서비스는 블록 스토리지를 제공하고 관리하는 서비스로 OCI Compute 인스턴스에서 사용되는 네트워크 스토리지입니다. Block Volume을 HDD라고 생각해도 좋습니다. Block Volume은 HDD와 같이 컴퓨터에 하드 드라이브를 연결해서 사용하는 방식으로 사용할 수 있습니다. HDD와 차이점은 Block Volume은  네트워크 스토리지라는 것 뿐입니다. Block Volume 서비스로 다음과 같은 작업을 할 수 있습니다.</p>
+
+<ul>
+<li>블록 볼륨 생성</li>
+<li>블록 볼륨 인스턴스에 추가</li>
+<li>블록 볼륨 인스턴스에 연결</li>
+<li>블록 볼륨 이동</li>
+</ul>
+
+<p>Block Volume은 한번에 1개의 인스턴스에만 연결할 수 있습니다. 기존에 연결했던 인스턴스에서 분리하여 다른 인스턴스에 연결하는 것도 가능합니다. A 인스턴스에 연결되어 데이터를 저장하던 Block Volume을 A 인스턴스에서 떼어낸 후, B 인스턴스에 연결할 수 있습니다. 이때 데이터 유실은 발생하지 않습니다.</p>
+
+<p>이 문서에서는 OCI Linux VM에 Block Storage를 추가하는 절차는 다음은 순서로 살펴보겠습니다.</p>
 
 <ol>
 <li>Block Volume 생성</li>
@@ -534,6 +552,20 @@ http://taewan.kim/img/icon/oracle.png
 <li>Block Volume 포멧</li>
 <li>Block Volume 마운트</li>
 </ol>
+
+<p>위 과정를 모두 마치면 다음과 같은 상태가 만들어집니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vm/220.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="2-1-block-volume-생성">2.1 Block Volume 생성</h2>
+
+<h2 id="2-1-block-volume을-인스턴스에-추가">2.1 Block Volume을 인스턴스에 추가</h2>
+
+<h2 id="2-1-block-volume을-인스턴스에-연결">2.1 Block Volume을 인스턴스에 연결</h2>
+
+<h2 id="2-1-block-volume-포멧">2.1 Block Volume 포멧</h2>
+
+<h2 id="2-1-block-volume-마운트">2.1 Block Volume 마운트</h2>
 
 <h1 id="3-참고-문서">3. 참고 문서</h1>
 
