@@ -13,10 +13,10 @@
     
     <item>
       <title>OCI에서 Root 파티션 확대 처리된 VM 생성 </title>
-      <link>http://taewan.kim/oratips/extending_root_partition_on_oci/</link>
+      <link>http://taewan.kim/oratips/oci-root-partition/</link>
       <pubDate>Fri, 28 Feb 2020 09:28:14 +0900</pubDate>
       
-      <guid>http://taewan.kim/oratips/extending_root_partition_on_oci/</guid>
+      <guid>http://taewan.kim/oratips/oci-root-partition/</guid>
       <description>OCI에서 Boot Volume 기본 크기를 늘려서 리눅스 가상머신을 만들어도, 프로비저닝된 리눅스 VM의 루트 파이션은 기본 9GB으로 설정됩니다. Boot Volume 최대 크기로 루트 파티션이 확장된 VM을 프로비저닝 방법은 다음 이미지와 같습니다.
 리눅스 가상머신을 생성할 때 루트 파이션 확장을 위해서 cloud-init에 다음 명령을 설정합니다.
 #!/bin/sh sudo yum -y install cloud-utils-growpart sudo yum -y install gdisk sudo growpart /dev/sda 3 sudo xfs_growfs /  </description>
