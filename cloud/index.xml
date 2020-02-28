@@ -17,10 +17,9 @@
       <pubDate>Fri, 28 Feb 2020 10:20:25 +0900</pubDate>
       
       <guid>http://taewan.kim/cloud/extending_root_partition_on_oci_linux/</guid>
-      <description>OCI(Oracle Cloud Infrastructure)에서 리눅스 VM을 만들 때, 기본 Boot Volume 크기는 46.6GB입니다. Boot Volume의 기본 크기를 최대 32TB까지 확장할 수 있습니다.
+      <description>OCI(Oracle Cloud Infrastructure)에서 리눅스 VM을 만들 때, 기본 Boot Volume 크기는 46.6GB입니다. Boot Volume의 기본 크기를 최대 32TB까지 확장할 수 있습니다. Boot Volume을 조정하고 리눅스 VM을 프로비저닝하더라도, Root Partition의 사이즈는 기본 크기로 고정됩니다. Root Partition을 조정하는 방법을 정리합니다.
 OCI에서 Oracle Linux VM 인스턴스를 프로비저닝하는 방법은 다음 링크의 문서를 참조하시기 바랍니다. OCI 리눅스 가상머신 프로비저닝[↗NW]
- OCI에서 VM을 프로비저닝할 때 가상머신의 Boot Volume을 늘리는 방법은 다음과 같습니다. 다음 그림에서 Block Volume을 500GB로 설정하고 있습니다.
-위 그림과 같이 Boot Volume을 500GB 할당하고 VM을 생성하더라도, Root Partition에 할당된 크기는 38.</description>
+ Root Partiion 고정 38.4GB OCI에서 VM을 프로비저닝할 때 가상머신의 Boot Volume을 늘리는 방법은 다음과 같습니다.</description>
     </item>
     
     <item>
