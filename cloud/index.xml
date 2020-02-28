@@ -6,10 +6,20 @@
     <description>Recent content in Clouds on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Dec 2019 01:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 30 Jan 2020 09:20:25 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/cloud/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Oracle Cloud 사용자(Identity) 관리 방식</title>
+      <link>http://taewan.kim/cloud/understanding_oracle_cloud_identity_management/</link>
+      <pubDate>Thu, 30 Jan 2020 09:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/understanding_oracle_cloud_identity_management/</guid>
+      <description>오라클 클라우드는 Big Data 서비스로 Big Data Cloud(이하 BDC)를 제공합니다. BDC는 Hotonworks 하둡 패키지를 오라클 클라우드의 PaaS로 제공하는 서비스입니다. 2018년 5월 현재 Oracle BDC는 OCI와 OCI Classic에 모두 배포 가능합니다. Oracle BDC에 대한 개요, 설치 방법 및 OCI와 OCI Classic에 대산 자세한 사항은 아래 문서를 참조하시기 바랍니다.
+ BDC 관련문서  Oracle BDC 소개 문서[↗NW]  Oracle BDC 클러스터 생성 절차(작성일: 2017-07-31)[↗NW]  Oracle OCI와 OCI Classic이란?[↗NW]    Oracle BDC의 Apache Ambari Apache Ambari는 하둡 클러스터 전문 관리 툴입니다.</description>
+    </item>
     
     <item>
       <title>2019 Modern Cloud Day @Seoul 세션 동영상과 발표 자료</title>
@@ -140,6 +150,16 @@ youtube 동영상   발표 문서  Oracle Impact: Oracle Cloud AI 요약 Enterpr
       <pubDate>Thu, 31 May 2018 23:20:25 +0900</pubDate>
       
       <guid>http://taewan.kim/cloud/bdc_ambari/</guid>
+      <description>오라클 클라우드는 Big Data 서비스로 Big Data Cloud(이하 BDC)를 제공합니다. BDC는 Hotonworks 하둡 패키지를 오라클 클라우드의 PaaS로 제공하는 서비스입니다. 2018년 5월 현재 Oracle BDC는 OCI와 OCI Classic에 모두 배포 가능합니다. Oracle BDC에 대한 개요, 설치 방법 및 OCI와 OCI Classic에 대산 자세한 사항은 아래 문서를 참조하시기 바랍니다.
+ BDC 관련문서  Oracle BDC 소개 문서[↗NW]  Oracle BDC 클러스터 생성 절차(작성일: 2017-07-31)[↗NW]  Oracle OCI와 OCI Classic이란?[↗NW]    Oracle BDC의 Apache Ambari Apache Ambari는 하둡 클러스터 전문 관리 툴입니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle BDC의 Ambari 보안 설정 변경</title>
+      <link>http://taewan.kim/cloud/reason_of_oci_has_two_identity_servicesidcs_iam/</link>
+      <pubDate>Thu, 31 May 2018 23:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/reason_of_oci_has_two_identity_servicesidcs_iam/</guid>
       <description>오라클 클라우드는 Big Data 서비스로 Big Data Cloud(이하 BDC)를 제공합니다. BDC는 Hotonworks 하둡 패키지를 오라클 클라우드의 PaaS로 제공하는 서비스입니다. 2018년 5월 현재 Oracle BDC는 OCI와 OCI Classic에 모두 배포 가능합니다. Oracle BDC에 대한 개요, 설치 방법 및 OCI와 OCI Classic에 대산 자세한 사항은 아래 문서를 참조하시기 바랍니다.
  BDC 관련문서  Oracle BDC 소개 문서[↗NW]  Oracle BDC 클러스터 생성 절차(작성일: 2017-07-31)[↗NW]  Oracle OCI와 OCI Classic이란?[↗NW]    Oracle BDC의 Apache Ambari Apache Ambari는 하둡 클러스터 전문 관리 툴입니다.</description>
     </item>
