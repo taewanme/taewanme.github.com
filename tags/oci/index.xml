@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>OCI Object Storage 버킷 파일 시스템에 마운트</title>
+      <title>S3FS를 이용한 OCI Object Storage 파일 시스템 마운트</title>
       <link>http://taewan.kim/cloud/mounting_oci_objectstorage_bucket_on_linux_mac/</link>
       <pubDate>Sat, 29 Feb 2020 10:20:25 +0900</pubDate>
       
