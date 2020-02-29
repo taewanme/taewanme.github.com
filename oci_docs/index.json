@@ -354,7 +354,7 @@
 	"title": "OCI 리전 정보",
 	"tags": [],
 	"description": "",
-	"content": " OCI 리전의 기본 정보를 정리합니다.\n 리전 기본 정보    리전 기본 정보    리전 이름 리전 ID 리전 위치 리전 Key Availability Domain 수     Sydney ap-sydney-1 호주, 시드니 SYD 1   Melbourne ap-melbourne-1 호주, 멜버른 MEL 1   Sao Paulo sa-saopaulo-1 브라질, 상파올로 GRU 1   Toronto ca-toronto-1 캐나다, 토론토 YYZ 1   Frankfurt eu-frankfurt-1 독일, 프랑크푸르트 FRA 3   Mumbai ap-mumbai-1 인도, 뭄바이 BOM 1   Osaka ap-osaka-1 일본, 오사카 KIX 1   Tokyo ap-tokyo-1 일본, 도쿄 NRT 1   Amsterdam eu-amsterdam-1 네덜란드, 암스테르담 AMS 1   Jeddah me-jeddah-1 사우디 아라비아, 제다 1    Seoul ap-seoul-1 대한민국, 서울 ICN 1   Zurich eu-zurich-1 스위스, 취리히 ZRH 1   London uk-london-1 영국, 런던 LHR 3   Ashburn us-ashburn-1 미국 버지니아, 애슈번 3    Phoenix us-phoenix-1 미국 애리조나, 피닉스 3     "
+	"content": " OCI 리전의 기본 정보를 정리합니다.\n OCI Region 기본 정보    OCI Region 기본 정보    리전 이름 리전 ID 리전 위치 리전 Key Availability Domain 수     Sydney ap-sydney-1 호주, 시드니 SYD 1   Melbourne ap-melbourne-1 호주, 멜버른 MEL 1   Sao Paulo sa-saopaulo-1 브라질, 상파올로 GRU 1   Toronto ca-toronto-1 캐나다, 토론토 YYZ 1   Frankfurt eu-frankfurt-1 독일, 프랑크푸르트 FRA 3   Mumbai ap-mumbai-1 인도, 뭄바이 BOM 1   Osaka ap-osaka-1 일본, 오사카 KIX 1   Tokyo ap-tokyo-1 일본, 도쿄 NRT 1   Amsterdam eu-amsterdam-1 네덜란드, 암스테르담 AMS 1   Jeddah me-jeddah-1 사우디 아라비아, 제다 1    Seoul ap-seoul-1 대한민국, 서울 ICN 1   Zurich eu-zurich-1 스위스, 취리히 ZRH 1   London uk-london-1 영국, 런던 LHR 3   Ashburn us-ashburn-1 미국 버지니아, 애슈번 3    Phoenix us-phoenix-1 미국 애리조나, 피닉스 3     "
 },
 {
 	"uri": "/oci_docs/99_oci_sites/",
