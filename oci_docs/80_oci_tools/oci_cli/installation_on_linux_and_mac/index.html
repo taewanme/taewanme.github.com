@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Oracle Cloud Infrastructure</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2020-02-29T18:34:35 KST">
+<title>[OCI CLI 설치] Linux &amp; Mac OS :: Oracle Cloud Infrastructure</title>
+
+<link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
+
+http://taewan.kim/img/icon/oracle.png
+<link href="/oci_docs/css/font-awesome.min.css" rel="stylesheet">
+<link href="/oci_docs/css/nucleus.css" rel="stylesheet">
+<link href="/oci_docs/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/oci_docs/css/bootstrap.min.css">
+<script src="/oci_docs/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "\/oci_docs";
+</script>
+<meta name="description" content="">
+
+
+<link href='/oci_docs/css/railload.css' rel="stylesheet">
+
+
+    
+  </head>
+  <body data-url="/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="/oci_docs">Oracle Cloud Infrastructure</a>
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="http://taewan.kim/"  rel="noopener">
+                  <i class='fa fa-file-o'></i> <label>Taewan.kim Blog</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="http://taewan.kim/cloud/"  rel="noopener">
+                  <i class='fa fa-cloud'></i> <label>Oracle Cloud</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://gohugo.io/"  rel="noopener">
+                  <i class='fa fa-folder'></i> <label>tutorial_manual</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+    <li data-nav-id="/oci_docs/00_oci/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/00_oci/">Oracle Cloud Infrastructure</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/00_oci/oci_services/" class="dd-item">
+        <div>
+          <a href="/oci_docs/00_oci/oci_services/">
+            OCI 주요 서비스
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/00_oci/oci_resion_info/" class="dd-item">
+        <div>
+          <a href="/oci_docs/00_oci/oci_resion_info/">
+            OCI 리전 정보
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/10_quickstart/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/">OCI 퀵 스타트</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/terminologies/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/terminologies/">
+            OCI 기본 용어 정리
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/how_to_sign_up_oci/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/how_to_sign_up_oci/">
+            OCI Free Tier 계정 등록
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/first_sign_in_oci/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/first_sign_in_oci/">
+            Free Tier 계정 첫 번째 로그인
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/cloudshell/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/cloudshell/">
+            OCI Cloud Shell 사용하기
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/create_compartment/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/create_compartment/">
+            Compartment 추가
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/oci_docs/10_quickstart/vcn/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/vcn/">VCN(Virtual Cloud Network) 생성</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/vcn/simple_vcn/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/vcn/simple_vcn/">
+            간편 VCN 만들기
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/vcn/manual_vcn/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/vcn/manual_vcn/">
+            메뉴얼 VCN 만들기
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/10_quickstart/compute/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/compute/">VM 인스턴스 프로비저닝</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/10_quickstart/compute/basic_linux_vm/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/compute/basic_linux_vm/">OCI Linux VM 프로비저닝 및 관리</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/">
+            Oracle Linux VM 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/compute/basic_linux_vm/adding_block_stoage/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/compute/basic_linux_vm/adding_block_stoage/">
+            Block Storage 추가
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/20_identity_and_access_management/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/20_identity_and_access_management/">OCI 사용자 및 권한 관리</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/">Core Infastructure</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/compute/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/compute/">Compute</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/block_storage/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/block_storage/">Block Storage</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/object_storage/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/object_storage/">Object Storage</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/file_storage/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/file_storage/">File Storage</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/networking/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/networking/">Networking</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/60_solutions/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/60_solutions/">OCI Services</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/60_solutions/data_flow/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/60_solutions/data_flow/">OCI Data Flow</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/60_solutions/functions/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/60_solutions/functions/">OCI Functions</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/60_solutions/data_catalog/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/60_solutions/data_catalog/">OCI Data Catalog</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/60_solutions/data_catalog/glossary/" class="dd-item">
+        <div>
+          <a href="/oci_docs/60_solutions/data_catalog/glossary/">
+            용어정리
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/" class="dd-item parent alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/">OCI 도구(Tool)</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/80_oci_tools/oci_rest_api/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/oci_rest_api/">OCI REST API</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/sdk/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/sdk/">OCI SDK</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/" class="dd-item parent alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/oci_cli/">OCI CLI (Command Line Interface)</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/installation_on_window/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/oci_cli/installation_on_window/">
+            [OCI CLI 설치] Window 10
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac/" class="dd-item active">
+        <div>
+          <a href="/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac/">
+            [OCI CLI 설치] Linux &amp; Mac OS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/manual_installation/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/oci_cli/manual_installation/">
+            [OCI CLI 설치] 메뉴얼 설치
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac_with_docker/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac_with_docker/">
+            [OCI CLI 설치] Linux/Mac OS (Docker)
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/config_of_ocicli/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/oci_cli/config_of_ocicli/">
+            OCI CLI 설정
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/cloud_shell/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/cloud_shell/">OCI Cloud Shell</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/external_useful_tools/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/external_useful_tools/">OCI에 유용한 써드파티 툴</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/98_misc_tips/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/98_misc_tips/">OCI 알아두면 유용한 팁</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/98_misc_tips/ssh_key_pairs/" class="dd-item">
+        <div>
+          <a href="/oci_docs/98_misc_tips/ssh_key_pairs/">
+            운영체제별 SSH Key Pair 준비
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/" class="dd-item">
+        <div>
+          <a href="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/">
+            OCI 기본 정보 확인법
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/99_oci_sites/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/99_oci_sites/">OCI 관련 문서 사이트</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/99_oci_sites/oci_sites/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/oci_sites/">
+            OCI 관련 사이트 모음
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/99_oci_sites/tutorials/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/tutorials/">
+            OCI 서비스 튜토리얼 사이트 모음
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/">클라우드 관련 유용한 서비스</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/">
+            OCI 비용 시뮬레이터
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/">
+            ocistatus.oraclecloud.com
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/">
+            CloudHarmondy: 네트웍 테스트
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_archi_diagram/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_archi_diagram/">
+            OCI 비쥬얼 다이어그램
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/oci_docs/00_oci/" >
+   Oracle Cloud Infrastructure</option> 
+      <option value="/oci_docs/00_oci/oci_services/" >- OCI 주요 서비스</option>
+      <option value="/oci_docs/00_oci/oci_resion_info/" >- OCI 리전 정보</option>
+  
+    <option value="/oci_docs/10_quickstart/" >
+   OCI 퀵 스타트</option> 
+      <option value="/oci_docs/10_quickstart/terminologies/" >- OCI 기본 용어 정리</option>
+      <option value="/oci_docs/10_quickstart/how_to_sign_up_oci/" >- OCI Free Tier 계정 등록</option>
+      <option value="/oci_docs/10_quickstart/first_sign_in_oci/" >- Free Tier 계정 첫 번째 로그인</option>
+      <option value="/oci_docs/10_quickstart/cloudshell/" >- OCI Cloud Shell 사용하기</option>
+      <option value="/oci_docs/10_quickstart/create_compartment/" >- Compartment 추가</option>
+    <option value="/oci_docs/10_quickstart/vcn/" >
+  - 
+   VCN(Virtual Cloud Network) 생성</option> 
+      <option value="/oci_docs/10_quickstart/vcn/simple_vcn/" >-- 간편 VCN 만들기</option>
+      <option value="/oci_docs/10_quickstart/vcn/manual_vcn/" >-- 메뉴얼 VCN 만들기</option>
+  
+    <option value="/oci_docs/10_quickstart/compute/" >
+  - 
+   VM 인스턴스 프로비저닝</option> 
+    <option value="/oci_docs/10_quickstart/compute/basic_linux_vm/" >
+  -- 
+   OCI Linux VM 프로비저닝 및 관리</option> 
+      <option value="/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/" >--- Oracle Linux VM 인스턴스 생성</option>
+      <option value="/oci_docs/10_quickstart/compute/basic_linux_vm/adding_block_stoage/" >--- Block Storage 추가</option>
+  
+  
+  
+    <option value="/oci_docs/20_identity_and_access_management/" >
+   OCI 사용자 및 권한 관리</option> 
+  
+    <option value="/oci_docs/30_core_infrastructure/" >
+   Core Infastructure</option> 
+    <option value="/oci_docs/30_core_infrastructure/compute/" >
+  - 
+   Compute</option> 
+  
+    <option value="/oci_docs/30_core_infrastructure/block_storage/" >
+  - 
+   Block Storage</option> 
+  
+    <option value="/oci_docs/30_core_infrastructure/object_storage/" >
+  - 
+   Object Storage</option> 
+  
+    <option value="/oci_docs/30_core_infrastructure/file_storage/" >
+  - 
+   File Storage</option> 
+  
+    <option value="/oci_docs/30_core_infrastructure/networking/" >
+  - 
+   Networking</option> 
+  
+  
+    <option value="/oci_docs/60_solutions/" >
+   OCI Services</option> 
+    <option value="/oci_docs/60_solutions/data_flow/" >
+  - 
+   OCI Data Flow</option> 
+  
+    <option value="/oci_docs/60_solutions/functions/" >
+  - 
+   OCI Functions</option> 
+  
+    <option value="/oci_docs/60_solutions/data_catalog/" >
+  - 
+   OCI Data Catalog</option> 
+      <option value="/oci_docs/60_solutions/data_catalog/glossary/" >-- 용어정리</option>
+  
+  
+    <option value="/oci_docs/80_oci_tools/" >
+   OCI 도구(Tool)</option> 
+    <option value="/oci_docs/80_oci_tools/oci_rest_api/" >
+  - 
+   OCI REST API</option> 
+  
+    <option value="/oci_docs/80_oci_tools/sdk/" >
+  - 
+   OCI SDK</option> 
+    <option value="/oci_docs/80_oci_tools/sdk/python_sdk/" >
+  -- 
+   OCI Python SDK</option> 
+      <option value="/oci_docs/80_oci_tools/sdk/python_sdk/installation/" >--- OCI Python SDK 설치</option>
+  
+  
+    <option value="/oci_docs/80_oci_tools/oci_cli/" >
+  - 
+   OCI CLI (Command Line Interface)</option> 
+      <option value="/oci_docs/80_oci_tools/oci_cli/installation_on_window/" >-- [OCI CLI 설치] Window 10</option>
+      <option value="/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac/"  selected>-- [OCI CLI 설치] Linux &amp; Mac OS</option>
+      <option value="/oci_docs/80_oci_tools/oci_cli/manual_installation/" >-- [OCI CLI 설치] 메뉴얼 설치</option>
+      <option value="/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac_with_docker/" >-- [OCI CLI 설치] Linux/Mac OS (Docker)</option>
+      <option value="/oci_docs/80_oci_tools/oci_cli/config_of_ocicli/" >-- OCI CLI 설정</option>
+  
+    <option value="/oci_docs/80_oci_tools/cloud_shell/" >
+  - 
+   OCI Cloud Shell</option> 
+  
+    <option value="/oci_docs/80_oci_tools/external_useful_tools/" >
+  - 
+   OCI에 유용한 써드파티 툴</option> 
+  
+  
+    <option value="/oci_docs/98_misc_tips/" >
+   OCI 알아두면 유용한 팁</option> 
+      <option value="/oci_docs/98_misc_tips/ssh_key_pairs/" >- 운영체제별 SSH Key Pair 준비</option>
+      <option value="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/" >- OCI 기본 정보 확인법</option>
+  
+    <option value="/oci_docs/99_oci_sites/" >
+   OCI 관련 문서 사이트</option> 
+      <option value="/oci_docs/99_oci_sites/oci_sites/" >- OCI 관련 사이트 모음</option>
+      <option value="/oci_docs/99_oci_sites/tutorials/" >- OCI 서비스 튜토리얼 사이트 모음</option>
+    <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/" >
+  - 
+   클라우드 관련 유용한 서비스</option> 
+      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/" >-- OCI 비용 시뮬레이터</option>
+      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/" >-- ocistatus.oraclecloud.com</option>
+      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/" >-- CloudHarmondy: 네트웍 테스트</option>
+      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_archi_diagram/" >-- OCI 비쥬얼 다이어그램</option>
+  
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/oci_docs/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/oci_docs/js/auto-complete.js"></script>
+        <link href="/oci_docs/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "\/oci_docs";
+          
+        </script>
+        <script type="text/javascript" src="/oci_docs/js/search.js"></script>
+      </div>
+    
+
+    <h1>[OCI CLI 설치] Linux &amp; Mac OS</h1>
+    
+    
+    
+    
+
+<hr />
+
+<p>이 문서는 리눅스 계열 OS와 Mac OS에서 <strong>OCI CLI</strong>를 설치하고 제거하는 과정을 소개합니다. 다음과 같은 목차로 구성됩니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-body"><nav id="TableOfContents">
+<ul>
+<li><a href="#oci-cli-설치">OCI CLI 설치</a></li>
+<li><a href="#oci-cli-제거">OCI CLI 제거</a></li>
+</ul>
+</nav>
+</div></div>
+
+
+<hr />
+
+<h1 id="oci-cli-설치">OCI CLI 설치</h1>
+
+<p><strong>OCI CLI</strong> 프로젝트에서는 리눅스 계열 OS와 Mac OS를 위한 쉡 스크립트를 제공합니다. 터미널상에서 다음 스크립트를 실행하여 간편하게 <strong>OCI CLI</strong>를 설치할 수 있습니다.</p>
+
+<pre><code>bash -c \
+&gt; &quot;$(curl -L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh)&quot;
+</code></pre>
+
+<p>위 스크립트를 실행하면 다음과 같은 항목에 대한 입력이 요청됩니다. 모든 항목에 대하여 기본 값을 선택할 것을 추천합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>입력 요청 질의</th>
+<th>설명</th>
+<th>입력값</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>===&gt; In what directory would you like to place the install? (leave blank to use &lsquo;/home/opc/lib/oracle-cli&rsquo;):</td>
+<td>OCI CLI 설치 위치</td>
+<td>기본 값 사용(Enter)</td>
+</tr>
+
+<tr>
+<td>===&gt; In what directory would you like to place the &lsquo;oci&rsquo; executable? (leave blank to use &lsquo;/home/opc/bin&rsquo;):</td>
+<td>OCI CLI 실행 파일 설치 위치</td>
+<td>기본 값 사용(Enter)</td>
+</tr>
+
+<tr>
+<td>===&gt; In what directory would you like to place the OCI scripts? (leave blank to use &lsquo;/home/opc/bin/oci-cli-scripts&rsquo;):</td>
+<td>OCI CLI 스크립트 파일 설치 위치</td>
+<td>기본 값 사용(Enter)</td>
+</tr>
+
+<tr>
+<td>===&gt; Currently supported optional packages are: [&lsquo;db (will install cx_Oracle)&lsquo;] What optional CLI packages would you like to be installed (comma separated names; press enter if you don&rsquo;t need any optional packages)?:</td>
+<td>추가패키지 설치</td>
+<td>기본 값 사용(Enter)</td>
+</tr>
+
+<tr>
+<td>===&gt; Modify profile to update your $PATH and enable shell/tab completion now? (Y/n):</td>
+<td>환경변수 수정</td>
+<td>기본 값 사용(Enter)</td>
+</tr>
+
+<tr>
+<td>===&gt; Enter a path to an rc file to update (leave blank to use &lsquo;/home/opc/.bashrc&rsquo;):</td>
+<td>패스 업데이트</td>
+<td>기본 값 사용(Enter)</td>
+</tr>
+</tbody>
+</table>
+
+<p>전체 설치 로그는 다음과 같습니다.</p>
+
+<pre><code>[opc@demo02 ~]$ bash -c \
+&gt; &quot;$(curl -L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh)&quot;
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 13979  100 13979    0     0  55147      0 --:--:-- --:--:-- --:--:-- 55472
+
+    ******************************************************************************
+    You have started the OCI CLI Installer in interactive mode. If you do not wish
+    to run this in interactive mode, please include the --accept-all-defaults option.
+    If you have the script locally and would like to know more about
+    input options for this script, then you can run:
+    ./install.sh -h
+    If you would like to know more about input options for this script, refer to:
+    https://github.com/oracle/oci-cli/blob/master/scripts/install/README.rst
+    ******************************************************************************
+Downloading Oracle Cloud Infrastructure CLI install script from https://raw.githubusercontent.com/oracle/oci-cli/v2.9.3/scripts/install/install.py to /tmp/oci_cli_install_tmp_2Rob.
+######################################################################## 100.0%
+Python3 not found on system PATH
+Running install script.
+python /tmp/oci_cli_install_tmp_2Rob
+-- Verifying Python version.
+-- Python version 2.7.5 okay.
+
+===&gt; In what directory would you like to place the install? (leave blank to use '/home/opc/lib/oracle-cli'):
+-- Creating directory '/home/opc/lib/oracle-cli'.
+-- We will install at '/home/opc/lib/oracle-cli'.
+
+===&gt; In what directory would you like to place the 'oci' executable? (leave blank to use '/home/opc/bin'):
+-- Creating directory '/home/opc/bin'.
+-- The executable will be in '/home/opc/bin'.
+
+===&gt; In what directory would you like to place the OCI scripts? (leave blank to use '/home/opc/bin/oci-cli-scripts'):
+-- Creating directory '/home/opc/bin/oci-cli-scripts'.
+-- The scripts will be in '/home/opc/bin/oci-cli-scripts'.
+
+===&gt; Currently supported optional packages are: ['db (will install cx_Oracle)']
+What optional CLI packages would you like to be installed (comma separated names; press enter if you don't need any optional packages)?:
+-- The optional packages installed will be ''.
+-- Trying to use python3 venv.
+-- Executing: ['/usr/bin/python', '-m', 'venv', '/home/opc/lib/oracle-cli']
+/usr/bin/python: No module named venv
+-- System was unable to use venv, is going to download and create virtualenv.
+-- Downloading virtualenv package from https://github.com/pypa/virtualenv/archive/15.0.0.tar.gz.
+-- Downloaded virtualenv package to /tmp/tmpZCpUza/15.0.0.tar.gz.
+-- Checksum of /tmp/tmpZCpUza/15.0.0.tar.gz OK.
+-- Extracting '/tmp/tmpZCpUza/15.0.0.tar.gz' to '/tmp/tmpZCpUza'.
+-- Executing: ['/usr/bin/python', 'virtualenv.py', '--python', '/usr/bin/python', '/home/opc/lib/oracle-cli']
+Already using interpreter /usr/bin/python
+New python executable in /home/opc/lib/oracle-cli/bin/python
+Installing setuptools, pip, wheel...done.
+-- Executing: ['/home/opc/lib/oracle-cli/bin/pip', 'install', '--cache-dir', '/tmp/tmpZCpUza', 'oci_cli', '--upgrade']
+DEPRECATION: Python 2.7 reached the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 is no longer maintained. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+Collecting oci_cli
+  Downloading oci_cli-2.9.3-py2.py3-none-any.whl (7.4 MB)
+     |████████████████████████████████| 7.4 MB 31.0 MB/s
+Collecting cryptography==2.8
+  Downloading cryptography-2.8-cp27-cp27mu-manylinux2010_x86_64.whl (2.3 MB)
+     |████████████████████████████████| 2.3 MB 33.0 MB/s
+Collecting certifi
+  Downloading certifi-2019.11.28-py2.py3-none-any.whl (156 kB)
+     |████████████████████████████████| 156 kB 40.2 MB/s
+Collecting pyOpenSSL==18.0.0
+  Downloading pyOpenSSL-18.0.0-py2.py3-none-any.whl (53 kB)
+     |████████████████████████████████| 53 kB 2.6 MB/s
+Collecting arrow==0.10.0
+  Downloading arrow-0.10.0.tar.gz (86 kB)
+     |████████████████████████████████| 86 kB 7.7 MB/s
+Collecting retrying==1.3.3
+  Downloading retrying-1.3.3.tar.gz (10 kB)
+Collecting oci==2.10.5
+  Downloading oci-2.10.5-py2.py3-none-any.whl (3.5 MB)
+     |████████████████████████████████| 3.5 MB 38.5 MB/s
+Collecting pytz==2016.10
+  Downloading pytz-2016.10-py2.py3-none-any.whl (483 kB)
+     |████████████████████████████████| 483 kB 35.1 MB/s
+Collecting idna&lt;2.7,&gt;=2.5
+  Downloading idna-2.6-py2.py3-none-any.whl (56 kB)
+     |████████████████████████████████| 56 kB 6.5 MB/s
+Collecting PyYAML==5.1.2
+  Downloading PyYAML-5.1.2.tar.gz (265 kB)
+     |████████████████████████████████| 265 kB 35.2 MB/s
+Collecting terminaltables==3.1.0
+  Downloading terminaltables-3.1.0.tar.gz (12 kB)
+Collecting six==1.11.0
+  Downloading six-1.11.0-py2.py3-none-any.whl (10 kB)
+Collecting python-dateutil==2.7.3
+  Downloading python_dateutil-2.7.3-py2.py3-none-any.whl (211 kB)
+     |████████████████████████████████| 211 kB 35.6 MB/s
+Collecting configparser==3.5.0
+  Downloading configparser-3.5.0.tar.gz (39 kB)
+Collecting jmespath==0.9.3
+  Downloading jmespath-0.9.3-py2.py3-none-any.whl (23 kB)
+Collecting click==6.7
+  Downloading click-6.7-py2.py3-none-any.whl (71 kB)
+     |████████████████████████████████| 71 kB 9.0 MB/s
+Collecting cffi!=1.11.3,&gt;=1.8
+  Downloading cffi-1.14.0-cp27-cp27mu-manylinux1_x86_64.whl (387 kB)
+     |████████████████████████████████| 387 kB 33.3 MB/s
+Collecting ipaddress; python_version &lt; &quot;3&quot;
+  Downloading ipaddress-1.0.23-py2.py3-none-any.whl (18 kB)
+Collecting enum34; python_version &lt; &quot;3&quot;
+  Downloading enum34-1.1.6-py2-none-any.whl (12 kB)
+Collecting pycparser
+  Downloading pycparser-2.19.tar.gz (158 kB)
+     |████████████████████████████████| 158 kB 43.3 MB/s
+Building wheels for collected packages: arrow, retrying, PyYAML, terminaltables, configparser, pycparser
+  Building wheel for arrow (setup.py) ... done
+  Created wheel for arrow: filename=arrow-0.10.0-py2.py3-none-any.whl size=32852 sha256=588fb64659d6e482ab77ff9923c1a3b0df991546b38f6c8a2fa35d312d149d08
+  Stored in directory: /tmp/tmpZCpUza/wheels/e9/2b/c1/e12eca55f056e9a41ed1d83bc42996bb12283c7509d5d690c6
+  Building wheel for retrying (setup.py) ... done
+  Created wheel for retrying: filename=retrying-1.3.3-py2-none-any.whl size=11430 sha256=41590ed3406a3bb96547a454c2dcdef5c7317a5a563f35b52d57f46ac1347ba0
+  Stored in directory: /tmp/tmpZCpUza/wheels/fa/24/c3/9912f4c9363033bbd0eafbec1b27c65b04d7ea6acd312876b0
+  Building wheel for PyYAML (setup.py) ... done
+  Created wheel for PyYAML: filename=PyYAML-5.1.2-cp27-cp27mu-linux_x86_64.whl size=44911 sha256=008463f3440ed923750648617d3f55c8be612daef2ddcb8fa25f5a692d2c2f33
+  Stored in directory: /tmp/tmpZCpUza/wheels/87/9b/a7/9bfdaa1487acce958269a6b5f86db2e4d38204dff4e256e23a
+  Building wheel for terminaltables (setup.py) ... done
+  Created wheel for terminaltables: filename=terminaltables-3.1.0-py2-none-any.whl size=15354 sha256=8ccf0b3bc5630e3a28f8f2b0712cb4b0068d7a782cc06562dcd32d69d824f65d
+  Stored in directory: /tmp/tmpZCpUza/wheels/f0/11/d1/8902b10e29e3ce2c8965a86533b76894c844565e02d5341520
+  Building wheel for configparser (setup.py) ... done
+  Created wheel for configparser: filename=configparser-3.5.0-py2-none-any.whl size=21661 sha256=1e85a455796d38a0e4119626b41a5c1c0527d1de6f04952c4d60e02d2edfcc69
+  Stored in directory: /tmp/tmpZCpUza/wheels/fe/e1/b2/ffea2d060a50955b9228e7a1dc7b1fc7a5013dc506da8c5272
+  Building wheel for pycparser (setup.py) ... done
+  Created wheel for pycparser: filename=pycparser-2.19-py2.py3-none-any.whl size=111028 sha256=ef0b916e255c13a6b24f2f827db4c01d8602e5a11c0505ba2ad977b5468ed606
+  Stored in directory: /tmp/tmpZCpUza/wheels/f1/ed/ed/1cba03d3b567c6fabb01ea0e572dffecf350b7da49612d05b0
+Successfully built arrow retrying PyYAML terminaltables configparser pycparser
+Installing collected packages: six, pycparser, cffi, ipaddress, enum34, cryptography, certifi, pyOpenSSL, python-dateutil, arrow, retrying, pytz, configparser, oci, idna, PyYAML, terminaltables, jmespath, click, oci-cli
+Successfully installed PyYAML-5.1.2 arrow-0.10.0 certifi-2019.11.28 cffi-1.14.0 click-6.7 configparser-3.5.0 cryptography-2.8 enum34-1.1.6 idna-2.6 ipaddress-1.0.23 jmespath-0.9.3 oci-2.10.5 oci-cli-2.9.3 pyOpenSSL-18.0.0 pycparser-2.19 python-dateutil-2.7.3 pytz-2016.10 retrying-1.3.3 six-1.11.0 terminaltables-3.1.0
+
+===&gt; Modify profile to update your $PATH and enable shell/tab completion now? (Y/n): Y
+
+===&gt; Enter a path to an rc file to update (leave blank to use '/home/opc/.bashrc'):
+-- Backed up '/home/opc/.bashrc' to '/home/opc/.bashrc.backup'
+-- Tab completion set up complete.
+-- If tab completion is not activated, verify that '/home/opc/.bashrc' is sourced by your shell.
+--
+-- ** Run `exec -l $SHELL` to restart your shell. **
+--
+-- Installation successful.
+-- Run the CLI with /home/opc/bin/oci --help
+[opc@demo02 ~]$ 
+</code></pre>
+
+<p>설치 상태를 <code>oci -v</code>명령으로 확인할 수 있습니다. 이 명령이 실행되면 설치된 <strong>OCI CLI</strong> 버전이 출력됩니다.</p>
+
+<pre><code>[opc@demo02 ~]$ oci -v
+2.9.3
+[opc@demo02 ~]$ 
+</code></pre>
+
+<h1 id="oci-cli-제거">OCI CLI 제거</h1>
+
+<p><strong>OCI CLI</strong>를 제거할 때 다음 디렉터리를 제거해야 합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>디렉터리 유형</th>
+<th>기본 설정 값(기본 디렉터리)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>OCI CLI 라이브러리 설치 위치</td>
+<td>~/lib/oracle-cli</td>
+</tr>
+
+<tr>
+<td>OCI CLI 실행 파일 설치 위치</td>
+<td>~/bin</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>OCI CLI</strong> 라이브러리 설치 디렉터리와 실행 파일 설치 위치를 모두 삭제합니다. 기본 설정 값으로 설치했다면 다음 명령으로 <strong>OCI CLI</strong>를 제거할 수 있습니다.</p>
+
+<pre><code>rm -rf $HOME/lib
+rm -rf $HOME/bin
+</code></pre>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/oci_docs/80_oci_tools/oci_cli/installation_on_window/" title="[OCI CLI 설치] Window 10"> <i class="fa fa-chevron-left"></i><label>[OCI CLI 설치] Window 10</label></a>
+    <a class="nav nav-next" href="/oci_docs/80_oci_tools/oci_cli/manual_installation/" title="[OCI CLI 설치] 메뉴얼 설치" style="margin-right: 0px;"><label>[OCI CLI 설치] 메뉴얼 설치</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+  <div class="chevrons">
+      <div class="row">
+    <div class="author left">
+        <img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan2.jpg" height="90" width="90">
+    </div>
+    <div class="author right">
+		<li><b>작성자: 김태완</b></li>
+        <li>사랑하는 민수와 데이터 관리, 데이터 분석 &amp; 클라우드에 집중하고 있습니다.</li>
+        <li>E-mail: taewanme@gmail.com</li>
+    </div>
+</div><div class="panel panel-danger">
+<div class="panel-heading">Disclaimer</div>
+<div class="panel-body">이 저작물은 Oracle과 관계없이 개인으로서 개인의 시간을 할애하여 작성된 글 입니다. 본 글의 내용, 입장, 예측은 Oracle을 공식적으로 <font color="red"><bold>절대</bold></font> 대변하지 않습니다.</div>
+</div>
+<hr />
+
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac/"></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+  </div>
+
+
+	<div>
+
+
+  
+
+
+
+  </div>
+  
+  
+</footer>
+
+<script src="/oci_docs/js/clipboard.min.js"></script>
+
+<link href="/oci_docs/css/featherlight.min.css" rel="stylesheet">
+<script src="/oci_docs/js/featherlight.min.js"></script>
+
+
+
+<script src="/oci_docs/theme-flex/script.js"></script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        
+        ga('create', 'UA-72835175-1', 'auto');
+        ga('send', 'pageview');
+</script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2&appId=404519239985000&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+    
+
+    
+    
+
+    
+
+
+  </body>
+</html>
