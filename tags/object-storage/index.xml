@@ -6,10 +6,20 @@
     <description>Recent content in Object Storage on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 11 Dec 2019 01:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 28 Feb 2020 10:20:25 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/object-storage/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OCI Object Storag를 Linux/Mac OS X 파일시스템 마운트</title>
+      <link>http://taewan.kim/cloud/mounting_oci_objectstorage_bucket_on_linux_mac/</link>
+      <pubDate>Fri, 28 Feb 2020 10:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/mounting_oci_objectstorage_bucket_on_linux_mac/</guid>
+      <description>클라우드 서비스에서 데이터를 관리하는 핵심 저장소는 Object Storage입니다. OCI(Oracle Cloud Infrasturcture)는 Object Storage에 파일을 저장하고 사용하는 인터페이스로 다음과 같은 방식을 제공합니다.
+ OCI Console의 UI: OCI 웹 사이트 REST API OCI SDK: Java, Python, Ruby, Go CLI 툴: OCI CLI  애플리케이션 코드에서 Object Storage에 저장된 파일을 접근하거나 자동화 프로세스에서 Object Storage를 사용하는 경우에는 위에서 나열한 방법이 효과적입니다. 그러나 이 인터페이스을 사람이 사용하기에는 상당히 불편합니다. 리눅스 사용자가 Object Storage를 사용하는 가장 편리한 방법은 파일 시스템으로 마운트하여 사용하는 방법입니다.</description>
+    </item>
     
     <item>
       <title>[OCI Release Note]Object Storage 새기능 요약</title>

@@ -255,6 +255,15 @@
     </item>
     
     <item>
+      <title>Bucket</title>
+      <link>http://taewan.kim/tags/bucket/</link>
+      <pubDate>Fri, 28 Feb 2020 10:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/bucket/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Cassandra</title>
       <link>http://taewan.kim/tags/cassandra/</link>
       <pubDate>Tue, 26 Dec 2017 21:28:14 +0900</pubDate>
@@ -665,6 +674,15 @@
       <pubDate>Tue, 18 Oct 2016 21:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/functioal-programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fuse</title>
+      <link>http://taewan.kim/tags/fuse/</link>
+      <pubDate>Fri, 28 Feb 2020 10:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/fuse/</guid>
       <description></description>
     </item>
     
@@ -1292,7 +1310,7 @@
     <item>
       <title>Object Storage</title>
       <link>http://taewan.kim/tags/object-storage/</link>
-      <pubDate>Wed, 11 Dec 2019 01:28:14 +0900</pubDate>
+      <pubDate>Fri, 28 Feb 2020 10:20:25 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/object-storage/</guid>
       <description></description>
