@@ -121,6 +121,10 @@
 		</header>
 
 		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2020/02/fuse/post.jpg" alt="OCI Object Storag를 Linux/Mac OS X 파일시스템 마운트">
+			</figure>
 			
 
 <p>클라우드 서비스에서 데이터를 관리하는 핵심 저장소는 Object Storage입니다. OCI(Oracle Cloud Infrasturcture)는 Object Storage에 파일을 저장하고 사용하는 인터페이스로 다음과 같은 방식을 제공합니다.</p>
@@ -150,6 +154,15 @@
 <p>s3fs-fuse의 프로젝트 홈페이지는 <a href="https://github.com/s3fs-fuse/s3fs-fuse">https://github.com/s3fs-fuse/s3fs-fuse</a> 입니다.</p>
 
 <p>s3fs-fuse는 yum, apt, brew 패키지 관리툴로 빌드한 이미지를 제공합니다.</p>
+
+<h3 id="s3fs-fuse의-한계">s3fs-fuse의 한계</h3>
+
+<p>s3fs-fuse를 이용하면 CI Object Storage 버킷을 파일시스템으로 마운트할 수 있습니다. s3fs-fuse의 한계는 다음과 같습니다.</p>
+
+<ul>
+<li>Hard Link를 만들 수 없음</li>
+<li>하나의 파일에 대한 동시에 여러 클라이언트의 동시 접근을 방지하지 못함</li>
+</ul>
 
 <h2 id="demo-사전-준비">Demo 사전 준비</h2>
 
@@ -445,7 +458,7 @@ sudo yum install s3fs-fuse
 <li>Bucket 마운트</li>
 </ol>
 
-<p>s3fs-fuse로 OCI Object Storage를 마운트하는 단계에서 Linux와 Mac OS X의 설정 과정이 약간 다릅니다. 설정 과정은 동일하기 때문에 Linux를 기준으로 설명하고 Bucket 마운트 단게는 Linux와 Mac OS X를 구분하여 설명하겠습니다.</p>
+<p>s3fs-fuse로 OCI Object Storage를 마운트하는 단계에서 Linux와 Mac OS X의 설정 과정이 동일합니다. 설정 과정이 같기 때문에 Linux를 기준으로 설명하겠습니다.</p>
 
 <h3 id="1-인증-파일-만들기">1. 인증 파일 만들기</h3>
 
@@ -484,7 +497,7 @@ drwxrwxr-x. 2 opc opc    6  2월 29 11:29 demo_bucket02
 [opc@demo-linux-vm ~]$
 </code></pre>
 
-<h3 id="3-리눅스-bucket-마운트">3. 리눅스 Bucket 마운트</h3>
+<h3 id="3-bucket-마운트">3. Bucket 마운트</h3>
 
 <p>리눅스에서 s3fs 명령을 실행하여 2개 object storage 버킷을 마운트하는 과정을 정리합니다. s3fs를 실행하기 전에 s3fs가 접근할 Object Storage URL을 확정해야 합니다. OCI Object Storage의 URL 패턴은 다음과 같습니다.</p>
 
@@ -568,7 +581,16 @@ drwxrwxr-x. 4 opc  opc  48  2월 29 11:29 ..
 
 <p><img src="https://taewanmerepo.github.io/2020/02/fuse/130.jpg" alt="" /></p>
 
+<p>이 설정을 Mac OS X에 적용하면 터미널과 Finder에서 OCI Object Storage를 접근할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/02/fuse/140.jpg" alt="" /></p>
+
 <h2 id="object-storage-마운트-포인트-제거">Object Storage 마운트 포인트 제거</h2>
+
+<p>Object Storage 마운트를 제거하는 명령은 다음과 같습니다.</p>
+
+<pre><code>sudo fusermount -u &lt;mount_point&gt;
+</code></pre>
 
 <h2 id="참고자료">참고자료</h2>
 
@@ -662,6 +684,7 @@ drwxrwxr-x. 4 opc  opc  48  2월 29 11:29 ..
 <li><a href="#linux-fuse">Linux Fuse</a>
 <ul>
 <li><a href="#s3fs-fuse">s3fs-fuse</a></li>
+<li><a href="#s3fs-fuse의-한계">s3fs-fuse의 한계</a></li>
 </ul></li>
 <li><a href="#demo-사전-준비">Demo 사전 준비</a>
 <ul>
@@ -685,7 +708,7 @@ drwxrwxr-x. 4 opc  opc  48  2월 29 11:29 ..
 <ul>
 <li><a href="#1-인증-파일-만들기">1. 인증 파일 만들기</a></li>
 <li><a href="#2-mount-point-디렉터리-만들기">2. Mount Point 디렉터리 만들기</a></li>
-<li><a href="#3-리눅스-bucket-마운트">3. 리눅스 Bucket 마운트</a></li>
+<li><a href="#3-bucket-마운트">3. Bucket 마운트</a></li>
 </ul></li>
 <li><a href="#object-storage-마운트-포인트-제거">Object Storage 마운트 포인트 제거</a></li>
 <li><a href="#참고자료">참고자료</a></li>
