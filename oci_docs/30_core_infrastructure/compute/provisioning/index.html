@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2020-03-01T20:45:10 KST">
-<title>OCI 알아두면 유용한 팁 :: Oracle Cloud Infrastructure</title>
+<title>Compute 인스턴스 만들기 :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 
@@ -20,7 +20,7 @@ http://taewan.kim/img/icon/oracle.png
 <script type="text/javascript">
       var baseurl = "\/oci_docs";
 </script>
-<meta name="description" content="Miscellaneous Tips">
+<meta name="description" content="">
 
 
 <link href='/oci_docs/css/railload.css' rel="stylesheet">
@@ -28,7 +28,7 @@ http://taewan.kim/img/icon/oracle.png
 
     
   </head>
-  <body data-url="/oci_docs/98_misc_tips/">
+  <body data-url="/oci_docs/30_core_infrastructure/compute/provisioning/">
     
       <header>
   <div class="logo">
@@ -286,21 +286,21 @@ http://taewan.kim/img/icon/oracle.png
       <a href="/oci_docs/20_identity_and_access_management/">OCI 사용자 및 권한 관리</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/oci_docs/30_core_infrastructure/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/30_core_infrastructure/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/30_core_infrastructure/">Core Infastructure</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/oci_docs/30_core_infrastructure/compute/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/30_core_infrastructure/compute/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/30_core_infrastructure/compute/">Compute</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/oci_docs/30_core_infrastructure/compute/provisioning/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/30_core_infrastructure/compute/provisioning/" class="dd-item parent active alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/30_core_infrastructure/compute/provisioning/">Compute 인스턴스 만들기</a>
@@ -381,7 +381,7 @@ http://taewan.kim/img/icon/oracle.png
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/98_misc_tips/" class="dd-item parent active alwaysopen haschildren
+    <li data-nav-id="/oci_docs/98_misc_tips/" class="dd-item alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/98_misc_tips/">OCI 알아두면 유용한 팁</a>
@@ -548,7 +548,7 @@ http://taewan.kim/img/icon/oracle.png
     <option value="/oci_docs/30_core_infrastructure/compute/" >
   - 
    Compute</option> 
-    <option value="/oci_docs/30_core_infrastructure/compute/provisioning/" >
+    <option value="/oci_docs/30_core_infrastructure/compute/provisioning/"  selected>
   -- 
    Compute 인스턴스 만들기</option> 
       <option value="/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/" >--- Developer Image 인스턴스 생성</option>
@@ -587,7 +587,7 @@ http://taewan.kim/img/icon/oracle.png
       <option value="/oci_docs/60_solutions/data_catalog/glossary/" >-- 용어정리</option>
   
   
-    <option value="/oci_docs/98_misc_tips/"  selected>
+    <option value="/oci_docs/98_misc_tips/" >
    OCI 알아두면 유용한 팁</option> 
       <option value="/oci_docs/98_misc_tips/ssh_key_pairs/" >- 운영체제별 SSH Key Pair 준비</option>
       <option value="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/" >- OCI 기본 정보 확인법</option>
@@ -627,15 +627,15 @@ http://taewan.kim/img/icon/oracle.png
       </div>
     
 
-    <h1>OCI 알아두면 유용한 팁</h1>
+    <h1>Compute 인스턴스 만들기</h1>
     
     
     
 
-<p>Oracle Cloud를 사용하면서 자주 사용되는 다양한 주제를 정리합니다.</p>
+<p>OCI(Oracle Cloud Infrastructure)에서 Compute 인스턴스를 프로비저닝하는 방법을 유형별 정리합니다.</p>
 
 <ul>
-<li><a href="./ssh_key_pairs/">운영체제 별 SSH Key Pair 준비</a></li>
+<li>Oracle Cloud Developer Image 인스턴스 생성</li>
 <li></li>
 </ul>
 
@@ -645,8 +645,8 @@ http://taewan.kim/img/icon/oracle.png
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/60_solutions/data_catalog/glossary/" title="용어정리"> <i class="fa fa-chevron-left"></i><label>용어정리</label></a>
-    <a class="nav nav-next" href="/oci_docs/98_misc_tips/ssh_key_pairs/" title="운영체제별 SSH Key Pair 준비" style="margin-right: 0px;"><label>운영체제별 SSH Key Pair 준비</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/30_core_infrastructure/compute/" title="Compute"> <i class="fa fa-chevron-left"></i><label>Compute</label></a>
+    <a class="nav nav-next" href="/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/" title="Developer Image 인스턴스 생성" style="margin-right: 0px;"><label>Developer Image 인스턴스 생성</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -665,7 +665,7 @@ http://taewan.kim/img/icon/oracle.png
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/98_misc_tips/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/30_core_infrastructure/compute/provisioning/"></div>
   </div>
 
   </section>

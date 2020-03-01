@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2020-03-01T20:45:10 KST">
-<title>OCI 알아두면 유용한 팁 :: Oracle Cloud Infrastructure</title>
+<title>Developer Image 인스턴스 생성 :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 
@@ -20,7 +20,7 @@ http://taewan.kim/img/icon/oracle.png
 <script type="text/javascript">
       var baseurl = "\/oci_docs";
 </script>
-<meta name="description" content="Miscellaneous Tips">
+<meta name="description" content="">
 
 
 <link href='/oci_docs/css/railload.css' rel="stylesheet">
@@ -28,7 +28,7 @@ http://taewan.kim/img/icon/oracle.png
 
     
   </head>
-  <body data-url="/oci_docs/98_misc_tips/">
+  <body data-url="/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/">
     
       <header>
   <div class="logo">
@@ -286,28 +286,28 @@ http://taewan.kim/img/icon/oracle.png
       <a href="/oci_docs/20_identity_and_access_management/">OCI 사용자 및 권한 관리</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/oci_docs/30_core_infrastructure/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/30_core_infrastructure/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/30_core_infrastructure/">Core Infastructure</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/oci_docs/30_core_infrastructure/compute/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/30_core_infrastructure/compute/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/30_core_infrastructure/compute/">Compute</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/oci_docs/30_core_infrastructure/compute/provisioning/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/30_core_infrastructure/compute/provisioning/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/30_core_infrastructure/compute/provisioning/">Compute 인스턴스 만들기</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/" class="dd-item">
+      <li data-nav-id="/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/" class="dd-item active">
         <div>
           <a href="/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/">
             Developer Image 인스턴스 생성
@@ -381,7 +381,7 @@ http://taewan.kim/img/icon/oracle.png
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/98_misc_tips/" class="dd-item parent active alwaysopen haschildren
+    <li data-nav-id="/oci_docs/98_misc_tips/" class="dd-item alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/98_misc_tips/">OCI 알아두면 유용한 팁</a>
@@ -551,7 +551,7 @@ http://taewan.kim/img/icon/oracle.png
     <option value="/oci_docs/30_core_infrastructure/compute/provisioning/" >
   -- 
    Compute 인스턴스 만들기</option> 
-      <option value="/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/" >--- Developer Image 인스턴스 생성</option>
+      <option value="/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/"  selected>--- Developer Image 인스턴스 생성</option>
   
   
     <option value="/oci_docs/30_core_infrastructure/block_storage/" >
@@ -587,7 +587,7 @@ http://taewan.kim/img/icon/oracle.png
       <option value="/oci_docs/60_solutions/data_catalog/glossary/" >-- 용어정리</option>
   
   
-    <option value="/oci_docs/98_misc_tips/"  selected>
+    <option value="/oci_docs/98_misc_tips/" >
    OCI 알아두면 유용한 팁</option> 
       <option value="/oci_docs/98_misc_tips/ssh_key_pairs/" >- 운영체제별 SSH Key Pair 준비</option>
       <option value="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/" >- OCI 기본 정보 확인법</option>
@@ -627,26 +627,393 @@ http://taewan.kim/img/icon/oracle.png
       </div>
     
 
-    <h1>OCI 알아두면 유용한 팁</h1>
+    <h1>Developer Image 인스턴스 생성</h1>
+    
     
     
     
 
-<p>Oracle Cloud를 사용하면서 자주 사용되는 다양한 주제를 정리합니다.</p>
+<p>이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.</p>
 
 <ul>
-<li><a href="./ssh_key_pairs/">운영체제 별 SSH Key Pair 준비</a></li>
-<li></li>
+<li><a href="./how_to_sign_up_in_oci/">OCI FREE TIER 계정 등록</a></li>
+<li><a href="./first_sign_in_oci/">Free Tier 계정 로그인</a></li>
 </ul>
 
+<hr />
+
+<p>이번 문서에서는 Oracle이 제공하는 Oracle Cloud Developer Image로 Compute VM을 생성하는 절차를 소개합니다. Oracle Cloud Developer Image으로 OCI Linux VM 인스턴스를 생성하는 문서는 다음과 같은 목차로 진행 됩니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-body"><p><nav id="TableOfContents">
+<ul>
+<li><a href="#1-사전-준비">1. 사전 준비</a>
+<ul>
+<li><a href="#1-1-oci-자원-준비">1.1 OCI 자원 준비</a></li>
+<li><a href="#1-2-준비-파일">1.2 준비 파일</a></li>
+<li><a href="#1-3-사용-가능한-자원-확인">1.3 사용 가능한 자원 확인</a></li>
+</ul></li>
+<li><a href="#2-oci-linux-vm-인스턴스-생성">2. OCI Linux VM 인스턴스 생성</a>
+<ul>
+<li><a href="#2-2-oralce-linxu-7-7-이미지로-vm-생성">2.2 Oralce Linxu 7.7 이미지로 VM 생성</a></li>
+<li><a href="#2-3-ssh-접속">2.3 SSH 접속</a></li>
+<li><a href="#2-4-vm-포트-오픈">2.4 VM 포트 오픈</a>
+<ul>
+<li><a href="#2-4-1-security-list에-secutiry-rule-추가">2.4.1 Security List에 Secutiry Rule 추가</a></li>
+<li><a href="#2-4-2-vm-방화벽-오픈">2.4.2 VM 방화벽 오픈</a></li>
+</ul></li>
+<li><a href="#요약">요약</a></li>
+<li><a href="#참고-문서">참고 문서</a></li>
+<li><a href="#참고-문서-1">참고 문서</a></li>
+</ul></li>
+</ul>
+</nav></p>
+</div></div>
+
+
+<hr />
+
+<h1 id="1-사전-준비">1. 사전 준비</h1>
+
+<p>OCI Linux VM 인스턴스를 생성 문서는 다음과 같은 자원과 파일이 이미 만들어져 있다는 것을 가정하고 진행합니다.</p>
+
+<h2 id="1-1-oci-자원-준비">1.1 OCI 자원 준비</h2>
+
+<p>다음 자원이 없다면 &ldquo;<strong>자원 생성 참조 문서</strong>&ldquo;를 참조하여 해당 자원을 생성하시기 바랍니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>자원 유형</th>
+<th>자원 이름</th>
+<th>소속 Compartment</th>
+<th>추가 설명</th>
+<th>자원 생성 참조 문서</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Compartment</td>
+<td>sanbox</td>
+<td>root &gt; sandbox</td>
+<td>.</td>
+<td><a href="../../../create_compartment/" target="_blank">Compartment 추가 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</td>
+</tr>
+
+<tr>
+<td>VCN</td>
+<td>demo_vcn</td>
+<td>root &gt; sandbox</td>
+<td>80포트를 공개하는 Custom_Security_List를 포함할 것</td>
+<td><a href="../../../vcn/simple_vcn/" target="_blank">간편 VCN 만들기 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="1-2-준비-파일">1.2 준비 파일</h2>
+
+<p>OCI Linux VM 인스턴스을 생성하기 위해서는 SSH 접속에 사용할 공개키 등록해야 합니다. 다음과 같은 RSA 공개키를 준비해야 합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>파일 유형</th>
+<th>파일명</th>
+<th>파일 위치</th>
+<th>파일 생성 참조 문서</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Key Paring RSA 공개키</td>
+<td>id_rsa.pub</td>
+<td>~/temp</td>
+<td><a href="/98_misc_tips/ssh_key_pairs/" target="_blank">운영체제별 SSH Key Pair 준비 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</td>
+</tr>
+
+<tr>
+<td>Key Paring RSA 비밀키</td>
+<td>id_rsa</td>
+<td>~/temp</td>
+<td><a href="/98_misc_tips/ssh_key_pairs/" target="_blank">운영체제별 SSH Key Pair 준비 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="1-3-사용-가능한-자원-확인">1.3 사용 가능한 자원 확인</h2>
+
+<p>현재 Tenancy에 할당된 사용 가능한 자원을 확인 합니다. Tenancy에 할당된 자원량을 확인하는 <strong>Limits, Quotas and Uasge(제한, 할당량 및 사용량)</strong> 페이지는 다음과 같은 메뉴 패스로 이동할 수 있습니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-body"><span class="glyphicon glyphicon-menu-hamburger" style="font-size:medium" aria-hidden="true"></span> (<strong>OCI 콘솔 왼쪽 위 햄버그 버튼</strong>) <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span>  <strong>Governance</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> <strong>Limits, Quotas and Uasge(제한, 할당량 및 사용량)</strong></div></div>
+
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vm/030.jpg?classes=border,shadow" alt="" /></p>
+
+<hr />
+
+<p><strong>Limits, Quotas and Uasge(제한, 할당량 및 사용량)</strong> 페이지에서 리전 AD(Available Domain)에서 서비스 별로 할당된 자원 크기와 현재 사용한 자원/사용 가능한 자원 규모를 확인할 수 있습니다. 또한 <strong>Request a services limit increase</strong>에서 자원 증설을 요청할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vm/060.jpg?classes=border,shadow" alt="" /></p>
+
+<p>위 이미지의 <strong>Limits, Quotas and Uasge(제한, 할당량 및 사용량)</strong> 페이지는 <strong>VM.Standard2.1</strong> Shape을 사용 가능한 자원으로 표시하고 있다. 이번 장에서는 이 Shape을 이용하여 리눅스 VM 인스턴스를 생성할 것입니다. 이 페이지를 보고 실습하시는 분들의 경우 상황에 따라서  <strong>VM.Standard2.1</strong> Shape을 사용할 수 없을 수 있습니다. 이 문서에서 Shape 타입은 중요하지 않으며, 사용 가능한 Shape을 선택하시면 됩니다. 아래에서 <strong>VM.Standard2.1</strong> Shape을 언급하는 부분을 여러분이 선택한 Shape으로 교체하고 진행하시면 됩니다.</p>
+
+<h1 id="2-oci-linux-vm-인스턴스-생성">2. OCI Linux VM 인스턴스 생성</h1>
+
+<p>앞에서 설명한 것 처럼, 이제는 Compartment(sandbox)와 VCN(demo_vcn)을 만들었고, SSH Key Pair로 id_rsa파일과 id_rsa.pub 파일을 생성했을 것입니다. 이제 부터 <strong>Oracle Cloud Developer Image</strong>를 프로비저닝하겠습니다.</p>
+
+<h2 id="2-2-oralce-linxu-7-7-이미지로-vm-생성">2.2 Oralce Linxu 7.7 이미지로 VM 생성</h2>
+
+<p>이제 부터 <strong>Oracle Cloud Developer Image</strong>를 <strong>VM.Standard2.1</strong> Shape으로 리눅스 VM 인스턴스를 만들겠습니다. OCI Console에서 다음 메뉴 패스로 OCI Compute의 Instance 관리 페이지로 이동합니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-body"><span class="glyphicon glyphicon-menu-hamburger" style="font-size:medium" aria-hidden="true"></span> (<strong>OCI 콘솔 왼쪽 위 햄버그 버튼</strong>) <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span>  <strong>Compute</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> <strong>Instance</strong></div></div>
+
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vm/070.jpg?classes=border,shadow" alt="" /></p>
+
+<p>OCI Compute의 Instance관리 페이지에서 VM을 할당할 <strong>sandbox</strong> Compartment를 선택합니다. 그리고 &ldquo;<strong>create instance</strong>&rdquo; 버튼을 클릭하고 &ldquo;<strong>Create Compute Instance</strong>&rdquo; 페이지로 이동합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vm/080.jpg?classes=border,shadow" alt="" /></p>
+
+<p>다음 그림과 같이 &ldquo;<strong>Create Compute Instance</strong>&rdquo; 페이지에서 인스턴스 이름(Name your instance)에 <strong>oci_developer_linux_vm</strong>를 입력합니다. 그리고 &ldquo;<strong>Change Image Source</strong>&rdquo; 버튼을 클립합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/02/developerimg/005.jpg?classes=border,shadow" alt="" /></p>
+
+<p>&ldquo;<strong>Browse All Images</strong>&ldquo;에서 <strong>Oracle Images</strong> 텝을 선택하고 <strong>Oracle Cloud Develoepr Image</strong>를 선택합니다. 그리고 &ldquo;<strong>I have reviewed and accept the Oracle Standard Terms and Restrictions</strong>&rdquo; 항목을 체크한 다음에 <strong>Select Image</strong> 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/02/developerimg/010.jpg?classes=border,shadow" alt="" /></p>
+
+<p>&ldquo;<strong>Browse All Images</strong>&rdquo; 창에서 <strong>Oracle Cloud Develoepr Image</strong>를 선택하면 다음 이미지와 같이 Image Source가 <strong>Oracle Cloud Developer Image</strong>로 변경됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/02/developerimg/030.jpg?classes=border,shadow" alt="" /></p>
+
+<p>&ldquo;<strong>Create Compute Instance</strong>&rdquo; 페이지에서 입력 폼 각 항목에 다음과 같이 입력합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>설정 항목</th>
+<th>설정값</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Name your instance</td>
+<td>oci_developer_linux_vm</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Operating System or Image Source</td>
+<td>Oracle Linux 7.7</td>
+<td>오라클 리눅스 7.X는 CentOs7.x/RedHat7.x와 완전한 호환성 제공</td>
+</tr>
+
+<tr>
+<td>Availability Domain</td>
+<td>AD 1</td>
+<td>현제 데모는 3AD 리전인 Ashburn에서 진행하고 있음</td>
+</tr>
+
+<tr>
+<td>Instance Type</td>
+<td>Virtual Machine</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Instance Shape</td>
+<td>VM.Stanndard2.1</td>
+<td>1 Core OCPU, 15GB Memory</td>
+</tr>
+
+<tr>
+<td>Virtaul cloud network compartment</td>
+<td>sandbox</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Virtaul cloud network</td>
+<td>demo_vcn</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Subnet Compartment</td>
+<td>sandbox</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Subnet</td>
+<td>Public Subnet-demo_vcn</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Assign a public IP address</td>
+<td>체크</td>
+<td>공개 IP를 설정하기 위해서 체크</td>
+</tr>
+
+<tr>
+<td>Choose SSH Key file</td>
+<td>체크</td>
+<td>아래 <strong>Choose Files</strong>를 클릭하고 미리 준비한 id_rsa.pub 파일을 업로드</td>
+</tr>
+</tbody>
+</table>
+
+<p>위 입력값을 모두 설정하면 다음 이미지와 같은 형태가 됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/02/developerimg/100.jpg?classes=border,shadow" alt="" /></p>
+
+<p>다음 이미지와 같이 입력을 완료한 후 &ldquo;<strong>Create</strong>&rdquo; 버튼을 클릭하여 인스턴스 생성을 시작합니다. 인스턴스 생성이 시작되면 Compute Instance 상세 페이지로 이동합니다. 처음에 Compute Instance 아이콘 색깔은 주황색(생성중)입니다. Compute Instance 생성이 완료되면  아이콘이 색이 초록색으로 변경됩니다. 그리고 <strong>Public IP Address</strong>에 IP <font color='red'><strong>129.213.51.111</strong></font>가 할당되어 있는것을 확인할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/02/developerimg/110.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="2-3-ssh-접속">2.3 SSH 접속</h2>
+
+<p>앞에서 확인한 공개 IP로 ssh 접근을 할 수 있습니다. 리눅스/맥의 터머널로 ssh 접근하는 명령의 형식은 다음과 같습니다.</p>
+
+<pre><code>ssh -i &lt;id_rsa파일&gt; opc@&lt;공개 IP&gt;
+</code></pre>
+
+<p>여기서 id_rsa는 앞에서 Compute Instance를 생성할 때 업로드한 공개키(id_rsa.pub)의 key pair 파일이고 opc는 오라클이 배포하는 VM 이미지의 기본 OS 사용자 계정입니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/02/developerimg/120.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="2-4-vm-포트-오픈">2.4 VM 포트 오픈</h2>
+
+<p>프로비저닝된 VM은 demo_vcn의 Public 서브넷에 위치하고 공개 IP를 갖고 있습니다. OCI에서 만들어지는 VCN에서 오픈되는 기본 포트는 22번 뿐입니다 22번 포트 이외의 새로운 포트를 오픈해야 한다면 다음과 2개 작업을 해야 합니다.</p>
+
+<ol>
+<li>소속된 VCN(demo_vcn)의 Public 서브넷에 포함된 Security List에 Security Rule을 추가</li>
+<li>VM에 활성화된 방화벽 설정</li>
+</ol>
+
+<h3 id="2-4-1-security-list에-secutiry-rule-추가">2.4.1 Security List에 Secutiry Rule 추가</h3>
+
+<p>이 절에서는 demo_vcn의 Public Subnet-demo_vcn에 80 포트를 오픈 Security Rule을 등록하는 과정을 소개합니다.  Security Rule 등록을 위해서 OCI Console에서 다음 메뉴 페스로 VCN 관리 페이지로 이동합니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-body"><span class="glyphicon glyphicon-menu-hamburger" style="font-size:medium" aria-hidden="true"></span> (<strong>OCI 콘솔 왼쪽 위 햄버그 버튼</strong>) <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span>  <strong>Networking</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> <strong>Virtual Cloud Networks</strong></div></div>
+
+
+<p><img src="https://taewanmerepo.github.io/2020/02/developerimg/210.jpg?classes=border,shadow" alt="" /></p>
+
+<p>VCN 관리 페이지에서 demo_vcn이 포함된 sandbox Compartment를 선택한 다음에 출력되는 demo_vcn 링크를 클릭하여 demo_vcn 상세 페이지로 이동합니다.  그리고 demo_vcn 상세 페이지에서 공개 서브넷인 <strong>Public Subnet-demo_vcn</strong> 링크를 클릭하여 서브넷 상세 페이지로 이동합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/02/developerimg/220.jpg?classes=border,shadow" alt="" /></p>
+
+<p>공개 서브넷 상세 페이지에서 디폴트 보안 목록인 &ldquo;<strong>Default Security List for demo_vcn</strong>&ldquo;을 클릭합니다. Public Subnet-demo_vcn 서브넷의 &ldquo;Security List&rdquo;에 80 포트를 오픈하는 Ingress Rule을 추가하는 작업을 진행하겠습니다. demo_vcn 상세 페이지 왼쪽 메뉴에서 공개 서브넷인 &ldquo;Public Subnet-demo_vcn&rdquo;을 클릭하고, &ldquo;Public Subnet-demo_vcn&rdquo;의 상세 페이지로 이동합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vcn/210.jpg?classes=border,shadow" alt="" /></p>
+
+<p>&ldquo;<strong>Default Security List for demo_vcn</strong>&rdquo; 링크를 클릭하면 보안 목록 상세 페이지로 이동합니다. 그리고 &ldquo;<strong>Add Ingress Rules</strong>&rdquo; 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vcn/220.jpg?classes=border,shadow" alt="" /></p>
+
+<p>&ldquo;<strong>Add Ingress Rules</strong>&rdquo; 버튼을 클릭하면, Ingress Rule 등록 폼이 출력됩니다. 공개 서브넷에 80 포트 유입을 허용하는 보안 룰을 다음과 같이 설정하고 &ldquo;<strong>Add Ingress Rules</strong>&rdquo; 버튼을 클릭합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>설정 항목</th>
+<th>설정 값</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Stateless 체크박스</td>
+<td>체크 하지 않음</td>
+</tr>
+
+<tr>
+<td>Source CIDR</td>
+<td>0.0.0.0/0</td>
+</tr>
+
+<tr>
+<td>IP Protocol</td>
+<td>TCP</td>
+</tr>
+
+<tr>
+<td>Source Port Range</td>
+<td>All</td>
+</tr>
+
+<tr>
+<td>Destination Port Range</td>
+<td>80</td>
+</tr>
+
+<tr>
+<td>Description</td>
+<td>Open 80 port for Web Servers</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vcn/230.jpg?classes=border,shadow" alt="" /></p>
+
+<hr />
+
+<p>&ldquo;<strong>Ingress Rules</strong>&ldquo;가 정상적으로 등록되면 다음과 같은 화면이 출력됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vcn/240.jpg?classes=border,shadow" alt="" /></p>
+
+<h3 id="2-4-2-vm-방화벽-오픈">2.4.2 VM 방화벽 오픈</h3>
+
+<p>Oracle Linux 7.x 버전에서 80포트 tcp를 오픈하는 명령은 다음과 같습니다. 다음 명령을로 방화벽에 80포트 룰을 추가하고 데몬을 재시작합니다.</p>
+
+<pre><code>sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
+sudo firewall-cmd --reload
+</code></pre>
+
+<h2 id="요약">요약</h2>
+
+<p>지금까지 Oracle Cloud Develoer Image로 Compute VM을 생성하고, SSH 접근을 시도해 보았습니다. 여기서 만든 Compute VM의 특정 포트(80 포트)를 오픈하는 절차에 대하여 알아보았습니다.</p>
+
+<h2 id="참고-문서">참고 문서</h2>
+
+<ul>
+<li><a href="https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Reference/overviewworkflow.htm" target="_blank">[Official OCI Docs] Tutorial - Launching Your First Linux Instance <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+
+
+<h2 id="참고-문서-1">참고 문서</h2></li>
+
+<li><p>Oracle Cloud Developer Image 소개 문서</p>
+
+<ul>
+<li><a href="https://console.us-ashburn-1.oraclecloud.com/marketplace/application/54030984/overview">https://console.us-ashburn-1.oraclecloud.com/marketplace/application/54030984/overview</a></li>
+</ul></li>
+</ul>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/60_solutions/data_catalog/glossary/" title="용어정리"> <i class="fa fa-chevron-left"></i><label>용어정리</label></a>
-    <a class="nav nav-next" href="/oci_docs/98_misc_tips/ssh_key_pairs/" title="운영체제별 SSH Key Pair 준비" style="margin-right: 0px;"><label>운영체제별 SSH Key Pair 준비</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/30_core_infrastructure/compute/provisioning/" title="Compute 인스턴스 만들기"> <i class="fa fa-chevron-left"></i><label>Compute 인스턴스 만들기</label></a>
+    <a class="nav nav-next" href="/oci_docs/30_core_infrastructure/block_storage/" title="Block Storage" style="margin-right: 0px;"><label>Block Storage</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -665,7 +1032,7 @@ http://taewan.kim/img/icon/oracle.png
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/98_misc_tips/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/"></div>
   </div>
 
   </section>

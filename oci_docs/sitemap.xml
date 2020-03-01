@@ -95,6 +95,10 @@
   </url>
   
   <url>
+    <loc>/oci_docs/80_oci_tools/</loc>
+  </url>
+  
+  <url>
     <loc>/oci_docs/20_identity_and_access_management/</loc>
   </url>
   
@@ -167,6 +171,10 @@
   </url>
   
   <url>
+    <loc>/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/</loc>
+  </url>
+  
+  <url>
     <loc>/oci_docs/30_core_infrastructure/networking/</loc>
   </url>
   
@@ -187,10 +195,6 @@
   </url>
   
   <url>
-    <loc>/oci_docs/80_oci_tools/</loc>
-  </url>
-  
-  <url>
     <loc>/oci_docs/80_oci_tools/external_useful_tools/</loc>
   </url>
   
@@ -204,6 +208,10 @@
   
   <url>
     <loc>/oci_docs/00_oci/oci_resion_info/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/30_core_infrastructure/compute/provisioning/</loc>
   </url>
   
   <url>
