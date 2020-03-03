@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-03-01T20:46:30 KST">
+<meta name="revised" content="2020-03-03T11:33:13 KST">
 <title>OCI CLI 설정 :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
@@ -633,6 +633,22 @@ http://taewan.kim/img/icon/oracle.png
     
     
 
+<p>이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다. 마지막으로 OCI CLI를 설치해야 합니다.</p>
+
+<ul>
+<li><a href="./how_to_sign_up_in_oci/">OCI FREE TIER 계정 등록</a></li>
+<li><a href="./first_sign_in_oci/">Free Tier 계정 로그인</a></li>
+<li>OCI CLI 설치
+
+<ul>
+<li><a href="/80_oci_tools/oci_cli/installation_on_window/">OCI CLI 설치: Window 10</a></li>
+<li><a href="/80_oci_tools/oci_cli/installation_on_linux_and_mac/">OCI CLI 설치: Linux &amp; Mac OS</a></li>
+<li><a href="80_oci_tools/oci_cli/manual_installation/">OCI CLI 설치: 메뉴얼 설치</a></li>
+</ul></li>
+</ul>
+
+<hr />
+
 <p>설치된 OCI CLI가 OCI Tenancy에 접속하고 정상적으로 동작하기 위해서는 <strong>OCI CLI</strong> 사용자 설정을 해야 합니다. <strong>OCI CLI</strong> 사용자 설정에는 다음과 같은 정보가 필요합니다.</p>
 
 <ul>
@@ -640,8 +656,6 @@ http://taewan.kim/img/icon/oracle.png
 <li>Tenancy OCID</li>
 <li>Region</li>
 </ul>
-
-<hr />
 
 <p>이번 문서에서는 <strong>OCI CLI</strong> 사용자 설정 정보를 확인하고 <strong>OCI CLI</strong>에 사용자 정보를 설정하는 과정을 소개합니다. 다음과 같은 목차로 진행됩니다.</p>
 
@@ -651,10 +665,20 @@ http://taewan.kim/img/icon/oracle.png
 <li><a href="#oci-cli-설정-정보-수집">OCI CLI 설정 정보 수집</a>
 <ul>
 <li><a href="#user-ocid">User OCID</a></li>
-<li><a href="#tenancy-ocid">Tenancy OCID</a></li>
+<li><a href="#tenancy-명과-tenancy-ocid">Tenancy 명과 Tenancy OCID</a></li>
 <li><a href="#region-id">Region ID</a></li>
 </ul></li>
-<li><a href="#oci-cli-설정-및-확인">OCI CLI 설정 및 확인</a></li>
+<li><a href="#oci-cli-기본-설정-및-확인">OCI CLI 기본 설정 및 확인</a>
+<ul>
+<li><a href="#기본-설정">기본 설정</a></li>
+<li><a href="#rsa-공개키-등록">RSA 공개키 등록</a></li>
+<li><a href="#oci-cli-설정-테스트">OCI CLI 설정 테스트</a></li>
+</ul></li>
+<li><a href="#oci-cli-추가-프로파일-등록">OCI CLI 추가 프로파일 등록</a>
+<ul>
+<li><a href="#rsa-공개키-등록-1">RSA 공개키 등록</a></li>
+<li><a href="#oci-cli-설정-테스트-1">OCI CLI 설정 테스트</a></li>
+</ul></li>
 </ul>
 </nav></p>
 </div></div>
@@ -666,15 +690,410 @@ http://taewan.kim/img/icon/oracle.png
 
 <h2 id="user-ocid">User OCID</h2>
 
-<h2 id="tenancy-ocid">Tenancy OCID</h2>
+<p>User OCID는 OCI Console의 OCI User 상세 페이지에서 확인할 수 있습니다. 현재 로그인 사용자의 OCI User 상세 페이지는 다음 메뉴 패스로 이동할 수 있습니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-body"><ul>
+<li><strong>오른쪽 위 OCI User Icon</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> <strong>오른쪽 위 OCI User Icon</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> <strong>사용자 ID</strong></li>
+<li><span class="glyphicon glyphicon-menu-hamburger" style="font-size:medium" aria-hidden="true"></span> (<strong>OCI 콘솔 왼쪽 위 햄버그 버튼</strong>) <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span>  <strong>Identity</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> <strong>Users</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> <strong>사용자 목록에서 로그인 ID 클릭</strong></li>
+</ul>
+</div></div>
+
+
+<p>다음 그림과 같이 위 메뉴 패스를 통해서 OCI User 상세 페이지로 이동할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/ocicli/setting/010.jpg?classes=border,shadow" alt="" /></p>
+
+<p>OCI User 상세 페이지에서 다음 그림과 같이 <strong>copy</strong> 링크를 클릭하여 User OCID를 복사할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/ocicli/setting/020.jpg?classes=border,shadow" alt="" /></p>
+
+<p>위에서 복사한 User OCID는 다음과 같은 패턴을 갖습니다.</p>
+
+<pre><code>ocid1.user.oc1..aaaaaaaaqddvfo3p4tprztewinniya3zebqdqgpbnk4cjspyzcluzi2yndna
+</code></pre>
+
+<h2 id="tenancy-명과-tenancy-ocid">Tenancy 명과 Tenancy OCID</h2>
+
+<p>Tenancy 명과 Tenancy OCID는 OCI Console의 Tenancy 상세 페이지에서 확인할 수 있습니다. Tenancy 상세 페이지는 다음 메뉴 패스로 이동할 수 있습니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-body"><ul>
+<li><strong>오른쪽 위 OCI User Icon</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> <strong>오른쪽 위 OCI User Icon</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> <strong>사용자 ID</strong></li>
+<li><span class="glyphicon glyphicon-menu-hamburger" style="font-size:medium" aria-hidden="true"></span> (<strong>OCI 콘솔 왼쪽 위 햄버그 버튼</strong>) <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span>  <strong>Identity</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> <strong>Users</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> <strong>사용자 목록에서 로그인 ID 클릭</strong></li>
+</ul>
+</div></div>
+
+
+<p>다음 그림과 같이 위 메뉴 패스를 통해서 Tenancy 상세 페이지로 이동할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/ocicli/setting/030.jpg?classes=border,shadow" alt="" /></p>
+
+<p>Tenancy 상세 페이지에서 Tenancy 이름을 확인할 수 있고 다음 그림과 같이 <strong>copy</strong> 링크를 클릭하여 Tenancy OCID를 복사할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/ocicli/setting/040.jpg?classes=border,shadow" alt="" /></p>
+
+<p>위에서 복사한 Tenancy 이름과 Tenancy OCID는 다음과 같은 패턴을 갖습니다.</p>
+
+<pre><code>Tenancy 명: apackrsct01
+ocid1.tenancy.oc1..aaaaaaaa6ma7kq3bsiddduzqidv22cajs3fpesgpqmmsgxihlbcemkklrsqa
+</code></pre>
 
 <h2 id="region-id">Region ID</h2>
 
-<h1 id="oci-cli-설정-및-확인">OCI CLI 설정 및 확인</h1>
+<p>사용할 Region 명은 다음 그림과 같이 OCI Console의 오른쪽 위 메뉴에서 확인할 수 있습니다.</p>
 
-<hr />
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/ocicli/setting/040.jpg?classes=border,shadow" alt="" /></p>
 
-<p>w0a8icio6wvena7_merong2_high.adwc.oraclecloud.com</p>
+<p>위 그림에서 현재 계정이 사용하는 리전 이름은 <strong>Ashburn</strong>입니다. <strong>Ashburn</strong>의 Region ID는 다음 링크 페이지에서 확인할 수 있습니다.</p>
+
+<a href="/00_oci/oci_resion_info/" target="_blank">[taewan.kim/ocidocs] OCI 리전 정보 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+
+
+<p>위 링크에서 <strong>Ashburn</strong>의 Region ID는 <strong>us-ashburn-1</strong>인 것을 확인할 수 있습니다.</p>
+
+<h1 id="oci-cli-기본-설정-및-확인">OCI CLI 기본 설정 및 확인</h1>
+
+<p>앞에서 OCI CLI 설정에 필요한 정보를 확인했습니다. 앞에서 확인한 정보는 다음과 같이 <strong>설정표</strong>로 나타낼 수 있습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>항목 값</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>User OCID</td>
+<td>ocid1.user.oc1..aaaaaaaaqddvfo3p4tprztewinniya3zebqdqgpbnk4cjspyzcluzi2yndna</td>
+</tr>
+
+<tr>
+<td>Tenancy OCID</td>
+<td>ocid1.tenancy.oc1..aaaaaaaa6ma7kq3bsiddduzqidv22cajs3fpesgpqmmsgxihlbcemkklrsqa</td>
+</tr>
+
+<tr>
+<td>Region ID</td>
+<td>us-ashburn-1</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="기본-설정">기본 설정</h2>
+
+<p>OCI CLI는 다음 명령으로 환경 설정을 구성할 수 있습니다.</p>
+
+<pre><code>oci setup config
+</code></pre>
+
+<p>위 명령을 실행하면 몇 가지 입력이 요청됩니다. 각 입력 항목은 다음과 같습니다. 아래 표의 입력 값에서 엔터는 &lsquo;<strong>return</strong>&rsquo; 키 입력을 의미합니다. 각 질문 항목에 대한 기본 값은 사용하는 OS의 Account에 따라서 달라집니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>입력항목</th>
+<th>입력 값</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Enter a location for your config</td>
+<td>엔터</td>
+<td>파일 위치: <strong>$HOME/.oci/config</strong></td>
+</tr>
+
+<tr>
+<td>Enter a user OCID</td>
+<td>위 <strong>설정표</strong>의 User OCID</td>
+<td>앞에서 조사한 값</td>
+</tr>
+
+<tr>
+<td>Enter a tenancy OCID</td>
+<td>위 <strong>설정표</strong>의 Tenancy OCID</td>
+<td>앞에서 조사한 값</td>
+</tr>
+
+<tr>
+<td>Enter a region</td>
+<td>u위 <strong>설정표</strong>의 Region ID</td>
+<td>앞에서 조사한 값</td>
+</tr>
+
+<tr>
+<td>Do you want to generate a new RSA key pair? (If you decline you will be asked to supply the path to an existing key.) [Y/n]</td>
+<td>엔터</td>
+<td>RSA 키 쌍 파일 생성</td>
+</tr>
+
+<tr>
+<td>Enter a directory for your keys to be created [/Users/taewan/.oci]</td>
+<td>엔터</td>
+<td>기본 위치 사용 권장</td>
+</tr>
+
+<tr>
+<td>Enter a name for your key [oci_api_key]</td>
+<td>엔터</td>
+<td>RSA 키 파일 명</td>
+</tr>
+
+<tr>
+<td>Enter a passphrase for your private key (empty for no passphrase)</td>
+<td>엔터</td>
+<td>입력값 없음</td>
+</tr>
+</tbody>
+</table>
+
+<p>위 입력값으로 실행한 <code>oci setup config</code>의 전체 실행 로그는 다음과 같습니다.</p>
+
+<pre><code>$ oci setup config
+    This command provides a walkthrough of creating a valid CLI config file.
+
+    The following links explain where to find the information required by this
+    script:
+
+    User OCID and Tenancy OCID:
+
+        https://docs.cloud.oracle.com/Content/API/Concepts/apisigningkey.htm#Other
+
+    Region:
+
+        https://docs.cloud.oracle.com/Content/General/Concepts/regions.htm
+
+    General config documentation:
+
+        https://docs.cloud.oracle.com/Content/API/Concepts/sdkconfig.htm
+
+
+Enter a location for your config [/Users/taewan/.oci/config]:
+Enter a user OCID: ocid1.user.oc1..aaaaaaaaqddvfo3p4tprztenweniyg3zebqgqgpbnk4cjspyzcluzi2yndna
+Enter a tenancy OCID: ocid1.tenancy.oc1..aaaaaaaa6ma7kq3bsif76uzqidv22cajs3fpesgpqmmsgxihlbcemkklrsqa
+Enter a region (e.g. ap-melbourne-1, ap-mumbai-1, ap-osaka-1, ap-seoul-1, ap-sydney-1, ap-tokyo-1, ca-toronto-1, eu-amsterdam-1, eu-frankfurt-1, eu-zurich-1, me-jeddah-1, sa-saopaulo-1, uk-gov-london-1, uk-london-1, us-ashburn-1, us-gov-ashburn-1, us-gov-chicago-1, us-gov-phoenix-1, us-langley-1, us-luke-1, us-phoenix-1): us-ashburn-1
+Do you want to generate a new RSA key pair? (If you decline you will be asked to supply the path to an existing key.) [Y/n]:
+Enter a directory for your keys to be created [/Users/taewan/.oci]:
+Enter a name for your key [oci_api_key]:
+Public key written to: /Users/taewan/.oci/oci_api_key_public.pem
+Enter a passphrase for your private key (empty for no passphrase):
+Private key written to: /Users/taewan/.oci/oci_api_key.pem
+Fingerprint: aa:41:d3:08:3d:f1:61:19:ad:9e:db:bc:2e:de:82:43
+Config written to /Users/taewan/.oci/config
+
+
+    If you haven't already uploaded your public key through the console,
+    follow the instructions on the page linked below in the section 'How to
+    upload the public key':
+
+        https://docs.cloud.oracle.com/Content/API/Concepts/apisigningkey.htm#How2
+
+ $
+</code></pre>
+
+<p>위 명령이 실행되면 <code>$HOME/.ocn/config</code> 파일에 다음과 같은 설정이 만들어집니다.</p>
+
+<pre><code>$ cat $HOME/.oci/config
+[DEFAULT]
+user=ocid1.user.oc1..aaaaaaaaqddvfo3p4tprztewinniya3zebqdqgpbnk4cjspyzcluzi2yndna
+fingerprint=aa:41:d3:08:3d:f1:61:19:ad:9e:db:bc:2e:de:82:43
+key_file=/Users/taewan/.oci/oci_api_key.pem
+tenancy=ocid1.tenancy.oc1..aaaaaaaa6ma7kq3bsiddduzqidv22cajs3fpesgpqmmsgxihlbcemkklrsqa
+region=us-ashburn-1
+ $
+</code></pre>
+
+<h2 id="rsa-공개키-등록">RSA 공개키 등록</h2>
+
+<p><code>$HOME/.oci/config</code> 파일에 default 프로파일이 만들어진 것을 확인할 수 있습니다. 이 default 프로파일에 등록된 RSA 키 파일의 공개키를 OCI User 페이지에 등록합니다. <code>$HOME/.oci/oci_api_key_public.pem</code> 공개키 파일의 내용을 OCI User에 등록합니다.</p>
+
+<pre><code> $ cat $HOME/.oci/oci_api_key_public.pem
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAp7gmJQu1g0wd1UNHht1g
+2NcAwE03Gi10DFHm/VXHOpZe+WH4igKCoCReg5sfX8winihySEgKeJTUrASRMvY8
+Z+WkpgAjmP0RVdM7i89jzBy1HDYTWSQouU+R/sWaTmbSpg18RgJF2Fg0znxJOkTD
+PqPIPxSf2f62m/SLZGz4teuvuUYQ3bXlDjTqio2x0vWXKwWVJqnY3tojNuRHYnbZ
+JGy55VTQGog4B1jaeE20xghDhx3TXHC1DeOS3lrIvxdQ0NnYhqwdcxv6lhwkACCc
+XcOjbdjqBARmkS+n/P+eh4wG1MqnGp7QnqymSp6rZaIU0dmdap2oym7yWMmtouPY
+mQIDAQAB
+-----END PUBLIC KEY-----
+$
+</code></pre>
+
+<p>OCI Console에서 오른쪽 위 사용자 프로파일 패스로 OCI User 사용자 상세 페이지에 이동합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/ocicli/setting/060.jpg?classes=border,shadow" alt="" /></p>
+
+<p>OCI User 사용자 상세 페이지에서 위 공개키 값을 다음과 같이 등록합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/ocicli/setting/080.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="oci-cli-설정-테스트">OCI CLI 설정 테스트</h2>
+
+<p>모든 설정이 정상적으로 설정되었다면, 다음 명령은 Tenancy 이름을 출력합니다.</p>
+
+<pre><code> $ oci os ns get
+{
+  &quot;data&quot;: &quot;apackrsct01&quot;
+}
+ $
+</code></pre>
+
+<h1 id="oci-cli-추가-프로파일-등록">OCI CLI 추가 프로파일 등록</h1>
+
+<p>Default 프로파일을 등록한 후 추가 프로파일을 등록하는 방법을 소개합니다. OCI CLI의 설정 파일인 $HOME/.oci/config에 seoul 프로파일을 등록하는 절차를 등록합니다.</p>
+
+<pre><code>oci setup config
+</code></pre>
+
+<p>위 명령을 실행하면 몇 가지 입력이 요청됩니다. 각 입력 항목은 다음과 같습니다. 아래 표의 입력 값에서 엔터는 &lsquo;<strong>return</strong>&rsquo; 키 입력을 의미합니다. 각 질문 항목에 대한 기본 값은 사용하는 OS의 Account에 따라서 달라집니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>입력항목</th>
+<th>입력 값</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Enter a location for your config [/Users/taewan/.oci/config]</td>
+<td>엔터</td>
+<td>파일 위치: <strong>$HOME/.oci/config</strong></td>
+</tr>
+
+<tr>
+<td>config file: /Users/taewan/.oci/config already exists. Do you want add a profile here? (If no, you will be prompted to overwrite the file) [Y/n]</td>
+<td>위 <strong>설정표</strong>의 User OCID</td>
+<td>앞에서 조사한 값</td>
+</tr>
+
+<tr>
+<td>Enter the name of the profile you would like to create</td>
+<td>seoul</td>
+<td>프로파일 이름</td>
+</tr>
+
+<tr>
+<td>Enter a tenancy OCID</td>
+<td>위 <strong>설정표</strong>의 Tenancy OCID</td>
+<td>앞에서 조사한 값</td>
+</tr>
+
+<tr>
+<td>Enter a region</td>
+<td>위 <strong>설정표</strong>의 Region ID</td>
+<td>앞에서 조사한 값</td>
+</tr>
+
+<tr>
+<td>Do you want to generate a new RSA key pair? (If you decline you will be asked to supply the path to an existing key.) [Y/n]</td>
+<td>n</td>
+<td>RSA 키 쌍 생성하지 않음</td>
+</tr>
+
+<tr>
+<td>Enter the location of your private key file</td>
+<td>$HOME/.oci/oci_api_key.pem</td>
+<td>기본 비밀키 파일 위치/이름</td>
+</tr>
+</tbody>
+</table>
+
+<p>위 설정값을 입력한 전체 실행 로그는 다음과 같습니다.</p>
+
+<pre><code> $ oci setup config
+    This command provides a walkthrough of creating a valid CLI config file.
+
+    The following links explain where to find the information required by this
+    script:
+
+    User OCID and Tenancy OCID:
+
+        https://docs.cloud.oracle.com/Content/API/Concepts/apisigningkey.htm#Other
+
+    Region:
+
+        https://docs.cloud.oracle.com/Content/General/Concepts/regions.htm
+
+    General config documentation:
+
+        https://docs.cloud.oracle.com/Content/API/Concepts/sdkconfig.htm
+
+
+Enter a location for your config [/Users/taewan/.oci/config]:
+Config file: /Users/taewan/.oci/config already exists. Do you want add a profile here? (If no, you will be prompted to overwrite the file) [Y/n]:
+Enter the name of the profile you would like to create:  seoul
+Enter a user OCID: ocid1.user.oc1..aaaaaaaaqddvfo3p4tprztenweniyg3zebqgqgpbnk4cjspyzcluzi2yndna
+Enter a tenancy OCID: ocid1.tenancy.oc1..aaaaaaaa6ma7kq3bsif76uzqidv22cajs3fpesgpqmmsgxihlbcemkklrsqa
+Enter a region (e.g. ap-melbourne-1, ap-mumbai-1, ap-osaka-1, ap-seoul-1, ap-sydney-1, ap-tokyo-1, ca-toronto-1, eu-amsterdam-1, eu-frankfurt-1, eu-zurich-1, me-jeddah-1, sa-saopaulo-1, uk-gov-london-1, uk-london-1, us-ashburn-1, us-gov-ashburn-1, us-gov-chicago-1, us-gov-phoenix-1, us-langley-1, us-luke-1, us-phoenix-1): ap-seoul-1
+Do you want to generate a new RSA key pair? (If you decline you will be asked to supply the path to an existing key.) [Y/n]: n
+Enter the location of your private key file: /Users/taewan/.oci/oci_api_key.pem
+Fingerprint: aa:41:d3:08:3d:f1:61:19:ad:9e:db:bc:2e:de:82:43
+Config written to /Users/taewan/.oci/config
+
+
+    If you haven't already uploaded your public key through the console,
+    follow the instructions on the page linked below in the section 'How to
+    upload the public key':
+
+        https://docs.cloud.oracle.com/Content/API/Concepts/apisigningkey.htm#How2
+
+ $
+</code></pre>
+
+<p>위 명령을 실행하면 $HOME/.oci/config에 SEOUL 프로파일이 추가된 것을 확인할 수 있습니다.</p>
+
+<pre><code> $ cat /Users/taewan/.oci/config
+[DEFAULT]
+user=ocid1.user.oc1..aaaaaaaaqddvfo3p4tprztenwiniyg3aaaqgqgpbnk4cjspyzcluzi2yndna
+fingerprint=aa:41:d3:08:3d:f1:61:19:ad:9e:db:bc:2e:de:82:43
+key_file=/Users/taewan/.oci/oci_api_key.pem
+tenancy=ocid1.tenancy.oc1..aaaaaaaa6ma7kq3bsif76uzqidv22cajsasbcsgpqmmsgxihlbcemkklrsqa
+region=us-ashburn-1
+
+
+[SEOUL]
+user=ocid1.user.oc1..aaaaaaaaqddvfo3p4tprztenwiniyg3aaaqgqgpbnk4cjspyzcluzi2yndna
+fingerprint=aa:41:d3:08:3d:f1:61:19:ad:9e:db:bc:2e:de:82:43
+key_file=/Users/taewan/.oci/oci_api_key.pem
+tenancy=ocid1.tenancy.oc1..aaaaaaaa6ma7kq3bsif76uzqidv22cajsasbcsgpqmmsgxihlbcemkklrsqa
+region=ap-seoul-1
+
+ $
+</code></pre>
+
+<h2 id="rsa-공개키-등록-1">RSA 공개키 등록</h2>
+
+<p>OCI User는 글로벌 객체입니다. 앞에서 디폴트 프로파일을 설정할 때 RSA 공개 키를 OCI User 상세 페이지에 등록했습니다. 새로 등록한 Seoul 프로파일이 디폴트 프로파일에서 사용한 RAS 키를 사용한다면 추가로 RSA 공개키를 등록할 필요가 업습니다.</p>
+
+<p>새로 등록한 프로파일이 기존에 등록한 RAS 키가 아닌 새로운 RAS 키를 사용한다면 앞에서 등록한 절차에 따라 RAS 공개키를 OCI User 상세 페이지에 등록해야 합니다.</p>
+
+<h2 id="oci-cli-설정-테스트-1">OCI CLI 설정 테스트</h2>
+
+<p>OCI 명령을 실행할 때 &ndash;profile 옵션에 프로파일 이름을 지정할 수 있습니다. 프로파일 이름을 지정하지 않으면 DEFAULT 프로파일이 적용됩니다.</p>
+
+<pre><code> $ oci os ns get --profile SEOUL
+{
+  &quot;data&quot;: &quot;apackrsct01&quot;
+}
+ $ oci os ns get --profile DEFAULT
+{
+  &quot;data&quot;: &quot;apackrsct01&quot;
+}
+ $ oci os ns get 
+{
+  &quot;data&quot;: &quot;apackrsct01&quot;
+}
+ $
+</code></pre>
 
 
     
@@ -714,6 +1133,10 @@ http://taewan.kim/img/icon/oracle.png
 
     
 
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 03/03/2020
+    </div>
     
   </div>
 

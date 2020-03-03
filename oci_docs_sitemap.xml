@@ -136,6 +136,7 @@
   
   <url>
     <loc>/oci_docs/80_oci_tools/oci_cli/</loc>
+    <lastmod>2020-03-03T08:20:25+09:00</lastmod>
   </url>
   
   <url>
@@ -167,6 +168,11 @@
   </url>
   
   <url>
+    <loc>/oci_docs/80_oci_tools/oci_cli/config_of_ocicli/</loc>
+    <lastmod>2020-03-03T08:20:25+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/oci_docs/10_quickstart/create_compartment/</loc>
   </url>
   
@@ -176,10 +182,6 @@
   
   <url>
     <loc>/oci_docs/30_core_infrastructure/networking/</loc>
-  </url>
-  
-  <url>
-    <loc>/oci_docs/80_oci_tools/oci_cli/config_of_ocicli/</loc>
   </url>
   
   <url>
@@ -225,6 +227,7 @@
   
   <url>
     <loc>/oci_docs/</loc>
+    <lastmod>2020-03-03T08:20:25+09:00</lastmod>
   </url>
   
   <url>
