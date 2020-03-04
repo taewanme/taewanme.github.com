@@ -7,6 +7,10 @@
   </url>
   
   <url>
+    <loc>/oci_docs/10_quickstart/adb/basic_adw_provisioning/</loc>
+  </url>
+  
+  <url>
     <loc>/oci_docs/30_core_infrastructure/compute/</loc>
   </url>
   
@@ -194,6 +198,10 @@
   
   <url>
     <loc>/oci_docs/10_quickstart/compute/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/10_quickstart/adb/</loc>
   </url>
   
   <url>
