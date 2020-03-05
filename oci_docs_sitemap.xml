@@ -15,6 +15,10 @@
   </url>
   
   <url>
+    <loc>/oci_docs/10_quickstart/object_storate/add_bucket_and_object/</loc>
+  </url>
+  
+  <url>
     <loc>/oci_docs/60_solutions/data_flow/</loc>
   </url>
   
@@ -148,6 +152,14 @@
   </url>
   
   <url>
+    <loc>/oci_docs/30_core_infrastructure/object_storage/management/bucket/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/30_core_infrastructure/object_storage/management/</loc>
+  </url>
+  
+  <url>
     <loc>/oci_docs/80_oci_tools/oci_cli/manual_installation/</loc>
   </url>
   
@@ -201,11 +213,15 @@
   </url>
   
   <url>
-    <loc>/oci_docs/10_quickstart/adb/</loc>
+    <loc>/oci_docs/80_oci_tools/external_useful_tools/</loc>
   </url>
   
   <url>
-    <loc>/oci_docs/80_oci_tools/external_useful_tools/</loc>
+    <loc>/oci_docs/10_quickstart/object_storate/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/10_quickstart/adb/</loc>
   </url>
   
   <url>

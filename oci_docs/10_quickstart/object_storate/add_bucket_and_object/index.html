@@ -5,8 +5,8 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-03-05T09:29:59 KST">
-<title>OCI Data Catalog :: Oracle Cloud Infrastructure</title>
+<meta name="revised" content="2020-03-05T09:29:58 KST">
+<title>OCI Console로 Bucket 추가 :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 
@@ -20,7 +20,7 @@ http://taewan.kim/img/icon/oracle.png
 <script type="text/javascript">
       var baseurl = "\/oci_docs";
 </script>
-<meta name="description" content="OCI에서 제공하는 관리형 데이터 디스커버리 및 거버닝 서비스입니다.">
+<meta name="description" content="">
 
 
 <link href='/oci_docs/css/railload.css' rel="stylesheet">
@@ -28,7 +28,7 @@ http://taewan.kim/img/icon/oracle.png
 
     
   </head>
-  <body data-url="/oci_docs/60_solutions/data_catalog/">
+  <body data-url="/oci_docs/10_quickstart/object_storate/add_bucket_and_object/">
     
       <header>
   <div class="logo">
@@ -85,7 +85,7 @@ http://taewan.kim/img/icon/oracle.png
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/10_quickstart/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/10_quickstart/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/10_quickstart/">OCI 퀵 스타트</a>
@@ -182,14 +182,14 @@ http://taewan.kim/img/icon/oracle.png
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/10_quickstart/object_storate/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/10_quickstart/object_storate/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/10_quickstart/object_storate/">Object Storage</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/oci_docs/10_quickstart/object_storate/add_bucket_and_object/" class="dd-item">
+      <li data-nav-id="/oci_docs/10_quickstart/object_storate/add_bucket_and_object/" class="dd-item active">
         <div>
           <a href="/oci_docs/10_quickstart/object_storate/add_bucket_and_object/">
             OCI Console로 Bucket 추가
@@ -394,7 +394,7 @@ http://taewan.kim/img/icon/oracle.png
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/60_solutions/" class="dd-item parent alwaysopen haschildren
+    <li data-nav-id="/oci_docs/60_solutions/" class="dd-item alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/60_solutions/">OCI Services</a>
@@ -413,7 +413,7 @@ http://taewan.kim/img/icon/oracle.png
       <a href="/oci_docs/60_solutions/functions/">OCI Functions</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/oci_docs/60_solutions/data_catalog/" class="dd-item parent active alwaysopen haschildren
+    <li data-nav-id="/oci_docs/60_solutions/data_catalog/" class="dd-item alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/60_solutions/data_catalog/">OCI Data Catalog</a>
@@ -559,7 +559,7 @@ http://taewan.kim/img/icon/oracle.png
     <option value="/oci_docs/10_quickstart/object_storate/" >
   - 
    Object Storage</option> 
-      <option value="/oci_docs/10_quickstart/object_storate/add_bucket_and_object/" >-- OCI Console로 Bucket 추가</option>
+      <option value="/oci_docs/10_quickstart/object_storate/add_bucket_and_object/"  selected>-- OCI Console로 Bucket 추가</option>
   
     <option value="/oci_docs/10_quickstart/adb/" >
   - 
@@ -649,7 +649,7 @@ http://taewan.kim/img/icon/oracle.png
   - 
    OCI Functions</option> 
   
-    <option value="/oci_docs/60_solutions/data_catalog/"  selected>
+    <option value="/oci_docs/60_solutions/data_catalog/" >
   - 
    OCI Data Catalog</option> 
       <option value="/oci_docs/60_solutions/data_catalog/glossary/" >-- 용어정리</option>
@@ -695,25 +695,153 @@ http://taewan.kim/img/icon/oracle.png
       </div>
     
 
-    <h1>OCI Data Catalog</h1>
+    <h1>OCI Console로 Bucket 추가</h1>
     
     
     
+    
 
-<p><strong>OCI Data Catalog</strong>는 오라클 클라우드의 데이터 거버넌스(Data Govenrance) 서비스 입니다. 데이터 거버넌스(data governance)는 기업에서 사용하는 데이터의 가용성, 유용성, 통합성, 보안성을 관리하기 위한 정책과 프로세스입니다. <strong>OCI Data Catalog</strong>는 OCI에서  신뢰도 높은 데이터 자산을 관리하고 유지하는 거버넌스를 위해서 만들어진 서비스입니다.</p>
+<p>이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.</p>
 
-<p>데이터 전문가는 <strong>OCI Data Catalog</strong>를 이용하여 비지니스 데이터, 운영 데이터, 기술 데이터의 메타 데이터를 수집하고, 구조화하고, 검색/접근 및 보강할 수 있습니다. <strong>OCI Data Catalog</strong>가 관리하는 데이터는 데이터 디스커버리, 고급 분석 및 거버넌스에 활용됩니다.</p>
+<ul>
+<li><a href="./how_to_sign_up_in_oci/">OCI FREE TIER 계정 등록</a></li>
+<li><a href="./first_sign_in_oci/">Free Tier 계정 로그인</a></li>
+</ul>
 
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/993.jpg?classes=border,shadow" alt="" /></p>
+<hr />
 
+<p>OCI Console에서 Object Storage에 Bucket을 추가하고 파일을 등록하는 절차를 다룹니다. 이 문서는 다음과 같은 목차로 진행됩니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-body"><p><nav id="TableOfContents">
+<ul>
+<li><a href="#1-사전-준비">1. 사전 준비</a>
+<ul>
+<li><a href="#1-1-oci-자원-준비">1.1 OCI 자원 준비</a></li>
+</ul></li>
+<li><a href="#2-bucket-추가">2. Bucket 추가</a></li>
+</ul>
+</nav></p>
+</div></div>
+
+
+<hr />
+
+<h1 id="1-사전-준비">1. 사전 준비</h1>
+
+<p>이 문서는 다음과 같은 자원과 파일이 이미 만들어져 있다는 것을 가정하고 진행합니다.</p>
+
+<h2 id="1-1-oci-자원-준비">1.1 OCI 자원 준비</h2>
+
+<p>다음 자원이 없다면 &ldquo;<strong>자원 생성 참조 문서</strong>&ldquo;를 참조하여 해당 자원을 생성하시기 바랍니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>자원 유형</th>
+<th>자원 이름</th>
+<th>소속 Compartment</th>
+<th>추가 설명</th>
+<th>자원 생성 참조 문서</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Compartment</td>
+<td>sanbox</td>
+<td>root &gt; sandbox</td>
+<td>.</td>
+<td><a href="../../../create_compartment/" target="_blank">Compartment 추가 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="2-bucket-추가">2. Bucket 추가</h1>
+
+<p>OCI Console에서 다음 메뉴 패스로 Object Storage 관리 페이지로 이동합니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-body"><span class="glyphicon glyphicon-menu-hamburger" style="font-size:medium" aria-hidden="true"></span> (<strong>OCI 콘솔 왼쪽 위 햄버그 버튼</strong>) <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span>  <strong>Object Storage</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> <strong>Object Storage</strong></div></div>
+
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/obj/basic/010.jpg?classes=border,shadow" alt="" /></p>
+
+<p>Object Storage 관리 페이지에서 Compartment를 <strong>sandbox</strong>로 지정하고 &ldquo;<strong>Create Bucket</strong>&rdquo; 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/obj/basic/020.jpg?classes=border,shadow" alt="" /></p>
+
+<p>&ldquo;<strong>Create Bucket</strong>&rdquo; 버튼을 클릭하면, <strong>Create Bucket</strong> 입력 폼이 출력됩니다. 입력폼에 다음 표의 입력 값을 설정하고 &ldquo;<strong>Create Bucket</strong>&rdquo; 버튼을 클릭합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>설정 항목</th>
+<th>설정값</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Bucket Name</td>
+<td>demo_bucket</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Storage Tier</td>
+<td>Strandard 체크</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Object Event</td>
+<td>체크하지 않음</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Encrpytion</td>
+<td>Encryption Using Oracle Managed Keys 체크</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>위 입력값을 설정하면 다음과 같은 상태가 됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/obj/basic/030.jpg?classes=border,shadow" alt="" /></p>
+
+<p>버킷이 만들어지면 다음과 같은 버킷 상세 페이지로 이동합니다. <strong>demo_bucket</strong>에 파일을 업로드하기 위해서 버킷 상세 페이지의 &ldquo;<strong>Upload Objects</strong>&rdquo; 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/obj/basic/090.jpg?classes=border,shadow" alt="" /></p>
+
+<p><strong>Select Files</strong> 링크를 클릭하고 업로드할 파일을 선택합니다. 파일을 지정하면 다음 이미지와 같이 업로드할 파일명이 출력됩니다. 그리고 &ldquo;<strong>Upload Objects</strong>&rdquo; 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/obj/basic/050.jpg?classes=border,shadow" alt="" /></p>
+
+<p>파일 업로드가 정상적으로 처리되면 파일 상태는 &ldquo;<strong>Finished</strong>&ldquo;로 출력됩니다. &ldquo;<strong>Close</strong>&rdquo; 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/obj/basic/060.jpg?classes=border,shadow" alt="" /></p>
+
+<p><strong>demo_bucket</strong> 버킷 상세 페이지에 버킷에 저장된 파일 목록이 출력됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/obj/basic/070.jpg?classes=border,shadow" alt="" /></p>
+
+<p>버킷 파일 목록의 오른쪽 메뉴를 클릭하면 해당 파일을 조착하는 메뉴가 출력됩니다. 이 메뉴를 이용하여 파일 삭제, 복사, 이름 변경, 접근 URL 생성등 작업을 할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/obj/basic/080.jpg?classes=border,shadow" alt="" /></p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/60_solutions/functions/" title="OCI Functions"> <i class="fa fa-chevron-left"></i><label>OCI Functions</label></a>
-    <a class="nav nav-next" href="/oci_docs/60_solutions/data_catalog/glossary/" title="용어정리" style="margin-right: 0px;"><label>용어정리</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/10_quickstart/object_storate/" title="Object Storage"> <i class="fa fa-chevron-left"></i><label>Object Storage</label></a>
+    <a class="nav nav-next" href="/oci_docs/10_quickstart/adb/" title="Autonomous DB" style="margin-right: 0px;"><label>Autonomous DB</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -732,7 +860,7 @@ http://taewan.kim/img/icon/oracle.png
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/60_solutions/data_catalog/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/10_quickstart/object_storate/add_bucket_and_object/"></div>
   </div>
 
   </section>

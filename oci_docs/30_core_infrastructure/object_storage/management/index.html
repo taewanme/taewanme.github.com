@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2020-03-05T09:29:59 KST">
-<title>OCI Data Catalog :: Oracle Cloud Infrastructure</title>
+<title>Object Storage 관리 :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 
@@ -20,7 +20,7 @@ http://taewan.kim/img/icon/oracle.png
 <script type="text/javascript">
       var baseurl = "\/oci_docs";
 </script>
-<meta name="description" content="OCI에서 제공하는 관리형 데이터 디스커버리 및 거버닝 서비스입니다.">
+<meta name="description" content="">
 
 
 <link href='/oci_docs/css/railload.css' rel="stylesheet">
@@ -28,7 +28,7 @@ http://taewan.kim/img/icon/oracle.png
 
     
   </head>
-  <body data-url="/oci_docs/60_solutions/data_catalog/">
+  <body data-url="/oci_docs/30_core_infrastructure/object_storage/management/">
     
       <header>
   <div class="logo">
@@ -318,7 +318,7 @@ http://taewan.kim/img/icon/oracle.png
       <a href="/oci_docs/20_identity_and_access_management/">OCI 사용자 및 권한 관리</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/oci_docs/30_core_infrastructure/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/30_core_infrastructure/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/30_core_infrastructure/">Core Infastructure</a>
@@ -356,14 +356,14 @@ http://taewan.kim/img/icon/oracle.png
       <a href="/oci_docs/30_core_infrastructure/block_storage/">Block Storage</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/oci_docs/30_core_infrastructure/object_storage/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/30_core_infrastructure/object_storage/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/30_core_infrastructure/object_storage/">Object Storage</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/oci_docs/30_core_infrastructure/object_storage/management/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/30_core_infrastructure/object_storage/management/" class="dd-item parent active alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/30_core_infrastructure/object_storage/management/">Object Storage 관리</a>
@@ -394,7 +394,7 @@ http://taewan.kim/img/icon/oracle.png
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/60_solutions/" class="dd-item parent alwaysopen haschildren
+    <li data-nav-id="/oci_docs/60_solutions/" class="dd-item alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/60_solutions/">OCI Services</a>
@@ -413,7 +413,7 @@ http://taewan.kim/img/icon/oracle.png
       <a href="/oci_docs/60_solutions/functions/">OCI Functions</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/oci_docs/60_solutions/data_catalog/" class="dd-item parent active alwaysopen haschildren
+    <li data-nav-id="/oci_docs/60_solutions/data_catalog/" class="dd-item alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/60_solutions/data_catalog/">OCI Data Catalog</a>
@@ -621,7 +621,7 @@ http://taewan.kim/img/icon/oracle.png
     <option value="/oci_docs/30_core_infrastructure/object_storage/" >
   - 
    Object Storage</option> 
-    <option value="/oci_docs/30_core_infrastructure/object_storage/management/" >
+    <option value="/oci_docs/30_core_infrastructure/object_storage/management/"  selected>
   -- 
    Object Storage 관리</option> 
     <option value="/oci_docs/30_core_infrastructure/object_storage/management/bucket/" >
@@ -649,7 +649,7 @@ http://taewan.kim/img/icon/oracle.png
   - 
    OCI Functions</option> 
   
-    <option value="/oci_docs/60_solutions/data_catalog/"  selected>
+    <option value="/oci_docs/60_solutions/data_catalog/" >
   - 
    OCI Data Catalog</option> 
       <option value="/oci_docs/60_solutions/data_catalog/glossary/" >-- 용어정리</option>
@@ -695,16 +695,32 @@ http://taewan.kim/img/icon/oracle.png
       </div>
     
 
-    <h1>OCI Data Catalog</h1>
+    <h1>Object Storage 관리</h1>
     
     
     
 
-<p><strong>OCI Data Catalog</strong>는 오라클 클라우드의 데이터 거버넌스(Data Govenrance) 서비스 입니다. 데이터 거버넌스(data governance)는 기업에서 사용하는 데이터의 가용성, 유용성, 통합성, 보안성을 관리하기 위한 정책과 프로세스입니다. <strong>OCI Data Catalog</strong>는 OCI에서  신뢰도 높은 데이터 자산을 관리하고 유지하는 거버넌스를 위해서 만들어진 서비스입니다.</p>
 
-<p>데이터 전문가는 <strong>OCI Data Catalog</strong>를 이용하여 비지니스 데이터, 운영 데이터, 기술 데이터의 메타 데이터를 수집하고, 구조화하고, 검색/접근 및 보강할 수 있습니다. <strong>OCI Data Catalog</strong>가 관리하는 데이터는 데이터 디스커버리, 고급 분석 및 거버넌스에 활용됩니다.</p>
 
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/993.jpg?classes=border,shadow" alt="" /></p>
+<div class="extra-pagination inner">
+<nav class="pagination" role="navigation">
+	
+	<span class="page-number">Page 1 of 0</span>
+	
+</nav>
+
+</div>
+
+
+
+<div style="margin-bottom:2rem"></div>
+
+<nav class="pagination" role="navigation">
+	
+	<span class="page-number">Page 1 of 0</span>
+	
+</nav>
+
 
 
 
@@ -712,8 +728,8 @@ http://taewan.kim/img/icon/oracle.png
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/60_solutions/functions/" title="OCI Functions"> <i class="fa fa-chevron-left"></i><label>OCI Functions</label></a>
-    <a class="nav nav-next" href="/oci_docs/60_solutions/data_catalog/glossary/" title="용어정리" style="margin-right: 0px;"><label>용어정리</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/30_core_infrastructure/object_storage/" title="Object Storage"> <i class="fa fa-chevron-left"></i><label>Object Storage</label></a>
+    <a class="nav nav-next" href="/oci_docs/30_core_infrastructure/object_storage/management/bucket/" title="Object Storage Bucket 관리" style="margin-right: 0px;"><label>Object Storage Bucket 관리</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -732,7 +748,7 @@ http://taewan.kim/img/icon/oracle.png
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/60_solutions/data_catalog/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/30_core_infrastructure/object_storage/management/"></div>
   </div>
 
   </section>
