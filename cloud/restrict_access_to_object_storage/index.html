@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>IP 주소 별 Object Storage 접근 제어</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.27.1" />
+<meta property="og:title" content="IP 주소 별 Object Storage 접근 제어" />
+<meta property="og:description" content="2020년 2월 28일 OCI는 Network Sources 기능을 공개했습니다. Network Sources를 이용하여 IP 주소 별 Object Storage 접근 제어를 구성할 수 있습니다. " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/cloud/restrict_access_to_object_storage/" />
+
+
+
+<meta property="article:published_time" content="2020-03-05T10:20:25&#43;09:00"/>
+<meta property="article:modified_time" content="2020-03-05T10:20:25&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/graalvm/" title="GraalVM 관련 새소식 및 기술 문서를 담고 있습니다." >GRAALVM</a></li>
+		<li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Deep Learning 구현 기술에 대하여 정리합니다." >TUTORIAL &amp; MANUAL</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">IP 주소 별 Object Storage 접근 제어 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2020-03-05 10:20:25 &#43;0900 KST">March 05, 2020</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/cloud" rel="category">Cloud</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2020/03/networksource/020.jpg" alt="IP 주소 별 Object Storage 접근 제어">
+			</figure>
+			
+
+<ul>
+<li><a href="https://docs.cloud.oracle.com/en-us/iaas/releasenotes/changes/d05f31db-a3c7-40dc-bcfd-6f3404e2b197/" target="_blank">[OCI Release Note]Restrict access to Object Storage resources to requests from specific IP addresses[↗NW]</a>
+</li>
+</ul>
+
+<p>2020년 2월 28일 OCI는 Network Sources 기능을 공개했습니다. Network Source는 OCI IAM(Infrastructure Identity and Access)의 새로운 구성 요소입니다. Network Source는 OCI의 다양한 리소스에 대한 네트워크 접근을 제한하는 기능을 제공합니다. 특정 서브넷 혹은 특정 IP에서만 OCI 리소스/서비스에 대한 접근을 제한 할 수 있습니다. Network Source를 이용하여 더 향상된 보안을 구성할 수 있습니다. 이 새로운 보안은 OCI IAM의 접근 가능한 네트워크의 정보를 정의한 다음에 OCI IAM의 Policy로 특정 서비스에 앞에서 정의한 Network Source를 적용하는 방식으로 구성됩니다.</p>
+
+<p>Network Sources는 현재 OCI Object Storage 서비스만을 지원합니다. Network Sources가 지원하는 서비스는 지속적으로 늘려 OCI 서비스 전체로 확대할 것 입니다.</p>
+
+<p>이 문서에서는 Network Source를 이용하여 IP 주소 별 Object Storage 접근 제어를 구성하는 방법을 정리하겠습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/networksource/030.jpg" alt="" /></p>
+
+<h2 id="사전-준비사항">사전 준비사항</h2>
+
+<p>진행을 위해서는 다음 표의 자원이 필요합니다. 다음 표의 자원이 없다면 &ldquo;<strong>자원 생성 참조 문서</strong>&ldquo;를 참조하여 해당 자원을 생성하시기 바랍니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>자원 유형</th>
+<th>자원 이름</th>
+<th>소속 Compartment</th>
+<th>추가 설명</th>
+<th>자원 생성 참조 문서</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Compartment</td>
+<td>sanbox</td>
+<td>root &gt; sandbox</td>
+<td>.</td>
+<td><a href="/oci_docs/10_quickstart/create_compartment/" target="_blank">Compartment 추가[↗NW]</a>
+</td>
+</tr>
+
+<tr>
+<td>VCN</td>
+<td>demo_vcn</td>
+<td>root &gt; sandbox</td>
+<td>public Subnet과 private Subnet으로 구성된 VNC 생성</td>
+<td><a href="/oci_docs/10_quickstart/vcn/simple_vcn/" target="_blank">간편 VCN 만들기[↗NW]</a>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="실습-환경-구성">실습 환경 구성</h2>
+
+<p>실습을 위해서는 __사전 준비사항_을 마치고 다음 3가지 작업을 진행해야 합니다.</p>
+
+<ol>
+<li>public 서브넷 추가</li>
+<li>developer image로 2개 인스턴스 생성</li>
+<li>2개 VM SSH 접근 및 OCI CLI 설정</li>
+<li>demo_bucket 만들고 파일 업로드</li>
+</ol>
+
+<h3 id="1-subnet-추가">1. Subnet 추가</h3>
+
+<p><strong>사전 준비사항</strong>에서 만든 <strong>demo_vcn</strong>에 public subnet을 하나 더 추가합니다. 서브넷을 추가하기 위해서 <strong>demo_vcn</strong> 상세 페이지에서 다음 이미지와 같이 &ldquo;<strong>Create Subnet</strong>&rdquo; 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/networksource/050.jpg" alt="" /></p>
+
+<p>&ldquo;<strong>Create Subnet</strong>&rdquo; 버튼을 클릭하면 출력되는 입력 폼에 다음 설정 값을 입력합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>설정 항목</th>
+<th>설정 값</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Name</td>
+<td>Public Subnet-demo_vcn01</td>
+</tr>
+
+<tr>
+<td>Subnet Type</td>
+<td>Regional</td>
+</tr>
+
+<tr>
+<td>OIDR BLOCK</td>
+<td>10.0.2.0/24</td>
+</tr>
+
+<tr>
+<td>Route Table</td>
+<td>Default Route Table For demo_vcn</td>
+</tr>
+
+<tr>
+<td>Subnet Access</td>
+<td>Public Subnet</td>
+</tr>
+
+<tr>
+<td>USE DNS HOSTNAMES IN THIS Subnet</td>
+<td>체크</td>
+</tr>
+</tbody>
+</table>
+
+<p>위 입력 항목을 입력하면 다음과 같은 상태가 됩니다. 입력을 마치면 다음 그림과 같습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/networksource/060.jpg" alt="" /></p>
+
+<p>입력을 마치면 <strong>Create Subnet</strong> 버튼을 클릭합니다. subnet이 만들어지면 다음과 같은 subnet 목록이 출력됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/networksource/070.jpg" alt="" /></p>
+
+<h3 id="2-2개-vm-인스턴스-생성">2. 2개 VM 인스턴스 생성</h3>
+
+<p>developer image로 2개 인스턴스를 생성합니다. 다음 문서를 참조하여 이미지를 생성합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>설정 항목</th>
+<th>VM01 설정값</th>
+<th>VM02 설정값</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Name your instance</td>
+<td>VM01</td>
+<td>VM02</td>
+</tr>
+
+<tr>
+<td>CoImage Source</td>
+<td>Oracle Cloud Developer Image</td>
+<td>Oracle Cloud Developer Image</td>
+</tr>
+
+<tr>
+<td>Availability Domain</td>
+<td>AD 1</td>
+<td>AD 1</td>
+</tr>
+
+<tr>
+<td>Instance Type</td>
+<td>Virtual Machine</td>
+<td>Virtual Machine</td>
+</tr>
+
+<tr>
+<td>Instance Shape</td>
+<td>VM.Stanndard2.1</td>
+<td>VM.Stanndard2.1</td>
+</tr>
+
+<tr>
+<td>Virtaul cloud network compartment</td>
+<td>sandbox</td>
+<td>sandbox</td>
+</tr>
+
+<tr>
+<td>Virtaul cloud network</td>
+<td>demo_vcn</td>
+<td>demo_vcn</td>
+</tr>
+
+<tr>
+<td>Subnet Compartment</td>
+<td>sandbox</td>
+<td>sandbox</td>
+</tr>
+
+<tr>
+<td>Subnet</td>
+<td>Public Subnet-demo_vcn</td>
+<td>Public Subnet-demo_vcn01</td>
+</tr>
+
+<tr>
+<td>Assign a public IP address</td>
+<td>체크</td>
+<td>체크</td>
+</tr>
+
+<tr>
+<td>Choose SSH Key file</td>
+<td>체크</td>
+<td>체크</td>
+</tr>
+
+<tr>
+<td>공개키 업로드</td>
+<td>준비한 id_rsa.pub 파일을 업로드</td>
+<td>준비한 id_rsa.pub 파일을 업로드</td>
+</tr>
+</tbody>
+</table>
+
+<p>Developer VM 생성 방법을 소개하는 다음 문서를 참조하고 위 입력값을 사용하여 VM Compute 인스턴스를 만듭니다.</p>
+
+<ul>
+<li><a href="/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/" target="_blank">Developer Image 인스턴스 생성[↗NW]</a>
+</li>
+</ul>
+
+<p>2개 VM이 생성되면 다음과 같이 2개 VM 목록이 출력됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/networksource/080.jpg" alt="" /></p>
+
+<h3 id="3-2개-vm-ssh-접근-및-oci-cli-설정">3. 2개 VM SSH 접근 및 OCI CLI 설정</h3>
+
+<p>2개 VM 상세 페이지에서 각 VM의 공개 IP 주소를 확인할 수 있습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>VM 이름</th>
+<th>공개 IP 주소</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>VM01</td>
+<td>168.138.195.21</td>
+</tr>
+
+<tr>
+<td>VM02</td>
+<td>168.138.198.19</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Oracle Cloud Developer Image</strong>에는 OCI CLI가 설치되어 있습니다. 따라서 SSH로 두개 VM에 각각 접근하고 OCI CLI 설정을 진행합니다.</p>
+
+<ul>
+<li>ssh 키 쌍 파일의 비밀키 파일은 ~/temp/id_rsa에 있다고 가정합니다.</li>
+</ul>
+
+<pre><code>ssh -i ~/temp/id_rsa opc@168.138.195.21
+ssh -i ~/temp/id_rsa opc@168.138.198.19
+</code></pre>
+
+<p>OCI CLI 설정은 다음 문서를 참조하여 진행합니다.</p>
+
+<ul>
+<li><a href="/oci_docs/80_oci_tools/oci_cli/config_of_ocicli/" target="_blank">[taewan.kim: Quick Start Guide]OCI CLI 설정[↗NW]</a>
+</li>
+</ul>
+
+<p>설치가 완료되면 다음과 같이 SSH에 접근하여 다음과 같은 결과가 출력됩니다.</p>
+
+<pre><code>$ ssh -i ~/temp/id_rsa opc@168.138.195.21 ##vm01 접근
+Last login: Thu Mar  5 09:39:44 2020
+[opc@vm01 ~]$ oci --version               ##oci cli 버전 체크
+2.6.11
+[opc@vm01 ~]$ oci os ns get               ##oci cli 설치 상태 확인
+{
+  &quot;data&quot;: &quot;apackrsct01&quot;
+}
+[opc@vm01 ~]$ exit                        ## vm01 로그아웃
+logout
+Connection to 168.138.195.21 closed.
+$ ssh -i ~/temp/id_rsa opc@168.138.198.19   ##vm01 접근
+Last login: Thu Mar  5 09:35:01 2020 from 175.212.219.38
+[opc@vm02 ~]$ oci --version                 ##oci cli 버전 체크
+2.6.11
+[opc@vm02 ~]$ oci os ns get                 ##oci cli 설치 상태 확인
+{
+  &quot;data&quot;: &quot;apackrsct01&quot;
+}
+[opc@vm02 ~]$ exit                          ## vm02 로그아웃
+logout
+Connection to 168.138.198.19 closed.
+$ 
+</code></pre>
+
+<h3 id="4-demo-bucket-만들고-파일-업로드">4. demo_bucket 만들고 파일 업로드</h3>
+
+<p>Bucket을 하나 만들고, 그 bucket에 1개 파일을 업로드합니다.</p>
+
+<ul>
+<li>생성 Bucket 이름: demo_bucket</li>
+<li>업로드 파일명: 업로드 파일에 대한 제약은 없습니다.</li>
+</ul>
+
+<p>Bucket 생성과 파일 업로드에 다음 문서를 참조하여 진행합니다.</p>
+
+<ul>
+<li><a href="/oci_docs/10_quickstart/object_storate/add_bucket_and_object/" target="_blank">[taewan.kim: Quick Start Guide]OCI Console로 Bucket 추가[↗NW]</a>
+</li>
+</ul>
+
+<h2 id="object-storage-버킷-접근">Object Storage 버킷 접근</h2>
+
+<p>별도 설정이 없는 상태에서 로컬 컴퓨터, VM01, VM02에서 모두 demo_bucket에 접근할 수 있습니다.</p>
+
+<p>다음은 로컬 컴퓨터에서 OCI Console로 demo_bucket에 접근한 결과입니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/networksource/090.jpg" alt="" /></p>
+
+<p>Public Subnet-demo_vcn 서브넷에 위치하는 VM01에서 demo_bucket에 접근한 결과입니다.</p>
+
+<pre><code>$ssh -i ./id_rsa opc@168.138.195.21
+Last login: Thu Mar  5 10:09:50 2020
+[opc@vm01 ~]$ oci os object list --bucket-name demo_bucket --output table
++--------------------------+-----------+-------+----------------------------------+
+| md5                      | name      | size  | time-created                     |
++--------------------------+-----------+-------+----------------------------------+
+| IwnMXwR4Ltm7YBbZ9OOBzw== | train.csv | 61194 | 2020-03-05T02:33:27.295000+00:00 |
++--------------------------+-----------+-------+----------------------------------+
+</code></pre>
+
+<p>Public Subnet-demo_vcn01 서브넷에 위치하는 VM02에서 demo_bucket에 접근한 결과입니다.</p>
+
+<pre><code>$ ssh -i ./id_rsa opc@168.138.198.19
+Last login: Thu Mar  5 10:14:01 2020
+[opc@vm02 ~]$ oci os object list --bucket-name demo_bucket --output table
++--------------------------+-----------+-------+----------------------------------+
+| md5                      | name      | size  | time-created                     |
++--------------------------+-----------+-------+----------------------------------+
+| IwnMXwR4Ltm7YBbZ9OOBzw== | train.csv | 61194 | 2020-03-05T02:33:27.295000+00:00 |
++--------------------------+-----------+-------+----------------------------------+
+prefixes: []
+[opc@vm02 ~]$
+</code></pre>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/oci/" rel="tag">oci</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/linux/" rel="tag">linux</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/cloud-init/" rel="tag">cloud-init</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan2.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+	<div class="notices disclaimer"><p>이 저작물은 Oracle과 관계없이 개인으로서 개인의 시간을 할애하여 작성된 글 입니다. 본 글의 내용, 입장, 예측은 Oracle을 공식적으로 <font color="red"><bold>절대</bold></font> 대변하지 않습니다.</p></div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/mounting_oci_objectstorage_bucket_on_linux_mac/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">S3FS를 이용한 OCI Object Storage 파일 시스템 마운트</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/oci_cloud_shell/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">OCI Cloud Shell 기능을 소개합니다. </p></a>
+	</div>
+</nav>
+
+	
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/cloud/restrict_access_to_object_storage/"></div>
+
+
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	
+
+<div class="widget-categories widget">	
+		<div class="fb-like" data-href="http://taewan.kim/cloud/restrict_access_to_object_storage/" 
+		data-layout="standard" data-action="like" 
+		data-size="small" 
+		data-show-faces="true" 
+		data-share="true"></div>
+</div>
+	
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#사전-준비사항">사전 준비사항</a></li>
+<li><a href="#실습-환경-구성">실습 환경 구성</a>
+<ul>
+<li><a href="#1-subnet-추가">1. Subnet 추가</a></li>
+<li><a href="#2-2개-vm-인스턴스-생성">2. 2개 VM 인스턴스 생성</a></li>
+<li><a href="#3-2개-vm-ssh-접근-및-oci-cli-설정">3. 2개 VM SSH 접근 및 OCI CLI 설정</a></li>
+<li><a href="#4-demo-bucket-만들고-파일-업로드">4. demo_bucket 만들고 파일 업로드</a></li>
+</ul></li>
+<li><a href="#object-storage-버킷-접근">Object Storage 버킷 접근</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	<div class="widget-categories widget">
+  <h4 class="widget__title">관련도서</h4>
+  <div class="widget__content" align="center">
+      <ul class="widget__list">
+          <li class="widget__item"><a href="http://www.yes24.com/Product/Goods/69335909" target="_blank"><img src="https://taewanmerepo.github.io/2019/02/pytorch/book200.jpg"/></a></li>
+      </ul>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_cloud_shell/" title="OCI Cloud Shell 기능을 소개합니다. ">
+							OCI Cloud Shell 기능을 소개합니다. </a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/restrict_access_to_object_storage/" title="IP 주소 별 Object Storage 접근 제어">
+							IP 주소 별 Object Storage 접근 제어</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/mounting_oci_objectstorage_bucket_on_linux_mac/" title="S3FS를 이용한 OCI Object Storage 파일 시스템 마운트">
+							S3FS를 이용한 OCI Object Storage 파일 시스템 마운트</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/access_/" title="OCI에서 리눅스 VM 루트 파티션(Root Partition) 확장">
+							OCI에서 리눅스 VM 루트 파티션(Root Partition) 확장</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/extending_root_partition_on_oci_linux/" title="OCI에서 리눅스 VM 루트 파티션(Root Partition) 확장">
+							OCI에서 리눅스 VM 루트 파티션(Root Partition) 확장</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/%EB%82%B4%EB%AA%B8%EC%B9%98%EC%9C%A0%EB%A0%A5/" title="[2020/Books:04] &#39;내 몸 치유력&#39; 후기">
+							[2020/Books:04] &#39;내 몸 치유력&#39; 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/english_for_developer/" title="[2020/Books:03] IT 개발자의 영어 필살기 ">
+							[2020/Books:03] IT 개발자의 영어 필살기 </a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/%EA%B2%B0%EB%A1%A0%EB%B6%80%ED%84%B0%EC%8D%A8%EB%9D%BC/" title="[2020/Books:02] &#39;결론부터 써라&#39; 후기">
+							[2020/Books:02] &#39;결론부터 써라&#39; 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/%EC%A7%80%EC%A0%81%EC%9E%90%EB%B3%B8%EB%A1%A0/" title="[2020/Books:01] &#39;지적자본론&#39; 후기">
+							[2020/Books:01] &#39;지적자본론&#39; 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/2019_mcd_videos/" title="2019 Modern Cloud Day @Seoul 세션 동영상과 발표 자료">
+							2019 Modern Cloud Day @Seoul 세션 동영상과 발표 자료</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/graalvm">Graalvm</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/math">Math</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%a7%9b%ec%a7%91">맛집</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">Licesne</h4>
+	<div class="widget__content">
+		<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+	</div>
+	<div class="widget__content">
+		이 저작물은 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank>크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2020 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+
