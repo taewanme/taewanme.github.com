@@ -63,11 +63,6 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/cloud/oci_object_storage_new_feature/</loc>
-    <lastmod>2019-12-11T01:28:14+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://taewan.kim/graalvm/not_found_native-image_graalvm/</loc>
     <lastmod>2019-11-22T01:28:14+09:00</lastmod>
   </url>
@@ -2597,12 +2592,6 @@
   <url>
     <loc>http://taewan.kim/tags/regularization/</loc>
     <lastmod>2017-12-15T21:28:14+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://taewan.kim/tags/release-note/</loc>
-    <lastmod>2019-12-11T01:28:14+09:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -1,0 +1,137 @@
++++
+date = "2019-12-11T01:28:14+09:00"
+description = "OCI Object Storage에 추가된 header 기능을 소개합니다. "
+title = "[OCI Release Note]Object Storage 새기능 요약"
+thumbnailInList = "https://taewanmerepo.github.io/2019/12/os/list.jpg"
+thumbnailInPost = "https://taewanmerepo.github.io/2019/12/os/post.jpg"
+tags = ["OCI", "oracle", "cloud", "Object Storage", "Release Note"]
+categories = ["cloud"]
+author = "taewan.kim"
+language = ""  
+jupyter = "false"
+adsense = "false"
+autoadsense = "false"
+disclaimer = "true"
+type = "main"
++++
+
+2019년 12월 10일에 OCI Object Storage에 몇 가지 아기자기한 기능이 추가되었습니다. 이번에 새로 추가된 기능은 주로 OCI Object Storage의 웹 리소스 사용성과 관련 기능입니다. OCI Object Storage에는 파일 크기와 형식에 제약 없는 클라우드 데이터 저장소입니다. 따라서 실행 파일, 대용량 데이터 파일, javascript 파일, css 파일, 이미지 파일 등 다양한 파일을 안전하고 저렴하게 저장할 수 있습니다. OCI Object Storage에 저장된 javascript 파일, css 파일, 이미지 파일 등을 웹 애플리케이션에서 자원으로 사용할 수 있습니다. 이번에 추가된 기능은 OCI Object Storage 저장 파일을 웹 애플리케이션에서 자원으로 사용할 때 유용한 기능입니다. 
+
+이번에 추가된 변경은 총 4가지입니다. 
+
+- OCI Console에서 Bucket의 ocid 제공
+- http 헤더로 content-disposition 제공
+- http 헤더로 cache-control 제공
+- ListObject API에 etag 지원
+
+## Bucket의 ocid 지원
+
+그동안 Object Storage의 Bucket은 이름으로만 참조했습니다. OCI의 Bucket을 제외한 모든 자원은 OCID로 관리합니다. 이제 OCI Console에서 Bucket의 OCID를 제공합니다. 
+
+![](https://taewanmerepo.github.io/2019/12/os/010.jpg)
+
+Bucket의 OCID는 OCI Console에서만 제공하는 정보입니다. oci-cli와 OCI SDK에서는 제공하지 않습니다.
+
+### oci-cli에서 bucket 정보 확인
+
+다음은 oci-cli로 bucket 정보를 확인하는 명령입니다.
+
+```
+$ compartment_id='ocid1.compartment.oc1..aaaaaaaaihv5qjkvzwovuc6bwm32ikrjjtz3syuevn47b44ssikueho2umxq'
+$ oci os bucket list --compartment-id $compartment_id 
+```
+
+위 명령의 결과는 다음과 같습니다. 다음 결과에서 bucket의 ocid는 별도로 제공하지 않습니다. 
+
+![](https://taewanmerepo.github.io/2019/12/os/020.jpg)
+
+### OCI Python SDK에서 bucket 정보 확인
+
+다음은 OCI Python SDK를 이용하여 bucket 정보를 확인하는 코드입니다.
+
+```
+import oci
+object_storage = oci.object_storage.ObjectStorageClient(config)
+
+ocid='ocid1.compartment.oc1..aaaaaaaaihv5qjkvzwovuc6bwm32ikrjjtz3syuevn47b44ssikueho2umxq'
+buckets = object_storage.list_buckets('apackrsct01', ocid)
+print(buckets.data)
+```
+
+위 코드의 결과는 다음과 같습니다. 다음 결과에서 bucket의 ocid는 별도로 제공하지 않습니다.
+
+![](https://taewanmerepo.github.io/2019/12/os/030.jpg)
+
+## Object의 Http header 설정
+
+이번에 OCI Object Storage에 다음과 같은 2개 http header를 설정하는 옵션이 추가되었습니다. 
+
+- Content-Disposition
+- Cache-Control
+
+이 두 옵션은 Object Storage에서 활용되는 http header가 아니라 Object Storage에 저장된 파일을 웹 리소스로 사용하는 브라우저에 영향을 미치는 옵션입니다. 
+
+HTTP URL로 Object Storage에 저장된 파일을 요청할 경우 OCI Object Storage는 HTTP 응답 헤더로 설정된 Content-Disposition과 Cache-Control 헤더를 함께 제공합니다. 
+
+Content-Disposition에 파일명이 설정될 경우 브라우저는 실제 파일명이 아닌 이 헤더에 설정된 파일명으로 파일을 저장합니다. 또한 Cache-Control은 브라우저의 캐쉬 설정에 영향을 줍니다. 
+
+Object Storage에 파일을 저장할 때 아래 이미지와 같이 Content-Disposition, Cache-Control 옵션을 설정할 수 있습니다. 
+
+![](https://taewanmerepo.github.io/2019/12/os/040.jpg)
+
+위 이미지에서 업로드되는 파일은 브라우저로 파일을 다운로드 할 때 파일명이 demo.jpeg로 다운로드하고, 해당 파일을 브라우저에서 5분간 캐시 하도록 설정된 예입니다. 이 파일의 설정 정보는 다음과 같이 확인할 수 있습니다. 
+
+![](https://taewanmerepo.github.io/2019/12/os/050.jpg)
+
+Object Storage에 저장된 파일의 공개 URL로 파일을 다운로드하면 다음 그림과 같이 __demo.jpeg__로 저장됩니다.
+
+![](https://taewanmerepo.github.io/2019/12/os/060.jpg)
+
+이 파일을 공개 URL로 요청할 때 http 헤더는 다음과 같이 확인할 수 있습니다. 
+
+![](https://taewanmerepo.github.io/2019/12/os/070.jpg)
+
+앞에서 설정한 2개 헤더외에 Content-Type, Content-Length, content-md5, last-modified, etag, cache-control, Content-disposition 등 여러 헤더가 제공되는 것을 확인할 수 있습니다. 
+
+브라우저에서 다운로드 받는 파일명을 demo.jpg로 Content-Disposition에 지정하는 방법은 다음과 같습니다. 
+
+```
+attachment; filename="demo.jpg"
+```
+
+브라우저를 위한 캐시 설정은 cache-control에 다음과 같이 지정할 수 있습니다. 
+
+|설정값|설명|
+|---|---|
+|no-store| 캐시하지 말 것|
+|no-cache| 캐시를 사영하기 전에 서버에 문의(존재 여부, 변경 여부)|
+|must-revalidate| 만료된 캐시만 서버에 문의(존재 여부, 변경 여부)|
+|public|공유 캐시에 저장|
+|private|특정 사용자 영역에 저장|
+|public, max-age=600|공유 캐시에 저장, 저장 기간 600초)|
+
+이 두 설정으로 OCI Object Storage에 저장된 파일을 웹 리소스로 더 효율적으로 사용할 수 있습니다. 
+
+## ListObject API에 etag 지원
+
+Object Storage의 Bucket에 포함된 파일의 목록을 조회하는 API에 부가 정보로 etag가 추가되었습니다. 다음 코드와 같이 fields 매개 변수에 제공 정보를 지정할 수 있습니다. 
+
+![](https://taewanmerepo.github.io/2019/12/os/080.jpg)
+
+## 요약
+
+Object Storage에 저장하는 파일의 사용성을 개선하는 몇 가지 옵션이 추가되었습니다. 저장 파일에 Content-Disposition, Cache-Control 옵션을 지정하여 웹 리소스로 활용성을 높일 수 있습니다. ListObject API에 부가 정보를 지정하여 검색 기능을 개발할 수 있습니다. 
+
+## 참고 문서
+
+- https://docs.cloud.oracle.com/iaas/Content/Object/Tasks/managingobjects.htm
+- https://tools.ietf.org/html/rfc2616#section-14.9
+- https://www.zerocho.com/category/HTTP/post/5b594dd3c06fa2001b89feb9
+
+
+이번에 Object Storage에 새로 추가된 아기자기한 기능의 요약 정리 문서입니다. 
+
+
+
+
+

@@ -19,7 +19,7 @@
 
 
 
-<meta property="og:updated_time" content="2019-09-10T01:28:14&#43;09:00"/>
+<meta property="og:updated_time" content="2019-09-04T01:28:14&#43;09:00"/>
 
 
 
@@ -109,34 +109,6 @@
 	<div class="main-content loop content" role="main">
 		
 		
-		<article class="loop__item post clearfix">
-			<figure class="loop__thumbnail">
-				<a href="http://taewan.kim/cloud/provisioning_gpu_vm_in_oci/">
-					<img src="https://taewanmerepo.github.io/2019/09/gpu/list.jpg" alt="OCI(Oracle Cloud Infrastructure) GPU VM 구성" />
-				</a>
-			</figure>
-			<div class="loop__content clearfix">
-				<header class="loop__header">
-					<h3 class="loop__title post__title ">
-						<a href="http://taewan.kim/cloud/provisioning_gpu_vm_in_oci/" rel="bookmark">OCI(Oracle Cloud Infrastructure) GPU VM 구성</a>
-					</h3>
-					<div class="loop__meta meta">
-						<div class="fb-like" data-href="http://taewan.kim/cloud/provisioning_gpu_vm_in_oci/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div><svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg><time class="loop__meta-date" datetime="2019-09-10 01:28:14 &#43;0900 KST">September 10, 2019</time>
-					</div>
-					
-				</header>
-				<div class="loop__excerpt">
-									  Oracle Cloud Infrastructure(OCI)에서는 NVIDIA Tesla P100과 V100 두 가지 GPU를 지원하며 이 두 GPU를 기반으로 총 6개1의 Shape을 제공합니다. 이 문서에서는 OCI GPU에 대한 소개와 VM 인스턴스를 만드는 방법을 정리합니다. 특히 다음과 같은 내용을 다룹니다.
- OCI에서 GPU를 제공하는 Shape에 대한 소개 GPU Shape을 선택하여 VM 인스턴스 생성 방법  보안 설정  Jupy ......
-				</div>
-				<div class="loop__excerpt">
-						<a class="label" href="/tags/oci/" rel="tag">OCI</a></li>
-						<a class="label" href="/tags/gpu/" rel="tag">GPU</a></li>
-						<a class="label" href="/tags/oracle/" rel="tag">oracle</a></li>
-						<a class="label" href="/tags/cloud/" rel="tag">cloud</a></li>
-				</div>
-			</div>
-		</article>
 		<article class="loop__item post clearfix">
 			<figure class="loop__thumbnail">
 				<a href="http://taewan.kim/graalvm/how_to_install_graalvm_with_brew/">
@@ -507,11 +479,41 @@ GraalVM 버전  2019년 8월 7일 현재 GraalVM 최신 버전: 19.1.1 (2019.07.
 				</div>
 			</div>
 		</article>
+		<article class="loop__item post clearfix">
+			<figure class="loop__thumbnail">
+				<a href="http://taewan.kim/cloud/rsa_with_oci_cli/">
+					<img src="https://taewanmerepo.github.io/2018/11/OciCliRsa/list.jpg" alt="OCI CLI로 RSA key pair 생성" />
+				</a>
+			</figure>
+			<div class="loop__content clearfix">
+				<header class="loop__header">
+					<h3 class="loop__title post__title ">
+						<a href="http://taewan.kim/cloud/rsa_with_oci_cli/" rel="bookmark">OCI CLI로 RSA key pair 생성</a>
+					</h3>
+					<div class="loop__meta meta">
+						<div class="fb-like" data-href="http://taewan.kim/cloud/rsa_with_oci_cli/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div><svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg><time class="loop__meta-date" datetime="2018-11-28 09:17:05 &#43;0900 KST">November 28, 2018</time>
+					</div>
+					
+				</header>
+				<div class="loop__excerpt">
+									  Oracle Cloud 서비스를 생성하는 과정에서, RSA Private Key 파일(pem 포맷)을 필요합니다. 예를 들어서 OCI에 Oracle BDC(Big Data Cloud) 서비스 인스턴스를 생성할 때, 인스턴스 생성 폼에는 RSA Private Key 파일을 등록1하는 항목을 포함됩니다.
+이렇게 클라우드 서비스를 관리하는 과정에서 다양한 이유로 pem 포맷의 RSA Key pair를 생성해야 하는 경우가 발생합니다. Linux나 M ......
+				</div>
+				<div class="loop__excerpt">
+						<a class="label" href="/tags/oracle-cloud/" rel="tag">oracle cloud</a></li>
+						<a class="label" href="/tags/oracle/" rel="tag">oracle</a></li>
+						<a class="label" href="/tags/cloud/" rel="tag">cloud</a></li>
+						<a class="label" href="/tags/oci/" rel="tag">oci</a></li>
+						<a class="label" href="/tags/oci-cli/" rel="tag">oci cli</a></li>
+						<a class="label" href="/tags/rsa/" rel="tag">RSA</a></li>
+				</div>
+			</div>
+		</article>
 
 		
 <div class="pagination clearfix">
 	<a class="pagination__item pagination__item--prev" href="/">«</a>
-	<span class="pagination__item pagination__item--current">2/11</span>
+	<span class="pagination__item pagination__item--current">2/10</span>
 	<a class="pagination__item pagination__item--next" href="/page/3/">»</a>
 </div>
 
