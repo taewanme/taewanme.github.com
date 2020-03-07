@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>[OCI New Feature]OCI Cloud Shell</title>
+      <title>OCI Cloud Shell: 브라우저 기반 가상 터미널</title>
       <link>http://taewan.kim/cloud/oci_cloud_shell/</link>
       <pubDate>Sat, 07 Mar 2020 08:20:25 +0900</pubDate>
       
@@ -123,7 +123,7 @@ OCI에서 Oracle Linux VM 인스턴스를 프로비저닝하는 방법은 다음
     </item>
     
     <item>
-      <title>[OCI Release Note]Object Storage 새기능 요약</title>
+      <title>[OCI Release Note] Object Storage 새기능 요약</title>
       <link>http://taewan.kim/cloud/oci_object_storage_new_feature/</link>
       <pubDate>Wed, 11 Dec 2019 01:28:14 +0900</pubDate>
       
