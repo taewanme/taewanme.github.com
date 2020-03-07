@@ -320,7 +320,7 @@
     <item>
       <title>Cloud Init</title>
       <link>http://taewan.kim/tags/cloud-init/</link>
-      <pubDate>Thu, 05 Mar 2020 10:20:25 +0900</pubDate>
+      <pubDate>Fri, 28 Feb 2020 10:20:25 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/cloud-init/</guid>
       <description></description>
@@ -1085,7 +1085,7 @@
     <item>
       <title>Linux</title>
       <link>http://taewan.kim/tags/linux/</link>
-      <pubDate>Thu, 05 Mar 2020 10:20:25 +0900</pubDate>
+      <pubDate>Sat, 29 Feb 2020 10:20:25 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/linux/</guid>
       <description></description>
@@ -1646,6 +1646,15 @@
       <pubDate>Fri, 15 Dec 2017 21:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/regularization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Release Note</title>
+      <link>http://taewan.kim/tags/release-note/</link>
+      <pubDate>Wed, 11 Dec 2019 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/release-note/</guid>
       <description></description>
     </item>
     

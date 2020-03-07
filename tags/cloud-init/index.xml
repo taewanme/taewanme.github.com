@@ -6,19 +6,10 @@
     <description>Recent content in Cloud Init on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 Mar 2020 10:20:25 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 28 Feb 2020 10:20:25 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/cloud-init/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>IP 주소 별 Object Storage 접근 제어</title>
-      <link>http://taewan.kim/cloud/restrict_access_to_object_storage/</link>
-      <pubDate>Thu, 05 Mar 2020 10:20:25 +0900</pubDate>
-      
-      <guid>http://taewan.kim/cloud/restrict_access_to_object_storage/</guid>
-      <description>[OCI Release Note]Restrict access to Object Storage resources to requests from specific IP addresses[↗NW]   2020년 2월 28일 OCI는 Network Sources 기능을 공개했습니다. Network Source는 OCI IAM(Infrastructure Identity and Access)의 새로운 구성 요소입니다. Network Source는 OCI의 다양한 리소스에 대한 네트워크 접근을 제한하는 기능을 제공합니다. 특정 서브넷 혹은 특정 IP에서만 OCI 리소스/서비스에 대한 접근을 제한 할 수 있습니다. Network Source를 이용하여 더 향상된 보안을 구성할 수 있습니다. 이 새로운 보안은 OCI IAM의 접근 가능한 네트워크의 정보를 정의한 다음에 OCI IAM의 Policy로 특정 서비스에 앞에서 정의한 Network Source를 적용하는 방식으로 구성됩니다.</description>
-    </item>
     
     <item>
       <title>OCI에서 리눅스 VM 루트 파티션(Root Partition) 확장</title>
