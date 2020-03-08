@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-03-09T01:44:08 KST">
+<meta name="revised" content="2020-03-09T01:59:54 KST">
 <title>Block Storage 추가 :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
@@ -710,7 +710,7 @@ http://taewan.kim/img/icon/oracle.png
 
 <hr />
 
-<p>이번 문서에서는 OCI 콘솔에서 OCI Linux VM 인스턴스에 Block Storage를 추가하고 마운트하는 과정을 소개합니다. OCI Linux VM 인스턴스에 Block Storage를 추가하는 과정은 다음과 같은 목차로 진행 됩니다.</p>
+<p>이번 문서에서는 OCI 콘솔에서 OCI Linux VM 인스턴스에 Block Storage를 추가하고 마운트하는 과정을 소개합니다. OCI Linux VM 인스턴스에 Block Storage를 추가하는 과정은 다음과 같은 목차로 진행됩니다.</p>
 
 
 <div class="panel panel-primary"><div class="panel-body"><p><nav id="TableOfContents">
@@ -747,9 +747,9 @@ http://taewan.kim/img/icon/oracle.png
 
 <h1 id="0-oic-block-volume">0. OIC Block Volume</h1>
 
-<p>OCI Block Volume은 네트워크 스토리지입니다. Block Storage는 한번에 1개 OCI Compute 인스턴스에 장착될 수 있도 있고, 한 번에 여러 OCI Compute 인스턴스에 마운트되어 공유 스토리지로 사용될 수 있습니다.</p>
+<p>OCI Block Volume은 네트워크 스토리지입니다. Block Storage는 한 번에 1개 OCI Compute 인스턴스에 장착될 수도 있고, 한 번에 여러 OCI Compute 인스턴스에 마운트되어 공유 스토리지로 사용될 수 있습니다.</p>
 
-<p>OCI Block Volume 서비스는 블록 스토리지를 제공하고 관리하는 네트워크 스토리지 서비스입니다. OCI Compute 인스턴스는 이 Block Storage를 마운트하여 스토리지를 확장하여 사용할 수 있습니다. Block Volume을 Cloud Compute를 위한 HDD라고 생각해도 좋습니다. Block Volume을 HDD와 같이 OCI Compute 인스턴스에 연결해서 사용하고 마운트하여 사용할 수 있습니다. HDD와 차이점은 Block Volume은 네트워크 스토리지라는 것 뿐입니다. Block Volume 서비스로 다음과 같은 작업을 할 수 있습니다.</p>
+<p>OCI Block Volume 서비스는 블록 스토리지를 제공하고 관리하는 네트워크 스토리지 서비스입니다. OCI Compute 인스턴스는 이 Block Storage를 마운트하여 스토리지를 확장하여 사용할 수 있습니다. Block Volume을 Cloud Compute를 위한 HDD라고 생각해도 좋습니다. Block Volume을 HDD와 같이 OCI Compute 인스턴스에 연결해서 사용하고 마운트하여 사용할 수 있습니다. HDD와 차이점은 Block Volume은 네트워크 스토리지라는 것뿐입니다. Block Volume 서비스로 다음과 같은 작업을 할 수 있습니다.</p>
 
 <ul>
 <li>블록 볼륨 생성</li>
@@ -759,7 +759,7 @@ http://taewan.kim/img/icon/oracle.png
 <li>블록 볼륨 백업</li>
 </ul>
 
-<p>Block Volume은 한번에 1개의 인스턴스에 전용으로 연결될 수도 있고, 여러 인스턴스에 공용 스토리지로 연결될 수도 있습니다. 공유 스토리지에 사용될 경우 OCI Compute 인스턴스에는 Clusterware가 설치 및 설정됩니다. 기존에 인스턴스에 연결하여 사용중이던 Block Volume을 분리하여 다른 인스턴스에 연결할 수 있습니다. A 인스턴스에 연결되어 데이터를 저장하던 Block Volume을 A 인스턴스에서 떼어낸 후, B 인스턴스에 연결할 수 있습니다. 이때 데이터 유실은 발생하지 않습니다.</p>
+<p>Block Volume은 한 번에 1개의 인스턴스에 전용으로 연결될 수도 있고, 여러 인스턴스에 공용 스토리지로 연결될 수도 있습니다. 공유 스토리지에 사용될 경우 OCI Compute 인스턴스에는 Clusterware가 설치 및 설정됩니다. 기존에 인스턴스에 연결하여 사용 중이던 Block Volume을 분리하여 다른 인스턴스에 연결할 수 있습니다. A 인스턴스에 연결되어 데이터를 저장하던 Block Volume을 A 인스턴스에서 떼어낸 후, B 인스턴스에 연결할 수 있습니다. 이때 데이터 유실은 발생하지 않습니다.</p>
 
 <h1 id="1-사전-준비">1. 사전 준비</h1>
 
@@ -817,11 +817,11 @@ http://taewan.kim/img/icon/oracle.png
 <li>Block Volume 생성</li>
 <li>Block Volume을 인스턴스에 추가</li>
 <li>Block Volume을 인스턴스에 연결</li>
-<li>Block Volume 포멧</li>
+<li>Block Volume 포맷</li>
 <li>Block Volume 마운트</li>
 </ol>
 
-<p>위 과정를 모두 마치면 다음과 같은 상태가 만들어집니다.</p>
+<p>위 과정을 모두 마치면 다음과 같은 상태가 만들어집니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2020/ocidocs/vm/220.jpg?classes=border,shadow" alt="" /></p>
 
@@ -839,7 +839,7 @@ http://taewan.kim/img/icon/oracle.png
 
 <p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/020.jpg?classes=border,shadow" alt="" /></p>
 
-<p>“Create Block Volume” 버튼을 클릭하면 __Create Block Volume&rdquo; 생성 입력폼이 나타납니다. 입력폼에 다음과 같은 입력 값을 설정합니다.</p>
+<p>“Create Block Volume” 버튼을 클릭하면 __Create Block Volume&rdquo; 생성 입력 폼이 나타납니다. 입력 폼에 다음과 같은 입력값을 설정합니다.</p>
 
 <table>
 <thead>
@@ -872,7 +872,7 @@ http://taewan.kim/img/icon/oracle.png
 <tr>
 <td>Size(In GB)</td>
 <td>1024</td>
-<td>기본 값인 1TB를 사용합니다.</td>
+<td>기본값인 1TB를 사용합니다.</td>
 </tr>
 
 <tr>
@@ -884,13 +884,13 @@ http://taewan.kim/img/icon/oracle.png
 <tr>
 <td>Backup Policy</td>
 <td>Bronze</td>
-<td>이 항목의 선택은 제약이 없습니다. 다른값 선택이 앞으로 진행에 영향이 없습니다.</td>
+<td>이 항목의 선택은 제약이 없습니다. 다른 값 선택이 앞으로 진행에 영향이 없습니다.</td>
 </tr>
 
 <tr>
 <td>Volume Porformance</td>
 <td>Balanced</td>
-<td>기본값을 사용합니다. 다른값 선택이 앞으로 진행에 영향이 없습니다.</td>
+<td>기본값을 사용합니다. 다른 값 선택이 앞으로 진행에 영향이 없습니다.</td>
 </tr>
 
 <tr>
@@ -921,7 +921,7 @@ http://taewan.kim/img/icon/oracle.png
 
 <p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/060.jpg?classes=border,shadow" alt="" /></p>
 
-<p>&ldquo;<strong>Attach Blcok Volume</strong>&rdquo; 버튼을 클릭하면, &ldquo;<strong>Attach Blcok Volume</strong>&rdquo; 입력폼이 나타납니다. 이 입력폼에 다음과 같은 설정값을 입력합니다.</p>
+<p>&ldquo;<strong>Attach Blcok Volume</strong>&rdquo; 버튼을 클릭하면, &ldquo;<strong>Attach Blcok Volume</strong>&rdquo; 입력 폼이 나타납니다. 이 입력 폼에 다음과 같은 설정값을 입력합니다.</p>
 
 <table>
 <thead>
@@ -975,7 +975,7 @@ http://taewan.kim/img/icon/oracle.png
 
 <p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/070.jpg?classes=border,shadow" alt="" /></p>
 
-<p>&ldquo;<strong>Attach</strong>&rdquo; 버튼을 클릭하면 <strong>demo_linux_vm</strong> 상세 페이지의  <strong>Attached Block Volume</strong> 블록에 앞에서 지정한 Block Volume 목록이 만들어 진것을 확인할 수 있습니다.</p>
+<p>&ldquo;<strong>Attach</strong>&rdquo; 버튼을 클릭하면 <strong>demo_linux_vm</strong> 상세 페이지의  <strong>Attached Block Volume</strong> 블록에 앞에서 지정한 Block Volume 목록이 만들어진 것을 확인할 수 있습니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/080.jpg?classes=border,shadow" alt="" /></p>
 
@@ -1002,27 +1002,27 @@ http://taewan.kim/img/icon/oracle.png
 
 <h2 id="2-3-block-volume-포멧">2.3 Block Volume 포멧</h2>
 
-<p>블럭 장치 목록을 보여주는 리눅스 명령어인 <strong>&ldquo;lsblk -f&rdquo;</strong>을 실행하면, 현재 <font color='red'><strong>/dev/sdb</strong></font>를 인식할 뿐 어떤 정보도 확인할 수 없습니다. 이제는 <font color='red'><strong>/dev/sdb</strong></font>을 포멧할 순서입니다.</p>
+<p>블럭 장치 목록을 보여주는 리눅스 명령어인 <strong>&ldquo;lsblk -f&rdquo;</strong>을 실행하면, 현재 <font color='red'><strong>/dev/sdb</strong></font>를 인식할 뿐 어떤 정보도 확인할 수 없습니다. 이제는 <font color='red'><strong>/dev/sdb</strong></font>을 포맷할 순서입니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/130.jpg?classes=border,shadow" alt="" /></p>
 
-<p><font color='red'><strong>/dev/sdb</strong></font>를 다음 명령을 입력하여 포멧합니다.</p>
+<p><font color='red'><strong>/dev/sdb</strong></font>를 다음 명령을 입력하여 포맷합니다.</p>
 
 <pre><code>sudo mkfs -t &lt;fs type&gt; /dev/sdb
 </code></pre>
 
-<p><fstype>으로는 xfs를 설정합니다. XFS는 Silicon Graphics, Inc.에서 설계 한 확장성이 뛰어난 고성능 파일 시스템입니다. XFS는 Red Hat Enterprise Linux 7과 Oracle Enterprise Linux 7의 기본 파일 시스템입니다.</p>
+<p><fstype>으로는 xfs를 설정합니다. XFS는 Silicon Graphics, Inc.에서 설계한 확장성이 뛰어난 고성능 파일 시스템입니다. XFS는 Red Hat Enterprise Linux 7과 Oracle Enterprise Linux 7의 기본 파일 시스템입니다.</p>
 
 <pre><code>sudo mkfs -t xfs /dev/sdb
 </code></pre>
 
-<p>위 명령을 실행하여 <font color='red'><strong>/dev/sdb</strong></font>를 포멧한 다음에 <strong>&ldquo;lsblk -l&rdquo;</strong>를 실행하면 다음 이미지와 같이 파일 시스템 타입과 UUID가 등록된 것을 확인할 수 있습니다. 이제는 블록을 특정 디렉터리로 마운트할 차례입니다.</p>
+<p>위 명령을 실행하여 <font color='red'><strong>/dev/sdb</strong></font>를 포맷한 다음에 <strong>&ldquo;lsblk -l&rdquo;</strong>를 실행하면 다음 이미지와 같이 파일 시스템 타입과 UUID가 등록된 것을 확인할 수 있습니다. 이제는 블록을 특정 디렉터리로 마운트할 차례입니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/140.jpg?classes=border,shadow" alt="" /></p>
 
 <h2 id="2-3-block-volume-마운트">2.3 Block Volume 마운트</h2>
 
-<p>블록을 마운트할 디렉터리를 생성합니다. 이 문세어세는 <font color='red'><strong>/dev/sdb</strong></font>를 <strong>/demo_mnt/demo_vol01/</strong>에 마운트할 것입니다. 다음 명령을 입력하여 <strong>/demo_mnt/demo_vol01/</strong> 디렉터리를 만듭니다.</p>
+<p>블록을 마운트할 디렉터리를 생성합니다. 이 문서에서는 <font color='red'><strong>/dev/sdb</strong></font>를 <strong>/demo_mnt/demo_vol01/</strong>에 마운트할 것입니다. 다음 명령을 입력하여 <strong>/demo_mnt/demo_vol01/</strong> 디렉터리를 만듭니다.</p>
 
 <pre><code>[opc@demo-linux-vm ~]$ sudo mkdir -p /demo_mnt/demo_vol01
 </code></pre>
@@ -1032,12 +1032,12 @@ http://taewan.kim/img/icon/oracle.png
 <pre><code>sudo vi /etc/fstab
 </code></pre>
 
-<p>그리고 마지막줄에 다음 설정을 입력합니다.</p>
+<p>그리고 마지막 줄에 다음 설정을 입력합니다.</p>
 
 <pre><code>/dev/oracleoci/oraclevdb /demo_mnt/demo_vol01 xfs defaults,_netdev,nofail 0 2
 </code></pre>
 
-<p>위 설정은 시스템이 부팅할 때, 파일시스템을 마운트하는 설정파일입니다. 설정의 의미는 다음과 같습니다.</p>
+<p>위 설정 파일은 시스템이 부팅될 때, 파일 시스템을 마운트하는 정보를 제공합니다. 설정의 의미는 다음과 같습니다.</p>
 
 <table>
 <thead>
@@ -1060,12 +1060,12 @@ http://taewan.kim/img/icon/oracle.png
 
 <tr>
 <td>xfs</td>
-<td>파일 포멧</td>
+<td>파일 포맷</td>
 </tr>
 
 <tr>
 <td>defaults,_netdev,nofail</td>
-<td>기본설정,네트웍 볼륨,볼륨마운트 오류시 에러 보고하지 않음</td>
+<td>기본설정,네트웍 볼륨,볼륨마운트 오류 시 에러 보고하지 않음</td>
 </tr>
 
 <tr>
@@ -1075,7 +1075,7 @@ http://taewan.kim/img/icon/oracle.png
 
 <tr>
 <td>2</td>
-<td>우선순위 2순위 설정, boot volume을 1순위로 설정, 1순위 점검후 점검</td>
+<td>우선순위 2순위 설정, boot volume을 1순위로 설정, 1순위 점검 후 점검</td>
 </tr>
 </tbody>
 </table>
@@ -1104,7 +1104,7 @@ drwxr-xr-x. 3 root root 24  3월  8 10:18 ..
 
 <p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/190.jpg?classes=border,shadow" alt="" /></p>
 
-<p><strong>/demo_mnt/demo_vol01</strong>에 설정은 시스템을 재시작(rebookt)해도 그래도 유지됩니다. Oracle Linux 7이 재시작할 때, /etc/fstab에 등록된 파일시스템이 마운트됩니다. 이때 앞에서 설정한 마운트 포인트의 소유권 설정이 그래도 유지되는 것을 확인할 수 있습니다.</p>
+<p><strong>/demo_mnt/demo_vol01</strong>에 설정은 시스템을 재시작(rebookt)해도 그래도 유지됩니다. Oracle Linux 7이 재시작할 때, /etc/fstab에 등록된 파일 시스템이 마운트됩니다. 이때 앞에서 설정한 마운트 포인트의 소유권 설정이 그래도 유지되는 것을 확인할 수 있습니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/180.jpg?classes=border,shadow" alt="" /></p>
 
@@ -1115,7 +1115,7 @@ drwxr-xr-x. 3 root root 24  3월  8 10:18 ..
 <pre><code>sudo lsblk -f
 </code></pre>
 
-<p>위 명령을 실행하면 각 볼륨 장차의 파일 포멧, uuid 및 마운트 위지 정보가 출력됩니다.</p>
+<p>위 명령을 실행하면 각 볼륨 장차의 파일 포맷, uuid 및 마운트 위지 정보가 출력됩니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/200.jpg?classes=border,shadow" alt="" /></p>
 
@@ -1283,7 +1283,7 @@ drwx------. 2 opc  opc    29  3월  8 09:58 .ssh
 
 <h2 id="3-1-unmount">3.1 unmount</h2>
 
-<p>마운트 포인트를 지저앟여 해당 block volume을 언마운트합니다.</p>
+<p>마운트 포인트를 지정하여 해당 block volume을 언마운트합니다.</p>
 
 <pre><code>umount &lt;mount_point&gt;
 </code></pre>
@@ -1323,7 +1323,7 @@ drwx------. 2 opc  opc    29  3월  8 09:58 .ssh
 
 <p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/250.jpg?classes=border,shadow" alt="" /></p>
 
-<p>위 iscsiadm 명령을 해당 compute 인스턴스의 터니널에서 실행하면 해당 볼륨은 compute 인스턴스에서 완전히 사라집니다. 그리고 <strong>Detach Block Volume</strong> 창의 &ldquo;<strong>Continue Detachement</strong>&ldquo;을 클릭합니다. 그러면 Block Volume 상세 페이제에서 Attached Instance가 사라집니다.</p>
+<p>위 iscsiadm 명령을 해당 compute 인스턴스의 터미널에서 실행하면 해당 볼륨은 compute 인스턴스에서 완전히 사라집니다. 그리고 <strong>Detach Block Volume</strong> 창의 &ldquo;<strong>Continue Detachment</strong>&ldquo;을 클릭합니다. 그러면 Block Volume 상세 페이지에서 Attached Instance가 사라집니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/260.jpg?classes=border,shadow" alt="" /></p>
 
