@@ -145,6 +145,13 @@
 <ul>
 <li>읽기/쓰기 모드로 공유</li>
 </ul></li>
+<li>구성 환경
+
+<ul>
+<li>OCFS2 클러스터 이름: ociocfs2</li>
+<li>공유 파일 시스템 포맷: ocfs2</li>
+<li>공유 볼륨 마운트 포인트: /u01</li>
+</ul></li>
 </ul>
 
 <h2 id="사전-준비-사항">사전 준비 사항</h2>
@@ -586,7 +593,7 @@ sudo iscsiadm -m node -T iqn.2015-12.com.oracleiaas:84a47e02-9482-4040-8476-e464
 <pre><code>sudo o2cb add-node &lt;Cluster_NAME&gt; &lt;COMPUTE_NAME&gt; --ip &lt;PRIVATE_ID&gt;
 </code></pre>
 
-<p>이 형식을 cluster_vm01과 cluster_vm02에 적용하면 다음과 같습니다. 다음 명령을 cluster_vm01과 cluster_vm02에서 각각 실행합니다.</p>
+<p>이 형식을 cluster_vm01과 cluster_vm02에 적용하면 다음과 같습니다. 다음 명령을 cluster_vm01과 cluster_vm02에서 각각 실행합니다. 아래 명령은 데모에서 사용하는 Private IP가 설정되어 있습니다. 이 명령를 사용하실 때 사용하시는 Compute 인스턴스의 Private IP로 수정하고 사용하시기 바랍니다.</p>
 
 <pre><code>sudo o2cb add-node ociocfs2 cluster-vm01 --ip 10.0.0.27
 sudo o2cb add-node ociocfs2 cluster-vm02 --ip 10.0.0.28
