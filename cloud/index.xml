@@ -6,10 +6,21 @@
     <description>Recent content in Clouds on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 07 Mar 2020 08:20:25 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 09 Mar 2020 01:20:25 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/cloud/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[OCFS2]OCI Shared Block Volume 구성</title>
+      <link>http://taewan.kim/cloud/oci_shared_block_volume/</link>
+      <pubDate>Mon, 09 Mar 2020 01:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_shared_block_volume/</guid>
+      <description>OCI(Oracle Cloud Infrastructure)는 여러 Compute 인스턴스가 공유하는 Block Volume을 지원합니다. 1개의 Block Volume을 2개 이 이상의 Compute 인스턴스가 마운트할 수 있습니다. 여러 Compute 인스턴스가 1개 Block Volume을 읽기/쓰기 모드로 마운트할 경우, 쓰기 중복을 방지하기 위해서 여러 Compute 인스턴스의 파일 쓰기를 조정하는 중재 소프트웨어가 필요합니다. 이런 중재 소프트웨어를 Clusterware라고 합니다.
+OCI는 공유 볼륨을 지원하기 위해서 2020년 3월 현재 다음과 같은 3개 Clusterware를 지원합니다.
+ OCSF2(Oracle Cluster File System Version 2) GlusterFS IBM Spectrum Scale  이번 문서에서는 OCFS2를 사용하여 Block Volume을 공유하는 방법을 정리합니다.</description>
+    </item>
     
     <item>
       <title>OCI Cloud Shell: 브라우저 기반 가상 터미널</title>
@@ -29,17 +40,6 @@ Cloud Shell 과금정책과 사용 권한 OCI Cloud Shell은 Free 서비스입�
       <guid>http://taewan.kim/cloud/mounting_oci_objectstorage_bucket_on_linux_mac/</guid>
       <description>클라우드 서비스에서 데이터를 관리하는 핵심 저장소는 Object Storage입니다. OCI(Oracle Cloud Infrastructure)는 Object Storage에 파일을 저장하고 사용하는 다음과 같은 인터페이스를 제공합니다.
  OCI Console의 UI: OCI 웹 사이트 REST API OCI SDK: Java, Python, Ruby, Go CLI 툴: OCI CLI  이러한 인터페이스는 애플리케이션에서 Object Storage에 저장된 파일을 접근하거나 자동화 프로세스에서 Object Storage를 사용하는 경우에는 효과적입니다. 반면, 이 인터페이스를 사람이 사용하는 것은 상당히 불편합니다. 일반 사용자에게는 Object Storage를 파일 시스템에 마운트하는 방식이 가장 효율적입니다.</description>
-    </item>
-    
-    <item>
-      <title>OCI에서 리눅스 VM 루트 파티션(Root Partition) 확장</title>
-      <link>http://taewan.kim/cloud/access_/</link>
-      <pubDate>Fri, 28 Feb 2020 10:20:25 +0900</pubDate>
-      
-      <guid>http://taewan.kim/cloud/access_/</guid>
-      <description>OCI(Oracle Cloud Infrastructure)에서 리눅스 VM을 만들 때, 기본 Boot Volume 크기는 46.6GB입니다. Boot Volume의 기본 크기를 최대 32TB까지 확장할 수 있습니다. Boot Volume을 조정하고 리눅스 VM을 프로비저닝하더라도, Root Partition의 사이즈는 기본 크기로 고정됩니다. Root Partition을 조정하는 방법과 Root Partition 조정을 자동화하는 방법을 정리합니다.
-OCI에서 Oracle Linux VM 인스턴스를 프로비저닝하는 방법은 다음 링크의 문서를 참조하시기 바랍니다. OCI 리눅스 가상머신 프로비저닝[↗NW]
- Root Partiion 고정 38.4GB OCI에서 VM을 프로비저닝할 때 가상머신의 Boot Volume을 늘리는 방법은 다음과 같습니다.</description>
     </item>
     
     <item>

@@ -1335,9 +1335,18 @@
     </item>
     
     <item>
+      <title>Ocfs2</title>
+      <link>http://taewan.kim/tags/ocfs2/</link>
+      <pubDate>Mon, 09 Mar 2020 01:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/ocfs2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Oci</title>
       <link>http://taewan.kim/tags/oci/</link>
-      <pubDate>Sat, 07 Mar 2020 08:20:25 +0900</pubDate>
+      <pubDate>Mon, 09 Mar 2020 01:20:25 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/oci/</guid>
       <description></description>
@@ -1772,6 +1781,15 @@
       <pubDate>Sun, 07 Oct 2018 18:59:47 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/setup/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Shard Block Volume</title>
+      <link>http://taewan.kim/tags/shard-block-volume/</link>
+      <pubDate>Mon, 09 Mar 2020 01:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/shard-block-volume/</guid>
       <description></description>
     </item>
     

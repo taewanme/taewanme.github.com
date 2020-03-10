@@ -1,0 +1,68 @@
++++
+date = "2020-02-28T10:20:25+09:00"
+description = "OCI 리눅스 VM의 루트 파티션을 확장하는 방법을 정리합니다."
+title = "OCI에서 리눅스 VM 루트 파티션(Root Partition) 확장"
+thumbnailInList = "https://taewanmerepo.github.io/2020/02/bootvolume/list.jpg"
+thumbnailInPost = "https://taewanmerepo.github.io/2020/02/bootvolume/510.jpg"
+tags = ["oci", "linux", "cloud-init"]
+categories = ["Cloud"]
+author = "taewan.kim"
+disclaimer = "true"
++++
+
+OCI(Oracle Cloud Infrastructure)에서 리눅스 VM을 만들 때, 기본 Boot Volume 크기는 46.6GB입니다. Boot Volume의 기본 크기를 최대 32TB까지 확장할 수 있습니다. Boot Volume을 조정하고 리눅스 VM을 프로비저닝하더라도, Root Partition의 사이즈는 기본 크기로 고정됩니다. Root Partition을 조정하는 방법과 Root Partition 조정을 자동화하는 방법을 정리합니다. 
+
+{{% notice note %}}
+OCI에서 Oracle Linux VM 인스턴스를 프로비저닝하는 방법은 다음 링크의 문서를 참조하시기 바랍니다. {{< extlink link="http://taewan.kim/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/" desc="OCI 리눅스 가상머신 프로비저닝" >}}
+{{% /notice %}}
+
+## Root Partiion 고정 38.4GB
+OCI에서 VM을 프로비저닝할 때 가상머신의 Boot Volume을 늘리는 방법은 다음과 같습니다. 다음 그림에서 Block Volume을 500GB로 설정하고 있습니다.
+
+![](https://taewanmerepo.github.io/2020/02/bootvolume/520.jpg)
+
+위 그림과 같이 Boot Volume을 500GB 할당하고 VM을 생성하더라도, Root Partition에 할당된 크기는 38.4GB입니다. VM의 sda 볼륨 크기는 491GB이지만, 루트 파티션에는 38.4GB만이 할당됩니다.
+
+![](https://taewanmerepo.github.io/2020/02/bootvolume/530.jpg)
+
+## Root Partition 확장
+
+Boot Volume의 나머지 스토리지 스페이스에 Root Partition을 확장하는 명령은 다음과 같습니다. 
+
+```
+sudo yum -y install cloud-utils-growpart
+sudo yum -y install gdisk
+sudo growpart /dev/sda 3
+sudo xfs_growfs /
+```
+
+위 명령을 수행하면 다음과 같이 Root Partition이 483GB로 확장된 것을 확인할 수 있습니다. 
+
+![](https://taewanmerepo.github.io/2020/02/bootvolume/540.jpg)
+
+## Root Partition 확장 자동화 처리
+
+앞에서 Root Partition을 처리하는 방식을 VM 프로비저닝 과정에 적용하여 자동화할 수 있습니다. OCI는 VM 초기 설정을 자동화하는 도구로 cloud-init를 지원합니다. cloud-init에 위 명령을 설정하면 Root Partition 확장 설정을 자동화할 수 있습니다. OCI VM 프로비저닝 cloud-init 블록에 다음과 같은 명령을 입력합니다. 
+
+![](https://taewanmerepo.github.io/2020/02/bootvolume/550.jpg)
+
+cloud-init 블록에 입력하는 명령은 다음과 같습니다. 
+
+```
+#!/bin/sh
+sudo yum -y install cloud-utils-growpart
+sudo yum -y install gdisk
+sudo growpart /dev/sda 3
+sudo xfs_growfs /
+```
+
+{{% notice note %}}
+cloud-init 블록에 Root Partition 확장 설정을 추가한 VM 프로비저닝 설정의 전체 입력 값은 다음 링크에서 확인할 수 있습니다. {{< extlink link="/oratips/oci-root-partition/" desc="OCI에서 Root 파티션 확대 처리된 VM 생성" >}}
+{{% /notice %}}
+
+위 명령을 cloud-init 블록에 설정하고 VM 인스턴스를 프로비저닝하면, 다음과 같이 Root Partition이 확장된 상태로 만들어집니다.   
+
+![](https://taewanmerepo.github.io/2020/02/bootvolume/560.jpg)
+
+
+

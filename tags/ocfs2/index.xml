@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ocfs2 on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/ocfs2/</link>
+    <description>Recent content in Ocfs2 on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 09 Mar 2020 01:20:25 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/ocfs2/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[OCFS2]OCI Shared Block Volume 구성</title>
+      <link>http://taewan.kim/cloud/oci_shared_block_volume/</link>
+      <pubDate>Mon, 09 Mar 2020 01:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_shared_block_volume/</guid>
+      <description>OCI(Oracle Cloud Infrastructure)는 여러 Compute 인스턴스가 공유하는 Block Volume을 지원합니다. 1개의 Block Volume을 2개 이 이상의 Compute 인스턴스가 마운트할 수 있습니다. 여러 Compute 인스턴스가 1개 Block Volume을 읽기/쓰기 모드로 마운트할 경우, 쓰기 중복을 방지하기 위해서 여러 Compute 인스턴스의 파일 쓰기를 조정하는 중재 소프트웨어가 필요합니다. 이런 중재 소프트웨어를 Clusterware라고 합니다.
+OCI는 공유 볼륨을 지원하기 위해서 2020년 3월 현재 다음과 같은 3개 Clusterware를 지원합니다.
+ OCSF2(Oracle Cluster File System Version 2) GlusterFS IBM Spectrum Scale  이번 문서에서는 OCFS2를 사용하여 Block Volume을 공유하는 방법을 정리합니다.</description>
+    </item>
+    
+  </channel>
+</rss>

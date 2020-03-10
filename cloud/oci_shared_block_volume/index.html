@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>[OCFS2]OCI Shared Block Volume 구성</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.27.1" />
+<meta property="og:title" content="[OCFS2]OCI Shared Block Volume 구성" />
+<meta property="og:description" content="OCI는 여러 Compute 인스턴스가 공유하는 shared Blokc Volume을 지원합니다. Shared Block Volume을 구성하는 방법을 소개합니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/cloud/oci_shared_block_volume/" />
+
+
+
+<meta property="article:published_time" content="2020-03-09T01:20:25&#43;09:00"/>
+<meta property="article:modified_time" content="2020-03-09T01:20:25&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >ORACLE CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/graalvm/" title="GraalVM 관련 새소식 및 기술 문서를 담고 있습니다." >GRAALVM</a></li>
+		<li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Deep Learning 구현 기술에 대하여 정리합니다." >TUTORIAL &amp; MANUAL</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">[OCFS2]OCI Shared Block Volume 구성 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2020-03-09 01:20:25 &#43;0900 KST">March 09, 2020</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/cloud" rel="category">Cloud</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2020/03/sharedvolume/post2.jpg" alt="[OCFS2]OCI Shared Block Volume 구성">
+			</figure>
+			
+
+<p>OCI(Oracle Cloud Infrastructure)는 여러 Compute 인스턴스가 공유하는 Block Volume을 지원합니다. 1개의 Block Volume을 2개 이 이상의 Compute 인스턴스가 마운트할 수 있습니다. 여러 Compute 인스턴스가 1개 Block Volume을 읽기/쓰기 모드로 마운트할 경우, 쓰기 중복을 방지하기 위해서 여러 Compute 인스턴스의 파일 쓰기를 조정하는 중재 소프트웨어가 필요합니다. 이런 중재 소프트웨어를 Clusterware라고 합니다.</p>
+
+<p>OCI는 공유 볼륨을 지원하기 위해서 2020년 3월 현재 다음과 같은 3개 Clusterware를 지원합니다.</p>
+
+<ul>
+<li>OCSF2(Oracle Cluster File System Version 2)</li>
+<li>GlusterFS</li>
+<li>IBM Spectrum Scale</li>
+</ul>
+
+<p>이번 문서에서는 OCFS2를 사용하여 Block Volume을 공유하는 방법을 정리합니다. 데모 시나리오는 다음과 같습니다.</p>
+
+<ul>
+<li>2개 OCI Compute 인스턴스가 1개 Block Storage를 공유
+
+<ul>
+<li>읽기/쓰기 모드로 공유</li>
+</ul></li>
+<li>1개 OCI Compute 인스턴스는 위 공유 볼륨을 읽기 전용으로 접근</li>
+</ul>
+
+<h2 id="사전-준비-사항">사전 준비 사항</h2>
+
+<p>이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.</p>
+
+<ul>
+<li><a href="/oci_docs/10_quickstart/vcn/simple_vcn/" target="_blank">OCI FREE TIER 계정 등록[↗NW]</a>
+</li>
+<li><a href="/oci_docs/10_quickstart/first_sign_in_oci/" target="_blank">Free Tier 계정 첫 번째 로그인[↗NW]</a>
+</li>
+</ul>
+
+<p>데모 진행을 위하여 다음과 같은 환경이 구성되어 있다고 가정합니다. 다음 자원이 없다면 “자원 생성 참조 문서“를 참조하여 해당 자원을 생성하시기 바랍니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>자원 유형</th>
+<th>자원 이름</th>
+<th>해당 자원을 포함하는 Compartment</th>
+<th>자원 생성 참조 문서</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Compartment</td>
+<td>sandbox</td>
+<td>root</td>
+<td><a href="/oci_docs/10_quickstart/create_compartment/" target="_blank">Compartment 추가[↗NW]</a>
+</td>
+</tr>
+
+<tr>
+<td>VCN</td>
+<td>demo_vcn</td>
+<td>root &gt; sandbox</td>
+<td><a href="/oci_docs/10_quickstart/vcn/simple_vcn/" target="_blank">간편 VCN 만들기[↗NW]</a>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="복수-compute-인스턴스-공유-볼륨-구성">복수 Compute 인스턴스 공유 볼륨 구성</h2>
+
+<p>여러 Compute가 공유하는 Block Volume 구성은 다음과 같은 순서로 구성됩니다.</p>
+
+<ol>
+<li>Compute VM 인스턴스 프로비저닝</li>
+<li>포트 공개 설정</li>
+<li>공유 Block Volume 생성</li>
+<li>Compute에 Block Volume 연결</li>
+<li>2개 인스턴스에 OCFS2 설치 및 구성</li>
+<li>cluster-vm01 공유 볼륨 포맷/마운트</li>
+<li>cluster-vm01 공유 볼륨 테스트</li>
+<li>cluster-vm02 공유 볼륨 마운트</li>
+<li>cluster-vm02 공유 볼륨 테스트</li>
+</ol>
+
+<h3 id="1-compute-인스턴스-프로비저닝">1. Compute 인스턴스 프로비저닝</h3>
+
+<p>OCFS2를 설치하고 Blokc Volume을 읽기/쓰기 모드로 공유할 Compute 인스턴스 2개를 만듭니다. 다음과 같은 설정으로 Compute 인스턴스 2개를 만드시기 바랍니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>설정 항목</th>
+<th>cluster_vm01</th>
+<th>cluster_vm02</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Name your instance</td>
+<td>cluster-vm01</td>
+<td>cluster-vm02</td>
+</tr>
+
+<tr>
+<td>Operating System or Image Source</td>
+<td>Oracle Linux 7.7</td>
+<td>Oracle Linux 7.7</td>
+</tr>
+
+<tr>
+<td>Availability Domain</td>
+<td>AD 1</td>
+<td>AD 1</td>
+</tr>
+
+<tr>
+<td>Instance Type</td>
+<td>Virtual Machine</td>
+<td>Virtual Machine</td>
+</tr>
+
+<tr>
+<td>Instance Shape</td>
+<td>VM.Stanndard2.1</td>
+<td>VM.Stanndard2.1</td>
+</tr>
+
+<tr>
+<td>Virtaul cloud network compartment</td>
+<td>sandbox</td>
+<td>sandbox</td>
+</tr>
+
+<tr>
+<td>Virtaul cloud network</td>
+<td>demo_vcn</td>
+<td>demo_vcn</td>
+</tr>
+
+<tr>
+<td>Subnet Compartment</td>
+<td>sandbox</td>
+<td>sandbox</td>
+</tr>
+
+<tr>
+<td>Subnet</td>
+<td>Public Subnet-demo_vcn</td>
+<td>Public Subnet-demo_vcn</td>
+</tr>
+
+<tr>
+<td>Assign a public IP address</td>
+<td>체크</td>
+<td>체크</td>
+</tr>
+
+<tr>
+<td>Choose SSH Key file</td>
+<td>체크</td>
+<td>체크</td>
+</tr>
+
+<tr>
+<td>public key</td>
+<td>id_rsa.pub</td>
+<td>id_rsa.pub</td>
+</tr>
+</tbody>
+</table>
+
+<p>Compute 인스턴스 프로비저닝이 어려우실 경우 다음 문서를 참조하시기 바랍니다.
+- <a href="/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/" target="_blank">Oracle Linux VM 인스턴스 생성[↗NW]</a>
+ 참조: <strong>2.3 SSH 접속</strong> 절까지 수행</p>
+
+<p>ssh 통신에 사용되는 SSH Key Pair(Public Key, Private Key)를 준비가 어려우실 경우 다음 문서를 참조하시기 바랍니다.
+- <a href="/oci_docs/98_misc_tips/ssh_key_pairs/" target="_blank">운영체제별 SSH Key Pair 준비[↗NW]</a>
+</p>
+
+<p>cluster_vm01와 cluster_vm02 인스턴스가 만들어지면 Compute 관리 페이지에 다음 이미지와 목록이 출력됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sharedvolume/310.jpg" alt="" /></p>
+
+<p>앞에서 생성한 Compute 인스턴스는 다음과 같은 공개 IP와 비공개 IP를 갖습니다. 이 IP 정보는 아래 설명에서 사용됩니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>인스턴스 이름</th>
+<th>공개 IP 주소</th>
+<th>비공개 IP 주소</th>
+<th>서브넷</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>cluster-vm01</td>
+<td>150.136.62.165</td>
+<td>10.0.0.27</td>
+<td>Public Subnet-demo_vcn</td>
+</tr>
+
+<tr>
+<td>cluster-vm02</td>
+<td>150.136.53.151</td>
+<td>10.0.0.28</td>
+<td>Public Subnet-demo_vcn</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="2-포트-공개-설정">2. 포트 공개 설정</h3>
+
+<p>OCFS2를 구성하기 위해서는 2개 포트를 공개해야 합니다. 7777과 3260입니다. 7777 포트는 OCFS2가 클러스터를 구성하기 위해서 사용하는 포트이고 3260은 Volume Gateway 포트입니다. 두 포트를 OCI Security List와 OS 방화벽에서 오픈합니다.</p>
+
+<h4 id="security-list에서-포트-오픈">Security List에서 포트 오픈</h4>
+
+<p>현재 사용하고 있는 demo_vcn의 Public Subnet-demo_vcn 서브넷에 기본적용되는 <strong>Default Security List for demo_vcn</strong> Security List에 다음 2개 룰을 추가합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>포트</th>
+<th>Stateless</th>
+<th>Source Type</th>
+<th>Source CIDR</th>
+<th>IP Protocol</th>
+<th>Source Port Range</th>
+<th>Destination Port Range</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>7777</td>
+<td>체크X</td>
+<td>CIDR</td>
+<td>10.0.0.0/16</td>
+<td>TCP</td>
+<td>All</td>
+<td>7777</td>
+</tr>
+
+<tr>
+<td>3260</td>
+<td>체크X</td>
+<td>CIDR</td>
+<td>10.0.0.0/16</td>
+<td>TCP</td>
+<td>All</td>
+<td>3260</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Default Security List for demo_vcn</strong> Security List에 2개 룰을 추가하는 것이 어려우실 경우 다음 문서를 참조하시기 바랍니다.</p>
+
+<ul>
+<li><a href="/oci_docs/10_quickstart/vcn/simple_vcn/#1-3-security-list%ec%97%90-secury-rule%ec%b6%94%ea%b0%80" target="_blank">1.3 Security List에 Secury Rule추가 [↗NW]</a>
+</li>
+</ul>
+
+<p>2개 룰이 추가디면 <strong>Default Security List for demo_vcn</strong>의 Ingress Rules은 다음과 같은 형태가 됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sharedvolume/020.jpg" alt="" /></p>
+
+<h4 id="리눅스-방화벽-오픈">리눅스 방화벽 오픈</h4>
+
+<p>cluster_vm01과 cluster_vm02에 ssh 접속한 후 다음 4개 명령을 실행하여 방화벽을 오픈합니다.</p>
+
+<pre><code>sudo firewall-cmd --zone=public --permanent --add-port=7777/tcp
+sudo firewall-cmd --zone=public --permanent --add-port=3260/tcp
+sudo firewall-cmd --complete-reload
+sudo firewall-cmd --info-zone public ##오픈 상태 확인
+</code></pre>
+
+<p>다음 이미지는 cluster_vm01과 cluster_vm02에서 각각 위 4개 명령을 시행한 결과입니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sharedvolume/320.jpg" alt="" /></p>
+
+<h3 id="3-공유-block-volume-생성">3. 공유 Block Volume 생성</h3>
+
+<p>cluster_vm01과 cluster_vm02에서 ocfs2로 클러스터를 구성하고 공유할 Block Storage를 생성할 차례입니다. Block Volues 관리 페이지에서 Block Volume을 생성합니다. Block Volues 관리 페이지 이동 메뉴 패스는 다음과 같습니다.</p>
+
+<ul>
+<li><strong>OCI 콘솔 왼쪽 위 햄버그 버튼</strong> &gt;&gt; <strong>Block Storage</strong> &gt;&gt;  <strong>Block Volumes</strong></li>
+</ul>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/010.jpg?classes=border,shadow" alt="" /></p>
+
+<p>Block Volume 관리 페이지에서 앞으로 생성할 Block Volume을 할당할 Compartment로 sandbox(root/sandbox)를 선택합니다. 그리고 “Create Block Volume” 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/020.jpg?classes=border,shadow" alt="" /></p>
+
+<p>“Create Block Volume” 버튼을 클릭하면 __Create Block Volume&rdquo; 생성 입력 폼이 나타납니다. 입력 폼에 다음과 같은 입력값을 설정합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>입력 항목</th>
+<th>설정값</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Name</td>
+<td>shared_volume</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Create In Compartment</td>
+<td>sandbox</td>
+<td>Block Volume을 할당할 Compartment</td>
+</tr>
+
+<tr>
+<td>Availability Domain</td>
+<td>fttO:US-ASHBURN-AD-1</td>
+<td>리전에 따라 달라지는 값입니다. 각 리전의 AD 1을 선택합니다.</td>
+</tr>
+
+<tr>
+<td>Size(In GB)</td>
+<td>1024</td>
+<td>기본값인 1TB를 사용합니다.</td>
+</tr>
+
+<tr>
+<td>Compartment For Backup Policies</td>
+<td>sandbox</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Backup Policy</td>
+<td>Bronze</td>
+<td>이 항목의 선택은 제약이 없습니다. 다른 값 선택이 앞으로 진행에 영향이 없습니다.</td>
+</tr>
+
+<tr>
+<td>Volume Performance</td>
+<td>Balanced</td>
+<td>기본값을 사용합니다. 다른 값 선택이 앞으로 진행에 영향이 없습니다.</td>
+</tr>
+
+<tr>
+<td>Encryption</td>
+<td>Encrypt Using Oracle-Managed Keys</td>
+<td>기본값을 사용합니다.</td>
+</tr>
+</tbody>
+</table>
+
+<p>위 입력값을 모두 입력하면 다음 이미지와 같은 상태가 됩니다. 입력을 마쳤으면 <strong>Create_Block_Volume</strong> 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sharedvolume/040.jpg" alt="" /></p>
+
+<h3 id="4-compute에-block-volume-연결">4. Compute에 Block Volume 연결</h3>
+
+<p>cluster_vm01과 cluster_vm02에 앞에서 생성한 Block Volume을 연결합니다. &ldquo;<strong>shared_volume</strong>&rdquo; 상세 페이지에서 왼쪽 메뉴의 &ldquo;<strong>Attached Instances</strong>&rdquo; 링크를 클릭하고 &ldquo;<strong>Attach to Instance</strong>&rdquo; 버튼을 클릭합니다. 그리고 다음과 같은 설정을 통해서 Block Volume에 인스턴스를 추가합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sharedvolume/050.jpg" alt="" /></p>
+
+<p>cluster_vm01과 cluster_vm02를 다음과 같은 설정으로 &ldquo;<strong>shared_volume</strong>&ldquo;에 등록합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>설정 항목</th>
+<th>cluster_vm01 설정값</th>
+<th>cluster_vm02 설정값</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Attachment Type</td>
+<td>ISCSI</td>
+<td>ISCSI</td>
+</tr>
+
+<tr>
+<td>Access Type</td>
+<td>READ/WRITE SHARED</td>
+<td>READ/WRITE SHARED</td>
+</tr>
+
+<tr>
+<td>Settig Type</td>
+<td>Select Instance</td>
+<td>Select Instance</td>
+</tr>
+
+<tr>
+<td>Choose Instance</td>
+<td>cluster_vm01</td>
+<td>cluster_vm02</td>
+</tr>
+
+<tr>
+<td>Device Name</td>
+<td>/dev/oracleoci/oraclevdb</td>
+<td>/dev/oracleoci/oraclevdb</td>
+</tr>
+</tbody>
+</table>
+
+<p>위 설정으로 등록 창을 입력하면 다음과 같은 상태가 됩니다. 두 인스턴스를 지정하고 <strong>Attach</strong> 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sharedvolume/060.jpg" alt="" /></p>
+
+<p>Block Volume에 2개 인스턴스를 등록하면 다음과 같은 상태가 됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sharedvolume/340.jpg" alt="" /></p>
+
+<p>Block Volume 상세 페이지에 등록된 인스턴스 목록에서 각각 <strong>iSCSI Command &amp; Information</strong> 메뉴를 실행하고 <strong>Attach Command</strong>를 복사합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sharedvolume/330.jpg" alt="" /></p>
+
+<p>cluster_vm01과 cluster_vm02의 <strong>Attach Command</strong>는 다음과 같습니다.</p>
+
+<ul>
+<li>cluster-vm01</li>
+</ul>
+
+<pre><code>sudo iscsiadm -m node -o new -T iqn.2015-12.com.oracleiaas:84a47e02-9482-4040-8476-e46468941046 -p 169.254.2.2:3260
+sudo iscsiadm -m node -o update -T iqn.2015-12.com.oracleiaas:84a47e02-9482-4040-8476-e46468941046 -n node.startup -v automatic
+sudo iscsiadm -m node -T iqn.2015-12.com.oracleiaas:84a47e02-9482-4040-8476-e46468941046 -p 169.254.2.2:3260 -l
+</code></pre>
+
+<ul>
+<li>cluster-vm02</li>
+</ul>
+
+<pre><code>sudo iscsiadm -m node -o new -T iqn.2015-12.com.oracleiaas:84a47e02-9482-4040-8476-e46468941046 -p 169.254.2.2:3260
+sudo iscsiadm -m node -o update -T iqn.2015-12.com.oracleiaas:84a47e02-9482-4040-8476-e46468941046 -n node.startup -v automatic
+sudo iscsiadm -m node -T iqn.2015-12.com.oracleiaas:84a47e02-9482-4040-8476-e46468941046 -p 169.254.2.2:3260 -l
+</code></pre>
+
+<p>cluster_vm01과 cluster_vm02에 ssh로 접속하고 위 명령을 각각 실행합니다. 위 명령을 각각 서버에서 실행한 후, fdisk 명령을 실행하면 공유 볼륨이 연결된 것을 확인할 수 있습니다. 다음 이미지는 cluster_vm01과 cluster_vm02에서 명령을 실행하고 fdisk 명령으로 shared_volume 인식을 확인하는 과정을 보여줍니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sharedvolume/090.jpg" alt="" /></p>
+
+<h3 id="5-2개-인스턴스에-ocfs2-설치-및-구성">5. 2개 인스턴스에 OCFS2 설치 및 구성</h3>
+
+<p>cluster_vm01과 cluster_vm02에 ssh로 접속하고 다음 명령을 각각 실행하여 ocfs2-tools-devel와 ocfs2-tools 패키지를 설치합니다.</p>
+
+<pre><code>sudo yum install ocfs2-tools-devel ocfs2-tools -y
+</code></pre>
+
+<p>cluster_vm01과 cluster_vm02에 다음 명령을 각각 수행하여 이름이 <font color='red'><strong>ociocfs2</strong></font>인 OCIFS2 클러스터를 만듭니다.</p>
+
+<pre><code>sudo o2cb add-cluster ociocfs2
+</code></pre>
+
+<p>이제 클러스터에 2개 노드를 등록합니다. 형식은 다음과 같습니다.</p>
+
+<pre><code>sudo o2cb add-node &lt;Cluster_NAME&gt; &lt;COMPUTE_NAME&gt; --ip &lt;PRIVATE_ID&gt;
+</code></pre>
+
+<p>이 형식을 cluster_vm01과 cluster_vm02에 적용하면 다음과 같습니다. 다음 명령을 cluster_vm01과 cluster_vm02에서 각각 실행합니다.</p>
+
+<pre><code>sudo o2cb add-node ociocfs2 cluster-vm01 --ip 10.0.0.27
+sudo o2cb add-node ociocfs2 cluster-vm02 --ip 10.0.0.28
+</code></pre>
+
+<p>OCFS2 클러스터 설정은 <strong>/etc/ocfs2/cluster.conf</strong> 파일에 저장됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sharedvolume/350.jpg" alt="" /></p>
+
+<p>OCFS2는 O2CB라는 클러스터 관리 컴포넌트로 5개의 시스템 서비스로 구성됩니다. 클러스터를 구성하기 위해서는 cluster_vm01과 cluster_vm02에서 O2CB를 동일하게 설정해야 합니다. O2CB 설정을 위하여 cluster_vm01과 cluster_vm02에서 각각 <strong>sudo /sbin/o2cb.init configure</strong> 명령을 실행합니다. &ldquo;Cluster to start on boot (Enter &ldquo;none&rdquo; to clear)&rdquo; 항목에 <strong>ociocfs2</strong>를 입력하는 것을 제외하면 모두 기본값을 설정합니다.(Just Enter)</p>
+
+<pre><code>[opc@cluster-vm01 ~]$ sudo /sbin/o2cb.init configure
+Configuring the O2CB driver.
+
+This will configure the on-boot properties of the O2CB driver.
+The following questions will determine whether the driver is loaded on
+boot.  The current values will be shown in brackets ('[]').  Hitting
+&lt;ENTER&gt; without typing an answer will keep that current value.  Ctrl-C
+will abort.
+
+Load O2CB driver on boot (y/n) [n]: y
+Cluster stack backing O2CB [o2cb]:
+Cluster to start on boot (Enter &quot;none&quot; to clear) [ocfs2]: ociocfs2
+Specify heartbeat dead threshold (&gt;=7) [31]:
+Specify network idle timeout in ms (&gt;=5000) [30000]:
+Specify network keepalive delay in ms (&gt;=1000) [2000]:
+Specify network reconnect delay in ms (&gt;=2000) [2000]:
+Writing O2CB configuration: OK
+checking debugfs...
+Loading stack plugin &quot;o2cb&quot;: OK
+Loading filesystem &quot;ocfs2_dlmfs&quot;: OK
+Creating directory '/dlm': OK
+Mounting ocfs2_dlmfs filesystem at /dlm: OK
+Setting cluster stack &quot;o2cb&quot;: OK
+Registering O2CB cluster &quot;ociocfs2&quot;: OK
+Setting O2CB cluster timeouts : OK
+[opc@cluster-vm01 ~]$
+</code></pre>
+
+<p>cluster_vm01과 cluster_vm02에서 <strong>sudo /sbin/o2cb.init status</strong> 명령을 실행하면 OCFS2 클러스터 스텍 상태를 확인할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sharedvolume/360.jpg" alt="" /></p>
+
+<p>cluster-vm01과 cluster-vm02 모두 클러스터 스택 중 O2CB heartbeat이 <strong>Not Active</strong> 상태입니다.</p>
+
+<p>cluster_vm01과 cluster_vm02에서 <strong>Checking O2CB cluster &ldquo;ociocfs2&rdquo;</strong> 상태가 Offline인 것을 확인할 수 있습니다. Cluster Stack을 관리하는 명령은 다음과 같습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>Cluster Stack 관리 명령</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>sudo /sbin/o2cb.init status</td>
+<td>Cluster Stack 상태 확인</td>
+</tr>
+
+<tr>
+<td>sudo /sbin/o2cb.init online</td>
+<td>Cluster Stack 시작</td>
+</tr>
+
+<tr>
+<td>sudo /sbin/o2cb.init offline</td>
+<td>Cluster Stack 정지</td>
+</tr>
+
+<tr>
+<td>sudo /sbin/o2cb.init unload</td>
+<td>Cluster Stack 비활성화</td>
+</tr>
+</tbody>
+</table>
+
+<p>cluster_vm01과 cluster_vm02에서 다음 명령을 실행하여 o2cb와 ocfs2를 서비스에 등록합니다.</p>
+
+<pre><code>sudo systemctl enable o2cb
+sudo systemctl enable ocfs2
+</code></pre>
+
+<p>위 명령은 다음과 같이 실행됩니다.</p>
+
+<pre><code>[opc@cluster-vm01 ~]$ sudo systemctl enable o2cb
+Created symlink from /etc/systemd/system/multi-user.target.wants/o2cb.service to /usr/lib/systemd/system/o2cb.service.
+[opc@cluster-vm01 ~]$ sudo systemctl enable ocfs2
+Created symlink from /etc/systemd/system/multi-user.target.wants/ocfs2.service to /usr/lib/systemd/system/ocfs2.service.
+[opc@cluster-vm01 ~]$ 
+</code></pre>
+
+<p>cluster_vm01과 cluster_vm02에서 다음 명령을 수행하여 OCFS2 클러스터를 위한 커널 설정을 합니다.</p>
+
+<pre><code># Define panic and panic_on_oops for cluster operation
+sudo sysctl kernel.panic=30
+sudo sysctl kernel.panic_on_oops=1
+</code></pre>
+
+<p>위 명령은 다음과 같이 실행됩니다.</p>
+
+<pre><code>[opc@cluster-vm01 ~]$ sudo sysctl kernel.panic=30
+kernel.panic = 30
+[opc@cluster-vm01 ~]$ sudo sysctl kernel.panic_on_oops=1
+kernel.panic_on_oops = 1
+[opc@cluster-vm01 ~]$
+</code></pre>
+
+<p>cluster_vm01과 cluster_vm02에서 이 설정이 시스템 재시작  후에도 유지되도록 <strong>/etc/sysctl.conf</strong>파일 마지막에 다음 설정을 추가합니다.</p>
+
+<pre><code># Define panic and panic_on_oops for cluster operation
+kernel.panic=30
+kernel.panic_on_oops=1
+</code></pre>
+
+<p><strong>/etc/sysctl.conf</strong> 파일을 수정한 결과는 다음과 같습니다.</p>
+
+<pre><code>[opc@cluster-vm01 ~]$ sudo vi /etc/sysctl.conf
+[opc@cluster-vm01 ~]$ sudo cat /etc/sysctl.conf
+# sysctl settings are defined through files in
+# /usr/lib/sysctl.d/, /run/sysctl.d/, and /etc/sysctl.d/.
+#
+# Vendors settings live in /usr/lib/sysctl.d/.
+# To override a whole file, create a new file with the same in
+# /etc/sysctl.d/ and put new settings there. To override
+# only specific settings, add a file with a lexically later
+# name in /etc/sysctl.d/ and put new settings there.
+#
+# For more information, see sysctl.conf(5) and sysctl.d(5).
+
+# Define panic and panic_on_oops for cluster operation
+kernel.panic=30
+kernel.panic_on_oops=1
+[opc@cluster-vm01 ~]$
+</code></pre>
+
+<p>두 커널 파라미터의 의미는 다음과 같습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>파라미터 이름</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>panic</td>
+<td>panic이 발생한 후 지정한 시간 이후에 시스템을 리부팅, 초 단위 설정</td>
+</tr>
+
+<tr>
+<td>panic_on_oops</td>
+<td>1로 설정하면 Kernel OOPS가 발생  시스템 패닉으로 간주. panic에 설정된 시간 후에 리부팅</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="6-cluster-vm01-공유-볼륨-포맷-마운트">6. cluster-vm01 공유 볼륨 포맷/마운트</h3>
+
+<p>이번 절은 cluster-vm01에만 적용하는 부분입니다. cluster-vm01에서 <strong>sudo lsblk -f</strong>을 실행하여 장치 파일 인식 상태를 확인할 수 있습니다. 현재 cluster-vm01에서는 block volume을 단순히 인식만 할 뿐입니다.</p>
+
+<pre><code>[opc@cluster-vm01 ~]$ sudo lsblk -f
+NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
+sdb
+sda
+├─sda2 swap         02789b15-4058-485e-86a6-38522a5c00c6 [SWAP]
+├─sda3 xfs          53bb89bf-50e3-4358-9f5e-e9c5ac8d535c /
+└─sda1 vfat         F831-6C7E                            /boot/efi
+[opc@cluster-vm01 ~]$
+</code></pre>
+
+<p><strong>sudo fdisk /dev/sdb</strong> 명령을 실행하여 앞에서 추가한 Block Volume에 파티션을 설정합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sharedvolume/380.jpg" alt="" /></p>
+
+<p><strong>sudo fdisk -l</strong> 명령을 실행하여 파티션 생성 결과를 확인합니다. 위 파티션 작업을 통해서 <font color='red'><strong>/dev/sdb1</strong></font>가 만들어 진 것을 확인할 수 있습니다.</p>
+
+<pre><code>opc@cluster-vm01 ~]$ sudo fdisk -l
+WARNING: fdisk GPT support is currently new, and therefore in an experimental phase. Use at your own discretion.
+
+Disk /dev/sda: 50.0 GB, 50010783744 bytes, 97677312 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 1048576 bytes
+Disk label type: gpt
+Disk identifier: 23A7AABA-6B11-4E98-A2CE-4962B4F7BCC3
+
+
+#         Start          End    Size  Type            Name
+ 1         2048       411647    200M  EFI System      EFI System Partition
+ 2       411648     17188863      8G  Linux swap
+ 3     17188864     97675263   38.4G  Microsoft basic
+
+Disk /dev/sdb: 1099.5 GB, 1099511627776 bytes, 2147483648 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 1048576 bytes
+Disk label type: dos
+Disk identifier: 0xcf42a827
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sdb1            2048   104859647    52428800   83  Linux
+[opc@cluster-vm01 ~]$ sudo ls -al /dev/sd*
+brw-rw----. 1 root disk 8,  0  3월 10 08:11 /dev/sda
+brw-rw----. 1 root disk 8,  1  3월 10 08:11 /dev/sda1
+brw-rw----. 1 root disk 8,  2  3월 10 08:11 /dev/sda2
+brw-rw----. 1 root disk 8,  3  3월 10 08:11 /dev/sda3
+brw-rw----. 1 root disk 8, 16  3월 10 09:28 /dev/sdb
+brw-rw----. 1 root disk 8, 17  3월 10 09:28 /dev/sdb1
+[opc@cluster-vm01 ~]$
+</code></pre>
+
+<p>다음 명령을 이용하여 /dev/sdb1 파티션을 ocfs2 타입으로 포맷합니다.</p>
+
+<pre><code>sudo mkfs.ocfs2 -L &quot;ocfs2&quot; /dev/sdb1
+</code></pre>
+
+<p>위 명령을 실행하면 다음과 같은 결과가 출력됩니다.</p>
+
+<pre><code>[opc@cluster-vm01 ~]$ sudo mkfs.ocfs2 -L &quot;ocfs2&quot; /dev/sdb1
+mkfs.ocfs2 1.8.6
+Cluster stack: classic o2cb
+Label: ocfs2
+Features: sparse extended-slotmap backup-super unwritten inline-data strict-journal-super xattr indexed-dirs refcount discontig-bg
+Block size: 4096 (12 bits)
+Cluster size: 4096 (12 bits)
+Volume size: 53687091200 (13107200 clusters) (13107200 blocks)
+Cluster groups: 407 (tail covers 11264 clusters, rest cover 32256 clusters)
+Extent allocator size: 8388608 (2 groups)
+Journal size: 268435456
+Node slots: 8
+Creating bitmaps: done
+Initializing superblock: done
+Writing system files: done
+Writing superblock: done
+Writing backup superblock: 3 block(s)
+Formatting Journals: done
+Growing extent allocator: done
+Formatting slot map: done
+Formatting quota files: done
+Writing lost+found: done
+mkfs.ocfs2 successful
+
+[opc@cluster-vm01 ~]$
+</code></pre>
+
+<p><strong>sudo lsblk -f</strong> 명령으로 /dev/sdb1의 포맷 결과를 확인할 수 있습니다. /dev/sdb1는 ocfs2 포맷으로 포맷되었고, 레이블 명은 &ldquo;ocfs2&rdquo;입니다.</p>
+
+<pre><code>[opc@cluster-vm01 ~]$ sudo lsblk -f
+NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
+sdb
+└─sdb1 ocfs2  ocfs2 d40356de-ed1a-47a0-9866-86906bca7cba
+sda
+├─sda2 swap         02789b15-4058-485e-86a6-38522a5c00c6 [SWAP]
+├─sda3 xfs          53bb89bf-50e3-4358-9f5e-e9c5ac8d535c /
+└─sda1 vfat         F831-6C7E                            /boot/efi
+[opc@cluster-vm01 ~]$
+</code></pre>
+
+<p>다음 명령으로 /dev/sdb1를 마운트할 디렉터리를 만듭니다.</p>
+
+<pre><code>sudo mkdir /u01
+</code></pre>
+
+<p>그리고 <strong>sudo vi /etc/fstab</strong> 명령을 실행하고 다음 마운트 설정을 추가합니다.</p>
+
+<pre><code>/dev/sdb1 /u01 ocfs2     _netdev,defaults   0 0 
+</code></pre>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sharedvolume/120.jpg" alt="" /></p>
+
+<p>다음 명령으로 <strong>etc/fstab</strong>에 파일 시스템 정보를 마운트합니다.</p>
+
+<pre><code>sudo mount -a
+</code></pre>
+
+<p>파일 시스템을 마운트하고 lsblk 명령으로 리눅스 볼륨 구성을 확인할 수 있습니다.</p>
+
+<pre><code>[opc@cluster-vm01 ~]$ sudo lsblk -f
+NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
+sdb
+└─sdb1 ocfs2  ocfs2 d40356de-ed1a-47a0-9866-86906bca7cba /u01
+sda
+├─sda2 swap         02789b15-4058-485e-86a6-38522a5c00c6 [SWAP]
+├─sda3 xfs          53bb89bf-50e3-4358-9f5e-e9c5ac8d535c /
+└─sda1 vfat         F831-6C7E                            /boot/efi
+[opc@cluster-vm01 ~]$
+</code></pre>
+
+<p><strong>/dev/sdb1</strong>이 <strong>/u01</strong>에 마운트된 것을 확인할 수 있습니다. cluster_vm01에서 &ldquo;<strong>sudo /sbin/o2cb.init status</strong>&rdquo; 명령을 실행하면 이제 OCFS2 클러스터 스택 상태를 확인할 수 있습니다. 클러스터 스택의 O2CB heartbeat이  &ldquo;<strong>Active</strong>&rdquo; 상태가 된 것을 확인할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sharedvolume/390.jpg" alt="" /></p>
+
+<h3 id="7-cluster-vm01-공유-볼륨-테스트">7. cluster-vm01 공유 볼륨 테스트</h3>
+
+<p>다음과 같이 cluster-vm01에서 마운트한 공유 블록 스토리지에 파일을 쓰고 조회할 수 있습니다.</p>
+
+<pre><code>[opc@cluster-vm01 ~]$ sudo cp /boot/vmlinuz* /u01
+[opc@cluster-vm01 ~]$ sudo ls -al /u01
+합계 28664
+drwxr-xr-x.  3 root root    3896  3월 10 10:10 .
+dr-xr-xr-x. 19 root root    4096  3월 10 09:53 ..
+drwxr-xr-x.  2 root root    3896  3월 10 09:47 lost+found
+-rwxr-xr-x.  1 root root 7534112  3월 10 10:10 vmlinuz-0-rescue-185a1faed8734f9d8fd4c288da75d2e4
+-rwxr-xr-x.  1 root root 7532256  3월 10 10:10 vmlinuz-0-rescue-33f2b4bac8b045d281f1e24789d4cb5b
+-rwxr-xr-x.  1 root root 6735520  3월 10 10:10 vmlinuz-3.10.0-1062.12.1.el7.x86_64
+-rwxr-xr-x.  1 root root 7532256  3월 10 10:10 vmlinuz-4.14.35-1902.10.8.el7uek.x86_64
+[opc@cluster-vm01 ~]$
+</code></pre>
+
+<h3 id="8-cluster-vm02-공유-볼륨-마운트">8. cluster-vm02 공유 볼륨 마운트</h3>
+
+<p>lsblk 명령으로 리눅스 볼륨 구성을 확인할 수 있습니다.</p>
+
+<pre><code>[opc@cluster-vm02 ~]$ sudo lsblk -f
+NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
+sdb
+sda
+├─sda2 swap         02789b15-4058-485e-86a6-38522a5c00c6 [SWAP]
+├─sda3 xfs          53bb89bf-50e3-4358-9f5e-e9c5ac8d535c /
+└─sda1 vfat         F831-6C7E                            /boot/efi
+[opc@cluster-vm02 ~]$
+</code></pre>
+
+<p>위 결과를 보면 cluster-vm02는 /dev/sdb의 파일 포맷과 레이블을 인식하지 못하고 있습니다. cluster-vm01에서 공유 볼륨을 파티션을 만들고 포맷헷지만, 이 정보를 cluster-vm02 커널은 아직 인식하지 못하는 상태입니다.</p>
+
+<p>현재 사용 중인 HDD에 특정 파티션을 추가하거나 변형했을 때, 리눅스 커널은 사용 중인 디바이스 변경을 인식하지 못합니다. partprobe 명령은 운영 중인 파티션 정보를 커널에 업데이트 역할을 담당합니다. 다음과 같은 형식으로 사용됩니다.</p>
+
+<pre><code>sudo partprobe /디바이스명
+</code></pre>
+
+<p>&ldquo;<strong>partprobe</strong>&ldquo;를 실행한 다음에 &ldquo;<strong>sudo lsblk -f</strong>&ldquo;를 실행하면 /dev/sdb1의 파일 시스템 타입과 레이블을 인식하는 것을 확인할 수 있습니다.</p>
+
+<pre><code>[opc@cluster-vm02 ~]$ sudo partprobe /dev/sdb
+[opc@cluster-vm02 ~]$ sudo lsblk -f
+NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
+sdb
+└─sdb1 ocfs2  ocfs2 d40356de-ed1a-47a0-9866-86906bca7cba
+sda
+├─sda2 swap         02789b15-4058-485e-86a6-38522a5c00c6 [SWAP]
+├─sda3 xfs          53bb89bf-50e3-4358-9f5e-e9c5ac8d535c /
+└─sda1 vfat         F831-6C7E                            /boot/efi
+[opc@cluster-vm02 ~]$
+</code></pre>
+
+<p>cluster-vm02에서 다음 명령으로 /dev/sdb1를 마운트할 디렉터리를 만듭니다.</p>
+
+<pre><code>sudo mkdir /u01
+</code></pre>
+
+<p>그리고 <strong>sudo vi /etc/fstab</strong> 명령을 실행하고 다음 마운트 설정을 추가합니다.</p>
+
+<pre><code>/dev/sdb1 /u01 ocfs2     _netdev,defaults   0 0 
+</code></pre>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sharedvolume/400.jpg" alt="" /></p>
+
+<p>다음 명령으로 <strong>etc/fstab</strong>의 파일 시스템 정보를 마운트합니다.</p>
+
+<pre><code>sudo mount -a
+</code></pre>
+
+<p>파일 시스템을 마운트하고 lsblk 명령으로 리눅스 볼륨 구성을 확인할 수 있습니다.</p>
+
+<pre><code>[[opc@cluster-vm02 ~]$ sudo mount -a
+[opc@cluster-vm02 ~]$ sudo lsblk -f
+NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
+sdb
+└─sdb1 ocfs2  ocfs2 d40356de-ed1a-47a0-9866-86906bca7cba /u01
+sda
+├─sda2 swap         02789b15-4058-485e-86a6-38522a5c00c6 [SWAP]
+├─sda3 xfs          53bb89bf-50e3-4358-9f5e-e9c5ac8d535c /
+└─sda1 vfat         F831-6C7E                            /boot/efi
+[opc@cluster-vm02 ~]$
+</code></pre>
+
+<h3 id="9-cluster-vm02-공유-볼륨-테스트">9. cluster-vm02 공유 볼륨 테스트</h3>
+
+<p>cluster-vm02에서 공유 볼륨인 /u01에 데이터를 쓰고 조회할 수 있습니다.</p>
+
+<pre><code>[opc@cluster-vm02 ~]$ sudo mkdir /u01/demo
+[opc@cluster-vm02 ~]$ sudo cp /boot/vmlinuz* /u01/demo/
+[opc@cluster-vm02 ~]$ sudo ls -al /u01/demo/
+합계 28660
+drwxr-xr-x. 2 root root    3896  3월 10 11:05 .
+drwxr-xr-x. 4 root root    3896  3월 10 11:05 ..
+-rwxr-xr-x. 1 root root 7534112  3월 10 11:05 vmlinuz-0-rescue-185a1faed8734f9d8fd4c288da75d2e4
+-rwxr-xr-x. 1 root root 7532256  3월 10 11:05 vmlinuz-0-rescue-33f2b4bac8b045d281f1e24789d4cb5b
+-rwxr-xr-x. 1 root root 6735520  3월 10 11:05 vmlinuz-3.10.0-1062.12.1.el7.x86_64
+-rwxr-xr-x. 1 root root 7532256  3월 10 11:05 vmlinuz-4.14.35-1902.10.8.el7uek.x86_64
+[opc@cluster-vm02 ~]$
+</code></pre>
+
+<h2 id="요약">요약</h2>
+
+<p>OCI(Oracle Cloud Infrastructure)는 여러 Compute 인스턴스에 공유 스토리지를 구성하는 방법을 제공합니다. Block Storage를 여러 Compute 인스턴스에 연결하고 마운트하는 방식입니다.</p>
+
+<p>여러 Compute 인스턴스가 특정 스토리지를 공유할 때, 안전한 데이터 관리를 위해서 I/O를 조율(Coodination)하는 Clusterwae가 필요합니다. OCI는 현재 OCSF2(Oracle Cluster File System Version 2), GlusterFS, IBM Spectrum Scale을 지원합니다.</p>
+
+<p>이번 문서에서는 OCFS2를 이용하여 2개 Compute 인스턴스가 Block Volume을 공유하는 방법을 정리했습니다.</p>
+
+<h2 id="참고자료">참고자료</h2>
+
+<ul>
+<li><a href="https://blogs.oracle.com/cloud-infrastructure/using-the-multi-attach-block-volume-feature-to-create-a-shared-file-system-on-oracle-cloud-infrastructure" target="_blank">[Oracle Blog]Using the Multiple-Instance Attach Block Volume Feature to Create a Shared File System on Oracle Cloud Infrastructure[↗NW]</a>
+</li>
+<li><a href="http://www.iorchard.net/docs/pengx2/pengx2_ocfs2.html" target="_blank">[한글블로그]OCFS2 Cluster 구성[↗NW]</a>
+</li>
+<li><a href="https://www.youtube.com/watch?v=Mw5LzHVX7AU%20" target="_blank">[Youtube]Configure and Test an OCFS2 Cluster with Oracle Linux on Oracle Cloud Infrastructure[↗NW]</a>
+</li>
+</ul>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/oci/" rel="tag">oci</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/shard-block-volume/" rel="tag">shard block volume</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/ocfs2/" rel="tag">ocfs2</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan2.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+	<div class="notices disclaimer"><p>이 저작물은 Oracle과 관계없이 개인으로서 개인의 시간을 할애하여 작성된 글 입니다. 본 글의 내용, 입장, 예측은 Oracle을 공식적으로 <font color="red"><bold>절대</bold></font> 대변하지 않습니다.</p></div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/oci_cloud_shell/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">OCI Cloud Shell: 브라우저 기반 가상 터미널</p></a>
+	</div>
+</nav>
+
+	
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/cloud/oci_shared_block_volume/"></div>
+
+
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	
+
+<div class="widget-categories widget">	
+		<div class="fb-like" data-href="http://taewan.kim/cloud/oci_shared_block_volume/" 
+		data-layout="standard" data-action="like" 
+		data-size="small" 
+		data-show-faces="true" 
+		data-share="true"></div>
+</div>
+	
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#사전-준비-사항">사전 준비 사항</a></li>
+<li><a href="#복수-compute-인스턴스-공유-볼륨-구성">복수 Compute 인스턴스 공유 볼륨 구성</a>
+<ul>
+<li><a href="#1-compute-인스턴스-프로비저닝">1. Compute 인스턴스 프로비저닝</a></li>
+<li><a href="#2-포트-공개-설정">2. 포트 공개 설정</a>
+<ul>
+<li><a href="#security-list에서-포트-오픈">Security List에서 포트 오픈</a></li>
+<li><a href="#리눅스-방화벽-오픈">리눅스 방화벽 오픈</a></li>
+</ul></li>
+<li><a href="#3-공유-block-volume-생성">3. 공유 Block Volume 생성</a></li>
+<li><a href="#4-compute에-block-volume-연결">4. Compute에 Block Volume 연결</a></li>
+<li><a href="#5-2개-인스턴스에-ocfs2-설치-및-구성">5. 2개 인스턴스에 OCFS2 설치 및 구성</a></li>
+<li><a href="#6-cluster-vm01-공유-볼륨-포맷-마운트">6. cluster-vm01 공유 볼륨 포맷/마운트</a></li>
+<li><a href="#7-cluster-vm01-공유-볼륨-테스트">7. cluster-vm01 공유 볼륨 테스트</a></li>
+<li><a href="#8-cluster-vm02-공유-볼륨-마운트">8. cluster-vm02 공유 볼륨 마운트</a></li>
+<li><a href="#9-cluster-vm02-공유-볼륨-테스트">9. cluster-vm02 공유 볼륨 테스트</a></li>
+</ul></li>
+<li><a href="#요약">요약</a></li>
+<li><a href="#참고자료">참고자료</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	<div class="widget-categories widget">
+  <h4 class="widget__title">관련도서</h4>
+  <div class="widget__content" align="center">
+      <ul class="widget__list">
+          <li class="widget__item"><a href="http://www.yes24.com/Product/Goods/69335909" target="_blank"><img src="https://taewanmerepo.github.io/2019/02/pytorch/book200.jpg"/></a></li>
+      </ul>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_shared_block_volume/" title="[OCFS2]OCI Shared Block Volume 구성">
+							[OCFS2]OCI Shared Block Volume 구성</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_cloud_shell/" title="OCI Cloud Shell: 브라우저 기반 가상 터미널">
+							OCI Cloud Shell: 브라우저 기반 가상 터미널</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/mounting_oci_objectstorage_bucket_on_linux_mac/" title="S3FS를 이용한 OCI Object Storage 파일 시스템 마운트">
+							S3FS를 이용한 OCI Object Storage 파일 시스템 마운트</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/extending_root_partition_on_oci_linux/" title="OCI에서 리눅스 VM 루트 파티션(Root Partition) 확장">
+							OCI에서 리눅스 VM 루트 파티션(Root Partition) 확장</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/%EB%82%B4%EB%AA%B8%EC%B9%98%EC%9C%A0%EB%A0%A5/" title="[2020/Books:04] &#39;내 몸 치유력&#39; 후기">
+							[2020/Books:04] &#39;내 몸 치유력&#39; 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/english_for_developer/" title="[2020/Books:03] IT 개발자의 영어 필살기 ">
+							[2020/Books:03] IT 개발자의 영어 필살기 </a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/%EA%B2%B0%EB%A1%A0%EB%B6%80%ED%84%B0%EC%8D%A8%EB%9D%BC/" title="[2020/Books:02] &#39;결론부터 써라&#39; 후기">
+							[2020/Books:02] &#39;결론부터 써라&#39; 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/%EC%A7%80%EC%A0%81%EC%9E%90%EB%B3%B8%EB%A1%A0/" title="[2020/Books:01] &#39;지적자본론&#39; 후기">
+							[2020/Books:01] &#39;지적자본론&#39; 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/2019_mcd_videos/" title="2019 Modern Cloud Day @Seoul 세션 동영상과 발표 자료">
+							2019 Modern Cloud Day @Seoul 세션 동영상과 발표 자료</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_object_storage_new_feature/" title="[OCI Release Note] Object Storage 새기능 요약">
+							[OCI Release Note] Object Storage 새기능 요약</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/graalvm">Graalvm</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/math">Math</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%a7%9b%ec%a7%91">맛집</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">Licesne</h4>
+	<div class="widget__content">
+		<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+	</div>
+	<div class="widget__content">
+		이 저작물은 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank>크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2020 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+
