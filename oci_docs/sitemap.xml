@@ -27,11 +27,11 @@
   </url>
   
   <url>
-    <loc>/oci_docs/10_quickstart/compute/basic_linux_vm/</loc>
+    <loc>/oci_docs/80_oci_tools/sdk/java_sdk/</loc>
   </url>
   
   <url>
-    <loc>/oci_docs/80_oci_tools/sdk/python_sdk/</loc>
+    <loc>/oci_docs/10_quickstart/compute/basic_linux_vm/</loc>
   </url>
   
   <url>
@@ -75,6 +75,10 @@
   </url>
   
   <url>
+    <loc>/oci_docs/80_oci_tools/sdk/java_sdk/configuration/</loc>
+  </url>
+  
+  <url>
     <loc>/oci_docs/98_misc_tips/ssh_key_pairs/</loc>
   </url>
   
@@ -92,6 +96,10 @@
   
   <url>
     <loc>/oci_docs/10_quickstart/how_to_sign_up_oci/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/80_oci_tools/sdk/python_sdk/</loc>
   </url>
   
   <url>

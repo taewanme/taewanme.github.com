@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2020-03-12T12:16:55 KST">
-<title>OCI Python SDK 설치 :: Oracle Cloud Infrastructure</title>
+<title>OCI Java SDK :: Oracle Cloud Infrastructure</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 
@@ -20,7 +20,7 @@ http://taewan.kim/img/icon/oracle.png
 <script type="text/javascript">
       var baseurl = "\/oci_docs";
 </script>
-<meta name="description" content="">
+<meta name="description" content="OCI Java SDK를 설치하고 사용하는 방법을 소개합니다. ">
 
 
 <link href='/oci_docs/css/railload.css' rel="stylesheet">
@@ -28,7 +28,7 @@ http://taewan.kim/img/icon/oracle.png
 
     
   </head>
-  <body data-url="/oci_docs/80_oci_tools/sdk/python_sdk/installation/">
+  <body data-url="/oci_docs/80_oci_tools/sdk/java_sdk/">
     
       <header>
   <div class="logo">
@@ -236,7 +236,7 @@ http://taewan.kim/img/icon/oracle.png
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/oci_docs/80_oci_tools/sdk/java_sdk/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/80_oci_tools/sdk/java_sdk/" class="dd-item parent active alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/80_oci_tools/sdk/java_sdk/">OCI Java SDK</a>
@@ -252,14 +252,14 @@ http://taewan.kim/img/icon/oracle.png
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/80_oci_tools/sdk/python_sdk/" class="dd-item parent alwaysopen haschildren
+    <li data-nav-id="/oci_docs/80_oci_tools/sdk/python_sdk/" class="dd-item alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/80_oci_tools/sdk/python_sdk/">OCI Python SDK</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/oci_docs/80_oci_tools/sdk/python_sdk/installation/" class="dd-item active">
+      <li data-nav-id="/oci_docs/80_oci_tools/sdk/python_sdk/installation/" class="dd-item">
         <div>
           <a href="/oci_docs/80_oci_tools/sdk/python_sdk/installation/">
             OCI Python SDK 설치
@@ -592,7 +592,7 @@ http://taewan.kim/img/icon/oracle.png
     <option value="/oci_docs/80_oci_tools/sdk/" >
   - 
    OCI SDK</option> 
-    <option value="/oci_docs/80_oci_tools/sdk/java_sdk/" >
+    <option value="/oci_docs/80_oci_tools/sdk/java_sdk/"  selected>
   -- 
    OCI Java SDK</option> 
       <option value="/oci_docs/80_oci_tools/sdk/java_sdk/configuration/" >--- 설치 및 설정(Maven)</option>
@@ -600,7 +600,7 @@ http://taewan.kim/img/icon/oracle.png
     <option value="/oci_docs/80_oci_tools/sdk/python_sdk/" >
   -- 
    OCI Python SDK</option> 
-      <option value="/oci_docs/80_oci_tools/sdk/python_sdk/installation/"  selected>--- OCI Python SDK 설치</option>
+      <option value="/oci_docs/80_oci_tools/sdk/python_sdk/installation/" >--- OCI Python SDK 설치</option>
   
   
     <option value="/oci_docs/80_oci_tools/oci_cli/" >
@@ -645,6 +645,10 @@ http://taewan.kim/img/icon/oracle.png
     <option value="/oci_docs/30_core_infrastructure/object_storage/management/" >
   -- 
    Object Storage 관리</option> 
+    <option value="/oci_docs/30_core_infrastructure/object_storage/management/bucket/" >
+  --- 
+   Object Storage Bucket 관리</option> 
+  
   
   
     <option value="/oci_docs/30_core_infrastructure/file_storage/" >
@@ -712,61 +716,105 @@ http://taewan.kim/img/icon/oracle.png
       </div>
     
 
-    <h1>OCI Python SDK 설치</h1>
+    <h1>OCI Java SDK</h1>
     
     
     
-    
 
-<p>Oracle Cloud Infrastructure가 제공하는 OCI REST API를 파이썬 랩핑 SDK인 OCI Python SDK를 설치하는 방법을 소개합니다.</p>
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/javasdk/010.jpg?classes=border,shadow" alt="" /></p>
 
-<hr />
+<p>OCI(Oracle Cloud Infrastructure)는 OCI REST API를 랩핑하는 OCI Java SDK를 제공합니다. OCI Java SDK를 이용하여 OCI 자원을 관리 및 사용할 수 있습니다. OCI Java SDK는 오픈소스 형태로 github에서 개발되고 있습니다. OCI Java SDK 라이브러리는 Maven Central과 JCenter에서 관리됩니다. OCI Java SDK 프로젝트 관련 사이트는 다음과 같습니다.</p>
 
-<p>이번 문서는 다음과 같은 목차로 구성됩니다.</p>
+<table>
+<thead>
+<tr>
+<th>관련 사이트</th>
+<th>URL</th>
+</tr>
+</thead>
 
+<tbody>
+<tr>
+<td>Project Home</td>
+<td><a href="https://github.com/oracle/oci-java-sdk/releases">https://github.com/oracle/oci-java-sdk/releases</a></td>
+</tr>
 
-<div class="panel panel-primary"><div class="panel-body"><nav id="TableOfContents">
+<tr>
+<td>라이브러리(Maven Central)</td>
+<td><a href="https://search.maven.org/search?q=g:com.oracle.oci.sdk">https://search.maven.org/search?q=g:com.oracle.oci.sdk</a></td>
+</tr>
+
+<tr>
+<td>라이브러리(JCenter)</td>
+<td><a href="https://bintray.com/oracle/jars/oci-java-sdk">https://bintray.com/oracle/jars/oci-java-sdk</a></td>
+</tr>
+
+<tr>
+<td>공식 메뉴얼</td>
+<td><a href="https://docs.cloud.oracle.com/en-us/iaas/Content/API/SDKDocs/javasdk.htm">https://docs.cloud.oracle.com/en-us/iaas/Content/API/SDKDocs/javasdk.htm</a></td>
+</tr>
+
+<tr>
+<td>Java Docs</td>
+<td><a href="https://docs.cloud.oracle.com/en-us/iaas/tools/java/1.14/">https://docs.cloud.oracle.com/en-us/iaas/tools/java/1.14/</a></td>
+</tr>
+</tbody>
+</table>
+
+<p>2020년 3월 11일 현재 OCI Java SDK 최신 버전은 1.14버전 입니다.</p>
+
+<p>OCI Java SDK 1.14버전은 다음과 같은 서비스를 지원합니다.</p>
+
 <ul>
-<li><a href="#oci-python-sdk-설치-사전-준비할-사항">OCI Python SDK 설치 사전 준비할 사항</a></li>
+<li>Analytics Cloud</li>
+<li>Announcements</li>
+<li>API Gateway</li>
+<li>Application Migration</li>
+<li>Audit</li>
+<li>Autoscaling (Compute)</li>
+<li>Budgets</li>
+<li>Container Engine for Kubernetes</li>
+<li>Content and Experience</li>
+<li>Core Services (Networking, Compute, Block Volume)</li>
+<li>Data Catalog</li>
+<li>Data Flow</li>
+<li>Data Science</li>
+<li>Data Transfer</li>
+<li>Database</li>
+<li>Digital Assistant</li>
+<li>DNS</li>
+<li>Email Delivery</li>
+<li>Events</li>
+<li>File Storage</li>
+<li>Functions</li>
+<li>Health Checks</li>
+<li>IAM</li>
+<li>Integration</li>
+<li>Key Management</li>
+<li>Limits</li>
+<li>Load Balancing</li>
+<li>Marketplace</li>
+<li>Monitoring</li>
+<li>Oracle NoSQL Database Cloud</li>
+<li>Notifications</li>
+<li>Object Storage</li>
+<li>OS Management</li>
+<li>Quotas</li>
+<li>Resource Manager</li>
+<li>Search</li>
+<li>Streaming</li>
+<li>Web Application Acceleration and Security</li>
+<li>Work Requests (Compute, Database)</li>
 </ul>
-</nav>
-</div></div>
 
-
-<hr />
-
-<h1 id="oci-python-sdk-설치-사전-준비할-사항">OCI Python SDK 설치 사전 준비할 사항</h1>
-
-<p>OCI Python SDK를 설치하기 위해서는 다음과 같은 사항이 선행되어야 합니다.</p>
-
-<ul>
-<li>Python 3.5 혹은 3.6 설치 및 사용</li>
-<li>OpenSSL 버전 1.0.1 이후 버전 설치</li>
-<li>Cryptography.io 라이브러리
-
-<ul>
-<li>OpenSSL의 필수 라이브러리</li>
-</ul></li>
-</ul>
-
-<p>리눅스와 맥에서 다음과 같이 <strong>openssl version</strong> 명령으로 설치된 버전을 확인할 수 있습니다.
-<img src="https://taewanmerepo.github.io/2020/ocidocs/pythonsdk/010.jpg?classes=border,shadow" alt="" /></p>
-
-<p>asdfghjkl;&rsquo;</p>
-
-<p>OpenSSL version 1.0.1 or later.</p>
-
-<p>The Python SDK uses the Cryptography.io library which requires OpenSSL.</p>
-
-<p>For details on all Cryptography.io prerequisites, see Cryptography.io Installation.</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/80_oci_tools/sdk/python_sdk/" title="OCI Python SDK"> <i class="fa fa-chevron-left"></i><label>OCI Python SDK</label></a>
-    <a class="nav nav-next" href="/oci_docs/80_oci_tools/oci_cli/" title="OCI CLI (Command Line Interface)" style="margin-right: 0px;"><label>OCI CLI (Command Line Interface)</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/80_oci_tools/sdk/" title="OCI SDK"> <i class="fa fa-chevron-left"></i><label>OCI SDK</label></a>
+    <a class="nav nav-next" href="/oci_docs/80_oci_tools/sdk/java_sdk/configuration/" title="설치 및 설정(Maven)" style="margin-right: 0px;"><label>설치 및 설정(Maven)</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -785,7 +833,7 @@ http://taewan.kim/img/icon/oracle.png
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/80_oci_tools/sdk/python_sdk/installation/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/80_oci_tools/sdk/java_sdk/"></div>
   </div>
 
   </section>
