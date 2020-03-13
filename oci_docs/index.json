@@ -459,7 +459,7 @@
 	"title": "OCI Dcos",
 	"tags": [],
 	"description": "",
-	"content": " OCI Docs OCI(Oracle Cloud Infrastructure)는 오라클이 제공하는 클라우드 서비스입니다. OCI Docs는 오라클 클라우드 입문자와 사용자를 위하여 OCI 관련 문서를 정리하는 페이지입니다. OCI는 매주 신규 기능을 공개하고 있습니다. OCI 서비스 변경에 맞춰 다양한 서비스에 대한 문서를 정리하겠습니다.\nOCIDocs는 다음과 같은 문서를 만들고 지속적으로 업데이트하여 가능한 최신 상태를 유지할 예정입니다.\n OCI 기본 개념 OCI 서비스 개념 OCI 각 서비스 사용법 Tutorial OCI 최신 정보  Change Log    일자 변경내역 URL     2020.01.30 FREE TIER 계정 첫 번째 로그인 http://taewan.kim/oci_docs/00_quickstart/first_sign_in_oci/   2020.01.30 OCI 계정 등록 http://taewan.kim/oci_docs/00_quickstart/how_to_sign_up_in_oci/   2020.01.29 OCI 기본 용어 정리 http://taewan.kim/oci_docs/00_quickstart/terminologies/   2020.01.29 Oradocs 페이지 오픈 https://taewan.kim/oradocs    "
+	"content": " 오라클 클라우드 사용자 가이드 OCI(Oracle Cloud Infrastructure)는 오라클이 제공하는 클라우드 서비스입니다. OCI Docs는 오라클 클라우드 입문자와 사용자를 위하여 OCI 관련 문서를 정리하는 페이지입니다. OCI는 매주 신규 기능을 공개하고 있습니다. OCI 서비스 변경에 맞춰 다양한 서비스에 대한 문서를 정리하겠습니다.\nOCIDocs는 다음과 같은 문서를 만들고 지속적으로 업데이트하여 가능한 최신 상태를 유지할 예정입니다.\n OCI 기본 개념 OCI 서비스 개념 OCI 각 서비스 사용법 Tutorial OCI 최신 정보  Change Log    일자 변경내역 URL     2020.01.30 FREE TIER 계정 첫 번째 로그인 http://taewan.kim/oci_docs/00_quickstart/first_sign_in_oci/   2020.01.30 OCI 계정 등록 http://taewan.kim/oci_docs/00_quickstart/how_to_sign_up_in_oci/   2020.01.29 OCI 기본 용어 정리 http://taewan.kim/oci_docs/00_quickstart/terminologies/   2020.01.29 Oradocs 페이지 오픈 https://taewan.kim/oradocs    "
 },
 {
 	"uri": "/oci_docs/tags/",

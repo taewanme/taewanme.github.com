@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>OCI Dcos on Oracle Cloud Infrastructure</title>
+    <title>OCI Dcos on 오라클 클라우드 사용자 가이드</title>
     <link>/oci_docs/</link>
-    <description>Recent content in OCI Dcos on Oracle Cloud Infrastructure</description>
+    <description>Recent content in OCI Dcos on 오라클 클라우드 사용자 가이드</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 03 Mar 2020 08:20:25 +0900</lastBuildDate>
