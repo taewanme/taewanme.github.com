@@ -67,6 +67,10 @@
   </url>
   
   <url>
+    <loc>/oci_docs/50.data_service/streaming/</loc>
+  </url>
+  
+  <url>
     <loc>/oci_docs/80_oci_tools/oci_cli/installation_on_window/</loc>
   </url>
   
@@ -111,10 +115,6 @@
   </url>
   
   <url>
-    <loc>/oci_docs/80_oci_tools/</loc>
-  </url>
-  
-  <url>
     <loc>/oci_docs/20_identity_and_access_management/</loc>
   </url>
   
@@ -143,16 +143,20 @@
   </url>
   
   <url>
-    <loc>/oci_docs/30_core_infrastructure/</loc>
-  </url>
-  
-  <url>
     <loc>/oci_docs/10_quickstart/first_sign_in_oci/</loc>
   </url>
   
   <url>
     <loc>/oci_docs/80_oci_tools/oci_cli/</loc>
     <lastmod>2020-03-03T08:20:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/30_core_infrastructure/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/50.data_service/</loc>
   </url>
   
   <url>
@@ -218,6 +222,10 @@
   
   <url>
     <loc>/oci_docs/10_quickstart/compute/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/80_oci_tools/</loc>
   </url>
   
   <url>
