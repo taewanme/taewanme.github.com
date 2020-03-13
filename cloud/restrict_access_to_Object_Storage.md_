@@ -188,3 +188,14 @@ Last login: Thu Mar  5 10:14:01 2020
 prefixes: []
 [opc@vm02 ~]$
 ```
+
+## Network Source 기반 접근 제어
+
+Network Souce를 만들고 Object Storage에 접근 제어 설정을 Policy로 적용하겠습니다. Policy를 적용하기 위해서는  OCI User Group을 등록해야 합니다. 
+
+- Groups Name: A_NS_DEMO
+- OCI User: taewan.kim@oracle.com
+
+PolicyforAccessofObjectStorage
+policy for demo of Network Source
+allow group A_NS_DEMO to manage object-family in comparment sandbox where request.networkSource.name = 'NetworkSource01'
