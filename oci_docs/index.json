@@ -116,7 +116,7 @@
 	"title": "Streaming",
 	"tags": [],
 	"description": "",
-	"content": "OCI Streaming 서비스는 OCI에서 제공하는 완전 관리형 Apache Kafka 서비스입니다.\n"
+	"content": "OCI Streaming 서비스는 OCI에서 제공하는 완전 관리형 Apache Kafka 서비스입니다. 지속적으로 유입되는 대규모 스트림 데이터를 저장하고 실시간 처리를 지원하는 서비스입니다. 다양한 소스에서 스트리밍\n"
 },
 {
 	"uri": "/oci_docs/80_oci_tools/oci_cli/installation_on_window/",
@@ -266,13 +266,6 @@
 	"content": ""
 },
 {
-	"uri": "/oci_docs/50.data_service/",
-	"title": "OCI Dataa&amp;Analysis Service",
-	"tags": [],
-	"description": "",
-	"content": ""
-},
-{
 	"uri": "/oci_docs/30_core_infrastructure/object_storage/",
 	"title": "Object Storage",
 	"tags": [],
@@ -359,6 +352,13 @@
 {
 	"uri": "/oci_docs/30_core_infrastructure/networking/",
 	"title": "Networking",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/oci_docs/50.data_service/",
+	"title": "OCI Dataa&amp;Analysis Service",
 	"tags": [],
 	"description": "",
 	"content": ""

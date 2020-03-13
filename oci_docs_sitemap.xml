@@ -156,10 +156,6 @@
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/</loc>
-  </url>
-  
-  <url>
     <loc>/oci_docs/30_core_infrastructure/object_storage/</loc>
   </url>
   
@@ -210,6 +206,10 @@
   
   <url>
     <loc>/oci_docs/30_core_infrastructure/networking/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/50.data_service/</loc>
   </url>
   
   <url>
