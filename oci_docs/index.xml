@@ -6,10 +6,20 @@
     <description>Recent content in OCI Dcos on 오라클 클라우드 사용자 가이드</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 Mar 2020 08:54:32 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 15 Mar 2020 08:54:32 +0900</lastBuildDate>
     
 	<atom:link href="/oci_docs/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Streaming 서비스</title>
+      <link>/oci_docs/50.data_service/streaming/overview/</link>
+      <pubDate>Sun, 15 Mar 2020 08:54:32 +0900</pubDate>
+      
+      <guid>/oci_docs/50.data_service/streaming/overview/</guid>
+      <description>OCI Streaming 제약 사항 OCI Streaming은 다음과 같은 제약을 갖습니다.
+ 메시지가 스트림에 저장되는 최대 기간: 7일 단일 메시지 최대 사이즈: 1MB 각 파티션은 최대 초당 1MB의 데이터를 처리할 수 있음 각 파티션은 최대 초당 5 번 Read API 호출을 처리와 1MB의 저장을 처리 각 파티셔은 최대 초당 읽기 2MB와 초당 쓰기 1MB를 처리 각 테넌시는 5개 파티션 제약 설정이 되어 있음, 필요시 Resource 증설 요청 (SR)  API에서 파이션은 문자열로 표시됨 5개 파이션을 갖는 스트림을 생성할 때, - 스트링은 - &amp;ldquo;0&amp;rdquo; - &amp;ldquo;1&amp;rdquo; - &amp;ldquo;2&amp;rdquo; - &amp;ldquo;3&amp;rdquo; - &amp;ldquo;4&amp;rdquo; - &amp;ldquo;5&amp;rdquo;</description>
+    </item>
     
     <item>
       <title>OCI 주요 서비스</title>

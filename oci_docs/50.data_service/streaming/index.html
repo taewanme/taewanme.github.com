@@ -4,18 +4,18 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-03-15T16:38:42 KST">
+<meta name="revised" content="2020-03-15T19:16:44 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="Streaming" />
-<meta property="og:description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다." />
+<meta property="og:description" content="오라클 클라우드(OCI Cloud Infrastructure)의 Streaming 서비스에 대한 사용자 가이드 문서입니다." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/oci_docs/50.data_service/streaming/" />
 
 
 
-
+<meta property="og:updated_time" content="2020-03-15T08:54:32&#43;09:00"/>
 
 
 
@@ -45,11 +45,10 @@ http://taewan.kim/img/icon/oracle.png
 <script type="text/javascript">
       var baseurl = "\/oci_docs";
 </script>
-<meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
+<meta name="description" content="오라클 클라우드(OCI Cloud Infrastructure)의 Streaming 서비스에 대한 사용자 가이드 문서입니다.">
 
 
-<link href='/oci_docs/css/railload.css' rel="stylesheet">
-
+<link href='/oci_docs/css/railload.css' rel="stylesheet"><script data-ad-client="ca-pub-8469722754608892" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
     
   </head>
@@ -332,6 +331,13 @@ http://taewan.kim/img/icon/oracle.png
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+      <li data-nav-id="/oci_docs/50.data_service/streaming/overview/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.data_service/streaming/overview/">
+            Streaming 서비스
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
       <li data-nav-id="/oci_docs/50.data_service/streaming/pricing/" class="dd-item">
         <div>
           <a href="/oci_docs/50.data_service/streaming/pricing/">
@@ -627,6 +633,7 @@ http://taewan.kim/img/icon/oracle.png
     <option value="/oci_docs/50.data_service/streaming/"  selected>
   - 
    Streaming</option> 
+      <option value="/oci_docs/50.data_service/streaming/overview/" >-- Streaming 서비스</option>
       <option value="/oci_docs/50.data_service/streaming/pricing/" >-- Streaming 서비스 가격 모델</option>
       <option value="/oci_docs/50.data_service/streaming/terminology/" >-- Streaming 주요 키워드</option>
   
@@ -674,7 +681,7 @@ http://taewan.kim/img/icon/oracle.png
 
     <h1>Streaming</h1>
     <div class="alert alert-info" role="alter">
-      <li><strong>문서 생성 추가 :</strong> 0001-01-01 00:00:00 &#43;0000 UTC </li>
+      <li><strong>문서 생성 추가 :</strong> 2020-03-15 08:54:32 &#43;0900 KST </li>
   </div>    
       
   
@@ -762,189 +769,6 @@ http://taewan.kim/img/icon/oracle.png
 <li>인프라스트럭처와 앱 이벤트 처리</li>
 </ul>
 
-<h1 id="oci-streaming-제약-사항">OCI Streaming 제약 사항</h1>
-
-<p>OCI Streaming은 다음과 같은 제약을 갖습니다.</p>
-
-<ul>
-<li>메시지가 스트림에 저장되는 최대 기간: 7일</li>
-<li>단일 메시지 최대 사이즈: 1MB</li>
-<li>각 파티션은 최대 초당 1MB의 데이터를 처리할 수 있음</li>
-<li>각 파티션은 최대 초당 5 번 Read API 호출을 처리와 1MB의 저장을 처리</li>
-<li>각 파티셔은 최대 초당 읽기 2MB와 초당 쓰기 1MB를 처리</li>
-<li>각 테넌시는 5개 파티션 제약 설정이 되어 있음, 필요시 Resource 증설 요청 (SR)</li>
-</ul>
-
-<p>API에서 파이션은 문자열로 표시됨
-5개 파이션을 갖는 스트림을 생성할 때,
-  - 스트링은
-  - &ldquo;0&rdquo;
-  - &ldquo;1&rdquo;
-  - &ldquo;2&rdquo;
-  - &ldquo;3&rdquo;
-  - &ldquo;4&rdquo;
-  - &ldquo;5&rdquo;</p>
-
-<p>offset은 밀집도가 높지 않음
-Offset은 숫자가 커짐
-그 값은 항상 1씩 올라가지 않음
-미래에 offset 계산을 하려하지 말것
-예를 들어서 같은 파티션에 메시지가 게시될 때,
-첫번째 메시지는 offsetdl 42이고
-두번째 메시지는 offset이 45일 수 있음
-43과 44는 존재하지 않을 수 있음</p>
-
-<p>스트림을 만드는 방법
-- oci console
-- API</p>
-
-<p>스트림은 특정 리전과 tenancy에서 생성됨
-stream 데이터는 전체 리전에 복제됨
-AD 장애에 대해서 내고장성을 갖춤
-고가용성을 갖춤</p>
-
-<p>프로비저닝할 때 파티션을 지정
-파이션 생성 시간: 10초 소요</p>
-
-<p>The number of partitions for your stream depends on the throughput expectations of your application (expected throughput = average recond size x maximum number of records written per sectond).</p>
-
-<ul>
-<li>스트림의 파티션 수는 응용 프로그램의 예상 처리량에 따라 변함
-(예상 처리량 = 평균 수신 크기 x 초당 기록 된 최대 레코드 수).</li>
-</ul>
-
-<p>스트림의 처리량
--  OCI 스트림의 처리량은 파이션으로 정의됨
-- 파티션 당 1MB/sec 저장과 2MB/sec 읽기 지원</p>
-
-<p>파티션에 초당 요청 수
-- 1,000개 요청 발생 가능</p>
-
-<p>SDK
-- <a href="https://github.com/oracle/oci-java-sdk/releases">https://github.com/oracle/oci-java-sdk/releases</a>
-- <a href="https://github.com/oracle/oci-python-sdk/releases">https://github.com/oracle/oci-python-sdk/releases</a>
-- <a href="https://github.com/oracle/oci-ruby-sdk/releases">https://github.com/oracle/oci-ruby-sdk/releases</a>
-- <a href="https://github.com/oracle/oci-go-sdk/releases">https://github.com/oracle/oci-go-sdk/releases</a></p>
-
-<ul>
-<li>스트림에</li>
-</ul>
-
-<p>How do I emit data into a stream?
-Once a stream is created and active you can publish messages. For publishing, you can use the Write API (putMessages). The message will be published to a partition in the stream. If there is more than one partition, the partition where the message will be published is calculated using the message&rsquo;s key.</p>
-
-<p>스트림에 메시지 게시
-- 스트림이 생성되고 활성화되면 메시지 게시 가능
-- 게시 방법: Write API, putMessage
-- 메시지는 한개 파티션에 저장됨
-- 피티션 선정에 message key로 계산됨</p>
-
-<p>Message에 Key가 null이면, 키는 value의 일부분으로 계산됨
-null을 갖는다고해서 도일한 파티션이라고 예측할 수 없음, 왜냐면 파티션 스키마는 변경됨
-null key를 넘으면 랜점 파티션에 메시지르 넣은 효율적인 방밥</p>
-
-<p>OCI Streaming에서 순서를 보증하는 방법
-- 동일한 Value를 갖는 메시지를 동일한 파ㅣ션에 넣는 방법
-    - 이 메시지에 동일한 key를 넣는다.</p>
-
-<p>메시지의 저장 안전성을 보증하는 방법
-- OCI Streaming API가 에러 없이 putMessage의 답변을 보내면, 해당 메시지는 안전하게 저장된 상태</p>
-
-<p>최대 크기 이상을 요청한다면?
-- 용량을 초과하면 request를 거부하고 error eception을 발생
-- 용량이 1M 이상인것&hellip;.
-- 1초에 5번 이상을 날려 보자&hellip;</p>
-
-<ul>
-<li><p>Throttle 메나니즘 다음 임계점을 초과할 때 발생 됨</p>
-
-<ul>
-<li>GetMessages: 초당 5번 호출 혹은 파티션당 2MB/s</li>
-</ul></li>
-
-<li><p>1MB 이상 메시지 처리법</p>
-
-<ul>
-<li>Object Storage를 경유할 것</li>
-<li>Chunking으로 잘라서 처리할 것</li>
-</ul></li>
-
-<li><p>date 지원 포멧</p>
-
-<ul>
-<li>ISO-8601</li>
-</ul></li>
-
-<li><p>메시지를 게시하면서 스트림 서비스의 파티션 수와 offset을 획득하는 방법</p>
-
-<ul>
-<li>PutMessagesResultsEntry 클래스의<br />
-
-<ul>
-<li>getPartition 사용</li>
-<li>getOffset 사용
-<br /></li>
-</ul></li>
-</ul></li>
-</ul>
-
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/streaming/streaming.jpg?classes=border,shadow" alt="" /></p>
-
-<ul>
-<li><p>Partial failure?</p>
-
-<ul>
-<li>Trottling때문에  Partial failure 발생 가능</li>
-<li>서비스 리턴
-
-<ul>
-<li>Status Code 200</li>
-</ul></li>
-</ul></li>
-
-<li><p>OSS는 Free Tiral로 제공하지 않음</p></li>
-</ul>
-
-<p>consumer의 gap을 알아내는 법
-- 현재 시간과 time stamp q비교 차이가 커지면&hellip;&hellip; 지연되는것
-- producer가 더 빠른것</p>
-
-<p>corsor 타입
-- TRIM_HORIZON, AT_OFFSET, AFTER_OFFSET, AT_TIME, and LATEST. F</p>
-
-<p>cursor는
-null이 아니다. 5분귀 expired
-consuming을 계속하는 한, cursor를 다시 만들 필요는 없음
-- GetMessages
-- GetMessages, Commit, and Heartbeat은 다음 호출을 위한 cursor를 반환</p>
-
-<p>얼마나 많은 메시지를 얻는가? from getMessage
-- GetMessageRequest의  getLimit는 최대수를 반환
-- 10,000까지 지정 가능
-- 서비스는 가능한 메시지 반환</p>
-
-<p>스트림의 throutput 초과를 피하기 위해서
-Consider your average message size to avoid exceeding throughput on the stream.</p>
-
-<p>Streaming service getMessage batch sizes are based on the average message size published to the particular stream.</p>
-
-<p>How long does an instance have to heartbeat before timing out?
-- o heartbeat 34초 타임아웃efore the 30-second timeout. For example, if a message is taking too long to process, we recommend that the instance send a heartbeat.</p>
-
-<p>consumer groups
-- 각 인스턴스는 아하 이상의 파이션으로 부터 메시지를 받는다.
-- 자동으로 할당됨
-- 동일한 메새지를 다른 인스턴스에 전달되지 않음
--  인스턴스 확장 가능, 새로운 인스턴스가 그룹에 조인
-Consumer groups provide the following advantages:</p>
-
-<p>=========</p>
-
-<h1 id="예제-다시-읽기-offset-지정">예제 - 다시 읽기 offset 지정</h1>
-
-<p><a href="https://blogs.oracle.com/cloud-infrastructure/extending-oracle-streaming-with-kafka-compatibility">https://blogs.oracle.com/cloud-infrastructure/extending-oracle-streaming-with-kafka-compatibility</a>
-<a href="https://blogs.oracle.com/cloud-infrastructure/announcing-oracle-cloud-infrastructure-streaming">https://blogs.oracle.com/cloud-infrastructure/announcing-oracle-cloud-infrastructure-streaming</a></p>
-
 
 
     
@@ -952,7 +776,7 @@ Consumer groups provide the following advantages:</p>
         <div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="/oci_docs/50.data_service/" title="OCI Dataa&amp;Analysis Service"> <i class="fa fa-chevron-left"></i><label>OCI Dataa&amp;Analysis Service</label></a>
-    <a class="nav nav-next" href="/oci_docs/50.data_service/streaming/pricing/" title="Streaming 서비스 가격 모델" style="margin-right: 0px;"><label>Streaming 서비스 가격 모델</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="/oci_docs/50.data_service/streaming/overview/" title="Streaming 서비스" style="margin-right: 0px;"><label>Streaming 서비스</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -984,6 +808,10 @@ Consumer groups provide the following advantages:</p>
 
     
 
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 15/03/2020
+    </div>
     
   </div>
 
