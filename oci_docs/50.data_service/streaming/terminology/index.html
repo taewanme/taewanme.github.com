@@ -8,10 +8,12 @@
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="OCI 알아두면 유용한 팁" />
-<meta property="og:description" content="Miscellaneous Tips" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="/oci_docs/98_misc_tips/" />
+<meta property="og:title" content="Streaming 주요 키워드" />
+<meta property="og:description" content="  Stream(스트림)  추가 전용 로그 파일 스트림에는 메시지가 저장됨 Kafka의 Topic과 같은 것 스트림은 한개 이상의 Partition으로 구성    Partition(파티션)  Stream은 여러개의 Partition으로 분할 각 Partition은 여러 노드(Broker)에 위치 Partition은 Stream을 분할하는 단위 여러 컨슈머는 Partition의 데이터를 읽어 병렬 처리 지원    Cursor(커서)  스트림의 위치를 나타내는 지시자 커서는 파이텬의 특정 오프셋 및 시간으로 나타냄 그룹의 현재 위치 지정에도 사용    Message(메시지)  스트림에 게시된(Published)된 데이터 Base64로 인코딩 됨    Producer(프로듀서)  스트림에 메시지를 게시하는 객체    Consumer(컨슈머)  스트림에서 메시지를 읽어가는 객체 하나 이상 존재 가능    Consumer Group(컨슈머 그룹)  컨슈머 그룹은 스트림에 모든 파티션으로부터 메시지 읽기 조정을 받는 인스턴스 집합 컨슈머 그룹의 인스턴스(컨슈머)는 Interaction을 통해서 그룹 멤버쉽을 유지 일정 기간 Interaction 부족할 경우에 그룹에서 인스턴스 제외    Topic / Key  관련 메시지를 그룹으로 만드는 구분자    Offset(오프셋)  파티션의 메시지 위치 스트림 읽기를 재시작할 때 offset을 지정   참조 문서  [OCI Official Docs]Streaming Service Overview     " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/oci_docs/50.data_service/streaming/terminology/" />
+
+
 
 
 
@@ -31,7 +33,7 @@
 
 
 
-<title>OCI 알아두면 유용한 팁 :: 오라클 클라우드 사용자 가이드</title>
+<title>Streaming 주요 키워드 :: 오라클 클라우드 사용자 가이드</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 
@@ -45,7 +47,7 @@ http://taewan.kim/img/icon/oracle.png
 <script type="text/javascript">
       var baseurl = "\/oci_docs";
 </script>
-<meta name="description" content="Miscellaneous Tips">
+<meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
 
 
 <link href='/oci_docs/css/railload.css' rel="stylesheet">
@@ -53,7 +55,7 @@ http://taewan.kim/img/icon/oracle.png
 
     
   </head>
-  <body data-url="/oci_docs/98_misc_tips/">
+  <body data-url="/oci_docs/50.data_service/streaming/terminology/">
     
       <header>
   <div class="logo">
@@ -318,12 +320,36 @@ http://taewan.kim/img/icon/oracle.png
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/50.data_service/" class="dd-item haschildren
+    <li data-nav-id="/oci_docs/50.data_service/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/oci_docs/50.data_service/">OCI Dataa&amp;Analysis Service</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/50.data_service/">OCI Dataa&amp;Analysis Service</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+    <li data-nav-id="/oci_docs/50.data_service/streaming/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.data_service/streaming/">Streaming</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/50.data_service/streaming/pricing/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.data_service/streaming/pricing/">
+            Streaming 서비스 가격 모델
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.data_service/streaming/terminology/" class="dd-item active">
+        <div>
+          <a href="/oci_docs/50.data_service/streaming/terminology/">
+            Streaming 주요 키워드
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
         </ul>
     </li>
     <li data-nav-id="/oci_docs/60_solutions/" class="dd-item haschildren
@@ -473,11 +499,10 @@ http://taewan.kim/img/icon/oracle.png
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/98_misc_tips/" class="dd-item parent active haschildren
+    <li data-nav-id="/oci_docs/98_misc_tips/" class="dd-item haschildren
         ">
       <div>
-      <a href="/oci_docs/98_misc_tips/">OCI 알아두면 유용한 팁</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/98_misc_tips/">OCI 알아두면 유용한 팁</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/oci_docs/98_misc_tips/ssh_key_pairs/" class="dd-item">
@@ -600,16 +625,20 @@ http://taewan.kim/img/icon/oracle.png
     <option value="/oci_docs/30_core_infrastructure/" >
    OCI Core Infastructure Service</option>
     <option value="/oci_docs/50.data_service/" >
-   OCI Dataa&amp;Analysis Service</option>
+   OCI Dataa&amp;Analysis Service</option> 
+    <option value="/oci_docs/50.data_service/streaming/" >
+  - 
+   Streaming</option> 
+      <option value="/oci_docs/50.data_service/streaming/pricing/" >-- Streaming 서비스 가격 모델</option>
+      <option value="/oci_docs/50.data_service/streaming/terminology/"  selected>-- Streaming 주요 키워드</option>
+  
+  
     <option value="/oci_docs/60_solutions/" >
    OCI Services</option>
     <option value="/oci_docs/80_oci_tools/" >
    OCI 도구(Tool)</option>
-    <option value="/oci_docs/98_misc_tips/"  selected>
-   OCI 알아두면 유용한 팁</option> 
-      <option value="/oci_docs/98_misc_tips/ssh_key_pairs/" >- 운영체제별 SSH Key Pair 준비</option>
-      <option value="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/" >- OCI 기본 정보 확인법</option>
-  
+    <option value="/oci_docs/98_misc_tips/" >
+   OCI 알아두면 유용한 팁</option>
     <option value="/oci_docs/99_oci_sites/" >
    OCI 관련 문서 사이트</option> 
       <option value="/oci_docs/99_oci_sites/oci_sites/" >- OCI 관련 사이트 모음</option>
@@ -645,7 +674,7 @@ http://taewan.kim/img/icon/oracle.png
       </div>
     
 
-    <h1>OCI 알아두면 유용한 팁</h1>
+    <h1>Streaming 주요 키워드</h1>
     <div class="alert alert-info" role="alter">
       <li><strong>문서 생성 추가 :</strong> 0001-01-01 00:00:00 &#43;0000 UTC </li>
   </div>    
@@ -654,22 +683,124 @@ http://taewan.kim/img/icon/oracle.png
     
     
     
-
-<p>Oracle Cloud를 사용하면서 자주 사용되는 다양한 주제를 정리합니다.</p>
+    
 
 <ul>
-<li><a href="./ssh_key_pairs/">운영체제 별 SSH Key Pair 준비</a></li>
-<li></li>
+<li>Stream(스트림)
+
+<ul>
+<li>추가 전용 로그 파일</li>
+<li>스트림에는 메시지가 저장됨</li>
+<li>Kafka의 Topic과 같은 것</li>
+<li>스트림은 한개 이상의 Partition으로 구성</li>
+</ul></li>
 </ul>
 
+<hr />
+
+<ul>
+<li>Partition(파티션)
+
+<ul>
+<li>Stream은 여러개의 Partition으로 분할</li>
+<li>각 Partition은 여러 노드(Broker)에 위치</li>
+<li>Partition은 Stream을 분할하는 단위</li>
+<li>여러 컨슈머는 Partition의 데이터를 읽어 병렬 처리 지원</li>
+</ul></li>
+</ul>
+
+<hr />
+
+<ul>
+<li>Cursor(커서)
+
+<ul>
+<li>스트림의 위치를 나타내는 지시자</li>
+<li>커서는 파이텬의 특정 오프셋 및 시간으로 나타냄</li>
+<li>그룹의 현재 위치 지정에도 사용</li>
+</ul></li>
+</ul>
+
+<hr />
+
+<ul>
+<li>Message(메시지)
+
+<ul>
+<li>스트림에 게시된(Published)된 데이터</li>
+<li>Base64로 인코딩 됨</li>
+</ul></li>
+</ul>
+
+<hr />
+
+<ul>
+<li>Producer(프로듀서)
+
+<ul>
+<li>스트림에 메시지를 게시하는 객체</li>
+</ul></li>
+</ul>
+
+<hr />
+
+<ul>
+<li>Consumer(컨슈머)
+
+<ul>
+<li>스트림에서 메시지를 읽어가는 객체</li>
+<li>하나 이상 존재 가능</li>
+</ul></li>
+</ul>
+
+<hr />
+
+<ul>
+<li>Consumer Group(컨슈머 그룹)
+
+<ul>
+<li>컨슈머 그룹은 스트림에 모든 파티션으로부터 메시지 읽기 조정을 받는 인스턴스 집합</li>
+<li>컨슈머 그룹의 인스턴스(컨슈머)는 Interaction을 통해서 그룹 멤버쉽을 유지</li>
+<li>일정 기간 Interaction 부족할 경우에 그룹에서 인스턴스 제외</li>
+</ul></li>
+</ul>
+
+<hr />
+
+<ul>
+<li>Topic / Key
+
+<ul>
+<li>관련 메시지를 그룹으로 만드는 구분자</li>
+</ul></li>
+</ul>
+
+<hr />
+
+<ul>
+<li>Offset(오프셋)
+
+<ul>
+<li>파티션의 메시지 위치</li>
+<li>스트림 읽기를 재시작할 때 offset을 지정</li>
+</ul></li>
+</ul>
+
+<h1 id="참조-문서">참조 문서</h1>
+
+<ul>
+<li><a href="https://docs.cloud.oracle.com/en-us/iaas/Content/Streaming/Concepts/streamingoverview.htm" target="_blank">[OCI Official Docs]Streaming Service Overview <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+</ul>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/80_oci_tools/external_useful_tools/" title="OCI에 유용한 써드파티 툴"> <i class="fa fa-chevron-left"></i><label>OCI에 유용한 써드파티 툴</label></a>
-    <a class="nav nav-next" href="/oci_docs/98_misc_tips/ssh_key_pairs/" title="운영체제별 SSH Key Pair 준비" style="margin-right: 0px;"><label>운영체제별 SSH Key Pair 준비</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/50.data_service/streaming/pricing/" title="Streaming 서비스 가격 모델"> <i class="fa fa-chevron-left"></i><label>Streaming 서비스 가격 모델</label></a>
+    <a class="nav nav-next" href="/oci_docs/60_solutions/" title="OCI Services" style="margin-right: 0px;"><label>OCI Services</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -688,7 +819,7 @@ http://taewan.kim/img/icon/oracle.png
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/98_misc_tips/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/50.data_service/streaming/terminology/"></div>
   </div>
 
   </section>

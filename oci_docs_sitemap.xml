@@ -4,6 +4,17 @@
   
   <url>
     <loc>/oci_docs/00_oci/</loc>
+    <lastmod>2020-03-05T08:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/00_oci/oci_services/</loc>
+    <lastmod>2020-03-05T08:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/10_quickstart/object_storate/add_bucket_and_object/</loc>
+    <lastmod>2020-03-01T08:54:32+09:00</lastmod>
   </url>
   
   <url>
@@ -12,10 +23,6 @@
   
   <url>
     <loc>/oci_docs/30_core_infrastructure/compute/</loc>
-  </url>
-  
-  <url>
-    <loc>/oci_docs/10_quickstart/object_storate/add_bucket_and_object/</loc>
   </url>
   
   <url>
@@ -47,15 +54,7 @@
   </url>
   
   <url>
-    <loc>/oci_docs/10_quickstart/terminologies/</loc>
-  </url>
-  
-  <url>
     <loc>/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/</loc>
-  </url>
-  
-  <url>
-    <loc>/oci_docs/00_oci/oci_services/</loc>
   </url>
   
   <url>
@@ -84,6 +83,11 @@
   
   <url>
     <loc>/oci_docs/98_misc_tips/ssh_key_pairs/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/00_oci/terminologies/</loc>
+    <lastmod>2020-03-15T08:54:32+09:00</lastmod>
   </url>
   
   <url>
@@ -168,6 +172,10 @@
   </url>
   
   <url>
+    <loc>/oci_docs/50.data_service/streaming/pricing/</loc>
+  </url>
+  
+  <url>
     <loc>/oci_docs/80_oci_tools/oci_cli/manual_installation/</loc>
   </url>
   
@@ -177,10 +185,6 @@
   
   <url>
     <loc>/oci_docs/80_oci_tools/cloud_shell/</loc>
-  </url>
-  
-  <url>
-    <loc>/oci_docs/10_quickstart/cloudshell/</loc>
   </url>
   
   <url>
@@ -213,6 +217,14 @@
   </url>
   
   <url>
+    <loc>/oci_docs/50.data_service/streaming/terminology/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/30_core_infrastructure/compute/provisioning/oci_ai_datascience_image/</loc>
+  </url>
+  
+  <url>
     <loc>/oci_docs/60_solutions/</loc>
   </url>
   
@@ -234,6 +246,7 @@
   
   <url>
     <loc>/oci_docs/10_quickstart/object_storate/</loc>
+    <lastmod>2020-03-01T08:54:32+09:00</lastmod>
   </url>
   
   <url>
@@ -250,6 +263,7 @@
   
   <url>
     <loc>/oci_docs/00_oci/oci_resion_info/</loc>
+    <lastmod>2020-03-01T08:54:32+09:00</lastmod>
   </url>
   
   <url>
@@ -267,7 +281,7 @@
   
   <url>
     <loc>/oci_docs/</loc>
-    <lastmod>2020-03-03T08:20:25+09:00</lastmod>
+    <lastmod>2020-03-05T08:54:32+09:00</lastmod>
   </url>
   
   <url>

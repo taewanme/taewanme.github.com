@@ -1,12 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>오라클 클라우드 사용자 가이드</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-03-13T19:43:15 KST">
-<title>OCI 기본 용어 정리 :: 오라클 클라우드 사용자 가이드</title>
+<meta name="revised" content="2020-03-15T16:38:42 KST">
+
+<meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
+<meta name="generator" content="Hugo 0.27.1" />
+<meta property="og:title" content="Streaming 서비스 가격 모델" />
+<meta property="og:description" content="OCI Streaming 서비스의 가격 모델 원친은 PAYG(Pay-as-You-Go, 사용 기준 과금 모델)입니다. Streaming 서비스에 대한 선불 금액이나 최소 비용은 없습니다. 오로지 자원을 사용한 만큼 비용으로 계산됩니다.
+GET/PUT request price (GigaBytes of data transferred) Please refer to the pricing guide for actual pricing of OCI Streaming.
+Let&rsquo;s consider a scenario where a data producer puts 500 records per second in aggregate and each record is 2kB. The customer wants to egress/retrieve data at a rate twice that of ingress." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/oci_docs/50.data_service/streaming/pricing/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+
+
+<title>Streaming 서비스 가격 모델 :: 오라클 클라우드 사용자 가이드</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 
@@ -20,7 +49,7 @@ http://taewan.kim/img/icon/oracle.png
 <script type="text/javascript">
       var baseurl = "\/oci_docs";
 </script>
-<meta name="description" content="">
+<meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
 
 
 <link href='/oci_docs/css/railload.css' rel="stylesheet">
@@ -28,7 +57,7 @@ http://taewan.kim/img/icon/oracle.png
 
     
   </head>
-  <body data-url="/oci_docs/10_quickstart/terminologies/">
+  <body data-url="/oci_docs/50.data_service/streaming/pricing/">
     
       <header>
   <div class="logo">
@@ -76,6 +105,13 @@ http://taewan.kim/img/icon/oracle.png
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+      <li data-nav-id="/oci_docs/00_oci/terminologies/" class="dd-item">
+        <div>
+          <a href="/oci_docs/00_oci/terminologies/">
+            OCI 기본 용어 정리
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
       <li data-nav-id="/oci_docs/00_oci/oci_resion_info/" class="dd-item">
         <div>
           <a href="/oci_docs/00_oci/oci_resion_info/">
@@ -85,20 +121,13 @@ http://taewan.kim/img/icon/oracle.png
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/10_quickstart/" class="dd-item parent alwaysopen haschildren
+    <li data-nav-id="/oci_docs/10_quickstart/" class="dd-item alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/10_quickstart/">OCI 퀵 스타트</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/oci_docs/10_quickstart/terminologies/" class="dd-item active">
-        <div>
-          <a href="/oci_docs/10_quickstart/terminologies/">
-            OCI 기본 용어 정리
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
       <li data-nav-id="/oci_docs/10_quickstart/how_to_sign_up_oci/" class="dd-item">
         <div>
           <a href="/oci_docs/10_quickstart/how_to_sign_up_oci/">
@@ -113,13 +142,6 @@ http://taewan.kim/img/icon/oracle.png
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/oci_docs/10_quickstart/cloudshell/" class="dd-item">
-        <div>
-          <a href="/oci_docs/10_quickstart/cloudshell/">
-            OCI Cloud Shell 사용하기
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
       <li data-nav-id="/oci_docs/10_quickstart/create_compartment/" class="dd-item">
         <div>
           <a href="/oci_docs/10_quickstart/create_compartment/">
@@ -127,11 +149,10 @@ http://taewan.kim/img/icon/oracle.png
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-    <li data-nav-id="/oci_docs/10_quickstart/vcn/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/10_quickstart/vcn/" class="dd-item haschildren
         ">
       <div>
-      <a href="/oci_docs/10_quickstart/vcn/">VCN(Virtual Cloud Network) 생성</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/10_quickstart/vcn/">VCN(Virtual Cloud Network) 생성</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/oci_docs/10_quickstart/vcn/simple_vcn/" class="dd-item">
@@ -150,11 +171,10 @@ http://taewan.kim/img/icon/oracle.png
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/10_quickstart/compute/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/10_quickstart/compute/" class="dd-item haschildren
         ">
       <div>
-      <a href="/oci_docs/10_quickstart/compute/">VM 인스턴스 프로비저닝</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/10_quickstart/compute/">VM 인스턴스 프로비저닝</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
     <li data-nav-id="/oci_docs/10_quickstart/compute/basic_linux_vm/" class="dd-item alwaysopen haschildren
@@ -182,11 +202,10 @@ http://taewan.kim/img/icon/oracle.png
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/10_quickstart/object_storate/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/10_quickstart/object_storate/" class="dd-item haschildren
         ">
       <div>
-      <a href="/oci_docs/10_quickstart/object_storate/">Object Storage</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/10_quickstart/object_storate/">Object Storage</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/oci_docs/10_quickstart/object_storate/add_bucket_and_object/" class="dd-item">
@@ -198,11 +217,10 @@ http://taewan.kim/img/icon/oracle.png
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/10_quickstart/adb/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/10_quickstart/adb/" class="dd-item haschildren
         ">
       <div>
-      <a href="/oci_docs/10_quickstart/adb/">Autonomous DB</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/10_quickstart/adb/">Autonomous DB</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/oci_docs/10_quickstart/adb/basic_adw_provisioning/" class="dd-item">
@@ -228,20 +246,111 @@ http://taewan.kim/img/icon/oracle.png
       <a href="/oci_docs/30_core_infrastructure/">OCI Core Infastructure Service</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/compute/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/compute/">Compute</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/compute/provisioning/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/compute/provisioning/">Compute 인스턴스 만들기</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/" class="dd-item">
+        <div>
+          <a href="/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/">
+            Developer Image 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/30_core_infrastructure/compute/provisioning/oci_ai_datascience_image/" class="dd-item">
+        <div>
+          <a href="/oci_docs/30_core_infrastructure/compute/provisioning/oci_ai_datascience_image/">
+            AI Datascience 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/50.data_service/" class="dd-item alwaysopen haschildren
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/block_storage/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/block_storage/">Block Storage</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/object_storage/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/object_storage/">Object Storage</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/object_storage/management/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/object_storage/management/">Object Storage 관리</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/object_storage/management/bucket/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/object_storage/management/bucket/">Object Storage Bucket 관리</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/file_storage/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/file_storage/">File Storage</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/networking/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/networking/">Networking</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/50.data_service/" class="dd-item parent haschildren
         ">
       <div>
       <a href="/oci_docs/50.data_service/">OCI Dataa&amp;Analysis Service</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/oci_docs/50.data_service/streaming/" class="dd-item
+    <li data-nav-id="/oci_docs/50.data_service/streaming/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/oci_docs/50.data_service/streaming/">Streaming</a><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/50.data_service/streaming/">Streaming</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
+        <ul>
+      <li data-nav-id="/oci_docs/50.data_service/streaming/pricing/" class="dd-item active">
+        <div>
+          <a href="/oci_docs/50.data_service/streaming/pricing/">
+            Streaming 서비스 가격 모델
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.data_service/streaming/terminology/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.data_service/streaming/terminology/">
+            Streaming 주요 키워드
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -392,11 +501,10 @@ http://taewan.kim/img/icon/oracle.png
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/98_misc_tips/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/98_misc_tips/" class="dd-item haschildren
         ">
       <div>
-      <a href="/oci_docs/98_misc_tips/">OCI 알아두면 유용한 팁</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/98_misc_tips/">OCI 알아두면 유용한 팁</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/oci_docs/98_misc_tips/ssh_key_pairs/" class="dd-item">
@@ -492,41 +600,26 @@ http://taewan.kim/img/icon/oracle.png
     <option value="/oci_docs/00_oci/" >
    Oracle Cloud Infrastructure</option> 
       <option value="/oci_docs/00_oci/oci_services/" >- OCI 주요 서비스</option>
+      <option value="/oci_docs/00_oci/terminologies/" >- OCI 기본 용어 정리</option>
       <option value="/oci_docs/00_oci/oci_resion_info/" >- OCI 리전 정보</option>
   
     <option value="/oci_docs/10_quickstart/" >
    OCI 퀵 스타트</option> 
-      <option value="/oci_docs/10_quickstart/terminologies/"  selected>- OCI 기본 용어 정리</option>
       <option value="/oci_docs/10_quickstart/how_to_sign_up_oci/" >- OCI Free Tier 계정 등록</option>
       <option value="/oci_docs/10_quickstart/first_sign_in_oci/" >- Free Tier 계정 첫 번째 로그인</option>
-      <option value="/oci_docs/10_quickstart/cloudshell/" >- OCI Cloud Shell 사용하기</option>
       <option value="/oci_docs/10_quickstart/create_compartment/" >- Compartment 추가</option>
     <option value="/oci_docs/10_quickstart/vcn/" >
   - 
-   VCN(Virtual Cloud Network) 생성</option> 
-      <option value="/oci_docs/10_quickstart/vcn/simple_vcn/" >-- 간편 VCN 만들기</option>
-      <option value="/oci_docs/10_quickstart/vcn/manual_vcn/" >-- 메뉴얼 VCN 만들기</option>
-  
+   VCN(Virtual Cloud Network) 생성</option>
     <option value="/oci_docs/10_quickstart/compute/" >
   - 
-   VM 인스턴스 프로비저닝</option> 
-    <option value="/oci_docs/10_quickstart/compute/basic_linux_vm/" >
-  -- 
-   OCI Linux VM 프로비저닝 및 관리</option> 
-      <option value="/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/" >--- Oracle Linux VM 인스턴스 생성</option>
-      <option value="/oci_docs/10_quickstart/compute/basic_linux_vm/adding_block_stoage/" >--- Block Storage 추가</option>
-  
-  
+   VM 인스턴스 프로비저닝</option>
     <option value="/oci_docs/10_quickstart/object_storate/" >
   - 
-   Object Storage</option> 
-      <option value="/oci_docs/10_quickstart/object_storate/add_bucket_and_object/" >-- OCI Console로 Bucket 추가</option>
-  
+   Object Storage</option>
     <option value="/oci_docs/10_quickstart/adb/" >
   - 
-   Autonomous DB</option> 
-      <option value="/oci_docs/10_quickstart/adb/basic_adw_provisioning/" >-- ADW 인스턴스 생성</option>
-  
+   Autonomous DB</option>
   
     <option value="/oci_docs/20_identity_and_access_management/" >
    OCI 사용자 및 권한 관리</option> 
@@ -537,17 +630,17 @@ http://taewan.kim/img/icon/oracle.png
    OCI Dataa&amp;Analysis Service</option> 
     <option value="/oci_docs/50.data_service/streaming/" >
   - 
-   Streaming</option>
+   Streaming</option> 
+      <option value="/oci_docs/50.data_service/streaming/pricing/"  selected>-- Streaming 서비스 가격 모델</option>
+      <option value="/oci_docs/50.data_service/streaming/terminology/" >-- Streaming 주요 키워드</option>
+  
   
     <option value="/oci_docs/60_solutions/" >
    OCI Services</option>
     <option value="/oci_docs/80_oci_tools/" >
    OCI 도구(Tool)</option>
     <option value="/oci_docs/98_misc_tips/" >
-   OCI 알아두면 유용한 팁</option> 
-      <option value="/oci_docs/98_misc_tips/ssh_key_pairs/" >- 운영체제별 SSH Key Pair 준비</option>
-      <option value="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/" >- OCI 기본 정보 확인법</option>
-  
+   OCI 알아두면 유용한 팁</option>
     <option value="/oci_docs/99_oci_sites/" >
    OCI 관련 문서 사이트</option> 
       <option value="/oci_docs/99_oci_sites/oci_sites/" >- OCI 관련 사이트 모음</option>
@@ -583,194 +676,42 @@ http://taewan.kim/img/icon/oracle.png
       </div>
     
 
-    <h1>OCI 기본 용어 정리</h1>
+    <h1>Streaming 서비스 가격 모델</h1>
+    <div class="alert alert-info" role="alter">
+      <li><strong>문서 생성 추가 :</strong> 0001-01-01 00:00:00 &#43;0000 UTC </li>
+  </div>    
+      
+  
     
     
     
     
 
-<p>Oracle Cloud를 새로 접하시는 분들을 위하여 Oracle Cloud에서 자주 사용하는 Oracle Cloud 핵심 용어를 간단하게 정리합니다.</p>
+<p>OCI Streaming 서비스의 가격 모델 원친은 PAYG(Pay-as-You-Go, 사용 기준 과금 모델)입니다. Streaming 서비스에 대한 선불 금액이나 최소 비용은 없습니다. 오로지 자원을 사용한 만큼 비용으로 계산됩니다.</p>
 
-<hr />
+<p>GET/PUT request price (GigaBytes of data transferred)
+Please refer to the pricing guide for actual pricing of OCI Streaming.</p>
 
-<p>이번 문서는 다음과 같은 목차로 구성됩니다.</p>
+<p>Let&rsquo;s consider a scenario where a data producer puts 500 records per second in aggregate and each record is 2kB. The customer wants to egress/retrieve data at a rate twice that of ingress. Also the customer wants to store this data for 7 days.</p>
 
+<p>Price calculation/day (just as an example)</p>
 
-<div class="panel panel-primary"><div class="panel-body"><nav id="TableOfContents">
-<ul>
-<li><a href="#oci-주요-용어">OCI 주요 용어</a>
-<ul>
-<li><a href="#oracle-cloud-infrastructure">Oracle Cloud Infrastructure</a></li>
-<li><a href="#리전-region-과-ad-availability-domains">리전(Region)과 AD(Availability Domains)</a></li>
-<li><a href="#oci-콘솔-console">OCI 콘솔(Console)</a></li>
-<li><a href="#tenancy-테넌시">Tenancy(테넌시)</a></li>
-<li><a href="#compartment-컴파트먼트">Compartment(컴파트먼트)</a></li>
-<li><a href="#virtual-cloud-network-vcn">Virtual Cloud Network(VCN)</a></li>
-<li><a href="#bare-metal-host">Bare Metal Host</a></li>
-<li><a href="#instance-인스턴스">Instance(인스턴스)</a></li>
-<li><a href="#image-이미지">Image(이미지)</a></li>
-<li><a href="#shape">Shape</a></li>
-<li><a href="#key-pair">Key Pair</a></li>
-<li><a href="#블록-볼륨-block-volume">블록 볼륨(BLOCK VOLUME)</a></li>
-<li><a href="#object-storage">Object Storage</a></li>
-<li><a href="#버킷-bucket">버킷(BUCKET)</a></li>
-<li><a href="#ocid-oracle-cloud-identifier">OCID(ORACLE CLOUD IDENTIFIER)</a></li>
-</ul></li>
-<li><a href="#참고-문서">참고 문서</a></li>
-</ul>
-</nav>
-</div></div>
+<p>Each record size = 4kB (rounded to 4kB for any record less than 4kB)</p>
 
+<p>In this scenario, total amount of data produced per day = 500 * 4 * 24 * 60 * 60 kB = 172.8 GB
+Total amount of data retrieved = Twice that of Produce = 2*172.8 GB = 345.6 GB
+PUT Request price/day = $172.8 * $xx= $A
+GET Request price/day = $345.6 * $xx = $B
+Data storage cost = $172.8*24<em>7</em>$yy = $C
+Total bill/day = $(A + B + C)
+Optional:</p>
 
-<hr />
+<p>Extended data retention is an optional cost determined by the amount of additional days of retention beyond the default 24-hour retention (GigaBytes of storage per hour)</p>
 
-<h1 id="oci-주요-용어">OCI 주요 용어</h1>
-
-<p>OCI이 완전 입문자를 위하여 Oracle Cloud에서 자주 사용되는 용어를 정리합니다.</p>
-
-<h2 id="oracle-cloud-infrastructure">Oracle Cloud Infrastructure</h2>
-
-<p><strong>Orale Cloud Infrasturcture</strong>는 2018년부터 사용하기 시작한 Oracle Cloud의 새로운 브랜드명입니다. 초기에 오라클은 Nimbula를 인수하여 클라우드 서비스를 개발하였고, 2014년 Oracle은 OPC(Oracle Public Cloud)라는 브랜드로 클라우드 서비스를 시작했습니다. 이 시점부터 오라클은 새로운 2세대 클라우드 아키텍처를 개발하기 시작했습니다. 오라클의 2세대 클라우드 아키텍처로 개발된 오라클 클라우드 서비스가 바로 Oracle Cloud Infrastructure(이하 OCI)입니다. 2018년 Oracle Cloud 인프라 구현 기술은 OCI로 전면 교체되었고, 동시에 오라클 클라우드 브랜드명도 OPC(Oracle Public Cloud)에서 OCI(Oracle Cloud Infrastructure)로 변경되었습니다.</p>
-
-<h2 id="리전-region-과-ad-availability-domains">리전(Region)과 AD(Availability Domains)</h2>
-
-<p><strong>Oracle Cloud Infrastructure(OCI)</strong>는 리전(Region)과 AD(Availability Domains)에서 운영됩니다. 리전은 데이터 센터가 운영되는 지리적인 영역을 나타냅니다. 그리고 AD는 리전을 구성하고 실제 OCI 서비스가 운영되는 데이터 센터입니다. 각 OCI 리전은 1개에서 최대 3개 AD로 구성됩니다. 리전은 오라클 클라우드가 서비스되는 물리적 데이터 센터인 AD를 묶는 논리적 단위입니다. 따라서 서비스 지역의 물리적 AD를 추상화하는 서비스 거점의 의미가 있습니다. 리전은 완전히 독립된 OCI 최상위 단위입니다. 각 리전은 네트워크로 연결될 뿐 모든 서비스와 자원은 완전히 격리됩니다.</p>
-
-<p>2020년 1월 12일 현재 Commercial Region을 12개를 운영하고 있습니다. 2020년 말까지 Commercial Region과 Government Region을 합쳐 총 36개까지 확대할 예정에 있습니다. 다음은 2020년 말 기준 OCI 리전 지도입니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/030.jpg?classes=border,shadow" alt="" /></p>
-
-<p>리전을 구성하는 각 AD는 어떤 자원도 공유하지 않는 물리적으로 완전히 독립된 데이터 센터입니다. 리전을 구성하는 AD은 파워와 네트워크 등 어떤 물리적 자원도 공유하지 않습니다. 따라서 특정 AD 장애가 다른 AD로 파급되지 않습니다. AD는 Region 고가용성을 위한 설계입니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/040.jpg?classes=border,shadow" alt="" /></p>
-
-<h2 id="oci-콘솔-console">OCI 콘솔(Console)</h2>
-
-<p>OCI 자원을 관리하고 접근하기 위해서 제공하는 웹 기반 UI입니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/500.jpg?classes=border,shadow" alt="" /></p>
-
-<h2 id="tenancy-테넌시">Tenancy(테넌시)</h2>
-
-<p>OCI에 계정(Account)을 생성하면, 해당 계정(Account)을 위한 <strong>Tenancy</strong>가 생성됩니다. OCI에서 테넌시는 완전히 독립되고 격리된 사용자 기준의 최상위 단위입니다. OCI에 생성된 계정이 바로 Tenancy라고 말할 수 있습니다.</p>
-
-<h2 id="compartment-컴파트먼트">Compartment(컴파트먼트)</h2>
-
-<p>컴파트먼트는 클라우드 자원을 구성하고 접근 제어하기 위한 논리적인 단위입니다. OCI에서 만들어지는 대부분 자원은 특정 컴파트먼트에 할당됩니다. OCI 자원에는 VM 인스턴스, VCN(Virtual Cloud Networks), 블록 볼륨 등이 있습니다. 모든 OCI 자원은 특정 Compartment에 할당되고, Compartment 단위로 <strong>OCI User Group</strong>(사용자 그룹) 단위로 사용자 접근 정책이 설정 및 관리됩니다. 컴파트먼트는 물리적으로 실체가 있는 오브젝트가 아닌 논리적인 그룹입니다.</p>
-
-<p>OCI 계정이 생성될 때 Tenancy가 생성됩니다. 이 Tenancy가 루트 컴파트먼트(Root Compartment)입니다. 루트 컴파트먼트(Root Compartment)는 최상의 컴파트먼트입니다. 파일 시스템의 루트 디렉터리(/)와 비슷합니다. 디렉터리 구조와 같이 Root Compartment 아래에 새로운 Compartment를 추가할 수 있습니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/510.jpg?classes=border,shadow" alt="" /></p>
-
-<h2 id="virtual-cloud-network-vcn">Virtual Cloud Network(VCN)</h2>
-
-<p>Virtual Cloud Network (VCN)은 서브넷, 라우트 테이블과 게이트웨이로 구성되는 전통적인 네트워크의 가상화 버전입니다. VCN은 리전 범위의 자원입니다. VCN은 특정 리전에 종속됩니다. VCN을 구성하는 서브넷(Subnet)을 만들 때, 리전 범위와 AD 범위를 선택할 수 있습니다. 리전 범위로 지정하면 리전을 구성하는 모든 AD에 걸쳐 서브넷이 구성됩니다. AD 범위를 지정하면 특정 AD에 위치합니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/530.jpg?classes=border,shadow" alt="" /></p>
-
-<p>VCN는 다음과 같은 컴포넌트로 구성됩니다.</p>
+<h2 id="참고-문서">참고 문서</h2>
 
 <ul>
-<li>Subnet
-
-<ul>
-<li>public subnet: 서브넷에 포함되는 VM 인스턴스에 Public IP 설정 가능</li>
-<li>private subnet: 서브넷에 포함되는 VM 인스턴스가 Public IP를 갖지 못함</li>
-</ul></li>
-<li>Internet Gateway: 인터넷 연결 관문</li>
-<li>Route Table: VCN을 위한 가상의 라우트 테이블</li>
-<li>Security Lists: VCN의 가상 방화벽</li>
-</ul>
-
-<h2 id="bare-metal-host">Bare Metal Host</h2>
-
-<p>OCI가 제공하는 사용자가 직접 제어 가능한 물리적인 서버가 <strong>Bare Metal Host</strong>입니다. <strong>Bare Metal Host</strong>에 하이퍼바이저 없이 Bere Metal 서버를 돌릴 수 있습니다. 이렇게 동작하는 서버를 <strong>Bare metal compute instances</strong>라고 합니다. OCI 사용자가 직접 물리적 CPU, 메모리, NIC(Network Interface Card)를 관리 할 수 있습니다. 이렇게 관리하는 자원은 다른 테넌트와 어떠한 자원도 공유하지 않습니다.</p>
-
-<h2 id="instance-인스턴스">Instance(인스턴스)</h2>
-
-<p>OCI에서 동작하는 VM을 인스턴스라고 합니다.</p>
-
-<h2 id="image-이미지">Image(이미지)</h2>
-
-<p>Image는 인스턴스를 위해서 운영체제와 여러 소프트웨어를 정의하는 가상 하드웨어 드라이브 템플릿입니다. OCI에서 인스턴스를 구동시킬 때, 이미지를 선택합니다. OCI는 다양한 이미지를 제공하며, OCI 사용자는 추가로 사용자 정의 이미지를 등록하고 사용할 수 있습니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/540.jpg?classes=border,shadow" alt="" /></p>
-
-<h2 id="shape">Shape</h2>
-
-<p>Shape은 인스턴스에 할당하는 컴퓨팅 자원(CPU, Memory 등) 템플릿입니다. 다음은 OCI가 제공하는 여러 Shape 중에서 <strong>Standard Shape</strong> 목록입니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/550.jpg?classes=border,shadow" alt="" /></p>
-
-<h2 id="key-pair">Key Pair</h2>
-
-<p>Key Pair(키 페어)는 OCI가 사용하는 인증 방식입니다. Key Pair(키 페어)는 개인 키(private key) 파일과 공개 키(public key) 파일로 구성됩니다. 공개 키는 OCI에 업로드됩니다. OCI 사용자는 개인 키를 패스워드처럼 비공개로 관리합니다.</p>
-
-<p>여러 스펙으로 Key Pair(키 페어)를 만들 수 있습니다. OCI는 목적에 따라 두 가지 유형의 Key Pair(키 페어)를 사용합니다.</p>
-
-<ul>
-<li>인스턴스 SSH Key Pair(키 페어)
-
-<ul>
-<li>인스턴스 SSH Key Pair(키 페어)는 VM 인스턴스에 SSH 접속에 사용됨.</li>
-<li>인스턴스를 프로비저닝할 때, 공개 키(public key)를 등록.</li>
-<li>등록된 공개 키(public key)는 인스턴스의 기본 OS 계정의 authorized key 파일에 저장
-
-<ul>
-<li>인스턴스의 기본 OS 계정: 오라클 리눅스(oci), 우분투(ubuntu)</li>
-</ul></li>
-<li>ssh 접속 시, 사용자의 개인 키(Private Key)를 authorized key 파일에 저장된 공개 키로 검증.</li>
-</ul></li>
-<li>API signing key pair(API 서명 키 페어)
-
-<ul>
-<li>API signing key pair는 PEM 포멧을 사용.</li>
-<li>API 요청을 제출할 때 사용자 인증에 사용.</li>
-<li>REST API로 OCI를 접속하는 사용자가 사용.</li>
-</ul></li>
-</ul>
-
-<p>다음 그림은 OCI 사용자에 <strong>API 서명 키 페어</strong>를 등록하는 화면입니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/560.jpg?classes=border,shadow" alt="" /></p>
-
-<h2 id="블록-볼륨-block-volume">블록 볼륨(BLOCK VOLUME)</h2>
-
-<p>블록 볼륨은 OCI 인스턴스에 영구적인 저장 공간을 제공하는 가상 디스크입니다. 기존에 물리적 하드 디스크 드라이브를 사용했던 것 처럼, 클라우드 인스턴스에서는 블록 볼륨을 사용합니다. OCI 사용자는 데이터 유시 없이 인스턴스에 볼륨을 분리해서 다른 인스턴스에 붙일수 있습니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/570.png?classes=border,shadow" alt="" /></p>
-
-<h2 id="object-storage">Object Storage</h2>
-
-<p>오브젝트 스토리지(Object Storage)는 객체로 데이터를 저장하고 관리하는 스토리지 아키텍처입니다. 모든 데이터 타입을 저장할 수 있습니다. 최대 객체 사이즈는 10TB입니다. Object Storage에 저장되는 최대 파일 사이즈는 50GB입니다. 50GB보다 큰 객체는 여러 파일로 분할되어 저장됩니다. 오브젝트 스토리지에는 변경 빈도가 낮은 데이터가 저장됩니다. 다음과 같은 용도로 사용됩니다.</p>
-
-<ul>
-<li>데이터 백업</li>
-<li>파일 공유</li>
-<li>로그나 센서 데이터와 같은 비정형 데이터 저장</li>
-</ul>
-
-<h2 id="버킷-bucket">버킷(BUCKET)</h2>
-
-<p>버킷은 오브젝트 스토리지(Object Storage)에 저장되는 데이터와 파일을 묶는 논리적인 그룹입니다. 버킷에 저장되는 객체 수는 제한이 없습니다.</p>
-
-<h2 id="ocid-oracle-cloud-identifier">OCID(ORACLE CLOUD IDENTIFIER)</h2>
-
-<p>모든 OCI 자원은 유일한 ID를 갖습니다. 이 ID가 Oracle Cloud Identifier(OCID)입니다. 이 ID에는 자원 정보가 포함됩니다.</p>
-
-<h1 id="참고-문서">참고 문서</h1>
-
-<ul>
-<li><a href="https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/concepts.htm" target="_blank">[OCI Official Documentation 사이트] Key Concepts and Terminology <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
-
-</li>
-<li><a href="https://k21academy.com/oracle-compute-cloud-services-iaas/oracle-cloud-infrastructure-oci-region-ad-tenancy-compartment-vcn-iam-storage-service/" target="_blank">[k21academy] Oracle Cloud Infrastructure (OCI) : Region, AD, FD, Tenancy, Compartment, VCN, IAM, Storage Service <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
-
-</li>
-<li><a href="https://www.oracle.com/a/ocom/docs/cloud/virtual-cloud-network-100.pdf" target="_blank">[OCI 100 Training] Virtual Cloud Network <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
-
-
-<a href="https://www.oracle.com/a/ocom/docs/cloud/virtual-cloud-network-100.pdf">https://www.oracle.com/a/ocom/docs/cloud/virtual-cloud-network-100.pdf</a></li>
+<li><a href="https://www.oracle.com/kr/big-data/streaming/faq.html">https://www.oracle.com/kr/big-data/streaming/faq.html</a></li>
 </ul>
 
 
@@ -778,8 +719,8 @@ http://taewan.kim/img/icon/oracle.png
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/10_quickstart/" title="OCI 퀵 스타트"> <i class="fa fa-chevron-left"></i><label>OCI 퀵 스타트</label></a>
-    <a class="nav nav-next" href="/oci_docs/10_quickstart/how_to_sign_up_oci/" title="OCI Free Tier 계정 등록" style="margin-right: 0px;"><label>OCI Free Tier 계정 등록</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/50.data_service/streaming/" title="Streaming"> <i class="fa fa-chevron-left"></i><label>Streaming</label></a>
+    <a class="nav nav-next" href="/oci_docs/50.data_service/streaming/terminology/" title="Streaming 주요 키워드" style="margin-right: 0px;"><label>Streaming 주요 키워드</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -798,7 +739,7 @@ http://taewan.kim/img/icon/oracle.png
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/10_quickstart/terminologies/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/50.data_service/streaming/pricing/"></div>
   </div>
 
   </section>
