@@ -4,21 +4,19 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-03-16T11:24:21 KST">
+<meta name="revised" content="2020-03-16T11:24:20 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="Streaming 서비스 가격 모델" />
-<meta property="og:description" content="OCI Streaming 서비스의 가격 모델 원친은 PAYG(Pay-as-You-Go, 사용 기준 과금 모델)입니다. Streaming 서비스에 대한 선불 금액이나 최소 비용은 없습니다. 오로지 자원을 사용한 만큼 비용으로 계산됩니다.
-GET/PUT request price (GigaBytes of data transferred) Please refer to the pricing guide for actual pricing of OCI Streaming.
-Let&rsquo;s consider a scenario where a data producer puts 500 records per second in aggregate and each record is 2kB. The customer wants to egress/retrieve data at a rate twice that of ingress." />
+<meta property="og:title" content="SQL Developer 설치: Mac OS X" />
+<meta property="og:description" content="SQLDeveloper 설치법을 정리합니다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/oci_docs/50.data_service/streaming/pricing/" />
+<meta property="og:url" content="/oci_docs/98_misc_tips/tools/install_sqldeveloper/" />
 
 
 
-
-
+<meta property="article:published_time" content="2020-03-16T08:54:32&#43;09:00"/>
+<meta property="article:modified_time" content="2020-03-16T08:54:32&#43;09:00"/>
 
 
 
@@ -35,7 +33,7 @@ Let&rsquo;s consider a scenario where a data producer puts 500 records per secon
 
 
 
-<title>Streaming 서비스 가격 모델 :: 오라클 클라우드 사용자 가이드</title>
+<title>SQL Developer 설치: Mac OS X :: 오라클 클라우드 사용자 가이드</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/oci_docs/css/font-awesome.min.css" rel="stylesheet">
@@ -47,7 +45,7 @@ Let&rsquo;s consider a scenario where a data producer puts 500 records per secon
 <script type="text/javascript">
       var baseurl = "\/oci_docs";
 </script>
-<meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
+<meta name="description" content="SQLDeveloper 설치법을 정리합니다.">
 
 
 <link href='/oci_docs/css/railload.css' rel="stylesheet"/>
@@ -71,7 +69,7 @@ Let&rsquo;s consider a scenario where a data producer puts 500 records per secon
 
     
   </head>
-  <body data-url="/oci_docs/50.data_service/streaming/pricing/">
+  <body data-url="/oci_docs/98_misc_tips/tools/install_sqldeveloper/">
     
       <header>
   <div class="logo">
@@ -336,18 +334,16 @@ Let&rsquo;s consider a scenario where a data producer puts 500 records per secon
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/50.data_service/" class="dd-item parent haschildren
+    <li data-nav-id="/oci_docs/50.data_service/" class="dd-item haschildren
         ">
       <div>
-      <a href="/oci_docs/50.data_service/">OCI Dataa&amp;Analysis Service</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/50.data_service/">OCI Dataa&amp;Analysis Service</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/oci_docs/50.data_service/streaming/" class="dd-item parent haschildren
+    <li data-nav-id="/oci_docs/50.data_service/streaming/" class="dd-item haschildren
         ">
       <div>
-      <a href="/oci_docs/50.data_service/streaming/">Streaming</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/50.data_service/streaming/">Streaming</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/oci_docs/50.data_service/streaming/overview/" class="dd-item">
@@ -357,7 +353,7 @@ Let&rsquo;s consider a scenario where a data producer puts 500 records per secon
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/oci_docs/50.data_service/streaming/pricing/" class="dd-item active">
+      <li data-nav-id="/oci_docs/50.data_service/streaming/pricing/" class="dd-item">
         <div>
           <a href="/oci_docs/50.data_service/streaming/pricing/">
             Streaming 서비스 가격 모델
@@ -522,10 +518,11 @@ Let&rsquo;s consider a scenario where a data producer puts 500 records per secon
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/98_misc_tips/" class="dd-item haschildren
+    <li data-nav-id="/oci_docs/98_misc_tips/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/oci_docs/98_misc_tips/">OCI 알아두면 유용한 팁</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/98_misc_tips/">OCI 알아두면 유용한 팁</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/oci_docs/98_misc_tips/ssh_key_pairs/" class="dd-item">
@@ -542,13 +539,14 @@ Let&rsquo;s consider a scenario where a data producer puts 500 records per secon
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-    <li data-nav-id="/oci_docs/98_misc_tips/tools/" class="dd-item haschildren
+    <li data-nav-id="/oci_docs/98_misc_tips/tools/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/oci_docs/98_misc_tips/tools/">OCI 지원 툴 관련 Tip</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/98_misc_tips/tools/">OCI 지원 툴 관련 Tip</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/oci_docs/98_misc_tips/tools/install_sqldeveloper/" class="dd-item">
+      <li data-nav-id="/oci_docs/98_misc_tips/tools/install_sqldeveloper/" class="dd-item active">
         <div>
           <a href="/oci_docs/98_misc_tips/tools/install_sqldeveloper/">
             SQL Developer 설치: Mac OS X
@@ -675,21 +673,21 @@ Let&rsquo;s consider a scenario where a data producer puts 500 records per secon
     <option value="/oci_docs/30_core_infrastructure/" >
    OCI Core Infastructure Service</option>
     <option value="/oci_docs/50.data_service/" >
-   OCI Dataa&amp;Analysis Service</option> 
-    <option value="/oci_docs/50.data_service/streaming/" >
-  - 
-   Streaming</option> 
-      <option value="/oci_docs/50.data_service/streaming/overview/" >-- Streaming 서비스</option>
-      <option value="/oci_docs/50.data_service/streaming/pricing/"  selected>-- Streaming 서비스 가격 모델</option>
-      <option value="/oci_docs/50.data_service/streaming/terminology/" >-- Streaming 주요 키워드</option>
-  
-  
+   OCI Dataa&amp;Analysis Service</option>
     <option value="/oci_docs/60_solutions/" >
    OCI Services</option>
     <option value="/oci_docs/80_oci_tools/" >
    OCI 도구(Tool)</option>
     <option value="/oci_docs/98_misc_tips/" >
-   OCI 알아두면 유용한 팁</option>
+   OCI 알아두면 유용한 팁</option> 
+      <option value="/oci_docs/98_misc_tips/ssh_key_pairs/" >- 운영체제별 SSH Key Pair 준비</option>
+      <option value="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/" >- OCI 기본 정보 확인법</option>
+    <option value="/oci_docs/98_misc_tips/tools/" >
+  - 
+   OCI 지원 툴 관련 Tip</option> 
+      <option value="/oci_docs/98_misc_tips/tools/install_sqldeveloper/"  selected>-- SQL Developer 설치: Mac OS X</option>
+  
+  
     <option value="/oci_docs/99_oci_sites/" >
    OCI 관련 문서 사이트</option> 
       <option value="/oci_docs/99_oci_sites/oci_sites/" >- OCI 관련 사이트 모음</option>
@@ -725,9 +723,9 @@ Let&rsquo;s consider a scenario where a data producer puts 500 records per secon
       </div>
     
 
-    <h1>Streaming 서비스 가격 모델</h1>
+    <h1>SQL Developer 설치: Mac OS X</h1>
     <div class="alert alert-info" role="alter">
-      <li><strong>문서 생성 추가 :</strong> 0001-01-01 00:00:00 &#43;0000 UTC </li>
+      <li><strong>문서 생성 추가 :</strong> 2020-03-16 08:54:32 &#43;0900 KST </li>
   </div>    
       
   
@@ -736,31 +734,68 @@ Let&rsquo;s consider a scenario where a data producer puts 500 records per secon
     
     
 
-<p>OCI Streaming 서비스의 가격 모델 원친은 PAYG(Pay-as-You-Go, 사용 기준 과금 모델)입니다. Streaming 서비스에 대한 선불 금액이나 최소 비용은 없습니다. 오로지 자원을 사용한 만큼 비용으로 계산됩니다.</p>
+<p>Oracle SQL Developer(이하 SQL Developer)는 Oracle 데이터베이스에 접속하여 SQL 작업을 돕는 데이터베이스 전용 IDE(Integrated Development Environment, 통합 개발 환경)입니다. SQL Developer는 사용에 제약이 없는 무료 툴입니다. Java를 기반으로 개발되었기 때문에 Oracle SQL Developer를 설치하기 위해서는 java 8 이상이 설치되어 있어야 합니다.</p>
 
-<p>GET/PUT request price (GigaBytes of data transferred)
-Please refer to the pricing guide for actual pricing of OCI Streaming.</p>
+<p>이 문서는 Mac OS X를 기준으로 화면을 정리했습니다. Window 설치 역시 GUI로 설치되기 때문에 설치 과정의 거의 유사합니다.</p>
 
-<p>Let&rsquo;s consider a scenario where a data producer puts 500 records per second in aggregate and each record is 2kB. The customer wants to egress/retrieve data at a rate twice that of ingress. Also the customer wants to store this data for 7 days.</p>
+<hr />
 
-<p>Price calculation/day (just as an example)</p>
+<h2 id="설치-절차-mac-os-x">설치 절차(Mac OS X)</h2>
 
-<p>Each record size = 4kB (rounded to 4kB for any record less than 4kB)</p>
-
-<p>In this scenario, total amount of data produced per day = 500 * 4 * 24 * 60 * 60 kB = 172.8 GB
-Total amount of data retrieved = Twice that of Produce = 2*172.8 GB = 345.6 GB
-PUT Request price/day = $172.8 * $xx= $A
-GET Request price/day = $345.6 * $xx = $B
-Data storage cost = $172.8*24<em>7</em>$yy = $C
-Total bill/day = $(A + B + C)
-Optional:</p>
-
-<p>Extended data retention is an optional cost determined by the amount of additional days of retention beyond the default 24-hour retention (GigaBytes of storage per hour)</p>
-
-<h2 id="참고-문서">참고 문서</h2>
+<p>SQL Developer를 설치하기 위해서는 다음 URL에서 설치 파일을 다운로드해야 합니다.</p>
 
 <ul>
-<li><a href="https://www.oracle.com/kr/big-data/streaming/faq.html">https://www.oracle.com/kr/big-data/streaming/faq.html</a></li>
+<li><a href="https://www.oracle.com/kr/tools/downloads/sqldev-v192-downloads.html" target="_blank">Oracle SQL Developer 공식 다운로드 사이트 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+</ul>
+
+<p>위 링크 페이지는 다음 이미지와 같은 형식으로 제공됩니다. Windows, Mac OS X, Linux 설치 파일을 제공합니다. Windows는 Java가 포함된 버전과 Java를 포함하지 않는 버전 두가지를 제공합니다. 설치 파일 사이즈는 약 300~400MB 정도도입니다</p>
+
+<p>Java를 별도로 설치하여 사용할 경우 Java 8 버전 이상을 권장합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sqldeveloper/015.jpg?classes=border,shadow" alt="" /></p>
+
+<p>사용할 설치 유형을 클릭하면 다음 이미지와 같이 확인 메시지가 출력됩니다. 라이센스 체크 박스를 체크하고 <strong>Download</strong> 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sqldeveloper/030.jpg?classes=border,shadow" alt="" /></p>
+
+<p><strong>Download</strong> 버튼을 클릭하면 다음같이 <strong>oracle.com</strong> OTN 계정 로그인 화면이 출력됩니다. <strong>oracle.com</strong> OTN 계정 로그인을 완료하면 설치 파일을 다운로드 됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sqldeveloper/050.jpg?classes=border,shadow" alt="" /></p>
+
+<p>zip 파일을 다운로드하고 압축을 풀면 다음과 같이 설치 파일이 만들어 집니다. 설치 파일을 더블 클릭하며 SQL Developer 설치가 시작됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sqldeveloper/060.jpg?classes=border,shadow" alt="" /></p>
+
+<p>Mac OS X의 경우 다운로드 파일 앱 설치에 대한 확인창이 출력됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sqldeveloper/080.jpg?classes=border,shadow" alt="" /></p>
+
+<p>기존에 SQL Developer가 설치된 적이 있거나 기존에 설정 정보가 설치 컴퓨터에 남아 있을 경우, 기존 정보를 가져올 것인지를 확인하는 팝업이 출력됩니다. 기존 정보를 가져오지 않을 경우 다음 이미지와 같이 <strong>NO</strong> 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sqldeveloper/090.jpg?classes=border,shadow" alt="" /></p>
+
+<p>설치는 다음과 같이 대부분 자동화되어 진행됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sqldeveloper/100.jpg?classes=border,shadow" alt="" /></p>
+
+<p>설치가 완료되면 다음과 같은 SQL Developer 윈도우가 출력됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/sqldeveloper/110.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="mac-os-x-설치-이슈">Mac OS X 설치 이슈</h2>
+
+<p>Mac OS X에 SQL Develope를 설치할 때 다음과 같은 이슈가 발생할 수 있습니다.</p>
+
+<h3 id="sqldeveloper-오류-locale-not-recoginized">SQLDeveloper 오류: Locale not recoginized</h3>
+
+<p>Mac OS X 운영체제 업데이트 하면 DB 접속시 <strong>Locale not recoginized</strong> 이슈가 발생할 수 있습니다. 이 이슈는 다음 문서로 해결할 수 있습니다.</p>
+
+<ul>
+<li><a href="/tip/sqldeveloper_error_unrecog_locale/" target="_blank">SQLDeveloper 오류: Locale not recoginized <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
 </ul>
 
 
@@ -768,8 +803,8 @@ Optional:</p>
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/50.data_service/streaming/overview/" title="Streaming 서비스"> <i class="fa fa-chevron-left"></i><label>Streaming 서비스</label></a>
-    <a class="nav nav-next" href="/oci_docs/50.data_service/streaming/terminology/" title="Streaming 주요 키워드" style="margin-right: 0px;"><label>Streaming 주요 키워드</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/98_misc_tips/tools/" title="OCI 지원 툴 관련 Tip"> <i class="fa fa-chevron-left"></i><label>OCI 지원 툴 관련 Tip</label></a>
+    <a class="nav nav-next" href="/oci_docs/99_oci_sites/" title="OCI 관련 문서 사이트" style="margin-right: 0px;"><label>OCI 관련 문서 사이트</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -788,7 +823,7 @@ Optional:</p>
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/50.data_service/streaming/pricing/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/98_misc_tips/tools/install_sqldeveloper/"></div>
   </div>
 
   </section>
@@ -801,6 +836,10 @@ Optional:</p>
 
     
 
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 16/03/2020
+    </div>
     
   </div>
 

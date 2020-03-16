@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>/oci_docs/98_misc_tips/tools/install_sqldeveloper/</loc>
+    <lastmod>2020-03-16T08:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/oci_docs/50.data_service/streaming/</loc>
     <lastmod>2020-03-15T08:54:32+09:00</lastmod>
   </url>
@@ -166,6 +171,11 @@
   </url>
   
   <url>
+    <loc>/oci_docs/98_misc_tips/tools/</loc>
+    <lastmod>2020-03-16T08:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/oci_docs/30_core_infrastructure/object_storage/</loc>
   </url>
   
@@ -287,7 +297,7 @@
   
   <url>
     <loc>/oci_docs/</loc>
-    <lastmod>2020-03-15T08:54:32+09:00</lastmod>
+    <lastmod>2020-03-16T08:54:32+09:00</lastmod>
   </url>
   
   <url>

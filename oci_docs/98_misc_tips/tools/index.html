@@ -8,18 +8,14 @@
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="Streaming 서비스 가격 모델" />
-<meta property="og:description" content="OCI Streaming 서비스의 가격 모델 원친은 PAYG(Pay-as-You-Go, 사용 기준 과금 모델)입니다. Streaming 서비스에 대한 선불 금액이나 최소 비용은 없습니다. 오로지 자원을 사용한 만큼 비용으로 계산됩니다.
-GET/PUT request price (GigaBytes of data transferred) Please refer to the pricing guide for actual pricing of OCI Streaming.
-Let&rsquo;s consider a scenario where a data producer puts 500 records per second in aggregate and each record is 2kB. The customer wants to egress/retrieve data at a rate twice that of ingress." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/oci_docs/50.data_service/streaming/pricing/" />
+<meta property="og:title" content="OCI 지원 툴 관련 Tip" />
+<meta property="og:description" content="OCI 지원 도구 관련 여러 팁을 정리합니다. " />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/oci_docs/98_misc_tips/tools/" />
 
 
 
-
-
-
+<meta property="og:updated_time" content="2020-03-16T08:54:32&#43;09:00"/>
 
 
 
@@ -35,7 +31,7 @@ Let&rsquo;s consider a scenario where a data producer puts 500 records per secon
 
 
 
-<title>Streaming 서비스 가격 모델 :: 오라클 클라우드 사용자 가이드</title>
+<title>OCI 지원 툴 관련 Tip :: 오라클 클라우드 사용자 가이드</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/oci_docs/css/font-awesome.min.css" rel="stylesheet">
@@ -47,7 +43,7 @@ Let&rsquo;s consider a scenario where a data producer puts 500 records per secon
 <script type="text/javascript">
       var baseurl = "\/oci_docs";
 </script>
-<meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
+<meta name="description" content="OCI 지원 도구 관련 여러 팁을 정리합니다. ">
 
 
 <link href='/oci_docs/css/railload.css' rel="stylesheet"/>
@@ -71,7 +67,7 @@ Let&rsquo;s consider a scenario where a data producer puts 500 records per secon
 
     
   </head>
-  <body data-url="/oci_docs/50.data_service/streaming/pricing/">
+  <body data-url="/oci_docs/98_misc_tips/tools/">
     
       <header>
   <div class="logo">
@@ -336,18 +332,16 @@ Let&rsquo;s consider a scenario where a data producer puts 500 records per secon
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/50.data_service/" class="dd-item parent haschildren
+    <li data-nav-id="/oci_docs/50.data_service/" class="dd-item haschildren
         ">
       <div>
-      <a href="/oci_docs/50.data_service/">OCI Dataa&amp;Analysis Service</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/50.data_service/">OCI Dataa&amp;Analysis Service</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/oci_docs/50.data_service/streaming/" class="dd-item parent haschildren
+    <li data-nav-id="/oci_docs/50.data_service/streaming/" class="dd-item haschildren
         ">
       <div>
-      <a href="/oci_docs/50.data_service/streaming/">Streaming</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/50.data_service/streaming/">Streaming</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/oci_docs/50.data_service/streaming/overview/" class="dd-item">
@@ -357,7 +351,7 @@ Let&rsquo;s consider a scenario where a data producer puts 500 records per secon
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/oci_docs/50.data_service/streaming/pricing/" class="dd-item active">
+      <li data-nav-id="/oci_docs/50.data_service/streaming/pricing/" class="dd-item">
         <div>
           <a href="/oci_docs/50.data_service/streaming/pricing/">
             Streaming 서비스 가격 모델
@@ -522,10 +516,11 @@ Let&rsquo;s consider a scenario where a data producer puts 500 records per secon
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/98_misc_tips/" class="dd-item haschildren
+    <li data-nav-id="/oci_docs/98_misc_tips/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/oci_docs/98_misc_tips/">OCI 알아두면 유용한 팁</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/98_misc_tips/">OCI 알아두면 유용한 팁</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/oci_docs/98_misc_tips/ssh_key_pairs/" class="dd-item">
@@ -542,10 +537,11 @@ Let&rsquo;s consider a scenario where a data producer puts 500 records per secon
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-    <li data-nav-id="/oci_docs/98_misc_tips/tools/" class="dd-item haschildren
+    <li data-nav-id="/oci_docs/98_misc_tips/tools/" class="dd-item parent active haschildren
         ">
       <div>
-      <a href="/oci_docs/98_misc_tips/tools/">OCI 지원 툴 관련 Tip</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/98_misc_tips/tools/">OCI 지원 툴 관련 Tip</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/oci_docs/98_misc_tips/tools/install_sqldeveloper/" class="dd-item">
@@ -675,21 +671,21 @@ Let&rsquo;s consider a scenario where a data producer puts 500 records per secon
     <option value="/oci_docs/30_core_infrastructure/" >
    OCI Core Infastructure Service</option>
     <option value="/oci_docs/50.data_service/" >
-   OCI Dataa&amp;Analysis Service</option> 
-    <option value="/oci_docs/50.data_service/streaming/" >
-  - 
-   Streaming</option> 
-      <option value="/oci_docs/50.data_service/streaming/overview/" >-- Streaming 서비스</option>
-      <option value="/oci_docs/50.data_service/streaming/pricing/"  selected>-- Streaming 서비스 가격 모델</option>
-      <option value="/oci_docs/50.data_service/streaming/terminology/" >-- Streaming 주요 키워드</option>
-  
-  
+   OCI Dataa&amp;Analysis Service</option>
     <option value="/oci_docs/60_solutions/" >
    OCI Services</option>
     <option value="/oci_docs/80_oci_tools/" >
    OCI 도구(Tool)</option>
     <option value="/oci_docs/98_misc_tips/" >
-   OCI 알아두면 유용한 팁</option>
+   OCI 알아두면 유용한 팁</option> 
+      <option value="/oci_docs/98_misc_tips/ssh_key_pairs/" >- 운영체제별 SSH Key Pair 준비</option>
+      <option value="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/" >- OCI 기본 정보 확인법</option>
+    <option value="/oci_docs/98_misc_tips/tools/"  selected>
+  - 
+   OCI 지원 툴 관련 Tip</option> 
+      <option value="/oci_docs/98_misc_tips/tools/install_sqldeveloper/" >-- SQL Developer 설치: Mac OS X</option>
+  
+  
     <option value="/oci_docs/99_oci_sites/" >
    OCI 관련 문서 사이트</option> 
       <option value="/oci_docs/99_oci_sites/oci_sites/" >- OCI 관련 사이트 모음</option>
@@ -725,51 +721,26 @@ Let&rsquo;s consider a scenario where a data producer puts 500 records per secon
       </div>
     
 
-    <h1>Streaming 서비스 가격 모델</h1>
+    <h1>OCI 지원 툴 관련 Tip</h1>
     <div class="alert alert-info" role="alter">
-      <li><strong>문서 생성 추가 :</strong> 0001-01-01 00:00:00 &#43;0000 UTC </li>
+      <li><strong>문서 생성 추가 :</strong> 2020-03-16 08:54:32 &#43;0900 KST </li>
   </div>    
       
   
     
     
     
-    
 
-<p>OCI Streaming 서비스의 가격 모델 원친은 PAYG(Pay-as-You-Go, 사용 기준 과금 모델)입니다. Streaming 서비스에 대한 선불 금액이나 최소 비용은 없습니다. 오로지 자원을 사용한 만큼 비용으로 계산됩니다.</p>
+<p>Oracle Cloud와 함께 사용되는  여러 툴과 관련된 다양한 주제를 정리합니다.</p>
 
-<p>GET/PUT request price (GigaBytes of data transferred)
-Please refer to the pricing guide for actual pricing of OCI Streaming.</p>
-
-<p>Let&rsquo;s consider a scenario where a data producer puts 500 records per second in aggregate and each record is 2kB. The customer wants to egress/retrieve data at a rate twice that of ingress. Also the customer wants to store this data for 7 days.</p>
-
-<p>Price calculation/day (just as an example)</p>
-
-<p>Each record size = 4kB (rounded to 4kB for any record less than 4kB)</p>
-
-<p>In this scenario, total amount of data produced per day = 500 * 4 * 24 * 60 * 60 kB = 172.8 GB
-Total amount of data retrieved = Twice that of Produce = 2*172.8 GB = 345.6 GB
-PUT Request price/day = $172.8 * $xx= $A
-GET Request price/day = $345.6 * $xx = $B
-Data storage cost = $172.8*24<em>7</em>$yy = $C
-Total bill/day = $(A + B + C)
-Optional:</p>
-
-<p>Extended data retention is an optional cost determined by the amount of additional days of retention beyond the default 24-hour retention (GigaBytes of storage per hour)</p>
-
-<h2 id="참고-문서">참고 문서</h2>
-
-<ul>
-<li><a href="https://www.oracle.com/kr/big-data/streaming/faq.html">https://www.oracle.com/kr/big-data/streaming/faq.html</a></li>
-</ul>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/50.data_service/streaming/overview/" title="Streaming 서비스"> <i class="fa fa-chevron-left"></i><label>Streaming 서비스</label></a>
-    <a class="nav nav-next" href="/oci_docs/50.data_service/streaming/terminology/" title="Streaming 주요 키워드" style="margin-right: 0px;"><label>Streaming 주요 키워드</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/" title="OCI 기본 정보 확인법"> <i class="fa fa-chevron-left"></i><label>OCI 기본 정보 확인법</label></a>
+    <a class="nav nav-next" href="/oci_docs/98_misc_tips/tools/install_sqldeveloper/" title="SQL Developer 설치: Mac OS X" style="margin-right: 0px;"><label>SQL Developer 설치: Mac OS X</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -788,7 +759,7 @@ Optional:</p>
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/50.data_service/streaming/pricing/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/98_misc_tips/tools/"></div>
   </div>
 
   </section>
@@ -801,6 +772,10 @@ Optional:</p>
 
     
 
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 16/03/2020
+    </div>
     
   </div>
 
