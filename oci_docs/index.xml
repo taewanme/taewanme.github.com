@@ -6,10 +6,21 @@
     <description>Recent content in OCI Dcos on 오라클 클라우드 사용자 가이드</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Mar 2020 08:54:32 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 17 Mar 2020 01:11:05 +0900</lastBuildDate>
     
 	<atom:link href="/oci_docs/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Oracle Linux VM 인스턴스 생성</title>
+      <link>/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/</link>
+      <pubDate>Tue, 17 Mar 2020 01:11:05 +0900</pubDate>
+      
+      <guid>/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/</guid>
+      <description>이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.
+ OCI FREE TIER 계정 등록 Free Tier 계정 로그인  이번 문서에서는 OCI 콘솔에서 OCI Linux VM 인스턴스를 생성하는 절차를 소개합니다. OCI Linux VM 인스턴스 생성 문서는 다음과 같은 목차로 진행 됩니다.
+ 1. 사전 준비  1.1 OCI 자원 준비  OCI Compute Instnce에 고정 IP 설정  2.</description>
+    </item>
     
     <item>
       <title>SQL Developer 설치: Mac OS X</title>
@@ -33,6 +44,17 @@
     </item>
     
     <item>
+      <title>ADW 인스턴스 생성</title>
+      <link>/oci_docs/10_quickstart/adb/basic_adw_provisioning/</link>
+      <pubDate>Wed, 11 Mar 2020 08:54:32 +0900</pubDate>
+      
+      <guid>/oci_docs/10_quickstart/adb/basic_adw_provisioning/</guid>
+      <description>이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.
+ OCI FREE TIER 계정 등록 Free Tier 계정 로그인  ADW는 Autonomous Databas의 DW 타입 서비스로 ExaData의 클라우드 DW 서비스입니다. ADW는 Autonomous 서비스 관리형 서비스이며 성능 및 운영의 더 높은 수준의 자율운영을 강조한 서비스입니다.
+이번 문서에서는 OCI Console에서 Autonomous Database 인스턴스(ADW 타입)를 생성하는 기본 절차를 소개합니다.</description>
+    </item>
+    
+    <item>
       <title>OCI 주요 서비스</title>
       <link>/oci_docs/00_oci/oci_services/</link>
       <pubDate>Thu, 05 Mar 2020 08:54:32 +0900</pubDate>
@@ -53,14 +75,14 @@
     </item>
     
     <item>
-      <title>ADW 인스턴스 생성</title>
-      <link>/oci_docs/10_quickstart/adb/basic_adw_provisioning/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Oracle Linux VM 인스턴스 생성</title>
+      <link>/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/</link>
+      <pubDate>Sun, 01 Mar 2020 01:11:05 +0900</pubDate>
       
-      <guid>/oci_docs/10_quickstart/adb/basic_adw_provisioning/</guid>
+      <guid>/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/</guid>
       <description>이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.
- OCI FREE TIER 계정 등록 Free Tier 계정 로그인  ADW는 Autonomous Databas의 DW 타입 서비스로 ExaData의 클라우드 DW 서비스입니다. ADW는 Autonomous 서비스 관리형 서비스이며 성능 및 운영의 더 높은 수준의 자율운영을 강조한 서비스입니다.
-이번 문서에서는 OCI Console에서 Autonomous Database 인스턴스(ADW 타입)를 생성하는 기본 절차를 소개합니다.</description>
+ OCI FREE TIER 계정 등록 Free Tier 계정 로그인  이번 문서에서는 OCI 콘솔에서 OCI Linux VM 인스턴스를 생성하는 절차를 소개합니다. OCI Linux VM 인스턴스 생성 문서는 다음과 같은 목차로 진행 됩니다.
+ 1. 사전 준비  1.1 OCI 자원 준비 1.</description>
     </item>
     
     <item>
@@ -94,17 +116,6 @@
       <guid>/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/</guid>
       <description>오라클 홈페이지에서는 Oracle Cloud Infrastructure(OCI) 서비스 비용 계산 툴을 제공합니다. 이 서비스를 이용하여 OCI 서비스 사용 금액을 계산해 볼수 있습니다. OCI 서비스 별로 주요 과금 기준과 입력 항목을 제공하기 때문에 서비스 별로 고려해야 하는 항목을 간편하고 고려할 수 있습니다.
  OCI 비용 계산기: https://www.oracle.com/cloud/cost-estimator.html     관련 OCI 서비스를 선택하면, 해당 서비스의 사용 금액을 결정짓는 주요 인자가 출력됩니다. 이 주요 인자 조정을 통해서 실제 서비스 이용 금액을 예측할 수 있습니다.</description>
-    </item>
-    
-    <item>
-      <title>Oracle Linux VM 인스턴스 생성</title>
-      <link>/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/</guid>
-      <description>이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.
- OCI FREE TIER 계정 등록 Free Tier 계정 로그인  이번 문서에서는 OCI 콘솔에서 OCI Linux VM 인스턴스를 생성하는 절차를 소개합니다. OCI Linux VM 인스턴스 생성 문서는 다음과 같은 목차로 진행 됩니다.
- 1. 사전 준비  1.1 OCI 자원 준비 1.</description>
     </item>
     
     <item>
@@ -146,6 +157,17 @@
       <description>Oracle Cloud Infrastructure(OCI)의 VM 인스턴스가 지원하는 접속 프로토콜은 SSH입니다. OCI VM 인스턴스 SSH 서버의 기본 사용자 인증 방식은 Key Pair입니다. 따라서 OCI VM 인스턴스를 생성때 SSH 공개키를 등록해야 합니다. 이 문서에서는 SSH 접속에 사용할 Key Pair(SSH-2 RSA 타입)를 만드는 방법을 정리합니다.
 이번 문서는 다음과 같은 목차로 구성됩니다.
 문서 목차 Key Pair란? SSH 키 생성  ssh-keygen을 이용한 ssh key 생성 window 10 아래 버전에서 ssh key 생성  PPK 형식 개인키를 PEM 형식으로 변환   참고 문서    Key Pair란?</description>
+    </item>
+    
+    <item>
+      <title>SQL Developer의 ADW 연결하기</title>
+      <link>/oci_docs/10_quickstart/adb/sqldeveloper/</link>
+      <pubDate>Mon, 16 Mar 2020 08:54:32 +0900</pubDate>
+      
+      <guid>/oci_docs/10_quickstart/adb/sqldeveloper/</guid>
+      <description>이번 문서는 오라클 클라우드 Free Tier 계정에 ADW 인스턴스를 만든 전제로 합니다. 현재 ADW 인스턴스이 없다면, 다음 문서를 참조하여 ADW 인스턴스(DemoADW)를 만드시기 바랍니다.
+ ADW 인스턴스 생성     이번 문서에서는 Oracle SQL Developer로 ADW 인스턴스에 연결하는 설정을 구성하는 절차를 소개합니다. 다음과 같은 목차로 진행 됩니다.
+ SQL Developer의 ADW 접속 설정  ADW Wallet 다운로드 Wallet 파일 구성 Oracle SQL Developer 설정 Oracle SQL Developer 접속</description>
     </item>
     
     <item>

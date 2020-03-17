@@ -4,21 +4,19 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-03-16T11:41:31 KST">
+<meta name="revised" content="2020-03-18T08:45:10 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="Oracle Linux VM 인스턴스 생성" />
-<meta property="og:description" content="이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.
- OCI FREE TIER 계정 등록 Free Tier 계정 로그인  이번 문서에서는 OCI 콘솔에서 OCI Linux VM 인스턴스를 생성하는 절차를 소개합니다. OCI Linux VM 인스턴스 생성 문서는 다음과 같은 목차로 진행 됩니다.
- 1. 사전 준비  1.1 OCI 자원 준비 1." />
+<meta property="og:description" content="OCI VM Instance 프로비저닝 방법을 정리합니다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/" />
 
 
 
-
-
+<meta property="article:published_time" content="2020-03-01T01:11:05&#43;09:00"/>
+<meta property="article:modified_time" content="2020-03-01T01:11:05&#43;09:00"/>
 
 
 
@@ -47,7 +45,7 @@
 <script type="text/javascript">
       var baseurl = "\/oci_docs";
 </script>
-<meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
+<meta name="description" content="OCI VM Instance 프로비저닝 방법을 정리합니다.">
 
 
 <link href='/oci_docs/css/railload.css' rel="stylesheet"/>
@@ -192,6 +190,13 @@
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/">
+            Oracle Linux VM 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
     <li data-nav-id="/oci_docs/10_quickstart/compute/basic_linux_vm/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
@@ -242,6 +247,13 @@
         <div>
           <a href="/oci_docs/10_quickstart/adb/basic_adw_provisioning/">
             ADW 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/adb/sqldeveloper/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/adb/sqldeveloper/">
+            SQL Developer의 ADW 연결하기
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -661,6 +673,7 @@
     <option value="/oci_docs/10_quickstart/compute/" >
   - 
    VM 인스턴스 프로비저닝</option> 
+      <option value="/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/" >-- Oracle Linux VM 인스턴스 생성</option>
     <option value="/oci_docs/10_quickstart/compute/basic_linux_vm/" >
   -- 
    OCI Linux VM 프로비저닝 및 관리</option> 
@@ -725,7 +738,7 @@
 
     <h1>Oracle Linux VM 인스턴스 생성</h1>
     <div class="alert alert-info" role="alter">
-      <li><strong>문서 생성 추가 :</strong> 0001-01-01 00:00:00 &#43;0000 UTC </li>
+      <li><strong>문서 생성 추가 :</strong> 2020-03-01 01:11:05 &#43;0900 KST </li>
   </div>    
       
   
@@ -794,7 +807,7 @@
 <td>sanbox</td>
 <td>root &gt; sandbox</td>
 <td>.</td>
-<td><a href="../../../create_compartment/" target="_blank">Compartment 추가 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+<td><a href="/oci_docs/10_quickstart/create_compartment/" target="_blank">Compartment 추가 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
 
 </td>
 </tr>
@@ -804,7 +817,7 @@
 <td>demo_vcn</td>
 <td>root &gt; sandbox</td>
 <td>80포트를 공개하는 Custom_Security_List를 포함할 것</td>
-<td><a href="../../../vcn/simple_vcn/" target="_blank">간편 VCN 만들기 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+<td><a href="/oci_docs/10_quickstart/vcn/simple_vcn/" target="_blank">간편 VCN 만들기 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
 
 </td>
 </tr>
@@ -1095,6 +1108,10 @@ sudo firewall-cmd --reload
 
     
 
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 01/03/2020
+    </div>
     
   </div>
 

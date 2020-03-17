@@ -8,16 +8,15 @@
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="설치 및 설정(Maven)" />
-<meta property="og:description" content="이번 문서는 다음과 같은 목차로 구성됩니다.
- OCI Java SDK 설치 - Maven OCI Java SDK 설정  사용자 자격증명 설정 파일 준비 OCI Java SDK 인증 코드  예제 Maven Project    OCI Java SDK 설치 - Maven Maven 프로젝트에서 OCI Java SDK 라이브러리를 사용하기 위해서 oci-java-sdk-bom를 임포트합니다. 그리고 필요한 라이브러리를 의존성 설치합니다. 2020년 3월 10일 현재 최신 버전은 1.14.0 버전 입니다. 다음과 같은 설정을 Maven Project의 pom." />
+<meta property="og:title" content="SQL Developer의 ADW 연결하기" />
+<meta property="og:description" content="오라클 클라우드(OCI Cloud Infrastructure)에서 프로비저닝한 ADW 인스턴스의 SQL Developer 설정 방법을 정리합니다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/oci_docs/80_oci_tools/sdk/java_sdk/configuration/" />
+<meta property="og:url" content="/oci_docs/10_quickstart/adb/sqldeveloper/" />
 
 
 
-
-
+<meta property="article:published_time" content="2020-03-16T08:54:32&#43;09:00"/>
+<meta property="article:modified_time" content="2020-03-16T08:54:32&#43;09:00"/>
 
 
 
@@ -34,7 +33,7 @@
 
 
 
-<title>설치 및 설정(Maven) :: 오라클 클라우드 사용자 가이드</title>
+<title>SQL Developer의 ADW 연결하기 :: 오라클 클라우드 사용자 가이드</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/oci_docs/css/font-awesome.min.css" rel="stylesheet">
@@ -46,7 +45,7 @@
 <script type="text/javascript">
       var baseurl = "\/oci_docs";
 </script>
-<meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
+<meta name="description" content="오라클 클라우드(OCI Cloud Infrastructure)에서 프로비저닝한 ADW 인스턴스의 SQL Developer 설정 방법을 정리합니다.">
 
 
 <link href='/oci_docs/css/railload.css' rel="stylesheet"/>
@@ -70,7 +69,7 @@
 
     
   </head>
-  <body data-url="/oci_docs/80_oci_tools/sdk/java_sdk/configuration/">
+  <body data-url="/oci_docs/10_quickstart/adb/sqldeveloper/">
     
       <header>
   <div class="logo">
@@ -134,7 +133,7 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/10_quickstart/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/10_quickstart/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/10_quickstart/">OCI 퀵 스타트</a>
@@ -237,10 +236,11 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/10_quickstart/adb/" class="dd-item haschildren
+    <li data-nav-id="/oci_docs/10_quickstart/adb/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/oci_docs/10_quickstart/adb/">Autonomous DB</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/10_quickstart/adb/">Autonomous DB</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/oci_docs/10_quickstart/adb/basic_adw_provisioning/" class="dd-item">
@@ -250,7 +250,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/oci_docs/10_quickstart/adb/sqldeveloper/" class="dd-item">
+      <li data-nav-id="/oci_docs/10_quickstart/adb/sqldeveloper/" class="dd-item active">
         <div>
           <a href="/oci_docs/10_quickstart/adb/sqldeveloper/">
             SQL Developer의 ADW 연결하기
@@ -422,11 +422,10 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/80_oci_tools/" class="dd-item parent haschildren
+    <li data-nav-id="/oci_docs/80_oci_tools/" class="dd-item haschildren
         ">
       <div>
-      <a href="/oci_docs/80_oci_tools/">OCI 도구(Tool)</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/80_oci_tools/">OCI 도구(Tool)</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
     <li data-nav-id="/oci_docs/80_oci_tools/oci_rest_api/" class="dd-item alwaysopen
@@ -435,21 +434,21 @@
       <a href="/oci_docs/80_oci_tools/oci_rest_api/">OCI REST API</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/oci_docs/80_oci_tools/sdk/" class="dd-item parent alwaysopen haschildren
+    <li data-nav-id="/oci_docs/80_oci_tools/sdk/" class="dd-item alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/80_oci_tools/sdk/">OCI SDK</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/oci_docs/80_oci_tools/sdk/java_sdk/" class="dd-item parent alwaysopen haschildren
+    <li data-nav-id="/oci_docs/80_oci_tools/sdk/java_sdk/" class="dd-item alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/80_oci_tools/sdk/java_sdk/">OCI Java SDK</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/oci_docs/80_oci_tools/sdk/java_sdk/configuration/" class="dd-item active">
+      <li data-nav-id="/oci_docs/80_oci_tools/sdk/java_sdk/configuration/" class="dd-item">
         <div>
           <a href="/oci_docs/80_oci_tools/sdk/java_sdk/configuration/">
             설치 및 설정(Maven)
@@ -679,7 +678,10 @@
    Object Storage</option>
     <option value="/oci_docs/10_quickstart/adb/" >
   - 
-   Autonomous DB</option>
+   Autonomous DB</option> 
+      <option value="/oci_docs/10_quickstart/adb/basic_adw_provisioning/" >-- ADW 인스턴스 생성</option>
+      <option value="/oci_docs/10_quickstart/adb/sqldeveloper/"  selected>-- SQL Developer의 ADW 연결하기</option>
+  
   
     <option value="/oci_docs/20_identity_and_access_management/" >
    OCI 사용자 및 권한 관리</option> 
@@ -691,43 +693,7 @@
     <option value="/oci_docs/60_solutions/" >
    OCI Services</option>
     <option value="/oci_docs/80_oci_tools/" >
-   OCI 도구(Tool)</option> 
-    <option value="/oci_docs/80_oci_tools/oci_rest_api/" >
-  - 
-   OCI REST API</option> 
-  
-    <option value="/oci_docs/80_oci_tools/sdk/" >
-  - 
-   OCI SDK</option> 
-    <option value="/oci_docs/80_oci_tools/sdk/java_sdk/" >
-  -- 
-   OCI Java SDK</option> 
-      <option value="/oci_docs/80_oci_tools/sdk/java_sdk/configuration/"  selected>--- 설치 및 설정(Maven)</option>
-  
-    <option value="/oci_docs/80_oci_tools/sdk/python_sdk/" >
-  -- 
-   OCI Python SDK</option> 
-      <option value="/oci_docs/80_oci_tools/sdk/python_sdk/installation/" >--- OCI Python SDK 설치</option>
-  
-  
-    <option value="/oci_docs/80_oci_tools/oci_cli/" >
-  - 
-   OCI CLI (Command Line Interface)</option> 
-      <option value="/oci_docs/80_oci_tools/oci_cli/installation_on_window/" >-- [OCI CLI 설치] Window 10</option>
-      <option value="/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac/" >-- [OCI CLI 설치] Linux &amp; Mac OS</option>
-      <option value="/oci_docs/80_oci_tools/oci_cli/manual_installation/" >-- [OCI CLI 설치] 메뉴얼 설치</option>
-      <option value="/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac_with_docker/" >-- [OCI CLI 설치] Linux/Mac OS (Docker)</option>
-      <option value="/oci_docs/80_oci_tools/oci_cli/config_of_ocicli/" >-- OCI CLI 설정</option>
-  
-    <option value="/oci_docs/80_oci_tools/cloud_shell/" >
-  - 
-   OCI Cloud Shell</option> 
-  
-    <option value="/oci_docs/80_oci_tools/external_useful_tools/" >
-  - 
-   OCI에 유용한 써드파티 툴</option> 
-  
-  
+   OCI 도구(Tool)</option>
     <option value="/oci_docs/98_misc_tips/" >
    OCI 알아두면 유용한 팁</option>
     <option value="/oci_docs/99_oci_sites/" >
@@ -765,9 +731,9 @@
       </div>
     
 
-    <h1>설치 및 설정(Maven)</h1>
+    <h1>SQL Developer의 ADW 연결하기</h1>
     <div class="alert alert-info" role="alter">
-      <li><strong>문서 생성 추가 :</strong> 0001-01-01 00:00:00 &#43;0000 UTC </li>
+      <li><strong>문서 생성 추가 :</strong> 2020-03-16 08:54:32 &#43;0900 KST </li>
   </div>    
       
   
@@ -776,220 +742,178 @@
     
     
 
-<p>이번 문서는 다음과 같은 목차로 구성됩니다.</p>
+<p><img src="https://technology.amis.nl/wp-content/uploads/2019/10/image-16.png?classes=border,shadow" alt="" /></p>
 
+<p>이번 문서는 오라클 클라우드 Free Tier 계정에 ADW 인스턴스를 만든 전제로 합니다. 현재 ADW 인스턴스이 없다면, 다음 문서를 참조하여 ADW 인스턴스(DemoADW)를 만드시기 바랍니다.</p>
 
-<div class="panel panel-primary"><div class="panel-body"><nav id="TableOfContents">
 <ul>
-<li><a href="#oci-java-sdk-설치-maven">OCI Java SDK 설치 - Maven</a></li>
-<li><a href="#oci-java-sdk-설정">OCI Java SDK 설정</a>
-<ul>
-<li><a href="#사용자-자격증명-설정-파일-준비">사용자 자격증명 설정 파일 준비</a></li>
-<li><a href="#oci-java-sdk-인증-코드">OCI Java SDK 인증 코드</a></li>
-</ul></li>
-<li><a href="#예제-maven-project">예제 Maven Project</a></li>
+<li><a href="/oci_docs/10_quickstart/adb/basic_adw_provisioning/%29" target="_blank">ADW 인스턴스 생성 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
 </ul>
-</nav>
+
+<hr />
+
+<p>이번 문서에서는 Oracle SQL Developer로 ADW 인스턴스에 연결하는 설정을 구성하는 절차를 소개합니다. 다음과 같은 목차로 진행 됩니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-body"><p><nav id="TableOfContents">
+<ul>
+<li><a href="#sql-developer의-adw-접속-설정">SQL Developer의 ADW 접속 설정</a>
+<ul>
+<li><a href="#adw-wallet-다운로드">ADW Wallet 다운로드</a></li>
+<li><a href="#wallet-파일-구성">Wallet 파일 구성</a></li>
+<li><a href="#oracle-sql-developer-설정">Oracle SQL Developer 설정</a></li>
+<li><a href="#oracle-sql-developer-접속">Oracle SQL Developer 접속</a></li>
+</ul></li>
+</ul>
+</nav></p>
 </div></div>
 
 
 <hr />
 
-<h1 id="oci-java-sdk-설치-maven">OCI Java SDK 설치 - Maven</h1>
+<h1 id="sql-developer의-adw-접속-설정">SQL Developer의 ADW 접속 설정</h1>
 
-<p>Maven 프로젝트에서 OCI Java SDK 라이브러리를 사용하기 위해서 oci-java-sdk-bom를 임포트합니다. 그리고 필요한 라이브러리를 의존성 설치합니다. 2020년 3월 10일 현재 최신 버전은 1.14.0 버전 입니다. 다음과 같은 설정을 Maven Project의 pom.xml에 추가합니다.</p>
+<h2 id="adw-wallet-다운로드">ADW Wallet 다운로드</h2>
 
-<pre><code>&lt;dependencyManagement&gt;
-    &lt;dependencies&gt;
-      &lt;dependency&gt;
-        &lt;groupId&gt;com.oracle.oci.sdk&lt;/groupId&gt;
-        &lt;artifactId&gt;oci-java-sdk-bom&lt;/artifactId&gt;
-        &lt;!-- [github.com:/oracle/oci-java-sdk\]의 tag로 최신 버전 확인 및 적용 --&gt;
-        &lt;version&gt;1.14.0&lt;/version&gt;
-        &lt;type&gt;pom&lt;/type&gt;
-        &lt;scope&gt;import&lt;/scope&gt;
-      &lt;/dependency&gt;
-    &lt;/dependencies&gt;
-  &lt;/dependencyManagement&gt;
-  &lt;dependencies&gt;
-  &lt;dependency&gt;
-    &lt;groupId&gt;com.oracle.oci.sdk&lt;/groupId&gt;
-    &lt;artifactId&gt;oci-java-sdk-audit&lt;/artifactId&gt;
-  &lt;/dependency&gt;
-  &lt;dependency&gt;
-    &lt;groupId&gt;com.oracle.oci.sdk&lt;/groupId&gt;
-    &lt;artifactId&gt;oci-java-sdk-core&lt;/artifactId&gt;
-  &lt;/dependency&gt;
-  &lt;dependency&gt;
-    &lt;groupId&gt;com.oracle.oci.sdk&lt;/groupId&gt;
-    &lt;artifactId&gt;oci-java-sdk-database&lt;/artifactId&gt;
-  &lt;/dependency&gt;
+<p>ADW 인스턴스의 접속 설정을 SQL Developer에 구성하기 위해서는 Wallet 파일이 필요합니다. Wallet 파일을 다운로드하기 위해서 OCI Console의 ADW 인스턴스 상세 페이지에서 <strong>DB Connection</strong> 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/connection/010.jpg?classes=border,shadow" alt="" /></p>
+
+<p>OCI Console의 ADW 인스턴스 상세 페이지에서 <strong>DB Connection</strong> 버튼을 클릭하면, 다음과 같이 <strong>Database Connection</strong> 창이 오픈됩니다. 다음 그림과 같이 <strong>Wallet Type</strong>을 Instance Wallet을 선택하고 <strong>Download Wallet</strong> 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/connection/020.jpg?classes=border,shadow" alt="" /></p>
+
+<p><strong>Download Wallet</strong> 버튼을 클릭하면 Wallet 파일에 대한 패스워드를 설청 화면이 출력됩니다. Wallet 파일에 대한 패스워드를 설정한 다음에, <strong>Download</strong> 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/connection/030.jpg?classes=border,shadow" alt="" /></p>
+
+<p><strong>Download</strong> 버튼을 클릭하면, 다음과 같은 형식의 파일이 다운로드됩니다.</p>
+
+<pre><code>Wallet_&lt;Database_name&gt;.zip
 </code></pre>
 
-<p>위 설정은 OCI Java SDK 중에서 oci-java-sdk-audit, oci-java-sdk-core, oci-java-sdk-database 관련 의존성 라이브러리를 설치하는 설정입니다.</p>
+<p>이와 같으 형식으로 <strong>Wallet_DemoApp.zip</strong> 파일이 다운로드됩니다.</p>
 
-<p>현재 이용 가능한 OCI Java SDK 모듈은 다음과 같습니다.</p>
+<h2 id="wallet-파일-구성">Wallet 파일 구성</h2>
 
-<ul>
-<li>oci-java-sdkaddons<br /></li>
-<li>oci-java-sdkanalytics<br /></li>
-<li>oci-java-sdkannouncementsservice<br /></li>
-<li>oci-java-sdkapigateway<br /></li>
-<li>oci-java-sdkapplicationmigration<br /></li>
-<li>oci-java-sdkaudit<br /></li>
-<li>oci-java-sdkautoscaling<br /></li>
-<li>oci-java-sdkbom<br /></li>
-<li>oci-java-sdkbudget<br /></li>
-<li>oci-java-sdkcommon<br /></li>
-<li>oci-java-sdkcontainerengine<br /></li>
-<li>oci-java-sdkcore<br /></li>
-<li>oci-java-sdkdatabase<br /></li>
-<li>oci-java-sdkdatacatalog<br /></li>
-<li>oci-java-sdkdataflow<br /></li>
-<li>oci-java-sdkdatascience<br /></li>
-<li>oci-java-sdkdns<br /></li>
-<li>oci-java-sdkdts<br /></li>
-<li>oci-java-sdkemail<br /></li>
-<li>oci-java-sdkevents<br /></li>
-<li>oci-java-sdkexamples<br /></li>
-<li>oci-java-sdkfilestorage<br /></li>
-<li>oci-java-sdkfull<br /></li>
-<li>oci-java-sdkfunctions<br /></li>
-<li>oci-java-sdkhealthchecks<br /></li>
-<li>oci-java-sdkidentity<br /></li>
-<li>oci-java-sdkintegration<br /></li>
-<li>oci-java-sdkkeymanagement<br /></li>
-<li>oci-java-sdklimits<br /></li>
-<li>oci-java-sdkloadbalancer<br /></li>
-<li>oci-java-sdkmarketplace<br /></li>
-<li>oci-java-sdkmonitoring<br /></li>
-<li>oci-java-sdknosql<br /></li>
-<li>oci-java-sdkobjectstorage<br /></li>
-<li>oci-java-sdkoce<br /></li>
-<li>oci-java-sdkoda<br /></li>
-<li>oci-java-sdkons<br /></li>
-<li>oci-java-sdkosmanagement<br /></li>
-<li>oci-java-sdkresourcemanager<br /></li>
-<li>oci-java-sdkresourcesearch<br /></li>
-<li>oci-java-sdkshaded<br /></li>
-<li>oci-java-sdkstreaming<br /></li>
-<li>oci-java-sdkwaas<br /></li>
-<li>oci-java-sdkworkrequests</li>
-<li>oci-java-sdk-waas</li>
-<li>oci-java-sdk-workrequests</li>
-</ul>
+<p><strong>Wallet_DemoApp.zip</strong>은 다음과 같은 파일을 포함합니다.</p>
 
-<p>필요한 모듈을 maven의 dependency 설정에 추가합니다.</p>
+<p><img src="https://taewanmerepo.github.io/2020/03/connection/035.jpg?classes=border,shadow" alt="" /></p>
 
-<h1 id="oci-java-sdk-설정">OCI Java SDK 설정</h1>
+<p>데이터베이스 접속 정보를 제공하는 tnsnames.ora 파일은 다음과 같은 내용으로 만들어집니다. 이 파일의 tnsname인 demoadw_high, demoadw_low, demoadw_medium을 다음에 사용합니다.</p>
 
-<h2 id="사용자-자격증명-설정-파일-준비">사용자 자격증명 설정 파일 준비</h2>
+<pre><code>demoadw_high = 
+(description= 
+    (retry_count=20)
+    (retry_delay=3)
+    (address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))
+    (connect_data=(service_name=w0a8icio6wvena7_demoadw_high.adwc.oraclecloud.com))
+    (security=
+        (ssl_server_cert_dn=&quot;CN=adwc.uscom-east-1.oraclecloud.com,OU=Oracle BMCS US,O=Oracle Corporation,L=Redwood City,ST=California,C=US&quot;)
+    )
+)
 
-<p>OCI Java SDK를 사용하기 위해서는 사용자 자격증명(인증)에 사용되는  OCI Java SDK 설정 파일을 설정합니다. 설정 파일의 기본 위치는 다음과 같습니다.</p>
+demoadw_low = 
+(description= 
+    (retry_count=20)
+    (retry_delay=3)
+    (address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))
+    (connect_data=(service_name=w0a8icio6wvena7_demoadw_low.adwc.oraclecloud.com))
+    (security=(ssl_server_cert_dn=&quot;CN=adwc.uscom-east-1.oraclecloud.com,OU=Oracle BMCS US,O=Oracle Corporation,L=Redwood City,ST=California,C=US&quot;)
+    )
+)
+
+demoadw_medium = 
+(description= 
+    (retry_count=20)
+    (retry_delay=3)
+    (address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))
+    (connect_data=(service_name=w0a8icio6wvena7_demoadw_medium.adwc.oraclecloud.com))
+    (security=
+        (ssl_server_cert_dn=&quot;CN=adwc.uscom-east-1.oraclecloud.com,OU=Oracle BMCS US,O=Oracle Corporation,L=Redwood City,ST=California,C=US&quot;)
+    )
+)
+</code></pre>
+
+<h2 id="oracle-sql-developer-설정">Oracle SQL Developer 설정</h2>
+
+<p>SQL Developer를 실행하고 다음과 같이 &ldquo;<strong>+</strong>&rdquo; 아이콘을 클릭하고, Connect 관리 창을 오픈합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/connection/040.jpg?classes=border,shadow" alt="" /></p>
+
+<p>Connection 관리 창에서, 다음과 같은 값을 설정합니다.</p>
 
 <table>
 <thead>
 <tr>
-<th>운영체제</th>
-<th>설정파일 위치</th>
-<th>위치 예(OS Account: taewan)</th>
+<th>설정 항목</th>
+<th>설정 값</th>
+<th>설명</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td>Window 10</td>
-<td>%HOME_PATH%/.oci/config</td>
-<td>/c:/Users/taewan/.oci/config</td>
+<td>Name</td>
+<td><strong>demo adw</strong></td>
+<td>커넥션 설정을 구분하는 이름</td>
 </tr>
 
 <tr>
-<td>Mac OS X, Linux</td>
-<td>~/.oci/config</td>
-<td>/home/taewan/.oci/config</td>
+<td>사용자 이름</td>
+<td><strong>admin</strong></td>
+<td>접속에 사용할 데이터베이스 사용자 명</td>
+</tr>
+
+<tr>
+<td>비밀번호</td>
+<td><strong>Welcome123456</strong></td>
+<td>사용자 이름으로 설정한 데이터베이스 사용자의 패스워드</td>
+</tr>
+
+<tr>
+<td>접속 유형</td>
+<td><strong>클라우드 전자지갑</strong>(Cloud Wallet)</td>
+<td>인증 정보 설정 방식</td>
+</tr>
+
+<tr>
+<td>구성 파일</td>
+<td><strong>/sandbox/Wallet_DemoApp.zip</strong></td>
+<td>다운로드 wallet 파일 위치</td>
+</tr>
+
+<tr>
+<td>서비스</td>
+<td><strong>demoadw_medium</strong></td>
+<td>tnsname.ora 파일에 등록된 tnsname 명</td>
 </tr>
 </tbody>
 </table>
 
-<p>이 설정 파일은 OCI CLI 설정 파일과 정확하게 같은 파일입니다. 다음 문서를 참조하여 OCI 사용자 인증을 위한 설정파일(~/.oci/config)을 만들고 구성합니다.</p>
+<p>위 설정을 입력한 다음에 <strong>테스트(T)</strong> 버튼을 클릭하여 커넥션 설정을 테스트합니다. 테스트가 <strong>성공</strong>으로  표시되면 <strong>저장(S)</strong> 버튼을 클릭하고 저장합니다.</p>
 
-<ul>
-<li><a href="/80_oci_tools/oci_cli/config_of_ocicli/" target="_blank">OCI CLI 설정 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+<p><img src="https://taewanmerepo.github.io/2020/03/connection/050.jpg?classes=border,shadow" alt="" /></p>
 
-</li>
-</ul>
+<h2 id="oracle-sql-developer-접속">Oracle SQL Developer 접속</h2>
 
-<p>설정을 마치면 ~/.oci/config 파일에 다음과 같은 설정이 추가됩니다.</p>
+<p>Oracle 접속의 <strong>demo adw</strong>을 더블 클릭하고 다음과 같이 패스워드를 입력하고 접속을 시도합니다.</p>
 
-<pre><code>cat ~/.oci/config
-[DEFAULT]
-user=ocid1.user.oc1..aaaaaaaaqddvfo3p4tprztenwebbbbbzebqgqgpbnk4cjspyzcluzi2yndna
-fingerprint=aa:41:d3:08:3d:f1:61:19:ad:9e:db:bc:2e:de:82:43
-key_file=/Users/taewan/.oci/oci_api_key.pem
-tenancy=ocid1.tenancy.oc1..aaaaaaaa6ma7kq3bsif7bdfghdv22cajs3fpesgpqmmsgxihlbcemkklrsqa
-region=us-ashburn-1
-</code></pre>
+<p><img src="https://taewanmerepo.github.io/2020/03/connection/060.jpg?classes=border,shadow" alt="" /></p>
 
-<h2 id="oci-java-sdk-인증-코드">OCI Java SDK 인증 코드</h2>
+<p>접속이 이뤄지면, 다음과 같이 SQL을 입력하고 쿼리를 수행할 수 있습니다.</p>
 
-<p>CI Java SDK에 인증 설정 파일을 지정하는 방법은 다음과 같습니다. 다음 코드는 디폴트 프로파일을 사용하는 예제 코드입니다.</p>
-
-<script src="//gist.github.com/taewanme/2dbc031c56ba924fbf36b110df26689d.js"></script>
-
-<h1 id="예제-maven-project">예제 Maven Project</h1>
-
-<p>OCI Java SDK 예제 코드는 다음 URL의 github repository에서 확인할 수 있습니다.</p>
-
-<ul>
-<li><a href="https://github.com/taewanme/oci-java-sdk-examples" target="_blank">OCI Java SDK 예제 프로젝트 모음 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
-
-</li>
-</ul>
-
-<p>위 프로젝트를 다음과 같이 다운로드하고 실행할 수 있습니다.</p>
-
-<pre><code> $ ## github 레파지터리에서 코드 다운로드 
- $ git clone https://github.com/taewanme/oci-java-sdk-examples.git    
-Cloning into 'oci-java-sdk-examples'...
-remote: Enumerating objects: 15, done.
-remote: Counting objects: 100% (15/15), done.
-remote: Compressing objects: 100% (7/7), done.
-remote: Total 15 (delta 0), reused 15 (delta 0), pack-reused 0
-Unpacking objects: 100% (15/15), done.
- $ ## 프로젝트 디렉터리로 이동
- $ cd oci-java-sdk-examples
- $ cd oci_java_sdk_basic
- $ ls
-bin     pom.xml src
- $ ## 프로젝트 빌드 및 실행 
- $ mvn clean install 
-[INFO] Scanning for projects...
-[INFO]
-[INFO] ------------------&lt; kim.taewan:oci.streaming.example &gt;------------------
-[INFO] Building oci.streaming.example 1.0-SNAPSHOT
-[INFO] --------------------------------[ jar ]---------------------------------
-## 로그 생략
-[kim.taewan.oci.BasicConfigTest.main()] INFO com.oracle.bmc.ClientRuntime - Using SDK: Oracle-JavaSDK/1.5.2
-[kim.taewan.oci.BasicConfigTest.main()] INFO com.oracle.bmc.ClientRuntime - User agent set to: Oracle-JavaSDK/1.5.2 (Mac OS X/10.15.1; Java/11.0.6; OpenJDK 64-Bit Server VM/11.0.6+9-jvmci-20.0-b02)
-============================
-Tenancy:apackrsct01
-============================
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  6.325 s
-[INFO] Finished at: 2020-03-12T10:54:38+09:00
-[INFO] ------------------------------------------------------------------------
- $
-</code></pre>
+<p><img src="https://taewanmerepo.github.io/2020/03/connection/070.jpg?classes=border,shadow" alt="" /></p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/80_oci_tools/sdk/java_sdk/" title="OCI Java SDK"> <i class="fa fa-chevron-left"></i><label>OCI Java SDK</label></a>
-    <a class="nav nav-next" href="/oci_docs/80_oci_tools/sdk/python_sdk/" title="OCI Python SDK" style="margin-right: 0px;"><label>OCI Python SDK</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/10_quickstart/adb/basic_adw_provisioning/" title="ADW 인스턴스 생성"> <i class="fa fa-chevron-left"></i><label>ADW 인스턴스 생성</label></a>
+    <a class="nav nav-next" href="/oci_docs/20_identity_and_access_management/" title="OCI 사용자 및 권한 관리" style="margin-right: 0px;"><label>OCI 사용자 및 권한 관리</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -1008,7 +932,7 @@ Tenancy:apackrsct01
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/80_oci_tools/sdk/java_sdk/configuration/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/10_quickstart/adb/sqldeveloper/"></div>
   </div>
 
   </section>
@@ -1021,6 +945,10 @@ Tenancy:apackrsct01
 
     
 
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 16/03/2020
+    </div>
     
   </div>
 
