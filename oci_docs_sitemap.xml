@@ -8,11 +8,6 @@
   </url>
   
   <url>
-    <loc>/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/</loc>
-    <lastmod>2020-03-17T01:11:05+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/oci_docs/98_misc_tips/tools/install_sqldeveloper/</loc>
     <lastmod>2020-03-16T08:54:32+09:00</lastmod>
   </url>
@@ -102,6 +97,11 @@
   
   <url>
     <loc>/oci_docs/98_misc_tips/ssh_key_pairs/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/</loc>
+    <lastmod>2020-03-17T01:11:05+09:00</lastmod>
   </url>
   
   <url>
@@ -312,7 +312,7 @@
   
   <url>
     <loc>/oci_docs/</loc>
-    <lastmod>2020-03-17T01:11:05+09:00</lastmod>
+    <lastmod>2020-03-16T08:54:32+09:00</lastmod>
   </url>
   
   <url>

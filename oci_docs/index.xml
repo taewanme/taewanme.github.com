@@ -6,21 +6,10 @@
     <description>Recent content in OCI Dcos on 오라클 클라우드 사용자 가이드</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Mar 2020 01:11:05 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 16 Mar 2020 08:54:32 +0900</lastBuildDate>
     
 	<atom:link href="/oci_docs/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Oracle Linux VM 인스턴스 생성</title>
-      <link>/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/</link>
-      <pubDate>Tue, 17 Mar 2020 01:11:05 +0900</pubDate>
-      
-      <guid>/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/</guid>
-      <description>이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.
- OCI FREE TIER 계정 등록 Free Tier 계정 로그인  이번 문서에서는 OCI 콘솔에서 OCI Linux VM 인스턴스를 생성하는 절차를 소개합니다. OCI Linux VM 인스턴스 생성 문서는 다음과 같은 목차로 진행 됩니다.
- 1. 사전 준비  1.1 OCI 자원 준비  OCI Compute Instnce에 고정 IP 설정  2.</description>
-    </item>
     
     <item>
       <title>SQL Developer 설치: Mac OS X</title>
@@ -157,6 +146,17 @@
       <description>Oracle Cloud Infrastructure(OCI)의 VM 인스턴스가 지원하는 접속 프로토콜은 SSH입니다. OCI VM 인스턴스 SSH 서버의 기본 사용자 인증 방식은 Key Pair입니다. 따라서 OCI VM 인스턴스를 생성때 SSH 공개키를 등록해야 합니다. 이 문서에서는 SSH 접속에 사용할 Key Pair(SSH-2 RSA 타입)를 만드는 방법을 정리합니다.
 이번 문서는 다음과 같은 목차로 구성됩니다.
 문서 목차 Key Pair란? SSH 키 생성  ssh-keygen을 이용한 ssh key 생성 window 10 아래 버전에서 ssh key 생성  PPK 형식 개인키를 PEM 형식으로 변환   참고 문서    Key Pair란?</description>
+    </item>
+    
+    <item>
+      <title>OCI VM 고정 IP 설정</title>
+      <link>/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/</link>
+      <pubDate>Tue, 17 Mar 2020 01:11:05 +0900</pubDate>
+      
+      <guid>/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/</guid>
+      <description>이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.
+ OCI FREE TIER 계정 등록 Free Tier 계정 로그인  이번 문서에서는 OCI 콘솔에서 OCI Linux VM 인스턴스를 생성하는 절차를 소개합니다. OCI Linux VM 인스턴스 생성 문서는 다음과 같은 목차로 진행됩니다.
+ 사전 준비  OCI 자원 준비  Compute 고정 IP 설정  Public Reserved IP 생성 예약 공개 IP 설정</description>
     </item>
     
     <item>
