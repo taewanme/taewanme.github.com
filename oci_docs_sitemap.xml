@@ -105,6 +105,11 @@
   </url>
   
   <url>
+    <loc>/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_3vm/</loc>
+    <lastmod>2020-03-19T01:14:00+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/</loc>
     <lastmod>2020-03-18T09:15:05+09:00</lastmod>
   </url>
