@@ -8,15 +8,15 @@
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="SQL Developer의 ADW 연결하기" />
-<meta property="og:description" content="오라클 클라우드(OCI Cloud Infrastructure)에서 프로비저닝한 ADW 인스턴스의 SQL Developer 설정 방법을 정리합니다." />
+<meta property="og:title" content="OCI 자원 상태 확인" />
+<meta property="og:description" content="OCI Load Balancer를 구성하기 위해서 " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/oci_docs/10_quickstart/adb/sqldeveloper/" />
+<meta property="og:url" content="/oci_docs/10_quickstart/ha_with_load_balancer/checking_resources/" />
 
 
 
-<meta property="article:published_time" content="2020-03-16T08:54:32&#43;09:00"/>
-<meta property="article:modified_time" content="2020-03-16T08:54:32&#43;09:00"/>
+<meta property="article:published_time" content="2020-03-01T01:11:05&#43;09:00"/>
+<meta property="article:modified_time" content="2020-03-01T01:11:05&#43;09:00"/>
 
 
 
@@ -33,7 +33,7 @@
 
 
 
-<title>SQL Developer의 ADW 연결하기 :: 오라클 클라우드 사용자 가이드</title>
+<title>OCI 자원 상태 확인 :: 오라클 클라우드 사용자 가이드</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/oci_docs/css/font-awesome.min.css" rel="stylesheet">
@@ -45,7 +45,7 @@
 <script type="text/javascript">
       var baseurl = "\/oci_docs";
 </script>
-<meta name="description" content="오라클 클라우드(OCI Cloud Infrastructure)에서 프로비저닝한 ADW 인스턴스의 SQL Developer 설정 방법을 정리합니다.">
+<meta name="description" content="OCI Load Balancer를 구성하기 위해서 ">
 
 
 <link href='/oci_docs/css/railload.css' rel="stylesheet"/>
@@ -69,7 +69,7 @@
 
     
   </head>
-  <body data-url="/oci_docs/10_quickstart/adb/sqldeveloper/">
+  <body data-url="/oci_docs/10_quickstart/ha_with_load_balancer/checking_resources/">
     
       <header>
   <div class="logo">
@@ -221,14 +221,14 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/10_quickstart/ha_with_load_balancer/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/10_quickstart/ha_with_load_balancer/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/10_quickstart/ha_with_load_balancer/">Load Balancer를 이용한 HA 구성</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/oci_docs/10_quickstart/ha_with_load_balancer/checking_resources/" class="dd-item">
+      <li data-nav-id="/oci_docs/10_quickstart/ha_with_load_balancer/checking_resources/" class="dd-item active">
         <div>
           <a href="/oci_docs/10_quickstart/ha_with_load_balancer/checking_resources/">
             OCI 자원 상태 확인
@@ -252,11 +252,10 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/10_quickstart/adb/" class="dd-item parent haschildren
+    <li data-nav-id="/oci_docs/10_quickstart/adb/" class="dd-item haschildren
         ">
       <div>
-      <a href="/oci_docs/10_quickstart/adb/">Autonomous DB</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/10_quickstart/adb/">Autonomous DB</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/oci_docs/10_quickstart/adb/basic_adw_provisioning/" class="dd-item">
@@ -266,7 +265,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/oci_docs/10_quickstart/adb/sqldeveloper/" class="dd-item active">
+      <li data-nav-id="/oci_docs/10_quickstart/adb/sqldeveloper/" class="dd-item">
         <div>
           <a href="/oci_docs/10_quickstart/adb/sqldeveloper/">
             SQL Developer의 ADW 연결하기
@@ -692,17 +691,14 @@
     <option value="/oci_docs/10_quickstart/ha_with_load_balancer/" >
   - 
    Load Balancer를 이용한 HA 구성</option> 
-      <option value="/oci_docs/10_quickstart/ha_with_load_balancer/checking_resources/" >-- OCI 자원 상태 확인</option>
+      <option value="/oci_docs/10_quickstart/ha_with_load_balancer/checking_resources/"  selected>-- OCI 자원 상태 확인</option>
   
     <option value="/oci_docs/10_quickstart/object_storate/" >
   - 
    Object Storage</option>
     <option value="/oci_docs/10_quickstart/adb/" >
   - 
-   Autonomous DB</option> 
-      <option value="/oci_docs/10_quickstart/adb/basic_adw_provisioning/" >-- ADW 인스턴스 생성</option>
-      <option value="/oci_docs/10_quickstart/adb/sqldeveloper/"  selected>-- SQL Developer의 ADW 연결하기</option>
-  
+   Autonomous DB</option>
   
     <option value="/oci_docs/20_identity_and_access_management/" >
    OCI 사용자 및 권한 관리</option> 
@@ -752,189 +748,54 @@
       </div>
     
 
-    <h1>SQL Developer의 ADW 연결하기</h1>
+    <h1>OCI 자원 상태 확인</h1>
     <div class="alert alert-info" role="alter">
-      <li><strong>문서 생성일:</strong> 2020-03-16 08:54:32 &#43;0900 KST </li>
+      <li><strong>문서 생성일:</strong> 2020-03-01 01:11:05 &#43;0900 KST </li>
   </div>      
       
   
     
     
     
-    
-
-<p><img src="https://technology.amis.nl/wp-content/uploads/2019/10/image-16.png?classes=border,shadow" alt="" /></p>
-
-<p>이번 문서는 오라클 클라우드 Free Tier 계정에 ADW 인스턴스를 만든 전제로 합니다. 현재 ADW 인스턴스이 없다면, 다음 문서를 참조하여 ADW 인스턴스(DemoADW)를 만드시기 바랍니다.</p>
+    <p>원할한 진행을 위해서는 다음과 같은 OCI 자원이 준비되어 있어야 합니다. 이 절에서는 다음 두 가지 자원 생성 상태를 확인할 것입니다.</p>
 
 <ul>
-<li><a href="/oci_docs/10_quickstart/adb/basic_adw_provisioning/%29" target="_blank">ADW 인스턴스 생성 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+<li>Compartment: root/sandbox</li>
+<li>Virtual Cloud Network: demo_vcn
 
-</li>
-</ul>
-
-<hr />
-
-<p>이번 문서에서는 Oracle SQL Developer로 ADW 인스턴스에 연결하는 설정을 구성하는 절차를 소개합니다. 다음과 같은 목차로 진행 됩니다.</p>
-
-
-<div class="panel panel-primary"><div class="panel-body"><p><nav id="TableOfContents">
 <ul>
-<li><a href="#sql-developer의-adw-접속-설정">SQL Developer의 ADW 접속 설정</a>
-<ul>
-<li><a href="#adw-wallet-다운로드">ADW Wallet 다운로드</a></li>
-<li><a href="#wallet-파일-구성">Wallet 파일 구성</a></li>
-<li><a href="#oracle-sql-developer-설정">Oracle SQL Developer 설정</a></li>
-<li><a href="#oracle-sql-developer-접속">Oracle SQL Developer 접속</a></li>
+<li>private subnet 1개</li>
+<li>public subnet 1개</li>
 </ul></li>
 </ul>
-</nav></p>
-</div></div>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/loadbalancer/015.png?classes=border,shadow" alt="" /></p>
+
+<p>Virtual Network Network 관리 페이지에서 Compartment와 VCN 프로비저닝 상태를 확인합니다. Virtual Network Network 관리 페이지는 다음 메뉴 패스로 이동합니다.</p>
 
 
-<hr />
+<div class="panel panel-primary"><div class="panel-body"><span class="glyphicon glyphicon-menu-hamburger" style="font-size:medium" aria-hidden="true"></span> (<strong>OCI 콘솔 왼쪽 위 햄버그 버튼</strong>) <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span>  <strong>Networking</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> <strong>Virtual Cloud Network</strong></div></div>
 
-<h1 id="sql-developer의-adw-접속-설정">SQL Developer의 ADW 접속 설정</h1>
 
-<h2 id="adw-wallet-다운로드">ADW Wallet 다운로드</h2>
+<p><img src="https://taewanmerepo.github.io/2020/03/loadbalancer/011.jpg?classes=border,shadow" alt="" /></p>
 
-<p>ADW 인스턴스의 접속 설정을 SQL Developer에 구성하기 위해서는 Wallet 파일이 필요합니다. Wallet 파일을 다운로드하기 위해서 OCI Console의 ADW 인스턴스 상세 페이지에서 <strong>DB Connection</strong> 버튼을 클릭합니다.</p>
+<p>Virtual Network Network 관리 페이지에서 Compartment를 root/sandbox로 설정하면 root/sandbox 컴파트먼트에 생성된 VCN이 조회됩니다. <strong>demo_vcn</strong>이 다음과 같이 조회되어야 합니다. <strong>demo_vcn</strong> VCN 링크를 클릭하면 상세 정보 페이지로 이동합니다.</p>
 
-<p><img src="https://taewanmerepo.github.io/2020/03/connection/010.jpg?classes=border,shadow" alt="" /></p>
+<p><img src="https://taewanmerepo.github.io/2020/03/loadbalancer/020.png?classes=border,shadow" alt="" /></p>
 
-<p>OCI Console의 ADW 인스턴스 상세 페이지에서 <strong>DB Connection</strong> 버튼을 클릭하면, 다음과 같이 <strong>Database Connection</strong> 창이 오픈됩니다. 다음 그림과 같이 <strong>Wallet Type</strong>을 Instance Wallet을 선택하고 <strong>Download Wallet</strong> 버튼을 클릭합니다.</p>
+<p><strong>demo_vcn</strong> 상세 페이지에서 2개의 서브넷이 조회된다면, OCI Load Balancer를 구성할 모든 준비는 완료되었습니다.</p>
 
-<p><img src="https://taewanmerepo.github.io/2020/03/connection/020.jpg?classes=border,shadow" alt="" /></p>
+<p><img src="https://taewanmerepo.github.io/2020/03/loadbalancer/030.png?classes=border,shadow" alt="" /></p>
 
-<p><strong>Download Wallet</strong> 버튼을 클릭하면 Wallet 파일에 대한 패스워드를 설청 화면이 출력됩니다. Wallet 파일에 대한 패스워드를 설정한 다음에, <strong>Download</strong> 버튼을 클릭합니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2020/03/connection/030.jpg?classes=border,shadow" alt="" /></p>
-
-<p><strong>Download</strong> 버튼을 클릭하면, 다음과 같은 형식의 파일이 다운로드됩니다.</p>
-
-<pre><code>Wallet_&lt;Database_name&gt;.zip
-</code></pre>
-
-<p>이와 같으 형식으로 <strong>Wallet_DemoApp.zip</strong> 파일이 다운로드됩니다.</p>
-
-<h2 id="wallet-파일-구성">Wallet 파일 구성</h2>
-
-<p><strong>Wallet_DemoApp.zip</strong>은 다음과 같은 파일을 포함합니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2020/03/connection/035.jpg?classes=border,shadow" alt="" /></p>
-
-<p>데이터베이스 접속 정보를 제공하는 tnsnames.ora 파일은 다음과 같은 내용으로 만들어집니다. 이 파일의 tnsname인 demoadw_high, demoadw_low, demoadw_medium을 다음에 사용합니다.</p>
-
-<pre><code>demoadw_high = 
-(description= 
-    (retry_count=20)
-    (retry_delay=3)
-    (address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))
-    (connect_data=(service_name=w0a8icio6wvena7_demoadw_high.adwc.oraclecloud.com))
-    (security=
-        (ssl_server_cert_dn=&quot;CN=adwc.uscom-east-1.oraclecloud.com,OU=Oracle BMCS US,O=Oracle Corporation,L=Redwood City,ST=California,C=US&quot;)
-    )
-)
-
-demoadw_low = 
-(description= 
-    (retry_count=20)
-    (retry_delay=3)
-    (address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))
-    (connect_data=(service_name=w0a8icio6wvena7_demoadw_low.adwc.oraclecloud.com))
-    (security=(ssl_server_cert_dn=&quot;CN=adwc.uscom-east-1.oraclecloud.com,OU=Oracle BMCS US,O=Oracle Corporation,L=Redwood City,ST=California,C=US&quot;)
-    )
-)
-
-demoadw_medium = 
-(description= 
-    (retry_count=20)
-    (retry_delay=3)
-    (address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))
-    (connect_data=(service_name=w0a8icio6wvena7_demoadw_medium.adwc.oraclecloud.com))
-    (security=
-        (ssl_server_cert_dn=&quot;CN=adwc.uscom-east-1.oraclecloud.com,OU=Oracle BMCS US,O=Oracle Corporation,L=Redwood City,ST=California,C=US&quot;)
-    )
-)
-</code></pre>
-
-<h2 id="oracle-sql-developer-설정">Oracle SQL Developer 설정</h2>
-
-<p>SQL Developer를 실행하고 다음과 같이 &ldquo;<strong>+</strong>&rdquo; 아이콘을 클릭하고, Connect 관리 창을 오픈합니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2020/03/connection/040.jpg?classes=border,shadow" alt="" /></p>
-
-<p>Connection 관리 창에서, 다음과 같은 값을 설정합니다.</p>
-
-<table>
-<thead>
-<tr>
-<th>설정 항목</th>
-<th>설정 값</th>
-<th>설명</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Name</td>
-<td><strong>demo adw</strong></td>
-<td>커넥션 설정을 구분하는 이름</td>
-</tr>
-
-<tr>
-<td>사용자 이름</td>
-<td><strong>admin</strong></td>
-<td>접속에 사용할 데이터베이스 사용자 명</td>
-</tr>
-
-<tr>
-<td>비밀번호</td>
-<td><strong>Welcome123456</strong></td>
-<td>사용자 이름으로 설정한 데이터베이스 사용자의 패스워드</td>
-</tr>
-
-<tr>
-<td>접속 유형</td>
-<td><strong>클라우드 전자지갑</strong>(Cloud Wallet)</td>
-<td>인증 정보 설정 방식</td>
-</tr>
-
-<tr>
-<td>구성 파일</td>
-<td><strong>/sandbox/Wallet_DemoApp.zip</strong></td>
-<td>다운로드 wallet 파일 위치</td>
-</tr>
-
-<tr>
-<td>서비스</td>
-<td><strong>demoadw_medium</strong></td>
-<td>tnsname.ora 파일에 등록된 tnsname 명</td>
-</tr>
-</tbody>
-</table>
-
-<p>위 설정을 입력한 다음에 <strong>테스트(T)</strong> 버튼을 클릭하여 커넥션 설정을 테스트합니다. 테스트가 <strong>성공</strong>으로  표시되면 <strong>저장(S)</strong> 버튼을 클릭하고 저장합니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2020/03/connection/050.jpg?classes=border,shadow" alt="" /></p>
-
-<h2 id="oracle-sql-developer-접속">Oracle SQL Developer 접속</h2>
-
-<p>Oracle 접속의 <strong>demo adw</strong>을 더블 클릭하고 다음과 같이 패스워드를 입력하고 접속을 시도합니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2020/03/connection/060.jpg?classes=border,shadow" alt="" /></p>
-
-<p>접속이 이뤄지면, 다음과 같이 SQL을 입력하고 쿼리를 수행할 수 있습니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2020/03/connection/070.jpg?classes=border,shadow" alt="" /></p>
+<p>이제 OIC Load Balancer로 HA 구성을 진행하겠습니다.</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/10_quickstart/adb/basic_adw_provisioning/" title="ADW 인스턴스 생성"> <i class="fa fa-chevron-left"></i><label>ADW 인스턴스 생성</label></a>
-    <a class="nav nav-next" href="/oci_docs/20_identity_and_access_management/" title="OCI 사용자 및 권한 관리" style="margin-right: 0px;"><label>OCI 사용자 및 권한 관리</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/10_quickstart/ha_with_load_balancer/" title="Load Balancer를 이용한 HA 구성"> <i class="fa fa-chevron-left"></i><label>Load Balancer를 이용한 HA 구성</label></a>
+    <a class="nav nav-next" href="/oci_docs/10_quickstart/object_storate/" title="Object Storage" style="margin-right: 0px;"><label>Object Storage</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -953,7 +814,7 @@ demoadw_medium =
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/10_quickstart/adb/sqldeveloper/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/10_quickstart/ha_with_load_balancer/checking_resources/"></div>
   </div>
 
   </section>
@@ -968,7 +829,7 @@ demoadw_medium =
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 16/03/2020
+        <i class='fa fa-calendar'></i> Last update on 01/03/2020
     </div>
     
   </div>
