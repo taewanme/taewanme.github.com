@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2020-03-20T11:24:22 KST">
+
+<meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
+<meta name="generator" content="Hugo 0.27.1" />
+<meta property="og:title" content="운영체제별 SSH Key Pair 준비" />
+<meta property="og:description" content="Oracle Cloud Infrastructure(OCI)의 VM 인스턴스가 지원하는 접속 프로토콜은 SSH입니다. OCI VM 인스턴스 SSH 서버의 기본 사용자 인증 방식은 Key Pair입니다. 따라서 OCI VM 인스턴스를 생성때 SSH 공개키를 등록해야 합니다. 이 문서에서는 SSH 접속에 사용할 Key Pair(SSH-2 RSA 타입)를 만드는 방법을 정리합니다.
+이번 문서는 다음과 같은 목차로 구성됩니다.
+문서 목차 Key Pair란? SSH 키 생성  ssh-keygen을 이용한 ssh key 생성 window 10 아래 버전에서 ssh key 생성  PPK 형식 개인키를 PEM 형식으로 변환   참고 문서    Key Pair란?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/oci_docs/98_misc_tips/ssh_key_pairs/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+
+
+<title>운영체제별 SSH Key Pair 준비 :: 오라클 클라우드 사용자 가이드</title>
+
+<link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
+<link href="/oci_docs/css/font-awesome.min.css" rel="stylesheet">
+<link href="/oci_docs/css/nucleus.css" rel="stylesheet">
+<link href="/oci_docs/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/oci_docs/css/bootstrap.min.css">
+<script src="/oci_docs/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "\/oci_docs";
+</script>
+<meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
+
+
+<link href='/oci_docs/css/railload.css' rel="stylesheet"/>
+
+
+<link href="/oci_docs/css/twstyle.css" rel="stylesheet">
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?style=Sons-Of-Obsidian"></script>
+
+
+<style>
+    li.L0, li.L1, li.L2, li.L3,
+    li.L5, li.L6, li.L7, li.L8
+       { list-style-type: decimal !important }
+</style>
+
+
+
+
+
+
+    
+  </head>
+  <body data-url="/oci_docs/98_misc_tips/ssh_key_pairs/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="/oci_docs">오라클 클라우드 사용자 가이드</a>
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="http://taewan.kim/"  rel="noopener">
+                  <i class='fa fa-file-o'></i> <label>Taewan.kim Blog</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="http://taewan.kim/cloud/"  rel="noopener">
+                  <i class='fa fa-cloud'></i> <label>Oracle Cloud</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="http://taewan.kim/tutorial_manual/"  rel="noopener">
+                  <i class='fa fa-folder'></i> <label>tutorial_manual</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+    <li data-nav-id="/oci_docs/00_oci/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/00_oci/">오라클 클라우드 사용자 가이드</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/00_oci/oci_services/" class="dd-item">
+        <div>
+          <a href="/oci_docs/00_oci/oci_services/">
+            OCI 주요 서비스
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/00_oci/terminologies/" class="dd-item">
+        <div>
+          <a href="/oci_docs/00_oci/terminologies/">
+            OCI 기본 용어 정리
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/00_oci/oci_resion_info/" class="dd-item">
+        <div>
+          <a href="/oci_docs/00_oci/oci_resion_info/">
+            OCI 리전 정보
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/10_quickstart/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/">OCI 퀵스타트</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/how_to_sign_up_oci/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/how_to_sign_up_oci/">
+            OCI Free Tier 계정 등록
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/first_sign_in_oci/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/first_sign_in_oci/">
+            Free Tier 계정 첫 번째 로그인
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/create_compartment/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/create_compartment/">
+            Compartment 추가
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/oci_docs/10_quickstart/vcn/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/vcn/">VCN(Virtual Cloud Network) 생성</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/vcn/simple_vcn/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/vcn/simple_vcn/">
+            간편 VCN 만들기
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/vcn/manual_vcn/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/vcn/manual_vcn/">
+            메뉴얼 VCN 만들기
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/10_quickstart/compute/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/compute/">VM 인스턴스 프로비저닝</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/10_quickstart/compute/basic_linux_vm/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/compute/basic_linux_vm/">OCI Linux VM 프로비저닝 및 관리</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/">
+            Oracle Linux VM 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/compute/basic_linux_vm/adding_block_stoage/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/compute/basic_linux_vm/adding_block_stoage/">
+            Block Storage 추가
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/">
+            OCI VM 고정 IP 설정
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/10_quickstart/ha_with_load_balancer/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/ha_with_load_balancer/">Load Balancer를 이용한 HA 구성</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/ha_with_load_balancer/checking_resources/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/ha_with_load_balancer/checking_resources/">
+            OCI 자원 상태 확인
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_3vm/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_3vm/">
+            3개 Compte 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_load_balancer/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_load_balancer/">
+            OCI Load Balancer 프로비저닝
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/10_quickstart/object_storate/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/object_storate/">Object Storage</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/object_storate/add_bucket_and_object/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/object_storate/add_bucket_and_object/">
+            OCI Console로 Bucket 추가
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/10_quickstart/adb/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/adb/">Autonomous DB</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/adb/basic_adw_provisioning/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/adb/basic_adw_provisioning/">
+            ADW 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/adb/sqldeveloper/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/adb/sqldeveloper/">
+            SQL Developer의 ADW 연결하기
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/20_identity_and_access_management/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/20_identity_and_access_management/">OCI 사용자 및 권한 관리</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/">OCI Core Infastructure Service</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/compute/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/compute/">Compute</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/compute/provisioning/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/compute/provisioning/">Compute 인스턴스 만들기</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/" class="dd-item">
+        <div>
+          <a href="/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/">
+            Developer Image 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/30_core_infrastructure/compute/provisioning/oci_ai_datascience_image/" class="dd-item">
+        <div>
+          <a href="/oci_docs/30_core_infrastructure/compute/provisioning/oci_ai_datascience_image/">
+            AI Datascience 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/block_storage/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/block_storage/">Block Storage</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/object_storage/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/object_storage/">Object Storage</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/object_storage/management/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/object_storage/management/">Object Storage 관리</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/object_storage/management/bucket/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/object_storage/management/bucket/">Object Storage Bucket 관리</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/file_storage/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/file_storage/">File Storage</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/networking/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/networking/">Networking</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/50.data_service/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.data_service/">OCI Data Management Service</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/50.data_service/streaming/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.data_service/streaming/">Streaming</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/50.data_service/streaming/overview/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.data_service/streaming/overview/">
+            Streaming 서비스
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.data_service/streaming/pricing/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.data_service/streaming/pricing/">
+            Streaming 서비스 가격 모델
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.data_service/streaming/terminology/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.data_service/streaming/terminology/">
+            Streaming 주요 키워드
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/50.data_service/adb/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.data_service/adb/">OCI Autonomous DB</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/50.data_service/adb/adw/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.data_service/adb/adw/">Autonomous Data Warehouse</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.data_service/adb/adw/hands-on/">ADW Hands-on Labs</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/basic_adw_provisioning/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.data_service/adb/adw/hands-on/basic_adw_provisioning/">
+            ADW 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/sqldeveloper/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.data_service/adb/adw/hands-on/sqldeveloper/">
+            SQL Developer의 ADW 연결하기
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/sel_devleloper_web/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.data_service/adb/adw/hands-on/sel_devleloper_web/">
+            SQL Developer Web 접속
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/60_solutions/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/60_solutions/">OCI Services</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/60_solutions/data_flow/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/60_solutions/data_flow/">OCI Data Flow</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/60_solutions/functions/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/60_solutions/functions/">OCI Functions</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/60_solutions/data_catalog/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/60_solutions/data_catalog/">OCI Data Catalog</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/60_solutions/data_catalog/glossary/" class="dd-item">
+        <div>
+          <a href="/oci_docs/60_solutions/data_catalog/glossary/">
+            용어정리
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/">OCI 도구(Tool)</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/80_oci_tools/oci_rest_api/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/oci_rest_api/">OCI REST API</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/sdk/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/sdk/">OCI SDK</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/80_oci_tools/sdk/java_sdk/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/sdk/java_sdk/">OCI Java SDK</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/80_oci_tools/sdk/java_sdk/configuration/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/sdk/java_sdk/configuration/">
+            설치 및 설정(Maven)
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/sdk/python_sdk/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/sdk/python_sdk/">OCI Python SDK</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/80_oci_tools/sdk/python_sdk/installation/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/sdk/python_sdk/installation/">
+            OCI Python SDK 설치
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/oci_cli/">OCI CLI (Command Line Interface)</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/installation_on_window/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/oci_cli/installation_on_window/">
+            [OCI CLI 설치] Window 10
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac/">
+            [OCI CLI 설치] Linux &amp; Mac OS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/manual_installation/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/oci_cli/manual_installation/">
+            [OCI CLI 설치] 메뉴얼 설치
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac_with_docker/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac_with_docker/">
+            [OCI CLI 설치] Linux/Mac OS (Docker)
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/config_of_ocicli/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/oci_cli/config_of_ocicli/">
+            OCI CLI 설정
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/cloud_shell/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/cloud_shell/">OCI Cloud Shell</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/external_useful_tools/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/external_useful_tools/">OCI에 유용한 써드파티 툴</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/98_misc_tips/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/oci_docs/98_misc_tips/">OCI 알아두면 유용한 팁</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/98_misc_tips/ssh_key_pairs/" class="dd-item active">
+        <div>
+          <a href="/oci_docs/98_misc_tips/ssh_key_pairs/">
+            운영체제별 SSH Key Pair 준비
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/" class="dd-item">
+        <div>
+          <a href="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/">
+            OCI 기본 정보 확인법
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/oci_docs/98_misc_tips/tools/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/98_misc_tips/tools/">OCI 지원 툴 관련 Tip</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/98_misc_tips/tools/install_sqldeveloper/" class="dd-item">
+        <div>
+          <a href="/oci_docs/98_misc_tips/tools/install_sqldeveloper/">
+            SQL Developer 설치: Mac OS X
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/99_oci_sites/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/99_oci_sites/">OCI 관련 문서 사이트</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/99_oci_sites/oci_sites/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/oci_sites/">
+            OCI 관련 사이트 모음
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/99_oci_sites/tutorials/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/tutorials/">
+            OCI 서비스 튜토리얼 사이트 모음
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/">클라우드 관련 유용한 서비스</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/">
+            OCI 비용 시뮬레이터
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/">
+            ocistatus.oraclecloud.com
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/">
+            CloudHarmondy: 네트웍 테스트
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_archi_diagram/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_archi_diagram/">
+            OCI 비쥬얼 다이어그램
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><hr />
+<div class="widget-categories widget">
+	<h4 class="widget__title">&nbsp;&nbsp;Licesne</h4>
+	<div class="widget__content">
+		&nbsp;&nbsp;<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+	</div>
+	<div class="widget__content">
+        <div>
+        이 저작물은 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank>크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+	</div>
+</div>
+
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/oci_docs/00_oci/" >
+   오라클 클라우드 사용자 가이드</option> 
+      <option value="/oci_docs/00_oci/oci_services/" >- OCI 주요 서비스</option>
+      <option value="/oci_docs/00_oci/terminologies/" >- OCI 기본 용어 정리</option>
+      <option value="/oci_docs/00_oci/oci_resion_info/" >- OCI 리전 정보</option>
+  
+    <option value="/oci_docs/10_quickstart/" >
+   OCI 퀵스타트</option> 
+      <option value="/oci_docs/10_quickstart/how_to_sign_up_oci/" >- OCI Free Tier 계정 등록</option>
+      <option value="/oci_docs/10_quickstart/first_sign_in_oci/" >- Free Tier 계정 첫 번째 로그인</option>
+      <option value="/oci_docs/10_quickstart/create_compartment/" >- Compartment 추가</option>
+    <option value="/oci_docs/10_quickstart/vcn/" >
+  - 
+   VCN(Virtual Cloud Network) 생성</option>
+    <option value="/oci_docs/10_quickstart/compute/" >
+  - 
+   VM 인스턴스 프로비저닝</option>
+    <option value="/oci_docs/10_quickstart/ha_with_load_balancer/" >
+  - 
+   Load Balancer를 이용한 HA 구성</option> 
+      <option value="/oci_docs/10_quickstart/ha_with_load_balancer/checking_resources/" >-- OCI 자원 상태 확인</option>
+      <option value="/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_3vm/" >-- 3개 Compte 인스턴스 생성</option>
+      <option value="/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_load_balancer/" >-- OCI Load Balancer 프로비저닝</option>
+  
+    <option value="/oci_docs/10_quickstart/object_storate/" >
+  - 
+   Object Storage</option>
+    <option value="/oci_docs/10_quickstart/adb/" >
+  - 
+   Autonomous DB</option>
+  
+    <option value="/oci_docs/20_identity_and_access_management/" >
+   OCI 사용자 및 권한 관리</option> 
+  
+    <option value="/oci_docs/30_core_infrastructure/" >
+   OCI Core Infastructure Service</option>
+    <option value="/oci_docs/50.data_service/" >
+   OCI Data Management Service</option>
+    <option value="/oci_docs/60_solutions/" >
+   OCI Services</option>
+    <option value="/oci_docs/80_oci_tools/" >
+   OCI 도구(Tool)</option>
+    <option value="/oci_docs/98_misc_tips/" >
+   OCI 알아두면 유용한 팁</option> 
+      <option value="/oci_docs/98_misc_tips/ssh_key_pairs/"  selected>- 운영체제별 SSH Key Pair 준비</option>
+      <option value="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/" >- OCI 기본 정보 확인법</option>
+    <option value="/oci_docs/98_misc_tips/tools/" >
+  - 
+   OCI 지원 툴 관련 Tip</option>
+  
+    <option value="/oci_docs/99_oci_sites/" >
+   OCI 관련 문서 사이트</option> 
+      <option value="/oci_docs/99_oci_sites/oci_sites/" >- OCI 관련 사이트 모음</option>
+      <option value="/oci_docs/99_oci_sites/tutorials/" >- OCI 서비스 튜토리얼 사이트 모음</option>
+    <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/" >
+  - 
+   클라우드 관련 유용한 서비스</option> 
+      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/" >-- OCI 비용 시뮬레이터</option>
+      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/" >-- ocistatus.oraclecloud.com</option>
+      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/" >-- CloudHarmondy: 네트웍 테스트</option>
+      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_archi_diagram/" >-- OCI 비쥬얼 다이어그램</option>
+  
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/oci_docs/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/oci_docs/js/auto-complete.js"></script>
+        <link href="/oci_docs/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "\/oci_docs";
+          
+        </script>
+        <script type="text/javascript" src="/oci_docs/js/search.js"></script>
+      </div>
+    
+
+    <h1>운영체제별 SSH Key Pair 준비</h1>
+    <div class="alert alert-info" role="alter">
+      <li><strong>문서 생성일:</strong> 0001-01-01 00:00:00 &#43;0000 UTC </li>
+  </div>      
+      
+  
+    
+    
+    
+    
+
+<p>Oracle Cloud Infrastructure(OCI)의 VM 인스턴스가 지원하는 접속 프로토콜은 SSH입니다. OCI VM 인스턴스 SSH 서버의 기본 사용자 인증 방식은 Key Pair입니다. 따라서 OCI VM 인스턴스를 생성때 SSH 공개키를 등록해야 합니다. 이 문서에서는 SSH 접속에 사용할 Key Pair(SSH-2 RSA 타입)를 만드는 방법을 정리합니다.</p>
+
+<hr />
+
+<p>이번 문서는 다음과 같은 목차로 구성됩니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-heading">문서 목차</div><div class="panel-body"><nav id="TableOfContents">
+<ul>
+<li><a href="#key-pair란">Key Pair란?</a></li>
+<li><a href="#ssh-키-생성">SSH 키 생성</a>
+<ul>
+<li><a href="#ssh-keygen을-이용한-ssh-key-생성">ssh-keygen을 이용한 ssh key 생성</a></li>
+<li><a href="#window-10-아래-버전에서-ssh-key-생성">window 10 아래 버전에서 ssh key 생성</a>
+<ul>
+<li><a href="#ppk-형식-개인키를-pem-형식으로-변환">PPK 형식 개인키를 PEM 형식으로 변환</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#참고-문서">참고 문서</a></li>
+</ul>
+</nav>
+</div></div>
+
+
+<hr />
+
+<h1 id="key-pair란">Key Pair란?</h1>
+
+<p>SSH Key는 개인키(private key)와 공개키(public key)로 구성됩니다. 두 개의 ssh key를 합쳐서 <strong>SSH Key Pair</strong>라고 부릅니다.</p>
+
+<p>오라클이 제공하는 VM 이미지는 다음과 같은 암호화 알고리즘 유형을 지원합니다.</p>
+
+<ul>
+<li>RSA</li>
+<li>DSA</li>
+<li>DSS</li>
+<li>ECDSA</li>
+<li>Ed25519</li>
+</ul>
+
+<p>OCI VM 인스턴스를 만들기 전에 앞에서 열거한 암호화 알고리즘을 사용하여 SSH key Pair를 준비해야 합니다. 사용자가 정의한 Custom VM 이미지에서는 지원하는 SSH key 유형이 다를 수 있습니다. 이 경우에 해당 Custom 이미지가 지원하는 ssh key 타입에 확인하고 작업해야 합니다. OCI가 제공하는 VM 이미지에 사용할 ssh Key Pair를 RSA, DSS, DSA와 같은 암호화 알고리즘으로 만든다면, 최소 2048 비트를 사용을 권장합니다. 반면 ECDSA 암호화 알고리즘으로 ssh Key Pair를 만든다면, 최소 256 비트 사용을 권장합니다.</p>
+
+<h1 id="ssh-키-생성">SSH 키 생성</h1>
+
+<p>각 운영체제(Linux, OSX, Window)별로 SSH 키를 생성 생성하는 방법은 다음과 같습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">운영체제</th>
+<th align="center">SSH 키 생성 툴</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">Linus</td>
+<td align="center">ssh-keygen</td>
+</tr>
+
+<tr>
+<td align="center">OS X</td>
+<td align="center">ssh-keygen</td>
+</tr>
+
+<tr>
+<td align="center">Windows 10 이상</td>
+<td align="center">ssh-keygen</td>
+</tr>
+
+<tr>
+<td align="center">Windows 10 아래 버전</td>
+<td align="center">puttygen</td>
+</tr>
+</tbody>
+</table>
+
+<p>리눅스, 맥 OS(OS X), Window 10을 사용할 경우에 ssh-keygen 사용하여 ssh key를 생성합니다. ssh-keygen이 설치되어 있지 않다면, 각 운영체제에 맞는 OpenSSH(<a href="http://www.openssh.com/portable.html)를">http://www.openssh.com/portable.html)를</a> 설치합니다. Windows 10 아래 버전에서는 PuTTY를 설치하고 PuTTY의 구성 컴포넌트인 PuTTY Key Generator(puttygen)을 사용하여 ssh key를 생성합니다.</p>
+
+<h2 id="ssh-keygen을-이용한-ssh-key-생성">ssh-keygen을 이용한 ssh key 생성</h2>
+
+<p>리눅스, Mac OS 및 Window 10에서는 ssh-keygen을 이용하여 ssh key pair를 생성합니다. 이때 아래와 같은 형식의 옵션으로 ssh-keygen 명령을 실행합니다.</p>
+
+<pre><code>ssh-keygen -t rsa -N &quot;&quot; -b 2048 -C &quot;comment&quot; -f &lt;path/KeyFileName&gt;
+</code></pre>
+
+<p>위와 같은 형식의 명령에서 각 옵션은 다음과 같은 의미를 갖습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">옵션</th>
+<th>설명</th>
+<th>예제 입력</th>
+<th>비고</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">-t</td>
+<td>생성 key 유형 지정</td>
+<td>-t rsa</td>
+<td>기본값이 rsa, 생략 가능</td>
+</tr>
+
+<tr>
+<td align="center">-b</td>
+<td>암호화 비트수</td>
+<td>-b 2048</td>
+<td>최소 2048을 권장</td>
+</tr>
+
+<tr>
+<td align="center">-C</td>
+<td>커맨트 입력</td>
+<td>-C &ldquo;ssh key for demo&rdquo;</td>
+<td>인증서 구분을 위해서 사용자 email을 주로 사용</td>
+</tr>
+
+<tr>
+<td align="center">-N</td>
+<td>new_passphrase 입력</td>
+<td>-N &ldquo;&rdquo;</td>
+<td>공백 문자열 입력</td>
+</tr>
+
+<tr>
+<td align="center">-f</td>
+<td>출력 파일명, 위치 포함</td>
+<td>-f ./id_rsa</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>ssh key를 생성하는 명령을 앞에서 설정한 입력 값으로 다음과 같이 실행할 수 있습니다.</p>
+
+<pre><code>&gt; ssh-keygen -t rsa -N &quot;&quot; -b 2048 -C &quot;ssh key for demo&quot; -f ./id_rsa
+Generating public/private rsa key pair.
+Your identification has been saved in ./id_rsa.
+Your public key has been saved in ./id_rsa.pub.
+The key fingerprint is:
+SHA256:SFo9Bzyr8dzoANqGZZ9oxwdZIBo+TCsJ9b8Ed5I8OlY ssh key for demo
+The key's randomart image is:
++---[RSA 2048]----+
+|..+ . .o.        |
+|.= = o o+.       |
+|o * o Eo+o.      |
+| . .+X+=.o       |
+|   *==+BSo       |
+|  o.=oB.= .      |
+|   o ..+         |
+|        .        |
+|                 |
++----[SHA256]-----+
+ &gt;
+</code></pre>
+
+<p>앞에서 <code>f</code> 옵션으로 지정한 위치에 다음과 같은 파일이 생성된 것을 확인할 수 있습니다.</p>
+
+<pre><code> &gt; ls -al id_rsa*
+-rw-------  1 taewan  staff  1823  1 17 15:25 id_rsa
+-rw-r--r--  1 taewan  staff   398  1 17 15:25 id_rsa.pub
+&gt;
+</code></pre>
+
+<h2 id="window-10-아래-버전에서-ssh-key-생성">window 10 아래 버전에서 ssh key 생성</h2>
+
+<p>window 10 아래에서는 putty에 포함된 puttygen을 이용하여 SSH 키를 생성할 수 있습니다.</p>
+
+<div class="notices note" ><p><p>Windows 10 아래 버전에서 git을 설치하면, git과 함께 설치되는 MINGW32가 제공하는 ssh-keygen이 설치됩니다. ssh-keygen을 이용하여
+SSH key pair를 생성할 수 있습니다. ssh-keygen은 git-bash에서 실행되어야 합니다.</p>
+</p></div>
+
+
+<p><a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">putty</a>를 내려받아 설치하면 puttygen도 함께 설치됩니다.
+puttygen을 실행하면 &lt;그림 1&gt;과 같은 모습으로 실행됩니다. &lt;그림 1&gt;과 같이 puttygen에서 키 타입으로 RSA와 키 생성의 비트 수를 2048로 설정한 후 &ldquo;Generate&rdquo; 버튼을 클릭합니다.</p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/03/ssh_key/window010.jpg?width=600" alt="" />
+- 그림 1. puttygen(Putty Key Generator) 모습</p>
+
+<p>PuttyGen은 키를 생성할 때  마우스 위치 값을 키 생성 초깃값으로 활용합니다.
+따라서 키를 생성이 완료할 때까지 &lt;그림 2&gt;의 빨간색 영역에서 마우스를 움직여야 합니다.</p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/03/ssh_key/window020.jpg?width=600" alt="" />
+- 그림 2. RSA 키 생성 진행 중</p>
+
+<p>RSA 키 생성이 완료되면 &lt;그림 3&gt;과 같이 UI가 변경됩니다. 이제 &lt;그림 3&gt;과 같이 <code>Save Private Key</code> 버튼을 클릭해서 개인키(Private Key)를 저장합니다. 프롬프트가 뜨면 passphrase 없이 키가  저장되도록 Yes 선택 후 저장합니다.</p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/03/ssh_key/window050.jpg?width=600" alt="" />
+- 그림 3. 개인 키 저장</p>
+
+<p>&lt;그림 4&gt;와 같이 개인 키를 저장합니다. 여기에서 저장된 개인키(Private Key)는 PuTTY Private Key(PPK) 형식으로 저장되며, 이 PPK 파일은 PuTTY에서만 사용 가능합니다.</p>
+
+<p><img src="https://oracloud-kr-teamrepo.github.io/2017/03/ssh_key/window060.jpg?width=600" alt="" />
+- 그림 4. 개인 키 저장</p>
+
+<p>Putty Key Generator는 공개키를 저장할 때, OpenSSH 형식이 아닌 자체 형식으로 저장합니다. 따라서 Putty Key Generator가 제공하는 공개키 저장 기능을 사용하지 않습니다. &lt;그림 5&gt;에서 공개키 문자열을 모두 복사하여 별도의 파일에 붙여넣고 저장합니다. 새로 만든 파일은 앞에서 만든 개인키와 같은 폴더에 저장합니다. 파일명은 개인키 파일명과 동일하게 하고 확장자는 pub로 설정합니다.</p>
+
+<p><img src="https://thekoguryo.github.io/oci/chapter03/images/puttygen4.png?width=600" alt="" />
+- 그림 5. 공개 키 저장</p>
+
+<h3 id="ppk-형식-개인키를-pem-형식으로-변환">PPK 형식 개인키를 PEM 형식으로 변환</h3>
+
+<p>Putty Key Generator는 개인키를 PPK 형식으로 저장합니다. 이 개인키를 Putty가 아닌 일반 SSH의 개인키로 사용할 수 없습니다. PPK 형식의 개인키를 PEM 형식으로 변환하는 기능을 Putty Key Generator에서 제공합니다. Putty Key Generator의 메뉴에서 Conversions을 선택하고 Export OpenSSH Key를 선택합니다. 프롬프트가 뜨면 passphrase 없이 키 저장하기 위해서 Yes 선택 후 파일을 저장합니다.</p>
+
+<h1 id="참고-문서">참고 문서</h1>
+
+<ul>
+<li><a href="http://taewan.kim/post/ssh_key/">http://taewan.kim/post/ssh_key/</a></li>
+<li><a href="https://www.onmsft.com/how-to/how-to-generate-an-ssh-key-in-windows-10">https://www.onmsft.com/how-to/how-to-generate-an-ssh-key-in-windows-10</a></li>
+<li><a href="https://www.youtube.com/watch?v=Y0e1mMl0D1g">https://www.youtube.com/watch?v=Y0e1mMl0D1g</a>
+
+<ul>
+<li>Generate SSH Key Pairs to Access Linux instances in the Oracle Cloud Infrastructure</li>
+</ul></li>
+</ul>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/oci_docs/98_misc_tips/" title="OCI 알아두면 유용한 팁"> <i class="fa fa-chevron-left"></i><label>OCI 알아두면 유용한 팁</label></a>
+    <a class="nav nav-next" href="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/" title="OCI 기본 정보 확인법" style="margin-right: 0px;"><label>OCI 기본 정보 확인법</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+  <div class="chevrons">
+      <div class="row">
+    <div class="author left">
+        <img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan2.jpg" height="90" width="90">
+    </div>
+    <div class="author right">
+		<li><b>작성자: 김태완</b></li>
+        <li>사랑하는 민수와 데이터 관리, 데이터 분석 &amp; 클라우드에 집중하고 있습니다.</li>
+        <li>E-mail: taewanme@gmail.com</li>
+    </div>
+</div><div class="panel panel-danger">
+<div class="panel-heading">Disclaimer</div>
+<div class="panel-body">이 저작물은 Oracle과 관계없이 개인으로서 개인의 시간을 할애하여 작성된 글 입니다. 본 글의 내용, 입장, 예측은 Oracle을 공식적으로 <font color="red"><bold>절대</bold></font> 대변하지 않습니다.</div>
+</div>
+<hr />
+
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/98_misc_tips/ssh_key_pairs/"></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+  </div>
+
+
+	<div>
+
+
+  
+
+
+
+  </div>
+  
+  
+</footer>
+
+<script src="/oci_docs/js/clipboard.min.js"></script>
+
+<link href="/oci_docs/css/featherlight.min.css" rel="stylesheet">
+<script src="/oci_docs/js/featherlight.min.js"></script>
+
+
+
+<script src="/oci_docs/theme-flex/script.js"></script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        
+        ga('create', 'UA-72835175-1', 'auto');
+        ga('send', 'pageview');
+</script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2&appId=404519239985000&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+    
+
+    
+    
+
+    
+
+
+  </body>
+</html>
