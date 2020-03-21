@@ -38,6 +38,11 @@
   </url>
   
   <url>
+    <loc>/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_start_and_stop/</loc>
+    <lastmod>2020-03-11T08:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/oci_docs/00_oci/oci_services/</loc>
     <lastmod>2020-03-05T08:54:32+09:00</lastmod>
   </url>
@@ -123,6 +128,16 @@
   </url>
   
   <url>
+    <loc>/oci_docs/50.data_service/adb/adw/hands-on/basic_management/</loc>
+    <lastmod>2020-03-20T11:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/50.data_service/adb/adw/hands-on/reset_password_4_admin/</loc>
+    <lastmod>2020-03-11T08:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_3vm/</loc>
     <lastmod>2020-03-19T01:14:00+09:00</lastmod>
   </url>
@@ -133,18 +148,23 @@
   </url>
   
   <url>
-    <loc>/oci_docs/10_quickstart/adb/sqldeveloper/</loc>
-    <lastmod>2020-03-16T08:54:32+09:00</lastmod>
+    <loc>/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_start_and_stop_with_ocicli/</loc>
+    <lastmod>2020-03-18T08:54:32+09:00</lastmod>
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/adb/adw/hands-on/sqldeveloper/</loc>
+    <loc>/oci_docs/10_quickstart/adb/sqldeveloper/</loc>
     <lastmod>2020-03-16T08:54:32+09:00</lastmod>
   </url>
   
   <url>
     <loc>/oci_docs/00_oci/terminologies/</loc>
     <lastmod>2020-03-15T08:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/50.data_service/adb/adw/hands-on/scale_up_and_sacle_down/</loc>
+    <lastmod>2020-03-11T08:54:32+09:00</lastmod>
   </url>
   
   <url>
@@ -200,13 +220,13 @@
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/adb/adw/hands-on/sel_devleloper_web/</loc>
-    <lastmod>2020-03-20T08:54:32+09:00</lastmod>
+    <loc>/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_load_balancer/</loc>
+    <lastmod>2020-03-19T03:52:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_load_balancer/</loc>
-    <lastmod>2020-03-19T03:52:00+09:00</lastmod>
+    <loc>/oci_docs/50.data_service/adb/adw/hands-on/sqldeveloper/</loc>
+    <lastmod>2020-03-16T08:54:32+09:00</lastmod>
   </url>
   
   <url>
@@ -252,6 +272,11 @@
   </url>
   
   <url>
+    <loc>/oci_docs/50.data_service/adb/adw/hands-on/sql_devleloper_web/</loc>
+    <lastmod>2020-03-20T08:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/oci_docs/30_core_infrastructure/file_storage/</loc>
   </url>
   
@@ -265,6 +290,11 @@
   
   <url>
     <loc>/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac_with_docker/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/50.data_service/adb/adw/hands-on/query_with_each_service/</loc>
+    <lastmod>2020-03-16T08:54:32+09:00</lastmod>
   </url>
   
   <url>

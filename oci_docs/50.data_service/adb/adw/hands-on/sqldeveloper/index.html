@@ -4,11 +4,11 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-03-20T11:58:39 KST">
+<meta name="revised" content="2020-03-21T16:01:24 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="SQL Developer의 ADW 연결하기" />
+<meta property="og:title" content="SQL Developer: 설정 및 접속" />
 <meta property="og:description" content="오라클 클라우드(OCI Cloud Infrastructure)에서 프로비저닝한 ADW 인스턴스의 SQL Developer 설정 방법을 정리합니다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/oci_docs/50.data_service/adb/adw/hands-on/sqldeveloper/" />
@@ -33,7 +33,7 @@
 
 
 
-<title>SQL Developer의 ADW 연결하기 :: 오라클 클라우드 사용자 가이드</title>
+<title>SQL Developer: 설정 및 접속 :: 오라클 클라우드 사용자 가이드</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/oci_docs/css/font-awesome.min.css" rel="stylesheet">
@@ -442,17 +442,61 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/sqldeveloper/" class="dd-item active">
+    <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/basic_management/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.data_service/adb/adw/hands-on/basic_management/">인스턴스 관리</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_start_and_stop/" class="dd-item">
         <div>
-          <a href="/oci_docs/50.data_service/adb/adw/hands-on/sqldeveloper/">
-            SQL Developer의 ADW 연결하기
+          <a href="/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_start_and_stop/">
+            인스턴스 기본 조작: Console
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/sel_devleloper_web/" class="dd-item">
+      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_start_and_stop_with_ocicli/" class="dd-item">
         <div>
-          <a href="/oci_docs/50.data_service/adb/adw/hands-on/sel_devleloper_web/">
+          <a href="/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_start_and_stop_with_ocicli/">
+            인스턴스 기본 조작: OCI CLI
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/reset_password_4_admin/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.data_service/adb/adw/hands-on/reset_password_4_admin/">
+            ADW 관리자 비밀번호 재설정
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/scale_up_and_sacle_down/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.data_service/adb/adw/hands-on/scale_up_and_sacle_down/">
+            ADW Scale Up&amp;Down
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/sqldeveloper/" class="dd-item active">
+        <div>
+          <a href="/oci_docs/50.data_service/adb/adw/hands-on/sqldeveloper/">
+            SQL Developer: 설정 및 접속
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/sql_devleloper_web/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.data_service/adb/adw/hands-on/sql_devleloper_web/">
             SQL Developer Web 접속
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/query_with_each_service/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.data_service/adb/adw/hands-on/query_with_each_service/">
+            ADW 서비스 별 쿼리 성능
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -785,8 +829,17 @@
   --- 
    ADW Hands-on Labs</option> 
       <option value="/oci_docs/50.data_service/adb/adw/hands-on/basic_adw_provisioning/" >---- ADW 인스턴스 생성</option>
-      <option value="/oci_docs/50.data_service/adb/adw/hands-on/sqldeveloper/"  selected>---- SQL Developer의 ADW 연결하기</option>
-      <option value="/oci_docs/50.data_service/adb/adw/hands-on/sel_devleloper_web/" >---- SQL Developer Web 접속</option>
+    <option value="/oci_docs/50.data_service/adb/adw/hands-on/basic_management/" >
+  ---- 
+   인스턴스 관리</option> 
+      <option value="/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_start_and_stop/" >----- 인스턴스 기본 조작: Console</option>
+      <option value="/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_start_and_stop_with_ocicli/" >----- 인스턴스 기본 조작: OCI CLI</option>
+  
+      <option value="/oci_docs/50.data_service/adb/adw/hands-on/reset_password_4_admin/" >---- ADW 관리자 비밀번호 재설정</option>
+      <option value="/oci_docs/50.data_service/adb/adw/hands-on/scale_up_and_sacle_down/" >---- ADW Scale Up&amp;Down</option>
+      <option value="/oci_docs/50.data_service/adb/adw/hands-on/sqldeveloper/"  selected>---- SQL Developer: 설정 및 접속</option>
+      <option value="/oci_docs/50.data_service/adb/adw/hands-on/sql_devleloper_web/" >---- SQL Developer Web 접속</option>
+      <option value="/oci_docs/50.data_service/adb/adw/hands-on/query_with_each_service/" >---- ADW 서비스 별 쿼리 성능</option>
   
   
   
@@ -832,7 +885,7 @@
       </div>
     
 
-    <h1>SQL Developer의 ADW 연결하기</h1>
+    <h1>SQL Developer: 설정 및 접속</h1>
     <div class="alert alert-info" role="alter">
       <li><strong>문서 생성일:</strong> 2020-03-16 08:54:32 &#43;0900 KST </li>
   </div>      
@@ -843,9 +896,9 @@
     
     
 
-<p><img src="https://technology.amis.nl/wp-content/uploads/2019/10/image-16.png?classes=border,shadow" alt="" /></p>
+<p><img src="https://taewanmerepo.github.io/2018/11/adwprovisioning/post.jpg" alt="" /></p>
 
-<p>이번 문서는 오라클 클라우드 Free Tier 계정에 ADW 인스턴스를 만든 전제로 합니다. 현재 ADW 인스턴스이 없다면, 다음 문서를 참조하여 ADW 인스턴스(DemoADW)를 만드시기 바랍니다.</p>
+<p>이번 문서는 오라클 클라우드 Free Tier 계정에 ADW 인스턴스를 만들었다는 전제로 진행합니다. 현재 ADW 인스턴스가 없다면, 다음 문서를 참조하여 ADW 인스턴스(DemoADW)를 만드시기 바랍니다.</p>
 
 <ul>
 <li><a href="/oci_docs/10_quickstart/adb/basic_adw_provisioning/%29" target="_blank">ADW 인스턴스 생성 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
@@ -875,6 +928,8 @@
 <hr />
 
 <h1 id="sql-developer의-adw-접속-설정">SQL Developer의 ADW 접속 설정</h1>
+
+<p><img src="https://technology.amis.nl/wp-content/uploads/2019/10/image-16.png?classes=border,shadow" alt="" /></p>
 
 <h2 id="adw-wallet-다운로드">ADW Wallet 다운로드</h2>
 
@@ -1013,8 +1068,8 @@ demoadw_medium =
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/50.data_service/adb/adw/hands-on/basic_adw_provisioning/" title="ADW 인스턴스 생성"> <i class="fa fa-chevron-left"></i><label>ADW 인스턴스 생성</label></a>
-    <a class="nav nav-next" href="/oci_docs/50.data_service/adb/adw/hands-on/sel_devleloper_web/" title="SQL Developer Web 접속" style="margin-right: 0px;"><label>SQL Developer Web 접속</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/50.data_service/adb/adw/hands-on/scale_up_and_sacle_down/" title="ADW Scale Up&amp;Down"> <i class="fa fa-chevron-left"></i><label>ADW Scale Up&amp;Down</label></a>
+    <a class="nav nav-next" href="/oci_docs/50.data_service/adb/adw/hands-on/sql_devleloper_web/" title="SQL Developer Web 접속" style="margin-right: 0px;"><label>SQL Developer Web 접속</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
