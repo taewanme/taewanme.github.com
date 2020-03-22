@@ -133,11 +133,6 @@
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/adb/adw/hands-on/reset_password_4_admin/</loc>
-    <lastmod>2020-03-11T08:54:32+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_3vm/</loc>
     <lastmod>2020-03-19T01:14:00+09:00</lastmod>
   </url>
@@ -160,11 +155,6 @@
   <url>
     <loc>/oci_docs/00_oci/terminologies/</loc>
     <lastmod>2020-03-15T08:54:32+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/oci_docs/50.data_service/adb/adw/hands-on/scale_up_and_sacle_down/</loc>
-    <lastmod>2020-03-11T08:54:32+09:00</lastmod>
   </url>
   
   <url>
@@ -220,12 +210,27 @@
   </url>
   
   <url>
+    <loc>/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_scale_management/</loc>
+    <lastmod>2020-03-19T08:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_load_balancer/</loc>
     <lastmod>2020-03-19T03:52:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/adb/adw/hands-on/sqldeveloper/</loc>
+    <loc>/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/</loc>
+    <lastmod>2020-03-18T11:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/50.data_service/adb/adw/hands-on/performance/</loc>
+    <lastmod>2020-03-18T11:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/sqldeveloper/</loc>
     <lastmod>2020-03-16T08:54:32+09:00</lastmod>
   </url>
   
@@ -272,8 +277,13 @@
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/adb/adw/hands-on/sql_devleloper_web/</loc>
+    <loc>/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/sql_devleloper_web/</loc>
     <lastmod>2020-03-20T08:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/50.data_service/adb/adw/hands-on/basic_management/reset_password_4_admin/</loc>
+    <lastmod>2020-03-11T08:54:32+09:00</lastmod>
   </url>
   
   <url>
@@ -293,8 +303,8 @@
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/adb/adw/hands-on/query_with_each_service/</loc>
-    <lastmod>2020-03-16T08:54:32+09:00</lastmod>
+    <loc>/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/apex/</loc>
+    <lastmod>2020-03-20T08:54:32+09:00</lastmod>
   </url>
   
   <url>
@@ -323,6 +333,11 @@
   </url>
   
   <url>
+    <loc>/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/oml/</loc>
+    <lastmod>2020-03-18T11:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/oci_docs/30_core_infrastructure/compute/provisioning/oci_ai_datascience_image/</loc>
   </url>
   
@@ -332,6 +347,11 @@
   
   <url>
     <loc>/oci_docs/10_quickstart/vcn/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/50.data_service/adb/adw/hands-on/performance/query_with_each_service/</loc>
+    <lastmod>2020-03-16T08:54:32+09:00</lastmod>
   </url>
   
   <url>

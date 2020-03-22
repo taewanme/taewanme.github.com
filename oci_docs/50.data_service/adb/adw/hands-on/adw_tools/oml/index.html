@@ -4,20 +4,18 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-03-21T16:01:24 KST">
+<meta name="revised" content="2020-03-22T15:25:47 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="ADW 서비스 별 쿼리 성능" />
-<meta property="og:description" content="오라클 클라우드(OCI Cloud Infrastructure)에서 프로비저닝한 ADW 인스턴스의 SQL Developer 설정 방법을 정리합니다." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/oci_docs/50.data_service/adb/adw/hands-on/query_with_each_service/" />
+<meta property="og:title" content="OML Notebook" />
+<meta property="og:description" content="OCI ADW(Authonomous Data Warehouse)가 제공하는 OML Notebook접근법을 정리합니다." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/oml/" />
 
 
 
-<meta property="article:published_time" content="2020-03-16T08:54:32&#43;09:00"/>
-<meta property="article:modified_time" content="2020-03-16T08:54:32&#43;09:00"/>
-
+<meta property="og:updated_time" content="2020-03-18T11:54:32&#43;09:00"/>
 
 
 
@@ -33,7 +31,7 @@
 
 
 
-<title>ADW 서비스 별 쿼리 성능 :: 오라클 클라우드 사용자 가이드</title>
+<title>OML Notebook :: 오라클 클라우드 사용자 가이드</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/oci_docs/css/font-awesome.min.css" rel="stylesheet">
@@ -45,7 +43,7 @@
 <script type="text/javascript">
       var baseurl = "\/oci_docs";
 </script>
-<meta name="description" content="오라클 클라우드(OCI Cloud Infrastructure)에서 프로비저닝한 ADW 인스턴스의 SQL Developer 설정 방법을 정리합니다.">
+<meta name="description" content="OCI ADW(Authonomous Data Warehouse)가 제공하는 OML Notebook접근법을 정리합니다.">
 
 
 <link href='/oci_docs/css/railload.css' rel="stylesheet"/>
@@ -69,7 +67,7 @@
 
     
   </head>
-  <body data-url="/oci_docs/50.data_service/adb/adw/hands-on/query_with_each_service/">
+  <body data-url="/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/oml/">
     
       <header>
   <div class="logo">
@@ -463,42 +461,73 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-        </ul>
-    </li>
-      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/reset_password_4_admin/" class="dd-item">
+      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_scale_management/" class="dd-item">
         <div>
-          <a href="/oci_docs/50.data_service/adb/adw/hands-on/reset_password_4_admin/">
+          <a href="/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_scale_management/">
+            인스턴스 Scale Up/Dwon
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/basic_management/reset_password_4_admin/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.data_service/adb/adw/hands-on/basic_management/reset_password_4_admin/">
             ADW 관리자 비밀번호 재설정
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/scale_up_and_sacle_down/" class="dd-item">
-        <div>
-          <a href="/oci_docs/50.data_service/adb/adw/hands-on/scale_up_and_sacle_down/">
-            ADW Scale Up&amp;Down
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
+        </ul>
     </li>
-      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/sqldeveloper/" class="dd-item">
+    <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/" class="dd-item parent alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/">ADW 지원 툴</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/sqldeveloper/" class="dd-item">
         <div>
-          <a href="/oci_docs/50.data_service/adb/adw/hands-on/sqldeveloper/">
+          <a href="/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/sqldeveloper/">
             SQL Developer: 설정 및 접속
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/sql_devleloper_web/" class="dd-item">
+      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/sql_devleloper_web/" class="dd-item">
         <div>
-          <a href="/oci_docs/50.data_service/adb/adw/hands-on/sql_devleloper_web/">
+          <a href="/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/sql_devleloper_web/">
             SQL Developer Web 접속
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/query_with_each_service/" class="dd-item active">
+      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/apex/" class="dd-item">
         <div>
-          <a href="/oci_docs/50.data_service/adb/adw/hands-on/query_with_each_service/">
+          <a href="/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/apex/">
+            APEX 서비스
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/oml/" class="dd-item parent active alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/oml/">OML Notebook</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/performance/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.data_service/adb/adw/hands-on/performance/">ADW 지원 툴</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/50.data_service/adb/adw/hands-on/performance/query_with_each_service/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.data_service/adb/adw/hands-on/performance/query_with_each_service/">
             ADW 서비스 별 쿼리 성능
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -834,12 +863,25 @@
    인스턴스 관리</option> 
       <option value="/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_start_and_stop/" >----- 인스턴스 기본 조작: Console</option>
       <option value="/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_start_and_stop_with_ocicli/" >----- 인스턴스 기본 조작: OCI CLI</option>
+      <option value="/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_scale_management/" >----- 인스턴스 Scale Up/Dwon</option>
+      <option value="/oci_docs/50.data_service/adb/adw/hands-on/basic_management/reset_password_4_admin/" >----- ADW 관리자 비밀번호 재설정</option>
   
-      <option value="/oci_docs/50.data_service/adb/adw/hands-on/reset_password_4_admin/" >---- ADW 관리자 비밀번호 재설정</option>
-      <option value="/oci_docs/50.data_service/adb/adw/hands-on/scale_up_and_sacle_down/" >---- ADW Scale Up&amp;Down</option>
-      <option value="/oci_docs/50.data_service/adb/adw/hands-on/sqldeveloper/" >---- SQL Developer: 설정 및 접속</option>
-      <option value="/oci_docs/50.data_service/adb/adw/hands-on/sql_devleloper_web/" >---- SQL Developer Web 접속</option>
-      <option value="/oci_docs/50.data_service/adb/adw/hands-on/query_with_each_service/"  selected>---- ADW 서비스 별 쿼리 성능</option>
+    <option value="/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/" >
+  ---- 
+   ADW 지원 툴</option> 
+      <option value="/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/sqldeveloper/" >----- SQL Developer: 설정 및 접속</option>
+      <option value="/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/sql_devleloper_web/" >----- SQL Developer Web 접속</option>
+      <option value="/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/apex/" >----- APEX 서비스</option>
+    <option value="/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/oml/"  selected>
+  ----- 
+   OML Notebook</option> 
+  
+  
+    <option value="/oci_docs/50.data_service/adb/adw/hands-on/performance/" >
+  ---- 
+   ADW 지원 툴</option> 
+      <option value="/oci_docs/50.data_service/adb/adw/hands-on/performance/query_with_each_service/" >----- ADW 서비스 별 쿼리 성능</option>
+  
   
   
   
@@ -885,152 +927,86 @@
       </div>
     
 
-    <h1>ADW 서비스 별 쿼리 성능</h1>
+    <h1>OML Notebook</h1>
     <div class="alert alert-info" role="alter">
-      <li><strong>문서 생성일:</strong> 2020-03-16 08:54:32 &#43;0900 KST </li>
+      <li><strong>문서 생성일:</strong> 2020-03-18 11:54:32 &#43;0900 KST </li>
   </div>      
       
   
     
     
     
-    
 
-<p><img src="https://taewanmerepo.github.io/2018/11/adwprovisioning/post.jpg" alt="" /></p>
 
-<p>이번 문서는 오라클 클라우드 Free Tier 계정에 ADW 인스턴스를 만들었다는 전제로 진행합니다. 현재 ADW 인스턴스가 없다면, 다음 문서를 참조하여 ADW 인스턴스(DemoADW)를 만드시기 바랍니다.</p>
 
-<ul>
-<li><a href="/oci_docs/10_quickstart/adb/basic_adw_provisioning/%29" target="_blank">ADW 인스턴스 생성 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+<p>ADW는  SQL을 기반으로하는 머신러닝 분석 툴인 OML4SQL을 제공합니다. 이 OML4SQL은 데이터베이스 데이터 처리 능력을 최대한 활용하는 머신러닝 기법입니다. ADW는 OML4SQL로 머신러닝 로직을 효과적으로 개발화고 검증하는 툴로 Oracle Machine Learning(OML) notebook 어플리케이션을 제공합니다. OML Notebook 서비스의 실체는 Apache Zeppelin입니다. OML notebook에서 SQL 쿼리와 Oracle Stored Porcedure를 실행하여 In-Database 머신러닝을 수행할 수 있습니다.</p>
 
-</li>
-</ul>
+<h1 id="oracle-sql-developer">Oracle SQL Developer</h1>
+
+<p>Oracle SQL Developer는 ADW 데이터베이스를 지원하는 대표적인 SQL 툴로 오라클이 무상으로 제공하는 개발 도구입니다.</p>
+
+<p><img src="https://technology.amis.nl/wp-content/uploads/2019/10/image-16.png?classes=border,shadow" alt="" /></p>
+
+<h1 id="adw-인스턴스-제공-툴">ADW 인스턴스 제공 툴</h1>
+
+<p>ADW 인스턴스는 3가지 서비스 툴을 제공합니다. ADW 인스턴스가 제공하는 서비스 툴은 다음과 같습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>서비스 명</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Oracle APEX</td>
+<td>Oracle APEX 개발 / 관리 환경</td>
+</tr>
+
+<tr>
+<td>SQL Developer Web</td>
+<td>SQLDeveloper 웹 버전, 웹 기반 SQL UI 도구</td>
+</tr>
+
+<tr>
+<td>Oracle Machine Learning 노트북</td>
+<td>Oracle Machine Learning을 위한 Apache Zeppelin 노트북</td>
+</tr>
+</tbody>
+</table>
+
+<p>이 서비스는 Autonomous Database 상세 페이지에서 다음과 같은 메뉴 페스로 접근할 수 있습니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-body">(Autonomous Database 상세 페이지)<strong>Service Console</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span>  <strong>개발</strong> (서비스 콘솔 페이지 메뉴)</div></div>
+
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/adb/provisioning/130.jpg?classes=border,shadow" alt="" /></p>
+
+<p>각 메뉴를 클릭하면 개별 서비스 페이지가 오픈됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/adb/provisioning/140.jpg?classes=border,shadow" alt="" /></p>
 
 <hr />
 
-<p>이번 문서에서는 OCI ADW 인스턴스는 사전에 정의된 3개의 서비스를 제공합니다. 3개 서비스에서 동일한 쿼리를 수행하고 결과를 비교해 보겠습니다. 이 문서는 다음과 같은 순서로 진행합니다.</p>
+<p><strong>ADW 지원 툴</strong>은 다음과 같은 주제로 진행됩니다.</p>
 
 
-<div class="panel panel-primary"><div class="panel-body"><p><nav id="TableOfContents">
-<ul>
-<li><a href="#adw-사전-정의-서비스">ADW 사전 정의 서비스</a></li>
-<li><a href="#서비스-별-쿼리-실행-시간-비교">서비스 별 쿼리 실행 시간 비교</a></li>
+<div class="panel panel-primary"><div class="panel-body"><ul class="children children-li">
 </ul>
-</nav></p>
 </div></div>
 
 
-<hr />
-
-<h1 id="adw-사전-정의-서비스">ADW 사전 정의 서비스</h1>
-
-<p>ADW 인스턴스가 제공하는 Wallet 파일에 포함된 tnsnames.ora 파일에는 ADW 인스턴스를 식별하는  세 개의 데이터베이스 서비스 이름이 등록되어 있습니다. 이름 형식은 다음과 같습니다.</p>
-
-<pre><code>&lt;DATAASE_NAME&gt;_&lt;high|medium|low&gt;
-</code></pre>
-
-<p>다음은 demoadw (ADW 인스턴스)가 제공하는  Wallet 파일(<strong>Wallet_DemoApp.zip</strong>)의 tns_names.ora에 정으된 서비스 예시입니다.</p>
-
-<pre><code>demoadw_high = 
-(description= 
-    (retry_count=20)
-    (retry_delay=3)
-    (address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))
-    (connect_data=(service_name=w0a8icio6wvena7_demoadw_high.adwc.oraclecloud.com))
-    (security=
-        (ssl_server_cert_dn=&quot;CN=adwc.uscom-east-1.oraclecloud.com,OU=Oracle BMCS US,O=Oracle Corporation,L=Redwood City,ST=California,C=US&quot;)
-    )
-)
-
-demoadw_low = 
-(description= 
-    (retry_count=20)
-    (retry_delay=3)
-    (address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))
-    (connect_data=(service_name=w0a8icio6wvena7_demoadw_low.adwc.oraclecloud.com))
-    (security=(ssl_server_cert_dn=&quot;CN=adwc.uscom-east-1.oraclecloud.com,OU=Oracle BMCS US,O=Oracle Corporation,L=Redwood City,ST=California,C=US&quot;)
-    )
-)
-
-demoadw_medium = 
-(description= 
-    (retry_count=20)
-    (retry_delay=3)
-    (address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))
-    (connect_data=(service_name=w0a8icio6wvena7_demoadw_medium.adwc.oraclecloud.com))
-    (security=
-        (ssl_server_cert_dn=&quot;CN=adwc.uscom-east-1.oraclecloud.com,OU=Oracle BMCS US,O=Oracle Corporation,L=Redwood City,ST=California,C=US&quot;)
-    )
-)
-</code></pre>
-
-<p>이렇게 사전 정의된 각 서비스는 각각 다른 레벨의 성능 및 동시성을 제공합니다.</p>
-
-<ul>
-<li>high
-
-<ul>
-<li>예시 서비스 명: demoadw_high</li>
-<li>특징
-
-<ul>
-<li>High 데이터베이스 서비스는 각 SQL 문에 최고 레벨의 자원을 제공하여 최고의 성능을 보임</li>
-<li>가장 적은 수의 동시 SQL 문을 지원</li>
-<li>모든 SQL 문은 데이터베이스의 모든 CPU 및 IO 리소스를 사용</li>
-<li>실행할 수있는 동시 SQL 문의 수는 3(이 수는 데이터베이스의 OCPU 수와 무관)</li>
-</ul></li>
-</ul></li>
-<li>medium
-
-<ul>
-<li>예시 서비스 명: demoadw_medium</li>
-<li>특징
-
-<ul>
-<li>medium 데이터베이스 서비스는 각 SQL 문에 더 낮은 수준의 리소스를 제공</li>
-<li>잠재적으로 더 낮은 수준의 성능을 제공</li>
-<li>high 보다 더 많은 동시 SQL 문을 지원</li>
-<li>실행할 수있는 동시 SQL 문의 수는 데이터베이스의 OCPU 수에 따라 달라짐</li>
-</ul></li>
-</ul></li>
-<li>low
-
-<ul>
-<li>예시 서비스 명: demoadw_low</li>
-<li>특징
-
-<ul>
-<li>Low 데이터베이스 서비스는 각 SQL 문에 최소 수준의 리소스를 제공</li>
-<li>가장 많은 수의 동시 SQL 문을 지원</li>
-<li>모든 SQL 문은 데이터베이스에서 단일 CPU와 여러 IO 리소스를 사용</li>
-<li>실행할 수있는 동시 SQL 문 수는 OCPU 수의 최대 300배</li>
-</ul></li>
-</ul></li>
-</ul>
-
-<h1 id="서비스-별-쿼리-실행-시간-비교">서비스 별 쿼리 실행 시간 비교</h1>
-
-<p><strong>Oracle SQL Developer</strong>에서 서비스 별로 3개의 커넥션을 만들고 접속합니다. 3개 서비스는 다음 이미지와 같이 각각 다른 서비스를 선택하여 구성합니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/adb/provisioning/105.jpg?classes=border,shadow" alt="" /></p>
-
-<p>능의 차이점을 비교하여 실습을 진행하기 위해서 demoadw_log, demoadw_medium, demoadw_high 데이터베이스 서비스에 로그인하여 성능 비교 테스트를 진행합니다. 이 테스트는 ADW 인스턴스에 기본 포함되어 있는 SH와 SSB 스키마 데이터 셋을 이용해 테스트를 진행합니다. SSH 스키마에는 60억 건의 1TB 테이블과 다수의 디멘션 테이블이 포함되어 있습니다.</p>
-
-<pre><code>select /*+ no_result_cache */ c_city,c_region,count(*) 
-from ssb.customer c_low
-group by c_city,c_region
-order by count(*);
-</code></pre>
-
-<p>쿼리를 실행할 때 캐쉬를 사용하지 못하도록 강제하기 위해서, 위 쿼리에 no_result_cache 힌트가 추가되어 있습니다</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/50.data_service/adb/adw/hands-on/sql_devleloper_web/" title="SQL Developer Web 접속"> <i class="fa fa-chevron-left"></i><label>SQL Developer Web 접속</label></a>
-    <a class="nav nav-next" href="/oci_docs/60_solutions/" title="OCI Services" style="margin-right: 0px;"><label>OCI Services</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/apex/" title="APEX 서비스"> <i class="fa fa-chevron-left"></i><label>APEX 서비스</label></a>
+    <a class="nav nav-next" href="/oci_docs/50.data_service/adb/adw/hands-on/performance/" title="ADW 지원 툴" style="margin-right: 0px;"><label>ADW 지원 툴</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -1049,7 +1025,7 @@ order by count(*);
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/50.data_service/adb/adw/hands-on/query_with_each_service/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/oml/"></div>
   </div>
 
   </section>
@@ -1064,7 +1040,7 @@ order by count(*);
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 16/03/2020
+        <i class='fa fa-calendar'></i> Last update on 18/03/2020
     </div>
     
   </div>

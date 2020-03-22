@@ -183,17 +183,6 @@
     </item>
     
     <item>
-      <title>ADW 관리자 비밀번호 재설정</title>
-      <link>/oci_docs/50.data_service/adb/adw/hands-on/reset_password_4_admin/</link>
-      <pubDate>Wed, 11 Mar 2020 08:54:32 +0900</pubDate>
-      
-      <guid>/oci_docs/50.data_service/adb/adw/hands-on/reset_password_4_admin/</guid>
-      <description>ADW 인스턴스를 관리하기 위해서 사용하는 ADW 인스턴스 관리자 계정의 패스워드를 재설정하는 과정을 소개합니다. ADW 인스턴스의 기본 관리자 예정은 admin입니다. admin 계정의 패스워드 변경 절차를 정리합니다.
-이 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 진행합니다. 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다. 마지막으로 ADW 인스턴스가 프로비저닝된 상태라고 가정합니다. ADW 인스턴스가 준비돼있지 않다면 다음 문서를 참조하시기 바랍니다.
- OCI FREE TIER 계정 등록 Free Tier 계정 로그인 ADW 인스턴스 생성  ADW 인스턴스 관리 페이지로 이동 admin 비밀번호를 변경하기 위해서 대상 ADW 인스턴스의 상세 페이지로 이동합니다.</description>
-    </item>
-    
-    <item>
       <title>3개 Compte 인스턴스 생성</title>
       <link>/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_3vm/</link>
       <pubDate>Thu, 19 Mar 2020 01:14:00 +0900</pubDate>
@@ -246,17 +235,6 @@
       <description>Oracle Cloud를 새로 접하시는 분들을 위하여 Oracle Cloud에서 자주 사용하는 Oracle Cloud 핵심 용어를 간단하게 정리합니다.
 이번 문서는 다음과 같은 목차로 구성됩니다.
  OCI 주요 용어  Oracle Cloud Infrastructure 리전(Region)과 AD(Availability Domains) OCI 콘솔(Console) Tenancy(테넌시) Compartment(컴파트먼트) Virtual Cloud Network(VCN) Bare Metal Host Instance(인스턴스) Image(이미지) Shape Key Pair 블록 볼륨(BLOCK VOLUME) Object Storage 버킷(BUCKET) OCID(ORACLE CLOUD IDENTIFIER)  참고 문서    OCI 주요 용어 OCI이 완전 입문자를 위하여 Oracle Cloud에서 자주 사용되는 용어를 정리합니다.</description>
-    </item>
-    
-    <item>
-      <title>ADW Scale Up&amp;Down</title>
-      <link>/oci_docs/50.data_service/adb/adw/hands-on/scale_up_and_sacle_down/</link>
-      <pubDate>Wed, 11 Mar 2020 08:54:32 +0900</pubDate>
-      
-      <guid>/oci_docs/50.data_service/adb/adw/hands-on/scale_up_and_sacle_down/</guid>
-      <description>ADW 인스턴스는 Sacle Up과 Scacle Down을 지원합니다. ADW 인스턴스에서 상세 페이지에서 ADW 인스턴스의 CPU와 스토리지를 조정할 수 있습니다. ADW 인스턴스의 Scale Up &amp;amp; Down은 ADW 인스턴스 서비스 중단없이 진행됩니다.
-이 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상태이며, ADW 인스턴스인 DemoADW를 프로비저닝한 상황을 가정하고 진행합니다. 문서가 가정하는 상황이 아니라면 다음 문서를 참조하여 사전 준비를 마치시기 바랍니다.
- OCI FREE TIER 계정 등록 Free Tier 계정 로그인 Compartment 추가 ADW 인스턴스 생성  OCI ADW 인스턴스를 Scale Up &amp;amp; Down 실습은 다음과 같은 목차로 진행 됩니다.</description>
     </item>
     
     <item>
@@ -347,6 +325,17 @@ bash -c \ &amp;gt; &amp;quot;$(curl -L https://raw.githubusercontent.com/oracle/
     </item>
     
     <item>
+      <title>인스턴스 Scale Up/Dwon</title>
+      <link>/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_scale_management/</link>
+      <pubDate>Thu, 19 Mar 2020 08:54:32 +0900</pubDate>
+      
+      <guid>/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_scale_management/</guid>
+      <description>ADW 인스턴스는 Sacle Up과 Scacle Down을 지원합니다. ADW 인스턴스에서 상세 페이지에서 ADW 인스턴스의 CPU와 스토리지를 조정할 수 있습니다. ADW 인스턴스의 Scale Up &amp;amp; Down은 ADW 인스턴스 서비스 중단없이 진행됩니다.
+ADW 자원 할당 관리 ADW 인스턴스의 Scale Up/Down 실습은 다음과 같은 목차로 진행됩니다.
+ ADW 자원 할당 관리  사전 준비 사항 실습 1: ADW Sacle Up: OCI COnsole ADW Scale Up/Down: OCI CLI  사전 준비 사항 ADW Scale Dwon: OCI CLI 명령</description>
+    </item>
+    
+    <item>
       <title>OCI Load Balancer 프로비저닝</title>
       <link>/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_load_balancer/</link>
       <pubDate>Thu, 19 Mar 2020 03:52:00 +0900</pubDate>
@@ -358,10 +347,10 @@ bash -c \ &amp;gt; &amp;quot;$(curl -L https://raw.githubusercontent.com/oracle/
     
     <item>
       <title>SQL Developer: 설정 및 접속</title>
-      <link>/oci_docs/50.data_service/adb/adw/hands-on/sqldeveloper/</link>
+      <link>/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/sqldeveloper/</link>
       <pubDate>Mon, 16 Mar 2020 08:54:32 +0900</pubDate>
       
-      <guid>/oci_docs/50.data_service/adb/adw/hands-on/sqldeveloper/</guid>
+      <guid>/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/sqldeveloper/</guid>
       <description>이번 문서는 오라클 클라우드 Free Tier 계정에 ADW 인스턴스를 만들었다는 전제로 진행합니다. 현재 ADW 인스턴스가 없다면, 다음 문서를 참조하여 ADW 인스턴스(DemoADW)를 만드시기 바랍니다.
  ADW 인스턴스 생성     이번 문서에서는 Oracle SQL Developer로 ADW 인스턴스에 연결하는 설정을 구성하는 절차를 소개합니다. 다음과 같은 목차로 진행 됩니다.
  SQL Developer의 ADW 접속 설정  ADW Wallet 다운로드 Wallet 파일 구성 Oracle SQL Developer 설정 Oracle SQL Developer 접속</description>
@@ -413,12 +402,23 @@ Let&amp;rsquo;s consider a scenario where a data producer puts 500 records per s
     
     <item>
       <title>SQL Developer Web 접속</title>
-      <link>/oci_docs/50.data_service/adb/adw/hands-on/sql_devleloper_web/</link>
+      <link>/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/sql_devleloper_web/</link>
       <pubDate>Fri, 20 Mar 2020 08:54:32 +0900</pubDate>
       
-      <guid>/oci_docs/50.data_service/adb/adw/hands-on/sql_devleloper_web/</guid>
-      <description>OCI ADW 인스턴스에 접근하여 데이터베이스 작업을 진행할 때 일반적으로 사용자 컴퓨터에 Oracle SQL Developer를 설치하고 ADW 인스턴스에 접속하여 작업을 진행합니다. OCI ADW는 Oracle SQL Developer의 웹 버전인 SQL Develoepr Web을 제공합니다. 별도 설치와 설정이 필요 없고 ADW 인스턴스 사용자 계정(DB User)로 로그인하고 바로 설정할 수 있다는 것이 강점입니다. 이 문서에서는 SQL Develoepr Web을 접근법과 주요 기능을 살펴보겠습니다.
-이번 문서는 오라클 클라우드 Free Tier 계정에 ADW 인스턴스를 만들었다는 전제로 진행합니다. 현재 ADW 인스턴스가 없다면, 다음 문서를 참조하여 ADW 인스턴스(DemoADW)를 만드시기 바랍니다.</description>
+      <guid>/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/sql_devleloper_web/</guid>
+      <description>OCI ADW 인스턴스에 접근하여 데이터베이스 작업을 진행할 때 일반적으로 사용자 컴퓨터에 Oracle SQL Developer를 설치하고 ADW 인스턴스에 접속하여 작업을 진행합니다. OCI ADW는 Oracle SQL Developer의 웹 버전인 SQL Develoepr Web을 인스턴스 툴로 제공합니다. 별도 설치와 설정이 필요 없고 ADW 인스턴스 사용자 계정(DB User)로 로그인하고 바로 설정할 수 있다는 것이 강점입니다. 이 문서에서는 SQL Develoepr Web을 접근법과 주요 기능을 살펴보겠습니다.
+이번 문서는 오라클 클라우드 Free Tier 계정에 ADW 인스턴스를 만들었다는 전제로 진행합니다.</description>
+    </item>
+    
+    <item>
+      <title>ADW 관리자 비밀번호 재설정</title>
+      <link>/oci_docs/50.data_service/adb/adw/hands-on/basic_management/reset_password_4_admin/</link>
+      <pubDate>Wed, 11 Mar 2020 08:54:32 +0900</pubDate>
+      
+      <guid>/oci_docs/50.data_service/adb/adw/hands-on/basic_management/reset_password_4_admin/</guid>
+      <description>ADW 인스턴스를 관리하기 위해서 사용하는 ADW 인스턴스 관리자 계정의 패스워드를 재설정하는 과정을 소개합니다. ADW 인스턴스의 기본 관리자 예정은 admin입니다. admin 계정의 패스워드 변경 절차를 정리합니다.
+이 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 진행합니다. 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다. 마지막으로 ADW 인스턴스가 프로비저닝된 상태라고 가정합니다. ADW 인스턴스가 준비돼있지 않다면 다음 문서를 참조하시기 바랍니다.
+ OCI FREE TIER 계정 등록 Free Tier 계정 로그인 ADW 인스턴스 생성  ADW 인스턴스 관리 페이지로 이동 admin 비밀번호를 변경하기 위해서 대상 ADW 인스턴스의 상세 페이지로 이동합니다.</description>
     </item>
     
     <item>
@@ -442,15 +442,14 @@ Let&amp;rsquo;s consider a scenario where a data producer puts 500 records per s
     </item>
     
     <item>
-      <title>ADW 서비스 별 쿼리 성능</title>
-      <link>/oci_docs/50.data_service/adb/adw/hands-on/query_with_each_service/</link>
-      <pubDate>Mon, 16 Mar 2020 08:54:32 +0900</pubDate>
+      <title>APEX 서비스</title>
+      <link>/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/apex/</link>
+      <pubDate>Fri, 20 Mar 2020 08:54:32 +0900</pubDate>
       
-      <guid>/oci_docs/50.data_service/adb/adw/hands-on/query_with_each_service/</guid>
-      <description>이번 문서는 오라클 클라우드 Free Tier 계정에 ADW 인스턴스를 만들었다는 전제로 진행합니다. 현재 ADW 인스턴스가 없다면, 다음 문서를 참조하여 ADW 인스턴스(DemoADW)를 만드시기 바랍니다.
- ADW 인스턴스 생성     이번 문서에서는 OCI ADW 인스턴스는 사전에 정의된 3개의 서비스를 제공합니다. 3개 서비스에서 동일한 쿼리를 수행하고 결과를 비교해 보겠습니다. 이 문서는 다음과 같은 순서로 진행합니다.
- ADW 사전 정의 서비스 서비스 별 쿼리 실행 시간 비교  
- ADW 사전 정의 서비스 ADW 인스턴스가 제공하는 Wallet 파일에 포함된 tnsnames.</description>
+      <guid>/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/apex/</guid>
+      <description>Oracle Application Express(APEX)는 어디든 배치할 수 있는 안전하고 확장성을 갖춘 엔터프라이즈 앱을 구축 로우코드 개발 플랫폼입니다. ADW는 자체 서비스로 APEX를 제공합니다. 이 문서에서는 APEX 개발 환경 접속 방법을 정리합니다.
+이번 문서는 오라클 클라우드 Free Tier 계정에 ADW 인스턴스를 만들었다는 전제로 진행합니다. 현재 ADW 인스턴스가 없다면, 다음 문서를 참조하여 ADW 인스턴스(DemoADW)를 만드시기 바랍니다.
+ ADW 인스턴스 생성     이번 문서에서는 ADW에서 제공하는 APEX 서비스에 대하여 접속 방법과 간단한 예제 애플리케이션 개발 절차를 소개합니다.</description>
     </item>
     
     <item>
@@ -500,6 +499,17 @@ Let&amp;rsquo;s consider a scenario where a data producer puts 500 records per s
       <guid>/oci_docs/30_core_infrastructure/compute/provisioning/oci_ai_datascience_image/</guid>
       <description>이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.
  OCI FREE TIER 계정 등록 Free Tier 계정 로그인  이번 문서에서는 Oracle이 제공하는 AI Datascience 로 Compute VM을 생성하는 절차를 소개합니다. 이 이미지의 정식 이름은 &amp;ldquo;Oracle Linux 7 Image for AI/ML/DL Workloads&amp;ldquo;입니다. 이 AI DatascienceOracle Cloud Developer Image으로 OCI Linux VM 인스턴스를 생성하는 문서는 다음과 같은 목차로 진행 됩니다.</description>
+    </item>
+    
+    <item>
+      <title>ADW 서비스 별 쿼리 성능</title>
+      <link>/oci_docs/50.data_service/adb/adw/hands-on/performance/query_with_each_service/</link>
+      <pubDate>Mon, 16 Mar 2020 08:54:32 +0900</pubDate>
+      
+      <guid>/oci_docs/50.data_service/adb/adw/hands-on/performance/query_with_each_service/</guid>
+      <description>ADW는 데이터베이스에 접속하여 SQL과 Stored Procedure를 실행할 때 자원을 할당 정책을 정의하는 3개의 기본 서비스를 제공합니다. 사용하는 서비스에 따라서 동일한 쿼리를 수행할 때 할당되는 자원이 달라집니다. 이 문서에서는 4개 OCPU가 할당된 ADW 인스턴스에서 low 서비스와 high 서비스에 동일한 SQL을 수행하고 처리 시간이 달라지는 실험을 진행하겠습니다.
+이번 문서는 오라클 클라우드 Free Tier 계정에 ADW 인스턴스를 만들었다는 전제로 진행합니다. 현재 ADW 인스턴스가 없다면, 다음 문서를 참조하여 ADW 인스턴스(DemoADW)를 만드시기 바랍니다.
+ ADW 인스턴스 생성     OCI ADW 인스턴스는 사전에 정의된 3개의 서비스를 제공합니다.</description>
     </item>
     
     <item>
