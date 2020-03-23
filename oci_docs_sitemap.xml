@@ -272,11 +272,6 @@
   </url>
   
   <url>
-    <loc>/oci_docs/98_misc_tips/tools/</loc>
-    <lastmod>2020-03-16T08:54:32+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/oci_docs/30_core_infrastructure/object_storage/</loc>
   </url>
   
@@ -294,6 +289,11 @@
   
   <url>
     <loc>/oci_docs/80_oci_tools/oci_cli/manual_installation/</loc>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/98_misc_tips/tools/</loc>
+    <lastmod>2020-03-16T08:54:32+09:00</lastmod>
   </url>
   
   <url>
