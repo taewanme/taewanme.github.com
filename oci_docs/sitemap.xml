@@ -8,8 +8,13 @@
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/adb/adw/hands-on/</loc>
+    <loc>/oci_docs/50.database_service/adb/adw/hands-on/</loc>
     <lastmod>2020-03-18T11:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/50.database_service/adb/adw/hands-on/performance/query_with_each_service/</loc>
+    <lastmod>2020-03-16T08:54:32+09:00</lastmod>
   </url>
   
   <url>
@@ -18,12 +23,12 @@
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/streaming/</loc>
+    <loc>/oci_docs/50.database_service/streaming/</loc>
     <lastmod>2020-03-15T08:54:32+09:00</lastmod>
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/streaming/overview/</loc>
+    <loc>/oci_docs/50.database_service/streaming/overview/</loc>
     <lastmod>2020-03-15T08:54:32+09:00</lastmod>
   </url>
   
@@ -33,12 +38,12 @@
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/adb/adw/hands-on/basic_adw_provisioning/</loc>
+    <loc>/oci_docs/50.database_service/adb/adw/hands-on/basic_adw_provisioning/</loc>
     <lastmod>2020-03-11T08:54:32+09:00</lastmod>
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_start_and_stop/</loc>
+    <loc>/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_start_and_stop/</loc>
     <lastmod>2020-03-11T08:54:32+09:00</lastmod>
   </url>
   
@@ -63,7 +68,7 @@
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/adb/adw/</loc>
+    <loc>/oci_docs/50.database_service/adb/adw/</loc>
   </url>
   
   <url>
@@ -71,15 +76,15 @@
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/adb/</loc>
+    <loc>/oci_docs/50.database_service/adb/</loc>
   </url>
   
   <url>
-    <loc>/oci_docs/60_solutions/data_flow/</loc>
+    <loc>/oci_docs/70_solutions/data_flow/</loc>
   </url>
   
   <url>
-    <loc>/oci_docs/60_solutions/functions/</loc>
+    <loc>/oci_docs/70_solutions/functions/</loc>
   </url>
   
   <url>
@@ -128,7 +133,17 @@
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/adb/adw/hands-on/basic_management/</loc>
+    <loc>/oci_docs/98_misc_tips/tools/windows10_window_subsystem/</loc>
+    <lastmod>2020-03-21T08:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/98_misc_tips/tools/management_of_java_tools_with_sdkman/</loc>
+    <lastmod>2020-03-21T08:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/50.database_service/adb/adw/hands-on/basic_management/</loc>
     <lastmod>2020-03-20T11:54:32+09:00</lastmod>
   </url>
   
@@ -143,7 +158,7 @@
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_start_and_stop_with_ocicli/</loc>
+    <loc>/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_start_and_stop_with_ocicli/</loc>
     <lastmod>2020-03-18T08:54:32+09:00</lastmod>
   </url>
   
@@ -166,7 +181,7 @@
   </url>
   
   <url>
-    <loc>/oci_docs/60_solutions/data_catalog/</loc>
+    <loc>/oci_docs/70_solutions/data_catalog/</loc>
   </url>
   
   <url>
@@ -206,11 +221,16 @@
   </url>
   
   <url>
-    <loc>/oci_docs/60_solutions/data_catalog/glossary/</loc>
+    <loc>/oci_docs/70_solutions/data_catalog/glossary/</loc>
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_scale_management/</loc>
+    <loc>/oci_docs/60.data_and_ai_service/data_flow/</loc>
+    <lastmod>2020-03-21T08:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_scale_management/</loc>
     <lastmod>2020-03-19T08:54:32+09:00</lastmod>
   </url>
   
@@ -220,17 +240,17 @@
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/</loc>
+    <loc>/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/</loc>
     <lastmod>2020-03-18T11:54:32+09:00</lastmod>
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/adb/adw/hands-on/performance/</loc>
+    <loc>/oci_docs/50.database_service/adb/adw/hands-on/performance/</loc>
     <lastmod>2020-03-18T11:54:32+09:00</lastmod>
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/sqldeveloper/</loc>
+    <loc>/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/sqldeveloper/</loc>
     <lastmod>2020-03-16T08:54:32+09:00</lastmod>
   </url>
   
@@ -269,7 +289,7 @@
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/streaming/pricing/</loc>
+    <loc>/oci_docs/50.database_service/streaming/pricing/</loc>
   </url>
   
   <url>
@@ -277,12 +297,12 @@
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/sql_devleloper_web/</loc>
+    <loc>/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/sql_devleloper_web/</loc>
     <lastmod>2020-03-20T08:54:32+09:00</lastmod>
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/adb/adw/hands-on/basic_management/reset_password_4_admin/</loc>
+    <loc>/oci_docs/50.database_service/adb/adw/hands-on/basic_management/reset_password_4_admin/</loc>
     <lastmod>2020-03-11T08:54:32+09:00</lastmod>
   </url>
   
@@ -303,7 +323,7 @@
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/apex/</loc>
+    <loc>/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/apex/</loc>
     <lastmod>2020-03-20T08:54:32+09:00</lastmod>
   </url>
   
@@ -317,6 +337,10 @@
   </url>
   
   <url>
+    <loc>/oci_docs/50.database_service/</loc>
+  </url>
+  
+  <url>
     <loc>/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/</loc>
   </url>
   
@@ -325,15 +349,16 @@
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/</loc>
+    <loc>/oci_docs/50.database_service/streaming/terminology/</loc>
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/streaming/terminology/</loc>
+    <loc>/oci_docs/60.data_and_ai_service/</loc>
+    <lastmod>2020-03-21T08:54:32+09:00</lastmod>
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/oml/</loc>
+    <loc>/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/oml/</loc>
     <lastmod>2020-03-18T11:54:32+09:00</lastmod>
   </url>
   
@@ -342,7 +367,7 @@
   </url>
   
   <url>
-    <loc>/oci_docs/60_solutions/</loc>
+    <loc>/oci_docs/70_solutions/</loc>
   </url>
   
   <url>
@@ -350,7 +375,7 @@
   </url>
   
   <url>
-    <loc>/oci_docs/50.data_service/adb/adw/hands-on/performance/query_with_each_service/</loc>
+    <loc>/oci_docs/50.database_service/adb/adw/hands-on/performance/query_of_adw_with_different_ocpu/</loc>
     <lastmod>2020-03-16T08:54:32+09:00</lastmod>
   </url>
   

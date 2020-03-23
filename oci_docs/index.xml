@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>ADW 서비스 별 쿼리 성능</title>
+      <link>/oci_docs/50.database_service/adb/adw/hands-on/performance/query_with_each_service/</link>
+      <pubDate>Mon, 16 Mar 2020 08:54:32 +0900</pubDate>
+      
+      <guid>/oci_docs/50.database_service/adb/adw/hands-on/performance/query_with_each_service/</guid>
+      <description>ADW는 데이터베이스에 접속하여 SQL과 Stored Procedure를 실행할 때 자원을 할당 정책을 정의하는 3개의 기본 서비스를 제공합니다. 사용하는 서비스에 따라서 동일한 쿼리를 수행할 때 할당되는 자원이 달라집니다. 이 문서에서는 4개 OCPU가 할당된 ADW 인스턴스에서 low 서비스와 high 서비스에 동일한 SQL을 수행하고 처리 시간이 달라지는 실험을 진행하겠습니다.
+이번 문서는 오라클 클라우드 Free Tier 계정에 ADW 인스턴스를 만들었다는 전제로 진행합니다. 현재 ADW 인스턴스가 없다면, 다음 문서를 참조하여 ADW 인스턴스(DemoADW)를 만드시기 바랍니다.
+ ADW 인스턴스 생성     OCI ADW 인스턴스는 사전에 정의된 3개의 서비스를 제공합니다.</description>
+    </item>
+    
+    <item>
       <title>SQL Developer 설치: Mac OS X</title>
       <link>/oci_docs/98_misc_tips/tools/install_sqldeveloper/</link>
       <pubDate>Mon, 16 Mar 2020 08:54:32 +0900</pubDate>
@@ -24,10 +35,10 @@
     
     <item>
       <title>Streaming 서비스</title>
-      <link>/oci_docs/50.data_service/streaming/overview/</link>
+      <link>/oci_docs/50.database_service/streaming/overview/</link>
       <pubDate>Sun, 15 Mar 2020 08:54:32 +0900</pubDate>
       
-      <guid>/oci_docs/50.data_service/streaming/overview/</guid>
+      <guid>/oci_docs/50.database_service/streaming/overview/</guid>
       <description>OCI Streaming 제약 사항 OCI Streaming은 다음과 같은 제약을 갖습니다.
  메시지가 스트림에 저장되는 최대 기간: 7일 단일 메시지 최대 사이즈: 1MB 각 파티션은 최대 초당 1MB의 데이터를 처리할 수 있음 각 파티션은 최대 초당 5 번 Read API 호출을 처리와 1MB의 저장을 처리 각 파티셔은 최대 초당 읽기 2MB와 초당 쓰기 1MB를 처리 각 테넌시는 5개 파티션 제약 설정이 되어 있음, 필요시 Resource 증설 요청 (SR)  API에서 파이션은 문자열로 표시됨 5개 파이션을 갖는 스트림을 생성할 때, - 스트링은 - &amp;ldquo;0&amp;rdquo; - &amp;ldquo;1&amp;rdquo; - &amp;ldquo;2&amp;rdquo; - &amp;ldquo;3&amp;rdquo; - &amp;ldquo;4&amp;rdquo; - &amp;ldquo;5&amp;rdquo;</description>
     </item>
@@ -45,10 +56,10 @@
     
     <item>
       <title>ADW 인스턴스 생성</title>
-      <link>/oci_docs/50.data_service/adb/adw/hands-on/basic_adw_provisioning/</link>
+      <link>/oci_docs/50.database_service/adb/adw/hands-on/basic_adw_provisioning/</link>
       <pubDate>Wed, 11 Mar 2020 08:54:32 +0900</pubDate>
       
-      <guid>/oci_docs/50.data_service/adb/adw/hands-on/basic_adw_provisioning/</guid>
+      <guid>/oci_docs/50.database_service/adb/adw/hands-on/basic_adw_provisioning/</guid>
       <description>ADW는 Autonomous Databas의 DW 타입 서비스입니다. ADW는 완전 관리형 서비스이며 기본 PaaS 서비스와 비교해서 더 높은 수준의 자율 운영성을 제공하는 서비스입니다. 이번 문서에서는 OCI Console에서 Autonomous Database 인스턴스(ADW 타입)를 생성하는 기본 절차를 소개합니다.
 이 문서는 오라클 클라우드 Free Tier 계정을 생성했고 로그인한 상태라는 가정으로 진행합니다. 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.
   OCI FREE TIER 계정 등록 Free Tier 계정 로그인  이 문서를 진행하기 위해서는 추가로 다음 자원이 준비되어 있어야 합니다.</description>
@@ -56,10 +67,10 @@
     
     <item>
       <title>인스턴스 기본 조작: Console</title>
-      <link>/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_start_and_stop/</link>
+      <link>/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_start_and_stop/</link>
       <pubDate>Wed, 11 Mar 2020 08:54:32 +0900</pubDate>
       
-      <guid>/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_start_and_stop/</guid>
+      <guid>/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_start_and_stop/</guid>
       <description>ADW 기본 관리 ADW 인스턴스를 시작, 종료 및 삭제하는 실습은 다음과 같은 목차로 진행됩니다.
  ADW 기본 관리  ADW 상세 페이지 이동 ADW 인스턴스 시작 ADW 인스턴스 종료 ADW 인스턴스 제거   
  ADW 상세 페이지 이동 OCI 콘솔의 ADW 인스턴스 상세 페이지에서 ADW 인스턴스를 시작하고 종료할 수 있습니다. 다음 메뉴 패스를 통해서 DemoAdw ADW 인스턴스 상세 페이지로 이동합니다.
@@ -183,6 +194,28 @@
     </item>
     
     <item>
+      <title>Window Subsystem 설치</title>
+      <link>/oci_docs/98_misc_tips/tools/windows10_window_subsystem/</link>
+      <pubDate>Sat, 21 Mar 2020 08:54:32 +0900</pubDate>
+      
+      <guid>/oci_docs/98_misc_tips/tools/windows10_window_subsystem/</guid>
+      <description>문서 작성중입니다.
+자체 문서를 작설할 때 까지 Window Subsystem 설치 가이드로 다음 문서를 참조하시기 바라비다.
+ https://docs.microsoft.com/ko-kr/windows/wsl/install-win10  </description>
+    </item>
+    
+    <item>
+      <title>sdkman로 자바환경 관리</title>
+      <link>/oci_docs/98_misc_tips/tools/management_of_java_tools_with_sdkman/</link>
+      <pubDate>Sat, 21 Mar 2020 08:54:32 +0900</pubDate>
+      
+      <guid>/oci_docs/98_misc_tips/tools/management_of_java_tools_with_sdkman/</guid>
+      <description>문서 작성중입니다.
+자체 문서를 작설할 때 까지 Window Subsystem 설치 가이드로 다음 문서를 참조하시기 바라비다.
+ https://docs.microsoft.com/ko-kr/windows/wsl/install-win10  </description>
+    </item>
+    
+    <item>
       <title>3개 Compte 인스턴스 생성</title>
       <link>/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_3vm/</link>
       <pubDate>Thu, 19 Mar 2020 01:14:00 +0900</pubDate>
@@ -205,10 +238,10 @@
     
     <item>
       <title>인스턴스 기본 조작: OCI CLI</title>
-      <link>/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_start_and_stop_with_ocicli/</link>
+      <link>/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_start_and_stop_with_ocicli/</link>
       <pubDate>Wed, 18 Mar 2020 08:54:32 +0900</pubDate>
       
-      <guid>/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_start_and_stop_with_ocicli/</guid>
+      <guid>/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_start_and_stop_with_ocicli/</guid>
       <description>ADW 기본 관리 ADW 인스턴스를 OCI CLI로 시작, 종료 및 삭제하는 실습은 다음과 같은 목차로 진행됩니다.
  ADW 기본 관리  사전 준비 사항 ADW 인스턴스 상태 확인 ADW 인스턴스 시작 ADW 인스턴스 종료 ADW 인스턴스 제거   
  사전 준비 사항 OCI CLI 설치와 설정이 되어 있어야합니다. OCI CLI 설치와 설정이 필요하다면 다음 문서를 첨조해서 준비하시기 바랍니다.
@@ -316,20 +349,20 @@ bash -c \ &amp;gt; &amp;quot;$(curl -L https://raw.githubusercontent.com/oracle/
     
     <item>
       <title>용어정리</title>
-      <link>/oci_docs/60_solutions/data_catalog/glossary/</link>
+      <link>/oci_docs/70_solutions/data_catalog/glossary/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/oci_docs/60_solutions/data_catalog/glossary/</guid>
+      <guid>/oci_docs/70_solutions/data_catalog/glossary/</guid>
       <description>Data Catalog는 데이터 거버넌스(Data Governance)를 지원하는 서비스입니다. 따라서 데이터 거버넌스 분야에 사용되는 용어가 다수 사용됩니다. 이 문서에서는 다음과 같은 데이터 거버넌스(Data Governance)와 Data Catalog 서비스에서 사용되는 용어를 먼저 정리힙니다.
  Data Governance Data Havest(Data Havesting) Data Steward Technical Metadata     Data Governance 용어 참조  http://www.datagovernance.com/glossary-governance/   Data Governance Data Governance란 기업에서 가치 있는 양질의 데이터를 지속적으로 발굴하고 관리하여 비즈니스 자산으로 활용하기 위한 데이터 통합 관리 체계다.</description>
     </item>
     
     <item>
       <title>인스턴스 Scale Up/Dwon</title>
-      <link>/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_scale_management/</link>
+      <link>/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_scale_management/</link>
       <pubDate>Thu, 19 Mar 2020 08:54:32 +0900</pubDate>
       
-      <guid>/oci_docs/50.data_service/adb/adw/hands-on/basic_management/instance_scale_management/</guid>
+      <guid>/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_scale_management/</guid>
       <description>ADW 인스턴스는 Sacle Up과 Scacle Down을 지원합니다. ADW 인스턴스에서 상세 페이지에서 ADW 인스턴스의 CPU와 스토리지를 조정할 수 있습니다. ADW 인스턴스의 Scale Up &amp;amp; Down은 ADW 인스턴스 서비스 중단없이 진행됩니다.
 ADW 자원 할당 관리 ADW 인스턴스의 Scale Up/Down 실습은 다음과 같은 목차로 진행됩니다.
  ADW 자원 할당 관리  사전 준비 사항 실습 1: ADW Sacle Up: OCI COnsole ADW Scale Up/Down: OCI CLI  사전 준비 사항 ADW Scale Dwon: OCI CLI 명령</description>
@@ -347,10 +380,10 @@ ADW 자원 할당 관리 ADW 인스턴스의 Scale Up/Down 실습은 다음과 �
     
     <item>
       <title>SQL Developer: 설정 및 접속</title>
-      <link>/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/sqldeveloper/</link>
+      <link>/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/sqldeveloper/</link>
       <pubDate>Mon, 16 Mar 2020 08:54:32 +0900</pubDate>
       
-      <guid>/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/sqldeveloper/</guid>
+      <guid>/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/sqldeveloper/</guid>
       <description>이번 문서는 오라클 클라우드 Free Tier 계정에 ADW 인스턴스를 만들었다는 전제로 진행합니다. 현재 ADW 인스턴스가 없다면, 다음 문서를 참조하여 ADW 인스턴스(DemoADW)를 만드시기 바랍니다.
  ADW 인스턴스 생성     이번 문서에서는 Oracle SQL Developer로 ADW 인스턴스에 연결하는 설정을 구성하는 절차를 소개합니다. 다음과 같은 목차로 진행 됩니다.
  SQL Developer의 ADW 접속 설정  ADW Wallet 다운로드 Wallet 파일 구성 Oracle SQL Developer 설정 Oracle SQL Developer 접속</description>
@@ -381,10 +414,10 @@ CloudHarmony 서비스는 사용자 브라우저에서 지정한 클러우드 �
     
     <item>
       <title>Streaming 서비스 가격 모델</title>
-      <link>/oci_docs/50.data_service/streaming/pricing/</link>
+      <link>/oci_docs/50.database_service/streaming/pricing/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/oci_docs/50.data_service/streaming/pricing/</guid>
+      <guid>/oci_docs/50.database_service/streaming/pricing/</guid>
       <description>OCI Streaming 서비스의 가격 모델 원친은 PAYG(Pay-as-You-Go, 사용 기준 과금 모델)입니다. Streaming 서비스에 대한 선불 금액이나 최소 비용은 없습니다. 오로지 자원을 사용한 만큼 비용으로 계산됩니다.
 GET/PUT request price (GigaBytes of data transferred) Please refer to the pricing guide for actual pricing of OCI Streaming.
 Let&amp;rsquo;s consider a scenario where a data producer puts 500 records per second in aggregate and each record is 2kB. The customer wants to egress/retrieve data at a rate twice that of ingress.</description>
@@ -402,20 +435,20 @@ Let&amp;rsquo;s consider a scenario where a data producer puts 500 records per s
     
     <item>
       <title>SQL Developer Web 접속</title>
-      <link>/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/sql_devleloper_web/</link>
+      <link>/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/sql_devleloper_web/</link>
       <pubDate>Fri, 20 Mar 2020 08:54:32 +0900</pubDate>
       
-      <guid>/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/sql_devleloper_web/</guid>
+      <guid>/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/sql_devleloper_web/</guid>
       <description>OCI ADW 인스턴스에 접근하여 데이터베이스 작업을 진행할 때 일반적으로 사용자 컴퓨터에 Oracle SQL Developer를 설치하고 ADW 인스턴스에 접속하여 작업을 진행합니다. OCI ADW는 Oracle SQL Developer의 웹 버전인 SQL Develoepr Web을 인스턴스 툴로 제공합니다. 별도 설치와 설정이 필요 없고 ADW 인스턴스 사용자 계정(DB User)로 로그인하고 바로 설정할 수 있다는 것이 강점입니다. 이 문서에서는 SQL Develoepr Web을 접근법과 주요 기능을 살펴보겠습니다.
 이번 문서는 오라클 클라우드 Free Tier 계정에 ADW 인스턴스를 만들었다는 전제로 진행합니다.</description>
     </item>
     
     <item>
       <title>ADW 관리자 비밀번호 재설정</title>
-      <link>/oci_docs/50.data_service/adb/adw/hands-on/basic_management/reset_password_4_admin/</link>
+      <link>/oci_docs/50.database_service/adb/adw/hands-on/basic_management/reset_password_4_admin/</link>
       <pubDate>Wed, 11 Mar 2020 08:54:32 +0900</pubDate>
       
-      <guid>/oci_docs/50.data_service/adb/adw/hands-on/basic_management/reset_password_4_admin/</guid>
+      <guid>/oci_docs/50.database_service/adb/adw/hands-on/basic_management/reset_password_4_admin/</guid>
       <description>ADW 인스턴스를 관리하기 위해서 사용하는 ADW 인스턴스 관리자 계정의 패스워드를 재설정하는 과정을 소개합니다. ADW 인스턴스의 기본 관리자 예정은 admin입니다. admin 계정의 패스워드 변경 절차를 정리합니다.
 이 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 진행합니다. 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다. 마지막으로 ADW 인스턴스가 프로비저닝된 상태라고 가정합니다. ADW 인스턴스가 준비돼있지 않다면 다음 문서를 참조하시기 바랍니다.
  OCI FREE TIER 계정 등록 Free Tier 계정 로그인 ADW 인스턴스 생성  ADW 인스턴스 관리 페이지로 이동 admin 비밀번호를 변경하기 위해서 대상 ADW 인스턴스의 상세 페이지로 이동합니다.</description>
@@ -443,10 +476,10 @@ Let&amp;rsquo;s consider a scenario where a data producer puts 500 records per s
     
     <item>
       <title>APEX 서비스</title>
-      <link>/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/apex/</link>
+      <link>/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/apex/</link>
       <pubDate>Fri, 20 Mar 2020 08:54:32 +0900</pubDate>
       
-      <guid>/oci_docs/50.data_service/adb/adw/hands-on/adw_tools/apex/</guid>
+      <guid>/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/apex/</guid>
       <description>Oracle Application Express(APEX)는 어디든 배치할 수 있는 안전하고 확장성을 갖춘 엔터프라이즈 앱을 구축 로우코드 개발 플랫폼입니다. ADW는 자체 서비스로 APEX를 제공합니다. 이 문서에서는 APEX 개발 환경 접속 방법을 정리합니다.
 이번 문서는 오라클 클라우드 Free Tier 계정에 ADW 인스턴스를 만들었다는 전제로 진행합니다. 현재 ADW 인스턴스가 없다면, 다음 문서를 참조하여 ADW 인스턴스(DemoADW)를 만드시기 바랍니다.
  ADW 인스턴스 생성     이번 문서에서는 ADW에서 제공하는 APEX 서비스에 대하여 접속 방법과 간단한 예제 애플리케이션 개발 절차를 소개합니다.</description>
@@ -484,10 +517,10 @@ Let&amp;rsquo;s consider a scenario where a data producer puts 500 records per s
     
     <item>
       <title>Streaming 주요 키워드</title>
-      <link>/oci_docs/50.data_service/streaming/terminology/</link>
+      <link>/oci_docs/50.database_service/streaming/terminology/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/oci_docs/50.data_service/streaming/terminology/</guid>
+      <guid>/oci_docs/50.database_service/streaming/terminology/</guid>
       <description>  Stream(스트림)  추가 전용 로그 파일 스트림에는 메시지가 저장됨 Kafka의 Topic과 같은 것 스트림은 한개 이상의 Partition으로 구성    Partition(파티션)  Stream은 여러개의 Partition으로 분할 각 Partition은 여러 노드(Broker)에 위치 Partition은 Stream을 분할하는 단위 여러 컨슈머는 Partition의 데이터를 읽어 병렬 처리 지원    Cursor(커서)  스트림의 위치를 나타내는 지시자 커서는 파이텬의 특정 오프셋 및 시간으로 나타냄 그룹의 현재 위치 지정에도 사용    Message(메시지)  스트림에 게시된(Published)된 데이터 Base64로 인코딩 됨    Producer(프로듀서)  스트림에 메시지를 게시하는 객체    Consumer(컨슈머)  스트림에서 메시지를 읽어가는 객체 하나 이상 존재 가능    Consumer Group(컨슈머 그룹)  컨슈머 그룹은 스트림에 모든 파티션으로부터 메시지 읽기 조정을 받는 인스턴스 집합 컨슈머 그룹의 인스턴스(컨슈머)는 Interaction을 통해서 그룹 멤버쉽을 유지 일정 기간 Interaction 부족할 경우에 그룹에서 인스턴스 제외    Topic / Key  관련 메시지를 그룹으로 만드는 구분자    Offset(오프셋)  파티션의 메시지 위치 스트림 읽기를 재시작할 때 offset을 지정   참조 문서  [OCI Official Docs]Streaming Service Overview     </description>
     </item>
     
@@ -502,14 +535,15 @@ Let&amp;rsquo;s consider a scenario where a data producer puts 500 records per s
     </item>
     
     <item>
-      <title>ADW 서비스 별 쿼리 성능</title>
-      <link>/oci_docs/50.data_service/adb/adw/hands-on/performance/query_with_each_service/</link>
+      <title>ADW OCPU와 쿼리 성능</title>
+      <link>/oci_docs/50.database_service/adb/adw/hands-on/performance/query_of_adw_with_different_ocpu/</link>
       <pubDate>Mon, 16 Mar 2020 08:54:32 +0900</pubDate>
       
-      <guid>/oci_docs/50.data_service/adb/adw/hands-on/performance/query_with_each_service/</guid>
-      <description>ADW는 데이터베이스에 접속하여 SQL과 Stored Procedure를 실행할 때 자원을 할당 정책을 정의하는 3개의 기본 서비스를 제공합니다. 사용하는 서비스에 따라서 동일한 쿼리를 수행할 때 할당되는 자원이 달라집니다. 이 문서에서는 4개 OCPU가 할당된 ADW 인스턴스에서 low 서비스와 high 서비스에 동일한 SQL을 수행하고 처리 시간이 달라지는 실험을 진행하겠습니다.
+      <guid>/oci_docs/50.database_service/adb/adw/hands-on/performance/query_of_adw_with_different_ocpu/</guid>
+      <description>ADW 인스턴스 COPU가 쿼리 실행 속도에 미치는 영향을 테스트해보겠습니다. OCPU 1개가 할당된 ADW 인스턴스와 OCPU 4개가 할당된 ADW 인스턴스에서 동일한 쿼리를 실행하고 실행 시간을 비교해 보겠습니다.
 이번 문서는 오라클 클라우드 Free Tier 계정에 ADW 인스턴스를 만들었다는 전제로 진행합니다. 현재 ADW 인스턴스가 없다면, 다음 문서를 참조하여 ADW 인스턴스(DemoADW)를 만드시기 바랍니다.
- ADW 인스턴스 생성     OCI ADW 인스턴스는 사전에 정의된 3개의 서비스를 제공합니다.</description>
+ ADW 인스턴스 생성     OCPU가 쿼리에 미치는 영향에 대한 실험은 다음과 같은 순서로 진행하겠습니다.
+ ADW 인스턴스 준비  테스트 쿼리 SQL 실행 테스트  테스트 결과</description>
     </item>
     
     <item>
