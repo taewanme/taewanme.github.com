@@ -138,11 +138,6 @@
   </url>
   
   <url>
-    <loc>/oci_docs/98_misc_tips/tools/management_of_java_tools_with_sdkman/</loc>
-    <lastmod>2020-03-21T08:54:32+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/oci_docs/50.database_service/adb/adw/hands-on/basic_management/</loc>
     <lastmod>2020-03-20T11:54:32+09:00</lastmod>
   </url>
@@ -226,6 +221,11 @@
   
   <url>
     <loc>/oci_docs/60.data_and_ai_service/data_flow/</loc>
+    <lastmod>2020-03-21T08:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/98_misc_tips/tools/management_of_java_tools_with_sdkman/</loc>
     <lastmod>2020-03-21T08:54:32+09:00</lastmod>
   </url>
   

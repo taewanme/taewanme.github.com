@@ -4,12 +4,12 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-03-23T11:31:08 KST">
+<meta name="revised" content="2020-03-23T14:38:27 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="sdkman로 자바환경 관리" />
-<meta property="og:description" content="Windows 10에서 리눅스용 Window Subsystem을 설치하는 방법을 정리합니다." />
+<meta property="og:title" content="sdkman 자바환경 관리 툴" />
+<meta property="og:description" content="sdk를 이용하여 Java 개발 환경을 관리하는 방법을 소개합니다." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/oci_docs/98_misc_tips/tools/management_of_java_tools_with_sdkman/" />
 
@@ -33,7 +33,7 @@
 
 
 
-<title>sdkman로 자바환경 관리 :: 오라클 클라우드 사용자 가이드</title>
+<title>sdkman 자바환경 관리 툴 :: 오라클 클라우드 사용자 가이드</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/oci_docs/css/font-awesome.min.css" rel="stylesheet">
@@ -45,7 +45,7 @@
 <script type="text/javascript">
       var baseurl = "\/oci_docs";
 </script>
-<meta name="description" content="Windows 10에서 리눅스용 Window Subsystem을 설치하는 방법을 정리합니다.">
+<meta name="description" content="sdk를 이용하여 Java 개발 환경을 관리하는 방법을 소개합니다.">
 
 
 <link href='/oci_docs/css/railload.css' rel="stylesheet"/>
@@ -743,14 +743,14 @@
       <li data-nav-id="/oci_docs/98_misc_tips/tools/windows10_window_subsystem/" class="dd-item">
         <div>
           <a href="/oci_docs/98_misc_tips/tools/windows10_window_subsystem/">
-            Window Subsystem 설치
+            리눅스 Windows Subsystem
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
       <li data-nav-id="/oci_docs/98_misc_tips/tools/management_of_java_tools_with_sdkman/" class="dd-item active">
         <div>
           <a href="/oci_docs/98_misc_tips/tools/management_of_java_tools_with_sdkman/">
-            sdkman로 자바환경 관리
+            sdkman 자바환경 관리 툴
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -896,8 +896,8 @@
   - 
    OCI 지원 툴 관련 Tip</option> 
       <option value="/oci_docs/98_misc_tips/tools/install_sqldeveloper/" >-- SQL Developer 설치: Mac OS X</option>
-      <option value="/oci_docs/98_misc_tips/tools/windows10_window_subsystem/" >-- Window Subsystem 설치</option>
-      <option value="/oci_docs/98_misc_tips/tools/management_of_java_tools_with_sdkman/"  selected>-- sdkman로 자바환경 관리</option>
+      <option value="/oci_docs/98_misc_tips/tools/windows10_window_subsystem/" >-- 리눅스 Windows Subsystem</option>
+      <option value="/oci_docs/98_misc_tips/tools/management_of_java_tools_with_sdkman/"  selected>-- sdkman 자바환경 관리 툴</option>
   
   
     <option value="/oci_docs/99_oci_sites/" >
@@ -933,30 +933,698 @@
         </script>
         <script type="text/javascript" src="/oci_docs/js/search.js"></script>
       </div>
-
-    <h1>sdkman로 자바환경 관리</h1>
+    <h1>sdkman 자바환경 관리 툴</h1>
     <div class="alert alert-info" role="alter">
       <li><strong>문서 생성일:</strong> 2020-03-21 08:54:32 &#43;0900 KST </li>
-   </div>      
+   </div>
+    <p><img src="https://taewanmerepo.github.io/2020/03/sdkman/000.jpg" alt="sdkman 자바환경 관리 툴"></p>
+
+
+     
       
   
     
     
     
-    <p>문서 작성중입니다.</p>
+    
 
-<p>자체 문서를 작설할 때 까지 Window Subsystem 설치 가이드로 다음 문서를 참조하시기 바라비다.</p>
+<p><strong>SDKMAN!</strong>은 자바 관련 개발 환경을 관리하는 툴입니다. <strong>SDkMAN!</strong>을 사용하면 자바 관련 여러 개발 툴 설치, 버전관리 및 업그레이드가 매우 편리합니다. SDKMAN은 Java를 비롯한 자바 툴(Maven, Ant, sbt, Spark, Spring Boot) 총 28개를 지원합니다. (2020.03.23일 기준)</p>
+
+<p><strong>SDKMAN!</strong> 설치, 설정 및 활용을 다루는 이 문서는 다음과 같은 목차로 진행됩니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-body"><p><nav id="TableOfContents">
+<ul>
+<li><a href="#sdkman-설치">SDKMAN! 설치</a>
+<ul>
+<li><a href="#sdkman-설치-환경-준비">SDkMAN! 설치 환경 준비</a></li>
+<li><a href="#sdkman-설치-1"><strong>SDkMAN!</strong> 설치</a></li>
+<li><a href="#설치된-sdkman-제거">설치된 <strong>SDkMAN!</strong> 제거</a></li>
+</ul></li>
+<li><a href="#sdkman-을-활용한-개발툴-관리">SDKMAN!을 활용한 개발툴 관리</a>
+<ul>
+<li><a href="#java-설치-및-버전-관리">Java  설치 및 버전 관리</a>
+<ul>
+<li><a href="#지원-java-목록-조회">지원 Java 목록 조회</a></li>
+<li><a href="#openjdk-14-버전-설치">OpenJDK 14 버전 설치</a></li>
+<li><a href="#openjdk-11-버전-설치">OpenJDK 11 버전 설치</a></li>
+<li><a href="#java-14-버전-활성화">Java 14 버전 활성화</a></li>
+<li><a href="#java-14-버전-업데이트">Java 14 버전 업데이트</a></li>
+<li><a href="#java-11-버전-제거">Java 11 버전 제거</a></li>
+</ul></li>
+<li><a href="#maven-설치">Maven 설치</a></li>
+<li><a href="#sbt-설치">SBT 설치</a></li>
+</ul></li>
+</ul>
+</nav></p>
+</div></div>
+
+
+<h1 id="sdkman-설치">SDKMAN! 설치</h1>
+
+<h2 id="sdkman-설치-환경-준비">SDkMAN! 설치 환경 준비</h2>
+
+<p><strong>SDkMAN!</strong>은 기반 시스템으로 유닉스 스타일을 사용합니다. 따라서 <strong>SDkMAN!</strong>을 설치하고 운영하기 위해서는 유닉스 기반 환경이 필요합니다. 리눅스와 Mac OS X는 <strong>SDkMAN!</strong> 설치/사용을 위해서 별도 분비가 필요 없습니다. Windows 환경에서는 유닉스 스타일 기반 시스템을 준비해야 합니다. Windows 10 이상을 사용하신다면 Windows SubSystem으로 리눅스를 구성하는 방법을 추천합니다. Window 7 등을 사용하신다면 Cgywin과 윈도우를 위한 POSIX 소프트웨어를 설치해야 합니다.</p>
+
+<p>Windows 10에서 Windows SubSystem을 새로 구성해야 한다면 다음 문서를 참조하여 준비하시기 바랍니다.</p>
 
 <ul>
-<li><a href="https://docs.microsoft.com/ko-kr/windows/wsl/install-win10">https://docs.microsoft.com/ko-kr/windows/wsl/install-win10</a></li>
+<li><a href="/oci_docs/98_misc_tips/tools/windows10_window_subsystem/" target="_blank">리눅스 Windows Subsystem 설치 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
 </ul>
+
+<h2 id="sdkman-설치-1"><strong>SDkMAN!</strong> 설치</h2>
+
+<p><strong>SDkMAN!</strong>을 설치하고자 한다면 사용하는 운영체제의 터미널에서 다음 명령을 실행합니다.</p>
+
+<pre><code>curl -s &quot;https://get.sdkman.io&quot; | bash
+</code></pre>
+
+<p>아래 [접기/펼치기]를 클릭하면 <strong>SDkMAN!</strong> 설치 명령 전체 출력 로그를 확인할 수 있습니다.</p>
+
+<div class="expand">
+    <div class="expand-label" style="cursor: pointer;" onclick="$h = $(this);$h.next('div').slideToggle(100,function () {$h.children('i').attr('class',function () {return $h.next('div').is(':visible') ? 'fa fa-chevron-down' : 'fa fa-chevron-right';});});">
+        <i style="font-size:x-small;" class="fa fa-chevron-right"></i>
+        <span>
+        
+        
+        [접기/펼치기] SDkMAN! 설치 명령 전체 출력 로그
+        
+        </span>
+    </div>
+    <div class="expand-content" style="display: none;">
+<pre class="prettyprint lang-bash">
+ $ curl -s "https://get.sdkman.io" | bash
+
+                                -+syyyyyyys:
+                            `/yho:`       -yd.
+                         `/yh/`             +m.
+                       .oho.                 hy                          .`
+                     .sh/`                   :N`                `-/o`  `+dyyo:.
+                   .yh:`                     `M-          `-/osysoym  :hs` `-+sys:      hhyssssssssy+
+                 .sh:`                       `N:          ms/-``  yy.yh-      -hy.    `.N-````````+N.
+               `od/`                         `N-       -/oM-      ddd+`     `sd:     hNNm        -N:
+              :do`                           .M.       dMMM-     `ms.      /d+`     `NMMs       `do
+            .yy-                             :N`    ```mMMM.      -      -hy.       /MMM:       yh
+          `+d+`           `:/oo/`       `-/osyh/ossssssdNMM`           .sh:         yMMN`      /m.
+         -dh-           :ymNMMMMy  `-/shmNm-`:N/-.``   `.sN            /N-         `NMMy      .m/
+       `oNs`          -hysosmMMMMydmNmds+-.:ohm           :             sd`        :MMM/      yy
+      .hN+           /d:    -MMMmhs/-.`   .MMMh   .ss+-                 `yy`       sMMN`     :N.
+     :mN/           `N/     `o/-`         :MMMo   +MMMN-         .`      `ds       mMMh      do
+    /NN/            `N+....--:/+oooosooo+:sMMM:   hMMMM:        `my       .m+     -MMM+     :N.
+   /NMo              -+ooooo+/:-....`...:+hNMN.  `NMMMd`        .MM/       -m:    oMMN.     hs
+  -NMd`                                    :mm   -MMMm- .s/     -MMm.       /m-   mMMd     -N.
+ `mMM/                                      .-   /MMh. -dMo     -MMMy        od. .MMMs..---yh
+ +MMM.                                           sNo`.sNMM+     :MMMM/        sh`+MMMNmNm+++-
+ mMMM-                                           /--ohmMMM+     :MMMMm.       `hyymmmdddo
+ MMMMh.                  ````                  `-+yy/`yMMM/     :MMMMMy       -sm:.``..-:-.`
+ dMMMMmo-.``````..-:/osyhddddho.           `+shdh+.   hMMM:     :MmMMMM/   ./yy/` `:sys+/+sh/
+ .dMMMMMMmdddddmmNMMMNNNNNMMMMMs           sNdo-      dMMM-  `-/yd/MMMMm-:sy+.   :hs-      /N`
+  `/ymNNNNNNNmmdys+/::----/dMMm:          +m-         mMMM+ohmo/.` sMMMMdo-    .om:       `sh
+     `.-----+/.`       `.-+hh/`         `od.          NMMNmds/     `mmy:`     +mMy      `:yy.
+           /moyso+//+ossso:.           .yy`          `dy+:`         ..       :MMMN+---/oys:
+         /+m:  `.-:::-`               /d+                                    +MMMMMMMNh:`
+        +MN/                        -yh.                                     `+hddhy+.
+       /MM+                       .sh:
+      :NMo                      -sh/
+     -NMs                    `/yy:
+    .NMy                  `:sh+.
+   `mMm`               ./yds-
+  `dMMMmyo:-.````.-:oymNy:`
+  +NMMMMMMMMMMMMMMMMms:`
+    -+shmNMMMNmdy+:`
+
+
+                                                                 Now attempting installation...
+
+
+Looking for a previous installation of SDKMAN...
+Looking for unzip...
+Looking for zip...
+Looking for curl...
+Looking for sed...
+Installing SDKMAN scripts...
+Create distribution directories...
+Getting available candidates...
+Prime the config file...
+Download script archive...
+######################################################################## 100.0%
+Extract script archive...
+Install scripts...
+Set version to 5.7.4+362 ...
+Attempt update of login bash profile on OSX...
+Attempt update of zsh profile...
+
+
+
+All done!
+
+
+Please open a new terminal, or run the following in the existing one:
+
+    source "/Users/taewan/.sdkman/bin/sdkman-init.sh"
+
+Then issue the following command:
+
+    sdk help
+
+Enjoy!!!
+</pre>
+
+    </div>
+</div>
+
+<p>zsh 사용자는 $HOME/.zshrc 파일을 그리고 bash 사용자는 $HOME/.bash_profile 파일 마지막에 다음 코드를 추가합니다.</p>
+
+<pre><code>export SDKMAN_DIR=&quot;$HOME/.sdkman&quot;
+[[ -s &quot;$SDKMAN_DIR/bin/sdkman-init.sh&quot; ]] &amp;&amp; source &quot;$SDKMAN_DIR/bin/sdkman-init.sh&quot;
+</code></pre>
+
+<p>그리고 bash를 사용한다면 다음 명령을 실행합니다.</p>
+
+<pre><code>source $HOME/.zshrc
+</code></pre>
+
+<p>zsh를 사용한다면 다음 명령을 실행합니다.</p>
+
+<pre><code>source $HOME/.zshrc
+</code></pre>
+
+<p><code>sdk version</code> 명령을</p>
+
+<h2 id="설치된-sdkman-제거">설치된 <strong>SDkMAN!</strong> 제거</h2>
+
+<p>설치된 <strong>SDkMAN!</strong>을 제거하고자 한다면 사용하는 운영체제의 터미널에서 다음 명령을 실행합니다.</p>
+
+<pre><code>rm -rf ~/.sdkman
+</code></pre>
+
+<h1 id="sdkman-을-활용한-개발툴-관리">SDKMAN!을 활용한 개발툴 관리</h1>
+
+<p>주요 자바 툴을 설치하고 관리하는 절차를 소개합니다.</p>
+
+<h2 id="java-설치-및-버전-관리">Java  설치 및 버전 관리</h2>
+
+<p>SDKMAN!을 이용한 Java 설치 및 관리 방법 소개를 다음과 같은 순서로 진행하겠습니다.</p>
+
+<ol>
+<li>지원 Java 목록 조회</li>
+<li>Java 14 버전 설치</li>
+<li>Java 11 버전 설치</li>
+<li>Java 14 버전 기본 설정</li>
+<li>Java 14 버전 제거</li>
+</ol>
+
+<hr />
+
+<h3 id="지원-java-목록-조회">지원 Java 목록 조회</h3>
+
+<p>다음 명령을 입력하여 <strong>SDKMAN!</strong>이 현재 지원하는 Java 목록을 조회합니다.</p>
+
+<pre><code>sdk list java
+</code></pre>
+
+<p>아래 [접기/펼치기]를 클릭하면 위 명령의 전체 출력 결과를 확인할 수 있습니다.</p>
+
+<div class="expand">
+    <div class="expand-label" style="cursor: pointer;" onclick="$h = $(this);$h.next('div').slideToggle(100,function () {$h.children('i').attr('class',function () {return $h.next('div').is(':visible') ? 'fa fa-chevron-down' : 'fa fa-chevron-right';});});">
+        <i style="font-size:x-small;" class="fa fa-chevron-right"></i>
+        <span>
+        
+        
+        [접기/펼치기] SDKMAN! 명령 전체 출력 로그
+        
+        </span>
+    </div>
+    <div class="expand-content" style="display: none;">
+<pre class="prettyprint lang-bash">
+ $ sdk list java
+================================================================================
+Available Java Versions
+================================================================================
+ Vendor        | Use | Version      | Dist    | Status     | Identifier
+--------------------------------------------------------------------------------
+ AdoptOpenJDK  |     | 14.0.0.j9    | adpt    |            | 14.0.0.j9-adpt
+               |     | 14.0.0.hs    | adpt    |            | 14.0.0.hs-adpt
+               |     | 13.0.2.j9    | adpt    |            | 13.0.2.j9-adpt
+               |     | 13.0.2.hs    | adpt    |            | 13.0.2.hs-adpt
+               |     | 12.0.2.j9    | adpt    |            | 12.0.2.j9-adpt
+               |     | 12.0.2.hs    | adpt    |            | 12.0.2.hs-adpt
+               |     | 11.0.6.j9    | adpt    |            | 11.0.6.j9-adpt
+               |     | 11.0.6.hs    | adpt    |            | 11.0.6.hs-adpt
+               |     | 8.0.242.j9   | adpt    |            | 8.0.242.j9-adpt
+               |     | 8.0.242.hs   | adpt    |            | 8.0.242.hs-adpt
+ Amazon        |     | 11.0.6       | amzn    |            | 11.0.6-amzn
+               |     | 8.0.242      | amzn    |            | 8.0.242-amzn
+               |     | 8.0.202      | amzn    |            | 8.0.202-amzn
+ Azul Zulu     |     | 14.0.0       | zulu    |            | 14.0.0-zulu
+               |     | 13.0.2       | zulu    |            | 13.0.2-zulu
+               |     | 12.0.2       | zulu    |            | 12.0.2-zulu
+               |     | 11.0.6       | zulu    |            | 11.0.6-zulu
+               |     | 11.0.5.fx    | zulu    |            | 11.0.5.fx-zulu
+               |     | 10.0.2       | zulu    |            | 10.0.2-zulu
+               |     | 9.0.7        | zulu    |            | 9.0.7-zulu
+               |     | 8.0.242      | zulu    |            | 8.0.242-zulu
+               |     | 8.0.232.fx   | zulu    |            | 8.0.232.fx-zulu
+               |     | 8.0.202      | zulu    |            | 8.0.202-zulu
+               |     | 7.0.181      | zulu    |            | 7.0.181-zulu
+ BellSoft      |     | 14.0.0.fx    | librca  |            | 14.0.0.fx-librca
+               |     | 14.0.0       | librca  |            | 14.0.0-librca
+               |     | 13.0.2.fx    | librca  |            | 13.0.2.fx-librca
+               |     | 13.0.2       | librca  |            | 13.0.2-librca
+               |     | 12.0.2       | librca  |            | 12.0.2-librca
+               |     | 11.0.6.fx    | librca  |            | 11.0.6.fx-librca
+               |     | 11.0.6       | librca  |            | 11.0.6-librca
+               |     | 8.0.242.fx   | librca  |            | 8.0.242.fx-librca
+               |     | 8.0.242      | librca  |            | 8.0.242-librca
+ GraalVM       |     | 20.0.0.r11   | grl     |            | 20.0.0.r11-grl
+               |     | 20.0.0.r8    | grl     |            | 20.0.0.r8-grl
+               |     | 19.3.1.r11   | grl     |            | 19.3.1.r11-grl
+               |     | 19.3.1.r8    | grl     |            | 19.3.1.r8-grl
+               |     | 19.3.0.r11   | grl     |            | 19.3.0.r11-grl
+               |     | 19.3.0.r8    | grl     |            | 19.3.0.r8-grl
+               |     | 19.3.0.2.r11 | grl     |            | 19.3.0.2.r11-grl
+               |     | 19.3.0.2.r8  | grl     |            | 19.3.0.2.r8-grl
+               |     | 19.2.1       | grl     |            | 19.2.1-grl
+               |     | 19.1.1       | grl     |            | 19.1.1-grl
+               |     | 19.0.2       | grl     |            | 19.0.2-grl
+               |     | 1.0.0        | grl     |            | 1.0.0-rc-16-grl
+ Java.net      |     | 15.ea.15     | open    |            | 15.ea.15-open
+               |     | 14.0.0       | open    |            | 14.0.0-open
+               |     | 13.0.2       | open    |            | 13.0.2-open
+               |     | 12.0.2       | open    |            | 12.0.2-open
+               |     | 11.0.2       | open    |            | 11.0.2-open
+               |     | 10.0.2       | open    |            | 10.0.2-open
+               |     | 9.0.4        | open    |            | 9.0.4-open
+ SAP           |     | 13.0.2       | sapmchn |            | 13.0.2-sapmchn
+               |     | 12.0.2       | sapmchn |            | 12.0.2-sapmchn
+               |     | 11.0.6       | sapmchn |            | 11.0.6-sapmchn
+================================================================================
+Use the Identifier for installation:
+
+    $ sdk install java 11.0.3.hs-adpt
+================================================================================
+ $
+</pre>
+
+    </div>
+</div>
+
+<h3 id="openjdk-14-버전-설치">OpenJDK 14 버전 설치</h3>
+
+<p>다음 명령을 입력하여 <strong>SDKMAN!</strong>으로 <strong>14.0.0-open</strong>를 설치합니다.</p>
+
+<pre><code>sdk instsall java 14.0.0-open
+</code></pre>
+
+<p>아래 [접기/펼치기]를 클릭하면 위 명령의 전체 출력 결과를 확인할 수 있습니다.</p>
+
+<div class="expand">
+    <div class="expand-label" style="cursor: pointer;" onclick="$h = $(this);$h.next('div').slideToggle(100,function () {$h.children('i').attr('class',function () {return $h.next('div').is(':visible') ? 'fa fa-chevron-down' : 'fa fa-chevron-right';});});">
+        <i style="font-size:x-small;" class="fa fa-chevron-right"></i>
+        <span>
+        
+        
+        [접기/펼치기] SDKMAN! 명령 전체 출력 로그
+        
+        </span>
+    </div>
+    <div class="expand-content" style="display: none;">
+<pre class="prettyprint lang-bash">
+ $ sdk install java 14.0.0-open
+
+Downloading: java 14.0.0-open
+
+In progress...
+
+############################################################################### 100.0%
+
+Repackaging Java 14.0.0-open...
+
+Done repackaging...
+Cleaning up residual files...
+
+Installing: java 14.0.0-open
+Done installing!
+
+
+Setting java 14.0.0-open as default.
+ $
+</pre>
+
+    </div>
+</div>
+
+<p>다음 명령을 입력하여 <strong>14.0.0-open</strong>이 설치된 상태를 확인합니다.</p>
+
+<pre><code>java --version
+</code></pre>
+
+<p>아래와 같이 출력된다면 설치가 완료됐다고 판단할 수 있습니다.</p>
+
+<pre class="prettyprint lang-bash">
+ $ java --version
+openjdk 14 2020-03-17
+OpenJDK Runtime Environment (build 14+36-1461)
+OpenJDK 64-Bit Server VM (build 14+36-1461, mixed mode, sharing)
+ $
+</pre>
+
+<p>다음 명령을 입력하여 <strong>SDKMAN!</strong>으로 설치된 자바 버전과 활성화된 상태를 확인할 수 있습니다.</p>
+
+<pre><code>sdk list java
+</code></pre>
+
+<p>다음 출력에서 설치 버전은 <strong>installed</strong>로 설치되고 활성화된 버전은 <strong>&gt;&gt;&gt;</strong>으로 표현됩니다. 문서 가독성을 고려하여 아래 출력에서 일부분 출력을 제거했습니다.</p>
+
+<pre class="prettyprint lang-bash">
+ $ sdk list java
+================================================================================
+Available Java Versions
+================================================================================
+ Vendor        | Use | Version      | Dist    | Status     | Identifier
+--------------------------------------------------------------------------------
+ AdoptOpenJDK  |     | 14.0.0.j9    | adpt    |            | 14.0.0.j9-adpt
+               |     | 14.0.0.hs    | adpt    |            | 14.0.0.hs-adpt
+               |     | 13.0.2.j9    | adpt    |            | 13.0.2.j9-adpt
+               |     | 13.0.2.hs    | adpt    |            | 13.0.2.hs-adpt
+               |     | 12.0.2.j9    | adpt    |            | 12.0.2.j9-adpt
+               |     | 12.0.2.hs    | adpt    |            | 12.0.2.hs-adpt
+               |     | 11.0.6.j9    | adpt    |            | 11.0.6.j9-adpt
+               |     | 11.0.6.hs    | adpt    |            | 11.0.6.hs-adpt
+               |     | 8.0.242.j9   | adpt    |            | 8.0.242.j9-adpt
+               |     | 8.0.242.hs   | adpt    |            | 8.0.242.hs-adpt
+ Java.net      |     | 15.ea.15     | open    |            | 15.ea.15-open
+               | >>> | 14.0.0       | open    | installed  | 14.0.0-open
+               |     | 13.0.2       | open    |            | 13.0.2-open
+               |     | 12.0.2       | open    |            | 12.0.2-open
+               |     | 11.0.2       | open    |            | 11.0.2-open
+               |     | 10.0.2       | open    |            | 10.0.2-open
+               |     | 9.0.4        | open    |            | 9.0.4-open
+================================================================================
+Use the Identifier for installation:
+
+    $ sdk install java 11.0.3.hs-adpt
+================================================================================
+ $
+</pre>
+
+<h3 id="openjdk-11-버전-설치">OpenJDK 11 버전 설치</h3>
+
+<p>이제 OpenJDK 11 버전을 설치해 보겠습니다. 다음 명령으로 OpenJDK 11을 설치합니다.</p>
+
+<pre><code>sdk install java 11.0.2-open
+</code></pre>
+
+<p>위 명령이 실행되면 Java 상태는 다음과 깉이 변경됩니다. 기본 설치 버전은 Java 11으로 변경됩니다.</p>
+
+<pre class="prettyprint lang-bash">
+ $ java --version
+openjdk 11.0.2 2019-01-15
+OpenJDK Runtime Environment 18.9 (build 11.0.2+9)
+OpenJDK 64-Bit Server VM 18.9 (build 11.0.2+9, mixed mode)
+ $ sdk list java
+================================================================================
+Available Java Versions
+================================================================================
+ Vendor        | Use | Version      | Dist    | Status     | Identifier
+--------------------------------------------------------------------------------
+ GraalVM       |     | 20.0.0.r11   | grl     |            | 20.0.0.r11-grl
+               |     | 20.0.0.r8    | grl     |            | 20.0.0.r8-grl
+               |     | 19.3.1.r11   | grl     |            | 19.3.1.r11-grl
+               |     | 19.3.1.r8    | grl     |            | 19.3.1.r8-grl
+               |     | 19.3.0.r11   | grl     |            | 19.3.0.r11-grl
+               |     | 19.3.0.r8    | grl     |            | 19.3.0.r8-grl
+               |     | 19.3.0.2.r11 | grl     |            | 19.3.0.2.r11-grl
+               |     | 19.3.0.2.r8  | grl     |            | 19.3.0.2.r8-grl
+               |     | 19.2.1       | grl     |            | 19.2.1-grl
+               |     | 19.1.1       | grl     |            | 19.1.1-grl
+               |     | 19.0.2       | grl     |            | 19.0.2-grl
+               |     | 1.0.0        | grl     |            | 1.0.0-rc-16-grl
+ Java.net      |     | 15.ea.15     | open    |            | 15.ea.15-open
+               |     | 14.0.0       | open    | installed  | 14.0.0-open
+               |     | 13.0.2       | open    |            | 13.0.2-open
+               |     | 12.0.2       | open    |            | 12.0.2-open
+               | >>> | 11.0.2       | open    | installed  | 11.0.2-open
+               |     | 10.0.2       | open    |            | 10.0.2-open
+               |     | 9.0.4        | open    |            | 9.0.4-open
+ SAP           |     | 13.0.2       | sapmchn |            | 13.0.2-sapmchn
+               |     | 12.0.2       | sapmchn |            | 12.0.2-sapmchn
+               |     | 11.0.6       | sapmchn |            | 11.0.6-sapmchn
+================================================================================
+Use the Identifier for installation:
+
+    $ sdk install java 11.0.3.hs-adpt
+================================================================================
+ $
+</pre>
+
+<h3 id="java-14-버전-활성화">Java 14 버전 활성화</h3>
+
+<p>현재 Java 11이 활성화된 상태입니다. Java 14를 활성화 시키기 위해서는 다음 명령을 실행합니다.</p>
+
+<pre><code>sdk use java 14.0.0-open
+</code></pre>
+
+<p>위 명령이 실행되면 Java 상태는 다음과 깉이 변경됩니다. 기본 설치 버전은 Java 14으로 변경됩니다.</p>
+
+<pre class="prettyprint lang-bash">
+ $ java --version
+openjdk 14 2020-03-17
+OpenJDK Runtime Environment (build 14+36-1461)
+OpenJDK 64-Bit Server VM (build 14+36-1461, mixed mode, sharing)                                                                                                 ✔  5027  14:06:13
+ $ sdk list java
+================================================================================
+Available Java Versions
+================================================================================
+ Vendor        | Use | Version      | Dist    | Status     | Identifier
+--------------------------------------------------------------------------------
+ GraalVM       |     | 20.0.0.r11   | grl     |            | 20.0.0.r11-grl
+               |     | 20.0.0.r8    | grl     |            | 20.0.0.r8-grl
+               |     | 19.3.1.r11   | grl     |            | 19.3.1.r11-grl
+               |     | 19.3.1.r8    | grl     |            | 19.3.1.r8-grl
+               |     | 19.3.0.r11   | grl     |            | 19.3.0.r11-grl
+               |     | 19.3.0.r8    | grl     |            | 19.3.0.r8-grl
+               |     | 19.3.0.2.r11 | grl     |            | 19.3.0.2.r11-grl
+               |     | 19.3.0.2.r8  | grl     |            | 19.3.0.2.r8-grl
+               |     | 19.2.1       | grl     |            | 19.2.1-grl
+               |     | 19.1.1       | grl     |            | 19.1.1-grl
+               |     | 19.0.2       | grl     |            | 19.0.2-grl
+               |     | 1.0.0        | grl     |            | 1.0.0-rc-16-grl
+ Java.net      |     | 15.ea.15     | open    |            | 15.ea.15-open
+               | >>> | 14.0.0       | open    | installed  | 14.0.0-open
+               |     | 13.0.2       | open    |            | 13.0.2-open
+               |     | 12.0.2       | open    |            | 12.0.2-open
+               |     | 11.0.2       | open    | installed  | 11.0.2-open
+               |     | 10.0.2       | open    |            | 10.0.2-open
+               |     | 9.0.4        | open    |            | 9.0.4-open
+================================================================================
+Use the Identifier for installation:
+
+    $ sdk install java 11.0.3.hs-adpt
+================================================================================
+ $                                                                                                 ✔  5028  14:06:18
+</pre>
+
+<h3 id="java-14-버전-업데이트">Java 14 버전 업데이트</h3>
+
+<p>다음 명령으로 현재 활성된 14.0.0-open를 최신 버전으로 업데이트 합니다.</p>
+
+<pre><code>sdk update java 14.0.0-open
+</code></pre>
+
+<h3 id="java-11-버전-제거">Java 11 버전 제거</h3>
+
+<p><strong>SDKMAN!</strong>으로 설치한 11.0.2-open를 다음 명령으로 제거합니다.</p>
+
+<pre><code>sdk uninstall java 11.0.2-open
+</code></pre>
+
+<p>위 명령이 실행되면 Java 상태는 다음과 깉이 변경됩니다. Java 11은 설치되지 않는 상태로 표시됩니다.</p>
+
+<pre class="prettyprint lang-bash">
+ $ sdk list java
+================================================================================
+Available Java Versions
+================================================================================
+ Vendor        | Use | Version      | Dist    | Status     | Identifier
+--------------------------------------------------------------------------------
+ GraalVM       |     | 20.0.0.r11   | grl     |            | 20.0.0.r11-grl
+               |     | 20.0.0.r8    | grl     |            | 20.0.0.r8-grl
+               |     | 19.3.1.r11   | grl     |            | 19.3.1.r11-grl
+               |     | 19.3.1.r8    | grl     |            | 19.3.1.r8-grl
+               |     | 19.3.0.r11   | grl     |            | 19.3.0.r11-grl
+               |     | 19.3.0.r8    | grl     |            | 19.3.0.r8-grl
+               |     | 19.3.0.2.r11 | grl     |            | 19.3.0.2.r11-grl
+               |     | 19.3.0.2.r8  | grl     |            | 19.3.0.2.r8-grl
+               |     | 19.2.1       | grl     |            | 19.2.1-grl
+               |     | 19.1.1       | grl     |            | 19.1.1-grl
+               |     | 19.0.2       | grl     |            | 19.0.2-grl
+               |     | 1.0.0        | grl     |            | 1.0.0-rc-16-grl
+ Java.net      |     | 15.ea.15     | open    |            | 15.ea.15-open
+               | >>> | 14.0.0       | open    | installed  | 14.0.0-open
+               |     | 13.0.2       | open    |            | 13.0.2-open
+               |     | 12.0.2       | open    |            | 12.0.2-open
+               |     | 11.0.2       | open    |            | 11.0.2-open
+               |     | 10.0.2       | open    |            | 10.0.2-open
+               |     | 9.0.4        | open    |            | 9.0.4-open
+================================================================================
+Use the Identifier for installation:
+
+    $ sdk install java 11.0.3.hs-adpt
+================================================================================
+ $                                                                                                 
+</pre>
+
+<h2 id="maven-설치">Maven 설치</h2>
+
+<p><strong>SDKMAN!</strong>으로 Maven을 설치하는 과정을 소개합니다. Maven은 대표적인 자바 플젝젝트 빌드 툴입니다.</p>
+
+<p>다음 명령으로 <strong>SDKMAN!</strong>이 지원하는 Maven 목록을 확인합니다.</p>
+
+<pre><code>sdk list maven
+</code></pre>
+
+<p>위 명령의 전체 출력 결과는 다음과 같습니다.</p>
+
+<pre class="prettyprint lang-bash">
+ $ sdk list maven
+================================================================================
+Available Maven Versions
+================================================================================
+     3.6.3
+     3.6.2
+     3.6.1
+     3.6.0
+     3.5.4
+     3.5.3
+     3.5.2
+     3.5.0
+     3.3.9
+================================================================================
++ - local version
+* - installed
+> - currently in use
+================================================================================
+$ </pre>
+
+<p>Maven 3.6.3 버전을 다음 명령으로 설치합니다.</p>
+
+<pre><code>sdk install maven 3.6.3
+</code></pre>
+
+<p>위 명령이 실행되어 설치되면 maven은 다음 명령으로 확인할 수 있습니다.</p>
+
+<pre class="prettyprint lang-bash">
+ $ mvn --version
+Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)
+Maven home: /Users/taewan/.sdkman/candidates/maven/current
+Java version: 14, vendor: Oracle Corporation, runtime: /Users/taewan/.sdkman/candidates/java/14.0.0-open
+Default locale: ko_KR, platform encoding: UTF-8
+OS name: "mac os x", version: "10.15.1", arch: "x86_64", family: "mac"                                                                                                 ✔  5035  14:29:32
+ $ sdk list maven
+================================================================================
+Available Maven Versions
+================================================================================
+ > * 3.6.3
+     3.6.2
+     3.6.1
+     3.6.0
+     3.5.4
+     3.5.3
+     3.5.2
+     3.5.0
+     3.3.9
+================================================================================
++ - local version
+* - installed
+> - currently in use
+================================================================================
+ $
+</pre>
+
+<h2 id="sbt-설치">SBT 설치</h2>
+
+<p><strong>SDKMAN!</strong>으로 SBT를 설치하는 과정을 소개합니다. SBT는 Scala 프로젝트 빌드 툴입니다.</p>
+
+<p>다음 명령으로 <strong>SDKMAN!</strong>이 지원하는 SBT 목록을 확인합니다.</p>
+
+<pre><code>sdk list maven
+</code></pre>
+
+<p>위 명령의 전체 출력 결과는 다음과 같습니다.</p>
+
+<pre class="prettyprint lang-bash">
+ $ sdk list sbt
+================================================================================
+Available Sbt Versions
+================================================================================
+     1.3.8               1.2.3               0.13.18
+     1.3.7               1.2.1               0.13.15
+     1.3.6               1.2.0               0.13.13
+     1.3.5               1.1.6               0.13.12
+     1.3.4               1.1.5               0.13.11
+     1.3.3               1.1.4               0.13.9
+     1.3.2               1.1.3
+     1.3.1               1.1.2
+     1.3.0               1.1.1
+     1.3.0-RC1           1.1.0
+     1.2.8               1.0.4
+     1.2.7               1.0.3
+     1.2.6               1.0.2
+     1.2.5               1.0.1
+     1.2.4               1.0.0
+================================================================================
++ - local version
+* - installed
+> - currently in use
+================================================================================
+$ </pre>
+
+<p>Maven 3.6.3 버전을 다음 명령으로 설치합니다.</p>
+
+<pre><code>sdk install sbt 0.13.9
+</code></pre>
+
+<p>위 명령이 실행되어 설치되면 sbt는 다음 명령으로 확인할 수 있습니다.</p>
+
+<pre class="prettyprint lang-bash">
+ $ sdk version
+SDKMAN 5.7.4+362
+ $ sdk list sbt
+================================================================================
+Available Sbt Versions
+================================================================================
+     1.3.8               1.2.3               0.13.18
+     1.3.7               1.2.1               0.13.15
+     1.3.6               1.2.0               0.13.13
+     1.3.5               1.1.6               0.13.12
+     1.3.4               1.1.5               0.13.11
+     1.3.3               1.1.4           > * 0.13.9
+     1.3.2               1.1.3
+     1.3.1               1.1.2
+     1.3.0               1.1.1
+     1.3.0-RC1           1.1.0
+     1.2.8               1.0.4
+     1.2.7               1.0.3
+     1.2.6               1.0.2
+     1.2.5               1.0.1
+     1.2.4               1.0.0
+================================================================================
++ - local version
+* - installed
+> - currently in use
+================================================================================
+ $
+</pre>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/98_misc_tips/tools/windows10_window_subsystem/" title="Window Subsystem 설치"> <i class="fa fa-chevron-left"></i><label>Window Subsystem 설치</label></a>
+<a class="nav nav-prev" href="/oci_docs/98_misc_tips/tools/windows10_window_subsystem/" title="리눅스 Windows Subsystem"> <i class="fa fa-chevron-left"></i><label>리눅스 Windows Subsystem</label></a>
     <a class="nav nav-next" href="/oci_docs/99_oci_sites/" title="OCI 관련 문서 사이트" style="margin-right: 0px;"><label>OCI 관련 문서 사이트</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
