@@ -4,19 +4,19 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-03-25T08:20:27 KST">
+<meta name="revised" content="2020-03-25T08:20:28 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="Streaming 주요 키워드" />
-<meta property="og:description" content="  Stream(스트림)  추가 전용 로그 파일 스트림에는 메시지가 저장됨 Kafka의 Topic과 같은 것 스트림은 한개 이상의 Partition으로 구성    Partition(파티션)  Stream은 여러개의 Partition으로 분할 각 Partition은 여러 노드(Broker)에 위치 Partition은 Stream을 분할하는 단위 여러 컨슈머는 Partition의 데이터를 읽어 병렬 처리 지원    Cursor(커서)  스트림의 위치를 나타내는 지시자 커서는 파이텬의 특정 오프셋 및 시간으로 나타냄 그룹의 현재 위치 지정에도 사용    Message(메시지)  스트림에 게시된(Published)된 데이터 Base64로 인코딩 됨    Producer(프로듀서)  스트림에 메시지를 게시하는 객체    Consumer(컨슈머)  스트림에서 메시지를 읽어가는 객체 하나 이상 존재 가능    Consumer Group(컨슈머 그룹)  컨슈머 그룹은 스트림에 모든 파티션으로부터 메시지 읽기 조정을 받는 인스턴스 집합 컨슈머 그룹의 인스턴스(컨슈머)는 Interaction을 통해서 그룹 멤버쉽을 유지 일정 기간 Interaction 부족할 경우에 그룹에서 인스턴스 제외    Topic / Key  관련 메시지를 그룹으로 만드는 구분자    Offset(오프셋)  파티션의 메시지 위치 스트림 읽기를 재시작할 때 offset을 지정   참조 문서  [OCI Official Docs]Streaming Service Overview     " />
+<meta property="og:title" content="DNS 설정" />
+<meta property="og:description" content="OCI VM Instance의 Public IP에 Domain을 맵핑하는 DNS 설정 방법을 정리합니다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/oci_docs/50.database_service/streaming/terminology/" />
+<meta property="og:url" content="/oci_docs/10_quickstart/mapping_public_ip_to_domain/" />
 
 
 
-
-
+<meta property="article:published_time" content="2020-03-23T09:15:05&#43;09:00"/>
+<meta property="article:modified_time" content="2020-03-23T09:15:05&#43;09:00"/>
 
 
 
@@ -33,7 +33,7 @@
 
 
 
-<title>Streaming 주요 키워드 :: 오라클 클라우드 사용자 가이드</title>
+<title>DNS 설정 :: 오라클 클라우드 사용자 가이드</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/oci_docs/css/font-awesome.min.css" rel="stylesheet">
@@ -45,7 +45,7 @@
 <script type="text/javascript">
       var baseurl = "\/oci_docs";
 </script>
-<meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
+<meta name="description" content="OCI VM Instance의 Public IP에 Domain을 맵핑하는 DNS 설정 방법을 정리합니다.">
 
 
 <link href='/oci_docs/css/railload.css' rel="stylesheet"/>
@@ -68,7 +68,7 @@
 
     
   </head>
-  <body data-url="/oci_docs/50.database_service/streaming/terminology/">
+  <body data-url="/oci_docs/10_quickstart/mapping_public_ip_to_domain/">
     
       <header>
   <div class="logo">
@@ -132,7 +132,7 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/10_quickstart/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/10_quickstart/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/10_quickstart/">OCI 퀵스타트(Step by Step)</a>
@@ -221,7 +221,7 @@
     </li>
         </ul>
     </li>
-      <li data-nav-id="/oci_docs/10_quickstart/mapping_public_ip_to_domain/" class="dd-item">
+      <li data-nav-id="/oci_docs/10_quickstart/mapping_public_ip_to_domain/" class="dd-item active">
         <div>
           <a href="/oci_docs/10_quickstart/mapping_public_ip_to_domain/">
             DNS 설정
@@ -396,18 +396,16 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/oci_docs/50.database_service/" class="dd-item parent haschildren
+    <li data-nav-id="/oci_docs/50.database_service/" class="dd-item haschildren
         ">
       <div>
-      <a href="/oci_docs/50.database_service/">Database Service</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/50.database_service/">Database Service</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/oci_docs/50.database_service/streaming/" class="dd-item parent haschildren
+    <li data-nav-id="/oci_docs/50.database_service/streaming/" class="dd-item haschildren
         ">
       <div>
-      <a href="/oci_docs/50.database_service/streaming/">Streaming</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/oci_docs/50.database_service/streaming/">Streaming</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/oci_docs/50.database_service/streaming/overview/" class="dd-item">
@@ -424,7 +422,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/oci_docs/50.database_service/streaming/terminology/" class="dd-item active">
+      <li data-nav-id="/oci_docs/50.database_service/streaming/terminology/" class="dd-item">
         <div>
           <a href="/oci_docs/50.database_service/streaming/terminology/">
             Streaming 주요 키워드
@@ -907,7 +905,7 @@
   
       <option value="/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/" >-- OCI VM 고정 IP 설정</option>
   
-      <option value="/oci_docs/10_quickstart/mapping_public_ip_to_domain/" >- DNS 설정</option>
+      <option value="/oci_docs/10_quickstart/mapping_public_ip_to_domain/"  selected>- DNS 설정</option>
     <option value="/oci_docs/10_quickstart/ha_with_load_balancer/" >
   - 
    Load Balancer를 이용한 HA 구성</option> 
@@ -931,53 +929,7 @@
     <option value="/oci_docs/30_core_infrastructure/" >
    OCI Core Infastructure Service</option>
     <option value="/oci_docs/50.database_service/" >
-   Database Service</option> 
-    <option value="/oci_docs/50.database_service/streaming/" >
-  - 
-   Streaming</option> 
-      <option value="/oci_docs/50.database_service/streaming/overview/" >-- Streaming 서비스</option>
-      <option value="/oci_docs/50.database_service/streaming/pricing/" >-- Streaming 서비스 가격 모델</option>
-      <option value="/oci_docs/50.database_service/streaming/terminology/"  selected>-- Streaming 주요 키워드</option>
-  
-    <option value="/oci_docs/50.database_service/adb/" >
-  - 
-   OCI Autonomous DB</option> 
-    <option value="/oci_docs/50.database_service/adb/adw/" >
-  -- 
-   Autonomous Data Warehouse</option> 
-    <option value="/oci_docs/50.database_service/adb/adw/hands-on/" >
-  --- 
-   ADW Hands-on Labs</option> 
-      <option value="/oci_docs/50.database_service/adb/adw/hands-on/basic_adw_provisioning/" >---- ADW 인스턴스 생성</option>
-    <option value="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/" >
-  ---- 
-   인스턴스 관리</option> 
-      <option value="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_start_and_stop/" >----- 인스턴스 기본 조작: Console</option>
-      <option value="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_start_and_stop_with_ocicli/" >----- 인스턴스 기본 조작: OCI CLI</option>
-      <option value="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_scale_management/" >----- 인스턴스 Scale Up/Dwon</option>
-      <option value="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/reset_password_4_admin/" >----- ADW 관리자 비밀번호 재설정</option>
-  
-    <option value="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/" >
-  ---- 
-   ADW 지원 툴</option> 
-      <option value="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/sqldeveloper/" >----- SQL Developer: 설정 및 접속</option>
-      <option value="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/sql_devleloper_web/" >----- SQL Developer Web 접속</option>
-      <option value="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/apex/" >----- APEX 서비스</option>
-    <option value="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/oml/" >
-  ----- 
-   OML Notebook</option> 
-  
-  
-    <option value="/oci_docs/50.database_service/adb/adw/hands-on/performance/" >
-  ---- 
-   ADW 쿼리 성능 테스트</option> 
-      <option value="/oci_docs/50.database_service/adb/adw/hands-on/performance/query_with_each_service/" >----- ADW 서비스 별 쿼리 성능</option>
-      <option value="/oci_docs/50.database_service/adb/adw/hands-on/performance/query_of_adw_with_different_ocpu/" >----- ADW OCPU와 쿼리 성능</option>
-  
-  
-  
-  
-  
+   Database Service</option>
     <option value="/oci_docs/60.data_and_ai_service/" >
    Data &amp; AI Service</option>
     <option value="/oci_docs/70_solutions/" >
@@ -1019,9 +971,9 @@
         </script>
         <script type="text/javascript" src="/oci_docs/js/search.js"></script>
       </div>
-    <h1>Streaming 주요 키워드</h1>
+    <h1>DNS 설정</h1>
     <div class="alert alert-info" role="alter">
-      <li><strong>문서 생성일:</strong> 0001-01-01 00:00:00 &#43;0000 UTC </li>
+      <li><strong>문서 생성일:</strong> 2020-03-23 09:15:05 &#43;0900 KST </li>
    </div>
 
 
@@ -1033,111 +985,248 @@
     
     
 
-<ul>
-<li>Stream(스트림)
+<p>이번 문서에서는 OCI Compute 인스턴스의 Public IP에 Domain Name을 설정하는 절차를 소개합니다. DNS 설정은 다음과 같은 목차로 진행됩니다.</p>
 
+
+<div class="panel panel-primary"><div class="panel-body"><p><nav id="TableOfContents">
 <ul>
-<li>추가 전용 로그 파일</li>
-<li>스트림에는 메시지가 저장됨</li>
-<li>Kafka의 Topic과 같은 것</li>
-<li>스트림은 한개 이상의 Partition으로 구성</li>
+<li><a href="#사전-준비">사전 준비</a></li>
+<li><a href="#domain-name-설정">Domain Name 설정</a>
+<ul>
+<li><a href="#dns-zone-생성">DNS Zone 생성</a></li>
+<li><a href="#domain-name-네임-서버-설정">Domain Name 네임 서버 설정</a></li>
+<li><a href="#dns-설정-테스트">DNS 설정 테스트</a></li>
 </ul></li>
+<li><a href="#참고문서">참고문서</a></li>
 </ul>
+</nav></p>
+</div></div>
+
 
 <hr />
 
-<ul>
-<li>Partition(파티션)
+<p>이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.</p>
 
 <ul>
-<li>Stream은 여러개의 Partition으로 분할</li>
-<li>각 Partition은 여러 노드(Broker)에 위치</li>
-<li>Partition은 Stream을 분할하는 단위</li>
-<li>여러 컨슈머는 Partition의 데이터를 읽어 병렬 처리 지원</li>
-</ul></li>
+<li><a href="/oci_docs/10_quickstart/how_to_sign_up_oci/" target="_blank">OCI FREE TIER 계정 등록 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+<li><a href="/oci_docs/10_quickstart/first_sign_in_oci/" target="_blank">Free Tier 계정 로그인 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
 </ul>
+
+<h1 id="사전-준비">사전 준비</h1>
+
+<p>OCI Linux VM 인스턴스 Public IP에 Domain Name을 설정하는 문서는 다음과 같은 자원이 이미 만들어져 있다는 것을 가정하고 진행합니다. 다음 자원이 없다면 &ldquo;<strong>자원 생성 참조 문서</strong>&ldquo;를 참조하여 해당 자원을 생성하시기 바랍니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>자원 유형</th>
+<th>자원 이름</th>
+<th>소속 Compartment</th>
+<th>추가 설명</th>
+<th>자원 생성 참조 문서</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Compartment</td>
+<td>sanbox</td>
+<td>root &gt; sandbox</td>
+<td>.</td>
+<td><a href="/oci_docs/10_quickstart/create_compartment/" target="_blank">Compartment 추가 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</td>
+</tr>
+
+<tr>
+<td>VCN</td>
+<td>demo_vcn</td>
+<td>root &gt; sandbox</td>
+<td>80포트를 공개하는 Custom_Security_List를 포함할 것</td>
+<td><a href="/oci_docs/10_quickstart/vcn/simple_vcn/" target="_blank">간편 VCN 만들기 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</td>
+</tr>
+
+<tr>
+<td>Compute</td>
+<td>demo_linux_vm</td>
+<td>root &gt; sandbox</td>
+<td>참조 문서는 2.3절(SSH 접속) 까지만 진행</td>
+<td><a href="/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/" target="_blank">Oracle Linux VM 인스턴스 생성 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>위 설정이 완료되면 다음과 같은 상태가 됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/dns/000.jpg?classes=border,shadow" alt="" /></p>
+
+<p>준비된 환경에서 Public IP는 <strong>140.238.9.185</strong>입니다. Public IP에 매핑하는 Domain Name으로 <font color='red'><strong>oci-demo.kr</strong></font>을 사용하겠습니다.</p>
+
+<h1 id="domain-name-설정">Domain Name 설정</h1>
+
+<h2 id="dns-zone-생성">DNS Zone 생성</h2>
+
+<p>DNS Zone은 실제 서비스할 호스트와 Domain Name을 매핑하는 Zone File을 관리하는 Name Server입니다. OCI에서 DNS Zone을 <strong>DNS Zone</strong> 관리 페이지에서 관리합니다. <strong>DNS Zone</strong> 관리 페이지는 다음 메뉴 패스로 접근할 수 있습니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-body"><span class="glyphicon glyphicon-menu-hamburger" style="font-size:medium" aria-hidden="true"></span> (<strong>OCI 콘솔 왼쪽 위 햄버그 버튼</strong>) <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span>  <strong>Networking</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> <strong>DNS Zone Management</strong></div></div>
+
+
+<p><img src="https://taewanmerepo.github.io/2020/03/dns/010.jpg?classes=border,shadow" alt="" /></p>
 
 <hr />
 
-<ul>
-<li>Cursor(커서)
+<p><strong>DNS Zone</strong> 관리 페이지에서 <strong>DNS Zone</strong>을 생성하기 위해서 다음과 같이 Compartment로 root/sandbox를 선택하고 <strong>Create Zone</strong> 버튼을 클릭합니다.</p>
 
-<ul>
-<li>스트림의 위치를 나타내는 지시자</li>
-<li>커서는 파이텬의 특정 오프셋 및 시간으로 나타냄</li>
-<li>그룹의 현재 위치 지정에도 사용</li>
-</ul></li>
-</ul>
+
+<div class="panel panel-primary"><div class="panel-body">(왼편 메뉴) Record <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span>  <strong>Add Record</strong> 버튼 클릭</div></div>
+
+
+<p><img src="https://taewanmerepo.github.io/2020/03/dns/020.jpg?classes=border,shadow" alt="" /></p>
 
 <hr />
 
-<ul>
-<li>Message(메시지)
+<p>DNS Zone 생성 폼에 다음과 같이 입력합니다.</p>
 
-<ul>
-<li>스트림에 게시된(Published)된 데이터</li>
-<li>Base64로 인코딩 됨</li>
-</ul></li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>설정항목</th>
+<th>설정값</th>
+<th>설명</th>
+</tr>
+</thead>
 
-<hr />
+<tbody>
+<tr>
+<td>Method</td>
+<td>Manual</td>
+<td>- Manual: 아래 항목 설정 </br> - Import: Zone 파일 업로드</td>
+</tr>
 
-<ul>
-<li>Producer(프로듀서)
+<tr>
+<td>Zone Type</td>
+<td>Primary</td>
+<td>- Primary: DNS Zone의 내용을 직접 관리 </br>- Secondary: 외부 Naming Server에 위임</td>
+</tr>
 
-<ul>
-<li>스트림에 메시지를 게시하는 객체</li>
-</ul></li>
-</ul>
+<tr>
+<td>Zone Name</td>
+<td>oci-demo.kr</td>
+<td>- Domain Name을 입력합니다.</br> - 데모로 준비한 oci-demo.kr</td>
+</tr>
+</tbody>
+</table>
 
-<hr />
+<p>위 설정을 입력하고 <strong>Submit</strong> 버튼을 클릭합니다.</p>
 
-<ul>
-<li>Consumer(컨슈머)
-
-<ul>
-<li>스트림에서 메시지를 읽어가는 객체</li>
-<li>하나 이상 존재 가능</li>
-</ul></li>
-</ul>
-
-<hr />
-
-<ul>
-<li>Consumer Group(컨슈머 그룹)
-
-<ul>
-<li>컨슈머 그룹은 스트림에 모든 파티션으로부터 메시지 읽기 조정을 받는 인스턴스 집합</li>
-<li>컨슈머 그룹의 인스턴스(컨슈머)는 Interaction을 통해서 그룹 멤버쉽을 유지</li>
-<li>일정 기간 Interaction 부족할 경우에 그룹에서 인스턴스 제외</li>
-</ul></li>
-</ul>
+<p><img src="https://taewanmerepo.github.io/2020/03/dns/030.jpg?classes=border,shadow" alt="" /></p>
 
 <hr />
 
-<ul>
-<li>Topic / Key
+<p>앞에서 생성한 DNS Zone의 상세 페이지에서 다음 메뉴와 같이 Record 항목으로 이동하고 Record를 추가 합니다.</p>
 
-<ul>
-<li>관련 메시지를 그룹으로 만드는 구분자</li>
-</ul></li>
-</ul>
+
+<div class="panel panel-primary"><div class="panel-body">(왼편 메뉴) Recordes <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span>  <strong>Add Record</strong> 버튼 클릭</div></div>
+
+
+<p><img src="https://taewanmerepo.github.io/2020/03/dns/040.jpg?classes=border,shadow" alt="" /></p>
 
 <hr />
 
-<ul>
-<li>Offset(오프셋)
+<p>Record 추가 폼에서 다음과 같이 설정합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>설정항목</th>
+<th>설정값</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Recode Type</td>
+<td>A - IPv4 Address</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Name</td>
+<td></td>
+<td>서브 도메인 설정, 현재 미설정으로 남깁니다.</td>
+</tr>
+
+<tr>
+<td>TTL</td>
+<td>300</td>
+<td>자물쇠 잠금을 풀고 설정합니다.</td>
+</tr>
+
+<tr>
+<td>RData Mode</td>
+<td>Basic</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Address</td>
+<td>140.238.9.185</td>
+<td>앞에서 만든 VM의 Public IP를 설정합니다.</td>
+</tr>
+</tbody>
+</table>
+
+<p>설정을 마치고 <strong>Submit</strong> 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/dns/050.jpg?classes=border,shadow" alt="" /></p>
+
+<hr />
+
+<p><strong>Publish Change</strong>를 클릭하여 변경 사항을 저장을 요청합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/dns/060.jpg?classes=border,shadow" alt="" /></p>
+
+<hr />
+
+<p><strong>Publish Change</strong>를 클릭하여 변경 사항을 저장을 확인합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/dns/070.jpg?classes=border,shadow" alt="" /></p>
+
+<hr />
+
+<p>Domain Name을 관리하는 네임 서버 목록을 확인합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/dns/080.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="domain-name-네임-서버-설정">Domain Name 네임 서버 설정</h2>
+
+<p>앞에서 확인한 네임 서버 목록을 Domain Name 관리 업체에 등록합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/dns/090.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="dns-설정-테스트">DNS 설정 테스트</h2>
+
+<p>브라우저에서 설정한 Domain Name인 <strong><a href="http://oci-demo.kr">http://oci-demo.kr</a></strong>를 입력하여 다음 이미지와 같이 DNS 적용 여부를 확인할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/dns/100.jpg?classes=border,shadow" alt="" /></p>
+
+<h1 id="참고문서">참고문서</h1>
 
 <ul>
-<li>파티션의 메시지 위치</li>
-<li>스트림 읽기를 재시작할 때 offset을 지정</li>
-</ul></li>
-</ul>
+<li><a href="https://docs.cloud.oracle.com/en-us/iaas/Content/DNS/Concepts/dnszonemanagement.htm" target="_blank">[Official OCI Docs]Overview of the DNS Service <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
 
-<h1 id="참조-문서">참조 문서</h1>
-
-<ul>
-<li><a href="https://docs.cloud.oracle.com/en-us/iaas/Content/Streaming/Concepts/streamingoverview.htm" target="_blank">[OCI Official Docs]Streaming Service Overview <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+</li>
+<li><a href="https://docs.cloud.oracle.com/en-us/iaas/Content/DNS/Concepts/gettingstarted.htm" target="_blank">[Official OCI Docs]Getting Started with DNS <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
 
 </li>
 </ul>
@@ -1147,8 +1236,8 @@
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/50.database_service/streaming/pricing/" title="Streaming 서비스 가격 모델"> <i class="fa fa-chevron-left"></i><label>Streaming 서비스 가격 모델</label></a>
-    <a class="nav nav-next" href="/oci_docs/50.database_service/adb/" title="OCI Autonomous DB" style="margin-right: 0px;"><label>OCI Autonomous DB</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/" title="OCI VM 고정 IP 설정"> <i class="fa fa-chevron-left"></i><label>OCI VM 고정 IP 설정</label></a>
+    <a class="nav nav-next" href="/oci_docs/10_quickstart/ha_with_load_balancer/" title="Load Balancer를 이용한 HA 구성" style="margin-right: 0px;"><label>Load Balancer를 이용한 HA 구성</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -1167,7 +1256,7 @@
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/50.database_service/streaming/terminology/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/10_quickstart/mapping_public_ip_to_domain/"></div>
   </div>
 
   </section>
@@ -1180,6 +1269,10 @@
 
     
 
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 23/03/2020
+    </div>
     
   </div>
 

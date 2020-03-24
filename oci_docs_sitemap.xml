@@ -13,6 +13,11 @@
   </url>
   
   <url>
+    <loc>/oci_docs/60.data_and_ai_service/data_flow/handson-labs/preparation/</loc>
+    <lastmod>2020-03-21T08:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/oci_docs/50.database_service/adb/adw/hands-on/</loc>
     <lastmod>2020-03-18T11:54:32+09:00</lastmod>
   </url>
@@ -44,6 +49,11 @@
   
   <url>
     <loc>/oci_docs/50.database_service/adb/adw/hands-on/basic_adw_provisioning/</loc>
+    <lastmod>2020-03-11T08:54:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/oci_docs/20_identity_and_access_management/adding_oci_user/</loc>
     <lastmod>2020-03-11T08:54:32+09:00</lastmod>
   </url>
   
@@ -119,6 +129,7 @@
   
   <url>
     <loc>/oci_docs/10_quickstart/</loc>
+    <lastmod>2020-03-23T09:15:05+09:00</lastmod>
   </url>
   
   <url>
@@ -202,6 +213,7 @@
   
   <url>
     <loc>/oci_docs/20_identity_and_access_management/</loc>
+    <lastmod>2020-03-11T08:54:32+09:00</lastmod>
   </url>
   
   <url>
@@ -390,6 +402,11 @@
   </url>
   
   <url>
+    <loc>/oci_docs/10_quickstart/mapping_public_ip_to_domain/</loc>
+    <lastmod>2020-03-23T09:15:05+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/oci_docs/10_quickstart/ha_with_load_balancer/</loc>
     <lastmod>2020-03-18T10:15:05+09:00</lastmod>
   </url>
@@ -440,7 +457,7 @@
   
   <url>
     <loc>/oci_docs/</loc>
-    <lastmod>2020-03-16T08:54:32+09:00</lastmod>
+    <lastmod>2020-03-21T08:54:32+09:00</lastmod>
   </url>
   
   <url>
