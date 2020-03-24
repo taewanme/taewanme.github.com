@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-03-23T14:41:20 KST">
+<meta name="revised" content="2020-03-24T13:02:24 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
@@ -747,7 +747,7 @@
       <li data-nav-id="/oci_docs/98_misc_tips/tools/management_of_java_tools_with_sdkman/" class="dd-item">
         <div>
           <a href="/oci_docs/98_misc_tips/tools/management_of_java_tools_with_sdkman/">
-            sdkman 자바환경 관리 툴
+            sdkman 자바 개발환경 관리툴
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -929,6 +929,7 @@
     <div class="alert alert-info" role="alter">
       <li><strong>문서 생성일:</strong> 2020-03-21 08:54:32 &#43;0900 KST </li>
    </div>
+    <p><img src="https://taewanmerepo.github.io/2020/03/dataflow/000.jpg" alt="Data Flow"></p>
 
 
      
@@ -940,82 +941,118 @@
 
 
 
-<p><img src="https://taewanmerepo.github.io/2020/ocidocs/streaming/000.jpg?classes=border,shadow" alt="" /></p>
+<p>OCI Data Flow 서비스를 다음과 같은 목차로 소개합니다.</p>
 
-<p>OCI Streaming 서비스는 OCI에서 제공하는 완전 관리형 Apache Kafka 서비스입니다. 여러 애플리케이션과 다양한 소스에서 지속적으로 유입되는 대량의 스트림 데이터를 수집하여 즉시 처리하는 서비스입니다. OCI Streaming은 완전 관리형 서비스이기 때문에 Apache Kafka 클러스터를 관리 운영하는 부담없이, 이 서비스를 이용하여 확장성과 데이터 안전성이 뛰어난 스티림 인프라를 확보할 수 있습니다.</p>
 
-<h1 id="oci-streaming-특징">OCI Streaming 특징</h1>
+<div class="panel panel-primary"><div class="panel-body"><p><nav id="TableOfContents">
+<ul>
+<li><a href="#oci-data-flow-란">OCI Data Flow 란?</a>
+<ul>
+<li><a href="#oci-data-flow-주요-특징">OCI Data Flow 주요 특징</a>
+<ul>
+<li><a href="#특징1-인프라-관리-부담-최소화">특징1: 인프라 관리 부담 최소화</a></li>
+<li><a href="#특징2-job-수행-결과-데이터-관리-자동화">특징2: JOB 수행 결과 데이터 관리 자동화</a></li>
+<li><a href="#특징3-통합된-spark-job-정보-제공">특징3: 통합된 Spark Job 정보 제공</a></li>
+<li><a href="#특징4-oci-보안과-통합된-안전성">특징4: OCI 보안과 통합된 안전성</a></li>
+<li><a href="#특징5-편리한-디버깅과-진단-diagnostics">특징5: 편리한 디버깅과 진단(Diagnostics)</a></li>
+</ul></li>
+<li><a href="#oci-data-flow-관련-사이트">OCI Data Flow 관련 사이트</a></li>
+</ul></li>
+</ul>
+</nav></p>
+</div></div>
 
-<p>OCI Streaming 서비스는 다음과 같은 특징을 갖습니다.</p>
 
-<table>
-<thead>
-<tr>
-<th>특징</th>
-<th>설명</th>
-</tr>
-</thead>
+<hr />
 
-<tbody>
-<tr>
-<td>OCI 네이브트 서비스 (OCI Native Service)</td>
-<td>OCI 인프라 위에서 OCI 관리 체계로 개발된 서비스입니다.</td>
-</tr>
+<h1 id="oci-data-flow-란">OCI Data Flow 란?</h1>
 
-<tr>
-<td>관리형 카프카 서비스 (Managed Kafka Service)</td>
-<td>Apache Kafak 기술을 기반으로 OCI Native 서비스로 개발된 스트리밍 서비스입니다.</td>
-</tr>
-
-<tr>
-<td>완전 관리형 서비스 (Fully-Managed Service)</td>
-<td>OCI에서 인프라 관리를 전담하는 완전 관리형 서비스입니다. 인프라 및 Kafka 클러스터 운영 부담을 줄일 수 있습니다.</td>
-</tr>
-
-<tr>
-<td>데이터 내구성 (Data Durability)</td>
-<td>Streaming에 게시된 데이터는 저장 안전성을 보장합니다.</td>
-</tr>
-
-<tr>
-<td>가용성&amp;안전성(Availability)</td>
-<td>3 AD 리전에서는 3개 AD에 Partition을 분산하여 배포하고 단일 AD 리전에서는 Fault Domain에 파티션을 분산하여 배포합니다. 물리적으로 분할된 서버에 파이션을 배포하여, 인프라 장애에 대비합니다.</td>
-</tr>
-
-<tr>
-<td>확장성 (Scability)</td>
-<td>Streaming 서비스에 유입되는 스트리밍 데이터의 규모에따라 탄력적인 확장이 가능합니다.</td>
-</tr>
-
-<tr>
-<td>탄력적 가격 (Elastic Pricing)</td>
-<td>유입 데이터의 확장에따라 확대되는 Partition의 규모에 따라 탄력적인 서비스 이용 금액이 &lsquo;<strong>Pay as you go</strong>&rsquo;(사용 기준 부과)로 계산됩니다.</td>
-</tr>
-
-<tr>
-<td>Kafka 호환성 (Kafka Compability)</td>
-<td>Kafka API 호환성을 제공합니다. Streaming이 완전 관리형 서비스이기 때문에 Kafka 서버 관리 API는 이용이 제한됩니다. Consumer와 Producer API는 호환성을 제공합니다.</td>
-</tr>
-
-<tr>
-<td>OCI 네이티브 인터페이스(OCI Native Interface)</td>
-<td>Streaming 서비스를 관리하는 인터페이스를 CLI(Command Line Interface) 툴과 OCI SDK로 제공합니다.</td>
-</tr>
-
-<tr>
-<td>OCI 메트릭 관리 (OCI Metric Management)</td>
-<td>Streaming의 운영 메트릭을 OCI에서 통합관리됩니다.</td>
-</tr>
-</tbody>
-</table>
-
-<p>OCI Streaming을 다음과 같은 시나리오에 적용할 수 있습니다.</p>
+<p>OCI((OCI Cloud Infrastructure) Data Flow는 오라클 클라우드에서 제공하는 서비스로 다음과 같은 키워드로 요약할 수 있습니다.</p>
 
 <ul>
-<li>메시징 처리</li>
-<li>메트릭 및 로그 수집</li>
-<li>웹 페이지 클릭 스크림 수집</li>
-<li>인프라스트럭처와 앱 이벤트 처리</li>
+<li>대규모 데이터 병렬처리를 위한 서비스</li>
+<li>아파치 스파크(Apache Spark) 서비스</li>
+<li>서비리스 서비스</li>
+<li>완전 관리형 서비스</li>
+</ul>
+
+<p>OCI Data Flow는 Object Storage에 저장된 대규모 데이터 병렬처리 기술을 제공하는 서비스입니다. Data Flow는 아파치 스파크 기술을 기반으로 합니다. Data Flow를 이용하면 원하는 규모의 스파크 클러스터를 즉시 구성할 수 있습니다. OCI Data Flow 사용자가 Spark 프로그램을 제출하면 Data Flow는 사용자가 지정한 규모의 Spark 클러스터를 생성한 다음에 Spark Job을 완료하면 사용한 모든 spark 클러스터를 제거하는 방식으로 운영되는 서비리스 서비스입니다. 그리고 OCI Data Flow의 모든 관리 영역은 OCI가 전담하는 완전 관리형 서비스입니다.</p>
+
+<h2 id="oci-data-flow-주요-특징">OCI Data Flow 주요 특징</h2>
+
+<p>OCI Data Flow의 특징을 5가지로 요약할 수 있습니다.</p>
+
+<ol>
+<li>인프라 관리 부담 최소화</li>
+<li>통합 관리 정보 제공</li>
+<li>OCI 보안과 통합된 안전성</li>
+<li>JOB 수행 결과 데이터 관리 자동화</li>
+<li>편리한 디버깅과 진단(Diagnostics)</li>
+</ol>
+
+<h3 id="특징1-인프라-관리-부담-최소화">특징1: 인프라 관리 부담 최소화</h3>
+
+<p>Data Flow 사용자가 Spark 애플리케이션을 Data Flow에 서비스에 등록하고 Job을 실행하면 필요한 인프라를 만들고, Job을 완료하면 인프라를 제거하는 서비리스 서비스입니다. Job을 완료하고 인프라를 제거하기 전에 Job 실행으로 발생한 모든 데이터와 로그를 별도 저장하여 통합관리합니다.</p>
+
+<p>Data Flow 사용자는 인프라와 Spark 클러스터의 설치, 패치, 업그레이드 관리 부담을 느낄 필요가 없습니다. Data Flow 서비스가 인프라 프로비저닝, 네트워크 구성, 스토리지 관리 및 보안 설정을 모두 전담하고합니다. 또한 실행 데이터 관리와 사용을 마친 자원 제거까지 모든 인프라 관리 작업을 담당합니다.</p>
+
+<p>Data Flow 사용자는 인프라 운영에서 자유로울 수 있고 대규모 데이터 처리 Spark Application 개발에 집중할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/dataflow/010.jpg?classes=border,shadow" alt="" /></p>
+
+<h3 id="특징2-job-수행-결과-데이터-관리-자동화">특징2: JOB 수행 결과 데이터 관리 자동화</h3>
+
+<p>Data Flow가 실행한 모든 Job 데이터는 OCI Object Storage의 dataflow-log 버킷에 저장됩니다. 이 데이터는 Data Flow Run 상세 페이지에서 직접 조회할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/dataflow/030.jpg?classes=border,shadow" alt="" /></p>
+
+<h3 id="특징3-통합된-spark-job-정보-제공">특징3: 통합된 Spark Job 정보 제공</h3>
+
+<p>Data Flow는 Spark Job을 등록하고 실행한 모든 내역을 단일 UI로 효과적으로 제공합니다. Job을 수행하면서 생성된 모든 실행 로그, 출력 결과, 에러 로그, Spark 작업 프로파일 정보를 웹 UI로 제공하는 기능을 제공합니다.</p>
+
+<p>다음과 같이 Data Flow는 수행한 모든 Spark Job 정보를 안전하게 관리할 수 있고, 사용자가 활용하기 편리한 인터페이스(Web UI, API, CLI)를 제공합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/dataflow/020.jpg?classes=border,shadow" alt="" /></p>
+
+<h3 id="특징4-oci-보안과-통합된-안전성">특징4: OCI 보안과 통합된 안전성</h3>
+
+<p>Data Flow는 OCI 보안 체계와 IAM( Identity and Access Management) 서비스와 완전 통합되어 있습니다. Object Storage 및 Data Flow에 대한 세밀한 권한 설정이 가능합니다.</p>
+
+<p>사용자 그룹별로 Job 등록, Job 수행, Job 결과 조회, Job 수행 로그 및 데이터 조회 등을 개별적으로 설정하여 데이터 안전성을 높이고 지정된 사용자에게만 자원을 공유하는 구성을 지원합니다.</p>
+
+<pre class="prettyprint lang-bash">
+ALLOW GROUP dataflow-admin TO READ buckets IN <TENANCY>
+ALLOW GROUP dataflow-admin TO MANAGE dataflow-family IN <TENANCY>
+ALLOW GROUP dataflow-users TO READ buckets IN <TENANCY>
+ALLOW GROUP dataflow-users TO USE dataflow-family IN <TENANCY>
+ALLOW GROUP dataflow-users TO MANAGE dataflow-family IN <TENANCY>
+ALLOW GROUP dataflow-users TO MANAGE objects IN <TENANCY>
+ALLOW GROUP <group_name> TO USE dataflow-applications in compartment
+ALLOW GROUP <group_name> TO MANAGE dataflow-runs in in compartment
+ALLOW GROUP <group_name> TO MANAGE dataflow-runs in <tenancy> where target.user.id = request.user.id
+ALLOW GROUP dataflow-admin TO READ buckets IN <TENANCY>
+</pre>
+
+<h3 id="특징5-편리한-디버깅과-진단-diagnostics">특징5: 편리한 디버깅과 진단(Diagnostics)</h3>
+
+<p>Data Flow의 모든 Run 상세 페이지는 실행한 Spark 프로세스 상세 정보를 제공하는 Spark UI를 제공합니다. 이 Spark UI와 실행 로그를 이용하여 Spark 애플리케이션을 디버깅하고 상태를 진단할 수 있습니다.</p>
+
+<p>각 Run의 Spark UI는 영구적으로 제공됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/dataflow/050.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="oci-data-flow-관련-사이트">OCI Data Flow 관련 사이트</h2>
+
+<ul>
+<li><a href="#ZgotmplZ" target="_blank">https://www.oracle.com/big-data/data-flow/ <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+<li><a href="#ZgotmplZ" target="_blank">https://docs.cloud.oracle.com/en-us/iaas/data-flow/using/dfs_data_flow.htm <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+<li><a href="#ZgotmplZ" target="_blank">https://docs.cloud.oracle.com/en-us/iaas/data-flow/data-flow-tutorial/tutorial/dfs_tut_front.htm <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
 </ul>
 
 
