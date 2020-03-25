@@ -4,18 +4,18 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-03-26T08:36:57 KST">
+<meta name="revised" content="2020-03-26T08:36:56 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="Compute 인스턴스 만들기" />
-<meta property="og:description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다." />
+<meta property="og:title" content="주요 개념 " />
+<meta property="og:description" content="OCI Networking을 구성하는 주요 컴포너트와 개념을 정리합니다." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="/oci_docs/30_core_infrastructure/compute/provisioning/" />
+<meta property="og:url" content="/oci_docs/30_core_infrastructure/networking/concepts/" />
 
 
 
-
+<meta property="og:updated_time" content="2020-03-11T08:54:32&#43;09:00"/>
 
 
 
@@ -31,7 +31,7 @@
 
 
 
-<title>Compute 인스턴스 만들기 :: 오라클 클라우드 사용자 가이드</title>
+<title>주요 개념  :: 오라클 클라우드 사용자 가이드</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/oci_docs/css/font-awesome.min.css" rel="stylesheet">
@@ -43,7 +43,7 @@
 <script type="text/javascript">
       var baseurl = "\/oci_docs";
 </script>
-<meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
+<meta name="description" content="OCI Networking을 구성하는 주요 컴포너트와 개념을 정리합니다.">
 
 
 <link href='/oci_docs/css/railload.css' rel="stylesheet"/>
@@ -66,7 +66,7 @@
 
     
   </head>
-  <body data-url="/oci_docs/30_core_infrastructure/compute/provisioning/">
+  <body data-url="/oci_docs/30_core_infrastructure/networking/concepts/">
     
       <header>
   <div class="logo">
@@ -319,14 +319,14 @@
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/oci_docs/30_core_infrastructure/compute/" class="dd-item parent alwaysopen haschildren
+    <li data-nav-id="/oci_docs/30_core_infrastructure/compute/" class="dd-item alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/30_core_infrastructure/compute/">Compute</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/oci_docs/30_core_infrastructure/compute/provisioning/" class="dd-item parent active alwaysopen haschildren
+    <li data-nav-id="/oci_docs/30_core_infrastructure/compute/provisioning/" class="dd-item alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/30_core_infrastructure/compute/provisioning/">Compute 인스턴스 만들기</a>
@@ -387,14 +387,14 @@
       <a href="/oci_docs/30_core_infrastructure/file_storage/">File Storage</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/oci_docs/30_core_infrastructure/networking/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="/oci_docs/30_core_infrastructure/networking/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/oci_docs/30_core_infrastructure/networking/">Networking</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/oci_docs/30_core_infrastructure/networking/concepts/" class="dd-item alwaysopen
+    <li data-nav-id="/oci_docs/30_core_infrastructure/networking/concepts/" class="dd-item parent active alwaysopen
         ">
       <div>
       <a href="/oci_docs/30_core_infrastructure/networking/concepts/">주요 개념 </a><i class="fa fa-circle-thin read-icon"></i>
@@ -953,7 +953,7 @@
     <option value="/oci_docs/30_core_infrastructure/compute/" >
   - 
    Compute</option> 
-    <option value="/oci_docs/30_core_infrastructure/compute/provisioning/"  selected>
+    <option value="/oci_docs/30_core_infrastructure/compute/provisioning/" >
   -- 
    Compute 인스턴스 만들기</option> 
       <option value="/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/" >--- Developer Image 인스턴스 생성</option>
@@ -983,7 +983,7 @@
     <option value="/oci_docs/30_core_infrastructure/networking/" >
   - 
    Networking</option> 
-    <option value="/oci_docs/30_core_infrastructure/networking/concepts/" >
+    <option value="/oci_docs/30_core_infrastructure/networking/concepts/"  selected>
   -- 
    주요 개념 </option> 
   
@@ -1032,9 +1032,9 @@
         </script>
         <script type="text/javascript" src="/oci_docs/js/search.js"></script>
       </div>
-    <h1>Compute 인스턴스 만들기</h1>
+    <h1>주요 개념 </h1>
     <div class="alert alert-info" role="alter">
-      <li><strong>문서 생성일:</strong> 0001-01-01 00:00:00 &#43;0000 UTC </li>
+      <li><strong>문서 생성일:</strong> 2020-03-11 08:54:32 &#43;0900 KST </li>
    </div>
 
 
@@ -1045,12 +1045,27 @@
     
     
 
-<p>OCI(Oracle Cloud Infrastructure)에서 Compute 인스턴스를 프로비저닝하는 방법을 유형별 정리합니다.</p>
 
-<ul>
-<li>Oracle Cloud Developer Image 인스턴스 생성</li>
-<li></li>
-</ul>
+
+<div class="extra-pagination inner">
+<nav class="pagination" role="navigation">
+	
+	<span class="page-number">Page 1 of 0</span>
+	
+</nav>
+
+</div>
+
+
+
+<div style="margin-bottom:2rem"></div>
+
+<nav class="pagination" role="navigation">
+	
+	<span class="page-number">Page 1 of 0</span>
+	
+</nav>
+
 
 
 
@@ -1058,8 +1073,8 @@
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/oci_docs/30_core_infrastructure/compute/" title="Compute"> <i class="fa fa-chevron-left"></i><label>Compute</label></a>
-    <a class="nav nav-next" href="/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/" title="Developer Image 인스턴스 생성" style="margin-right: 0px;"><label>Developer Image 인스턴스 생성</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/oci_docs/30_core_infrastructure/networking/" title="Networking"> <i class="fa fa-chevron-left"></i><label>Networking</label></a>
+    <a class="nav nav-next" href="/oci_docs/50.database_service/" title="Database Service" style="margin-right: 0px;"><label>Database Service</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="row">
@@ -1078,7 +1093,7 @@
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/30_core_infrastructure/compute/provisioning/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/30_core_infrastructure/networking/concepts/"></div>
 
   </div>
 
@@ -1092,6 +1107,10 @@
 
     
 
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 11/03/2020
+    </div>
     
   </div>
 

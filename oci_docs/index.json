@@ -84,6 +84,13 @@
 	"content": " ADW 기본 관리 ADW 인스턴스를 Scale Up\u0026amp;Dwon하는 실습은 다음과 같은 목차로 진행됩니다.\n ADW 기본 관리  ADW 상세 페이지 이동 ADW 인스턴스 시작 ADW 인스턴스 종료 ADW 인스턴스 제거   \n ADW 상세 페이지 이동 OCI 콘솔의 ADW 인스턴스 상세 페이지에서 ADW 인스턴스를 시작하고 종료할 수 있습니다. 다음 메뉴 패스를 통해서 DemoAdw ADW 인스턴스 상세 페이지로 이동합니다.\n (OCI 콘솔 왼쪽 위 햄버그 버튼)  Autonomous Data Warehouse  sandbox 컴파트먼트 선택  DemoAdw 링크 클릭 위 이미지에서 DemoAdw 링크를 클릭하면 DemoAdw 상세 페이지로 이동합니다. 아래 이미지에서 DemoAdw 인스턴스는 정지된 상태입니다.\nADW 인스턴스 시작 DemoAdw 인스턴스 상세 페이지에서 다음 메뉴를 통해서 정지된 인스턴스를 시작할 수 있습니다.\nMore Actions  Start DemoAdw ADW 인스턴스가 정상적으로 실행되면 DemoAdw 인스턴스 상세 페이지는 다음과 같이 변경됩니다.\nADW 인스턴스 종료 DemoAdw 인스턴스 상세 페이지에서 다음 메뉴를 통해서 인스턴스를 정지할 수 있습니다.\nMore Actions  Stop DemoAdw ADW 인스턴스가 정상적으로 종료되면 DemoAdw 인스턴스 상세 페이지는 다음과 같이 변경됩니다.\nADW 인스턴스 제거 DemoAdw 인스턴스 상세 페이지에서 다음 메뉴를 통해서 인스턴스를 제거할 수 있습니다.\nMore Actions  Terminates 인스턴스 삭제를 확인하기 위해서 ADW 데이터베이스 이름을 입력하고 \u0026ldquo;Terminate Autonomous Database\u0026rdquo; 버튼을 클릭합니다.\nDemoAdw ADW 인스턴스가 정상적으로 제거되면 DemoAdw 인스턴스 상세 페이지는 다음과 같이 변경됩니다.\n"
 },
 {
+	"uri": "/oci_docs/30_core_infrastructure/networking/concepts/",
+	"title": "주요 개념 ",
+	"tags": [],
+	"description": "OCI Networking을 구성하는 주요 컴포너트와 개념을 정리합니다.",
+	"content": ""
+},
+{
 	"uri": "/oci_docs/00_oci/oci_services/",
 	"title": "OCI 주요 서비스",
 	"tags": [],
