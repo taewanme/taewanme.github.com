@@ -6,10 +6,21 @@
     <description>Recent content in Oci Cli on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 28 Nov 2018 09:17:05 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 15 Mar 2020 01:20:25 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/oci-cli/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>예제를 중심으로 정리한 OCI CLI와 jq 레시피</title>
+      <link>http://taewan.kim/cloud/practices_of_oci_cli_and_jq/</link>
+      <pubDate>Sun, 15 Mar 2020 01:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/practices_of_oci_cli_and_jq/</guid>
+      <description>OCI CLI는 OCI(Oracle Cloud Infrastructure) 자원 관리를 돕는 명령어 기반 도구입니다. jq는 json의 반환 값을 처리하는데 매우 편리한 도구로 CLI 형태의 도구와 궁합이 잘 맞는 유틸리티입니다.
+이 문서에서는 OCI CLI 활용에 도움이 될 OCI CLI 명령을 레시피 형태로 정리해 보겠습니다. 이 문서에 레시피는 지속적으로 업데이트 할 예정입니다. 필요한 명령은 댓글로 남겨주시면 반영하겠습니다.
+사전 준비 이 문서는 다음과 같은 사항을 전제로 합니다. 이 문서를 따라하기 형태로 사용하기 위해서는 다음 조건을 만족해야 합니다.</description>
+    </item>
     
     <item>
       <title>OCI CLI로 RSA key pair 생성</title>
