@@ -17,8 +17,8 @@
       <pubDate>Sat, 07 Mar 2020 08:20:25 +0900</pubDate>
       
       <guid>http://taewan.kim/cloud/oci_cloud_shell/</guid>
-      <description>2020년 2월 11일 OCI(Oracle Cloud Infrastructure)는 Cloud Shell을 새롭게 공개했습니다. Cloud Shell은 OCI Console(OCI 관리 콘솔)에서 실행되는 브라우저 기반 터미널입니다. OCI Cloud Shell은 GCP의 Google Cloud Shell, Azure의 Cloud Shell 및 AWS의 Session Manager와 같은 서비스입니다. OCI Cloud Shell를 이용하면 PuTTY를 사용하지 않고 OCI VM 인스턴스에 접속하거나 별도의 소프트웨어와 계정 설정 작업 없이 즉시 OCI CLI를 실행할 수 있습니다.
-Cloud Shell 과금정책과 사용 권한 OCI Cloud Shell은 Free 서비스입니다. 사용에 대한 별도 비용이 발생하지 않습니다.</description>
+      <description>OCI 브라우저 기반 가상 터미널 2020년 2월 11일 OCI(Oracle Cloud Infrastructure)는 Cloud Shell을 새롭게 공개했습니다. Cloud Shell은 OCI Console(OCI 관리 콘솔)에서 실행되는 브라우저 기반 터미널입니다. OCI Cloud Shell은 GCP의 Google Cloud Shell, Azure의 Cloud Shell 및 AWS의 Session Manager와 같은 서비스입니다. OCI Cloud Shell를 이용하면 PuTTY를 사용하지 않고 OCI VM 인스턴스에 접속하거나 별도의 소프트웨어와 계정 설정 작업 없이 즉시 OCI CLI와 같은 툴을 사용할 수 있습니다.
+Cloud Shell 과금정책과 사용 권한 OCI Cloud Shell은 Free 서비스입니다.</description>
     </item>
     
     <item>
