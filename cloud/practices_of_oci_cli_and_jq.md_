@@ -147,6 +147,20 @@ OCI USER에 등록하 api-key 정보를 조회합니다.
 
 ## 2. oci compute 
 
+__oci compute__ 명령은 OCI Compute Service 자원을 관리하는 명령을 제공합니다.
+
+### compute image : 이미지 검색
+
+현재 사용 가능한 compute image 목록을 조회합니다. 
+
+
+oci compute image list -c $COCID | jq '.data [] | select ( .create-image-allowed == true) |  select ( "operating-system"| contains ( "Linux") ) | "display-name"+ ","+ "id"+ ","+ "operating-system"+ ","+ "operating-system-version" ' 
+
+oci compute image list -c $COCID | jq -r '.data [] | select ( "create-image-allowed"== true) | * ' 
+
+.EnvironmentName == "hello-dev"
+
+hello.json | jq '.[] | select(.EnvironmentName == "hello-dev")'
 
 ## 참고 문서
 
