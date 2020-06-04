@@ -1,0 +1,679 @@
++++
+date = "2020-04-26T01:20:25+09:00"
+description = ""
+title = "[OCI]Spark 개발 환경 구성"
+thumbnailInList = "https://taewanmerepo.github.io/2020/04/ocisparkdev/list.jpg"
+thumbnailInPost = "https://taewanmerepo.github.io/2020/03/sharedvolume/post2.jpg"
+tags = ["oci", "spark", "hdfs connector", "jupyter", "apache toree"]
+categories = ["Cloud"]
+author = "taewan.kim"
+disclaimer = "true"
++++
+
+OCI에서 Spark 환경을 구성할 때, Spark 애플리케이션이 사용하는 데이터는 대부분 OCI Object Storage에 저장됩니다. OCI Object Storage는  Map Reduce와 Spark 애플리케이션이 OCI Object Storage에 접근할 수 있도록 __HDFS Connector__를 제공합니다. __HDFS Connector__가 구성된 Hadoop Cluster나 Spark Cluster에서 OCI Object Storage를 __oci://...__ 프로토롤로 접근할 수 있습니다. 
+
+최근에 OCI에는 Apache Spark 서비스인 OCI Data Flow가 공개되었습니다. OCI Data Flow에 Spark Job을 등록하면 Spark 클러스터가 배포되고 실행됩니다. 등록된 Job이 종료되면 Spark Cluter를 제거하는 Serverless spark 서비스입니다. OCI Data Flow에서 대부분 입력 데이터와 출력 데이터는 OCI Object Storage에 저장됩니다. 
+
+![](https://taewanmerepo.github.io/2020/04/ocisparkdev/000.jpg)
+
+OCI Data Flow와 같은 서비스에서 동작하는 Spark 애플리케이션을 개발하기 위해서는 Spark 클러스터와 __HDFS Connector__로 OCI Object Storage를 연결하는 환경 구성이 필요합니다. 
+
+이번 문서에서는 OCI Compute 인스턴스에 Spark을 설치하고 __HDFS Connector__구성하는 과정을 소개합니다. 추가로 Jupyter lab과 Apache Toree를 설치하여 OCI Object Storage를 Spark 애플리케이션 개발 환경을 구성해 보겠습니다. 이 문서는 다음과 같은 절차로 진행됩니다. 
+
+- 사전 준비 사항
+    - OCI 작업 사용자 선정 및 로그인
+    - Compartment 결정
+    - 권한 설정
+    - OCI Shell에서 SSH Key Pair 생성
+    - Object Storage에 버킷 생성 
+    - Object Storeate 테스트 데이터 추가
+- OCI VCN(Virtual Cloud Network) 생성
+- OCI Compute 인스턴스 생성
+- Spark 환경 구성
+    - Spark 설치
+    - OCI HDFS Connector 설치 및 설정
+    - Spark 코드 테스트
+- Spark 개발환경 구성
+    - Jupyter Lab 설치 
+    - Apache Toree 설치
+    - Spark 코드 테스트
+    - OS 서비스 등록
+
+설치과정을 진행할 때, OCI Compute 인스턴스에 접속하기 위해서 사용하는 Terminal은 OCI Cloud Shell을 사용하겠습니다. OCI Cloud Shell은 OCI Console에서 제공하는 브라우저 기반 가상 리눅스 터미널입니다. 
+
+![](https://taewanmerepo.github.io/2020/ocidocs/tools/050.jpg)
+
+OCI Cloud Shell에 대한 자세한 내용은 다음 문서를 참조하시기 바랍니다. 
+
+- {{< extlink link="http://cloud-docs.taewan.me/700.oci_tools/010.cloud_shell/" desc="OCI Cloud Shell 소개">}}
+
+이베 부터 Spark와 OCI Object Storage가 통합된 Spark 개발 환경을 구성하는 과정을 알아보겠습니다.
+
+## 1. 사전 준비 사항
+
+OCI Spark 개발 환경 구성을 진행하기에 앞서, 먼저 준비할 부분에 대하여 알아보겠습니다. 
+
+### 1.1 OCI 사용자 선정 및 로그인
+
+### 1.2 Compartment 선정
+### 1.3 권한 설정
+### 1.4 OCI Shell에서 SSH Key Pair 생성
+### 1.5 Object Storage에 버킷 생성
+### 1.6 Object Storeate 테스트 데이터 추가
+## 2. OCI VCN(Virtual Cloud Network) 생성
+## 3. OCI Compute 인스턴스 생성
+## 4. Spark 환경 구성
+### 4.1 Spark 설치
+### 4.2 OCI HDFS Connector 설치 및 설정
+### 4.3 Spark 코드 테스트
+## 5 Spark 개발환경 구성
+### 5.1 Jupyter Lab 설치
+### 5.2 Apache Toree 설치
+### 5.3 Spark 코드 테스트
+### 5.4 OS 서비스 등록
+
+
+이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.
+
+- {{< extlink link="/oci_docs/10_quickstart/vcn/simple_vcn/" desc="OCI FREE TIER 계정 등록">}}
+- {{< extlink link="/oci_docs/10_quickstart/first_sign_in_oci/" desc="Free Tier 계정 첫 번째 로그인">}}
+
+데모 진행을 위하여 다음과 같은 환경이 구성되어 있다고 가정합니다. 다음 자원이 없다면 “자원 생성 참조 문서“를 참조하여 해당 자원을 생성하시기 바랍니다.
+
+|자원 유형|자원 이름|해당 자원을 포함하는 Compartment| 자원 생성 참조 문서|
+|----|----|----|----|
+|Compartment|sandbox|root|{{< extlink link="/oci_docs/10_quickstart/create_compartment/" desc="Compartment 추가">}} |
+|VCN|demo_vcn|root > sandbox|{{< extlink link="/oci_docs/10_quickstart/vcn/simple_vcn/" desc="간편 VCN 만들기">}} |
+
+
+## 멀티 Compute 인스턴스 공유 볼륨 구성
+
+여러 Compute가 공유하는 Block Volume 구성은 다음과 같은 순서로 구성됩니다. 
+
+1. Compute VM 인스턴스 프로비저닝
+1. 포트 공개 설정 
+1. 공유 Block Volume 생성
+1. Compute에 Block Volume 연결
+1. 2개 인스턴스에 OCFS2 설치 및 구성
+1. cluster-vm01 공유 볼륨 포맷/마운트
+1. cluster-vm01 공유 볼륨 테스트
+1. cluster-vm02 공유 볼륨 마운트
+1. cluster-vm02 공유 볼륨 테스트
+
+### 1. Compute 인스턴스 프로비저닝
+
+OCFS2를 설치하고 Blokc Volume을 읽기/쓰기 모드로 공유할 Compute 인스턴스 2개를 만듭니다. 다음과 같은 설정으로 Compute 인스턴스 2개를 만드시기 바랍니다. 
+
+|설정 항목|cluster_vm01|cluster_vm02|
+|----|----|----|
+|Name your instance|cluster-vm01|cluster-vm02|
+|Operating System or Image Source|Oracle Linux 7.7|Oracle Linux 7.7|
+|Availability Domain|AD 1|AD 1|
+|Instance Type|Virtual Machine|Virtual Machine|
+|Instance Shape|VM.Stanndard2.1|VM.Stanndard2.1|
+|Virtaul cloud network compartment|sandbox|sandbox|
+|Virtaul cloud network|demo_vcn|demo_vcn|
+|Subnet Compartment|sandbox|sandbox|
+|Subnet|Public Subnet-demo_vcn|Public Subnet-demo_vcn|
+|Assign a public IP address|체크|체크|
+|Choose SSH Key file|체크|체크|
+|public key|id_rsa.pub|id_rsa.pub|
+
+Compute 인스턴스 프로비저닝이 어려우실 경우 다음 문서를 참조하시기 바랍니다. 
+- {{< extlink link="/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/" desc="Oracle Linux VM 인스턴스 생성">}} 참조: __2.3 SSH 접속__ 절까지 수행
+
+ssh 통신에 사용되는 SSH Key Pair(Public Key, Private Key)를 준비가 어려우실 경우 다음 문서를 참조하시기 바랍니다. 
+- {{< extlink link="/oci_docs/98_misc_tips/ssh_key_pairs/" desc="운영체제별 SSH Key Pair 준비">}} 
+
+cluster_vm01와 cluster_vm02 인스턴스가 만들어지면 Compute 관리 페이지에 다음 이미지와 목록이 출력됩니다. 
+
+![](https://taewanmerepo.github.io/2020/03/sharedvolume/310.jpg)
+
+앞에서 생성한 Compute 인스턴스는 다음과 같은 공개 IP와 비공개 IP를 갖습니다. 이 IP 정보는 아래 설명에서 사용됩니다. 
+
+|인스턴스 이름|공개 IP 주소|비공개 IP 주소|서브넷|
+|----|----|----|----|
+|cluster-vm01|150.136.62.165|10.0.0.27|Public Subnet-demo_vcn|
+|cluster-vm02|150.136.53.151|10.0.0.28|Public Subnet-demo_vcn|
+
+
+### 2. 포트 공개 설정 
+
+OCFS2를 구성하기 위해서는 2개 포트를 공개해야 합니다. 7777과 3260입니다. 7777 포트는 OCFS2가 클러스터를 구성하기 위해서 사용하는 포트이고 3260은 Volume Gateway 포트입니다. 두 포트를 OCI Security List와 OS 방화벽에서 오픈합니다. 
+
+#### Security List에서 포트 오픈
+
+현재 사용하고 있는 demo_vcn의 Public Subnet-demo_vcn 서브넷에 기본적용되는 __Default Security List for demo_vcn__ Security List에 다음 2개 룰을 추가합니다. 
+
+|포트|Stateless|Source Type|Source CIDR|IP Protocol|Source Port Range|Destination Port Range|
+|----|----|----|----|----|----|----|
+|7777|체크X|CIDR|10.0.0.0/16|TCP|All|7777|
+|3260|체크X|CIDR|10.0.0.0/16|TCP|All|3260|
+
+__Default Security List for demo_vcn__ Security List에 2개 룰을 추가하는 것이 어려우실 경우 다음 문서를 참조하시기 바랍니다. 
+
+- {{< extlink link="/oci_docs/10_quickstart/vcn/simple_vcn/#1-3-security-list에-secury-rule추가" desc="1.3 Security List에 Secury Rule추가 ">}} 
+
+2개 룰이 추가디면 __Default Security List for demo_vcn__의 Ingress Rules은 다음과 같은 형태가 됩니다. 
+
+![](https://taewanmerepo.github.io/2020/03/sharedvolume/020.jpg)
+
+#### 리눅스 방화벽 오픈
+
+cluster_vm01과 cluster_vm02에 ssh 접속한 후 다음 4개 명령을 실행하여 방화벽을 오픈합니다. 
+
+```
+sudo firewall-cmd --zone=public --permanent --add-port=7777/tcp
+sudo firewall-cmd --zone=public --permanent --add-port=3260/tcp
+sudo firewall-cmd --complete-reload
+sudo firewall-cmd --info-zone public ##오픈 상태 확인
+```
+
+다음 이미지는 cluster_vm01과 cluster_vm02에서 각각 위 4개 명령을 시행한 결과입니다. 
+
+![](https://taewanmerepo.github.io/2020/03/sharedvolume/320.jpg)
+
+### 3. 공유 Block Volume 생성
+
+cluster_vm01과 cluster_vm02에서 ocfs2로 클러스터를 구성하고 공유할 Block Storage를 생성할 차례입니다. Block Volues 관리 페이지에서 Block Volume을 생성합니다. Block Volues 관리 페이지 이동 메뉴 패스는 다음과 같습니다.
+
+- __OCI 콘솔 왼쪽 위 햄버그 버튼__ >> __Block Storage__ >>  __Block Volumes__
+
+![](https://taewanmerepo.github.io/2020/ocidocs/block/010.jpg?classes=border,shadow) 
+
+Block Volume 관리 페이지에서 앞으로 생성할 Block Volume을 할당할 Compartment로 sandbox(root/sandbox)를 선택합니다. 그리고 “Create Block Volume” 버튼을 클릭합니다. 
+
+![](https://taewanmerepo.github.io/2020/ocidocs/block/020.jpg?classes=border,shadow) 
+
+“Create Block Volume” 버튼을 클릭하면 __Create Block Volume" 생성 입력 폼이 나타납니다. 입력 폼에 다음과 같은 입력값을 설정합니다. 
+
+|입력 항목|설정값|설명|
+|----|----|----|
+|Name|shared_volume||
+|Create In Compartment|sandbox|Block Volume을 할당할 Compartment|
+|Availability Domain|fttO:US-ASHBURN-AD-1|리전에 따라 달라지는 값입니다. 각 리전의 AD 1을 선택합니다.|
+|Size(In GB)|1024|기본값인 1TB를 사용합니다.|
+|Compartment For Backup Policies|sandbox||
+|Backup Policy|Bronze|이 항목의 선택은 제약이 없습니다. 다른 값 선택이 앞으로 진행에 영향이 없습니다.|
+|Volume Performance|Balanced|기본값을 사용합니다. 다른 값 선택이 앞으로 진행에 영향이 없습니다.|
+|Encryption|Encrypt Using Oracle-Managed Keys|기본값을 사용합니다.|
+
+위 입력값을 모두 입력하면 다음 이미지와 같은 상태가 됩니다. 입력을 마쳤으면 __Create_Block_Volume__ 버튼을 클릭합니다. 
+
+![](https://taewanmerepo.github.io/2020/03/sharedvolume/040.jpg)
+
+### 4. Compute에 Block Volume 연결
+
+cluster_vm01과 cluster_vm02에 앞에서 생성한 Block Volume을 연결합니다. "__shared_volume__" 상세 페이지에서 왼쪽 메뉴의 "__Attached Instances__" 링크를 클릭하고 "__Attach to Instance__" 버튼을 클릭합니다. 그리고 다음과 같은 설정을 통해서 Block Volume에 인스턴스를 추가합니다. 
+
+![](https://taewanmerepo.github.io/2020/03/sharedvolume/050.jpg)
+
+cluster_vm01과 cluster_vm02를 다음과 같은 설정으로 "__shared_volume__"에 등록합니다. 
+
+|설정 항목|cluster_vm01 설정값|cluster_vm02 설정값|
+|----|----|----|
+|Attachment Type|ISCSI|ISCSI|
+|Access Type|READ/WRITE SHARED|READ/WRITE SHARED|
+|Settig Type|Select Instance|Select Instance|
+|Choose Instance|cluster_vm01|cluster_vm02|
+|Device Name|/dev/oracleoci/oraclevdb|/dev/oracleoci/oraclevdb|
+
+위 설정으로 등록 창을 입력하면 다음과 같은 상태가 됩니다. 두 인스턴스를 지정하고 __Attach__ 버튼을 클릭합니다. 
+
+![](https://taewanmerepo.github.io/2020/03/sharedvolume/060.jpg)
+
+Block Volume에 2개 인스턴스를 등록하면 다음과 같은 상태가 됩니다. 
+
+![](https://taewanmerepo.github.io/2020/03/sharedvolume/340.jpg)
+
+Block Volume 상세 페이지에 등록된 인스턴스 목록에서 각각 __iSCSI Command & Information__ 메뉴를 실행하고 __Attach Command__를 복사합니다. 
+
+![](https://taewanmerepo.github.io/2020/03/sharedvolume/330.jpg)
+
+cluster_vm01과 cluster_vm02의 __Attach Command__는 다음과 같습니다. 
+
+- cluster-vm01
+
+```
+sudo iscsiadm -m node -o new -T iqn.2015-12.com.oracleiaas:84a47e02-9482-4040-8476-e46468941046 -p 169.254.2.2:3260
+sudo iscsiadm -m node -o update -T iqn.2015-12.com.oracleiaas:84a47e02-9482-4040-8476-e46468941046 -n node.startup -v automatic
+sudo iscsiadm -m node -T iqn.2015-12.com.oracleiaas:84a47e02-9482-4040-8476-e46468941046 -p 169.254.2.2:3260 -l
+```
+
+- cluster-vm02
+
+```
+sudo iscsiadm -m node -o new -T iqn.2015-12.com.oracleiaas:84a47e02-9482-4040-8476-e46468941046 -p 169.254.2.2:3260
+sudo iscsiadm -m node -o update -T iqn.2015-12.com.oracleiaas:84a47e02-9482-4040-8476-e46468941046 -n node.startup -v automatic
+sudo iscsiadm -m node -T iqn.2015-12.com.oracleiaas:84a47e02-9482-4040-8476-e46468941046 -p 169.254.2.2:3260 -l
+```
+
+cluster_vm01과 cluster_vm02에 ssh로 접속하고 위 명령을 각각 실행합니다. 위 명령을 각각 서버에서 실행한 후, fdisk 명령을 실행하면 공유 볼륨이 연결된 것을 확인할 수 있습니다. 다음 이미지는 cluster_vm01과 cluster_vm02에서 명령을 실행하고 fdisk 명령으로 shared_volume 인식을 확인하는 과정을 보여줍니다.
+
+![](https://taewanmerepo.github.io/2020/03/sharedvolume/090.jpg)
+
+### 5. 2개 인스턴스에 OCFS2 설치 및 구성
+
+cluster_vm01과 cluster_vm02에 ssh로 접속하고 다음 명령을 각각 실행하여 ocfs2-tools-devel와 ocfs2-tools 패키지를 설치합니다.
+
+```
+sudo yum install ocfs2-tools-devel ocfs2-tools -y
+```
+
+cluster_vm01과 cluster_vm02에 다음 명령을 각각 수행하여 이름이 <font color='red'>__ociocfs2__</font>인 OCIFS2 클러스터를 만듭니다. 
+
+```
+sudo o2cb add-cluster ociocfs2
+```
+
+이제 클러스터에 2개 노드를 등록합니다. 형식은 다음과 같습니다. 
+
+```
+sudo o2cb add-node <Cluster_NAME> <COMPUTE_NAME> --ip <PRIVATE_ID>
+```
+
+이 형식을 cluster_vm01과 cluster_vm02에 적용하면 다음과 같습니다. 다음 명령을 cluster_vm01과 cluster_vm02에서 각각 실행합니다. 아래 명령은 데모에서 사용하는 Private IP가 설정되어 있습니다. 이 명령를 사용하실 때 사용하시는 Compute 인스턴스의 Private IP로 수정하고 사용하시기 바랍니다.   
+
+```
+sudo o2cb add-node ociocfs2 cluster-vm01 --ip 10.0.0.27
+sudo o2cb add-node ociocfs2 cluster-vm02 --ip 10.0.0.28
+```
+
+OCFS2 클러스터 설정은 __/etc/ocfs2/cluster.conf__ 파일에 저장됩니다. 
+
+![](https://taewanmerepo.github.io/2020/03/sharedvolume/350.jpg)
+
+OCFS2는 O2CB라는 클러스터 관리 컴포넌트로 5개의 시스템 서비스로 구성됩니다. 클러스터를 구성하기 위해서는 cluster_vm01과 cluster_vm02에서 O2CB를 동일하게 설정해야 합니다. O2CB 설정을 위하여 cluster_vm01과 cluster_vm02에서 각각 __sudo /sbin/o2cb.init configure__ 명령을 실행합니다. "Cluster to start on boot (Enter "none" to clear)" 항목에 __ociocfs2__를 입력하는 것을 제외하면 모두 기본값을 설정합니다.(Just Enter) 
+
+```
+[opc@cluster-vm01 ~]$ sudo /sbin/o2cb.init configure
+Configuring the O2CB driver.
+
+This will configure the on-boot properties of the O2CB driver.
+The following questions will determine whether the driver is loaded on
+boot.  The current values will be shown in brackets ('[]').  Hitting
+<ENTER> without typing an answer will keep that current value.  Ctrl-C
+will abort.
+
+Load O2CB driver on boot (y/n) [n]: y
+Cluster stack backing O2CB [o2cb]:
+Cluster to start on boot (Enter "none" to clear) [ocfs2]: ociocfs2
+Specify heartbeat dead threshold (>=7) [31]:
+Specify network idle timeout in ms (>=5000) [30000]:
+Specify network keepalive delay in ms (>=1000) [2000]:
+Specify network reconnect delay in ms (>=2000) [2000]:
+Writing O2CB configuration: OK
+checking debugfs...
+Loading stack plugin "o2cb": OK
+Loading filesystem "ocfs2_dlmfs": OK
+Creating directory '/dlm': OK
+Mounting ocfs2_dlmfs filesystem at /dlm: OK
+Setting cluster stack "o2cb": OK
+Registering O2CB cluster "ociocfs2": OK
+Setting O2CB cluster timeouts : OK
+[opc@cluster-vm01 ~]$
+```
+
+cluster_vm01과 cluster_vm02에서 __sudo /sbin/o2cb.init status__ 명령을 실행하면 OCFS2 클러스터 스텍 상태를 확인할 수 있습니다.  
+
+![](https://taewanmerepo.github.io/2020/03/sharedvolume/360.jpg)
+
+cluster-vm01과 cluster-vm02 모두 클러스터 스택 중 O2CB heartbeat이 __Not Active__ 상태입니다. 
+
+
+cluster_vm01과 cluster_vm02에서 __Checking O2CB cluster "ociocfs2"__ 상태가 Offline인 것을 확인할 수 있습니다. Cluster Stack을 관리하는 명령은 다음과 같습니다.
+
+|Cluster Stack 관리 명령|설명|
+|----|----|
+|sudo /sbin/o2cb.init status|Cluster Stack 상태 확인|
+|sudo /sbin/o2cb.init online|Cluster Stack 시작|
+|sudo /sbin/o2cb.init offline|Cluster Stack 정지|
+|sudo /sbin/o2cb.init unload|Cluster Stack 비활성화|
+
+
+cluster_vm01과 cluster_vm02에서 다음 명령을 실행하여 o2cb와 ocfs2를 서비스에 등록합니다.
+
+```
+sudo systemctl enable o2cb
+sudo systemctl enable ocfs2
+```
+
+위 명령은 다음과 같이 실행됩니다.
+
+```
+[opc@cluster-vm01 ~]$ sudo systemctl enable o2cb
+Created symlink from /etc/systemd/system/multi-user.target.wants/o2cb.service to /usr/lib/systemd/system/o2cb.service.
+[opc@cluster-vm01 ~]$ sudo systemctl enable ocfs2
+Created symlink from /etc/systemd/system/multi-user.target.wants/ocfs2.service to /usr/lib/systemd/system/ocfs2.service.
+[opc@cluster-vm01 ~]$ 
+```
+
+cluster_vm01과 cluster_vm02에서 다음 명령을 수행하여 OCFS2 클러스터를 위한 커널 설정을 합니다.
+
+```
+# Define panic and panic_on_oops for cluster operation
+sudo sysctl kernel.panic=30
+sudo sysctl kernel.panic_on_oops=1
+```
+
+위 명령은 다음과 같이 실행됩니다.
+
+```
+[opc@cluster-vm01 ~]$ sudo sysctl kernel.panic=30
+kernel.panic = 30
+[opc@cluster-vm01 ~]$ sudo sysctl kernel.panic_on_oops=1
+kernel.panic_on_oops = 1
+[opc@cluster-vm01 ~]$
+```
+
+cluster_vm01과 cluster_vm02에서 이 설정이 시스템 재시작  후에도 유지되도록 __/etc/sysctl.conf__파일 마지막에 다음 설정을 추가합니다.
+
+```
+# Define panic and panic_on_oops for cluster operation
+kernel.panic=30
+kernel.panic_on_oops=1
+```
+
+__/etc/sysctl.conf__ 파일을 수정한 결과는 다음과 같습니다.
+
+```
+[opc@cluster-vm01 ~]$ sudo vi /etc/sysctl.conf
+[opc@cluster-vm01 ~]$ sudo cat /etc/sysctl.conf
+# sysctl settings are defined through files in
+# /usr/lib/sysctl.d/, /run/sysctl.d/, and /etc/sysctl.d/.
+#
+# Vendors settings live in /usr/lib/sysctl.d/.
+# To override a whole file, create a new file with the same in
+# /etc/sysctl.d/ and put new settings there. To override
+# only specific settings, add a file with a lexically later
+# name in /etc/sysctl.d/ and put new settings there.
+#
+# For more information, see sysctl.conf(5) and sysctl.d(5).
+
+# Define panic and panic_on_oops for cluster operation
+kernel.panic=30
+kernel.panic_on_oops=1
+[opc@cluster-vm01 ~]$
+```
+
+두 커널 파라미터의 의미는 다음과 같습니다. 
+
+|파라미터 이름|설명|
+|----|----|
+|panic|panic이 발생한 후 지정한 시간 이후에 시스템을 리부팅, 초 단위 설정|
+|panic_on_oops|1로 설정하면 Kernel OOPS가 발생  시스템 패닉으로 간주. panic에 설정된 시간 후에 리부팅|
+
+### 6. cluster-vm01 공유 볼륨 포맷/마운트
+
+이번 절은 cluster-vm01에만 적용하는 부분입니다. cluster-vm01에서 __sudo lsblk -f__을 실행하여 장치 파일 인식 상태를 확인할 수 있습니다. 현재 cluster-vm01에서는 block volume을 단순히 인식만 할 뿐입니다. 
+
+```
+[opc@cluster-vm01 ~]$ sudo lsblk -f
+NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
+sdb
+sda
+├─sda2 swap         02789b15-4058-485e-86a6-38522a5c00c6 [SWAP]
+├─sda3 xfs          53bb89bf-50e3-4358-9f5e-e9c5ac8d535c /
+└─sda1 vfat         F831-6C7E                            /boot/efi
+[opc@cluster-vm01 ~]$
+```
+
+__sudo fdisk /dev/sdb__ 명령을 실행하여 앞에서 추가한 Block Volume에 파티션을 설정합니다. 
+
+![](https://taewanmerepo.github.io/2020/03/sharedvolume/380.jpg)
+
+__sudo fdisk -l__ 명령을 실행하여 파티션 생성 결과를 확인합니다. 위 파티션 작업을 통해서 <font color='red'>__/dev/sdb1__</font>가 만들어 진 것을 확인할 수 있습니다.
+
+```
+opc@cluster-vm01 ~]$ sudo fdisk -l
+WARNING: fdisk GPT support is currently new, and therefore in an experimental phase. Use at your own discretion.
+
+Disk /dev/sda: 50.0 GB, 50010783744 bytes, 97677312 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 1048576 bytes
+Disk label type: gpt
+Disk identifier: 23A7AABA-6B11-4E98-A2CE-4962B4F7BCC3
+
+
+#         Start          End    Size  Type            Name
+ 1         2048       411647    200M  EFI System      EFI System Partition
+ 2       411648     17188863      8G  Linux swap
+ 3     17188864     97675263   38.4G  Microsoft basic
+
+Disk /dev/sdb: 1099.5 GB, 1099511627776 bytes, 2147483648 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 1048576 bytes
+Disk label type: dos
+Disk identifier: 0xcf42a827
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sdb1            2048   104859647    52428800   83  Linux
+[opc@cluster-vm01 ~]$ sudo ls -al /dev/sd*
+brw-rw----. 1 root disk 8,  0  3월 10 08:11 /dev/sda
+brw-rw----. 1 root disk 8,  1  3월 10 08:11 /dev/sda1
+brw-rw----. 1 root disk 8,  2  3월 10 08:11 /dev/sda2
+brw-rw----. 1 root disk 8,  3  3월 10 08:11 /dev/sda3
+brw-rw----. 1 root disk 8, 16  3월 10 09:28 /dev/sdb
+brw-rw----. 1 root disk 8, 17  3월 10 09:28 /dev/sdb1
+[opc@cluster-vm01 ~]$
+```
+
+다음 명령을 이용하여 /dev/sdb1 파티션을 ocfs2 타입으로 포맷합니다. 
+
+```
+sudo mkfs.ocfs2 -L "ocfs2" /dev/sdb1
+```
+
+위 명령을 실행하면 다음과 같은 결과가 출력됩니다. 
+
+```
+[opc@cluster-vm01 ~]$ sudo mkfs.ocfs2 -L "ocfs2" /dev/sdb1
+mkfs.ocfs2 1.8.6
+Cluster stack: classic o2cb
+Label: ocfs2
+Features: sparse extended-slotmap backup-super unwritten inline-data strict-journal-super xattr indexed-dirs refcount discontig-bg
+Block size: 4096 (12 bits)
+Cluster size: 4096 (12 bits)
+Volume size: 53687091200 (13107200 clusters) (13107200 blocks)
+Cluster groups: 407 (tail covers 11264 clusters, rest cover 32256 clusters)
+Extent allocator size: 8388608 (2 groups)
+Journal size: 268435456
+Node slots: 8
+Creating bitmaps: done
+Initializing superblock: done
+Writing system files: done
+Writing superblock: done
+Writing backup superblock: 3 block(s)
+Formatting Journals: done
+Growing extent allocator: done
+Formatting slot map: done
+Formatting quota files: done
+Writing lost+found: done
+mkfs.ocfs2 successful
+
+[opc@cluster-vm01 ~]$
+```
+
+__sudo lsblk -f__ 명령으로 /dev/sdb1의 포맷 결과를 확인할 수 있습니다. /dev/sdb1는 ocfs2 포맷으로 포맷되었고, 레이블 명은 "ocfs2"입니다. 
+
+```
+[opc@cluster-vm01 ~]$ sudo lsblk -f
+NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
+sdb
+└─sdb1 ocfs2  ocfs2 d40356de-ed1a-47a0-9866-86906bca7cba
+sda
+├─sda2 swap         02789b15-4058-485e-86a6-38522a5c00c6 [SWAP]
+├─sda3 xfs          53bb89bf-50e3-4358-9f5e-e9c5ac8d535c /
+└─sda1 vfat         F831-6C7E                            /boot/efi
+[opc@cluster-vm01 ~]$
+```
+
+다음 명령으로 /dev/sdb1를 마운트할 디렉터리를 만듭니다. 
+
+```
+sudo mkdir /u01
+```
+
+그리고 __sudo vi /etc/fstab__ 명령을 실행하고 다음 마운트 설정을 추가합니다. 
+
+```
+/dev/sdb1 /u01 ocfs2     _netdev,defaults   0 0 
+```
+
+![](https://taewanmerepo.github.io/2020/03/sharedvolume/120.jpg)
+
+다음 명령으로 __etc/fstab__에 파일 시스템 정보를 마운트합니다.
+
+```
+sudo mount -a
+```
+
+파일 시스템을 마운트하고 lsblk 명령으로 리눅스 볼륨 구성을 확인할 수 있습니다.
+
+```
+[opc@cluster-vm01 ~]$ sudo lsblk -f
+NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
+sdb
+└─sdb1 ocfs2  ocfs2 d40356de-ed1a-47a0-9866-86906bca7cba /u01
+sda
+├─sda2 swap         02789b15-4058-485e-86a6-38522a5c00c6 [SWAP]
+├─sda3 xfs          53bb89bf-50e3-4358-9f5e-e9c5ac8d535c /
+└─sda1 vfat         F831-6C7E                            /boot/efi
+[opc@cluster-vm01 ~]$
+```
+
+__/dev/sdb1__이 __/u01__에 마운트된 것을 확인할 수 있습니다. cluster_vm01에서 "__sudo /sbin/o2cb.init status__" 명령을 실행하면 이제 OCFS2 클러스터 스택 상태를 확인할 수 있습니다. 클러스터 스택의 O2CB heartbeat이  "__Active__" 상태가 된 것을 확인할 수 있습니다. 
+
+![](https://taewanmerepo.github.io/2020/03/sharedvolume/390.jpg)
+
+### 7. cluster-vm01 공유 볼륨 테스트
+
+다음과 같이 cluster-vm01에서 마운트한 공유 블록 스토리지에 파일을 쓰고 조회할 수 있습니다. 
+
+```
+[opc@cluster-vm01 ~]$ sudo cp /boot/vmlinuz* /u01
+[opc@cluster-vm01 ~]$ sudo ls -al /u01
+합계 28664
+drwxr-xr-x.  3 root root    3896  3월 10 10:10 .
+dr-xr-xr-x. 19 root root    4096  3월 10 09:53 ..
+drwxr-xr-x.  2 root root    3896  3월 10 09:47 lost+found
+-rwxr-xr-x.  1 root root 7534112  3월 10 10:10 vmlinuz-0-rescue-185a1faed8734f9d8fd4c288da75d2e4
+-rwxr-xr-x.  1 root root 7532256  3월 10 10:10 vmlinuz-0-rescue-33f2b4bac8b045d281f1e24789d4cb5b
+-rwxr-xr-x.  1 root root 6735520  3월 10 10:10 vmlinuz-3.10.0-1062.12.1.el7.x86_64
+-rwxr-xr-x.  1 root root 7532256  3월 10 10:10 vmlinuz-4.14.35-1902.10.8.el7uek.x86_64
+[opc@cluster-vm01 ~]$
+```
+
+### 8. cluster-vm02 공유 볼륨 마운트
+
+lsblk 명령으로 리눅스 볼륨 구성을 확인할 수 있습니다. 
+
+```
+[opc@cluster-vm02 ~]$ sudo lsblk -f
+NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
+sdb
+sda
+├─sda2 swap         02789b15-4058-485e-86a6-38522a5c00c6 [SWAP]
+├─sda3 xfs          53bb89bf-50e3-4358-9f5e-e9c5ac8d535c /
+└─sda1 vfat         F831-6C7E                            /boot/efi
+[opc@cluster-vm02 ~]$
+```
+
+위 결과를 보면 cluster-vm02는 /dev/sdb의 파일 포맷과 레이블을 인식하지 못하고 있습니다. cluster-vm01에서 공유 볼륨을 파티션을 만들고 포맷헷지만, 이 정보를 cluster-vm02 커널은 아직 인식하지 못하는 상태입니다. 
+
+현재 사용 중인 HDD에 특정 파티션을 추가하거나 변형했을 때, 리눅스 커널은 사용 중인 디바이스 변경을 인식하지 못합니다. partprobe 명령은 운영 중인 파티션 정보를 커널에 업데이트 역할을 담당합니다. 다음과 같은 형식으로 사용됩니다.  
+
+```
+sudo partprobe /디바이스명
+```
+ 
+"__partprobe__"를 실행한 다음에 "__sudo lsblk -f__"를 실행하면 /dev/sdb1의 파일 시스템 타입과 레이블을 cluster-vm02 커널이 인식하는 것을 확인할 수 있습니다.  
+
+```
+[opc@cluster-vm02 ~]$ sudo partprobe /dev/sdb
+[opc@cluster-vm02 ~]$ sudo lsblk -f
+NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
+sdb
+└─sdb1 ocfs2  ocfs2 d40356de-ed1a-47a0-9866-86906bca7cba
+sda
+├─sda2 swap         02789b15-4058-485e-86a6-38522a5c00c6 [SWAP]
+├─sda3 xfs          53bb89bf-50e3-4358-9f5e-e9c5ac8d535c /
+└─sda1 vfat         F831-6C7E                            /boot/efi
+[opc@cluster-vm02 ~]$
+```
+
+cluster-vm02에서 다음 명령으로 /dev/sdb1를 마운트할 디렉터리를 만듭니다. 
+
+```
+sudo mkdir /u01
+```
+
+그리고 __sudo vi /etc/fstab__ 명령을 실행하고 다음 마운트 설정을 추가합니다. 
+
+```
+/dev/sdb1 /u01 ocfs2     _netdev,defaults   0 0 
+```
+
+![](https://taewanmerepo.github.io/2020/03/sharedvolume/400.jpg)
+
+다음 명령으로 __etc/fstab__의 파일 시스템 정보를 마운트합니다.
+
+```
+sudo mount -a
+```
+
+파일 시스템을 마운트하고 lsblk 명령으로 리눅스 볼륨 구성을 확인할 수 있습니다.
+
+```
+[[opc@cluster-vm02 ~]$ sudo mount -a
+[opc@cluster-vm02 ~]$ sudo lsblk -f
+NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
+sdb
+└─sdb1 ocfs2  ocfs2 d40356de-ed1a-47a0-9866-86906bca7cba /u01
+sda
+├─sda2 swap         02789b15-4058-485e-86a6-38522a5c00c6 [SWAP]
+├─sda3 xfs          53bb89bf-50e3-4358-9f5e-e9c5ac8d535c /
+└─sda1 vfat         F831-6C7E                            /boot/efi
+[opc@cluster-vm02 ~]$
+```
+
+### 9. cluster-vm02 공유 볼륨 테스트
+
+cluster-vm02에서 공유 볼륨인 /u01에 데이터를 쓰고 조회할 수 있습니다. 
+
+```
+[opc@cluster-vm02 ~]$ sudo mkdir /u01/demo
+[opc@cluster-vm02 ~]$ sudo cp /boot/vmlinuz* /u01/demo/
+[opc@cluster-vm02 ~]$ sudo ls -al /u01/demo/
+합계 28660
+drwxr-xr-x. 2 root root    3896  3월 10 11:05 .
+drwxr-xr-x. 4 root root    3896  3월 10 11:05 ..
+-rwxr-xr-x. 1 root root 7534112  3월 10 11:05 vmlinuz-0-rescue-185a1faed8734f9d8fd4c288da75d2e4
+-rwxr-xr-x. 1 root root 7532256  3월 10 11:05 vmlinuz-0-rescue-33f2b4bac8b045d281f1e24789d4cb5b
+-rwxr-xr-x. 1 root root 6735520  3월 10 11:05 vmlinuz-3.10.0-1062.12.1.el7.x86_64
+-rwxr-xr-x. 1 root root 7532256  3월 10 11:05 vmlinuz-4.14.35-1902.10.8.el7uek.x86_64
+[opc@cluster-vm02 ~]$
+```
+
+## 요약
+
+OCI(Oracle Cloud Infrastructure)는 여러 Compute 인스턴스에 공유 스토리지를 구성하는 방법을 제공합니다. Block Storage를 여러 Compute 인스턴스에 연결하고 마운트하는 방식입니다. 
+
+여러 Compute 인스턴스가 특정 스토리지를 공유할 때, 안전한 데이터 관리를 위해서 I/O를 조율(Coodination)하는 Clusterwae가 필요합니다. OCI는 현재 OCSF2(Oracle Cluster File System Version 2), GlusterFS, IBM Spectrum Scale을 지원합니다. 
+
+이번 문서에서는 OCFS2를 이용하여 2개 Compute 인스턴스가 Block Volume을 공유하는 방법을 정리했습니다.  
+
+## 참고자료
+- {{< extlink link="https://blogs.oracle.com/cloud-infrastructure/using-the-multi-attach-block-volume-feature-to-create-a-shared-file-system-on-oracle-cloud-infrastructure" desc="[Oracle Blog]Using the Multiple-Instance Attach Block Volume Feature to Create a Shared File System on Oracle Cloud Infrastructure">}}
+- {{< extlink link="http://www.iorchard.net/docs/pengx2/pengx2_ocfs2.html" desc="[한글블로그]OCFS2 Cluster 구성">}}
+- {{< extlink link="https://www.youtube.com/watch?v=Mw5LzHVX7AU " desc="[Youtube]Configure and Test an OCFS2 Cluster with Oracle Linux on Oracle Cloud Infrastructure">}}
+
+
+
+
+
+
+
+

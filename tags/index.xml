@@ -120,15 +120,6 @@
     </item>
     
     <item>
-      <title>Apache Toree</title>
-      <link>http://taewan.kim/tags/apache-toree/</link>
-      <pubDate>Sun, 26 Apr 2020 01:20:25 +0900</pubDate>
-      
-      <guid>http://taewan.kim/tags/apache-toree/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Autoenv</title>
       <link>http://taewan.kim/tags/autoenv/</link>
       <pubDate>Sat, 09 Sep 2017 10:50:36 +0900</pubDate>
@@ -822,15 +813,6 @@
     </item>
     
     <item>
-      <title>Hdfs Connector</title>
-      <link>http://taewan.kim/tags/hdfs-connector/</link>
-      <pubDate>Sun, 26 Apr 2020 01:20:25 +0900</pubDate>
-      
-      <guid>http://taewan.kim/tags/hdfs-connector/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Hostname</title>
       <link>http://taewan.kim/tags/hostname/</link>
       <pubDate>Fri, 27 Apr 2018 15:59:47 +0900</pubDate>
@@ -986,7 +968,7 @@
     <item>
       <title>Jupyter</title>
       <link>http://taewan.kim/tags/jupyter/</link>
-      <pubDate>Sun, 26 Apr 2020 01:20:25 +0900</pubDate>
+      <pubDate>Fri, 06 Sep 2019 01:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/jupyter/</guid>
       <description></description>
@@ -1364,7 +1346,7 @@
     <item>
       <title>Oci</title>
       <link>http://taewan.kim/tags/oci/</link>
-      <pubDate>Sun, 26 Apr 2020 01:20:25 +0900</pubDate>
+      <pubDate>Mon, 09 Mar 2020 01:20:25 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/oci/</guid>
       <description></description>
@@ -1841,7 +1823,7 @@
     <item>
       <title>Spark</title>
       <link>http://taewan.kim/tags/spark/</link>
-      <pubDate>Sun, 26 Apr 2020 01:20:25 +0900</pubDate>
+      <pubDate>Fri, 13 Apr 2018 21:59:47 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/spark/</guid>
       <description></description>
