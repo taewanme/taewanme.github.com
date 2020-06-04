@@ -16,8 +16,7 @@ echo ""
 echo "====Guide for Configuring Nanum Font.===="
 echo "#configure Nanum font for matplotlib with the next code into the jupyter cell."
 echo "import matplotlib.pyplot as plt"
-echo "import matplotlib.pyplot as plt"
 echo "plt.rcParams['font.family']='NanumGothic'"
-
+echo ""
 
 
