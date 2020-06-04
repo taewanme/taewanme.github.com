@@ -11,3 +11,11 @@ python ./check.py
 
 rm -f ./install_nanum_font.sh
 rm -f ./check.py
+
+echo "====Tip===="
+echo "#configure Nanum font in matplotlib with the next code."
+echo "import matplotlib.pyplot as plt"
+echo "plt.rcParams['font.family']='NanumGothic"
+
+
+
