@@ -248,7 +248,7 @@
     <item>
       <title>Book</title>
       <link>http://taewan.kim/tags/book/</link>
-      <pubDate>Sun, 26 Jan 2020 00:28:14 +0900</pubDate>
+      <pubDate>Tue, 04 Aug 2020 01:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/book/</guid>
       <description></description>
@@ -2298,6 +2298,15 @@
     </item>
     
     <item>
+      <title>데이터레이크</title>
+      <link>http://taewan.kim/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A0%88%EC%9D%B4%ED%81%AC/</link>
+      <pubDate>Tue, 04 Aug 2020 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A0%88%EC%9D%B4%ED%81%AC/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>데이터센터</title>
       <link>http://taewan.kim/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%84%BC%ED%84%B0/</link>
       <pubDate>Fri, 29 Sep 2017 22:15:48 +0900</pubDate>
@@ -2474,6 +2483,15 @@
       <pubDate>Sat, 21 Apr 2018 15:59:47 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/%EB%B3%B4%EC%95%88%EC%9C%84%EB%B0%98/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>빅데이터</title>
+      <link>http://taewan.kim/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0/</link>
+      <pubDate>Tue, 04 Aug 2020 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0/</guid>
       <description></description>
     </item>
     
@@ -2847,6 +2865,15 @@
     </item>
     
     <item>
+      <title>하둡에코</title>
+      <link>http://taewan.kim/tags/%ED%95%98%EB%91%A1%EC%97%90%EC%BD%94/</link>
+      <pubDate>Tue, 04 Aug 2020 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/%ED%95%98%EB%91%A1%EC%97%90%EC%BD%94/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>한글화</title>
       <link>http://taewan.kim/tags/%ED%95%9C%EA%B8%80%ED%99%94/</link>
       <pubDate>Wed, 27 Dec 2017 19:35:14 +0900</pubDate>
@@ -2894,7 +2921,7 @@
     <item>
       <title>후기</title>
       <link>http://taewan.kim/tags/%ED%9B%84%EA%B8%B0/</link>
-      <pubDate>Sun, 26 Jan 2020 00:28:14 +0900</pubDate>
+      <pubDate>Tue, 04 Aug 2020 01:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/%ED%9B%84%EA%B8%B0/</guid>
       <description></description>

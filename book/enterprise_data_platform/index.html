@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>[2020/Books:05] &#39;엔터프라이즈 데이터 플랫폼 구축&#39; 리뷰</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.27.1" />
+<meta property="og:title" content="[2020/Books:05] &#39;엔터프라이즈 데이터 플랫폼 구축&#39; 리뷰" />
+<meta property="og:description" content="&#39;엔터프라이즈 데이터 플랫폼 구축&#39;의 리뷰입니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/book/enterprise_data_platform/" />
+
+
+
+<meta property="article:published_time" content="2020-08-04T01:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2020-08-04T01:28:14&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="http://taewan.kim/css/jupyter.css" type="text/css" media="all" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="http://cloud-docs.taewan.me" title="Oracle Cloud User Guide" >오라클 클라우드 사용자 가이드</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/graalvm/" title="GraalVM 관련 새소식 및 기술 문서를 담고 있습니다." >GRAALVM</a></li>
+		<li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Deep Learning 구현 기술에 대하여 정리합니다." >TUTORIAL &amp; MANUAL</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">[2020/Books:05] &#39;엔터프라이즈 데이터 플랫폼 구축&#39; 리뷰 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2020-08-04 01:28:14 &#43;0900 KST">August 04, 2020</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/book" rel="category">book</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2020/08/bookDataPlatform/post.jpg" alt="[2020/Books:05] &#39;엔터프라이즈 데이터 플랫폼 구축&#39; 리뷰">
+			</figure>
+			
+
+<p>&lsquo;<a href="http://www.yes24.com/Product/Goods/90634328" target="_blank">엔터프라이즈 데이터 플랫폼 구축[↗NW]</a>
+&rsquo;은 하둡을 기반으로 데이터 플랫폼을 구축하고 운영하는 데이터 엔지니어를 위한 하둡 데이터 플랫폼 실무서입니다. <strong>엔터프라이즈 데이터 플랫폼 구축</strong>은 하둡 에코시스템의 특정 기술 사용법을 단편적으로 소개하는 책이 아닙니다. 이 책은 하둡 데이터 플랫폼 전체를 올바르게 구축하고 체계적으로 관리하는 방법을 소개합니다. 하둡 클러스터 확장성을 보장하기 위해서 어떤 네트워크 구성을 적용해야하고, 하둡 클러스터 성능 개선을 위한 운영체제 설정과 하드웨어 구성에 대해서 설명합니다. 또한 하둡 클러스터 안전성을 높이는 보안 구성과 소프트웨어 설정을 다룹니다. <strong>엔터프라이즈 데이터 플랫폼 구축</strong>은 데이터 플랫폼 구축과 운영을 위한 하둡 기술과 인프라스터럭처(하드웨어, 네트워크, 보안, 운영 조직) 전체를 주제로 합니다.</p>
+
+<h2 id="오픈소스-데이터-플랫폼-그리고-현실">오픈소스 데이터 플랫폼 그리고 현실</h2>
+
+<p>하둡 에코시스템을 조사하다보면 하둡으로 못할것이 없어 보입니다. Yahoo가 4,500 노드 하둡 클러스터를 구축했다는 위키피디아 문서, 하둡으로 데이터 레이클를 구축했다는 사례 PPT 문서와 유튜브 세미나 발표 동영상을 보고 있으면 하둡에 대하 신뢰도는 점점 더 높아집니다. 하둡 데이터 플랫폼은 구축 사례도 많고 기술 저변도 상당히 넓으며 안정된 것 처럼 보입니다. 그러나 하둡 데이터 플랫폼을 우리 회사에 직접 구축하려고 하면 막막해 집니다. 하둡 데이터 플랫폼을 구축하기 전에 무엇을 고려해야 하는지 파악하고 준비하는 것 자체가 연구 과제입니다. 하둡 데이터 플랫폼 구축에 필요한 주요 고려 사항을 확인하고 준비했다고해도 이 결정이 옮바른 것인지, 고려 사항 중에 빠진것은 없는지 확신이 서질 않습니다. 오픈 소스 기술을 사용하다 보면 검증된 개발자/엔지니어의 경험과 노하우에 대한 목마름이 생깁니다.</p>
+
+<p>Cloudera에서 하둡 엔지니어 및 개발자로 수 년간 활동해온 저자는 그 동안의 경험과 CDH를 관리하면서 정립한 노하우를 정리하여 &lsquo;<a href="http://www.yes24.com/Product/Goods/90634328" target="_blank">엔터프라이즈 데이터 플랫폼 구축[↗NW]</a>
+&rsquo;를 출간했습니다. 이 책을 통해서 저자가 Cloudera에서 다년간 축적한 하둡 데이터 플랫폼 구축과 운영 경험을 확인할 수있니다.</p>
+
+<h2 id="엔터프라이즈-데이터-플랫폼-구축-의-구성">&ldquo;엔터프라이즈 데이터 플랫폼 구축&rdquo;의 구성</h2>
+
+<p>&lsquo;<a href="http://www.yes24.com/Product/Goods/90634328" target="_blank">엔터프라이즈 데이터 플랫폼 구축[↗NW]</a>
+&rsquo;은 다음과 같이 3부로 구성됩니다.</p>
+
+<ol>
+<li>하둡 클러스터 구축: 인프라스터럭처 구성</li>
+<li>하둡 클러스터 운영: 플랫폼 운영</li>
+<li>On-Prem &amp; Cloud 하둡</li>
+</ol>
+
+<h3 id="1-하둡-클러스터-구축-인프라스터럭처-구성">1. 하둡 클러스터 구축: 인프라스터럭처 구성</h3>
+
+<p>하둡 데이터 플랫폼 담당자의 어려움은 관리해야 기술 범위가 굉장히 넓다는 것입니다. 하둡 클러스터를 구성하고 운영할 때 다음과 같은 것을 고려하고 관리해야 합니다.</p>
+
+<ul>
+<li>하둡 에코시스템 오픈소스 통합</li>
+<li>하드웨어 인프라스트럭처(Server, CPU, Memroy)</li>
+<li>데이터 저장 스토리지 구성</li>
+<li>네트워크 구성</li>
+<li>인프라&amp;소프트웨어 관리 체계</li>
+</ul>
+
+<p>하둡 데이터 플랫폼 담당자는 오픈소스 개발자, 데이터 엔지니어, 네트워크 담당자, 운영체제 담당자와 계속 협업해야 합니다. 성능 개선을 위해서는 우리 환경에 맞는 운영 체제 커널 설정을 관리해야 하고, 다수의 서버 운영체제를 관리해야 합니다. 클러스터를 연결하는 네트워크 구성에 대해서도 알고 있어야 합니다. 하둡을 연결하는 네트워크 스위치를 어떻게 관리할지 결정해야 합니다. 하둡 데이터 플랫폼 담당자가 관여해야 하는 개발, 운영, 인프라 관리, 네트워크, 조직 및 관리 체계는 하나하나가 독립적인 전문 분야입니다. 따라서 하둡 데이터 플랫폼 담당자는 각 분야의 전문 담당자와 함께 기술 이슈를 지속해서 소통하고 공유해야 합니다.</p>
+
+<p><strong><1부. 인프라스럭처></strong>에서는 인프라스트럭처 관점으로 개발, 운영, 하드웨어(서버), 네트워크, 조직 및 클러스터 관리 체계에 대해 하둡 데이터 플랫폼 담당자가 무엇을 알아야 하고 어떤 것을 고려하고 관리하는지를 소개합니다. <1부. 인프라스럭처>에서는 다음과 같은 주제가 잘 정리돼 있습니다.</p>
+
+<ol>
+<li>하둡 클러스터 스토리지 옵션</li>
+<li>하둡 클러스터 서버, 랙, 스위치 구성</li>
+<li>하둡 클러스터를 위한 네트워크 구성</li>
+</ol>
+
+<h3 id="2-하둡-클러스터-운영-플랫폼-운영">2. 하둡 클러스터 운영: 플랫폼 운영</h3>
+
+<p><2부, 플랫폼>에서는 하둡 클러스터를 체계적으로 관리하기 위에서 플랫폼 담당자가 알아야 하는 사항을 다룹니다.</p>
+
+<ul>
+<li>클러스터 프로비저닝
+
+<ul>
+<li>Hadoop Echo 컴포넌트 구성 및 통합</li>
+<li>운영체제 구성</li>
+<li>플랫폼 검증</li>
+</ul></li>
+<li>고가용성 구성</li>
+<li>데이터 안전성 구성
+
+<ul>
+<li>데이터 백업과 복구 체계</li>
+</ul></li>
+<li>보안 구성
+
+<ul>
+<li>플랫폼 계정 및 인증서 관리</li>
+<li>Kerbros 구성</li>
+</ul></li>
+</ul>
+
+<h3 id="3-on-prem-cloud-하둡">3. On-Prem&amp;Cloud 하둡</h3>
+
+<p>최근에 데이터 플랫폼을 계획하거나 운영할 때 On-Prem과 Cloud의 관계를 고려해야 합니다. 요즘에는 기업은 자체 데이터센터에 On-Prem으로 구축한 데이터 플랫폼과 클라우드에 구축한 데이터 플랫폼을 동시에 운영하는 경우가 많습니다.</p>
+
+<p>On-Prem에 구축한 하둡 클러스터는 기업이 전체 데이터를 통합하는 데이터 레이크가 되기도 하고, 여러 소스의 데이터를 모으고 전처리(비식별 등)하여 클라우드에 데이터를 이관하는 데이터 Edge가 되기도 합니다. 때로는 클라우드 데이터 플랫폼에 데이터를 모으고 전처리하여 분석 대상 데이터를 만든 다음에 이 데이터를 On-Prem 데이터 플랫폼에 이관하는 형태로 On-Prem과 Cloud 데이터 플랫폼을 하이브리드로 구성하기도 합니다.</p>
+
+<p>클라우드에서 데이터 플랫폼을 구축할 때도 하둡 기술을 기반으로 데이터 플랫폼을 구성하기도 하고, 클라우드 네이티브 방식으로 데이터 플랫폼을 구성할 수도  있습니다. 클라우드에서 하둡 기술을 중심으로 데이터를 관리할 것인지 아니면 클라우드 네이티브 기술로 데이터를 관리할 것인지를 결정해야 합니다.</p>
+
+<p><3부, 클라우드 기반 하둡>에서는 Public Cloud와 Private Cloud에서 하둡 클러스터를 구축하고 운영하는 내용을 다룹니다. 가상화 환경에서 하둡을 구성할 때 고려사항과 클라우드 특성 및 구성 방법을 소개합니다. 특히 Private Cloud 환경인 OpenStack, OpenShift, VMWare, EMC 아이슬론에서 하둡 클러스터를 구성하는 방법과 특이 사항을 정리합니다. 마지막으로 AWS, Azure, GCP과 같은 Public Cloud에서 제공하는 하둡 서비스를 소개하고, 각 서비스별 특성, 사용 방법 및 고려사항을 다룹니다.</p>
+
+<h2 id="도서-후기">도서 후기</h2>
+
+<p>&lsquo;<a href="http://www.yes24.com/Product/Goods/90634328" target="_blank">엔터프라이즈 데이터 플랫폼 구축[↗NW]</a>
+&rsquo;은 단수하게 하둡 에코시스템의 특정 기술을 다루는 책이 아닙니다. 이 책이 다루는 핵심 주제는 <strong>하둡 데이터 플랫폼 구축과 운영</strong>입니다. 하둡 데이터 플랫폼 구축과 운영 단계에서 실무 담당자가 알아야 하는 인프라와 소프트웨어 지식과 고려사항을 정리합니다. 독자는 이 책을 통해서 하둡 데이터 플랫폼을 체계적으로 구축/관리하는 실무적인 정보를 확인할 수 있습니다.</p>
+
+<p>개인적으로 이 책을 통해서 하둡 클러스터를 중심으로 네트워크, 운영체제에 대해 다시 한번 정리할 수 있었습니다. 특히 하둡 클러스터를 위한 하드웨어(서버&amp;랙)과 네트워크 구성 및 보안 구성에 대한 부분이 인상적이었습니다.</p>
+
+<p>하둡 클러스터 도입을 계획하시는 분이나 하둡 데이터 플랫폼을 체계적으로 이해하고 운영하고자 하시는 데이터 엔지니어분들에게 추천하는 책입니다.</p>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/%ED%9B%84%EA%B8%B0/" rel="tag">후기</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/book/" rel="tag">book</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="tag">빅데이터</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%ED%95%98%EB%91%A1%EC%97%90%EC%BD%94/" rel="tag">하둡에코</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A0%88%EC%9D%B4%ED%81%AC/" rel="tag">데이터레이크</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan2.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/book/%EB%82%B4%EB%AA%B8%EC%B9%98%EC%9C%A0%EB%A0%A5/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">[2020/Books:04] &#39;내 몸 치유력&#39; 후기</p></a>
+	</div>
+</nav>
+
+	
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/book/enterprise_data_platform/"></div>
+
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		
+		<ins class="adsbygoogle"
+			 style="display:block"
+			 data-ad-client="ca-pub-8469722754608892"
+			 data-ad-slot="5594090168"
+			 data-ad-format="auto"
+			 data-full-width-responsive="true"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	
+
+<div class="widget-categories widget">	
+		<div class="fb-like" data-href="http://taewan.kim/book/enterprise_data_platform/" 
+		data-layout="standard" data-action="like" 
+		data-size="small" 
+		data-show-faces="true" 
+		data-share="true"></div>
+</div>
+	
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#오픈소스-데이터-플랫폼-그리고-현실">오픈소스 데이터 플랫폼 그리고 현실</a></li>
+<li><a href="#엔터프라이즈-데이터-플랫폼-구축-의-구성">&ldquo;엔터프라이즈 데이터 플랫폼 구축&rdquo;의 구성</a>
+<ul>
+<li><a href="#1-하둡-클러스터-구축-인프라스터럭처-구성">1. 하둡 클러스터 구축: 인프라스터럭처 구성</a></li>
+<li><a href="#2-하둡-클러스터-운영-플랫폼-운영">2. 하둡 클러스터 운영: 플랫폼 운영</a></li>
+<li><a href="#3-on-prem-cloud-하둡">3. On-Prem&amp;Cloud 하둡</a></li>
+</ul></li>
+<li><a href="#도서-후기">도서 후기</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	<div class="widget-categories widget">
+  <h4 class="widget__title">관련도서</h4>
+  <div class="widget__content" align="center">
+      <ul class="widget__list">
+          <li class="widget__item"><a href="http://www.yes24.com/Product/Goods/69335909" target="_blank"><img src="https://taewanmerepo.github.io/2019/02/pytorch/book200.jpg"/></a></li>
+      </ul>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/book/enterprise_data_platform/" title="[2020/Books:05] &#39;엔터프라이즈 데이터 플랫폼 구축&#39; 리뷰">
+							[2020/Books:05] &#39;엔터프라이즈 데이터 플랫폼 구축&#39; 리뷰</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/setup_hangul_font_on_data_science/" title="OCI Data Science 한글 폰트 설정">
+							OCI Data Science 한글 폰트 설정</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_shared_block_volume/" title="[OCFS2]OCI Shared Block Volume 구성">
+							[OCFS2]OCI Shared Block Volume 구성</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_cloud_shell/" title="OCI Cloud Shell: 브라우저 기반 가상 터미널">
+							OCI Cloud Shell: 브라우저 기반 가상 터미널</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/mounting_oci_objectstorage_bucket_on_linux_mac/" title="S3FS를 이용한 OCI Object Storage 파일 시스템 마운트">
+							S3FS를 이용한 OCI Object Storage 파일 시스템 마운트</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/extending_root_partition_on_oci_linux/" title="OCI에서 리눅스 VM 루트 파티션(Root Partition) 확장">
+							OCI에서 리눅스 VM 루트 파티션(Root Partition) 확장</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/%EB%82%B4%EB%AA%B8%EC%B9%98%EC%9C%A0%EB%A0%A5/" title="[2020/Books:04] &#39;내 몸 치유력&#39; 후기">
+							[2020/Books:04] &#39;내 몸 치유력&#39; 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/english_for_developer/" title="[2020/Books:03] IT 개발자의 영어 필살기 ">
+							[2020/Books:03] IT 개발자의 영어 필살기 </a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/%EA%B2%B0%EB%A1%A0%EB%B6%80%ED%84%B0%EC%8D%A8%EB%9D%BC/" title="[2020/Books:02] &#39;결론부터 써라&#39; 후기">
+							[2020/Books:02] &#39;결론부터 써라&#39; 후기</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/book/%EC%A7%80%EC%A0%81%EC%9E%90%EB%B3%B8%EB%A1%A0/" title="[2020/Books:01] &#39;지적자본론&#39; 후기">
+							[2020/Books:01] &#39;지적자본론&#39; 후기</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/graalvm">Graalvm</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/math">Math</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%a7%9b%ec%a7%91">맛집</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">Licesne</h4>
+	<div class="widget__content">
+		<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+	</div>
+	<div class="widget__content">
+		이 저작물은 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank>크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2020 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+
