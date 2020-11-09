@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://taewan.kim/cloud/oci_marketing_trial/</loc>
+    <lastmod>2020-11-07T01:20:25+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/book/enterprise_data_platform/</loc>
     <lastmod>2020-08-04T01:28:14+09:00</lastmod>
   </url>
@@ -1340,6 +1345,12 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/tags/account/</loc>
+    <lastmod>2020-11-07T01:20:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tags/activation-function/</loc>
     <lastmod>2017-09-19T21:28:14+09:00</lastmod>
     <priority>0</priority>
@@ -1581,7 +1592,7 @@
   
   <url>
     <loc>http://taewan.kim/categories/cloud/</loc>
-    <lastmod>2020-06-05T01:20:25+09:00</lastmod>
+    <lastmod>2020-11-07T01:20:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1605,7 +1616,7 @@
   
   <url>
     <loc>http://taewan.kim/cloud/</loc>
-    <lastmod>2020-06-05T01:20:25+09:00</lastmod>
+    <lastmod>2020-11-07T01:20:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2385,7 +2396,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/oci/</loc>
-    <lastmod>2020-06-05T01:20:25+09:00</lastmod>
+    <lastmod>2020-11-07T01:20:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2895,7 +2906,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/trial/</loc>
-    <lastmod>2018-05-01T11:59:47+09:00</lastmod>
+    <lastmod>2020-11-07T01:20:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -3021,7 +3032,7 @@
   
   <url>
     <loc>http://taewan.kim/</loc>
-    <lastmod>2020-08-04T01:28:14+09:00</lastmod>
+    <lastmod>2020-11-07T01:20:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -3164,6 +3175,12 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/tags/%EB%93%B1%EB%A1%9D/</loc>
+    <lastmod>2020-11-07T01:20:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tags/%EB%94%94%EC%9E%90%EC%9D%B8/</loc>
     <lastmod>2020-01-05T21:28:14+09:00</lastmod>
     <priority>0</priority>
@@ -3196,6 +3213,12 @@
   <url>
     <loc>http://taewan.kim/tags/%EB%A7%88%EC%86%8C%EA%B8%B0%EA%B3%A0/</loc>
     <lastmod>2017-08-23T21:59:47+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/%EB%A7%88%EC%BC%80%ED%8C%85%ED%8A%B8%EB%9D%BC%EC%9D%B4%EC%96%BC/</loc>
+    <lastmod>2020-11-07T01:20:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   

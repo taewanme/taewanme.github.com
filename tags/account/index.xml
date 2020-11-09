@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Account on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/account/</link>
+    <description>Recent content in Account on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Nov 2020 01:20:25 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/account/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>OCI 마케팅 트라이얼 계정 등록</title>
+      <link>http://taewan.kim/cloud/oci_marketing_trial/</link>
+      <pubDate>Sat, 07 Nov 2020 01:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_marketing_trial/</guid>
+      <description>Oracle Cloud Free Tier(이하 Cloud Free Tier)는 별도 비용 없이 오라클 클라우드 사용 경험을 제공하는 프로모션 프로그램입니다. Cloud Free Tier에 계정을 등록하면 30일 동안 300달러에 해당하는 오라클 클라우드 자원을 사용할 수 있는 크래딧을 제공합니다.
+일반 Cloud Free Tier 프로그램과 별도로 특별한 형태의 Cloud Free Trial을 제공하는 마케팅 프로그램이 있습니다. 이 프로그램을 편의상 &amp;ldquo;마케팅 트라이얼&amp;rdquo;이라고 부릅니다. 마케팅 트라이얼은 온라인/오프라인 오라클 행사에 참여한 분들에게 월간 500불 상당의 Cloud Free Tier를 제공하는 프로그램입니다.</description>
+    </item>
+    
+  </channel>
+</rss>
