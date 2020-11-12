@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mobile on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/mobile/</link>
+    <description>Recent content in Mobile on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 12 Nov 2020 01:20:25 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/mobile/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>OCI 관리 모바일 앱(Mobile App)</title>
+      <link>http://taewan.kim/cloud/oci_mobile_app/</link>
+      <pubDate>Thu, 12 Nov 2020 01:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_mobile_app/</guid>
+      <description>OCI(Oracle Cloud Infrastructure) 공식 모바일 애플리케이션과 안드로이드 버전과 IOS 버전으로 공개되었습니다.(2020/11/03) OCI 모바일 앱을 이용하여 OCI 리소스 탐색, 리소스 사용량 확인 및 상태 모니터링을 할 수 있습니다. 또한 알람(Alarm)을 설정하여 OCI 자원 상태를 통지받을 수 있습니다. 추가로 이 앱을 이용하여 사용량 청구 및 리소스 제한 정보를 확인할 수 있습니다.
+공식 과련 정보는 다음 링크로 확인할 수 있습니다.
+ OCI 공식 메뉴얼(OCI Mobile)  https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/mobile.htm  OCI 공식 블로그  https://blogs.</description>
+    </item>
+    
+  </channel>
+</rss>
