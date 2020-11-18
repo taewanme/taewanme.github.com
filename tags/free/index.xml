@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Free on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/free/</link>
+    <description>Recent content in Free on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 17 Nov 2020 21:20:25 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/free/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>OCI에 Oracle Java &amp; GraalVM EE 설치</title>
+      <link>http://taewan.kim/cloud/how_to_install_oracle_java_in_oci/</link>
+      <pubDate>Tue, 17 Nov 2020 21:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/how_to_install_oracle_java_in_oci/</guid>
+      <description>Oracle Cloud Infrastructure(이하 OCI)에서 Oracle Java와 GraalVM Entrprise Edition은 모두 무상으로 사용할 수 있습니다. Oracle Java는 대표적인 표준 자바 구현체이고 오라클이 프리미엄 서포트를 제공하는 기업용 자바입니다. GraalVM은 Oracle Java를 확장한 차세대 자바입니다. OCI에서 제공하는 Oracle Linux 이미지에는 Oracle Java와 GraalVM 설치를 지원하는 yum 레파지토리 구성이 되어 있습니다. 이번 문서에서는 OCI Oracle Linux에서 Oracle Java와 GraalVM을 설치하는 방법을 정리합니다.
+Oracle Java &amp;amp; GraalVM is Free OCI에서 Oracle Java와 GraalVM Enterprise Edition을 무상으로 사용할 수 있다는 근거는 다음 링크에서 찾을 수 있습니다.</description>
+    </item>
+    
+  </channel>
+</rss>
