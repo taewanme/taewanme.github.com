@@ -275,11 +275,11 @@ graalvm20-ee-8-wasm.x86_64                             20.2.1-2.el7             
 
 <p><img src="https://taewanmerepo.github.io/2020/11/ocijava/070.jpg" alt="" /></p>
 
-<h2 id="설치-자바-제거">설치 자바 제거</h2>
+<h2 id="설치된-자바-패키지-제거">설치된 자바 패키지 제거</h2>
 
 <p>yum으로 설치된 java 패키지는 다음 명령으로 확인할 수 있습니다.</p>
 
-<pre><code>yum list installed | grep JDK
+<pre><code>yum list installed | grep jdk
 </code></pre>
 
 <p>위 명령을 실행한 결과는 다음과 같습니다.</p>
@@ -288,14 +288,16 @@ graalvm20-ee-8-wasm.x86_64                             20.2.1-2.el7             
 
 <p>위 결과 패키지 명으로 부터 특정 패키지를 지우는 명령은 다음과 같습니다.</p>
 
-<pre><code>sudo yum remove -y [package name]
+<pre><code>sudo yum remove -y [package_name]
 </code></pre>
 
 <p>위에서 조회한 패키지 명 중에서 <strong>jdk-11.0.3.x86_64</strong>를 제거하는 명령은 다음과 같습니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2020/11/ocijava/090.jpg" alt="" /></p>
 
-<p>yum 으로 설치된 자바는 다음과 같은 명령으로 운영체제에서 제거할 수 있습니다.</p>
+<h2 id="요약">요약</h2>
+
+<p>OCI Oracle Linux에 설정된 Oracle Java와 GraalVM의 yum 패키지를 조회하고 설치, 제거하는 방법을 살펴 보았습니다. 이 모든 상용 자바는 OCI에서 무상으로 이용 가능합니다.</p>
 
 <h2 id="참고-문서">참고 문서</h2>
 
@@ -389,7 +391,8 @@ graalvm20-ee-8-wasm.x86_64                             20.2.1-2.el7             
 <li><a href="#oci-oracle-linux에-oracle-java-설치">OCI Oracle Linux에 Oracle Java 설치</a></li>
 <li><a href="#oci-oracle-linux에-graalvm-ee-설치">OCI Oracle Linux에 GraalVM EE 설치</a></li>
 <li><a href="#복수-java-중에서-기본-java-설정">복수 Java 중에서 기본 Java 설정</a></li>
-<li><a href="#설치-자바-제거">설치 자바 제거</a></li>
+<li><a href="#설치된-자바-패키지-제거">설치된 자바 패키지 제거</a></li>
+<li><a href="#요약">요약</a></li>
 <li><a href="#참고-문서">참고 문서</a></li>
 </ul></li>
 </ul>
