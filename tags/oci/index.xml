@@ -6,10 +6,20 @@
     <description>Recent content in Oci on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Nov 2020 21:20:25 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2020 21:20:25 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/oci/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OCI Console 단일 URL</title>
+      <link>http://taewan.kim/cloud/oci_login_one_url/</link>
+      <pubDate>Fri, 20 Nov 2020 21:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_login_one_url/</guid>
+      <description>Oracle Cloud Infrastructure의 웹 관리 사이트인 OCI Console은 OCI 계정의 로그인 URL이 달라지는 문제가 있었습니다. 특히 OCI IAM 로그인할 경우에 홈-리전 아이디를 기준으로 로그인 URL이 달랐습니다. 처음 OCI를 사용하시는 분들에게 많은 혼란을 유발했습니다. 이 문제가 2020년 11월 18일 업데이트로 해결되었습니다. 이제 모든 사용자의 OCI Console 로그인 URL은 https://cloud.oracle.com 으로 통일 되었습니다.
+ 출처: https://docs.cloud.oracle.com/en-us/iaas/releasenotes/changes/7352c345-1777-4dba-a64f-c8441f46922a/  기존 OCI Console 로그인 URL 기존에 OCI Console 로그인 URL은 다음과 같은 패턴을 갖았습니다. OCI Console을 로그인하기 위해서는 OCI 계정의 홈-리전 ID에 따라서 다음 패턴으로 만들어집니다.</description>
+    </item>
     
     <item>
       <title>OCI에 Oracle Java &amp; GraalVM EE 설치</title>
