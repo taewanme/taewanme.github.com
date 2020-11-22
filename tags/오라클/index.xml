@@ -6,10 +6,21 @@
     <description>Recent content in 오라클 on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Nov 2020 21:20:25 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 22 Nov 2020 01:20:25 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/%EC%98%A4%EB%9D%BC%ED%81%B4/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OCI 사용자 기본 설정(Feat. OCI IAM)</title>
+      <link>http://taewan.kim/cloud/oci_user/</link>
+      <pubDate>Sun, 22 Nov 2020 01:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_user/</guid>
+      <description>Oracle Cloud Infrastructure(이하 OCI) 계정을 생성하면 초기에 2개 사용가 ID가 만들어 집니다. OCI 계정을 등록할 때 E-mail로 taewan.me@gmail.com을 등록했다면 다음과 같은 2개 사용자 ID가 만들어 집니다.
+ oracleidentitycloudservice/taewan.me@gmail.com taewan.me@gmail.com  이번 문서에서는 두 개 사용자 ID가 무엇인지 알아보고, 앞으로 데모에 사용할 사용자 ID와 Group을 만들어 보겠습니다.
+IDCS &amp;amp; OCI IAM 오라클 클라우드는 사용자 계정을 관리하는 IDCS(Identity Cloud Service)와 OCI IAM 서비스를 제공합니다. IDCS(Identity Cloud Service)는 오라클 클라우드 초기부터 계정 관리와 사용자 권한을 관리하는 체계였습니다.</description>
+    </item>
     
     <item>
       <title>OCI Console 단일 URL</title>
