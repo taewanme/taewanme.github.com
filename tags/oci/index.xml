@@ -6,10 +6,21 @@
     <description>Recent content in Oci on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Nov 2020 01:20:25 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 23 Nov 2020 01:20:25 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/oci/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OCI 멀티 팩터 인증(Multi-Factor Authentication)</title>
+      <link>http://taewan.kim/cloud/oci_multi_factor_authentication/</link>
+      <pubDate>Mon, 23 Nov 2020 01:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_multi_factor_authentication/</guid>
+      <description>Oracle Cloud Infrastructure(이하 OCI)의 IAM( Identity and Access Management)은 Multi-Factor Authentication(이하 MFA)를 지원합니다. 여기서 MFA란 다중인증 체계입니다. OCI Console이 MFA를 지원하는 방식과 설정 방식에 대하여 알아보겠습니다.
+Multi-Factor Authentication 사용자의 신원을 확인하는 방법을 지식기반 인증, 소유기반 인증, 속성기반 인증 3가지의 카테고리로 구분하는데 이를 ‘인증 팩터(Authentication Factor)라고 합니다.
+   인증 유형 설명 적용 예     지식기반(Knowledge) 사용자만 알고 있는 것 패스워드, PIN코드, 미리 설정해놓은 질문답변 등   소유기반(Possession) 사용자만 소유하고 있는 것 휴대폰 SMS인증, 보안카드, OTP, 공인인증서   속성기반(Inherence) 사용자만의 고유한 속성 지문인식, 홍채인식, 정맥인식, 얼굴인식     [출처] 멀티팩터 인증 (Multi-Factor Authentication): https://blog.</description>
+    </item>
     
     <item>
       <title>OCI 사용자 기본 설정(Feat. OCI IAM)</title>
