@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Group on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/group/</link>
+    <description>Recent content in Group on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 26 Nov 2020 16:20:25 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/group/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>OCI Tenancy 기본 설정</title>
+      <link>http://taewan.kim/cloud/oci_basic_config/</link>
+      <pubDate>Thu, 26 Nov 2020 16:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_basic_config/</guid>
+      <description>Oracle Cloud Infrastructure(이하 OCI)의 Tenancy(클라우드 계정)을 생성한 다음에 기본 제공되는 OCI 관리자 계정으로 사용자 등록, 그룹 생성 및 컴파트먼트를 구성하는 과정을 살펴보겠습니다. 이 문서는 이 문서는 앞으로 데모 환경을 구성하는 기본 문서로 활용하는 것을 목적으로 작성했습니다. 이 문서에서 OCI User ID, OCI Group, Compoartment 및 VCN의 기본 환경을 구성합니다. 다음과 같은 자원을 만들것 입니다.
+ OCI 사용자 ID: OCI 사용자 계정  developer01, operator01, data_analyst01, admin  OCI Group: OCI 사용자를 묶는 논리적인 단위  developers, operators, data_analysts  Compartment: OCI 자원을 묶는 논리적인 단위  democomp  VCN: 가상 클라우드 네트워크  demovcn   OCI User ID OCI User ID 4개와 Group 3개를 만들고, 그룹에 OCI User ID를 할당합니다.</description>
+    </item>
+    
+  </channel>
+</rss>
