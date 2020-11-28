@@ -9,18 +9,20 @@
 <META http-equiv="Cache-Control" content="No-Cache">
 <meta property="fb:admins" content="devtainer@gmail.com"/>
 
-<title>macOS 업데이트 이후 git 실행시 &#39;xcrun: error&#39; 해결 방법</title>
+<title>OCI API 인증을 위한 RAS Key Pair 준비</title>
 <meta name="description" content="taewan.kim">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="macOS 업데이트 이후 git 실행시 &#39;xcrun: error&#39; 해결 방법" />
-<meta property="og:description" content="macOS 업데이트 이후 git 오류: &#39;xcrun: error: invalid active developer path&#39; 해결 방법" />
+<meta property="og:title" content="OCI API 인증을 위한 RAS Key Pair 준비" />
+<meta property="og:description" content="OCI(Oracle Cloud Infrastructure)에서 제공하는 API를 사용하기 위해서는 RSA 키로 API signing을 해야 합니다. RSA 키를 PEM 파일로 만드는 명령을 정리합니다. 이 문서에서 정리하는 명령은 Linux/Mac를 기준으로 합니다. 윈도우의 경우 Windows 10의 WSL(Winsow Subsystem for Linux2)를 설치하면 동일한 명령을 사용할 수 있습니다.
+이 문서의 기준 정보는 다음과 같습니다.
+   기준 정보 설정값     기준 디렉터리 $HOME/.oci   개인키 파일명 oci_api   공개키 파일명 oci_api_public." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/tip/git_error_after_macos_update/" />
+<meta property="og:url" content="http://taewan.kim/tip/dd/" />
 
 
 
-<meta property="article:published_time" content="2019-10-05T21:28:14&#43;09:00"/>
-<meta property="article:modified_time" content="2019-10-05T21:28:14&#43;09:00"/>
+<meta property="article:published_time" content="2020-11-27T11:28:14&#43;09:00"/>
+<meta property="article:modified_time" content="2020-11-27T11:28:14&#43;09:00"/>
 
 
 
@@ -110,55 +112,110 @@
 <div class="main-content content" role="main" itemprop="mainContentOfPage">
 	<article class="post">
 		<header class="post__header clearfix">
-			<h1 class="post__title">macOS 업데이트 이후 git 실행시 &#39;xcrun: error&#39; 해결 방법 </h1>
+			<h1 class="post__title">OCI API 인증을 위한 RAS Key Pair 준비 </h1>
 			<p class="post__meta meta">
 				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="post__meta-date" datetime="2019-10-05 21:28:14 &#43;0900 KST">October 05, 2019</time>
+				<time class="post__meta-date" datetime="2020-11-27 11:28:14 &#43;0900 KST">November 27, 2020</time>
 			</p>
 		</header>
 
 		<div class="post__content clearfix">
 			
 
-<p>macOS를 10.15 catalina로 업그레이드 후에 git을 실행하면 오류가 발생했습니다.</p>
+<p>OCI(Oracle Cloud Infrastructure)에서 제공하는 API를 사용하기 위해서는 RSA 키로 API signing을 해야 합니다. RSA 키를 PEM 파일로 만드는 명령을 정리합니다. 이 문서에서 정리하는 명령은 Linux/Mac를 기준으로 합니다. 윈도우의 경우 Windows 10의 WSL(Winsow Subsystem for Linux2)를 설치하면 동일한 명령을 사용할 수 있습니다.</p>
 
-<p><img src="https://taewanmerepo.github.io/2019/12/giterror/img02.png" alt="" />
-<img src="https://taewanmerepo.github.io/2019/12/giterror/img03.jpg" alt="" /></p>
+<p>이 문서의 기준 정보는 다음과 같습니다.</p>
 
-<p>git 에러 메시지에서 OS 업데이트 후 <strong>Xcode Command Line Tools</strong>에 이슈가 있음을 확인할 수 있습니다.</p>
+<table>
+<thead>
+<tr>
+<th>기준 정보</th>
+<th>설정값</th>
+</tr>
+</thead>
 
-<pre><code>$ git
-xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
-$
+<tbody>
+<tr>
+<td>기준 디렉터리</td>
+<td><strong>$HOME/.oci</strong></td>
+</tr>
+
+<tr>
+<td>개인키 파일명</td>
+<td>oci_api</td>
+</tr>
+
+<tr>
+<td>공개키 파일명</td>
+<td>oci_api_public.pem</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="rsa-개인키-만들기">RSA 개인키 만들기</h2>
+
+<p>RAS 개인키는 다음과 같은 명령 패턴으로 생성합니다.</p>
+
+<pre><code>openssl genrsa -out $HOME/.oci/&lt;your-rsa-key-name&gt;.pem 2048
 </code></pre>
 
-<p>이 문제는 <strong>xcode-select</strong>을 새로 설치하면 해결됩니다. <strong>xcode-select</strong> 는 콘솔에서 다음 명령을 실행하면 설치할 수 있습니다.</p>
+<p>위 명령 패턴은 개인키 파일명이 <code>oci_api</code>`일 경우에 다음과 같은 명령이 됩니다.</p>
 
-<pre><code>$ xcode-select --install
+<pre><code>openssl genrsa -out $HOME/.oci/oci_api.pem 2048
 </code></pre>
 
-<p><img src="https://taewanmerepo.github.io/2019/12/giterror/img04.jpg" alt="" /></p>
+<p>이렇게 생성된 파일은 권한을 <code>600</code>으로 설정합니다.</p>
 
-<p>위 명령을 입력하면 설치 확인 팝업이 나타납니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2019/12/giterror/img05.jpg" alt="" /></p>
-
-<p>팝업의 설치 번튼을 클릭하면 설치가 진행됩니다. 제 경우 설치에 약 10분 정도 걸렸습니다.</p>
-
-<p>설치가 완료되면 <strong>xcode-select</strong> 버전을 확인할 수 있고, git도 정상적으로 작동하는 것을 확인할 수 있습니다.</p>
-
-<pre><code>$ xcode-select --version
-  xcode-select version 2370.
+<pre><code>chmod 600 $HOME/.oci/oci_api.pem
 </code></pre>
 
-<p><img src="https://taewanmerepo.github.io/2019/12/giterror/img06.jpg" alt="" /></p>
+<p>위 명령을 실행한 결과는 다음과 같습니다.</p>
 
-<h2 id="참고자료">참고자료</h2>
+<pre><code>&gt; openssl genrsa -out $HOME/.oci/oci_api.pem 2048
+Generating RSA private key, 2048 bit long modulus
+.........+++
+...............................................................................+++
+e is 65537 (0x10001)
+&gt; chmod 600 $HOME/.oci/oci_api.pem
+&gt; ls -al $HOME/.oci/oci_api.pem
+-rw-------  1 taewan  staff  1679 11 29 00:09 /Users/taewan/.oci/oci_api.pem
+</code></pre>
 
-<ul>
-<li><a href="https://stackoverflow.com/questions/52522565/git-is-not-working-after-macos-update-xcrun-error-invalid-active-developer-pa" target="_blank">stackoverflow: Git is not working after macOS Update [↗NW]</a>
-</li>
-</ul>
+<h2 id="rsa-공개키-만들기">RSA 공개키 만들기</h2>
+
+<p>RAS 공개키는 다음과 같은 명령 패턴으로 생성합니다.</p>
+
+<pre><code>openssl rsa -pubout -in $HOME/.oci/&lt;your-rsa-key-name&gt;.pem -out $HOME/.oci/&lt;your-rsa-key-name&gt;_public.pem
+</code></pre>
+
+<p>위 명령 패턴은 개인키 파일명이 <code>oci_api</code>`일 경우에 다음과 같은 명령이 됩니다.</p>
+
+<pre><code>openssl rsa -pubout -in $HOME/.oci/oci_api.pem \
+-out $HOME/.oci/oci_api_public.pem
+</code></pre>
+
+<p>위 명령을 실행한 결과는 다음과 같습니다.</p>
+
+<pre><code>&gt; openssl rsa -pubout -in $HOME/.oci/oci_api.pem \
+-out $HOME/.oci/oci_api_public.pem
+writing RSA key
+&gt; 
+</code></pre>
+
+<h2 id="공개키-fingerprint-확인">공개키 Fingerprint 확인</h2>
+
+<p>공개 파일명이 <code>$HOME/.oci/oci_api_public.pem</code>일 때, 다음 명령으로 공개키 파일 Fingerprint를 확인할 수 있습니다.</p>
+
+<pre><code>openssl rsa -pubout -outform DER -in ~/.oci/oci_api_key.pem | openssl md5 -c
+</code></pre>
+
+<p>위 명령의 실행 결과는 다음과 같습니다.</p>
+
+<pre><code>&gt; openssl rsa -pubout -outform DER -in ~/.oci/oci_api_key.pem | openssl md5 -c
+writing RSA key
+aa:41:d3:08:3d:f1:61:19:ad:9e:db:bc:2e:de:82:43
+&gt;
+</code></pre>
 
 		</div>
 		
@@ -169,16 +226,13 @@ $
 	
 <nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	<div class="post-nav__item post-nav__item--prev col-1-2">
-		<a class="post-nav__link" href="http://taewan.kim/tip/how_to_install_python36_in_oel7/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Oracle Linux 7.X에 Python 3.6 설치 방법</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next col-1-2">
-		<a class="post-nav__link" href="http://taewan.kim/tip/dd/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">OCI API 인증을 위한 RAS Key Pair 준비</p></a>
+		<a class="post-nav__link" href="http://taewan.kim/tip/git_error_after_macos_update/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">macOS 업데이트 이후 git 실행시 &#39;xcrun: error&#39; 해결 방법</p></a>
 	</div>
 </nav>
 
 	
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tip/git_error_after_macos_update/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/tip/dd/"></div>
 
 
 	<div>
@@ -214,7 +268,7 @@ $
 	
 
 <div class="widget-categories widget">	
-		<div class="fb-like" data-href="http://taewan.kim/tip/git_error_after_macos_update/" 
+		<div class="fb-like" data-href="http://taewan.kim/tip/dd/" 
 		data-layout="standard" data-action="like" 
 		data-size="small" 
 		data-show-faces="true" 
@@ -229,7 +283,9 @@ $
 <ul>
 <li>
 <ul>
-<li><a href="#참고자료">참고자료</a></li>
+<li><a href="#rsa-개인키-만들기">RSA 개인키 만들기</a></li>
+<li><a href="#rsa-공개키-만들기">RSA 공개키 만들기</a></li>
+<li><a href="#공개키-fingerprint-확인">공개키 Fingerprint 확인</a></li>
 </ul></li>
 </ul>
 </nav>

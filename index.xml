@@ -6,10 +6,21 @@
     <description>Recent content on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Nov 2020 16:20:25 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2020 11:28:14 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OCI API 인증을 위한 RAS Key Pair 준비</title>
+      <link>http://taewan.kim/tip/dd/</link>
+      <pubDate>Fri, 27 Nov 2020 11:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tip/dd/</guid>
+      <description>OCI(Oracle Cloud Infrastructure)에서 제공하는 API를 사용하기 위해서는 RSA 키로 API signing을 해야 합니다. RSA 키를 PEM 파일로 만드는 명령을 정리합니다. 이 문서에서 정리하는 명령은 Linux/Mac를 기준으로 합니다. 윈도우의 경우 Windows 10의 WSL(Winsow Subsystem for Linux2)를 설치하면 동일한 명령을 사용할 수 있습니다.
+이 문서의 기준 정보는 다음과 같습니다.
+   기준 정보 설정값     기준 디렉터리 $HOME/.oci   개인키 파일명 oci_api   공개키 파일명 oci_api_public.</description>
+    </item>
     
     <item>
       <title>OCI Tenancy 기본 설정</title>
