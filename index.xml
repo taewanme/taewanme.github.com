@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>OCI API 인증을 위한 RAS Key Pair 준비</title>
+      <title>OCI API 인증을 위한 RAS Key Pair</title>
       <link>http://taewan.kim/tip/dd/</link>
       <pubDate>Fri, 27 Nov 2020 11:28:14 +0900</pubDate>
       
@@ -20,6 +20,15 @@
       <description>OCI(Oracle Cloud Infrastructure)에서 제공하는 API를 사용하기 위해서는 RSA 키로 API signing을 해야 합니다. RSA 키를 PEM 파일로 만드는 명령을 정리합니다. 이 문서에서 정리하는 명령은 Linux/Mac를 기준으로 합니다. 윈도우의 경우 Windows 10의 WSL(Winsow Subsystem for Linux2)를 설치하면 동일한 명령을 사용할 수 있습니다.
 이 문서의 기준 정보는 다음과 같습니다.
    기준 정보 설정값     기준 디렉터리 $HOME/.oci   개인키 파일명 oci_api   공개키 파일명 oci_api_public.</description>
+    </item>
+    
+    <item>
+      <title>Sing Again - 보관</title>
+      <link>http://taewan.kim/entertain/sing_again/</link>
+      <pubDate>Fri, 27 Nov 2020 02:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/entertain/sing_again/</guid>
+      <description> 63호 누구 없소  소개, 노래, 인터뷰(9:43)    30호 허니    </description>
     </item>
     
     <item>
