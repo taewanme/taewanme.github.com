@@ -128,7 +128,7 @@
 			</figure>
 			
 
-<p>이 문서는 앞으로 데모 환경을 구성하는 기본 문서로 활용할 목적으로 작성합니다. 이 문서에서 OCI User ID, OCI Group, Compoartment 및 VCN를 다음과 같이 구성합니다.</p>
+<p>이 문서는 앞으로 데모 환경을 구성하는 기본 문서로 활용할 목적으로 작성합니다. 이 문서에서는 OCI User ID, OCI Group, Compoartment 및 VCN를 다음과 같이 구성합니다.</p>
 
 <ul>
 <li>OCI 사용자 ID: OCI 사용자 계정
@@ -214,19 +214,19 @@
 </tbody>
 </table>
 
-<p>OCI Tenancy가 생성될 때, 기본 생성되는 OCI 관리자 ID 2개 이외에 4개 새로운 사용자 ID를 만듭니다. 각 사용자 ID는 개발자, 운영자, 데이터 분석가, 클라우드 관리자의 역할을 수행합니다. 사용자 설정이 완료되면 다음과 같은 상태가 됩니다.</p>
+<p>OCI Tenancy가 생성될 때, 기본 관리자 ID가 2개 만들어집니다. 이 관리자 ID 외에 새로운 사용자 ID를 4개 만듭니다. 각 사용자 ID는 개발자, 운영자, 데이터 분석가, 클라우드 관리자의 역할을 수행합니다. 사용자 설정이 완료되면 다음과 같은 상태가 됩니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2020/11/basicsetting/010.jpg" alt="" /></p>
 
 <h3 id="oci-user-group">OCI User Group</h3>
 
-<p>개발자, 운영자, 데이터 분석가, 클라우드 관리자의 역할을 대표하는 각 사용자 ID를 묶는 그룹을 3개 만들고 기본 제공되는 Administrotors 그룹은 재사용합니다.</p>
+<p>IAM 사용자 ID를 묶는 사용자 그룹을 3개(개발자 그룹, 운영자 그룹, 분석가 그룹) 새로 만듭니다. OCI Tenancy가 기본 제공하는 Administrotors 그룹은 관리자 그룹으로 재사용합니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2020/11/basicsetting/020.jpg" alt="" /></p>
 
 <h2 id="compartment">Compartment</h2>
 
-<p>OCI에서 자원(VCN, VM, Database, Storage 및 여러 서비스)을 만들 때, Compartment는 OCI 자원을 논리적으로 묶는 역할을 담당합니다. Compartment로 여러 자원을 묶고, 이 단위로 자원 모니터링, 과금 및 권한을 설정 합니다. Compartment는 OCI 클라우드 자원을 관리하는 IAM 핵심 구성요소입니다.</p>
+<p>OCI에서 자원(VCN, VM, Database, Storage 및 여러 서비스)을 만들 때, Compartment는 OCI 자원을 논리적으로 묶는 역할을 담당합니다. Compartment로 여러 자원을 묶고, OCI 컴파트먼트 단위로 자원 모니터링, 과금 및 권한 설정을 합니다. Compartment는 OCI 클라우드 자원을 관리하는 IAM 핵심 구성요소입니다.</p>
 
 <p>컴파트먼트는 중첩 디렉터리 구조를 갖습니다. OCI의 모든 자원은 특정 컴파트먼트에 소속됩니다. 컴파트먼트는 OCI 글루벌 범위를 갖습니다. 컴파트먼트는 특정 리전에 종속적이지 않으며, 특정 리전에서 만든 컴파트먼트는 모든 리전에서 사용 가능합니다.</p>
 
