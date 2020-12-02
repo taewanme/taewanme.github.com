@@ -9,10 +9,10 @@
 <META http-equiv="Cache-Control" content="No-Cache">
 <meta property="fb:admins" content="devtainer@gmail.com"/>
 
-<title>OCI Tenancy 기본 설정</title>
+<title>OCI Tenancy 기본 환경 설정</title>
 <meta name="description" content="taewan.kim">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="OCI Tenancy 기본 설정" />
+<meta property="og:title" content="OCI Tenancy 기본 환경 설정" />
 <meta property="og:description" content="Oracle Cloud Infrastructure(이하 OCI)의 Tenancy(클라우드 계정)을 생성한 다음에 기본 제공되는 OCI 관리자 계정으로 사용자 등록, 그룹 생성 및 컴파트먼트를 구성하는 과정을 살펴보겠습니다. 이 문서는 이 문서는 앞으로 데모 환경을 구성하는 기본 문서로 활용하는 것을 목적으로 작성했습니다. 이 문서에서 OCI User ID, OCI Group, Compoartment 및 VCN의 기본 환경을 구성합니다. " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/cloud/oci_basic_config/" />
@@ -110,7 +110,7 @@
 <div class="main-content content" role="main" itemprop="mainContentOfPage">
 	<article class="post">
 		<header class="post__header clearfix">
-			<h1 class="post__title">OCI Tenancy 기본 설정 </h1>
+			<h1 class="post__title">OCI Tenancy 기본 환경 설정 </h1>
 			<p class="post__meta meta">
 				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
 				<time class="post__meta-date" datetime="2020-11-26 16:20:25 &#43;0900 KST">November 26, 2020</time>
@@ -124,27 +124,32 @@
 		<div class="post__content clearfix">
 
 			<figure class="post__thumbnail">
-				<img src="https://taewanmerepo.github.io/2020/03/usersetting/1200.jpg" alt="OCI Tenancy 기본 설정">
+				<img src="https://taewanmerepo.github.io/2020/03/usersetting/1200.jpg" alt="OCI Tenancy 기본 환경 설정">
 			</figure>
 			
 
-<p>Oracle Cloud Infrastructure(이하 OCI)의 Tenancy(클라우드 계정)을 생성한 다음에 기본 제공되는 OCI 관리자 계정으로 사용자 등록, 그룹 생성 및 컴파트먼트를 구성하는 과정을 살펴보겠습니다. 이 문서는 이 문서는 앞으로 데모 환경을 구성하는 기본 문서로 활용하는 것을 목적으로 작성했습니다. 이 문서에서 OCI User ID, OCI Group, Compoartment 및 VCN의 기본 환경을 구성합니다. 다음과 같은 자원을 만들것 입니다.</p>
+<p>이 문서는 앞으로 데모 환경을 구성하는 기본 문서로 활용할 목적으로 작성합니다. 이 문서에서 OCI User ID, OCI Group, Compoartment 및 VCN를 다음과 같이 구성합니다.</p>
 
 <ul>
 <li>OCI 사용자 ID: OCI 사용자 계정
 
 <ul>
-<li>developer01, operator01, data_analyst01, admin</li>
+<li>developer01</li>
+<li>operator01</li>
+<li>data_analyst01</li>
+<li>admin</li>
 </ul></li>
 <li>OCI Group: OCI 사용자를 묶는 논리적인 단위
 
 <ul>
-<li>developers, operators, data_analysts</li>
+<li>developers</li>
+<li>operators</li>
+<li>data_analysts</li>
 </ul></li>
 <li>Compartment: OCI 자원을 묶는 논리적인 단위
 
 <ul>
-<li>democomp</li>
+<li>demo</li>
 </ul></li>
 <li>VCN: 가상 클라우드 네트워크
 
@@ -153,9 +158,20 @@
 </ul></li>
 </ul>
 
-<h2 id="oci-user-id">OCI User ID</h2>
+<h2 id="oci-사용자-기본-설정">OCI 사용자 기본 설정</h2>
 
-<p>OCI User ID 4개와 Group 3개를 만들고, 그룹에 OCI User ID를 할당합니다.</p>
+<p>OCI Group과 OCI User를 만들고, 그룹에 OCI User를 할당하는 과정은 다음 문서를 참조하시기 바랍니다.</p>
+
+<ul>
+<li><a href="http://taewan.kim/cloud/oci_user/" target="_blank">OCI 사용자 기본 설정(Feat. OCI IAM)[↗NW]</a>
+</li>
+</ul>
+
+<p>OCI 사용자 기본 설정은 OCI 관리자 계정으로 로그인하여 진행합니다.</p>
+
+<h3 id="oci-user-id">OCI User ID</h3>
+
+<p>OCI User ID 4개와 Group 3개를 만들고, 각 그룹에 다음 OCI User ID를 할당합니다.</p>
 
 <table>
 <thead>
@@ -198,46 +214,27 @@
 </tbody>
 </table>
 
-<p>OCI Group과 OCI User를 만들고, 그룹에 OCI User를 할당하는 과정은 다음 문서를 참조하시기 바랍니다.</p>
-
-<ul>
-<li><a href="http://taewan.kim/cloud/oci_user/" target="_blank">OCI 사용자 기본 설정(Feat. OCI IAM)[↗NW]</a>
-</li>
-</ul>
-
-<p>사용자 설정이 완료되면 다음과 같은 상태가 됩니다.</p>
-
-<ul>
-<li>사용자 ID 목록</li>
-</ul>
-
-<p>OCI Tenancy가 생성될 때, 기본 생성되는 OCI 관리자 ID 2개 이외에 4개 새로운 사용자 ID를 만듭니다. 각 사용자 ID는 개발자, 운영자, 데이터 분석가, 클라우드 관리자의 역할을 수행합니다.</p>
+<p>OCI Tenancy가 생성될 때, 기본 생성되는 OCI 관리자 ID 2개 이외에 4개 새로운 사용자 ID를 만듭니다. 각 사용자 ID는 개발자, 운영자, 데이터 분석가, 클라우드 관리자의 역할을 수행합니다. 사용자 설정이 완료되면 다음과 같은 상태가 됩니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2020/11/basicsetting/010.jpg" alt="" /></p>
 
-<ul>
-<li>OCI Group 목록</li>
-</ul>
+<h3 id="oci-user-group">OCI User Group</h3>
 
-<p>개발자, 운영자, 데이터 분석가, 클라우드 관리자의 역할을 대표하는 각 사용자 ID를 묶는 그룹을 3개 만들고 기본 제공되는 Administrotors 그룹을 재사용합니다.</p>
+<p>개발자, 운영자, 데이터 분석가, 클라우드 관리자의 역할을 대표하는 각 사용자 ID를 묶는 그룹을 3개 만들고 기본 제공되는 Administrotors 그룹은 재사용합니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2020/11/basicsetting/020.jpg" alt="" /></p>
 
 <h2 id="compartment">Compartment</h2>
 
-<p>OCI에서 자원(VCN, VM, Database, Storage 및 여러 서비스)을 만들 때, Compartment는 필수 설정 항목입니다. Compartment는 OCI 자원을 논리적으로 묶는 역할을 담당합니다. 다양한 OCI 자원의 논리 그룹을 Compartment로 만들고 이 단위로 자원 모니터링, 과금 및 권한을 설정 합니다. Compartment는 OCI 자원을 관리하는 OCI 핵심 구성요소입니다.</p>
+<p>OCI에서 자원(VCN, VM, Database, Storage 및 여러 서비스)을 만들 때, Compartment는 OCI 자원을 논리적으로 묶는 역할을 담당합니다. Compartment로 여러 자원을 묶고, 이 단위로 자원 모니터링, 과금 및 권한을 설정 합니다. Compartment는 OCI 클라우드 자원을 관리하는 IAM 핵심 구성요소입니다.</p>
 
-<p>OCI에서 사용자 관리와 권한 관리는 IAM(Identity and Access Management)이 담당합니다. IAM은 권한 관리를 위하여 사용자 그룹을 만들고 사용자 그룹에 어떤 자원을 접근하는 권한을 설정합니다. 여기서 어떤 자원을 논리적으로 묶는 OCI 단위가 Compartment입니다. 이렇게 OCI는 Compartment를 근간으로 보안과 접근 제어 기능을 제공합니다. Compartment는 논리적으로 자원을 묶는 OCI IAM(Identity and Access Management)의 핵심 컴포넌트 입니다.</p>
-
-<p>Compartment는 중첩 디렉터리 구조를 갖습니다. Oracle Cloud 계정인 테넌시(Tenancy)가 만들어지면, 관리자 컴파트먼트인 Root Compartment가 만들어 집니다. Administrator 사용자 그룹에 포함된 OCI User는 Root 컴파트먼트 아래에 컴포넌트를 만들 수 있습니다. OCI에서 모든 자원은 특정 컴파트먼트에 소속됩니다.</p>
-
-<p>컴파트먼트는 OCI 글루벌 범위를 갖습니다. 컴파트먼트는 특정 리전에 종속적이지 않습니다. 특정 리전에서 만든 컴파트먼트는 모든 리전에서 사용 가능합니다.</p>
+<p>컴파트먼트는 중첩 디렉터리 구조를 갖습니다. OCI의 모든 자원은 특정 컴파트먼트에 소속됩니다. 컴파트먼트는 OCI 글루벌 범위를 갖습니다. 컴파트먼트는 특정 리전에 종속적이지 않으며, 특정 리전에서 만든 컴파트먼트는 모든 리전에서 사용 가능합니다.</p>
 
 <p><strong>Compartment(컴파트먼트)</strong>는 한국어로 &ldquo;<strong>구획</strong>&ldquo;으로 번역됩니다.</p>
 
 <h3 id="demo-컴파트먼트-만들기">demo 컴파트먼트 만들기</h3>
 
-<p>demo 컴파트먼트에 생성은 admin 사용자로 진행합니다. 데모 환경에서는 root 컴파트먼트 아래에 demo 컴파트먼트를 만들겠습니다.</p>
+<p>demo 컴파트먼트 생성은 OCI 관리자 계정으로 진행합니다. root 컴파트먼트 아래에 demo 컴파트먼트를 만들겠습니다.</p>
 
 <p>Compartment 생성을 위해서 다음 메뉴 패스로 이동합니다.</p>
 
@@ -253,7 +250,7 @@
 
 <hr />
 
-<p>새로운 Compartment에 대해서 다음과 같이 설정하고 생성합니다.</p>
+<p>새로운 Compartment를 대해서 다음과 같이 설정하고 생성합니다.</p>
 
 <table>
 <thead>
@@ -297,7 +294,7 @@
 
 <h2 id="policy">Policy</h2>
 
-<p>OCI에서는 OCI IAM Policy로 OCI 자원에 대한 권한 설정을 합니다.</p>
+<p>OCI에서는 IAM Policy로 OCI 자원 권한 설정을 합니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2020/03/usersetting/1200.jpg" alt="" /></p>
 
@@ -364,21 +361,39 @@
 
 <h3 id="demo-컴파트먼트-권한-부여">Demo 컴파트먼트 권한 부여</h3>
 
-<p>demo 컴파트먼트에 Policy 설정은 admin 사용자로 진행합니다. demo 컴파트먼트에 대한 권한을 사용자 그룹에 다음과 같이 설정합니다.</p>
+<p>demo 컴파트먼트의 Policy 설정은 OCI 관리자 계정으로 진행합니다. demo 컴파트먼트에 대한 권한을 사용자 그룹 별로 다음과 같이 설정합니다.</p>
 
-<p>|사용자 그룹|권한|설명|
-|&mdash;-|&mdash;-|&mdash;-|&mdash;-|
-|developers|manage|demo 컴파트먼트의 모든 리소스 생성, 사용, 삭제 권한 부여|
-|operators|read|demo 컴파트먼트의 모든 리소스의 읽기 권한 부여|
-|data_analysts|manage|emo 컴파트먼트의 모든 리소스 생성, 사용, 삭제 권한 부여|</p>
+<table>
+<thead>
+<tr>
+<th>사용자 그룹</th>
+<th>권한</th>
+<th>설명</th>
+</tr>
+</thead>
 
-<p>위 3개 그룹에 권한을 부여하는 Policy는 다음과 같은 형태를 갖습니다.</p>
+<tbody>
+<tr>
+<td>developers</td>
+<td>manage</td>
+<td>demo 컴파트먼트의 모든 리소스 생성, 사용, 삭제 권한 부여</td>
+</tr>
 
-<pre><code>Allow group developers, data_analysts to manage all-resources in compartment demo
-Allow group operators to read all-resources in compartment demo
-</code></pre>
+<tr>
+<td>operators</td>
+<td>read</td>
+<td>demo 컴파트먼트의 모든 리소스의 읽기 권한 부여</td>
+</tr>
 
-<p>Policy를 생성하기 위해서다음 메뉴 패스로 이동합니다.</p>
+<tr>
+<td>data_analysts</td>
+<td>manage</td>
+<td>emo 컴파트먼트의 모든 리소스 생성, 사용, 삭제 권한 부여</td>
+</tr>
+</tbody>
+</table>
+
+<p>Policy를 생성하기 위해서 다음 메뉴 패스로 이동합니다.</p>
 
 <ul>
 <li><strong>OCI 콘솔 왼쪽 위 햄버그 버튼</strong> &gt;&gt; <strong>Identity</strong> &gt;&gt; <strong>Policies</strong></li>
@@ -394,7 +409,7 @@ Allow group operators to read all-resources in compartment demo
 
 <hr />
 
-<p>Policy 등록 폼에 다음과 같이 입력하고 <strong>Create</strong> 버튼을 클릭합니다.</p>
+<p>Policy 등록 폼에 다음과 같이 입력합니다.</p>
 
 <table>
 <thead>
@@ -422,11 +437,37 @@ Allow group operators to read all-resources in compartment demo
 </tbody>
 </table>
 
+<p>위 항목을 입력하고 Policy Builder에 <strong>Switch to Basic Builder</strong> 링크를 클릭한 다음에 아래 문장을 입력합니다.</p>
+
+<pre><code>Allow group developers, data_analysts to manage all-resources in compartment demo
+Allow group operators to read all-resources in compartment demo
+</code></pre>
+
+<p>모두 입력을 완료했으면 <strong>Create</strong> 버튼을 클릭합니다.</p>
+
 <p><img src="https://taewanmerepo.github.io/2020/11/basicsetting/100.jpg" alt="" /></p>
 
 <p>Policy가 생성되면 다음과 같은 상세 정보가 출력됩니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2020/11/basicsetting/110.jpg" alt="" /></p>
+
+<h3 id="cloud-shell을-위한-policy-설정">Cloud Shell을 위한 Policy 설정</h3>
+
+<p>Cloud Shell은 OCI Console(OCI 관리 콘솔)에서 실행되는 브라우저 기반 가상 터미널입니다. OCI Cloud Shell를 이용하면 PuTTY를 사용하지 않고 OCI VM 인스턴스에 접속하거나 추가적인 계정 설정 작업 없이 OCI CLI와 같은 툴을 사용할 수 있습니다.</p>
+
+<p>OCI 사용자가 Cloud Shell을 사용하기 위해서는 root 컴파트먼트에 다음 Policy를 설정해야 합니다.</p>
+
+<pre><code>allow group &lt;GROUP-NAME&gt; to use cloud-shell in tenancy
+</code></pre>
+
+<p>develper01과 data_analyst01 사용자가 Cloud Shell을 사용하기 위해서 다음 Policy를 root 컴파트먼트에 생성합니다.</p>
+
+<pre><code>allow group data_analysts, developers to use cloud-shell in tenancy
+</code></pre>
+
+<p>cloud shell을 위한 Policy를 다음과 같이 만듭니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/11/basicsetting/900.jpg" alt="" /></p>
 
 <h2 id="vcn-virtual-cloud-network-만들기">VCN(Virtual Cloud Network) 만들기</h2>
 
@@ -446,7 +487,7 @@ Allow group operators to read all-resources in compartment demo
 
 <h3 id="demovcn-만들기">demovcn 만들기</h3>
 
-<p>OCI Console에 developer01로 OCI IAM 로그인합니다. 그리고 VCN을 생성하기 위해서 다음 메뉴 패스로 이동합니다.</p>
+<p>demovcn 만들기는 <strong>developer01</strong> 사용자로 진행합니다. <strong>developer01</strong> 사용자로 OCI Console에 로그인합니다. 그리고 VCN을 생성하기 위해서 다음 메뉴 패스로 이동합니다.</p>
 
 <ul>
 <li><strong>OCI 콘솔 왼쪽 위 햄버그 버튼</strong>  &gt;&gt; <strong>Networking</strong> &gt;&gt; <strong>Virutla Cloud Network</strong></li>
@@ -565,10 +606,6 @@ Allow group operators to read all-resources in compartment demo
 
 <p><img src="https://taewanmerepo.github.io/2020/11/basicsetting/270.jpg" alt="" /></p>
 
-<h2 id="요약">요약</h2>
-
-<p>지금까지 OCI IAM 사용자 계정 4개, IAM 그룹 3개, Policy 1개, VCN 1개를 만들어 봤습니다. 이 환경은 앞으로 데모를 진행할 때, OCI 계정의 초기 환경으로 사용할 것 입니다.</p>
-
 		</div>
 		
 <div class="post__tags tags clearfix">
@@ -652,7 +689,11 @@ Allow group operators to read all-resources in compartment demo
 <ul>
 <li>
 <ul>
+<li><a href="#oci-사용자-기본-설정">OCI 사용자 기본 설정</a>
+<ul>
 <li><a href="#oci-user-id">OCI User ID</a></li>
+<li><a href="#oci-user-group">OCI User Group</a></li>
+</ul></li>
 <li><a href="#compartment">Compartment</a>
 <ul>
 <li><a href="#demo-컴파트먼트-만들기">demo 컴파트먼트 만들기</a></li>
@@ -660,12 +701,12 @@ Allow group operators to read all-resources in compartment demo
 <li><a href="#policy">Policy</a>
 <ul>
 <li><a href="#demo-컴파트먼트-권한-부여">Demo 컴파트먼트 권한 부여</a></li>
+<li><a href="#cloud-shell을-위한-policy-설정">Cloud Shell을 위한 Policy 설정</a></li>
 </ul></li>
 <li><a href="#vcn-virtual-cloud-network-만들기">VCN(Virtual Cloud Network) 만들기</a>
 <ul>
 <li><a href="#demovcn-만들기">demovcn 만들기</a></li>
 </ul></li>
-<li><a href="#요약">요약</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -691,8 +732,8 @@ Allow group operators to read all-resources in compartment demo
 							OCI ADB 튜토리얼-01.프로비저닝</a>
 		  </li>
 			<li class="widget__item">
-				<a class="widget__link" href="/cloud/oci_basic_config/" title="OCI Tenancy 기본 설정">
-							OCI Tenancy 기본 설정</a>
+				<a class="widget__link" href="/cloud/oci_basic_config/" title="OCI Tenancy 기본 환경 설정">
+							OCI Tenancy 기본 환경 설정</a>
 		  </li>
 			<li class="widget__item">
 				<a class="widget__link" href="/post/how_to_check_data_pump_file_and_expot_file/" title="Oracle Export(exp)와 Datapump(expdp) 파일 구분">
