@@ -39,6 +39,15 @@
     </item>
     
     <item>
+      <title>Adb</title>
+      <link>http://taewan.kim/tags/adb/</link>
+      <pubDate>Tue, 01 Dec 2020 21:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/adb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Adec</title>
       <link>http://taewan.kim/tags/adec/</link>
       <pubDate>Sat, 31 Mar 2018 08:05:14 +0900</pubDate>
@@ -1481,7 +1490,7 @@
     <item>
       <title>Oci</title>
       <link>http://taewan.kim/tags/oci/</link>
-      <pubDate>Thu, 26 Nov 2020 16:20:25 +0900</pubDate>
+      <pubDate>Tue, 01 Dec 2020 21:01:25 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/oci/</guid>
       <description></description>
@@ -1709,6 +1718,15 @@
       <pubDate>Thu, 26 Dec 2019 01:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/presentation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Provisioning</title>
+      <link>http://taewan.kim/tags/provisioning/</link>
+      <pubDate>Tue, 01 Dec 2020 21:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/provisioning/</guid>
       <description></description>
     </item>
     
@@ -2111,7 +2129,7 @@
     <item>
       <title>Tutorial</title>
       <link>http://taewan.kim/tags/tutorial/</link>
-      <pubDate>Tue, 27 Mar 2018 03:05:14 +0900</pubDate>
+      <pubDate>Tue, 01 Dec 2020 21:01:25 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/tutorial/</guid>
       <description></description>
@@ -2768,7 +2786,7 @@
     <item>
       <title>오라클</title>
       <link>http://taewan.kim/tags/%EC%98%A4%EB%9D%BC%ED%81%B4/</link>
-      <pubDate>Thu, 26 Nov 2020 16:20:25 +0900</pubDate>
+      <pubDate>Tue, 01 Dec 2020 21:01:25 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/%EC%98%A4%EB%9D%BC%ED%81%B4/</guid>
       <description></description>
@@ -2903,7 +2921,7 @@
     <item>
       <title>클라우드</title>
       <link>http://taewan.kim/tags/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</link>
-      <pubDate>Thu, 26 Nov 2020 16:20:25 +0900</pubDate>
+      <pubDate>Tue, 01 Dec 2020 21:01:25 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</guid>
       <description></description>

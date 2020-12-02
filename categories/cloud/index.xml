@@ -6,10 +6,20 @@
     <description>Recent content in Cloud on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Nov 2020 16:20:25 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 01 Dec 2020 21:01:25 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/categories/cloud/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OCI ADB 튜토리얼-01.프로비저닝</title>
+      <link>http://taewan.kim/cloud/oci_adb_tutorial_01_provisioning/</link>
+      <pubDate>Tue, 01 Dec 2020 21:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_adb_tutorial_01_provisioning/</guid>
+      <description>우선 OCI ADB에 대해서 간단히 소개하겠습니다. OCI의 Autonomous Database 서비스(ADB)는 자율 운영을 표방하는 데이터베이스 서비스입니다. 시스템 및 데이터베이스 관리자의 Oracle DB 운영 부담을 최소화하면서 기존 Oracle Database 활용 경험을 클라우드에서 그대로 활용하는 것을 목표로 합니다. On-Prem의 Exadata 기술 스택을 클라우드화하고 운영/관리 부담을 줄이는 진보적인 Oracle Database 클라우드 PaaS입니다.
+OCI ADB는 데이터베이스 사용 형태(Workload)에 따라 3가지 유형으로 구분됩니다. 각 유형 ADB 인스턴스를 생성할 때 공용 인프라와 전용 인프라를 지정할 수 있습니다.</description>
+    </item>
     
     <item>
       <title>OCI Tenancy 기본 설정</title>

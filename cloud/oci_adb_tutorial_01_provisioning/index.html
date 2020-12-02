@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>OCI ADB 튜토리얼-01.프로비저닝</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.27.1" />
+<meta property="og:title" content="OCI ADB 튜토리얼-01.프로비저닝" />
+<meta property="og:description" content="OCI ADB는 데이터베이스 사용 형태(Workload)에 따라 3가지 유형으로 구분됩니다. 각 유형 ADB 인스턴스를 생성할 때 공용 인프라와 전용 인프라를 지정할 수 있습니다. OCI Console에서 Autonomous Database 인스턴스(ADW 타입)를 생성하는 기본 절차를 소개합니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/cloud/oci_adb_tutorial_01_provisioning/" />
+
+
+
+<meta property="article:published_time" content="2020-12-01T21:01:25&#43;09:00"/>
+<meta property="article:modified_time" content="2020-12-01T21:01:25&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="http://cloud-docs.taewan.me" title="Oracle Cloud User Guide" >오라클 클라우드 사용자 가이드</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/graalvm/" title="GraalVM 관련 새소식 및 기술 문서를 담고 있습니다." >GRAALVM</a></li>
+		<li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Deep Learning 구현 기술에 대하여 정리합니다." >TUTORIAL &amp; MANUAL</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">OCI ADB 튜토리얼-01.프로비저닝 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2020-12-01 21:01:25 &#43;0900 KST">December 01, 2020</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/cloud" rel="category">Cloud</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2020/12/adbprovisioning/post.jpg" alt="OCI ADB 튜토리얼-01.프로비저닝">
+			</figure>
+			
+
+<p>우선 OCI ADB에 대해서 간단히 소개하겠습니다. OCI의 Autonomous Database 서비스(ADB)는 자율 운영을 표방하는 데이터베이스 서비스입니다. 시스템 및 데이터베이스 관리자의 Oracle DB 운영 부담을 최소화하면서 기존 Oracle Database 활용 경험을 클라우드에서 그대로 활용하는 것을 목표로 합니다. On-Prem의 Exadata 기술 스택을 클라우드화하고 운영/관리 부담을 줄이는 진보적인 Oracle Database 클라우드 PaaS입니다.</p>
+
+<p>OCI ADB는 데이터베이스 사용 형태(Workload)에 따라 3가지 유형으로 구분됩니다. 각 유형 ADB 인스턴스를 생성할 때 공용 인프라와 전용 인프라를 지정할 수 있습니다. OCI Console에서 Autonomous Database 인스턴스(ADW 타입)를 생성하는 기본 절차를 소개합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/11/refreshclone/0010.jpg" alt="" /></p>
+
+<h2 id="adb-튜토리얼">ADB 튜토리얼</h2>
+
+<p>이번 문서에서는 OCI ADB 기본 튜토리얼의 1편입니다. OCI ADB 기본 튜토리얼을 다음과 같습니다.</p>
+
+<ul>
+<li><a href="/cloud/oci_adb_tutorial_01_provisioning/">1. OCI ADB: Provisioning</a></li>
+<li>2. OCI ADB: SQL Developer Web</li>
+<li>3. OCI ADB: SQL Developer 접속 설정</li>
+<li>4. OCI ADB: Data Loading</li>
+<li>5. OCI ADB: 외부 데이터 쿼리</li>
+<li>6. OCI ADB: 인스턴스 모니터링</li>
+<li>7. OCI ADB: 스케일 관리</li>
+<li>8. OCI ADB: OML -  In-Database 머신러닝</li>
+<li>9. OCI ADB: Low Code 기반 웹 개발 - ADB</li>
+</ul>
+
+<h2 id="사전-준비사항">사전 준비사항</h2>
+
+<p>이번 튜토리얼은 OCI Free Trial 계정에서 진행됩니다. 다음과 같은 환경에서 진행합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>환경 유형</th>
+<th>자원</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>OCI IAM 계정</td>
+<td>developer01</td>
+<td>IAM 개발자 ID</td>
+</tr>
+
+<tr>
+<td>Compartment</td>
+<td>demo</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>현재 사용중인 OCI 계정(OCI Free Trial 포함)에 아직 위 환경이 준비되어 있지 않은 상태라면 다음 문서를 참고하여 준비하시기 바랍니다.</p>
+
+<ul>
+<li><a href="/cloud/oci_user/" target="_blank">OCI 사용자 기본 설정(Feat. OCI IAM)[↗NW]</a>
+</li>
+<li><a href="/cloud/oci_basic_config/" target="_blank">OCI Tenancy 기본 설정[↗NW]</a>
+</li>
+</ul>
+
+<p>다음 절의 OCI ADB 프로비저닝 절차를 실습하기 위해서는 위 문서를 참조하여 IAM 사용자(developer01), Compartment(demo), 사용자에 대한 Policy 설정을 미리 준비해야 합니다.</p>
+
+<h2 id="oci-adb-프로비저닝">OCI ADB 프로비저닝</h2>
+
+<p>이 절에서는 OCI Console에 developer01(IAM ID)로 로그인한 상태에서 ADB를 생성하는 과정을 정리합니다. ADB를 생성하기 위해서 다음 메뉴 패스로 이동합니다.</p>
+
+<ul>
+<li><strong>OCI 콘솔 왼쪽 위 햄버그 버튼</strong> &gt;&gt; <strong>Autonomous Transaction Processing</strong></li>
+</ul>
+
+<p><img src="https://taewanmerepo.github.io/2020/12/adbprovisioning/030.jpg" alt="" /></p>
+
+<h3 id="oracle-adb-인스턴스-생성">Oracle ADB 인스턴스 생성</h3>
+
+<p>Autonomous Database 페이지에서 다음 그림과 같이 <strong>Create Autonomous Database</strong> 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/12/adbprovisioning/040.jpg" alt="" /></p>
+
+<p><strong>Create Autonomous Database</strong> 버튼을 클릭하면 출력되는 ADB 생성 폼에 다음 값을 설정합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>항목 명</th>
+<th>설정값</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>Compartment</td>
+<td>demo</td>
+<td>ADB 인스터스를 논리적으로 묶는 컴파트먼트 지정</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Display NAME</td>
+<td>demoadb</td>
+<td>인스턴스의 출력 이름입니다. 문자와 숫자로 최대 14 문자로 이름을 설정할 수 있습니다.</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>DATABASE NAME</td>
+<td>demoadb</td>
+<td>인스턴스 명입니다. 문자와 숫자로 최대 14 문자로 이름을 설정할 수 있습니다.</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Workload Type</td>
+<td>Transaction Processing</td>
+<td>ADB는 3가지 Workload를 지원합니다. 이중에서 OLTP에 적합한 Transaction Processing을 선택합니다.</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Deployment Type</td>
+<td>Shared Structure</td>
+<td>Shared Structure를 선택하여 공유 인프라에 ADB 인스턴스를 만듭니다.</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>Always Free</td>
+<td>Disable</td>
+<td>Always Free는 OCI 계정당 ATP 인스턴스 1개와 ADW 인스턴스 1개만을 지원</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>Database Version</td>
+<td>19c</td>
+<td></td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>OCPU count</td>
+<td>1</td>
+<td>지정 범위: 1~128개</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>스토리지(TB)</td>
+<td>1</td>
+<td>지정 범위: 1~128TB</td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>Password</td>
+<td>Welcome123456!</td>
+<td>패스워드 예시</td>
+</tr>
+
+<tr>
+<td>11</td>
+<td>Confirm password</td>
+<td>Welcome123456!</td>
+<td>패스워드 예시</td>
+</tr>
+
+<tr>
+<td>12</td>
+<td>Access Type</td>
+<td>Allow secure access from everywhere</td>
+<td>한국어 표시: 모든 곳에서 보안 액세스 허용</td>
+</tr>
+
+<tr>
+<td>13</td>
+<td>License Type</td>
+<td>License Included</td>
+<td>BYOL은 On-Prem에 오라클 라이센스를 갖고 있느 경우에 On-Prem 라이센스를 클라우드 라이센스로 전환하는 모델입니다.</td>
+</tr>
+</tbody>
+</table>
+
+<p>위 설정 값을 입력하고 <strong>Create Autonomous Database</strong>을 클릭합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2020/12/adbprovisioning/020.jpg" alt="" /></p>
+</blockquote>
+
+<hr />
+
+<p>ADB가 프로비저닝에 약 1-2분 정도 소요됩니다. ADB 인스턴스가 생성되면 다음과 같이 ADB 상세 페이지로 이동합니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2020/12/adbprovisioning/050.jpg" alt="" /></p>
+</blockquote>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/oci/" rel="tag">oci</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EC%98%A4%EB%9D%BC%ED%81%B4/" rel="tag">오라클</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/" rel="tag">클라우드</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/adb/" rel="tag">ADB</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/provisioning/" rel="tag">Provisioning</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/tutorial/" rel="tag">Tutorial</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan2.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+	<div class="notices disclaimer"><p>이 저작물은 Oracle과 관계없이 개인으로서 개인의 시간을 할애하여 작성된 글 입니다. 본 글의 내용, 입장, 예측은 Oracle을 공식적으로 <font color="red"><bold>절대</bold></font> 대변하지 않습니다.</p></div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/oci_basic_config/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">OCI Tenancy 기본 설정</p></a>
+	</div>
+</nav>
+
+	
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/cloud/oci_adb_tutorial_01_provisioning/"></div>
+
+
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	
+
+<div class="widget-categories widget">	
+		<div class="fb-like" data-href="http://taewan.kim/cloud/oci_adb_tutorial_01_provisioning/" 
+		data-layout="standard" data-action="like" 
+		data-size="small" 
+		data-show-faces="true" 
+		data-share="true"></div>
+</div>
+	
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#adb-튜토리얼">ADB 튜토리얼</a></li>
+<li><a href="#사전-준비사항">사전 준비사항</a></li>
+<li><a href="#oci-adb-프로비저닝">OCI ADB 프로비저닝</a>
+<ul>
+<li><a href="#oracle-adb-인스턴스-생성">Oracle ADB 인스턴스 생성</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	<div class="widget-categories widget">
+  <h4 class="widget__title">관련도서</h4>
+  <div class="widget__content" align="center">
+      <ul class="widget__list">
+          <li class="widget__item"><a href="http://www.yes24.com/Product/Goods/69335909" target="_blank"><img src="https://taewanmerepo.github.io/2019/02/pytorch/book200.jpg"/></a></li>
+      </ul>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_adb_tutorial_01_provisioning/" title="OCI ADB 튜토리얼-01.프로비저닝">
+							OCI ADB 튜토리얼-01.프로비저닝</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_basic_config/" title="OCI Tenancy 기본 설정">
+							OCI Tenancy 기본 설정</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/how_to_check_data_pump_file_and_expot_file/" title="Oracle Export(exp)와 Datapump(expdp) 파일 구분">
+							Oracle Export(exp)와 Datapump(expdp) ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_multi_factor_authentication/" title="OCI 멀티 팩터 인증(Multi-Factor Authentication)">
+							OCI 멀티 팩터 인증(Multi-Factor Authentic ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_user/" title="OCI 사용자 기본 설정(Feat. OCI IAM)">
+							OCI 사용자 기본 설정(Feat. OCI IAM)</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_login_one_url/" title="OCI Console 단일 URL">
+							OCI Console 단일 URL</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/how_to_install_oracle_java_in_oci/" title="OCI에 Oracle Java &amp; GraalVM EE 설치">
+							OCI에 Oracle Java &amp; GraalVM EE 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_adb_refreshable_clone/" title="OCI ADB 인스턴스로 새로운 ADB 데이터베이스 복제">
+							OCI ADB 인스턴스로 새로운 ADB 데이터베이스 복제</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_mobile_app/" title="OCI 관리 모바일 앱(Mobile App)">
+							OCI 관리 모바일 앱(Mobile App)</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_marketing_trial/" title="OCI 마케팅 트라이얼 계정 등록">
+							OCI 마케팅 트라이얼 계정 등록</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/graalvm">Graalvm</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/math">Math</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%a7%9b%ec%a7%91">맛집</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">Licesne</h4>
+	<div class="widget__content">
+		<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+	</div>
+	<div class="widget__content">
+		이 저작물은 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank>크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2020 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

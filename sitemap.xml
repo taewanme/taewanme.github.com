@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://taewan.kim/cloud/oci_adb_tutorial_01_provisioning/</loc>
+    <lastmod>2020-12-01T21:01:25+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tip/dd/</loc>
     <lastmod>2020-11-27T11:28:14+09:00</lastmod>
   </url>
@@ -1407,6 +1412,12 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/tags/adb/</loc>
+    <lastmod>2020-12-01T21:01:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tags/adec/</loc>
     <lastmod>2018-03-31T08:05:14+09:00</lastmod>
     <priority>0</priority>
@@ -1648,7 +1659,7 @@
   
   <url>
     <loc>http://taewan.kim/categories/cloud/</loc>
-    <lastmod>2020-11-26T16:20:25+09:00</lastmod>
+    <lastmod>2020-12-01T21:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1672,7 +1683,7 @@
   
   <url>
     <loc>http://taewan.kim/cloud/</loc>
-    <lastmod>2020-11-26T16:20:25+09:00</lastmod>
+    <lastmod>2020-12-01T21:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2518,7 +2529,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/oci/</loc>
-    <lastmod>2020-11-26T16:20:25+09:00</lastmod>
+    <lastmod>2020-12-01T21:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2699,6 +2710,12 @@
   <url>
     <loc>http://taewan.kim/tags/presentation/</loc>
     <lastmod>2019-12-26T01:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/provisioning/</loc>
+    <lastmod>2020-12-01T21:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -3046,7 +3063,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/tutorial/</loc>
-    <lastmod>2018-03-27T03:05:14+09:00</lastmod>
+    <lastmod>2020-12-01T21:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -3166,7 +3183,7 @@
   
   <url>
     <loc>http://taewan.kim/</loc>
-    <lastmod>2020-11-27T11:28:14+09:00</lastmod>
+    <lastmod>2020-12-01T21:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -3514,7 +3531,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/%EC%98%A4%EB%9D%BC%ED%81%B4/</loc>
-    <lastmod>2020-11-26T16:20:25+09:00</lastmod>
+    <lastmod>2020-12-01T21:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -3616,7 +3633,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</loc>
-    <lastmod>2020-11-26T16:20:25+09:00</lastmod>
+    <lastmod>2020-12-01T21:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
