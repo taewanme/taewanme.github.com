@@ -347,7 +347,7 @@
     <item>
       <title>Cloud</title>
       <link>http://taewan.kim/tags/cloud/</link>
-      <pubDate>Thu, 26 Dec 2019 01:28:14 +0900</pubDate>
+      <pubDate>Thu, 03 Dec 2020 01:01:25 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/cloud/</guid>
       <description></description>
@@ -1355,7 +1355,7 @@
     <item>
       <title>Mysql</title>
       <link>http://taewan.kim/tags/mysql/</link>
-      <pubDate>Fri, 29 Sep 2017 17:17:35 +0900</pubDate>
+      <pubDate>Thu, 03 Dec 2020 01:01:25 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/mysql/</guid>
       <description></description>
@@ -1490,7 +1490,7 @@
     <item>
       <title>Oci</title>
       <link>http://taewan.kim/tags/oci/</link>
-      <pubDate>Tue, 01 Dec 2020 21:01:25 +0900</pubDate>
+      <pubDate>Thu, 03 Dec 2020 01:01:25 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/oci/</guid>
       <description></description>
@@ -1533,6 +1533,15 @@
     </item>
     
     <item>
+      <title>Omd</title>
+      <link>http://taewan.kim/tags/omd/</link>
+      <pubDate>Thu, 03 Dec 2020 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/omd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Openjdk</title>
       <link>http://taewan.kim/tags/openjdk/</link>
       <pubDate>Sun, 16 Jun 2019 07:28:14 +0900</pubDate>
@@ -1562,7 +1571,7 @@
     <item>
       <title>Oracle</title>
       <link>http://taewan.kim/tags/oracle/</link>
-      <pubDate>Thu, 26 Nov 2020 01:20:25 +0900</pubDate>
+      <pubDate>Thu, 03 Dec 2020 01:01:25 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/oracle/</guid>
       <description></description>
@@ -1724,7 +1733,7 @@
     <item>
       <title>Provisioning</title>
       <link>http://taewan.kim/tags/provisioning/</link>
-      <pubDate>Tue, 01 Dec 2020 21:01:25 +0900</pubDate>
+      <pubDate>Thu, 03 Dec 2020 01:01:25 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/provisioning/</guid>
       <description></description>
@@ -2804,7 +2813,7 @@
     <item>
       <title>오라클 클라우드</title>
       <link>http://taewan.kim/tags/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</link>
-      <pubDate>Tue, 26 Dec 2017 21:28:14 +0900</pubDate>
+      <pubDate>Thu, 03 Dec 2020 01:01:25 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</guid>
       <description></description>

@@ -6,10 +6,22 @@
     <description>Recent content in Oracle on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Nov 2020 01:20:25 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 03 Dec 2020 01:01:25 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/oracle/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OCI MySQL 가이드-01.프로비저닝</title>
+      <link>http://taewan.kim/cloud/oci_mds_tutorial_01_provisioning/</link>
+      <pubDate>Thu, 03 Dec 2020 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_mds_tutorial_01_provisioning/</guid>
+      <description>OCI MySQL Database(이하 OMD)는 Oracle Cloud Infrastructure(이하 OCI)가 제공하는 완전 관리형 MySQL 서비스입니다. OMD는 MySQL 배포, 백업, 패치 등 관리 작업 자동화 및 OCI 최적화 구성을 제공합니다. 또한 이 서비스는 오라클 MySQL 팀의 엔터프라이즈 서포트를 포함합니다. 특히 OMD는 OLTP를 넘어 OLAP 확장을 위한 MySQL Extension(OCI MySQL ANALYTICS) 기능을 제공합니다.
+이 문서에서 다루는 내용은 OCI Free Trial에서 실습 가능합니다.
+ 이번 문서에서는 OCI MySQL Database 프로비저닝 과정을 소개합니다.
+MySQL Database Service 기본 가이드 이번 문서는 OMD 기본 가이드 1편입니다.</description>
+    </item>
     
     <item>
       <title>Oracle Export(exp)와 Datapump(expdp) 파일 구분</title>

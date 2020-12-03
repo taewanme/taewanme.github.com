@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://taewan.kim/cloud/oci_mds_tutorial_01_provisioning/</loc>
+    <lastmod>2020-12-03T01:01:25+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/cloud/oci_adb_tutorial_01_provisioning/</loc>
     <lastmod>2020-12-01T21:01:25+09:00</lastmod>
   </url>
@@ -1653,13 +1658,13 @@
   
   <url>
     <loc>http://taewan.kim/tags/cloud/</loc>
-    <lastmod>2019-12-26T01:28:14+09:00</lastmod>
+    <lastmod>2020-12-03T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://taewan.kim/categories/cloud/</loc>
-    <lastmod>2020-12-01T21:01:25+09:00</lastmod>
+    <lastmod>2020-12-03T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1683,7 +1688,7 @@
   
   <url>
     <loc>http://taewan.kim/cloud/</loc>
-    <lastmod>2020-12-01T21:01:25+09:00</lastmod>
+    <lastmod>2020-12-03T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2427,7 +2432,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/mysql/</loc>
-    <lastmod>2017-09-29T17:17:35+09:00</lastmod>
+    <lastmod>2020-12-03T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2529,7 +2534,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/oci/</loc>
-    <lastmod>2020-12-01T21:01:25+09:00</lastmod>
+    <lastmod>2020-12-03T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2564,6 +2569,12 @@
   </url>
   
   <url>
+    <loc>http://taewan.kim/tags/omd/</loc>
+    <lastmod>2020-12-03T01:01:25+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/tags/openjdk/</loc>
     <lastmod>2019-06-16T07:28:14+09:00</lastmod>
     <priority>0</priority>
@@ -2583,7 +2594,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/oracle/</loc>
-    <lastmod>2020-11-26T01:20:25+09:00</lastmod>
+    <lastmod>2020-12-03T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2715,7 +2726,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/provisioning/</loc>
-    <lastmod>2020-12-01T21:01:25+09:00</lastmod>
+    <lastmod>2020-12-03T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -3183,7 +3194,7 @@
   
   <url>
     <loc>http://taewan.kim/</loc>
-    <lastmod>2020-12-01T21:01:25+09:00</lastmod>
+    <lastmod>2020-12-03T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -3543,7 +3554,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</loc>
-    <lastmod>2017-12-26T21:28:14+09:00</lastmod>
+    <lastmod>2020-12-03T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   

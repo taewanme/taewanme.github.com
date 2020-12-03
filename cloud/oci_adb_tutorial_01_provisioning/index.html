@@ -132,6 +132,10 @@
 
 <p>OCI ADB는 데이터베이스 사용 형태(Workload)에 따라 3가지 유형으로 구분됩니다. 각 유형 ADB 인스턴스를 생성할 때 공용 인프라와 전용 인프라를 지정할 수 있습니다. OCI Console에서 Autonomous Database 인스턴스(ADW 타입)를 생성하는 기본 절차를 소개합니다.</p>
 
+<div class="notices note" ><p>이 문서에서 다루는 내용은 OCI Free Trial에서 실습가능합니다.</p>
+</div>
+
+
 <p><img src="https://taewanmerepo.github.io/2020/11/refreshclone/0010.jpg" alt="" /></p>
 
 <h2 id="adb-튜토리얼">ADB 튜토리얼</h2>
@@ -152,7 +156,7 @@
 
 <h2 id="사전-준비사항">사전 준비사항</h2>
 
-<p>이번 튜토리얼은 OCI Free Trial 계정에서 진행됩니다. 다음과 같은 환경에서 진행합니다.</p>
+<p>이번 튜토리얼은 OCI Free Trial 계정에서 진행됩니다. 사용할 IAM 사용자 계정과 자원을 배치할 컴파트먼트는 다음과 같습니다.</p>
 
 <table>
 <thead>
@@ -178,7 +182,9 @@
 </tbody>
 </table>
 
-<p>현재 사용중인 OCI 계정(OCI Free Trial 포함)에 아직 위 환경이 준비되어 있지 않은 상태라면 다음 문서를 참고하여 준비하시기 바랍니다.</p>
+<p>다음 절의 OCI ADB 프로비저닝 절차를 실습하기 위해서는 IAM 사용자(developer01), Compartment(demo), 사용자에 대한 Policy 설정을 미리 준비돼있어야 합니다.</p>
+
+<p>현재 사용 중인 OCI Tenancy(OCI Free Trial 포함)에 위 환경이 준비되어 있지 않은 상태라면 다음 문서를 참고하여 준비하시기 바랍니다.</p>
 
 <ul>
 <li><a href="/cloud/oci_user/" target="_blank">OCI 사용자 기본 설정(Feat. OCI IAM)[↗NW]</a>
@@ -186,8 +192,6 @@
 <li><a href="/cloud/oci_basic_config/" target="_blank">OCI Tenancy 기본 설정[↗NW]</a>
 </li>
 </ul>
-
-<p>다음 절의 OCI ADB 프로비저닝 절차를 실습하기 위해서는 위 문서를 참조하여 IAM 사용자(developer01), Compartment(demo), 사용자에 대한 Policy 설정을 미리 준비해야 합니다.</p>
 
 <h2 id="oci-adb-프로비저닝">OCI ADB 프로비저닝</h2>
 
@@ -362,6 +366,9 @@
 	<div class="post-nav__item post-nav__item--prev col-1-2">
 		<a class="post-nav__link" href="http://taewan.kim/cloud/oci_basic_config/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">OCI Tenancy 기본 환경 설정</p></a>
 	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/oci_mds_tutorial_01_provisioning/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">OCI MySQL 가이드-01.프로비저닝</p></a>
+	</div>
 </nav>
 
 	
@@ -430,6 +437,10 @@
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_mds_tutorial_01_provisioning/" title="OCI MySQL 가이드-01.프로비저닝">
+							OCI MySQL 가이드-01.프로비저닝</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oci_adb_tutorial_01_provisioning/" title="OCI ADB 튜토리얼-01.프로비저닝">
 							OCI ADB 튜토리얼-01.프로비저닝</a>
 		  </li>
@@ -464,10 +475,6 @@
 			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oci_mobile_app/" title="OCI 관리 모바일 앱(Mobile App)">
 							OCI 관리 모바일 앱(Mobile App)</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/cloud/oci_marketing_trial/" title="OCI 마케팅 트라이얼 계정 등록">
-							OCI 마케팅 트라이얼 계정 등록</a>
 		  </li>
 		</ul>
 	</div>

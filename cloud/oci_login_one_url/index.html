@@ -128,7 +128,7 @@
 			</figure>
 			
 
-<p>Oracle Cloud Infrastructure의 웹 관리 사이트인 OCI Console은 OCI 계정의 로그인 URL이 달라지는 문제가 있었습니다. 특히 OCI IAM 로그인할 경우에 홈-리전 아이디를 기준으로 로그인 URL이 달랐습니다. 처음 OCI를 사용하시는 분들에게 많은 혼란을 유발했습니다. 이 문제가 2020년 11월 18일 업데이트로 해결되었습니다. 이제 모든 사용자의 OCI Console 로그인 URL은 <a href="https://cloud.oracle.com">https://cloud.oracle.com</a> 으로 통일 되었습니다.</p>
+<p>Oracle Cloud Infrastructure의 웹 관리 사이트인 OCI Console은 OCI Tenancy의 홈 리전에 따라서 로그인 URL이 달라지는 문제가 있었습니다. 홈-리전에 따라라 로그인 URL이 달라지는 특징 때문에, 처음 OCI를 사용하시는 분들은 많은 혼란을 경험했습니다. 이 문제는 2020년 11월 18일 업데이트로 해결되었습니다. 이제 모든 사용자의 OCI Console 로그인 URL은 <a href="https://cloud.oracle.com">https://cloud.oracle.com</a> 으로 통일 되었습니다.</p>
 
 <hr />
 
@@ -142,13 +142,13 @@
 
 <h2 id="기존-oci-console-로그인-url">기존 OCI Console 로그인 URL</h2>
 
-<p>기존에 OCI Console 로그인 URL은 다음과 같은 패턴을 갖았습니다. OCI Console을 로그인하기 위해서는 OCI 계정의 홈-리전 ID에 따라서 다음 패턴으로 만들어집니다.</p>
+<p>기존에 OCI Console 로그인 URL은 다음과 같은 패턴을 갖았습니다. OCI Console에 로그인하기 위해서는 OCI Tenancy의 홈-리전 ID를 알고있어야 했습니다. 기존 OCI Console 로그인 URL은 다음과 같은 패턴을 갖습니다.</p>
 
 <pre><code>https://console.&lt;OCI_HOME_REGION_ID&gt;.oraclecloud.com/
 https://console.&lt;OCI_HOME_REGION_ID&gt;.oraclecloud.com/?tenant={Tenant_Name}
 </code></pre>
 
-<p>예를 들어 홈-리전으로 다음 URL을 사용했습니다.</p>
+<p>예를 들어 서울 리전을 홈-리전으로 사용하는 OCI Tenancy의 OCI Console 로그인 URL은 다음과 같았습니다.</p>
 
 <ul>
 <li><a href="https://console.ap-seoul-1.oraclecloud.com">https://console.ap-seoul-1.oraclecloud.com</a></li>
@@ -158,8 +158,7 @@ https://console.&lt;OCI_HOME_REGION_ID&gt;.oraclecloud.com/?tenant={Tenant_Name}
 
 <h2 id="단일-url로-로그인">단일 URL로 로그인</h2>
 
-<p><a href="https://cloud.oracle.com">https://cloud.oracle.com</a> 을 통해서 OCI Console에 로그인할 수 있습니다.
-<a href="https://cloud.oracle.com">https://cloud.oracle.com</a> 를 실행하고 이동한 페이지에서 OCI 계정명을 입력하여 로그인합니다.</p>
+<p>OCI Console 로그인 URL은 OCI Tenancy 홈-리전과 상간없이 <strong><a href="https://cloud.oracle.com">https://cloud.oracle.com</a></strong>으로 통일됐습니다. <a href="https://cloud.oracle.com으로">https://cloud.oracle.com으로</a> 이동하고, Tenancy 아이디를 입력합니다. 그리고 로그인 페이지로 이동합니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2020/11/loginurl/020.jpg" alt="" /></p>
 
@@ -278,6 +277,10 @@ https://console.&lt;OCI_HOME_REGION_ID&gt;.oraclecloud.com/?tenant={Tenant_Name}
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_mds_tutorial_01_provisioning/" title="OCI MySQL 가이드-01.프로비저닝">
+							OCI MySQL 가이드-01.프로비저닝</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oci_adb_tutorial_01_provisioning/" title="OCI ADB 튜토리얼-01.프로비저닝">
 							OCI ADB 튜토리얼-01.프로비저닝</a>
 		  </li>
@@ -312,10 +315,6 @@ https://console.&lt;OCI_HOME_REGION_ID&gt;.oraclecloud.com/?tenant={Tenant_Name}
 			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oci_mobile_app/" title="OCI 관리 모바일 앱(Mobile App)">
 							OCI 관리 모바일 앱(Mobile App)</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/cloud/oci_marketing_trial/" title="OCI 마케팅 트라이얼 계정 등록">
-							OCI 마케팅 트라이얼 계정 등록</a>
 		  </li>
 		</ul>
 	</div>
