@@ -229,7 +229,7 @@ Allow service mysql to use all-resources in compartment &lt;COMPARTMENT_NAME&gt;
 
 <p><img src="https://taewanmerepo.github.io/2020/12/mds01/030.jpg" alt="" /></p>
 
-<p>MySQL Database를 생성할 IAM 사용자 ID는 <strong>developer01</strong>이고, 이 ID는 <strong>developers</strong> 그룹에 소속됩니다. 그리고 MySQL Database가 프로비저닝될  컴파트먼트는  <strong>demo</strong>입니다. 따라서 위 Policy 패턴은 다음과 같이 변경됩니다.</p>
+<p>MySQL Database를 생성할 IAM 사용자 ID는 <strong>developer01</strong>이고, 이 ID는 <strong>developers</strong> 그룹에 소속됩니다. 그리고 MySQL Database가 프로비저닝될  컴파트먼트는  <strong>demo</strong>입니다. 따라서 위 Policy 패턴은 다음과 같이 완성됩니다.</p>
 
 <pre><code>Allow group developers to manage mysql-family in compartment demo
 Allow service mysql to use all-resources in compartment demo
