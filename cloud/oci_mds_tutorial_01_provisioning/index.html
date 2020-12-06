@@ -13,7 +13,7 @@
 <meta name="description" content="taewan.kim">
 <meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="OCI MySQL 가이드-01.프로비저닝" />
-<meta property="og:description" content="OCI MySQL Database(이하 OMD)는 Oracle Cloud Infrastructure(이하 OCI)가 제공하는 완전 관리형 MySQL 서비스입니다. OMD는 MySQL 배포, 백업, 패치 등 관리 작업 자동화 및 OCI 최적화 구성을 제공합니다. 또한 이 서비스는 오라클 MySQL 팀의 엔터프라이즈 서포트를 포함합니다. 특히 OMD는 OLTP를 넘어 OLAP 확장을 위한 MySQL Extension(OCI MySQL ANALYTICS) 기능을 제공합니다.
+<meta property="og:description" content="OCI MySQL Database(이하 OMD)는 Oracle Cloud Infrastructure(이하 OCI)가 제공하는 완전 관리형 MySQL 서비스입니다. OMD는 MySQL 배포, 백업, 패치 등 관리 작업 자동화 및 OCI 최적화 구성을 제공합니다. 또한 이 서비스는 오라클 MySQL 팀의 엔터프라이즈 서포트를 포함합니다. 특히 OMD는 OLTP를 넘어 OLAP 확장을 위한 MySQL Extension(OCI MySQL ANALYTICS)이 포함돼있습니다.
 이 문서에서 다루는 내용은 OCI Free Trial에서 실습 가능합니다.
  이번 문서에서는 OCI MySQL Database 프로비저닝 과정을 소개합니다.
 MySQL Database Service 기본 가이드 이번 문서는 OMD 기본 가이드 1편입니다." />
@@ -131,7 +131,7 @@ MySQL Database Service 기본 가이드 이번 문서는 OMD 기본 가이드 1�
 			</figure>
 			
 
-<p>OCI MySQL Database(이하 OMD)는 Oracle Cloud Infrastructure(이하 OCI)가 제공하는 완전 관리형 MySQL 서비스입니다. OMD는 MySQL 배포, 백업, 패치 등 관리 작업 자동화 및 OCI 최적화 구성을 제공합니다. 또한 이 서비스는 오라클 MySQL 팀의 엔터프라이즈 서포트를 포함합니다. 특히 OMD는 OLTP를 넘어 OLAP 확장을 위한 MySQL Extension(OCI MySQL ANALYTICS) 기능을 제공합니다.</p>
+<p>OCI MySQL Database(이하 OMD)는 Oracle Cloud Infrastructure(이하 OCI)가 제공하는 완전 관리형 MySQL 서비스입니다. OMD는 MySQL 배포, 백업, 패치 등 관리 작업 자동화 및 OCI 최적화 구성을 제공합니다. 또한 이 서비스는 오라클 MySQL 팀의 엔터프라이즈 서포트를 포함합니다. 특히 OMD는 OLTP를 넘어 OLAP 확장을 위한 MySQL Extension(OCI MySQL ANALYTICS)이 포함돼있습니다.</p>
 
 <div class="notices note" ><p>이 문서에서 다루는 내용은 OCI Free Trial에서 실습 가능합니다.</p>
 </div>
@@ -150,7 +150,7 @@ MySQL Database Service 기본 가이드 이번 문서는 OMD 기본 가이드 1�
 <ul>
 <li><a href="cloud/oci_mds_tutorial_01_provisioning/">OCI MySQL 가이드-01.프로비저닝</a></li>
 <li><a href="/cloud/oci_mds_tutorial_01_connection/">OCI MySQL 가이드-02.데이터베이스 접속: MySQL Shell &amp; MySQL Client</a></li>
-<li>OCI MySQL 가이드-03: workbench 설치</li>
+<li><a href="/cloud/oci_mds_tutorial_03_workbench/">OCI MySQL 가이드-03: workbench 구성</a></li>
 <li>OCI MySQL 가이드-03: 데이터 로딩</li>
 </ul>
 
@@ -550,6 +550,10 @@ Allow service mysql to use all-resources in compartment demo
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_mds_tutorial_03_workbench/" title="OCI MySQL 가이드-03.MySQL Workbench 구성">
+							OCI MySQL 가이드-03.MySQL Workbench 구성</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oci_mds_tutorial_02_connection/" title="OCI MySQL 가이드-02.데이터베이스 접속">
 							OCI MySQL 가이드-02.데이터베이스 접속</a>
 		  </li>
@@ -584,10 +588,6 @@ Allow service mysql to use all-resources in compartment demo
 			<li class="widget__item">
 				<a class="widget__link" href="/cloud/how_to_install_oracle_java_in_oci/" title="OCI에 Oracle Java &amp; GraalVM EE 설치">
 							OCI에 Oracle Java &amp; GraalVM EE 설치</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/cloud/oci_adb_refreshable_clone/" title="OCI ADB 인스턴스로 새로운 ADB 데이터베이스 복제">
-							OCI ADB 인스턴스로 새로운 ADB 데이터베이스 복제</a>
 		  </li>
 		</ul>
 	</div>
