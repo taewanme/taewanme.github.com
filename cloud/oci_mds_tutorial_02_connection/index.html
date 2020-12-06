@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>OCI MySQL 가이드-02.데이터베이스 접속</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.27.1" />
+<meta property="og:title" content="OCI MySQL 가이드-02.데이터베이스 접속" />
+<meta property="og:description" content="OCI MySQL Database(이하 OMD)는 Oracle Cloud Infrastructure(이하 OCI)가 제공하는 완전 관리형 MySQL 서비스입니다. OMD는 MySQL 배포, 백업, 패치 등 관리 작업 자동화 및 OCI 최적화 구성을 제공합니다. 또한 이 서비스는 오라클 MySQL 팀의 엔터프라이즈 서포트를 포함합니다. 특히 OMD는 OLTP를 넘어 OLAP 확장을 위한 MySQL Extension(OCI MySQL ANALYTICS) 기능을 제공합니다. " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/cloud/oci_mds_tutorial_02_connection/" />
+
+
+
+<meta property="article:published_time" content="2020-12-05T01:01:25&#43;09:00"/>
+<meta property="article:modified_time" content="2020-12-05T01:01:25&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="http://cloud-docs.taewan.me" title="Oracle Cloud User Guide" >오라클 클라우드 사용자 가이드</a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >CLOUD</a></li>
+		<li class="menu__item "><a class="menu__link" href="/graalvm/" title="GraalVM 관련 새소식 및 기술 문서를 담고 있습니다." >GRAALVM</a></li>
+		<li class="menu__item "><a class="menu__link" href="/tutorial_manual/" title="Deep Learning 구현 기술에 대하여 정리합니다." >TUTORIAL &amp; MANUAL</a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">OCI MySQL 가이드-02.데이터베이스 접속 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2020-12-05 01:01:25 &#43;0900 KST">December 05, 2020</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/cloud" rel="category">Cloud</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2020/12/mds02/post.jpg" alt="OCI MySQL 가이드-02.데이터베이스 접속">
+			</figure>
+			
+
+<p>OCI MySQL Database(이하 OMD)는 Oracle Cloud Infrastructure(이하 OCI)가 제공하는 완전 관리형 MySQL 서비스입니다. OMD는 MySQL 배포, 백업, 패치 등 관리 작업 자동화 및 OCI 최적화 구성을 제공합니다. 또한 이 서비스는 오라클 MySQL 팀의 엔터프라이즈 서포트를 포함합니다. 특히 OMD는 OLTP를 넘어 OLAP 확장을 위한 MySQL Extension(OCI MySQL ANALYTICS)이 포함돼있습니다.</p>
+
+<div class="notices note" ><p>이 문서에서 다루는 내용은 OCI Free Trial에서 실습 가능합니다.</p>
+</div>
+
+
+<p>이번 문서에서는 OCI MySQL Database 인스턴스에 MySQL Shell과 MySQL Client로 접근하는 과정을 소개합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/12/mds01/010.jpg" alt="" /></p>
+
+<hr />
+
+<h2 id="mysql-database-service-기본-가이드">MySQL Database Service 기본 가이드</h2>
+
+<p>이번 문서는 OMD 기본 가이드 두 번째 문서입니다. OMD 기본 가이드는 다음과 같이 구성됩니다.</p>
+
+<ul>
+<li><a href="cloud/oci_mds_tutorial_01_provisioning/">OCI MySQL 가이드-01.프로비저닝</a></li>
+<li><a href="/cloud/oci_mds_tutorial_01_connection/">OCI MySQL 가이드-02.데이터베이스 접속: MySQL Shell &amp; MySQL Client</a></li>
+<li>OCI MySQL 가이드-03: workbench 설치</li>
+<li>OCI MySQL 가이드-03: 데이터 로딩</li>
+</ul>
+
+<h2 id="omd-프로비저닝-사전-준비">OMD 프로비저닝 사전 준비</h2>
+
+<p>이번 튜토리얼은 OCI Free Trial 계정에서 진행됩니다. 다음과 같은 계정 및 자원을 사용합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>환경 유형</th>
+<th>자원</th>
+<th>역할</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>OCI IAM 계정</td>
+<td>developer01</td>
+<td>MySQL 사용지&amp;관리자</td>
+</tr>
+
+<tr>
+<td>Compartment</td>
+<td>demo</td>
+<td></td>
+</tr>
+
+<tr>
+<td>VCN</td>
+<td>demovcn</td>
+<td>MySQL 인스턴스 배포 VCN</td>
+</tr>
+</tbody>
+</table>
+
+<p>위 OCI 기본 환경이 준비 안 된 상태라면 다음 문서를 참조하여 구성하시기 바랍니다.</p>
+
+<ul>
+<li><a href="/cloud/oci_user/" target="_blank">OCI 사용자 기본 설정(Feat. OCI IAM)[↗NW]</a>
+</li>
+<li><a href="/cloud/oci_basic_config/" target="_blank">OCI Tenancy 기본 설정[↗NW]</a>
+</li>
+</ul>
+
+<p>이 문서는 demo 컴파트먼트에 OMD 인스턴스인 <strong>mysql_demo_01</strong>이 프로비저닝된 상태에서 시작합니다. <strong>mysql_demo_01</strong> 인스턴스가 준비 안 된 상태라면, 다음 문서를 참조하여 OMD 인스턴스를 만드시기 바랍니다.</p>
+
+<ul>
+<li><a href="/cloud/oci_mds_tutorial_01_provisioning/" target="_blank">OCI MySQL 가이드-01.프로비저닝[↗NW]</a>
+</li>
+</ul>
+
+<h2 id="oci-mysql-database-접속">OCI MySQL Database 접속</h2>
+
+<p>이 문서는 MySQL Shell과 MySQL Client로 OCI MySQL Database(이하 OMD) 인스턴스에 접속하는 절차를 소개합니다. OMD 인스턴스는 private subnet에 위치합니다. 따라서 OMD가 배포된 Private Subnet에 접근 가능한 public subnet에 bastion 서버를 만들어야 합니다. 다음 이미지와 같이 bastion 서버를 만들고 MySQL에 접속하는 환경을 구성하겠습니다.</p>
+
+<p>이 문서의 모든 작업은 OCI Console에 OCI IAM 사용자 <strong>developer01</strong>로  로그인하여 진행합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/12/mds02/010.jpg" alt="" /></p>
+
+<p>작업 순서는 다음과 같습니다.</p>
+
+<ol>
+<li>SSH 키 생성 (@OCI Cloud Shell)</li>
+<li>Bastion VM 프로비저닝</li>
+<li>Bastion VM에 ssh 접근</li>
+<li>MySQL Shell 설치 &amp; DB Connection</li>
+<li>MySQL Client 설치 &amp; DB Connection</li>
+</ol>
+
+<h3 id="1-ssh-키-생성-oci-cloud-shell">1. SSH 키 생성 (@OCI Cloud Shell)</h3>
+
+<p>Bation 서버에 등록할 ssh key pair를 OCI Cloud Shell에서 만들겠습니다. 앞에서 정리한 것처럼 OCI Console에 <strong>developer01</strong>로 로그인하여 진행합니다.</p>
+
+<p>다음 이미지의 2번 위치에 Cloud Shell 아이콘을 클릭하고 브라우저 가상 터미널을 오픈합니다. 3번 위치에 아이콘을 클릭하여 Cloud Shell 창 크기를 조절합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/12/mds02/020.jpg" alt="" /></p>
+
+<hr />
+
+<p>Cloud Shell에 다음 명령을 실행합니다.</p>
+
+<blockquote>
+<pre><code>ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' #명령 1
+ls -al ~/.ssh                            #명령 2
+cat ~/.ssh/id_rsa.pub                    #명령 3
+</code></pre>
+</blockquote>
+
+<p>1번 명령으로 key 파일을 만듭니다. 그리고 3번 명령으로 공개키 내용을 확인하고 공개키를 별도로 저장해 놓습니다. 작업을 마치면 5번 위치의 아이콘을 클릭하고 Cloud Shell을 종료합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/12/mds02/030.jpg" alt="" /></p>
+
+<p>앞에서 만들어진 공개키는 다음과 같은 형태를 보입니다. 원본에서 아래 공개키는 한 줄로 출력됩니다.</p>
+
+<pre><code>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCw5Zg59C4pjL14v/
+Ary9CCV+L2lO4GsfPBmp7jC65roM7tdxGYgf3gEbPuadAD7JxUrZPD/
+CeedCrSXO08P/+O2cG5AZcSluuRG0jZZzpWu3j3dBLaGmh95BbFgvPz
+HuZiLkec+U2UcuTR7Ub5aJFk5T86uXmI35OjdkP11hisc62i372UuYhR
+IZSObD6oCu1mAUocsc2T5ggY5/Hk+wzK3qMmDP8qCHCrjQhe4Hpc9
+7fypdNYUn0M8e1hl1vz2Jmx2YDcVHg2WywGRHE98tJfb+wp4pgOgK
+bcFqZ5ZAu2zPKwecDSj/0dvQSRLFTABsD9q++EOgHE4ZwaXPYnTvL
+developer0@7940e5e9c3b9
+</code></pre>
+
+<h3 id="2-bastion-vm-프로비저닝">2. Bastion VM 프로비저닝</h3>
+
+<p>OCI Console에서 Bastion VM을 생성합니다. Bastion 서버란 Private subnet에 배포된 자원에 접근하기 위해서, Private 영역에 접근 가능한 Public Subnet에 설치되는 거점 서버입니다.</p>
+
+<div class="notices note" ><p>OMD는 Private Subnet에 배포됩니다. 따라서 OMD 인스터스에 접근하기 위해서는 Bastion 서버가 필요합니다.</p>
+</div>
+
+
+<p>Bastion VM을 만들기 위해서 OCI 메인 페이지에서 <strong>Cream a VM Instance</strong> 버튼(다음 이미지의 2번 위치)을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/12/mds02/050.jpg" alt="" /></p>
+
+<hr />
+
+<p><strong>Cream a VM Instance</strong> 버튼을 클릭하면 VM 인스턴스 생성 페이지로 이동합니다. VM 생성 페이지에 VM 이름과 Compartment를 다음과 같이 설정합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>설정 항목</th>
+<th>설정값</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Name</td>
+<td>bastion</td>
+<td>VM 이름</td>
+</tr>
+
+<tr>
+<td>Compartment</td>
+<td>demo</td>
+<td>root&gt;&gt;demo</td>
+</tr>
+</tbody>
+</table>
+
+<p>두 항목의 설정을 마쳤으면, Shape을 변경하기 위해서 3번 영역의 <strong>Edit</strong> 링크를 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/12/mds02/140.jpg" alt="" /></p>
+
+<hr />
+
+<p>다음 이미지에서 1번 영역에 <strong>Change Shape</strong> 버튼을 클릭하고 Shape을 변경합니다. 아래에서는 <strong>VM.StandardE2.1</strong>을 선택했습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/12/mds02/130.jpg" alt="" /></p>
+
+<hr />
+
+<p>다음 이미지에서 1번 영역에 <strong>Paste Public Key</strong>를 선택하고 2번 영역에 앞에서 복사한 공개키를 복사해 넣습니다. 그리고 3번 영역의 <strong>Create</strong> 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/12/mds02/120.jpg" alt="" /></p>
+
+<hr />
+
+<p>Bastion VM이 만들어지면 다음과 같이 상세 정보가 출력됩니다. 공개 IP가 <strong>158.101.148.108</strong> 인 것을 확인할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/12/mds02/110.jpg" alt="" /></p>
+
+<h3 id="3-bastion-vm에-ssh-접근">3. Bastion VM에 ssh 접근</h3>
+
+<p>OCI Console에 <strong>developer01</strong>로 로그인하고 다음과 같이 Cloud Shell을 오픈합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/12/mds02/200.jpg" alt="" /></p>
+
+<p>Cloud Shell에서 bastion VM의 공개 IP(<strong>158.101.149.108</strong>)로 ssh 접근을 합니다.</p>
+
+<pre><code>ssh opc@158.101.149.108
+</code></pre>
+
+<p>처음 로그인할 때 <code>Are you sure you want to continue connecting (yes/no)? yes</code> 메시지가 출력됩니다. 이 때 <strong>yes</strong>를 입력합니다. bastion VM에 로그인하면 다음 이미지와 같은 상태가 됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/12/mds02/220.jpg" alt="" /></p>
+
+<h3 id="4-mysql-shell-설치-db-connection">4. MySQL Shell 설치 &amp; DB Connection</h3>
+
+<p>Bastion 서버에서 다음 두 개 명령을 입력하여 MySQL Shell을 설치합니다.</p>
+
+<blockquote>
+<pre><code>sudo yum install -y \
+https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
+
+sudo yum install -y mysql-shell
+</code></pre>
+</blockquote>
+
+<div class="notices note" ><p>OS 버전 별 MySQL RPM 경로는 다음 URL에서 확인할 수 있습니다.
+<a href="https://dev.mysql.com/downloads/repo/yum/">https://dev.mysql.com/downloads/repo/yum/</a></p>
+</div>
+
+
+<p>다음은 mysql-shell 설치로그 입니다</p>
+
+<pre><code>[opc@bastion ~]$ sudo yum install -y \
+&gt; https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
+BDB2053 Freeing read locks for locker 0x8e: 11889/140623267997504
+Loaded plugins: langpacks, ulninfo
+mysql80-community-release-el7-3.noarch.rpm                                                                |  25 kB  00:00:00     
+## 로그 생략
+Installed:
+  mysql80-community-release.noarch 0:el7-3                                                                                       
+
+Complete!
+[opc@bastion ~]$ yum install -y mysql-shell
+Loaded plugins: langpacks, ulninfo
+You need to be root to perform this command.
+[opc@bastion ~]$ sudo yum install -y mysql-shell
+Loaded plugins: langpacks, ulninfo
+mysql-connectors-community                                      
+## 로그 생략
+Transaction test succeeded
+Running transaction
+  Installing : mysql-shell-8.0.22-1.el7.x86_64                                                                               1/1 
+  Verifying  : mysql-shell-8.0.22-1.el7.x86_64                                                                               1/1 
+
+Installed:
+  mysql-shell.x86_64 0:8.0.22-1.el7                                                                                              
+
+Complete!
+[opc@bastion ~]$ 
+</code></pre>
+
+<p>MySQL Shell이 설치되었으면 다음 명령으로 MySQL Shell을 실행합니다.</p>
+
+<pre><code>mysqlsh [MYSQL_ADMIN_USER]@[PRIVATE_IP_ADDRESS or HOSTNAME]
+</code></pre>
+
+<p><strong>mysql_demo_01</strong> 인스턴스의 상세 페이지에서 Private IP와 Hostname을 아래 이미지와 같이 확인할 수 있습니다.</p>
+
+<blockquote>
+<p><img src="https://taewanmerepo.github.io/2020/12/mds02/300.jpg" alt="" /></p>
+</blockquote>
+
+<p>위 이미지에서 확인한 <strong>mysql_demo_01</strong> 인스턴스의 호스트 명과 Private IP는 다음과 같습니다.</p>
+
+<ul>
+<li>HostName: <strong>demomysql.sub11270510191.demovcn.oraclevcn.com</strong></li>
+<li>Private IP: <strong>10.0.1.5</strong></li>
+</ul>
+
+<p>이전 가이드에서 <strong>mysql_demo_01</strong> 인스턴스의 Administrotor 계정을 <strong>admin</strong>으로 설정했습니다. 이 정보를 이용하여 <strong>MySQL Shell</strong>에서 OMD 인스턴스에 접근할 수 있습니다.</p>
+
+<p>아래 이미지는 bastion VM에서 MySQL Shell로 <strong>mysql_demo_01</strong>에 접근하고 데이터베이스 목록을 조회하는 모습을 담습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/12/mds02/320.jpg" alt="" /></p>
+
+<h3 id="5-mysql-client-설치-db-connection">5. MySQL Client 설치 &amp; DB Connection</h3>
+
+<p>Bastion 서버에 SSH 접근하고 다음 명령 Bastion 서버에 실행하여 MySQL을 설치합니다.</p>
+
+<pre><code>sudo yum install -y \
+https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm #명령 1
+
+sudo yum install -y mysql #명령 2
+</code></pre>
+
+<p>MySQL이 설치되었으면 다음 명령으로 MySQL Client를 실행합니다.</p>
+
+<pre><code>mysql --host  [PRIVATE_IP_ADDRESS | HOSTNAME] -u  [MYSQL_ADMIN_USER] -p 
+</code></pre>
+
+<p><strong>mysql_demo_01</strong> 인스턴스의 호스트 명과 Private IP는 다음과 같습니다.</p>
+
+<ul>
+<li>HostName: <strong>demomysql.sub11270510191.demovcn.oraclevcn.com</strong></li>
+<li>Private IP: <strong>10.0.1.5</strong></li>
+</ul>
+
+<p>이전 가이드에서 <strong>mysql_demo_01</strong> 인스턴스의 Administrotor 계정을 <strong>admin</strong>으로 설정했습니다. 이 정보를 이용하여 <strong>MySQL Shell</strong>로 인스턴스에 접근할 수 있습니다.</p>
+
+<p>다음 이미지는 bastion VM에서 MySQL Client로 <strong>mysql_demo_01</strong>에 접근하여 데이터베이스 목록을 조회하는 과정을 담고 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/12/mds02/330.jpg" alt="" /></p>
+
+<h2 id="요약-next">요약 &amp; Next..</h2>
+
+<p>프로비저닝된 OMD 인스턴스에 접근하기 위하여 OCI Bastion 서버를 만들고 MySQL Shell과 MySQL Client를 설치했습니다. 그리고 MySQL Shell과 Client로 OMD에 접근하는 과정을 정리했습니다.</p>
+
+<p>다음 문서에서는 Bastion 서버에 OMD 인스터스 관리 툴로 <strong>MySQL Workbench</strong>를 설치하는 과정을 정리합니다.</p>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/oci/" rel="tag">OCI</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/oracle/" rel="tag">Oracle</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/cloud/" rel="tag">CLOUD</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/mysql/" rel="tag">MySQL</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/connection/" rel="tag">Connection</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/omd/" rel="tag">OMD</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/" rel="tag">오라클 클라우드</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/mysql-shell/" rel="tag">MySQL Shell</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan2.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+	<div class="notices disclaimer"><p>이 저작물은 Oracle과 관계없이 개인으로서 개인의 시간을 할애하여 작성된 글 입니다. 본 글의 내용, 입장, 예측은 Oracle을 공식적으로 <font color="red"><bold>절대</bold></font> 대변하지 않습니다.</p></div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/oci_mds_tutorial_01_provisioning/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">OCI MySQL 가이드-01.프로비저닝</p></a>
+	</div>
+</nav>
+
+	
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/cloud/oci_mds_tutorial_02_connection/"></div>
+
+
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	
+
+<div class="widget-categories widget">	
+		<div class="fb-like" data-href="http://taewan.kim/cloud/oci_mds_tutorial_02_connection/" 
+		data-layout="standard" data-action="like" 
+		data-size="small" 
+		data-show-faces="true" 
+		data-share="true"></div>
+</div>
+	
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#mysql-database-service-기본-가이드">MySQL Database Service 기본 가이드</a></li>
+<li><a href="#omd-프로비저닝-사전-준비">OMD 프로비저닝 사전 준비</a></li>
+<li><a href="#oci-mysql-database-접속">OCI MySQL Database 접속</a>
+<ul>
+<li><a href="#1-ssh-키-생성-oci-cloud-shell">1. SSH 키 생성 (@OCI Cloud Shell)</a></li>
+<li><a href="#2-bastion-vm-프로비저닝">2. Bastion VM 프로비저닝</a></li>
+<li><a href="#3-bastion-vm에-ssh-접근">3. Bastion VM에 ssh 접근</a></li>
+<li><a href="#4-mysql-shell-설치-db-connection">4. MySQL Shell 설치 &amp; DB Connection</a></li>
+<li><a href="#5-mysql-client-설치-db-connection">5. MySQL Client 설치 &amp; DB Connection</a></li>
+</ul></li>
+<li><a href="#요약-next">요약 &amp; Next..</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	<div class="widget-categories widget">
+  <h4 class="widget__title">관련도서</h4>
+  <div class="widget__content" align="center">
+      <ul class="widget__list">
+          <li class="widget__item"><a href="http://www.yes24.com/Product/Goods/69335909" target="_blank"><img src="https://taewanmerepo.github.io/2019/02/pytorch/book200.jpg"/></a></li>
+      </ul>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_mds_tutorial_02_connection/" title="OCI MySQL 가이드-02.데이터베이스 접속">
+							OCI MySQL 가이드-02.데이터베이스 접속</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_mds_tutorial_01_provisioning/" title="OCI MySQL 가이드-01.프로비저닝">
+							OCI MySQL 가이드-01.프로비저닝</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_adb_tutorial_01_provisioning/" title="OCI ADB 튜토리얼-01.프로비저닝">
+							OCI ADB 튜토리얼-01.프로비저닝</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_basic_config/" title="OCI Tenancy 기본 환경 설정">
+							OCI Tenancy 기본 환경 설정</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/how_to_check_data_pump_file_and_expot_file/" title="Oracle Export(exp)와 Datapump(expdp) 파일 구분">
+							Oracle Export(exp)와 Datapump(expdp) ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_multi_factor_authentication/" title="OCI 멀티 팩터 인증(Multi-Factor Authentication)">
+							OCI 멀티 팩터 인증(Multi-Factor Authentic ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_user/" title="OCI 사용자 기본 설정(Feat. OCI IAM)">
+							OCI 사용자 기본 설정(Feat. OCI IAM)</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_login_one_url/" title="OCI Console 단일 URL">
+							OCI Console 단일 URL</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/how_to_install_oracle_java_in_oci/" title="OCI에 Oracle Java &amp; GraalVM EE 설치">
+							OCI에 Oracle Java &amp; GraalVM EE 설치</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_adb_refreshable_clone/" title="OCI ADB 인스턴스로 새로운 ADB 데이터베이스 복제">
+							OCI ADB 인스턴스로 새로운 ADB 데이터베이스 복제</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/graalvm">Graalvm</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/math">Math</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%a7%9b%ec%a7%91">맛집</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">Licesne</h4>
+	<div class="widget__content">
+		<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+	</div>
+	<div class="widget__content">
+		이 저작물은 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank>크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2020 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

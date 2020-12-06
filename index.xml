@@ -6,10 +6,21 @@
     <description>Recent content on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 03 Dec 2020 01:01:25 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 05 Dec 2020 01:01:25 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OCI MySQL 가이드-02.데이터베이스 접속</title>
+      <link>http://taewan.kim/cloud/oci_mds_tutorial_02_connection/</link>
+      <pubDate>Sat, 05 Dec 2020 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_mds_tutorial_02_connection/</guid>
+      <description>OCI MySQL Database(이하 OMD)는 Oracle Cloud Infrastructure(이하 OCI)가 제공하는 완전 관리형 MySQL 서비스입니다. OMD는 MySQL 배포, 백업, 패치 등 관리 작업 자동화 및 OCI 최적화 구성을 제공합니다. 또한 이 서비스는 오라클 MySQL 팀의 엔터프라이즈 서포트를 포함합니다. 특히 OMD는 OLTP를 넘어 OLAP 확장을 위한 MySQL Extension(OCI MySQL ANALYTICS)이 포함돼있습니다.
+이 문서에서 다루는 내용은 OCI Free Trial에서 실습 가능합니다.
+ 이번 문서에서는 OCI MySQL Database 인스턴스에 MySQL Shell과 MySQL Client로 접근하는 과정을 소개합니다.</description>
+    </item>
     
     <item>
       <title>OCI MySQL 가이드-01.프로비저닝</title>
@@ -34,7 +45,7 @@ OCI ADB는 데이터베이스 사용 형태(Workload)에 따라 3가지 유형�
     </item>
     
     <item>
-      <title>OCI API 인증을 위한 RAS Key Pair</title>
+      <title>OCI API 인증을 위한 RSA Key Pair</title>
       <link>http://taewan.kim/tip/dd/</link>
       <pubDate>Fri, 27 Nov 2020 11:28:14 +0900</pubDate>
       
