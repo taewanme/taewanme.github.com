@@ -128,7 +128,7 @@
 			</figure>
 			
 
-<p>OCI MySQL Database(이하 OMD)는 Oracle Cloud Infrastructure(이하 OCI)가 제공하는 완전 관리형 MySQL 서비스입니다. OMD는 MySQL 배포, 백업, 패치 등 관리 작업 자동화 및 OCI 최적화 구성을 제공합니다. 또한, 이 서비스는 오라클 MySQL 팀의 엔터프라이즈 서포트를 포함합니다. 이번 문서에서는 MySQL의 대표적인 툴인 MySQL Workbench를 Bastion VM에 설치하고 OMD 인스턴스를 설정하는 과정을 소개합니다.</p>
+<p>OCI MySQL Database(이하 OMD)는 Oracle Cloud Infrastructure(이하 OCI)가 제공하는 완전 관리형 MySQL 서비스입니다. OMD는 MySQL 배포, 백업, 패치 등 관리 작업 자동화 및 OCI 최적화 구성을 제공합니다. 또한, 이 서비스는 오라클 MySQL 팀의 엔터프라이즈 서포트를 포함합니다. 이번 문서에서는 MySQL의 대표적인 툴인 MySQL Workbench를 로컬 컴퓨터에 설치합니다. 그리고 MySQL Workbench에 Bastion VM을 통해서 OMD 인스턴스에 접속하는 설정을 진행합니다.</p>
 
 <div class="notices note" ><p>이 문서에서 다루는 내용은 OCI Free Trial에서 실습 가능합니다.</p>
 </div>
@@ -212,7 +212,7 @@
 
 <h2 id="oci-mysql-인스턴스를-위한-workbench-설치">OCI MySQL 인스턴스를 위한 Workbench 설치</h2>
 
-<p>이 문서는 OCI MySQL Database(이하 OMD) 인스턴스를 위한 MySQL Workbench 설치 과정을 정리합니다. OMD 인스턴스는 private subnet에 위치합니다. 따라서 다음과 이미지와 같이 OMD이 배포된 Private Subnet에 접근 가능한 public subnet에 배포된 bastion VM에 MySQL Workbench를 설치합니다.</p>
+<p>OMD 인스턴스는 private subnet에 위치합니다. 로컬 컴퓨터에 설치되는 MySQL Workbench는 다음 이미지와 같이 Private Subnet에 배포되는 OMD 인스턴스에  접근하기 위해서 Bastion VM을 이용합니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2020/12/mds03/020.jpg" alt="" /></p>
 
@@ -228,9 +228,9 @@
 
 <h3 id="1-local-pc에-ssh-key-pair-설치">1. Local PC에 SSH Key Pair 설치</h3>
 
-<p>MySQL Workbench는 로컬 컴퓨터(Mac OS, Linux, Window)에 설치되고 Bastion 서버에 SSH 통신을 경유하여 OMD에 접근합니다. 따라서 로컬 컴퓨터에서 SSH Key Pair를 만들어야 합니다.</p>
+<p>로컬 컴퓨터(Mac OS, Linux, Window)에 위치하는 MySQL Workbench는 Bastion 서버를 경유하여 OMD에 접근합니다. 따라서 로컬 컴퓨터에 SSH Key Pair를 만들어야 합니다.</p>
 
-<p>SSH Key Pair를 만드는 방식은 Mac OS와 Linux는 같지만, Window10의 경우는 약간 다릅니다. 이 문서는  Mac OS와 Linux를 기준으로 합니다. Window 10의 경우 PEM 포맷으로 Key Pair를 만들어야 합니다. 이와 관련해서는 다음 문서를 참조하시기 바랍니다.</p>
+<p>SSH Key Pair를 만드는 방식은 Mac OS와 Linux는 같습니다. 그러나  Window10의 경우는 약간 다릅니다. 이 문서는  Mac OS와 Linux를 기준으로 작성했습니다. Window 10을 사용할 경우에 PEM 포맷으로 Key Pair를 만들어야 합니다. 이와 관련해서는 다음 문서를 참조하시기 바랍니다.</p>
 
 <ul>
 <li><a href="https://swiftcoding.org/lightsail-from-window10" target="_blank">윈도우 10 에서 pem 파일을 사용하기[↗NW]</a>
@@ -296,7 +296,7 @@ Yr/hLIZ5AtBk= taewan@taewanui-MacBook-Pro.local
 
 <p>Bastion 서버에 공개키를 등록하기 위해서, OCI Cloud Shell로 Bastion VM에 SSH 접근해야 합니다.</p>
 
-<div class="notices note" ><p>현재 데모에서 Bastion 서버에 접근 가능한 곳은 Cloud Shell 뿐입니다. Bastion 서버를 생성할 때, 공개키를 Cloud Shell에서 생성해서 등록했습니다.</p>
+<div class="notices note" ><p>현재 데모에서 Bastion 서버에 접근 가능한 곳은 Cloud Shell 뿐입니다. 이전 가이드 문서에서 Bastion 서버를 생성할 때, 공개키를 Cloud Shell에서 생성해서 등록했습니다.</p>
 </div>
 
 
@@ -313,7 +313,7 @@ Yr/hLIZ5AtBk= taewan@taewanui-MacBook-Pro.local
 
 <p><img src="https://taewanmerepo.github.io/2020/12/mds02/220.jpg" alt="" /></p>
 
-<p>Bastion VM에 ssh 접근한 다음에, 아래 명령을 실행하여 공개키를 <code>~/.ssh/authrized_key</code> 파일에 추가합니다.</p>
+<p>Bastion VM에 ssh 접근한 다음에, 아래 명령을 실행하여 로컬 컴퓨터의 공개키를 Bastion VM의 <code>~/.ssh/authrized_key</code> 파일에 추가합니다.</p>
 
 <pre><code>echo '[공캐키]' &gt;&gt; ~/.ssh/authrized_key
 </code></pre>
@@ -378,9 +378,7 @@ Yr/hLIZ5AtBk= taewan@taewanui-MacBook-Pro.local
 
 <hr />
 
-<p>다음 이미지와 같이 Bastion VM에 로그인하여 ODM 인스턴스에 접근하는 설정을 합니다.</p>
-
-<p>설정 시 다음 정보를 사용합니다.</p>
+<p>Bastion VM을 경유하여 ODM 인스턴스에 접근하는 설정을 할 때, 다음 정보를 이용합니다.</p>
 
 <ul>
 <li>Bastion VM 공개 IP: 158.101.148.108</li>
