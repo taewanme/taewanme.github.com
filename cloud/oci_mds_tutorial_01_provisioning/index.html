@@ -215,7 +215,7 @@ MySQL Database Service 기본 가이드 이번 문서는 OMD 기본 가이드 1�
 
 <h3 id="oci-iam-policy-구성">OCI IAM Policy 구성</h3>
 
-<p>OCI IAM 사용자 <strong>admin</strong>(OCI 관리자 계정)으로 OCI Console에 로그인하여 Policy를 구성합니다. MySQL Database를 프로비저닝할 컴파트먼트에 다음 Policy 문의 패턴은 다음과 같습니다.</p>
+<p>OCI IAM 사용자 <strong>admin</strong>(OCI 관리자 계정)으로 OCI Console에 로그인하여 Policy를 구성합니다. MySQL Database를 프로비저닝할 컴파트먼트에 적용할  Policy 문 패턴은 다음과 같습니다.</p>
 
 <pre><code>Allow group &lt;GROUP_NAME&gt; to manage mysql-family in compartment &lt;COMPARTMENT_NAME&gt;
 Allow service mysql to use all-resources in compartment &lt;COMPARTMENT_NAME&gt;
