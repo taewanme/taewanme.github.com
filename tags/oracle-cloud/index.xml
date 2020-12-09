@@ -6,10 +6,21 @@
     <description>Recent content in Oracle Cloud on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Nov 2020 16:20:25 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 08 Dec 2020 01:01:25 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/oracle-cloud/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OCI 가상 방화벽: Network Seurity Group &amp; Security List</title>
+      <link>http://taewan.kim/cloud/oci_networking_diff_nsg_and_sl/</link>
+      <pubDate>Tue, 08 Dec 2020 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_networking_diff_nsg_and_sl/</guid>
+      <description>Oracle Cloud Infrastructure(이하 OCI) Network는 가상 방화벽 기능을 Network Security Group(이하 NSG)과 Security List로 제공합니다. NSG와 Security List에 대해서 혼동하는 경우가 있습니다. 이번 문서에서는 OCI 가상 방화벽 기능을 제공하는 NSG와 Security List 차이점을 사례를 통해서 확인해 보겠습니다.
+이 문서에서 다루는 내용은 OCI Free Trial에서 실습 가능합니다.
+ NSG &amp;amp; Security List NSG와 Security List는 모두 VCN에 가상 방화벽(Virtual Firewall)을 정의하는 OCI VCN(Virtual Cloud Network)의 구성 요소입니다. NSG와 Security List 모두 Source와 Destination에 대한 네트워크 접근 허용 규칙을 정의한다는 공통점을 갖습니다.</description>
+    </item>
     
     <item>
       <title>OCI Tenancy 기본 환경 설정</title>

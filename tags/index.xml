@@ -1479,6 +1479,15 @@
     </item>
     
     <item>
+      <title>Nsg</title>
+      <link>http://taewan.kim/tags/nsg/</link>
+      <pubDate>Tue, 08 Dec 2020 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/nsg/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Numpy</title>
       <link>http://taewan.kim/tags/numpy/</link>
       <pubDate>Wed, 22 Aug 2018 23:28:14 +0900</pubDate>
@@ -1517,7 +1526,7 @@
     <item>
       <title>Oci</title>
       <link>http://taewan.kim/tags/oci/</link>
-      <pubDate>Sun, 06 Dec 2020 01:01:25 +0900</pubDate>
+      <pubDate>Tue, 08 Dec 2020 01:01:25 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/oci/</guid>
       <description></description>
@@ -1547,6 +1556,15 @@
       <pubDate>Wed, 28 Nov 2018 09:17:05 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/oci-cli/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Oci Networking</title>
+      <link>http://taewan.kim/tags/oci-networking/</link>
+      <pubDate>Tue, 08 Dec 2020 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/oci-networking/</guid>
       <description></description>
     </item>
     
@@ -1616,7 +1634,7 @@
     <item>
       <title>Oracle Cloud</title>
       <link>http://taewan.kim/tags/oracle-cloud/</link>
-      <pubDate>Thu, 26 Nov 2020 16:20:25 +0900</pubDate>
+      <pubDate>Tue, 08 Dec 2020 01:01:25 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/oracle-cloud/</guid>
       <description></description>
@@ -2258,6 +2276,15 @@
       <pubDate>Fri, 31 Mar 2017 22:42:46 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/virtualization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Virual Firewall</title>
+      <link>http://taewan.kim/tags/virual-firewall/</link>
+      <pubDate>Tue, 08 Dec 2020 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/virual-firewall/</guid>
       <description></description>
     </item>
     
