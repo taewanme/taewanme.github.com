@@ -31,7 +31,7 @@ fi
 echo ""
 echo "* Step2: Validate parametes of the configuration file for OCI CLI."
 
-TENANCT_OCID=$(cat $OCI_CONFIG_FILE|grep user)
+TENANCT_OCID=$(cat $OCI_CONFIG_FILE|grep tenancy)
 prefix="tenancy="
 empty=""
 TENANCT_OCID=${TENANCT_OCID/$prefix/$empty}
