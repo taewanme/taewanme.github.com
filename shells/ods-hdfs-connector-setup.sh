@@ -6,7 +6,7 @@ echo "This Script is supported by http://taewan.kim. (taewan.me@gmail.com)"
 echo ""
 
 export BLOCK_STORAGE_PATH=/home/datascience
-export CONFIG_FILE=${BLOCK_STORAGE_PATH}/spark_conf_dir/core-site2.xml
+export CONFIG_FILE=${BLOCK_STORAGE_PATH}/spark_conf_dir/core-site.xml
 export OCI_CONFIG_FILE=${BLOCK_STORAGE_PATH}/.oci/config
 
 echo "* Step1: Chcek the configuration file for OCI CLI."
