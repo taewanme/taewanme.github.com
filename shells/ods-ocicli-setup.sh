@@ -8,6 +8,7 @@ echo "# Step1: Check Environment."
     echo " * This script should be executed on OCI Datascience Service"
 if [[ $DATASCIENCE_USER = "datascience" ]]; then 
     echo " * This script is running on OCI Datascience Service"
+    echo " "
 else
     echo " * The current envorinment is not OCI Data Science "
     echo ""
@@ -21,11 +22,11 @@ if [[ $USER_OCID =~ "ocid1.saml2idp.oc1" ]]; then
     echo " "
     echo " =========================================="
     echo " export USER_OCID=<REPACE Your User OCID>"
-    echo " sssss update command"
+    echo " bash -c "$(curl -L http://taewan.kim/shells/ods-ocicli-setup.sh)""
     echo " =========================================="    
     exit
 else
-    echo "* This Notebook is provisioned by OCI User"
+    echo " * This Notebook is provisioned by OCI User"
     echo ""
 fi
 
@@ -34,6 +35,7 @@ export BLOCK_STORAGE_PATH=/home/datascience
 rm -rf ${BLOCK_STORAGE_PATH}/.oci 
 rm -rf /home/datascience/.oci
 
+echo ""
 echo "# Step4: Generate ${BLOCK_STORAGE_PATH}/.oci/config file"
 
 oci setup keys --output-dir ${BLOCK_STORAGE_PATH}/.oci --overwrite --passphrase 'a' > tmp_file
