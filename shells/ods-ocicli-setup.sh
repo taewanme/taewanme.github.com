@@ -22,7 +22,7 @@ if [[ $USER_OCID =~ "ocid1.saml2idp.oc1" ]]; then
     echo " "
     echo " =========================================="
     echo " export USER_OCID=<REPACE Your User OCID>"
-    echo " bash -c "$(curl -L http://taewan.kim/shells/ods-ocicli-setup.sh)""
+    echo " bash -c '$(curl -L http://taewan.kim/shells/ods-ocicli-setup.sh)'"
     echo " =========================================="    
     exit
 else
