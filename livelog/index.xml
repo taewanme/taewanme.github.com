@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Livelogs on taewan.kim 블로그</title>
+    <link>http://taewan.kim/livelog/</link>
+    <description>Recent content in Livelogs on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Mar 2021 09:59:47 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/livelog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[Livelog] OCI Free Trial 계정 신청</title>
+      <link>http://taewan.kim/livelog/00.oci_free_tier/</link>
+      <pubDate>Fri, 12 Mar 2021 09:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/livelog/00.oci_free_tier/</guid>
+      <description>Livelog는 동영상 데모를 중심으로 작성된 컨텐츠입니다. Livelog는 Youtube에 배포된 동영상과 블로그 문서로 구성됩니다. Livelog의 블로그 문서는 동영상을 진행하기 위한 보조 정보를 중심으로 작성됩니다.
+ Oracle Cloud Free Tier(이하 OCI Free Tier)는 별도 비용 없이 오라클 클라우드 사용 경험을 제공하는 프로모션 프로그램입니다. OCI Tree Tier를 등록하는 절차를 Livelog로 소개합니다.
+OCI Free Tier OCI Free Tier를 등록하면 30일간 자유롭게 사용할수 있는 $300 크레딧이 제공됩니다. 이 크래딧으로 Free Trial로 제공되는 모든 자원을 사용할 수 있습니다.</description>
+    </item>
+    
+  </channel>
+</rss>
