@@ -9,20 +9,21 @@
 <META http-equiv="Cache-Control" content="No-Cache">
 <meta property="fb:admins" content="devtainer@gmail.com"/>
 
-<title>[Livelog] OCI Free Tier 신청</title>
+<title>[Livelog] OCI 테넌시(Tenancy) 기초 환경 설정</title>
 <meta name="description" content="taewan.kim">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="[Livelog] OCI Free Tier 신청" />
-<meta property="og:description" content="Livelog는 동영상 데모를 중심으로 작성된 컨텐츠입니다. Livelog는 Youtube에 배포된 동영상과 블로그 문서로 구성됩니다. Livelog의 블로그 문서는 동영상을 진행하기 위한 보조 정보를 중심으로 작성됩니다.
- Oracle Cloud Free Tier(이하 OCI Free Tier)는 별도 비용 없이 오라클 클라우드 사용 경험을 제공하는 프로모션 프로그램입니다. OCI Tree Tier를 등록하는 절차를 Livelog로 소개합니다.
-OCI Free Tier OCI Free Tier를 등록하면 30일간 자유롭게 사용할 수 있는 $300 크레딧이 제공됩니다. 이 크래딧으로 Free Tier로 제공되는 모든 자원을 사용할 수 있습니다." />
+<meta property="og:title" content="[Livelog] OCI 테넌시(Tenancy) 기초 환경 설정" />
+<meta property="og:description" content="이전 LiveLog에서는 OCI Free Tier를 등록하는 방법에 대해서 진행했습니다. 이번 LiveLog에서는 새로 생성한 OCI Tenancy에 OCI 사용자 생성 및 권한 설정, 데모를 위한 기본 네트워크 구성 작업을 진행합니다.
+Livelog는 동영상 데모를 중심으로 작성된 컨텐츠입니다. Livelog는 Youtube에 배포된 동영상과 블로그 문서로 구성됩니다. Livelog의 블로그 문서는 동영상을 진행하기 위한 보조 정보를 중심으로 작성됩니다.
+ 이번 LiveLog에서는 새로 만든 OCI Tenancy를 위한 기본 설정을 위하여 다음과 같은 작업을 진행합니다.
+ 새로운 OCI 사용자 생성 새로운 OCI 사용자 그룹 생성 및 사용자 할당 사용자 패스워드 변경 및 로그인 신규 Comaprtment 생성 기본 권한(Policy) 설정  Demo 컴파트먼트 권한 부여 Cloud Shell을 위한 권한 설정  VCN(Virtual Cloud Network) 생성  OCI Tenancy 기본 정보 이전 LiveLog OCI Free Tier 신청[↗NW] 에서 생성한 OCI Tenancy(계정) 정보는 다음과 같다고 가정합니다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/livelog/00.oci_free_tier/" />
+<meta property="og:url" content="http://taewan.kim/livelog/01.oci_initial_setup/" />
 
 
 
-<meta property="article:published_time" content="2021-03-12T09:59:47&#43;09:00"/>
-<meta property="article:modified_time" content="2021-03-12T09:59:47&#43;09:00"/>
+<meta property="article:published_time" content="2021-03-14T09:59:47&#43;09:00"/>
+<meta property="article:modified_time" content="2021-03-14T09:59:47&#43;09:00"/>
 
 
 
@@ -112,10 +113,10 @@ OCI Free Tier OCI Free Tier를 등록하면 30일간 자유롭게 사용할 수 
 <div class="main-content content" role="main" itemprop="mainContentOfPage">
 	<article class="post">
 		<header class="post__header clearfix">
-			<h1 class="post__title">[Livelog] OCI Free Tier 신청 </h1>
+			<h1 class="post__title">[Livelog] OCI 테넌시(Tenancy) 기초 환경 설정 </h1>
 			<p class="post__meta meta">
 				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="post__meta-date" datetime="2021-03-12 09:59:47 &#43;0900 KST">March 12, 2021</time>
+				<time class="post__meta-date" datetime="2021-03-14 09:59:47 &#43;0900 KST">March 14, 2021</time>
 				<span class="post__meta-categories meta-categories">
 					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 					<a class="meta-categories__link" href="/categories/livelog" rel="category">Livelog</a>
@@ -124,231 +125,434 @@ OCI Free Tier OCI Free Tier를 등록하면 30일간 자유롭게 사용할 수 
 		</header>
 
 		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2020/03/usersetting/1200.jpg" alt="[Livelog] OCI 테넌시(Tenancy) 기초 환경 설정">
+			</figure>
 			
 
-
-<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/G_NLS3Glvno" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
- </div>
-
+<p>이전 LiveLog에서는 OCI Free Tier를 등록하는 방법에 대해서 진행했습니다. 이번 LiveLog에서는 새로 생성한 OCI Tenancy에 OCI 사용자 생성 및 권한 설정, 데모를 위한 기본 네트워크 구성 작업을 진행합니다.</p>
 
 <div class="notices note" ><p><strong><font color='red'>Livelog</font></strong>는 동영상 데모를 중심으로 작성된 컨텐츠입니다. <strong><font color='red'>Livelog</font></strong>는 Youtube에 배포된 동영상과 블로그 문서로 구성됩니다. <strong><font color='red'>Livelog</font></strong>의 블로그 문서는 동영상을 진행하기 위한 보조 정보를 중심으로 작성됩니다.</p>
 </div>
 
 
-<p><img src="https://taewanmerepo.github.io/2019/09/freetier/post.jpg" alt="" /></p>
-
-<p>Oracle Cloud Free Tier(이하 OCI Free Tier)는 별도 비용 없이 오라클 클라우드 사용 경험을 제공하는 프로모션 프로그램입니다. OCI Tree Tier를 등록하는 절차를 Livelog로 소개합니다.</p>
-
-<h2 id="oci-free-tier">OCI Free Tier</h2>
-
-<p>OCI Free Tier를 등록하면 30일간 자유롭게 사용할 수 있는 <font color='red'>$300</font> 크레딧이 제공됩니다. 이 크래딧으로 <strong>Free Tier</strong>로 제공되는 모든 자원을 사용할 수 있습니다. OCI Free Tier 등록 시 제공되는 크레딧은 30일 이후에는 소멸됩니다</p>
-
-<p>OCI Free Tier는 다음과 같은 형태로 구성됩니다.</p>
+<p>이번 LiveLog에서는 새로 만든 OCI Tenancy를 위한 기본 설정을 위하여 다음과 같은 작업을 진행합니다.</p>
 
 <ul>
-<li><strong>Oracle Cloud Free Tier</strong>
+<li>새로운 OCI 사용자 생성</li>
+<li>새로운 OCI 사용자 그룹 생성 및 사용자 할당</li>
+<li>사용자 패스워드 변경 및 로그인</li>
+<li>신규 Comaprtment 생성</li>
+<li>기본 권한(Policy) 설정
 
 <ul>
-<li>구성 컴포넌트: 1. <strong>Free Trial</strong></li>
-<li>구성 컴포넌트: 2. <strong>Always Free</strong></li>
+<li>Demo 컴파트먼트 권한 부여</li>
+<li>Cloud Shell을 위한 권한 설정</li>
 </ul></li>
+<li>VCN(Virtual Cloud Network) 생성</li>
 </ul>
 
-<p>OCI Free Tier를 등록하면 제공되는 300 달러 크레딧으로 30일간  <strong>Free Trial</strong> 자원을 자유롭게 사용할 수 있습니다. &ldquo;<strong>Free Trial</strong>&ldquo;로 다음과 같은 서비스를 사용할 수 있습니다.</p>
+<h2 id="oci-tenancy-기본-정보">OCI Tenancy 기본 정보</h2>
 
-<p><img src="https://taewanmerepo.github.io/2020/11/0120.jpg" alt="" /></p>
+<p>이전 LiveLog <a href="http://taewan.kim/livelog/" target="_blank">OCI Free Tier 신청[↗NW]</a>
+에서 생성한 OCI Tenancy(계정) 정보는 다음과 같다고 가정합니다.</p>
 
-<p><strong>Oracle Cloud Free Tier</strong>는 <strong>Free Trial</strong> 이외에  영구적으로 사용할 수 있는 <strong>Always Free</strong> 자원을 별도로 제공합니다.</p>
+<ul>
+<li>OCI Tenancy 명: taewandemo003</li>
+<li>Admin User(IDCS): iamtaewan@gmail.com</li>
+<li>Admin User 비밀번호: Welcome123456!</li>
+</ul>
 
-<p>다음과 같은 서비스를 기간 제약없이 계속 이용할 수 있습니다.</p>
+<h2 id="배경지식-idcs-oci-iam">배경지식: IDCS &amp; OCI IAM</h2>
+
+<p>오라클 클라우드는 사용자 계정을 관리하는 IDCS(Identity Cloud Service)와 OCI IAM 서비스를 제공합니다. IDCS(Identity Cloud Service)는 오라클 클라우드 초기부터 계정 관리와 사용자 권한을 관리하는 체계였습니다. Gen2가 시작되면서 Oracle Cloud Infrastructure(OCI)가 새로운 인프라로 공개됐습니다. OCI안에서 사용자 계정과 권한을 제공하는 새로운 관리 서비스가 IAM입니다. 현재 IDCS는 IAM과 통합되어 있어 있으며, 점진적으로 IAM에 흡수되는 과정에 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/ocioraclecloud/220.jpg" alt="" /></p>
+
+<p>IDCS에서 만든 사용자 ID는 OCI IAM으로 페더레이션됩니다. IDCS는 IDCS Group을 OCI IAM 그룹에 매핍하는 기능을 제공합니다. 반대로 OCI IAM에서 생성한 사용자 ID는 IDCS에 페더레이션되지 않습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/identity/020.jpg" alt="" /></p>
+
+<h2 id="oci-사용자-생성">OCI 사용자 생성</h2>
+
+<p><strong>taewandemo003</strong> 테넌시에 Admin User로 로그인하고 다음과 같은 OCI IAM 사용자를 생성합니다.</p>
 
 <table>
 <thead>
 <tr>
-<th>서비스</th>
-<th>지원 규모</th>
+<th>IAM User ID</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>developer01</td>
+<td>개발자 ID로 사용</td>
+</tr>
+
+<tr>
+<td>operator01</td>
+<td>운영자 ID로 사용</td>
+</tr>
+
+<tr>
+<td>data_analyst01</td>
+<td>데이터 분석가 ID로 사용</td>
+</tr>
+
+<tr>
+<td>admin</td>
+<td>OCI 관리자 ID</td>
+</tr>
+</tbody>
+</table>
+
+<p>사용자 설정이 완료되면 다음과 같은 상태가 됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/11/basicsetting/010.jpg" alt="" /></p>
+
+<h2 id="oci-사용자-그룹-생성-및-사용자-할당">OCI 사용자 그룹 생성 및 사용자 할당</h2>
+
+<p><strong>taewandemo003</strong> 테넌시에 Admin User로 로그인하고 다음과 같이 OCI 사용자 그룹을 OCI 사용자를 할당 합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>IAM User Group</th>
+<th>Group 설명</th>
+<th>할당 OCI User</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>develoeprs</td>
+<td>개발자 그룹</td>
+<td>developer01</td>
+</tr>
+
+<tr>
+<td>operators</td>
+<td>운영자 그룹</td>
+<td>operator01</td>
+</tr>
+
+<tr>
+<td>data_analysts</td>
+<td>데이터 분석가 그룹</td>
+<td>data_analyst01</td>
+</tr>
+
+<tr>
+<td>administrators</td>
+<td>OCI 관리자 그룹, 기존에 생성된 그룹 재사용</td>
+<td>admin</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="https://taewanmerepo.github.io/2020/11/basicsetting/020.jpg" alt="" /></p>
+
+<h2 id="사용자-패스워드-변경-및-로그인">사용자 패스워드 변경 및 로그인</h2>
+
+<p><strong>taewandemo003</strong> 테넌시에 Admin User로 로그인하여 만든 4개 OCI 사용자의 패스워드를 초기화합니다. 그리고 각 사용자로 OCI IAM 로그인을 진행합니다.</p>
+
+<h2 id="comaprtment-생성">Comaprtment 생성</h2>
+
+<p>OCI에서 자원(VCN, VM, Database, Storage 및 여러 서비스)을 만들 때, Compartment는 OCI 자원을 논리적으로 묶는 역할을 담당합니다. Compartment로 여러 자원을 묶고, OCI 컴파트먼트 단위로 자원 모니터링, 과금 및 권한 설정을 합니다. Compartment는 OCI 클라우드 자원을 관리하는 IAM 핵심 구성요소입니다.</p>
+
+<p>컴파트먼트는 중첩 디렉터리 구조를 갖습니다. OCI의 모든 자원은 특정 컴파트먼트에 소속됩니다. 컴파트먼트는 OCI 글루벌 범위를 갖습니다. 컴파트먼트는 특정 리전에 종속적이지 않으며, 특정 리전에서 만든 컴파트먼트는 모든 리전에서 사용 가능합니다.</p>
+
+<p><strong>Compartment(컴파트먼트)</strong>는 한국어로 &ldquo;<strong>구획</strong>&ldquo;으로 번역됩니다.</p>
+
+<h3 id="demo-컴파트먼트-만들기">demo 컴파트먼트 만들기</h3>
+
+<p>demo 컴파트먼트 생성은 OCI 관리자 계정(admin)으로 진행합니다. root 컴파트먼트 아래에 demo 컴파트먼트를 다음과 같이 설정하고 생성합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>설정 값</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Name</td>
+<td>demo</td>
+</tr>
+
+<tr>
+<td>Description</td>
+<td>demo 컴파트먼트</td>
+</tr>
+
+<tr>
+<td>Parent Compartment</td>
+<td>root</td>
+</tr>
+</tbody>
+</table>
+
+<p>Compartment가 정상적으로 생성되면 위 그림과 같이 Compartments 관리 페이지가 출력됩니다. 이 페이지에서 demo 컴파트먼트 생성된 것을 확인할 수 있습니다</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/11/basicsetting/060.jpg" alt="" /></p>
+
+<h2 id="policy">Policy</h2>
+
+<p>OCI에서는 IAM Policy로 OCI 자원 권한 설정을 합니다. OCI IAM policy의 기본 문법은 다음과 같습니다.</p>
+
+<pre><code>Allow &lt;subject&gt; to &lt;verb&gt; &lt;resource-type&gt; in &lt;location&gt; where &lt;conditions&gt;
+</code></pre>
+
+<p>Policy를 사용하는 패턴은 다음과 같습니다.</p>
+
+<ul>
+<li>Case 1: 특정 OCI Group을 특정 Compartment에 포함된 자원의 접근 제어 설정</li>
+</ul>
+
+<pre><code>Allow group &lt;group_name&gt; to &lt;verb&gt; &lt;resource-type&gt; in compartment &lt;compartment_name&gt;
+</code></pre>
+
+<hr />
+
+<ul>
+<li>Case 2: 특정 OCI Group이 Tenancy 전체 자원 접근 제어 설정</li>
+</ul>
+
+<pre><code>Allow group &lt;group_name&gt; to &lt;verb&gt; &lt;resource-type&gt; in tenancy
+</code></pre>
+
+<p>Policy에 적용하는 verb는 다음과 같습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>VERB</th>
+<th>설명</th>
+<th>대상 OCI USER</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>inspect</td>
+<td>- 사용자 정의 메타데이터, 보안 정보를 제외한 자원을 리스트(조회)할 수 있는 권한</td>
+<td>조회가 필요한 제3자 사용자</td>
+</tr>
+
+<tr>
+<td>read</td>
+<td>- inspect에 추가하여 사용자 정의 메타데이터도 조회할 수 있는 권한 포함</td>
+<td>조회가 필요한 내부 사용자</td>
+</tr>
+
+<tr>
+<td>use</td>
+<td>- read의 모든 권한 포함</br>- 자원을 사용할 수 있는 권한 포함</br>- 자원 생성, 삭제에 대한 권한은 포함하지 않음</td>
+<td>일반 사용자</td>
+</tr>
+
+<tr>
+<td>manage</td>
+<td>해당 자원의 모든 권한 부여</td>
+<td>관리자</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="demo-컴파트먼트-권한-부여">Demo 컴파트먼트 권한 부여</h3>
+
+<p>demo 컴파트먼트의 Policy 설정은 OCI 관리자 계정으로 진행합니다. demo 컴파트먼트에 대한 권한을 사용자 그룹 별로 다음과 같이 설정합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>사용자 그룹</th>
+<th>권한</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>developers</td>
+<td>manage</td>
+<td>demo 컴파트먼트의 모든 리소스 생성, 사용, 삭제 권한 부여</td>
+</tr>
+
+<tr>
+<td>operators</td>
+<td>read</td>
+<td>demo 컴파트먼트의 모든 리소스의 읽기 권한 부여</td>
+</tr>
+
+<tr>
+<td>data_analysts</td>
+<td>manage</td>
+<td>demo 컴파트먼트의 모든 리소스 생성, 사용, 삭제 권한 부여</td>
+</tr>
+</tbody>
+</table>
+
+<p>다음과 같은 Policy를 생성합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>설정 값</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Name</td>
+<td>BasicPolicy</td>
+</tr>
+
+<tr>
+<td>Description</td>
+<td>Default Policy</td>
+</tr>
+
+<tr>
+<td>Compartment</td>
+<td>root</td>
+</tr>
+</tbody>
+</table>
+
+<p>Policy Builder에 다음과 같은 설정을 입력합니다.</p>
+
+<pre><code>Allow group developers, data_analysts to manage all-resources in compartment demo
+Allow group operators to read all-resources in compartment demo
+</code></pre>
+
+<h3 id="cloud-shell을-위한-policy-설정">Cloud Shell을 위한 Policy 설정</h3>
+
+<p>Cloud Shell은 OCI Console(OCI 관리 콘솔)에서 실행되는 브라우저 기반 가상 터미널입니다. OCI Cloud Shell를 이용하면 PuTTY를 사용하지 않고 OCI VM 인스턴스에 접속하거나 추가적인 계정 설정 작업 없이 OCI CLI와 같은 툴을 사용할 수 있습니다.</p>
+
+<p>OCI 사용자가 Cloud Shell을 사용하기 위해서는 root 컴파트먼트에 다음 Policy를 설정해야 합니다.</p>
+
+<pre><code>allow group &lt;GROUP-NAME&gt; to use cloud-shell in tenancy
+</code></pre>
+
+<p>develper01과 data_analyst01 사용자가 Cloud Shell을 사용하기 위해서 다음 Policy를 root 컴파트먼트에 생성합니다.</p>
+
+<pre><code>allow group data_analysts, developers to use cloud-shell in tenancy
+</code></pre>
+
+<h2 id="vcn-virtual-cloud-network-생성">VCN(Virtual Cloud Network) 생성</h2>
+
+<p>OCI Compute 서비스를 사용하면 여러 VCN(Virtual Cloud Network)을 만들 수 있습니다. OCI 자원을 생성/배포하기 위해서는 다른 자원을 생성하기 전에 VCN을 먼저 만들어야 합니니다. VCN은 다음과 같은 네트워크 컴포넌트로 구성됩니다.</p>
+
+<ul>
+<li>Subnet</li>
+<li>Route Table</li>
+<li>Security List</li>
+<li>Internet Gateway</li>
+<li>NAT Gateway</li>
+<li>Service Gateway</li>
+<li>Dynamic Routing Gateway(DRG)</li>
+<li>Load Balancer</li>
+<li>Local/Remote Peering</li>
+</ul>
+
+<h3 id="demovcn-만들기">demovcn 만들기</h3>
+
+<p>demovcn VCN을 만들기 위하여 <strong>developer01</strong> 사용자로 OCI Console에 OCI IAM 로그인 합니다.</p>
+
+<p>VCN 관리 페이지에서 컴파트먼트로 demo를 선택하고 demovcn을 생성합니다.</p>
+
+<p>간편 모드로 2가지 형태의 VCN을 만들 수 있습니다. 간편 모드가 지원하는 2개 형태는 다음과 같은 특징을 갖습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/11/basicsetting/230.jpg" alt="" /></p>
+
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>설정</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>인터넷 접속을 위한 VCN</td>
+<td>- 2개 서브넷 구성(public subnet, private subnet)</br>- 주요 구성: Internet Gateway, NAT Gateway, Service Gateway</td>
+</tr>
+
+<tr>
+<td>인터넷 접속 사이트간 VCN Connect를 통한 VCN</td>
+<td>- <strong>VCN with Internet Connectivity</strong>에 VPN 기본 설정 구성</td>
+</tr>
+</tbody>
+</table>
+
+<p>“<strong>인터넷 접속을 위한 VCN</strong>“을 선택하고 VCN을 다음과 같은 정보로 생성합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>입력 항목</th>
+<th>설정 값</th>
 <th>비고</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td>Autonomous Data Warehouse(ADW)</td>
-<td>1개 인스턴스</td>
-<td>CPU: 1 OCPU, Storage: 20GB</td>
+<td>VCN Name</td>
+<td>demovcn</td>
+<td>신규입력</td>
 </tr>
 
 <tr>
-<td>Autonomous Transaction Processing(ATP)</td>
-<td>1개 인스턴스</td>
-<td>CPU: 1 OCPU, Storage: 20GB)</td>
+<td>Compartment</td>
+<td>demo</td>
+<td>신규입력</td>
 </tr>
 
 <tr>
-<td>컴퓨트</td>
-<td>2VM</td>
-<td>VM 사양: <code>1/8</code> OCPU, 1GB 메모리</td>
+<td>VCN CIDR Block</td>
+<td>10.0.0.0/16</td>
+<td>기본값 사용</td>
 </tr>
 
 <tr>
-<td>블록스토리지</td>
-<td>2개 블록 볼륨</td>
-<td>전체 크기 100GB</td>
+<td>Public Subnet CIDR Block</td>
+<td>10.0.0.0/24</td>
+<td>기본값 사용</td>
 </tr>
 
 <tr>
-<td>오브젝트 스토리지</td>
-<td>Standard Mode: 10GB<br/>Archive Mode: 10GB</td>
-<td>매월 50,000 API 요청</td>
+<td>Private Subnet CIDR Block</td>
+<td>10.0.1.0/24</td>
+<td>기본값 사용</td>
 </tr>
 
 <tr>
-<td>로드 밸런서(Load Balancer)</td>
-<td>1개</td>
-<td>Bandwith: 10Mbps</td>
-</tr>
-
-<tr>
-<td>아웃바운드 데이터 전송(Outbound Data Transfer)</td>
-<td>매월 10TB</td>
-<td></td>
-</tr>
-
-<tr>
-<td>모니터링 서비스</td>
-<td>매월 5억 건의 데이터 수집, 10억 건 데이터 조회</td>
-<td></td>
-</tr>
-
-<tr>
-<td>알림 서비스</td>
-<td>매월 1백만 건 알림 서비스</td>
-<td></td>
-</tr>
-
-<tr>
-<td>메일</td>
-<td>매월 1000개 메일</td>
-<td></td>
+<td>Use DNS HOSTINGNAMES In the VCN</td>
+<td>체크</td>
+<td>기본값 사용</td>
 </tr>
 </tbody>
 </table>
 
-<h3 id="oci-free-tier-등록을-위한-준비">OCI Free Tier 등록을 위한 준비</h3>
+<p>2개 서브넷으로 구성된 demovcn의 상세 페이지를 확인할 수 있습니다.</p>
 
-<p>OCI Free Tier 등록을 위해서는 다음과 같은 정보가 필요합니다.</p>
+<p><img src="https://taewanmerepo.github.io/2020/11/basicsetting/270.jpg" alt="" /></p>
 
-<ul>
-<li>사전 결정 사항
-
-<ul>
-<li>OCI 계정명 (Tenante)</li>
-<li>OCI 홈영역 (Home Region): 거점 OCI 데이터센터</li>
-</ul></li>
-<li>사용자 인증을 위한 사전 준비물
+<h2 id="참고-자료">참고 자료</h2>
 
 <ul>
-<li>메일 주소: gmail, naver, daum 등 개인 메일 사용 가능</li>
-<li>신용 카드: 해외 결제가 가능한 VISA, MASTER, AMEX</li>
-<li>핸드폰 번호: SMS 수신 용도</li>
-</ul></li>
-<li>부가 정보
-
-<ul>
-<li>등록자 주소(우편번호 포함)</li>
-</ul></li>
-</ul>
-
-<h3 id="oci-free-tier의-유료-전환에-대한-걱정">OCI Free Tier의 유료 전환에 대한 걱정</h3>
-
-<p>OCI Free Tier를 등록하시는 분들은 혹시 모를 &ldquo;<strong>요금 폭탄</strong>&ldquo;에 대해서 걱정하십니다. OCI Free Tier 등록 단계에서 신용카드 정보를 입력하기 때문에 1달 무료 사용 기간이 넘어가면 자동 유료로 전환되고, 기존에 사용했던 자원을 정리하지 않으면 비용이 청구되는 것이 아닌지를 걱정하시는 분들이 많습니다.</p>
-
-<p>OCI Free Tier 계정이 유료 계정으로 전환되기 위해서는 추가적인 등록 절차가 필요합니다. 유료 전환 승인 절차를 따로 진행하지 않을 경우 OCI Free Tier 사용에 대한 어떤 비용 청구도 발생하지 않습니다.</p>
-
-<p>OCI Free Tier 등록 단계에서 등록한 신용카드 정보는 사용자 인증 용도로만 사용됩니다. 다음 이미지와 같이 사용자 인증을 위해서 1불을 청구하고 정상 청구가 되면 바로 청구 취소하는 과정에만 이용됩니다. 추가로 OCI Free Tier 등록 이력 조회 용도로만 사용됩니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2019/09/freetier/110.jpg" alt="" /></p>
-
-<div class="notices note" ><p>OCI Free Tier 계정에는 자원 할당에 대한 규모 및 기간 한계가 설정되어 있습니다. OCI Free Tier 계정에 할당된 자원 한계 이상의 서비스를 사용하고자 한다면 <strong><font color='red'>계정 업그레이드 절차(정식 계약)</strong></font>가 필요합니다. 따라서 <strong><font color='red'>계정 업그레이드 절차(정식 계약)</strong></font>를 수행하지 않는다면 OCI Free Tier는 어떤 비용도 청구하지 않습니다.</p>
-</div>
-
-
-<h2 id="oci-free-tier-등록-절차">OCI Free Tier 등록 절차</h2>
-
-<p>OCI Free Tier 등록 페이지는 <a href="https://cloud.oracle.com">https://cloud.oracle.com</a> 에서 찾을 수 있습니다. OCI Free Tier 등록 절차는 다음과 같습니다.</p>
-
-<h3 id="1-계정-정보-입력">1. 계정 정보 입력</h3>
-
-<p>기본 계정 정보를 입력합니다. 이 단계에서 입력한 Email에 OCI는 메일을 발송하여 등록 메일을 검증합니다.</p>
-
-<h3 id="2-계정-정보-등록">2. 계정 정보 등록</h3>
-
-<p>기본 계정 정보를 등록합니다. 이 단계에서 다음과 같은 정보를 입력합니다.</p>
-
-<ul>
-<li>국가(지역)</li>
-<li>클라우드 계정 이름 (Tenante)</li>
-<li>Admin 계정명 및 패스워드</li>
-<li>홈 영역</li>
-</ul>
-
-<p><img src="https://taewanmerepo.github.io/2020/11/0060.jpg" alt="" /></p>
-
-<h3 id="3-등록자-주소-입력">3. 등록자 주소 입력</h3>
-
-<p>등록자의 주소를 입력합니다. 주소 등록 시 한글 및 영문 모두 지원합니다. 다섯 자리 우편번호를 입력해야 합니다.</p>
-
-<h3 id="4-전화번호-등록-및-sms-인증">4. 전화번호 등록 및 SMS 인증</h3>
-
-<p><img src="https://taewanmerepo.github.io/2019/09/freetier/070.jpg" alt="" /></p>
-
-<p>전화번호는 사용자 정보 등록 목적이며, 사용자 인증 외에 다른 용도로 사용되지 않습니다. 전화번호 국가 코드는 앞에서 입력한 국가 정보를 기준으로 기본 설정됩니다. 전화번호 입력 시 첫 번째 &ldquo;0&rdquo;은 반드시 생략해야 합니다. 다음은 전화번호 입력 예입니다.</p>
-
-<table>
-<thead>
-<tr>
-<th>국가</th>
-<th>전화번호</th>
-<th>입력 전화 번호</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>대한민국</td>
-<td>010-3123-1234</td>
-<td>*82 1031231234</td>
-</tr>
-</tbody>
-</table>
-
-<p>전화번호 입력 시 첫 번째 &ldquo;0&rdquo;을 입력할 경우 정상적으로 SMS 문자를 받을 수 없습니다.</p>
-
-<h3 id="5-신용카드-등록">5. 신용카드 등록</h3>
-
-<p>해외 결제가 가능한 VISA, Master, AMAX 카드만을 사용해야 합니다. 이 신용카드는 사용자 인증 용도로만 사용됩니다. 여기에서 등록한 신용카드로 어떤 비용도 청구되지 않습니다.</p>
-
-<h3 id="6-계정-생성">6. 계정 생성</h3>
-
-<p>모든 정보가 정상적으로 입력되고 검증되면 계정 생성 작업이 진행됩니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2020/11/0100.jpg" alt="" /></p>
-
-<h2 id="참고문서">참고문서</h2>
-
-<ul>
-<li><a href="http://taewan.kim/cloud/how_to_register_free_tier_account/" target="_blank">새로운 Oracle Cloud 프로모션: Free Tier[↗NW]</a>
+<li><a href="http://taewan.kim/cloud/oci_user/" target="_blank">OCI 사용자 기본 설정(Feat. OCI IAM)[↗NW]</a>
 </li>
-<li><a href="https://www.oracle.com/corporate/pressrelease/oow19-oracle-free-tier-091619.html" target="_blank">Oracle Offers Always Free Autonomous Database and Cloud Infrastructure[↗NW]</a>
-</li>
-<li><a href="https://www.oracle.com/cloud/free/#free-cloud-trial" target="_blank">What can I try with my Oracle Cloud Free Trial credits?[↗NW]</a>
-</li>
-<li><a href="http://itdaily.kr/news/articleView.html?idxno=96978" target="_blank">IT Daily: 오라클 ‘지역 내 이중 리전’ 전략 강화[↗NW]</a>
-</li>
-<li><a href="https://www.zdnet.co.kr/view/?no=20190704141512" target="_blank">ZDNet Korea: 오라클 &#39;MS와의 클라우드 연동, 한국서도 가능&#39;[↗NW]</a>
-</li>
-<li><a href="https://www.mk.co.kr/news/it/view/2019/09/738006/" target="_blank">매일경제: 오라클 &#39;AI 클라우드, 40기가 무료제공&#39;[↗NW]</a>
+<li><a href="http://taewan.kim/cloud/oci_basic_config/" target="_blank">OCI Tenancy 기본 환경 설정[↗NW]</a>
 </li>
 </ul>
 
@@ -358,8 +562,11 @@ OCI Free Tier OCI Free Tier를 등록하면 30일간 자유롭게 사용할 수 
 	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
 	<ul class="tags__list">
 		<li class="tags__item"><a class="tags__link" href="/tags/oci/" rel="tag">OCI</a></li>
-		<li class="tags__item"><a class="tags__link" href="/tags/trial/" rel="tag">Trial</a></li>
-		<li class="tags__item"><a class="tags__link" href="/tags/account/" rel="tag">Account</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/initial/" rel="tag">Initial</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/setup/" rel="tag">Setup</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/compartment/" rel="tag">Compartment</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/vcn/" rel="tag">VCN</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/cloud-shell/" rel="tag">Cloud Shell</a></li>
 		<li class="tags__item"><a class="tags__link" href="/tags/livelog/" rel="tag">Livelog</a></li>
 	</ul>
 </div>
@@ -383,14 +590,14 @@ OCI Free Tier OCI Free Tier를 등록하면 30일간 자유롭게 사용할 수 
 
 	
 <nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
-	<div class="post-nav__item post-nav__item--next col-1-2">
-		<a class="post-nav__link" href="http://taewan.kim/livelog/01.oci_initial_setup/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">[Livelog] OCI 테넌시(Tenancy) 기초 환경 설정</p></a>
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/livelog/00.oci_free_tier/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">[Livelog] OCI Free Tier 신청</p></a>
 	</div>
 </nav>
 
 	
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/livelog/00.oci_free_tier/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/livelog/01.oci_initial_setup/"></div>
 
 
 	<div>
@@ -426,7 +633,7 @@ OCI Free Tier OCI Free Tier를 등록하면 30일간 자유롭게 사용할 수 
 	
 
 <div class="widget-categories widget">	
-		<div class="fb-like" data-href="http://taewan.kim/livelog/00.oci_free_tier/" 
+		<div class="fb-like" data-href="http://taewan.kim/livelog/01.oci_initial_setup/" 
 		data-layout="standard" data-action="like" 
 		data-size="small" 
 		data-show-faces="true" 
@@ -441,21 +648,25 @@ OCI Free Tier OCI Free Tier를 등록하면 30일간 자유롭게 사용할 수 
 <ul>
 <li>
 <ul>
-<li><a href="#oci-free-tier">OCI Free Tier</a>
+<li><a href="#oci-tenancy-기본-정보">OCI Tenancy 기본 정보</a></li>
+<li><a href="#배경지식-idcs-oci-iam">배경지식: IDCS &amp; OCI IAM</a></li>
+<li><a href="#oci-사용자-생성">OCI 사용자 생성</a></li>
+<li><a href="#oci-사용자-그룹-생성-및-사용자-할당">OCI 사용자 그룹 생성 및 사용자 할당</a></li>
+<li><a href="#사용자-패스워드-변경-및-로그인">사용자 패스워드 변경 및 로그인</a></li>
+<li><a href="#comaprtment-생성">Comaprtment 생성</a>
 <ul>
-<li><a href="#oci-free-tier-등록을-위한-준비">OCI Free Tier 등록을 위한 준비</a></li>
-<li><a href="#oci-free-tier의-유료-전환에-대한-걱정">OCI Free Tier의 유료 전환에 대한 걱정</a></li>
+<li><a href="#demo-컴파트먼트-만들기">demo 컴파트먼트 만들기</a></li>
 </ul></li>
-<li><a href="#oci-free-tier-등록-절차">OCI Free Tier 등록 절차</a>
+<li><a href="#policy">Policy</a>
 <ul>
-<li><a href="#1-계정-정보-입력">1. 계정 정보 입력</a></li>
-<li><a href="#2-계정-정보-등록">2. 계정 정보 등록</a></li>
-<li><a href="#3-등록자-주소-입력">3. 등록자 주소 입력</a></li>
-<li><a href="#4-전화번호-등록-및-sms-인증">4. 전화번호 등록 및 SMS 인증</a></li>
-<li><a href="#5-신용카드-등록">5. 신용카드 등록</a></li>
-<li><a href="#6-계정-생성">6. 계정 생성</a></li>
+<li><a href="#demo-컴파트먼트-권한-부여">Demo 컴파트먼트 권한 부여</a></li>
+<li><a href="#cloud-shell을-위한-policy-설정">Cloud Shell을 위한 Policy 설정</a></li>
 </ul></li>
-<li><a href="#참고문서">참고문서</a></li>
+<li><a href="#vcn-virtual-cloud-network-생성">VCN(Virtual Cloud Network) 생성</a>
+<ul>
+<li><a href="#demovcn-만들기">demovcn 만들기</a></li>
+</ul></li>
+<li><a href="#참고-자료">참고 자료</a></li>
 </ul></li>
 </ul>
 </nav>
