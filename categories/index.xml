@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>taewan.kim 블로그</title>
+    <title>Categories on taewan.kim 블로그</title>
     <link>http://taewan.kim/categories/</link>
-    <description>Recent content on taewan.kim 블로그</description>
+    <description>Recent content in Categories on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 22 Aug 2018 23:28:14 +0900</lastBuildDate>
@@ -12,24 +12,228 @@
     
     
     <item>
-      <title>다차원 텐서 Transpose와 Reshape</title>
-      <link>http://taewan.kim/post/transpose_reshape/</link>
+      <title></title>
+      <link>http://taewan.kim/categories/</link>
       <pubDate>Wed, 22 Aug 2018 23:28:14 +0900</pubDate>
       
-      <guid>http://taewan.kim/post/transpose_reshape/</guid>
-      <description>CNN과 같은 이미지 데이터를 다룰 때 입력 데이터로 4차원 텐서를 다룹니다. 이 4차원 데이터는 (image 수, channel 수, Height , Width)와 같은 구조를 갖습니다. 데이터를 전처리하는 과정에서 Channel First인 텐서를 Channel Last 텐서로 변형해야 하는 상황이 발생했습니다. 처음에 4차원 구조는 상상하기도 어려운데 4차원 텐서를 전치하라는 것은 어떤 의미인지 난감했습니다.
-문제의 시작: Channel First를 Channel Last로 변환 파이토치로 CIFAR10 데이터셋을 읽어와서 대상 이미지를 Mathplotlib의 plt.imshow() 함수로 출력하는 작업을 진행했습니다.
-# 변환기 파이프라인  transform = transforms.</description>
+      <guid>http://taewan.kim/categories/</guid>
+      <description></description>
     </item>
     
     <item>
-      <title>Big Data Cloud Hands-on 세미나</title>
-      <link>http://taewan.kim/seminar/180516_bdc_handson/</link>
-      <pubDate>Wed, 16 May 2018 21:28:14 +0900</pubDate>
+      <title>Bigdata</title>
+      <link>http://taewan.kim/categories/bigdata/</link>
+      <pubDate>Sun, 15 Apr 2018 15:59:47 +0900</pubDate>
       
-      <guid>http://taewan.kim/seminar/180516_bdc_handson/</guid>
-      <description>세니마 정보  일시: 2018.05.16 13:30 ~ 18:00 장소: 아셈타워 15층 15008 관련 문서 다운로드:  notebook: https://drive.google.com/file/d/1-B814XXn1bbyQtEWbcbYSydZc13EewPt/view?usp=sharing pdf: https://drive.google.com/file/d/1iQBEZ28yWELC8YnyjoPZprcIxGwy6BTu/view?usp=sharing  출입관련 주의 사항  출입을 위해서 아셈타워 일층에서 출입 등록을 하셔야 합니다. (3-5 분 소요)   세미나 구성 Oracle Big Data Cloud Hands-on은 다음과 같은 세션으로 구성됩니다.
- Preview of Today Course1: 데이터 정제하기 Course2: 데이터 그리기 Cousee3: 머신러닝 체험하  서버 접속 정보 Spark 클러스터 접속 정보는 참석자 등록 메일로 발송될 예정입니다.</description>
+      <guid>http://taewan.kim/categories/bigdata/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Blogs.oracle.com</title>
+      <link>http://taewan.kim/categories/blogs.oracle.com/</link>
+      <pubDate>Wed, 04 Oct 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/blogs.oracle.com/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Book</title>
+      <link>http://taewan.kim/categories/book/</link>
+      <pubDate>Tue, 04 Aug 2020 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/book/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cloud</title>
+      <link>http://taewan.kim/categories/cloud/</link>
+      <pubDate>Fri, 08 Jan 2021 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Graalvm</title>
+      <link>http://taewan.kim/categories/graalvm/</link>
+      <pubDate>Fri, 22 Nov 2019 01:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/graalvm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>It Life</title>
+      <link>http://taewan.kim/categories/it-life/</link>
+      <pubDate>Fri, 30 Mar 2018 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/it-life/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>http://taewan.kim/categories/java/</link>
+      <pubDate>Sun, 16 Jun 2019 07:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Language</title>
+      <link>http://taewan.kim/categories/language/</link>
+      <pubDate>Sun, 07 Oct 2018 19:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/language/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Life</title>
+      <link>http://taewan.kim/categories/life/</link>
+      <pubDate>Mon, 24 Sep 2018 11:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/life/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Livelog</title>
+      <link>http://taewan.kim/categories/livelog/</link>
+      <pubDate>Fri, 12 Mar 2021 09:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/livelog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Machine Learning</title>
+      <link>http://taewan.kim/categories/machine-learning/</link>
+      <pubDate>Wed, 08 Aug 2018 16:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Math</title>
+      <link>http://taewan.kim/categories/math/</link>
+      <pubDate>Tue, 15 Jan 2019 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/math/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Minsu</title>
+      <link>http://taewan.kim/categories/minsu/</link>
+      <pubDate>Sat, 19 Mar 2016 01:50:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/minsu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mysql</title>
+      <link>http://taewan.kim/categories/mysql/</link>
+      <pubDate>Fri, 29 Sep 2017 17:17:35 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Oracle</title>
+      <link>http://taewan.kim/categories/oracle/</link>
+      <pubDate>Thu, 26 Nov 2020 01:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/oracle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Seminar</title>
+      <link>http://taewan.kim/categories/seminar/</link>
+      <pubDate>Sat, 16 Dec 2017 22:54:32 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/seminar/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tech Event</title>
+      <link>http://taewan.kim/categories/tech-event/</link>
+      <pubDate>Sun, 10 Sep 2017 08:54:32 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/tech-event/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tech Tip</title>
+      <link>http://taewan.kim/categories/tech-tip/</link>
+      <pubDate>Tue, 05 Sep 2017 16:50:36 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/tech-tip/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tip</title>
+      <link>http://taewan.kim/categories/tip/</link>
+      <pubDate>Sat, 18 Aug 2018 16:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/tip/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Youtube</title>
+      <link>http://taewan.kim/categories/youtube/</link>
+      <pubDate>Sat, 19 Mar 2016 01:50:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/youtube/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>맛집</title>
+      <link>http://taewan.kim/categories/%EB%A7%9B%EC%A7%91/</link>
+      <pubDate>Wed, 09 Oct 2019 07:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/%EB%A7%9B%EC%A7%91/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>번역</title>
+      <link>http://taewan.kim/categories/%EB%B2%88%EC%97%AD/</link>
+      <pubDate>Wed, 27 Dec 2017 01:50:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/%EB%B2%88%EC%97%AD/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>오라클 클라우드</title>
+      <link>http://taewan.kim/categories/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</link>
+      <pubDate>Tue, 26 Dec 2017 21:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/%EC%98%A4%EB%9D%BC%ED%81%B4-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>짜투리</title>
+      <link>http://taewan.kim/categories/%EC%A7%9C%ED%88%AC%EB%A6%AC/</link>
+      <pubDate>Fri, 25 Mar 2016 00:17:44 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/%EC%A7%9C%ED%88%AC%EB%A6%AC/</guid>
+      <description></description>
     </item>
     
   </channel>
