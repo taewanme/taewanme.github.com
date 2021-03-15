@@ -239,7 +239,7 @@ Livelog는 동영상 데모를 중심으로 작성된 컨텐츠입니다. Livelo
 
 <tbody>
 <tr>
-<td>develoeprs</td>
+<td>developers</td>
 <td>개발자 그룹</td>
 <td>developer01</td>
 </tr>
@@ -455,6 +455,13 @@ Allow group operators to read all-resources in compartment demo
 <p>develper01과 data_analyst01 사용자가 Cloud Shell을 사용하기 위해서 다음 Policy를 root 컴파트먼트에 생성합니다.</p>
 
 <pre><code>allow group data_analysts, developers to use cloud-shell in tenancy
+</code></pre>
+
+<p>cloud shell을 실행하고 oci cli 호출을 테스트합니다.</p>
+
+<pre><code>oci os ns get
+oci iam region list
+oci iam region list --output table
 </code></pre>
 
 <h2 id="vcn-virtual-cloud-network-생성">VCN(Virtual Cloud Network) 생성</h2>
