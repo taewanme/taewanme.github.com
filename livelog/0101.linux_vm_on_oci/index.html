@@ -335,8 +335,7 @@ ssh -i ~/.ssh/livelog-web-vm01 opc@&lt;VM_PUBLIC_IP_ADDRESS&gt;
 
 <p>Oracle Linux의 방화벽에서 80(http) 포트를 다음과 같은 명령으로 오픈합니다.</p>
 
-<pre><code>sudo systemctl restart httpd
-sudo firewall-cmd --add-service=http --permanent
+<pre><code>sudo firewall-cmd --add-service=http --permanent
 sudo firewall-cmd --reload
 </code></pre>
 
