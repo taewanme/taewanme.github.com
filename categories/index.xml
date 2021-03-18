@@ -104,7 +104,7 @@
     <item>
       <title>Livelog</title>
       <link>http://taewan.kim/categories/livelog/</link>
-      <pubDate>Sun, 14 Mar 2021 09:59:47 +0900</pubDate>
+      <pubDate>Thu, 18 Mar 2021 09:59:47 +0900</pubDate>
       
       <guid>http://taewan.kim/categories/livelog/</guid>
       <description></description>
@@ -143,6 +143,15 @@
       <pubDate>Fri, 29 Sep 2017 17:17:35 +0900</pubDate>
       
       <guid>http://taewan.kim/categories/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Oci</title>
+      <link>http://taewan.kim/categories/oci/</link>
+      <pubDate>Thu, 18 Mar 2021 09:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/oci/</guid>
       <description></description>
     </item>
     

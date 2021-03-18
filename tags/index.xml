@@ -950,7 +950,7 @@
     <item>
       <title>Iaas</title>
       <link>http://taewan.kim/tags/iaas/</link>
-      <pubDate>Thu, 03 May 2018 15:59:47 +0900</pubDate>
+      <pubDate>Thu, 18 Mar 2021 09:59:47 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/iaas/</guid>
       <description></description>
@@ -1544,7 +1544,7 @@
     <item>
       <title>Oci</title>
       <link>http://taewan.kim/tags/oci/</link>
-      <pubDate>Sun, 14 Mar 2021 09:59:47 +0900</pubDate>
+      <pubDate>Thu, 18 Mar 2021 09:59:47 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/oci/</guid>
       <description></description>
@@ -1704,6 +1704,15 @@
     </item>
     
     <item>
+      <title>Oracle Linux</title>
+      <link>http://taewan.kim/tags/oracle-linux/</link>
+      <pubDate>Thu, 18 Mar 2021 09:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/oracle-linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Orchestration</title>
       <link>http://taewan.kim/tags/orchestration/</link>
       <pubDate>Mon, 25 Sep 2017 21:28:14 +0900</pubDate>
@@ -1767,6 +1776,15 @@
     </item>
     
     <item>
+      <title>Php</title>
+      <link>http://taewan.kim/tags/php/</link>
+      <pubDate>Thu, 18 Mar 2021 09:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Pickle</title>
       <link>http://taewan.kim/tags/pickle/</link>
       <pubDate>Sat, 02 Jan 2016 10:50:36 +0900</pubDate>
@@ -1808,6 +1826,15 @@
       <pubDate>Thu, 26 Dec 2019 01:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/presentation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Provision</title>
+      <link>http://taewan.kim/tags/provision/</link>
+      <pubDate>Thu, 18 Mar 2021 09:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/provision/</guid>
       <description></description>
     </item>
     
@@ -2354,7 +2381,7 @@
     <item>
       <title>Vm</title>
       <link>http://taewan.kim/tags/vm/</link>
-      <pubDate>Fri, 28 Feb 2020 09:28:14 +0900</pubDate>
+      <pubDate>Thu, 18 Mar 2021 09:59:47 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/vm/</guid>
       <description></description>
