@@ -950,7 +950,7 @@
     <item>
       <title>Iaas</title>
       <link>http://taewan.kim/tags/iaas/</link>
-      <pubDate>Thu, 18 Mar 2021 09:59:47 +0900</pubDate>
+      <pubDate>Mon, 22 Mar 2021 09:59:47 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/iaas/</guid>
       <description></description>
@@ -1544,7 +1544,7 @@
     <item>
       <title>Oci</title>
       <link>http://taewan.kim/tags/oci/</link>
-      <pubDate>Thu, 18 Mar 2021 09:59:47 +0900</pubDate>
+      <pubDate>Mon, 22 Mar 2021 09:59:47 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/oci/</guid>
       <description></description>
@@ -1832,7 +1832,7 @@
     <item>
       <title>Provision</title>
       <link>http://taewan.kim/tags/provision/</link>
-      <pubDate>Thu, 18 Mar 2021 09:59:47 +0900</pubDate>
+      <pubDate>Mon, 22 Mar 2021 09:59:47 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/provision/</guid>
       <description></description>
@@ -1907,6 +1907,15 @@
       <pubDate>Wed, 23 Mar 2016 14:01:55 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/rdbms/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rdp</title>
+      <link>http://taewan.kim/tags/rdp/</link>
+      <pubDate>Mon, 22 Mar 2021 09:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/rdp/</guid>
       <description></description>
     </item>
     
@@ -2381,7 +2390,7 @@
     <item>
       <title>Vm</title>
       <link>http://taewan.kim/tags/vm/</link>
-      <pubDate>Thu, 18 Mar 2021 09:59:47 +0900</pubDate>
+      <pubDate>Mon, 22 Mar 2021 09:59:47 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/vm/</guid>
       <description></description>
@@ -2411,6 +2420,15 @@
       <pubDate>Fri, 31 Mar 2017 22:42:46 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/window/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows 2019</title>
+      <link>http://taewan.kim/tags/windows-2019/</link>
+      <pubDate>Mon, 22 Mar 2021 09:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/windows-2019/</guid>
       <description></description>
     </item>
     

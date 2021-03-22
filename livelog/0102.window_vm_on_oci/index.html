@@ -9,17 +9,20 @@
 <META http-equiv="Cache-Control" content="No-Cache">
 <meta property="fb:admins" content="devtainer@gmail.com"/>
 
-<title>Oci</title>
+<title>[Livelog:OCI] Windows VM 배포</title>
 <meta name="description" content="taewan.kim">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="Oci" />
-<meta property="og:description" content="taewan.kim" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://taewan.kim/categories/oci/" />
+<meta property="og:title" content="[Livelog:OCI] Windows VM 배포" />
+<meta property="og:description" content="이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/livelog/0102.window_vm_on_oci/" />
 
 
 
-<meta property="og:updated_time" content="2021-03-22T09:59:47&#43;09:00"/>
+<meta property="article:published_time" content="2021-03-22T09:59:47&#43;09:00"/>
+<meta property="article:modified_time" content="2021-03-22T09:59:47&#43;09:00"/>
+
 
 
 
@@ -31,7 +34,7 @@
 
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-<link rel="alternate" type="application/rss+xml" title="taewan.kim 블로그 Feed" href="http://taewan.kim/categories/oci/index.xml">
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
 <link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
 <link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
@@ -96,8 +99,7 @@
 		</header>
 		<div class="wrapper clearfix">
 
-
-<div id="fb-root"> </div>
+<div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
@@ -106,75 +108,282 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-	<hr/>
-	<div class="main-content loop content" role="main">
-		
-		
-		<article class="loop__item post clearfix">
-			<figure class="loop__thumbnail">
-				<a href="http://taewan.kim/livelog/0102.window_vm_on_oci/">
-					<img src="https://taewanmerepo.github.io/2021/03/livelog05/list.jpg" alt="[Livelog:OCI] Windows VM 배포" />
-				</a>
-			</figure>
-			<div class="loop__content clearfix">
-				<header class="loop__header">
-					<h3 class="loop__title post__title ">
-						<a href="http://taewan.kim/livelog/0102.window_vm_on_oci/" rel="bookmark">[Livelog:OCI] Windows VM 배포</a>
-					</h3>
-					<div class="loop__meta meta">
-						<div class="fb-like" data-href="http://taewan.kim/livelog/0102.window_vm_on_oci/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div><svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg><time class="loop__meta-date" datetime="2021-03-22 09:59:47 &#43;0900 KST">March 22, 2021</time>
-					</div>
-					
-				</header>
-				<div class="loop__excerpt">
-									  이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
- 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     L ......
-				</div>
-				<div class="loop__excerpt">
-						<a class="label" href="/tags/oci/" rel="tag">OCI</a></li>
-						<a class="label" href="/tags/iaas/" rel="tag">IaaS</a></li>
-						<a class="label" href="/tags/vm/" rel="tag">VM</a></li>
-						<a class="label" href="/tags/provision/" rel="tag">Provision</a></li>
-						<a class="label" href="/tags/windows-2019/" rel="tag">Windows 2019</a></li>
-						<a class="label" href="/tags/rdp/" rel="tag">RDP</a></li>
-				</div>
-			</div>
-		</article>
-		<article class="loop__item post clearfix">
-			<figure class="loop__thumbnail">
-				<a href="http://taewan.kim/livelog/0101.linux_vm_on_oci/">
-					<img src="https://taewanmerepo.github.io/2021/03/livelog04/list.jpg" alt="[Livelog:OCI] Linux VM 배포" />
-				</a>
-			</figure>
-			<div class="loop__content clearfix">
-				<header class="loop__header">
-					<h3 class="loop__title post__title ">
-						<a href="http://taewan.kim/livelog/0101.linux_vm_on_oci/" rel="bookmark">[Livelog:OCI] Linux VM 배포</a>
-					</h3>
-					<div class="loop__meta meta">
-						<div class="fb-like" data-href="http://taewan.kim/livelog/0101.linux_vm_on_oci/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div><svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg><time class="loop__meta-date" datetime="2021-03-18 09:59:47 &#43;0900 KST">March 18, 2021</time>
-					</div>
-					
-				</header>
-				<div class="loop__excerpt">
-									  이번 Livelog에서는 OCI에 Linux VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
- 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Liv ......
-				</div>
-				<div class="loop__excerpt">
-						<a class="label" href="/tags/oci/" rel="tag">OCI</a></li>
-						<a class="label" href="/tags/iaas/" rel="tag">IaaS</a></li>
-						<a class="label" href="/tags/vm/" rel="tag">VM</a></li>
-						<a class="label" href="/tags/provision/" rel="tag">Provision</a></li>
-						<a class="label" href="/tags/oracle-linux/" rel="tag">Oracle Linux</a></li>
-						<a class="label" href="/tags/php/" rel="tag">PHP</a></li>
-				</div>
-			</div>
-		</article>
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">[Livelog:OCI] Windows VM 배포 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2021-03-22 09:59:47 &#43;0900 KST">March 22, 2021</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/livelog" rel="category">Livelog</a>, <a class="meta-categories__link" href="/categories/oci" rel="category">OCI</a>
+				</span>
+			</p>
+		</header>
 
-		
+		<div class="post__content clearfix">
 
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2021/03/livelog05/post.jpg" alt="[Livelog:OCI] Windows VM 배포">
+			</figure>
+			
+
+<hr />
+
+<p>이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.</p>
+
+<ul>
+<li>아래 이미지를 클릭하면 해당 Livelog로 이동합니다.</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>Livelog1: OCI 계정 생성</th>
+<th>Livelog2: OCI 기본 설정</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="http://taewan.kim/livelog/00.oci_free_tier/" target='_blank'><img src="https://taewanmerepo.github.io/2021/03/livelog04/img01.jpg" alt="" /></a></td>
+<td><a href="http://taewan.kim/livelog/01.oci_initial_setup/" target='_blank'><img src="https://taewanmerepo.github.io/2021/03/livelog04/img02.jpg" alt="" /></a></td>
+</tr>
+</tbody>
+</table>
+
+<div class="notices note" ><p><strong><font color='red'>Livelog</font></strong>는 동영상 데모를 중심으로 작성된 콘텐츠입니다. <strong><font color='red'>Livelog</font></strong>는 Youtube에 배포된 동영상과 블로그 문서로 구성됩니다. <strong><font color='red'>Livelog</font></strong>의 블로그 문서는 동영상을 진행하기 위한 보조 정보를 중심으로 작성됩니다.</p>
+</div>
+
+
+<h2 id="livelog-진행-환경">Livelog 진행 환경</h2>
+
+<p>이번 Livelog에서 사용하는 OCI Tenancy(계정) 정보는 다음과 같습니다.</p>
+
+<ul>
+<li>OCI Tenancy 명: taewandemo003</li>
+</ul>
+
+<p>이번 Livelog에서는 다음과 같은 자원을 이용하여 진행합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>자원유형</th>
+<th>대상자원</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>OCI User</td>
+<td>developer01</td>
+<td>개발자 유저</td>
+</tr>
+
+<tr>
+<td>OCI Compartment</td>
+<td>demo</td>
+<td></td>
+</tr>
+
+<tr>
+<td>VCN</td>
+<td>demovcn</td>
+<td><strong>Public Subnet-demovcn</strong> 서브넷</td>
+</tr>
+
+<tr>
+<td>Policy</td>
+<td>basic_policy</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="vm-배포-절차">VM 배포 절차</h2>
+
+<p><img src="https://taewanmerepo.github.io/2021/03/livelog05/img01.jpg" alt="" /></p>
+
+<ul>
+<li>VM 이미지 생성
+
+<ul>
+<li>OS: Microsoft Windows 2019</li>
+<li>Shape: VM.Standard.E3.Flex</li>
+<li>CPU: 2</li>
+<li>Memory: 32</li>
+</ul></li>
+<li>VCN(demovcn)의 인터넷 접속(ingress) 설정: 3389 포트</li>
+<li>노트북 접속: Microsoft Remote Desktop 로그인</li>
+<li>기본 설정 패스워드 변경</li>
+</ul>
+
+<h3 id="oci-console-접속">OCI Console 접속</h3>
+
+<p><strong><a href="https://cloud.oracle.com">https://cloud.oracle.com</a></strong> 로그인 페이지에서 사용할 OCI 계정(<strong>taewandemo003</strong>)에 developer01 사용자로 로그인합니다.</p>
+
+<h3 id="vm-생성">VM 생성</h3>
+
+<p>VM을 설정하기 위하여 다음과 같이 설정합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>설정값</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Name</td>
+<td>livelog-win-vm01</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Compartment</td>
+<td>demo</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Availability Domain</td>
+<td>AD 1</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Image</td>
+<td>Microsoft Windows 2019</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Shape</td>
+<td>VM.Standard.E3.Flex</td>
+<td>OCPU: 2, Memory: 32GB</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="vcn-demovcn-의-인터넷-접속-설정">VCN(demovcn)의 인터넷 접속 설정</h3>
+
+<p><img src="https://docs.oracle.com/en-us/iaas/developer-tutorials/tutorials/apache-on-oracle-linux/images/Apache_Diagram.png" alt="" /></p>
+
+<p>demovcn의 <strong>Public Subnet-demovcn</strong> 서브넷의 Security List에 80 포트를 오픈하는 설정을 추가합니다.</p>
+
+<ul>
+<li>VCN: demovcn</li>
+<li>Subnet: Public Subnet-demovcn</li>
+<li>Security List: Default Security List for demovcn</li>
+<li>Ingress Rule 추가
+<br /></li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>Source CIDR</th>
+<th>IP Protocol</th>
+<th>Source Port Range</th>
+<th>Target Port Range</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>0.0.0.0/0</td>
+<td>TCP</td>
+<td>All</td>
+<td>3389</td>
+<td>Allow RDP Connection</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="microsoft-remote-desktop-접속">Microsoft Remote Desktop 접속</h3>
+
+<p>VM의 공개 IP와 기본 설정 패스워드를 이용하여 접속 및 패스워드 변경</p>
+
+<h3 id="linux-vm-관리">Linux VM 관리</h3>
+
+<ul>
+<li>Linux VM Scale-up</li>
+<li>Linux VM 정지/시작</li>
+<li>Linux VM 제거</li>
+</ul>
+
+<h2 id="참고-문서">참고 문서</h2>
+
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/developer-tutorials/tutorials/apache-on-oracle-linux/01-summary.htm" target="_blank">Free Tier: Install Apache and PHP on an Oracle Linux Instance[↗NW]</a>
+</li>
+</ul>
+
+		</div>
 		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/oci/" rel="tag">OCI</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/iaas/" rel="tag">IaaS</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/vm/" rel="tag">VM</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/provision/" rel="tag">Provision</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/windows-2019/" rel="tag">Windows 2019</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/rdp/" rel="tag">RDP</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan2.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/livelog/0101.linux_vm_on_oci/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">[Livelog:OCI] Linux VM 배포</p></a>
+	</div>
+</nav>
+
+	
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/livelog/0102.window_vm_on_oci/"></div>
+
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		
+		<ins class="adsbygoogle"
+			 style="display:block"
+			 data-ad-client="ca-pub-8469722754608892"
+			 data-ad-slot="5594090168"
+			 data-ad-format="auto"
+			 data-full-width-responsive="true"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
 	</div>
 
 <aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
@@ -193,7 +402,7 @@
 	
 
 <div class="widget-categories widget">	
-		<div class="fb-like" data-href="http://taewan.kim/categories/oci/" 
+		<div class="fb-like" data-href="http://taewan.kim/livelog/0102.window_vm_on_oci/" 
 		data-layout="standard" data-action="like" 
 		data-size="small" 
 		data-show-faces="true" 
@@ -201,6 +410,28 @@
 </div>
 	
 	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#livelog-진행-환경">Livelog 진행 환경</a></li>
+<li><a href="#vm-배포-절차">VM 배포 절차</a>
+<ul>
+<li><a href="#oci-console-접속">OCI Console 접속</a></li>
+<li><a href="#vm-생성">VM 생성</a></li>
+<li><a href="#vcn-demovcn-의-인터넷-접속-설정">VCN(demovcn)의 인터넷 접속 설정</a></li>
+<li><a href="#microsoft-remote-desktop-접속">Microsoft Remote Desktop 접속</a></li>
+<li><a href="#linux-vm-관리">Linux VM 관리</a></li>
+</ul></li>
+<li><a href="#참고-문서">참고 문서</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
 
 	<div class="widget-categories widget">
   <h4 class="widget__title">관련도서</h4>
