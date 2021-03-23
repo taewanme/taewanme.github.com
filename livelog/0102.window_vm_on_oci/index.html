@@ -220,9 +220,9 @@
 
 <ul>
 <li>OS: Microsoft Windows 2019</li>
-<li>Shape: VM.Standard.E3.Flex</li>
+<li>Shape: VM.Standard2.1</li>
 <li>CPU: 1</li>
-<li>Memory: 16</li>
+<li>Memory: 15GB</li>
 </ul></li>
 
 <li><p>VCN(demovcn)의 인터넷 접속(ingress) 설정: 3389 포트</p></li>
@@ -288,8 +288,8 @@
 
 <tr>
 <td>Shape</td>
-<td>VM.Standard.E3.Flex</td>
-<td>OCPU: 1, Memory: 16GB</td>
+<td>VM.Standard2.1</td>
+<td>OCPU: 1, Memory: 15GB</td>
 </tr>
 </tbody>
 </table>
@@ -348,11 +348,17 @@
 
 <p><img src="https://taewanmerepo.github.io/2021/03/livelog05/img02.jpg" alt="" /></p>
 
-<h3 id="linux-vm-관리">Linux VM 관리</h3>
+<h3 id="windows-vm-관리">Windows VM 관리</h3>
 
 <ul>
-<li>Window VM 정지/시작</li>
-<li>Window VM 제거</li>
+<li>Windows VM Scale-up
+
+<ul>
+<li>OCPU: 2</li>
+<li>Memory: 30GB</li>
+</ul></li>
+<li>Windows VM 정지/시작</li>
+<li>Windows VM 제거</li>
 </ul>
 
 <h2 id="참고-문서">참고 문서</h2>
@@ -460,7 +466,7 @@
 <li><a href="#vm-생성">VM 생성</a></li>
 <li><a href="#vcn-demovcn-의-windows-rdp-접속-설정">VCN(demovcn)의 Windows RDP 접속 설정</a></li>
 <li><a href="#microsoft-remote-desktop-접속">Microsoft Remote Desktop 접속</a></li>
-<li><a href="#linux-vm-관리">Linux VM 관리</a></li>
+<li><a href="#windows-vm-관리">Windows VM 관리</a></li>
 </ul></li>
 <li><a href="#참고-문서">참고 문서</a></li>
 </ul></li>
