@@ -63,15 +63,5 @@ Livelog는 동영상 데모를 중심으로 작성된 컨텐츠입니다. Livelo
 OCI Free Tier OCI Free Tier를 등록하면 30일간 자유롭게 사용할 수 있는 $300 크레딧이 제공됩니다. 이 크래딧으로 Free Tier로 제공되는 모든 자원을 사용할 수 있습니다.</description>
     </item>
     
-    <item>
-      <title></title>
-      <link>http://taewan.kim/livelog/script-windowsvm/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://taewan.kim/livelog/script-windowsvm/</guid>
-      <description>&amp;lt;&amp;lt;#1&amp;gt;&amp;gt; 안녕하세요 민수아빠입니다. 이번 Livelog는 OCI Free Tier 계정에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 영상은은 2021년 3월 22일 촬영되었습니다. 이번 Livelog는 영상 제목 아래에 표시된 URL 웹 페이지를 참조 문서로 사용합니다. 참조 문서 URL은 유튜브 동영상 설명란에 적어놨습니다. 이번 Livelog를 실습하실 때 이 참조 문서를 이용하시기 바랍니다.
-&amp;lt;#2&amp;gt; 이번 Livelog는 제목과 같이 OCI 계정에 Window VM을 배포하는 방법을 정리합니다. OCI 계정이 준비된 상태이고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정하고 진행합니다.</description>
-    </item>
-    
   </channel>
 </rss>
