@@ -192,6 +192,30 @@
 <li>Bucket(버킷): 데이터와 파일을 저장하기 위해 오브젝트 스토리지에서 사용하는 논리적 그룹 단위. 버킷에 포함될 객체수에는 제약이 없음.</li>
 </ul>
 
+<h2 id="사용자정의-이미지-지원-운영체제">사용자정의 이미지 지원 운영체제</h2>
+
+<p>사용자정의 이미지 Export/Import를 지원하는 운영체제는 2021년 3월 31일 현재 다음과 같습니다.</p>
+
+<ul>
+<li><p>Linux</p>
+
+<ul>
+<li>Oracle Linux 6.x, 7.x, 8.x</li>
+<li>CentOS 7, 8</li>
+<li>Ubuntu 16.04 이후
+<br /></li>
+</ul></li>
+
+<li><p>windows</p>
+
+<ul>
+<li>Windows Server 2012 Standard, Datacenter</li>
+<li>Windows Server 2012 R2 Standard, Datacenter</li>
+<li>Windows Server 2016 Standard, Datacenter</li>
+<li>Windows Server 2019 Standard, Datacenter</li>
+</ul></li>
+</ul>
+
 <h2 id="실습-환경">실습 환경</h2>
 
 <p>이번 Livelog에서 사용하는 OCI Tenancy(계정) 정보는 다음과 같습니다.</p>
@@ -601,7 +625,7 @@ sudo systemctl restart httpd
 <h2 id="참고-문서">참고 문서</h2>
 
 <ul>
-<li><a href="https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/launchinginstance.htm#Creating" target="_blank">Creating a Windows Instance[↗NW]</a>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/imageimportexport.htm" target="_blank">Oracle Cloud Infrastructure Documentation:Image Import/Export[↗NW]</a>
 </li>
 </ul>
 
@@ -683,6 +707,7 @@ sudo systemctl restart httpd
 <ul>
 <li><a href="#실습-시나리오">실습 시나리오</a></li>
 <li><a href="#oci-용어-정리">OCI 용어 정리</a></li>
+<li><a href="#사용자정의-이미지-지원-운영체제">사용자정의 이미지 지원 운영체제</a></li>
 <li><a href="#실습-환경">실습 환경</a></li>
 <li><a href="#실습-진행-절차">실습 진행 절차</a></li>
 <li><a href="#livelog-실습">LiveLog 실습</a>
