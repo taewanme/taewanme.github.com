@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://taewan.kim/cloud/transfer_oci_custom_image_to_other_tenancy/</loc>
+    <lastmod>2021-03-31T01:01:25+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/livelog/0102.window_vm_on_oci-copy/</loc>
+    <lastmod>2021-03-22T09:59:47+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/livelog/0102.window_vm_on_oci/</loc>
     <lastmod>2021-03-22T09:59:47+09:00</lastmod>
   </url>
@@ -1719,7 +1729,7 @@
   
   <url>
     <loc>http://taewan.kim/categories/cloud/</loc>
-    <lastmod>2021-01-08T01:01:25+09:00</lastmod>
+    <lastmod>2021-03-31T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1743,7 +1753,7 @@
   
   <url>
     <loc>http://taewan.kim/cloud/</loc>
-    <lastmod>2021-01-08T01:01:25+09:00</lastmod>
+    <lastmod>2021-03-31T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1798,6 +1808,12 @@
   <url>
     <loc>http://taewan.kim/tags/coursera/</loc>
     <lastmod>2018-07-09T21:28:14+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/tags/custom-image/</loc>
+    <lastmod>2021-03-31T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2373,7 +2389,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/livelog/</loc>
-    <lastmod>2021-03-14T09:59:47+09:00</lastmod>
+    <lastmod>2021-03-31T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2637,7 +2653,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/oci/</loc>
-    <lastmod>2021-03-22T09:59:47+09:00</lastmod>
+    <lastmod>2021-03-31T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2727,7 +2743,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/oracle-cloud/</loc>
-    <lastmod>2021-01-08T01:01:25+09:00</lastmod>
+    <lastmod>2021-03-31T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -3363,7 +3379,7 @@
   
   <url>
     <loc>http://taewan.kim/</loc>
-    <lastmod>2021-03-22T09:59:47+09:00</lastmod>
+    <lastmod>2021-03-31T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
