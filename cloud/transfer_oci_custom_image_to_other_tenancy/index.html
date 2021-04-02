@@ -155,6 +155,67 @@
 </div>
 
 
+<h2 id="oci-용어-정리">OCI 용어 정리</h2>
+
+<p>이번 LiveLog에서는 다음과 같은 OCI 용어를 사용합니다.</p>
+
+<ul>
+<li>Region(리전): OCI를 구성하는 데이터 센터의 지역 거점. 1개 혹은 3개 AD로 구성</li>
+<li>Availability Domain(AD): 완전 독립적인 데이터 센터. 1개 혹은 3개 그룹으로 리전 구성</li>
+<li>Shape(구성): Compute 인스턴스에 할당될 CPU와 메모리 크기를 지정하는 유형.
+
+<ul>
+<li>AWS의 Type에 해당</li>
+</ul></li>
+<li>Image(이미지): VM(가상머신)의 운영 체제 및 기타 소프트웨어를 정의하는 가상 하드 드라이브 템플릿으로, VM이 프로비저닝될 때, VM의 Boot Volume에 지정한 이미지가 복사됨. OCI는 3 가지 유형의 이미지 제공
+
+<ul>
+<li>플랫폼 이미지</li>
+<li>OCI 이미지</li>
+<li>파트너 이미지</li>
+</ul></li>
+<li>Object Storage(오브젝트 스토리지): AWS S3에 대응되는 OCI 스토리지 서비스입니다. 데이터를 객체 형태로 저장하고 관리.</li>
+<li>Bucket(버킷): 데이터와 파일을 저장하기 위해 오브젝트 스토리지에서 사용하는 논리적 그룹 단위. 버킷에 포함될 객체수에는 제약이 없음.</li>
+</ul>
+
+<h2 id="livelog-핵심-주제-custom-image">LiveLog 핵심 주제: Custom Image</h2>
+
+<iframe src="https://www.slideshare.net/TaewanKim/slideshelf" width="760px" height="570px" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:none;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+
+<h3 id="사용자정의-이미지-지원-운영체제">사용자정의 이미지 지원 운영체제</h3>
+
+<p>사용자정의 이미지 Export/Import를 지원하는 운영체제는 2021년 3월 31일 현재 다음과 같습니다.</p>
+
+<ul>
+<li><p>Linux</p>
+
+<ul>
+<li>Oracle Linux 6.x, 7.x, 8.x</li>
+<li>CentOS 7, 8</li>
+<li>Ubuntu 16.04 이후</li>
+</ul></li>
+
+<li><p>windows</p>
+
+<ul>
+<li>Windows Server 2012 Standard, Datacenter</li>
+<li>Windows Server 2012 R2 Standard, Datacenter</li>
+<li>Windows Server 2016 Standard, Datacenter</li>
+<li>Windows Server 2019 Standard, Datacenter</li>
+</ul></li>
+</ul>
+
+<h3 id="사용자정의-이미지-제약사항">사용자정의 이미지 제약사항</h3>
+
+<ul>
+<li>Boot Volume의 복사본</li>
+<li>운영체제 변경 사항, 소프트웨어 설치 및 설정 변경을 대상으로 함</li>
+<li>Boot Voluem이 아닌 Block Volume의 데이터는 포함되지 않음</li>
+<li>사용자정의 이미지 생성시 소스 컴퓨트 인스턴스는 종료 됨</li>
+<li>사용자정의 이미지 최대 크기: 300GB</li>
+<li>Windows 사용자정의 이미지는 테넌시 밖으로 이동 불가(MS 라이센스 위반)</li>
+</ul>
+
 <h2 id="실습-시나리오">실습 시나리오</h2>
 
 <p>이번 라이브로그에서는 다음과 같은 상황을 다룹니다.</p>
@@ -169,52 +230,6 @@
 </ul>
 
 <p>이번 라이브로그에서는 이 상황에 대한 데모를 진행합니다.</p>
-
-<h2 id="oci-용어-정리">OCI 용어 정리</h2>
-
-<ul>
-<li>Region(리전): OCI를 구성하는 데이터 센터의 지역 거점. 1개 혹은 3개 AD로 구성</li>
-<li>Availability Domain(AD): 완전 독립적인 데이터 센터. 1개 혹은 3개 그룹으로 리전 구성</li>
-<li>Image(이미지): VM(가상머신)의 운영 체제 및 기타 소프트웨어를 정의하는 가상 하드 드라이브 템플릿으로, VM이 프로비저닝될 때, VM의 Boot Volume에 지정한 이미지가 복사됨. OCI는 3 가지 유형의 이미지 제공
-
-<ul>
-<li>플랫폼 이미지</li>
-<li>OCI 이미지</li>
-<li>파트너 이미지</li>
-</ul></li>
-<li>Custom Image(사용자정의 이미지): OCI가 제공하는 OCI 이미지를 변경하여 사용자가 직접 관리하는  이미지.</li>
-<li>Shape(구성): Compute 인스턴스에 할당될 CPU와 메모리 크기를 지정하는 유형.
-
-<ul>
-<li>AWS의 Type에 해당</li>
-</ul></li>
-<li>Object Storage(오브젝트 스토리지): AWS S3에 대응되는 OCI 스토리지 서비스입니다. 데이터를 객체 형태로 저장하고 관리.</li>
-<li>Bucket(버킷): 데이터와 파일을 저장하기 위해 오브젝트 스토리지에서 사용하는 논리적 그룹 단위. 버킷에 포함될 객체수에는 제약이 없음.</li>
-</ul>
-
-<h2 id="사용자정의-이미지-지원-운영체제">사용자정의 이미지 지원 운영체제</h2>
-
-<p>사용자정의 이미지 Export/Import를 지원하는 운영체제는 2021년 3월 31일 현재 다음과 같습니다.</p>
-
-<ul>
-<li><p>Linux</p>
-
-<ul>
-<li>Oracle Linux 6.x, 7.x, 8.x</li>
-<li>CentOS 7, 8</li>
-<li>Ubuntu 16.04 이후
-<br /></li>
-</ul></li>
-
-<li><p>windows</p>
-
-<ul>
-<li>Windows Server 2012 Standard, Datacenter</li>
-<li>Windows Server 2012 R2 Standard, Datacenter</li>
-<li>Windows Server 2016 Standard, Datacenter</li>
-<li>Windows Server 2019 Standard, Datacenter</li>
-</ul></li>
-</ul>
 
 <h2 id="실습-환경">실습 환경</h2>
 
@@ -257,7 +272,7 @@
 <hr />
 
 <ul>
-<li>OCI 대상 테넌시 명: taewandemo003</li>
+<li>OCI 대상 테넌시 명: taewandemo004</li>
 </ul>
 
 <table>
@@ -705,9 +720,13 @@ sudo systemctl restart httpd
 <ul>
 <li>
 <ul>
-<li><a href="#실습-시나리오">실습 시나리오</a></li>
 <li><a href="#oci-용어-정리">OCI 용어 정리</a></li>
+<li><a href="#livelog-핵심-주제-custom-image">LiveLog 핵심 주제: Custom Image</a>
+<ul>
 <li><a href="#사용자정의-이미지-지원-운영체제">사용자정의 이미지 지원 운영체제</a></li>
+<li><a href="#사용자정의-이미지-제약사항">사용자정의 이미지 제약사항</a></li>
+</ul></li>
+<li><a href="#실습-시나리오">실습 시나리오</a></li>
 <li><a href="#실습-환경">실습 환경</a></li>
 <li><a href="#실습-진행-절차">실습 진행 절차</a></li>
 <li><a href="#livelog-실습">LiveLog 실습</a>
