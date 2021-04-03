@@ -73,5 +73,145 @@ Livelog는 동영상 데모를 중심으로 작성된 컨텐츠입니다. Livelo
  아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
     </item>
     
+    <item>
+      <title>OCI Console 이해하기</title>
+      <link>http://taewan.kim/oci-livelogs/010.oci_basics/temp01/</link>
+      <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-livelogs/010.oci_basics/temp01/</guid>
+      <description>이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI CLI 설치</title>
+      <link>http://taewan.kim/oci-livelogs/010.oci_basics/temp02/</link>
+      <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-livelogs/010.oci_basics/temp02/</guid>
+      <description>이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI VCN 생성</title>
+      <link>http://taewan.kim/oci-livelogs/010.oci_basics/temp03/</link>
+      <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-livelogs/010.oci_basics/temp03/</guid>
+      <description>이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI Compute</title>
+      <link>http://taewan.kim/oci-livelogs/010.oci_basics/temp04/</link>
+      <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-livelogs/010.oci_basics/temp04/</guid>
+      <description>이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI Compute 라이프 사이클</title>
+      <link>http://taewan.kim/oci-livelogs/010.oci_basics/temp05/</link>
+      <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-livelogs/010.oci_basics/temp05/</guid>
+      <description>이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI Block Volume</title>
+      <link>http://taewan.kim/oci-livelogs/010.oci_basics/temp06/</link>
+      <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-livelogs/010.oci_basics/temp06/</guid>
+      <description>이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI 블록 볼륨</title>
+      <link>http://taewan.kim/oci-livelogs/010.oci_basics/temp07/</link>
+      <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-livelogs/010.oci_basics/temp07/</guid>
+      <description>이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI 블록 볼륨 공유하기</title>
+      <link>http://taewan.kim/oci-livelogs/010.oci_basics/temp08/</link>
+      <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-livelogs/010.oci_basics/temp08/</guid>
+      <description>이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI 파일 스토리지</title>
+      <link>http://taewan.kim/oci-livelogs/010.oci_basics/temp09/</link>
+      <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-livelogs/010.oci_basics/temp09/</guid>
+      <description>이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI 사용자정의 이미지</title>
+      <link>http://taewan.kim/oci-livelogs/010.oci_basics/temp10/</link>
+      <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-livelogs/010.oci_basics/temp10/</guid>
+      <description>이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI Load Balancer 분산</title>
+      <link>http://taewan.kim/oci-livelogs/010.oci_basics/temp11/</link>
+      <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-livelogs/010.oci_basics/temp11/</guid>
+      <description>이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI 스케일 아웃</title>
+      <link>http://taewan.kim/oci-livelogs/010.oci_basics/temp12/</link>
+      <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-livelogs/010.oci_basics/temp12/</guid>
+      <description>이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI 자동 스케일 아웃</title>
+      <link>http://taewan.kim/oci-livelogs/010.oci_basics/temp13/</link>
+      <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-livelogs/010.oci_basics/temp13/</guid>
+      <description>이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI DNS 설정</title>
+      <link>http://taewan.kim/oci-livelogs/010.oci_basics/temp14/</link>
+      <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-livelogs/010.oci_basics/temp14/</guid>
+      <description>이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
   </channel>
 </rss>
