@@ -39,7 +39,7 @@
 	"title": "OCI 기본 개념 &amp; 용어 정리",
 	"tags": [],
 	"description": "",
-	"content": "Oracle Cloud Infrastructure(OCI)를 구성하는 기본 개념과 주요 용어 정리를 다룹니다. OCI LiveLog를 진행하기 위해서 사전에 알아야 하는 기본 지식과 주요 용어를 정리하는 합니다.\n "
+	"content": "Oracle Cloud Infrastructure(OCI)를 구성하는 기본 개념과 주요 용어 정리를 다룹니다. OCI LiveLog를 진행하기 위해서 사전에 알아야 하는 기본 지식과 주요 용어를 정리하는 합니다.\nLivelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다. Livelog는 Youtube에 배포된 동영상과 블로그 문서로 구성됩니다. Livelog의 블로그 문서는 동영상을 진행하기 위한 보조 정보를 중심으로 작성됩니다.\n  "
 },
 {
 	"uri": "http://taewan.kim/oci-livelogs/010.oci_basics/020.oci_basic_config/",
