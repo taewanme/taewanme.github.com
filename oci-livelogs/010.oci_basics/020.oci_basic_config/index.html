@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2021-04-03T12:14:11 KST">
+
+<meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
+<meta name="generator" content="Hugo 0.27.1" />
+<meta property="og:title" content="OCI 테넌시(Tenancy) 기본 설정" />
+<meta property="og:description" content="OCI(Oracle Cloud Infrastructure) Oracle Cloud를 사용하기 위해서는 OCI 계정이 필요합니다. 오라클이 무료로 제공하는 프로모션 프로그램인 OCI Free Tiral 계정을 만드는 과정을 소개합니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/oci-livelogs/010.oci_basics/020.oci_basic_config/" />
+
+
+
+<meta property="article:published_time" content="2020-03-27T09:11:05&#43;09:00"/>
+<meta property="article:modified_time" content="2020-03-27T09:11:05&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+
+
+<title>OCI 테넌시(Tenancy) 기본 설정 :: OCI LiveLogs</title>
+
+<link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
+<link href="/oci-livelogs/css/font-awesome.min.css" rel="stylesheet">
+<link href="/oci-livelogs/css/nucleus.css" rel="stylesheet">
+<link href="/oci-livelogs/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/oci-livelogs/css/bootstrap.min.css">
+<script src="/oci-livelogs/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "http:\/\/taewan.kim\/oci-livelogs";
+</script>
+<meta name="description" content="OCI(Oracle Cloud Infrastructure) Oracle Cloud를 사용하기 위해서는 OCI 계정이 필요합니다. 오라클이 무료로 제공하는 프로모션 프로그램인 OCI Free Tiral 계정을 만드는 과정을 소개합니다.">
+
+
+<link href='/oci-livelogs/css/railload.css' rel="stylesheet"/>
+
+
+<link href="/oci-livelogs/css/twstyle.css" rel="stylesheet">
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?style=Sons-Of-Obsidian"></script>
+
+
+<style>
+    li.L0, li.L1, li.L2, li.L3,
+    li.L5, li.L6, li.L7, li.L8
+       { list-style-type: decimal !important }
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162015179-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162015179-1');
+</script>
+
+    
+  </head>
+  <body data-url="/oci-livelogs/010.oci_basics/020.oci_basic_config/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="http://taewan.kim/oci-livelogs">OCI LiveLogs</a>
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://cloud.oracle.com"  rel="noopener">
+                  <i class='fa fa-cloud'></i> <label>Oracle Cloud</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://docs.cloud.oracle.com/"  rel="noopener">
+                  <i class='fa fa-book'></i> <label>OCI Docs</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="http://taewan.kim/"  rel="noopener">
+                  <i class='fa fa-send'></i> <label>taewan.kim blog</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+    <li data-nav-id="http://taewan.kim/oci-livelogs/000.index/" class="dd-item
+        ">
+      <div>
+      <a href="/oci-livelogs/000.index/">OCI LiveLogs</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="http://taewan.kim/oci-livelogs/010.oci_basics/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/oci-livelogs/010.oci_basics/">OCI 입문자 가이드</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="http://taewan.kim/oci-livelogs/010.oci_basics/000.basic_concept/" class="dd-item">
+        <div>
+          <a href="/oci-livelogs/010.oci_basics/000.basic_concept/">
+            OCI 기초 &amp; 용어 정리
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/oci-livelogs/010.oci_basics/010.oci_free_tier/" class="dd-item">
+        <div>
+          <a href="/oci-livelogs/010.oci_basics/010.oci_free_tier/">
+            OCI Free Tier 신청
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/oci-livelogs/010.oci_basics/015.oci_marketing_free_tier/" class="dd-item">
+        <div>
+          <a href="/oci-livelogs/010.oci_basics/015.oci_marketing_free_tier/">
+            OCI Marketing Free Tier 신청
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/oci-livelogs/010.oci_basics/020.oci_basic_config/" class="dd-item active">
+        <div>
+          <a href="/oci-livelogs/010.oci_basics/020.oci_basic_config/">
+            OCI 테넌시(Tenancy) 기본 설정
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/oci-livelogs/010.oci_basics/025.oci_linux_vm/" class="dd-item">
+        <div>
+          <a href="/oci-livelogs/010.oci_basics/025.oci_linux_vm/">
+            OCI Linux VM 배포
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/oci-livelogs/010.oci_basics/028.oci_windows_vm/" class="dd-item">
+        <div>
+          <a href="/oci-livelogs/010.oci_basics/028.oci_windows_vm/">
+            OCI Windows VM 배포
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="http://taewan.kim/oci-livelogs/050.data_ai/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci-livelogs/050.data_ai/">OCI Data 및 AI</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="http://taewan.kim/oci-livelogs/050.data_ai/057.datascience/" class="dd-item
+        ">
+      <div>
+      <a href="/oci-livelogs/050.data_ai/057.datascience/">OCI Data Science</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><hr />
+<div class="widget-categories widget">
+	<h4 class="widget__title">&nbsp;&nbsp;License</h4>
+	<div class="widget__content">
+		&nbsp;&nbsp;<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+	</div>
+	<div class="widget__content">
+        <div>
+        이 저작물은 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank>크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+	</div>
+</div>
+<hr />
+<div>
+    <hr/>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8469722754608892"
+         data-ad-slot="5594090168"
+         data-ad-format="auto"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <hr/>  
+  </div>
+
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/oci-livelogs/000.index/" >
+   OCI LiveLogs</option>
+    <option value="/oci-livelogs/010.oci_basics/" >
+   OCI 입문자 가이드</option> 
+      <option value="/oci-livelogs/010.oci_basics/000.basic_concept/" >- OCI 기초 &amp; 용어 정리</option>
+      <option value="/oci-livelogs/010.oci_basics/010.oci_free_tier/" >- OCI Free Tier 신청</option>
+      <option value="/oci-livelogs/010.oci_basics/015.oci_marketing_free_tier/" >- OCI Marketing Free Tier 신청</option>
+      <option value="/oci-livelogs/010.oci_basics/020.oci_basic_config/"  selected>- OCI 테넌시(Tenancy) 기본 설정</option>
+      <option value="/oci-livelogs/010.oci_basics/025.oci_linux_vm/" >- OCI Linux VM 배포</option>
+      <option value="/oci-livelogs/010.oci_basics/028.oci_windows_vm/" >- OCI Windows VM 배포</option>
+  
+    <option value="/oci-livelogs/050.data_ai/" >
+   OCI Data 및 AI</option>
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/oci-livelogs/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/oci-livelogs/js/auto-complete.js"></script>
+        <link href="/oci-livelogs/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "http:\/\/taewan.kim\/oci-livelogs";
+          
+        </script>
+        <script type="text/javascript" src="/oci-livelogs/js/search.js"></script>
+      </div>
+    <h1>OCI 테넌시(Tenancy) 기본 설정</h1>
+
+
+     
+      
+  
+    
+    
+    
+    
+
+
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/_pZbxh6tM0s" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
+ </div>
+
+
+<hr />
+
+<p>이전 Livelog에서는 OCI Free Tier를 등록하는 방법에 대해서 진행했습니다. 이번 Livelog에서는 새로 생성한 OCI Tenancy에 OCI 사용자 생성 및 권한 설정, 데모를 위한 기본 네트워크 구성 작업을 진행합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/usersetting/1200.jpg" alt="" /></p>
+
+<div class="notices note" ><p><p><strong><font color='red'>Livelog</font></strong>는 동영상 데모를 중심으로 작성된 컨텐츠입니다. <strong><font color='red'>Livelog</font></strong>는 Youtube에 배포된 동영상과 블로그 문서로 구성됩니다. <strong><font color='red'>Livelog</font></strong>의 블로그 문서는 동영상을 진행하기 위한 보조 정보를 중심으로 작성됩니다.</p>
+</p></div>
+
+
+<h2 id="목차">목차</h2>
+
+<p>이번 Livelog에서는 새로 만든 OCI Tenancy를 위한 기본 설정을 위하여 다음과 같은 작업을 진행합니다.</p>
+
+<ul>
+<li>새로운 OCI 사용자 생성</li>
+<li>새로운 OCI 사용자 그룹 생성 및 사용자 할당</li>
+<li>사용자 패스워드 변경 및 로그인</li>
+<li>신규 Comaprtment 생성</li>
+<li>기본 권한(Policy) 설정
+
+<ul>
+<li>Demo 컴파트먼트 권한 부여</li>
+<li>Cloud Shell을 위한 권한 설정</li>
+</ul></li>
+<li>VCN(Virtual Cloud Network) 생성</li>
+</ul>
+
+<h2 id="사전-준비-사항">사전 준비 사항</h2>
+
+<p>이번 Livelog는 OCI Free Tier 계정이 생성됨을 가정합니다. 아직 OCI Free Tier가 없는 상태라면 다음 링크를 참조하여 OCI 계정을 준비하시기 바랍니다.</p>
+
+<ul>
+<li><a href="http://taewan.kim/livelog/" target="_blank">OCI Free Tier 신청 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+</ul>
+
+<h3 id="oci-tenancy-기본-정보">OCI Tenancy 기본 정보</h3>
+
+<p>이전 Livelog <a href="http://taewan.kim/livelog/" target="_blank">OCI Free Tier 신청 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+에서 생성한 OCI Tenancy(계정) 정보는 다음과 같다고 가정합니다.</p>
+
+<ul>
+<li>OCI Tenancy 명: taewandemo003</li>
+<li>Admin User(IDCS): iamtaewan@gmail.com</li>
+<li>Admin User 비밀번호: Welcome123456!</li>
+</ul>
+
+<h2 id="배경지식-idcs-oci-iam">배경지식: IDCS &amp; OCI IAM</h2>
+
+<p>오라클 클라우드는 사용자 계정을 관리하는 IDCS(Identity Cloud Service)와 OCI IAM 서비스를 제공합니다. IDCS(Identity Cloud Service)는 오라클 클라우드 초기부터 계정 관리와 사용자 권한을 관리하는 체계였습니다. Gen2가 시작되면서 Oracle Cloud Infrastructure(OCI)가 새로운 인프라로 공개됐습니다. OCI안에서 사용자 계정과 권한을 제공하는 새로운 관리 서비스가 IAM입니다. 현재 IDCS는 IAM과 통합되어 있어 있으며, 점진적으로 IAM에 흡수되는 과정에 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/03/ocioraclecloud/220.jpg" alt="" /></p>
+
+<p>IDCS에서 만든 사용자 ID는 OCI IAM으로 페더레이션됩니다. IDCS는 IDCS Group을 OCI IAM 그룹에 매핍하는 기능을 제공합니다. 반대로 OCI IAM에서 생성한 사용자 ID는 IDCS에 페더레이션되지 않습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/identity/020.jpg" alt="" /></p>
+
+<h2 id="oci-사용자-생성">OCI 사용자 생성</h2>
+
+<p><strong>taewandemo003</strong> 테넌시에 Admin User로 로그인하고 다음과 같은 OCI IAM 사용자를 생성합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>IAM User ID</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>developer01</td>
+<td>개발자 ID로 사용</td>
+</tr>
+
+<tr>
+<td>operator01</td>
+<td>운영자 ID로 사용</td>
+</tr>
+
+<tr>
+<td>data_analyst01</td>
+<td>데이터 분석가 ID로 사용</td>
+</tr>
+
+<tr>
+<td>admin</td>
+<td>OCI 관리자 ID</td>
+</tr>
+</tbody>
+</table>
+
+<p>사용자 설정이 완료되면 다음과 같은 상태가 됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/11/basicsetting/010.jpg" alt="" /></p>
+
+<h2 id="oci-사용자-그룹-생성-및-사용자-할당">OCI 사용자 그룹 생성 및 사용자 할당</h2>
+
+<p><strong>taewandemo003</strong> 테넌시에 Admin User로 로그인하고 다음과 같이 OCI 사용자 그룹을 OCI 사용자를 할당 합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>IAM User Group</th>
+<th>Group 설명</th>
+<th>할당 OCI User</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>developers</td>
+<td>개발자 그룹</td>
+<td>developer01</td>
+</tr>
+
+<tr>
+<td>operators</td>
+<td>운영자 그룹</td>
+<td>operator01</td>
+</tr>
+
+<tr>
+<td>data_analysts</td>
+<td>데이터 분석가 그룹</td>
+<td>data_analyst01</td>
+</tr>
+
+<tr>
+<td>administrators</td>
+<td>OCI 관리자 그룹, 기존에 생성된 그룹 재사용</td>
+<td>admin</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="https://taewanmerepo.github.io/2020/11/basicsetting/020.jpg" alt="" /></p>
+
+<h2 id="사용자-패스워드-변경-및-로그인">사용자 패스워드 변경 및 로그인</h2>
+
+<p><strong>taewandemo003</strong> 테넌시에 Admin User로 로그인하여 만든 4개 OCI 사용자의 패스워드를 초기화합니다. 그리고 각 사용자로 OCI IAM 로그인을 진행합니다.</p>
+
+<h2 id="comaprtment-생성">Comaprtment 생성</h2>
+
+<p>OCI에서 자원(VCN, VM, Database, Storage 및 여러 서비스)을 만들 때, Compartment는 OCI 자원을 논리적으로 묶는 역할을 담당합니다. Compartment로 여러 자원을 묶고, OCI 컴파트먼트 단위로 자원 모니터링, 과금 및 권한 설정을 합니다. Compartment는 OCI 클라우드 자원을 관리하는 IAM 핵심 구성요소입니다.</p>
+
+<p>컴파트먼트는 중첩 디렉터리 구조를 갖습니다. OCI의 모든 자원은 특정 컴파트먼트에 소속됩니다. 컴파트먼트는 OCI 글루벌 범위를 갖습니다. 컴파트먼트는 특정 리전에 종속적이지 않으며, 특정 리전에서 만든 컴파트먼트는 모든 리전에서 사용 가능합니다.</p>
+
+<p><strong>Compartment(컴파트먼트)</strong>는 한국어로 &ldquo;<strong>구획</strong>&ldquo;으로 번역됩니다.</p>
+
+<h3 id="demo-컴파트먼트-만들기">demo 컴파트먼트 만들기</h3>
+
+<p>demo 컴파트먼트 생성은 OCI 관리자 계정(admin)으로 진행합니다. root 컴파트먼트 아래에 demo 컴파트먼트를 다음과 같이 설정하고 생성합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>설정 값</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Name</td>
+<td>demo</td>
+</tr>
+
+<tr>
+<td>Description</td>
+<td>demo 컴파트먼트</td>
+</tr>
+
+<tr>
+<td>Parent Compartment</td>
+<td>root</td>
+</tr>
+</tbody>
+</table>
+
+<p>Compartment가 정상적으로 생성되면 위 그림과 같이 Compartments 관리 페이지가 출력됩니다. 이 페이지에서 demo 컴파트먼트 생성된 것을 확인할 수 있습니다</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/11/basicsetting/060.jpg" alt="" /></p>
+
+<h2 id="policy">Policy</h2>
+
+<p>OCI에서는 IAM Policy로 OCI 자원 권한 설정을 합니다. OCI IAM policy의 기본 문법은 다음과 같습니다.</p>
+
+<pre><code>Allow &lt;subject&gt; to &lt;verb&gt; &lt;resource-type&gt; in &lt;location&gt; where &lt;conditions&gt;
+</code></pre>
+
+<p>Policy를 사용하는 패턴은 다음과 같습니다.</p>
+
+<ul>
+<li>Case 1: 특정 OCI Group을 특정 Compartment에 포함된 자원의 접근 제어 설정</li>
+</ul>
+
+<pre><code>Allow group &lt;group_name&gt; to &lt;verb&gt; &lt;resource-type&gt; in compartment &lt;compartment_name&gt;
+</code></pre>
+
+<hr />
+
+<ul>
+<li>Case 2: 특정 OCI Group이 Tenancy 전체 자원 접근 제어 설정</li>
+</ul>
+
+<pre><code>Allow group &lt;group_name&gt; to &lt;verb&gt; &lt;resource-type&gt; in tenancy
+</code></pre>
+
+<p>Policy에 적용하는 verb는 다음과 같습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>VERB</th>
+<th>설명</th>
+<th>대상 OCI USER</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>inspect</td>
+<td>- 사용자 정의 메타데이터, 보안 정보를 제외한 자원을 리스트(조회)할 수 있는 권한</td>
+<td>조회가 필요한 제3자 사용자</td>
+</tr>
+
+<tr>
+<td>read</td>
+<td>- inspect에 추가하여 사용자 정의 메타데이터도 조회할 수 있는 권한 포함</td>
+<td>조회가 필요한 내부 사용자</td>
+</tr>
+
+<tr>
+<td>use</td>
+<td>- read의 모든 권한 포함</br>- 자원을 사용할 수 있는 권한 포함</br>- 자원 생성, 삭제에 대한 권한은 포함하지 않음</td>
+<td>일반 사용자</td>
+</tr>
+
+<tr>
+<td>manage</td>
+<td>해당 자원의 모든 권한 부여</td>
+<td>관리자</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="demo-컴파트먼트-권한-부여">Demo 컴파트먼트 권한 부여</h3>
+
+<p>demo 컴파트먼트의 Policy 설정은 OCI 관리자 계정으로 진행합니다. demo 컴파트먼트에 대한 권한을 사용자 그룹 별로 다음과 같이 설정합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>사용자 그룹</th>
+<th>권한</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>developers</td>
+<td>manage</td>
+<td>demo 컴파트먼트의 모든 리소스 생성, 사용, 삭제 권한 부여</td>
+</tr>
+
+<tr>
+<td>operators</td>
+<td>read</td>
+<td>demo 컴파트먼트의 모든 리소스의 읽기 권한 부여</td>
+</tr>
+
+<tr>
+<td>data_analysts</td>
+<td>manage</td>
+<td>demo 컴파트먼트의 모든 리소스 생성, 사용, 삭제 권한 부여</td>
+</tr>
+</tbody>
+</table>
+
+<p>다음과 같은 Policy를 생성합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>설정 값</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Name</td>
+<td>BasicPolicy</td>
+</tr>
+
+<tr>
+<td>Description</td>
+<td>Default Policy</td>
+</tr>
+
+<tr>
+<td>Compartment</td>
+<td>root</td>
+</tr>
+</tbody>
+</table>
+
+<p>Policy Builder에 다음과 같은 설정을 입력합니다.</p>
+
+<pre><code>Allow group developers, data_analysts to manage all-resources in compartment demo
+Allow group operators to read all-resources in compartment demo
+</code></pre>
+
+<h3 id="cloud-shell을-위한-policy-설정">Cloud Shell을 위한 Policy 설정</h3>
+
+<p>Cloud Shell은 OCI Console(OCI 관리 콘솔)에서 실행되는 브라우저 기반 가상 터미널입니다. OCI Cloud Shell를 이용하면 PuTTY를 사용하지 않고 OCI VM 인스턴스에 접속하거나 추가적인 계정 설정 작업 없이 OCI CLI와 같은 툴을 사용할 수 있습니다.</p>
+
+<p>OCI 사용자가 Cloud Shell을 사용하기 위해서는 root 컴파트먼트에 다음 Policy를 설정해야 합니다.</p>
+
+<pre><code>allow group &lt;GROUP-NAME&gt; to use cloud-shell in tenancy
+</code></pre>
+
+<p>develper01과 data_analyst01 사용자가 Cloud Shell을 사용하기 위해서 다음 Policy를 root 컴파트먼트에 생성합니다.</p>
+
+<pre><code>allow group data_analysts, developers to use cloud-shell in tenancy
+</code></pre>
+
+<p>cloud shell을 실행하고 oci cli 호출을 테스트합니다.</p>
+
+<pre><code>oci os ns get
+oci iam region list
+oci iam region list --output table
+</code></pre>
+
+<h2 id="vcn-virtual-cloud-network-생성">VCN(Virtual Cloud Network) 생성</h2>
+
+<p>OCI Compute 서비스를 사용하면 여러 VCN(Virtual Cloud Network)을 만들 수 있습니다. OCI 자원을 생성/배포하기 위해서는 다른 자원을 생성하기 전에 VCN을 먼저 만들어야 합니니다. VCN은 다음과 같은 네트워크 컴포넌트로 구성됩니다.</p>
+
+<ul>
+<li>Subnet</li>
+<li>Route Table</li>
+<li>Security List</li>
+<li>Internet Gateway</li>
+<li>NAT Gateway</li>
+<li>Service Gateway</li>
+<li>Dynamic Routing Gateway(DRG)</li>
+<li>Load Balancer</li>
+<li>Local/Remote Peering</li>
+</ul>
+
+<h3 id="demovcn-만들기">demovcn 만들기</h3>
+
+<p>demovcn VCN을 만들기 위하여 <strong>developer01</strong> 사용자로 OCI Console에 OCI IAM 로그인 합니다.</p>
+
+<p>VCN 관리 페이지에서 컴파트먼트로 demo를 선택하고 demovcn을 생성합니다.</p>
+
+<p>간편 모드로 2가지 형태의 VCN을 만들 수 있습니다. 간편 모드가 지원하는 2개 형태는 다음과 같은 특징을 갖습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/11/basicsetting/230.jpg" alt="" /></p>
+
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>설정</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>인터넷 접속을 위한 VCN</td>
+<td>- 2개 서브넷 구성(public subnet, private subnet)</br>- 주요 구성: Internet Gateway, NAT Gateway, Service Gateway</td>
+</tr>
+
+<tr>
+<td>인터넷 접속 사이트간 VCN Connect를 통한 VCN</td>
+<td>- <strong>VCN with Internet Connectivity</strong>에 VPN 기본 설정 구성</td>
+</tr>
+</tbody>
+</table>
+
+<p>“<strong>인터넷 접속을 위한 VCN</strong>“을 선택하고 VCN을 다음과 같은 정보로 생성합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>입력 항목</th>
+<th>설정 값</th>
+<th>비고</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>VCN Name</td>
+<td>demovcn</td>
+<td>신규입력</td>
+</tr>
+
+<tr>
+<td>Compartment</td>
+<td>demo</td>
+<td>신규입력</td>
+</tr>
+
+<tr>
+<td>VCN CIDR Block</td>
+<td>10.0.0.0/16</td>
+<td>기본값 사용</td>
+</tr>
+
+<tr>
+<td>Public Subnet CIDR Block</td>
+<td>10.0.0.0/24</td>
+<td>기본값 사용</td>
+</tr>
+
+<tr>
+<td>Private Subnet CIDR Block</td>
+<td>10.0.1.0/24</td>
+<td>기본값 사용</td>
+</tr>
+
+<tr>
+<td>Use DNS HOSTINGNAMES In the VCN</td>
+<td>체크</td>
+<td>기본값 사용</td>
+</tr>
+</tbody>
+</table>
+
+<p>2개 서브넷으로 구성된 demovcn의 상세 페이지를 확인할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/11/basicsetting/270.jpg" alt="" /></p>
+
+<h2 id="참고-자료">참고 자료</h2>
+
+<ul>
+<li><a href="http://taewan.kim/cloud/oci_user/" target="_blank">OCI 사용자 기본 설정(Feat. OCI IAM) <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+<li><a href="http://taewan.kim/cloud/oci_basic_config/" target="_blank">OCI Tenancy 기본 환경 설정 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+</ul>
+
+
+    
+    
+      <div class="alert alert-info" role="alter">
+  <li><strong>문서 생성:</strong> 2020-03-27 09:11 / <string>최종 문서 수정:</strong> 2020-03-27 09:11 </li>
+</div><div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/oci-livelogs/010.oci_basics/015.oci_marketing_free_tier/" title="OCI Marketing Free Tier 신청"> <i class="fa fa-chevron-left"></i><label>OCI Marketing Free Tier 신청</label></a>
+    <a class="nav nav-next" href="/oci-livelogs/010.oci_basics/025.oci_linux_vm/" title="OCI Linux VM 배포" style="margin-right: 0px;"><label>OCI Linux VM 배포</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+  <div class="chevrons">
+      <div class="row">
+    <div class="author left">
+        <img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan2.jpg" height="90" width="90">
+    </div>
+    <div class="author right">
+		<li><b>작성자: 김태완</b></li>
+        <li>사랑하는 민수와 데이터 관리, 데이터 분석 &amp; 클라우드에 집중하고 있습니다.</li>
+        <li>E-mail: taewan.me@gmail.com</li>
+    </div>
+</div><div class="panel panel-danger">
+<div class="panel-heading">Disclaimer</div>
+<div class="panel-body">이 저작물은 Oracle과 관계없이 개인으로서 개인의 시간을 할애하여 작성된 글 입니다. 본 글의 내용, 입장, 예측은 Oracle을 공식적으로 <font color="red"><bold>절대</bold></font> 대변하지 않습니다.</div>
+</div>
+<hr />
+
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/oci-livelogs/010.oci_basics/020.oci_basic_config/"></div>
+
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 27/03/2020
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+
+
+
+  </div>
+  
+  
+</footer>
+
+<script src="/oci-livelogs/js/clipboard.min.js"></script>
+
+<link href="/oci-livelogs/css/featherlight.min.css" rel="stylesheet">
+<script src="/oci-livelogs/js/featherlight.min.js"></script>
+
+
+
+<script src="/oci-livelogs/theme-flex/script.js"></script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        
+        ga('create', 'UA-72835175-1', 'auto');
+        ga('send', 'pageview');
+</script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2&appId=404519239985000&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+    
+
+    
+    
+
+    
+
+
+  </body>
+</html>

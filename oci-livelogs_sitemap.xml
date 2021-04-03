@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://taewan.kim/oci-livelogs/000.index/</loc>
+    <lastmod>2021-03-29T01:11:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/oci-livelogs/010.oci_basics/000.basic_concept/</loc>
+    <lastmod>2020-03-27T09:11:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/oci-livelogs/</loc>
+    <lastmod>2020-03-01T01:11:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/oci-livelogs/010.oci_basics/</loc>
+    <lastmod>2021-03-29T01:11:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/oci-livelogs/010.oci_basics/010.oci_free_tier/</loc>
+    <lastmod>2020-03-27T09:11:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/oci-livelogs/010.oci_basics/015.oci_marketing_free_tier/</loc>
+    <lastmod>2020-03-27T09:11:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/oci-livelogs/010.oci_basics/020.oci_basic_config/</loc>
+    <lastmod>2020-03-27T09:11:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/oci-livelogs/010.oci_basics/025.oci_linux_vm/</loc>
+    <lastmod>2020-03-27T09:11:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/oci-livelogs/010.oci_basics/028.oci_windows_vm/</loc>
+    <lastmod>2020-03-27T09:11:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/oci-livelogs/050.data_ai/</loc>
+    <lastmod>2021-03-30T01:11:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/oci-livelogs/050.data_ai/057.datascience/</loc>
+    <lastmod>2021-03-29T01:11:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/oci-livelogs/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://taewan.kim/oci-livelogs/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>
