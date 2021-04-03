@@ -12,16 +12,6 @@
     
     
     <item>
-      <title>OCI 기본 개념 &amp; 용어 정리</title>
-      <link>http://taewan.kim/oci-livelogs/010.oci_basics/000.basic_concept/</link>
-      <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/oci-livelogs/010.oci_basics/000.basic_concept/</guid>
-      <description>Oracle Cloud Infrastructure(OCI)를 구성하는 기본 개념과 주요 용어 정리를 다룹니다. OCI LiveLog를 진행하기 위해서 사전에 알아야 하는 기본 지식과 주요 용어를 정리하는 합니다.
- </description>
-    </item>
-    
-    <item>
       <title>OCI Free Tier 신청</title>
       <link>http://taewan.kim/oci-livelogs/010.oci_basics/010.oci_free_tier/</link>
       <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
@@ -40,6 +30,16 @@ OCI Free Tier OCI Free Tier를 등록하면 30일간 자유롭게 사용할 수 
       <guid>http://taewan.kim/oci-livelogs/010.oci_basics/015.oci_marketing_free_tier/</guid>
       <description>Oracle Cloud Free Tier(이하 Cloud Free Tier)는 별도 비용 없이 오라클 클라우드 사용 경험을 제공하는 프로모션 프로그램입니다. Cloud Free Tier에 계정을 등록하면 30일 동안 300달러에 해당하는 오라클 클라우드 자원을 사용할 수 있는 크래딧을 제공합니다.
 일반 Cloud Free Tier 프로그램과 별도로 특별한 형태의 Cloud Free Trial을 제공하는 마케팅 프로그램이 있습니다. 이 프로그램을 편의상 “마케팅 트라이얼”이라고 부릅니다. 마케팅 트라이얼은 온라인/오프라인 오라클 행사에 참여한 분들에게 월간 500달러 상당의 Cloud Free Tier를 제공하는 프로그램입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI 기본 개념 &amp; 용어 정리</title>
+      <link>http://taewan.kim/oci-livelogs/010.oci_basics/000.basic_concept/</link>
+      <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-livelogs/010.oci_basics/000.basic_concept/</guid>
+      <description>Oracle Cloud Infrastructure(OCI)를 구성하는 기본 개념과 주요 용어 정리를 다룹니다. OCI LiveLog를 진행하기 위해서 사전에 알아야 하는 기본 지식과 주요 용어를 정리하는 합니다.
+ </description>
     </item>
     
     <item>

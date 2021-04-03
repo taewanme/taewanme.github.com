@@ -7,13 +7,6 @@
 	"content": "   1. LiveLog란? LiveLogs는 유튜브, 웹문서, 깃헙(Github), 슬라이드쉐어(Slidesahre)를 구조화하여 정보와 함께 데모를 제공하는 구조화된 컨텐츠입니다. LiveLog 형식으로 작성된 콘텐츠는 동영상을 통해서 개념와 데모 절차를 정보를 전달하고, 해당 동영상이 참조하는 문서를 이용하여 실습을 쉽게 따라할 수 있도록 구성됩니다. 위 동영상을 통해서 LiveLog의 의미를 확인할 수 있습니다.\n2. OCI(Oracle Cloud Infrastructure) 오라클 클라우드는 2016년 하반기에 클라우드 서비스를 시작했습니다. 오라클 클라우드는 탄력적이고 유연한 자원 관리의 특징을 갖는 퍼블릭 클라우드입니다. 이런 디자인 원칙을 강조한 오라클 2세대 클라우드 IaaS 서비스를 OCI(Oracle Cloud Infrastructure)라고 합니다. 2020년 오라클 클라우드의 공식 브랜드 명은 Oracle Cloud에서 OCI(Oracle Cloud Infrastructure)로 변경됐습니다.\n3. OCI Livelogs OCI 입문자를 위하여 LiveLog 형식으로 OCI 사용자 가이드를 제공하는 것을 OCI Livelogs라고 합니다. OCI Livelogs는 youtube과 웹사이트로 구성됩니다.\n 동영상: Youtube 채널: Σ민수아빠    문서: taewan.kim 블로그 - OCI Livelogs     "
 },
 {
-	"uri": "http://taewan.kim/oci-livelogs/010.oci_basics/000.basic_concept/",
-	"title": "OCI 기본 개념 &amp; 용어 정리",
-	"tags": [],
-	"description": "",
-	"content": "Oracle Cloud Infrastructure(OCI)를 구성하는 기본 개념과 주요 용어 정리를 다룹니다. OCI LiveLog를 진행하기 위해서 사전에 알아야 하는 기본 지식과 주요 용어를 정리하는 합니다.\n "
-},
-{
 	"uri": "http://taewan.kim/oci-livelogs/",
 	"title": "OCI LiveLogs",
 	"tags": [],
@@ -40,6 +33,13 @@
 	"tags": [],
 	"description": "OCI(Oracle Cloud Infrastructure) Oracle Cloud를 사용하기 위해서는 OCI 계정이 필요합니다. 오라클이 무료로 제공하는 프로모션 프로그램인 OCI Free Tiral 계정을 만드는 과정을 소개합니다.",
 	"content": "   Oracle Cloud Free Tier(이하 Cloud Free Tier)는 별도 비용 없이 오라클 클라우드 사용 경험을 제공하는 프로모션 프로그램입니다. Cloud Free Tier에 계정을 등록하면 30일 동안 300달러에 해당하는 오라클 클라우드 자원을 사용할 수 있는 크래딧을 제공합니다.\n일반 Cloud Free Tier 프로그램과 별도로 특별한 형태의 Cloud Free Trial을 제공하는 마케팅 프로그램이 있습니다. 이 프로그램을 편의상 “마케팅 트라이얼”이라고 부릅니다. 마케팅 트라이얼은 온라인/오프라인 오라클 행사에 참여한 분들에게 월간 500달러 상당의 Cloud Free Tier를 제공하는 프로그램입니다. OCI Marketing Free Tier를 등록하는 절차를 Livelog로 소개합니다.\nLivelog는 동영상 데모를 중심으로 작성된 컨텐츠입니다. Livelog는 Youtube에 배포된 동영상과 블로그 문서로 구성됩니다. Livelog의 블로그 문서는 동영상을 진행하기 위한 보조 정보를 중심으로 작성됩니다.\n 오라클 마케팅 트라이얼 차별성 오라클 마케팅 트라이얼은 오라클 행사에 참여하시는 분들에게 제공됩니다. 오라클 마케팅 트라이얼은 일반 Cloud Free Tier와 다음과 같은 차별성을 갖습니다.\n 간편한 사용자 등록 절차 오라클 클라우드 크래딧: 500불  오라클 마케팅 트라이얼 등록 절차는 일반 Cloud Free Tier 계정 등록 절차보다 간단합니다. 핸드폰 및 신용카드 인증 절차가 없습니다. 또한 일반 Cloud Free Tier보다 많은 500불 크래딧을 제공합니다.\n오라클 마케팅 트라이얼 등록 절차 오라클 마케팅 트라이얼 제공을 안내하는 오라클 이벤트에 참여 등록하면, 참석자가 등록한 E-mail로 오라클 마케팅 트라이얼이 사전 등록됩니다. 해당 이벤트가 끝나면 참석자는 기존에 등록한 E-mail로 마케팅 트라이얼 계정을 직접 생성할 수 있습니다.\n오라클 마케팅 트라이얼 제공을 공지한 오라클 행사에 참여한 사용자는 행사가 끝나면 다음과 같은 절차로 마케팅 트라이얼 계정을 직접 생성합니다.\n오라클 마케팅 트라이얼 계정 등록의 시작점은 https://cloud.oracle.com 입니다.\n오라클 클라우드 로그인 페이지에서 \u0026ldquo;Sign Up\u0026rdquo; 버튼을 클릭하면 다음과 같이 Oracle Cloud Free Tier 계정 등록 폼이 나타납니다. 이 폼에 국가, 이름, 사용할 E-mail(전자메일)을 입력합니다. 일반 Cloud Free Tier 계정이 아닌 마케팅 트라이얼 계정을 생성하기 위해서는 E-mail 항목에 오라클 행사 참여에 등록했던 E-mail을 입력해야 합니다.\n앞에서 3번 항목에 입력한 E-mail이 오라클 마케팅 트라이얼 대상자로 등록된 상태라면 500달러 마케팅 트라이얼 제공 대상임을 알리는 \u0026ldquo;Oracle 특별 제안(Special Oracle Offer)\u0026rdquo; 메시지가 출력됩니다. 이 팝업에 \u0026ldquo;제공 사항 선택(Select Offer)\u0026rdquo; 버튼을 클릭하면 오라클 마케팅 트라이얼 계정 등록 절차가 진행됩니다.\n\u0026ldquo;Oracle 특별 제안(Special Oracle Offer)\u0026rdquo; 메시지가 출력되지 않는다면 이유는 다음 2가지로 예상할 수 있습니다.\n 현지 입력한 E-mail은 마케팅 트라이얼 대상자가 아님 특정 오라클 이벤터의 마케팅 트라이얼 대상자 설정이 완료되지 않음  \u0026ldquo;제공 사항 선택(Select Offer)\u0026rdquo; 버튼하면 다음 이미지와 같이 4개의 새로운 입력 항목이 출력됩니다.\n   # 입력 항목 설명 비고     1 비밀번호 비밀번호 입력과 입력 확인 항목 2개 8자 이상 40자 이하의 대소눈자, 숫자, 특수문자 조합   2 회사이름 입력 필수 항목 아님    3 클라우드 계정 이름 OCI 계정을 대표하는 Tenancy 이름 필수 입력 항목   4 홈영역(Home Region) 트라이얼 계정이 활성화 되는 리전 트라이얼 계정은 Home Region에만 클라우드 자원을 배포 가능\n홈리전 이외 리전 접근 불가    Livelog에서 사용할 정보 Livelog에서는 다음과 같은 정보를 이용합니다.\n   # 입력 항목 입력 값 설명     1 E-mail i.am.taewan@gmail.com 마케팅 트라이얼 등록 메일   2 비밀번호 Welcome123456 패스워드예시   3 클라우드 계정 이름 taewandemo004    4 홈영역(Home Region) 서울리전     클라우드 계정 이름과 홈 영역(Home Region)은 신중하게 설정해야 합니다. 클라우드 계정을 대표하는 이름인 OCI Tenancy로 사용됩니다. OCI 트라이얼 계정은 홈 영역(Home Region)에만 자원 배포가 가능하고, 홈 영역이 아닌 다른 리전은 접근이 불가능합니다.\n   OCI 핵심 관심 영역 추천 리전 이유     최신 OCI 서비스 활용에 관심이 많을 경우 서울 리전/도쿄 리전 서울과 도쿄 리전에 신규 서비스 배포가 빠른 리전   Always Free 사용에 관심이 많을 경우 대한민국 춘천 리전 2020년 11월 현재 춘천 리전이 Always Free의 Capacity에 여유가 많은 상태   Multi-AD(Availability Domain)에 관심이 많을 경우 U.S. Ashiburn 리전 Ashiburn 리전은 3개 AD로 구성    이용 약관 4개 항목이 체크 박스를 체크하여 동의하고, \u0026ldquo;계속\u0026rdquo; 버튼을 클릭합니다.\n사용자 주소를 입력합니다. 주소는 한글 입력이 가능합니다. 우편번호 항목의 경우 5자리 우편번호 포맷을 입력해야 합니다. 주소 입력을 완료하고 \u0026ldquo;계속\u0026rdquo; 버튼을 클릭합니다.\n마지막으로 사용자의 전화번호를 입력합니다. 전화번호는 사용자 정보 등록 목적이며, 사용자 인증 및 다른 용도로 사용되지 않습니다. 전화번호 국가 코드는 앞에서 입력한 국가 정보를 기준으로 기본 설정됩니다. 국가 코드를 입력할 경우 전화번호의 첫 번째 \u0026ldquo;0\u0026rdquo;은 생략합니다. 다음은 전화번호 입력 예입니다.\n   국가 전화번호 입력 전화 번호     대한민국 010-3123-1234 *82 1031231234    전화번호를 입력한 후, 계약에 체크하고 \u0026ldquo;내 무료 체험판 시작하기(Start my free trial)\u0026rdquo; 버튼을 클릭합니다.\n\u0026ldquo;Start my free trial\u0026rdquo; 버튼을 클릭하면 다음과 같이 계정 생성 화면이 출력됩니다.\n트라이얼 계정 생성이 완료되면, OCI Console 화면으로 이동합니다.\nOCI Console에서 OCI 클라우드 서비스에 접근하고 사용할 수 있습니다.\n요약 OCI 마케팅 트라이얼은 오라클 온라인/오프라인 행사에 참여하시는 분들에게 제공되는 특별한 형태의 OCI Free Trial 프로그램입니다. OCI Free Trial은 월간 300달러 상당의 OCI 크래딧을 제공하지만, OCI 마케팅 트라이얼은 월간 500달러 크래딧을 제공합니다.\nOCI 마케팅 트라이얼 계정 등록 절차에 핸드폰 인증 및 신용 카드 인증이 필요 없기에 간편하게 계정을 생성할 수 있습니다.\n참고문서  새로운 Oracle Cloud 프로모션: \u0008Free Tier    What can I try with my Oracle Cloud Free Trial credits?     "
+},
+{
+	"uri": "http://taewan.kim/oci-livelogs/010.oci_basics/000.basic_concept/",
+	"title": "OCI 기본 개념 &amp; 용어 정리",
+	"tags": [],
+	"description": "",
+	"content": "Oracle Cloud Infrastructure(OCI)를 구성하는 기본 개념과 주요 용어 정리를 다룹니다. OCI LiveLog를 진행하기 위해서 사전에 알아야 하는 기본 지식과 주요 용어를 정리하는 합니다.\n "
 },
 {
 	"uri": "http://taewan.kim/oci-livelogs/010.oci_basics/020.oci_basic_config/",
