@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2021-04-05T00:02:49 KST">
+
+<meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
+<meta name="generator" content="Hugo 0.27.1" />
+<meta property="og:title" content="OCI Free Tier 신청" />
+<meta property="og:description" content="OCI(Oracle Cloud Infrastructure) Oracle Cloud를 사용하기 위해서는 OCI 계정이 필요합니다. 오라클이 무료로 제공하는 프로모션 프로그램인 OCI Free Tiral 계정을 만드는 과정을 소개합니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/010.oci_free_tier/" />
+
+
+
+<meta property="article:published_time" content="2020-03-27T09:11:05&#43;09:00"/>
+<meta property="article:modified_time" content="2020-03-27T09:11:05&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+
+
+<title>OCI Free Tier 신청 :: OCI LiveLogs</title>
+
+<link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
+<link href="/oci-livelogs/css/font-awesome.min.css" rel="stylesheet">
+<link href="/oci-livelogs/css/nucleus.css" rel="stylesheet">
+<link href="/oci-livelogs/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/oci-livelogs/css/bootstrap.min.css">
+<script src="/oci-livelogs/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "http:\/\/taewan.kim\/oci-livelogs";
+</script>
+<meta name="description" content="OCI(Oracle Cloud Infrastructure) Oracle Cloud를 사용하기 위해서는 OCI 계정이 필요합니다. 오라클이 무료로 제공하는 프로모션 프로그램인 OCI Free Tiral 계정을 만드는 과정을 소개합니다.">
+
+
+<link href='/oci-livelogs/css/railload.css' rel="stylesheet"/>
+
+
+<link href="/oci-livelogs/css/twstyle.css" rel="stylesheet">
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?style=Sons-Of-Obsidian"></script>
+
+
+<style>
+    li.L0, li.L1, li.L2, li.L3,
+    li.L5, li.L6, li.L7, li.L8
+       { list-style-type: decimal !important }
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162015179-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162015179-1');
+</script>
+
+    
+  </head>
+  <body data-url="/oci-livelogs/010.oci_user_guide/quick_start/010.oci_free_tier/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="http://taewan.kim/oci-livelogs">OCI LiveLogs</a>
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="http://taewan.kim/"  rel="noopener">
+                  <i class='fa fa-home'></i> <label>taewan.kim 블로그</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="http://taewan.kim/"  rel="noopener">
+                  <i class='fa fa-youtube-play'></i> <label>Σ민수아빠</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://cloud.oracle.com"  rel="noopener">
+                  <i class='fa fa-cloud'></i> <label>Oracle Cloud</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://docs.cloud.oracle.com/"  rel="noopener">
+                  <i class='fa fa-book'></i> <label>OCI 공식문서</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+    <li data-nav-id="http://taewan.kim/oci-livelogs/000.index/" class="dd-item
+        ">
+      <div>
+      <a href="/oci-livelogs/000.index/">OCI LiveLogs</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="http://taewan.kim/oci-livelogs/010.oci_user_guide/" class="dd-item parent alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci-livelogs/010.oci_user_guide/">OCI 사용자 가이드</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/" class="dd-item parent alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci-livelogs/010.oci_user_guide/quick_start/">OCI Quick Stat [초급자]</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/000.basic_concept/" class="dd-item">
+        <div>
+          <a href="/oci-livelogs/010.oci_user_guide/quick_start/000.basic_concept/">
+            OCI 기본 개념 &amp; 용어 정리
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/010.oci_free_tier/" class="dd-item active">
+        <div>
+          <a href="/oci-livelogs/010.oci_user_guide/quick_start/010.oci_free_tier/">
+            OCI Free Tier 신청
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/020.oci_marketing_free_tier/" class="dd-item">
+        <div>
+          <a href="/oci-livelogs/010.oci_user_guide/quick_start/020.oci_marketing_free_tier/">
+            OCI Marketing Free Tier 신청
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/030.oci_basic_config/" class="dd-item">
+        <div>
+          <a href="/oci-livelogs/010.oci_user_guide/quick_start/030.oci_basic_config/">
+            OCI 테넌시(Tenancy) 기본 설정
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/040.oci_linux_vm/" class="dd-item">
+        <div>
+          <a href="/oci-livelogs/010.oci_user_guide/quick_start/040.oci_linux_vm/">
+            OCI Linux VM 배포
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/050.oci_windows_vm/" class="dd-item">
+        <div>
+          <a href="/oci-livelogs/010.oci_user_guide/quick_start/050.oci_windows_vm/">
+            OCI Windows VM 배포
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="http://taewan.kim/oci-livelogs/050.data_ai/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci-livelogs/050.data_ai/">OCI Data 및 AI</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="http://taewan.kim/oci-livelogs/050.data_ai/057.datascience/" class="dd-item
+        ">
+      <div>
+      <a href="/oci-livelogs/050.data_ai/057.datascience/">OCI Data Science</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><hr />
+<div class="widget-categories widget">
+	<h4 class="widget__title">&nbsp;&nbsp;License</h4>
+	<div class="widget__content">
+		&nbsp;&nbsp;<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+	</div>
+	<div class="widget__content">
+        <div>
+        이 저작물은 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank>크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+	</div>
+</div>
+<hr />
+<div>
+    <hr/>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8469722754608892"
+         data-ad-slot="5594090168"
+         data-ad-format="auto"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <hr/>  
+  </div>
+
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/oci-livelogs/000.index/" >
+   OCI LiveLogs</option>
+    <option value="/oci-livelogs/010.oci_user_guide/" >
+   OCI 사용자 가이드</option> 
+    <option value="/oci-livelogs/010.oci_user_guide/quick_start/" >
+  - 
+   OCI Quick Stat [초급자]</option> 
+      <option value="/oci-livelogs/010.oci_user_guide/quick_start/000.basic_concept/" >-- OCI 기본 개념 &amp; 용어 정리</option>
+      <option value="/oci-livelogs/010.oci_user_guide/quick_start/010.oci_free_tier/"  selected>-- OCI Free Tier 신청</option>
+      <option value="/oci-livelogs/010.oci_user_guide/quick_start/020.oci_marketing_free_tier/" >-- OCI Marketing Free Tier 신청</option>
+      <option value="/oci-livelogs/010.oci_user_guide/quick_start/030.oci_basic_config/" >-- OCI 테넌시(Tenancy) 기본 설정</option>
+      <option value="/oci-livelogs/010.oci_user_guide/quick_start/040.oci_linux_vm/" >-- OCI Linux VM 배포</option>
+      <option value="/oci-livelogs/010.oci_user_guide/quick_start/050.oci_windows_vm/" >-- OCI Windows VM 배포</option>
+  
+  
+    <option value="/oci-livelogs/050.data_ai/" >
+   OCI Data 및 AI</option>
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/oci-livelogs/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/oci-livelogs/js/auto-complete.js"></script>
+        <link href="/oci-livelogs/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "http:\/\/taewan.kim\/oci-livelogs";
+          
+        </script>
+        <script type="text/javascript" src="/oci-livelogs/js/search.js"></script>
+      </div>
+    <h1>OCI Free Tier 신청</h1>
+
+
+     
+      
+  
+    
+    
+    
+    
+
+
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/G_NLS3Glvno" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
+ </div>
+
+
+<hr />
+
+<div class="notices note" ><p><p><strong><font color='red'>Livelog</font></strong>는 동영상 데모를 중심으로 작성된 컨텐츠입니다. <strong><font color='red'>Livelog</font></strong>는 Youtube에 배포된 동영상과 블로그 문서로 구성됩니다. <strong><font color='red'>Livelog</font></strong>의 블로그 문서는 동영상을 진행하기 위한 보조 정보를 중심으로 작성됩니다.</p>
+</p></div>
+
+
+<p><img src="https://taewanmerepo.github.io/2019/09/freetier/post.jpg" alt="" /></p>
+
+<p>Oracle Cloud Free Tier(이하 OCI Free Tier)는 별도 비용 없이 오라클 클라우드 사용 경험을 제공하는 프로모션 프로그램입니다. OCI Tree Tier를 등록하는 절차를 Livelog로 소개합니다.</p>
+
+<h2 id="oci-free-tier">OCI Free Tier</h2>
+
+<p>OCI Free Tier를 등록하면 30일간 자유롭게 사용할 수 있는 <font color='red'>$300</font> 크레딧이 제공됩니다. 이 크래딧으로 <strong>Free Tier</strong>로 제공되는 모든 자원을 사용할 수 있습니다. OCI Free Tier 등록 시 제공되는 크레딧은 30일 이후에는 소멸됩니다</p>
+
+<p>OCI Free Tier는 다음과 같은 형태로 구성됩니다.</p>
+
+<ul>
+<li><strong>Oracle Cloud Free Tier</strong>
+
+<ul>
+<li>구성 컴포넌트: 1. <strong>Free Trial</strong></li>
+<li>구성 컴포넌트: 2. <strong>Always Free</strong></li>
+</ul></li>
+</ul>
+
+<p>OCI Free Tier를 등록하면 제공되는 300 달러 크레딧으로 30일간  <strong>Free Trial</strong> 자원을 자유롭게 사용할 수 있습니다. &ldquo;<strong>Free Trial</strong>&ldquo;로 다음과 같은 서비스를 사용할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/11/0120.jpg" alt="" /></p>
+
+<p><strong>Oracle Cloud Free Tier</strong>는 <strong>Free Trial</strong> 이외에  영구적으로 사용할 수 있는 <strong>Always Free</strong> 자원을 별도로 제공합니다.</p>
+
+<p>다음과 같은 서비스를 기간 제약없이 계속 이용할 수 있습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>서비스</th>
+<th>지원 규모</th>
+<th>비고</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Autonomous Data Warehouse(ADW)</td>
+<td>1개 인스턴스</td>
+<td>CPU: 1 OCPU, Storage: 20GB</td>
+</tr>
+
+<tr>
+<td>Autonomous Transaction Processing(ATP)</td>
+<td>1개 인스턴스</td>
+<td>CPU: 1 OCPU, Storage: 20GB)</td>
+</tr>
+
+<tr>
+<td>컴퓨트</td>
+<td>2VM</td>
+<td>VM 사양: <code>1/8</code> OCPU, 1GB 메모리</td>
+</tr>
+
+<tr>
+<td>블록스토리지</td>
+<td>2개 블록 볼륨</td>
+<td>전체 크기 100GB</td>
+</tr>
+
+<tr>
+<td>오브젝트 스토리지</td>
+<td>Standard Mode: 10GB<br/>Archive Mode: 10GB</td>
+<td>매월 50,000 API 요청</td>
+</tr>
+
+<tr>
+<td>로드 밸런서(Load Balancer)</td>
+<td>1개</td>
+<td>Bandwith: 10Mbps</td>
+</tr>
+
+<tr>
+<td>아웃바운드 데이터 전송(Outbound Data Transfer)</td>
+<td>매월 10TB</td>
+<td></td>
+</tr>
+
+<tr>
+<td>모니터링 서비스</td>
+<td>매월 5억 건의 데이터 수집, 10억 건 데이터 조회</td>
+<td></td>
+</tr>
+
+<tr>
+<td>알림 서비스</td>
+<td>매월 1백만 건 알림 서비스</td>
+<td></td>
+</tr>
+
+<tr>
+<td>메일</td>
+<td>매월 1000개 메일</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="oci-free-tier-등록을-위한-준비">OCI Free Tier 등록을 위한 준비</h3>
+
+<p>OCI Free Tier 등록을 위해서는 다음과 같은 정보가 필요합니다.</p>
+
+<ul>
+<li>사전 결정 사항
+
+<ul>
+<li>OCI 계정명 (Tenante)</li>
+<li>OCI 홈영역 (Home Region): 거점 OCI 데이터센터</li>
+</ul></li>
+<li>사용자 인증을 위한 사전 준비물
+
+<ul>
+<li>메일 주소: gmail, naver, daum 등 개인 메일 사용 가능</li>
+<li>신용 카드: 해외 결제가 가능한 VISA, MASTER, AMEX</li>
+<li>핸드폰 번호: SMS 수신 용도</li>
+</ul></li>
+<li>부가 정보
+
+<ul>
+<li>등록자 주소(우편번호 포함)</li>
+</ul></li>
+</ul>
+
+<h3 id="oci-free-tier의-유료-전환에-대한-걱정">OCI Free Tier의 유료 전환에 대한 걱정</h3>
+
+<p>OCI Free Tier를 등록하시는 분들은 혹시 모를 &ldquo;<strong>요금 폭탄</strong>&ldquo;에 대해서 걱정하십니다. OCI Free Tier 등록 단계에서 신용카드 정보를 입력하기 때문에 1달 무료 사용 기간이 넘어가면 자동 유료로 전환되고, 기존에 사용했던 자원을 정리하지 않으면 비용이 청구되는 것이 아닌지를 걱정하시는 분들이 많습니다.</p>
+
+<p>OCI Free Tier 계정이 유료 계정으로 전환되기 위해서는 추가적인 등록 절차가 필요합니다. 유료 전환 승인 절차를 따로 진행하지 않을 경우 OCI Free Tier 사용에 대한 어떤 비용 청구도 발생하지 않습니다.</p>
+
+<p>OCI Free Tier 등록 단계에서 등록한 신용카드 정보는 사용자 인증 용도로만 사용됩니다. 다음 이미지와 같이 사용자 인증을 위해서 1불을 청구하고 정상 청구가 되면 바로 청구 취소하는 과정에만 이용됩니다. 추가로 OCI Free Tier 등록 이력 조회 용도로만 사용됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2019/09/freetier/110.jpg" alt="" /></p>
+
+<div class="notices note" ><p><p>OCI Free Tier 계정에는 자원 할당에 대한 규모 및 기간 한계가 설정되어 있습니다. OCI Free Tier 계정에 할당된 자원 한계 이상의 서비스를 사용하고자 한다면 <strong><font color='red'>계정 업그레이드 절차(정식 계약)</strong></font>가 필요합니다. 따라서 <strong><font color='red'>계정 업그레이드 절차(정식 계약)</strong></font>를 수행하지 않는다면 OCI Free Tier는 어떤 비용도 청구하지 않습니다.</p>
+</p></div>
+
+
+<h2 id="oci-free-tier-등록-절차">OCI Free Tier 등록 절차</h2>
+
+<p>OCI Free Tier 등록 페이지는 <a href="https://cloud.oracle.com">https://cloud.oracle.com</a> 에서 찾을 수 있습니다. OCI Free Tier 등록 절차는 다음과 같습니다.</p>
+
+<h3 id="1-계정-정보-입력">1. 계정 정보 입력</h3>
+
+<p>기본 계정 정보를 입력합니다. 이 단계에서 입력한 Email에 OCI는 메일을 발송하여 등록 메일을 검증합니다.</p>
+
+<h3 id="2-계정-정보-등록">2. 계정 정보 등록</h3>
+
+<p>기본 계정 정보를 등록합니다. 이 단계에서 다음과 같은 정보를 입력합니다.</p>
+
+<ul>
+<li>국가(지역)</li>
+<li>클라우드 계정 이름 (Tenante)</li>
+<li>Admin 계정명 및 패스워드</li>
+<li>홈 영역</li>
+</ul>
+
+<p><img src="https://taewanmerepo.github.io/2020/11/0060.jpg" alt="" /></p>
+
+<h3 id="3-등록자-주소-입력">3. 등록자 주소 입력</h3>
+
+<p>등록자의 주소를 입력합니다. 주소 등록 시 한글 및 영문 모두 지원합니다. 다섯 자리 우편번호를 입력해야 합니다.</p>
+
+<h3 id="4-전화번호-등록-및-sms-인증">4. 전화번호 등록 및 SMS 인증</h3>
+
+<p><img src="https://taewanmerepo.github.io/2019/09/freetier/070.jpg" alt="" /></p>
+
+<p>전화번호는 사용자 정보 등록 목적이며, 사용자 인증 외에 다른 용도로 사용되지 않습니다. 전화번호 국가 코드는 앞에서 입력한 국가 정보를 기준으로 기본 설정됩니다. 전화번호 입력 시 첫 번째 &ldquo;0&rdquo;은 반드시 생략해야 합니다. 다음은 전화번호 입력 예입니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>국가</th>
+<th>전화번호</th>
+<th>입력 전화 번호</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>대한민국</td>
+<td>010-3123-1234</td>
+<td>*82 1031231234</td>
+</tr>
+</tbody>
+</table>
+
+<p>전화번호 입력 시 첫 번째 &ldquo;0&rdquo;을 입력할 경우 정상적으로 SMS 문자를 받을 수 없습니다.</p>
+
+<h3 id="5-신용카드-등록">5. 신용카드 등록</h3>
+
+<p>해외 결제가 가능한 VISA, Master, AMAX 카드만을 사용해야 합니다. 이 신용카드는 사용자 인증 용도로만 사용됩니다. 여기에서 등록한 신용카드로 어떤 비용도 청구되지 않습니다.</p>
+
+<h3 id="6-계정-생성">6. 계정 생성</h3>
+
+<p>모든 정보가 정상적으로 입력되고 검증되면 계정 생성 작업이 진행됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/11/0100.jpg" alt="" /></p>
+
+<h2 id="참고문서">참고문서</h2>
+
+<ul>
+<li><a href="http://taewan.kim/cloud/how_to_register_free_tier_account/" target="_blank">새로운 Oracle Cloud 프로모션: Free Tier <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+<li><a href="https://www.oracle.com/corporate/pressrelease/oow19-oracle-free-tier-091619.html" target="_blank">Oracle Offers Always Free Autonomous Database and Cloud Infrastructure <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+<li><a href="https://www.oracle.com/cloud/free/#free-cloud-trial" target="_blank">What can I try with my Oracle Cloud Free Trial credits? <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+<li><a href="http://itdaily.kr/news/articleView.html?idxno=96978" target="_blank">IT Daily: 오라클 ‘지역 내 이중 리전’ 전략 강화 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+<li><a href="https://www.zdnet.co.kr/view/?no=20190704141512" target="_blank">ZDNet Korea: 오라클 &#39;MS와의 클라우드 연동, 한국서도 가능&#39; <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+<li><a href="https://www.mk.co.kr/news/it/view/2019/09/738006/" target="_blank">매일경제: 오라클 &#39;AI 클라우드, 40기가 무료제공&#39; <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+</ul>
+
+
+    
+    
+      <div class="alert alert-info" role="alter">
+  <li><strong>문서 생성:</strong> 2020-03-27 09:11 / <string>최종 문서 수정:</strong> 2020-03-27 09:11 </li>
+</div><div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/oci-livelogs/010.oci_user_guide/quick_start/000.basic_concept/" title="OCI 기본 개념 &amp; 용어 정리"> <i class="fa fa-chevron-left"></i><label>OCI 기본 개념 &amp; 용어 정리</label></a>
+    <a class="nav nav-next" href="/oci-livelogs/010.oci_user_guide/quick_start/020.oci_marketing_free_tier/" title="OCI Marketing Free Tier 신청" style="margin-right: 0px;"><label>OCI Marketing Free Tier 신청</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+  <div class="chevrons">
+      <div class="row">
+    <div class="author left">
+        <img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan2.jpg" height="90" width="90">
+    </div>
+    <div class="author right">
+		<li><b>작성자: 김태완</b></li>
+        <li>사랑하는 민수와 데이터 관리, 데이터 분석 &amp; 클라우드에 집중하고 있습니다.</li>
+        <li>E-mail: taewan.me@gmail.com</li>
+    </div>
+</div><div class="panel panel-danger">
+<div class="panel-heading">Disclaimer</div>
+<div class="panel-body">이 저작물은 Oracle과 관계없이 개인으로서 개인의 시간을 할애하여 작성된 글 입니다. 본 글의 내용, 입장, 예측은 Oracle을 공식적으로 <font color="red"><bold>절대</bold></font> 대변하지 않습니다.</div>
+</div>
+<hr />
+
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/010.oci_free_tier/"></div>
+
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 27/03/2020
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+
+
+
+  </div>
+  
+  
+</footer>
+
+<script src="/oci-livelogs/js/clipboard.min.js"></script>
+
+<link href="/oci-livelogs/css/featherlight.min.css" rel="stylesheet">
+<script src="/oci-livelogs/js/featherlight.min.js"></script>
+
+
+
+<script src="/oci-livelogs/theme-flex/script.js"></script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        
+        ga('create', 'UA-72835175-1', 'auto');
+        ga('send', 'pageview');
+</script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2&appId=404519239985000&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+    
+
+    
+    
+
+    
+
+
+  </body>
+</html>
