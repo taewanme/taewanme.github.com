@@ -12,12 +12,23 @@
     
     
     <item>
-      <title>OCI 기본 개념 &amp; 용어 정리</title>
+      <title>Object Storage: PAR 기능 강화</title>
+      <link>http://taewan.kim/oci-livelogs/901.oci_news/202104/20210406-object-storage-par-enhance/</link>
+      <pubDate>Sat, 11 Apr 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-livelogs/901.oci_news/202104/20210406-object-storage-par-enhance/</guid>
+      <description>merong
+다음과 같은 2021.04.06와 2021.04.09에 발표된 OCI Object Storage의 기능 업데이트 소식을 정리합니다.
+ [2021.04.06:Release Note]Object Storage pre-authenticated request enhancements    [2021.04.09:Release Note]Object Storage Console bucket delete enhancements        Pre-authenticated request enhancements Bucket delete enhancements          OCI 새 소식은 OCI Release Notes에서 발표한 OCI 신규 업데이트 내용을 정리하는 섹션입니다. OCI 신규 기능 개선의 빠른 정보 전달을 목표로 합니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI 기본 용어 &amp; 개념</title>
       <link>http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/000.basic_concept/</link>
       <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/000.basic_concept/</guid>
-      <description>이번 LiveLog에서는 Oracle Cloud Infrastructure(OCI)를 구성하는 기본 개념과 주요 용어를 다룹니다. 앞으로 28편으로 연재할 OCI Quick Start를 진행하기 위해서 사전에 알아야 기본 선수지식을 다룹니다.
+      <description>이번 LiveLog에서는 Oracle Cloud Infrastructure(OCI)를 구성하는 기본 개념과 주요 용어를 다룹니다. 앞으로 30편으로 연재할 오라클 클라우드 첫걸음를 진행하기 위해서 사전에 알아야 기본 지식을 다룹니다.
 Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다. Livelog는 Youtube에 배포된 동영상과 블로그 문서로 구성됩니다. Livelog의 블로그 문서는 동영상을 진행하기 위한 보조 정보를 중심으로 작성됩니다.
   </description>
     </item>
