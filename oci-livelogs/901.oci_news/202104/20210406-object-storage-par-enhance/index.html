@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-04-13T17:19:58 KST">
+<meta name="revised" content="2021-04-13T17:25:11 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
@@ -589,7 +589,12 @@ echo $PAR_URL
 </ul>
 
 <pre><code>wget https://objectstorage.ap-seoul-1.oraclecloud.com/p/iAY-HfREkqAh1SpHS-GhfWHBu4mer3soFEFTTZaG6BG1FNZn2RYk7JuGjaKjqZv2/n/cnwky3co9wbs/b/demo_date/o/demo_imgs.zip
-jar xvf demo_imgs.zip
+ls -al
+</code></pre>
+
+<p>다운로드 한 파일의 압축을 풉니다.</p>
+
+<pre><code>jar xvf demo_imgs.zip
 cd ~/demo_imgs/put
 </code></pre>
 
@@ -598,8 +603,12 @@ cd ~/demo_imgs/put
 </ul>
 
 <pre><code>export IMG02_URL=$PAR_URL'img02.png'
+echo $IMG02_URL
+</code></pre>
 
-curl -X PUT  --data-binary '@img02_updated.png'   \
+<p>앞에서 만든 img02.png의 URL로 파일 수정을 합니다.</p>
+
+<pre><code>curl -X PUT  --data-binary '@img02_updated.png'   \
 -H 'Content-Type: image/png'                      \
 $IMG02_URL
 
@@ -616,9 +625,13 @@ echo &quot;Please check the url&quot;
 <li>img03.png 파일 추가</li>
 </ul>
 
-<pre><code>IMG03_URL=$PAR_URL'img03.png'
+<pre><code>export IMG03_URL=$PAR_URL'img03.png'
+echo $IMG03_URL
+</code></pre>
 
-curl -X PUT  --data-binary '@img03.png'   \
+<p>앞에서 만든 URL로 새로운 파일을 등록합니다.</p>
+
+<pre><code>curl -X PUT  --data-binary '@img03.png'   \
 -H 'Content-Type: image/png'              \
 $IMG03_URL
 
