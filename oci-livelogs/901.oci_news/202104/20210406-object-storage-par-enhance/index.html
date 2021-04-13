@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-04-13T21:05:21 KST">
+<meta name="revised" content="2021-04-13T21:23:11 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
@@ -756,7 +756,7 @@ res = requests.put(url=par_url+'img03.png',
                     headers={'Content-Type': 'image/png'})
 print(res.text)          
 print(&quot;===URL===&quot;)   
-print(&quot;par_url+'img03_updated_by_python.png')       
+print(par_url+'img03_updated_by_python.png')       
 </code></pre>
 
 <h4 id="15-python-코드를-이용한-파일-업로드">15. Python 코드를 이용한 파일 업로드</h4>
@@ -774,8 +774,9 @@ with open('./img06.png', 'rb') as f:
 res = requests.put(url=par_prefix_url+'img06.png',
                     data=data,
                     headers={'Content-Type': 'image/png'})
-print(res.text)             
-print(&quot;URL:&quot;+par_prefix_url+'img06.png')       
+print(res.text)  
+print(&quot;===URL===&quot;)             
+print(par_prefix_url+'img06.png')       
 </code></pre>
 
 <h4 id="16-oci-cli로-par-조회">16. OCI CLI로 PAR 조회</h4>
