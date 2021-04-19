@@ -12,16 +12,6 @@
     
     
     <item>
-      <title>Object Storage: PAR 기능 강화</title>
-      <link>http://taewan.kim/oci-livelogs/901.oci_news/202104/20210406-object-storage-par-enhance/</link>
-      <pubDate>Sat, 11 Apr 2020 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/oci-livelogs/901.oci_news/202104/20210406-object-storage-par-enhance/</guid>
-      <description>다음과 같은 2021.04.06와 2021.04.09에 발표된 OCI Object Storage의 기능 업데이트 소식을 정리합니다.
- [2021.04.06:Release Note]Object Storage pre-authenticated request enhancements    [2021.04.09:Release Note]Object Storage Console bucket delete enhancements        Pre-authenticated request enhancements Bucket delete enhancements          OCI 새 소식은 OCI Release Notes에서 발표한 OCI 신규 업데이트 내용을 정리하는 섹션입니다. OCI 신규 기능 개선의 빠른 정보 전달을 목표로 합니다.</description>
-    </item>
-    
-    <item>
       <title>OCI 기본 용어 &amp; 개념</title>
       <link>http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/000.basic_concept/</link>
       <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
@@ -82,6 +72,26 @@ Livelog는 동영상 데모를 중심으로 작성된 컨텐츠입니다. Livelo
       <guid>http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/050.oci_windows_vm/</guid>
       <description>이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
  아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
+    <item>
+      <title>Object Storage: PAR 기능 강화</title>
+      <link>http://taewan.kim/oci-livelogs/901.oci_news/202104/20210406-object-storage-par-enhance/</link>
+      <pubDate>Sat, 11 Apr 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-livelogs/901.oci_news/202104/20210406-object-storage-par-enhance/</guid>
+      <description>다음과 같은 2021.04.06와 2021.04.09에 발표된 OCI Object Storage의 기능 업데이트 소식을 정리합니다.
+ [2021.04.06:Release Note]Object Storage pre-authenticated request enhancements    [2021.04.09:Release Note]Object Storage Console bucket delete enhancements        Pre-authenticated request enhancements Bucket delete enhancements          OCI 새 소식은 OCI Release Notes에서 발표한 OCI 신규 업데이트 내용을 정리하는 섹션입니다. OCI 신규 기능 개선의 빠른 정보 전달을 목표로 합니다.</description>
+    </item>
+    
+    <item>
+      <title>Compute: Burstable Instance</title>
+      <link>http://taewan.kim/oci-livelogs/901.oci_news/202104/20210418-burstablevm/</link>
+      <pubDate>Sat, 18 Apr 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-livelogs/901.oci_news/202104/20210418-burstablevm/</guid>
+      <description>2021년 4월 13일에 OCI Compute VM의 새로운 인스턴스 형태인 버스터블 인스턴스(Burstable Instance, 순간 성능 확장 가능 인스턴스)를 공개했습니다. 이와 관련 정보의 원본은 아래 링크에서 확인할 수 있습니다. 버스터블 인스턴스는 특정 순간에 성능을 확장 할 수 있는 저렴한하고 비용 효율적인 인스턴스 형태입니다.
+ [2021.04.13:Release Note]Burstable compute instances for small or low-utilization applications    [2021.04.14:Oracle Blog]Run your low-CPU workloads more cost-effectively with burstable VMs        Burstable compute instances for small or low-utilization applications Oracle Blog: Run your low-CPU workloads more cost-effectively with burstable VMs          OCI 새 소식은 OCI Release Notes에서 발표한 OCI 신규 업데이트 내용을 정리하는 섹션입니다.</description>
     </item>
     
   </channel>
