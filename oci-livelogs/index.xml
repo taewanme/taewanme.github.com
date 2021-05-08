@@ -1,97 +1,34 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>OCI LiveLogs</title>
-    <link>http://taewan.kim/oci-livelogs/</link>
-    <description>Recent content on OCI LiveLogs</description>
+    <title>OCI 튜토리얼(Tutorials) on OCI 튜토리얼</title>
+    <link>http://taewan.kim/oci-tutorials/</link>
+    <description>Recent content in OCI 튜토리얼(Tutorials) on OCI 튜토리얼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Mar 2020 01:11:05 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 08 May 2020 01:11:05 +0900</lastBuildDate>
     
-	<atom:link href="http://taewan.kim/oci-livelogs/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://taewan.kim/oci-tutorials/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>OCI 기본 용어 &amp; 개념</title>
-      <link>http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/000.basic_concept/</link>
-      <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
+      <title>OCI News:2021년 4월 넷째 주</title>
+      <link>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210502/</link>
+      <pubDate>Sat, 02 May 2020 09:11:05 +0900</pubDate>
       
-      <guid>http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/000.basic_concept/</guid>
-      <description>이번 LiveLog에서는 Oracle Cloud Infrastructure(OCI)를 구성하는 기본 개념과 주요 용어를 다룹니다. 앞으로 30편으로 연재할 오라클 클라우드 첫걸음를 진행하기 위해서 사전에 알아야 기본 지식을 다룹니다.
-Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다. Livelog는 Youtube에 배포된 동영상과 블로그 문서로 구성됩니다. Livelog의 블로그 문서는 동영상을 진행하기 위한 보조 정보를 중심으로 작성됩니다.
-  </description>
+      <guid>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210502/</guid>
+      <description>4월 넷째 주(2021.4.23~4.30)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 2회 영상입니다.
+     시작 시간 제목 진행자     00:00 ​OCI 읽어주는 곰돌이 두번째 방송: Intro 베어 메탈   00:48 ​News01: Always Free Autonomous Database: APEX and JSON workload types available 베어 메탈   03:37 ​News02: GoldenGate is now available in additional APAC regions 베어 메탈   06:07 News03: Logging Analytics: Microsoft SQL Server Database Support 베어 메탈   08:00 ​News04: Logging Analytics: Support to Harvest Entity Model Data from Enterprise Manager 베어 메탈   09:31 ​News05: New Release for Cloud Guard is now available 곰돌이   14:04 ​News06: Optimized3-based Intel shapes for compute instances 곰돌이   18:44 ​News07: Resize cluster networks 곰돌이   21:10 ​News08: Introducing Object Storage Auto-Tiering 곰돌이   24:14 ​News09: New Console navigation experience 민수아빠   25:32 ​News10: Opt-out of creating DNS records when launching compute instances 곰돌이   27:28 ​News11: Data Science has updated the Environment Explorer 민수아빠   29:06 ​News12 Java &amp;amp; GraalVM on OCI   32:57 ​마무리 베어 메탈, 아빠곰, 민수아빠, 곰돌이    </description>
     </item>
     
     <item>
-      <title>OCI Free Tier 신청</title>
-      <link>http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/010.oci_free_tier/</link>
-      <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
+      <title>OCI News:2021년 4월 셋째 주</title>
+      <link>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210416/</link>
+      <pubDate>Sat, 02 May 2020 09:11:05 +0900</pubDate>
       
-      <guid>http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/010.oci_free_tier/</guid>
-      <description>Livelog는 동영상 데모를 중심으로 작성된 컨텐츠입니다. Livelog는 Youtube에 배포된 동영상과 블로그 문서로 구성됩니다. Livelog의 블로그 문서는 동영상을 진행하기 위한 보조 정보를 중심으로 작성됩니다.
- Oracle Cloud Free Tier(이하 OCI Free Tier)는 별도 비용 없이 오라클 클라우드 사용 경험을 제공하는 프로모션 프로그램입니다. OCI Tree Tier를 등록하는 절차를 Livelog로 소개합니다.
-OCI Free Tier OCI Free Tier를 등록하면 30일간 자유롭게 사용할 수 있는 $300 크레딧이 제공됩니다. 이 크래딧으로 Free Tier로 제공되는 모든 자원을 사용할 수 있습니다.</description>
-    </item>
-    
-    <item>
-      <title>OCI Marketing Free Tier 신청</title>
-      <link>http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/020.oci_marketing_free_tier/</link>
-      <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/020.oci_marketing_free_tier/</guid>
-      <description>Oracle Cloud Free Tier(이하 Cloud Free Tier)는 별도 비용 없이 오라클 클라우드 사용 경험을 제공하는 프로모션 프로그램입니다. Cloud Free Tier에 계정을 등록하면 30일 동안 300달러에 해당하는 오라클 클라우드 자원을 사용할 수 있는 크래딧을 제공합니다.
-일반 Cloud Free Tier 프로그램과 별도로 특별한 형태의 Cloud Free Trial을 제공하는 마케팅 프로그램이 있습니다. 이 프로그램을 편의상 “마케팅 트라이얼”이라고 부릅니다. 마케팅 트라이얼은 온라인/오프라인 오라클 행사에 참여한 분들에게 월간 500달러 상당의 Cloud Free Tier를 제공하는 프로그램입니다.</description>
-    </item>
-    
-    <item>
-      <title>OCI 테넌시(Tenancy) 기본 설정</title>
-      <link>http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/030.oci_basic_config/</link>
-      <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/030.oci_basic_config/</guid>
-      <description>이전 Livelog에서는 OCI Free Tier를 등록하는 방법에 대해서 진행했습니다. 이번 Livelog에서는 새로 생성한 OCI Tenancy에 OCI 사용자 생성 및 권한 설정, 데모를 위한 기본 네트워크 구성 작업을 진행합니다.
-Livelog는 동영상 데모를 중심으로 작성된 컨텐츠입니다. Livelog는 Youtube에 배포된 동영상과 블로그 문서로 구성됩니다. Livelog의 블로그 문서는 동영상을 진행하기 위한 보조 정보를 중심으로 작성됩니다.
- 목차 이번 Livelog에서는 새로 만든 OCI Tenancy를 위한 기본 설정을 위하여 다음과 같은 작업을 진행합니다.</description>
-    </item>
-    
-    <item>
-      <title>OCI Linux VM 배포</title>
-      <link>http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/040.oci_linux_vm/</link>
-      <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/040.oci_linux_vm/</guid>
-      <description>이번 Livelog에서는 OCI에 Linux VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
- 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
-    </item>
-    
-    <item>
-      <title>OCI Windows VM 배포</title>
-      <link>http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/050.oci_windows_vm/</link>
-      <pubDate>Fri, 27 Mar 2020 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/oci-livelogs/010.oci_user_guide/quick_start/050.oci_windows_vm/</guid>
-      <description>이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
- 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
-    </item>
-    
-    <item>
-      <title>Object Storage: PAR 기능 강화</title>
-      <link>http://taewan.kim/oci-livelogs/901.oci_news/202104/20210406-object-storage-par-enhance/</link>
-      <pubDate>Sat, 11 Apr 2020 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/oci-livelogs/901.oci_news/202104/20210406-object-storage-par-enhance/</guid>
-      <description>다음과 같은 2021.04.06와 2021.04.09에 발표된 OCI Object Storage의 기능 업데이트 소식을 정리합니다.
- [2021.04.06:Release Note]Object Storage pre-authenticated request enhancements    [2021.04.09:Release Note]Object Storage Console bucket delete enhancements        Pre-authenticated request enhancements Bucket delete enhancements          OCI 새 소식은 OCI Release Notes에서 발표한 OCI 신규 업데이트 내용을 정리하는 섹션입니다. OCI 신규 기능 개선의 빠른 정보 전달을 목표로 합니다.</description>
-    </item>
-    
-    <item>
-      <title>Compute: Burstable Instance</title>
-      <link>http://taewan.kim/oci-livelogs/901.oci_news/202104/20210418-burstablevm/</link>
-      <pubDate>Sat, 18 Apr 2020 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/oci-livelogs/901.oci_news/202104/20210418-burstablevm/</guid>
-      <description>2021년 4월 13일에 OCI Compute VM의 새로운 인스턴스 형태인 버스터블 인스턴스(Burstable Instance, 순간 성능 확장 가능 인스턴스)를 공개했습니다. 이와 관련 정보의 원본은 아래 링크에서 확인할 수 있습니다. 버스터블 인스턴스는 특정 순간에 성능을 확장 할 수 있는 저렴한하고 비용 효율적인 인스턴스 형태입니다.
- [2021.04.13:Release Note]Burstable compute instances for small or low-utilization applications    [2021.04.14:Oracle Blog]Run your low-CPU workloads more cost-effectively with burstable VMs        Burstable compute instances for small or low-utilization applications Oracle Blog: Run your low-CPU workloads more cost-effectively with burstable VMs          OCI 새 소식은 OCI Release Notes에서 발표한 OCI 신규 업데이트 내용을 정리하는 섹션입니다.</description>
+      <guid>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210416/</guid>
+      <description>4월 셋째 주(2021.4.16~4.23)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 1회 영상입니다.
+     시작 시간 제목 진행자     00:00 ​ Intro 베어 메탈   00:45 ​ OCI 읽어주는 곰돌스 소개 베어 메탈   01:09​ News01:​ Capacity reservations for compute instances 곰돌이   04:46​ News02:​ Container Image Scanning, Signing and Verification 민수아빠   07:10​ News03:​ Java Management is now available 아빠곰   09:01​ News04:​ Network Visualizer is now available 곰돌이   11:32​ News05:​ Customer-managed encryption keys available with Oracle Data Guard 곰돌이   12:36​ News06:​ Database Migration: US Phoenix, India Mumbai, Brazil East regions 베어 메탈   14:41​ News07:​ Maintenance advisory contacts for ADB on shared Exadata Infrastructure 베어 메탈   15:36​ News08:​ Support for MySQL version 8.</description>
     </item>
     
   </channel>
