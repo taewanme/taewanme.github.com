@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>OCI 튜토리얼(Tutorials) on OCI LiveLogs</title>
+    <title>OCI 튜토리얼(Tutorials) on OCI 튜토리얼</title>
     <link>http://taewan.kim/oci-tutorials/</link>
-    <description>Recent content in OCI 튜토리얼(Tutorials) on OCI LiveLogs</description>
+    <description>Recent content in OCI 튜토리얼(Tutorials) on OCI 튜토리얼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 08 May 2020 01:11:05 +0900</lastBuildDate>
