@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>OCI News:2021년 5월 첫째 주</title>
+      <link>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210509/</link>
+      <pubDate>Mon, 11 May 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210509/</guid>
+      <description>5월 첫째 주(2021.4.30~5.7)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 3회 영상입니다.
+  OCI 주간 새소식 3회 영상은 다음과 같은 내용으로 구성됩니다.
+   시작 시간 제목 진행자     00:00 OCI 주간 새소식    00:36 Unified Monitoring Agent enhancements in multiple regions 곰돌이   04:07 Support for email delivery 곰돌이   06:41 External Database Service: Support for RAC databases 베어메탈   08:26 GoldenGate is now available in all commercial regions 베어메탈   13:10 Cross-availability domain Oracle Data Guard deployments can access&amp;hellip; 곰돌이   16:41 Exadata Cloud@Customer: Operator Access Control 곰돌이   20:38 ADB-D on Exadata Cloud@Customer: Infrastructure Patching 곰돌이   23:17 Database Migration is now available in the Australia East… 베어메탈   28:12 Language is now available 민수아빠   29:52 마무리…     </description>
+    </item>
+    
+    <item>
       <title>OCI News:2021년 4월 넷째 주</title>
       <link>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210502/</link>
       <pubDate>Sat, 02 May 2020 09:11:05 +0900</pubDate>
