@@ -19,7 +19,7 @@
       <guid>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210523/</guid>
       <description>5월 첫째 주(2021.5.14~5.21)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 5회 영상입니다.
   OCI 주간 새소식 5회 영상은 다음과 같은 내용으로 구성됩니다.
-   시작 시간 제목 진행자     00:00 OCI 주간 새소식 아빠곰   00:39 Console overview page now available for Resource Manager 곰돌이   05:30 Support for manifest lists and multi-architecture images in Registry 민수아빠   07:33 Store Terraform configurations in Object Storage buckets 곰돌이   09:36 MySQL Database Server direct data import 베어메탈   15:48 Data Flow Supports Spark-Submit 민수아빠   20:10 Support for GPU shapes 곰​돌이   23:00 마무리… 아빠곰      What services can be used to create a centralized logging in OCI?</description>
+   시작 시간 제목 진행자     00:00 OCI 주간 새소식 아빠곰   00:39 Console overview page now available for Resource Manager 곰돌이   05:30 Support for manifest lists and multi-architecture images in Registry 민수아빠   07:33 Store Terraform configurations in Object Storage buckets 곰돌이   09:36 MySQL Database Server direct data import 베어메탈   15:48 Data Flow Supports Spark-Submit 민수아빠   20:10 Support for GPU shapes 곰​돌이   23:00 마무리… 아빠곰    </description>
     </item>
     
     <item>
