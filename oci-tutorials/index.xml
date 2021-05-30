@@ -12,12 +12,23 @@
     
     
     <item>
+      <title>OCI News:2021년 5월 넷째 주</title>
+      <link>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210530/</link>
+      <pubDate>Sat, 30 May 2020 20:00:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210530/</guid>
+      <description>5월 넷째 주(2021.5.21~5.28)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 6회 영상입니다.
+  OCI 주간 새소식 6회 영상은 다음과 같은 내용으로 구성됩니다.
+   시작 시간 제목 진행자     00:00 OCI 주간 새소식 아빠곰   00:51 Arm-based Ampere A1 Compute shape - Part I 베어메탈   05:59 Arm-based Ampere A1 Compute shape - Part II 곰돌이   09:50 Arm-based Ampere A1 Compute shape - Part III 민수아빠   15:48 Retrieve Secrets by Name 곰돌이   19:34 AWR Viewer for On-premises Oracle Databases 베어메탈   23:09 Artifact Registry is now available 민수아빠   25:16 New Release for Data Integration 민수아빠   27:01 Use Bastion to secure public access to private resources 곰돌이   32:28 HCX Enterprise license option for VMware is now available 베어메탈   34:40 마무리… 아빠곰    </description>
+    </item>
+    
+    <item>
       <title>OCI News:2021년 5월 셋째 주</title>
       <link>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210523/</link>
       <pubDate>Sat, 23 May 2020 20:00:05 +0900</pubDate>
       
       <guid>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210523/</guid>
-      <description>5월 첫째 주(2021.5.14~5.21)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 5회 영상입니다.
+      <description>5월 셋째 주(2021.5.14~5.21)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 5회 영상입니다.
   OCI 주간 새소식 5회 영상은 다음과 같은 내용으로 구성됩니다.
    시작 시간 제목 진행자     00:00 OCI 주간 새소식 아빠곰   00:39 Console overview page now available for Resource Manager 곰돌이   05:30 Support for manifest lists and multi-architecture images in Registry 민수아빠   07:33 Store Terraform configurations in Object Storage buckets 곰돌이   09:36 MySQL Database Server direct data import 베어메탈   15:48 Data Flow Supports Spark-Submit 민수아빠   20:10 Support for GPU shapes 곰​돌이   23:00 마무리… 아빠곰    </description>
     </item>
@@ -28,7 +39,7 @@
       <pubDate>Sat, 16 May 2020 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210515/</guid>
-      <description>5월 첫째 주(2021.5.7~5.14)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 4회 영상입니다.
+      <description>5월 둘째 주(2021.5.7~5.14)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 4회 영상입니다.
   OCI 주간 새소식 4회 영상은 다음과 같은 내용으로 구성됩니다.
    시작 시간 제목 진행자     00:00 OCI 주간 새소식 아빠곰   00:33 Registry now Open Container Initiative-compliant 민수아빠   03:13 Support for MySQL version 8.0.25 BARE Metal   13:08 Data Science has updated conda environments plus a new NLP environment 민수아빠   15:09 Support for Mapping Kubernetes RBAC to OCI IAM Groups 곰돌이   20:03 Expanded DRG functionality 곰돌이   25:24 Inter-Region Latency Dashboard is now available BARE Metal   32:04 마무리… 아빠곰    </description>
     </item>
