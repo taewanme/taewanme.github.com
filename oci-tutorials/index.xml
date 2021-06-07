@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>OCI News:2021년 6월 첫째 주</title>
+      <link>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210606/</link>
+      <pubDate>Sat, 06 Jun 2020 20:00:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210606/</guid>
+      <description>6월 첫째 주(2021.5.28~6.6)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 7회 영상입니다.
+  OCI 주간 새소식 7회 영상은 다음과 같은 내용으로 구성됩니다.
+   시작 시간 제목 진행자     00:00 Intro 아빠곰   01:14 Logging Analytics: Pre-Built customizable Dashboards for OCI Audit Logs, VCN Flow Logs and OCI API Gateway 민수아빠   02:33 New streamlined onboarding by 민수아빠   03:22 New Query Commands for Advanced Analytics 민수아빠   03:56 ATP/ADW Log Analytics Support 민수아빠   05:02 Interactive metrics charts creation experience for OCI Metrics 민수아빠   06:00 New Region in Vinhedo, Brazil 베어메탈   11:29 Autonomous Database on Dedicated infrastructure: Restrict Access Using a Network Access Control List 베어메탈   13:20 PySpark V3.</description>
+    </item>
+    
+    <item>
       <title>OCI News:2021년 5월 넷째 주</title>
       <link>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210530/</link>
       <pubDate>Sat, 30 May 2020 20:00:05 +0900</pubDate>
