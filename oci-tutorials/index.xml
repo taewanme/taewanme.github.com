@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>OCI News:2021년 6월 둘째 주</title>
+      <link>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210613/</link>
+      <pubDate>Sat, 13 Jun 2020 01:00:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210613/</guid>
+      <description>6월 첫째 주(2021.6.4~6.10)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 8회 영상입니다.
+  OCI 주간 새소식 8회 영상은 다음과 같은 내용으로 구성됩니다.
+   시작 시간 제목 진행자     00:00 Intro 아빠곰   01:05 Block Volume Ultra High Performance 곰돌이   08:51 In-Transit Encryption for Bare Metal Instances 곰돌이   11:40 Support for Node.js 14, Go 1.15, and Ruby 2.</description>
+    </item>
+    
+    <item>
       <title>OCI News:2021년 6월 첫째 주</title>
       <link>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210606/</link>
       <pubDate>Sat, 06 Jun 2020 20:00:05 +0900</pubDate>

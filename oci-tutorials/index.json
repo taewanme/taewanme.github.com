@@ -1,5 +1,12 @@
 [
 {
+	"uri": "http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210613/",
+	"title": "OCI News:2021년 6월 둘째 주",
+	"tags": [],
+	"description": "",
+	"content": " 6월 첫째 주(2021.6.4~6.10)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 8회 영상입니다.\n  OCI 주간 새소식 8회 영상은 다음과 같은 내용으로 구성됩니다.\n   시작 시간 제목 진행자     00:00 Intro 아빠곰   01:05 Block Volume Ultra High Performance 곰돌이   08:51 In-Transit Encryption for Bare Metal Instances 곰돌이   11:40 Support for Node.js 14, Go 1.15, and Ruby 2.7 민수아빠   13:11 New Release for Application Performance Monitoring is Now Available 민수아빠   16:00 Filter Databases and Hosts Across Applications 베어메탈   19:57 Arm-based Ampere A1 Compute shape for bare metal instances is now available 곰돌이   21:41 MySQL Database Service now allows to expand storage while restoring from backups 베어메탈   22:46 ​(Blog)Announcing Java Management Service 민수아빠   24:00 마무리 아빠곰    참조 링크  Logging Analytics 시작 간편화 동영상: https://youtu.be/ycF1n55AgHU 클라우드 리전 맵: https://www.cloudinfrastructuremap.com/  "
+},
+{
 	"uri": "http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210606/",
 	"title": "OCI News:2021년 6월 첫째 주",
 	"tags": [],
