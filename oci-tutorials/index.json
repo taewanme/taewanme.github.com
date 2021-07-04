@@ -1,5 +1,26 @@
 [
 {
+	"uri": "http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210704/",
+	"title": "OCI News:2021년 7월 첫째 주",
+	"tags": [],
+	"description": "",
+	"content": "6월 첫째 주(2021.6.25~7.2)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 11회 영상입니다.\n  OCI 주간 새소식 11회 영상은 다음과 같은 내용으로 구성됩니다.\n   시작 시간 제목 진행자     00:00 Intro 아빠곰   01:01 Application Performance Monitoring: Terraform Support 민수아빠   03:34 Oracle Linux Cloud Developer platform image for AMD and Intel compute instances 민수아빠   05:09 ADB-D on Exadata Cloud@Customer: Fractional OCPU and GB Stora \u0026amp; Autonomous Database on Dedicated cloud infrastructure: Fractional OCPU and GB storage 베어메탈   11:57 Support for Network Security Group (NSGs) 곰돌이   17:02 DevOps is now available 민수아빠   19:38 New Release for Data Catalog 민수아빠   21:44 Quick Actions renamed to \u0026ldquo;Launch Resources\u0026rdquo; 곰돌이   23:12 Quickstarts section added to the Console home page 곰돌이   26:23 MySQL Database Service is now available in Brazil Southeast (Vinhedo) region 베어메탈   27:35 마무리 아빠곰    "
+},
+{
+	"uri": "http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210627/",
+	"title": "OCI News:2021년 6월 넷째 주",
+	"tags": [],
+	"description": "",
+	"content": "6월 첫째 주(2021.6.18~6.24)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 10회 영상입니다.\n  OCI 주간 새소식 10회 영상은 다음과 같은 내용으로 구성됩니다.\n   시작 시간 제목 진행자     00:00 Intro 아빠곰   00:43 Support for reserved public IP addresses for load balancers created by Container Engine for Kubernetes 곰돌이   04:08 Database Critical events for DB systems 민수아빠   06:39 New Cloud Guard Features Are Available 베어메탈   17:29 OS Management is now available in the Brazil Southeast (Vinhedo) region 곰돌이   21:42 PDB Management for Database Cloud Service 베어메탈   25:42 Logging Analytics now available in the region: Vinhedo 민수아빠   27:31 Outbound SMTP is blocked 민수아빠   32:02 Terraform 1.0.x support 민수아빠   34:07 Using Python from Java with GraalVM 아빠곰   34:52 마무리 아빠곰    "
+},
+{
+	"uri": "http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210620/",
+	"title": "OCI News:2021년 6월 셋째 주",
+	"tags": [],
+	"description": "",
+	"content": "6월 첫째 주(2021.6.10~6.17)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 9회 영상입니다.\n  OCI 주간 새소식 9회 영상은 다음과 같은 내용으로 구성됩니다.\n   시작 시간 제목 진행자     00:00 Intro 아빠곰   00:59 BOracle Data Safe: Target Registration in Oracle Cloud Infrastructure 베어메탈   07:43 Support for VCN-native cluster migration 곰돌이   12:03 Access to Microsoft Azure expanded to Brazil Southeast (Vinhedo) region and Azure Campinas location 베어메탈   15:52 MySQL Database Service new configuration variables 베어메탈   22:44 Exadata Cloud@Customer: Elastic Storage Expansion 곰돌이   25:35 General availability of Java Management 민수아빠   26:50 마무리 아빠곰    "
+},
+{
 	"uri": "http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210613/",
 	"title": "OCI News:2021년 6월 둘째 주",
 	"tags": [],
