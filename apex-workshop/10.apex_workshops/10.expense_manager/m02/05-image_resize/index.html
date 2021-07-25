@@ -4,12 +4,12 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-07-25T22:47:24 KST">
+<meta name="revised" content="2021-07-26T02:25:30 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="05: 이미지 처리 이슈" />
-<meta property="og:description" content="Employee 폼 List of Value (Shard Component)  LOB TYPES  select lob_id as r, lob_name as d from LOB_TYPES   EMP TYPES (Shard Component)  select type_id as r, type_name ||&#39; (&#39;||type_full_name||&#39;)&#39; as d from USER_TYPES   Teams  select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   List of Value (Local) select team_name ||&#39; (&#39;||team_full_name||&#39;)&#39; as d, team_id as r from TEAMS where lob_type_id = :12_LOB  Form Component 이슈  이미지 크기  img { width: 200px; height: 200px; }  Input Validation  Email  ^[A-Za-z]&#43;[A-Za-z0-9." />
+<meta property="og:description" content=" Form 이미지 처리  이미지 크기  img { width: 200px; height: 200px; }  Interfactive Report 이미지 처리  이미지 크기  img { width: 100px; height: 100px; }  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/05-image_resize/" />
 
@@ -124,6 +124,115 @@
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+    <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/" class="dd-item parent alwaysopen haschildren
+        ">
+      <div>
+      <a href="/apex-workshop/10.apex_workshops/10.expense_manager/">APEX Expense Manager</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m01-employees/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m01-employees/">
+            M01: Oracle APEX 소개
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/" class="dd-item parent alwaysopen haschildren
+        ">
+      <div>
+      <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/">M02:직원 정보 관리</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/01-login-account/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/01-login-account/">
+            01: APEX 로그인 및 계정 등록
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/02-table/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/02-table/">
+            02: 직원 정보 관리 테이블 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/03-apexreport/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/03-apexreport/">
+            03: 직원 정보 관리 APEX Report 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/04-valueoflist/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/04-valueoflist/">
+            04: Key 처리를 위한 UI 컴포넌트 구성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/05-image_resize/" class="dd-item active">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/05-image_resize/">
+            05: 이미지 처리 이슈
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/06-inputvalidation/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/06-inputvalidation/">
+            06: 입력 데이터 Validation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/07-dault_value/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/07-dault_value/">
+            07: 입력 폼 기본 값 처리
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/08-readonly/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/08-readonly/">
+            08: 입력 폼 읽기 전용 설정
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/09.server_side/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/09.server_side/">
+            09: Server Side 설정
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/10-search/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/10-search/">
+            10: 검색 기능
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03-reports/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m03-reports/">
+            M03: Expense Report
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04-master-detail/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m04-master-detail/">
+            M04: Master-Detail 리포트
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
         </ul>
     </li>
 
@@ -223,51 +332,7 @@
     
     
 
-<h2 id="employee-폼">Employee 폼</h2>
-
-<h3 id="list-of-value-shard-component">List of Value (Shard Component)</h3>
-
-<ul>
-<li>LOB TYPES</li>
-</ul>
-
-<pre><code>select lob_id as r, lob_name as d from LOB_TYPES
-</code></pre>
-
-<ul>
-<li>EMP TYPES (Shard Component)</li>
-</ul>
-
-<pre><code>select type_id as r, type_name ||' ('||type_full_name||')' as d 
-from USER_TYPES 
-</code></pre>
-
-<ul>
-<li>Teams</li>
-</ul>
-
-<pre><code>select team_full_name as d, team_id as r 
-from TEAMS 
-</code></pre>
-
-<ul>
-<li>Gender Types
-
-<ul>
-<li>남성: M</li>
-<li>여성: F</li>
-</ul></li>
-</ul>
-
-<h3 id="list-of-value-local">List of Value (Local)</h3>
-
-<pre><code>select  
-team_name ||' ('||team_full_name||')' as d, team_id as r    
-from TEAMS 
-where lob_type_id = :12_LOB
-</code></pre>
-
-<h3 id="form-component-이슈">Form Component 이슈</h3>
+<h3 id="form-이미지-처리">Form 이미지 처리</h3>
 
 <ul>
 <li>이미지 크기</li>
@@ -279,74 +344,16 @@ height: 200px;
 }
 </code></pre>
 
-<h3 id="input-validation">Input Validation</h3>
+<h3 id="interfactive-report-이미지-처리">Interfactive Report 이미지 처리</h3>
 
 <ul>
-<li>Email</li>
-</ul>
-
-<pre><code>^[A-Za-z]+[A-Za-z0-9.]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$
-# error message: Mail 포멧이 아닙니다. 메일 형식이어야 합니다. 
-</code></pre>
-
-<ul>
-<li>핸드폰 번호</li>
-</ul>
-
-<pre><code>^\d{3}-\d{3,4}-\d{4}$
-# error message: 핸드폰 전화번호 형식이 아닙니다. (예 010-1234-1234)
-</code></pre>
-
-<ul>
-<li>생년월일</li>
-</ul>
-
-<pre><code>sysdate &gt; to_date(:P3_BIRTH_DAY, 'YYYY-MM-DD')
-# error message:  생일은 오늘 이전이어야 합니다. 
-</code></pre>
-
-<ul>
-<li>id == email</li>
-</ul>
-
-<pre><code>:P12_EMPLOYEE_ID = :P12_EMAIL
-# error message: ID와 Email은 같아야 합니다.
-</code></pre>
-
-<h3 id="11-page-이슈">11 Page 이슈</h3>
-
-<ul>
-<li>이미지 사이즈 조정</li>
+<li>이미지 크기</li>
 </ul>
 
 <pre><code>img {
 width: 100px;
 height: 100px;
 }
-</code></pre>
-
-<h3 id="11-페이지-검색-report-where-절">11 페이지 검색 - Report where 절</h3>
-
-<pre><code>where InStr(':'||:P11_TYPES||':', ':'||TYPE_ID||':') &gt; 0
-and TYPE_ID IS NOT NULL
-and InStr(':'||:P11_GENDERS||':', ':'||GENDER||':') &gt; 0
-and GENDER IS NOT NULL
-</code></pre>
-
-<h3 id="검색-조건-기본값-설정">검색 조건 기본값 설정</h3>
-
-<ul>
-<li>Type</li>
-</ul>
-
-<pre><code>select type_id from USER_TYPES
-</code></pre>
-
-<ul>
-<li>Gender</li>
-</ul>
-
-<pre><code>M:F
 </code></pre>
 
 
