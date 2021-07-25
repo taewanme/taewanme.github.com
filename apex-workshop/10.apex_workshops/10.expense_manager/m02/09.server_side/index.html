@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2021-07-25T12:22:37 KST">
+
+<meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
+<meta name="generator" content="Hugo 0.27.1" />
+<meta property="og:title" content="09: Server Side 설정" />
+<meta property="og:description" content="Employee 폼 List of Value (Shard Component)  LOB TYPES  select lob_id as r, lob_name as d from LOB_TYPES   EMP TYPES (Shard Component)  select type_id as r, type_name ||&#39; (&#39;||type_full_name||&#39;)&#39; as d from USER_TYPES   Teams  select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   List of Value (Local) select team_name ||&#39; (&#39;||team_full_name||&#39;)&#39; as d, team_id as r from TEAMS where lob_type_id = :12_LOB  Form Component 이슈  이미지 크기  img { width: 200px; height: 200px; }  Input Validation  Email  ^[A-Za-z]&#43;[A-Za-z0-9." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/09.server_side/" />
+
+
+
+<meta property="article:published_time" content="2020-05-02T09:11:05&#43;09:00"/>
+<meta property="article:modified_time" content="2020-05-02T09:11:05&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+
+
+<title>09: Server Side 설정 :: Oracle APEX Workshop</title>
+
+<link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
+<link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
+<link href="/apex-workshop/css/nucleus.css" rel="stylesheet">
+<link href="/apex-workshop/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/apex-workshop/css/bootstrap.min.css">
+<script src="/apex-workshop/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "http:\/\/taewan.kim\/apex-workshop";
+</script>
+<meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
+
+
+<link href='/apex-workshop/css/railload.css' rel="stylesheet"/>
+
+
+<link href="/apex-workshop/css/twstyle.css" rel="stylesheet">
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?style=Sons-Of-Obsidian"></script>
+
+
+<style>
+    li.L0, li.L1, li.L2, li.L3,
+    li.L5, li.L6, li.L7, li.L8
+       { list-style-type: decimal !important }
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162015179-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162015179-1');
+</script>
+
+    
+  </head>
+  <body data-url="/apex-workshop/10.apex_workshops/10.expense_manager/m02/09.server_side/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="http://taewan.kim/apex-workshop">Oracle APEX Workshop</a>
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="http://taewan.kim/"  rel="noopener">
+                  <i class='fa fa-home'></i> <label>taewan.kim 블로그</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://www.youtube.com/channel/UCo32ifcqG3i56nIjS2YtRIw"  rel="noopener">
+                  <i class='fa fa-youtube-play'></i> <label>Σ민수아빠</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://cloud.oracle.com"  rel="noopener">
+                  <i class='fa fa-cloud'></i> <label>Oracle Cloud</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://docs.cloud.oracle.com/"  rel="noopener">
+                  <i class='fa fa-book'></i> <label>OCI 공식문서</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+    <li data-nav-id="http://taewan.kim/apex-workshop/00.index/" class="dd-item
+        ">
+      <div>
+      <a href="/apex-workshop/00.index/">Oracle APEX Workshop</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/" class="dd-item parent alwaysopen haschildren
+        ">
+      <div>
+      <a href="/apex-workshop/10.apex_workshops/">APEX Workshop</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><hr />
+<div class="widget-categories widget">
+	<h4 class="widget__title">&nbsp;&nbsp;License</h4>
+	<div class="widget__content">
+		&nbsp;&nbsp;<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+	</div>
+	<div class="widget__content">
+        <div>
+        이 저작물은 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank>크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+	</div>
+</div>
+<hr />
+<div>
+    <hr/>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8469722754608892"
+         data-ad-slot="5594090168"
+         data-ad-format="auto"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <hr/>  
+  </div>
+
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/apex-workshop/00.index/" >
+   Oracle APEX Workshop</option>
+    <option value="/apex-workshop/10.apex_workshops/" >
+   APEX Workshop</option> 
+    <option value="/apex-workshop/10.apex_workshops/10.expense_manager/" >
+  - 
+   APEX Expense Manager</option> 
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m01-employees/" >-- M01: Oracle APEX 소개</option>
+    <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/" >
+  -- 
+   M02:직원 정보 관리</option> 
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/01-login-account/" >--- 01: APEX 로그인 및 계정 등록</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/02-table/" >--- 02: 직원 정보 관리 테이블 생성</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/03-apexreport/" >--- 03: 직원 정보 관리 APEX Report 생성</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/04-valueoflist/" >--- 04: Key 처리를 위한 UI 컴포넌트 구성</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/05-image_resize/" >--- 05: 이미지 처리 이슈</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/06-inputvalidation/" >--- 06: 입력 데이터 Validation</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/07-dault_value/" >--- 07: 입력 폼 기본 값 처리</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/08-readonly/" >--- 08: 입력 폼 읽기 전용 설정</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/09.server_side/"  selected>--- 09: Server Side 설정</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/10-search/" >--- 10: 검색 기능</option>
+  
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m03-reports/" >-- M03: Expense Report</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m04-master-detail/" >-- M04: Master-Detail 리포트</option>
+  
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/apex-workshop/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/apex-workshop/js/auto-complete.js"></script>
+        <link href="/apex-workshop/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "http:\/\/taewan.kim\/apex-workshop";
+          
+        </script>
+        <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
+      </div>
+    <h1>09: Server Side 설정</h1>
+
+
+     
+      
+  
+    
+    
+    
+    
+
+<h2 id="employee-폼">Employee 폼</h2>
+
+<h3 id="list-of-value-shard-component">List of Value (Shard Component)</h3>
+
+<ul>
+<li>LOB TYPES</li>
+</ul>
+
+<pre><code>select lob_id as r, lob_name as d from LOB_TYPES
+</code></pre>
+
+<ul>
+<li>EMP TYPES (Shard Component)</li>
+</ul>
+
+<pre><code>select type_id as r, type_name ||' ('||type_full_name||')' as d 
+from USER_TYPES 
+</code></pre>
+
+<ul>
+<li>Teams</li>
+</ul>
+
+<pre><code>select team_full_name as d, team_id as r 
+from TEAMS 
+</code></pre>
+
+<ul>
+<li>Gender Types
+
+<ul>
+<li>남성: M</li>
+<li>여성: F</li>
+</ul></li>
+</ul>
+
+<h3 id="list-of-value-local">List of Value (Local)</h3>
+
+<pre><code>select  
+team_name ||' ('||team_full_name||')' as d, team_id as r    
+from TEAMS 
+where lob_type_id = :12_LOB
+</code></pre>
+
+<h3 id="form-component-이슈">Form Component 이슈</h3>
+
+<ul>
+<li>이미지 크기</li>
+</ul>
+
+<pre><code>img {
+width: 200px;
+height: 200px;
+}
+</code></pre>
+
+<h3 id="input-validation">Input Validation</h3>
+
+<ul>
+<li>Email</li>
+</ul>
+
+<pre><code>^[A-Za-z]+[A-Za-z0-9.]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$
+# error message: Mail 포멧이 아닙니다. 메일 형식이어야 합니다. 
+</code></pre>
+
+<ul>
+<li>핸드폰 번호</li>
+</ul>
+
+<pre><code>^\d{3}-\d{3,4}-\d{4}$
+# error message: 핸드폰 전화번호 형식이 아닙니다. (예 010-1234-1234)
+</code></pre>
+
+<ul>
+<li>생년월일</li>
+</ul>
+
+<pre><code>sysdate &gt; to_date(:P3_BIRTH_DAY, 'YYYY-MM-DD')
+# error message:  생일은 오늘 이전이어야 합니다. 
+</code></pre>
+
+<ul>
+<li>id == email</li>
+</ul>
+
+<pre><code>:P12_EMPLOYEE_ID = :P12_EMAIL
+# error message: ID와 Email은 같아야 합니다.
+</code></pre>
+
+<h3 id="11-page-이슈">11 Page 이슈</h3>
+
+<ul>
+<li>이미지 사이즈 조정</li>
+</ul>
+
+<pre><code>img {
+width: 100px;
+height: 100px;
+}
+</code></pre>
+
+<h3 id="11-페이지-검색-report-where-절">11 페이지 검색 - Report where 절</h3>
+
+<pre><code>where InStr(':'||:P11_TYPES||':', ':'||TYPE_ID||':') &gt; 0
+and TYPE_ID IS NOT NULL
+and InStr(':'||:P11_GENDERS||':', ':'||GENDER||':') &gt; 0
+and GENDER IS NOT NULL
+</code></pre>
+
+<h3 id="검색-조건-기본값-설정">검색 조건 기본값 설정</h3>
+
+<ul>
+<li>Type</li>
+</ul>
+
+<pre><code>select type_id from USER_TYPES
+</code></pre>
+
+<ul>
+<li>Gender</li>
+</ul>
+
+<pre><code>M:F
+</code></pre>
+
+
+    
+    
+      <div class="alert alert-info" role="alter">
+  <li><strong>문서 생성:</strong> 2020-05-02 09:11 / <string>최종 문서 수정:</strong> 2020-05-02 09:11 </li>
+</div><div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/08-readonly/" title="08: 입력 폼 읽기 전용 설정"> <i class="fa fa-chevron-left"></i><label>08: 입력 폼 읽기 전용 설정</label></a>
+    <a class="nav nav-next" href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/10-search/" title="10: 검색 기능" style="margin-right: 0px;"><label>10: 검색 기능</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+  <div class="chevrons">
+      <div class="panel panel-danger">
+<div class="panel-heading">Disclaimer</div>
+<div class="panel-body">이 저작물은 Oracle과 관계없이 개인으로서 개인의 시간을 할애하여 작성된 글 입니다. 본 글의 내용, 입장, 예측은 Oracle을 공식적으로 <font color="red"><bold>절대</bold></font> 대변하지 않습니다.</div>
+</div>
+<hr />
+
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/09.server_side/"></div>
+
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 02/05/2020
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+
+
+
+  </div>
+  
+  
+</footer>
+
+<script src="/apex-workshop/js/clipboard.min.js"></script>
+
+<link href="/apex-workshop/css/featherlight.min.css" rel="stylesheet">
+<script src="/apex-workshop/js/featherlight.min.js"></script>
+
+
+
+<script src="/apex-workshop/theme-flex/script.js"></script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        
+        ga('create', 'UA-72835175-1', 'auto');
+        ga('send', 'pageview');
+</script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2&appId=404519239985000&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+    
+
+    
+    
+
+    
+
+
+  </body>
+</html>
