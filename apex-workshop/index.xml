@@ -26,7 +26,7 @@
       <pubDate>Sat, 25 Jul 2020 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/01-login-account/</guid>
-      <description> 주요 작업  APEX Workspace 접속 개발자 계정 생성  실습자 Email Trainer Email: apex.workshop.helper@gmail.com     </description>
+      <description>   주요 작업  APEX Workspace 접속 개발자 계정 생성  실습자 Email Trainer Email: apex.workshop.helper@gmail.com   </description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Sun, 25 Jul 2021 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/02-table/</guid>
-      <description> 리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip    </description>
+      <description>   리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  </description>
     </item>
     
     <item>
@@ -44,9 +44,8 @@
       <pubDate>Sun, 25 Jul 2021 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/03-apexreport/</guid>
-      <description> 주요 작업 다음 Employees 테이블를 지정하여 APEX Report를 만듭니다.
-생성된 Employees 테이블의 APEX Report를 다음과 같이 수정하겠습니다.
-  </description>
+      <description>주요 작업 다음 Employees 테이블를 지정하여 APEX Report를 만듭니다.
+생성된 Employees 테이블의 APEX Report를 다음과 같이 수정하겠습니다.</description>
     </item>
     
     <item>
@@ -64,7 +63,7 @@
       <pubDate>Sun, 25 Jul 2021 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/04-valueoflist/</guid>
-      <description> Shared Component &amp;gt; List of Values 등록  LOB TYPES  select lob_id as r, lob_name as d from LOB_TYPES   EMP TYPES  select type_id as r, type_name ||&#39; (&#39;||type_full_name||&#39;)&#39; as d from USER_TYPES   Teams  select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   List of Value (Local) select team_name ||&#39; (&#39;||team_full_name||&#39;)&#39; as d, team_id as r from TEAMS where lob_type_id = :P12_LOB_ID    </description>
+      <description>   Shared Component &amp;gt; List of Values 등록  LOB TYPES  select lob_id as r, lob_name as d from LOB_TYPES   EMP TYPES  select type_id as r, type_name ||&#39; (&#39;||type_full_name||&#39;)&#39; as d from USER_TYPES   Teams  select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   List of Value (Local) select team_name ||&#39; (&#39;||team_full_name||&#39;)&#39; as d, team_id as r from TEAMS where lob_type_id = :P12_LOB_ID  </description>
     </item>
     
     <item>
@@ -82,7 +81,7 @@
       <pubDate>Sat, 02 May 2020 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/05-image_resize/</guid>
-      <description> 리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  Form 이미지 처리  이미지 크기  img { width: 200px; height: 200px; }  Interfactive Report 이미지 처리  이미지 크기  img { width: 100px; height: 100px; }    </description>
+      <description>   리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  Form 이미지 처리  이미지 크기  img { width: 200px; height: 200px; }  Interfactive Report 이미지 처리  이미지 크기  img { width: 100px; height: 100px; }  </description>
     </item>
     
     <item>
@@ -91,18 +90,16 @@
       <pubDate>Mon, 26 Jul 2021 03:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/06-inputvalidation/</guid>
-      <description> Input Validation  Email  error message: Mail 포멧이 아닙니다. 메일 형식이어야 합니다.   ^[A-Za-z]+[A-Za-z0-9.]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$   핸드폰 번호  Error message: 핸드폰 전화번호 형식이 아닙니다. (예 010-1234-1234)   ^\d{3}-\d{3,4}-\d{4}$   생년월일
- Error message: 생일은 오늘 이전이어야 합니다.  sysdate &amp;gt; to_date(:P12_BIRTH_DAY, &#39;YYYY-MM-DD&#39;)   id == email
- error message: ID와 Email은 같아야 합니다.   :P12_EMPLOYEE_ID = :P12_EMAIL  </description>
+      <description>   Input Validation  Email  error message: Mail 포멧이 아닙니다. 메일 형식이어야 합니다.   ^[A-Za-z]+[A-Za-z0-9.]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$   핸드폰 번호  Error message: 핸드폰 전화번호 형식이 아닙니다. (예 010-1234-1234)   ^\d{3}-\d{3,4}-\d{4}$   생년월일  Error message: 생일은 오늘 이전이어야 합니다.   sysdate &amp;gt; to_date(:P12_BIRTH_DAY, &#39;YYYY-MM-DD&#39;)   id == email  error message: ID와 Email은 같아야 합니다.   :P12_EMPLOYEE_ID = :P12_EMAIL  </description>
     </item>
     
     <item>
-      <title>07: 입력 폼 기본 값 처리</title>
+      <title>07: 입력 폼 기본 처리</title>
       <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/07-dault_value/</link>
       <pubDate>Sat, 02 May 2020 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/07-dault_value/</guid>
-      <description>Employee 폼 List of Value (Shard Component)  LOB TYPES  select lob_id as r, lob_name as d from LOB_TYPES   EMP TYPES (Shard Component)  select type_id as r, type_name ||&#39; (&#39;||type_full_name||&#39;)&#39; as d from USER_TYPES   Teams  select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   List of Value (Local) select team_name ||&#39; (&#39;||team_full_name||&#39;)&#39; as d, team_id as r from TEAMS where lob_type_id = :12_LOB  Form Component 이슈  이미지 크기  img { width: 200px; height: 200px; }  Input Validation  Email  ^[A-Za-z]+[A-Za-z0-9.</description>
+      <description> Server Side Read only Default  </description>
     </item>
     
     <item>
