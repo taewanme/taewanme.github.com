@@ -39,7 +39,7 @@
 	"title": "02: 직원 정보 관리 테이블 생성",
 	"tags": [],
 	"description": "",
-	"content": " 리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  Employee 폼 List of Value (Shard Component)  LOB TYPES  select lob_id as r, lob_name as d from LOB_TYPES   EMP TYPES (Shard Component)  select type_id as r, type_name ||' ('||type_full_name||')' as d from USER_TYPES   Teams  select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   List of Value (Local) select team_name ||' ('||team_full_name||')' as d, team_id as r from TEAMS where lob_type_id = :12_LOB  Form Component 이슈  이미지 크기  img { width: 200px; height: 200px; }  Input Validation  Email  ^[A-Za-z]+[A-Za-z0-9.]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$ # error message: Mail 포멧이 아닙니다. 메일 형식이어야 합니다.   핸드폰 번호  ^\\d{3}-\\d{3,4}-\\d{4}$ # error message: 핸드폰 전화번호 형식이 아닙니다. (예 010-1234-1234)   생년월일  sysdate \u0026gt; to_date(:P3_BIRTH_DAY, 'YYYY-MM-DD') # error message: 생일은 오늘 이전이어야 합니다.   id == email  :P12_EMPLOYEE_ID = :P12_EMAIL # error message: ID와 Email은 같아야 합니다.  11 Page 이슈  이미지 사이즈 조정  img { width: 100px; height: 100px; }  11 페이지 검색 - Report where 절 where InStr(':'||:P11_TYPES||':', ':'||TYPE_ID||':') \u0026gt; 0 and TYPE_ID IS NOT NULL and InStr(':'||:P11_GENDERS||':', ':'||GENDER||':') \u0026gt; 0 and GENDER IS NOT NULL  검색 조건 기본값 설정  Type  select type_id from USER_TYPES   Gender  M:F  "
+	"content": " 리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip    "
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/03-apexreport/",
