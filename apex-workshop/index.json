@@ -74,7 +74,7 @@
 	"title": "05: 이미지 처리 이슈",
 	"tags": [],
 	"description": "",
-	"content": " Form 이미지 처리  이미지 크기  img { width: 200px; height: 200px; }  Interfactive Report 이미지 처리  이미지 크기  img { width: 100px; height: 100px; }  "
+	"content": " 리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  Form 이미지 처리  이미지 크기  img { width: 200px; height: 200px; }  Interfactive Report 이미지 처리  이미지 크기  img { width: 100px; height: 100px; }  "
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/06-inputvalidation/",
