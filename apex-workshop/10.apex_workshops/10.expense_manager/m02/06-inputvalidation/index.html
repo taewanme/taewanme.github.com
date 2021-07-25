@@ -4,19 +4,21 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-07-26T02:57:12 KST">
+<meta name="revised" content="2021-07-26T05:01:40 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="06: 입력 데이터 Validation" />
-<meta property="og:description" content="Employee 폼 List of Value (Shard Component)  LOB TYPES  select lob_id as r, lob_name as d from LOB_TYPES   EMP TYPES (Shard Component)  select type_id as r, type_name ||&#39; (&#39;||type_full_name||&#39;)&#39; as d from USER_TYPES   Teams  select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   List of Value (Local) select team_name ||&#39; (&#39;||team_full_name||&#39;)&#39; as d, team_id as r from TEAMS where lob_type_id = :12_LOB  Form Component 이슈  이미지 크기  img { width: 200px; height: 200px; }  Input Validation  Email  ^[A-Za-z]&#43;[A-Za-z0-9." />
+<meta property="og:description" content=" Input Validation  Email  error message: Mail 포멧이 아닙니다. 메일 형식이어야 합니다.   ^[A-Za-z]&#43;[A-Za-z0-9.]&#43;@[A-Za-z0-9.-]&#43;\.[A-Za-z]{2,4}$   핸드폰 번호  Error message: 핸드폰 전화번호 형식이 아닙니다. (예 010-1234-1234)   ^\d{3}-\d{3,4}-\d{4}$   생년월일
+ Error message: 생일은 오늘 이전이어야 합니다.  sysdate &gt; to_date(:P11_BIRTH_DAY, &#39;YYYY-MM-DD&#39;)   id == email
+ error message: ID와 Email은 같아야 합니다.   :P12_EMPLOYEE_ID = :P12_EMAIL  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/06-inputvalidation/" />
 
 
 
-<meta property="article:published_time" content="2020-05-02T09:11:05&#43;09:00"/>
-<meta property="article:modified_time" content="2020-05-02T09:11:05&#43;09:00"/>
+<meta property="article:published_time" content="2021-07-26T03:11:05&#43;09:00"/>
+<meta property="article:modified_time" content="2021-07-26T03:11:05&#43;09:00"/>
 
 
 
@@ -283,6 +285,20 @@
   - 
    APEX Expense Manager</option> 
       <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m01-employees/" >-- M01: Oracle APEX 소개</option>
+    <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/" >
+  -- 
+   M02:직원 정보 관리</option> 
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/01-login-account/" >--- 01: APEX 로그인 및 계정 등록</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/02-table/" >--- 02: 직원 정보 관리 테이블 생성</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/03-apexreport/" >--- 03: 직원 정보 관리 APEX Report 생성</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/04-valueoflist/" >--- 04: Key 처리를 위한 UI 컴포넌트 구성</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/05-image_resize/" >--- 05: 이미지 처리 이슈</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/06-inputvalidation/"  selected>--- 06: 입력 데이터 Validation</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/07-dault_value/" >--- 07: 입력 폼 기본 값 처리</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/08-readonly/" >--- 08: 입력 폼 읽기 전용 설정</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/09.server_side/" >--- 09: Server Side 설정</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/10-search/" >--- 10: 검색 기능</option>
+  
       <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m03-reports/" >-- M03: Expense Report</option>
       <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m04-master-detail/" >-- M04: Master-Detail 리포트</option>
   
@@ -318,137 +334,55 @@
     
     
 
-<h2 id="employee-폼">Employee 폼</h2>
-
-<h3 id="list-of-value-shard-component">List of Value (Shard Component)</h3>
+<h2 id="input-validation">Input Validation</h2>
 
 <ul>
-<li>LOB TYPES</li>
-</ul>
-
-<pre><code>select lob_id as r, lob_name as d from LOB_TYPES
-</code></pre>
+<li>Email
 
 <ul>
-<li>EMP TYPES (Shard Component)</li>
-</ul>
-
-<pre><code>select type_id as r, type_name ||' ('||type_full_name||')' as d 
-from USER_TYPES 
-</code></pre>
-
-<ul>
-<li>Teams</li>
-</ul>
-
-<pre><code>select team_full_name as d, team_id as r 
-from TEAMS 
-</code></pre>
-
-<ul>
-<li>Gender Types
-
-<ul>
-<li>남성: M</li>
-<li>여성: F</li>
+<li>error message: Mail 포멧이 아닙니다. 메일 형식이어야 합니다.</li>
 </ul></li>
 </ul>
 
-<h3 id="list-of-value-local">List of Value (Local)</h3>
-
-<pre><code>select  
-team_name ||' ('||team_full_name||')' as d, team_id as r    
-from TEAMS 
-where lob_type_id = :12_LOB
-</code></pre>
-
-<h3 id="form-component-이슈">Form Component 이슈</h3>
-
-<ul>
-<li>이미지 크기</li>
-</ul>
-
-<pre><code>img {
-width: 200px;
-height: 200px;
-}
-</code></pre>
-
-<h3 id="input-validation">Input Validation</h3>
-
-<ul>
-<li>Email</li>
-</ul>
-
 <pre><code>^[A-Za-z]+[A-Za-z0-9.]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$
-# error message: Mail 포멧이 아닙니다. 메일 형식이어야 합니다. 
 </code></pre>
 
 <ul>
-<li>핸드폰 번호</li>
+<li>핸드폰 번호
+
+<ul>
+<li>Error message: 핸드폰 전화번호 형식이 아닙니다. (예 010-1234-1234)</li>
+</ul></li>
 </ul>
 
 <pre><code>^\d{3}-\d{3,4}-\d{4}$
-# error message: 핸드폰 전화번호 형식이 아닙니다. (예 010-1234-1234)
 </code></pre>
 
 <ul>
-<li>생년월일</li>
-</ul>
-
-<pre><code>sysdate &gt; to_date(:P3_BIRTH_DAY, 'YYYY-MM-DD')
-# error message:  생일은 오늘 이전이어야 합니다. 
-</code></pre>
+<li><p>생년월일</p>
 
 <ul>
-<li>id == email</li>
-</ul>
+<li>Error message:  생일은 오늘 이전이어야 합니다.
+<code>
+sysdate &gt; to_date(:P11_BIRTH_DAY, 'YYYY-MM-DD') 
+</code></li>
+</ul></li>
 
-<pre><code>:P12_EMPLOYEE_ID = :P12_EMAIL
-# error message: ID와 Email은 같아야 합니다.
-</code></pre>
-
-<h3 id="11-page-이슈">11 Page 이슈</h3>
-
-<ul>
-<li>이미지 사이즈 조정</li>
-</ul>
-
-<pre><code>img {
-width: 100px;
-height: 100px;
-}
-</code></pre>
-
-<h3 id="11-페이지-검색-report-where-절">11 페이지 검색 - Report where 절</h3>
-
-<pre><code>where InStr(':'||:P11_TYPES||':', ':'||TYPE_ID||':') &gt; 0
-and TYPE_ID IS NOT NULL
-and InStr(':'||:P11_GENDERS||':', ':'||GENDER||':') &gt; 0
-and GENDER IS NOT NULL
-</code></pre>
-
-<h3 id="검색-조건-기본값-설정">검색 조건 기본값 설정</h3>
+<li><p>id == email</p>
 
 <ul>
-<li>Type</li>
+<li>error message: ID와 Email은 같아야 합니다.</li>
+</ul></li>
 </ul>
 
-<pre><code>select type_id from USER_TYPES
-</code></pre>
-
-<ul>
-<li>Gender</li>
-</ul>
-
-<pre><code>M:F
+<pre><code>:P12_EMPLOYEE_ID = :P12_EMAIL 
 </code></pre>
 
 
     
     
       <div class="alert alert-info" role="alter">
-  <li><strong>문서 생성:</strong> 2020-05-02 09:11 / <string>최종 문서 수정:</strong> 2020-05-02 09:11 </li>
+  <li><strong>문서 생성:</strong> 2021-07-26 03:11 / <string>최종 문서 수정:</strong> 2021-07-26 03:11 </li>
 </div><div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/05-image_resize/" title="05: 이미지 처리 이슈"> <i class="fa fa-chevron-left"></i><label>05: 이미지 처리 이슈</label></a>
@@ -478,7 +412,7 @@ and GENDER IS NOT NULL
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 02/05/2020
+        <i class='fa fa-calendar'></i> Last update on 26/07/2021
     </div>
     
   </div>
