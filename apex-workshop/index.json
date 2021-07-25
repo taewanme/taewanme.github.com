@@ -81,7 +81,7 @@
 	"title": "06: 입력 데이터 Validation",
 	"tags": [],
 	"description": "",
-	"content": " Input Validation  Email  error message: Mail 포멧이 아닙니다. 메일 형식이어야 합니다.   ^[A-Za-z]+[A-Za-z0-9.]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$   핸드폰 번호  Error message: 핸드폰 전화번호 형식이 아닙니다. (예 010-1234-1234)   ^\\d{3}-\\d{3,4}-\\d{4}$   생년월일\n Error message: 생일은 오늘 이전이어야 합니다.  sysdate \u0026gt; to_date(:P11_BIRTH_DAY, 'YYYY-MM-DD')   id == email\n error message: ID와 Email은 같아야 합니다.   :P12_EMPLOYEE_ID = :P12_EMAIL  "
+	"content": " Input Validation  Email  error message: Mail 포멧이 아닙니다. 메일 형식이어야 합니다.   ^[A-Za-z]+[A-Za-z0-9.]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$   핸드폰 번호  Error message: 핸드폰 전화번호 형식이 아닙니다. (예 010-1234-1234)   ^\\d{3}-\\d{3,4}-\\d{4}$   생년월일\n Error message: 생일은 오늘 이전이어야 합니다.  sysdate \u0026gt; to_date(:P12_BIRTH_DAY, 'YYYY-MM-DD')   id == email\n error message: ID와 Email은 같아야 합니다.   :P12_EMPLOYEE_ID = :P12_EMAIL  "
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/07-dault_value/",

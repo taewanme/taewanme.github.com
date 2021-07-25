@@ -4,13 +4,13 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-07-26T05:43:17 KST">
+<meta name="revised" content="2021-07-26T06:06:38 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="06: 입력 데이터 Validation" />
 <meta property="og:description" content=" Input Validation  Email  error message: Mail 포멧이 아닙니다. 메일 형식이어야 합니다.   ^[A-Za-z]&#43;[A-Za-z0-9.]&#43;@[A-Za-z0-9.-]&#43;\.[A-Za-z]{2,4}$   핸드폰 번호  Error message: 핸드폰 전화번호 형식이 아닙니다. (예 010-1234-1234)   ^\d{3}-\d{3,4}-\d{4}$   생년월일
- Error message: 생일은 오늘 이전이어야 합니다.  sysdate &gt; to_date(:P11_BIRTH_DAY, &#39;YYYY-MM-DD&#39;)   id == email
+ Error message: 생일은 오늘 이전이어야 합니다.  sysdate &gt; to_date(:P12_BIRTH_DAY, &#39;YYYY-MM-DD&#39;)   id == email
  error message: ID와 Email은 같아야 합니다.   :P12_EMPLOYEE_ID = :P12_EMAIL  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/06-inputvalidation/" />
@@ -364,7 +364,7 @@
 <ul>
 <li>Error message:  생일은 오늘 이전이어야 합니다.
 <code>
-sysdate &gt; to_date(:P11_BIRTH_DAY, 'YYYY-MM-DD') 
+sysdate &gt; to_date(:P12_BIRTH_DAY, 'YYYY-MM-DD') 
 </code></li>
 </ul></li>
 
