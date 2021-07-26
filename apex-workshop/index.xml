@@ -103,12 +103,12 @@
     </item>
     
     <item>
-      <title>10: 검색 기능 &amp; Dynamic Action</title>
+      <title>8: 검색 기능 &amp; Dynamic Action</title>
       <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/08-search/</link>
       <pubDate>Sat, 02 May 2020 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/08-search/</guid>
-      <description> 검색 조건 where InStr(&#39;:&#39;||:P11_TYPES||&#39;:&#39;, &#39;:&#39;||TYPE_ID||&#39;:&#39;) &amp;gt; 0 and TYPE_ID IS NOT NULL and InStr(&#39;:&#39;||:P11_GENDERS||&#39;:&#39;, &#39;:&#39;||GENDER||&#39;:&#39;) &amp;gt; 0 and GENDER IS NOT NULL  Default Value  Types  select type_id from USER_TYPES   Gender  M:F  </description>
+      <description> 검색 조건 where InStr(&#39;:&#39;||:P11_TYPES||&#39;:&#39;, &#39;:&#39;||TYPE_ID||&#39;:&#39;) &amp;gt; 0 and TYPE_ID IS NOT NULL and InStr(&#39;:&#39;||:P11_GENDERS||&#39;:&#39;, &#39;:&#39;||GENDER||&#39;:&#39;) &amp;gt; 0 and GENDER IS NOT NULL  Default Value  Types  select type_id from USER_TYPES   Gender  M:F  Region  ICON: FA-USERS  </description>
     </item>
     
   </channel>

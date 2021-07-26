@@ -92,10 +92,10 @@
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/08-search/",
-	"title": "10: 검색 기능 &amp; Dynamic Action",
+	"title": "8: 검색 기능 &amp; Dynamic Action",
 	"tags": [],
 	"description": "",
-	"content": " 검색 조건 where InStr(':'||:P11_TYPES||':', ':'||TYPE_ID||':') \u0026gt; 0 and TYPE_ID IS NOT NULL and InStr(':'||:P11_GENDERS||':', ':'||GENDER||':') \u0026gt; 0 and GENDER IS NOT NULL  Default Value  Types  select type_id from USER_TYPES   Gender  M:F  "
+	"content": " 검색 조건 where InStr(':'||:P11_TYPES||':', ':'||TYPE_ID||':') \u0026gt; 0 and TYPE_ID IS NOT NULL and InStr(':'||:P11_GENDERS||':', ':'||GENDER||':') \u0026gt; 0 and GENDER IS NOT NULL  Default Value  Types  select type_id from USER_TYPES   Gender  M:F  Region  ICON: FA-USERS  "
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/",
