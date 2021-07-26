@@ -4,11 +4,11 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-07-27T08:10:25 KST">
+<meta name="revised" content="2021-07-27T08:58:51 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="M03:Expense 영수증 관리" />
+<meta property="og:title" content="M04:Expense Report 영수증 관리" />
 <meta property="og:description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/" />
@@ -31,7 +31,7 @@
 
 
 
-<title>M03:Expense 영수증 관리 :: Oracle APEX Workshop</title>
+<title>M04:Expense Report 영수증 관리 :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -234,17 +234,10 @@
     <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/" class="dd-item parent active alwaysopen haschildren
         ">
       <div>
-      <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m04/">M03:Expense 영수증 관리</a>
+      <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m04/">M04:Expense Report 영수증 관리</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/02.updating-master-table/" class="dd-item">
-        <div>
-          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m04/02.updating-master-table/">
-            02: expense-report 테이블 업데이트
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
       <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/03.card-report/" class="dd-item">
         <div>
           <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m04/03.card-report/">
@@ -256,6 +249,13 @@
         <div>
           <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m04/01.expense_report-copy/">
             01: expense report 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/02.updating-master-table/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m04/02.updating-master-table/">
+            02: expense-report 테이블 업데이트
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -334,10 +334,10 @@
   
     <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m04/"  selected>
   -- 
-   M03:Expense 영수증 관리</option> 
-      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m04/02.updating-master-table/" >--- 02: expense-report 테이블 업데이트</option>
+   M04:Expense Report 영수증 관리</option> 
       <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m04/03.card-report/" >--- 03: card report 생성</option>
       <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m04/01.expense_report-copy/" >--- 01: expense report 생성</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m04/02.updating-master-table/" >--- 02: expense-report 테이블 업데이트</option>
   
   
   
@@ -361,7 +361,7 @@
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>M03:Expense 영수증 관리</h1>
+    <h1>M04:Expense Report 영수증 관리</h1>
 
 
      
@@ -373,7 +373,7 @@
 
 
 
-<p>APEX Workshop 101의 두 번째 실습으로 법인카드 영수증을 관리하는 페이지를 개발하는 과정을 소개합니다. 이번 실습에서는 다음 이미지와 같은 법인카드 영수증 관리 페이지를 개발해 보겠습니다.</p>
+<p>APEX Workshop 101의 세 번째 실습으로 법인카드 영수증을 관리하는 페이지를 개발하는 과정을 소개합니다. 이번 실습에서는 다음 이미지와 같은 법인카드 영수증 관리 페이지를 개발해 보겠습니다.</p>
 
 <p><img src="https://taewanmerepo.github.io/2021/07/apex/m03/030.jpg" alt="" />
 <img src="https://taewanmerepo.github.io/2021/07/apex/m03/040.jpg" alt="" /></p>
@@ -398,8 +398,8 @@
   <li><strong>문서 생성:</strong> 2021-07-26 01:11 / <string>최종 문서 수정:</strong> 2021-07-26 01:11 </li>
 </div><div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/apex-workshop/00.index/" title="Oracle APEX Workshop"> <i class="fa fa-chevron-left"></i><label>Oracle APEX Workshop</label></a>
-    <a class="nav nav-next" href="/apex-workshop/10.apex_workshops/10.expense_manager/m04/02.updating-master-table/" title="02: expense-report 테이블 업데이트" style="margin-right: 0px;"><label>02: expense-report 테이블 업데이트</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/apex-workshop/10.apex_workshops/10.expense_manager/m03/03.report/" title="03: 영수증 리포트 설정"> <i class="fa fa-chevron-left"></i><label>03: 영수증 리포트 설정</label></a>
+    <a class="nav nav-next" href="/apex-workshop/10.apex_workshops/10.expense_manager/m04/03.card-report/" title="03: card report 생성" style="margin-right: 0px;"><label>03: card report 생성</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="panel panel-danger">
