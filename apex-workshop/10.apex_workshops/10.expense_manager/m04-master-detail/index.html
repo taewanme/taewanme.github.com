@@ -4,12 +4,12 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-07-27T02:38:10 KST">
+<meta name="revised" content="2021-07-27T04:00:09 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="M04: Master-Detail 리포트" />
-<meta property="og:description" content="Expense 리포트 관리 Title Region  제목: Expense Report 관리 설명: 사용자별 Expense Report를 관리 검색하는 페이지입니다. ICON: fa-layout-grid-3x  Sequence 생성  EXPENSE_REPORT_SEQ   CREATE SEQUENCE &quot;EXPENSE_REPORT_SEQ&quot; MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 9 NOCACHE NOORDER NOCYCLE NOKEEP NOSCALE GLOBAL  report id 설정  Expense Report Form 설정 process  declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual; :P22_EXPENSE_REPORT_ID := V_REPORT_ID; end;  List of Value  추가 대상 영수증 목록(Local - Page:23)  select title||&#39;,&#39;||payment_amount||&#39;(&#39;||use_date||&#39;)&#39;, expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i." />
+<meta property="og:description" content="Title Region  제목: Expense Report 관리 설명: 사용자별 Expense Report를 관리 검색하는 페이지입니다. ICON: fa-layout-grid-3x  report id 설정  Expense Report Form 설정 process  declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual; :P32_EXPENSE_REPORT_ID := V_REPORT_ID; end;  Expense Item 쿼리 select ROWID, REPORT_ID, EXPENSE_ID, EMPLOYEE_ID, TYPE_ID, PAYMENT_AMOUNT, TITLE, DESCRIPTION, USE_DATE, CRE_DATE from EXPENSE_REPORT_ITEMS_V where &quot;REPORT_ID&quot; = :P21_EXPENSE_REPORT_ID order by expense_id  List of Value  추가 대상 영수증 목록(Local - Page:23)  select title||&#39;,&#39;||payment_amount||&#39;(&#39;||use_date||&#39;)&#39;, expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04-master-detail/" />
 
@@ -345,9 +345,7 @@
     
     
 
-<h2 id="expense-리포트-관리">Expense 리포트 관리</h2>
-
-<h3 id="title-region">Title Region</h3>
+<h2 id="title-region">Title Region</h2>
 
 <ul>
 <li>제목: Expense Report 관리</li>
@@ -355,21 +353,7 @@
 <li>ICON: fa-layout-grid-3x</li>
 </ul>
 
-<h3 id="sequence-생성">Sequence 생성</h3>
-
-<ul>
-<li>EXPENSE_REPORT_SEQ</li>
-</ul>
-
-<pre><code> CREATE SEQUENCE   &quot;EXPENSE_REPORT_SEQ&quot;  
- MINVALUE 1 
- MAXVALUE 9999999999999999999999999999 
- INCREMENT BY 1 
- START WITH 9 
- NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL
-</code></pre>
-
-<h3 id="report-id-설정">report id 설정</h3>
+<h2 id="report-id-설정">report id 설정</h2>
 
 <ul>
 <li>Expense Report Form 설정</li>
@@ -380,8 +364,25 @@
 V_REPORT_ID number(9);
 begin
 select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual;
-:P22_EXPENSE_REPORT_ID := V_REPORT_ID;
+:P32_EXPENSE_REPORT_ID := V_REPORT_ID;
 end;
+</code></pre>
+
+<h3 id="expense-item-쿼리">Expense Item 쿼리</h3>
+
+<pre><code>select ROWID,
+       REPORT_ID,
+       EXPENSE_ID,
+       EMPLOYEE_ID,
+       TYPE_ID,
+       PAYMENT_AMOUNT,
+       TITLE,
+       DESCRIPTION,
+       USE_DATE,
+       CRE_DATE
+  from EXPENSE_REPORT_ITEMS_V
+ where &quot;REPORT_ID&quot; = :P21_EXPENSE_REPORT_ID
+ order by expense_id
 </code></pre>
 
 <h3 id="list-of-value">List of Value</h3>
