@@ -4,20 +4,18 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-07-26T13:27:31 KST">
+<meta name="revised" content="2021-07-26T21:25:52 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="M03: Expense Report" />
-<meta property="og:description" content="Expense 리포트 관리 Title Region  제목: Expense Report 관리 설명: 사용자별 Expense Report를 관리 검색하는 페이지입니다. ICON: fa-layout-grid-3x  Sequence 생성  EXPENSE_REPORT_SEQ   CREATE SEQUENCE &quot;EXPENSE_REPORT_SEQ&quot; MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 9 NOCACHE NOORDER NOCYCLE NOKEEP NOSCALE GLOBAL  report id 설정  Expense Report Form 설정 process  declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual; :P22_EXPENSE_REPORT_ID := V_REPORT_ID; end;  List of Value  추가 대상 영수증 목록(Local - Page:23)  select title||&#39;,&#39;||payment_amount||&#39;(&#39;||use_date||&#39;)&#39;, expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03-reports/" />
+<meta property="og:title" content="M03:Expense 영수증 관리" />
+<meta property="og:description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/" />
 
 
 
-<meta property="article:published_time" content="2020-05-02T09:11:05&#43;09:00"/>
-<meta property="article:modified_time" content="2020-05-02T09:11:05&#43;09:00"/>
-
+<meta property="og:updated_time" content="2021-07-26T01:11:05&#43;09:00"/>
 
 
 
@@ -33,7 +31,7 @@
 
 
 
-<title>M03: Expense Report :: Oracle APEX Workshop</title>
+<title>M03:Expense 영수증 관리 :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -72,7 +70,7 @@
 
     
   </head>
-  <body data-url="/apex-workshop/10.apex_workshops/10.expense_manager/m03-reports/">
+  <body data-url="/apex-workshop/10.apex_workshops/10.expense_manager/m03/">
     
       <header>
   <div class="logo">
@@ -203,12 +201,35 @@
     </li>
         </ul>
     </li>
-      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03-reports/" class="dd-item active">
+    <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/" class="dd-item parent active alwaysopen haschildren
+        ">
+      <div>
+      <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m03/">M03:Expense 영수증 관리</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/01.databaes/" class="dd-item">
         <div>
-          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m03-reports/">
-            M03: Expense Report
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m03/01.databaes/">
+            01: 관련 데이터베이스 객체 생성
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/02.form/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m03/02.form/">
+            02: 리포트 생성 및 영수증 폼 설정
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/03.report/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m03/03.report/">
+            02: 리포트 생성 및 영수증 폼 설정
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
     </li>
       <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04-master-detail/" class="dd-item">
         <div>
@@ -281,7 +302,13 @@
       <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/07-dault_value/" >--- 07: 입력 폼 기본 처리</option>
       <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m02/08-search/" >--- 08: 검색 기능 &amp; Dynamic Action</option>
   
-      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m03-reports/"  selected>-- M03: Expense Report</option>
+    <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m03/"  selected>
+  -- 
+   M03:Expense 영수증 관리</option> 
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m03/01.databaes/" >--- 01: 관련 데이터베이스 객체 생성</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m03/02.form/" >--- 02: 리포트 생성 및 영수증 폼 설정</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m03/03.report/" >--- 02: 리포트 생성 및 영수증 폼 설정</option>
+  
       <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m04-master-detail/" >-- M04: Master-Detail 리포트</option>
   
   
@@ -305,7 +332,7 @@
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>M03: Expense Report</h1>
+    <h1>M03:Expense 영수증 관리</h1>
 
 
      
@@ -314,152 +341,33 @@
     
     
     
-    
-
-<h2 id="expense-리포트-관리">Expense 리포트 관리</h2>
-
-<h3 id="title-region">Title Region</h3>
-
-<ul>
-<li>제목: Expense Report 관리</li>
-<li>설명: 사용자별 Expense Report를 관리 검색하는 페이지입니다.</li>
-<li>ICON: fa-layout-grid-3x</li>
-</ul>
-
-<h3 id="sequence-생성">Sequence 생성</h3>
-
-<ul>
-<li>EXPENSE_REPORT_SEQ</li>
-</ul>
-
-<pre><code> CREATE SEQUENCE   &quot;EXPENSE_REPORT_SEQ&quot;  
- MINVALUE 1 
- MAXVALUE 9999999999999999999999999999 
- INCREMENT BY 1 
- START WITH 9 
- NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL
-</code></pre>
-
-<h3 id="report-id-설정">report id 설정</h3>
-
-<ul>
-<li>Expense Report Form 설정</li>
-<li>process</li>
-</ul>
-
-<pre><code>declare 
-V_REPORT_ID number(9);
-begin
-select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual;
-:P22_EXPENSE_REPORT_ID := V_REPORT_ID;
-end;
-</code></pre>
-
-<h3 id="list-of-value">List of Value</h3>
-
-<ul>
-<li>추가 대상 영수증 목록(Local - Page:23)</li>
-</ul>
-
-<pre><code>select title||','||payment_amount||'('||use_date||')', 
-expense_id 
-from expenses
-where employee_id=lower(:APP_USER) and 
-expense_id not in (
-    select i.expense_id 
-    from expense_reports r, expense_report_items i 
-    where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) )
-order by use_date
 
 
-</code></pre>
 
-<h3 id="master-record-조회-조건">Master Record 조회 조건</h3>
+<p>APEX Workshop 101의 두 번째 실습으로 법인카드 영수증을 관리하는 페이지를 개발하는 과정을 소개합니다. 이번 실습에서는 다음 이미지와 같은 법인카드 영수증 관리 페이지를 개발해 보겠습니다.</p>
 
-<pre><code>select &quot;EXPENSE_REPORT_ID&quot;,
-    null link_class,
-    apex_page.get_url(p_items =&gt; 'P21_EXPENSE_REPORT_ID', p_values =&gt; &quot;EXPENSE_REPORT_ID&quot;) link,
-    null icon_class,
-    null link_attr,
-    null icon_color_class,
-    case when nvl(:P21_EXPENSE_REPORT_ID,'0') = &quot;EXPENSE_REPORT_ID&quot;
-      then 'is-active' 
-      else ' '
-    end list_class,
-    substr(&quot;REPORT_TITLE&quot;, 1, 50)||( case when length(&quot;REPORT_TITLE&quot;) &gt; 50 then '...' end ) list_title,
-    substr(&quot;CRE_DATE&quot;, 1, 50)||( case when length(&quot;CRE_DATE&quot;) &gt; 50 then '...' end ) list_text,
-    null list_badge
-from &quot;EXPENSE_REPORTS&quot; x
-where (:P21_SEARCH is null
-        or upper(x.&quot;REPORT_TITLE&quot;) like '%'||upper(:P21_SEARCH)||'%'
-        or upper(x.&quot;CRE_DATE&quot;) like '%'||upper(:P21_SEARCH)||'%'
-    ) and
-    employee_id = lower(:APP_USER)
-order by &quot;REPORT_TITLE&quot;
-</code></pre>
+<h2 id="모듈-구성">모듈 구성</h2>
 
-<h3 id="복수-영수증-추가-report">복수 영수증 추가 report</h3>
+<p>이번 모듈은 다음과 같은 항목으로 구성됩니다.</p>
 
-<pre><code>select  apex_item.checkbox(1, EXPENSE_ID) selected,
-&quot;EXPENSE_ID&quot;,&quot;EMPLOYEE_ID&quot;,&quot;TYPE_ID&quot;,&quot;PAYMENT_AMOUNT&quot;,&quot;TITLE&quot;,
-&quot;DESCRIPTION&quot;,&quot;RECEIPT_STATUS&quot;,&quot;CARD_TYPE&quot;,
-&quot;USE_DATE&quot;,&quot;CRE_DATE&quot;
-from &quot;EXPENSES&quot;
-where USE_DATE &gt;= to_date(:P35_EXPENSE_FROM, 'YYYY-MM-DD') 
-and USE_DATE &lt;= to_date(:P35_EXPENSE_TO, 'YYYY-MM-DD')
-and expense_id not in (
-    select i.expense_id 
-    from expense_reports r, expense_report_items i 
-    where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) )
-order by USE_DATE
+<ol>
+<li>영수증 관리 테이블 생성<br /></li>
+<li>List Of Values 생성</li>
+<li>영수증 관리 APEX Report 생성</li>
+<li>영수증 관리 Form 수정</li>
+<li>영수증 관리 Report 페이지 수정</li>
+</ol>
 
-</code></pre>
-
-<h3 id="update-expense-report">Update Expense Report</h3>
-
-<pre><code>create or replace PROCEDURE update_expense_report( p_report_id IN VARCHAR2 ) 
-IS 
-v_cc_num NUMBER(3);
-v_cc_amount NUMBER(9);
-v_pc_num NUMBER(3);
-v_pc_amount NUMBER(9);
-BEGIN 
-
-select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0)
-into v_cc_num, v_cc_amount
-from expenses e, expense_report_items i 
-where e.EXPENSE_ID = i.expense_id 
-and i.report_id = p_report_id
-and card_type = 'cc';
-
-select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0)
-into v_pc_num, v_pc_amount
-from expenses e, expense_report_items i 
-where e.EXPENSE_ID = i.expense_id 
-and i.report_id = p_report_id
-and card_type = 'pc';
-
-
-UPDATE EXPENSE_REPORTS
-SET 
-COMPANY_CARD_RECIEPT_NUM = v_cc_num,
-PRIVATE_CARD_RECIEPT_NUM = v_pc_num,
-COMPANY_CARD_AMOUNT = v_cc_amount,
-PRIVATE_CARD_AMOUNT = v_pc_amount
-WHERE EXPENSE_REPORT_ID = p_report_id;
-
-END; 
-</code></pre>
 
 
     
     
       <div class="alert alert-info" role="alter">
-  <li><strong>문서 생성:</strong> 2020-05-02 09:11 / <string>최종 문서 수정:</strong> 2020-05-02 09:11 </li>
+  <li><strong>문서 생성:</strong> 2021-07-26 01:11 / <string>최종 문서 수정:</strong> 2021-07-26 01:11 </li>
 </div><div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/08-search/" title="08: 검색 기능 &amp; Dynamic Action"> <i class="fa fa-chevron-left"></i><label>08: 검색 기능 &amp; Dynamic Action</label></a>
-    <a class="nav nav-next" href="/apex-workshop/10.apex_workshops/10.expense_manager/m04-master-detail/" title="M04: Master-Detail 리포트" style="margin-right: 0px;"><label>M04: Master-Detail 리포트</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="/apex-workshop/10.apex_workshops/10.expense_manager/m03/01.databaes/" title="01: 관련 데이터베이스 객체 생성" style="margin-right: 0px;"><label>01: 관련 데이터베이스 객체 생성</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="panel panel-danger">
@@ -469,7 +377,7 @@ END;
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03-reports/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/"></div>
 
   </div>
 
@@ -485,7 +393,7 @@ END;
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 02/05/2020
+        <i class='fa fa-calendar'></i> Last update on 26/07/2021
     </div>
     
   </div>

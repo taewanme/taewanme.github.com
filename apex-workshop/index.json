@@ -21,18 +21,18 @@
 	"content": "to-do\n"
 },
 {
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/",
-	"title": "M02:직원 정보 관리",
-	"tags": [],
-	"description": "",
-	"content": " APEX Workshop 101의 첫 번째 실습으로 직원 정보를 관리하는 페이지를 개발하는 과정을 소개합니다. 이번 실습에서는 다음 이미지와 같은 직원 정보 관리 페이지를 개발해 보겠습니다.\n모듈 구성 이번 모듈은 다음과 같은 항목을 다룹니다.\n APEX 로그인 및 계정 등록 직원 정보 관리 테이블 생성 직원 정보 관리 APEX Report 생성 Key 처리를 위한 UI 컴포넌트 구성 이미지 이슈 처리 입력 데이터 Validation 입력 값 처리 (Serverside, Read Only, Default) 검색 \u0026amp; Dynamic Action  개발 화면 이번 모듈을 통해서 다음과 같은 페이지를 개발할 수 있습니다.\n 직원 정보 조회  직원 상세 정보 조회 및 정보 입력 폼   "
-},
-{
 	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/01-login-account/",
 	"title": "01: APEX 로그인 및 계정 등록",
 	"tags": [],
 	"description": "",
 	"content": "   주요 작업  APEX Workspace 접속 개발자 계정 생성  실습자 Email Trainer Email: apex.workshop.helper@gmail.com   "
+},
+{
+	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/01.databaes/",
+	"title": "01: 관련 데이터베이스 객체 생성",
+	"tags": [],
+	"description": "",
+	"content": " 리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  관련 데이트 생성  SQL Workshop =\u0026gt; SQL Script  스크립트 파일: {apexws101-res.zip}/m03/sql/expense.sql   SEQUENCE 생성  SQL Workshop =\u0026gt; Object Browser 이름  EXPENSE_SEQ EXPENSE_REPORT_SEQ    Trigger 생성  SQL Workshop =\u0026gt; SQL Command  create or replace trigger \u0026quot;EXPENSES_T1\u0026quot; BEFORE insert on \u0026quot;EXPENSES\u0026quot; for each row begin if :NEW.\u0026quot;EXPENSE_ID\u0026quot; is null then select \u0026quot;EXPENSE_SEQ\u0026quot;.nextval into :NEW.\u0026quot;EXPENSE_ID\u0026quot; from sys.dual; end if; end;  "
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/02-table/",
@@ -42,18 +42,39 @@
 	"content": "   리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  "
 },
 {
+	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/",
+	"title": "M02:직원 정보 관리",
+	"tags": [],
+	"description": "",
+	"content": " APEX Workshop 101의 첫 번째 실습으로 직원 정보를 관리하는 페이지를 개발하는 과정을 소개합니다. 이번 실습에서는 다음 이미지와 같은 직원 정보 관리 페이지를 개발해 보겠습니다.\n모듈 구성 이번 모듈은 다음과 같은 항목으로 구성됩니다.\n APEX 로그인 및 계정 등록 직원 정보 관리 테이블 생성 직원 정보 관리 APEX Report 생성 Key 처리를 위한 UI 컴포넌트 구성 이미지 이슈 처리 입력 데이터 Validation 입력 값 처리 (Serverside, Read Only, Default) 검색 \u0026amp; Dynamic Actionz  개발 화면 이번 모듈을 통해서 다음과 같은 페이지를 개발할 수 있습니다.\n 직원 정보 조회  직원 상세 정보 조회 및 정보 입력 폼   "
+},
+{
+	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/02.form/",
+	"title": "02: 리포트 생성 및 영수증 폼 설정",
+	"tags": [],
+	"description": "",
+	"content": " 리포트 생성  대상 테이블: Expenses 리포트 타입: Interactive Report 페이지 번호: 21, 22  LoV (List of Values)  이름: EXPENSE TYPE  Shared Component   expense types select type_id as r, type_name as d from EXPENSE_TYPES order by 1   이름: CARD TYPES  Shared Component      Display Return     개인카드 pc   법인카드 cc     이름: RECEIPT STATUS  Shared Component      Display Return     분실 m   보관 k    폼 레이아웃 및 레이블 설정  폼 레이아웃\n 페이비 번호오류: P12 ==\u0026gt; P22 으로 처리   폼 레이블  P22_EMPLOYEE_ID\n READ ONLY: Always Default  TYPE: Expression Language: PL/SQL PL/SQL Expression  lower(:APP_USER)    P22_TYPE_ID\n select list  shared component EXPENSE TYPES\n   P22_CARD_TYPE\n RADIO GROUP  shared component CARD TYPES\n   P22_RECEIPT_STATUS\n RADIO GROUP  shared component RECEIPT STATUS   P12_DESCRIPTION\n RICH TEXT Editor Toolbar: Intermediate Minimum Height: 100  P22_CRE_DATE\n hidden default: sysdate   format 처리  P22_USE_DATE P22_PAYMENT_AMOUNT  Column 생성 (Duplicate)  P12_RECEIPT_PIC ==\u0026gt; P12_RECEIPT_PIC_DISPLAY  "
+},
+{
+	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/03.report/",
+	"title": "02: 리포트 생성 및 영수증 폼 설정",
+	"tags": [],
+	"description": "",
+	"content": " 리포트 생성  대상 테이블: Expenses 리포트 타입: Interactive Report 페이지 번호: 21, 22  LoV (List of Values)  이름: EXPENSE TYPE  Shared Component   expense types select type_id as r, type_name as d from EXPENSE_TYPES order by 1   이름: CARD TYPES  Shared Component      Display Return     개인카드 pc   법인카드 cc     이름: RECEIPT STATUS  Shared Component      Display Return     분실 m   보관 k    폼 레이아웃 및 레이블 설정  폼 레이아웃\n 페이비 번호오류: P12 ==\u0026gt; P22 으로 처리   폼 레이블  P22_EMPLOYEE_ID\n READ ONLY: Always Default  TYPE: Expression Language: PL/SQL PL/SQL Expression  lower(:APP_USER)    P22_TYPE_ID\n select list  shared component EXPENSE TYPES\n   P22_CARD_TYPE\n RADIO GROUP  shared component CARD TYPES\n   P22_RECEIPT_STATUS\n RADIO GROUP  shared component RECEIPT STATUS   P12_DESCRIPTION\n RICH TEXT Editor Toolbar: Intermediate Minimum Height: 100  P22_CRE_DATE\n hidden default: sysdate   format 처리  P22_USE_DATE P22_PAYMENT_AMOUNT  Column 생성 (Duplicate)  P12_RECEIPT_PIC ==\u0026gt; P12_RECEIPT_PIC_DISPLAY  "
+},
+{
+	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/",
+	"title": "M03:Expense 영수증 관리",
+	"tags": [],
+	"description": "",
+	"content": " APEX Workshop 101의 두 번째 실습으로 법인카드 영수증을 관리하는 페이지를 개발하는 과정을 소개합니다. 이번 실습에서는 다음 이미지와 같은 법인카드 영수증 관리 페이지를 개발해 보겠습니다.\n모듈 구성 이번 모듈은 다음과 같은 항목으로 구성됩니다.\n 영수증 관리 테이블 생성\n List Of Values 생성 영수증 관리 APEX Report 생성 영수증 관리 Form 수정 영수증 관리 Report 페이지 수정  "
+},
+{
 	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/03-apexreport/",
 	"title": "03: 직원 정보 관리 APEX Report 생성",
 	"tags": [],
 	"description": "",
 	"content": "   주요 작업 다음 Employees 테이블를 지정하여 APEX Report를 만듭니다.\n생성된 Employees 테이블의 APEX Report를 다음과 같이 수정하겠습니다.\n"
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03-reports/",
-	"title": "M03: Expense Report",
-	"tags": [],
-	"description": "",
-	"content": " Expense 리포트 관리 Title Region  제목: Expense Report 관리 설명: 사용자별 Expense Report를 관리 검색하는 페이지입니다. ICON: fa-layout-grid-3x  Sequence 생성  EXPENSE_REPORT_SEQ   CREATE SEQUENCE \u0026quot;EXPENSE_REPORT_SEQ\u0026quot; MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 9 NOCACHE NOORDER NOCYCLE NOKEEP NOSCALE GLOBAL  report id 설정  Expense Report Form 설정 process  declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual; :P22_EXPENSE_REPORT_ID := V_REPORT_ID; end;  List of Value  추가 대상 영수증 목록(Local - Page:23)  select title||','||payment_amount||'('||use_date||')', expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i.expense_id from expense_reports r, expense_report_items i where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) ) order by use_date  Master Record 조회 조건 select \u0026quot;EXPENSE_REPORT_ID\u0026quot;, null link_class, apex_page.get_url(p_items =\u0026gt; 'P21_EXPENSE_REPORT_ID', p_values =\u0026gt; \u0026quot;EXPENSE_REPORT_ID\u0026quot;) link, null icon_class, null link_attr, null icon_color_class, case when nvl(:P21_EXPENSE_REPORT_ID,'0') = \u0026quot;EXPENSE_REPORT_ID\u0026quot; then 'is-active' else ' ' end list_class, substr(\u0026quot;REPORT_TITLE\u0026quot;, 1, 50)||( case when length(\u0026quot;REPORT_TITLE\u0026quot;) \u0026gt; 50 then '...' end ) list_title, substr(\u0026quot;CRE_DATE\u0026quot;, 1, 50)||( case when length(\u0026quot;CRE_DATE\u0026quot;) \u0026gt; 50 then '...' end ) list_text, null list_badge from \u0026quot;EXPENSE_REPORTS\u0026quot; x where (:P21_SEARCH is null or upper(x.\u0026quot;REPORT_TITLE\u0026quot;) like '%'||upper(:P21_SEARCH)||'%' or upper(x.\u0026quot;CRE_DATE\u0026quot;) like '%'||upper(:P21_SEARCH)||'%' ) and employee_id = lower(:APP_USER) order by \u0026quot;REPORT_TITLE\u0026quot;  복수 영수증 추가 report select apex_item.checkbox(1, EXPENSE_ID) selected, \u0026quot;EXPENSE_ID\u0026quot;,\u0026quot;EMPLOYEE_ID\u0026quot;,\u0026quot;TYPE_ID\u0026quot;,\u0026quot;PAYMENT_AMOUNT\u0026quot;,\u0026quot;TITLE\u0026quot;, \u0026quot;DESCRIPTION\u0026quot;,\u0026quot;RECEIPT_STATUS\u0026quot;,\u0026quot;CARD_TYPE\u0026quot;, \u0026quot;USE_DATE\u0026quot;,\u0026quot;CRE_DATE\u0026quot; from \u0026quot;EXPENSES\u0026quot; where USE_DATE \u0026gt;= to_date(:P35_EXPENSE_FROM, 'YYYY-MM-DD') and USE_DATE \u0026lt;= to_date(:P35_EXPENSE_TO, 'YYYY-MM-DD') and expense_id not in ( select i.expense_id from expense_reports r, expense_report_items i where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) ) order by USE_DATE  Update Expense Report create or replace PROCEDURE update_expense_report( p_report_id IN VARCHAR2 ) IS v_cc_num NUMBER(3); v_cc_amount NUMBER(9); v_pc_num NUMBER(3); v_pc_amount NUMBER(9); BEGIN select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_cc_num, v_cc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = 'cc'; select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_pc_num, v_pc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = 'pc'; UPDATE EXPENSE_REPORTS SET COMPANY_CARD_RECIEPT_NUM = v_cc_num, PRIVATE_CARD_RECIEPT_NUM = v_pc_num, COMPANY_CARD_AMOUNT = v_cc_amount, PRIVATE_CARD_AMOUNT = v_pc_amount WHERE EXPENSE_REPORT_ID = p_report_id; END;  "
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/04-valueoflist/",

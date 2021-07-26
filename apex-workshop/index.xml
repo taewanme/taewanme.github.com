@@ -30,12 +30,39 @@
     </item>
     
     <item>
+      <title>01: 관련 데이터베이스 객체 생성</title>
+      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/01.databaes/</link>
+      <pubDate>Sat, 25 Jul 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/01.databaes/</guid>
+      <description>리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  관련 데이트 생성  SQL Workshop =&amp;gt; SQL Script  스크립트 파일: {apexws101-res.zip}/m03/sql/expense.sql   SEQUENCE 생성  SQL Workshop =&amp;gt; Object Browser 이름  EXPENSE_SEQ EXPENSE_REPORT_SEQ    Trigger 생성  SQL Workshop =&amp;gt; SQL Command  create or replace trigger &amp;quot;EXPENSES_T1&amp;quot; BEFORE insert on &amp;quot;EXPENSES&amp;quot; for each row begin if :NEW.&amp;quot;EXPENSE_ID&amp;quot; is null then select &amp;quot;EXPENSE_SEQ&amp;quot;.nextval into :NEW.</description>
+    </item>
+    
+    <item>
       <title>02: 직원 정보 관리 테이블 생성</title>
       <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/02-table/</link>
       <pubDate>Sun, 25 Jul 2021 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/02-table/</guid>
       <description>   리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  </description>
+    </item>
+    
+    <item>
+      <title>02: 리포트 생성 및 영수증 폼 설정</title>
+      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/02.form/</link>
+      <pubDate>Sat, 25 Jul 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/02.form/</guid>
+      <description>리포트 생성  대상 테이블: Expenses 리포트 타입: Interactive Report 페이지 번호: 21, 22  LoV (List of Values)  이름: EXPENSE TYPE  Shared Component   expense types select type_id as r, type_name as d from EXPENSE_TYPES order by 1   이름: CARD TYPES  Shared Component      Display Return     개인카드 pc   법인카드 cc     이름: RECEIPT STATUS  Shared Component      Display Return     분실 m   보관 k    폼 레이아웃 및 레이블 설정  폼 레이아웃</description>
+    </item>
+    
+    <item>
+      <title>02: 리포트 생성 및 영수증 폼 설정</title>
+      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/03.report/</link>
+      <pubDate>Sat, 25 Jul 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/03.report/</guid>
+      <description>리포트 생성  대상 테이블: Expenses 리포트 타입: Interactive Report 페이지 번호: 21, 22  LoV (List of Values)  이름: EXPENSE TYPE  Shared Component   expense types select type_id as r, type_name as d from EXPENSE_TYPES order by 1   이름: CARD TYPES  Shared Component      Display Return     개인카드 pc   법인카드 cc     이름: RECEIPT STATUS  Shared Component      Display Return     분실 m   보관 k    폼 레이아웃 및 레이블 설정  폼 레이아웃</description>
     </item>
     
     <item>
@@ -46,15 +73,6 @@
       <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/03-apexreport/</guid>
       <description>주요 작업 다음 Employees 테이블를 지정하여 APEX Report를 만듭니다.
 생성된 Employees 테이블의 APEX Report를 다음과 같이 수정하겠습니다.</description>
-    </item>
-    
-    <item>
-      <title>M03: Expense Report</title>
-      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03-reports/</link>
-      <pubDate>Sat, 02 May 2020 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03-reports/</guid>
-      <description>Expense 리포트 관리 Title Region  제목: Expense Report 관리 설명: 사용자별 Expense Report를 관리 검색하는 페이지입니다. ICON: fa-layout-grid-3x  Sequence 생성  EXPENSE_REPORT_SEQ   CREATE SEQUENCE &amp;quot;EXPENSE_REPORT_SEQ&amp;quot; MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 9 NOCACHE NOORDER NOCYCLE NOKEEP NOSCALE GLOBAL  report id 설정  Expense Report Form 설정 process  declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual; :P22_EXPENSE_REPORT_ID := V_REPORT_ID; end;  List of Value  추가 대상 영수증 목록(Local - Page:23)  select title||&#39;,&#39;||payment_amount||&#39;(&#39;||use_date||&#39;)&#39;, expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i.</description>
     </item>
     
     <item>
