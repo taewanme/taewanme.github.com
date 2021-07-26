@@ -72,7 +72,7 @@
       <pubDate>Sat, 25 Jul 2020 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/03.report/</guid>
-      <description> Report Title  Expense 영수증 관리 설명: Expense 영수증을 등록, 조회, 수정, 삭제하는 페이지 입니다. Template: Hero icon: fa-file-text  Search  P21_USE_DATE_FROM P21_USE_DATE_TO  이미지 처리 img { width: 100px; height: 100px; }  </description>
+      <description> Report Title  Expense 영수증 관리 설명: Expense 영수증을 등록, 조회, 수정, 삭제하는 페이지 입니다. Template: Hero icon: fa-file-text  Search  P21_USE_DATE_FROM P21_USE_DATE_TO  where USE_DATE &amp;gt;= to_date(:P21_USE_DATE_FROM, &#39;YYYY-MM-DD&#39;) and USE_DATE &amp;lt;= to_date(:P21_USE_DATE_TO, &#39;YYYY-MM-DD&#39;) order by USE_DATE  이미지 처리 img { width: 100px; height: 100px; }  </description>
     </item>
     
     <item>
