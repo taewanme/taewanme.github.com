@@ -57,15 +57,6 @@
     </item>
     
     <item>
-      <title>02: 리포트 생성 및 영수증 폼 설정</title>
-      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/03.report/</link>
-      <pubDate>Sat, 25 Jul 2020 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/03.report/</guid>
-      <description>리포트 생성  대상 테이블: Expenses 리포트 타입: Interactive Report 페이지 번호: 21, 22  LoV (List of Values)  이름: EXPENSE TYPE  Shared Component   expense types select type_id as r, type_name as d from EXPENSE_TYPES order by 1   이름: CARD TYPES  Shared Component      Display Return     개인카드 pc   법인카드 cc     이름: RECEIPT STATUS  Shared Component      Display Return     분실 m   보관 k    폼 레이아웃 및 레이블 설정  폼 레이아웃</description>
-    </item>
-    
-    <item>
       <title>03: 직원 정보 관리 APEX Report 생성</title>
       <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/03-apexreport/</link>
       <pubDate>Sun, 25 Jul 2021 09:11:05 +0900</pubDate>
@@ -73,6 +64,15 @@
       <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/03-apexreport/</guid>
       <description>주요 작업 다음 Employees 테이블를 지정하여 APEX Report를 만듭니다.
 생성된 Employees 테이블의 APEX Report를 다음과 같이 수정하겠습니다.</description>
+    </item>
+    
+    <item>
+      <title>03: Expense Report 설정</title>
+      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/03.report/</link>
+      <pubDate>Sat, 25 Jul 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/03.report/</guid>
+      <description>LoV (List of Values)  이름: EXPENSE TYPE  Shared Component   expense types select type_id as r, type_name as d from EXPENSE_TYPES order by 1   이름: CARD TYPES  Shared Component      Display Return     개인카드 pc   법인카드 cc     이름: RECEIPT STATUS  Shared Component      Display Return     분실 m   보관 k    폼 레이아웃 및 레이블 설정  폼 레이아웃</description>
     </item>
     
     <item>
