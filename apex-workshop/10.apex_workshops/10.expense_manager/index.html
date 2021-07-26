@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-07-26T12:01:35 KST">
+<meta name="revised" content="2021-07-26T13:27:31 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
@@ -313,75 +313,7 @@
     
     
 
-
-
-<div class="extra-pagination inner">
-<nav class="pagination" role="navigation">
-	
-	<span class="page-number">Page 1 of 1</span>
-	
-</nav>
-
-</div>
-
-
-   <article class="post 10.apex_workshops">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/apex-workshop/10.apex_workshops/10.expense_manager/m01-employees/">M01: Oracle APEX 소개</a></h2>
-    </header>
-    <section class="post-excerpt">
-        <p>Employee 폼 List of Value (Shard Component)  LOB TYPES  select lob_id as r, lob_name as d from LOB_TYPES   EMP TYPES (Shard Component)  select type_id as r, type_name ||' ('||type_full_name||')' as d from USER_TYPES   Teams  select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   List of Value (Local) select team_name ||' ('||team_full_name||')' as d, team_id as r from TEAMS where lob_type_id = :12_LOB  Form Component 이슈  이미지 크기  img { width: 200px; height: 200px; }  Input Validation  Email  ^[A-Za-z]+[A-Za-z0-9. <a class="read-more" href="/apex-workshop/10.apex_workshops/10.expense_manager/m01-employees/">&raquo;</a></p>
-    </section>
-    <footer class=" footline" >
-         
-        
-
-        
-        
-    </footer>
-</article>
-
-   <article class="post 10.apex_workshops">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/apex-workshop/10.apex_workshops/10.expense_manager/m03-reports/">M03: Expense Report</a></h2>
-    </header>
-    <section class="post-excerpt">
-        <p>Expense 리포트 관리 Title Region  제목: Expense Report 관리 설명: 사용자별 Expense Report를 관리 검색하는 페이지입니다. ICON: fa-layout-grid-3x  Sequence 생성  EXPENSE_REPORT_SEQ   CREATE SEQUENCE &quot;EXPENSE_REPORT_SEQ&quot; MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 9 NOCACHE NOORDER NOCYCLE NOKEEP NOSCALE GLOBAL  report id 설정  Expense Report Form 설정 process  declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual; :P22_EXPENSE_REPORT_ID := V_REPORT_ID; end;  List of Value  추가 대상 영수증 목록(Local - Page:23)  select title||','||payment_amount||'('||use_date||')', expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i. <a class="read-more" href="/apex-workshop/10.apex_workshops/10.expense_manager/m03-reports/">&raquo;</a></p>
-    </section>
-    <footer class=" footline" >
-         
-        
-
-        
-        
-    </footer>
-</article>
-
-   <article class="post 10.apex_workshops">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/apex-workshop/10.apex_workshops/10.expense_manager/m04-master-detail/">M04: Master-Detail 리포트</a></h2>
-    </header>
-    <section class="post-excerpt">
-        <p>Expense 리포트 관리 Title Region  제목: Expense Report 관리 설명: 사용자별 Expense Report를 관리 검색하는 페이지입니다. ICON: fa-layout-grid-3x  Sequence 생성  EXPENSE_REPORT_SEQ   CREATE SEQUENCE &quot;EXPENSE_REPORT_SEQ&quot; MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 9 NOCACHE NOORDER NOCYCLE NOKEEP NOSCALE GLOBAL  report id 설정  Expense Report Form 설정 process  declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual; :P22_EXPENSE_REPORT_ID := V_REPORT_ID; end;  List of Value  추가 대상 영수증 목록(Local - Page:23)  select title||','||payment_amount||'('||use_date||')', expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i. <a class="read-more" href="/apex-workshop/10.apex_workshops/10.expense_manager/m04-master-detail/">&raquo;</a></p>
-    </section>
-    <footer class=" footline" >
-         
-        
-
-        
-        
-    </footer>
-</article>
-
-
-<div style="margin-bottom:2rem"></div>
-
-<nav class="pagination" role="navigation">
-	
-	<span class="page-number">Page 1 of 1</span>
-	
-</nav>
-
+<p>Expense Manager를 데모로 APEX를 진행하는 워크샾입니다.</p>
 
 
 
