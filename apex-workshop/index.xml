@@ -30,6 +30,15 @@
     </item>
     
     <item>
+      <title>01: expense report 생성</title>
+      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/01.databaes/</link>
+      <pubDate>Sat, 25 Jul 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/01.databaes/</guid>
+      <description>Expense Report 생성  Page 번호: 31 Application이름: Expense Report  expense_report_id 설정 declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual; :P31_EXPENSE_REPORT_ID := V_REPORT_ID; end;  영수증 목록 select title||&#39;,&#39;||payment_amount||&#39;(&#39;||use_date||&#39;)&#39;, expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i.expense_id from expense_reports r, expense_report_items i where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) ) order by use_date  마스터 테이블 업데이트  Procedure 생성  create or replace PROCEDURE update_expense_report( p_report_id IN VARCHAR2 ) IS v_cc_num NUMBER(3); v_cc_amount NUMBER(9); v_pc_num NUMBER(3); v_pc_amount NUMBER(9); BEGIN select count(e.</description>
+    </item>
+    
+    <item>
       <title>01: 관련 데이터베이스 객체 생성</title>
       <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/01.databaes/</link>
       <pubDate>Sat, 25 Jul 2020 09:11:05 +0900</pubDate>
@@ -82,15 +91,6 @@
       
       <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/04-valueoflist/</guid>
       <description>   Shared Component &amp;gt; List of Values 등록  LOB TYPES  select lob_id as r, lob_name as d from LOB_TYPES   EMP TYPES  select type_id as r, type_name ||&#39; (&#39;||type_full_name||&#39;)&#39; as d from USER_TYPES   Teams  select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   List of Value (Local) select team_name ||&#39; (&#39;||team_full_name||&#39;)&#39; as d, team_id as r from TEAMS where lob_type_id = :P12_LOB_ID  </description>
-    </item>
-    
-    <item>
-      <title>M04: Master-Detail 리포트</title>
-      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04-master-detail/</link>
-      <pubDate>Sat, 02 May 2020 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04-master-detail/</guid>
-      <description>Title Region  제목: Expense Report 관리 설명: 사용자별 Expense Report를 관리 검색하는 페이지입니다. ICON: fa-layout-grid-3x  report id 설정  Expense Report Form 설정 process  declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual; :P32_EXPENSE_REPORT_ID := V_REPORT_ID; end;  Expense Item 쿼리 select ROWID, REPORT_ID, EXPENSE_ID, EMPLOYEE_ID, TYPE_ID, PAYMENT_AMOUNT, TITLE, DESCRIPTION, USE_DATE, CRE_DATE from EXPENSE_REPORT_ITEMS_V where &amp;quot;REPORT_ID&amp;quot; = :P21_EXPENSE_REPORT_ID order by expense_id  List of Value  추가 대상 영수증 목록(Local - Page:23)  select title||&#39;,&#39;||payment_amount||&#39;(&#39;||use_date||&#39;)&#39;, expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i.</description>
     </item>
     
     <item>

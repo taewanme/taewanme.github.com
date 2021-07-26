@@ -4,19 +4,19 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-07-27T04:00:09 KST">
+<meta name="revised" content="2021-07-27T05:53:27 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="M04: Master-Detail 리포트" />
-<meta property="og:description" content="Title Region  제목: Expense Report 관리 설명: 사용자별 Expense Report를 관리 검색하는 페이지입니다. ICON: fa-layout-grid-3x  report id 설정  Expense Report Form 설정 process  declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual; :P32_EXPENSE_REPORT_ID := V_REPORT_ID; end;  Expense Item 쿼리 select ROWID, REPORT_ID, EXPENSE_ID, EMPLOYEE_ID, TYPE_ID, PAYMENT_AMOUNT, TITLE, DESCRIPTION, USE_DATE, CRE_DATE from EXPENSE_REPORT_ITEMS_V where &quot;REPORT_ID&quot; = :P21_EXPENSE_REPORT_ID order by expense_id  List of Value  추가 대상 영수증 목록(Local - Page:23)  select title||&#39;,&#39;||payment_amount||&#39;(&#39;||use_date||&#39;)&#39;, expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i." />
+<meta property="og:title" content="01: expense report 생성" />
+<meta property="og:description" content="Expense Report 생성  Page 번호: 31 Application이름: Expense Report  expense_report_id 설정 declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual; :P31_EXPENSE_REPORT_ID := V_REPORT_ID; end;  영수증 목록 select title||&#39;,&#39;||payment_amount||&#39;(&#39;||use_date||&#39;)&#39;, expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i.expense_id from expense_reports r, expense_report_items i where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) ) order by use_date  마스터 테이블 업데이트  Procedure 생성  create or replace PROCEDURE update_expense_report( p_report_id IN VARCHAR2 ) IS v_cc_num NUMBER(3); v_cc_amount NUMBER(9); v_pc_num NUMBER(3); v_pc_amount NUMBER(9); BEGIN select count(e." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04-master-detail/" />
+<meta property="og:url" content="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/01.databaes/" />
 
 
 
-<meta property="article:published_time" content="2020-05-02T09:11:05&#43;09:00"/>
-<meta property="article:modified_time" content="2020-05-02T09:11:05&#43;09:00"/>
+<meta property="article:published_time" content="2020-07-25T09:11:05&#43;09:00"/>
+<meta property="article:modified_time" content="2020-07-25T09:11:05&#43;09:00"/>
 
 
 
@@ -33,7 +33,7 @@
 
 
 
-<title>M04: Master-Detail 리포트 :: Oracle APEX Workshop</title>
+<title>01: expense report 생성 :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/apex-workshop/10.apex_workshops/10.expense_manager/m04-master-detail/">
+  <body data-url="/apex-workshop/10.apex_workshops/10.expense_manager/m04/01.databaes/">
     
       <header>
   <div class="logo">
@@ -233,12 +233,21 @@
     </li>
         </ul>
     </li>
-      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04-master-detail/" class="dd-item active">
+    <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/" class="dd-item parent alwaysopen haschildren
+        ">
+      <div>
+      <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m04/">M03:Expense 영수증 관리</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/01.databaes/" class="dd-item active">
         <div>
-          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m04-master-detail/">
-            M04: Master-Detail 리포트
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m04/01.databaes/">
+            01: expense report 생성
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -311,7 +320,11 @@
       <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m03/02.form/" >--- 02: 리포트 생성 및 영수증 폼 설정</option>
       <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m03/03.report/" >--- 03: 영수증 리포트 설정</option>
   
-      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m04-master-detail/"  selected>-- M04: Master-Detail 리포트</option>
+    <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m04/" >
+  -- 
+   M03:Expense 영수증 관리</option> 
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m04/01.databaes/"  selected>--- 01: expense report 생성</option>
+  
   
   
 
@@ -334,7 +347,7 @@
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>M04: Master-Detail 리포트</h1>
+    <h1>01: expense report 생성</h1>
 
 
      
@@ -345,107 +358,47 @@
     
     
 
-<h2 id="title-region">Title Region</h2>
+
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/-ICBsGz9n0U" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
+ </div>
+
+
+<hr />
+
+<h2 id="expense-report-생성">Expense Report 생성</h2>
 
 <ul>
-<li>제목: Expense Report 관리</li>
-<li>설명: 사용자별 Expense Report를 관리 검색하는 페이지입니다.</li>
-<li>ICON: fa-layout-grid-3x</li>
+<li>Page 번호: 31</li>
+<li>Application이름: Expense Report</li>
 </ul>
 
-<h2 id="report-id-설정">report id 설정</h2>
-
-<ul>
-<li>Expense Report Form 설정</li>
-<li>process</li>
-</ul>
+<h2 id="expense-report-id-설정">expense_report_id 설정</h2>
 
 <pre><code>declare 
 V_REPORT_ID number(9);
 begin
 select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual;
-:P32_EXPENSE_REPORT_ID := V_REPORT_ID;
+:P31_EXPENSE_REPORT_ID := V_REPORT_ID;
 end;
 </code></pre>
 
-<h3 id="expense-item-쿼리">Expense Item 쿼리</h3>
+<h2 id="영수증-목록">영수증 목록</h2>
 
-<pre><code>select ROWID,
-       REPORT_ID,
-       EXPENSE_ID,
-       EMPLOYEE_ID,
-       TYPE_ID,
-       PAYMENT_AMOUNT,
-       TITLE,
-       DESCRIPTION,
-       USE_DATE,
-       CRE_DATE
-  from EXPENSE_REPORT_ITEMS_V
- where &quot;REPORT_ID&quot; = :P21_EXPENSE_REPORT_ID
- order by expense_id
-</code></pre>
-
-<h3 id="list-of-value">List of Value</h3>
-
-<ul>
-<li>추가 대상 영수증 목록(Local - Page:23)</li>
-</ul>
-
-<pre><code>select title||','||payment_amount||'('||use_date||')', 
-expense_id 
-from expenses
+<pre><code>select title||','||payment_amount||'('||use_date||')', expense_id from expenses
 where employee_id=lower(:APP_USER) and 
 expense_id not in (
     select i.expense_id 
     from expense_reports r, expense_report_items i 
     where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) )
 order by use_date
-
-
 </code></pre>
 
-<h3 id="master-record-조회-조건">Master Record 조회 조건</h3>
+<h2 id="마스터-테이블-업데이트">마스터 테이블 업데이트</h2>
 
-<pre><code>select &quot;EXPENSE_REPORT_ID&quot;,
-    null link_class,
-    apex_page.get_url(p_items =&gt; 'P21_EXPENSE_REPORT_ID', p_values =&gt; &quot;EXPENSE_REPORT_ID&quot;) link,
-    null icon_class,
-    null link_attr,
-    null icon_color_class,
-    case when nvl(:P21_EXPENSE_REPORT_ID,'0') = &quot;EXPENSE_REPORT_ID&quot;
-      then 'is-active' 
-      else ' '
-    end list_class,
-    substr(&quot;REPORT_TITLE&quot;, 1, 50)||( case when length(&quot;REPORT_TITLE&quot;) &gt; 50 then '...' end ) list_title,
-    substr(&quot;CRE_DATE&quot;, 1, 50)||( case when length(&quot;CRE_DATE&quot;) &gt; 50 then '...' end ) list_text,
-    null list_badge
-from &quot;EXPENSE_REPORTS&quot; x
-where (:P21_SEARCH is null
-        or upper(x.&quot;REPORT_TITLE&quot;) like '%'||upper(:P21_SEARCH)||'%'
-        or upper(x.&quot;CRE_DATE&quot;) like '%'||upper(:P21_SEARCH)||'%'
-    ) and
-    employee_id = lower(:APP_USER)
-order by &quot;REPORT_TITLE&quot;
-</code></pre>
-
-<h3 id="복수-영수증-추가-report">복수 영수증 추가 report</h3>
-
-<pre><code>select  apex_item.checkbox(1, EXPENSE_ID) selected,
-&quot;EXPENSE_ID&quot;,&quot;EMPLOYEE_ID&quot;,&quot;TYPE_ID&quot;,&quot;PAYMENT_AMOUNT&quot;,&quot;TITLE&quot;,
-&quot;DESCRIPTION&quot;,&quot;RECEIPT_STATUS&quot;,&quot;CARD_TYPE&quot;,
-&quot;USE_DATE&quot;,&quot;CRE_DATE&quot;
-from &quot;EXPENSES&quot;
-where USE_DATE &gt;= to_date(:P35_EXPENSE_FROM, 'YYYY-MM-DD') 
-and USE_DATE &lt;= to_date(:P35_EXPENSE_TO, 'YYYY-MM-DD')
-and expense_id not in (
-    select i.expense_id 
-    from expense_reports r, expense_report_items i 
-    where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) )
-order by USE_DATE
-
-</code></pre>
-
-<h3 id="update-expense-report">Update Expense Report</h3>
+<ul>
+<li>Procedure 생성</li>
+</ul>
 
 <pre><code>create or replace PROCEDURE update_expense_report( p_report_id IN VARCHAR2 ) 
 IS 
@@ -481,14 +434,23 @@ WHERE EXPENSE_REPORT_ID = p_report_id;
 END; 
 </code></pre>
 
+<ul>
+<li>process 생성</li>
+</ul>
+
+<pre><code>begin
+update_expense_report( p_report_id =&gt; :P33_REPORT_ID);
+end;
+</code></pre>
+
 
     
     
       <div class="alert alert-info" role="alter">
-  <li><strong>문서 생성:</strong> 2020-05-02 09:11 / <string>최종 문서 수정:</strong> 2020-05-02 09:11 </li>
+  <li><strong>문서 생성:</strong> 2020-07-25 09:11 / <string>최종 문서 수정:</strong> 2020-07-25 09:11 </li>
 </div><div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/apex-workshop/10.apex_workshops/10.expense_manager/m03/03.report/" title="03: 영수증 리포트 설정"> <i class="fa fa-chevron-left"></i><label>03: 영수증 리포트 설정</label></a>
+<a class="nav nav-prev" href="/apex-workshop/10.apex_workshops/10.expense_manager/m04/" title="M03:Expense 영수증 관리"> <i class="fa fa-chevron-left"></i><label>M03:Expense 영수증 관리</label></a>
     <a class="nav nav-next" href="/apex-workshop/10.apex_workshops/10.expense_manager/m01-employees/" title="M01: Oracle APEX 소개" style="margin-right: 0px;"><label>M01: Oracle APEX 소개</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
@@ -499,7 +461,7 @@ END;
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04-master-detail/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/01.databaes/"></div>
 
   </div>
 
@@ -515,7 +477,7 @@ END;
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 02/05/2020
+        <i class='fa fa-calendar'></i> Last update on 25/07/2020
     </div>
     
   </div>
