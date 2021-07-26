@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Oracle APEX Workshop</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -9,13 +8,15 @@
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="404 Page not found" />
-<meta property="og:description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="" />
+<meta property="og:title" content="03: card report 생성" />
+<meta property="og:description" content="   Card Report select i.title, i.payment_amount, e.RECEIPT_PIC from expense_report_items_v i, expenses e where i.expense_id = e.expense_id and i.report_id = [page item]  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/03.card-report/" />
 
 
 
+<meta property="article:published_time" content="2020-07-25T09:11:05&#43;09:00"/>
+<meta property="article:modified_time" content="2020-07-25T09:11:05&#43;09:00"/>
 
 
 
@@ -32,7 +33,7 @@
 
 
 
-<title>404 Page not found :: Oracle APEX Workshop</title>
+<title>03: card report 생성 :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -71,7 +72,7 @@
 
     
   </head>
-  <body data-url="">
+  <body data-url="/apex-workshop/10.apex_workshops/10.expense_manager/m04/03.card-report/">
     
       <header>
   <div class="logo">
@@ -116,14 +117,14 @@
       <a href="/apex-workshop/00.index/">Oracle APEX Workshop</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/apex-workshop/10.apex_workshops/">APEX Workshop</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/apex-workshop/10.apex_workshops/10.expense_manager/">APEX Expense Manager</a>
@@ -232,7 +233,7 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m04/">M03:Expense 영수증 관리</a>
@@ -246,7 +247,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/03.card-report/" class="dd-item">
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/03.card-report/" class="dd-item active">
         <div>
           <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m04/03.card-report/">
             03: card report 생성
@@ -337,7 +338,7 @@
   -- 
    M03:Expense 영수증 관리</option> 
       <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m04/02.updating-master-table/" >--- 02: expense-report 테이블 업데이트</option>
-      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m04/03.card-report/" >--- 03: card report 생성</option>
+      <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m04/03.card-report/"  selected>--- 03: card report 생성</option>
       <option value="/apex-workshop/10.apex_workshops/10.expense_manager/m04/01.expense_report-copy/" >--- 01: expense report 생성</option>
   
   
@@ -362,7 +363,7 @@
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>404 Page not found</h1>
+    <h1>03: card report 생성</h1>
 
 
      
@@ -370,20 +371,34 @@
   
     
     
-	<h1>Error</h1>
-	<p>
-	</p>
-	<p>Woops. Looks like this page doesn&#39;t exist.</p>
-	<p></p>
-	<p><a href="http://taewan.kim/apex-workshop">Go to homepage</a></p>
-	<p><img src="/apex-workshop/images/gopher-404.jpg" style="width:50%"></img></p>    
+    
+    
+
+
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/-ICBsGz9n0U" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
+ </div>
+
+
+<hr />
+
+<h2 id="card-report">Card Report</h2>
+
+<pre><code>select i.title, i.payment_amount, e.RECEIPT_PIC  
+from expense_report_items_v i, expenses e
+where i.expense_id = e.expense_id and
+i.report_id = [page item]
+</code></pre>
+
+
     
     
       <div class="alert alert-info" role="alter">
-  <li><strong>문서 생성:</strong> 0001-01-01 00:00 / <string>최종 문서 수정:</strong> 0001-01-01 00:00 </li>
+  <li><strong>문서 생성:</strong> 2020-07-25 09:11 / <string>최종 문서 수정:</strong> 2020-07-25 09:11 </li>
 </div><div class="chevrons">
     <div id="navigation">
-</div>
+<a class="nav nav-prev" href="/apex-workshop/10.apex_workshops/10.expense_manager/m04/02.updating-master-table/" title="02: expense-report 테이블 업데이트"> <i class="fa fa-chevron-left"></i><label>02: expense-report 테이블 업데이트</label></a>
+    <a class="nav nav-next" href="/apex-workshop/10.apex_workshops/10.expense_manager/m04/01.expense_report-copy/" title="01: expense report 생성" style="margin-right: 0px;"><label>01: expense report 생성</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="panel panel-danger">
@@ -393,7 +408,7 @@
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/03.card-report/"></div>
 
   </div>
 
@@ -407,6 +422,10 @@
 
     
 
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 25/07/2020
+    </div>
     
   </div>
 
@@ -463,5 +482,3 @@
 
   </body>
 </html>
-
-

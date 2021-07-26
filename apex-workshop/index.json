@@ -28,18 +28,25 @@
 	"content": "   주요 작업  APEX Workspace 접속 개발자 계정 생성  실습자 Email Trainer Email: apex.workshop.helper@gmail.com   "
 },
 {
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/01.databaes/",
-	"title": "01: expense report 생성",
-	"tags": [],
-	"description": "",
-	"content": "   Expense Report 생성  Page 번호: 31 Application이름: Expense Report  expense_report_id 설정 declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual; :P31_EXPENSE_REPORT_ID := V_REPORT_ID; end;  영수증 목록 select title||','||payment_amount||'('||use_date||')', expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i.expense_id from expense_reports r, expense_report_items i where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) ) order by use_date  마스터 테이블 업데이트  Procedure 생성  create or replace PROCEDURE update_expense_report( p_report_id IN VARCHAR2 ) IS v_cc_num NUMBER(3); v_cc_amount NUMBER(9); v_pc_num NUMBER(3); v_pc_amount NUMBER(9); BEGIN select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_cc_num, v_cc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = 'cc'; select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_pc_num, v_pc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = 'pc'; UPDATE EXPENSE_REPORTS SET COMPANY_CARD_RECIEPT_NUM = v_cc_num, PRIVATE_CARD_RECIEPT_NUM = v_pc_num, COMPANY_CARD_AMOUNT = v_cc_amount, PRIVATE_CARD_AMOUNT = v_pc_amount WHERE EXPENSE_REPORT_ID = p_report_id; END;   process 생성  begin update_expense_report( p_report_id =\u0026gt; :P33_REPORT_ID); end;  "
-},
-{
 	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/01.databaes/",
 	"title": "01: 관련 데이터베이스 객체 생성",
 	"tags": [],
 	"description": "",
 	"content": "   리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  관련 데이트 생성  SQL Workshop =\u0026gt; SQL Script  스크립트 파일: {apexws101-res.zip}/m03/sql/expense.sql   SEQUENCE 생성  SQL Workshop =\u0026gt; Object Browser 이름  EXPENSE_SEQ EXPENSE_REPORT_SEQ    Trigger 생성  SQL Workshop =\u0026gt; SQL Command  create or replace trigger \u0026quot;EXPENSES_T1\u0026quot; BEFORE insert on \u0026quot;EXPENSES\u0026quot; for each row begin if :NEW.\u0026quot;EXPENSE_ID\u0026quot; is null then select \u0026quot;EXPENSE_SEQ\u0026quot;.nextval into :NEW.\u0026quot;EXPENSE_ID\u0026quot; from sys.dual; end if; end;  "
+},
+{
+	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/02.updating-master-table/",
+	"title": "02: expense-report 테이블 업데이트",
+	"tags": [],
+	"description": "",
+	"content": "   마스터 테이블 업데이트  Procedure 생성  create or replace PROCEDURE update_expense_report( p_report_id IN VARCHAR2 ) IS v_cc_num NUMBER(3); v_cc_amount NUMBER(9); v_pc_num NUMBER(3); v_pc_amount NUMBER(9); BEGIN select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_cc_num, v_cc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = 'cc'; select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_pc_num, v_pc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = 'pc'; UPDATE EXPENSE_REPORTS SET COMPANY_CARD_RECIEPT_NUM = v_cc_num, PRIVATE_CARD_RECIEPT_NUM = v_pc_num, COMPANY_CARD_AMOUNT = v_cc_amount, PRIVATE_CARD_AMOUNT = v_pc_amount WHERE EXPENSE_REPORT_ID = p_report_id; END;   process 생성  begin update_expense_report( p_report_id =\u0026gt; [binding page item]); end;  "
+},
+{
+	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/03.card-report/",
+	"title": "03: card report 생성",
+	"tags": [],
+	"description": "",
+	"content": "   Card Report select i.title, i.payment_amount, e.RECEIPT_PIC from expense_report_items_v i, expenses e where i.expense_id = e.expense_id and i.report_id = [page item]  "
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/02-table/",
@@ -54,6 +61,13 @@
 	"tags": [],
 	"description": "",
 	"content": " APEX Workshop 101의 첫 번째 실습으로 직원 정보를 관리하는 페이지를 개발하는 과정을 소개합니다. 이번 실습에서는 다음 이미지와 같은 직원 정보 관리 페이지를 개발해 보겠습니다.\n모듈 구성 이번 모듈은 다음과 같은 항목으로 구성됩니다.\n APEX 로그인 및 계정 등록 직원 정보 관리 테이블 생성 직원 정보 관리 APEX Report 생성 Key 처리를 위한 UI 컴포넌트 구성 이미지 이슈 처리 입력 데이터 Validation 입력 값 처리 (Serverside, Read Only, Default) 검색 \u0026amp; Dynamic Actionz  개발 화면 이번 모듈을 통해서 다음과 같은 페이지를 개발할 수 있습니다.\n 직원 정보 조회  직원 상세 정보 조회 및 정보 입력 폼   "
+},
+{
+	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/01.expense_report-copy/",
+	"title": "01: expense report 생성",
+	"tags": [],
+	"description": "",
+	"content": "   Expense Report 생성  Page 번호: 31 Application이름: Expense Report  expense_report_id 설정 declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual; :P31_EXPENSE_REPORT_ID := V_REPORT_ID; end;  영수증 목록 ``` select title||\u0026lsquo;,\u0026rsquo;||payment_amount||\u0026lsquo;(\u0026rsquo;||use_date||\u0026lsquo;)\u0026rsquo;, expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i.expense_id from expense_reports r, expense_report_items i where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) ) order by use_date\n"
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/02.form/",
