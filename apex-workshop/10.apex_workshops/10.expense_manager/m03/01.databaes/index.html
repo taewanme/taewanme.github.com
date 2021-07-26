@@ -4,12 +4,12 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-07-26T22:30:35 KST">
+<meta name="revised" content="2021-07-27T01:42:13 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="01: 관련 데이터베이스 객체 생성" />
-<meta property="og:description" content="리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  관련 데이트 생성  SQL Workshop =&gt; SQL Script  스크립트 파일: {apexws101-res.zip}/m03/sql/expense.sql   SEQUENCE 생성  SQL Workshop =&gt; Object Browser 이름  EXPENSE_SEQ EXPENSE_REPORT_SEQ    Trigger 생성  SQL Workshop =&gt; SQL Command  create or replace trigger &quot;EXPENSES_T1&quot; BEFORE insert on &quot;EXPENSES&quot; for each row begin if :NEW.&quot;EXPENSE_ID&quot; is null then select &quot;EXPENSE_SEQ&quot;.nextval into :NEW." />
+<meta property="og:description" content="리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  관련 데이트 생성  SQL Workshop =&gt; SQL Script  스크립트 파일: {apexws101-res.zip}/m03/sql/expense.sql   SEQUENCE 생성  SQL Workshop =&gt; Object Browser 이름  EXPENSE_SEQ EXPENSE_REPORT_SEQ    Trigger 생성  SQL Workshop =&gt; SQL Command  create or replace trigger &quot;EXPENSES_T1&quot; BEFORE insert on &quot;EXPENSES&quot; for each row begin if :NEW.&quot;EXPENSE_ID&quot; is null then select &quot;EXPENSE_SEQ&quot;." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/01.databaes/" />
 
@@ -138,6 +138,101 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+    <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/">M02:직원 정보 관리</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/01-login-account/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/01-login-account/">
+            01: APEX 로그인 및 계정 등록
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/02-table/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/02-table/">
+            02: 직원 정보 관리 테이블 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/03-apexreport/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/03-apexreport/">
+            03: 직원 정보 관리 APEX Report 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/04-valueoflist/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/04-valueoflist/">
+            04: Key 처리를 위한 UI 컴포넌트 구성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/05-image_resize/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/05-image_resize/">
+            05: 이미지 처리 이슈
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/06-inputvalidation/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/06-inputvalidation/">
+            06: 입력 데이터 Validation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/07-dault_value/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/07-dault_value/">
+            07: 입력 폼 기본 처리
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/08-search/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m02/08-search/">
+            08: 검색 기능 &amp; Dynamic Action
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/" class="dd-item parent alwaysopen haschildren
+        ">
+      <div>
+      <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m03/">M03:Expense 영수증 관리</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/01.databaes/" class="dd-item active">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m03/01.databaes/">
+            01: 관련 데이터베이스 객체 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/02.form/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m03/02.form/">
+            02: 리포트 생성 및 영수증 폼 설정
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/03.report/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m03/03.report/">
+            03: 영수증 리포트 설정
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
       <li data-nav-id="http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04-master-detail/" class="dd-item">
         <div>
           <a href="/apex-workshop/10.apex_workshops/10.expense_manager/m04-master-detail/">
@@ -249,6 +344,14 @@
     
     
     
+
+
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/-ICBsGz9n0U" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
+ </div>
+
+
+<hr />
 
 <h2 id="리소스-파일-다운로드">리소스 파일 다운로드</h2>
 

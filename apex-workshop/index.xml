@@ -35,7 +35,7 @@
       <pubDate>Sat, 25 Jul 2020 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/01.databaes/</guid>
-      <description>리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  관련 데이트 생성  SQL Workshop =&amp;gt; SQL Script  스크립트 파일: {apexws101-res.zip}/m03/sql/expense.sql   SEQUENCE 생성  SQL Workshop =&amp;gt; Object Browser 이름  EXPENSE_SEQ EXPENSE_REPORT_SEQ    Trigger 생성  SQL Workshop =&amp;gt; SQL Command  create or replace trigger &amp;quot;EXPENSES_T1&amp;quot; BEFORE insert on &amp;quot;EXPENSES&amp;quot; for each row begin if :NEW.&amp;quot;EXPENSE_ID&amp;quot; is null then select &amp;quot;EXPENSE_SEQ&amp;quot;.nextval into :NEW.</description>
+      <description>리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  관련 데이트 생성  SQL Workshop =&amp;gt; SQL Script  스크립트 파일: {apexws101-res.zip}/m03/sql/expense.sql   SEQUENCE 생성  SQL Workshop =&amp;gt; Object Browser 이름  EXPENSE_SEQ EXPENSE_REPORT_SEQ    Trigger 생성  SQL Workshop =&amp;gt; SQL Command  create or replace trigger &amp;quot;EXPENSES_T1&amp;quot; BEFORE insert on &amp;quot;EXPENSES&amp;quot; for each row begin if :NEW.&amp;quot;EXPENSE_ID&amp;quot; is null then select &amp;quot;EXPENSE_SEQ&amp;quot;.</description>
     </item>
     
     <item>
@@ -72,7 +72,7 @@
       <pubDate>Sat, 25 Jul 2020 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/03.report/</guid>
-      <description>LoV (List of Values)  이름: EXPENSE TYPE  Shared Component   expense types select type_id as r, type_name as d from EXPENSE_TYPES order by 1   이름: CARD TYPES  Shared Component      Display Return     개인카드 pc   법인카드 cc     이름: RECEIPT STATUS  Shared Component      Display Return     분실 m   보관 k    폼 레이아웃 및 레이블 설정  폼 레이아웃</description>
+      <description> Report Title  Expense 영수증 관리 설명: Expense 영수증을 등록, 조회, 수정, 삭제하는 페이지 입니다. Template: Hero icon: fa-file-text  Search  P21_USE_DATE_FROM P21_USE_DATE_TO  이미지 처리 img { width: 100px; height: 100px; }  </description>
     </item>
     
     <item>

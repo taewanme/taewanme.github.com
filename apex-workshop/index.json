@@ -32,7 +32,7 @@
 	"title": "01: 관련 데이터베이스 객체 생성",
 	"tags": [],
 	"description": "",
-	"content": " 리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  관련 데이트 생성  SQL Workshop =\u0026gt; SQL Script  스크립트 파일: {apexws101-res.zip}/m03/sql/expense.sql   SEQUENCE 생성  SQL Workshop =\u0026gt; Object Browser 이름  EXPENSE_SEQ EXPENSE_REPORT_SEQ    Trigger 생성  SQL Workshop =\u0026gt; SQL Command  create or replace trigger \u0026quot;EXPENSES_T1\u0026quot; BEFORE insert on \u0026quot;EXPENSES\u0026quot; for each row begin if :NEW.\u0026quot;EXPENSE_ID\u0026quot; is null then select \u0026quot;EXPENSE_SEQ\u0026quot;.nextval into :NEW.\u0026quot;EXPENSE_ID\u0026quot; from sys.dual; end if; end;  "
+	"content": "   리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  관련 데이트 생성  SQL Workshop =\u0026gt; SQL Script  스크립트 파일: {apexws101-res.zip}/m03/sql/expense.sql   SEQUENCE 생성  SQL Workshop =\u0026gt; Object Browser 이름  EXPENSE_SEQ EXPENSE_REPORT_SEQ    Trigger 생성  SQL Workshop =\u0026gt; SQL Command  create or replace trigger \u0026quot;EXPENSES_T1\u0026quot; BEFORE insert on \u0026quot;EXPENSES\u0026quot; for each row begin if :NEW.\u0026quot;EXPENSE_ID\u0026quot; is null then select \u0026quot;EXPENSE_SEQ\u0026quot;.nextval into :NEW.\u0026quot;EXPENSE_ID\u0026quot; from sys.dual; end if; end;  "
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/02-table/",
@@ -53,7 +53,7 @@
 	"title": "02: 리포트 생성 및 영수증 폼 설정",
 	"tags": [],
 	"description": "",
-	"content": " 리포트 생성  대상 테이블: Expenses 리포트 타입: Interactive Report 페이지 번호: 21, 22  LoV (List of Values)  이름: EXPENSE TYPE  Shared Component   expense types select type_id as r, type_name as d from EXPENSE_TYPES order by 1   이름: CARD TYPES  Shared Component      Display Return     개인카드 pc   법인카드 cc     이름: RECEIPT STATUS  Shared Component      Display Return     분실 m   보관 k    폼 레이아웃 및 레이블 설정  폼 레이아웃\n 페이비 번호오류: P12 ==\u0026gt; P22 으로 처리   폼 레이블  P22_EMPLOYEE_ID\n READ ONLY: Always Default  TYPE: Expression Language: PL/SQL PL/SQL Expression  lower(:APP_USER)    P22_TYPE_ID\n select list  shared component EXPENSE TYPES\n   P22_CARD_TYPE\n RADIO GROUP  shared component CARD TYPES\n   P22_RECEIPT_STATUS\n RADIO GROUP  shared component RECEIPT STATUS   P12_DESCRIPTION\n RICH TEXT Editor Toolbar: Intermediate Minimum Height: 100  P22_CRE_DATE\n hidden default: sysdate   format 처리  P22_USE_DATE P22_PAYMENT_AMOUNT  Column 생성 (Duplicate)  P12_RECEIPT_PIC ==\u0026gt; P12_RECEIPT_PIC_DISPLAY  "
+	"content": "   리포트 생성  대상 테이블: Expenses 리포트 타입: Interactive Report 페이지 번호: 21, 22  LoV (List of Values)  이름: EXPENSE TYPE  Shared Component   expense types select type_id as r, type_name as d from EXPENSE_TYPES order by 1   이름: CARD TYPES  Shared Component      Display Return     개인카드 pc   법인카드 cc     이름: RECEIPT STATUS  Shared Component      Display Return     분실 m   보관 k    폼 레이아웃 및 레이블 설정  폼 레이아웃\n 페이비 번호오류: P12 ==\u0026gt; P22 으로 처리   폼 레이블  P22_EMPLOYEE_ID\n READ ONLY: Always Default  TYPE: Expression Language: PL/SQL PL/SQL Expression  lower(:APP_USER)    P22_TYPE_ID\n select list  shared component EXPENSE TYPES\n   P22_CARD_TYPE\n RADIO GROUP  shared component CARD TYPES\n   P22_RECEIPT_STATUS\n RADIO GROUP  shared component RECEIPT STATUS   P12_DESCRIPTION\n RICH TEXT Editor Toolbar: Intermediate Minimum Height: 100  P22_CRE_DATE\n hidden default: sysdate   format 처리  P22_USE_DATE P22_PAYMENT_AMOUNT  Column 생성 (Duplicate)  P12_RECEIPT_PIC ==\u0026gt; P12_RECEIPT_PIC_DISPLAY  Image 처리 img { width: 200px; height: 200px; }  "
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/",
@@ -74,7 +74,7 @@
 	"title": "03: 영수증 리포트 설정",
 	"tags": [],
 	"description": "",
-	"content": " LoV (List of Values)  이름: EXPENSE TYPE  Shared Component   expense types select type_id as r, type_name as d from EXPENSE_TYPES order by 1   이름: CARD TYPES  Shared Component      Display Return     개인카드 pc   법인카드 cc     이름: RECEIPT STATUS  Shared Component      Display Return     분실 m   보관 k    폼 레이아웃 및 레이블 설정  폼 레이아웃\n 페이비 번호오류: P12 ==\u0026gt; P22 으로 처리   폼 레이블  P22_EMPLOYEE_ID\n READ ONLY: Always Default  TYPE: Expression Language: PL/SQL PL/SQL Expression  lower(:APP_USER)    P22_TYPE_ID\n select list  shared component EXPENSE TYPES\n   P22_CARD_TYPE\n RADIO GROUP  shared component CARD TYPES\n   P22_RECEIPT_STATUS\n RADIO GROUP  shared component RECEIPT STATUS   P12_DESCRIPTION\n RICH TEXT Editor Toolbar: Intermediate Minimum Height: 100  P22_CRE_DATE\n hidden default: sysdate   format 처리  P22_USE_DATE P22_PAYMENT_AMOUNT  Column 생성 (Duplicate)  P12_RECEIPT_PIC ==\u0026gt; P12_RECEIPT_PIC_DISPLAY  "
+	"content": " Report Title  Expense 영수증 관리 설명: Expense 영수증을 등록, 조회, 수정, 삭제하는 페이지 입니다. Template: Hero icon: fa-file-text  Search  P21_USE_DATE_FROM P21_USE_DATE_TO  이미지 처리 img { width: 100px; height: 100px; }  "
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/04-valueoflist/",
