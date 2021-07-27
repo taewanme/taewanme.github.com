@@ -35,13 +35,6 @@
 	"content": "   리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  관련 데이트 생성  SQL Workshop =\u0026gt; SQL Script  스크립트 파일: {apexws101-res.zip}/m03/sql/expense.sql   SEQUENCE 생성  SQL Workshop =\u0026gt; Object Browser 이름  EXPENSE_SEQ EXPENSE_REPORT_SEQ    Trigger 생성  SQL Workshop =\u0026gt; SQL Command  create or replace trigger \u0026quot;EXPENSES_T1\u0026quot; BEFORE insert on \u0026quot;EXPENSES\u0026quot; for each row begin if :NEW.\u0026quot;EXPENSE_ID\u0026quot; is null then select \u0026quot;EXPENSE_SEQ\u0026quot;.nextval into :NEW.\u0026quot;EXPENSE_ID\u0026quot; from sys.dual; end if; end;  "
 },
 {
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/03.card-report/",
-	"title": "03: card report 생성",
-	"tags": [],
-	"description": "",
-	"content": "   Card Report select i.title, i.payment_amount, e.RECEIPT_PIC from expense_report_items_v i, expenses e where i.expense_id = e.expense_id and i.report_id = [page item]  "
-},
-{
 	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/02-table/",
 	"title": "02: 직원 정보 관리 테이블 생성",
 	"tags": [],
@@ -89,6 +82,13 @@
 	"tags": [],
 	"description": "",
 	"content": "   주요 작업 다음 Employees 테이블를 지정하여 APEX Report를 만듭니다.\n생성된 Employees 테이블의 APEX Report를 다음과 같이 수정하겠습니다.\n"
+},
+{
+	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/03.card-report/",
+	"title": "03: card report 생성",
+	"tags": [],
+	"description": "",
+	"content": "   Card Report select i.title, i.payment_amount, e.RECEIPT_PIC from expense_report_items_v i, expenses e where i.expense_id = e.expense_id and i.report_id = [page item]  "
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/03.report/",

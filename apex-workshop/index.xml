@@ -39,15 +39,6 @@
     </item>
     
     <item>
-      <title>03: card report 생성</title>
-      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/03.card-report/</link>
-      <pubDate>Sat, 25 Jul 2020 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/03.card-report/</guid>
-      <description>   Card Report select i.title, i.payment_amount, e.RECEIPT_PIC from expense_report_items_v i, expenses e where i.expense_id = e.expense_id and i.report_id = [page item]  </description>
-    </item>
-    
-    <item>
       <title>02: 직원 정보 관리 테이블 생성</title>
       <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/02-table/</link>
       <pubDate>Sun, 25 Jul 2021 09:11:05 +0900</pubDate>
@@ -91,6 +82,15 @@
       <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/03-apexreport/</guid>
       <description>주요 작업 다음 Employees 테이블를 지정하여 APEX Report를 만듭니다.
 생성된 Employees 테이블의 APEX Report를 다음과 같이 수정하겠습니다.</description>
+    </item>
+    
+    <item>
+      <title>03: card report 생성</title>
+      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/03.card-report/</link>
+      <pubDate>Sat, 25 Jul 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/03.card-report/</guid>
+      <description>   Card Report select i.title, i.payment_amount, e.RECEIPT_PIC from expense_report_items_v i, expenses e where i.expense_id = e.expense_id and i.report_id = [page item]  </description>
     </item>
     
     <item>
