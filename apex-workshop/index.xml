@@ -12,139 +12,36 @@
     
     
     <item>
-      <title>M01: Oracle APEX 소개</title>
-      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m01-employees/</link>
-      <pubDate>Sat, 02 May 2020 09:11:05 +0900</pubDate>
+      <title>APEX 입문자 워크숖 소개</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/05-about-workshop/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
       
-      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m01-employees/</guid>
-      <description>to-do</description>
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/05-about-workshop/</guid>
+      <description>//todo workshop 구성을 소개.</description>
     </item>
     
     <item>
-      <title>01: APEX 로그인 및 계정 등록</title>
-      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/01-login-account/</link>
+      <title>OCI Free Trail 신청</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/</link>
       <pubDate>Sat, 25 Jul 2020 09:11:05 +0900</pubDate>
       
-      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/01-login-account/</guid>
-      <description>   주요 작업  APEX Workspace 접속 개발자 계정 생성  실습자 Email Trainer Email: apex.workshop.helper@gmail.com   </description>
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/</guid>
+      <description>이번 워크숖은 오라클 클라우드(OCI, Oracle Cloud Infrastructure)의 Always Free 환경에서 진행됩니다.
+Always Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 제간 제약없이 무상으로 제공하는 서비스를 의미힙니다. 오라클 클라우드가 제공하는 Always Free 서비스에 대한 자세한 내용은 다음 문서를 참조하시기 바랍니다.
+새로운 Oracle Cloud 프로모션: Free Tier  
+ 워크숖 실습을 진행하기 위해서는 오라클 클라우드(OCI, Oracle Cloud Infrastructure) 자원을 사용하기 위해서 OCI 계정이 필요합니다.
+현재 사용 가능한 OCI 계정이 있다면 다음 페이지로 넘어가셔도 좋습니다.</description>
     </item>
     
     <item>
-      <title>01: 관련 데이터베이스 객체 생성</title>
-      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/01.databaes/</link>
-      <pubDate>Sat, 25 Jul 2020 09:11:05 +0900</pubDate>
+      <title>OCI 기본 환경 설정</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/20-oci-env-setup/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
       
-      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/01.databaes/</guid>
-      <description>리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  관련 데이트 생성  SQL Workshop =&amp;gt; SQL Script  스크립트 파일: {apexws101-res.zip}/m03/sql/expense.sql   SEQUENCE 생성  SQL Workshop =&amp;gt; Object Browser 이름  EXPENSE_SEQ EXPENSE_REPORT_SEQ    Trigger 생성  SQL Workshop =&amp;gt; SQL Command  create or replace trigger &amp;quot;EXPENSES_T1&amp;quot; BEFORE insert on &amp;quot;EXPENSES&amp;quot; for each row begin if :NEW.&amp;quot;EXPENSE_ID&amp;quot; is null then select &amp;quot;EXPENSE_SEQ&amp;quot;.</description>
-    </item>
-    
-    <item>
-      <title>02: 직원 정보 관리 테이블 생성</title>
-      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/02-table/</link>
-      <pubDate>Sun, 25 Jul 2021 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/02-table/</guid>
-      <description>   리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  </description>
-    </item>
-    
-    <item>
-      <title>01: expense report 생성</title>
-      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/01.expense_report-copy/</link>
-      <pubDate>Sat, 25 Jul 2020 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/01.expense_report-copy/</guid>
-      <description>Expense Report 생성  Page 번호: 31 Application이름: Expense Report  expense_report_id 설정 declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual; :P31_EXPENSE_REPORT_ID := V_REPORT_ID; end;  영수증 목록 ``` select title||&amp;lsquo;,&amp;rsquo;||payment_amount||&amp;lsquo;(&amp;rsquo;||use_date||&amp;lsquo;)&amp;rsquo;, expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i.expense_id from expense_reports r, expense_report_items i where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) ) order by use_date</description>
-    </item>
-    
-    <item>
-      <title>02: expense-report 테이블 업데이트</title>
-      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/02.updating-master-table/</link>
-      <pubDate>Sat, 25 Jul 2020 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/02.updating-master-table/</guid>
-      <description>   마스터 테이블 업데이트  Procedure 생성  create or replace PROCEDURE update_expense_report( p_report_id IN VARCHAR2 ) IS v_cc_num NUMBER(3); v_cc_amount NUMBER(9); v_pc_num NUMBER(3); v_pc_amount NUMBER(9); BEGIN select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_cc_num, v_cc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = &#39;cc&#39;; select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_pc_num, v_pc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = &#39;pc&#39;; UPDATE EXPENSE_REPORTS SET COMPANY_CARD_RECEIPT_NUM = v_cc_num, PRIVATE_CARD_RECEIEPT_NUM = v_pc_num, COMPANY_CARD_AMOUNT = v_cc_amount, PRIVATE_CARD_AMOUNT = v_pc_amount WHERE EXPENSE_REPORT_ID = p_report_id; END;   process 생성  begin update_expense_report( p_report_id =&amp;gt; [binding page item]); end;  </description>
-    </item>
-    
-    <item>
-      <title>02: 리포트 생성 및 영수증 폼 설정</title>
-      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/02.form/</link>
-      <pubDate>Sat, 25 Jul 2020 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/02.form/</guid>
-      <description>리포트 생성  대상 테이블: Expenses 리포트 타입: Interactive Report 페이지 번호: 21, 22  LoV (List of Values)  이름: EXPENSE TYPE  Shared Component   expense types select type_id as r, type_name as d from EXPENSE_TYPES order by 1   이름: CARD TYPES  Shared Component      Display Return     개인카드 pc   법인카드 cc     이름: RECEIPT STATUS  Shared Component      Display Return     분실 m   보관 k    폼 레이아웃 및 레이블 설정  폼 레이아웃</description>
-    </item>
-    
-    <item>
-      <title>03: 직원 정보 관리 APEX Report 생성</title>
-      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/03-apexreport/</link>
-      <pubDate>Sun, 25 Jul 2021 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/03-apexreport/</guid>
-      <description>주요 작업 다음 Employees 테이블를 지정하여 APEX Report를 만듭니다.
-생성된 Employees 테이블의 APEX Report를 다음과 같이 수정하겠습니다.</description>
-    </item>
-    
-    <item>
-      <title>03: card report 생성</title>
-      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/03.card-report/</link>
-      <pubDate>Sat, 25 Jul 2020 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/03.card-report/</guid>
-      <description>   Card Report select i.title, i.payment_amount, e.RECEIPT_PIC from expense_report_items_v i, expenses e where i.expense_id = e.expense_id and i.report_id = [page item]  </description>
-    </item>
-    
-    <item>
-      <title>03: 영수증 리포트 설정</title>
-      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/03.report/</link>
-      <pubDate>Sat, 25 Jul 2020 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/03.report/</guid>
-      <description>   Report Title  Expense 영수증 관리 설명: Expense 영수증을 등록, 조회, 수정, 삭제하는 페이지 입니다. Template: Hero icon: fa-file-text  Search  P21_USE_DATE_FROM P21_USE_DATE_TO  where USE_DATE &amp;gt;= to_date(:P21_USE_DATE_FROM, &#39;YYYY-MM-DD&#39;) and USE_DATE &amp;lt;= to_date(:P21_USE_DATE_TO, &#39;YYYY-MM-DD&#39;) order by USE_DATE  이미지 처리 img { width: 100px; height: 100px; }  </description>
-    </item>
-    
-    <item>
-      <title>04: Key 처리를 위한 UI 컴포넌트 구성</title>
-      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/04-valueoflist/</link>
-      <pubDate>Sun, 25 Jul 2021 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/04-valueoflist/</guid>
-      <description>   Shared Component &amp;gt; List of Values 등록  LOB TYPES  select lob_id as r, lob_name as d from LOB_TYPES   EMP TYPES  select type_id as r, type_name ||&#39; (&#39;||type_full_name||&#39;)&#39; as d from USER_TYPES   Teams  select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   List of Value (Local) select team_name ||&#39; (&#39;||team_full_name||&#39;)&#39; as d, team_id as r from TEAMS where lob_type_id = :P12_LOB_ID  </description>
-    </item>
-    
-    <item>
-      <title>05: 이미지 처리 이슈</title>
-      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/05-image_resize/</link>
-      <pubDate>Sat, 02 May 2020 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/05-image_resize/</guid>
-      <description>   리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  Form 이미지 처리  이미지 크기  img { width: 200px; height: 200px; }  Interfactive Report 이미지 처리  이미지 크기  img { width: 100px; height: 100px; }  </description>
-    </item>
-    
-    <item>
-      <title>06: 입력 데이터 Validation</title>
-      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/06-inputvalidation/</link>
-      <pubDate>Mon, 26 Jul 2021 03:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/06-inputvalidation/</guid>
-      <description>   Input Validation  Email  error message: Mail 포멧이 아닙니다. 메일 형식이어야 합니다.   ^[A-Za-z]+[A-Za-z0-9.]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$   핸드폰 번호  Error message: 핸드폰 전화번호 형식이 아닙니다. (예 010-1234-1234)   ^\d{3}-\d{3,4}-\d{4}$   생년월일  Error message: 생일은 오늘 이전이어야 합니다.   sysdate &amp;gt; to_date(:P12_BIRTH_DAY, &#39;YYYY-MM-DD&#39;)   id == email  error message: ID와 Email은 같아야 합니다.   :P12_EMPLOYEE_ID = :P12_EMAIL  </description>
-    </item>
-    
-    <item>
-      <title>07: 입력 폼 기본 처리</title>
-      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/07-dault_value/</link>
-      <pubDate>Sat, 02 May 2020 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/07-dault_value/</guid>
-      <description>    Server Side Read only Default  </description>
-    </item>
-    
-    <item>
-      <title>08: 검색 기능 &amp; Dynamic Action</title>
-      <link>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/08-search/</link>
-      <pubDate>Sat, 02 May 2020 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/08-search/</guid>
-      <description>   Here region  ICON: fa-users  검색 조건 where InStr(&#39;:&#39;||:P11_TYPES||&#39;:&#39;, &#39;:&#39;||TYPE_ID||&#39;:&#39;) &amp;gt; 0 and TYPE_ID IS NOT NULL and InStr(&#39;:&#39;||:P11_GENDERS||&#39;:&#39;, &#39;:&#39;||GENDER||&#39;:&#39;) &amp;gt; 0 and GENDER IS NOT NULL  Default Value  Types  select type_id from USER_TYPES   Gender  M:F  Region  ICON: FA-USERS  </description>
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/20-oci-env-setup/</guid>
+      <description>Oracle APEX 입문 워크숖 실습의 통일성을 높이기 위하여 OCI 기본 환경 다음과 같이 구성하겠습니다.
+OCI 사용자 ID &amp;amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI IAM으로 만들고, OCI 사용자 그룹에 설정하겠습니다.
+   IAM User ID IAM USER Group 설명     admin administrators OCI 계정 관리자 ID   developer01 develoeprs 개발자 ID    OCI Compartment OCI Compartment(구획)은 OCI 자원을 논리적으로 묶는 OCI IAM 핵심 구성 요소입니다.</description>
     </item>
     
   </channel>

@@ -14,144 +14,39 @@
 	"content": "Oracle APEX 워크샾 진행을 위한 부가 정보를 제공합니다.\n"
 },
 {
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m01-employees/",
-	"title": "M01: Oracle APEX 소개",
+	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/05-about-workshop/",
+	"title": "APEX 입문자 워크숖 소개",
 	"tags": [],
 	"description": "",
-	"content": "to-do\n"
+	"content": "//todo workshop 구성을 소개.\n"
 },
 {
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/01-login-account/",
-	"title": "01: APEX 로그인 및 계정 등록",
+	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/",
+	"title": "실습환경 준비",
 	"tags": [],
 	"description": "",
-	"content": "   주요 작업  APEX Workspace 접속 개발자 계정 생성  실습자 Email Trainer Email: apex.workshop.helper@gmail.com   "
+	"content": " Oracle APEX 입문 워크숖을 진행하기 위해서는 다음과 같은 환경이 필요합니다.\n OCI Tenante (OCI 계정)  OCI 사용자 계정  OCI ATP 인스턴스  APEX Workspace   실습 환경 준비 절차 실습 환경을 준비하기 위하여 다음과 같은 작업을 진행합니다.\n OCI Free Trial 계정 신청 OCI 계정 기본 설정 APEX 실습 환경 구성  ATP 인스턴스 생성 APEX Workspace 생성   "
 },
 {
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/01.databaes/",
-	"title": "01: 관련 데이터베이스 객체 생성",
+	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/",
+	"title": "OCI Free Trail 신청",
 	"tags": [],
 	"description": "",
-	"content": "   리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  관련 데이트 생성  SQL Workshop =\u0026gt; SQL Script  스크립트 파일: {apexws101-res.zip}/m03/sql/expense.sql   SEQUENCE 생성  SQL Workshop =\u0026gt; Object Browser 이름  EXPENSE_SEQ EXPENSE_REPORT_SEQ    Trigger 생성  SQL Workshop =\u0026gt; SQL Command  create or replace trigger \u0026quot;EXPENSES_T1\u0026quot; BEFORE insert on \u0026quot;EXPENSES\u0026quot; for each row begin if :NEW.\u0026quot;EXPENSE_ID\u0026quot; is null then select \u0026quot;EXPENSE_SEQ\u0026quot;.nextval into :NEW.\u0026quot;EXPENSE_ID\u0026quot; from sys.dual; end if; end;  "
+	"content": " 이번 워크숖은 오라클 클라우드(OCI, Oracle Cloud Infrastructure)의 Always Free 환경에서 진행됩니다.\nAlways Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 제간 제약없이 무상으로 제공하는 서비스를 의미힙니다. 오라클 클라우드가 제공하는 Always Free 서비스에 대한 자세한 내용은 다음 문서를 참조하시기 바랍니다.\n새로운 Oracle Cloud 프로모션: \u0008Free Tier  \n 워크숖 실습을 진행하기 위해서는 오라클 클라우드(OCI, Oracle Cloud Infrastructure) 자원을 사용하기 위해서 OCI 계정이 필요합니다.\n현재 사용 가능한 OCI 계정이 있다면 다음 페이지로 넘어가셔도 좋습니다. 반면에 현재 사용 가능한 OCI 계정이 없다면 오라클이 30일 동안 클라우드 자원을 무료(최대 300달려)로 제공하는 OCI Free Trail 계정을 신청해야 합니다. OCI Free Trail 계정 신청 절차는 다음 동영상을 참고하시기 바랍니다.\n실습 환경 다음 동영상은 OCI Free Trial 계정 신청 방법을 소개합니다.\n  다음 단계 실습에 사용할 ATP 인스턴스를 생성할 수 있는 OCI 계정이 확보된 상태라면 다음 페이지로 이동하시기 바랍니다. 다음 페이지에서는 OCI 계정의 기본 설정을 다룹니다. 워크샾 가이드 통일성을 유지하기 위하여 다음과 같은 자원을 만들어 일관성을 높일 것입니다. 다음 페이지에서는 다음과 같은 작업을 진행합니다.\n Compartment 생성 OCI IAM 사용자 계정 생성 OCI IAM 사용자 그룹 생성 Policy 설정  "
 },
 {
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/02-table/",
-	"title": "02: 직원 정보 관리 테이블 생성",
+	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/20-oci-env-setup/",
+	"title": "OCI 기본 환경 설정",
 	"tags": [],
 	"description": "",
-	"content": "   리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  "
+	"content": " Oracle APEX 입문 워크숖 실습의 통일성을 높이기 위하여 OCI 기본 환경 다음과 같이 구성하겠습니다.\nOCI 사용자 ID \u0026amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI IAM으로 만들고, OCI 사용자 그룹에 설정하겠습니다.\n   IAM User ID IAM USER Group 설명     admin administrators OCI 계정 관리자 ID   developer01 develoeprs 개발자 ID    OCI Compartment OCI Compartment(구획)은 OCI 자원을 논리적으로 묶는 OCI IAM 핵심 구성 요소입니다. OCI Compartment(구획) 계층 구조로 만들어집니다. 다음과 같은 계층 구조로 apexws와 livelabs 컴파트먼트를 만들겠습니다. 이번 워크샾의 모든 자원은 projects/apexws 컴파트먼트에 생성합니다.\n PROJECT  APEXWS LIVELABS   OCI Policy root 컴파트먼트에 다음과 같은 policy를 생성합니다.\nAllow group developers to manage all-resources in compartment PROJECT:APEXWS  "
 },
 {
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/",
-	"title": "M02:직원 정보 관리",
+	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/",
+	"title": "APEX 입문자 워크숖",
 	"tags": [],
 	"description": "",
-	"content": " APEX Workshop 101의 첫 번째 실습으로 직원 정보를 관리하는 페이지를 개발하는 과정을 소개합니다. 이번 실습에서는 다음 이미지와 같은 직원 정보 관리 페이지를 개발해 보겠습니다.\n모듈 구성 이번 모듈은 다음과 같은 항목으로 구성됩니다.\n APEX 로그인 및 계정 등록 직원 정보 관리 테이블 생성 직원 정보 관리 APEX Report 생성 Key 처리를 위한 UI 컴포넌트 구성 이미지 이슈 처리 입력 데이터 Validation 입력 값 처리 (Serverside, Read Only, Default) 검색 \u0026amp; Dynamic Actionz  개발 화면 이번 모듈을 통해서 다음과 같은 페이지를 개발할 수 있습니다.\n 직원 정보 조회  직원 상세 정보 조회 및 정보 입력 폼   "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/01.expense_report-copy/",
-	"title": "01: expense report 생성",
-	"tags": [],
-	"description": "",
-	"content": "   Expense Report 생성  Page 번호: 31 Application이름: Expense Report  expense_report_id 설정 declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual; :P31_EXPENSE_REPORT_ID := V_REPORT_ID; end;  영수증 목록 ``` select title||\u0026lsquo;,\u0026rsquo;||payment_amount||\u0026lsquo;(\u0026rsquo;||use_date||\u0026lsquo;)\u0026rsquo;, expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i.expense_id from expense_reports r, expense_report_items i where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) ) order by use_date\n"
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/02.updating-master-table/",
-	"title": "02: expense-report 테이블 업데이트",
-	"tags": [],
-	"description": "",
-	"content": "   마스터 테이블 업데이트  Procedure 생성  create or replace PROCEDURE update_expense_report( p_report_id IN VARCHAR2 ) IS v_cc_num NUMBER(3); v_cc_amount NUMBER(9); v_pc_num NUMBER(3); v_pc_amount NUMBER(9); BEGIN select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_cc_num, v_cc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = 'cc'; select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_pc_num, v_pc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = 'pc'; UPDATE EXPENSE_REPORTS SET COMPANY_CARD_RECEIPT_NUM = v_cc_num, PRIVATE_CARD_RECEIEPT_NUM = v_pc_num, COMPANY_CARD_AMOUNT = v_cc_amount, PRIVATE_CARD_AMOUNT = v_pc_amount WHERE EXPENSE_REPORT_ID = p_report_id; END;   process 생성  begin update_expense_report( p_report_id =\u0026gt; [binding page item]); end;  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/02.form/",
-	"title": "02: 리포트 생성 및 영수증 폼 설정",
-	"tags": [],
-	"description": "",
-	"content": "   리포트 생성  대상 테이블: Expenses 리포트 타입: Interactive Report 페이지 번호: 21, 22  LoV (List of Values)  이름: EXPENSE TYPE  Shared Component   expense types select type_id as r, type_name as d from EXPENSE_TYPES order by 1   이름: CARD TYPES  Shared Component      Display Return     개인카드 pc   법인카드 cc     이름: RECEIPT STATUS  Shared Component      Display Return     분실 m   보관 k    폼 레이아웃 및 레이블 설정  폼 레이아웃\n 페이비 번호오류: P12 ==\u0026gt; P22 으로 처리   폼 레이블  P22_EMPLOYEE_ID\n READ ONLY: Always Default  TYPE: Expression Language: PL/SQL PL/SQL Expression  lower(:APP_USER)    P22_TYPE_ID\n select list  shared component EXPENSE TYPES\n   P22_CARD_TYPE\n RADIO GROUP  shared component CARD TYPES\n   P22_RECEIPT_STATUS\n RADIO GROUP  shared component RECEIPT STATUS   P12_DESCRIPTION\n RICH TEXT Editor Toolbar: Intermediate Minimum Height: 100  P22_CRE_DATE\n hidden default: sysdate   format 처리  P22_USE_DATE P22_PAYMENT_AMOUNT  Column 생성 (Duplicate)  P12_RECEIPT_PIC ==\u0026gt; P12_RECEIPT_PIC_DISPLAY  Image 처리 img { width: 200px; height: 200px; }  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/",
-	"title": "M03:Expense 영수증 관리",
-	"tags": [],
-	"description": "",
-	"content": " APEX Workshop 101의 두 번째 실습으로 법인카드 영수증을 관리하는 페이지를 개발하는 과정을 소개합니다. 이번 실습에서는 다음 이미지와 같은 법인카드 영수증 관리 페이지를 개발해 보겠습니다.\n모듈 구성 이번 모듈은 다음과 같은 항목으로 구성됩니다.\n 영수증 관리 테이블 생성\n List Of Values 생성 영수증 관리 APEX Report 생성 영수증 관리 Form 수정 영수증 관리 Report 페이지 수정  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/03-apexreport/",
-	"title": "03: 직원 정보 관리 APEX Report 생성",
-	"tags": [],
-	"description": "",
-	"content": "   주요 작업 다음 Employees 테이블를 지정하여 APEX Report를 만듭니다.\n생성된 Employees 테이블의 APEX Report를 다음과 같이 수정하겠습니다.\n"
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/03.card-report/",
-	"title": "03: card report 생성",
-	"tags": [],
-	"description": "",
-	"content": "   Card Report select i.title, i.payment_amount, e.RECEIPT_PIC from expense_report_items_v i, expenses e where i.expense_id = e.expense_id and i.report_id = [page item]  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m03/03.report/",
-	"title": "03: 영수증 리포트 설정",
-	"tags": [],
-	"description": "",
-	"content": "   Report Title  Expense 영수증 관리 설명: Expense 영수증을 등록, 조회, 수정, 삭제하는 페이지 입니다. Template: Hero icon: fa-file-text  Search  P21_USE_DATE_FROM P21_USE_DATE_TO  where USE_DATE \u0026gt;= to_date(:P21_USE_DATE_FROM, 'YYYY-MM-DD') and USE_DATE \u0026lt;= to_date(:P21_USE_DATE_TO, 'YYYY-MM-DD') order by USE_DATE  이미지 처리 img { width: 100px; height: 100px; }  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m04/",
-	"title": "M04:Expense Report 영수증 관리",
-	"tags": [],
-	"description": "",
-	"content": " APEX Workshop 101의 세 번째 실습으로 법인카드 영수증을 관리하는 페이지를 개발하는 과정을 소개합니다. 이번 실습에서는 다음 이미지와 같은 법인카드 영수증 관리 페이지를 개발해 보겠습니다.\n모듈 구성 이번 모듈은 다음과 같은 항목으로 구성됩니다.\n 영수증 관리 테이블 생성\n List Of Values 생성 영수증 관리 APEX Report 생성 영수증 관리 Form 수정 영수증 관리 Report 페이지 수정  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/04-valueoflist/",
-	"title": "04: Key 처리를 위한 UI 컴포넌트 구성",
-	"tags": [],
-	"description": "",
-	"content": "   Shared Component \u0026gt; List of Values 등록  LOB TYPES  select lob_id as r, lob_name as d from LOB_TYPES   EMP TYPES  select type_id as r, type_name ||' ('||type_full_name||')' as d from USER_TYPES   Teams  select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   List of Value (Local) select team_name ||' ('||team_full_name||')' as d, team_id as r from TEAMS where lob_type_id = :P12_LOB_ID  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/05-image_resize/",
-	"title": "05: 이미지 처리 이슈",
-	"tags": [],
-	"description": "",
-	"content": "   리소스 파일 다운로드  Hands-on Lab 리소스 파일: https://taewanmerepo.github.io/2021/07/apex/apexws101-res.zip  Form 이미지 처리  이미지 크기  img { width: 200px; height: 200px; }  Interfactive Report 이미지 처리  이미지 크기  img { width: 100px; height: 100px; }  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/06-inputvalidation/",
-	"title": "06: 입력 데이터 Validation",
-	"tags": [],
-	"description": "",
-	"content": "   Input Validation  Email  error message: Mail 포멧이 아닙니다. 메일 형식이어야 합니다.   ^[A-Za-z]+[A-Za-z0-9.]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$   핸드폰 번호  Error message: 핸드폰 전화번호 형식이 아닙니다. (예 010-1234-1234)   ^\\d{3}-\\d{3,4}-\\d{4}$   생년월일  Error message: 생일은 오늘 이전이어야 합니다.   sysdate \u0026gt; to_date(:P12_BIRTH_DAY, 'YYYY-MM-DD')   id == email  error message: ID와 Email은 같아야 합니다.   :P12_EMPLOYEE_ID = :P12_EMAIL  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/07-dault_value/",
-	"title": "07: 입력 폼 기본 처리",
-	"tags": [],
-	"description": "",
-	"content": "    Server Side Read only Default  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/m02/08-search/",
-	"title": "08: 검색 기능 &amp; Dynamic Action",
-	"tags": [],
-	"description": "",
-	"content": "   Here region  ICON: fa-users  검색 조건 where InStr(':'||:P11_TYPES||':', ':'||TYPE_ID||':') \u0026gt; 0 and TYPE_ID IS NOT NULL and InStr(':'||:P11_GENDERS||':', ':'||GENDER||':') \u0026gt; 0 and GENDER IS NOT NULL  Default Value  Types  select type_id from USER_TYPES   Gender  M:F  Region  ICON: FA-USERS  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/10.expense_manager/",
-	"title": "APEX Expense Manager",
-	"tags": [],
-	"description": "",
-	"content": "Expense Manager를 데모로 APEX를 진행하는 워크샾입니다.\n"
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/10.apex_workshops/",
-	"title": "APEX Workshop",
-	"tags": [],
-	"description": "",
-	"content": ""
+	"content": " APEX 입문자 워크숖은 Oracle APEX를 처음 접하시는 분들을 위한 실습을 다룹니다. 이번 워크숖은 다음과 목적으로 제작되었습니다.\n 실습을 통해서 Oracle APEX로 애플리케이션을 개발하는 전반적인 절차를 익힌다. 실습을 통해서 기본적인 Oracle APEX 개념을 익힌다. 실습을 통해서 Oracle APEX 애플리케이션의 작동방식을 이해한다.  실습 환경 이번 워크숖은 오라클 클라우드(OCI, Oracle Cloud Infrastructure)의 Always Free 환경에서 진행됩니다.\nAlways Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 제간 제약없이 무상으로 제공하는 서비스를 의미힙니다. 오라클 클라우드가 제공하는 Always Free 서비스에 대한 자세한 내용은 다음 문서를 참조하시기 바랍니다.\n새로운 Oracle Cloud 프로모션: \u0008Free Tier  \n 오라클 클라우드 계정 이번 워크숖 실습은 OCI의 Always Free 서비스 중에서 ATP(Autonomous Transaction Service)를 이용하여 실습을 진행합니다. 따라서 OCI의 Always Free 서비스를 사용하기 위하여 오라클 클라우드 계정이 필요합니다.\n현재 사용할 오라클 클라우드 계정이 없으시다면 다음 동영상을 참조하여 오라클 클라우드가 제공하는 Free Tier 계정을 먼저 등록하시고 진행하시기 바랍니다.\n  워크숖 시작 워크숖 실습에 사용할 오라클 클라우드 계정이 준비됐다면, 이제 APEX 입문자 워크숖을 시작하겠습니다. 다음 페이지로 이동해 주세요.\n"
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/categories/",

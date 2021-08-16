@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Oracle APEX Workshop</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -9,14 +8,14 @@
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="404 Page not found" />
+<meta property="og:title" content="실습환경 준비" />
 <meta property="og:description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="" />
+<meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/" />
 
 
 
-
+<meta property="og:updated_time" content="2021-08-14T01:11:05&#43;09:00"/>
 
 
 
@@ -32,7 +31,7 @@
 
 
 
-<title>404 Page not found :: Oracle APEX Workshop</title>
+<title>실습환경 준비 :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -71,7 +70,7 @@
 
     
   </head>
-  <body data-url="">
+  <body data-url="/apex-workshop/01.beginner_ws/10.prep/">
     
       <header>
   <div class="logo">
@@ -116,7 +115,7 @@
       <a href="/apex-workshop/00.index/">Oracle APEX Workshop</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/apex-workshop/01.beginner_ws/">APEX 입문자 워크숖</a>
@@ -130,7 +129,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/" class="dd-item parent active alwaysopen haschildren
         ">
       <div>
       <a href="/apex-workshop/01.beginner_ws/10.prep/">실습환경 준비</a>
@@ -200,7 +199,7 @@
     <option value="/apex-workshop/01.beginner_ws/" >
    APEX 입문자 워크숖</option> 
       <option value="/apex-workshop/01.beginner_ws/05-about-workshop/" >- APEX 입문자 워크숖 소개</option>
-    <option value="/apex-workshop/01.beginner_ws/10.prep/" >
+    <option value="/apex-workshop/01.beginner_ws/10.prep/"  selected>
   - 
    실습환경 준비</option> 
       <option value="/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/" >-- OCI Free Trail 신청</option>
@@ -227,7 +226,7 @@
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>404 Page not found</h1>
+    <h1>실습환경 준비</h1>
 
 
      
@@ -235,20 +234,52 @@
   
     
     
-	<h1>Error</h1>
-	<p>
-	</p>
-	<p>Woops. Looks like this page doesn&#39;t exist.</p>
-	<p></p>
-	<p><a href="http://taewan.kim/apex-workshop">Go to homepage</a></p>
-	<p><img src="/apex-workshop/images/gopher-404.jpg" style="width:50%"></img></p>    
+    
+
+
+
+<p><strong>Oracle APEX 입문 워크숖</strong>을 진행하기 위해서는 다음과 같은 환경이 필요합니다.</p>
+
+<ul>
+<li>OCI Tenante (OCI 계정)
+
+<ul>
+<li>OCI 사용자 계정</li>
+</ul></li>
+<li>OCI ATP 인스턴스
+
+<ul>
+<li>APEX Workspace</li>
+</ul></li>
+</ul>
+
+<hr />
+
+<h2 id="실습-환경-준비-절차">실습 환경 준비 절차</h2>
+
+<p>실습 환경을 준비하기 위하여 다음과 같은 작업을 진행합니다.</p>
+
+<ul>
+<li>OCI Free Trial 계정 신청</li>
+<li>OCI 계정 기본 설정</li>
+<li>APEX 실습 환경 구성
+
+<ul>
+<li>ATP 인스턴스 생성</li>
+<li>APEX Workspace 생성</li>
+</ul></li>
+</ul>
+
+
+
     
     
       <div class="alert alert-info" role="alter">
-  <li><strong>문서 생성:</strong> 0001-01-01 00:00 / <string>최종 문서 수정:</strong> 0001-01-01 00:00 </li>
+  <li><strong>문서 생성:</strong> 2021-08-14 01:11 / <string>최종 문서 수정:</strong> 2021-08-14 01:11 </li>
 </div><div class="chevrons">
     <div id="navigation">
-</div>
+<a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/05-about-workshop/" title="APEX 입문자 워크숖 소개"> <i class="fa fa-chevron-left"></i><label>APEX 입문자 워크숖 소개</label></a>
+    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/" title="OCI Free Trail 신청" style="margin-right: 0px;"><label>OCI Free Trail 신청</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="panel panel-danger">
@@ -258,7 +289,7 @@
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/01.beginner_ws/10.prep/"></div>
 
   </div>
 
@@ -272,6 +303,10 @@
 
     
 
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 14/08/2021
+    </div>
     
   </div>
 
@@ -328,5 +363,3 @@
 
   </body>
 </html>
-
-
