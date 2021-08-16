@@ -8,14 +8,11 @@
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="OCI Free Trail 신청" />
-<meta property="og:description" content="이번 워크숖은 오라클 클라우드(OCI, Oracle Cloud Infrastructure)의 Always Free 환경에서 진행됩니다.
-Always Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 제간 제약없이 무상으로 제공하는 서비스를 의미힙니다. 오라클 클라우드가 제공하는 Always Free 서비스에 대한 자세한 내용은 다음 문서를 참조하시기 바랍니다.
-새로운 Oracle Cloud 프로모션: Free Tier  
- 워크숖 실습을 진행하기 위해서는 오라클 클라우드(OCI, Oracle Cloud Infrastructure) 자원을 사용하기 위해서 OCI 계정이 필요합니다.
-현재 사용 가능한 OCI 계정이 있다면 다음 페이지로 넘어가셔도 좋습니다." />
+<meta property="og:title" content="APEX 개발 환경 구성" />
+<meta property="og:description" content="APEX 환경을 구성하기 위해서 다음과 같은 작업을 수행합니다.
+ ATP 인스턴스 생성 ATP 인스턴스의 APEX 로그인  id: admin  Workspace 생성  ATP 인스턴스 생성    설정 항목 설섲 값 비고     Compartment PROJECT &gt;&gt; APEXWS    Display Name DemoATP    Database Name DemoATP    Workload Type Transaction Processing    Deployment Type Shared Infrastructure    Version 19C    OCPU 1    Storage 1    Admin username admin 고정값   Password Welcome123456!" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/" />
+<meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/" />
 
 
 
@@ -37,7 +34,7 @@ Always Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 �
 
 
 
-<title>OCI Free Trail 신청 :: Oracle APEX Workshop</title>
+<title>APEX 개발 환경 구성 :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -76,7 +73,7 @@ Always Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 �
 
     
   </head>
-  <body data-url="/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/">
+  <body data-url="/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/">
     
       <header>
   <div class="logo">
@@ -142,7 +139,7 @@ Always Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 �
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/" class="dd-item active">
+      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/" class="dd-item">
         <div>
           <a href="/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/">
             OCI Free Trail 신청
@@ -156,7 +153,7 @@ Always Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 �
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/" class="dd-item">
+      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/" class="dd-item active">
         <div>
           <a href="/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/">
             APEX 개발 환경 구성
@@ -215,9 +212,9 @@ Always Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 �
     <option value="/apex-workshop/01.beginner_ws/10.prep/" >
   - 
    실습환경 준비</option> 
-      <option value="/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/"  selected>-- OCI Free Trail 신청</option>
+      <option value="/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/" >-- OCI Free Trail 신청</option>
       <option value="/apex-workshop/01.beginner_ws/10.prep/20-oci-env-setup/" >-- OCI 기본 환경 설정</option>
-      <option value="/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/" >-- APEX 개발 환경 구성</option>
+      <option value="/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/"  selected>-- APEX 개발 환경 구성</option>
   
   
 
@@ -240,7 +237,7 @@ Always Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 �
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>OCI Free Trail 신청</h1>
+    <h1>APEX 개발 환경 구성</h1>
 
 
      
@@ -251,45 +248,161 @@ Always Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 �
     
     
 
+<p>APEX 환경을 구성하기 위해서 다음과 같은 작업을 수행합니다.</p>
 
-<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/SxE65H7cnTo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
- </div>
-
-
-<p>이번 워크숖은 오라클 클라우드(OCI, Oracle Cloud Infrastructure)의 Always Free 환경에서 진행됩니다.</p>
-
-<div class="notices info" ><p><p><strong>Always Free</strong>란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 제간 제약없이 무상으로 제공하는 서비스를 의미힙니다. 오라클 클라우드가 제공하는 Always Free 서비스에 대한 자세한 내용은 다음 문서를 참조하시기 바랍니다.</p>
-
-<p><a href="http://taewan.kim/cloud/how_to_register_free_tier_account/" target="_blank">새로운 Oracle Cloud 프로모션: Free Tier <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a></p>
-</p></div>
-
-
-<p>워크숖 실습을 진행하기 위해서는 오라클 클라우드(OCI, Oracle Cloud Infrastructure) 자원을 사용하기 위해서 OCI 계정이 필요합니다.</p>
-
-<p>현재 사용 가능한 OCI 계정이 있다면 다음 페이지로 넘어가셔도 좋습니다. 반면에 현재 사용 가능한 OCI 계정이 없다면 오라클이 30일 동안 클라우드 자원을 무료(최대 300달려)로 제공하는 OCI Free Trail 계정을 신청해야 합니다.  OCI Free Trail 계정 신청 절차는 다음 동영상을 참고하시기 바랍니다.</p>
-
-<h2 id="실습-환경">실습 환경</h2>
-
-<p>다음 동영상은 OCI Free Trial 계정 신청 방법을 소개합니다.</p>
-
-
-<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/G_NLS3Glvno" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
- </div>
-
-
-<h2 id="다음-단계">다음 단계</h2>
-
-<p>실습에 사용할 ATP 인스턴스를 생성할 수 있는 OCI 계정이 확보된 상태라면 다음 페이지로 이동하시기 바랍니다. 다음 페이지에서는 OCI 계정의 기본 설정을 다룹니다. 워크샾 가이드 통일성을 유지하기 위하여 다음과 같은 자원을 만들어 일관성을 높일 것입니다.
-다음 페이지에서는 다음과 같은 작업을 진행합니다.</p>
+<ol>
+<li>ATP 인스턴스 생성</li>
+<li>ATP 인스턴스의 APEX 로그인
 
 <ul>
-<li>Compartment 생성</li>
-<li>OCI IAM 사용자 계정 생성</li>
-<li>OCI IAM 사용자 그룹 생성</li>
-<li>Policy 설정</li>
+<li>id: admin</li>
+</ul></li>
+<li>Workspace 생성</li>
+</ol>
+
+<h2 id="atp-인스턴스-생성">ATP 인스턴스 생성</h2>
+
+<table>
+<thead>
+<tr>
+<th>설정 항목</th>
+<th>설섲 값</th>
+<th>비고</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Compartment</td>
+<td>PROJECT &gt;&gt; APEXWS</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Display Name</td>
+<td>DemoATP</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Database Name</td>
+<td>DemoATP</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Workload Type</td>
+<td>Transaction Processing</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Deployment Type</td>
+<td>Shared Infrastructure</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Version</td>
+<td>19C</td>
+<td></td>
+</tr>
+
+<tr>
+<td>OCPU</td>
+<td>1</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Storage</td>
+<td>1</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Admin username</td>
+<td>admin</td>
+<td>고정값</td>
+</tr>
+
+<tr>
+<td>Password</td>
+<td>Welcome123456!</td>
+<td>패스워드 예시</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="oracle-application-expression">Oracle Application Expression</h2>
+
+<ul>
+<li>ATP 인스턴스의 Tools 탭의 Oracle APEX 오픈</li>
 </ul>
+
+<h3 id="workspace-생성">Workspace 생성</h3>
+
+<table>
+<thead>
+<tr>
+<th>설정 항목</th>
+<th>설정 값</th>
+<th>비고</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Database User</td>
+<td>apexws</td>
+<td></td>
+</tr>
+
+<tr>
+<td>password</td>
+<td>Welcome123456!</td>
+<td>패스워드 예시</td>
+</tr>
+
+<tr>
+<td>Workspace User</td>
+<td>apexws</td>
+<td>기본설정 값</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Oracle APEX Administration 서비스 로그아웃</li>
+</ul>
+
+<h3 id="apexws-workspace-로그인">apexws Workspace 로그인</h3>
+
+<table>
+<thead>
+<tr>
+<th>로그인 항목</th>
+<th>입력 값</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Database User</td>
+<td>apexws</td>
+</tr>
+
+<tr>
+<td>password</td>
+<td>Welcome123456!</td>
+</tr>
+
+<tr>
+<td>Workspace User</td>
+<td>apexws</td>
+</tr>
+</tbody>
+</table>
 
 
     
@@ -298,8 +411,8 @@ Always Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 �
   <li><strong>문서 생성:</strong> 2021-08-14 09:11 / <string>최종 문서 수정:</strong> 2021-08-14 09:11 </li>
 </div><div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/10.prep/" title="실습환경 준비"> <i class="fa fa-chevron-left"></i><label>실습환경 준비</label></a>
-    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/10.prep/20-oci-env-setup/" title="OCI 기본 환경 설정" style="margin-right: 0px;"><label>OCI 기본 환경 설정</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/10.prep/20-oci-env-setup/" title="OCI 기본 환경 설정"> <i class="fa fa-chevron-left"></i><label>OCI 기본 환경 설정</label></a>
+    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/" title="OCI Free Trail 신청" style="margin-right: 0px;"><label>OCI Free Trail 신청</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="panel panel-danger">
@@ -309,7 +422,7 @@ Always Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 �
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/"></div>
 
   </div>
 

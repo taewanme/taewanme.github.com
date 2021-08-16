@@ -21,6 +21,13 @@
 	"content": "//todo workshop 구성을 소개.\n"
 },
 {
+	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/",
+	"title": "OCI Free Trail 신청",
+	"tags": [],
+	"description": "",
+	"content": "   이번 워크숖은 오라클 클라우드(OCI, Oracle Cloud Infrastructure)의 Always Free 환경에서 진행됩니다.\nAlways Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 제간 제약없이 무상으로 제공하는 서비스를 의미힙니다. 오라클 클라우드가 제공하는 Always Free 서비스에 대한 자세한 내용은 다음 문서를 참조하시기 바랍니다.\n새로운 Oracle Cloud 프로모션: \u0008Free Tier  \n 워크숖 실습을 진행하기 위해서는 오라클 클라우드(OCI, Oracle Cloud Infrastructure) 자원을 사용하기 위해서 OCI 계정이 필요합니다.\n현재 사용 가능한 OCI 계정이 있다면 다음 페이지로 넘어가셔도 좋습니다. 반면에 현재 사용 가능한 OCI 계정이 없다면 오라클이 30일 동안 클라우드 자원을 무료(최대 300달려)로 제공하는 OCI Free Trail 계정을 신청해야 합니다. OCI Free Trail 계정 신청 절차는 다음 동영상을 참고하시기 바랍니다.\n실습 환경 다음 동영상은 OCI Free Trial 계정 신청 방법을 소개합니다.\n  다음 단계 실습에 사용할 ATP 인스턴스를 생성할 수 있는 OCI 계정이 확보된 상태라면 다음 페이지로 이동하시기 바랍니다. 다음 페이지에서는 OCI 계정의 기본 설정을 다룹니다. 워크샾 가이드 통일성을 유지하기 위하여 다음과 같은 자원을 만들어 일관성을 높일 것입니다. 다음 페이지에서는 다음과 같은 작업을 진행합니다.\n Compartment 생성 OCI IAM 사용자 계정 생성 OCI IAM 사용자 그룹 생성 Policy 설정  "
+},
+{
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/",
 	"title": "실습환경 준비",
 	"tags": [],
@@ -28,18 +35,18 @@
 	"content": " Oracle APEX 입문 워크숖을 진행하기 위해서는 다음과 같은 환경이 필요합니다.\n OCI Tenante (OCI 계정)  OCI 사용자 계정  OCI ATP 인스턴스  APEX Workspace   실습 환경 준비 절차 실습 환경을 준비하기 위하여 다음과 같은 작업을 진행합니다.\n OCI Free Trial 계정 신청 OCI 계정 기본 설정 APEX 실습 환경 구성  ATP 인스턴스 생성 APEX Workspace 생성   "
 },
 {
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/",
-	"title": "OCI Free Trail 신청",
-	"tags": [],
-	"description": "",
-	"content": " 이번 워크숖은 오라클 클라우드(OCI, Oracle Cloud Infrastructure)의 Always Free 환경에서 진행됩니다.\nAlways Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 제간 제약없이 무상으로 제공하는 서비스를 의미힙니다. 오라클 클라우드가 제공하는 Always Free 서비스에 대한 자세한 내용은 다음 문서를 참조하시기 바랍니다.\n새로운 Oracle Cloud 프로모션: \u0008Free Tier  \n 워크숖 실습을 진행하기 위해서는 오라클 클라우드(OCI, Oracle Cloud Infrastructure) 자원을 사용하기 위해서 OCI 계정이 필요합니다.\n현재 사용 가능한 OCI 계정이 있다면 다음 페이지로 넘어가셔도 좋습니다. 반면에 현재 사용 가능한 OCI 계정이 없다면 오라클이 30일 동안 클라우드 자원을 무료(최대 300달려)로 제공하는 OCI Free Trail 계정을 신청해야 합니다. OCI Free Trail 계정 신청 절차는 다음 동영상을 참고하시기 바랍니다.\n실습 환경 다음 동영상은 OCI Free Trial 계정 신청 방법을 소개합니다.\n  다음 단계 실습에 사용할 ATP 인스턴스를 생성할 수 있는 OCI 계정이 확보된 상태라면 다음 페이지로 이동하시기 바랍니다. 다음 페이지에서는 OCI 계정의 기본 설정을 다룹니다. 워크샾 가이드 통일성을 유지하기 위하여 다음과 같은 자원을 만들어 일관성을 높일 것입니다. 다음 페이지에서는 다음과 같은 작업을 진행합니다.\n Compartment 생성 OCI IAM 사용자 계정 생성 OCI IAM 사용자 그룹 생성 Policy 설정  "
-},
-{
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/20-oci-env-setup/",
 	"title": "OCI 기본 환경 설정",
 	"tags": [],
 	"description": "",
-	"content": " Oracle APEX 입문 워크숖 실습의 통일성을 높이기 위하여 OCI 기본 환경 다음과 같이 구성하겠습니다.\nOCI 사용자 ID \u0026amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI IAM으로 만들고, OCI 사용자 그룹에 설정하겠습니다.\n   IAM User ID IAM USER Group 설명     admin administrators OCI 계정 관리자 ID   developer01 develoeprs 개발자 ID    OCI Compartment OCI Compartment(구획)은 OCI 자원을 논리적으로 묶는 OCI IAM 핵심 구성 요소입니다. OCI Compartment(구획) 계층 구조로 만들어집니다. 다음과 같은 계층 구조로 apexws와 livelabs 컴파트먼트를 만들겠습니다. 이번 워크샾의 모든 자원은 projects/apexws 컴파트먼트에 생성합니다.\n PROJECT  APEXWS LIVELABS   OCI Policy root 컴파트먼트에 다음과 같은 policy를 생성합니다.\nAllow group developers to manage all-resources in compartment PROJECT:APEXWS  "
+	"content": "   Oracle APEX 입문 워크숖 실습의 통일성을 높이기 위하여 OCI 기본 환경 다음과 같이 구성하겠습니다.\nOCI 사용자 ID \u0026amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI IAM으로 만들고, OCI 사용자 그룹에 설정하겠습니다.\n   IAM User ID IAM USER Group 설명     admin administrators OCI 계정 관리자 ID   developer01 develoeprs 개발자 ID    OCI Compartment OCI Compartment(구획)은 OCI 자원을 논리적으로 묶는 OCI IAM 핵심 구성 요소입니다. OCI Compartment(구획) 계층 구조로 만들어집니다. 다음과 같은 계층 구조로 apexws와 livelabs 컴파트먼트를 만들겠습니다. 이번 워크샾의 모든 자원은 projects/apexws 컴파트먼트에 생성합니다.\n PROJECT  APEXWS LIVELABS   OCI Policy root 컴파트먼트에 다음과 같은 policy를 생성합니다.\nAllow group developers to manage all-resources in compartment PROJECT:APEXWS  "
+},
+{
+	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/",
+	"title": "APEX 개발 환경 구성",
+	"tags": [],
+	"description": "",
+	"content": " APEX 환경을 구성하기 위해서 다음과 같은 작업을 수행합니다.\n ATP 인스턴스 생성 ATP 인스턴스의 APEX 로그인  id: admin  Workspace 생성  ATP 인스턴스 생성    설정 항목 설섲 값 비고     Compartment PROJECT \u0026gt;\u0026gt; APEXWS    Display Name DemoATP    Database Name DemoATP    Workload Type Transaction Processing    Deployment Type Shared Infrastructure    Version 19C    OCPU 1    Storage 1    Admin username admin 고정값   Password Welcome123456! 패스워드 예시    Oracle Application Expression  ATP 인스턴스의 Tools 탭의 Oracle APEX 오픈  Workspace 생성    설정 항목 설정 값 비고     Database User apexws    password Welcome123456! 패스워드 예시   Workspace User apexws 기본설정 값     Oracle APEX Administration 서비스 로그아웃  apexws Workspace 로그인    로그인 항목 입력 값     Database User apexws   password Welcome123456!   Workspace User apexws    "
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/",

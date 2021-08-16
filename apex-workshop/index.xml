@@ -23,7 +23,7 @@
     <item>
       <title>OCI Free Trail 신청</title>
       <link>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/</link>
-      <pubDate>Sat, 25 Jul 2020 09:11:05 +0900</pubDate>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/</guid>
       <description>이번 워크숖은 오라클 클라우드(OCI, Oracle Cloud Infrastructure)의 Always Free 환경에서 진행됩니다.
@@ -42,6 +42,16 @@ Always Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 �
       <description>Oracle APEX 입문 워크숖 실습의 통일성을 높이기 위하여 OCI 기본 환경 다음과 같이 구성하겠습니다.
 OCI 사용자 ID &amp;amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI IAM으로 만들고, OCI 사용자 그룹에 설정하겠습니다.
    IAM User ID IAM USER Group 설명     admin administrators OCI 계정 관리자 ID   developer01 develoeprs 개발자 ID    OCI Compartment OCI Compartment(구획)은 OCI 자원을 논리적으로 묶는 OCI IAM 핵심 구성 요소입니다.</description>
+    </item>
+    
+    <item>
+      <title>APEX 개발 환경 구성</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/</guid>
+      <description>APEX 환경을 구성하기 위해서 다음과 같은 작업을 수행합니다.
+ ATP 인스턴스 생성 ATP 인스턴스의 APEX 로그인  id: admin  Workspace 생성  ATP 인스턴스 생성    설정 항목 설섲 값 비고     Compartment PROJECT &amp;gt;&amp;gt; APEXWS    Display Name DemoATP    Database Name DemoATP    Workload Type Transaction Processing    Deployment Type Shared Infrastructure    Version 19C    OCPU 1    Storage 1    Admin username admin 고정값   Password Welcome123456!</description>
     </item>
     
   </channel>
