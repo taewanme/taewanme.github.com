@@ -8,10 +8,10 @@
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="APEX APP, DB 테이블, LoV 생성" />
-<meta property="og:description" content="   APEX App 생성  Name: 슬기로운 익스펜스 생활 Appearance: Vita, Side Menu  DB 테이블 생성  리소스 파일 다운로드: https://taewanmerepo.github.io/2021/08/apex/apexws_res.zip DDL 파일 위치: /sqls/base_table.sql SQL Workshop &gt;&gt; SQL Script  7개 테이블   LoV 생성 Shared Component &gt; List of Values 등록  JOB TYPES  업무 유형: 의사, 간호사   select job_id as r, job_name as d from JOB_TYPES   EMP TYPES  (1, &lsquo;교수&rsquo;) (2, &lsquo;펠로우&rsquo;) (3, &lsquo;레시던트&rsquo;) (4, &lsquo;인턴&rsquo;) (5, &lsquo;본과실습생&rsquo;) (6, &lsquo;간호사&rsquo;) (7, &lsquo;주임간호사&rsquo;) (8, &lsquo;수간호사&rsquo;) (9, &lsquo;간호부장&rsquo;)   select type_id as r, type_name as d from USER_TYPES   Teams  (1, 소아과) (2, 산부인과) (3, 간담췌외과) (4, 신경외과) (5, 응급의학과)   select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   " />
+<meta property="og:title" content="직원 정보 관리 Report 생성" />
+<meta property="og:description" content=" APEX App 생성  Name: 슬기로운 익스펜스 생활 Appearance: Vita, Side Menu  DB 테이블 생성  리소스 파일 다운로드: https://taewanmerepo.github.io/2021/08/apex/apexws_res.zip DDL 파일 위치: /sqls/base_table.sql SQL Workshop &gt;&gt; SQL Script  7개 테이블   LoV 생성 Shared Component &gt; List of Values 등록  JOB TYPES  업무 유형: 의사, 간호사   select job_id as r, job_name as d from JOB_TYPES   EMP TYPES  (1, &lsquo;교수&rsquo;) (2, &lsquo;펠로우&rsquo;) (3, &lsquo;레시던트&rsquo;) (4, &lsquo;인턴&rsquo;) (5, &lsquo;본과실습생&rsquo;) (6, &lsquo;간호사&rsquo;) (7, &lsquo;주임간호사&rsquo;) (8, &lsquo;수간호사&rsquo;) (9, &lsquo;간호부장&rsquo;)   select type_id as r, type_name as d from USER_TYPES   Teams  (1, 소아과) (2, 산부인과) (3, 간담췌외과) (4, 신경외과) (5, 응급의학과)   select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/" />
+<meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/20-report-form/" />
 
 
 
@@ -33,7 +33,7 @@
 
 
 
-<title>APEX APP, DB 테이블, LoV 생성 :: Oracle APEX Workshop</title>
+<title>직원 정보 관리 Report 생성 :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
     
   </head>
-  <body data-url="/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/">
+  <body data-url="/apex-workshop/01.beginner_ws/20.m01/20-report-form/">
     
       <header>
   <div class="logo">
@@ -175,14 +175,14 @@
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/" class="dd-item active">
+      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/" class="dd-item">
         <div>
           <a href="/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/">
             APEX APP, DB 테이블, LoV 생성
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/20-report-form/" class="dd-item">
+      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/20-report-form/" class="dd-item active">
         <div>
           <a href="/apex-workshop/01.beginner_ws/20.m01/20-report-form/">
             직원 정보 관리 Report 생성
@@ -249,8 +249,8 @@
     <option value="/apex-workshop/01.beginner_ws/20.m01/" >
   - 
    M02-직원정보관리</option> 
-      <option value="/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/"  selected>-- APEX APP, DB 테이블, LoV 생성</option>
-      <option value="/apex-workshop/01.beginner_ws/20.m01/20-report-form/" >-- 직원 정보 관리 Report 생성</option>
+      <option value="/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/" >-- APEX APP, DB 테이블, LoV 생성</option>
+      <option value="/apex-workshop/01.beginner_ws/20.m01/20-report-form/"  selected>-- 직원 정보 관리 Report 생성</option>
   
   
 
@@ -273,7 +273,7 @@
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>APEX APP, DB 테이블, LoV 생성</h1>
+    <h1>직원 정보 관리 Report 생성</h1>
 
 
      
@@ -283,14 +283,6 @@
     
     
     
-
-
-<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/v8wIMMYzQpY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
- </div>
-
-
-<hr />
 
 <h2 id="apex-app-생성">APEX App 생성</h2>
 
@@ -392,8 +384,8 @@ from TEAMS
   <li><strong>문서 생성:</strong> 2021-08-14 09:11 / <string>최종 문서 수정:</strong> 2021-08-14 09:11 </li>
 </div><div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/20.m01/" title="M02-직원정보관리"> <i class="fa fa-chevron-left"></i><label>M02-직원정보관리</label></a>
-    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/20.m01/20-report-form/" title="직원 정보 관리 Report 생성" style="margin-right: 0px;"><label>직원 정보 관리 Report 생성</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/" title="APEX APP, DB 테이블, LoV 생성"> <i class="fa fa-chevron-left"></i><label>APEX APP, DB 테이블, LoV 생성</label></a>
+    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/" title="APEX APP, DB 테이블, LoV 생성" style="margin-right: 0px;"><label>APEX APP, DB 테이블, LoV 생성</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="panel panel-danger">
@@ -403,7 +395,7 @@ from TEAMS
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/01.beginner_ws/20.m01/20-report-form/"></div>
 
   </div>
 

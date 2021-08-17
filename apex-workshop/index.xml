@@ -26,7 +26,7 @@
       <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/</guid>
-      <description> APEX App 생성  Name: 슬기로운 익스펜스 생활 Appearance: Vita, Side Menu  DB 테이블 생성  리소스 파일 다운로드: https://taewanmerepo.github.io/2021/08/apex/apexws_res.zip DDL 파일 위치: /sqls/base_table.sql SQL Workshop &amp;gt;&amp;gt; SQL Script  7개 테이블   LoV 생성 Shared Component &amp;gt; List of Values 등록  JOB TYPES  업무 유형: 의사, 간호사   select job_id as r, job_name as d from JOB_TYPES   EMP TYPES  (1, &amp;lsquo;교수&amp;rsquo;) (2, &amp;lsquo;펠로우&amp;rsquo;) (3, &amp;lsquo;레시던트&amp;rsquo;) (4, &amp;lsquo;인턴&amp;rsquo;) (5, &amp;lsquo;본과실습생&amp;rsquo;) (6, &amp;lsquo;간호사&amp;rsquo;) (7, &amp;lsquo;주임간호사&amp;rsquo;) (8, &amp;lsquo;수간호사&amp;rsquo;) (9, &amp;lsquo;간호부장&amp;rsquo;)   select type_id as r, type_name as d from USER_TYPES   Teams  (1, 소아과) (2, 산부인과) (3, 간담췌외과) (4, 신경외과) (5, 응급의학과)   select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   </description>
+      <description>   APEX App 생성  Name: 슬기로운 익스펜스 생활 Appearance: Vita, Side Menu  DB 테이블 생성  리소스 파일 다운로드: https://taewanmerepo.github.io/2021/08/apex/apexws_res.zip DDL 파일 위치: /sqls/base_table.sql SQL Workshop &amp;gt;&amp;gt; SQL Script  7개 테이블   LoV 생성 Shared Component &amp;gt; List of Values 등록  JOB TYPES  업무 유형: 의사, 간호사   select job_id as r, job_name as d from JOB_TYPES   EMP TYPES  (1, &amp;lsquo;교수&amp;rsquo;) (2, &amp;lsquo;펠로우&amp;rsquo;) (3, &amp;lsquo;레시던트&amp;rsquo;) (4, &amp;lsquo;인턴&amp;rsquo;) (5, &amp;lsquo;본과실습생&amp;rsquo;) (6, &amp;lsquo;간호사&amp;rsquo;) (7, &amp;lsquo;주임간호사&amp;rsquo;) (8, &amp;lsquo;수간호사&amp;rsquo;) (9, &amp;lsquo;간호부장&amp;rsquo;)   select type_id as r, type_name as d from USER_TYPES   Teams  (1, 소아과) (2, 산부인과) (3, 간담췌외과) (4, 신경외과) (5, 응급의학과)   select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   </description>
     </item>
     
     <item>
@@ -51,6 +51,15 @@ Always Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 �
       <description>Oracle APEX 입문 워크숖 실습의 통일성을 높이기 위하여 OCI 기본 환경 다음과 같이 구성하겠습니다.
 OCI 사용자 ID &amp;amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI IAM으로 만들고, OCI 사용자 그룹에 설정하겠습니다.
    IAM User ID IAM USER Group 설명     admin administrators OCI 계정 관리자 ID   developer01 develoeprs 개발자 ID    OCI Compartment OCI Compartment(구획)은 OCI 자원을 논리적으로 묶는 OCI IAM 핵심 구성 요소입니다.</description>
+    </item>
+    
+    <item>
+      <title>직원 정보 관리 Report 생성</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/20-report-form/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/20-report-form/</guid>
+      <description> APEX App 생성  Name: 슬기로운 익스펜스 생활 Appearance: Vita, Side Menu  DB 테이블 생성  리소스 파일 다운로드: https://taewanmerepo.github.io/2021/08/apex/apexws_res.zip DDL 파일 위치: /sqls/base_table.sql SQL Workshop &amp;gt;&amp;gt; SQL Script  7개 테이블   LoV 생성 Shared Component &amp;gt; List of Values 등록  JOB TYPES  업무 유형: 의사, 간호사   select job_id as r, job_name as d from JOB_TYPES   EMP TYPES  (1, &amp;lsquo;교수&amp;rsquo;) (2, &amp;lsquo;펠로우&amp;rsquo;) (3, &amp;lsquo;레시던트&amp;rsquo;) (4, &amp;lsquo;인턴&amp;rsquo;) (5, &amp;lsquo;본과실습생&amp;rsquo;) (6, &amp;lsquo;간호사&amp;rsquo;) (7, &amp;lsquo;주임간호사&amp;rsquo;) (8, &amp;lsquo;수간호사&amp;rsquo;) (9, &amp;lsquo;간호부장&amp;rsquo;)   select type_id as r, type_name as d from USER_TYPES   Teams  (1, 소아과) (2, 산부인과) (3, 간담췌외과) (4, 신경외과) (5, 응급의학과)   select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   </description>
     </item>
     
     <item>
