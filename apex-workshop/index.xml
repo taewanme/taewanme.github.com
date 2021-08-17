@@ -45,6 +45,16 @@ OCI 사용자 ID &amp;amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI
     </item>
     
     <item>
+      <title>APEX Workspace 사용자 등록</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/</guid>
+      <description>지금까지 APEX Workspace에 데이터베이스 사용자인 apexws로 로그인했습니다. 데이터베이스 사용자가 아닌 APEX Workspace 사용자를 등록하여 사용하겠습니다. 개발자 사용자와 일반 사용자 2개를 등록합니다.
+|사용자 유형|사용자 이름|패스워드|패스워드 변경 옵션| |&amp;mdash;|&amp;mdash;|&amp;mdash;|&amp;mdash;| |개발자 사용자|dev01|Welcome123456!|비활성화| |일반 사용자|user01|Welcome123456!|비활성화|</description>
+    </item>
+    
+    <item>
       <title>APEX 개발 환경 구성</title>
       <link>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/</link>
       <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
