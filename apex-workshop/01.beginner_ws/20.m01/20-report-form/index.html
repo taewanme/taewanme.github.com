@@ -4,12 +4,12 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-18T00:37:22 KST">
+<meta name="revised" content="2021-08-18T05:57:03 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="직원 정보 관리 Report 생성" />
-<meta property="og:description" content=" APEX App 생성  Name: 슬기로운 익스펜스 생활 Appearance: Vita, Side Menu  DB 테이블 생성  리소스 파일 다운로드: https://taewanmerepo.github.io/2021/08/apex/apexws_res.zip DDL 파일 위치: /sqls/base_table.sql SQL Workshop &gt;&gt; SQL Script  7개 테이블   LoV 생성 Shared Component &gt; List of Values 등록  JOB TYPES  업무 유형: 의사, 간호사   select job_id as r, job_name as d from JOB_TYPES   EMP TYPES  (1, &lsquo;교수&rsquo;) (2, &lsquo;펠로우&rsquo;) (3, &lsquo;레시던트&rsquo;) (4, &lsquo;인턴&rsquo;) (5, &lsquo;본과실습생&rsquo;) (6, &lsquo;간호사&rsquo;) (7, &lsquo;주임간호사&rsquo;) (8, &lsquo;수간호사&rsquo;) (9, &lsquo;간호부장&rsquo;)   select type_id as r, type_name as d from USER_TYPES   Teams  (1, 소아과) (2, 산부인과) (3, 간담췌외과) (4, 신경외과) (5, 응급의학과)   select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   " />
+<meta property="og:description" content=" Report 생성  Report Type: Report with Form 대상 테이블: Employees page 번호  Report Page: 21 Form Page: 22   Form 페이지 CSS 적용 img { width: 200px; height: 200px; }  Form의 직급 select list 변경 select type_name, type_id from USER_TYPES where job_id = :P22_JOB_ID order by type_id  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/20-report-form/" />
 
@@ -284,98 +284,34 @@
     
     
 
-<h2 id="apex-app-생성">APEX App 생성</h2>
+<h2 id="report-생성">Report 생성</h2>
 
 <ul>
-<li>Name: 슬기로운 익스펜스 생활</li>
-<li>Appearance: Vita, Side Menu</li>
-</ul>
-
-<p><img src="https://taewanmerepo.github.io/2021/08/apex/apps.jpg" alt="" /></p>
-
-<hr />
-
-<h2 id="db-테이블-생성">DB 테이블 생성</h2>
+<li>Report Type: Report with Form</li>
+<li>대상 테이블: Employees</li>
+<li>page 번호
 
 <ul>
-<li>리소스 파일 다운로드: <a href="https://taewanmerepo.github.io/2021/08/apex/apexws_res.zip">https://taewanmerepo.github.io/2021/08/apex/apexws_res.zip</a></li>
-<li>DDL 파일 위치: <apex-res.zip>/sqls/base_table.sql</li>
-<li>SQL Workshop &gt;&gt; SQL Script
-
-<ul>
-<li>7개 테이블</li>
+<li>Report Page: 21</li>
+<li>Form Page: 22</li>
 </ul></li>
 </ul>
 
-<p><img src="https://taewanmerepo.github.io/2021/08/apex/erd.jpg" alt="" /></p>
+<h2 id="form-페이지-css-적용">Form 페이지 CSS 적용</h2>
 
-<hr />
-
-<h2 id="lov-생성">LoV 생성</h2>
-
-<h3 id="shared-component-list-of-values-등록">Shared Component &gt; List of Values 등록</h3>
-
-<ul>
-<li>JOB TYPES
-
-<ul>
-<li>업무 유형: 의사, 간호사</li>
-</ul></li>
-</ul>
-
-<pre><code>select job_id as r, job_name as d from JOB_TYPES
+<pre><code>img {
+width: 200px;
+height: 200px;
+}
 </code></pre>
 
-<hr />
+<h2 id="form의-직급-select-list-변경">Form의 직급 select list 변경</h2>
 
-<ul>
-<li>EMP TYPES
-
-<ul>
-<li>(1, &lsquo;교수&rsquo;)</li>
-<li>(2, &lsquo;펠로우&rsquo;)</li>
-<li>(3, &lsquo;레시던트&rsquo;)</li>
-<li>(4, &lsquo;인턴&rsquo;)</li>
-<li>(5, &lsquo;본과실습생&rsquo;)</li>
-<li>(6, &lsquo;간호사&rsquo;)</li>
-<li>(7, &lsquo;주임간호사&rsquo;)</li>
-<li>(8, &lsquo;수간호사&rsquo;)</li>
-<li>(9, &lsquo;간호부장&rsquo;)</li>
-</ul></li>
-</ul>
-
-<pre><code>select type_id as r, type_name  as d 
+<pre><code>select  type_name, type_id
 from USER_TYPES 
+where job_id = :P22_JOB_ID
+order by type_id 
 </code></pre>
-
-<hr />
-
-<ul>
-<li>Teams
-
-<ul>
-<li>(1, 소아과)</li>
-<li>(2, 산부인과)</li>
-<li>(3, 간담췌외과)</li>
-<li>(4, 신경외과)</li>
-<li>(5, 응급의학과)</li>
-</ul></li>
-</ul>
-
-<pre><code>select team_full_name as d, team_id as r 
-from TEAMS 
-</code></pre>
-
-<hr />
-
-<ul>
-<li>Gender Types
-
-<ul>
-<li>남성: M</li>
-<li>여성: F</li>
-</ul></li>
-</ul>
 
 
     

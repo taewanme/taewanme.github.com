@@ -59,7 +59,7 @@ OCI 사용자 ID &amp;amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI
       <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/20-report-form/</guid>
-      <description> APEX App 생성  Name: 슬기로운 익스펜스 생활 Appearance: Vita, Side Menu  DB 테이블 생성  리소스 파일 다운로드: https://taewanmerepo.github.io/2021/08/apex/apexws_res.zip DDL 파일 위치: /sqls/base_table.sql SQL Workshop &amp;gt;&amp;gt; SQL Script  7개 테이블   LoV 생성 Shared Component &amp;gt; List of Values 등록  JOB TYPES  업무 유형: 의사, 간호사   select job_id as r, job_name as d from JOB_TYPES   EMP TYPES  (1, &amp;lsquo;교수&amp;rsquo;) (2, &amp;lsquo;펠로우&amp;rsquo;) (3, &amp;lsquo;레시던트&amp;rsquo;) (4, &amp;lsquo;인턴&amp;rsquo;) (5, &amp;lsquo;본과실습생&amp;rsquo;) (6, &amp;lsquo;간호사&amp;rsquo;) (7, &amp;lsquo;주임간호사&amp;rsquo;) (8, &amp;lsquo;수간호사&amp;rsquo;) (9, &amp;lsquo;간호부장&amp;rsquo;)   select type_id as r, type_name as d from USER_TYPES   Teams  (1, 소아과) (2, 산부인과) (3, 간담췌외과) (4, 신경외과) (5, 응급의학과)   select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   </description>
+      <description> Report 생성  Report Type: Report with Form 대상 테이블: Employees page 번호  Report Page: 21 Form Page: 22   Form 페이지 CSS 적용 img { width: 200px; height: 200px; }  Form의 직급 select list 변경 select type_name, type_id from USER_TYPES where job_id = :P22_JOB_ID order by type_id  </description>
     </item>
     
     <item>
