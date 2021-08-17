@@ -21,6 +21,13 @@
 	"content": "//todo workshop 구성을 소개.\n"
 },
 {
+	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/",
+	"title": "APEX APP, DB 테이블, LoV 생성",
+	"tags": [],
+	"description": "",
+	"content": " APEX App 생성  Name: 슬기로운 익스펜스 Appearance: Vita-Dark, Side Menu  DB 테이블 생성  리소스 파일 다운로드: https://taewanmerepo.github.io/2021/08/apex/apexws_res.zip DDL 파일 위치: /sqls/base_table.sql SQL Workshop \u0026gt;\u0026gt; SQL Script  7개 테이블   LoV 생성 Shared Component \u0026gt; List of Values 등록  JOB TYPES  업무 유형: 의사, 간호사   select lob_id as r, lob_name as d from JOB_TYPES   EMP TYPES  (1, \u0026lsquo;교수\u0026rsquo;) (2, \u0026lsquo;펠로우\u0026rsquo;) (3, \u0026lsquo;레시던트\u0026rsquo;) (4, \u0026lsquo;인턴\u0026rsquo;) (5, \u0026lsquo;본과실습생\u0026rsquo;) (6, \u0026lsquo;간호사\u0026rsquo;) (7, \u0026lsquo;주임간호사\u0026rsquo;) (8, \u0026lsquo;수간호사\u0026rsquo;) = (9, \u0026lsquo;간호부장\u0026rsquo;)   select type_id as r, type_name as d from USER_TYPES   Teams  (1, 소아과) (2, 산부인과) (3, 간담췌외과) (4, 신경외과) (5, 응급의학과)   select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   "
+},
+{
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/",
 	"title": "OCI Free Trail 신청",
 	"tags": [],
@@ -29,7 +36,7 @@
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/",
-	"title": "M00.실습환경 준비",
+	"title": "M01.실습환경 준비",
 	"tags": [],
 	"description": "",
 	"content": " Oracle APEX 입문 워크숖을 진행하기 위해서는 다음과 같은 환경이 필요합니다.\n OCI Tenante (OCI 계정)  OCI 사용자 계정  OCI ATP 인스턴스  APEX Workspace   실습 환경 준비 절차 실습 환경을 준비하기 위하여 다음과 같은 작업을 진행합니다.\n OCI Free Trial 계정 신청 OCI 계정 기본 설정 APEX 실습 환경 구성  ATP 인스턴스 생성 APEX Workspace 생성   "
@@ -43,17 +50,10 @@
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/",
-	"title": "M01-직원정보관리",
+	"title": "M02-직원정보관리",
 	"tags": [],
 	"description": "",
-	"content": " Oracle APEX Beginner Workshop의 첫 번째 실습으로 직원 정보를 관리하는 페이지를 개발하는 과정을 소개합니다. 이번 실습에서는 다음 이미지와 같은 직원 정보 관리 페이지를 개발해 보겠습니다.\n모듈 구성 이번 모듈은 다음과 같은 항목으로 구성됩니다.\n APEX Workshop 로그인 및 계정 등록 직원 정보 관리 테이블 생성 직원 정보 관리 APEX Report 생성 Key 처리를 위한 UI 컴포넌트 구성 이미지 이슈 처리 입력 데이터 Validation 입력 값 처리 (Serverside, Read Only, Default) 검색 \u0026amp; Dynamic Action  개발 화면 이번 모듈을 통해서 다음과 같은 페이지를 개발할 수 있습니다.\n 직원 정보 조회  직원 상세 정보 조회 및 정보 입력 폼   "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/",
-	"title": "APEX Workspace 사용자 등록",
-	"tags": [],
-	"description": "",
-	"content": "   지금까지 APEX Workspace에 데이터베이스 사용자인 apexws로 로그인했습니다. 데이터베이스 사용자가 아닌 APEX Workspace 사용자를 등록하여 사용하겠습니다. 개발자 사용자와 일반 사용자 2개를 등록합니다.\n|사용자 유형|사용자 이름|패스워드|패스워드 변경 옵션| |\u0026mdash;|\u0026mdash;|\u0026mdash;|\u0026mdash;| |개발자 사용자|dev01|Welcome123456!|비활성화| |일반 사용자|user01|Welcome123456!|비활성화|\n"
+	"content": " Oracle APEX Beginner Workshop의 첫 번째 실습으로 직원 정보를 관리하는 페이지를 개발하는 과정을 소개합니다. 이번 실습에서는 다음 이미지와 같은 직원 정보 관리 페이지를 개발해 보겠습니다.\n모듈 구성 이번 모듈은 다음과 같은 항목으로 구성됩니다.\n My Expense 앱 만들기 데모 테이블 생성 직원 정보 관리 APEX Report 생성 Key 처리를 위한 UI 컴포넌트 구성 이미지 이슈 처리 입력 데이터 Validation 입력 값 처리 (Serverside, Read Only, Default) 검색 \u0026amp; Dynamic Action  개발 화면 이번 모듈을 통해서 다음과 같은 페이지를 개발할 수 있습니다.\n 직원 정보 조회  직원 상세 정보 조회 및 정보 입력 폼   "
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/",
@@ -61,6 +61,13 @@
 	"tags": [],
 	"description": "",
 	"content": "   APEX 환경을 구성하기 위해서 다음과 같은 작업을 수행합니다.\n ATP 인스턴스 생성 ATP 인스턴스의 APEX 로그인  id: admin  Workspace 생성  ATP 인스턴스 생성    설정 항목 설섲 값 비고     Compartment PROJECT \u0026gt;\u0026gt; APEXWS    Display Name DemoATP    Database Name DemoATP    Workload Type Transaction Processing    Deployment Type Shared Infrastructure    Version 19C    OCPU 1    Storage 1    Admin username admin 고정값   Password Welcome123456! 패스워드 예시    Oracle Application Expression  ATP 인스턴스의 Tools 탭의 Oracle APEX 오픈  Workspace 생성    설정 항목 설정 값 비고     Database User apexws    password Welcome123456! 패스워드 예시   Workspace User apexws 기본설정 값     Oracle APEX Administration 서비스 로그아웃  apexws Workspace 로그인    로그인 항목 입력 값     Database User apexws   password Welcome123456!   Workspace User apexws    "
+},
+{
+	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/",
+	"title": "APEX Workspace 사용자 등록",
+	"tags": [],
+	"description": "",
+	"content": "   지금까지 APEX Workspace에 데이터베이스 사용자인 apexws로 로그인했습니다. 데이터베이스 사용자가 아닌 APEX Workspace 사용자를 등록하여 사용하겠습니다. 개발자 사용자와 일반 사용자 2개를 등록합니다.\n   사용자 유형 사용자 이름 패스워드 비고     개발자 사용자 dev01 Welcome123456! 관리자, 개발자 권한 부여   일반 사용자 user01 Welcome123456!     "
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/",

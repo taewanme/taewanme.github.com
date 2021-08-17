@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>APEX APP, DB 테이블, LoV 생성</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/</guid>
+      <description> APEX App 생성  Name: 슬기로운 익스펜스 Appearance: Vita-Dark, Side Menu  DB 테이블 생성  리소스 파일 다운로드: https://taewanmerepo.github.io/2021/08/apex/apexws_res.zip DDL 파일 위치: /sqls/base_table.sql SQL Workshop &amp;gt;&amp;gt; SQL Script  7개 테이블   LoV 생성 Shared Component &amp;gt; List of Values 등록  JOB TYPES  업무 유형: 의사, 간호사   select lob_id as r, lob_name as d from JOB_TYPES   EMP TYPES  (1, &amp;lsquo;교수&amp;rsquo;) (2, &amp;lsquo;펠로우&amp;rsquo;) (3, &amp;lsquo;레시던트&amp;rsquo;) (4, &amp;lsquo;인턴&amp;rsquo;) (5, &amp;lsquo;본과실습생&amp;rsquo;) (6, &amp;lsquo;간호사&amp;rsquo;) (7, &amp;lsquo;주임간호사&amp;rsquo;) (8, &amp;lsquo;수간호사&amp;rsquo;) = (9, &amp;lsquo;간호부장&amp;rsquo;)   select type_id as r, type_name as d from USER_TYPES   Teams  (1, 소아과) (2, 산부인과) (3, 간담췌외과) (4, 신경외과) (5, 응급의학과)   select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   </description>
+    </item>
+    
+    <item>
       <title>OCI Free Trail 신청</title>
       <link>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/</link>
       <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
@@ -45,16 +54,6 @@ OCI 사용자 ID &amp;amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI
     </item>
     
     <item>
-      <title>APEX Workspace 사용자 등록</title>
-      <link>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/</link>
-      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/</guid>
-      <description>지금까지 APEX Workspace에 데이터베이스 사용자인 apexws로 로그인했습니다. 데이터베이스 사용자가 아닌 APEX Workspace 사용자를 등록하여 사용하겠습니다. 개발자 사용자와 일반 사용자 2개를 등록합니다.
-|사용자 유형|사용자 이름|패스워드|패스워드 변경 옵션| |&amp;mdash;|&amp;mdash;|&amp;mdash;|&amp;mdash;| |개발자 사용자|dev01|Welcome123456!|비활성화| |일반 사용자|user01|Welcome123456!|비활성화|</description>
-    </item>
-    
-    <item>
       <title>APEX 개발 환경 구성</title>
       <link>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/</link>
       <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
@@ -62,6 +61,16 @@ OCI 사용자 ID &amp;amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI
       <guid>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/</guid>
       <description>APEX 환경을 구성하기 위해서 다음과 같은 작업을 수행합니다.
  ATP 인스턴스 생성 ATP 인스턴스의 APEX 로그인  id: admin  Workspace 생성  ATP 인스턴스 생성    설정 항목 설섲 값 비고     Compartment PROJECT &amp;gt;&amp;gt; APEXWS    Display Name DemoATP    Database Name DemoATP    Workload Type Transaction Processing    Deployment Type Shared Infrastructure    Version 19C    OCPU 1    Storage 1    Admin username admin 고정값   Password Welcome123456!</description>
+    </item>
+    
+    <item>
+      <title>APEX Workspace 사용자 등록</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/</guid>
+      <description>   지금까지 APEX Workspace에 데이터베이스 사용자인 apexws로 로그인했습니다. 데이터베이스 사용자가 아닌 APEX Workspace 사용자를 등록하여 사용하겠습니다. 개발자 사용자와 일반 사용자 2개를 등록합니다.
+   사용자 유형 사용자 이름 패스워드 비고     개발자 사용자 dev01 Welcome123456! 관리자, 개발자 권한 부여   일반 사용자 user01 Welcome123456!     </description>
     </item>
     
   </channel>

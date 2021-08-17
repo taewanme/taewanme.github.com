@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-17T11:38:28 KST">
+<meta name="revised" content="2021-08-17T21:36:55 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
@@ -136,7 +136,7 @@ OCI 사용자 ID &amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI IAM
     <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
-      <a href="/apex-workshop/01.beginner_ws/10.prep/">M00.실습환경 준비</a>
+      <a href="/apex-workshop/01.beginner_ws/10.prep/">M01.실습환경 준비</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
@@ -154,13 +154,6 @@ OCI 사용자 ID &amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI IAM
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/" class="dd-item">
-        <div>
-          <a href="/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/">
-            APEX Workspace 사용자 등록
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
       <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/" class="dd-item">
         <div>
           <a href="/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/">
@@ -168,13 +161,30 @@ OCI 사용자 ID &amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI IAM
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/">
+            APEX Workspace 사용자 등록
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
         </ul>
     </li>
-    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/" class="dd-item alwaysopen
+    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/" class="dd-item alwaysopen haschildren
         ">
       <div>
-      <a href="/apex-workshop/01.beginner_ws/20.m01/">M01-직원정보관리</a><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/apex-workshop/01.beginner_ws/20.m01/">M02-직원정보관리</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
+        <ul>
+      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/">
+            APEX APP, DB 테이블, LoV 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -225,15 +235,16 @@ OCI 사용자 ID &amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI IAM
       <option value="/apex-workshop/01.beginner_ws/05-about-workshop/" >- APEX 입문자 워크숖 소개</option>
     <option value="/apex-workshop/01.beginner_ws/10.prep/" >
   - 
-   M00.실습환경 준비</option> 
+   M01.실습환경 준비</option> 
       <option value="/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/" >-- OCI Free Trail 신청</option>
       <option value="/apex-workshop/01.beginner_ws/10.prep/20-oci-env-setup/"  selected>-- OCI 기본 환경 설정</option>
-      <option value="/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/" >-- APEX Workspace 사용자 등록</option>
       <option value="/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/" >-- APEX 개발 환경 구성</option>
+      <option value="/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/" >-- APEX Workspace 사용자 등록</option>
   
     <option value="/apex-workshop/01.beginner_ws/20.m01/" >
   - 
-   M01-직원정보관리</option> 
+   M02-직원정보관리</option> 
+      <option value="/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/" >-- APEX APP, DB 테이블, LoV 생성</option>
   
   
 
@@ -335,7 +346,7 @@ OCI 사용자 ID &amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI IAM
 </div><div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/" title="OCI Free Trail 신청"> <i class="fa fa-chevron-left"></i><label>OCI Free Trail 신청</label></a>
-    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/" title="APEX Workspace 사용자 등록" style="margin-right: 0px;"><label>APEX Workspace 사용자 등록</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/" title="APEX 개발 환경 구성" style="margin-right: 0px;"><label>APEX 개발 환경 구성</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="panel panel-danger">
