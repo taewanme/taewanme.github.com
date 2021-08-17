@@ -4,12 +4,12 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-17T23:19:06 KST">
+<meta name="revised" content="2021-08-17T23:21:14 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="APEX APP, DB 테이블, LoV 생성" />
-<meta property="og:description" content=" APEX App 생성  Name: 슬기로운 익스펜스 생활 Appearance: Vita, Side Menu  DB 테이블 생성  리소스 파일 다운로드: https://taewanmerepo.github.io/2021/08/apex/apexws_res.zip DDL 파일 위치: /sqls/base_table.sql SQL Workshop &gt;&gt; SQL Script  7개 테이블   LoV 생성 Shared Component &gt; List of Values 등록  JOB TYPES  업무 유형: 의사, 간호사   select lob_id as r, lob_name as d from JOB_TYPES   EMP TYPES  (1, &lsquo;교수&rsquo;) (2, &lsquo;펠로우&rsquo;) (3, &lsquo;레시던트&rsquo;) (4, &lsquo;인턴&rsquo;) (5, &lsquo;본과실습생&rsquo;) (6, &lsquo;간호사&rsquo;) (7, &lsquo;주임간호사&rsquo;) (8, &lsquo;수간호사&rsquo;) = (9, &lsquo;간호부장&rsquo;)   select type_id as r, type_name as d from USER_TYPES   Teams  (1, 소아과) (2, 산부인과) (3, 간담췌외과) (4, 신경외과) (5, 응급의학과)   select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   " />
+<meta property="og:description" content=" APEX App 생성  Name: 슬기로운 익스펜스 생활 Appearance: Vita, Side Menu  DB 테이블 생성  리소스 파일 다운로드: https://taewanmerepo.github.io/2021/08/apex/apexws_res.zip DDL 파일 위치: /sqls/base_table.sql SQL Workshop &gt;&gt; SQL Script  7개 테이블   LoV 생성 Shared Component &gt; List of Values 등록  JOB TYPES  업무 유형: 의사, 간호사   select job_id as r, job_name as d from JOB_TYPES   EMP TYPES  (1, &lsquo;교수&rsquo;) (2, &lsquo;펠로우&rsquo;) (3, &lsquo;레시던트&rsquo;) (4, &lsquo;인턴&rsquo;) (5, &lsquo;본과실습생&rsquo;) (6, &lsquo;간호사&rsquo;) (7, &lsquo;주임간호사&rsquo;) (8, &lsquo;수간호사&rsquo;) (9, &lsquo;간호부장&rsquo;)   select type_id as r, type_name as d from USER_TYPES   Teams  (1, 소아과) (2, 산부인과) (3, 간담췌외과) (4, 신경외과) (5, 응급의학과)   select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/" />
 
@@ -315,7 +315,7 @@
 </ul></li>
 </ul>
 
-<pre><code>select lob_id as r, lob_name as d from JOB_TYPES
+<pre><code>select job_id as r, job_name as d from JOB_TYPES
 </code></pre>
 
 <hr />
@@ -331,8 +331,8 @@
 <li>(5, &lsquo;본과실습생&rsquo;)</li>
 <li>(6, &lsquo;간호사&rsquo;)</li>
 <li>(7, &lsquo;주임간호사&rsquo;)</li>
-<li>(8, &lsquo;수간호사&rsquo;)
-= (9, &lsquo;간호부장&rsquo;)</li>
+<li>(8, &lsquo;수간호사&rsquo;)</li>
+<li>(9, &lsquo;간호부장&rsquo;)</li>
 </ul></li>
 </ul>
 
