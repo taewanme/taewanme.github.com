@@ -46,7 +46,7 @@
 	"title": "APEX 개발 환경 구성",
 	"tags": [],
 	"description": "",
-	"content": " APEX 환경을 구성하기 위해서 다음과 같은 작업을 수행합니다.\n ATP 인스턴스 생성 ATP 인스턴스의 APEX 로그인  id: admin  Workspace 생성  ATP 인스턴스 생성    설정 항목 설섲 값 비고     Compartment PROJECT \u0026gt;\u0026gt; APEXWS    Display Name DemoATP    Database Name DemoATP    Workload Type Transaction Processing    Deployment Type Shared Infrastructure    Version 19C    OCPU 1    Storage 1    Admin username admin 고정값   Password Welcome123456! 패스워드 예시    Oracle Application Expression  ATP 인스턴스의 Tools 탭의 Oracle APEX 오픈  Workspace 생성    설정 항목 설정 값 비고     Database User apexws    password Welcome123456! 패스워드 예시   Workspace User apexws 기본설정 값     Oracle APEX Administration 서비스 로그아웃  apexws Workspace 로그인    로그인 항목 입력 값     Database User apexws   password Welcome123456!   Workspace User apexws    "
+	"content": "   APEX 환경을 구성하기 위해서 다음과 같은 작업을 수행합니다.\n ATP 인스턴스 생성 ATP 인스턴스의 APEX 로그인  id: admin  Workspace 생성  ATP 인스턴스 생성    설정 항목 설섲 값 비고     Compartment PROJECT \u0026gt;\u0026gt; APEXWS    Display Name DemoATP    Database Name DemoATP    Workload Type Transaction Processing    Deployment Type Shared Infrastructure    Version 19C    OCPU 1    Storage 1    Admin username admin 고정값   Password Welcome123456! 패스워드 예시    Oracle Application Expression  ATP 인스턴스의 Tools 탭의 Oracle APEX 오픈  Workspace 생성    설정 항목 설정 값 비고     Database User apexws    password Welcome123456! 패스워드 예시   Workspace User apexws 기본설정 값     Oracle APEX Administration 서비스 로그아웃  apexws Workspace 로그인    로그인 항목 입력 값     Database User apexws   password Welcome123456!   Workspace User apexws    "
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/",
