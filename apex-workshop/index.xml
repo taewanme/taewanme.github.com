@@ -54,12 +54,23 @@ OCI 사용자 ID &amp;amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI
     </item>
     
     <item>
-      <title>직원 정보 관리 Report 생성</title>
+      <title>직원 정보 관리 Report 생성(1)</title>
       <link>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/20-report-form/</link>
       <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/20-report-form/</guid>
-      <description>   목표 애플리케이션 &amp;mdash;-./ Report 생성  Report Type: Report with Form 대상 테이블: Employees page 번호  Report Page: 21 Form Page: 22   Form 페이지 CSS 적용 img { width: 200px; height: 200px; }  Form의 직급 select list 변경 select type_name, type_id from USER_TYPES where job_id = :P22_JOB_ID order by type_id  </description>
+      <description>   목표 애플리케이션  Report 생성  Report Type: Report with Form 대상 테이블: Employees page 번호  Report Page: 21 Form Page: 22   Form 페이지 CSS 적용 img { width: 200px; height: 200px; }  Form의 직급 select list 변경 select type_name, type_id from USER_TYPES where job_id = :P22_JOB_ID order by type_id  </description>
+    </item>
+    
+    <item>
+      <title>직원 정보 관리 Report 생성(2)</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/30-report-form/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/30-report-form/</guid>
+      <description>이번 영상에서는 직원 정보 관리 Report의 다음을 업데이트 합니다.
+ (From) 이슈: 업데이트 가능한 PK PAGE ITEM (P22_EMPLOYEE_ID) (From) 생일: 포멧 설정 (From) 기본값 설정: P22_CRE_DATE (From) 이메일 입력 데이터 검증 (Validation) (From) 전화번호 입력 데이터 검증 (Validation) (리포트) PK 컬럼 출력 (리포트) 지정한 컬럼 정리(Hidden 처리)
+ P21_EMP_PW, P21_TEMP_PW, P21_CELL_PHONE, P21_EMP_PIC, P21_BIRTHDAY  (리포트) 컬럼 이름 한글화 (리포트) 컬럼 값 대체(Lookup) (리포트) 포멧 설정: P21_BIRTHDAY (리포트) 꾸미기 – HERO  정규 표현식 Validation 설정  Email  error message: Mail 포멧이 아닙니다.</description>
     </item>
     
     <item>
