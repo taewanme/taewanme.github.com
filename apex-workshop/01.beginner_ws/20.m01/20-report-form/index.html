@@ -4,11 +4,11 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-19T03:00:05 KST">
+<meta name="revised" content="2021-08-19T03:09:18 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="직원 정보 관리 Report 생성(1)" />
+<meta property="og:title" content="직원 정보 관리 Report 생성" />
 <meta property="og:description" content="   목표 애플리케이션  Report 생성  Report Type: Report with Form 대상 테이블: Employees page 번호  Report Page: 21 Form Page: 22   Form 페이지 CSS 적용 img { width: 200px; height: 200px; }  Form의 직급 select list 변경 select type_name, type_id from USER_TYPES where job_id = :P22_JOB_ID order by type_id  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/20-report-form/" />
@@ -33,7 +33,7 @@
 
 
 
-<title>직원 정보 관리 Report 생성(1) :: Oracle APEX Workshop</title>
+<title>직원 정보 관리 Report 생성 :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -185,7 +185,7 @@
       <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/20-report-form/" class="dd-item active">
         <div>
           <a href="/apex-workshop/01.beginner_ws/20.m01/20-report-form/">
-            직원 정보 관리 Report 생성(1)
+            직원 정보 관리 Report 생성
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -199,7 +199,7 @@
       <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/40-report-search/" class="dd-item">
         <div>
           <a href="/apex-workshop/01.beginner_ws/20.m01/40-report-search/">
-            직원 정보 관리 세부설정
+            직원 정보 관리 - 검색
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -264,9 +264,9 @@
   - 
    M02-직원정보관리</option> 
       <option value="/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/" >-- APEX APP, DB 테이블, LoV 생성</option>
-      <option value="/apex-workshop/01.beginner_ws/20.m01/20-report-form/"  selected>-- 직원 정보 관리 Report 생성(1)</option>
+      <option value="/apex-workshop/01.beginner_ws/20.m01/20-report-form/"  selected>-- 직원 정보 관리 Report 생성</option>
       <option value="/apex-workshop/01.beginner_ws/20.m01/30-report-form/" >-- 직원 정보 관리 세부설정</option>
-      <option value="/apex-workshop/01.beginner_ws/20.m01/40-report-search/" >-- 직원 정보 관리 세부설정</option>
+      <option value="/apex-workshop/01.beginner_ws/20.m01/40-report-search/" >-- 직원 정보 관리 - 검색</option>
   
   
 
@@ -289,7 +289,7 @@
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>직원 정보 관리 Report 생성(1)</h1>
+    <h1>직원 정보 관리 Report 생성</h1>
 
 
      

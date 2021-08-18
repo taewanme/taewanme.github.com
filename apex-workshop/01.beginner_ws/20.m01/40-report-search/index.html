@@ -4,14 +4,14 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-19T03:00:05 KST">
+<meta name="revised" content="2021-08-19T03:09:18 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="직원 정보 관리 세부설정" />
-<meta property="og:description" content="이번 영상에서는 직원 정보 관리 Report의 다음을 업데이트 합니다.
- (FORM) 이슈: 업데이트 가능한 PK PAGE ITEM (P22_EMPLOYEE_ID) (FORM) 생일: 포멧 설정 (FORM) 기본값 설정: P22_CRE_DATE (FORM) 이메일 입력 데이터 검증 (Validation) (FORM) 전화번호 입력 데이터 검증 (Validation) (FORM) 생일 입력 데이터 검증 (Validation) (리포트) PK 컬럼 출력 (리포트) 지정한 컬럼 정리(Hidden 처리)
- P21_EMP_PW, P21_TEMP_PW, P21_CELL_PHONE, P21_EMP_PIC, P21_BIRTHDAY  (리포트) 컬럼 이름 한글화 (리포트) 컬럼 값 대체(Lookup) (리포트) 포멧 설정: P21_BIRTHDAY (리포트) 꾸미기 – HERO  정규 표현식 Validation 설정  Email  error message: Mail 포멧이 아닙니다." />
+<meta property="og:title" content="직원 정보 관리 - 검색" />
+<meta property="og:description" content=" 이번 영상에서는 직원 정보 관리 Report에 검색 기능을 추가해 보겠습니다.
+팀/성별 검색  팀 명을 체크 그룹으로 나열하고 하나 이상의 팀을 선택하여 검색 성명을 체크 그룹으로 나열하고 하나 이상의 성별 검색
+   팀명 검색 Page Item  P21_SEARCH_TEAMS  성별 검색 Page Item  P21_SEARCH_GENDERS   where InStr(&#39;:&#39;||:P11_TYPES||&#39;:&#39;, &#39;:&#39;||TYPE_ID||&#39;:&#39;) &gt; 0 and TYPE_ID IS NOT NULL and InStr(&#39;:&#39;||:P11_GENDERS||&#39;:&#39;, &#39;:&#39;||GENDER||&#39;:&#39;) &gt; 0 and GENDER IS NOT NULL  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/40-report-search/" />
 
@@ -35,7 +35,7 @@
 
 
 
-<title>직원 정보 관리 세부설정 :: Oracle APEX Workshop</title>
+<title>직원 정보 관리 - 검색 :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -187,7 +187,7 @@
       <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/20-report-form/" class="dd-item">
         <div>
           <a href="/apex-workshop/01.beginner_ws/20.m01/20-report-form/">
-            직원 정보 관리 Report 생성(1)
+            직원 정보 관리 Report 생성
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -201,7 +201,7 @@
       <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/40-report-search/" class="dd-item active">
         <div>
           <a href="/apex-workshop/01.beginner_ws/20.m01/40-report-search/">
-            직원 정보 관리 세부설정
+            직원 정보 관리 - 검색
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -266,9 +266,9 @@
   - 
    M02-직원정보관리</option> 
       <option value="/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/" >-- APEX APP, DB 테이블, LoV 생성</option>
-      <option value="/apex-workshop/01.beginner_ws/20.m01/20-report-form/" >-- 직원 정보 관리 Report 생성(1)</option>
+      <option value="/apex-workshop/01.beginner_ws/20.m01/20-report-form/" >-- 직원 정보 관리 Report 생성</option>
       <option value="/apex-workshop/01.beginner_ws/20.m01/30-report-form/" >-- 직원 정보 관리 세부설정</option>
-      <option value="/apex-workshop/01.beginner_ws/20.m01/40-report-search/"  selected>-- 직원 정보 관리 세부설정</option>
+      <option value="/apex-workshop/01.beginner_ws/20.m01/40-report-search/"  selected>-- 직원 정보 관리 - 검색</option>
   
   
 
@@ -291,7 +291,7 @@
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>직원 정보 관리 세부설정</h1>
+    <h1>직원 정보 관리 - 검색</h1>
 
 
      
@@ -302,67 +302,35 @@
     
     
 
-<p>이번 영상에서는 직원 정보 관리 Report의 다음을 업데이트 합니다.</p>
+<p>이번 영상에서는 직원 정보 관리 Report에 검색 기능을 추가해 보겠습니다.</p>
+
+<h2 id="팀-성별-검색">팀/성별 검색</h2>
 
 <ul>
-<li>(FORM) 이슈: 업데이트 가능한 PK PAGE ITEM (P22_EMPLOYEE_ID)</li>
-<li>(FORM) 생일: 포멧 설정</li>
-<li>(FORM) 기본값 설정: P22_CRE_DATE</li>
-<li>(FORM) 이메일 입력 데이터 검증 (Validation)</li>
-<li>(FORM) 전화번호 입력 데이터 검증 (Validation)</li>
-<li>(FORM) 생일 입력 데이터 검증 (Validation)</li>
-<li>(리포트) PK 컬럼 출력</li>
-<li>(리포트) 지정한 컬럼 정리(Hidden 처리)<br />
-
-<ul>
-<li>P21_EMP_PW, P21_TEMP_PW, P21_CELL_PHONE, P21_EMP_PIC, P21_BIRTHDAY</li>
-</ul></li>
-<li>(리포트) 컬럼 이름 한글화</li>
-<li>(리포트) 컬럼 값 대체(Lookup)</li>
-<li>(리포트) 포멧 설정: P21_BIRTHDAY</li>
-<li>(리포트) 꾸미기 – HERO</li>
+<li>팀 명을 체크 그룹으로 나열하고 하나 이상의 팀을 선택하여 검색</li>
+<li>성명을 체크 그룹으로 나열하고 하나 이상의 성별 검색<br /></li>
 </ul>
 
-<h2 id="정규-표현식-validation-설정">정규 표현식 Validation 설정</h2>
+<hr />
 
 <ul>
-<li>Email
+<li>팀명 검색 Page Item
 
 <ul>
-<li>error message: Mail 포멧이 아닙니다. 메일 형식이어야 합니다.</li>
+<li>P21_SEARCH_TEAMS</li>
+</ul></li>
+<li>성별 검색 Page Item
+
+<ul>
+<li>P21_SEARCH_GENDERS</li>
 </ul></li>
 </ul>
 
-<pre><code>^[A-Za-z]+[A-Za-z0-9.]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$
+<pre><code>where InStr(':'||:P11_TYPES||':', ':'||TYPE_ID||':') &gt; 0
+and TYPE_ID IS NOT NULL
+and InStr(':'||:P11_GENDERS||':', ':'||GENDER||':') &gt; 0
+and GENDER IS NOT NULL
 </code></pre>
-
-<ul>
-<li>핸드폰 번호
-
-<ul>
-<li>Error message: 핸드폰 전화번호 형식이 아닙니다. (예 010-1234-1234)</li>
-</ul></li>
-</ul>
-
-<pre><code>^\d{3}-\d{3,4}-\d{4}$
-</code></pre>
-
-<ul>
-<li>생년월일
-
-<ul>
-<li>Error message:  생일은 오늘 이전이어야 합니다.</li>
-</ul></li>
-</ul>
-
-<pre><code>sysdate &gt; to_date(:P22_BIRTH_DAY, 'YYYY-MM-DD') 
-</code></pre>
-
-<h2 id="리포트-꾸미기">리포트 꾸미기</h2>
-
-<ul>
-<li>Icon ID: fa-users</li>
-</ul>
 
 
     

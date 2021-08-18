@@ -50,7 +50,7 @@
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/20-report-form/",
-	"title": "직원 정보 관리 Report 생성(1)",
+	"title": "직원 정보 관리 Report 생성",
 	"tags": [],
 	"description": "",
 	"content": "   목표 애플리케이션  Report 생성  Report Type: Report with Form 대상 테이블: Employees page 번호  Report Page: 21 Form Page: 22   Form 페이지 CSS 적용 img { width: 200px; height: 200px; }  Form의 직급 select list 변경 select type_name, type_id from USER_TYPES where job_id = :P22_JOB_ID order by type_id  "
@@ -77,18 +77,18 @@
 	"content": "   이번 영상에서는 직원 정보 관리 Report의 다음을 업데이트 합니다.\n (FORM) 이슈: 업데이트 가능한 PK PAGE ITEM (P22_EMPLOYEE_ID) (FORM) 생일: 포멧 설정 (FORM) 기본값 설정: P22_CRE_DATE (FORM) 이메일 입력 데이터 검증 (Validation) (FORM) 전화번호 입력 데이터 검증 (Validation) (FORM) 생일 입력 데이터 검증 (Validation) (리포트) PK 컬럼 출력 (리포트) 지정한 컬럼 정리(Hidden 처리)\n P21_EMP_PW, P21_TEMP_PW, P21_CELL_PHONE, P21_EMP_PIC, P21_BIRTHDAY  (리포트) 컬럼 이름 한글화 (리포트) 컬럼 값 대체(Lookup) (리포트) 포멧 설정: P21_BIRTHDAY (리포트) 꾸미기 – HERO  정규 표현식 Validation 설정  Email  error message: Mail 포멧이 아닙니다. 메일 형식이어야 합니다.   ^[A-Za-z]+[A-Za-z0-9.]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$   핸드폰 번호  Error message: 핸드폰 전화번호 형식이 아닙니다. (예 010-1234-1234)   ^\\d{3}-\\d{3,4}-\\d{4}$   생년월일  Error message: 생일은 오늘 이전이어야 합니다.   sysdate \u0026gt; to_date(:P22_BIRTH_DAY, 'YYYY-MM-DD')  리포트 꾸미기  Icon ID: fa-users  "
 },
 {
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/40-report-search/",
-	"title": "직원 정보 관리 세부설정",
-	"tags": [],
-	"description": "",
-	"content": " 이번 영상에서는 직원 정보 관리 Report의 다음을 업데이트 합니다.\n (FORM) 이슈: 업데이트 가능한 PK PAGE ITEM (P22_EMPLOYEE_ID) (FORM) 생일: 포멧 설정 (FORM) 기본값 설정: P22_CRE_DATE (FORM) 이메일 입력 데이터 검증 (Validation) (FORM) 전화번호 입력 데이터 검증 (Validation) (FORM) 생일 입력 데이터 검증 (Validation) (리포트) PK 컬럼 출력 (리포트) 지정한 컬럼 정리(Hidden 처리)\n P21_EMP_PW, P21_TEMP_PW, P21_CELL_PHONE, P21_EMP_PIC, P21_BIRTHDAY  (리포트) 컬럼 이름 한글화 (리포트) 컬럼 값 대체(Lookup) (리포트) 포멧 설정: P21_BIRTHDAY (리포트) 꾸미기 – HERO  정규 표현식 Validation 설정  Email  error message: Mail 포멧이 아닙니다. 메일 형식이어야 합니다.   ^[A-Za-z]+[A-Za-z0-9.]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$   핸드폰 번호  Error message: 핸드폰 전화번호 형식이 아닙니다. (예 010-1234-1234)   ^\\d{3}-\\d{3,4}-\\d{4}$   생년월일  Error message: 생일은 오늘 이전이어야 합니다.   sysdate \u0026gt; to_date(:P22_BIRTH_DAY, 'YYYY-MM-DD')  리포트 꾸미기  Icon ID: fa-users  "
-},
-{
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/",
 	"title": "APEX Workspace 사용자 등록",
 	"tags": [],
 	"description": "",
 	"content": "   지금까지 APEX Workspace에 데이터베이스 사용자인 apexws로 로그인했습니다. 데이터베이스 사용자가 아닌 APEX Workspace 사용자를 등록하여 사용하겠습니다. 개발자 사용자와 일반 사용자 2개를 등록합니다.\n   사용자 유형 사용자 이름 패스워드 비고     개발자 사용자 dev01 Welcome123456! 관리자, 개발자 권한 부여   일반 사용자 user01 Welcome123456!     "
+},
+{
+	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/40-report-search/",
+	"title": "직원 정보 관리 - 검색",
+	"tags": [],
+	"description": "",
+	"content": " 이번 영상에서는 직원 정보 관리 Report에 검색 기능을 추가해 보겠습니다.\n팀/성별 검색  팀 명을 체크 그룹으로 나열하고 하나 이상의 팀을 선택하여 검색 성명을 체크 그룹으로 나열하고 하나 이상의 성별 검색\n   팀명 검색 Page Item  P21_SEARCH_TEAMS  성별 검색 Page Item  P21_SEARCH_GENDERS   where InStr(':'||:P11_TYPES||':', ':'||TYPE_ID||':') \u0026gt; 0 and TYPE_ID IS NOT NULL and InStr(':'||:P11_GENDERS||':', ':'||GENDER||':') \u0026gt; 0 and GENDER IS NOT NULL  "
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/",
