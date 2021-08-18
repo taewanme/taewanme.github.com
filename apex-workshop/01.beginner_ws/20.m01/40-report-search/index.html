@@ -8,10 +8,12 @@
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="APEX APP, DB 테이블, LoV 생성" />
-<meta property="og:description" content="   APEX App 생성  Name: 슬기로운 익스펜스 생활 Appearance: Vita, Side Menu  DB 테이블 생성  리소스 파일 다운로드: https://taewanmerepo.github.io/2021/08/apex/apexws_res.zip DDL 파일 위치: /sqls/base_table.sql SQL Workshop &gt;&gt; SQL Script  7개 테이블   LoV 생성 Shared Component &gt; List of Values 등록  JOB TYPES  업무 유형: 의사, 간호사   select job_id as r, job_name as d from JOB_TYPES   EMP TYPES  (1, &lsquo;교수&rsquo;) (2, &lsquo;펠로우&rsquo;) (3, &lsquo;레시던트&rsquo;) (4, &lsquo;인턴&rsquo;) (5, &lsquo;본과실습생&rsquo;) (6, &lsquo;간호사&rsquo;) (7, &lsquo;주임간호사&rsquo;) (8, &lsquo;수간호사&rsquo;) (9, &lsquo;간호부장&rsquo;)   select type_id as r, type_name as d from USER_TYPES   Teams  (1, 소아과) (2, 산부인과) (3, 간담췌외과) (4, 신경외과) (5, 응급의학과)   select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   " />
+<meta property="og:title" content="직원 정보 관리 세부설정" />
+<meta property="og:description" content="이번 영상에서는 직원 정보 관리 Report의 다음을 업데이트 합니다.
+ (FORM) 이슈: 업데이트 가능한 PK PAGE ITEM (P22_EMPLOYEE_ID) (FORM) 생일: 포멧 설정 (FORM) 기본값 설정: P22_CRE_DATE (FORM) 이메일 입력 데이터 검증 (Validation) (FORM) 전화번호 입력 데이터 검증 (Validation) (FORM) 생일 입력 데이터 검증 (Validation) (리포트) PK 컬럼 출력 (리포트) 지정한 컬럼 정리(Hidden 처리)
+ P21_EMP_PW, P21_TEMP_PW, P21_CELL_PHONE, P21_EMP_PIC, P21_BIRTHDAY  (리포트) 컬럼 이름 한글화 (리포트) 컬럼 값 대체(Lookup) (리포트) 포멧 설정: P21_BIRTHDAY (리포트) 꾸미기 – HERO  정규 표현식 Validation 설정  Email  error message: Mail 포멧이 아닙니다." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/" />
+<meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/40-report-search/" />
 
 
 
@@ -33,7 +35,7 @@
 
 
 
-<title>APEX APP, DB 테이블, LoV 생성 :: Oracle APEX Workshop</title>
+<title>직원 정보 관리 세부설정 :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -72,7 +74,7 @@
 
     
   </head>
-  <body data-url="/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/">
+  <body data-url="/apex-workshop/01.beginner_ws/20.m01/40-report-search/">
     
       <header>
   <div class="logo">
@@ -175,7 +177,7 @@
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/" class="dd-item active">
+      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/" class="dd-item">
         <div>
           <a href="/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/">
             APEX APP, DB 테이블, LoV 생성
@@ -196,7 +198,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/40-report-search/" class="dd-item">
+      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/40-report-search/" class="dd-item active">
         <div>
           <a href="/apex-workshop/01.beginner_ws/20.m01/40-report-search/">
             직원 정보 관리 세부설정
@@ -263,10 +265,10 @@
     <option value="/apex-workshop/01.beginner_ws/20.m01/" >
   - 
    M02-직원정보관리</option> 
-      <option value="/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/"  selected>-- APEX APP, DB 테이블, LoV 생성</option>
+      <option value="/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/" >-- APEX APP, DB 테이블, LoV 생성</option>
       <option value="/apex-workshop/01.beginner_ws/20.m01/20-report-form/" >-- 직원 정보 관리 Report 생성(1)</option>
       <option value="/apex-workshop/01.beginner_ws/20.m01/30-report-form/" >-- 직원 정보 관리 세부설정</option>
-      <option value="/apex-workshop/01.beginner_ws/20.m01/40-report-search/" >-- 직원 정보 관리 세부설정</option>
+      <option value="/apex-workshop/01.beginner_ws/20.m01/40-report-search/"  selected>-- 직원 정보 관리 세부설정</option>
   
   
 
@@ -289,7 +291,7 @@
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>APEX APP, DB 테이블, LoV 생성</h1>
+    <h1>직원 정보 관리 세부설정</h1>
 
 
      
@@ -300,105 +302,66 @@
     
     
 
-
-<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/v8wIMMYzQpY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
- </div>
-
-
-<hr />
-
-<h2 id="apex-app-생성">APEX App 생성</h2>
+<p>이번 영상에서는 직원 정보 관리 Report의 다음을 업데이트 합니다.</p>
 
 <ul>
-<li>Name: 슬기로운 익스펜스 생활</li>
-<li>Appearance: Vita, Side Menu</li>
+<li>(FORM) 이슈: 업데이트 가능한 PK PAGE ITEM (P22_EMPLOYEE_ID)</li>
+<li>(FORM) 생일: 포멧 설정</li>
+<li>(FORM) 기본값 설정: P22_CRE_DATE</li>
+<li>(FORM) 이메일 입력 데이터 검증 (Validation)</li>
+<li>(FORM) 전화번호 입력 데이터 검증 (Validation)</li>
+<li>(FORM) 생일 입력 데이터 검증 (Validation)</li>
+<li>(리포트) PK 컬럼 출력</li>
+<li>(리포트) 지정한 컬럼 정리(Hidden 처리)<br />
+
+<ul>
+<li>P21_EMP_PW, P21_TEMP_PW, P21_CELL_PHONE, P21_EMP_PIC, P21_BIRTHDAY</li>
+</ul></li>
+<li>(리포트) 컬럼 이름 한글화</li>
+<li>(리포트) 컬럼 값 대체(Lookup)</li>
+<li>(리포트) 포멧 설정: P21_BIRTHDAY</li>
+<li>(리포트) 꾸미기 – HERO</li>
 </ul>
 
-<p><img src="https://taewanmerepo.github.io/2021/08/apex/apps.jpg" alt="" /></p>
-
-<hr />
-
-<h2 id="db-테이블-생성">DB 테이블 생성</h2>
+<h2 id="정규-표현식-validation-설정">정규 표현식 Validation 설정</h2>
 
 <ul>
-<li>리소스 파일 다운로드: <a href="https://taewanmerepo.github.io/2021/08/apex/apexws_res.zip">https://taewanmerepo.github.io/2021/08/apex/apexws_res.zip</a></li>
-<li>DDL 파일 위치: <apex-res.zip>/sqls/base_table.sql</li>
-<li>SQL Workshop &gt;&gt; SQL Script
+<li>Email
 
 <ul>
-<li>7개 테이블</li>
+<li>error message: Mail 포멧이 아닙니다. 메일 형식이어야 합니다.</li>
 </ul></li>
 </ul>
 
-<p><img src="https://taewanmerepo.github.io/2021/08/apex/erd.jpg" alt="" /></p>
-
-<hr />
-
-<h2 id="lov-생성">LoV 생성</h2>
-
-<h3 id="shared-component-list-of-values-등록">Shared Component &gt; List of Values 등록</h3>
-
-<ul>
-<li>JOB TYPES
-
-<ul>
-<li>업무 유형: 의사, 간호사</li>
-</ul></li>
-</ul>
-
-<pre><code>select job_id as r, job_name as d from JOB_TYPES
+<pre><code>^[A-Za-z]+[A-Za-z0-9.]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$
 </code></pre>
 
-<hr />
+<ul>
+<li>핸드폰 번호
 
 <ul>
-<li>EMP TYPES
-
-<ul>
-<li>(1, &lsquo;교수&rsquo;)</li>
-<li>(2, &lsquo;펠로우&rsquo;)</li>
-<li>(3, &lsquo;레시던트&rsquo;)</li>
-<li>(4, &lsquo;인턴&rsquo;)</li>
-<li>(5, &lsquo;본과실습생&rsquo;)</li>
-<li>(6, &lsquo;간호사&rsquo;)</li>
-<li>(7, &lsquo;주임간호사&rsquo;)</li>
-<li>(8, &lsquo;수간호사&rsquo;)</li>
-<li>(9, &lsquo;간호부장&rsquo;)</li>
+<li>Error message: 핸드폰 전화번호 형식이 아닙니다. (예 010-1234-1234)</li>
 </ul></li>
 </ul>
 
-<pre><code>select type_id as r, type_name  as d 
-from USER_TYPES 
+<pre><code>^\d{3}-\d{3,4}-\d{4}$
 </code></pre>
 
-<hr />
+<ul>
+<li>생년월일
 
 <ul>
-<li>Teams
-
-<ul>
-<li>(1, 소아과)</li>
-<li>(2, 산부인과)</li>
-<li>(3, 간담췌외과)</li>
-<li>(4, 신경외과)</li>
-<li>(5, 응급의학과)</li>
+<li>Error message:  생일은 오늘 이전이어야 합니다.</li>
 </ul></li>
 </ul>
 
-<pre><code>select team_full_name as d, team_id as r 
-from TEAMS 
+<pre><code>sysdate &gt; to_date(:P22_BIRTH_DAY, 'YYYY-MM-DD') 
 </code></pre>
 
-<hr />
+<h2 id="리포트-꾸미기">리포트 꾸미기</h2>
 
 <ul>
-<li>Gender Types
-
-<ul>
-<li>남성: M</li>
-<li>여성: F</li>
-</ul></li>
+<li>Icon ID: fa-users</li>
 </ul>
 
 
@@ -408,8 +371,8 @@ from TEAMS
   <li><strong>문서 생성:</strong> 2021-08-14 09:11 / <string>최종 문서 수정:</strong> 2021-08-14 09:11 </li>
 </div><div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/20.m01/" title="M02-직원정보관리"> <i class="fa fa-chevron-left"></i><label>M02-직원정보관리</label></a>
-    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/20.m01/20-report-form/" title="직원 정보 관리 Report 생성(1)" style="margin-right: 0px;"><label>직원 정보 관리 Report 생성(1)</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/20.m01/30-report-form/" title="직원 정보 관리 세부설정"> <i class="fa fa-chevron-left"></i><label>직원 정보 관리 세부설정</label></a>
+    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/" title="APEX APP, DB 테이블, LoV 생성" style="margin-right: 0px;"><label>APEX APP, DB 테이블, LoV 생성</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="panel panel-danger">
@@ -419,7 +382,7 @@ from TEAMS
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/01.beginner_ws/20.m01/40-report-search/"></div>
 
   </div>
 

@@ -84,6 +84,17 @@ OCI 사용자 ID &amp;amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI
     </item>
     
     <item>
+      <title>직원 정보 관리 세부설정</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/40-report-search/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/40-report-search/</guid>
+      <description>이번 영상에서는 직원 정보 관리 Report의 다음을 업데이트 합니다.
+ (FORM) 이슈: 업데이트 가능한 PK PAGE ITEM (P22_EMPLOYEE_ID) (FORM) 생일: 포멧 설정 (FORM) 기본값 설정: P22_CRE_DATE (FORM) 이메일 입력 데이터 검증 (Validation) (FORM) 전화번호 입력 데이터 검증 (Validation) (FORM) 생일 입력 데이터 검증 (Validation) (리포트) PK 컬럼 출력 (리포트) 지정한 컬럼 정리(Hidden 처리)
+ P21_EMP_PW, P21_TEMP_PW, P21_CELL_PHONE, P21_EMP_PIC, P21_BIRTHDAY  (리포트) 컬럼 이름 한글화 (리포트) 컬럼 값 대체(Lookup) (리포트) 포멧 설정: P21_BIRTHDAY (리포트) 꾸미기 – HERO  정규 표현식 Validation 설정  Email  error message: Mail 포멧이 아닙니다.</description>
+    </item>
+    
+    <item>
       <title>APEX Workspace 사용자 등록</title>
       <link>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/</link>
       <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>

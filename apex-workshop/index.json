@@ -74,6 +74,13 @@
 	"title": "직원 정보 관리 세부설정",
 	"tags": [],
 	"description": "",
+	"content": "   이번 영상에서는 직원 정보 관리 Report의 다음을 업데이트 합니다.\n (FORM) 이슈: 업데이트 가능한 PK PAGE ITEM (P22_EMPLOYEE_ID) (FORM) 생일: 포멧 설정 (FORM) 기본값 설정: P22_CRE_DATE (FORM) 이메일 입력 데이터 검증 (Validation) (FORM) 전화번호 입력 데이터 검증 (Validation) (FORM) 생일 입력 데이터 검증 (Validation) (리포트) PK 컬럼 출력 (리포트) 지정한 컬럼 정리(Hidden 처리)\n P21_EMP_PW, P21_TEMP_PW, P21_CELL_PHONE, P21_EMP_PIC, P21_BIRTHDAY  (리포트) 컬럼 이름 한글화 (리포트) 컬럼 값 대체(Lookup) (리포트) 포멧 설정: P21_BIRTHDAY (리포트) 꾸미기 – HERO  정규 표현식 Validation 설정  Email  error message: Mail 포멧이 아닙니다. 메일 형식이어야 합니다.   ^[A-Za-z]+[A-Za-z0-9.]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$   핸드폰 번호  Error message: 핸드폰 전화번호 형식이 아닙니다. (예 010-1234-1234)   ^\\d{3}-\\d{3,4}-\\d{4}$   생년월일  Error message: 생일은 오늘 이전이어야 합니다.   sysdate \u0026gt; to_date(:P22_BIRTH_DAY, 'YYYY-MM-DD')  리포트 꾸미기  Icon ID: fa-users  "
+},
+{
+	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/40-report-search/",
+	"title": "직원 정보 관리 세부설정",
+	"tags": [],
+	"description": "",
 	"content": " 이번 영상에서는 직원 정보 관리 Report의 다음을 업데이트 합니다.\n (FORM) 이슈: 업데이트 가능한 PK PAGE ITEM (P22_EMPLOYEE_ID) (FORM) 생일: 포멧 설정 (FORM) 기본값 설정: P22_CRE_DATE (FORM) 이메일 입력 데이터 검증 (Validation) (FORM) 전화번호 입력 데이터 검증 (Validation) (FORM) 생일 입력 데이터 검증 (Validation) (리포트) PK 컬럼 출력 (리포트) 지정한 컬럼 정리(Hidden 처리)\n P21_EMP_PW, P21_TEMP_PW, P21_CELL_PHONE, P21_EMP_PIC, P21_BIRTHDAY  (리포트) 컬럼 이름 한글화 (리포트) 컬럼 값 대체(Lookup) (리포트) 포멧 설정: P21_BIRTHDAY (리포트) 꾸미기 – HERO  정규 표현식 Validation 설정  Email  error message: Mail 포멧이 아닙니다. 메일 형식이어야 합니다.   ^[A-Za-z]+[A-Za-z0-9.]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$   핸드폰 번호  Error message: 핸드폰 전화번호 형식이 아닙니다. (예 010-1234-1234)   ^\\d{3}-\\d{3,4}-\\d{4}$   생년월일  Error message: 생일은 오늘 이전이어야 합니다.   sysdate \u0026gt; to_date(:P22_BIRTH_DAY, 'YYYY-MM-DD')  리포트 꾸미기  Icon ID: fa-users  "
 },
 {
