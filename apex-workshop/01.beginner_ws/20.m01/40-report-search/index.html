@@ -4,14 +4,14 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-19T05:12:54 KST">
+<meta name="revised" content="2021-08-19T06:08:48 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="직원 정보 관리 - 검색" />
 <meta property="og:description" content=" 이번 영상에서는 직원 정보 관리 Report에 검색 기능을 추가해 보겠습니다.
 팀/성별 검색  팀 명을 체크박스 그룹으로 나열하고 하나 이상의 팀을 선택하여 검색 성별(Gender)을 체크박스 그룹으로 나열하고 하나 이상의 성별 검색
-   팀명 검색 Page Item  P21_SEARCH_TEAMS  성별 검색 Page Item  P21_SEARCH_GENDERS    Report 조회 조건  where InStr(&#39;:&#39;||:P21_SEARCH_TEAMS||&#39;:&#39;, &#39;:&#39;||TEAM_ID||&#39;:&#39;) &gt; 0 and TEAM_ID IS NOT NULL and InStr(&#39;:&#39;||:P21_SEARCH_GENDERS||&#39;:&#39;, &#39;:&#39;||GENDER||&#39;:&#39;) &gt; 0 and GENDER IS NOT NULL   조회 조건 디폴트 값 설정  Default Value  Types  select type_id from TEAMS   Gender  M:F  " />
+   팀명 검색 Page Item  P21_SEARCH_TEAMS  성별 검색 Page Item  P21_SEARCH_GENDERS    Report 조회 조건  where InStr(&#39;:&#39;||:P21_SEARCH_TEAMS||&#39;:&#39;, &#39;:&#39;||TEAM_ID||&#39;:&#39;) &gt; 0 and TEAM_ID IS NOT NULL and InStr(&#39;:&#39;||:P21_SEARCH_GENDERS||&#39;:&#39;, &#39;:&#39;||GENDER||&#39;:&#39;) &gt; 0 and GENDER IS NOT NULL   조회 조건 디폴트 값 설정  Default Value  Types  select team_id from TEAMS   Gender  M:F  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/40-report-search/" />
 
@@ -350,7 +350,7 @@ and GENDER IS NOT NULL
 <li>Types</li>
 </ul>
 
-<pre><code>select type_id from TEAMS
+<pre><code>select team_id from TEAMS
 </code></pre>
 
 <ul>

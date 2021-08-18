@@ -101,7 +101,7 @@ OCI 사용자 ID &amp;amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI
       <guid>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/40-report-search/</guid>
       <description> 이번 영상에서는 직원 정보 관리 Report에 검색 기능을 추가해 보겠습니다.
 팀/성별 검색  팀 명을 체크박스 그룹으로 나열하고 하나 이상의 팀을 선택하여 검색 성별(Gender)을 체크박스 그룹으로 나열하고 하나 이상의 성별 검색
-   팀명 검색 Page Item  P21_SEARCH_TEAMS  성별 검색 Page Item  P21_SEARCH_GENDERS    Report 조회 조건  where InStr(&#39;:&#39;||:P21_SEARCH_TEAMS||&#39;:&#39;, &#39;:&#39;||TEAM_ID||&#39;:&#39;) &amp;gt; 0 and TEAM_ID IS NOT NULL and InStr(&#39;:&#39;||:P21_SEARCH_GENDERS||&#39;:&#39;, &#39;:&#39;||GENDER||&#39;:&#39;) &amp;gt; 0 and GENDER IS NOT NULL   조회 조건 디폴트 값 설정  Default Value  Types  select type_id from TEAMS   Gender  M:F  </description>
+   팀명 검색 Page Item  P21_SEARCH_TEAMS  성별 검색 Page Item  P21_SEARCH_GENDERS    Report 조회 조건  where InStr(&#39;:&#39;||:P21_SEARCH_TEAMS||&#39;:&#39;, &#39;:&#39;||TEAM_ID||&#39;:&#39;) &amp;gt; 0 and TEAM_ID IS NOT NULL and InStr(&#39;:&#39;||:P21_SEARCH_GENDERS||&#39;:&#39;, &#39;:&#39;||GENDER||&#39;:&#39;) &amp;gt; 0 and GENDER IS NOT NULL   조회 조건 디폴트 값 설정  Default Value  Types  select team_id from TEAMS   Gender  M:F  </description>
     </item>
     
   </channel>
