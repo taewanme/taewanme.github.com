@@ -63,17 +63,6 @@ OCI 사용자 ID &amp;amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI
     </item>
     
     <item>
-      <title>직원 정보 관리 세부설정</title>
-      <link>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/30-report-form/</link>
-      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/30-report-form/</guid>
-      <description>이번 영상에서는 직원 정보 관리 Report의 다음을 업데이트 합니다.
- (From) 이슈: 업데이트 가능한 PK PAGE ITEM (P22_EMPLOYEE_ID) (From) 생일: 포멧 설정 (From) 기본값 설정: P22_CRE_DATE (From) 이메일 입력 데이터 검증 (Validation) (From) 전화번호 입력 데이터 검증 (Validation) (리포트) PK 컬럼 출력 (리포트) 지정한 컬럼 정리(Hidden 처리)
- P21_EMP_PW, P21_TEMP_PW, P21_CELL_PHONE, P21_EMP_PIC, P21_BIRTHDAY  (리포트) 컬럼 이름 한글화 (리포트) 컬럼 값 대체(Lookup) (리포트) 포멧 설정: P21_BIRTHDAY (리포트) 꾸미기 – HERO  정규 표현식 Validation 설정  Email  error message: Mail 포멧이 아닙니다.</description>
-    </item>
-    
-    <item>
       <title>APEX 개발 환경 구성</title>
       <link>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/</link>
       <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
@@ -81,6 +70,17 @@ OCI 사용자 ID &amp;amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI
       <guid>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/</guid>
       <description>APEX 환경을 구성하기 위해서 다음과 같은 작업을 수행합니다.
  ATP 인스턴스 생성 ATP 인스턴스의 APEX 로그인  id: admin  Workspace 생성  ATP 인스턴스 생성    설정 항목 설섲 값 비고     Compartment PROJECT &amp;gt;&amp;gt; APEXWS    Display Name DemoATP    Database Name DemoATP    Workload Type Transaction Processing    Deployment Type Shared Infrastructure    Version 19C    OCPU 1    Storage 1    Admin username admin 고정값   Password Welcome123456!</description>
+    </item>
+    
+    <item>
+      <title>직원 정보 관리 세부설정</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/30-report-form/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/30-report-form/</guid>
+      <description>이번 영상에서는 직원 정보 관리 Report의 다음을 업데이트 합니다.
+ (FORM) 이슈: 업데이트 가능한 PK PAGE ITEM (P22_EMPLOYEE_ID) (FORM) 생일: 포멧 설정 (FORM) 기본값 설정: P22_CRE_DATE (FORM) 이메일 입력 데이터 검증 (Validation) (FORM) 전화번호 입력 데이터 검증 (Validation) (FORM) 생일 입력 데이터 검증 (Validation) (리포트) PK 컬럼 출력 (리포트) 지정한 컬럼 정리(Hidden 처리)
+ P21_EMP_PW, P21_TEMP_PW, P21_CELL_PHONE, P21_EMP_PIC, P21_BIRTHDAY  (리포트) 컬럼 이름 한글화 (리포트) 컬럼 값 대체(Lookup) (리포트) 포멧 설정: P21_BIRTHDAY (리포트) 꾸미기 – HERO  정규 표현식 Validation 설정  Email  error message: Mail 포멧이 아닙니다.</description>
     </item>
     
     <item>
