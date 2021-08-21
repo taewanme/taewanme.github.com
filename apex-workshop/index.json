@@ -67,7 +67,7 @@
 	"title": "M03-영수증 관리",
 	"tags": [],
 	"description": "",
-	"content": " Oracle APEX Beginner Workshop의 세 번째 모듈에서는 법인 카드 영수증을 관리하는 페이지 개발 과정을 소개합니다. 이번 실습에서는 다음 이미지와 같은 Expense 영수증 관리 페이지를 개발해 보겠습니다.\n모듈 구성 이번 모듈은 다음과 같은 항목을 다룹니다.\n Interactive Report Card Report Mater Detail: Side by Side Faceted Search JavaScript Validator Stored procedure 적용  개발 화면 이번 실습에서는 다음 이미지와 같은 법인카드 영수증 관리 페이지를 개발해 보겠습니다.\n"
+	"content": "   Oracle APEX Beginner Workshop의 세 번째 모듈에서는 법인 카드 영수증을 관리하는 페이지 개발 과정을 소개합니다. 이번 실습에서는 다음 이미지와 같은 Expense 영수증 관리 페이지를 개발해 보겠습니다.\n모듈 구성 이번 모듈은 다음과 같은 항목을 다룹니다.\n Interactive Report Card Report Mater Detail: Side by Side Faceted Search JavaScript Validator Stored procedure 적용  개발 화면 이번 실습에서는 다음 이미지와 같은 법인카드 영수증 관리 페이지를 개발해 보겠습니다.\n"
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/",
