@@ -39,7 +39,7 @@
 	"title": "M01.실습환경 준비",
 	"tags": [],
 	"description": "",
-	"content": " Oracle APEX 입문 워크숖을 진행하기 위해서는 다음과 같은 환경이 필요합니다.\n OCI Tenante (OCI 계정)  OCI 사용자 계정  OCI ATP 인스턴스  APEX Workspace   실습 환경 준비 절차 실습 환경을 준비하기 위하여 다음과 같은 작업을 진행합니다.\n OCI Free Trial 계정 신청 OCI 계정 기본 설정 APEX 실습 환경 구성  ATP 인스턴스 생성 APEX Workspace 생성   "
+	"content": " Oracle APEX 입문 워크숍을 진행하기 위해서는 다음과 같은 환경이 필요합니다.\n OCI Tenante (OCI 계정)  OCI 사용자 계정  OCI ATP 인스턴스  APEX Workspace   실습 환경 준비 절차 실습 환경을 준비하기 위하여 다음과 같은 작업을 진행합니다.\n OCI Free Trial 계정 신청 OCI 계정 기본 설정 APEX 실습 환경 구성  ATP 인스턴스 생성 APEX Workspace 생성   "
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/20-oci-env-setup/",
@@ -61,6 +61,13 @@
 	"tags": [],
 	"description": "",
 	"content": " Oracle APEX Beginner Workshop의 첫 번째 실습으로 직원 정보를 관리하는 페이지를 개발하는 과정을 소개합니다. 이번 실습에서는 다음 이미지와 같은 직원 정보 관리 페이지를 개발해 보겠습니다.\n모듈 구성 이번 모듈은 다음과 같은 항목으로 구성됩니다.\n My Expense 앱 만들기 데모 테이블 생성 직원 정보 관리 APEX Report 생성 Key 처리를 위한 UI 컴포넌트 구성 이미지 이슈 처리 입력 데이터 Validation 입력 값 처리 (Serverside, Read Only, Default) 검색 \u0026amp; Dynamic Action  개발 화면 이번 모듈을 통해서 다음과 같은 페이지를 개발할 수 있습니다.\n 직원 정보 조회  직원 상세 정보 조회 및 정보 입력 폼   "
+},
+{
+	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/",
+	"title": "M03-영수증 관리",
+	"tags": [],
+	"description": "",
+	"content": " Oracle APEX Beginner Workshop의 세 번째 모듈에서는 법인 카드 영수증을 관리하는 페이지 개발 과정을 소개합니다. 이번 실습에서는 다음 이미지와 같은 Expense 영수증 관리 페이지를 개발해 보겠습니다.\n모듈 구성 이번 모듈은 다음과 같은 항목을 다룹니다.\n Interactive Report Card Report Mater Detail: Side by Side Faceted Search JavaScript Validator Stored procedure 적용  개발 화면 이번 실습에서는 다음 이미지와 같은 법인카드 영수증 관리 페이지를 개발해 보겠습니다.\n"
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/",

@@ -8,18 +8,14 @@
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="직원 정보 관리 세부설정" />
-<meta property="og:description" content="영상 재생 시간: 22:01  이번 영상에서는 직원 정보 관리 Report의 다음을 업데이트 합니다.
- (FORM) 이슈: 업데이트 가능한 PK PAGE ITEM (P22_EMPLOYEE_ID) (FORM) 생일: 포멧 설정 (FORM) 기본값 설정: P22_CRE_DATE (FORM) 이메일 입력 데이터 검증 (Validation) (FORM) 전화번호 입력 데이터 검증 (Validation) (FORM) 생일 입력 데이터 검증 (Validation) (리포트) PK 컬럼 출력 (리포트) 지정한 컬럼 정리(Hidden 처리)
- P21_EMP_PW, P21_TEMP_PW, P21_CELL_PHONE, P21_EMP_PIC, P21_BIRTHDAY  (리포트) 컬럼 이름 한글화 (리포트) 컬럼 값 대체(Lookup) (리포트) 포멧 설정: P21_BIRTHDAY (리포트) 꾸미기 – HERO  정규 표현식 Validation 설정  Email  error message: Mail 포멧이 아닙니다." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/30-report-form/" />
+<meta property="og:title" content="M03-영수증 관리" />
+<meta property="og:description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/" />
 
 
 
-<meta property="article:published_time" content="2021-08-14T09:11:05&#43;09:00"/>
-<meta property="article:modified_time" content="2021-08-14T09:11:05&#43;09:00"/>
-
+<meta property="og:updated_time" content="2021-08-21T01:11:05&#43;09:00"/>
 
 
 
@@ -35,7 +31,7 @@
 
 
 
-<title>직원 정보 관리 세부설정 :: Oracle APEX Workshop</title>
+<title>M03-영수증 관리 :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -74,7 +70,7 @@
 
     
   </head>
-  <body data-url="/apex-workshop/01.beginner_ws/20.m01/30-report-form/">
+  <body data-url="/apex-workshop/01.beginner_ws/30.expense/">
     
       <header>
   <div class="logo">
@@ -170,7 +166,7 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/" class="dd-item parent alwaysopen haschildren
+    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/" class="dd-item alwaysopen haschildren
         ">
       <div>
       <a href="/apex-workshop/01.beginner_ws/20.m01/">M02-직원정보관리</a>
@@ -191,7 +187,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/30-report-form/" class="dd-item active">
+      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/30-report-form/" class="dd-item">
         <div>
           <a href="/apex-workshop/01.beginner_ws/20.m01/30-report-form/">
             직원 정보 관리 세부설정
@@ -207,7 +203,7 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/" class="dd-item alwaysopen
+    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/" class="dd-item parent active alwaysopen
         ">
       <div>
       <a href="/apex-workshop/01.beginner_ws/30.expense/">M03-영수증 관리</a><i class="fa fa-circle-thin read-icon"></i>
@@ -273,10 +269,10 @@
    M02-직원정보관리</option> 
       <option value="/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/" >-- APEX APP, DB 테이블, LoV 생성</option>
       <option value="/apex-workshop/01.beginner_ws/20.m01/20-report-form/" >-- 직원 정보 관리 Report 생성</option>
-      <option value="/apex-workshop/01.beginner_ws/20.m01/30-report-form/"  selected>-- 직원 정보 관리 세부설정</option>
+      <option value="/apex-workshop/01.beginner_ws/20.m01/30-report-form/" >-- 직원 정보 관리 세부설정</option>
       <option value="/apex-workshop/01.beginner_ws/20.m01/40-report-search/" >-- 직원 정보 관리 - 검색</option>
   
-    <option value="/apex-workshop/01.beginner_ws/30.expense/" >
+    <option value="/apex-workshop/01.beginner_ws/30.expense/"  selected>
   - 
    M03-영수증 관리</option> 
   
@@ -301,7 +297,7 @@
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>직원 정보 관리 세부설정</h1>
+    <h1>M03-영수증 관리</h1>
 
 
      
@@ -310,91 +306,43 @@
     
     
     
-    
 
 
-<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/zmibx2TEw2M" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
- </div>
-
-
-<ul>
-<li>영상 재생 시간: 22:01</li>
-</ul>
 
 <hr />
 
-<p>이번 영상에서는 직원 정보 관리 Report의 다음을 업데이트 합니다.</p>
+<p><strong>Oracle APEX Beginner Workshop</strong>의 세 번째 모듈에서는 법인 카드 영수증을 관리하는 페이지 개발 과정을 소개합니다. 이번 실습에서는 다음 이미지와 같은 <strong>Expense 영수증 관리 페이지</strong>를 개발해 보겠습니다.</p>
+
+<h2 id="모듈-구성">모듈 구성</h2>
+
+<p>이번 모듈은 다음과 같은 항목을 다룹니다.</p>
 
 <ul>
-<li>(FORM) 이슈: 업데이트 가능한 PK PAGE ITEM (P22_EMPLOYEE_ID)</li>
-<li>(FORM) 생일: 포멧 설정</li>
-<li>(FORM) 기본값 설정: P22_CRE_DATE</li>
-<li>(FORM) 이메일 입력 데이터 검증 (Validation)</li>
-<li>(FORM) 전화번호 입력 데이터 검증 (Validation)</li>
-<li>(FORM) 생일 입력 데이터 검증 (Validation)</li>
-<li>(리포트) PK 컬럼 출력</li>
-<li>(리포트) 지정한 컬럼 정리(Hidden 처리)<br />
-
-<ul>
-<li>P21_EMP_PW, P21_TEMP_PW, P21_CELL_PHONE, P21_EMP_PIC, P21_BIRTHDAY</li>
-</ul></li>
-<li>(리포트) 컬럼 이름 한글화</li>
-<li>(리포트) 컬럼 값 대체(Lookup)</li>
-<li>(리포트) 포멧 설정: P21_BIRTHDAY</li>
-<li>(리포트) 꾸미기 – HERO</li>
+<li>Interactive Report</li>
+<li>Card Report</li>
+<li>Mater Detail: Side by Side</li>
+<li>Faceted Search</li>
+<li>JavaScript Validator</li>
+<li>Stored procedure 적용</li>
 </ul>
 
-<h2 id="정규-표현식-validation-설정">정규 표현식 Validation 설정</h2>
+<h2 id="개발-화면">개발 화면</h2>
 
-<ul>
-<li>Email
+<p>이번 실습에서는 다음 이미지와 같은 법인카드 영수증 관리 페이지를 개발해 보겠습니다.</p>
 
-<ul>
-<li>error message: Mail 포멧이 아닙니다. 메일 형식이어야 합니다.</li>
-</ul></li>
-</ul>
+<p><img src="https://taewanmerepo.github.io/2021/07/apex/m03/030.jpg" alt="" />
+<img src="https://taewanmerepo.github.io/2021/07/apex/m03/040.jpg" alt="" /></p>
 
-<pre><code>^[A-Za-z]+[A-Za-z0-9.]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$
-</code></pre>
-
-<ul>
-<li>핸드폰 번호
-
-<ul>
-<li>Error message: 핸드폰 전화번호 형식이 아닙니다. (예 010-1234-1234)</li>
-</ul></li>
-</ul>
-
-<pre><code>^\d{3}-\d{3,4}-\d{4}$
-</code></pre>
-
-<ul>
-<li>생년월일
-
-<ul>
-<li>Error message:  생일은 오늘 이전이어야 합니다.</li>
-</ul></li>
-</ul>
-
-<pre><code>sysdate &gt; to_date(:P22_BIRTH_DAY, 'YYYY-MM-DD') 
-</code></pre>
-
-<h2 id="리포트-꾸미기">리포트 꾸미기</h2>
-
-<ul>
-<li>Icon ID: fa-users</li>
-</ul>
 
 
     
     
       <div class="alert alert-info" role="alter">
-  <li><strong>문서 생성:</strong> 2021-08-14 09:11 / <string>최종 문서 수정:</strong> 2021-08-14 09:11 </li>
+  <li><strong>문서 생성:</strong> 2021-08-21 01:11 / <string>최종 문서 수정:</strong> 2021-08-21 01:11 </li>
 </div><div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/20.m01/20-report-form/" title="직원 정보 관리 Report 생성"> <i class="fa fa-chevron-left"></i><label>직원 정보 관리 Report 생성</label></a>
-    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/20.m01/40-report-search/" title="직원 정보 관리 - 검색" style="margin-right: 0px;"><label>직원 정보 관리 - 검색</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/20.m01/40-report-search/" title="직원 정보 관리 - 검색"> <i class="fa fa-chevron-left"></i><label>직원 정보 관리 - 검색</label></a>
+    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/05-about-workshop/" title="APEX 입문자 워크숍 소개" style="margin-right: 0px;"><label>APEX 입문자 워크숍 소개</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="panel panel-danger">
@@ -404,7 +352,7 @@
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/01.beginner_ws/20.m01/30-report-form/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/01.beginner_ws/30.expense/"></div>
 
   </div>
 
@@ -420,7 +368,7 @@
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 14/08/2021
+        <i class='fa fa-calendar'></i> Last update on 21/08/2021
     </div>
     
   </div>
