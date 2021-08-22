@@ -21,6 +21,13 @@
 	"content": "APEX 입문자 워크숍은 Oracle APEX를 처음 접하시는 분들을 대상으로 합니다. Oracle APEX Low-Code를 쉽게 따라하면서 기본적은 작동 방식을 이해하는 형태로 구성됩니다.\nAPEX 입문자 워크숍은 4개 모듈로 구성됩니다.\n M01: Oracle APEX 실습 환경 구성 M02: 직원 정보 관리 M03: Expense 영수증 관리 M04: APEX 인증 커스커마이징  총 4개 모듈로 구성되면 전체 동영상 길이는 5시간 입니다.\nOracle Cloud Infrastrucrue의 ADB를 기반 실습 환경으로합니다.\n"
 },
 {
+	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/10-expense_mngt/",
+	"title": "Expense 영수증 관리 - Form",
+	"tags": [],
+	"description": "",
+	"content": "   Expense 영수증 관리 생성    Page 번호 페이지 이름     31 Expenses   32 Expenses form    Expenses 테이블을 PK를 위한 오라클 객체 생성 Sequence 객체를 생성하고 트리거로 일련 번호를 확보하여 PK로 설정합니다.\n1. Sequence 생성 Object Browser를 이용하여 Sequence를 생성합니다.\n APEX Workspace  SQL Workshop  Object Browser Sequence 이름: expense_seq  2. 트리거 생성  APEX Workspace  SQL Workshop  SQL Command Expenses 테이블의 Insert 문 수행 전에 작동하는 트리거  create or replace trigger \u0026quot;EXPENSES_T1\u0026quot; BEFORE insert on \u0026quot;EXPENSES\u0026quot; for each row begin if :NEW.\u0026quot;EXPENSE_ID\u0026quot; is null then select \u0026quot;EXPENSE_SEQ\u0026quot;.nextval into :NEW.\u0026quot;EXPENSE_ID\u0026quot; from sys.dual; end if; end;  Expense Form 페이지  Page Item - Hidden 처리 (P32_CRE_DATE) List of Values 구성 (EMPLOYEES, EXPENSE_TYPES, RECEIPT_STATUS, CARD_TYPES) LoV 컴포넌트 설정 컴포넌트 명 한글화 Page Item 타입 변경: P32_Title, P32_Description Page Item 타입 추가: P32_RECEIPT_PIC 폼 레이아웃 변경 새로운 APEX 사용자 등록\n 대체 문자열 설정  List of Values 구성  EMPLOYEES  유형: Shared Component   select employee_id r, emp_name || ' (' || t.team_name||', '||t.team_full_name ||')' d from employees e, teams t where e.team_id = t.team_id   Expense Types  유형: Shared Component   expense types select type_id as r, type_name as d from EXPENSE_TYPES order by 1   CARD TYPES  유형: Shared Component      Display Return     개인카드 pc   법인카드 cc     RECEIPT STATUS  유형: Shared Component      Display Return     분실 m   보관 k    LoV 컴포넌트 설정  직원: select list 비용 결재 유형: select list 카드 유형: checkbox group 영수증 상태: checkbox group  Page Item 타입 추가  P32_RECEIPT_PIC 복제 P32_RECEIPT_PIC_1\n type: Display Image  CSS 등록\n Expense Receipt Form  CSS 속성  inline   img { width: 200px; height: 200px; }  "
+},
+{
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/",
 	"title": "APEX APP, DB 테이블, LoV 생성",
 	"tags": [],
@@ -40,6 +47,13 @@
 	"tags": [],
 	"description": "",
 	"content": " Oracle APEX 입문 워크숍을 진행하기 위해서는 다음과 같은 환경이 필요합니다.\n OCI Tenante (OCI 계정)  OCI 사용자 계정  OCI ATP 인스턴스  APEX Workspace   실습 환경 준비 절차 실습 환경을 준비하기 위하여 다음과 같은 작업을 진행합니다.\n OCI Free Trial 계정 신청 OCI 계정 기본 설정 APEX 실습 환경 구성  ATP 인스턴스 생성 APEX Workspace 생성   "
+},
+{
+	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/",
+	"title": "Expense 영수증 관리 - 목록",
+	"tags": [],
+	"description": "",
+	"content": "   작업 절차  컴럼 정리 컬럼 헤더 변경 컬럼 패턴 변경 LoV를 적용하여 각 컬럼의 Key 값을 가독성 높은 표현으로 변경 페이지 타이틀 설정 (리전) 검색 리전 추가 검색 리전에 PageItem 추가 DYNAMIC ACTION 추가  검색 리전 Page Item  P31_SEARCH_FROM P32_SEARCH_TO  검색 리전 Page Item Default 설정  P31_SEARCH_FROM  select min(use_date) from expense where employee_id = lower(:APP_USER)   P32_SEARCH_TO  select max(use_date) from expense where employee_id = lower(:APP_USER)  검색 쿼리 리포트 검색 쿼리의 Where 절 변경\nwhere EMPLOYEE_ID = lower(:APP_USER) and USE_DATE \u0026gt;= TO_CHAR(:P31_SEARCH_FROM, 'YYYY-MM-DD') and USE_DATE \u0026lt;= TO_CHAR(:P31_SEARCH_to, 'YYYY-MM-DD')  Data 입력 채송화(songwha)로 로그인하여 영수증 등록\n"
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/20-oci-env-setup/",
