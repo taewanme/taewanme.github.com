@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-22T21:43:09 KST">
+<meta name="revised" content="2021-08-22T21:57:50 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
@@ -277,6 +277,28 @@
     <option value="/apex-workshop/01.beginner_ws/" >
    APEX 입문자 워크숖</option> 
       <option value="/apex-workshop/01.beginner_ws/05-about-workshop/" >- APEX 입문자 워크숍 소개</option>
+    <option value="/apex-workshop/01.beginner_ws/10.prep/" >
+  - 
+   M01.실습환경 준비</option> 
+      <option value="/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/" >-- OCI Free Trail 신청</option>
+      <option value="/apex-workshop/01.beginner_ws/10.prep/20-oci-env-setup/" >-- OCI 기본 환경 설정</option>
+      <option value="/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/" >-- APEX 개발 환경 구성</option>
+      <option value="/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/" >-- APEX Workspace 사용자 등록</option>
+  
+    <option value="/apex-workshop/01.beginner_ws/20.m01/" >
+  - 
+   M02-직원정보관리</option> 
+      <option value="/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/" >-- APEX APP, DB 테이블, LoV 생성</option>
+      <option value="/apex-workshop/01.beginner_ws/20.m01/20-report-form/" >-- 직원 정보 관리 Report 생성</option>
+      <option value="/apex-workshop/01.beginner_ws/20.m01/30-report-form/" >-- 직원 정보 관리 세부설정</option>
+      <option value="/apex-workshop/01.beginner_ws/20.m01/40-report-search/" >-- 직원 정보 관리 - 검색</option>
+  
+    <option value="/apex-workshop/01.beginner_ws/30.expense/" >
+  - 
+   M03-영수증 관리</option> 
+      <option value="/apex-workshop/01.beginner_ws/30.expense/10-expense_mngt/"  selected>-- Expense 영수증 관리 - Form</option>
+      <option value="/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/" >-- Expense 영수증 관리 - 목록</option>
+  
   
 
 
@@ -308,12 +330,6 @@
     
     
     
-
-
-<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/-ICBsGz9n0U" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
- </div>
-
 
 <hr />
 
@@ -378,6 +394,8 @@ end;
 <h2 id="expense-form-페이지">Expense Form 페이지</h2>
 
 <ul>
+<li>새로운 APEX 사용자 등록<br /></li>
+<li>대체 문자열 설정</li>
 <li>Page Item - Hidden 처리 (P32_CRE_DATE)</li>
 <li>List of Values 구성 (EMPLOYEES, EXPENSE_TYPES, RECEIPT_STATUS, CARD_TYPES)</li>
 <li>LoV 컴포넌트 설정</li>
@@ -385,8 +403,44 @@ end;
 <li>Page Item 타입 변경: P32_Title, P32_Description</li>
 <li>Page Item 타입 추가: P32_RECEIPT_PIC</li>
 <li>폼 레이아웃 변경</li>
-<li>새로운 APEX 사용자 등록<br /></li>
-<li>대체 문자열 설정</li>
+</ul>
+
+<h3 id="새로운-apex-사용자-등록">새로운 APEX 사용자 등록</h3>
+
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Mail</th>
+<th>Password</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>songwha</td>
+<td>demo@gmail.com</td>
+<td>Welcome123456!</td>
+</tr>
+
+<tr>
+<td>ij</td>
+<td>demo@gmail.com</td>
+<td>Welcome123456!</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="대체-문자열-설정">대체 문자열 설정</h3>
+
+<ul>
+<li>P32_EMPLOYEE_ID</li>
+<li>Default
+
+<ul>
+<li>Expression</li>
+<li>lower(:APP_USER)</li>
+</ul></li>
 </ul>
 
 <h3 id="list-of-values-구성">List of Values 구성</h3>
@@ -412,8 +466,7 @@ where e.team_id = t.team_id
 </ul></li>
 </ul>
 
-<pre><code>expense types 
-select type_id as r, type_name as d from EXPENSE_TYPES 
+<pre><code>select type_id as r, type_name as d from EXPENSE_TYPES 
 order by 1
 </code></pre>
 
