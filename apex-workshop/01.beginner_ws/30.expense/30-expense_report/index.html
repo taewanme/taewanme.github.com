@@ -4,12 +4,12 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-24T07:44:41 KST">
+<meta name="revised" content="2021-08-24T07:56:19 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="Expense 영수증 관리: Master Detail(1)" />
-<meta property="og:description" content=" 작업 절차  Expense Report 생성 (#41, #42, #43) SEQUENCE 생성: EXPESNE_REPORT_SEQ Process 등록: set pk with seq FORM Page Item 수정 리포트 생성  Expense Report 생성  Start Page Number: 41 Type: Master Detail - Side by Side  SEQUENCE 생성  APEX Workspace  SQL Workshop  Object Browser Sequence 이름: EXPENSE_REPORT_SEQ  Process 등록: set pk with seq declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual; :P42_EXPENSE_REPORT_ID := V_REPORT_ID; end;   Server Sdie Condition 설정  Form Page Item 수정    Page Item 이름 작업 내역 출력 이름     P42_EMPLOYEE_ID Select List, READ Only, Defalut 작성자   P42_REPORT_TITLE 리포트 이름    P42_COMPANY_CARD_RECIEPT_NUM Hidden 처리    P42_PRIVATE_CARD_RECIEPT_NUM Hidden 처리    P42_COMPANY_CARD_AMOUNT Hidden 처리    P42_PRIVATE_CARD_AMOUNT Hidden 처리    P42_CRE_DATE READ Only, Defalut, Format: YYYY-MM-DD 작성일    " />
+<meta property="og:description" content="작업 절차  Expense Report 생성 (#41, #42, #43) SEQUENCE 생성: EXPESNE_REPORT_SEQ Process 등록: set pk with seq FORM Page Item 수정 리포트 생성  Expense Report 생성  Start Page Number: 41 Type: Master Detail - Side by Side  SEQUENCE 생성  APEX Workspace  SQL Workshop  Object Browser Sequence 이름: EXPENSE_REPORT_SEQ  Process 등록: set pk with seq declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/30-expense_report/" />
 
@@ -344,6 +344,12 @@
     
     
     
+
+
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/fVkH8xvI9Nk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
+ </div>
+
 
 <hr />
 
