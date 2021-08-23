@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-24T00:27:41 KST">
+<meta name="revised" content="2021-08-24T00:39:30 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
@@ -510,8 +510,8 @@ where employee_id = lower(:APP_USER)
 <p>리포트 검색 쿼리의 Where 절 변경</p>
 
 <pre><code>where EMPLOYEE_ID = lower(:APP_USER) 
-and USE_DATE &gt;= TO_CHAR(:P31_SEARCH_FROM, 'YYYY-MM-DD') 
-and USE_DATE &lt;= TO_CHAR(:P31_SEARCH_to, 'YYYY-MM-DD')
+and USE_DATE &gt;= TO_DATE(:P31_SEARCH_FROM, 'YYYY-MM-DD') 
+and USE_DATE &lt;= TO_DATE(:P31_SEARCH_TO, 'YYYY-MM-DD')
 </code></pre>
 
 
