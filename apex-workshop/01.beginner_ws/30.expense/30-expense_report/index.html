@@ -4,11 +4,11 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-24T03:44:07 KST">
+<meta name="revised" content="2021-08-24T04:02:51 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="Expense 영수증 관리: Master Detail 생성" />
+<meta property="og:title" content="Expense 영수증 관리: Master Detail(1)" />
 <meta property="og:description" content=" 작업 절차  Expense Report 생성 (#31, #32, #33) SEQUENCE 생성: EXPESNE_REPORT_SEQ Process 등록: set pk with seq FORM Page Item 수정 리포트 생성  Expense Report 생성  Start Page Number: 31 Type: Master Detail - Side by Side  SEQUENCE 생성  APEX Workspace  SQL Workshop  Object Browser Sequence 이름: EXPENSE_REPORT_SEQ  Process 등록: set pk with seq declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual; :P32_EXPENSE_REPORT_ID := V_REPORT_ID; end;   Server Sdie Condition 설정  Form Page Item 수정    Page Item 이름 작업 내역 출력 이름     P32_EMPLOYEE_ID Select List, READ Only, Defalut 작성자   P32_REPORT_TITLE 리포트 이름    P32_COMPANY_CARD_RECIEPT_NUM Hidden 처리    P32_PRIVATE_CARD_RECIEPT_NUM Hidden 처리    P32_COMPANY_CARD_AMOUNT Hidden 처리    P32_PRIVATE_CARD_AMOUNT Hidden 처리    P22_CRE_DATE READ Only, Defalut, Format: YYYY-MM-DD 작성일    " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/30-expense_report/" />
@@ -33,7 +33,7 @@
 
 
 
-<title>Expense 영수증 관리: Master Detail 생성 :: Oracle APEX Workshop</title>
+<title>Expense 영수증 관리: Master Detail(1) :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -229,7 +229,7 @@
       <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/30-expense_report/" class="dd-item active">
         <div>
           <a href="/apex-workshop/01.beginner_ws/30.expense/30-expense_report/">
-            Expense 영수증 관리: Master Detail 생성
+            Expense 영수증 관리: Master Detail(1)
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -303,7 +303,7 @@
    M03-영수증 관리</option> 
       <option value="/apex-workshop/01.beginner_ws/30.expense/10-expense_mngt/" >-- Expense 영수증 관리: Form</option>
       <option value="/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/" >-- Expense 영수증 관리: IR</option>
-      <option value="/apex-workshop/01.beginner_ws/30.expense/30-expense_report/"  selected>-- Expense 영수증 관리: Master Detail 생성</option>
+      <option value="/apex-workshop/01.beginner_ws/30.expense/30-expense_report/"  selected>-- Expense 영수증 관리: Master Detail(1)</option>
   
   
 
@@ -326,7 +326,7 @@
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>Expense 영수증 관리: Master Detail 생성</h1>
+    <h1>Expense 영수증 관리: Master Detail(1)</h1>
 
 
      

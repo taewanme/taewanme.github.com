@@ -78,7 +78,7 @@
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/30-expense_report/",
-	"title": "Expense 영수증 관리: Master Detail 생성",
+	"title": "Expense 영수증 관리: Master Detail(1)",
 	"tags": [],
 	"description": "",
 	"content": " 작업 절차  Expense Report 생성 (#31, #32, #33) SEQUENCE 생성: EXPESNE_REPORT_SEQ Process 등록: set pk with seq FORM Page Item 수정 리포트 생성  Expense Report 생성  Start Page Number: 31 Type: Master Detail - Side by Side  SEQUENCE 생성  APEX Workspace  SQL Workshop  Object Browser Sequence 이름: EXPENSE_REPORT_SEQ  Process 등록: set pk with seq declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual; :P32_EXPENSE_REPORT_ID := V_REPORT_ID; end;   Server Sdie Condition 설정  Form Page Item 수정    Page Item 이름 작업 내역 출력 이름     P32_EMPLOYEE_ID Select List, READ Only, Defalut 작성자   P32_REPORT_TITLE 리포트 이름    P32_COMPANY_CARD_RECIEPT_NUM Hidden 처리    P32_PRIVATE_CARD_RECIEPT_NUM Hidden 처리    P32_COMPANY_CARD_AMOUNT Hidden 처리    P32_PRIVATE_CARD_AMOUNT Hidden 처리    P22_CRE_DATE READ Only, Defalut, Format: YYYY-MM-DD 작성일    "
