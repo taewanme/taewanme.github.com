@@ -61,7 +61,7 @@ Always Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 �
       <pubDate>Sat, 21 Aug 2021 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/</guid>
-      <description>작업 절차  컴럼 정리 컬럼 헤더 변경 컬럼 패턴 변경 LoV를 적용하여 각 컬럼의 Key 값을 가독성 높은 표현으로 변경 페이지 타이틀 설정 (리전) 검색 리전 추가 검색 리전에 PageItem 추가 DYNAMIC ACTION 추가  검색 리전 Page Item  P31_SEARCH_FROM P32_SEARCH_TO  검색 리전 Page Item Default 설정  P31_SEARCH_FROM  select min(use_date) from expense where employee_id = lower(:APP_USER)   P32_SEARCH_TO  select max(use_date) from expense where employee_id = lower(:APP_USER)  검색 쿼리 리포트 검색 쿼리의 Where 절 변경</description>
+      <description>작업 절차  컴럼 정리 컬럼 헤더 변경 컬럼 패턴 변경 LoV를 적용하여 각 컬럼의 Key 값을 가독성 높은 표현으로 변경 페이지 타이틀 설정 (리전) 검색 리전 추가 검색 리전에 PageItem 추가 리포트 검색 쿼리 변경 DYNAMIC ACTION 추가  검색 리전 Page Item  P31_SEARCH_FROM P32_SEARCH_TO  검색 리전 Page Item Default 설정  P31_SEARCH_FROM  select min(use_date) from expense where employee_id = lower(:APP_USER)   P32_SEARCH_TO  select max(use_date) from expense where employee_id = lower(:APP_USER)  검색 쿼리 리포트 검색 쿼리의 Where 절 변경</description>
     </item>
     
     <item>
