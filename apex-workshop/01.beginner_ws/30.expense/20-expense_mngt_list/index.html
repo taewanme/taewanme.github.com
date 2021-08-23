@@ -4,11 +4,11 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-23T22:27:13 KST">
+<meta name="revised" content="2021-08-23T22:30:51 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="Expense 영수증 관리 - 목록" />
+<meta property="og:title" content="Expense 영수증 관리: Interactive Report" />
 <meta property="og:description" content="작업 절차  영수증 등록 5건 리포트 조회 조건 설정: 조회 범위 한정 컴럼 정리 컬럼 헤더 변경 컬럼 패턴 변경 (사용일, 등록일) LoV를 적용하여 참조 컬럼의 Key값 변경 페이지 타이틀 설정 (리전) 검색 리전 추가 검색 리전에 PageItem 추가 리포트 검색 쿼리 변경 DYNAMIC ACTION 추가 직원정보 폼 연결 직원정보 폼 읽기 전용 설정  리포트 조회 조건 컬럼 정보 설정    컬럼 이럼 초기 헤더 이름 변경 헤더 이름 변경 설정     p31_employee_id Employee Id 사용자 LoV Lookup   p31_type_id Type Id 비용 유형 LoV Lookup   p31_payment_amount Payment Amount 결재금액 포멧 지정   p31_title Title 제목    p31_description Description 설명 html 지원 설정   p31_receipt_status Receipt Status 영수증 상태 LoV Lookup   p31_card_type Card Type 카드 유형 LoV Lookup   p31_receitp_pic Receipt Pic 영수증 사진 hidden 처리   p31_use_date Use Date 사용일 포멧 설정 YYYY-MM-DD   p31_cre_date Cre Date 등록일 포멧 설정 YYYY-MM-DD    검색 리전 Page Item  P31_SEARCH_FROM: Data Picker  Validator 등록  P32_SEARCH_TO: Data Picker  Validator 등록   검색 리전 Page Item Default 설정  P31_SEARCH_FROM  select min(use_date) from expense where employee_id = lower(:APP_USER)   P32_SEARCH_TO  select max(use_date) from expense where employee_id = lower(:APP_USER)  검색 쿼리 리포트 검색 쿼리의 Where 절 변경" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/" />
@@ -33,7 +33,7 @@
 
 
 
-<title>Expense 영수증 관리 - 목록 :: Oracle APEX Workshop</title>
+<title>Expense 영수증 관리: Interactive Report :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -215,14 +215,14 @@
       <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/10-expense_mngt/" class="dd-item">
         <div>
           <a href="/apex-workshop/01.beginner_ws/30.expense/10-expense_mngt/">
-            Expense 영수증 관리 - Form
+            Expense 영수증 관리: Form
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
       <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/" class="dd-item active">
         <div>
           <a href="/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/">
-            Expense 영수증 관리 - 목록
+            Expense 영수증 관리: Interactive Report
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -301,8 +301,8 @@
     <option value="/apex-workshop/01.beginner_ws/30.expense/" >
   - 
    M03-영수증 관리</option> 
-      <option value="/apex-workshop/01.beginner_ws/30.expense/10-expense_mngt/" >-- Expense 영수증 관리 - Form</option>
-      <option value="/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/"  selected>-- Expense 영수증 관리 - 목록</option>
+      <option value="/apex-workshop/01.beginner_ws/30.expense/10-expense_mngt/" >-- Expense 영수증 관리: Form</option>
+      <option value="/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/"  selected>-- Expense 영수증 관리: Interactive Report</option>
       <option value="/apex-workshop/01.beginner_ws/30.expense/30-expense_report/" >-- Expense 영수증 관리: Master Detail</option>
   
   
@@ -326,7 +326,7 @@
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>Expense 영수증 관리 - 목록</h1>
+    <h1>Expense 영수증 관리: Interactive Report</h1>
 
 
      
@@ -493,7 +493,7 @@ and USE_DATE &lt;= TO_CHAR(:P31_SEARCH_to, 'YYYY-MM-DD')
   <li><strong>문서 생성:</strong> 2021-08-21 09:11 / <string>최종 문서 수정:</strong> 2021-08-21 09:11 </li>
 </div><div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/30.expense/10-expense_mngt/" title="Expense 영수증 관리 - Form"> <i class="fa fa-chevron-left"></i><label>Expense 영수증 관리 - Form</label></a>
+<a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/30.expense/10-expense_mngt/" title="Expense 영수증 관리: Form"> <i class="fa fa-chevron-left"></i><label>Expense 영수증 관리: Form</label></a>
     <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/30.expense/30-expense_report/" title="Expense 영수증 관리: Master Detail" style="margin-right: 0px;"><label>Expense 영수증 관리: Master Detail</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">

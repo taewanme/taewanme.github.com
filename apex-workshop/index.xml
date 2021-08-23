@@ -24,7 +24,7 @@ Oracle Cloud Infrastrucrue의 ADB를 기반 실습 환경으로합니다.</descr
     </item>
     
     <item>
-      <title>Expense 영수증 관리 - Form</title>
+      <title>Expense 영수증 관리: Form</title>
       <link>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/10-expense_mngt/</link>
       <pubDate>Sat, 21 Aug 2021 09:11:05 +0900</pubDate>
       
@@ -56,7 +56,7 @@ Always Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 �
     </item>
     
     <item>
-      <title>Expense 영수증 관리 - 목록</title>
+      <title>Expense 영수증 관리: Interactive Report</title>
       <link>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/</link>
       <pubDate>Sat, 21 Aug 2021 09:11:05 +0900</pubDate>
       

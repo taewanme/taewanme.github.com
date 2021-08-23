@@ -4,11 +4,11 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-23T22:27:13 KST">
+<meta name="revised" content="2021-08-23T22:30:51 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="Expense 영수증 관리 - Form" />
+<meta property="og:title" content="Expense 영수증 관리: Form" />
 <meta property="og:description" content="Expense 영수증 관리 생성    Page 번호 페이지 이름     31 Expenses   32 Expenses form    Expenses 테이블을 PK를 위한 오라클 객체 생성 Sequence 객체를 생성하고 트리거로 일련 번호를 확보하여 PK로 설정합니다.
 1. Sequence 생성 Object Browser를 이용하여 Sequence를 생성합니다.
  APEX Workspace  SQL Workshop  Object Browser Sequence 이름: expense_seq  2. 트리거 생성  APEX Workspace  SQL Workshop  SQL Command Expenses 테이블의 Insert 문 수행 전에 작동하는 트리거  create or replace trigger &quot;EXPENSES_T1&quot; BEFORE insert on &quot;EXPENSES&quot; for each row begin if :NEW." />
@@ -35,7 +35,7 @@
 
 
 
-<title>Expense 영수증 관리 - Form :: Oracle APEX Workshop</title>
+<title>Expense 영수증 관리: Form :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -217,14 +217,14 @@
       <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/10-expense_mngt/" class="dd-item active">
         <div>
           <a href="/apex-workshop/01.beginner_ws/30.expense/10-expense_mngt/">
-            Expense 영수증 관리 - Form
+            Expense 영수증 관리: Form
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
       <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/" class="dd-item">
         <div>
           <a href="/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/">
-            Expense 영수증 관리 - 목록
+            Expense 영수증 관리: Interactive Report
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -303,8 +303,8 @@
     <option value="/apex-workshop/01.beginner_ws/30.expense/" >
   - 
    M03-영수증 관리</option> 
-      <option value="/apex-workshop/01.beginner_ws/30.expense/10-expense_mngt/"  selected>-- Expense 영수증 관리 - Form</option>
-      <option value="/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/" >-- Expense 영수증 관리 - 목록</option>
+      <option value="/apex-workshop/01.beginner_ws/30.expense/10-expense_mngt/"  selected>-- Expense 영수증 관리: Form</option>
+      <option value="/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/" >-- Expense 영수증 관리: Interactive Report</option>
       <option value="/apex-workshop/01.beginner_ws/30.expense/30-expense_report/" >-- Expense 영수증 관리: Master Detail</option>
   
   
@@ -328,7 +328,7 @@
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>Expense 영수증 관리 - Form</h1>
+    <h1>Expense 영수증 관리: Form</h1>
 
 
      
@@ -535,8 +535,8 @@ order by 1
 <ul>
 <li>직원: select list</li>
 <li>비용 결재 유형: select list</li>
-<li>카드 유형: checkbox group</li>
-<li>영수증 상태: checkbox group</li>
+<li>카드 유형: radio group</li>
+<li>영수증 상태: radio group</li>
 </ul>
 
 <h3 id="page-item-타입-추가">Page Item 타입 추가</h3>
@@ -571,7 +571,7 @@ height: 200px;
 </div><div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/30.expense/" title="M03-영수증 관리"> <i class="fa fa-chevron-left"></i><label>M03-영수증 관리</label></a>
-    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/" title="Expense 영수증 관리 - 목록" style="margin-right: 0px;"><label>Expense 영수증 관리 - 목록</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/" title="Expense 영수증 관리: Interactive Report" style="margin-right: 0px;"><label>Expense 영수증 관리: Interactive Report</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="panel panel-danger">
