@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-23T22:55:33 KST">
+<meta name="revised" content="2021-08-24T00:27:41 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
@@ -493,7 +493,7 @@
 <li>P31_SEARCH_FROM</li>
 </ul>
 
-<pre><code>select min(use_date) from expense 
+<pre><code>select min(use_date) from expenses
 where employee_id = lower(:APP_USER)
 </code></pre>
 
@@ -501,7 +501,7 @@ where employee_id = lower(:APP_USER)
 <li>P32_SEARCH_TO</li>
 </ul>
 
-<pre><code>select max(use_date) from expense 
+<pre><code>select max(use_date) from expenses 
 where employee_id = lower(:APP_USER)
 </code></pre>
 
