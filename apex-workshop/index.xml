@@ -124,15 +124,6 @@ OCI 사용자 ID &amp;amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI
     </item>
     
     <item>
-      <title>Expense 영수증 관리: Master Detail(2)</title>
-      <link>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/</link>
-      <pubDate>Sat, 21 Aug 2021 09:11:05 +0900</pubDate>
-      
-      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/</guid>
-      <description> 작업 절차  43번 페이지 수정 P43_REPORT_ID는 Hidden 처리 P43_EXPESNE_ID는 Select List 처리 P43_EXPESNE_ID 이름 한글화 41번 페이지의 +기호 한글화  P43_EXPESNE_ID는 Select List 처리 select title||&#39;,&#39;||payment_amount||&#39;(&#39;||use_date||&#39;)&#39;, expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i.expense_id from expense_reports r, expense_report_items i where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) ) order by use_date  </description>
-    </item>
-    
-    <item>
       <title>APEX Workspace 사용자 등록</title>
       <link>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/</link>
       <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
@@ -151,6 +142,15 @@ OCI 사용자 ID &amp;amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI
       <description>    영상 재생 시간: 17:29  이번 영상에서는 직원 정보 관리 Report에 검색 기능을 추가해 보겠습니다.
 팀/성별 검색  팀 명을 체크박스 그룹으로 나열하고 하나 이상의 팀을 선택하여 검색 성별(Gender)을 체크박스 그룹으로 나열하고 하나 이상의 성별 검색
    팀명 검색 Page Item  P21_SEARCH_TEAMS  성별 검색 Page Item  P21_SEARCH_GENDERS    Report 조회 조건  where InStr(&#39;:&#39;||:P21_SEARCH_TEAMS||&#39;:&#39;, &#39;:&#39;||TEAM_ID||&#39;:&#39;) &amp;gt; 0 and TEAM_ID IS NOT NULL and InStr(&#39;:&#39;||:P21_SEARCH_GENDERS||&#39;:&#39;, &#39;:&#39;||GENDER||&#39;:&#39;) &amp;gt; 0 and GENDER IS NOT NULL   조회 조건 디폴트 값 설정  Default Value  P21_SEARCH_TEAMS  select team_id from TEAMS   P21_SEARCH_GENDERS  M:F  </description>
+    </item>
+    
+    <item>
+      <title>Expense 영수증 관리: Master Detail(3)</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/</link>
+      <pubDate>Sat, 21 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/</guid>
+      <description> 작업 절차  41번 페이지 영수증 리포트 View 변경 Select/Unselect All 설정 복수 삭제 버튼 &amp;amp; Process 설정 리포트 컬럼명 변경  </description>
     </item>
     
   </channel>

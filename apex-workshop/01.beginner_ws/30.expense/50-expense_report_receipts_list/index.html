@@ -4,12 +4,12 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-24T09:32:18 KST">
+<meta name="revised" content="2021-08-24T09:35:31 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="Expense 영수증 관리: Master Detail(2)" />
-<meta property="og:description" content=" 작업 절차  43번 페이지 수정 P43_REPORT_ID는 Hidden 처리 P43_EXPESNE_ID는 Select List 처리 P43_EXPESNE_ID 이름 한글화 41번 페이지의 &#43;기호 한글화  P43_EXPESNE_ID는 Select List 처리 select title||&#39;,&#39;||payment_amount||&#39;(&#39;||use_date||&#39;)&#39;, expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i.expense_id from expense_reports r, expense_report_items i where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) ) order by use_date  " />
+<meta property="og:title" content="Expense 영수증 관리: Master Detail(3)" />
+<meta property="og:description" content=" 작업 절차  41번 페이지 영수증 리포트 View 변경 Select/Unselect All 설정 복수 삭제 버튼 &amp; Process 설정 리포트 컬럼명 변경  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/" />
 
@@ -33,7 +33,7 @@
 
 
 
-<title>Expense 영수증 관리: Master Detail(2) :: Oracle APEX Workshop</title>
+<title>Expense 영수증 관리: Master Detail(3) :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -243,7 +243,7 @@
       <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/" class="dd-item active">
         <div>
           <a href="/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/">
-            Expense 영수증 관리: Master Detail(2)
+            Expense 영수증 관리: Master Detail(3)
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -319,7 +319,7 @@
       <option value="/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/" >-- Expense 영수증 관리: IR</option>
       <option value="/apex-workshop/01.beginner_ws/30.expense/30-expense_report/" >-- Expense 영수증 관리: Master Detail(1)</option>
       <option value="/apex-workshop/01.beginner_ws/30.expense/40-expense_report_add_receipts/" >-- Expense 영수증 관리: Master Detail(2)</option>
-      <option value="/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/"  selected>-- Expense 영수증 관리: Master Detail(2)</option>
+      <option value="/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/"  selected>-- Expense 영수증 관리: Master Detail(3)</option>
   
   
 
@@ -342,7 +342,7 @@
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>Expense 영수증 관리: Master Detail(2)</h1>
+    <h1>Expense 영수증 관리: Master Detail(3)</h1>
 
 
      
@@ -358,23 +358,11 @@
 <h2 id="작업-절차">작업 절차</h2>
 
 <ul>
-<li>43번 페이지 수정</li>
-<li>P43_REPORT_ID는 Hidden 처리</li>
-<li>P43_EXPESNE_ID는 Select List 처리</li>
-<li>P43_EXPESNE_ID 이름 한글화</li>
-<li>41번 페이지의 +기호 한글화</li>
+<li>41번 페이지 영수증 리포트 View 변경</li>
+<li>Select/Unselect All 설정</li>
+<li>복수 삭제 버튼 &amp; Process 설정</li>
+<li>리포트 컬럼명 변경</li>
 </ul>
-
-<h3 id="p43-expesne-id는-select-list-처리">P43_EXPESNE_ID는 Select List 처리</h3>
-
-<pre><code>select title||','||payment_amount||'('||use_date||')', expense_id from expenses
-where employee_id=lower(:APP_USER) and 
-expense_id not in (
-    select i.expense_id 
-    from expense_reports r, expense_report_items i 
-    where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) )
-order by use_date
-</code></pre>
 
 
     
