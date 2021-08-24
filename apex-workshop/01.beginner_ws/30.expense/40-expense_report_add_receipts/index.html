@@ -4,12 +4,12 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-24T09:21:36 KST">
+<meta name="revised" content="2021-08-24T09:29:57 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="Expense 영수증 관리: Master Detail(2)" />
-<meta property="og:description" content=" 작업 절차  43번 페이지 수정 P43_REPORT_ID는 Hidden 처리 P43_EXPESNE_ID는 Select List 처리 P43_EXPESNE_ID 이름 한글화 41번 페이지의 &#43;기호 한글화  P43_EXPESNE_ID는 Select List 처리 select title||&#39;,&#39;||payment_amount||&#39;(&#39;||use_date||&#39;)&#39;, expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i.expense_id from expense_reports r, expense_report_items i where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) ) order by use_date  " />
+<meta property="og:description" content="   작업 절차  43번 페이지 수정 P43_REPORT_ID는 Hidden 처리 P43_EXPESNE_ID는 Select List 처리 P43_EXPESNE_ID 이름 한글화 41번 페이지의 &#43;기호 한글화  P43_EXPESNE_ID는 Select List 처리 select title||&#39;,&#39;||payment_amount||&#39;(&#39;||use_date||&#39;)&#39;, expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i.expense_id from expense_reports r, expense_report_items i where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) ) order by use_date  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/40-expense_report_add_receipts/" />
 
@@ -240,6 +240,13 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/">
+            Expense 영수증 관리: Master Detail(2)
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
         </ul>
     </li>
         </ul>
@@ -312,6 +319,7 @@
       <option value="/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/" >-- Expense 영수증 관리: IR</option>
       <option value="/apex-workshop/01.beginner_ws/30.expense/30-expense_report/" >-- Expense 영수증 관리: Master Detail(1)</option>
       <option value="/apex-workshop/01.beginner_ws/30.expense/40-expense_report_add_receipts/"  selected>-- Expense 영수증 관리: Master Detail(2)</option>
+      <option value="/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/" >-- Expense 영수증 관리: Master Detail(2)</option>
   
   
 
@@ -345,6 +353,12 @@
     
     
 
+
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/zbIrMot93b4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
+ </div>
+
+
 <hr />
 
 <h2 id="작업-절차">작업 절차</h2>
@@ -376,7 +390,7 @@ order by use_date
 </div><div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/30.expense/30-expense_report/" title="Expense 영수증 관리: Master Detail(1)"> <i class="fa fa-chevron-left"></i><label>Expense 영수증 관리: Master Detail(1)</label></a>
-    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/30.expense/10-expense_mngt/" title="Expense 영수증 관리: Form" style="margin-right: 0px;"><label>Expense 영수증 관리: Form</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/" title="Expense 영수증 관리: Master Detail(2)" style="margin-right: 0px;"><label>Expense 영수증 관리: Master Detail(2)</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="panel panel-danger">
