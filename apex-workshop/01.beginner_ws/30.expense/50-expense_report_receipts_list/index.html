@@ -4,12 +4,14 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-24T09:35:31 KST">
+<meta name="revised" content="2021-08-24T10:20:52 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="Expense 영수증 관리: Master Detail(3)" />
-<meta property="og:description" content=" 작업 절차  41번 페이지 영수증 리포트 View 변경 Select/Unselect All 설정 복수 삭제 버튼 &amp; Process 설정 리포트 컬럼명 변경  " />
+<meta property="og:description" content="작업 절차  41번 페이지 영수증 리포트 View 변경 Select/Unselect All 설정 복수 삭제 버튼 &amp; Process 설정 리포트 컬럼명 변경  리포트 SQL 변경 select REPORT_ID, EXPENSE_ID, EMPLOYEE_ID, TYPE_ID, PAYMENT_AMOUNT, TITLE, DESCRIPTION, USE_DATE, CRE_DATE from EXPENSE_REPORT_ITEMS_V where REPORT_ID = :P41_EXPENSE_REPORT_ID order by expense_id  select/unselect all  리포트 SQL 컬럼 추가  apex_item.checkbox2(1, EXPENSE_ID) selected,   헤딩 변경
+&lt;input type=&quot;checkbox&quot; id=&quot;selectunselectall&quot;&gt;  컬럼 위치 변경
+ Escape special characters 비활성화" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/" />
 
@@ -363,6 +365,78 @@
 <li>복수 삭제 버튼 &amp; Process 설정</li>
 <li>리포트 컬럼명 변경</li>
 </ul>
+
+<h3 id="리포트-sql-변경">리포트 SQL 변경</h3>
+
+<pre><code>select
+       REPORT_ID,
+       EXPENSE_ID,
+       EMPLOYEE_ID,
+       TYPE_ID,
+       PAYMENT_AMOUNT,
+       TITLE,
+       DESCRIPTION,
+       USE_DATE,
+       CRE_DATE
+  from EXPENSE_REPORT_ITEMS_V
+ where REPORT_ID = :P41_EXPENSE_REPORT_ID
+ order by expense_id
+</code></pre>
+
+<h3 id="select-unselect-all">select/unselect all</h3>
+
+<ul>
+<li>리포트 SQL 컬럼 추가</li>
+</ul>
+
+<pre><code>apex_item.checkbox2(1, EXPENSE_ID) selected,
+</code></pre>
+
+<ul>
+<li><p>헤딩 변경</p>
+
+<pre><code>&lt;input type=&quot;checkbox&quot; id=&quot;selectunselectall&quot;&gt;
+</code></pre></li>
+
+<li><p>컬럼 위치 변경</p></li>
+
+<li><p>Escape special characters 비활성화</p>
+
+<ul>
+<li>Expense Report Item 리전 <span class="fa fa-angle-double-right"  style="font-size:large" aria-hidden="true"></span>  SELECTED <span class="fa fa-angle-double-right"  style="font-size:large" aria-hidden="true"></span>  SECURITY <span class="fa fa-angle-double-right"  style="font-size:large" aria-hidden="true"></span> Escape special characters <span class="fa fa-angle-double-right"  style="font-size:large" aria-hidden="true"></span> 비활성화</li>
+</ul></li>
+
+<li><p>Region static ID 설정</p>
+
+<ul>
+<li>Expense Report Item 리전 <span class="fa fa-angle-double-right"  style="font-size:large" aria-hidden="true"></span>  Advanced <span class="fa fa-angle-double-right"  style="font-size:large" aria-hidden="true"></span>  Static ID</li>
+<li>설정값: added_expenses</li>
+</ul></li>
+
+<li><p>change event</p></li>
+</ul>
+
+<pre><code>  if ($('#added_expenses #selectunselectall' ).is(':checked') ) {
+    $('#added_expenses input[type=checkbox][name=f01]').prop('checked',true);
+  } else {
+    $('#added_expenses input[type=checkbox][name=f01]').prop('checked',false);
+  }
+</code></pre>
+
+<h3 id="영수증-일괄-삭제">영수증 일괄 삭제</h3>
+
+<ul>
+<li>Delete Button 추가</li>
+<li>Delete Process 추가</li>
+</ul>
+
+<pre><code>FOR i in 1..APEX_APPLICATION.G_F01.COUNT LOOP
+
+delete from EXPENSE_REPORT_ITEMS 
+where report_id = :P41_EXPENSE_REPORT_ID and 
+      expense_id = APEX_APPLICATION.G_F01(i);
+END LOOP;
+</code></pre>
 
 
     

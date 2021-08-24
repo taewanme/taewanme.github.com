@@ -150,7 +150,9 @@ OCI 사용자 ID &amp;amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI
       <pubDate>Sat, 21 Aug 2021 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/</guid>
-      <description> 작업 절차  41번 페이지 영수증 리포트 View 변경 Select/Unselect All 설정 복수 삭제 버튼 &amp;amp; Process 설정 리포트 컬럼명 변경  </description>
+      <description>작업 절차  41번 페이지 영수증 리포트 View 변경 Select/Unselect All 설정 복수 삭제 버튼 &amp;amp; Process 설정 리포트 컬럼명 변경  리포트 SQL 변경 select REPORT_ID, EXPENSE_ID, EMPLOYEE_ID, TYPE_ID, PAYMENT_AMOUNT, TITLE, DESCRIPTION, USE_DATE, CRE_DATE from EXPENSE_REPORT_ITEMS_V where REPORT_ID = :P41_EXPENSE_REPORT_ID order by expense_id  select/unselect all  리포트 SQL 컬럼 추가  apex_item.checkbox2(1, EXPENSE_ID) selected,   헤딩 변경
+&amp;lt;input type=&amp;quot;checkbox&amp;quot; id=&amp;quot;selectunselectall&amp;quot;&amp;gt;  컬럼 위치 변경
+ Escape special characters 비활성화</description>
     </item>
     
   </channel>
