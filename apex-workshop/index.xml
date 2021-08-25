@@ -154,12 +154,12 @@ OCI 사용자 ID &amp;amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI
     </item>
     
     <item>
-      <title>Expense Report: 복수 영수증 추가</title>
+      <title>Expense Report: Master Update</title>
       <link>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/</link>
       <pubDate>Sat, 21 Aug 2021 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/</guid>
-      <description>새로운 페이지 추가  type: blank page number: 44  리포트 추가  Report Name: 대상 영수증  select apex_item.checkbox(1, EXPENSE_ID) selected, &amp;quot;EXPENSE_ID&amp;quot;, &amp;quot;TYPE_ID&amp;quot;,&amp;quot;PAYMENT_AMOUNT&amp;quot;,&amp;quot;TITLE&amp;quot; ,&amp;quot;CARD_TYPE&amp;quot;, &amp;quot;USE_DATE&amp;quot;,&amp;quot;CRE_DATE&amp;quot; from &amp;quot;EXPENSES&amp;quot; where expense_id not in ( select i.expense_id from expense_reports r, expense_report_items i where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) ) and employee_id = lower(:APP_USER) order by USE_DATE  Report ID Page Item  P44_REPORT_ID  조회 조건 Page Item 추가  Search 리전  P44_SEARCH_FROM  default: sysdate - 60 format mask: YYYY-MM-DD  P44_SEARCH_TO  default: sysdate format mask: YYYY-MM-DD    리포트 쿼리 수정 select apex_item.</description>
+      <description> Stored Procedure create or replace PROCEDURE update_expense_report( p_report_id IN VARCHAR2 ) IS v_cc_num NUMBER(3); v_cc_amount NUMBER(9); v_pc_num NUMBER(3); v_pc_amount NUMBER(9); BEGIN select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_cc_num, v_cc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = &#39;cc&#39;; select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_pc_num, v_pc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = &#39;pc&#39;; UPDATE EXPENSE_REPORTS SET COMPANY_CARD_RECIEPT_NUM = v_cc_num, PRIVATE_CARD_RECIEPT_NUM = v_pc_num, COMPANY_CARD_AMOUNT = v_cc_amount, PRIVATE_CARD_AMOUNT = v_pc_amount WHERE EXPENSE_REPORT_ID = p_report_id; END;  Page 41 - Process 추가  name: update report  when: Delete   begin update_expense_report( p_report_id =&amp;gt; :P41_EXPENSE_REPORT_ID); end;  Page 43 - Process 추가  name: update report     begin update_expense_report( p_report_id =&amp;gt; :P43_REPORT_ID); end;  </description>
     </item>
     
   </channel>

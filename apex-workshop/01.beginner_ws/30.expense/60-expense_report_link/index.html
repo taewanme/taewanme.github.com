@@ -4,12 +4,12 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-26T06:56:12 KST">
+<meta name="revised" content="2021-08-26T07:08:54 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="Expense Report: 복수 영수증 추가" />
-<meta property="og:description" content="새로운 페이지 추가  type: blank page number: 44  리포트 추가  Report Name: 대상 영수증  select apex_item.checkbox(1, EXPENSE_ID) selected, &quot;EXPENSE_ID&quot;, &quot;TYPE_ID&quot;,&quot;PAYMENT_AMOUNT&quot;,&quot;TITLE&quot; ,&quot;CARD_TYPE&quot;, &quot;USE_DATE&quot;,&quot;CRE_DATE&quot; from &quot;EXPENSES&quot; where expense_id not in ( select i.expense_id from expense_reports r, expense_report_items i where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) ) and employee_id = lower(:APP_USER) order by USE_DATE  Report ID Page Item  P44_REPORT_ID  조회 조건 Page Item 추가  Search 리전  P44_SEARCH_FROM  default: sysdate - 60 format mask: YYYY-MM-DD  P44_SEARCH_TO  default: sysdate format mask: YYYY-MM-DD    리포트 쿼리 수정 select apex_item." />
+<meta property="og:title" content="Expense Report: Master Update" />
+<meta property="og:description" content=" Stored Procedure create or replace PROCEDURE update_expense_report( p_report_id IN VARCHAR2 ) IS v_cc_num NUMBER(3); v_cc_amount NUMBER(9); v_pc_num NUMBER(3); v_pc_amount NUMBER(9); BEGIN select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_cc_num, v_cc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = &#39;cc&#39;; select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_pc_num, v_pc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = &#39;pc&#39;; UPDATE EXPENSE_REPORTS SET COMPANY_CARD_RECIEPT_NUM = v_cc_num, PRIVATE_CARD_RECIEPT_NUM = v_pc_num, COMPANY_CARD_AMOUNT = v_cc_amount, PRIVATE_CARD_AMOUNT = v_pc_amount WHERE EXPENSE_REPORT_ID = p_report_id; END;  Page 41 - Process 추가  name: update report  when: Delete   begin update_expense_report( p_report_id =&gt; :P41_EXPENSE_REPORT_ID); end;  Page 43 - Process 추가  name: update report     begin update_expense_report( p_report_id =&gt; :P43_REPORT_ID); end;  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/" />
 
@@ -33,7 +33,7 @@
 
 
 
-<title>Expense Report: 복수 영수증 추가 :: Oracle APEX Workshop</title>
+<title>Expense Report: Master Update :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -250,7 +250,7 @@
       <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/" class="dd-item active">
         <div>
           <a href="/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/">
-            Expense Report: 복수 영수증 추가
+            Expense Report: Master Update
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -327,7 +327,7 @@
       <option value="/apex-workshop/01.beginner_ws/30.expense/30-expense_report/" >-- Expense 영수증 관리: Master Detail(1)</option>
       <option value="/apex-workshop/01.beginner_ws/30.expense/40-expense_report_add_receipts/" >-- Expense 영수증 관리: Master Detail(2)</option>
       <option value="/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/" >-- Expense Report: 상세 리포트 개선</option>
-      <option value="/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/"  selected>-- Expense Report: 복수 영수증 추가</option>
+      <option value="/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/"  selected>-- Expense Report: Master Update</option>
   
   
 
@@ -350,7 +350,7 @@
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>Expense Report: 복수 영수증 추가</h1>
+    <h1>Expense Report: Master Update</h1>
 
 
      
@@ -363,150 +363,70 @@
 
 <hr />
 
-<h3 id="새로운-페이지-추가">새로운 페이지 추가</h3>
+<h3 id="stored-procedure">Stored Procedure</h3>
 
-<ul>
-<li>type: blank</li>
-<li>page number: 44</li>
-</ul>
+<pre><code>create or replace PROCEDURE update_expense_report( p_report_id IN VARCHAR2 ) 
+IS 
+v_cc_num NUMBER(3);
+v_cc_amount NUMBER(9);
+v_pc_num NUMBER(3);
+v_pc_amount NUMBER(9);
+BEGIN 
 
-<h3 id="리포트-추가">리포트 추가</h3>
+select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0)
+into v_cc_num, v_cc_amount
+from expenses e, expense_report_items i 
+where e.EXPENSE_ID = i.expense_id 
+and i.report_id = p_report_id
+and card_type = 'cc';
 
-<ul>
-<li>Report Name: 대상 영수증</li>
-</ul>
+select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0)
+into v_pc_num, v_pc_amount
+from expenses e, expense_report_items i 
+where e.EXPENSE_ID = i.expense_id 
+and i.report_id = p_report_id
+and card_type = 'pc';
 
-<pre><code>select  apex_item.checkbox(1, EXPENSE_ID) selected,
-&quot;EXPENSE_ID&quot;, &quot;TYPE_ID&quot;,&quot;PAYMENT_AMOUNT&quot;,&quot;TITLE&quot;
-,&quot;CARD_TYPE&quot;,
-&quot;USE_DATE&quot;,&quot;CRE_DATE&quot;
-from &quot;EXPENSES&quot;
-where expense_id not in (
-    select i.expense_id 
-    from expense_reports r, expense_report_items i 
-    where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) )
-    and employee_id = lower(:APP_USER)
-order by USE_DATE
+
+UPDATE EXPENSE_REPORTS
+SET 
+COMPANY_CARD_RECIEPT_NUM = v_cc_num,
+PRIVATE_CARD_RECIEPT_NUM = v_pc_num,
+COMPANY_CARD_AMOUNT = v_cc_amount,
+PRIVATE_CARD_AMOUNT = v_pc_amount
+WHERE EXPENSE_REPORT_ID = p_report_id;
+
+END; 
 </code></pre>
 
-<h3 id="report-id-page-item">Report ID Page Item</h3>
+<h3 id="page-41-process-추가">Page 41 - Process 추가</h3>
 
 <ul>
-<li>P44_REPORT_ID</li>
-</ul>
-
-<h3 id="조회-조건-page-item-추가">조회 조건 Page Item 추가</h3>
+<li>name: update report
 
 <ul>
-<li>Search 리전
-
-<ul>
-<li>P44_SEARCH_FROM
-
-<ul>
-<li>default: sysdate - 60</li>
-<li>format mask: YYYY-MM-DD</li>
-</ul></li>
-<li>P44_SEARCH_TO
-
-<ul>
-<li>default: sysdate</li>
-<li>format mask: YYYY-MM-DD</li>
-</ul></li>
+<li>when: Delete</li>
 </ul></li>
 </ul>
 
-<h3 id="리포트-쿼리-수정">리포트 쿼리 수정</h3>
-
-<pre><code>select  apex_item.checkbox(1, EXPENSE_ID) selected,
-&quot;EXPENSE_ID&quot;, &quot;TYPE_ID&quot;,&quot;PAYMENT_AMOUNT&quot;,&quot;TITLE&quot;
-,&quot;CARD_TYPE&quot;,
-from &quot;EXPENSES&quot;
-where USE_DATE &gt;= to_date(:P44_SEARCH_FROM, 'YYYY-MM-DD') 
-and USE_DATE &lt;= to_date(:P44_SEARCH_TO, 'YYYY-MM-DD')
-and expense_id not in (
-    select i.expense_id 
-    from expense_reports r, expense_report_items i 
-    where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) )
-    and employee_id = lower(:APP_USER)
-order by USE_DATE
+<pre><code>begin
+update_expense_report( p_report_id =&gt; :P41_EXPENSE_REPORT_ID);
+end;
 </code></pre>
 
-<h3 id="select-unselect-all-처리">Select/Unselect ALL 처리</h3>
+<h3 id="page-43-process-추가">Page 43 - Process 추가</h3>
 
 <ul>
-<li><p>헤딩 변경</p>
-
-<pre><code>&lt;input type=&quot;checkbox&quot; id=&quot;selectunselectall&quot;&gt;
-</code></pre></li>
-
-<li><p>Escape special characters 비활성화</p>
+<li>name: update report
 
 <ul>
-<li>Expense Report Item 리전 <span class="fa fa-angle-double-right"  style="font-size:large" aria-hidden="true"></span>  SELECTED <span class="fa fa-angle-double-right"  style="font-size:large" aria-hidden="true"></span>  SECURITY <span class="fa fa-angle-double-right"  style="font-size:large" aria-hidden="true"></span> Escape special characters <span class="fa fa-angle-double-right"  style="font-size:large" aria-hidden="true"></span> 비활성화</li>
-</ul></li>
-
-<li><p>Region static ID 설정</p>
-
-<ul>
-<li>Expense Report Item 리전 <span class="fa fa-angle-double-right"  style="font-size:large" aria-hidden="true"></span>  Advanced <span class="fa fa-angle-double-right"  style="font-size:large" aria-hidden="true"></span>  Static ID</li>
-<li>설정값: expenses</li>
-</ul></li>
-
-<li><p>event 등록</p>
-
-<ul>
-<li>Identification<br />
-
-<ul>
-<li>Name  : change selectunselectall</li>
-</ul></li>
-<li>when
-
-<ul>
-<li>Event: change</li>
-<li>Selection Type: JQuery Selector</li>
-<li>JQuery Selector #selectunselectall</li>
-</ul></li>
-<li>Advanced
-
-<ul>
-<li>Event Scope: Dynamic</li>
-<li>static container: #expenses</li>
-</ul></li>
-</ul></li>
-
-<li><p>change event의 action</p>
-
-<ul>
-<li>Execute JavaScript</li>
-</ul></li>
-
-<li><p>Change Event</p>
-
-<ul>
-<li>Execute JavaScript Code</li>
+<li></li>
 </ul></li>
 </ul>
 
-<pre><code>  if ($('#expenses #selectunselectall' ).is(':checked') ) {
-    $('#expenses input[type=checkbox][name=f01]').prop('checked',true);
-  } else {
-    $('#expenses input[type=checkbox][name=f01]').prop('checked',false);
-  }
-</code></pre>
-
-<h3 id="process">Process</h3>
-
-<ul>
-<li>add reciepts</li>
-</ul>
-
-<pre><code>FOR i in 1..APEX_APPLICATION.G_F01.COUNT LOOP
-
-insert into EXPENSE_REPORT_ITEMS values (:P44_REPORT_ID, APEX_APPLICATION.G_F01(i));
-
-END LOOP;
+<pre><code>begin
+update_expense_report( p_report_id =&gt; :P43_REPORT_ID);
+end;
 </code></pre>
 
 
