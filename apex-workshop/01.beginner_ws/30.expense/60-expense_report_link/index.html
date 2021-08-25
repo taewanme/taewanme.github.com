@@ -4,12 +4,12 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-26T07:08:54 KST">
+<meta name="revised" content="2021-08-26T07:27:23 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="Expense Report: Master Update" />
-<meta property="og:description" content=" Stored Procedure create or replace PROCEDURE update_expense_report( p_report_id IN VARCHAR2 ) IS v_cc_num NUMBER(3); v_cc_amount NUMBER(9); v_pc_num NUMBER(3); v_pc_amount NUMBER(9); BEGIN select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_cc_num, v_cc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = &#39;cc&#39;; select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_pc_num, v_pc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = &#39;pc&#39;; UPDATE EXPENSE_REPORTS SET COMPANY_CARD_RECIEPT_NUM = v_cc_num, PRIVATE_CARD_RECIEPT_NUM = v_pc_num, COMPANY_CARD_AMOUNT = v_cc_amount, PRIVATE_CARD_AMOUNT = v_pc_amount WHERE EXPENSE_REPORT_ID = p_report_id; END;  Page 41 - Process 추가  name: update report  when: Delete   begin update_expense_report( p_report_id =&gt; :P41_EXPENSE_REPORT_ID); end;  Page 43 - Process 추가  name: update report     begin update_expense_report( p_report_id =&gt; :P43_REPORT_ID); end;  " />
+<meta property="og:description" content=" Stored Procedure create or replace PROCEDURE update_expense_report( p_report_id IN VARCHAR2 ) IS v_cc_num NUMBER(3); v_cc_amount NUMBER(9); v_pc_num NUMBER(3); v_pc_amount NUMBER(9); BEGIN select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_cc_num, v_cc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = &#39;cc&#39;; select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_pc_num, v_pc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = &#39;pc&#39;; UPDATE EXPENSE_REPORTS SET COMPANY_CARD_RECEIPT_NUM = v_cc_num, PRIVATE_CARD_RECEIEPT_NUM = v_pc_num, COMPANY_CARD_AMOUNT = v_cc_amount, PRIVATE_CARD_AMOUNT = v_pc_amount WHERE EXPENSE_REPORT_ID = p_report_id; END;  Page 41 - Process 추가  name: update report  when: Delete   begin update_expense_report( p_report_id =&gt; :P41_EXPENSE_REPORT_ID); end;  Page 43 - Process 추가  name: update report     begin update_expense_report( p_report_id =&gt; :P43_REPORT_ID); end;  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/" />
 
@@ -390,8 +390,8 @@ and card_type = 'pc';
 
 UPDATE EXPENSE_REPORTS
 SET 
-COMPANY_CARD_RECIEPT_NUM = v_cc_num,
-PRIVATE_CARD_RECIEPT_NUM = v_pc_num,
+COMPANY_CARD_RECEIPT_NUM = v_cc_num,
+PRIVATE_CARD_RECEIEPT_NUM = v_pc_num,
 COMPANY_CARD_AMOUNT = v_cc_amount,
 PRIVATE_CARD_AMOUNT = v_pc_amount
 WHERE EXPENSE_REPORT_ID = p_report_id;
