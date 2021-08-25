@@ -4,12 +4,12 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-26T06:24:17 KST">
+<meta name="revised" content="2021-08-26T06:48:55 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="Expense Report: 복수 영수증 추가" />
-<meta property="og:description" content="새로운 페이지 추가  type: blank page number: 44  리포트 추가  Report Name: 대상 영수증  select apex_item.checkbox(1, EXPENSE_ID) selected, &quot;EXPENSE_ID&quot;,&quot;EMPLOYEE_ID&quot;,&quot;TYPE_ID&quot;,&quot;PAYMENT_AMOUNT&quot;,&quot;TITLE&quot;, ,&quot;CARD_TYPE&quot;, &quot;USE_DATE&quot;,&quot;CRE_DATE&quot; from &quot;EXPENSES&quot; where expense_id not in ( select i.expense_id from expense_reports r, expense_report_items i where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) ) order by USE_DATE  Report ID Page Item  P44_REPORT_ID  조회 조건 Page Item 추가  Search 리전  P44_SEARCH_FROM  default: sysdate - 60 format mask: YYYY-MM-DD  P44_SEARCH_TO  default: sysdate - 60 format mask: YYYY-MM-DD    리포트 쿼리 수정 select apex_item." />
+<meta property="og:description" content="새로운 페이지 추가  type: blank page number: 44  리포트 추가  Report Name: 대상 영수증  select apex_item.checkbox(1, EXPENSE_ID) selected, &quot;EXPENSE_ID&quot;,&quot;EMPLOYEE_ID&quot;,&quot;TYPE_ID&quot;,&quot;PAYMENT_AMOUNT&quot;,&quot;TITLE&quot; ,&quot;CARD_TYPE&quot;, &quot;USE_DATE&quot;,&quot;CRE_DATE&quot; from &quot;EXPENSES&quot; where expense_id not in ( select i.expense_id from expense_reports r, expense_report_items i where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) ) order by USE_DATE  Report ID Page Item  P44_REPORT_ID  조회 조건 Page Item 추가  Search 리전  P44_SEARCH_FROM  default: sysdate - 60 format mask: YYYY-MM-DD  P44_SEARCH_TO  default: sysdate format mask: YYYY-MM-DD    리포트 쿼리 수정 select apex_item." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/" />
 
@@ -377,7 +377,7 @@
 </ul>
 
 <pre><code>select  apex_item.checkbox(1, EXPENSE_ID) selected,
-&quot;EXPENSE_ID&quot;,&quot;EMPLOYEE_ID&quot;,&quot;TYPE_ID&quot;,&quot;PAYMENT_AMOUNT&quot;,&quot;TITLE&quot;,
+&quot;EXPENSE_ID&quot;,&quot;EMPLOYEE_ID&quot;,&quot;TYPE_ID&quot;,&quot;PAYMENT_AMOUNT&quot;,&quot;TITLE&quot;
 ,&quot;CARD_TYPE&quot;,
 &quot;USE_DATE&quot;,&quot;CRE_DATE&quot;
 from &quot;EXPENSES&quot;
@@ -409,7 +409,7 @@ order by USE_DATE
 <li>P44_SEARCH_TO
 
 <ul>
-<li>default: sysdate - 60</li>
+<li>default: sysdate</li>
 <li>format mask: YYYY-MM-DD</li>
 </ul></li>
 </ul></li>
@@ -418,7 +418,7 @@ order by USE_DATE
 <h3 id="리포트-쿼리-수정">리포트 쿼리 수정</h3>
 
 <pre><code>select  apex_item.checkbox(1, EXPENSE_ID) selected,
-&quot;EXPENSE_ID&quot;,&quot;EMPLOYEE_ID&quot;,&quot;TYPE_ID&quot;,&quot;PAYMENT_AMOUNT&quot;,&quot;TITLE&quot;,
+&quot;EXPENSE_ID&quot;,&quot;EMPLOYEE_ID&quot;,&quot;TYPE_ID&quot;,&quot;PAYMENT_AMOUNT&quot;,&quot;TITLE&quot;
 ,&quot;CARD_TYPE&quot;,
 from &quot;EXPENSES&quot;
 where USE_DATE &gt;= to_date(:P44_SEARCH_FROM, 'YYYY-MM-DD') 
