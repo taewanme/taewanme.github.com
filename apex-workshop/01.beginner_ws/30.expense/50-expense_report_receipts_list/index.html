@@ -4,14 +4,12 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-24T10:20:52 KST">
+<meta name="revised" content="2021-08-25T22:42:42 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="Expense 영수증 관리: Master Detail(3)" />
-<meta property="og:description" content="작업 절차  41번 페이지 영수증 리포트 View 변경 Select/Unselect All 설정 복수 삭제 버튼 &amp; Process 설정 리포트 컬럼명 변경  리포트 SQL 변경 select REPORT_ID, EXPENSE_ID, EMPLOYEE_ID, TYPE_ID, PAYMENT_AMOUNT, TITLE, DESCRIPTION, USE_DATE, CRE_DATE from EXPENSE_REPORT_ITEMS_V where REPORT_ID = :P41_EXPENSE_REPORT_ID order by expense_id  select/unselect all  리포트 SQL 컬럼 추가  apex_item.checkbox2(1, EXPENSE_ID) selected,   헤딩 변경
-&lt;input type=&quot;checkbox&quot; id=&quot;selectunselectall&quot;&gt;  컬럼 위치 변경
- Escape special characters 비활성화" />
+<meta property="og:title" content="Expense Report: 상세 테이블 개선" />
+<meta property="og:description" content="작업 절차  41번 페이지 Expense Report Items 리전의 영수증 리포트 View 변경 리포트에 Select/Unselect All 설정 선택한 복수 영수증 삭제 버튼 선택한 복수 영수증 삭제 Process 리포트 컬럼명 변경  리포트 뷰 변경  뷰: EXPENSE_REPORT_ITEMS_V Where: REPORT_ID = :P41_EXPENSE_REPORT_ID order: expense_id  select REPORT_ID, EXPENSE_ID, EMPLOYEE_ID, TYPE_ID, PAYMENT_AMOUNT, TITLE, DESCRIPTION, USE_DATE, CRE_DATE from EXPENSE_REPORT_ITEMS_V where REPORT_ID = :P41_EXPENSE_REPORT_ID order by expense_id  select/unselect all  리포트 SQL 컬럼 추가  apex_item." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/" />
 
@@ -35,7 +33,7 @@
 
 
 
-<title>Expense 영수증 관리: Master Detail(3) :: Oracle APEX Workshop</title>
+<title>Expense Report: 상세 테이블 개선 :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -245,7 +243,14 @@
       <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/" class="dd-item active">
         <div>
           <a href="/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/">
-            Expense 영수증 관리: Master Detail(3)
+            Expense Report: 상세 테이블 개선
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/" class="dd-item">
+        <div>
+          <a href="/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/">
+            Expense Report: 상세 테이블 개선
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -321,7 +326,8 @@
       <option value="/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/" >-- Expense 영수증 관리: IR</option>
       <option value="/apex-workshop/01.beginner_ws/30.expense/30-expense_report/" >-- Expense 영수증 관리: Master Detail(1)</option>
       <option value="/apex-workshop/01.beginner_ws/30.expense/40-expense_report_add_receipts/" >-- Expense 영수증 관리: Master Detail(2)</option>
-      <option value="/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/"  selected>-- Expense 영수증 관리: Master Detail(3)</option>
+      <option value="/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/"  selected>-- Expense Report: 상세 테이블 개선</option>
+      <option value="/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/" >-- Expense Report: 상세 테이블 개선</option>
   
   
 
@@ -344,7 +350,7 @@
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>Expense 영수증 관리: Master Detail(3)</h1>
+    <h1>Expense Report: 상세 테이블 개선</h1>
 
 
      
@@ -360,13 +366,20 @@
 <h2 id="작업-절차">작업 절차</h2>
 
 <ul>
-<li>41번 페이지 영수증 리포트 View 변경</li>
-<li>Select/Unselect All 설정</li>
-<li>복수 삭제 버튼 &amp; Process 설정</li>
+<li>41번 페이지 Expense Report Items 리전의 영수증 리포트 View 변경</li>
+<li>리포트에 Select/Unselect All 설정</li>
+<li>선택한 복수 영수증 삭제 버튼</li>
+<li>선택한 복수 영수증 삭제 Process</li>
 <li>리포트 컬럼명 변경</li>
 </ul>
 
-<h3 id="리포트-sql-변경">리포트 SQL 변경</h3>
+<h3 id="리포트-뷰-변경">리포트 뷰 변경</h3>
+
+<ul>
+<li>뷰: EXPENSE_REPORT_ITEMS_V</li>
+<li>Where: REPORT_ID = :P41_EXPENSE_REPORT_ID</li>
+<li>order: expense_id</li>
+</ul>
 
 <pre><code>select
        REPORT_ID,
@@ -446,7 +459,7 @@ END LOOP;
 </div><div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/30.expense/40-expense_report_add_receipts/" title="Expense 영수증 관리: Master Detail(2)"> <i class="fa fa-chevron-left"></i><label>Expense 영수증 관리: Master Detail(2)</label></a>
-    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/30.expense/10-expense_mngt/" title="Expense 영수증 관리: Form" style="margin-right: 0px;"><label>Expense 영수증 관리: Form</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/" title="Expense Report: 상세 테이블 개선" style="margin-right: 0px;"><label>Expense Report: 상세 테이블 개선</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="panel panel-danger">
