@@ -4,11 +4,11 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-26T03:59:26 KST">
+<meta name="revised" content="2021-08-26T04:02:10 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="Expense Report: 상세 테이블 개선" />
+<meta property="og:title" content="Expense Report: 상세 리포트 개선" />
 <meta property="og:description" content="작업 절차  41번 페이지 Expense Report Items 리전의 영수증 리포트 View 변경 리포트에 Select/Unselect All 설정 선택한 복수 영수증 삭제 버튼 선택한 복수 영수증 삭제 Process 리포트 컬럼명 변경  리포트 뷰 변경  뷰: EXPENSE_REPORT_ITEMS_V Where: REPORT_ID = :P41_EXPENSE_REPORT_ID order: expense_id  select REPORT_ID, EXPENSE_ID, EMPLOYEE_ID, TYPE_ID, PAYMENT_AMOUNT, TITLE, DESCRIPTION, USE_DATE, CRE_DATE from EXPENSE_REPORT_ITEMS_V where REPORT_ID = :P41_EXPENSE_REPORT_ID order by expense_id  select/unselect all  리포트 SQL 컬럼 추가  apex_item." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/" />
@@ -33,7 +33,7 @@
 
 
 
-<title>Expense Report: 상세 테이블 개선 :: Oracle APEX Workshop</title>
+<title>Expense Report: 상세 리포트 개선 :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -243,7 +243,7 @@
       <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/" class="dd-item active">
         <div>
           <a href="/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/">
-            Expense Report: 상세 테이블 개선
+            Expense Report: 상세 리포트 개선
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -326,7 +326,7 @@
       <option value="/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/" >-- Expense 영수증 관리: IR</option>
       <option value="/apex-workshop/01.beginner_ws/30.expense/30-expense_report/" >-- Expense 영수증 관리: Master Detail(1)</option>
       <option value="/apex-workshop/01.beginner_ws/30.expense/40-expense_report_add_receipts/" >-- Expense 영수증 관리: Master Detail(2)</option>
-      <option value="/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/"  selected>-- Expense Report: 상세 테이블 개선</option>
+      <option value="/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/"  selected>-- Expense Report: 상세 리포트 개선</option>
       <option value="/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/" >-- Expense Report: 폼 페이지 연결</option>
   
   
@@ -350,7 +350,7 @@
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>Expense Report: 상세 테이블 개선</h1>
+    <h1>Expense Report: 상세 리포트 개선</h1>
 
 
      
@@ -426,7 +426,25 @@
 <li>설정값: added_expenses</li>
 </ul></li>
 
-<li><p>change event</p></li>
+<li><p>event 등록</p>
+
+<ul>
+<li>Identification<br /></li>
+<li>Name  : change selectunselectall</li>
+<li>when</li>
+<li>Event: change</li>
+<li>Selection Type: JQuery Selector</li>
+<li>JQuery Selector #selectunselectall</li>
+<li>Advanced</li>
+<li>Event Scope: Dynamic</li>
+<li>static container: #added_expenses</li>
+</ul></li>
+
+<li><p>change event의 action</p>
+
+<ul>
+<li>Execute JavaScript</li>
+</ul></li>
 </ul>
 
 <pre><code>  if ($('#added_expenses #selectunselectall' ).is(':checked') ) {
