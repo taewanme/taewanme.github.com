@@ -4,7 +4,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-26T00:15:03 KST">
+<meta name="revised" content="2021-08-26T03:32:30 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
@@ -426,7 +426,25 @@
 <li>설정값: added_expenses</li>
 </ul></li>
 
-<li><p>change event</p></li>
+<li><p>event 등록</p>
+
+<ul>
+<li>Identification<br /></li>
+<li>Name  : change selectunselectall</li>
+<li>when</li>
+<li>Event: change</li>
+<li>Selection Type: JQuery Selector</li>
+<li>JQuery Selector #selectunselectall</li>
+<li>Advanced</li>
+<li>Event Scope: Dynamic</li>
+<li>static container: #added_expenses</li>
+</ul></li>
+
+<li><p>change event의 action</p>
+
+<ul>
+<li>Execute JavaScript</li>
+</ul></li>
 </ul>
 
 <pre><code>  if ($('#added_expenses #selectunselectall' ).is(':checked') ) {
