@@ -112,6 +112,13 @@
 	"content": "   작업 절차  43번 페이지 수정 P43_REPORT_ID는 Hidden 처리 P43_EXPESNE_ID는 Select List 처리 P43_EXPESNE_ID 이름 한글화 41번 페이지의 +기호 한글화  P43_EXPESNE_ID는 Select List 처리 select title||','||payment_amount||'('||use_date||')', expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i.expense_id from expense_reports r, expense_report_items i where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) ) order by use_date  "
 },
 {
+	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/",
+	"title": "M04-APEX 인증",
+	"tags": [],
+	"description": "",
+	"content": " Oracle APEX Beginner Workshop의 네 번째 모듈에서는 APEX 인증 커스터마이징을 다룹니다.\n모듈 구성 이번 모듈은 다음과 같은 항목을 다룹니다.\n Login 페이지 수정 사용자 정의 인증: 데이터베이스 테이블 사용자 등록 메일 발송 패스워드 초기화  "
+},
+{
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/",
 	"title": "APEX Workspace 사용자 등록",
 	"tags": [],

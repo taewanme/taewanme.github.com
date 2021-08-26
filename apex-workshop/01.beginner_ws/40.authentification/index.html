@@ -8,19 +8,14 @@
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="APEX 입문자 워크숍 소개" />
-<meta property="og:description" content="APEX 입문자 워크숍은 Oracle APEX를 처음 접하시는 분들을 대상으로 합니다. Oracle APEX Low-Code를 쉽게 따라하면서 기본적은 작동 방식을 이해하는 형태로 구성됩니다.
-APEX 입문자 워크숍은 4개 모듈로 구성됩니다.
- M01: Oracle APEX 실습 환경 구성 M02: 직원 정보 관리 M03: Expense 영수증 관리 M04: APEX 인증 커스커마이징  총 4개 모듈로 구성되면 전체 동영상 길이는 5시간 입니다.
-Oracle Cloud Infrastrucrue의 ADB를 기반 실습 환경으로합니다." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/05-about-workshop/" />
+<meta property="og:title" content="M04-APEX 인증" />
+<meta property="og:description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/" />
 
 
 
-<meta property="article:published_time" content="2021-08-14T09:11:05&#43;09:00"/>
-<meta property="article:modified_time" content="2021-08-14T09:11:05&#43;09:00"/>
-
+<meta property="og:updated_time" content="2021-08-21T01:11:05&#43;09:00"/>
 
 
 
@@ -36,7 +31,7 @@ Oracle Cloud Infrastrucrue의 ADB를 기반 실습 환경으로합니다." />
 
 
 
-<title>APEX 입문자 워크숍 소개 :: Oracle APEX Workshop</title>
+<title>M04-APEX 인증 :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -75,7 +70,7 @@ Oracle Cloud Infrastrucrue의 ADB를 기반 실습 환경으로합니다." />
 
     
   </head>
-  <body data-url="/apex-workshop/01.beginner_ws/05-about-workshop/">
+  <body data-url="/apex-workshop/01.beginner_ws/40.authentification/">
     
       <header>
   <div class="logo">
@@ -127,7 +122,7 @@ Oracle Cloud Infrastrucrue의 ADB를 기반 실습 환경으로합니다." />
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/05-about-workshop/" class="dd-item active">
+      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/05-about-workshop/" class="dd-item">
         <div>
           <a href="/apex-workshop/01.beginner_ws/05-about-workshop/">
             APEX 입문자 워크숍 소개
@@ -259,7 +254,7 @@ Oracle Cloud Infrastrucrue의 ADB를 기반 실습 환경으로합니다." />
     </li>
         </ul>
     </li>
-    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/" class="dd-item alwaysopen
+    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/" class="dd-item parent active alwaysopen
         ">
       <div>
       <a href="/apex-workshop/01.beginner_ws/40.authentification/">M04-APEX 인증</a><i class="fa fa-circle-thin read-icon"></i>
@@ -311,7 +306,7 @@ Oracle Cloud Infrastrucrue의 ADB를 기반 실습 환경으로합니다." />
    Oracle APEX Workshop</option>
     <option value="/apex-workshop/01.beginner_ws/" >
    APEX 입문자 워크숖</option> 
-      <option value="/apex-workshop/01.beginner_ws/05-about-workshop/"  selected>- APEX 입문자 워크숍 소개</option>
+      <option value="/apex-workshop/01.beginner_ws/05-about-workshop/" >- APEX 입문자 워크숍 소개</option>
     <option value="/apex-workshop/01.beginner_ws/10.prep/" >
   - 
    M01.실습환경 준비</option> 
@@ -338,7 +333,7 @@ Oracle Cloud Infrastrucrue의 ADB를 기반 실습 환경으로합니다." />
       <option value="/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/" >-- Expense Report: 상세 리포트 개선</option>
       <option value="/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/" >-- Expense Report: Master Update</option>
   
-    <option value="/apex-workshop/01.beginner_ws/40.authentification/" >
+    <option value="/apex-workshop/01.beginner_ws/40.authentification/"  selected>
   - 
    M04-APEX 인증</option> 
   
@@ -363,7 +358,7 @@ Oracle Cloud Infrastrucrue의 ADB를 기반 실습 환경으로합니다." />
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>APEX 입문자 워크숍 소개</h1>
+    <h1>M04-APEX 인증</h1>
 
 
      
@@ -372,30 +367,35 @@ Oracle Cloud Infrastrucrue의 ADB를 기반 실습 환경으로합니다." />
     
     
     
-    <p>APEX 입문자 워크숍은 Oracle APEX를 처음 접하시는 분들을 대상으로 합니다. Oracle APEX Low-Code를 쉽게 따라하면서 기본적은 작동 방식을 이해하는 형태로 구성됩니다.</p>
 
-<p>APEX 입문자 워크숍은 4개 모듈로 구성됩니다.</p>
 
-<ol>
-<li>M01: Oracle APEX 실습 환경 구성</li>
-<li>M02: 직원 정보 관리</li>
-<li>M03: Expense 영수증 관리</li>
-<li>M04: APEX 인증 커스커마이징</li>
-</ol>
 
-<p>총 4개 모듈로 구성되면 전체 동영상 길이는 5시간 입니다.</p>
+<hr />
 
-<p>Oracle Cloud Infrastrucrue의 ADB를 기반 실습 환경으로합니다.</p>
+<p><strong>Oracle APEX Beginner Workshop</strong>의 네 번째 모듈에서는 APEX 인증 커스터마이징을 다룹니다.</p>
+
+<h2 id="모듈-구성">모듈 구성</h2>
+
+<p>이번 모듈은 다음과 같은 항목을 다룹니다.</p>
+
+<ul>
+<li>Login 페이지 수정</li>
+<li>사용자 정의 인증: 데이터베이스 테이블</li>
+<li>사용자 등록</li>
+<li>메일 발송</li>
+<li>패스워드 초기화</li>
+</ul>
+
 
 
     
     
       <div class="alert alert-info" role="alter">
-  <li><strong>문서 생성:</strong> 2021-08-14 09:11 / <string>최종 문서 수정:</strong> 2021-08-14 09:11 </li>
+  <li><strong>문서 생성:</strong> 2021-08-21 01:11 / <string>최종 문서 수정:</strong> 2021-08-21 01:11 </li>
 </div><div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/" title="APEX 입문자 워크숖"> <i class="fa fa-chevron-left"></i><label>APEX 입문자 워크숖</label></a>
-    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/10.prep/" title="M01.실습환경 준비" style="margin-right: 0px;"><label>M01.실습환경 준비</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/" title="Expense Report: Master Update"> <i class="fa fa-chevron-left"></i><label>Expense Report: Master Update</label></a>
+    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/05-about-workshop/" title="APEX 입문자 워크숍 소개" style="margin-right: 0px;"><label>APEX 입문자 워크숍 소개</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="panel panel-danger">
@@ -405,7 +405,7 @@ Oracle Cloud Infrastrucrue의 ADB를 기반 실습 환경으로합니다." />
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/01.beginner_ws/05-about-workshop/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/"></div>
 
   </div>
 
@@ -421,7 +421,7 @@ Oracle Cloud Infrastrucrue의 ADB를 기반 실습 환경으로합니다." />
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 14/08/2021
+        <i class='fa fa-calendar'></i> Last update on 21/08/2021
     </div>
     
   </div>
