@@ -44,6 +44,16 @@ Oracle Cloud Infrastrucrue의 ADB를 기반 실습 환경으로합니다.</descr
     </item>
     
     <item>
+      <title>Login 페이지 변경</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/10-login/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/10-login/</guid>
+      <description> Login 페이지 적용 이미지 다음 이미지를 다운로드 받으시기 바랍니다.
+Static Application Files 등록 CSS Inline body{ background-image: url(&#39;#APP_IMAGES#base.jpg&#39;); background-position: center; background-repeat: no-repeat; background-size: cover; } Span.t-Login-logo{ background-image : url(&#39;#APP_IMAGES#oracle-apex.png&#39;); background-Size :cover; width :150px; height :120px; }  </description>
+    </item>
+    
+    <item>
       <title>OCI Free Trail 신청</title>
       <link>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/</link>
       <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
