@@ -85,12 +85,12 @@ OCI 사용자 ID &amp;amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI
     </item>
     
     <item>
-      <title>Expense 영수증 관리: Master Detail(1)</title>
+      <title>Expense Report: Master Detail</title>
       <link>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/30-expense_report/</link>
       <pubDate>Sat, 21 Aug 2021 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/30-expense_report/</guid>
-      <description>작업 절차  Expense Report 생성 (#41, #42, #43) SEQUENCE 생성: EXPESNE_REPORT_SEQ Process 등록: set pk with seq FORM Page Item 수정 리포트 생성  Expense Report 생성  Start Page Number: 41 Type: Master Detail - Side by Side  SEQUENCE 생성  APEX Workspace  SQL Workshop  Object Browser Sequence 이름: EXPENSE_REPORT_SEQ  Process 등록: set pk with seq declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.</description>
+      <description>작업 절차  Expense Report 생성 (#41, #42, #43) SEQUENCE 생성: EXPENSE_REPORT_SEQ Process 등록: set pk with seq FORM Page Item 수정 리포트 생성  Expense Report 생성  Start Page Number: 41 Type: Master Detail - Side by Side  SEQUENCE 생성  APEX Workspace  SQL Workshop  Object Browser Sequence 이름: EXPENSE_REPORT_SEQ  Process 등록: set pk with seq declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.</description>
     </item>
     
     <item>
