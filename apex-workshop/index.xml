@@ -91,7 +91,7 @@ OCI 사용자 ID &amp;amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI
       <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/20-authentication/</guid>
-      <description>Employees 테이블 패스워 설정  SQL Workshop  SQL Commands  update employees set EMP_PW = &#39;WELCOME123456!&#39;;  Oracle Function: APEX 인증  SQL Workshop  SQL Commands  create or replace function authenticate_user ( p_username in varchar2, p_password in varchar2 ) return boolean as v_pw_check varchar2(1); v_pw_retry number; begin APEX_UTIL.SET_SESSION_STATE(&#39;LOGIN_MESSAGE&#39;, &#39;시작&#39;); select &#39;x&#39; into v_pw_check from employees where upper(employee_id) = upper(p_username) and upper(emp_pw) = upper(p_password) apex_util.set_authentication_result(0); APEX_UTIL.SET_SESSION_STATE(&#39;LOGIN_MESSAGE&#39;, &#39;Success&#39;); return true; exception when NO_DATA_FOUND then apex_util.</description>
+      <description>Employees 테이블 패스워 설정  SQL Workshop  SQL Commands  update employees set EMP_PW = &#39;WELCOME123456!&#39;;  Oracle Function: APEX 인증  SQL Workshop  SQL Commands  create or replace function authenticate_user ( p_username in varchar2, p_password in varchar2 ) return boolean as v_pw_check varchar2(1); begin APEX_UTIL.SET_SESSION_STATE(&#39;LOGIN_MESSAGE&#39;, &#39;시작&#39;); select &#39;x&#39; into v_pw_check from employees where upper(employee_id) = upper(p_username) and upper(emp_pw) = upper(p_password); apex_util.set_authentication_result(0); APEX_UTIL.SET_SESSION_STATE(&#39;LOGIN_MESSAGE&#39;, &#39;Success&#39;); return true; exception when NO_DATA_FOUND then apex_util.</description>
     </item>
     
     <item>

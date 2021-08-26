@@ -4,12 +4,12 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-27T04:54:12 KST">
+<meta name="revised" content="2021-08-27T07:57:59 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
 <meta property="og:title" content="Oracle APEX 커스텀 인증" />
-<meta property="og:description" content="Employees 테이블 패스워 설정  SQL Workshop  SQL Commands  update employees set EMP_PW = &#39;WELCOME123456!&#39;;  Oracle Function: APEX 인증  SQL Workshop  SQL Commands  create or replace function authenticate_user ( p_username in varchar2, p_password in varchar2 ) return boolean as v_pw_check varchar2(1); v_pw_retry number; begin APEX_UTIL.SET_SESSION_STATE(&#39;LOGIN_MESSAGE&#39;, &#39;시작&#39;); select &#39;x&#39; into v_pw_check from employees where upper(employee_id) = upper(p_username) and upper(emp_pw) = upper(p_password) apex_util.set_authentication_result(0); APEX_UTIL.SET_SESSION_STATE(&#39;LOGIN_MESSAGE&#39;, &#39;Success&#39;); return true; exception when NO_DATA_FOUND then apex_util." />
+<meta property="og:description" content="Employees 테이블 패스워 설정  SQL Workshop  SQL Commands  update employees set EMP_PW = &#39;WELCOME123456!&#39;;  Oracle Function: APEX 인증  SQL Workshop  SQL Commands  create or replace function authenticate_user ( p_username in varchar2, p_password in varchar2 ) return boolean as v_pw_check varchar2(1); begin APEX_UTIL.SET_SESSION_STATE(&#39;LOGIN_MESSAGE&#39;, &#39;시작&#39;); select &#39;x&#39; into v_pw_check from employees where upper(employee_id) = upper(p_username) and upper(emp_pw) = upper(p_password); apex_util.set_authentication_result(0); APEX_UTIL.SET_SESSION_STATE(&#39;LOGIN_MESSAGE&#39;, &#39;Success&#39;); return true; exception when NO_DATA_FOUND then apex_util." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/20-authentication/" />
 
@@ -390,6 +390,14 @@
     
     
 
+
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/hf-ipC-zD3Q" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
+ </div>
+
+
+<hr />
+
 <h2 id="employees-테이블-패스워-설정">Employees 테이블 패스워 설정</h2>
 
 <ul>
@@ -411,14 +419,13 @@ p_password in varchar2
 ) return boolean 
 as 
   v_pw_check varchar2(1);
-  v_pw_retry number;
 begin 
   APEX_UTIL.SET_SESSION_STATE('LOGIN_MESSAGE', '시작');
 
   select 'x'
   into v_pw_check
   from employees 
-  where upper(employee_id) = upper(p_username) and upper(emp_pw) = upper(p_password) 
+  where upper(employee_id) = upper(p_username) and upper(emp_pw) = upper(p_password); 
 
   apex_util.set_authentication_result(0);
   APEX_UTIL.SET_SESSION_STATE('LOGIN_MESSAGE', 'Success');
