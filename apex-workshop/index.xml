@@ -49,7 +49,7 @@ Oracle Cloud Infrastrucrue의 ADB를 기반 실습 환경으로합니다.</descr
       <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
       
       <guid>http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/10-login/</guid>
-      <description> Login 페이지 적용 이미지 다음 이미지를 다운로드 받으시기 바랍니다.
+      <description>   Login 페이지 적용 이미지 다음 이미지를 다운로드 받으시기 바랍니다.
 Static Application Files 등록 CSS Inline body{ background-image: url(&#39;#APP_IMAGES#base.jpg&#39;); background-position: center; background-repeat: no-repeat; background-size: cover; } Span.t-Login-logo{ background-image : url(&#39;#APP_IMAGES#oracle-apex.png&#39;); background-Size :cover; width :150px; height :120px; }  </description>
     </item>
     
@@ -83,6 +83,15 @@ Always Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 �
       <description>영상 재생 시간: 14:18  Oracle APEX 입문 워크숖 실습의 통일성을 높이기 위하여 OCI 기본 환경 다음과 같이 구성하겠습니다.
 OCI 사용자 ID &amp;amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI IAM으로 만들고, OCI 사용자 그룹에 설정하겠습니다.
    IAM User ID IAM USER Group 설명     admin administrators OCI 계정 관리자 ID   developer01 develoeprs 개발자 ID    OCI Compartment OCI Compartment(구획)은 OCI 자원을 논리적으로 묶는 OCI IAM 핵심 구성 요소입니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle APEX 커스텀 인증</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/20-authentication/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/20-authentication/</guid>
+      <description>Employees 테이블 패스워 설정  SQL Workshop  SQL Commands  update employees set EMP_PW = &#39;WELCOME123456!&#39;;  Oracle Function: APEX 인증  SQL Workshop  SQL Commands  create or replace function authenticate_user ( p_username in varchar2, p_password in varchar2 ) return boolean as v_pw_check varchar2(1); v_pw_retry number; begin APEX_UTIL.SET_SESSION_STATE(&#39;LOGIN_MESSAGE&#39;, &#39;시작&#39;); select &#39;x&#39; into v_pw_check from employees where upper(employee_id) = upper(p_username) and upper(emp_pw) = upper(p_password) apex_util.set_authentication_result(0); APEX_UTIL.SET_SESSION_STATE(&#39;LOGIN_MESSAGE&#39;, &#39;Success&#39;); return true; exception when NO_DATA_FOUND then apex_util.</description>
     </item>
     
     <item>

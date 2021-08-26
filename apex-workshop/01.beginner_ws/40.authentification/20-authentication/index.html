@@ -8,11 +8,10 @@
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="Login 페이지 변경" />
-<meta property="og:description" content="   Login 페이지 적용 이미지 다음 이미지를 다운로드 받으시기 바랍니다.
-Static Application Files 등록 CSS Inline body{ background-image: url(&#39;#APP_IMAGES#base.jpg&#39;); background-position: center; background-repeat: no-repeat; background-size: cover; } Span.t-Login-logo{ background-image : url(&#39;#APP_IMAGES#oracle-apex.png&#39;); background-Size :cover; width :150px; height :120px; }  " />
+<meta property="og:title" content="Oracle APEX 커스텀 인증" />
+<meta property="og:description" content="Employees 테이블 패스워 설정  SQL Workshop  SQL Commands  update employees set EMP_PW = &#39;WELCOME123456!&#39;;  Oracle Function: APEX 인증  SQL Workshop  SQL Commands  create or replace function authenticate_user ( p_username in varchar2, p_password in varchar2 ) return boolean as v_pw_check varchar2(1); v_pw_retry number; begin APEX_UTIL.SET_SESSION_STATE(&#39;LOGIN_MESSAGE&#39;, &#39;시작&#39;); select &#39;x&#39; into v_pw_check from employees where upper(employee_id) = upper(p_username) and upper(emp_pw) = upper(p_password) apex_util.set_authentication_result(0); APEX_UTIL.SET_SESSION_STATE(&#39;LOGIN_MESSAGE&#39;, &#39;Success&#39;); return true; exception when NO_DATA_FOUND then apex_util." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/10-login/" />
+<meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/20-authentication/" />
 
 
 
@@ -34,7 +33,7 @@ Static Application Files 등록 CSS Inline body{ background-image: url(&#39;#APP
 
 
 
-<title>Login 페이지 변경 :: Oracle APEX Workshop</title>
+<title>Oracle APEX 커스텀 인증 :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -73,7 +72,7 @@ Static Application Files 등록 CSS Inline body{ background-image: url(&#39;#APP
 
     
   </head>
-  <body data-url="/apex-workshop/01.beginner_ws/40.authentification/10-login/">
+  <body data-url="/apex-workshop/01.beginner_ws/40.authentification/20-authentication/">
     
       <header>
   <div class="logo">
@@ -264,14 +263,14 @@ Static Application Files 등록 CSS Inline body{ background-image: url(&#39;#APP
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/10-login/" class="dd-item active">
+      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/10-login/" class="dd-item">
         <div>
           <a href="/apex-workshop/01.beginner_ws/40.authentification/10-login/">
             Login 페이지 변경
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/20-authentication/" class="dd-item">
+      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/20-authentication/" class="dd-item active">
         <div>
           <a href="/apex-workshop/01.beginner_ws/40.authentification/20-authentication/">
             Oracle APEX 커스텀 인증
@@ -356,8 +355,8 @@ Static Application Files 등록 CSS Inline body{ background-image: url(&#39;#APP
     <option value="/apex-workshop/01.beginner_ws/40.authentification/" >
   - 
    M04-APEX 인증</option> 
-      <option value="/apex-workshop/01.beginner_ws/40.authentification/10-login/"  selected>-- Login 페이지 변경</option>
-      <option value="/apex-workshop/01.beginner_ws/40.authentification/20-authentication/" >-- Oracle APEX 커스텀 인증</option>
+      <option value="/apex-workshop/01.beginner_ws/40.authentification/10-login/" >-- Login 페이지 변경</option>
+      <option value="/apex-workshop/01.beginner_ws/40.authentification/20-authentication/"  selected>-- Oracle APEX 커스텀 인증</option>
   
   
 
@@ -380,7 +379,7 @@ Static Application Files 등록 CSS Inline body{ background-image: url(&#39;#APP
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>Login 페이지 변경</h1>
+    <h1>Oracle APEX 커스텀 인증</h1>
 
 
      
@@ -391,44 +390,55 @@ Static Application Files 등록 CSS Inline body{ background-image: url(&#39;#APP
     
     
 
+<h2 id="employees-테이블-패스워-설정">Employees 테이블 패스워 설정</h2>
 
-<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/NtMdEcIe0kI" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
- </div>
+<ul>
+<li>SQL Workshop <span class="fa fa-angle-double-right"  style="font-size:large" aria-hidden="true"></span>  SQL Commands</li>
+</ul>
 
-
-<hr />
-
-<h2 id="login-페이지-적용-이미지">Login 페이지 적용 이미지</h2>
-
-<p>다음 이미지를 다운로드 받으시기 바랍니다.</p>
-
-<p><img src="https://taewanmerepo.github.io/2021/08/apex/bg.png" alt="" />
-<img src="https://www.oracle.com/a/ocom/img/dc/em/oracle-apex.png" alt="" /></p>
-
-<h2 id="static-application-files-등록">Static Application Files 등록</h2>
-
-<p><img src="https://taewanmerepo.github.io/2021/08/apex/600.jpg" alt="" />
-<img src="https://taewanmerepo.github.io/2021/08/apex/700.jpg" alt="" /></p>
-
-<h2 id="css-inline">CSS Inline</h2>
-
-<pre><code>body{
-  background-image: url('#APP_IMAGES#base.jpg');
-  background-position: center;
-  background-repeat: no-repeat; 
-  background-size: cover;
-}
-
-
-Span.t-Login-logo{
-background-image : url('#APP_IMAGES#oracle-apex.png');
-background-Size :cover;
- width :150px;
-height :120px;
-
-}
+<pre><code>update employees set EMP_PW = 'WELCOME123456!';
 </code></pre>
+
+<h2 id="oracle-function-apex-인증">Oracle Function: APEX 인증</h2>
+
+<ul>
+<li>SQL Workshop <span class="fa fa-angle-double-right"  style="font-size:large" aria-hidden="true"></span>  SQL Commands</li>
+</ul>
+
+<pre><code>create or replace function authenticate_user (
+p_username in varchar2,
+p_password in varchar2
+) return boolean 
+as 
+  v_pw_check varchar2(1);
+  v_pw_retry number;
+begin 
+  APEX_UTIL.SET_SESSION_STATE('LOGIN_MESSAGE', '시작');
+
+  select 'x'
+  into v_pw_check
+  from employees 
+  where upper(employee_id) = upper(p_username) and upper(emp_pw) = upper(p_password) 
+
+  apex_util.set_authentication_result(0);
+  APEX_UTIL.SET_SESSION_STATE('LOGIN_MESSAGE', 'Success');
+
+  return true;
+
+exception when NO_DATA_FOUND then 
+  apex_util.set_authentication_result(4);
+  APEX_UTIL.SET_SESSION_STATE('LOGIN_MESSAGE', '오류!! 아이디와 비밀번호가 불일치합니다.');
+
+  return false;
+
+end authenticate_user;
+</code></pre>
+
+<h2 id="application-item-등록">Application Item 등록</h2>
+
+<ul>
+<li>LOGIN_MESSAGE</li>
+</ul>
 
 
     
@@ -437,8 +447,8 @@ height :120px;
   <li><strong>문서 생성:</strong> 2021-08-14 09:11 / <string>최종 문서 수정:</strong> 2021-08-14 09:11 </li>
 </div><div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/40.authentification/" title="M04-APEX 인증"> <i class="fa fa-chevron-left"></i><label>M04-APEX 인증</label></a>
-    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/40.authentification/20-authentication/" title="Oracle APEX 커스텀 인증" style="margin-right: 0px;"><label>Oracle APEX 커스텀 인증</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/40.authentification/10-login/" title="Login 페이지 변경"> <i class="fa fa-chevron-left"></i><label>Login 페이지 변경</label></a>
+    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/40.authentification/10-login/" title="Login 페이지 변경" style="margin-right: 0px;"><label>Login 페이지 변경</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="panel panel-danger">
@@ -448,7 +458,7 @@ height :120px;
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/10-login/"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/20-authentication/"></div>
 
   </div>
 
