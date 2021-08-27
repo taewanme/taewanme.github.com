@@ -11,14 +11,14 @@
 	"title": "Oracle APEX Workshop",
 	"tags": [],
 	"description": "&#39;",
-	"content": "Oracle APEX 워크샾은 실습을 중심으로 Oracle APEX를 익히는 컨텐트로 구성됩니다. 각 워크샾은 동영상 따라하기 방식으로 진행됩니다.\n"
+	"content": "Oracle APEX 워크숍은 실습을 중심으로 Oracle APEX를 익히는 컨텐트로 구성됩니다. 각 워크샾은 동영상 따라하기 방식으로 진행됩니다.\n"
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/05-about-workshop/",
 	"title": "APEX 입문자 워크숍 소개",
 	"tags": [],
 	"description": "",
-	"content": "APEX 입문자 워크숍은 Oracle APEX를 처음 접하시는 분들을 대상으로 합니다. Oracle APEX Low-Code를 쉽게 따라하면서 기본적은 작동 방식을 이해하는 형태로 구성됩니다.\nAPEX 입문자 워크숍은 4개 모듈로 구성됩니다.\n M01: Oracle APEX 실습 환경 구성 M02: 직원 정보 관리 M03: Expense 영수증 관리 M04: APEX 인증 커스커마이징  총 4개 모듈로 구성되면 전체 동영상 길이는 5시간 입니다.\nOracle Cloud Infrastrucrue의 ADB를 기반 실습 환경으로합니다.\n"
+	"content": "APEX 입문자 워크숍은 Oracle APEX를 처음 접하시는 분들을 대상으로 합니다. Oracle APEX Low-Code를 쉽게 따라하면서 기본적은 작동 방식을 이해하는 형태로 구성됩니다.\nAPEX 입문자 워크숍은 4개 모듈로 구성됩니다.\n M01: Oracle APEX 실습 환경 구성 M02: 직원 정보 관리 M03: Expense 영수증 관리 M04: APEX 인증 및 커스커마이징  총 4개 모듈로 구성되면 전체 동영상 길이는 5시간 입니다.\nOracle Cloud Infrastrucrue의 ADB를 기반 실습 환경으로합니다.\n"
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/10-expense_mngt/",
@@ -151,7 +151,7 @@
 	"title": "Expense Report: 상세 리포트 개선",
 	"tags": [],
 	"description": "",
-	"content": "   작업 절차  41번 페이지 Expense Report Items 리전의 영수증 리포트 View 변경 리포트에 Select/Unselect All 설정 선택한 복수 영수증 삭제 버튼 선택한 복수 영수증 삭제 Process 리포트 컬럼명 변경  리포트 뷰 변경  뷰: EXPENSE_REPORT_ITEMS_V Where: REPORT_ID = :P41_EXPENSE_REPORT_ID order: expense_id  select REPORT_ID, EXPENSE_ID, EMPLOYEE_ID, TYPE_ID, PAYMENT_AMOUNT, TITLE, DESCRIPTION, USE_DATE, CRE_DATE from EXPENSE_REPORT_ITEMS_V where REPORT_ID = :P41_EXPENSE_REPORT_ID order by expense_id  select/unselect all  리포트 SQL 컬럼 추가  apex_item.checkbox2(1, EXPENSE_ID) selected,   헤딩 변경\n\u0026lt;input type=\u0026quot;checkbox\u0026quot; id=\u0026quot;selectunselectall\u0026quot;\u0026gt;  컬럼 위치 변경\n Escape special characters 비활성화\n Expense Report Item 리전  SELECTED  SECURITY  Escape special characters  비활성화  Region static ID 설정\n Expense Report Item 리전  Advanced  Static ID 설정값: added_expenses  event 등록\n Identification\n Name : change selectunselectall  when  Event: change Selection Type: JQuery Selector JQuery Selector #selectunselectall  Advanced  Event Scope: Dynamic static container: #added_expenses   change event의 action\n Execute JavaScript    if ($('#added_expenses #selectunselectall' ).is(':checked') ) { $('#added_expenses input[type=checkbox][name=f01]').prop('checked',true); } else { $('#added_expenses input[type=checkbox][name=f01]').prop('checked',false); }  영수증 일괄 삭제  Delete Button 추가 Delete Process 추가  FOR i in 1..APEX_APPLICATION.G_F01.COUNT LOOP delete from EXPENSE_REPORT_ITEMS where report_id = :P41_EXPENSE_REPORT_ID and expense_id = APEX_APPLICATION.G_F01(i); END LOOP;  LoV 참조키 치환 select title||'('||payment_amount||')', expense_id from expenses  "
+	"content": "   작업 절차  41번 페이지 Expense Report Items 리전의 영수증 리포트 View 변경 리포트에 Select/Unselect All 설정 선택한 복수 영수증 삭제 버튼 선택한 복수 영수증 삭제 Process 리포트 컬 럼명 변경  리포트 뷰 변경  뷰: EXPENSE_REPORT_ITEMS_V Where: REPORT_ID = :P41_EXPENSE_REPORT_ID order: expense_id  select REPORT_ID, EXPENSE_ID, EMPLOYEE_ID, TYPE_ID, PAYMENT_AMOUNT, TITLE, DESCRIPTION, USE_DATE, CRE_DATE from EXPENSE_REPORT_ITEMS_V where REPORT_ID = :P41_EXPENSE_REPORT_ID order by expense_id  select/unselect all  리포트 SQL 컬럼 추가  apex_item.checkbox2(1, EXPENSE_ID) selected,   헤딩 변경\n\u0026lt;input type=\u0026quot;checkbox\u0026quot; id=\u0026quot;selectunselectall\u0026quot;\u0026gt;  컬럼 위치 변경\n Escape special characters 비활성화\n Expense Report Item 리전  SELECTED  SECURITY  Escape special characters  비활성화  Region static ID 설정\n Expense Report Item 리전  Advanced  Static ID 설정값: added_expenses  event 등록\n Identification\n Name : change selectunselectall  when  Event: change Selection Type: JQuery Selector JQuery Selector #selectunselectall  Advanced  Event Scope: Dynamic static container: #added_expenses   change event의 action\n Execute JavaScript    if ($('#added_expenses #selectunselectall' ).is(':checked') ) { $('#added_expenses input[type=checkbox][name=f01]').prop('checked',true); } else { $('#added_expenses input[type=checkbox][name=f01]').prop('checked',false); }  영수증 일괄 삭제  Delete Button 추가 Delete Process 추가  FOR i in 1..APEX_APPLICATION.G_F01.COUNT LOOP delete from EXPENSE_REPORT_ITEMS where report_id = :P41_EXPENSE_REPORT_ID and expense_id = APEX_APPLICATION.G_F01(i); END LOOP;  LoV 참조키 치환 select title||'('||payment_amount||')', expense_id from expenses  "
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/",
