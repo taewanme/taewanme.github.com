@@ -4,11 +4,11 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2021-08-27T11:44:24 KST">
+<meta name="revised" content="2021-08-27T17:08:28 KST">
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="Expense 영수증 관리: Master Detail(2)" />
+<meta property="og:title" content="Expense Report: Master Detail(2)" />
 <meta property="og:description" content="   작업 절차  43번 페이지 수정 P43_REPORT_ID는 Hidden 처리 P43_EXPESNE_ID는 Select List 처리 P43_EXPESNE_ID 이름 한글화 41번 페이지의 &#43;기호 한글화  P43_EXPESNE_ID는 Select List 처리 select title||&#39;,&#39;||payment_amount||&#39;(&#39;||use_date||&#39;)&#39;, expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i.expense_id from expense_reports r, expense_report_items i where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) ) order by use_date  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/40-expense_report_add_receipts/" />
@@ -33,7 +33,7 @@
 
 
 
-<title>Expense 영수증 관리: Master Detail(2) :: Oracle APEX Workshop</title>
+<title>Expense Report: Master Detail(2) :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -229,14 +229,14 @@
       <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/30-expense_report/" class="dd-item">
         <div>
           <a href="/apex-workshop/01.beginner_ws/30.expense/30-expense_report/">
-            Expense Report: Master Detail
+            Expense Report: Master Detail(1)
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
       <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/40-expense_report_add_receipts/" class="dd-item active">
         <div>
           <a href="/apex-workshop/01.beginner_ws/30.expense/40-expense_report_add_receipts/">
-            Expense 영수증 관리: Master Detail(2)
+            Expense Report: Master Detail(2)
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -326,6 +326,38 @@
     <option value="/apex-workshop/01.beginner_ws/" >
    APEX 입문자 워크숍</option> 
       <option value="/apex-workshop/01.beginner_ws/05-about-workshop/" >- APEX 입문자 워크숍 소개</option>
+    <option value="/apex-workshop/01.beginner_ws/10.prep/" >
+  - 
+   M01.실습환경 준비</option> 
+      <option value="/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/" >-- OCI Free Trail 신청</option>
+      <option value="/apex-workshop/01.beginner_ws/10.prep/20-oci-env-setup/" >-- OCI 기본 환경 설정</option>
+      <option value="/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/" >-- APEX 개발 환경 구성</option>
+      <option value="/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/" >-- APEX Workspace 사용자 등록</option>
+  
+    <option value="/apex-workshop/01.beginner_ws/20.m01/" >
+  - 
+   M02-직원정보관리</option> 
+      <option value="/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/" >-- APEX APP, DB 테이블, LoV 생성</option>
+      <option value="/apex-workshop/01.beginner_ws/20.m01/20-report-form/" >-- 직원 정보 관리 Report 생성</option>
+      <option value="/apex-workshop/01.beginner_ws/20.m01/30-report-form/" >-- 직원 정보 관리 세부설정</option>
+      <option value="/apex-workshop/01.beginner_ws/20.m01/40-report-search/" >-- 직원 정보 관리 - 검색</option>
+  
+    <option value="/apex-workshop/01.beginner_ws/30.expense/" >
+  - 
+   M03-영수증 관리</option> 
+      <option value="/apex-workshop/01.beginner_ws/30.expense/10-expense_mngt/" >-- Expense 영수증 관리: Form</option>
+      <option value="/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/" >-- Expense 영수증 관리: IR</option>
+      <option value="/apex-workshop/01.beginner_ws/30.expense/30-expense_report/" >-- Expense Report: Master Detail(1)</option>
+      <option value="/apex-workshop/01.beginner_ws/30.expense/40-expense_report_add_receipts/"  selected>-- Expense Report: Master Detail(2)</option>
+      <option value="/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/" >-- Expense Report: 상세 리포트 개선</option>
+      <option value="/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/" >-- Expense Report: Master Update</option>
+  
+    <option value="/apex-workshop/01.beginner_ws/40.authentification/" >
+  - 
+   M04-APEX 인증</option> 
+      <option value="/apex-workshop/01.beginner_ws/40.authentification/10-login/" >-- Login 페이지 변경</option>
+      <option value="/apex-workshop/01.beginner_ws/40.authentification/20-authentication/" >-- Oracle APEX 커스텀 인증</option>
+  
   
 
 
@@ -347,7 +379,7 @@
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>Expense 영수증 관리: Master Detail(2)</h1>
+    <h1>Expense Report: Master Detail(2)</h1>
 
 
      
@@ -394,7 +426,7 @@ order by use_date
   <li><strong>문서 생성:</strong> 2021-08-21 09:11 / <string>최종 문서 수정:</strong> 2021-08-21 09:11 </li>
 </div><div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/30.expense/30-expense_report/" title="Expense Report: Master Detail"> <i class="fa fa-chevron-left"></i><label>Expense Report: Master Detail</label></a>
+<a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/30.expense/30-expense_report/" title="Expense Report: Master Detail(1)"> <i class="fa fa-chevron-left"></i><label>Expense Report: Master Detail(1)</label></a>
     <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/" title="Expense Report: 상세 리포트 개선" style="margin-right: 0px;"><label>Expense Report: 상세 리포트 개선</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">

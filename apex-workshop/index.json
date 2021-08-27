@@ -92,7 +92,7 @@
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/30-expense_report/",
-	"title": "Expense Report: Master Detail",
+	"title": "Expense Report: Master Detail(1)",
 	"tags": [],
 	"description": "",
 	"content": "   작업 절차  Expense Report 생성 (#41, #42, #43) SEQUENCE 생성: EXPEN\u0008SE_REPORT_SEQ Process 등록: set pk with seq FORM Page Item 수정 리포트 생성  Expense Report 생성  Start Page Number: 41 Type: Master Detail - Side by Side  SEQUENCE 생성  APEX Workspace  SQL Workshop  Object Browser Sequence 이름: EXPENSE_REPORT_SEQ  Process 등록: set pk with seq declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual; :P42_EXPENSE_REPORT_ID := V_REPORT_ID; end;   Server Sdie Condition 설정  Form Page Item 수정    Page Item 이름 작업 내역 출력 이름     P42_EMPLOYEE_ID Select List, READ Only, Defalut 작성자   P42_REPORT_TITLE 리포트 이름    P42_COMPANY_CARD_RECIEPT_NUM Hidden 처리    P42_PRIVATE_CARD_RECIEPT_NUM Hidden 처리    P42_COMPANY_CARD_AMOUNT Hidden 처리    P42_PRIVATE_CARD_AMOUNT Hidden 처리    P42_CRE_DATE READ Only, Defalut, Format: YYYY-MM-DD 작성일    "
@@ -120,7 +120,7 @@
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/40-expense_report_add_receipts/",
-	"title": "Expense 영수증 관리: Master Detail(2)",
+	"title": "Expense Report: Master Detail(2)",
 	"tags": [],
 	"description": "",
 	"content": "   작업 절차  43번 페이지 수정 P43_REPORT_ID는 Hidden 처리 P43_EXPESNE_ID는 Select List 처리 P43_EXPESNE_ID 이름 한글화 41번 페이지의 +기호 한글화  P43_EXPESNE_ID는 Select List 처리 select title||','||payment_amount||'('||use_date||')', expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i.expense_id from expense_reports r, expense_report_items i where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) ) order by use_date  "
