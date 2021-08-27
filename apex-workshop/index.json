@@ -162,10 +162,10 @@
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/",
-	"title": "APEX 입문자 워크숖",
+	"title": "APEX 입문자 워크숍",
 	"tags": [],
 	"description": "",
-	"content": " APEX 입문자 워크숍은 Oracle APEX를 처음 접하시는 분들을 위한 실습을 다룹니다. 이번 워크숖은 다음과 목적으로 제작되었습니다.\n 실습을 통해서 Oracle APEX로 애플리케이션을 개발하는 전반적인 절차를 익힌다. 실습을 통해서 기본적인 Oracle APEX 개념을 익힌다. 실습을 통해서 Oracle APEX 애플리케이션의 작동방식을 이해한다.  입문자 워크샾을 통해서 다음과 같은 애플리케이션을 개발할 예정입니다.\n실습 환경 이번 워크숍은 오라클 클라우드(OCI, Oracle Cloud Infrastructure)의 Always Free 환경에서 진행됩니다.\nAlways Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 제간 제약없이 무상으로 제공하는 서비스를 의미힙니다. 오라클 클라우드가 제공하는 Always Free 서비스에 대한 자세한 내용은 다음 문서를 참조하시기 바랍니다.\n새로운 Oracle Cloud 프로모션: \u0008Free Tier  \n 오라클 클라우드 계정 이번 워크숖 실습은 OCI의 Always Free 서비스 중에서 ATP(Autonomous Transaction Service)를 이용하여 실습을 진행합니다. 따라서 OCI의 Always Free 서비스를 사용하기 위하여 오라클 클라우드 계정이 필요합니다.\n현재 사용할 오라클 클라우드 계정이 없으시다면 다음 동영상을 참조하여 오라클 클라우드가 제공하는 Free Tier 계정을 먼저 등록하시고 진행하시기 바랍니다.\n  워크숖 시작 워크숖 실습에 사용할 오라클 클라우드 계정이 준비됐다면, 이제 APEX 입문자 워크숖을 시작하겠습니다. 다음 페이지로 이동해 주세요.\n"
+	"content": " APEX 입문자 워크숍은 Oracle APEX를 처음 접하시는 분들을 위한 실습을 다룹니다. 이번 워크샵은 다음과 목적으로 제작되었습니다.\n 실습을 통해서 Oracle APEX로 애플리케이션을 개발하는 전반적인 절차를 익힌다. 실습을 통해서 기본적인 Oracle APEX 개념을 익힌다. 실습을 통해서 Oracle APEX 애플리케이션의 작동방식을 이해한다.  입문자 워크샾을 통해서 다음과 같은 애플리케이션을 개발할 예정입니다.\n실습 환경 이번 워크숍은 오라클 클라우드(OCI, Oracle Cloud Infrastructure)의 Always Free 환경에서 진행됩니다.\nAlways Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 제간 제약없이 무상으로 제공하는 서비스를 의미힙니다. 오라클 클라우드가 제공하는 Always Free 서비스에 대한 자세한 내용은 다음 문서를 참조하시기 바랍니다.\n새로운 Oracle Cloud 프로모션: \u0008Free Tier  \n 오라클 클라우드 계정 이번 워크숖 실습은 OCI의 Always Free 서비스 중에서 ATP(Autonomous Transaction Service)를 이용하여 실습을 진행합니다. 따라서 OCI의 Always Free 서비스를 사용하기 위하여 오라클 클라우드 계정이 필요합니다.\n현재 사용할 오라클 클라우드 계정이 없으시다면 다음 동영상을 참조하여 오라클 클라우드가 제공하는 Free Tier 계정을 먼저 등록하시고 진행하시기 바랍니다.\n  워크숖 시작 워크숖 실습에 사용할 오라클 클라우드 계정이 준비됐다면, 이제 APEX 입문자 워크숖을 시작하겠습니다. 다음 페이지로 이동해 주세요.\n"
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/categories/",
