@@ -144,7 +144,7 @@
 	"title": "직원 정보 관리 - 검색",
 	"tags": [],
 	"description": "",
-	"content": "    영상 재생 시간: 17:29  이번 영상에서는 직원 정보 관리 Report에 검색 기능을 추가해 보겠습니다.\n팀/성별 검색  팀 명을 체크박스 그룹으로 나열하고 하나 이상의 팀을 선택하여 검색 성별(Gender)을 체크박스 그룹으로 나열하고 하나 이상의 성별 검색\n   팀명 검색 Page Item  P21_SEARCH_TEAMS  성별 검색 Page Item  P21_SEARCH_GENDERS    Report 조회 조건  where InStr(':'||:P21_SEARCH_TEAMS||':', ':'||TEAM_ID||':') \u0026gt; 0 and TEAM_ID IS NOT NULL and InStr(':'||:P21_SEARCH_GENDERS||':', ':'||GENDER||':') \u0026gt; 0 and GENDER IS NOT NULL   조회 조건 디폴트 값 설정  Default Value  P21_SEARCH_TEAMS  select team_id from TEAMS   P21_SEARCH_GENDERS  M:F  "
+	"content": "    영상 재생 시간: 18:10  실습 과정에서 데이터 변경을 공지드립니다. 이전 영상에서는 EMPLOYEES 테이블의 employee_id로 songwha를 사용했습니다. 이 데이터가 이번 영상 부터 flower로 변경됩니다. 실습 데모를 진행하는 과정에서 부득이하게 변경됐습니다. 실습시 기존 데이터(songwha)를 삭제하고, employee_id가 flower인 새로운 직원 데이터를 입력하시고 실습을 진행하시기 바랍니다.\n 이번 영상에서는 직원 정보 관리 Report에 검색 기능을 추가해 보겠습니다.\n팀/성별 검색  팀 명을 체크박스 그룹으로 나열하고 하나 이상의 팀을 선택하여 검색 성별(Gender)을 체크박스 그룹으로 나열하고 하나 이상의 성별 검색\n   팀명 검색 Page Item  P21_SEARCH_TEAMS  성별 검색 Page Item  P21_SEARCH_GENDERS    Report 조회 조건  where InStr(':'||:P21_SEARCH_TEAMS||':', ':'||TEAM_ID||':') \u0026gt; 0 and TEAM_ID IS NOT NULL and InStr(':'||:P21_SEARCH_GENDERS||':', ':'||GENDER||':') \u0026gt; 0 and GENDER IS NOT NULL   조회 조건 디폴트 값 설정  Default Value  P21_SEARCH_TEAMS  select team_id from TEAMS   P21_SEARCH_GENDERS  M:F  "
 },
 {
 	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/",
