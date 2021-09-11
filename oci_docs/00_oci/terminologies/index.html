@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2020-03-26T08:38:11 KST">
+
+<meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
+<meta name="generator" content="Hugo 0.27.1" />
+<meta property="og:title" content="OCI 기본 용어 정리" />
+<meta property="og:description" content="오라클 클라우드(OCI Cloud Infrastructure)에서 주로 사용되는 용어를 정의합니다. " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/oci_docs/00_oci/terminologies/" />
+
+
+
+<meta property="article:published_time" content="2020-03-15T08:54:32&#43;09:00"/>
+<meta property="article:modified_time" content="2020-03-15T08:54:32&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+
+
+<title>OCI 기본 용어 정리 :: 오라클 클라우드 사용자 가이드</title>
+
+<link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
+<link href="/oci_docs/css/font-awesome.min.css" rel="stylesheet">
+<link href="/oci_docs/css/nucleus.css" rel="stylesheet">
+<link href="/oci_docs/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/oci_docs/css/bootstrap.min.css">
+<script src="/oci_docs/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "\/oci_docs";
+</script>
+<meta name="description" content="오라클 클라우드(OCI Cloud Infrastructure)에서 주로 사용되는 용어를 정의합니다. ">
+
+
+<link href='/oci_docs/css/railload.css' rel="stylesheet"/>
+
+
+<link href="/oci_docs/css/twstyle.css" rel="stylesheet">
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?style=Sons-Of-Obsidian"></script>
+
+
+<style>
+    li.L0, li.L1, li.L2, li.L3,
+    li.L5, li.L6, li.L7, li.L8
+       { list-style-type: decimal !important }
+</style>
+
+
+
+
+
+    
+  </head>
+  <body data-url="/oci_docs/00_oci/terminologies/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="/oci_docs">오라클 클라우드 사용자 가이드</a>
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="http://taewan.kim/"  rel="noopener">
+                  <i class='fa fa-file-o'></i> <label>Taewan.kim Blog</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="http://taewan.kim/cloud/"  rel="noopener">
+                  <i class='fa fa-cloud'></i> <label>Oracle Cloud</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="http://taewan.kim/tutorial_manual/"  rel="noopener">
+                  <i class='fa fa-folder'></i> <label>tutorial_manual</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+    <li data-nav-id="/oci_docs/00_oci/" class="dd-item parent alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/00_oci/">오라클 클라우드 사용자 가이드</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/00_oci/oci_services/" class="dd-item">
+        <div>
+          <a href="/oci_docs/00_oci/oci_services/">
+            OCI 주요 서비스
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/00_oci/terminologies/" class="dd-item active">
+        <div>
+          <a href="/oci_docs/00_oci/terminologies/">
+            OCI 기본 용어 정리
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/00_oci/oci_resion_info/" class="dd-item">
+        <div>
+          <a href="/oci_docs/00_oci/oci_resion_info/">
+            OCI 리전 정보
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/10_quickstart/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/">OCI 퀵스타트(Step by Step)</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/how_to_sign_up_oci/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/how_to_sign_up_oci/">
+            OCI Free Tier 계정 등록
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/first_sign_in_oci/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/first_sign_in_oci/">
+            Free Tier 계정 첫 번째 로그인
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/create_compartment/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/create_compartment/">
+            Compartment 추가
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/oci_docs/10_quickstart/vcn/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/vcn/">VCN(Virtual Cloud Network) 생성</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/vcn/simple_vcn/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/vcn/simple_vcn/">
+            간편 VCN 만들기
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/vcn/manual_vcn/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/vcn/manual_vcn/">
+            메뉴얼 VCN 만들기
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/10_quickstart/compute/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/compute/">VM 인스턴스 프로비저닝</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/10_quickstart/compute/basic_linux_vm/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/compute/basic_linux_vm/">OCI Linux VM 프로비저닝 및 관리</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/">
+            Oracle Linux VM 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/compute/basic_linux_vm/adding_block_stoage/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/compute/basic_linux_vm/adding_block_stoage/">
+            Block Storage 추가
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/">
+            OCI VM 고정 IP 설정
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/mapping_public_ip_to_domain/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/mapping_public_ip_to_domain/">
+            DNS 설정
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/oci_docs/10_quickstart/ha_with_load_balancer/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/ha_with_load_balancer/">Load Balancer를 이용한 HA 구성</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/ha_with_load_balancer/checking_resources/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/ha_with_load_balancer/checking_resources/">
+            OCI 자원 상태 확인
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_3vm/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_3vm/">
+            3개 Compte 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_load_balancer/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_load_balancer/">
+            OCI Load Balancer 프로비저닝
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/10_quickstart/object_storate/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/object_storate/">Object Storage</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/object_storate/add_bucket_and_object/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/object_storate/add_bucket_and_object/">
+            OCI Console로 Bucket 추가
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/10_quickstart/adb/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/adb/">Autonomous DB</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/adb/basic_adw_provisioning/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/adb/basic_adw_provisioning/">
+            ADW 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/adb/sqldeveloper/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/adb/sqldeveloper/">
+            SQL Developer의 ADW 연결하기
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/20_identity_and_access_management/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/20_identity_and_access_management/">OCI 사용자 및 권한 관리</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/20_identity_and_access_management/adding_oci_user/" class="dd-item">
+        <div>
+          <a href="/oci_docs/20_identity_and_access_management/adding_oci_user/">
+            OCI User 등록
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/">OCI Core Infastructure Service</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/compute/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/compute/">Compute</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/compute/provisioning/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/compute/provisioning/">Compute 인스턴스 만들기</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/" class="dd-item">
+        <div>
+          <a href="/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/">
+            Developer Image 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/30_core_infrastructure/compute/provisioning/oci_ai_datascience_image/" class="dd-item">
+        <div>
+          <a href="/oci_docs/30_core_infrastructure/compute/provisioning/oci_ai_datascience_image/">
+            AI Datascience 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/block_storage/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/block_storage/">Block Storage</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/object_storage/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/object_storage/">Object Storage</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/object_storage/management/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/object_storage/management/">Object Storage 관리</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/object_storage/management/bucket/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/object_storage/management/bucket/">Object Storage Bucket 관리</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/file_storage/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/file_storage/">File Storage</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/networking/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/networking/">Networking</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/networking/concepts/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/networking/concepts/">주요 개념 </a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/50.database_service/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.database_service/">Database Service</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/50.database_service/streaming/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.database_service/streaming/">Streaming</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/50.database_service/streaming/overview/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/streaming/overview/">
+            Streaming 서비스
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.database_service/streaming/pricing/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/streaming/pricing/">
+            Streaming 서비스 가격 모델
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.database_service/streaming/terminology/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/streaming/terminology/">
+            Streaming 주요 키워드
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/50.database_service/adb/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.database_service/adb/">OCI Autonomous DB</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/50.database_service/adb/adw/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.database_service/adb/adw/">Autonomous Data Warehouse</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.database_service/adb/adw/hands-on/">ADW Hands-on Labs</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/basic_adw_provisioning/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/adb/adw/hands-on/basic_adw_provisioning/">
+            ADW 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/">인스턴스 관리</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_start_and_stop/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_start_and_stop/">
+            인스턴스 기본 조작: Console
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_start_and_stop_with_ocicli/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_start_and_stop_with_ocicli/">
+            인스턴스 기본 조작: OCI CLI
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_scale_management/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_scale_management/">
+            인스턴스 Scale Up/Dwon
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/reset_password_4_admin/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/reset_password_4_admin/">
+            ADW 관리자 비밀번호 재설정
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/">ADW 지원 툴</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/sqldeveloper/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/sqldeveloper/">
+            SQL Developer: 설정 및 접속
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/sql_devleloper_web/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/sql_devleloper_web/">
+            SQL Developer Web 접속
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/apex/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/apex/">
+            APEX 서비스
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/oml/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/oml/">OML Notebook</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/performance/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.database_service/adb/adw/hands-on/performance/">ADW 쿼리 성능 테스트</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/performance/query_with_each_service/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/adb/adw/hands-on/performance/query_with_each_service/">
+            ADW 서비스 별 쿼리 성능
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/performance/query_of_adw_with_different_ocpu/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/adb/adw/hands-on/performance/query_of_adw_with_different_ocpu/">
+            ADW OCPU와 쿼리 성능
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/60.data_and_ai_service/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/60.data_and_ai_service/">Data &amp; AI Service</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/60.data_and_ai_service/data_flow/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/60.data_and_ai_service/data_flow/">Data Flow</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/60.data_and_ai_service/data_flow/handson-labs/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/60.data_and_ai_service/data_flow/handson-labs/">기초 Hands-on Lab</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/60.data_and_ai_service/data_flow/handson-labs/preparation/" class="dd-item">
+        <div>
+          <a href="/oci_docs/60.data_and_ai_service/data_flow/handson-labs/preparation/">
+            핸드온랩 사전 준비
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/70_solutions/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/70_solutions/">OCI Services</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/70_solutions/data_flow/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/70_solutions/data_flow/">OCI Data Flow</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/70_solutions/functions/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/70_solutions/functions/">OCI Functions</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/70_solutions/data_catalog/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/70_solutions/data_catalog/">OCI Data Catalog</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/70_solutions/data_catalog/glossary/" class="dd-item">
+        <div>
+          <a href="/oci_docs/70_solutions/data_catalog/glossary/">
+            용어정리
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/">OCI 도구(Tool)</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/80_oci_tools/oci_rest_api/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/oci_rest_api/">OCI REST API</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/sdk/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/sdk/">OCI SDK</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/80_oci_tools/sdk/java_sdk/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/sdk/java_sdk/">OCI Java SDK</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/80_oci_tools/sdk/java_sdk/configuration/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/sdk/java_sdk/configuration/">
+            설치 및 설정(Maven)
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/sdk/python_sdk/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/sdk/python_sdk/">OCI Python SDK</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/80_oci_tools/sdk/python_sdk/installation/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/sdk/python_sdk/installation/">
+            OCI Python SDK 설치
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/oci_cli/">OCI CLI (Command Line Interface)</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/installation_on_window/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/oci_cli/installation_on_window/">
+            [OCI CLI 설치] Window 10
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac/">
+            [OCI CLI 설치] Linux &amp; Mac OS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/manual_installation/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/oci_cli/manual_installation/">
+            [OCI CLI 설치] 메뉴얼 설치
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac_with_docker/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac_with_docker/">
+            [OCI CLI 설치] Linux/Mac OS (Docker)
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/config_of_ocicli/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/oci_cli/config_of_ocicli/">
+            OCI CLI 설정
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/cloud_shell/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/cloud_shell/">OCI Cloud Shell</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/external_useful_tools/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/external_useful_tools/">OCI에 유용한 써드파티 툴</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/98_misc_tips/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/98_misc_tips/">OCI 알아두면 유용한 팁</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/98_misc_tips/ssh_key_pairs/" class="dd-item">
+        <div>
+          <a href="/oci_docs/98_misc_tips/ssh_key_pairs/">
+            운영체제별 SSH Key Pair 준비
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/" class="dd-item">
+        <div>
+          <a href="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/">
+            OCI 기본 정보 확인법
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/oci_docs/98_misc_tips/tools/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/98_misc_tips/tools/">개발 툴 관련 Tip</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/98_misc_tips/tools/install_sqldeveloper/" class="dd-item">
+        <div>
+          <a href="/oci_docs/98_misc_tips/tools/install_sqldeveloper/">
+            SQL Developer 설치: Mac OS X
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/98_misc_tips/tools/windows10_window_subsystem/" class="dd-item">
+        <div>
+          <a href="/oci_docs/98_misc_tips/tools/windows10_window_subsystem/">
+            리눅스 Windows Subsystem
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/98_misc_tips/tools/management_of_java_tools_with_sdkman/" class="dd-item">
+        <div>
+          <a href="/oci_docs/98_misc_tips/tools/management_of_java_tools_with_sdkman/">
+            sdkman 자바 개발환경 관리툴
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/99_oci_sites/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/99_oci_sites/">OCI 관련 문서 사이트</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/99_oci_sites/oci_sites/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/oci_sites/">
+            OCI 관련 사이트 모음
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/99_oci_sites/tutorials/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/tutorials/">
+            OCI 서비스 튜토리얼 사이트 모음
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/">클라우드 관련 유용한 서비스</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/">
+            OCI 비용 시뮬레이터
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/">
+            ocistatus.oraclecloud.com
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/">
+            CloudHarmondy: 네트웍 테스트
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_archi_diagram/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_archi_diagram/">
+            OCI 비쥬얼 다이어그램
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><hr />
+<div class="widget-categories widget">
+	<h4 class="widget__title">&nbsp;&nbsp;Licesne</h4>
+	<div class="widget__content">
+		&nbsp;&nbsp;<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+	</div>
+	<div class="widget__content">
+        <div>
+        이 저작물은 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank>크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+	</div>
+</div>
+<hr />
+<div>
+    <hr/>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8469722754608892"
+         data-ad-slot="5594090168"
+         data-ad-format="auto"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <hr/>  
+  </div>
+
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/oci_docs/00_oci/" >
+   오라클 클라우드 사용자 가이드</option> 
+      <option value="/oci_docs/00_oci/oci_services/" >- OCI 주요 서비스</option>
+      <option value="/oci_docs/00_oci/terminologies/"  selected>- OCI 기본 용어 정리</option>
+      <option value="/oci_docs/00_oci/oci_resion_info/" >- OCI 리전 정보</option>
+  
+    <option value="/oci_docs/10_quickstart/" >
+   OCI 퀵스타트(Step by Step)</option> 
+      <option value="/oci_docs/10_quickstart/how_to_sign_up_oci/" >- OCI Free Tier 계정 등록</option>
+      <option value="/oci_docs/10_quickstart/first_sign_in_oci/" >- Free Tier 계정 첫 번째 로그인</option>
+      <option value="/oci_docs/10_quickstart/create_compartment/" >- Compartment 추가</option>
+    <option value="/oci_docs/10_quickstart/vcn/" >
+  - 
+   VCN(Virtual Cloud Network) 생성</option>
+    <option value="/oci_docs/10_quickstart/compute/" >
+  - 
+   VM 인스턴스 프로비저닝</option> 
+    <option value="/oci_docs/10_quickstart/compute/basic_linux_vm/" >
+  -- 
+   OCI Linux VM 프로비저닝 및 관리</option> 
+      <option value="/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/" >--- Oracle Linux VM 인스턴스 생성</option>
+      <option value="/oci_docs/10_quickstart/compute/basic_linux_vm/adding_block_stoage/" >--- Block Storage 추가</option>
+  
+      <option value="/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/" >-- OCI VM 고정 IP 설정</option>
+  
+      <option value="/oci_docs/10_quickstart/mapping_public_ip_to_domain/" >- DNS 설정</option>
+    <option value="/oci_docs/10_quickstart/ha_with_load_balancer/" >
+  - 
+   Load Balancer를 이용한 HA 구성</option> 
+      <option value="/oci_docs/10_quickstart/ha_with_load_balancer/checking_resources/" >-- OCI 자원 상태 확인</option>
+      <option value="/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_3vm/" >-- 3개 Compte 인스턴스 생성</option>
+      <option value="/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_load_balancer/" >-- OCI Load Balancer 프로비저닝</option>
+  
+    <option value="/oci_docs/10_quickstart/object_storate/" >
+  - 
+   Object Storage</option> 
+      <option value="/oci_docs/10_quickstart/object_storate/add_bucket_and_object/" >-- OCI Console로 Bucket 추가</option>
+  
+    <option value="/oci_docs/10_quickstart/adb/" >
+  - 
+   Autonomous DB</option>
+  
+    <option value="/oci_docs/20_identity_and_access_management/" >
+   OCI 사용자 및 권한 관리</option> 
+      <option value="/oci_docs/20_identity_and_access_management/adding_oci_user/" >- OCI User 등록</option>
+  
+    <option value="/oci_docs/30_core_infrastructure/" >
+   OCI Core Infastructure Service</option>
+    <option value="/oci_docs/50.database_service/" >
+   Database Service</option>
+    <option value="/oci_docs/60.data_and_ai_service/" >
+   Data &amp; AI Service</option>
+    <option value="/oci_docs/70_solutions/" >
+   OCI Services</option>
+    <option value="/oci_docs/80_oci_tools/" >
+   OCI 도구(Tool)</option>
+    <option value="/oci_docs/98_misc_tips/" >
+   OCI 알아두면 유용한 팁</option>
+    <option value="/oci_docs/99_oci_sites/" >
+   OCI 관련 문서 사이트</option> 
+      <option value="/oci_docs/99_oci_sites/oci_sites/" >- OCI 관련 사이트 모음</option>
+      <option value="/oci_docs/99_oci_sites/tutorials/" >- OCI 서비스 튜토리얼 사이트 모음</option>
+    <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/" >
+  - 
+   클라우드 관련 유용한 서비스</option> 
+      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/" >-- OCI 비용 시뮬레이터</option>
+      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/" >-- ocistatus.oraclecloud.com</option>
+      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/" >-- CloudHarmondy: 네트웍 테스트</option>
+      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_archi_diagram/" >-- OCI 비쥬얼 다이어그램</option>
+  
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/oci_docs/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/oci_docs/js/auto-complete.js"></script>
+        <link href="/oci_docs/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "\/oci_docs";
+          
+        </script>
+        <script type="text/javascript" src="/oci_docs/js/search.js"></script>
+      </div>
+    <h1>OCI 기본 용어 정리</h1>
+    <div class="alert alert-info" role="alter">
+      <li><strong>문서 생성일:</strong> 2020-03-15 08:54:32 &#43;0900 KST </li>
+   </div>
+
+
+     
+      
+  
+    
+    
+    
+    
+
+<p>Oracle Cloud를 새로 접하시는 분들을 위하여 Oracle Cloud에서 자주 사용하는 Oracle Cloud 핵심 용어를 간단하게 정리합니다.</p>
+
+<hr />
+
+<p>이번 문서는 다음과 같은 목차로 구성됩니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-body"><nav id="TableOfContents">
+<ul>
+<li><a href="#oci-주요-용어">OCI 주요 용어</a>
+<ul>
+<li><a href="#oracle-cloud-infrastructure">Oracle Cloud Infrastructure</a></li>
+<li><a href="#리전-region-과-ad-availability-domains">리전(Region)과 AD(Availability Domains)</a></li>
+<li><a href="#oci-콘솔-console">OCI 콘솔(Console)</a></li>
+<li><a href="#tenancy-테넌시">Tenancy(테넌시)</a></li>
+<li><a href="#compartment-컴파트먼트">Compartment(컴파트먼트)</a></li>
+<li><a href="#virtual-cloud-network-vcn">Virtual Cloud Network(VCN)</a></li>
+<li><a href="#bare-metal-host">Bare Metal Host</a></li>
+<li><a href="#instance-인스턴스">Instance(인스턴스)</a></li>
+<li><a href="#image-이미지">Image(이미지)</a></li>
+<li><a href="#shape">Shape</a></li>
+<li><a href="#key-pair">Key Pair</a></li>
+<li><a href="#블록-볼륨-block-volume">블록 볼륨(BLOCK VOLUME)</a></li>
+<li><a href="#object-storage">Object Storage</a></li>
+<li><a href="#버킷-bucket">버킷(BUCKET)</a></li>
+<li><a href="#ocid-oracle-cloud-identifier">OCID(ORACLE CLOUD IDENTIFIER)</a></li>
+</ul></li>
+<li><a href="#참고-문서">참고 문서</a></li>
+</ul>
+</nav>
+</div></div>
+
+
+<hr />
+
+<h1 id="oci-주요-용어">OCI 주요 용어</h1>
+
+<p>OCI이 완전 입문자를 위하여 Oracle Cloud에서 자주 사용되는 용어를 정리합니다.</p>
+
+<h2 id="oracle-cloud-infrastructure">Oracle Cloud Infrastructure</h2>
+
+<p><strong>Orale Cloud Infrasturcture</strong>는 2018년부터 사용하기 시작한 Oracle Cloud의 새로운 브랜드명입니다. 초기에 오라클은 Nimbula를 인수하여 클라우드 서비스를 개발하였고, 2014년 Oracle은 OPC(Oracle Public Cloud)라는 브랜드로 클라우드 서비스를 시작했습니다. 이 시점부터 오라클은 새로운 2세대 클라우드 아키텍처를 개발하기 시작했습니다. 오라클의 2세대 클라우드 아키텍처로 개발된 오라클 클라우드 서비스가 바로 Oracle Cloud Infrastructure(이하 OCI)입니다. 2018년 Oracle Cloud 인프라 구현 기술은 OCI로 전면 교체되었고, 동시에 오라클 클라우드 브랜드명도 OPC(Oracle Public Cloud)에서 OCI(Oracle Cloud Infrastructure)로 변경되었습니다.</p>
+
+<h2 id="리전-region-과-ad-availability-domains">리전(Region)과 AD(Availability Domains)</h2>
+
+<p><strong>Oracle Cloud Infrastructure(OCI)</strong>는 리전(Region)과 AD(Availability Domains)에서 운영됩니다. 리전은 데이터 센터가 운영되는 지리적인 영역을 나타냅니다. 그리고 AD는 리전을 구성하고 실제 OCI 서비스가 운영되는 데이터 센터입니다. 각 OCI 리전은 1개에서 최대 3개 AD로 구성됩니다. 리전은 오라클 클라우드가 서비스되는 물리적 데이터 센터인 AD를 묶는 논리적 단위입니다. 따라서 서비스 지역의 물리적 AD를 추상화하는 서비스 거점의 의미가 있습니다. 리전은 완전히 독립된 OCI 최상위 단위입니다. 각 리전은 네트워크로 연결될 뿐 모든 서비스와 자원은 완전히 격리됩니다.</p>
+
+<p>2020년 1월 12일 현재 Commercial Region을 12개를 운영하고 있습니다. 2020년 말까지 Commercial Region과 Government Region을 합쳐 총 36개까지 확대할 예정에 있습니다. 다음은 2020년 말 기준 OCI 리전 지도입니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/030.jpg?classes=border,shadow" alt="" /></p>
+
+<p>리전을 구성하는 각 AD는 어떤 자원도 공유하지 않는 물리적으로 완전히 독립된 데이터 센터입니다. 리전을 구성하는 AD은 파워와 네트워크 등 어떤 물리적 자원도 공유하지 않습니다. 따라서 특정 AD 장애가 다른 AD로 파급되지 않습니다. AD는 Region 고가용성을 위한 설계입니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/040.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="oci-콘솔-console">OCI 콘솔(Console)</h2>
+
+<p>OCI 자원을 관리하고 접근하기 위해서 제공하는 웹 기반 UI입니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/500.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="tenancy-테넌시">Tenancy(테넌시)</h2>
+
+<p>OCI에 계정(Account)을 생성하면, 해당 계정(Account)을 위한 <strong>Tenancy</strong>가 생성됩니다. OCI에서 테넌시는 완전히 독립되고 격리된 사용자 기준의 최상위 단위입니다. OCI에 생성된 계정이 바로 Tenancy라고 말할 수 있습니다.</p>
+
+<h2 id="compartment-컴파트먼트">Compartment(컴파트먼트)</h2>
+
+<p>컴파트먼트는 클라우드 자원을 구성하고 접근 제어하기 위한 논리적인 단위입니다. OCI에서 만들어지는 대부분 자원은 특정 컴파트먼트에 할당됩니다. OCI 자원에는 VM 인스턴스, VCN(Virtual Cloud Networks), 블록 볼륨 등이 있습니다. 모든 OCI 자원은 특정 Compartment에 할당되고, Compartment 단위로 <strong>OCI User Group</strong>(사용자 그룹) 단위로 사용자 접근 정책이 설정 및 관리됩니다. 컴파트먼트는 물리적으로 실체가 있는 오브젝트가 아닌 논리적인 그룹입니다.</p>
+
+<p>OCI 계정이 생성될 때 Tenancy가 생성됩니다. 이 Tenancy가 루트 컴파트먼트(Root Compartment)입니다. 루트 컴파트먼트(Root Compartment)는 최상의 컴파트먼트입니다. 파일 시스템의 루트 디렉터리(/)와 비슷합니다. 디렉터리 구조와 같이 Root Compartment 아래에 새로운 Compartment를 추가할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/510.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="virtual-cloud-network-vcn">Virtual Cloud Network(VCN)</h2>
+
+<p>Virtual Cloud Network (VCN)은 서브넷, 라우트 테이블과 게이트웨이로 구성되는 전통적인 네트워크의 가상화 버전입니다. VCN은 리전 범위의 자원입니다. VCN은 특정 리전에 종속됩니다. VCN을 구성하는 서브넷(Subnet)을 만들 때, 리전 범위와 AD 범위를 선택할 수 있습니다. 리전 범위로 지정하면 리전을 구성하는 모든 AD에 걸쳐 서브넷이 구성됩니다. AD 범위를 지정하면 특정 AD에 위치합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/530.jpg?classes=border,shadow" alt="" /></p>
+
+<p>VCN는 다음과 같은 컴포넌트로 구성됩니다.</p>
+
+<ul>
+<li>Subnet
+
+<ul>
+<li>public subnet: 서브넷에 포함되는 VM 인스턴스에 Public IP 설정 가능</li>
+<li>private subnet: 서브넷에 포함되는 VM 인스턴스가 Public IP를 갖지 못함</li>
+</ul></li>
+<li>Internet Gateway: 인터넷 연결 관문</li>
+<li>Route Table: VCN을 위한 가상의 라우트 테이블</li>
+<li>Security Lists: VCN의 가상 방화벽</li>
+</ul>
+
+<h2 id="bare-metal-host">Bare Metal Host</h2>
+
+<p>OCI가 제공하는 사용자가 직접 제어 가능한 물리적인 서버가 <strong>Bare Metal Host</strong>입니다. <strong>Bare Metal Host</strong>에 하이퍼바이저 없이 Bere Metal 서버를 돌릴 수 있습니다. 이렇게 동작하는 서버를 <strong>Bare metal compute instances</strong>라고 합니다. OCI 사용자가 직접 물리적 CPU, 메모리, NIC(Network Interface Card)를 관리 할 수 있습니다. 이렇게 관리하는 자원은 다른 테넌트와 어떠한 자원도 공유하지 않습니다.</p>
+
+<h2 id="instance-인스턴스">Instance(인스턴스)</h2>
+
+<p>OCI에서 동작하는 VM을 인스턴스라고 합니다.</p>
+
+<h2 id="image-이미지">Image(이미지)</h2>
+
+<p>Image는 인스턴스를 위해서 운영체제와 여러 소프트웨어를 정의하는 가상 하드웨어 드라이브 템플릿입니다. OCI에서 인스턴스를 구동시킬 때, 이미지를 선택합니다. OCI는 다양한 이미지를 제공하며, OCI 사용자는 추가로 사용자 정의 이미지를 등록하고 사용할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/540.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="shape">Shape</h2>
+
+<p>Shape은 인스턴스에 할당하는 컴퓨팅 자원(CPU, Memory 등) 템플릿입니다. 다음은 OCI가 제공하는 여러 Shape 중에서 <strong>Standard Shape</strong> 목록입니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/550.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="key-pair">Key Pair</h2>
+
+<p>Key Pair(키 페어)는 OCI가 사용하는 인증 방식입니다. Key Pair(키 페어)는 개인 키(private key) 파일과 공개 키(public key) 파일로 구성됩니다. 공개 키는 OCI에 업로드됩니다. OCI 사용자는 개인 키를 패스워드처럼 비공개로 관리합니다.</p>
+
+<p>여러 스펙으로 Key Pair(키 페어)를 만들 수 있습니다. OCI는 목적에 따라 두 가지 유형의 Key Pair(키 페어)를 사용합니다.</p>
+
+<ul>
+<li>인스턴스 SSH Key Pair(키 페어)
+
+<ul>
+<li>인스턴스 SSH Key Pair(키 페어)는 VM 인스턴스에 SSH 접속에 사용됨.</li>
+<li>인스턴스를 프로비저닝할 때, 공개 키(public key)를 등록.</li>
+<li>등록된 공개 키(public key)는 인스턴스의 기본 OS 계정의 authorized key 파일에 저장
+
+<ul>
+<li>인스턴스의 기본 OS 계정: 오라클 리눅스(oci), 우분투(ubuntu)</li>
+</ul></li>
+<li>ssh 접속 시, 사용자의 개인 키(Private Key)를 authorized key 파일에 저장된 공개 키로 검증.</li>
+</ul></li>
+<li>API signing key pair(API 서명 키 페어)
+
+<ul>
+<li>API signing key pair는 PEM 포멧을 사용.</li>
+<li>API 요청을 제출할 때 사용자 인증에 사용.</li>
+<li>REST API로 OCI를 접속하는 사용자가 사용.</li>
+</ul></li>
+</ul>
+
+<p>다음 그림은 OCI 사용자에 <strong>API 서명 키 페어</strong>를 등록하는 화면입니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/560.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="블록-볼륨-block-volume">블록 볼륨(BLOCK VOLUME)</h2>
+
+<p>블록 볼륨은 OCI 인스턴스에 영구적인 저장 공간을 제공하는 가상 디스크입니다. 기존에 물리적 하드 디스크 드라이브를 사용했던 것 처럼, 클라우드 인스턴스에서는 블록 볼륨을 사용합니다. OCI 사용자는 데이터 유시 없이 인스턴스에 볼륨을 분리해서 다른 인스턴스에 붙일수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/570.png?classes=border,shadow" alt="" /></p>
+
+<h2 id="object-storage">Object Storage</h2>
+
+<p>오브젝트 스토리지(Object Storage)는 객체로 데이터를 저장하고 관리하는 스토리지 아키텍처입니다. 모든 데이터 타입을 저장할 수 있습니다. 최대 객체 사이즈는 10TB입니다. Object Storage에 저장되는 최대 파일 사이즈는 50GB입니다. 50GB보다 큰 객체는 여러 파일로 분할되어 저장됩니다. 오브젝트 스토리지에는 변경 빈도가 낮은 데이터가 저장됩니다. 다음과 같은 용도로 사용됩니다.</p>
+
+<ul>
+<li>데이터 백업</li>
+<li>파일 공유</li>
+<li>로그나 센서 데이터와 같은 비정형 데이터 저장</li>
+</ul>
+
+<h2 id="버킷-bucket">버킷(BUCKET)</h2>
+
+<p>버킷은 오브젝트 스토리지(Object Storage)에 저장되는 데이터와 파일을 묶는 논리적인 그룹입니다. 버킷에 저장되는 객체 수는 제한이 없습니다.</p>
+
+<h2 id="ocid-oracle-cloud-identifier">OCID(ORACLE CLOUD IDENTIFIER)</h2>
+
+<p>모든 OCI 자원은 유일한 ID를 갖습니다. 이 ID가 Oracle Cloud Identifier(OCID)입니다. 이 ID에는 자원 정보가 포함됩니다.</p>
+
+<h1 id="참고-문서">참고 문서</h1>
+
+<ul>
+<li><a href="https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/concepts.htm" target="_blank">[OCI Official Documentation 사이트] Key Concepts and Terminology <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+<li><a href="https://k21academy.com/oracle-compute-cloud-services-iaas/oracle-cloud-infrastructure-oci-region-ad-tenancy-compartment-vcn-iam-storage-service/" target="_blank">[k21academy] Oracle Cloud Infrastructure (OCI) : Region, AD, FD, Tenancy, Compartment, VCN, IAM, Storage Service <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+<li><a href="https://www.oracle.com/a/ocom/docs/cloud/virtual-cloud-network-100.pdf" target="_blank">[OCI 100 Training] Virtual Cloud Network <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+
+<a href="https://www.oracle.com/a/ocom/docs/cloud/virtual-cloud-network-100.pdf">https://www.oracle.com/a/ocom/docs/cloud/virtual-cloud-network-100.pdf</a></li>
+</ul>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/oci_docs/00_oci/oci_services/" title="OCI 주요 서비스"> <i class="fa fa-chevron-left"></i><label>OCI 주요 서비스</label></a>
+    <a class="nav nav-next" href="/oci_docs/00_oci/oci_resion_info/" title="OCI 리전 정보" style="margin-right: 0px;"><label>OCI 리전 정보</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+  <div class="chevrons">
+      <div class="row">
+    <div class="author left">
+        <img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan2.jpg" height="90" width="90">
+    </div>
+    <div class="author right">
+		<li><b>작성자: 김태완</b></li>
+        <li>사랑하는 민수와 데이터 관리, 데이터 분석 &amp; 클라우드에 집중하고 있습니다.</li>
+        <li>E-mail: taewanme@gmail.com</li>
+    </div>
+</div><div class="panel panel-danger">
+<div class="panel-heading">Disclaimer</div>
+<div class="panel-body">이 저작물은 Oracle과 관계없이 개인으로서 개인의 시간을 할애하여 작성된 글 입니다. 본 글의 내용, 입장, 예측은 Oracle을 공식적으로 <font color="red"><bold>절대</bold></font> 대변하지 않습니다.</div>
+</div>
+<hr />
+
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/00_oci/terminologies/"></div>
+
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 15/03/2020
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+
+
+
+  </div>
+  
+  
+</footer>
+
+<script src="/oci_docs/js/clipboard.min.js"></script>
+
+<link href="/oci_docs/css/featherlight.min.css" rel="stylesheet">
+<script src="/oci_docs/js/featherlight.min.js"></script>
+
+
+
+<script src="/oci_docs/theme-flex/script.js"></script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        
+        ga('create', 'UA-72835175-1', 'auto');
+        ga('send', 'pageview');
+</script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2&appId=404519239985000&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+    
+
+    
+    
+
+    
+
+
+  </body>
+</html>

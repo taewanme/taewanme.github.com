@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Oracle APEX on Oracle APEX Workshop</title>
+    <link>http://taewan.kim/apex-workshop/</link>
+    <description>Recent content in Oracle APEX on Oracle APEX Workshop</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 18 Jul 2021 01:11:05 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/apex-workshop/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>APEX 입문자 워크숍 소개</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/05-about-workshop/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/05-about-workshop/</guid>
+      <description>APEX 입문자 워크숍은 Oracle APEX를 처음 접하시는 분들을 대상으로 합니다. Oracle APEX Low-Code를 쉽게 따라하면서 기본적은 작동 방식을 이해하는 형태로 구성됩니다.
+APEX 입문자 워크숍은 4개 모듈로 구성됩니다.
+ M01: Oracle APEX 실습 환경 구성 M02: 직원 정보 관리 M03: Expense 영수증 관리 M04: APEX 인증 및 커스커마이징  총 4개 모듈로 구성되면 전체 동영상 길이는 5시간 입니다.
+Oracle Cloud Infrastrucrue의 ADB를 기반 실습 환경으로합니다.</description>
+    </item>
+    
+    <item>
+      <title>Expense 영수증 관리: Form</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/10-expense_mngt/</link>
+      <pubDate>Sat, 21 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/10-expense_mngt/</guid>
+      <description>Expense 영수증 관리 생성    Page 번호 페이지 이름     31 Expenses   32 Expenses form    Expenses 테이블을 PK를 위한 오라클 객체 생성 Sequence 객체를 생성하고 트리거로 일련 번호를 확보하여 PK로 설정합니다.
+1. Sequence 생성 Object Browser를 이용하여 Sequence를 생성합니다.
+ APEX Workspace  SQL Workshop  Object Browser Sequence 이름: expense_seq  2. 트리거 생성  APEX Workspace  SQL Workshop  SQL Command Expenses 테이블의 Insert 문 수행 전에 작동하는 트리거  create or replace trigger &amp;quot;EXPENSES_T1&amp;quot; BEFORE insert on &amp;quot;EXPENSES&amp;quot; for each row begin if :NEW.</description>
+    </item>
+    
+    <item>
+      <title>APEX APP, DB 테이블, LoV 생성</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/</guid>
+      <description>    영상 재생 시간: 13:02  APEX App 생성  Name: 슬기로운 익스펜스 생활 Appearance: Vita, Side Menu  DB 테이블 생성  리소스 파일 다운로드: https://taewanmerepo.github.io/2021/08/apex/apexws_res.zip DDL 파일 위치: /sqls/base_table.sql SQL Workshop &amp;gt;&amp;gt; SQL Script  7개 테이블   LoV 생성 Shared Component &amp;gt; List of Values 등록  JOB TYPES  업무 유형: 의사, 간호사   select job_id as r, job_name as d from JOB_TYPES   EMP TYPES  (1, &amp;lsquo;교수&amp;rsquo;) (2, &amp;lsquo;펠로우&amp;rsquo;) (3, &amp;lsquo;레시던트&amp;rsquo;) (4, &amp;lsquo;인턴&amp;rsquo;) (5, &amp;lsquo;본과실습생&amp;rsquo;) (6, &amp;lsquo;간호사&amp;rsquo;) (7, &amp;lsquo;주임간호사&amp;rsquo;) (8, &amp;lsquo;수간호사&amp;rsquo;) (9, &amp;lsquo;간호부장&amp;rsquo;)   select type_id as r, type_name as d from USER_TYPES   Teams  (1, 소아과) (2, 산부인과) (3, 간담췌외과) (4, 신경외과) (5, 응급의학과)   select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   </description>
+    </item>
+    
+    <item>
+      <title>Login 페이지 변경</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/10-login/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/10-login/</guid>
+      <description>   Login 페이지 적용 이미지 다음 이미지를 다운로드 받으시기 바랍니다.
+Static Application Files 등록 CSS Inline body{ background-image: url(&#39;#APP_IMAGES#base.jpg&#39;); background-position: center; background-repeat: no-repeat; background-size: cover; } Span.t-Login-logo{ background-image : url(&#39;#APP_IMAGES#oracle-apex.png&#39;); background-Size :cover; width :150px; height :120px; }  </description>
+    </item>
+    
+    <item>
+      <title>OCI Free Trial 신청</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/</guid>
+      <description>영상 재생 시간: 1:46  이번 워크숖은 오라클 클라우드(OCI, Oracle Cloud Infrastructure)의 Always Free 환경에서 진행됩니다.
+Always Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 기간 제약없이 무상으로 제공하는 서비스를 의미힙니다. 오라클 클라우드가 제공하는 Always Free 서비스에 대한 자세한 내용은 다음 문서를 참조하시기 바랍니다.
+새로운 Oracle Cloud 프로모션: Free Tier  
+ 워크숖 실습을 진행하기 위해서는 오라클 클라우드(OCI, Oracle Cloud Infrastructure) 자원을 사용하기 위해서 OCI 계정이 필요합니다.</description>
+    </item>
+    
+    <item>
+      <title>Expense 영수증 관리: IR</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/</link>
+      <pubDate>Sat, 21 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/</guid>
+      <description>작업 절차  새로운 APEX 사용자 등록 모든 Expenses 데이터 삭제  신규 데이터 5건 입력 (flower, chuchu)  리포트 조회 조건 설정: 조회 범위 한정 (APP_USER) 컴럼 정리 (hidden) 컬럼 헤더 한글화 컬럼 패턴 변경 (사용일, 등록일) LoV를 적용하여 참조 컬럼의 Key값 변경 페이지 타이틀 설정 (리전) 검색 리전 추가 검색 리전에 PageItem 추가 리포트 검색 쿼리 변경 DYNAMIC ACTION 추가 직원정보 폼 연결 직원정보 폼 읽기 전용 설정  새로운 APEX 사용자 등록    ID Mail Password     chuchu demo@gmail.</description>
+    </item>
+    
+    <item>
+      <title>OCI 기본 환경 설정</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/20-oci-env-setup/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/20-oci-env-setup/</guid>
+      <description>영상 재생 시간: 14:18  Oracle APEX 입문 워크숖 실습의 통일성을 높이기 위하여 OCI 기본 환경 다음과 같이 구성하겠습니다.
+OCI 사용자 ID &amp;amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI IAM으로 만들고, OCI 사용자 그룹에 설정하겠습니다.
+   IAM User ID IAM USER Group 설명     admin administrators OCI 계정 관리자 ID   developer01 develoeprs 개발자 ID    OCI Compartment OCI Compartment(구획)은 OCI 자원을 논리적으로 묶는 OCI IAM 핵심 구성 요소입니다.</description>
+    </item>
+    
+    <item>
+      <title>Oracle APEX 커스텀 인증</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/20-authentication/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/20-authentication/</guid>
+      <description>Employees 테이블 패스워 설정  SQL Workshop  SQL Commands  update employees set EMP_PW = &#39;WELCOME123456!&#39;;  Oracle Function: APEX 인증  SQL Workshop  SQL Commands  create or replace function authenticate_user ( p_username in varchar2, p_password in varchar2 ) return boolean as v_pw_check varchar2(1); begin APEX_UTIL.SET_SESSION_STATE(&#39;LOGIN_MESSAGE&#39;, &#39;시작&#39;); select &#39;x&#39; into v_pw_check from employees where upper(employee_id) = upper(p_username) and upper(emp_pw) = upper(p_password); apex_util.set_authentication_result(0); APEX_UTIL.SET_SESSION_STATE(&#39;LOGIN_MESSAGE&#39;, &#39;Success&#39;); return true; exception when NO_DATA_FOUND then apex_util.</description>
+    </item>
+    
+    <item>
+      <title>직원 정보 관리 Report 생성</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/20-report-form/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/20-report-form/</guid>
+      <description>    영상 재생 시간: 24:04  목표 애플리케이션  Report 생성  Report Type: Report with Form 대상 테이블: Employees page 번호  Report Page: 21 Form Page: 22   Form 페이지 CSS 적용 img { width: 200px; height: 200px; }  Form의 직급 select list 변경 select type_name, type_id from USER_TYPES where job_id = :P22_JOB_ID order by type_id  </description>
+    </item>
+    
+    <item>
+      <title>Expense Report: Master Detail(1)</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/30-expense_report/</link>
+      <pubDate>Sat, 21 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/30-expense_report/</guid>
+      <description>작업 절차  Expense Report 생성 (#41, #42, #43) SEQUENCE 생성: EXPENSE_REPORT_SEQ Process 등록: set pk with seq FORM Page Item 수정 리포트 생성  Expense Report 생성  Start Page Number: 41 Type: Master Detail - Side by Side  SEQUENCE 생성  APEX Workspace  SQL Workshop  Object Browser Sequence 이름: EXPENSE_REPORT_SEQ  Process 등록: set pk with seq declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.</description>
+    </item>
+    
+    <item>
+      <title>APEX 개발 환경 구성</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/</guid>
+      <description>영상 재생 시간: 7:47  APEX 환경을 구성하기 위해서 다음과 같은 작업을 수행합니다.
+ ATP 인스턴스 생성 ATP 인스턴스의 APEX 로그인  id: admin  Workspace 생성  ATP 인스턴스 생성    설정 항목 설섲 값 비고     Compartment PROJECT &amp;gt;&amp;gt; APEXWS    Display Name DemoATP    Database Name DemoATP    Workload Type Transaction Processing    Deployment Type Shared Infrastructure    Version 19C    OCPU 1    Storage 1    Admin username admin 고정값   Password Welcome123456!</description>
+    </item>
+    
+    <item>
+      <title>직원 정보 관리 세부설정</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/30-report-form/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/30-report-form/</guid>
+      <description>영상 재생 시간: 22:01  이번 영상에서는 직원 정보 관리 Report의 다음을 업데이트 합니다.
+ (FORM) 이슈: 업데이트 가능한 PK PAGE ITEM (P22_EMPLOYEE_ID) (FORM) 생일: 포멧 설정 (FORM) 기본값 설정: P22_CRE_DATE (FORM) 이메일 입력 데이터 검증 (Validation) (FORM) 전화번호 입력 데이터 검증 (Validation) (FORM) 생일 입력 데이터 검증 (Validation) (리포트) PK 컬럼 출력 (리포트) 지정한 컬럼 정리(Hidden 처리)
+ P21_EMP_PW, P21_TEMP_PW, P21_CELL_PHONE, P21_EMP_PIC, P21_BIRTHDAY  (리포트) 컬럼 이름 한글화 (리포트) 컬럼 값 대체(Lookup) (리포트) 포멧 설정: P21_BIRTHDAY (리포트) 꾸미기 – HERO  정규 표현식 Validation 설정  Email  error message: Mail 포멧이 아닙니다.</description>
+    </item>
+    
+    <item>
+      <title>Expense Report: Master Detail(2)</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/40-expense_report_add_receipts/</link>
+      <pubDate>Sat, 21 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/40-expense_report_add_receipts/</guid>
+      <description>   작업 절차  43번 페이지 수정 P43_REPORT_ID는 Hidden 처리 P43_EXPESNE_ID는 Select List 처리 P43_EXPESNE_ID 이름 한글화 41번 페이지의 +기호 한글화  P43_EXPESNE_ID는 Select List 처리 select title||&#39;,&#39;||payment_amount||&#39;(&#39;||use_date||&#39;)&#39;, expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i.expense_id from expense_reports r, expense_report_items i where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) ) order by use_date  </description>
+    </item>
+    
+    <item>
+      <title>APEX Workspace 사용자 등록</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/</guid>
+      <description>    영상 재생 시간: 4:17  지금까지 APEX Workspace에 데이터베이스 사용자인 apexws로 로그인했습니다. 데이터베이스 사용자가 아닌 APEX Workspace 사용자를 등록하여 사용하겠습니다. 개발자 사용자와 일반 사용자 2개를 등록합니다.
+   사용자 유형 사용자 이름 패스워드 비고     개발자 사용자 dev01 Welcome123456! 관리자, 개발자 권한 부여   일반 사용자 user01 Welcome123456!     </description>
+    </item>
+    
+    <item>
+      <title>직원 정보 관리 - 검색</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/40-report-search/</link>
+      <pubDate>Sat, 14 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/40-report-search/</guid>
+      <description>영상 재생 시간: 18:10  실습 과정에서 데이터 변경을 공지드립니다. 이전 영상에서는 EMPLOYEES 테이블의 employee_id로 songwha를 사용했습니다. 이 데이터가 이번 영상 부터 flower로 변경됩니다. 실습 데모를 진행하는 과정에서 부득이하게 변경됐습니다. 실습시 기존 데이터(songwha)를 삭제하고, employee_id가 flower인 새로운 직원 데이터를 입력하시고 실습을 진행하시기 바랍니다.
+ 이번 영상에서는 직원 정보 관리 Report에 검색 기능을 추가해 보겠습니다.
+팀/성별 검색  팀 명을 체크박스 그룹으로 나열하고 하나 이상의 팀을 선택하여 검색 성별(Gender)을 체크박스 그룹으로 나열하고 하나 이상의 성별 검색</description>
+    </item>
+    
+    <item>
+      <title>Expense Report: 상세 리포트 개선</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/</link>
+      <pubDate>Sat, 21 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/</guid>
+      <description>작업 절차  41번 페이지 Expense Report Items 리전의 영수증 리포트 View 변경 리포트에 Select/Unselect All 설정 선택한 복수 영수증 삭제 버튼 선택한 복수 영수증 삭제 Process 리포트 컬 럼명 변경  리포트 뷰 변경  뷰: EXPENSE_REPORT_ITEMS_V Where: REPORT_ID = :P41_EXPENSE_REPORT_ID order: expense_id  select REPORT_ID, EXPENSE_ID, EMPLOYEE_ID, TYPE_ID, PAYMENT_AMOUNT, TITLE, DESCRIPTION, USE_DATE, CRE_DATE from EXPENSE_REPORT_ITEMS_V where REPORT_ID = :P41_EXPENSE_REPORT_ID order by expense_id  select/unselect all  리포트 SQL 컬럼 추가  apex_item.</description>
+    </item>
+    
+    <item>
+      <title>Expense Report: Master Update</title>
+      <link>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/</link>
+      <pubDate>Sat, 21 Aug 2021 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/</guid>
+      <description>   Stored Procedure create or replace PROCEDURE update_expense_report( p_report_id IN VARCHAR2 ) IS v_cc_num NUMBER(3); v_cc_amount NUMBER(9); v_pc_num NUMBER(3); v_pc_amount NUMBER(9); BEGIN select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_cc_num, v_cc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = &#39;cc&#39;; select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_pc_num, v_pc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = &#39;pc&#39;; UPDATE EXPENSE_REPORTS SET COMPANY_CARD_RECEIPT_NUM = v_cc_num, PRIVATE_CARD_RECEIEPT_NUM = v_pc_num, COMPANY_CARD_AMOUNT = v_cc_amount, PRIVATE_CARD_AMOUNT = v_pc_amount WHERE EXPENSE_REPORT_ID = p_report_id; END;  Page 41 - Process 추가  name: update report  when: Delete   begin update_expense_report( p_report_id =&amp;gt; :P41_EXPENSE_REPORT_ID); end;  Page 43 - Process 추가  name: update report     begin update_expense_report( p_report_id =&amp;gt; :P43_REPORT_ID); end;  </description>
+    </item>
+    
+  </channel>
+</rss>

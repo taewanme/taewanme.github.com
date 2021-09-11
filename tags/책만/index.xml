@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>책만 on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/%EC%B1%85%EB%A7%8C/</link>
+    <description>Recent content in 책만 on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 21 Jan 2020 05:28:14 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/%EC%B1%85%EB%A7%8C/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[2020/Books:03] IT 개발자의 영어 필살기 </title>
+      <link>http://taewan.kim/book/english_for_developer/</link>
+      <pubDate>Tue, 21 Jan 2020 05:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/book/english_for_developer/</guid>
+      <description>&amp;lsquo;IT 개발자의 영어 필살기&amp;rsquo;는 책 구성과 기획이 돋보이는 책입니다. 저자의 기획력에 상당히 놀랐습니다. &amp;lsquo;IT 개발자의 영어 필살기&amp;rsquo;는 제가 갖고있던 영어책에 대한 선입견을 깨는 도서입니다. 책을 넘기는 속도감도 좋고 책의 목차도 흥미롭습니다. 특히 개발자에게 전달되는 영어 독해에 대한 메시지와 정보도 묵직합니다. IT에 종사하면서 영어가 부담스럽게 느껴지시는 분들은 읽어보시면 여러 가지로 도움이 될 것 같습니다. 제 경우에도 그동안 무심결에 넘기고 대충 안다고 생각했던 부분에 대해서 조금 더 명확하고 체계적으로 알 수 있는 계기가 되었습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

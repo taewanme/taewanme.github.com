@@ -6,10 +6,51 @@
     <description>Recent content in Vm on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 30 Apr 2018 11:59:47 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 22 Mar 2021 09:59:47 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/vm/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[Livelog:OCI] Windows VM 배포</title>
+      <link>http://taewan.kim/livelog/0102.window_vm_on_oci-copy/</link>
+      <pubDate>Mon, 22 Mar 2021 09:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/livelog/0102.window_vm_on_oci-copy/</guid>
+      <description>이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
+    <item>
+      <title>[Livelog:OCI] Windows VM 배포</title>
+      <link>http://taewan.kim/livelog/0102.window_vm_on_oci/</link>
+      <pubDate>Mon, 22 Mar 2021 09:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/livelog/0102.window_vm_on_oci/</guid>
+      <description>이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
+    <item>
+      <title>[Livelog:OCI] Linux VM 배포</title>
+      <link>http://taewan.kim/livelog/0101.linux_vm_on_oci/</link>
+      <pubDate>Thu, 18 Mar 2021 09:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/livelog/0101.linux_vm_on_oci/</guid>
+      <description>이번 Livelog에서는 OCI에 Linux VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI에서 Root 파티션 확대 처리된 VM 생성 </title>
+      <link>http://taewan.kim/oratips/oci-root-partition/</link>
+      <pubDate>Fri, 28 Feb 2020 09:28:14 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oratips/oci-root-partition/</guid>
+      <description>OCI에서 Boot Volume 기본 크기를 늘려서 리눅스 가상머신을 만들어도, 프로비저닝된 리눅스 VM의 루트 파이션은 기본 9GB으로 설정됩니다. Boot Volume 최대 크기로 루트 파티션이 확장된 VM을 프로비저닝 방법은 다음 이미지와 같습니다.
+리눅스 가상머신을 생성할 때 루트 파이션 확장을 위해서 cloud-init에 다음 명령을 설정합니다.
+#!/bin/sh sudo yum -y install cloud-utils-growpart sudo yum -y install gdisk sudo growpart /dev/sda 3 sudo xfs_growfs /  </description>
+    </item>
     
     <item>
       <title>OCI Classic: Compute 서비스, VM의 고정 Public IP 지정</title>

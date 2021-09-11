@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>[Livelog:OCI] Windows VM 배포</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.27.1" />
+<meta property="og:title" content="[Livelog:OCI] Windows VM 배포" />
+<meta property="og:description" content="이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/livelog/0102.window_vm_on_oci-copy/" />
+
+
+
+<meta property="article:published_time" content="2021-03-22T09:59:47&#43;09:00"/>
+<meta property="article:modified_time" content="2021-03-22T09:59:47&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG </a></li>
+		<li class="menu__item "><a class="menu__link" href="http://cloud-docs.taewan.me" title="Oracle Cloud User Guide" >오라클 클라우드 사용자 가이드 </a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >CLOUD </a></li>
+		<li class="menu__item "><a class="menu__link" href="/oci-tutorials/" title="동영상 중심 메뉴얼 컨텐츠." >OCI 튜토리얼 </a></li>
+		<li class="menu__item "><a class="menu__link" href="/graalvm/" title="GraalVM 관련 새소식 및 기술 문서" >GRAALVM </a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK </a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">[Livelog:OCI] Windows VM 배포 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2021-03-22 09:59:47 &#43;0900 KST">March 22, 2021</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/livelog" rel="category">Livelog</a>, <a class="meta-categories__link" href="/categories/oci" rel="category">OCI</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+			
+
+
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/ZfEu4kOhdX0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
+ </div>
+
+
+<hr />
+
+<p>이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.</p>
+
+<ul>
+<li>아래 이미지를 클릭하면 해당 Livelog로 이동합니다.</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>Livelog1: OCI 계정 생성</th>
+<th>Livelog2: OCI 기본 설정</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="http://taewan.kim/livelog/00.oci_free_tier/" target='_blank'><img src="https://taewanmerepo.github.io/2021/03/livelog04/img02.jpg" alt="" /></a></td>
+<td><a href="http://taewan.kim/livelog/01.oci_initial_setup/" target='_blank'><img src="https://taewanmerepo.github.io/2021/03/livelog04/img01.jpg" alt="" /></a></td>
+</tr>
+</tbody>
+</table>
+
+<div class="notices note" ><p><strong><font color='red'>Livelog</font></strong>는 동영상 데모를 중심으로 작성된 콘텐츠입니다. <strong><font color='red'>Livelog</font></strong>는 Youtube에 배포된 동영상과 블로그 문서로 구성됩니다. <strong><font color='red'>Livelog</font></strong>의 블로그 문서는 동영상을 진행하기 위한 보조 정보를 중심으로 작성됩니다.</p>
+</div>
+
+
+<h2 id="livelog-진행-환경">Livelog 진행 환경</h2>
+
+<p>이번 Livelog에서 사용하는 OCI Tenancy(계정) 정보는 다음과 같습니다.</p>
+
+<ul>
+<li>OCI Tenancy 명: taewandemo003</li>
+</ul>
+
+<p>이번 Livelog에서는 다음과 같은 자원을 이용하여 진행합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>자원유형</th>
+<th>대상자원</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>OCI User</td>
+<td>developer01</td>
+<td>개발자 유저</td>
+</tr>
+
+<tr>
+<td>OCI Compartment</td>
+<td>demo</td>
+<td></td>
+</tr>
+
+<tr>
+<td>VCN</td>
+<td>demovcn</td>
+<td><strong>Public Subnet-demovcn</strong> 서브넷</td>
+</tr>
+
+<tr>
+<td>Policy</td>
+<td>basic_policy</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="vm-배포-절차">VM 배포 절차</h2>
+
+<ul>
+<li>Livelog 시작 시점 OCI 환경
+<img src="https://taewanmerepo.github.io/2021/03/livelog05/img04.jpg" alt="" /></li>
+</ul>
+
+<hr />
+
+<ul>
+<li><p>Livelog 배포 대상 자원
+<img src="https://taewanmerepo.github.io/2021/03/livelog05/img05.jpg" alt="" /></p></li>
+
+<li><p>VM 이미지 생성</p>
+
+<ul>
+<li>OS: Microsoft Windows 2019</li>
+<li>Shape: VM.Standard.E3.Flex</li>
+<li>CPU: 1</li>
+<li>Memory: 16GB</li>
+</ul></li>
+
+<li><p>VCN(demovcn)의 인터넷 접속(ingress) 설정: 3389 포트</p></li>
+</ul>
+
+<hr />
+
+<ul>
+<li><p>Livelog 완료 시점의 OCI 상태
+<img src="https://taewanmerepo.github.io/2021/03/livelog05/post.jpg" alt="" /></p></li>
+
+<li><p>노트북 접속: Microsoft Remote Desktop 로그인</p></li>
+
+<li><p>기본 설정 패스워드 변경</p></li>
+
+<li><p>Widnows VM 인스턴스 Scale-up</p></li>
+
+<li><p>Windows VM 인스턴스 정지</p></li>
+
+<li><p>Windows VM 종료(자원 제거)</p></li>
+</ul>
+
+<h3 id="oci-console-접속">OCI Console 접속</h3>
+
+<ul>
+<li>OCI Login: <strong><a href="https://cloud.oracle.com">https://cloud.oracle.com</a></strong></li>
+<li>OCI 계정명 입력: <strong>taewandemo003</strong></li>
+<li>OCI 인증: OCI Direct Login</li>
+<li>OCI User: developer01<br /></li>
+</ul>
+
+<h3 id="vm-생성">VM 생성</h3>
+
+<p>VM을 설정하기 위하여 다음과 같이 설정합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>설정값</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Name</td>
+<td>livelog-win-vm01</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Compartment</td>
+<td>demo</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Availability Domain</td>
+<td>AD 1</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Image</td>
+<td>Microsoft Windows 2019</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Shape</td>
+<td>VM.Standard.E3.Flex</td>
+<td>OCPU: 1, Memory: 16GB</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="vcn-demovcn-의-windows-rdp-접속-설정">VCN(demovcn)의 Windows RDP 접속 설정</h3>
+
+<p><img src="https://taewanmerepo.github.io/2021/03/livelog05/img06.jpg" alt="" /></p>
+
+<p>demovcn의 <strong>Public Subnet-demovcn</strong> 서브넷의 Security List에 3389 포트를 오픈하는 설정을 추가합니다.</p>
+
+<ul>
+<li>VCN: demovcn</li>
+<li>Subnet: Public Subnet-demovcn</li>
+<li>Security List: Default Security List for demovcn</li>
+<li>Ingress Rule 추가
+<br /></li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>Source CIDR</th>
+<th>IP Protocol</th>
+<th>Source Port Range</th>
+<th>Target Port Range</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>0.0.0.0/0</td>
+<td>TCP</td>
+<td>All</td>
+<td>3389</td>
+<td>Allow RDP Connection</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="microsoft-remote-desktop-접속">Microsoft Remote Desktop 접속</h3>
+
+<ul>
+<li>Windows Server 2019 VM 정보
+
+<ul>
+<li>User: opc</li>
+<li>password: wE89)gPV~!o;(</li>
+<li>Public IP: 193.123.234.133</li>
+</ul></li>
+</ul>
+
+<p>VM의 공개 IP와 기본 설정 패스워드를 이용하여 접속 및 패스워드 변경합니다.</p>
+
+<p>사용하는 컴퓨터/노트북 운영체제를 Windows를 사용한다면 다음 메뉴 패스로 <strong>원격 데스크톱</strong>을 실행하고 접속합니다.</p>
+
+<ul>
+<li>시작  &gt; 설정  &gt; 시스템 &gt; 원격 데스크톱</li>
+</ul>
+
+<p><img src="https://taewanmerepo.github.io/2021/03/livelog05/img03.jpg" alt="" /></p>
+
+<hr />
+
+<p>사용하는 컴퓨터/노트북 운영체제를 IOS를 사용한다면 AppStore에서 <strong>Microsoft Remote Desktop</strong>을 설치하고 접속합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2021/03/livelog05/img02.jpg" alt="" /></p>
+
+<h3 id="windows-vm-관리">Windows VM 관리</h3>
+
+<ul>
+<li>Windows VM Scale-up</li>
+<li>Windows VM 시작/재지작/종료</li>
+<li>Windows VM 제거</li>
+</ul>
+
+<h2 id="참고-문서">참고 문서</h2>
+
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/launchinginstance.htm#Creating" target="_blank">Creating a Windows Instance[↗NW]</a>
+</li>
+</ul>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/oci/" rel="tag">OCI</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/iaas/" rel="tag">IaaS</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/vm/" rel="tag">VM</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/provision/" rel="tag">Provision</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/windows-2019/" rel="tag">Windows 2019</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/rdp/" rel="tag">RDP</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan2.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/livelog/0102.window_vm_on_oci/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">[Livelog:OCI] Windows VM 배포</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/livelog/0200.oci_concept/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">[Livelog:OCI] OCI 기본 개념 &amp; 용어</p></a>
+	</div>
+</nav>
+
+	
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/livelog/0102.window_vm_on_oci-copy/"></div>
+
+
+	<div>
+		<hr />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		
+		<ins class="adsbygoogle"
+			 style="display:block"
+			 data-ad-client="ca-pub-8469722754608892"
+			 data-ad-slot="5594090168"
+			 data-ad-format="auto"
+			 data-full-width-responsive="true"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	
+
+<div class="widget-categories widget">	
+		<div class="fb-like" data-href="http://taewan.kim/livelog/0102.window_vm_on_oci-copy/" 
+		data-layout="standard" data-action="like" 
+		data-size="small" 
+		data-show-faces="true" 
+		data-share="true"></div>
+</div>
+	
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#livelog-진행-환경">Livelog 진행 환경</a></li>
+<li><a href="#vm-배포-절차">VM 배포 절차</a>
+<ul>
+<li><a href="#oci-console-접속">OCI Console 접속</a></li>
+<li><a href="#vm-생성">VM 생성</a></li>
+<li><a href="#vcn-demovcn-의-windows-rdp-접속-설정">VCN(demovcn)의 Windows RDP 접속 설정</a></li>
+<li><a href="#microsoft-remote-desktop-접속">Microsoft Remote Desktop 접속</a></li>
+<li><a href="#windows-vm-관리">Windows VM 관리</a></li>
+</ul></li>
+<li><a href="#참고-문서">참고 문서</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	<div class="widget-categories widget">
+  <h4 class="widget__title">관련도서</h4>
+  <div class="widget__content" align="center">
+      <ul class="widget__list">
+          <li class="widget__item"><a href="http://www.yes24.com/Product/Goods/69335909" target="_blank"><img src="https://taewanmerepo.github.io/2019/02/pytorch/book200.jpg"/></a></li>
+      </ul>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/transfer_oci_custom_image_to_other_tenancy/" title="OCI 사용자정의 이미지 생성 및 Export/Import">
+							OCI 사용자정의 이미지 생성 및 Export/Import</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_official_icon_png/" title="OCI 서비스 로고 PNG 이미지">
+							OCI 서비스 로고 PNG 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_password_policy/" title="OCI 사용자 패스워드 변경 주기 설정">
+							OCI 사용자 패스워드 변경 주기 설정</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_networking_diff_nsg_and_sl/" title="OCI 가상 방화벽: Network Security Group &amp; Security List">
+							OCI 가상 방화벽: Network Security Group  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_mds_tutorial_03_workbench/" title="OCI MySQL 가이드-03.MySQL Workbench 구성">
+							OCI MySQL 가이드-03.MySQL Workbench 구성</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_mds_tutorial_02_connection/" title="OCI MySQL 가이드-02.데이터베이스 접속">
+							OCI MySQL 가이드-02.데이터베이스 접속</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_mds_tutorial_01_provisioning/" title="OCI MySQL 가이드-01.프로비저닝">
+							OCI MySQL 가이드-01.프로비저닝</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_adb_tutorial_01_provisioning/" title="OCI ADB 튜토리얼-01.프로비저닝">
+							OCI ADB 튜토리얼-01.프로비저닝</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_basic_config/" title="OCI Tenancy 기본 환경 설정">
+							OCI Tenancy 기본 환경 설정</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/how_to_check_data_pump_file_and_expot_file/" title="Oracle Export(exp)와 Datapump(expdp) 파일 구분">
+							Oracle Export(exp)와 Datapump(expdp) ......</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/graalvm">Graalvm</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/livelog">Livelog</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/math">Math</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oci">Oci</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%a7%9b%ec%a7%91">맛집</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">Licesne</h4>
+	<div class="widget__content">
+		<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+	</div>
+	<div class="widget__content">
+		이 저작물은 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank>크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2021 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

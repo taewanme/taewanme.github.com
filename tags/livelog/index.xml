@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Livelog on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/livelog/</link>
+    <description>Recent content in Livelog on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 31 Mar 2021 01:01:25 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/livelog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>OCI 사용자정의 이미지 생성 및 Export/Import</title>
+      <link>http://taewan.kim/cloud/transfer_oci_custom_image_to_other_tenancy/</link>
+      <pubDate>Wed, 31 Mar 2021 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/transfer_oci_custom_image_to_other_tenancy/</guid>
+      <description>이번 Livelog에서는 OCI에서 사용자정의 이미지(Cumstom Image)를 만들고 이 이미지를 다른 OCI 계정에 전달하는 과정을 소개합니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
+    <item>
+      <title>[Livelog] OCI 테넌시(Tenancy) 기본 설정</title>
+      <link>http://taewan.kim/livelog/01.oci_initial_setup/</link>
+      <pubDate>Sun, 14 Mar 2021 09:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/livelog/01.oci_initial_setup/</guid>
+      <description>이전 Livelog에서는 OCI Free Tier를 등록하는 방법에 대해서 진행했습니다. 이번 Livelog에서는 새로 생성한 OCI Tenancy에 OCI 사용자 생성 및 권한 설정, 데모를 위한 기본 네트워크 구성 작업을 진행합니다.
+Livelog는 동영상 데모를 중심으로 작성된 컨텐츠입니다. Livelog는 Youtube에 배포된 동영상과 블로그 문서로 구성됩니다. Livelog의 블로그 문서는 동영상을 진행하기 위한 보조 정보를 중심으로 작성됩니다.
+ 목차 이번 Livelog에서는 새로 만든 OCI Tenancy를 위한 기본 설정을 위하여 다음과 같은 작업을 진행합니다.</description>
+    </item>
+    
+    <item>
+      <title>[Livelog:OCI] OCI Marketing Free Tier 신청</title>
+      <link>http://taewan.kim/livelog/00.oci_marketing_free_tier/</link>
+      <pubDate>Fri, 12 Mar 2021 10:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/livelog/00.oci_marketing_free_tier/</guid>
+      <description>Oracle Cloud Free Tier(이하 Cloud Free Tier)는 별도 비용 없이 오라클 클라우드 사용 경험을 제공하는 프로모션 프로그램입니다. Cloud Free Tier에 계정을 등록하면 30일 동안 300달러에 해당하는 오라클 클라우드 자원을 사용할 수 있는 크래딧을 제공합니다.
+일반 Cloud Free Tier 프로그램과 별도로 특별한 형태의 Cloud Free Trial을 제공하는 마케팅 프로그램이 있습니다. 이 프로그램을 편의상 “마케팅 트라이얼”이라고 부릅니다. 마케팅 트라이얼은 온라인/오프라인 오라클 행사에 참여한 분들에게 월간 500달러 상당의 Cloud Free Tier를 제공하는 프로그램입니다.</description>
+    </item>
+    
+    <item>
+      <title>[Livelog:OCI] OCI Free Tier 신청</title>
+      <link>http://taewan.kim/livelog/00.oci_free_tier/</link>
+      <pubDate>Fri, 12 Mar 2021 09:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/livelog/00.oci_free_tier/</guid>
+      <description>Livelog는 동영상 데모를 중심으로 작성된 컨텐츠입니다. Livelog는 Youtube에 배포된 동영상과 블로그 문서로 구성됩니다. Livelog의 블로그 문서는 동영상을 진행하기 위한 보조 정보를 중심으로 작성됩니다.
+ Oracle Cloud Free Tier(이하 OCI Free Tier)는 별도 비용 없이 오라클 클라우드 사용 경험을 제공하는 프로모션 프로그램입니다. OCI Tree Tier를 등록하는 절차를 Livelog로 소개합니다.
+OCI Free Tier OCI Free Tier를 등록하면 30일간 자유롭게 사용할 수 있는 $300 크레딧이 제공됩니다. 이 크래딧으로 Free Tier로 제공되는 모든 자원을 사용할 수 있습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

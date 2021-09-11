@@ -6,10 +6,55 @@
     <description>Recent content in Cloud on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Dec 2019 01:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 02 Apr 2021 09:59:47 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/cloud/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[Livelog:OCI] OCI 기본 개념 &amp; 용어</title>
+      <link>http://taewan.kim/livelog/0200.oci_concept/</link>
+      <pubDate>Fri, 02 Apr 2021 09:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/livelog/0200.oci_concept/</guid>
+      <description>Oracle Cloud Infrastructure(OCI)를 구성하는 기본 개념과 주요 용어 정리를 다룹니다. OCI LiveLog를 진행하기 위해서 사전에 알아야 하는 기본 지식과 주요 용어를 정리합니다.
+Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다. Livelog는 Youtube에 배포된 동영상과 블로그 문서로 구성됩니다. Livelog의 블로그 문서는 동영상을 진행하기 위한 보조 정보를 중심으로 작성됩니다.
+  </description>
+    </item>
+    
+    <item>
+      <title>OCI MySQL 가이드-03.MySQL Workbench 구성</title>
+      <link>http://taewan.kim/cloud/oci_mds_tutorial_03_workbench/</link>
+      <pubDate>Sun, 06 Dec 2020 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_mds_tutorial_03_workbench/</guid>
+      <description>OCI MySQL Database(이하 OMD)는 Oracle Cloud Infrastructure(이하 OCI)가 제공하는 완전 관리형 MySQL 서비스입니다. OMD는 MySQL 배포, 백업, 패치 등 관리 작업 자동화 및 OCI 최적화 구성을 제공합니다. 또한, 이 서비스는 오라클 MySQL 팀의 엔터프라이즈 서포트를 포함합니다. 이번 문서에서는 MySQL의 대표적인 툴인 MySQL Workbench를 로컬 컴퓨터에 설치합니다. 그리고 MySQL Workbench에 Bastion VM을 통해서 OMD 인스턴스에 접속하는 설정을 진행합니다.
+이 문서에서 다루는 내용은 OCI Free Trial에서 실습 가능합니다.
+ MySQL Workbench는 SQL 개발, 데이터베이스 설계, 생성 및 관리 통합 환경을 제공하는 대표적인 MySQL 도구입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI MySQL 가이드-02.데이터베이스 접속</title>
+      <link>http://taewan.kim/cloud/oci_mds_tutorial_02_connection/</link>
+      <pubDate>Sat, 05 Dec 2020 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_mds_tutorial_02_connection/</guid>
+      <description>OCI MySQL Database(이하 OMD)는 Oracle Cloud Infrastructure(이하 OCI)가 제공하는 완전 관리형 MySQL 서비스입니다. OMD는 MySQL 배포, 백업, 패치 등 관리 작업 자동화 및 OCI 최적화 구성을 제공합니다. 또한 이 서비스는 오라클 MySQL 팀의 엔터프라이즈 서포트를 포함합니다. 특히 OMD는 OLTP를 넘어 OLAP 확장을 위한 MySQL Extension(OCI MySQL ANALYTICS)이 포함돼있습니다.
+이 문서에서 다루는 내용은 OCI Free Trial에서 실습 가능합니다.
+ 이번 문서에서는 OCI MySQL Database 인스턴스에 MySQL Shell과 MySQL Client로 접근하는 과정을 소개합니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI MySQL 가이드-01.프로비저닝</title>
+      <link>http://taewan.kim/cloud/oci_mds_tutorial_01_provisioning/</link>
+      <pubDate>Thu, 03 Dec 2020 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_mds_tutorial_01_provisioning/</guid>
+      <description>OCI MySQL Database(이하 OMD)는 Oracle Cloud Infrastructure(이하 OCI)가 제공하는 완전 관리형 MySQL 서비스입니다. OMD는 MySQL 배포, 백업, 패치 등 관리 작업 자동화 및 OCI 최적화 구성을 제공합니다. 또한 이 서비스는 오라클 MySQL 팀의 엔터프라이즈 서포트를 포함합니다. 특히 OMD는 OLTP를 넘어 OLAP 확장을 위한 MySQL Extension(OCI MySQL ANALYTICS)이 포함돼있습니다.
+이 문서에서 다루는 내용은 OCI Free Trial에서 실습 가능합니다.
+ 이번 문서에서는 OCI MySQL Database 프로비저닝 과정을 소개합니다.
+MySQL Database Service 기본 가이드 이번 문서는 OMD 기본 가이드 1편입니다.</description>
+    </item>
     
     <item>
       <title>2019 Modern Cloud Day @Seoul 세션 동영상과 발표 자료</title>
@@ -22,7 +67,7 @@
     </item>
     
     <item>
-      <title>[OCI Release Note]Object Storage 새기능 요약</title>
+      <title>[OCI Release Note] Object Storage 새기능 요약</title>
       <link>http://taewan.kim/cloud/oci_object_storage_new_feature/</link>
       <pubDate>Wed, 11 Dec 2019 01:28:14 +0900</pubDate>
       

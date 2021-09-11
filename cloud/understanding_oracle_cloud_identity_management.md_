@@ -1,0 +1,111 @@
++++
+date = "2020-01-30T09:20:25+09:00"
+description = "Oracle Cloud의 사용자 관리 체계에 대한 현재 상황을 정리합니다."
+title = "Oracle Cloud 사용자(Identity) 관리 방식"
+thumbnailInList = "https://taewanmerepo.github.io/2018/05/ambari/list.jpg"
+thumbnailInPost = "https://taewanmerepo.github.io/2018/05/ambari/post.jpg"
+tags = ["bdc", "amabari"]
+categories = ["Cloud"]
+author = "taewan.kim"
+disclaimer = "true"
++++
+
+오라클 클라우드는 Big Data 서비스로 Big Data Cloud(이하 BDC)를 제공합니다. BDC는 Hotonworks 하둡 패키지를 오라클 클라우드의 PaaS로 제공하는 서비스입니다.
+2018년 5월 현재 Oracle BDC는 OCI와 OCI Classic에 모두 배포 가능합니다. Oracle BDC에 대한 개요, 설치 방법 및 OCI와 OCI Classic에 대산 자세한 사항은 아래 문서를 참조하시기 바랍니다.
+
+- BDC 관련문서
+  - {{< extlink link="/cloud/bdcsce01/" desc="Oracle BDC 소개 문서">}}
+  - {{< extlink link="/cloud/stpe_by_step_new_cluster_bdcsce/" desc="Oracle BDC 클러스터 생성 절차(작성일: 2017-07-31)">}}
+  - {{< extlink link="/cloud/oci_and_oci_classic/" desc="Oracle OCI와 OCI Classic이란?">}}
+
+## Oracle BDC의 Apache Ambari
+
+Apache Ambari는 하둡 클러스터 전문 관리 툴입니다. 아파치 프로젝트로 개발되고 있습니다. Oracle BDC는 ```Full Profile```로 하둡 클러스터를 생성할 경우 Ambari를 설치하여 제공합니다. <그림 1>과 같이 클러스터 웹 콘솔의 클러스터 세부 정보 페이지에서 Ambari의 공개 IP를 확인할 수 있습니다.
+
+{{< img src="https://taewanmerepo.github.io/2018/05/ambari/img30.jpg"
+title="그림 1"
+caption="BDC 웹 콘솔: 클러스터 세부 정보, Amabari 공개 IP 확인" >}}
+
+Oracle BDC의 Ambari 서버는 다음과 같은 URL로 서비스됩니다.
+
+> https://[Ambari's public IP]:8080
+
+```<Ambari's public IP>```는 <그림 1>에서 확인한 Ambari 공개 IP를 의미합니다. 프로토콜로 https만을 지원합니다.
+
+{{< img src="https://taewanmerepo.github.io/2018/05/ambari/img40.jpg"
+title="그림 2"
+caption="Ambari 공개 IP 접근 불가" >}}
+
+앞에서 확인한 Ambari 서비스 URL을 브라우저에서 접근하면 <그림 2>와 같이 아무것도 출력되지 않는 현상이 발생합니다. Oracle BDC 서비스 생성 시 기본 보안 설정에서 Ambari 서버 포트가 막혀있습니다. <그림 3>은 Oracle BDC에 보안 룰입니다. <그림 3>에서 ```ora_p2bdcsce_ambari``` 보안 률이 비활성화되어 있습니다. Ambari에 접근을 위해서는 ```ora_p2bdcsce_ambari``` 보안 룰을 활성화해야 합니다.   
+
+{{< img src="https://taewanmerepo.github.io/2018/05/ambari/img60.jpg"
+title="그림 3"
+caption="Oracle BDC에 적용된 기본 보안 룰" >}}
+
+## Ambari 보안 룰 활성화 절차
+
+Oracle BDC 인스턴스 생성시 Ambari를 사용하기 위해서는 해당 보안 룰(```ora_p2bdcsce_ambari```)을 활성화 시켜야 합니다. Ambari 활성화 절차를 단계별로 설명합니다. ```https://cloud.oracle.com```에 로그인하면 <그림 4>와 같은 대시보드가 출력됩니다. <그림 4>의 메뉴를 통해서 <그림 5>와 같은 Oracle BDC 서비스 콘솔에 접근할 수 있습니다.
+
+{{< img src="https://taewanmerepo.github.io/2018/05/ambari/img10.jpg"
+title="그림 4"
+caption="Oracle Cloud의 Dashboard" >}}
+
+Oracle BDC의 서비스 콘솔에서 <그림 5>와 같이 인스턴스 목록을 클릭하면 <그림 6>과 같은 인스턴스 정보 요약 페이지로 이동합니다.
+
+{{< img src="https://taewanmerepo.github.io/2018/05/ambari/img20.jpg"
+title="그림 5"
+caption="Oracle BDC 인스턴스(클러스터) 목록" >}}
+
+Oracle BDC의 인스턴스 정보 요약 페이지에서 Ambari 공개 IP를 확인할 수 있습니다.
+
+{{< img src="https://taewanmerepo.github.io/2018/05/ambari/img30.jpg"
+title="그림 6"
+caption="Oracle BDC의 인스턴스 정보 요약 페이지" >}}
+
+Oracle BDC의 인스턴스 정보 요약 페이지에서 <그림 7>과 오른쪽 위의 메뉴 아이콘으로 부터 인스턴스 보안 룰 페이지로 이동할 수 있습니다.
+
+{{< img src="https://taewanmerepo.github.io/2018/05/ambari/img50.jpg"
+title="그림 7"
+caption="Oracle BDC의 인스턴스 보안 룰 페이지 이동" >}}
+
+Oracle BDC의 인스턴스 보안 룰 페이지에서 현재 인스턴스에 적용된 보안 룰을 확인할 수 있습니다. <그림 8>에서 Ambari 관련 보안 룰 ```ora_p2bdcsce_ambari```가 비활성화 되어 있는 것을 확인할 수 있습니다.   
+
+{{< img src="https://taewanmerepo.github.io/2018/05/ambari/img60.jpg"
+title="그림 8"
+caption="Oracle BDC에 적용된 기본 보안 룰" >}}
+
+<그림 9>와 같이 ```ora_p2bdcsce_ambari``` 룰의 오른쪽 메뉴를 통해서 해당 룰을 활성화 할 수 있습니다.
+
+{{< img src="https://taewanmerepo.github.io/2018/05/ambari/img70.jpg"
+title="그림 9"
+caption="Oracle BDC의 ora_p2bdcsce_ambari 활성화" >}}
+
+보안 룰이 활성화되면 <그림 10>과 같이 보안 룰 왼쪽의 아이콘이 변경된 것을 확인할 수 있습니다.  
+
+{{< img src="https://taewanmerepo.github.io/2018/05/ambari/img75.jpg"
+title="그림 10"
+caption="Oracle BDC의 ora_p2bdcsce_ambari 활성 상태" >}}
+
+이제 <그림 2>에서 확인한 공개 IP로 Ambari에 접근할 수 있습니다. 주의할 점은 Ambari URL은 프로토롬로 https을 사용하고 8080 포트를 사용한다는 점 입니다. 초기 접근 시 Ambari는 <그림 11>과 같이 사용자 인증을 요구합니다.  
+
+> https://[Ambari's public IP]:8080
+
+{{< img src="https://taewanmerepo.github.io/2018/05/ambari/img80.jpg"
+title="그림 11"
+caption="Ambari 인증 요청" >}}
+
+<그림 11>에 사용자 인증은 <그림 12>와 같이 인스턴스 생성 시 설정한 ID/Password를 사용합니다.
+
+{{< img src="https://taewanmerepo.github.io/2018/05/ambari/img110.jpg"
+title="그림 12"
+caption="Oracle BDC 인스턴스 생성 정보 - 인증 정보 설정" >}}
+
+인증이 성공하면 <그림 13>과 같이 Ambari 서비스를 이용하여 BDC 인스턴스를 관리 할 수 있습니다.
+
+{{< img src="https://taewanmerepo.github.io/2018/05/ambari/img90.jpg"
+title="그림 13"
+caption="Apache Ambari UI" >}}
+
+## 요약
+
+Oracle BDC(Big Data Cloud)는 하둡 클러스터 관리 툴인 Ambari를 제공합니다. Ambari는 Full Profile로 인스턴스 생성 시 제공됩니다. Ambari를 사용하기 위해서는 해당 인스턴스의 Ambari 보안 룰을 활성화해야 합니다. Ambari 인증에 인스턴스 생성시에 등록한 __Administrative User__ 정보를 사용합니다. Ambari URL은 프로토콜로 https를 사용하고 포트는 8080입니다.

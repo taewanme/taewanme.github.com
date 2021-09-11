@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Provisioning on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/provisioning/</link>
+    <description>Recent content in Provisioning on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 03 Dec 2020 01:01:25 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/provisioning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>OCI MySQL 가이드-01.프로비저닝</title>
+      <link>http://taewan.kim/cloud/oci_mds_tutorial_01_provisioning/</link>
+      <pubDate>Thu, 03 Dec 2020 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_mds_tutorial_01_provisioning/</guid>
+      <description>OCI MySQL Database(이하 OMD)는 Oracle Cloud Infrastructure(이하 OCI)가 제공하는 완전 관리형 MySQL 서비스입니다. OMD는 MySQL 배포, 백업, 패치 등 관리 작업 자동화 및 OCI 최적화 구성을 제공합니다. 또한 이 서비스는 오라클 MySQL 팀의 엔터프라이즈 서포트를 포함합니다. 특히 OMD는 OLTP를 넘어 OLAP 확장을 위한 MySQL Extension(OCI MySQL ANALYTICS)이 포함돼있습니다.
+이 문서에서 다루는 내용은 OCI Free Trial에서 실습 가능합니다.
+ 이번 문서에서는 OCI MySQL Database 프로비저닝 과정을 소개합니다.
+MySQL Database Service 기본 가이드 이번 문서는 OMD 기본 가이드 1편입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI ADB 튜토리얼-01.프로비저닝</title>
+      <link>http://taewan.kim/cloud/oci_adb_tutorial_01_provisioning/</link>
+      <pubDate>Tue, 01 Dec 2020 21:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_adb_tutorial_01_provisioning/</guid>
+      <description>우선 OCI ADB에 대해서 간단히 소개하겠습니다. OCI의 Autonomous Database 서비스(ADB)는 자율 운영을 표방하는 데이터베이스 서비스입니다. 시스템 및 데이터베이스 관리자의 Oracle DB 운영 부담을 최소화하면서 기존 Oracle Database 활용 경험을 클라우드에서 그대로 활용하는 것을 목표로 합니다. On-Prem의 Exadata 기술 스택을 클라우드화하고 운영/관리 부담을 줄이는 진보적인 Oracle Database 클라우드 PaaS입니다.
+OCI ADB는 데이터베이스 사용 형태(Workload)에 따라 3가지 유형으로 구분됩니다. 각 유형 ADB 인스턴스를 생성할 때 공용 인프라와 전용 인프라를 지정할 수 있습니다.</description>
+    </item>
+    
+  </channel>
+</rss>

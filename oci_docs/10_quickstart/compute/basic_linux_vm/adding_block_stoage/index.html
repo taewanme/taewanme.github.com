@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2020-03-26T08:38:11 KST">
+
+<meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
+<meta name="generator" content="Hugo 0.27.1" />
+<meta property="og:title" content="Block Storage 추가" />
+<meta property="og:description" content="이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.
+ OCI FREE TIER 계정 등록 Free Tier 계정 로그인  이번 문서에서는 OCI 콘솔에서 OCI Linux VM 인스턴스에 Block Storage를 추가하고 마운트하는 과정을 소개합니다. OCI Linux VM 인스턴스에 Block Storage를 추가하는 과정은 다음과 같은 목차로 진행됩니다.
+ 0. OIC Block Volume 1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/oci_docs/10_quickstart/compute/basic_linux_vm/adding_block_stoage/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+
+
+<title>Block Storage 추가 :: 오라클 클라우드 사용자 가이드</title>
+
+<link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
+<link href="/oci_docs/css/font-awesome.min.css" rel="stylesheet">
+<link href="/oci_docs/css/nucleus.css" rel="stylesheet">
+<link href="/oci_docs/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/oci_docs/css/bootstrap.min.css">
+<script src="/oci_docs/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "\/oci_docs";
+</script>
+<meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위하여 주요 문서를 정리합니다.">
+
+
+<link href='/oci_docs/css/railload.css' rel="stylesheet"/>
+
+
+<link href="/oci_docs/css/twstyle.css" rel="stylesheet">
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?style=Sons-Of-Obsidian"></script>
+
+
+<style>
+    li.L0, li.L1, li.L2, li.L3,
+    li.L5, li.L6, li.L7, li.L8
+       { list-style-type: decimal !important }
+</style>
+
+
+
+
+
+    
+  </head>
+  <body data-url="/oci_docs/10_quickstart/compute/basic_linux_vm/adding_block_stoage/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="/oci_docs">오라클 클라우드 사용자 가이드</a>
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="http://taewan.kim/"  rel="noopener">
+                  <i class='fa fa-file-o'></i> <label>Taewan.kim Blog</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="http://taewan.kim/cloud/"  rel="noopener">
+                  <i class='fa fa-cloud'></i> <label>Oracle Cloud</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="http://taewan.kim/tutorial_manual/"  rel="noopener">
+                  <i class='fa fa-folder'></i> <label>tutorial_manual</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+    <li data-nav-id="/oci_docs/00_oci/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/00_oci/">오라클 클라우드 사용자 가이드</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/00_oci/oci_services/" class="dd-item">
+        <div>
+          <a href="/oci_docs/00_oci/oci_services/">
+            OCI 주요 서비스
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/00_oci/terminologies/" class="dd-item">
+        <div>
+          <a href="/oci_docs/00_oci/terminologies/">
+            OCI 기본 용어 정리
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/00_oci/oci_resion_info/" class="dd-item">
+        <div>
+          <a href="/oci_docs/00_oci/oci_resion_info/">
+            OCI 리전 정보
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/10_quickstart/" class="dd-item parent alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/">OCI 퀵스타트(Step by Step)</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/how_to_sign_up_oci/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/how_to_sign_up_oci/">
+            OCI Free Tier 계정 등록
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/first_sign_in_oci/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/first_sign_in_oci/">
+            Free Tier 계정 첫 번째 로그인
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/create_compartment/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/create_compartment/">
+            Compartment 추가
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/oci_docs/10_quickstart/vcn/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/vcn/">VCN(Virtual Cloud Network) 생성</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/vcn/simple_vcn/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/vcn/simple_vcn/">
+            간편 VCN 만들기
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/vcn/manual_vcn/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/vcn/manual_vcn/">
+            메뉴얼 VCN 만들기
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/10_quickstart/compute/" class="dd-item parent alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/compute/">VM 인스턴스 프로비저닝</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/10_quickstart/compute/basic_linux_vm/" class="dd-item parent alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/compute/basic_linux_vm/">OCI Linux VM 프로비저닝 및 관리</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/">
+            Oracle Linux VM 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/compute/basic_linux_vm/adding_block_stoage/" class="dd-item active">
+        <div>
+          <a href="/oci_docs/10_quickstart/compute/basic_linux_vm/adding_block_stoage/">
+            Block Storage 추가
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/">
+            OCI VM 고정 IP 설정
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/mapping_public_ip_to_domain/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/mapping_public_ip_to_domain/">
+            DNS 설정
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/oci_docs/10_quickstart/ha_with_load_balancer/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/ha_with_load_balancer/">Load Balancer를 이용한 HA 구성</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/ha_with_load_balancer/checking_resources/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/ha_with_load_balancer/checking_resources/">
+            OCI 자원 상태 확인
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_3vm/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_3vm/">
+            3개 Compte 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_load_balancer/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_load_balancer/">
+            OCI Load Balancer 프로비저닝
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/10_quickstart/object_storate/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/object_storate/">Object Storage</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/object_storate/add_bucket_and_object/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/object_storate/add_bucket_and_object/">
+            OCI Console로 Bucket 추가
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/10_quickstart/adb/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/10_quickstart/adb/">Autonomous DB</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/10_quickstart/adb/basic_adw_provisioning/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/adb/basic_adw_provisioning/">
+            ADW 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/10_quickstart/adb/sqldeveloper/" class="dd-item">
+        <div>
+          <a href="/oci_docs/10_quickstart/adb/sqldeveloper/">
+            SQL Developer의 ADW 연결하기
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/20_identity_and_access_management/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/20_identity_and_access_management/">OCI 사용자 및 권한 관리</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/20_identity_and_access_management/adding_oci_user/" class="dd-item">
+        <div>
+          <a href="/oci_docs/20_identity_and_access_management/adding_oci_user/">
+            OCI User 등록
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/">OCI Core Infastructure Service</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/compute/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/compute/">Compute</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/compute/provisioning/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/compute/provisioning/">Compute 인스턴스 만들기</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/" class="dd-item">
+        <div>
+          <a href="/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/">
+            Developer Image 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/30_core_infrastructure/compute/provisioning/oci_ai_datascience_image/" class="dd-item">
+        <div>
+          <a href="/oci_docs/30_core_infrastructure/compute/provisioning/oci_ai_datascience_image/">
+            AI Datascience 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/block_storage/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/block_storage/">Block Storage</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/object_storage/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/object_storage/">Object Storage</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/object_storage/management/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/object_storage/management/">Object Storage 관리</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/object_storage/management/bucket/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/object_storage/management/bucket/">Object Storage Bucket 관리</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/file_storage/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/file_storage/">File Storage</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/networking/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/networking/">Networking</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/30_core_infrastructure/networking/concepts/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/30_core_infrastructure/networking/concepts/">주요 개념 </a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/50.database_service/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.database_service/">Database Service</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/50.database_service/streaming/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.database_service/streaming/">Streaming</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/50.database_service/streaming/overview/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/streaming/overview/">
+            Streaming 서비스
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.database_service/streaming/pricing/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/streaming/pricing/">
+            Streaming 서비스 가격 모델
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.database_service/streaming/terminology/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/streaming/terminology/">
+            Streaming 주요 키워드
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/50.database_service/adb/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.database_service/adb/">OCI Autonomous DB</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/50.database_service/adb/adw/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.database_service/adb/adw/">Autonomous Data Warehouse</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.database_service/adb/adw/hands-on/">ADW Hands-on Labs</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/basic_adw_provisioning/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/adb/adw/hands-on/basic_adw_provisioning/">
+            ADW 인스턴스 생성
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/">인스턴스 관리</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_start_and_stop/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_start_and_stop/">
+            인스턴스 기본 조작: Console
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_start_and_stop_with_ocicli/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_start_and_stop_with_ocicli/">
+            인스턴스 기본 조작: OCI CLI
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_scale_management/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/instance_scale_management/">
+            인스턴스 Scale Up/Dwon
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/reset_password_4_admin/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/adb/adw/hands-on/basic_management/reset_password_4_admin/">
+            ADW 관리자 비밀번호 재설정
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/">ADW 지원 툴</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/sqldeveloper/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/sqldeveloper/">
+            SQL Developer: 설정 및 접속
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/sql_devleloper_web/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/sql_devleloper_web/">
+            SQL Developer Web 접속
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/apex/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/apex/">
+            APEX 서비스
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/oml/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/50.database_service/adb/adw/hands-on/adw_tools/oml/">OML Notebook</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/performance/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/50.database_service/adb/adw/hands-on/performance/">ADW 쿼리 성능 테스트</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/performance/query_with_each_service/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/adb/adw/hands-on/performance/query_with_each_service/">
+            ADW 서비스 별 쿼리 성능
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/50.database_service/adb/adw/hands-on/performance/query_of_adw_with_different_ocpu/" class="dd-item">
+        <div>
+          <a href="/oci_docs/50.database_service/adb/adw/hands-on/performance/query_of_adw_with_different_ocpu/">
+            ADW OCPU와 쿼리 성능
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/60.data_and_ai_service/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/60.data_and_ai_service/">Data &amp; AI Service</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/60.data_and_ai_service/data_flow/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/60.data_and_ai_service/data_flow/">Data Flow</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/60.data_and_ai_service/data_flow/handson-labs/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/60.data_and_ai_service/data_flow/handson-labs/">기초 Hands-on Lab</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/60.data_and_ai_service/data_flow/handson-labs/preparation/" class="dd-item">
+        <div>
+          <a href="/oci_docs/60.data_and_ai_service/data_flow/handson-labs/preparation/">
+            핸드온랩 사전 준비
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/70_solutions/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/70_solutions/">OCI Services</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/70_solutions/data_flow/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/70_solutions/data_flow/">OCI Data Flow</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/70_solutions/functions/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/70_solutions/functions/">OCI Functions</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/70_solutions/data_catalog/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/70_solutions/data_catalog/">OCI Data Catalog</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/70_solutions/data_catalog/glossary/" class="dd-item">
+        <div>
+          <a href="/oci_docs/70_solutions/data_catalog/glossary/">
+            용어정리
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/">OCI 도구(Tool)</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/80_oci_tools/oci_rest_api/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/oci_rest_api/">OCI REST API</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/sdk/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/sdk/">OCI SDK</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/oci_docs/80_oci_tools/sdk/java_sdk/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/sdk/java_sdk/">OCI Java SDK</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/80_oci_tools/sdk/java_sdk/configuration/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/sdk/java_sdk/configuration/">
+            설치 및 설정(Maven)
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/sdk/python_sdk/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/sdk/python_sdk/">OCI Python SDK</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/80_oci_tools/sdk/python_sdk/installation/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/sdk/python_sdk/installation/">
+            OCI Python SDK 설치
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/oci_cli/">OCI CLI (Command Line Interface)</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/installation_on_window/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/oci_cli/installation_on_window/">
+            [OCI CLI 설치] Window 10
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac/">
+            [OCI CLI 설치] Linux &amp; Mac OS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/manual_installation/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/oci_cli/manual_installation/">
+            [OCI CLI 설치] 메뉴얼 설치
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac_with_docker/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/oci_cli/installation_on_linux_and_mac_with_docker/">
+            [OCI CLI 설치] Linux/Mac OS (Docker)
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/80_oci_tools/oci_cli/config_of_ocicli/" class="dd-item">
+        <div>
+          <a href="/oci_docs/80_oci_tools/oci_cli/config_of_ocicli/">
+            OCI CLI 설정
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/cloud_shell/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/cloud_shell/">OCI Cloud Shell</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/oci_docs/80_oci_tools/external_useful_tools/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/oci_docs/80_oci_tools/external_useful_tools/">OCI에 유용한 써드파티 툴</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/98_misc_tips/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/98_misc_tips/">OCI 알아두면 유용한 팁</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/98_misc_tips/ssh_key_pairs/" class="dd-item">
+        <div>
+          <a href="/oci_docs/98_misc_tips/ssh_key_pairs/">
+            운영체제별 SSH Key Pair 준비
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/" class="dd-item">
+        <div>
+          <a href="/oci_docs/98_misc_tips/how_to_collect_basic_info_of_oci/">
+            OCI 기본 정보 확인법
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/oci_docs/98_misc_tips/tools/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/oci_docs/98_misc_tips/tools/">개발 툴 관련 Tip</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/98_misc_tips/tools/install_sqldeveloper/" class="dd-item">
+        <div>
+          <a href="/oci_docs/98_misc_tips/tools/install_sqldeveloper/">
+            SQL Developer 설치: Mac OS X
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/98_misc_tips/tools/windows10_window_subsystem/" class="dd-item">
+        <div>
+          <a href="/oci_docs/98_misc_tips/tools/windows10_window_subsystem/">
+            리눅스 Windows Subsystem
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/98_misc_tips/tools/management_of_java_tools_with_sdkman/" class="dd-item">
+        <div>
+          <a href="/oci_docs/98_misc_tips/tools/management_of_java_tools_with_sdkman/">
+            sdkman 자바 개발환경 관리툴
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/oci_docs/99_oci_sites/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/99_oci_sites/">OCI 관련 문서 사이트</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/99_oci_sites/oci_sites/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/oci_sites/">
+            OCI 관련 사이트 모음
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/99_oci_sites/tutorials/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/tutorials/">
+            OCI 서비스 튜토리얼 사이트 모음
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/">클라우드 관련 유용한 서비스</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/">
+            OCI 비용 시뮬레이터
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/">
+            ocistatus.oraclecloud.com
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/">
+            CloudHarmondy: 네트웍 테스트
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_archi_diagram/" class="dd-item">
+        <div>
+          <a href="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_archi_diagram/">
+            OCI 비쥬얼 다이어그램
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><hr />
+<div class="widget-categories widget">
+	<h4 class="widget__title">&nbsp;&nbsp;Licesne</h4>
+	<div class="widget__content">
+		&nbsp;&nbsp;<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+	</div>
+	<div class="widget__content">
+        <div>
+        이 저작물은 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank>크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.
+        </div>
+	</div>
+</div>
+<hr />
+<div>
+    <hr/>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-8469722754608892"
+         data-ad-slot="5594090168"
+         data-ad-format="auto"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <hr/>  
+  </div>
+
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/oci_docs/00_oci/" >
+   오라클 클라우드 사용자 가이드</option> 
+      <option value="/oci_docs/00_oci/oci_services/" >- OCI 주요 서비스</option>
+      <option value="/oci_docs/00_oci/terminologies/" >- OCI 기본 용어 정리</option>
+      <option value="/oci_docs/00_oci/oci_resion_info/" >- OCI 리전 정보</option>
+  
+    <option value="/oci_docs/10_quickstart/" >
+   OCI 퀵스타트(Step by Step)</option> 
+      <option value="/oci_docs/10_quickstart/how_to_sign_up_oci/" >- OCI Free Tier 계정 등록</option>
+      <option value="/oci_docs/10_quickstart/first_sign_in_oci/" >- Free Tier 계정 첫 번째 로그인</option>
+      <option value="/oci_docs/10_quickstart/create_compartment/" >- Compartment 추가</option>
+    <option value="/oci_docs/10_quickstart/vcn/" >
+  - 
+   VCN(Virtual Cloud Network) 생성</option>
+    <option value="/oci_docs/10_quickstart/compute/" >
+  - 
+   VM 인스턴스 프로비저닝</option> 
+    <option value="/oci_docs/10_quickstart/compute/basic_linux_vm/" >
+  -- 
+   OCI Linux VM 프로비저닝 및 관리</option> 
+      <option value="/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/" >--- Oracle Linux VM 인스턴스 생성</option>
+      <option value="/oci_docs/10_quickstart/compute/basic_linux_vm/adding_block_stoage/"  selected>--- Block Storage 추가</option>
+  
+      <option value="/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/" >-- OCI VM 고정 IP 설정</option>
+  
+      <option value="/oci_docs/10_quickstart/mapping_public_ip_to_domain/" >- DNS 설정</option>
+    <option value="/oci_docs/10_quickstart/ha_with_load_balancer/" >
+  - 
+   Load Balancer를 이용한 HA 구성</option> 
+      <option value="/oci_docs/10_quickstart/ha_with_load_balancer/checking_resources/" >-- OCI 자원 상태 확인</option>
+      <option value="/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_3vm/" >-- 3개 Compte 인스턴스 생성</option>
+      <option value="/oci_docs/10_quickstart/ha_with_load_balancer/provisioning_load_balancer/" >-- OCI Load Balancer 프로비저닝</option>
+  
+    <option value="/oci_docs/10_quickstart/object_storate/" >
+  - 
+   Object Storage</option> 
+      <option value="/oci_docs/10_quickstart/object_storate/add_bucket_and_object/" >-- OCI Console로 Bucket 추가</option>
+  
+    <option value="/oci_docs/10_quickstart/adb/" >
+  - 
+   Autonomous DB</option>
+  
+    <option value="/oci_docs/20_identity_and_access_management/" >
+   OCI 사용자 및 권한 관리</option> 
+      <option value="/oci_docs/20_identity_and_access_management/adding_oci_user/" >- OCI User 등록</option>
+  
+    <option value="/oci_docs/30_core_infrastructure/" >
+   OCI Core Infastructure Service</option>
+    <option value="/oci_docs/50.database_service/" >
+   Database Service</option>
+    <option value="/oci_docs/60.data_and_ai_service/" >
+   Data &amp; AI Service</option>
+    <option value="/oci_docs/70_solutions/" >
+   OCI Services</option>
+    <option value="/oci_docs/80_oci_tools/" >
+   OCI 도구(Tool)</option>
+    <option value="/oci_docs/98_misc_tips/" >
+   OCI 알아두면 유용한 팁</option>
+    <option value="/oci_docs/99_oci_sites/" >
+   OCI 관련 문서 사이트</option> 
+      <option value="/oci_docs/99_oci_sites/oci_sites/" >- OCI 관련 사이트 모음</option>
+      <option value="/oci_docs/99_oci_sites/tutorials/" >- OCI 서비스 튜토리얼 사이트 모음</option>
+    <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/" >
+  - 
+   클라우드 관련 유용한 서비스</option> 
+      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_cost_estimator/" >-- OCI 비용 시뮬레이터</option>
+      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_status/" >-- ocistatus.oraclecloud.com</option>
+      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/cloudharmony/" >-- CloudHarmondy: 네트웍 테스트</option>
+      <option value="/oci_docs/99_oci_sites/useful_sites_for_oci/oci_archi_diagram/" >-- OCI 비쥬얼 다이어그램</option>
+  
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/oci_docs/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/oci_docs/js/auto-complete.js"></script>
+        <link href="/oci_docs/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "\/oci_docs";
+          
+        </script>
+        <script type="text/javascript" src="/oci_docs/js/search.js"></script>
+      </div>
+    <h1>Block Storage 추가</h1>
+    <div class="alert alert-info" role="alter">
+      <li><strong>문서 생성일:</strong> 0001-01-01 00:00:00 &#43;0000 UTC </li>
+   </div>
+
+
+     
+      
+  
+    
+    
+    
+    
+
+<p>이번 문서는 오라클 클라우드 Free Tier 계정을 생성하고 로그인한 상황을 전제로 합니다. 만약에 현재 오라클 클라우드 계정이 없는 상태라면, 다음 문서를 참조하여 오라클 클라우드 계정을 만들고 OCI 콘솔에 로그인하시기 바랍니다.</p>
+
+<ul>
+<li><a href="./how_to_sign_up_in_oci/">OCI FREE TIER 계정 등록</a></li>
+<li><a href="./first_sign_in_oci/">Free Tier 계정 로그인</a></li>
+</ul>
+
+<hr />
+
+<p>이번 문서에서는 OCI 콘솔에서 OCI Linux VM 인스턴스에 Block Storage를 추가하고 마운트하는 과정을 소개합니다. OCI Linux VM 인스턴스에 Block Storage를 추가하는 과정은 다음과 같은 목차로 진행됩니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-body"><p><nav id="TableOfContents">
+<ul>
+<li><a href="#0-oic-block-volume">0. OIC Block Volume</a></li>
+<li><a href="#1-사전-준비">1. 사전 준비</a>
+<ul>
+<li><a href="#1-1-oci-자원-준비">1.1 OCI 자원 준비</a></li>
+</ul></li>
+<li><a href="#2-oci-vm에-block-volume-추가">2. OCI VM에 Block Volume 추가</a>
+<ul>
+<li><a href="#2-1-block-volume-생성">2.1 Block Volume 생성</a></li>
+<li><a href="#2-2-block-volume-연결">2.2 Block Volume 연결</a></li>
+<li><a href="#2-3-block-volume-포멧">2.3 Block Volume 포멧</a></li>
+<li><a href="#2-3-block-volume-마운트">2.3 Block Volume 마운트</a></li>
+<li><a href="#2-5-block-volume-마운트-포인트-소유권-변경">2.5 Block Volume 마운트 포인트 소유권 변경</a></li>
+<li><a href="#2-6-etc-fstab에-uuid-등록">2.6 /etc/fstab에 UUID 등록</a></li>
+<li><a href="#2-7-전체-터니멀-작업-로그">2.7 전체 터니멀 작업 로그</a></li>
+</ul></li>
+<li><a href="#3-block-volume-연결-끊기-및-제거">3. Block Volume 연결 끊기 및 제거</a>
+<ul>
+<li><a href="#3-1-unmount">3.1 unmount</a></li>
+<li><a href="#3-2-etc-fstab에-설정-제거">3.2 /etc/fstab에 설정 제거</a></li>
+<li><a href="#3-3-oci-console에서-block-volume-연결-끊기">3.3 OCI Console에서 block volume 연결 끊기</a></li>
+<li><a href="#3-4-oci-console에서-block-volue-삭제">3.4 OCI Console에서 block volue 삭제</a></li>
+</ul></li>
+<li><a href="#4-참고-문서">4 참고 문서</a></li>
+</ul>
+</nav></p>
+</div></div>
+
+
+<hr />
+
+<h1 id="0-oic-block-volume">0. OIC Block Volume</h1>
+
+<p>OCI Block Volume은 네트워크 스토리지입니다. Block Storage는 한 번에 1개 OCI Compute 인스턴스에 장착될 수도 있고, 한 번에 여러 OCI Compute 인스턴스에 마운트되어 공유 스토리지로 사용될 수 있습니다.</p>
+
+<p>OCI Block Volume 서비스는 블록 스토리지를 제공하고 관리하는 네트워크 스토리지 서비스입니다. OCI Compute 인스턴스는 이 Block Storage를 마운트하여 스토리지를 확장하여 사용할 수 있습니다. Block Volume을 Cloud Compute를 위한 HDD라고 생각해도 좋습니다. Block Volume을 HDD와 같이 OCI Compute 인스턴스에 연결해서 사용하고 마운트하여 사용할 수 있습니다. HDD와 차이점은 Block Volume은 네트워크 스토리지라는 것뿐입니다. Block Volume 서비스로 다음과 같은 작업을 할 수 있습니다.</p>
+
+<ul>
+<li>블록 볼륨 생성</li>
+<li>블록 볼륨 인스턴스에 추가</li>
+<li>블록 볼륨 인스턴스에 연결</li>
+<li>블록 볼륨 이동</li>
+<li>블록 볼륨 백업</li>
+</ul>
+
+<p>Block Volume은 한 번에 1개의 인스턴스에 전용으로 연결될 수도 있고, 여러 인스턴스에 공용 스토리지로 연결될 수도 있습니다. 공유 스토리지에 사용될 경우 OCI Compute 인스턴스에는 Clusterware가 설치 및 설정됩니다. 기존에 인스턴스에 연결하여 사용 중이던 Block Volume을 분리하여 다른 인스턴스에 연결할 수 있습니다. A 인스턴스에 연결되어 데이터를 저장하던 Block Volume을 A 인스턴스에서 떼어낸 후, B 인스턴스에 연결할 수 있습니다. 이때 데이터 유실은 발생하지 않습니다.</p>
+
+<h1 id="1-사전-준비">1. 사전 준비</h1>
+
+<p>이 문서에서 다루는 OCI Compute 인스턴스에 Block Storage를 추가하는 절차는 다음과 같은 자원이 이미 만들어져 있다는 가정으로 진행됩니다.</p>
+
+<h2 id="1-1-oci-자원-준비">1.1 OCI 자원 준비</h2>
+
+<p>다음 자원이 없다면 &ldquo;<strong>자원 생성 참조 문서</strong>&ldquo;를 참조하여 해당 자원을 생성하시기 바랍니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>자원 유형</th>
+<th>자원 이름</th>
+<th>소속 Compartment</th>
+<th>자원 생성 참조 문서</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Compartment</td>
+<td>sanbox</td>
+<td>root</td>
+<td><a href="../../../create_compartment/" target="_blank">Compartment 추가 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</td>
+</tr>
+
+<tr>
+<td>VCN</td>
+<td>demo_vcn</td>
+<td>root &gt; sandbox</td>
+<td><a href="../../../vcn/simple_vcn/" target="_blank">간편 VCN 만들기 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</td>
+</tr>
+
+<tr>
+<td>Compute VM</td>
+<td>demo_linux_vm</td>
+<td>root &gt; sandbox</td>
+<td><a href="../linux_vm_provisioning/" target="_blank">Oracle Linux VM 인스턴스 생성 <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="2-oci-vm에-block-volume-추가">2. OCI VM에 Block Volume 추가</h1>
+
+<p>이 문서에서는 OCI Linux VM에 Block Storage를 추가하는 절차는 다음은 순서로 살펴보겠습니다.</p>
+
+<ol>
+<li>Block Volume 생성</li>
+<li>Block Volume을 인스턴스에 추가</li>
+<li>Block Volume을 인스턴스에 연결</li>
+<li>Block Volume 포맷</li>
+<li>Block Volume 마운트</li>
+</ol>
+
+<p>위 과정을 모두 마치면 다음과 같은 상태가 만들어집니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/vm/220.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="2-1-block-volume-생성">2.1 Block Volume 생성</h2>
+
+<p>Block Volume을 만들기 위해서는 OCI Console에서 다음 메뉴 패스로 Block Volume 관리 페이지로 이동해야 합니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-body"><span class="glyphicon glyphicon-menu-hamburger" style="font-size:medium" aria-hidden="true"></span> (<strong>OCI 콘솔 왼쪽 위 햄버그 버튼</strong>) <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span>  <strong>Block Storage</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> <strong>Block Volumes</strong></div></div>
+
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/010.jpg?classes=border,shadow" alt="" /></p>
+
+<p>Block Volume 관리 페이지에서 앞으로 생성할 Block Volume을 할당할 Compartment로 sandbox(root/sandbox)를 선택합니다. 그리고 “Create Block Volume” 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/020.jpg?classes=border,shadow" alt="" /></p>
+
+<p>“Create Block Volume” 버튼을 클릭하면 __Create Block Volume&rdquo; 생성 입력 폼이 나타납니다. 입력 폼에 다음과 같은 입력값을 설정합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>입력 항목</th>
+<th>설정값</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Name</td>
+<td>demo_vol01</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Create In Compartment</td>
+<td>sandbox</td>
+<td>Block Volume을 할당할 Compartment</td>
+</tr>
+
+<tr>
+<td>Availability Domain</td>
+<td>fttO:US-ASHBURN-AD-1</td>
+<td>리전에 따라 달라지는 값입니다. 데모에서는 편의상 AD-1로 통일합니다.</td>
+</tr>
+
+<tr>
+<td>Size(In GB)</td>
+<td>1024</td>
+<td>기본값인 1TB를 사용합니다.</td>
+</tr>
+
+<tr>
+<td>Compartment For Backup Policies</td>
+<td>sandbox</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Backup Policy</td>
+<td>Bronze</td>
+<td>이 항목의 선택은 제약이 없습니다. 다른 값 선택이 앞으로 진행에 영향이 없습니다.</td>
+</tr>
+
+<tr>
+<td>Volume Porformance</td>
+<td>Balanced</td>
+<td>기본값을 사용합니다. 다른 값 선택이 앞으로 진행에 영향이 없습니다.</td>
+</tr>
+
+<tr>
+<td>Encryption</td>
+<td>Encrypt Using Oracle-Managed Keys</td>
+<td>기본값을 사용합니다.</td>
+</tr>
+</tbody>
+</table>
+
+<p>위 항목을 입력한 결과는 다음 이미지와 같습니다. 위 항목을 모두 입력하고 <strong>Create Block Volume</strong> 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/030.jpg?classes=border,shadow" alt="" /></p>
+
+<p>Block Volume은 다음 이미지와 같이 생성됩니다. Block Volume은 다음 이미지와 같이 아이콘 색깔이 변하면서 만들어집니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/040.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="2-2-block-volume-연결">2.2 Block Volume 연결</h2>
+
+<p><strong>demo_linux_vm</strong> Compute 인스턴스에 Block Volume을 연결하기 위해서 다음 메뉴 패스를 이용하여 <strong>demo_linux_vm</strong> 인스턴스 상세 페이지로 이동합니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-body"><span class="glyphicon glyphicon-menu-hamburger" style="font-size:medium" aria-hidden="true"></span> (<strong>OCI 콘솔 왼쪽 위 햄버그 버튼</strong>) <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span>  <strong>Compute</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> <strong>Instance</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> (Compute 인스턴스 목록에서) <font color='red'><strong>demo_linux_vm</strong></font> 클릭</div></div>
+
+
+<p><strong>demo_linux_vm</strong> 상세 페이지에서 왼쪽 메뉴에서 &ldquo;<strong>Attached Block Volumes</strong>&rdquo; 링크합니다. 그리고 다음 이미지와 같이 &ldquo;<strong>Attach Blcok Volume</strong>&rdquo; 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/060.jpg?classes=border,shadow" alt="" /></p>
+
+<p>&ldquo;<strong>Attach Blcok Volume</strong>&rdquo; 버튼을 클릭하면, &ldquo;<strong>Attach Blcok Volume</strong>&rdquo; 입력 폼이 나타납니다. 이 입력 폼에 다음과 같은 설정값을 입력합니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>입력항목</th>
+<th>설정값</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Choose how you want to attach your block volume</td>
+<td>ISCSI 선택</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Access</td>
+<td>READ/WRITE</td>
+<td>1개 Compute에 전용으로 연결되는 모드</td>
+</tr>
+
+<tr>
+<td>Select Volume</td>
+<td>체크</td>
+<td></td>
+</tr>
+
+<tr>
+<td>BLOCK VOLUME Compartment</td>
+<td>sandbox</td>
+<td></td>
+</tr>
+
+<tr>
+<td>BLOCK VOLUME</td>
+<td>demo_vol01</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Device Path</td>
+<td>/dev/oracleoci/oraclevdb</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>위 입력값을 설정하면 다음 이미지와 형태가 됩니다. 모든 값을 입력하고 &ldquo;<strong>Attach</strong>&rdquo; 버튼을 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/070.jpg?classes=border,shadow" alt="" /></p>
+
+<p>&ldquo;<strong>Attach</strong>&rdquo; 버튼을 클릭하면 <strong>demo_linux_vm</strong> 상세 페이지의  <strong>Attached Block Volume</strong> 블록에 앞에서 지정한 Block Volume 목록이 만들어진 것을 확인할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/080.jpg?classes=border,shadow" alt="" /></p>
+
+<p><strong>Attached Block Volume</strong> 블록의 목록에서 <strong>demo_vol01</strong>의 오른쪽 마지막 메뉴 아이콘을 클릭하고 &ldquo;<strong>iSCSI Command &amp; Information</strong>&rdquo; 메뉴를 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/090.jpg?classes=border,shadow" alt="" /></p>
+
+<p>&ldquo;<strong>iSCSI Command &amp; Information</strong>&rdquo; 메뉴를 클릭하면 다음 이미지와 같이 Block Volume을 연결하고 제거하는 iscsiadm 명령이 출력됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/095.jpg?classes=border,shadow" alt="" /></p>
+
+<p>위 이미지에서 출력된 <strong>Attach Commands</strong>의 3개 명령을 복사하여, <strong>demo_linux_vm</strong> 인스턴스에 ssh 접속하여 실행해야 합니다. 아래 이미지는 <strong>demo_linux_vm</strong>에 ssh 접속하여 다음 <code>fdsik</code> 명령을 입력하여 현재 OS가 인식하는 디스크 파이션 목록을 출력한 결과입니다.</p>
+
+<pre><code>sudo fdisk -l
+</code></pre>
+
+<p>아래 이미지에서 위 명령의 실행 결과를 보면, 현재 boot volume인 <font color='red'><strong>/dev/sda</strong></font>만이 인식하고 있음을 알 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/100.jpg?classes=border,shadow" alt="" /></p>
+
+<p>앞에서 복사한 3개 iscsiadm 명령을 순서대로 <strong>demo_linux_vm</strong> 접속 터미널에 실행합니다. 그리고 위에서 실행한 <code>sudo fdisk -l</code> 명령을 다시 실행합니다. 아래 이미지에서 iscsiadm 명령 3개를 모두 실행한 다음에 <font color='red'><strong>/dev/sdb</strong></font>를 인식하고 있는 것을 확인할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/110.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="2-3-block-volume-포멧">2.3 Block Volume 포멧</h2>
+
+<p>블럭 장치 목록을 보여주는 리눅스 명령어인 <strong>&ldquo;lsblk -f&rdquo;</strong>을 실행하면, 현재 <font color='red'><strong>/dev/sdb</strong></font>를 인식할 뿐 어떤 정보도 확인할 수 없습니다. 이제는 <font color='red'><strong>/dev/sdb</strong></font>을 포맷할 순서입니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/130.jpg?classes=border,shadow" alt="" /></p>
+
+<p><font color='red'><strong>/dev/sdb</strong></font>를 다음 명령을 입력하여 포맷합니다.</p>
+
+<pre><code>sudo mkfs -t &lt;fs type&gt; /dev/sdb
+</code></pre>
+
+<p><fstype>으로는 xfs를 설정합니다. XFS는 Silicon Graphics, Inc.에서 설계한 확장성이 뛰어난 고성능 파일 시스템입니다. XFS는 Red Hat Enterprise Linux 7과 Oracle Enterprise Linux 7의 기본 파일 시스템입니다.</p>
+
+<pre><code>sudo mkfs -t xfs /dev/sdb
+</code></pre>
+
+<p>위 명령을 실행하여 <font color='red'><strong>/dev/sdb</strong></font>를 포맷한 다음에 <strong>&ldquo;lsblk -l&rdquo;</strong>를 실행하면 다음 이미지와 같이 파일 시스템 타입과 UUID가 등록된 것을 확인할 수 있습니다. 이제는 블록을 특정 디렉터리로 마운트할 차례입니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/140.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="2-3-block-volume-마운트">2.3 Block Volume 마운트</h2>
+
+<p>블록을 마운트할 디렉터리를 생성합니다. 이 문서에서는 <font color='red'><strong>/dev/sdb</strong></font>를 <strong>/demo_mnt/demo_vol01/</strong>에 마운트할 것입니다. 다음 명령을 입력하여 <strong>/demo_mnt/demo_vol01/</strong> 디렉터리를 만듭니다.</p>
+
+<pre><code>[opc@demo-linux-vm ~]$ sudo mkdir -p /demo_mnt/demo_vol01
+</code></pre>
+
+<p>그리고 <strong>/etc/fstab</strong>을 다음 명령으로 오픈합니다.</p>
+
+<pre><code>sudo vi /etc/fstab
+</code></pre>
+
+<p>그리고 마지막 줄에 다음 설정을 입력합니다.</p>
+
+<pre><code>/dev/oracleoci/oraclevdb /demo_mnt/demo_vol01 xfs defaults,_netdev,nofail 0 2
+</code></pre>
+
+<p>위 설정 파일은 시스템이 부팅될 때, 파일 시스템을 마운트하는 정보를 제공합니다. 설정의 의미는 다음과 같습니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>설정 값</th>
+<th>의미</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/dev/oracleoci/oraclevdb</td>
+<td>마운트 대상 블록 장치</td>
+</tr>
+
+<tr>
+<td>/demo_mnt/demo_vol01</td>
+<td>블록을 마운트할 위치</td>
+</tr>
+
+<tr>
+<td>xfs</td>
+<td>파일 포맷</td>
+</tr>
+
+<tr>
+<td>defaults,_netdev,nofail</td>
+<td>기본설정,네트웍 볼륨,볼륨마운트 오류 시 에러 보고하지 않음</td>
+</tr>
+
+<tr>
+<td>0</td>
+<td>덤프를 설정하지 않음</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>우선순위 2순위 설정, boot volume을 1순위로 설정, 1순위 점검 후 점검</td>
+</tr>
+</tbody>
+</table>
+
+<p>다음 이미지와 같이 설정하고 저장합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/150.jpg?classes=border,shadow" alt="" /></p>
+
+<p>다음 명령을 입력하여 /etc/fstab에 설정된 볼륨을 마운트합니다.</p>
+
+<pre><code>sudo mount -a
+</code></pre>
+
+<h2 id="2-5-block-volume-마운트-포인트-소유권-변경">2.5 Block Volume 마운트 포인트 소유권 변경</h2>
+
+<p>/etc/fstab 파일의 모든 볼륨을 마운트하면, <strong>/demo_mnt/demo_vol01</strong> 디렉터리가 root로 마운트 된 것을 확인할 수 있습니다. 다음 명령을 입력하여 <strong>/demo_mnt/demo_vol01</strong>의 소유권은 root에서 opc로 변경합니다.</p>
+
+<pre><code>[opc@demo-linux-vm ~]$ sudo chown opc:opc /demo_mnt/demo_vol01/
+[opc@demo-linux-vm ~]$ ls -al /demo_mnt/demo_vol01/
+합계 0
+drwxr-xr-x. 2 opc  opc   6  3월  8 10:16 .
+drwxr-xr-x. 3 root root 24  3월  8 10:18 ..
+</code></pre>
+
+<p>다음 이미지에서는 <strong>/demo_mnt/demo_vol01</strong> 디렉터리의 소유권을 root:root에서 opc:opc로 변경하고 해당 디렉터리에 log 파일을 만드는 과정입니다. log 파일 소유권이 opc:opc로 설정된 것을 확인할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/190.jpg?classes=border,shadow" alt="" /></p>
+
+<p><strong>/demo_mnt/demo_vol01</strong>에 설정은 시스템을 재시작(rebookt)해도 그래도 유지됩니다. Oracle Linux 7이 재시작할 때, /etc/fstab에 등록된 파일 시스템이 마운트됩니다. 이때 앞에서 설정한 마운트 포인트의 소유권 설정이 그래도 유지되는 것을 확인할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/180.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="2-6-etc-fstab에-uuid-등록">2.6 /etc/fstab에 UUID 등록</h2>
+
+<p>Boot Volume을 제외하고 마운트할 볼륨이 2개 이상일 경우에 서버를 재시작할 때, Block Volume Path가 변경되어 마운트 장치가 변경되는 이슈가 발생할 수 있습니다. 이러한 문제를 피하기 위해서, 2개 이상의  block volume을 연결할 경우에 /etc/fstab에 uuid를 사용할 것을 권장합니다. block volume의 uuid는 다음 명령으로 확인할 수 있습니다.</p>
+
+<pre><code>sudo lsblk -f
+</code></pre>
+
+<p>위 명령을 실행하면 각 볼륨 장차의 파일 포맷, uuid 및 마운트 위지 정보가 출력됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/200.jpg?classes=border,shadow" alt="" /></p>
+
+<p>/etc/fstab에 마운트 정보를 다음과 같이 입력합니다.</p>
+
+<pre><code>## /dev/oracleoci/oraclevdb /demo_mnt/demo_vol1 xfs defaults,_netdev,nofail 0 2
+UUID=47dd6348-4357-421d-a089-40f2c05b8822 /demo_mnt/demo_vol1 xfs defaults,_netdev,nofail 0 2
+</code></pre>
+
+<p>다음 명령을 입력하여 볼륨을 마운트하고 소유권 변경을 수행합니다.</p>
+
+<pre><code>[opc@demo-linux-vm ~]$ sudo mount -a                ## 파일 시스템 마운트
+[opc@demo-linux-vm ~]$ sudo chown opc:opc /demo_mnt/demo_vol01/ ## 마운트 포인트 소유권 변경
+[opc@demo-linux-vm ~]$ 
+</code></pre>
+
+<h2 id="2-7-전체-터니멀-작업-로그">2.7 전체 터니멀 작업 로그</h2>
+
+<p>Block Volume을 <strong>demo_linux_vm</strong>에 연결한 후, 인스턴스에 ssh 접속한 다음에 터미널에 입력하는 모든 명령 로그는 다음과 같습니다.</p>
+
+<pre><code>$ ssh -i ./id_rsa opc@150.136.57.41     ## demo_linux_vm에 ssh 접속
+The authenticity of host '150.136.57.41 (150.136.57.41)' can't be established.
+ECDSA key fingerprint is SHA256:Q7YlJql7MZqf6mp/ZQnP/0cQtcX6756U+pHEqAqy+CU.
+Are you sure you want to continue connecting (yes/no)?  yes
+Warning: Permanently added '150.136.57.41' (ECDSA) to the list of known hosts.
+[opc@demo-linux-vm ~]$
+[opc@demo-linux-vm ~]$ sudo fdisk -l     ## 블록 파이션 조회
+WARNING: fdisk GPT support is currently new, and therefore in an experimental phase. Use at your own discretion.
+
+Disk /dev/sda: 50.0 GB, 50010783744 bytes, 97677312 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 1048576 bytes
+Disk label type: gpt
+Disk identifier: 23A7AABA-6B11-4E98-A2CE-4962B4F7BCC3
+
+
+#         Start          End    Size  Type            Name
+1         2048       411647    200M  EFI System      EFI System Partition
+2       411648     17188863      8G  Linux swap
+3     17188864     97675263   38.4G  Microsoft basic
+[opc@demo-linux-vm ~]$
+[opc@demo-linux-vm ~]$ ## 3개 iscsiadm 명령 실행
+[opc@demo-linux-vm ~]$ sudo iscsiadm -m node -o new -T iqn.2015-12.com.oracleiaas:dd5529e3-b556-4603-b563-83d2ccfc5128 -p 169.254.2.2:3260
+New iSCSI node [tcp:[hw=,ip=,net_if=,iscsi_if=default] 169.254.2.2,3260,-1 iqn.2015-12.com.oracleiaas:dd5529e3-b556-4603-b563-83d2ccfc5128] added
+[opc@demo-linux-vm ~]$ sudo iscsiadm -m node -o new -T iqn.2015-12.com.oracleiaas:dd5529e3-b556-4603-b563-83d2ccfc5128 -p 169.254.2.2:3260
+New iSCSI node [tcp:[hw=,ip=,net_if=,iscsi_if=default] 169.254.2.2,3260,-1 iqn.2015-12.com.oracleiaas:dd5529e3-b556-4603-b563-83d2ccfc5128] added
+[opc@demo-linux-vm ~]$ sudo iscsiadm -m node -o update -T iqn.2015-12.com.oracleiaas:dd5529e3-b556-4603-b563-83d2ccfc5128 -n node.startup -v automatic
+[opc@demo-linux-vm ~]$
+[opc@demo-linux-vm ~]$ sudo fdisk -l         ## 블록 파이션 조회, /dev/sdb 연결됨
+WARNING: fdisk GPT support is currently new, and therefore in an experimental phase. Use at your own discretion.
+
+Disk /dev/sda: 50.0 GB, 50010783744 bytes, 97677312 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 1048576 bytes
+Disk label type: gpt
+Disk identifier: 23A7AABA-6B11-4E98-A2CE-4962B4F7BCC3
+
+
+#         Start          End    Size  Type            Name
+1         2048       411647    200M  EFI System      EFI System Partition
+2       411648     17188863      8G  Linux swap
+3     17188864     97675263   38.4G  Microsoft basic
+
+Disk /dev/sdb: 1099.5 GB, 1099511627776 bytes, 2147483648 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 1048576 bytes
+
+[opc@demo-linux-vm ~]$ lsblk -f     ## 블록 파이션 정보 조회
+NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
+sdb
+sda
+├─sda2 swap         02789b15-4058-485e-86a6-38522a5c00c6 [SWAP]
+├─sda3 xfs          53bb89bf-50e3-4358-9f5e-e9c5ac8d535c /
+└─sda1 vfat         F831-6C7E                            /boot/efi
+[opc@demo-linux-vm ~]$
+[opc@demo-linux-vm ~]$ sudo mkfs -t xfs /dev/sdb    ## 블록 포멧
+meta-data=/dev/sdb               isize=256    agcount=4, agsize=67108864 blks
+         =                       sectsz=4096  attr=2, projid32bit=1
+         =                       crc=0        finobt=0, sparse=0, rmapbt=0, reflink=0
+data     =                       bsize=4096   blocks=268435456, imaxpct=5
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal log           bsize=4096   blocks=131072, version=2
+         =                       sectsz=4096  sunit=1 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+[opc@demo-linux-vm ~]$ lsblk -f     ## 블록 파이션 정보 조회
+NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
+sdb    xfs          47dd6348-4357-421d-a089-40f2c05b8822
+sda
+├─sda2 swap         02789b15-4058-485e-86a6-38522a5c00c6 [SWAP]
+├─sda3 xfs          53bb89bf-50e3-4358-9f5e-e9c5ac8d535c /
+└─sda1 vfat         F831-6C7E                            /boot/efi
+[opc@demo-linux-vm ~]$
+[opc@demo-linux-vm ~]$ sudo mkdir -p /demo_mnt/demo_vol01 ## 마운트 포인트 생성
+[opc@demo-linux-vm ~]$ sudo vi /etc/fstab
+[opc@demo-linux-vm ~]$                  ## /etc/fstab에 마운트 정보 추가후 저장
+[opc@demo-linux-vm ~]$ sudo mount -a            ## 파일 시스템 마운트
+[opc@demo-linux-vm ~]$
+[opc@demo-linux-vm ~]$ ls -al /demo_mnt/demo_vol01/     ## 마운트 포인트 조회
+합계 0
+drwxr-xr-x. 2 root root  6  3월  8 10:16 .
+drwxr-xr-x. 3 root root 24  3월  8 10:18 ..
+[opc@demo-linux-vm ~]$ sudo chown opc:opc /demo_mnt/demo_vol01/ ## 마운트 포인트 소유권 변경
+[opc@demo-linux-vm ~]$ ls -al /demo_mnt/demo_vol01/
+합계 0
+drwxr-xr-x. 2 opc  opc   6  3월  8 10:16 .
+drwxr-xr-x. 3 root root 24  3월  8 10:18 ..
+[opc@demo-linux-vm ~]$
+[opc@demo-linux-vm ~]$ ls -al &gt;&gt; /demo_mnt/demo_vol01/log   ## 쓰기 테스트
+[opc@demo-linux-vm ~]$ cat /demo_mnt/demo_vol01/log
+합계 20
+drwx------. 5 opc  opc  4096  3월  8 10:23 .
+drwxr-xr-x. 3 root root   17  3월  8 09:58 ..
+-rw-r--r--. 1 opc  opc    18  6월 13  2019 .bash_logout
+-rw-r--r--. 1 opc  opc   193  6월 13  2019 .bash_profile
+-rw-r--r--. 1 opc  opc   231  6월 13  2019 .bashrc
+drwxrwxr-x. 3 opc  opc    18  3월  8 10:09 .cache
+drwxrwxr-x. 3 opc  opc    18  3월  8 10:09 .config
+drwx------. 2 opc  opc    29  3월  8 09:58 .ssh
+-rw-------. 1 opc  opc   801  3월  8 10:23 .viminfo
+[opc@demo-linux-vm ~]$ ls -al /demo_mnt/demo_vol01
+합계 4
+drwxr-xr-x. 2 opc  opc   17  3월  8 10:29 .
+drwxr-xr-x. 3 root root  24  3월  8 10:18 ..
+-rw-rw-r--. 1 opc  opc  475  3월  8 10:29 log
+[opc@demo-linux-vm ~]$
+[opc@demo-linux-vm ~]$ sudo reboot          ## 운영체제 재시작
+Connection to 150.136.57.41 closed by remote host.
+Connection to 150.136.57.41 closed.
+=====세션 종료
+$ ssh -i ./id_rsa opc@150.136.57.41         ## 재접속
+Last login: Sun Mar  8 10:09:46 2020 from 175.212.219.38
+[opc@demo-linux-vm ~]$ ls -al /demo_mnt/demo_vol01  ## 소유권 유지 확인
+합계 4
+drwxr-xr-x. 2 opc  opc   17  3월  8 10:29 .
+drwxr-xr-x. 3 root root  24  3월  8 10:18 ..
+-rw-rw-r--. 1 opc  opc  475  3월  8 10:29 log
+[opc@demo-linux-vm ~]$ cat /demo_mnt/demo_vol01/log
+합계 20
+drwx------. 5 opc  opc  4096  3월  8 10:23 .
+drwxr-xr-x. 3 root root   17  3월  8 09:58 ..
+-rw-r--r--. 1 opc  opc    18  6월 13  2019 .bash_logout
+-rw-r--r--. 1 opc  opc   193  6월 13  2019 .bash_profile
+-rw-r--r--. 1 opc  opc   231  6월 13  2019 .bashrc
+drwxrwxr-x. 3 opc  opc    18  3월  8 10:09 .cache
+drwxrwxr-x. 3 opc  opc    18  3월  8 10:09 .config
+drwx------. 2 opc  opc    29  3월  8 09:58 .ssh
+-rw-------. 1 opc  opc   801  3월  8 10:23 .viminfo
+[opc@demo-linux-vm ~]$
+</code></pre>
+
+<h1 id="3-block-volume-연결-끊기-및-제거">3. Block Volume 연결 끊기 및 제거</h1>
+
+<p>Blokc Volume을 제거하는 방법은 다음과 같습니다.</p>
+
+<ol>
+<li>unmount</li>
+<li>/etc/fstab에 설정 제거</li>
+<li>OCI Console에서 block volume 연결 끊기</li>
+<li>OCI Console에서 block volue 삭제</li>
+</ol>
+
+<h2 id="3-1-unmount">3.1 unmount</h2>
+
+<p>마운트 포인트를 지정하여 해당 block volume을 언마운트합니다.</p>
+
+<pre><code>umount &lt;mount_point&gt;
+</code></pre>
+
+<p>다음과 같이 해당 마운트를 해지합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/210.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="3-2-etc-fstab에-설정-제거">3.2 /etc/fstab에 설정 제거</h2>
+
+<p>/etc/fstab 파일에 해당 마운트 설정을 제거합니다.</p>
+
+<pre><code>sudo vi /etc/fstab
+</code></pre>
+
+<p>위 명령으로 /etc/fstab 파일을 오픈하고 block volume 설정을 제거합니다. 아래 이미지는 <strong>/etc/fstab</strong> 파일에 마운트 정보를 주석 처리한  상태입니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/220.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="3-3-oci-console에서-block-volume-연결-끊기">3.3 OCI Console에서 block volume 연결 끊기</h2>
+
+<p>다음 메뉴 패스로 Block Volume 상세 페이지로 이동합니다.</p>
+
+
+<div class="panel panel-primary"><div class="panel-body"><span class="glyphicon glyphicon-menu-hamburger" style="font-size:medium" aria-hidden="true"></span> (<strong>OCI 콘솔 왼쪽 위 햄버그 버튼</strong>) <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span>  <strong>Block Storage</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> <strong>Block Volumes</strong> <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> (Block Volues 목록에서) <font color='red'><strong>demo_vol01</strong></font> 클릭 <span class="glyphicon glyphicon-menu-right" style="font-size:medium" aria-hidden="true"></span> Attached Instance 클릭(왼쪽 메뉴)</div></div>
+
+
+<p>다음 그림과 같이 Attached Instance 목록에서 현재 연결을 해제할 인스턴스의 오른쪽 메뉴를 클릭하고 <strong>Detach From Instance</strong> 메뉴를 클릭합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/230.jpg?classes=border,shadow" alt="" /></p>
+
+<p><strong>Detach From Instance</strong> 메뉴를 클릭하면 다음과 같은 <strong>Detach Block Volume</strong> 창이 오픈됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/240.jpg?classes=border,shadow" alt="" /></p>
+
+<p>이 창에서 <strong>DETACH COMMANDS</strong> 명령을 복사하여 대상 Compute 인스턴스에서 실행합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/250.jpg?classes=border,shadow" alt="" /></p>
+
+<p>위 iscsiadm 명령을 해당 compute 인스턴스의 터미널에서 실행하면 해당 볼륨은 compute 인스턴스에서 완전히 사라집니다. 그리고 <strong>Detach Block Volume</strong> 창의 &ldquo;<strong>Continue Detachment</strong>&ldquo;을 클릭합니다. 그러면 Block Volume 상세 페이지에서 Attached Instance가 사라집니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/260.jpg?classes=border,shadow" alt="" /></p>
+
+<h2 id="3-4-oci-console에서-block-volue-삭제">3.4 OCI Console에서 block volue 삭제</h2>
+
+<p>Block Volume 상세 페이지에서 <strong>Terminate</strong> 버튼을 클릭하면, Block Volume은 완전히 삭제됩니다. 이 볼륨의 모든 데이터는 소멸됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/ocidocs/block/270.jpg?classes=border,shadow" alt="" /></p>
+
+<h1 id="4-참고-문서">4 참고 문서</h1>
+
+<ul>
+<li><a href="https://docs.cloud.oracle.com/en-us/iaas/Content/Block/Concepts/bootvolumes.htm" target="_blank">[Official OCI Docs] Boot Volumes <span class="glyphicon glyphicon-new-window" style="font-size:medium" aria-hidden="true"></span> </a>
+
+</li>
+</ul>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/" title="Oracle Linux VM 인스턴스 생성"> <i class="fa fa-chevron-left"></i><label>Oracle Linux VM 인스턴스 생성</label></a>
+    <a class="nav nav-next" href="/oci_docs/10_quickstart/compute/linux_vm_with_reserved_ip/" title="OCI VM 고정 IP 설정" style="margin-right: 0px;"><label>OCI VM 고정 IP 설정</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+  <div class="chevrons">
+      <div class="row">
+    <div class="author left">
+        <img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan2.jpg" height="90" width="90">
+    </div>
+    <div class="author right">
+		<li><b>작성자: 김태완</b></li>
+        <li>사랑하는 민수와 데이터 관리, 데이터 분석 &amp; 클라우드에 집중하고 있습니다.</li>
+        <li>E-mail: taewanme@gmail.com</li>
+    </div>
+</div><div class="panel panel-danger">
+<div class="panel-heading">Disclaimer</div>
+<div class="panel-body">이 저작물은 Oracle과 관계없이 개인으로서 개인의 시간을 할애하여 작성된 글 입니다. 본 글의 내용, 입장, 예측은 Oracle을 공식적으로 <font color="red"><bold>절대</bold></font> 대변하지 않습니다.</div>
+</div>
+<hr />
+
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/oci_docs/10_quickstart/compute/basic_linux_vm/adding_block_stoage/"></div>
+
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+  </div>
+
+
+	<div>
+
+
+  
+
+
+
+  </div>
+  
+  
+</footer>
+
+<script src="/oci_docs/js/clipboard.min.js"></script>
+
+<link href="/oci_docs/css/featherlight.min.css" rel="stylesheet">
+<script src="/oci_docs/js/featherlight.min.js"></script>
+
+
+
+<script src="/oci_docs/theme-flex/script.js"></script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        
+        ga('create', 'UA-72835175-1', 'auto');
+        ga('send', 'pageview');
+</script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.2&appId=404519239985000&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+    
+
+    
+    
+
+    
+
+
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Group on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/group/</link>
+    <description>Recent content in Group on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 26 Nov 2020 16:20:25 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/group/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>OCI Tenancy 기본 환경 설정</title>
+      <link>http://taewan.kim/cloud/oci_basic_config/</link>
+      <pubDate>Thu, 26 Nov 2020 16:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_basic_config/</guid>
+      <description>이 문서는 앞으로 데모 환경을 구성하는 기본 문서로 활용할 목적으로 작성합니다. 이 문서에서는 OCI User ID, OCI Group, Compoartment 및 VCN를 다음과 같이 구성합니다.
+ OCI 사용자 ID: OCI 사용자 계정  developer01 operator01 data_analyst01 admin  OCI Group: OCI 사용자를 묶는 논리적인 단위  developers operators data_analysts  Compartment: OCI 자원을 묶는 논리적인 단위  demo  VCN: 가상 클라우드 네트워크  demovcn   OCI 사용자 기본 설정 OCI Group과 OCI User를 만들고, 그룹에 OCI User를 할당하는 과정은 다음 문서를 참조하시기 바랍니다.</description>
+    </item>
+    
+  </channel>
+</rss>

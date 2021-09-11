@@ -1,0 +1,201 @@
++++
+date = "2020-03-05T10:20:25+09:00"
+description = "2020년 2월 28일 OCI는 Network Sources 기능을 공개했습니다. Network Sources를 이용하여 IP 주소 별 Object Storage 접근 제어를 구성할 수 있습니다. "
+title = "IP 주소 별 Object Storage 접근 제어"
+thumbnailInList = "https://taewanmerepo.github.io/2020/03/networksource/list.jpg"
+thumbnailInPost = "https://taewanmerepo.github.io/2020/03/networksource/020.jpg"
+tags = ["oci", "linux", "cloud-init"]
+categories = ["Cloud"]
+author = "taewan.kim"
+disclaimer = "true"
++++
+
+- {{<extlink link="https://docs.cloud.oracle.com/en-us/iaas/releasenotes/changes/d05f31db-a3c7-40dc-bcfd-6f3404e2b197/" desc="[OCI Release Note]Restrict access to Object Storage resources to requests from specific IP addresses">}}
+
+2020년 2월 28일 OCI는 Network Sources 기능을 공개했습니다. Network Source는 OCI IAM(Infrastructure Identity and Access)의 새로운 구성 요소입니다. Network Source는 OCI의 다양한 리소스에 대한 네트워크 접근을 제한하는 기능을 제공합니다. 특정 서브넷 혹은 특정 IP에서만 OCI 리소스/서비스에 대한 접근을 제한 할 수 있습니다. Network Source를 이용하여 더 향상된 보안을 구성할 수 있습니다. 이 새로운 보안은 OCI IAM의 접근 가능한 네트워크의 정보를 정의한 다음에 OCI IAM의 Policy로 특정 서비스에 앞에서 정의한 Network Source를 적용하는 방식으로 구성됩니다. 
+
+Network Sources는 현재 OCI Object Storage 서비스만을 지원합니다. Network Sources가 지원하는 서비스는 지속적으로 늘려 OCI 서비스 전체로 확대할 것 입니다. 
+
+이 문서에서는 Network Source를 이용하여 IP 주소 별 Object Storage 접근 제어를 구성하는 방법을 정리하겠습니다. 
+
+![](https://taewanmerepo.github.io/2020/03/networksource/030.jpg)
+
+## 사전 준비사항
+
+진행을 위해서는 다음 표의 자원이 필요합니다. 다음 표의 자원이 없다면 "__자원 생성 참조 문서__"를 참조하여 해당 자원을 생성하시기 바랍니다. 
+
+|자원 유형| 자원 이름 | 소속 Compartment | 추가 설명 | 자원 생성 참조 문서 |
+|----|----|----|----|----|
+|Compartment| sanbox | root > sandbox |. |{{<extlink link="/oci_docs/10_quickstart/create_compartment/" desc="Compartment 추가">}}|
+|VCN| demo_vcn | root > sandbox | public Subnet과 private Subnet으로 구성된 VNC 생성|{{<extlink link="/oci_docs/10_quickstart/vcn/simple_vcn/" desc="간편 VCN 만들기">}} |
+
+## 실습 환경 구성 
+
+실습을 위해서는 __사전 준비사항_을 마치고 다음 3가지 작업을 진행해야 합니다. 
+
+1. public 서브넷 추가
+1. developer image로 2개 인스턴스 생성
+1. 2개 VM SSH 접근 및 OCI CLI 설정
+1. demo_bucket 만들고 파일 업로드
+
+### 1. Subnet 추가
+
+__사전 준비사항__에서 만든 __demo_vcn__에 public subnet을 하나 더 추가합니다. 서브넷을 추가하기 위해서 __demo_vcn__ 상세 페이지에서 다음 이미지와 같이 "__Create Subnet__" 버튼을 클릭합니다. 
+
+![](https://taewanmerepo.github.io/2020/03/networksource/050.jpg)
+
+"__Create Subnet__" 버튼을 클릭하면 출력되는 입력 폼에 다음 설정 값을 입력합니다. 
+
+|설정 항목|설정 값|
+|----|----|
+|Name|Public Subnet-demo_vcn01|
+|Subnet Type|Regional|
+|OIDR BLOCK|10.0.2.0/24|
+|Route Table|Default Route Table For demo_vcn|
+|Subnet Access|Public Subnet|
+|USE DNS HOSTNAMES IN THIS Subnet|체크|
+
+위 입력 항목을 입력하면 다음과 같은 상태가 됩니다. 입력을 마치면 다음 그림과 같습니다. 
+
+![](https://taewanmerepo.github.io/2020/03/networksource/060.jpg)
+
+입력을 마치면 __Create Subnet__ 버튼을 클릭합니다. subnet이 만들어지면 다음과 같은 subnet 목록이 출력됩니다. 
+
+![](https://taewanmerepo.github.io/2020/03/networksource/070.jpg)
+
+### 2. 2개 VM 인스턴스 생성
+
+developer image로 2개 인스턴스를 생성합니다. 다음 문서를 참조하여 이미지를 생성합니다. 
+
+
+|설정 항목|VM01 설정값|VM02 설정값|
+|----|----|----|
+|Name your instance|VM01|VM02|
+|CoImage Source|Oracle Cloud Developer Image|Oracle Cloud Developer Image|
+|Availability Domain|AD 1|AD 1|
+|Instance Type|Virtual Machine|Virtual Machine|
+|Instance Shape|VM.Stanndard2.1|VM.Stanndard2.1||
+|Virtaul cloud network compartment|sandbox|sandbox|
+|Virtaul cloud network|demo_vcn|demo_vcn|
+|Subnet Compartment|sandbox|sandbox|
+|Subnet|Public Subnet-demo_vcn|Public Subnet-demo_vcn01|
+|Assign a public IP address|체크|체크|
+|Choose SSH Key file|체크|체크|
+|공개키 업로드|준비한 id_rsa.pub 파일을 업로드|준비한 id_rsa.pub 파일을 업로드|
+
+Developer VM 생성 방법을 소개하는 다음 문서를 참조하고 위 입력값을 사용하여 VM Compute 인스턴스를 만듭니다.
+
+- {{<extlink link="/oci_docs/30_core_infrastructure/compute/provisioning/oci_developer_image/" desc="Developer Image 인스턴스 생성">}}
+
+2개 VM이 생성되면 다음과 같이 2개 VM 목록이 출력됩니다. 
+
+![](https://taewanmerepo.github.io/2020/03/networksource/080.jpg)
+
+### 3. 2개 VM SSH 접근 및 OCI CLI 설정
+
+2개 VM 상세 페이지에서 각 VM의 공개 IP 주소를 확인할 수 있습니다. 
+
+|VM 이름|공개 IP 주소|
+|----|----|
+|VM01|168.138.195.21|
+|VM02|168.138.198.19|
+
+__Oracle Cloud Developer Image__에는 OCI CLI가 설치되어 있습니다. 따라서 SSH로 두개 VM에 각각 접근하고 OCI CLI 설정을 진행합니다. 
+
+- ssh 키 쌍 파일의 비밀키 파일은 ~/temp/id_rsa에 있다고 가정합니다.
+
+```
+ssh -i ~/temp/id_rsa opc@168.138.195.21
+ssh -i ~/temp/id_rsa opc@168.138.198.19
+```
+
+OCI CLI 설정은 다음 문서를 참조하여 진행합니다. 
+
+- {{<extlink link="/oci_docs/80_oci_tools/oci_cli/config_of_ocicli/" desc="[taewan.kim: Quick Start Guide]OCI CLI 설정">}}
+
+설치가 완료되면 다음과 같이 SSH에 접근하여 다음과 같은 결과가 출력됩니다. 
+
+
+```
+$ ssh -i ~/temp/id_rsa opc@168.138.195.21 ##vm01 접근
+Last login: Thu Mar  5 09:39:44 2020
+[opc@vm01 ~]$ oci --version               ##oci cli 버전 체크
+2.6.11
+[opc@vm01 ~]$ oci os ns get               ##oci cli 설치 상태 확인
+{
+  "data": "apackrsct01"
+}
+[opc@vm01 ~]$ exit                        ## vm01 로그아웃
+logout
+Connection to 168.138.195.21 closed.
+$ ssh -i ~/temp/id_rsa opc@168.138.198.19   ##vm01 접근
+Last login: Thu Mar  5 09:35:01 2020 from 175.212.219.38
+[opc@vm02 ~]$ oci --version                 ##oci cli 버전 체크
+2.6.11
+[opc@vm02 ~]$ oci os ns get                 ##oci cli 설치 상태 확인
+{
+  "data": "apackrsct01"
+}
+[opc@vm02 ~]$ exit                          ## vm02 로그아웃
+logout
+Connection to 168.138.198.19 closed.
+$ 
+```
+
+### 4. demo_bucket 만들고 파일 업로드
+
+Bucket을 하나 만들고, 그 bucket에 1개 파일을 업로드합니다. 
+
+- 생성 Bucket 이름: demo_bucket
+- 업로드 파일명: 업로드 파일에 대한 제약은 없습니다. 
+
+Bucket 생성과 파일 업로드에 다음 문서를 참조하여 진행합니다.
+
+- {{<extlink link="/oci_docs/10_quickstart/object_storate/add_bucket_and_object/" desc="[taewan.kim: Quick Start Guide]OCI Console로 Bucket 추가">}}
+
+## Object Storage 버킷 접근
+
+별도 설정이 없는 상태에서 로컬 컴퓨터, VM01, VM02에서 모두 demo_bucket에 접근할 수 있습니다. 
+
+다음은 로컬 컴퓨터에서 OCI Console로 demo_bucket에 접근한 결과입니다.
+
+![](https://taewanmerepo.github.io/2020/03/networksource/090.jpg)
+
+Public Subnet-demo_vcn 서브넷에 위치하는 VM01에서 demo_bucket에 접근한 결과입니다.
+
+```
+$ssh -i ./id_rsa opc@168.138.195.21
+Last login: Thu Mar  5 10:09:50 2020
+[opc@vm01 ~]$ oci os object list --bucket-name demo_bucket --output table
++--------------------------+-----------+-------+----------------------------------+
+| md5                      | name      | size  | time-created                     |
++--------------------------+-----------+-------+----------------------------------+
+| IwnMXwR4Ltm7YBbZ9OOBzw== | train.csv | 61194 | 2020-03-05T02:33:27.295000+00:00 |
++--------------------------+-----------+-------+----------------------------------+
+```
+
+Public Subnet-demo_vcn01 서브넷에 위치하는 VM02에서 demo_bucket에 접근한 결과입니다.
+
+```
+$ ssh -i ./id_rsa opc@168.138.198.19
+Last login: Thu Mar  5 10:14:01 2020
+[opc@vm02 ~]$ oci os object list --bucket-name demo_bucket --output table
++--------------------------+-----------+-------+----------------------------------+
+| md5                      | name      | size  | time-created                     |
++--------------------------+-----------+-------+----------------------------------+
+| IwnMXwR4Ltm7YBbZ9OOBzw== | train.csv | 61194 | 2020-03-05T02:33:27.295000+00:00 |
++--------------------------+-----------+-------+----------------------------------+
+prefixes: []
+[opc@vm02 ~]$
+```
+
+## Network Source 기반 접근 제어
+
+Network Souce를 만들고 Object Storage에 접근 제어 설정을 Policy로 적용하겠습니다. Policy를 적용하기 위해서는  OCI User Group을 등록해야 합니다. 
+
+- Groups Name: A_NS_DEMO
+- OCI User: taewan.kim@oracle.com
+
+PolicyforAccessofObjectStorage
+policy for demo of Network Source
+allow group A_NS_DEMO to manage object-family in comparment sandbox where request.networkSource.name = 'NetworkSource01'

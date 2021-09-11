@@ -1,0 +1,113 @@
+[
+{
+	"uri": "http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210704/",
+	"title": "OCI News:2021년 7월 첫째 주",
+	"tags": [],
+	"description": "",
+	"content": "6월 첫째 주(2021.6.25~7.2)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 11회 영상입니다.\n  OCI 주간 새소식 11회 영상은 다음과 같은 내용으로 구성됩니다.\n   시작 시간 제목 진행자     00:00 Intro 아빠곰   01:01 Application Performance Monitoring: Terraform Support 민수아빠   03:34 Oracle Linux Cloud Developer platform image for AMD and Intel compute instances 민수아빠   05:09 ADB-D on Exadata Cloud@Customer: Fractional OCPU and GB Stora \u0026amp; Autonomous Database on Dedicated cloud infrastructure: Fractional OCPU and GB storage 베어메탈   11:57 Support for Network Security Group (NSGs) 곰돌이   17:02 DevOps is now available 민수아빠   19:38 New Release for Data Catalog 민수아빠   21:44 Quick Actions renamed to \u0026ldquo;Launch Resources\u0026rdquo; 곰돌이   23:12 Quickstarts section added to the Console home page 곰돌이   26:23 MySQL Database Service is now available in Brazil Southeast (Vinhedo) region 베어메탈   27:35 마무리 아빠곰    "
+},
+{
+	"uri": "http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210627/",
+	"title": "OCI News:2021년 6월 넷째 주",
+	"tags": [],
+	"description": "",
+	"content": "6월 첫째 주(2021.6.18~6.24)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 10회 영상입니다.\n  OCI 주간 새소식 10회 영상은 다음과 같은 내용으로 구성됩니다.\n   시작 시간 제목 진행자     00:00 Intro 아빠곰   00:43 Support for reserved public IP addresses for load balancers created by Container Engine for Kubernetes 곰돌이   04:08 Database Critical events for DB systems 민수아빠   06:39 New Cloud Guard Features Are Available 베어메탈   17:29 OS Management is now available in the Brazil Southeast (Vinhedo) region 곰돌이   21:42 PDB Management for Database Cloud Service 베어메탈   25:42 Logging Analytics now available in the region: Vinhedo 민수아빠   27:31 Outbound SMTP is blocked 민수아빠   32:02 Terraform 1.0.x support 민수아빠   34:07 Using Python from Java with GraalVM 아빠곰   34:52 마무리 아빠곰    "
+},
+{
+	"uri": "http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210620/",
+	"title": "OCI News:2021년 6월 셋째 주",
+	"tags": [],
+	"description": "",
+	"content": "6월 첫째 주(2021.6.10~6.17)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 9회 영상입니다.\n  OCI 주간 새소식 9회 영상은 다음과 같은 내용으로 구성됩니다.\n   시작 시간 제목 진행자     00:00 Intro 아빠곰   00:59 BOracle Data Safe: Target Registration in Oracle Cloud Infrastructure 베어메탈   07:43 Support for VCN-native cluster migration 곰돌이   12:03 Access to Microsoft Azure expanded to Brazil Southeast (Vinhedo) region and Azure Campinas location 베어메탈   15:52 MySQL Database Service new configuration variables 베어메탈   22:44 Exadata Cloud@Customer: Elastic Storage Expansion 곰돌이   25:35 General availability of Java Management 민수아빠   26:50 마무리 아빠곰    "
+},
+{
+	"uri": "http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210613/",
+	"title": "OCI News:2021년 6월 둘째 주",
+	"tags": [],
+	"description": "",
+	"content": " 6월 첫째 주(2021.6.4~6.10)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 8회 영상입니다.\n  OCI 주간 새소식 8회 영상은 다음과 같은 내용으로 구성됩니다.\n   시작 시간 제목 진행자     00:00 Intro 아빠곰   01:05 Block Volume Ultra High Performance 곰돌이   08:51 In-Transit Encryption for Bare Metal Instances 곰돌이   11:40 Support for Node.js 14, Go 1.15, and Ruby 2.7 민수아빠   13:11 New Release for Application Performance Monitoring is Now Available 민수아빠   16:00 Filter Databases and Hosts Across Applications 베어메탈   19:57 Arm-based Ampere A1 Compute shape for bare metal instances is now available 곰돌이   21:41 MySQL Database Service now allows to expand storage while restoring from backups 베어메탈   22:46 ​(Blog)Announcing Java Management Service 민수아빠   24:00 마무리 아빠곰    참조 링크  Logging Analytics 시작 간편화 동영상: https://youtu.be/ycF1n55AgHU 클라우드 리전 맵: https://www.cloudinfrastructuremap.com/  "
+},
+{
+	"uri": "http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210606/",
+	"title": "OCI News:2021년 6월 첫째 주",
+	"tags": [],
+	"description": "",
+	"content": " 6월 첫째 주(2021.5.28~6.6)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 7회 영상입니다.\n  OCI 주간 새소식 7회 영상은 다음과 같은 내용으로 구성됩니다.\n   시작 시간 제목 진행자     00:00 Intro 아빠곰   01:14 Logging Analytics: Pre-Built customizable Dashboards for OCI Audit Logs, VCN Flow Logs and OCI API Gateway 민수아빠   02:33 New streamlined onboarding by 민수아빠   03:22 New Query Commands for Advanced Analytics 민수아빠   03:56 ATP/ADW Log Analytics Support 민수아빠   05:02 Interactive metrics charts creation experience for OCI Metrics 민수아빠   06:00 New Region in Vinhedo, Brazil 베어메탈   11:29 Autonomous Database on Dedicated infrastructure: Restrict Access Using a Network Access Control List 베어메탈   13:20 PySpark V3.0 conda environment is introduced 민수아빠   15:32 Exadata Cloud Service: Non-rolling infrastructure patching option now available (by 23:09 File System Clones 베어메탈   18:50 File System Clones 베어메탈   22:22 Cross-Region Volume Replication 곰돌이   25:05 Preemptible instance 곰돌이   29:02 마무리 아빠곰    참조 링크  Logging Analytics 시작 간편화 동영상: https://youtu.be/ycF1n55AgHU 클라우드 리전 맵: https://www.cloudinfrastructuremap.com/  "
+},
+{
+	"uri": "http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210530/",
+	"title": "OCI News:2021년 5월 넷째 주",
+	"tags": [],
+	"description": "",
+	"content": "5월 넷째 주(2021.5.21~5.28)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 6회 영상입니다.\n  OCI 주간 새소식 6회 영상은 다음과 같은 내용으로 구성됩니다.\n   시작 시간 제목 진행자     00:00 OCI 주간 새소식 아빠곰   00:51 Arm-based Ampere A1 Compute shape - Part I 베어메탈   05:59 Arm-based Ampere A1 Compute shape - Part II 곰돌이   09:50 Arm-based Ampere A1 Compute shape - Part III 민수아빠   15:48 Retrieve Secrets by Name 곰돌이   19:34 AWR Viewer for On-premises Oracle Databases 베어메탈   23:09 Artifact Registry is now available 민수아빠   25:16 New Release for Data Integration 민수아빠   27:01 Use Bastion to secure public access to private resources 곰돌이   32:28 HCX Enterprise license option for VMware is now available 베어메탈   34:40 마무리… 아빠곰    "
+},
+{
+	"uri": "http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210523/",
+	"title": "OCI News:2021년 5월 셋째 주",
+	"tags": [],
+	"description": "",
+	"content": "5월 셋째 주(2021.5.14~5.21)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 5회 영상입니다.\n  OCI 주간 새소식 5회 영상은 다음과 같은 내용으로 구성됩니다.\n   시작 시간 제목 진행자     00:00 OCI 주간 새소식 아빠곰   00:39 Console overview page now available for Resource Manager 곰돌이   05:30 Support for manifest lists and multi-architecture images in Registry 민수아빠   07:33 Store Terraform configurations in Object Storage buckets 곰돌이   09:36 MySQL Database Server direct data import 베어메탈   15:48 Data Flow Supports Spark-Submit 민수아빠   20:10 Support for GPU shapes 곰​돌이   23:00 마무리… 아빠곰    "
+},
+{
+	"uri": "http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210515/",
+	"title": "OCI News:2021년 5월 둘째 주",
+	"tags": [],
+	"description": "",
+	"content": "5월 둘째 주(2021.5.7~5.14)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 4회 영상입니다.\n  OCI 주간 새소식 4회 영상은 다음과 같은 내용으로 구성됩니다.\n   시작 시간 제목 진행자     00:00 OCI 주간 새소식 아빠곰   00:33 Registry now Open Container Initiative-compliant 민수아빠   03:13 Support for MySQL version 8.0.25 BARE Metal   13:08 Data Science has updated conda environments plus a new NLP environment 민수아빠   15:09 Support for Mapping Kubernetes RBAC to OCI IAM Groups 곰돌이   20:03 Expanded DRG functionality 곰돌이   25:24 Inter-Region Latency Dashboard is now available BARE Metal   32:04 마무리… 아빠곰    "
+},
+{
+	"uri": "http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210509/",
+	"title": "OCI News:2021년 5월 첫째 주",
+	"tags": [],
+	"description": "",
+	"content": "5월 첫째 주(2021.4.30~5.7)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 3회 영상입니다.\n  OCI 주간 새소식 3회 영상은 다음과 같은 내용으로 구성됩니다.\n   시작 시간 제목 진행자     00:00 OCI 주간 새소식    00:36 Unified Monitoring Agent enhancements in multiple regions 곰돌이   04:07 Support for email delivery 곰돌이   06:41 External Database Service: Support for RAC databases 베어메탈   08:26 GoldenGate is now available in all commercial regions 베어메탈   13:10 Cross-availability domain Oracle Data Guard deployments can access\u0026hellip; 곰돌이   16:41 Exadata Cloud@Customer: Operator Access Control 곰돌이   20:38 ADB-D on Exadata Cloud@Customer: Infrastructure Patching 곰돌이   23:17 Database Migration is now available in the Australia East… 베어메탈   28:12 Language is now available 민수아빠   29:52 마무리…     "
+},
+{
+	"uri": "http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210502/",
+	"title": "OCI News:2021년 4월 넷째 주",
+	"tags": [],
+	"description": "",
+	"content": "4월 넷째 주(2021.4.23~4.30)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 2회 영상입니다.\n     시작 시간 제목 진행자     00:00 ​OCI 읽어주는 곰돌이 두번째 방송: Intro 베어 메탈   00:48 ​News01: Always Free Autonomous Database: APEX and JSON workload types available 베어 메탈   03:37 ​News02: GoldenGate is now available in additional APAC regions 베어 메탈   06:07 News03: Logging Analytics: Microsoft SQL Server Database Support 베어 메탈   08:00 ​News04: Logging Analytics: Support to Harvest Entity Model Data from Enterprise Manager 베어 메탈   09:31 ​News05: New Release for Cloud Guard is now available 곰돌이   14:04 ​News06: Optimized3-based Intel shapes for compute instances 곰돌이   18:44 ​News07: Resize cluster networks 곰돌이   21:10 ​News08: Introducing Object Storage Auto-Tiering 곰돌이   24:14 ​News09: New Console navigation experience 민수아빠   25:32 ​News10: Opt-out of creating DNS records when launching compute instances 곰돌이   27:28 ​News11: Data Science has updated the Environment Explorer 민수아빠   29:06 ​News12 Java \u0026amp; GraalVM on OCI   32:57 ​마무리 베어 메탈, 아빠곰, 민수아빠, 곰돌이    "
+},
+{
+	"uri": "http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210416/",
+	"title": "OCI News:2021년 4월 셋째 주",
+	"tags": [],
+	"description": "",
+	"content": "4월 셋째 주(2021.4.16~4.23)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 1회 영상입니다.\n     시작 시간 제목 진행자     00:00 ​ Intro 베어 메탈   00:45 ​ OCI 읽어주는 곰돌스 소개 베어 메탈   01:09​ News01:​ Capacity reservations for compute instances 곰돌이   04:46​ News02:​ Container Image Scanning, Signing and Verification 민수아빠   07:10​ News03:​ Java Management is now available 아빠곰   09:01​ News04:​ Network Visualizer is now available 곰돌이   11:32​ News05:​ Customer-managed encryption keys available with Oracle Data Guard 곰돌이   12:36​ News06:​ Database Migration: US Phoenix, India Mumbai, Brazil East regions 베어 메탈   14:41​ News07:​ Maintenance advisory contacts for ADB on shared Exadata Infrastructure 베어 메탈   15:36​ News08:​ Support for MySQL version 8.0.24 민수아빠   17:46​ News09:​ Autonomous Exadata Infrastructure on Oracle Exadata X8M 곰돌이   23:13 News10:​ New release for Data Catalog 민수아빠   26:17​ News11: New live migration option 곰돌이   29:33​ News12: External Database: Support for Operations Insights now available 민수아빠    "
+},
+{
+	"uri": "http://taewan.kim/oci-tutorials/00.index/",
+	"title": "OCI 튜토리얼(Tutorials)",
+	"tags": [],
+	"description": "&#39;",
+	"content": "OCI(Oracle Cloud Infrastructure)는 오라클 클라우드 서비스의 공식 브랜드 명입니다. OCI 튜토리얼는 OCI 신규 사용자를 위한 기술 컨텐츠를 다룹니다. OCI 튜토리얼는 OCI 신규 사용자를 위하여 다음과 같은 내용으로 지속적으로 채워갈 계획입니다.\n   주제 설명     OCI 기본 개념 OCI 입문자를 위하여 오라클 클라우드의 주요 개념 및 주요 용어를 정리합니다.   OCI Quick Start OCI 무료 계정을 이용하여 오라클 클라우드에 웹 사이트를 배포하는 과정을 단계별로 소개하는 핸즈온 랩을 다룹니다.   OCI Live Demo OCI에서 특정 단위 시나리오를 처리하는 과정을 핸즈온 랩으로 제공합니다.   OCI Livelabs OCI가 공개하는 LiveLab을 영상으로 제공합니다.   OCI 주간 새소식 매주 공개되는 OCI 업데이트 소식을 정리하는 영상 컨텐츠입니다.    "
+},
+{
+	"uri": "http://taewan.kim/oci-tutorials/",
+	"title": "OCI 튜토리얼(Tutorials)",
+	"tags": [],
+	"description": "",
+	"content": " OCI 튜토리얼(Tutorials) OCI(Oracle Cloud Infrastructure)는 오라클 클라우드 서비스의 공식 브랜드 명입니다. OCI 튜토리얼는 OCI 신규 사용자를 위한 기술 컨텐츠를 다룹니다. OCI 튜토리얼는 OCI 신규 사용자를 위하여 다음과 같은 내용으로 지속적으로 채워갈 계획입니다.\n   주제 설명     OCI 기본 개념 OCI 입문자를 위하여 오라클 클라우드의 주요 개념 및 주요 용어를 정리합니다.   OCI Quick Start OCI 무료 계정을 이용하여 오라클 클라우드에 웹 사이트를 배포하는 과정을 단계별로 소개하는 핸즈온 랩을 다룹니다.   OCI Live Demo OCI에서 특정 단위 시나리오를 처리하는 과정을 핸즈온 랩으로 제공합니다.   OCI Livelabs OCI가 공개하는 LiveLab을 영상으로 제공합니다.   OCI 주간 새소식 매주 공개되는 OCI 업데이트 소식을 정리하는 영상 컨텐츠입니다.    "
+},
+{
+	"uri": "http://taewan.kim/oci-tutorials/10.oci_weekly_news/",
+	"title": "OCI 주간 새소식",
+	"tags": [],
+	"description": "",
+	"content": " OCI 주간 새소식은 오라클 클라우드가 매우 발표하는 업데이트 소식을 요약하여 유튜브 영상으로 소개하는 컨텐츠입니다.\n오라클 클라우드는 OCI 공식 문서 사이트의 OCI Release Notes   에 신규 업데이트 소식을 매주 공개합니다. OCI 주간 새소식은 매주 업데이트되는 OCI Release Notes   을 요약하고 그 의미를 정리합니다.\n고정 MC: 곰돌스 [OCI 주간 새소식]는 OCI 읽어주는 곰돌스가 진행합니다. OCI 읽어주는 곰돌스는 현장에서 오라클 클라우드를 다루는 3명의 클라우드 엔지니어와 자바 전문가로 구성된 그룹입니다.\nOCI 주간 새소식 운영 계획 OCI 주간 새소식 매주 일요일 22시에 온라인에 모여서 녹화하고, 영상 편집 과정을 거쳐 화요일 오전에 너튜브 민수아빠 채널   에 공개할 계획입니다.\n"
+},
+{
+	"uri": "http://taewan.kim/oci-tutorials/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "http://taewan.kim/oci-tutorials/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]

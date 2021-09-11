@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Oci on taewan.kim 블로그</title>
+    <link>http://taewan.kim/categories/oci/</link>
+    <description>Recent content in Oci on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 02 Apr 2021 09:59:47 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/categories/oci/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[Livelog:OCI] OCI 기본 개념 &amp; 용어</title>
+      <link>http://taewan.kim/livelog/0200.oci_concept/</link>
+      <pubDate>Fri, 02 Apr 2021 09:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/livelog/0200.oci_concept/</guid>
+      <description>Oracle Cloud Infrastructure(OCI)를 구성하는 기본 개념과 주요 용어 정리를 다룹니다. OCI LiveLog를 진행하기 위해서 사전에 알아야 하는 기본 지식과 주요 용어를 정리합니다.
+Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다. Livelog는 Youtube에 배포된 동영상과 블로그 문서로 구성됩니다. Livelog의 블로그 문서는 동영상을 진행하기 위한 보조 정보를 중심으로 작성됩니다.
+  </description>
+    </item>
+    
+    <item>
+      <title>[Livelog:OCI] Windows VM 배포</title>
+      <link>http://taewan.kim/livelog/0102.window_vm_on_oci-copy/</link>
+      <pubDate>Mon, 22 Mar 2021 09:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/livelog/0102.window_vm_on_oci-copy/</guid>
+      <description>이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
+    <item>
+      <title>[Livelog:OCI] Windows VM 배포</title>
+      <link>http://taewan.kim/livelog/0102.window_vm_on_oci/</link>
+      <pubDate>Mon, 22 Mar 2021 09:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/livelog/0102.window_vm_on_oci/</guid>
+      <description>이번 Livelog에서는 OCI에 Windows VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
+    <item>
+      <title>[Livelog:OCI] Linux VM 배포</title>
+      <link>http://taewan.kim/livelog/0101.linux_vm_on_oci/</link>
+      <pubDate>Thu, 18 Mar 2021 09:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/livelog/0101.linux_vm_on_oci/</guid>
+      <description>이번 Livelog에서는 OCI에 Linux VM을 배포하는 과정을 소개하겠습니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -41,7 +41,7 @@
     <item>
       <title>Book</title>
       <link>http://taewan.kim/categories/book/</link>
-      <pubDate>Sat, 08 Jun 2019 09:28:14 +0900</pubDate>
+      <pubDate>Tue, 04 Aug 2020 01:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/categories/book/</guid>
       <description></description>
@@ -50,7 +50,7 @@
     <item>
       <title>Cloud</title>
       <link>http://taewan.kim/categories/cloud/</link>
-      <pubDate>Thu, 26 Dec 2019 01:28:14 +0900</pubDate>
+      <pubDate>Wed, 31 Mar 2021 01:01:25 +0900</pubDate>
       
       <guid>http://taewan.kim/categories/cloud/</guid>
       <description></description>
@@ -102,6 +102,15 @@
     </item>
     
     <item>
+      <title>Livelog</title>
+      <link>http://taewan.kim/categories/livelog/</link>
+      <pubDate>Fri, 02 Apr 2021 09:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/livelog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Machine Learning</title>
       <link>http://taewan.kim/categories/machine-learning/</link>
       <pubDate>Wed, 08 Aug 2018 16:28:14 +0900</pubDate>
@@ -138,9 +147,18 @@
     </item>
     
     <item>
+      <title>Oci</title>
+      <link>http://taewan.kim/categories/oci/</link>
+      <pubDate>Fri, 02 Apr 2021 09:59:47 +0900</pubDate>
+      
+      <guid>http://taewan.kim/categories/oci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Oracle</title>
       <link>http://taewan.kim/categories/oracle/</link>
-      <pubDate>Wed, 16 May 2018 15:59:47 +0900</pubDate>
+      <pubDate>Thu, 26 Nov 2020 01:20:25 +0900</pubDate>
       
       <guid>http://taewan.kim/categories/oracle/</guid>
       <description></description>

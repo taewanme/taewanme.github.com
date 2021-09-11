@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+<meta property="fb:admins" content="devtainer@gmail.com"/>
+
+<title>S3FS를 이용한 OCI Object Storage 파일 시스템 마운트</title>
+<meta name="description" content="taewan.kim">
+<meta name="generator" content="Hugo 0.27.1" />
+<meta property="og:title" content="S3FS를 이용한 OCI Object Storage 파일 시스템 마운트" />
+<meta property="og:description" content="OCI Object Storage를 리눅스/Mac OS X에 마운트 시키는 방법을 정리합니다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/cloud/mounting_oci_objectstorage_bucket_on_linux_mac/" />
+
+
+
+<meta property="article:published_time" content="2020-02-29T10:20:25&#43;09:00"/>
+<meta property="article:modified_time" content="2020-02-29T10:20:25&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/minsu.css" type="text/css" media="all" />
+<link rel="stylesheet" href="http://taewan.kim/css/hybrid.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="http://taewan.kim/js/scripts.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        //inlineMath: [ ['$', '$'], ["\(", "\)"] ],
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+        extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+      //,
+      //displayAlign: "left",
+      //displayIndent: "2em"
+    });
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/icon/oracle.png" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8469722754608892",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="http://taewan.kim/" title="taewan.kim 블로그" rel="home">
+						<h1 class="logo__title">taewan.kim 블로그</h1>
+						<h2 class="logo__tagline">Step By Step - 우공이산(愚公移山)</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="/" title="블로그 메인 페이지 " >BLOG </a></li>
+		<li class="menu__item "><a class="menu__link" href="http://cloud-docs.taewan.me" title="Oracle Cloud User Guide" >오라클 클라우드 사용자 가이드 </a></li>
+		<li class="menu__item "><a class="menu__link" href="/cloud/" title="클라우드 관련 문서 목록" >CLOUD </a></li>
+		<li class="menu__item "><a class="menu__link" href="/oci-tutorials/" title="동영상 중심 메뉴얼 컨텐츠." >OCI 튜토리얼 </a></li>
+		<li class="menu__item "><a class="menu__link" href="/graalvm/" title="GraalVM 관련 새소식 및 기술 문서" >GRAALVM </a></li>
+		<li class="menu__item "><a class="menu__link" href="/book/" title="book reviews" >BOOK </a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=404519239985000';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">S3FS를 이용한 OCI Object Storage 파일 시스템 마운트 </h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2020-02-29 10:20:25 &#43;0900 KST">February 29, 2020</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/cloud" rel="category">Cloud</a>
+				</span>
+			</p>
+		</header>
+
+		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2020/02/fuse/post.jpg" alt="S3FS를 이용한 OCI Object Storage 파일 시스템 마운트">
+			</figure>
+			
+
+<p>클라우드 서비스에서 데이터를 관리하는 핵심 저장소는 Object Storage입니다. OCI(Oracle Cloud Infrastructure)는 Object Storage에 파일을 저장하고 사용하는 다음과 같은 인터페이스를 제공합니다.</p>
+
+<ul>
+<li>OCI Console의 UI: OCI 웹 사이트</li>
+<li>REST API</li>
+<li>OCI SDK: Java, Python, Ruby, Go</li>
+<li>CLI 툴: OCI CLI</li>
+</ul>
+
+<p>이러한 인터페이스는 애플리케이션에서 Object Storage에 저장된 파일을 접근하거나 자동화 프로세스에서 Object Storage를 사용하는 경우에는 효과적입니다. 반면, 이 인터페이스를 사람이  사용하는 것은 상당히 불편합니다. 일반 사용자에게는 Object Storage를 파일 시스템에 마운트하는 방식이 가장 효율적입니다. FUSE 모듈을 이용하면 Object Storage를 파일 시스템에 마운트 할 수 있습니다. 리눅스와 맥에서 FUSE 모듈을 이용하면 OCI Object Storage 버킷을 일반 디렉터리 처럼 사용할 수 있습니다. 이 문서는 리눅스와 Mac OS X에 OCI Object Storage 버킷을 마운트하는 방법을 소개합니다.</p>
+
+<h2 id="linux-fuse">Linux Fuse</h2>
+
+<p>파일시스템을 개발하기 위해서는 리눅스 커널 개발이 필요합니다. 리눅스 커널을 직접 편집하는 파일 시스템 개발은 매우 복잡합니다. FUSE를 이용하면 사용자 커널 코드를 편집하지 않고 새로운 파일 시스템을 만들수 있습니다. 물론 FUSE 모듈의 편리한 개발 댓가로 20-30% 성능 저하가 발생합니다. FUSE는 <strong>Filesystem in USEr space</strong>의 약자입니다. FUSE 모듈은 파일 시스템을 구현한 코드가 User Space(유저 스페이즈)에서 실행될 수 있도록 커널 인터페이스와 User Space를 연결하는 브릿지 역할을 담당합니다.FUSE는 리눅스를 비롯해, Mac OS X, 윈도우즈, 솔라리스에서 사용 가능합니다.</p>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/FUSE_structure.svg/2560px-FUSE_structure.svg.png" alt="" />
+- 출처: <a href="https://cs.wikipedia.org/wiki/Filesystem_in_Userspace">https://cs.wikipedia.org/wiki/Filesystem_in_Userspace</a></p>
+
+<p>OCI Object Storage를 지원하는 Fuse 모듈을 리눅스 운영체제에 설치하면, OCI Object Storage 버킷을 파일 시스템의 디렉터리로 마운트할 수 있습니다.</p>
+
+<h3 id="s3fs-fuse">s3fs-fuse</h3>
+
+<p>OCI Object Storage가 리눅스에 마운트하기 위해서 s3fs-fuse 모듈을 이용합니다. s3fs-fuse는 AWS S3를 지원하는 FUSE 모듈입니다. OCI Object Storage는 S3 호환성을 제공합니다. 따라서 AWS S3용 FUSE 모듈을 OCI Object Storage에 적용할 수 있습니다. s3fs-fuse는 리눅스와 Mac OS X를 지원합니다.</p>
+
+<p>s3fs-fuse의 프로젝트 홈페이지는 <a href="https://github.com/s3fs-fuse/s3fs-fuse">https://github.com/s3fs-fuse/s3fs-fuse</a> 입니다.</p>
+
+<p>s3fs-fuse는 yum, apt, brew 패키지 관리툴로 빌드한 이미지를 제공합니다.</p>
+
+<h3 id="s3fs-fuse의-한계">s3fs-fuse의 한계</h3>
+
+<p>s3fs-fuse를 이용하면 CI Object Storage 버킷을 파일시스템으로 마운트할 수 있습니다. s3fs-fuse의 한계는 다음과 같습니다.</p>
+
+<ul>
+<li>Hard Link를 만들 수 없음</li>
+<li>하나의 파일에 대한 동시에 여러 클라이언트의 동시 접근을 방지하지 못함</li>
+</ul>
+
+<h2 id="demo-사전-준비">Demo 사전 준비</h2>
+
+<p>OCI Object Storage의 버킷을 리눅스와 Mac OS 파일시스템에 디렉터리로 마운트하기 위해서 다음과 같은 준비가 필요합니다.</p>
+
+<ol>
+<li>OCI Object Storage에 버킷 2개 생성
+
+<ul>
+<li>demo_bucket01</li>
+<li>demo_bucket02</li>
+</ul></li>
+<li>s3fs-fuse를 설치할 리눅스
+
+<ul>
+<li>데모를 진행할 리눅스 서버는 OCI VM 인스턴스를 사용합니다.</li>
+</ul></li>
+</ol>
+
+<p>실습을 진행하기 위해서는 OCI 계정과 OCI Object Storage 버킷을 생성할 Compartment가 필요합니다. OCI 계정이 없거나 실습에 사용할 Compartment가 없다면, 다음 문서를 참조하여 게정을 생성하고 실습에 사용할 Compartment를 미리 만드시기 바랍니다.</p>
+
+<ul>
+<li><a href="http://taewan.kim/oci_docs/10_quickstart/how_to_sign_up_oci/" target="_blank">OCI Trial Account 등록[↗NW]</a>
+</li>
+<li><a href="http://taewan.kim/oci_docs/10_quickstart/create_compartment/" target="_blank">데모용 Compartment 등록[↗NW]</a>
+
+
+<ul>
+<li>위 문서를 참조하여 root 아래에 sandbox Compartment를 생성합니다.</li>
+</ul></li>
+</ul>
+
+<h3 id="1-사전-준비-oci-object-storage">1. 사전 준비: OCI Object Storage</h3>
+
+<p>OCI Object Storage에 실습에 사용할 2개의 버킷을 만들겠습니다. root 컴파트먼트 아래의 sandbox 컴파트먼트에 2개의 OCI Object Storage Bucket을 생성합니다. Bucket은 OCI Object Storage에서 파일을 보관하고 묶는 최상위 단위입니다. OCI Object Storage에 파일을 저장하기 위해서는 파일을 등록할 2개 Bucket(demo-bucket01, demo-bucket02)를 만듭니다.</p>
+
+<p>OCI Object Storage Bucket를 만들기 위해서, OCI Console에서 다음 메뉴 패스로 <strong>Object Storage</strong> 관리 페이지로 이동합니다.</p>
+
+<ul>
+<li>OCI 햄버그 아이콘 <strong>&gt;&gt;</strong> Object Storage <strong>&gt;&gt;</strong>  <strong>&gt;&gt;</strong> Object Storage <strong>&gt;&gt;</strong> <strong>sanbox</strong> Compartment 선택 <strong>&gt;&gt;</strong> <strong>Create Bucket</strong> 버튼 클릭</li>
+</ul>
+
+<p><img src="https://taewanmerepo.github.io/2020/02/fuse/010.jpg" alt="" /></p>
+
+<p>Object Storage 관리 페이지에서 <strong>sanbox</strong> Compartment를 선택하고 <strong>Create Bucket</strong> 버튼 클릭하면 다음 이미지와 같이 bucket 생성 폼이 출력됩니다. 다음 그림과 같이 demo_bucket01, demobucket02 2개의 버킷을 만듭니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/02/fuse/020.jpg" alt="" /></p>
+
+<p>Object Storage 관리 페이지의 <strong>sanbox</strong> Compartment 아래에 다음 이미지와 같이 2개 버킷을 만듭니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/02/fuse/030.jpg" alt="" /></p>
+
+<h3 id="2-사전-준비-리눅스-인스턴스">2. 사전 준비: 리눅스 인스턴스</h3>
+
+<p>데모를 진행할 리눅스 인스턴스를 만듭니다. OCI 리눅스 VM를 다음 문서를 참조하여 만듭니다.</p>
+
+<ul>
+<li><a href="http://taewan.kim/oci_docs/10_quickstart/compute/basic_linux_vm/linux_vm_provisioning/" target="_blank">OCI 리눅스 가상머신 프로비저닝[↗NW]</a>
+
+
+<ul>
+<li>위 문서를 참조하여 VM 인스턴스를 만들 때, public subnet을 갖는 VCN을 sandbox 컴파트먼트에 만듭니다.</li>
+<li>사용할 VCN 이름은 demo-vcn 이라고 가정합니다.</li>
+</ul></li>
+</ul>
+
+<p>위 문서를 참조하고 다음 테이블의 값을 사용해서 OCI 리눅스 VM을 만듭니다.</p>
+
+<table>
+<thead>
+<tr>
+<th>설정 항목</th>
+<th>설정 값</th>
+<th>설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>VM 생성 Compartment</td>
+<td>sandbox</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Name your instance</td>
+<td>demo_linux_vm</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Choose an operating system or image source</td>
+<td>Oracle Linux 7.7</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Availability Domain</td>
+<td>AD 1</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Instance Type</td>
+<td>Virtual Box</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Instance Shape</td>
+<td>VM.Standard2.1 (Virtual Machine)</td>
+<td>Shape 선택은 자유롭습니다. 이용 가능한 Shape을 자유롭게 선택하시기 바랍니다.</td>
+</tr>
+
+<tr>
+<td>Virtual cloud network compartment</td>
+<td>sandbox</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Virtual cloud network</td>
+<td>demo-vcn</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Subnet compartment</td>
+<td>sandbox</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Subnet</td>
+<td>Public Subnet-demo-vcn</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Assign a public IP address</td>
+<td>체크</td>
+<td>공개 IP를 설정하기 위해서 체크</td>
+</tr>
+
+<tr>
+<td>Choose SSH Key file</td>
+<td>체크</td>
+<td>아래 Choose Files를 클릭하고 미리 준비한 id_rsa.pub 파일을 업로드</td>
+</tr>
+</tbody>
+</table>
+
+<p>위 테이블의 설정값을 입력한 실제 입력 폼은 다음 링크에서 확인할 수 있습니다.</p>
+
+<ul>
+<li><a href="https://taewanmerepo.github.io/2020/02/fuse/500.png" target="_blank">Oracle Linux VM 생성 입력 폼 참고 이미지[↗NW]</a>
+</li>
+</ul>
+
+<p>Oracle Linux VM이 만들어지면, 다음과 같이 Public IP로 서버에 접근할 수 있습니다. 아래 이미지와 같이 ssh 접근이 가능다하면 Linux 서버 준비는 완료됐다고 판단할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/02/fuse/040.jpg" alt="" /></p>
+
+<h2 id="s3fs-fuse-설치">s3fs-fuse 설치</h2>
+
+<p>s3fs-fuse는 간편한 설치를 돕는 다양한 Package Manager를 운영체제 별로 지원합니다. 운영 체제 별로 다음과 같이 설치할 수 있습니다.</p>
+
+<h3 id="1-mac-os-x에-설치">1. Mac OS X에 설치</h3>
+
+<pre><code>brew cask install osxfuse
+brew install s3fs
+</code></pre>
+
+<p>Mac OS X에서는 다음과 같이 설치됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/02/fuse/060.jpg" alt="" /></p>
+
+<h3 id="2-oracle-linux-7-설치">2. Oracle Linux 7 설치</h3>
+
+<p>Oracle Linux 7.x에서는 다음과 같은 명령으로 s3fs-fuse를 설치합니다.</p>
+
+<pre><code>sudo yum install -y s3fs-fuse
+</code></pre>
+
+<p>Oracle Linux VM에서 위 명령을 실행하면 다음과 같이 실행됩니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/02/fuse/070.jpg" alt="" /></p>
+
+<h3 id="3-다른-리눅스에-s3fs-fuse-설치">3. 다른 리눅스에 s3fs-fuse 설치</h3>
+
+<p>다른 리눅스 패키지의 설치 방법은 다음과 같습니다.</p>
+
+<ul>
+<li>RHEL/CentOS 7.X</li>
+</ul>
+
+<pre><code>sudo yum install epel-release
+sudo yum install s3fs-fuse
+</code></pre>
+
+<ul>
+<li>Debian / Ubuntu</li>
+</ul>
+
+<pre><code>sudo apt install s3fs
+</code></pre>
+
+<h2 id="s3fs-fuse-설정">s3fs-fuse 설정</h2>
+
+<p>이제 s3fs-fuse를 설정하기 위해서는 다음과 같은 정보가 필요합니다.</p>
+
+<ul>
+<li>Tenancy 명</li>
+<li>OCI 리전 ID</li>
+<li>OCI 사용자 Customer Secret Key와 Access key</li>
+<li>Object Storage 버킷 명</li>
+</ul>
+
+<p>각 정보를 확인하는 방법을 정리합니다.</p>
+
+<h3 id="1-tenancy-명">1. Tenancy 명</h3>
+
+<p>현재 사용하는 Tenancy 명은 OCI Consle의 오른쪽 위의 사용자 프로파일에서 확인할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/02/fuse/080.jpg" alt="" /></p>
+
+<p>위 이미지에서 Tenancy명은 <strong>apackrsct01</strong> 입니다.</p>
+
+<h3 id="2-oci-리전-id">2. OCI 리전 ID</h3>
+
+<p>현재 사용하는 OCI 리전 이름은 OCI Consle의 오른쪽 위 메뉴에서 확인할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/02/fuse/090.jpg" alt="" /></p>
+
+<p>위 이미지에서 현재 사용중인 리전은 Ashburn입니다. Ashburn 리전의 리전 ID는 다음 페이지에서 확인할 수 있습니다.</p>
+
+<ul>
+<li><a href="http://taewan.kim/oci_docs/00_oci/oci_resion_info/#%EB%A6%AC%EC%A0%84-%EA%B8%B0%EB%B3%B8-%EC%A0%95%EB%B3%B4" target="_blank">OCI 리전 기본 정보[↗NW]</a>
+</li>
+</ul>
+
+<p>위 참조 페이지에서 Ashburn 리전의 Region ID가 <strong>us-ashburn-1</strong>이라는 것을 확인할 수 있습니다.</p>
+
+<h3 id="3-oci-사용자-customer-secret-key와-access-key">3. OCI 사용자 Customer Secret Key와 Access Key</h3>
+
+<p>OCI Consle의 오른쪽 위의 사용자 프로파일에서 OCI 사용자 관리 페이지로 이동할 수 있습니다. OCI 사용자 관리 페이지의 왼쪽 하단 메뉴에서 <strong>Customer Secret Key</strong> 메뉴를 통해서 Secret Key를 생성하는 페이지로 이동합니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/02/fuse/100.jpg" alt="" /></p>
+
+<p>Secret Key를 생성하는 페이지에서 &ldquo;Generate Secret Key&rdquo; 버튼을 클릭하고, 이름이 &ldquo;<strong>for s3fs</strong>&ldquo;를 설정한 다음에 Secret Key를 생성합니다. 여기에서 만든 Secret key는 <strong>Copy</strong>링크로 복사할 수 있습니다. 그리고 팝업 창을 닫으면 Secret Key를 확인할 수 없습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/02/fuse/110.jpg" alt="" /></p>
+
+<p>앞에서 만든 Secret key는 다음과 같은 형태를 갖습니다.</p>
+
+<pre><code>gftWSxfCfmTdsBDDqUqyPPEXJSYXX2OGKdpxNkhlAYU=
+</code></pre>
+
+<p>Secret Key 생성 팝업을 닫으면 <strong>Custom Secret Keys</strong> 블록에서 Secret Key 목록을 확인할 수 있습니다. 이 목록에서는 Secret Key를 다시 확인할 수는 없습니다. 단지, Secret Key에 대한 Access Key만을 확인할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/02/fuse/120.jpg" alt="" /></p>
+
+<p>위 이미지와 같이 &ldquo;<strong>for s3fs</strong>&ldquo;의 Secret Key에 대한 Access Key는 다음과 같은 형태를 갖습니다.</p>
+
+<pre><code>8fd53118140f9f0b2b6599aa9547e5102479b550
+</code></pre>
+
+<h3 id="object-storage-버킷-명">Object Storage 버킷 명</h3>
+
+<p>실습에 사용할 Object Storage 명은 다음과 같습니다.</p>
+
+<ul>
+<li>demo_bucket01</li>
+<li>demo_bucket02</li>
+</ul>
+
+<h2 id="s3fs-fuse-설정-1">s3fs-fuse 설정</h2>
+
+<p>OCI Object Storage를 마운트하는 s3fs-fuse 설정은 다음과 같은 단계로 진행됩니다.</p>
+
+<ol>
+<li>인증 파일 만들기
+
+<ul>
+<li>파일명: ~/.s3fs-password</li>
+</ul></li>
+<li>Mount Point 디렉터리 만들기
+
+<ul>
+<li>~/oci-fs/demo_bucket01</li>
+<li>~/oci-fs/demo-bucket02</li>
+</ul></li>
+<li>두 Bucket을 2번 디렉터리에 각각 마운트</li>
+</ol>
+
+<p>s3fs-fuse로 OCI Object Storage를 마운트하는 단계에서 Linux와 Mac OS X의 설정 과정이 동일합니다. 설정 과정이 같기 때문에 Linux를 기준으로 설명하겠습니다.</p>
+
+<h3 id="1-인증-파일-만들기">1. 인증 파일 만들기</h3>
+
+<p>s3fs-fuse가 사용하는 인증 파일이 필요합니다. 실습에서 사용할 인증 파일명은 <strong>~/.s3fs-password</strong>입니다. 인증 파일에는 <strong><access key>:<secret key></strong> 형식의 인증 정보가 기록됩니다. 인증 파일에 앞에서 수집한 정보를 다음과 같은 형태로 저장합니다.</p>
+
+<pre><code># &lt;access key&gt;:&lt;secret key&gt;
+8fd53118140f9f0b2b6599aa9547e5102479b550:gftWSxfCfmTdsBDDqUqyPPEXJSYXX2OGKdpxNkhlAYU=
+</code></pre>
+
+<p>인증 파일의 퍼미션은 <code>600</code>으로 설정합니다. 앞에서 만든 Oracle Linux 7 VM 인스턴스에 다음과 같이 설정 됩니다.</p>
+
+<pre><code>[opc@demo-linux-vm ~]$ cat ~/.s3fs-password
+#&lt;access key&gt;:&lt;secret key&gt;
+8fd53118140f9f0b2b6599aa9547e5102479b550:gftWSxfCfmTdsBDDqUqyBBEXJSY1U2OGKdpxNkhlAYU=
+
+[opc@demo-linux-vm ~]$ chmod 600 ~/.s3fs-password
+[opc@demo-linux-vm ~]$ ls -al ~/.s3fs-password
+-rw-------. 1 opc opc 114  2월 29 11:25 /home/opc/.s3fs-password
+[opc@demo-linux-vm ~]$
+</code></pre>
+
+<p>Mac OS X에서도 위와 같은 방식으로 인증 파일이 설정됩니다.</p>
+
+<h3 id="2-mount-point-디렉터리-만들기">2. Mount Point 디렉터리 만들기</h3>
+
+<p>Object Storage 2개 버킷을 마운트할 디렉터리를 다음과 같이 만듭니다.</p>
+
+<pre><code>[opc@demo-linux-vm ~]$ mkdir -p ~/oci-fs/demo_bucket01
+[opc@demo-linux-vm ~]$ mkdir -p ~/oci-fs/demo_bucket02
+[opc@demo-linux-vm ~]$ ls -al ~/oci-fs/
+합계 4
+drwxrwxr-x. 4 opc opc   48  2월 29 11:29 .
+drwx------. 6 opc opc 4096  2월 29 11:29 ..
+drwxrwxr-x. 2 opc opc    6  2월 29 11:29 demo_bucket01
+drwxrwxr-x. 2 opc opc    6  2월 29 11:29 demo_bucket02
+[opc@demo-linux-vm ~]$
+</code></pre>
+
+<h3 id="3-bucket-마운트">3. Bucket 마운트</h3>
+
+<p>리눅스에서 s3fs 명령을 실행하여 2개 object storage 버킷을 마운트하는 과정을 정리합니다. s3fs 명령을 실행하기 전에 s3fs가 접근할 Object Storage의 Region API Endpoint를 확정해야 합니다. OCI Object Storage의 Region API Endpoint 패턴은 다음과 같습니다.</p>
+
+<pre><code>https://&lt;tenancy&gt;.compat.objectstorage.&lt;region id&gt;.oraclecloud.com
+</code></pre>
+
+<p>앞에서 조사한 Tenancy 명과 Region ID로 만든 Region API Endpoint는 다음과 같습니다.</p>
+
+<pre><code>https://apackrsct01.compat.objectstorage.us-ashburn-1.oraclecloud.com
+</code></pre>
+
+<p>다음 두 명령을 실행하여 demo_bucket01 버킷과 demo_bucket02 버킷을 ~/oci-fs/demo_bucket01과 ~/oci-fs/demo_bucket02 디렉터리에 각각 마운트 합니다.</p>
+
+<ul>
+<li>demo_bucket01 마운트 명령</li>
+</ul>
+
+<pre><code>sudo s3fs demo_bucket01 $HOME/oci-fs/demo_bucket01 \
+-o passwd_file=$HOME/.s3fs-password \
+-o url=https://apackrsct01.compat.objectstorage.us-ashburn-1.oraclecloud.com/ \
+-o allow_other  \
+-o nomultipart -o use_path_request_style
+</code></pre>
+
+<ul>
+<li>demo_bucket02 마운트 명령</li>
+</ul>
+
+<pre><code>sudo s3fs demo_bucket02 $HOME/oci-fs/demo_bucket02 \
+-o passwd_file=$HOME/.s3fs-password \
+-o url=https://apackrsct01.compat.objectstorage.us-ashburn-1.oraclecloud.com/ \
+-o allow_other  \
+-o nomultipart -o use_path_request_style
+</code></pre>
+
+<p>리눅스 인스턴스에서 train.csv 파일을 다운로드하고 demo_bucket01 버킷에 파일을 복사하여 업로드하는 작업을 다음과 같이 수행합니다.</p>
+
+<ol>
+<li>wget으로 train.csv 파일 다운로드</li>
+<li>oci object storage의 demo_bucket01 버킷을 마운트한 디렉터리에 파일 복사</li>
+<li>2개 버킷 목록 조회</li>
+</ol>
+
+<pre><code>[opc@demo-linux-vm ~]$ wget https://raw.githubusercontent.com/nybbles/kaggle/master/train.csv
+--2020-02-29 11:49:14--  https://raw.githubusercontent.com/nybbles/kaggle/master/train.csv
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 199.232.64.133
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|199.232.64.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 57726 (56K) [text/plain]
+Saving to: ‘train.csv’
+
+100%[=======================================================================&gt;] 57,726      --.-K/s   in 0.002s
+
+2020-02-29 11:49:14 (28.6 MB/s) - ‘train.csv’ saved [57726/57726]
+
+[opc@demo-linux-vm ~]$ ls -al ./train.csv
+-rw-rw-r--. 1 opc opc 57726  2월 29 11:49 ./train.csv
+[opc@demo-linux-vm ~]$ cp ./train.csv ~/oci-fs/demo_bucket01
+[opc@demo-linux-vm ~]$ ls -alR ~/oci-fs/
+/home/opc/oci-fs/:
+합계 5
+drwxrwxr-x. 4 opc  opc    48  2월 29 11:29 .
+drwx------. 6 opc  opc  4096  2월 29 11:49 ..
+drwxrwxrwx. 1 root root    0  1월  1  1970 demo_bucket01
+drwxrwxrwx. 1 root root    0  1월  1  1970 demo_bucket02
+
+/home/opc/oci-fs/demo_bucket01:
+합계 57
+drwxrwxrwx. 1 root root     0  1월  1  1970 .
+drwxrwxr-x. 4 opc  opc     48  2월 29 11:29 ..
+-rw-rw-r--. 1 opc  opc  57726  2월 29 11:49 train.csv
+
+/home/opc/oci-fs/demo_bucket02:
+합계 1
+drwxrwxrwx. 1 root root  0  1월  1  1970 .
+drwxrwxr-x. 4 opc  opc  48  2월 29 11:29 ..
+[opc@demo-linux-vm ~]$
+</code></pre>
+
+<p>OCI Object Storage의 demo_bucket01 버킷을 마운트한 디렉터리에 cp 명령으로 복사한 파일(train.csv)은 OCI Console에서 확인할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/02/fuse/130.jpg" alt="" /></p>
+
+<p>이 설정을 Mac OS X에 적용하여 Object Storage 버킷을 디렉터리로 마운트하면, 다음 이미지와 같이 터미널과 Finder로 버킷을 접근할 수 있습니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2020/02/fuse/140.jpg" alt="" /></p>
+
+<div class="notices note" ><p>현재 Mac OS X 버전의 s3fs-fuse는 리눅스 버전 s3fs-fuse에 비교하여 성능이 상당히 떨어집니다. 크기가 작은 여러 파일을 s3fs-fuse로 마운트한 디렉터리에 복사하는 작업은 현실적으로 불가능합니다.</p>
+</div>
+
+
+<h2 id="object-storage-마운트-포인트-제거">Object Storage 마운트 포인트 제거</h2>
+
+<p>Object Storage 마운트를 제거하는 명령은 다음과 같습니다.</p>
+
+<pre><code>sudo fusermount -u &lt;mount_point&gt;
+</code></pre>
+
+<h2 id="참고자료">참고자료</h2>
+
+<ul>
+<li><a href="https://cs.wikipedia.org/wiki/Filesystem_in_Userspace" target="_blank">[Wikipedia]Filesystem in Userspace[↗NW]</a>
+</li>
+<li><a href="https://blogs.oracle.com/cloud-infrastructure/mounting-an-object-storage-bucket-as-file-system-on-oracle-linux" target="_blank">Mounting an Object Storage Bucket as File System on Oracle Linux[↗NW]</a>
+</li>
+<li><a href="https://www.scaleway.com/en/docs/object-storage-with-s3fs/" target="_blank">How to use Object Storage with s3fs[↗NW]</a>
+</li>
+</ul>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/oci/" rel="tag">oci</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/linux/" rel="tag">linux</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/object-storage/" rel="tag">object storage</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/fuse/" rel="tag">fuse</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/bucket/" rel="tag">bucket</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+<div class="authorbox row clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="김태완 avatar" src="https://taewanmerepo.github.io//taewan2.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">작성자: 김태완</span>
+	</div>
+	<div class="authorbox__description">
+		1999년 부터 Java, Framework, Middleware, SOA, DB Replication, Cache, CEP, NoSQL, Big Data, Cloud를 키워드로 살아왔습니다. 현재는 빅데이터와 Machine Learning을 중점에 두고 있습니다.
+	</div>
+	<div class="authorbox__description">
+		E-mail: taewanme@gmail.com
+	</div>
+	<div class="notices disclaimer"><p>이 저작물은 Oracle과 관계없이 개인으로서 개인의 시간을 할애하여 작성된 글 입니다. 본 글의 내용, 입장, 예측은 Oracle을 공식적으로 <font color="red"><bold>절대</bold></font> 대변하지 않습니다.</p></div>
+</div>
+
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/extending_root_partition_on_oci_linux/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">OCI에서 리눅스 VM 루트 파티션(Root Partition) 확장</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="http://taewan.kim/cloud/oci_cloud_shell/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">OCI Cloud Shell: 브라우저 기반 가상 터미널</p></a>
+	</div>
+</nav>
+
+	
+
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kim/cloud/mounting_oci_objectstorage_bucket_on_linux_mac/"></div>
+
+
+	
+	</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="taewan.kim" />
+	</form>
+</div>
+
+	
+
+<div class="widget-categories widget">	
+		<div class="fb-like" data-href="http://taewan.kim/cloud/mounting_oci_objectstorage_bucket_on_linux_mac/" 
+		data-layout="standard" data-action="like" 
+		data-size="small" 
+		data-show-faces="true" 
+		data-share="true"></div>
+</div>
+	
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">ToC (목차)</h4>
+	<div class="widget__content">
+	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#linux-fuse">Linux Fuse</a>
+<ul>
+<li><a href="#s3fs-fuse">s3fs-fuse</a></li>
+<li><a href="#s3fs-fuse의-한계">s3fs-fuse의 한계</a></li>
+</ul></li>
+<li><a href="#demo-사전-준비">Demo 사전 준비</a>
+<ul>
+<li><a href="#1-사전-준비-oci-object-storage">1. 사전 준비: OCI Object Storage</a></li>
+<li><a href="#2-사전-준비-리눅스-인스턴스">2. 사전 준비: 리눅스 인스턴스</a></li>
+</ul></li>
+<li><a href="#s3fs-fuse-설치">s3fs-fuse 설치</a>
+<ul>
+<li><a href="#1-mac-os-x에-설치">1. Mac OS X에 설치</a></li>
+<li><a href="#2-oracle-linux-7-설치">2. Oracle Linux 7 설치</a></li>
+<li><a href="#3-다른-리눅스에-s3fs-fuse-설치">3. 다른 리눅스에 s3fs-fuse 설치</a></li>
+</ul></li>
+<li><a href="#s3fs-fuse-설정">s3fs-fuse 설정</a>
+<ul>
+<li><a href="#1-tenancy-명">1. Tenancy 명</a></li>
+<li><a href="#2-oci-리전-id">2. OCI 리전 ID</a></li>
+<li><a href="#3-oci-사용자-customer-secret-key와-access-key">3. OCI 사용자 Customer Secret Key와 Access Key</a></li>
+<li><a href="#object-storage-버킷-명">Object Storage 버킷 명</a></li>
+</ul></li>
+<li><a href="#s3fs-fuse-설정-1">s3fs-fuse 설정</a>
+<ul>
+<li><a href="#1-인증-파일-만들기">1. 인증 파일 만들기</a></li>
+<li><a href="#2-mount-point-디렉터리-만들기">2. Mount Point 디렉터리 만들기</a></li>
+<li><a href="#3-bucket-마운트">3. Bucket 마운트</a></li>
+</ul></li>
+<li><a href="#object-storage-마운트-포인트-제거">Object Storage 마운트 포인트 제거</a></li>
+<li><a href="#참고자료">참고자료</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+	<div class="widget-categories widget">
+  <h4 class="widget__title">관련도서</h4>
+  <div class="widget__content" align="center">
+      <ul class="widget__list">
+          <li class="widget__item"><a href="http://www.yes24.com/Product/Goods/69335909" target="_blank"><img src="https://taewanmerepo.github.io/2019/02/pytorch/book200.jpg"/></a></li>
+      </ul>
+  </div>
+</div>
+
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">최신글</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/transfer_oci_custom_image_to_other_tenancy/" title="OCI 사용자정의 이미지 생성 및 Export/Import">
+							OCI 사용자정의 이미지 생성 및 Export/Import</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_official_icon_png/" title="OCI 서비스 로고 PNG 이미지">
+							OCI 서비스 로고 PNG 이미지</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_password_policy/" title="OCI 사용자 패스워드 변경 주기 설정">
+							OCI 사용자 패스워드 변경 주기 설정</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_networking_diff_nsg_and_sl/" title="OCI 가상 방화벽: Network Security Group &amp; Security List">
+							OCI 가상 방화벽: Network Security Group  ......</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_mds_tutorial_03_workbench/" title="OCI MySQL 가이드-03.MySQL Workbench 구성">
+							OCI MySQL 가이드-03.MySQL Workbench 구성</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_mds_tutorial_02_connection/" title="OCI MySQL 가이드-02.데이터베이스 접속">
+							OCI MySQL 가이드-02.데이터베이스 접속</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_mds_tutorial_01_provisioning/" title="OCI MySQL 가이드-01.프로비저닝">
+							OCI MySQL 가이드-01.프로비저닝</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_adb_tutorial_01_provisioning/" title="OCI ADB 튜토리얼-01.프로비저닝">
+							OCI ADB 튜토리얼-01.프로비저닝</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci_basic_config/" title="OCI Tenancy 기본 환경 설정">
+							OCI Tenancy 기본 환경 설정</a>
+		  </li>
+			<li class="widget__item">
+				<a class="widget__link" href="/post/how_to_check_data_pump_file_and_expot_file/" title="Oracle Export(exp)와 Datapump(expdp) 파일 구분">
+							Oracle Export(exp)와 Datapump(expdp) ......</a>
+		  </li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">카테고리</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/"></a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/bigdata">Bigdata</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/blogs.oracle.com">Blogs.oracle.com</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/book">Book</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/cloud">Cloud</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/graalvm">Graalvm</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/it-life">It-Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/java">Java</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/language">Language</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/livelog">Livelog</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/machine-learning">Machine-Learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/math">Math</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/minsu">Minsu</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/mysql">Mysql</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oci">Oci</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/oracle">Oracle</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/seminar">Seminar</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-event">Tech-Event</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tech-tip">Tech-Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/tip">Tip</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/youtube">Youtube</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%a7%9b%ec%a7%91">맛집</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%eb%b2%88%ec%97%ad">번역</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%98%a4%eb%9d%bc%ed%81%b4-%ed%81%b4%eb%9d%bc%ec%9a%b0%eb%93%9c">오라클-클라우드</a></li>
+			<li class="widget__item"><a class="widget__link" href="http://taewan.kim/categories/%ec%a7%9c%ed%88%ac%eb%a6%ac">짜투리</a></li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">SNS(Social Network Service)</h4>
+	<div class="widget__content">
+		<a href="https://github.com/oracloud-kr-team" target="_blank" title="github"><img src="/img/icon/github.png" width="50px" height="50px"/></a>
+		<a href="https://www.slideshare.net/ssusercda07e" target="_blank" title="slideshare"><img src="/img/icon/slideshare.png" width="50px" height="50px"/></a>
+		<a href="https://www.youtube.com/channel/UCboJr3TLlqeDqpBURRdb_lg" target="_blank" title="youtube"><img src="/img/icon/youtube.png" width="50px" height="50px"/></a>
+		<a href="mailto:taewanme@gmail.com" title="email"><img src="/img/icon/email.png" width="50px" height="50px"/></a>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">관심 사이트</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="http://steemit.com/@taewan.kim">
+				Steemit 블로그</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://hub.docker.com/u/taewanme/">
+				Docker Hub for taewan.kim</a>
+			</li>
+		</ul>
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://github.com/taewanme/notebooks4til">
+				Github REPOSITORY for Notebooks/a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+	<h4 class="widget__title">Licesne</h4>
+	<div class="widget__content">
+		<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank><img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+	</div>
+	<div class="widget__content">
+		이 저작물은 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target=_blank>크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.
+	</div>
+</div>
+
+	<div class="widget-categories widget">
+<script type="text/javascript" src="//ra.revolvermaps.com/0/0/7.js?i=00xvkd43pz7&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;sx=0" async="async"></script>
+</div>
+
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2021 taewan.kim 블로그. </p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72835175-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

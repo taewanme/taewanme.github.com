@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OCI 튜토리얼(Tutorials) on OCI 튜토리얼</title>
+    <link>http://taewan.kim/oci-tutorials/</link>
+    <description>Recent content in OCI 튜토리얼(Tutorials) on OCI 튜토리얼</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 08 May 2020 01:11:05 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/oci-tutorials/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>OCI News:2021년 4월 넷째 주</title>
+      <link>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210502/</link>
+      <pubDate>Sat, 02 May 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210502/</guid>
+      <description>4월 넷째 주(2021.4.23~4.30)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 2회 영상입니다.
+     시작 시간 제목 진행자     00:00 ​OCI 읽어주는 곰돌이 두번째 방송: Intro 베어 메탈   00:48 ​News01: Always Free Autonomous Database: APEX and JSON workload types available 베어 메탈   03:37 ​News02: GoldenGate is now available in additional APAC regions 베어 메탈   06:07 News03: Logging Analytics: Microsoft SQL Server Database Support 베어 메탈   08:00 ​News04: Logging Analytics: Support to Harvest Entity Model Data from Enterprise Manager 베어 메탈   09:31 ​News05: New Release for Cloud Guard is now available 곰돌이   14:04 ​News06: Optimized3-based Intel shapes for compute instances 곰돌이   18:44 ​News07: Resize cluster networks 곰돌이   21:10 ​News08: Introducing Object Storage Auto-Tiering 곰돌이   24:14 ​News09: New Console navigation experience 민수아빠   25:32 ​News10: Opt-out of creating DNS records when launching compute instances 곰돌이   27:28 ​News11: Data Science has updated the Environment Explorer 민수아빠   29:06 ​News12 Java &amp;amp; GraalVM on OCI   32:57 ​마무리 베어 메탈, 아빠곰, 민수아빠, 곰돌이    </description>
+    </item>
+    
+    <item>
+      <title>OCI News:2021년 4월 셋째 주</title>
+      <link>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210416/</link>
+      <pubDate>Sat, 02 May 2020 09:11:05 +0900</pubDate>
+      
+      <guid>http://taewan.kim/oci-tutorials/10.oci_weekly_news/oci_20210416/</guid>
+      <description>4월 셋째 주(2021.4.16~4.23)에 공개된 OCI Release Notes를 다룬 OCI 주간 새소식 제 1회 영상입니다.
+     시작 시간 제목 진행자     00:00 ​ Intro 베어 메탈   00:45 ​ OCI 읽어주는 곰돌스 소개 베어 메탈   01:09​ News01:​ Capacity reservations for compute instances 곰돌이   04:46​ News02:​ Container Image Scanning, Signing and Verification 민수아빠   07:10​ News03:​ Java Management is now available 아빠곰   09:01​ News04:​ Network Visualizer is now available 곰돌이   11:32​ News05:​ Customer-managed encryption keys available with Oracle Data Guard 곰돌이   12:36​ News06:​ Database Migration: US Phoenix, India Mumbai, Brazil East regions 베어 메탈   14:41​ News07:​ Maintenance advisory contacts for ADB on shared Exadata Infrastructure 베어 메탈   15:36​ News08:​ Support for MySQL version 8.</description>
+    </item>
+    
+  </channel>
+</rss>

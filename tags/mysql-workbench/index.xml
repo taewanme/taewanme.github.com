@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mysql Workbench on taewan.kim 블로그</title>
+    <link>http://taewan.kim/tags/mysql-workbench/</link>
+    <description>Recent content in Mysql Workbench on taewan.kim 블로그</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 06 Dec 2020 01:01:25 +0900</lastBuildDate>
+    
+	<atom:link href="http://taewan.kim/tags/mysql-workbench/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>OCI MySQL 가이드-03.MySQL Workbench 구성</title>
+      <link>http://taewan.kim/cloud/oci_mds_tutorial_03_workbench/</link>
+      <pubDate>Sun, 06 Dec 2020 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_mds_tutorial_03_workbench/</guid>
+      <description>OCI MySQL Database(이하 OMD)는 Oracle Cloud Infrastructure(이하 OCI)가 제공하는 완전 관리형 MySQL 서비스입니다. OMD는 MySQL 배포, 백업, 패치 등 관리 작업 자동화 및 OCI 최적화 구성을 제공합니다. 또한, 이 서비스는 오라클 MySQL 팀의 엔터프라이즈 서포트를 포함합니다. 이번 문서에서는 MySQL의 대표적인 툴인 MySQL Workbench를 로컬 컴퓨터에 설치합니다. 그리고 MySQL Workbench에 Bastion VM을 통해서 OMD 인스턴스에 접속하는 설정을 진행합니다.
+이 문서에서 다루는 내용은 OCI Free Trial에서 실습 가능합니다.
+ MySQL Workbench는 SQL 개발, 데이터베이스 설계, 생성 및 관리 통합 환경을 제공하는 대표적인 MySQL 도구입니다.</description>
+    </item>
+    
+  </channel>
+</rss>

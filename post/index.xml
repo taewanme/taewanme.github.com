@@ -6,10 +6,22 @@
     <description>Recent content in Posts on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Jan 2019 09:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2020 01:20:25 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Oracle Export(exp)와 Datapump(expdp) 파일 구분</title>
+      <link>http://taewan.kim/post/how_to_check_data_pump_file_and_expot_file/</link>
+      <pubDate>Thu, 26 Nov 2020 01:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/post/how_to_check_data_pump_file_and_expot_file/</guid>
+      <description>Oracle Database에서 백업/복구의 대표적인 툴은 Data Pump와 Oracle exp/imp입니다. 두 툴은 완전히 다른 성격의 백업/복구 툴입니다. 그러나 데이터를 백업하는 결과 파일의 확장자는 dmp로 동일합니다.
+이러한 이유로 Oracle Database의 데이터를 dmp 파일로 전달받을 때, 부가적인 정보가 없으면, 이 파일이 Data Pump로 만든 파일인지 exp 툴로 만든 파일인지 구분하기 어렵습니다.
+현재 사용하는 운영체제가 리눅스 혹은 맥이라면 strings를 이용하여 파일을 구분할 수 있습니다.
+strings &amp;lt;FILE_NAME&amp;gt; | head  Data Pump로 만든 대상 파일에 위 명령을 실행하면 다음과 같이 출력됩니다.</description>
+    </item>
     
     <item>
       <title>함수 표기법: 세미콜론으로 변수와 파라미터 구분</title>

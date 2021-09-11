@@ -6,10 +6,230 @@
     <description>Recent content in Cloud on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Dec 2019 01:28:14 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 31 Mar 2021 01:01:25 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/categories/cloud/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OCI 사용자정의 이미지 생성 및 Export/Import</title>
+      <link>http://taewan.kim/cloud/transfer_oci_custom_image_to_other_tenancy/</link>
+      <pubDate>Wed, 31 Mar 2021 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/transfer_oci_custom_image_to_other_tenancy/</guid>
+      <description>이번 Livelog에서는 OCI에서 사용자정의 이미지(Cumstom Image)를 만들고 이 이미지를 다른 OCI 계정에 전달하는 과정을 소개합니다. 이번 Livelog는 OCI 계정이 준비된 상태고, OCI 기본설정(사용자, 그룹, Policy, Compartment, VCN)이 준비된 상태를 가정합니다. 현재 OCI 계정과 기본 환경 구성이 안된 상태라면 다음 두 개 Livelog를 참조하여 사전 준비를 먼저 진행해 주시기 바랍니다.
+ 아래 이미지를 클릭하면 해당 Livelog로 이동합니다.     Livelog1: OCI 계정 생성 Livelog2: OCI 기본 설정          Livelog는 동영상 데모를 중심으로 작성된 콘텐츠입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI 서비스 로고 PNG 이미지</title>
+      <link>http://taewan.kim/cloud/oci_official_icon_png/</link>
+      <pubDate>Fri, 08 Jan 2021 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_official_icon_png/</guid>
+      <description>오라클에서 배포한 OCI 공식 서비스 로고 PNG 파일입니다. 첨부한 이미지는 2020년 11월에 오라클에서 공개된 이미지입니다. 2020년 11월 출시된 서비스를 모두 포함합니다. 정확한 정보 전달을 위하여 앞으로 이 로고를 사용하여 문서화 하겠습니다.
+OCI Compute       Service: AutoScale 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)       Service: Baremetal 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)       Service: Contaienr 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)         Service: Functions 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)       Service: Instance Pools 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)       Service: OCIR 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)          Service: Functions 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Instance_Pools 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        OCI Connectivity       Service: Backbone 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: CDN 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Customer DataCnter 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)          Service: Customer Premise 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: DNS 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Disconnected Regions 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)          Service: Fast Connect 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: NAT Gateway 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: VPN 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)      Data Management       Service: Autonomous 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: BigData 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Data Integration 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)          Service: Autonomous 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Database 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Data Science 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)      DEVOPS       Service: Streaming 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: API Gateway 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: API 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)      Governanace       Service: Audit 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Compartment 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Group 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)          Service: Logging 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: OCID 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Policies 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)          Service: Tagging 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)          Marketplace    Service: Market Place 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)   MONITORING MANAGEMENT       Service: Alarm 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Email 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Events 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)          Service: Health Check 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Notifications 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Queue 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)          Service: Search 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Telemetry 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Workflow 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)      OCI Networks       Service: DRG 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Firewall 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Internet Gateway 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)          Service: Load Balancer 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Route Table 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Security List 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)          Service: Service Gateway 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: VCN 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        OCI Security       Service: Cloud Guard 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: DDOS 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Encryption 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)          Service: ID Access 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Key Management 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Max Security Zone 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)          Service: Vault 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: WAF 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        OCI Storage       Service: Backp Restore 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Block Storage 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Block Storage Clone 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)          Service: Buckets 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Data Transfer 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Elastic Performance 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)          Service: File Storage 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Object Storage 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)        Service: Storage Gateway 파일사이즈: 6KB 이미지사이즈: 675 x 675 이미지해상도: 300 x 300 원본 이미지 오픈(@New Window)      첨부한 이미지는 Oracle에서 제작하여 배포한 이미지입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI 사용자 패스워드 변경 주기 설정</title>
+      <link>http://taewan.kim/cloud/oci_password_policy/</link>
+      <pubDate>Tue, 05 Jan 2021 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_password_policy/</guid>
+      <description>Oracle Cloud Infrastructure(이하 OCI)는 웹 기반 클라우드 서비스 관리 페이지를 제공하며, 이 웹 페이지를 OCI Console이라고 부릅니다. OCI Console은 ID/패스워드로 OCI 사용자를 인증합니다. OCI Console은 인증에 사용되는 패스워드를 주기적으로 변경하도록 강제합니다. 기본 변경 주기는 120일이며, 설정 주기마다 OCI 사용자를 패스워드를 변경해야 합니다. 이 문서에서는 OCI의 사용자 패스워드 설정을 관리하는 Password Policy 관리 페이지에 이동하는 방법과 패스워드 변경 주기를 변경하는 설정법을 정리합니다.
+패스워드 변경 주기에 도달한 OCI 사용자는 다음 이미지와 같이 OCI Console에서 사용자 인증할 때, 패스워드 변경 페이지로 이동됩니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI 가상 방화벽: Network Security Group &amp; Security List</title>
+      <link>http://taewan.kim/cloud/oci_networking_diff_nsg_and_sl/</link>
+      <pubDate>Tue, 08 Dec 2020 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_networking_diff_nsg_and_sl/</guid>
+      <description>Oracle Cloud Infrastructure(이하 OCI) Network는 가상 방화벽 기능을 Network Security Group(이하 NSG)과 Security List로 제공합니다. NSG와 Security List가 혼동되는 경우가 있습니다. 이번 문서에서는 OCI 가상 방화벽 기능을 제공하는 NSG와 Security List 차이점을 사례를 통해서 확인해 보겠습니다.
+이 문서에서 다루는 내용은 OCI Free Trial에서 실습 가능합니다.
+ NSG &amp;amp; Security List NSG와 Security List는 모두 VCN에 가상 방화벽(Virtual Firewall)을 정의하는 OCI VCN(Virtual Cloud Network)의 구성 요소입니다. NSG와 Security List 모두 Source와 Destination에 대한 네트워크 접근 허용 규칙을 정의한다는 공통점을 갖습니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI MySQL 가이드-03.MySQL Workbench 구성</title>
+      <link>http://taewan.kim/cloud/oci_mds_tutorial_03_workbench/</link>
+      <pubDate>Sun, 06 Dec 2020 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_mds_tutorial_03_workbench/</guid>
+      <description>OCI MySQL Database(이하 OMD)는 Oracle Cloud Infrastructure(이하 OCI)가 제공하는 완전 관리형 MySQL 서비스입니다. OMD는 MySQL 배포, 백업, 패치 등 관리 작업 자동화 및 OCI 최적화 구성을 제공합니다. 또한, 이 서비스는 오라클 MySQL 팀의 엔터프라이즈 서포트를 포함합니다. 이번 문서에서는 MySQL의 대표적인 툴인 MySQL Workbench를 로컬 컴퓨터에 설치합니다. 그리고 MySQL Workbench에 Bastion VM을 통해서 OMD 인스턴스에 접속하는 설정을 진행합니다.
+이 문서에서 다루는 내용은 OCI Free Trial에서 실습 가능합니다.
+ MySQL Workbench는 SQL 개발, 데이터베이스 설계, 생성 및 관리 통합 환경을 제공하는 대표적인 MySQL 도구입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI MySQL 가이드-02.데이터베이스 접속</title>
+      <link>http://taewan.kim/cloud/oci_mds_tutorial_02_connection/</link>
+      <pubDate>Sat, 05 Dec 2020 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_mds_tutorial_02_connection/</guid>
+      <description>OCI MySQL Database(이하 OMD)는 Oracle Cloud Infrastructure(이하 OCI)가 제공하는 완전 관리형 MySQL 서비스입니다. OMD는 MySQL 배포, 백업, 패치 등 관리 작업 자동화 및 OCI 최적화 구성을 제공합니다. 또한 이 서비스는 오라클 MySQL 팀의 엔터프라이즈 서포트를 포함합니다. 특히 OMD는 OLTP를 넘어 OLAP 확장을 위한 MySQL Extension(OCI MySQL ANALYTICS)이 포함돼있습니다.
+이 문서에서 다루는 내용은 OCI Free Trial에서 실습 가능합니다.
+ 이번 문서에서는 OCI MySQL Database 인스턴스에 MySQL Shell과 MySQL Client로 접근하는 과정을 소개합니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI MySQL 가이드-01.프로비저닝</title>
+      <link>http://taewan.kim/cloud/oci_mds_tutorial_01_provisioning/</link>
+      <pubDate>Thu, 03 Dec 2020 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_mds_tutorial_01_provisioning/</guid>
+      <description>OCI MySQL Database(이하 OMD)는 Oracle Cloud Infrastructure(이하 OCI)가 제공하는 완전 관리형 MySQL 서비스입니다. OMD는 MySQL 배포, 백업, 패치 등 관리 작업 자동화 및 OCI 최적화 구성을 제공합니다. 또한 이 서비스는 오라클 MySQL 팀의 엔터프라이즈 서포트를 포함합니다. 특히 OMD는 OLTP를 넘어 OLAP 확장을 위한 MySQL Extension(OCI MySQL ANALYTICS)이 포함돼있습니다.
+이 문서에서 다루는 내용은 OCI Free Trial에서 실습 가능합니다.
+ 이번 문서에서는 OCI MySQL Database 프로비저닝 과정을 소개합니다.
+MySQL Database Service 기본 가이드 이번 문서는 OMD 기본 가이드 1편입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI ADB 튜토리얼-01.프로비저닝</title>
+      <link>http://taewan.kim/cloud/oci_adb_tutorial_01_provisioning/</link>
+      <pubDate>Tue, 01 Dec 2020 21:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_adb_tutorial_01_provisioning/</guid>
+      <description>우선 OCI ADB에 대해서 간단히 소개하겠습니다. OCI의 Autonomous Database 서비스(ADB)는 자율 운영을 표방하는 데이터베이스 서비스입니다. 시스템 및 데이터베이스 관리자의 Oracle DB 운영 부담을 최소화하면서 기존 Oracle Database 활용 경험을 클라우드에서 그대로 활용하는 것을 목표로 합니다. On-Prem의 Exadata 기술 스택을 클라우드화하고 운영/관리 부담을 줄이는 진보적인 Oracle Database 클라우드 PaaS입니다.
+OCI ADB는 데이터베이스 사용 형태(Workload)에 따라 3가지 유형으로 구분됩니다. 각 유형 ADB 인스턴스를 생성할 때 공용 인프라와 전용 인프라를 지정할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI Tenancy 기본 환경 설정</title>
+      <link>http://taewan.kim/cloud/oci_basic_config/</link>
+      <pubDate>Thu, 26 Nov 2020 16:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_basic_config/</guid>
+      <description>이 문서는 앞으로 데모 환경을 구성하는 기본 문서로 활용할 목적으로 작성합니다. 이 문서에서는 OCI User ID, OCI Group, Compoartment 및 VCN를 다음과 같이 구성합니다.
+ OCI 사용자 ID: OCI 사용자 계정  developer01 operator01 data_analyst01 admin  OCI Group: OCI 사용자를 묶는 논리적인 단위  developers operators data_analysts  Compartment: OCI 자원을 묶는 논리적인 단위  demo  VCN: 가상 클라우드 네트워크  demovcn   OCI 사용자 기본 설정 OCI Group과 OCI User를 만들고, 그룹에 OCI User를 할당하는 과정은 다음 문서를 참조하시기 바랍니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI 멀티 팩터 인증(Multi-Factor Authentication)</title>
+      <link>http://taewan.kim/cloud/oci_multi_factor_authentication/</link>
+      <pubDate>Mon, 23 Nov 2020 01:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_multi_factor_authentication/</guid>
+      <description>Oracle Cloud Infrastructure(이하 OCI)의 IAM( Identity and Access Management)은 Multi-Factor Authentication(이하 MFA)를 지원합니다. 여기서 MFA란 다중인증 체계입니다. OCI Console이 MFA를 지원하는 방식과 설정 방식에 대하여 알아보겠습니다.
+Multi-Factor Authentication 사용자의 신원을 확인하는 방법을 지식기반 인증, 소유기반 인증, 속성기반 인증 3가지의 카테고리로 구분하는데 이를 ‘인증 팩터(Authentication Factor)라고 합니다.
+   인증 유형 설명 적용 예     지식기반(Knowledge) 사용자만 알고 있는 것 패스워드, PIN코드, 미리 설정해놓은 질문답변 등   소유기반(Possession) 사용자만 소유하고 있는 것 휴대폰 SMS인증, 보안카드, OTP, 공인인증서   속성기반(Inherence) 사용자만의 고유한 속성 지문인식, 홍채인식, 정맥인식, 얼굴인식     [출처] 멀티팩터 인증 (Multi-Factor Authentication): https://blog.</description>
+    </item>
+    
+    <item>
+      <title>OCI 사용자 기본 설정(Feat. OCI IAM)</title>
+      <link>http://taewan.kim/cloud/oci_user/</link>
+      <pubDate>Sun, 22 Nov 2020 01:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_user/</guid>
+      <description>Oracle Cloud Infrastructure(이하 OCI) Tenancy를 생성하면, 사용가 ID가 두 개가 기본적으로 만들어 집니다. OCI Tenancy를 등록할 때 E-mail로 taewan.me@gmail.com을 설정했다면 다음과 같은 2개 사용자 ID가 만들어 집니다.
+ oracleidentitycloudservice/taewan.me@gmail.com taewan.me@gmail.com  이번 문서에서는 두 개 사용자 ID가 무엇인지 알아보고, 앞으로 데모에 사용할 사용자 ID와 Group을 만들어 보겠습니다.
+IDCS &amp;amp; OCI IAM 오라클 클라우드는 사용자 계정을 관리하는 IDCS(Identity Cloud Service)와 OCI IAM 서비스를 제공합니다. IDCS(Identity Cloud Service)는 오라클 클라우드 초기부터 계정 관리와 사용자 권한을 관리하는 체계였습니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI Console 단일 URL</title>
+      <link>http://taewan.kim/cloud/oci_login_one_url/</link>
+      <pubDate>Fri, 20 Nov 2020 21:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_login_one_url/</guid>
+      <description>Oracle Cloud Infrastructure의 웹 관리 사이트인 OCI Console은 OCI Tenancy의 홈 리전에 따라서 로그인 URL이 달라지는 문제가 있었습니다. 홈-리전에 따라라 로그인 URL이 달라지는 특징 때문에, 처음 OCI를 사용하시는 분들은 많은 혼란을 경험했습니다. 이 문제는 2020년 11월 18일 업데이트로 해결되었습니다. 이제 모든 사용자의 OCI Console 로그인 URL은 https://cloud.oracle.com 으로 통일 되었습니다.
+ 출처: https://docs.cloud.oracle.com/en-us/iaas/releasenotes/changes/7352c345-1777-4dba-a64f-c8441f46922a/  기존 OCI Console 로그인 URL 기존에 OCI Console 로그인 URL은 다음과 같은 패턴을 갖았습니다. OCI Console에 로그인하기 위해서는 OCI Tenancy의 홈-리전 ID를 알고있어야 했습니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI에 Oracle Java &amp; GraalVM EE 설치</title>
+      <link>http://taewan.kim/cloud/how_to_install_oracle_java_in_oci/</link>
+      <pubDate>Tue, 17 Nov 2020 21:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/how_to_install_oracle_java_in_oci/</guid>
+      <description>Oracle Cloud Infrastructure(이하 OCI)에서 Oracle Java와 GraalVM Entrprise Edition을 모두 무상으로 사용할 수 있습니다. Oracle Java는 대표적인 표준 자바 구현체이고 오라클이 프리미엄 서포트를 제공하는 기업용 자바입니다. GraalVM은 Oracle Java를 확장한 차세대 자바입니다. OCI에서 제공하는 Oracle Linux 이미지에는 Oracle Java와 GraalVM 설치를 지원하는 yum 레파지토리가 구성돼 있습니다. 이번 문서에서는 OCI Oracle Linux에서 Oracle Java와 GraalVM을 설치하는 방법을 정리합니다.
+Oracle Java &amp;amp; GraalVM is Free OCI에서 Oracle Java와 GraalVM Enterprise Edition을 무상으로 사용할 수 있다는 근거는 다음 링크에서 확인할 수 있습니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI ADB 인스턴스로 새로운 ADB 데이터베이스 복제</title>
+      <link>http://taewan.kim/cloud/oci_adb_refreshable_clone/</link>
+      <pubDate>Sun, 15 Nov 2020 21:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_adb_refreshable_clone/</guid>
+      <description>OCI Autonomous Database 서비스(이하 OCI ADB)는 데이터베이스 데이터를 그대로 복제하여 새로운 데이터베이스를 생성하는 데이터베이스 복제(Clone) 기능을 제공합니다. 데이터베이스를 운영하다 보면 다양한 이유로 복제 데이터베이스를 만들 필요가 있습니다. 원본 데이터베이스를 일회성 복제하는 것으로 끝날 수도 있지만, 때로는 복제한 데이터베이스가 계속 원본 데이터베이스와 동기화돼야 하는 경우도 있습니다. OCI ADB는 전체 데이터베이스를 복제하는 &amp;ldquo;Full Clone&amp;ldquo;과 지속해서 원본 데이터베이스의 변경분을 동기화하는 &amp;ldquo;Refreshable Clone&amp;ldquo;을 모두 지원합니다.
+이 문서는 작성일(2020.11.15)을 기준으로 OCI Autonomous Database의 데이터베이스 복제 기능을 소개합니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI 관리 모바일 앱(Mobile App)</title>
+      <link>http://taewan.kim/cloud/oci_mobile_app/</link>
+      <pubDate>Thu, 12 Nov 2020 01:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_mobile_app/</guid>
+      <description>OCI(Oracle Cloud Infrastructure) 공식 모바일 애플리케이션과 안드로이드 버전과 IOS 버전으로 공개되었습니다.(2020/11/03) OCI 모바일 앱을 이용하여 OCI 리소스 탐색, 리소스 사용량 확인 및 상태 모니터링을 할 수 있습니다. 또한 알람(Alarm)을 설정하여 OCI 자원 상태를 통지받을 수 있습니다. 추가로 이 앱을 이용하여 사용량 청구 및 리소스 제한 정보를 확인할 수 있습니다.
+공식 과련 정보는 다음 링크로 확인할 수 있습니다.
+ OCI 공식 메뉴얼(OCI Mobile)  https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/mobile.htm  OCI 공식 블로그  https://blogs.</description>
+    </item>
+    
+    <item>
+      <title>OCI 마케팅 트라이얼 계정 등록</title>
+      <link>http://taewan.kim/cloud/oci_marketing_trial/</link>
+      <pubDate>Sat, 07 Nov 2020 01:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_marketing_trial/</guid>
+      <description>Oracle Cloud Free Tier(이하 Cloud Free Tier)는 별도 비용 없이 오라클 클라우드 사용 경험을 제공하는 프로모션 프로그램입니다. Cloud Free Tier에 계정을 등록하면 30일 동안 300달러에 해당하는 오라클 클라우드 자원을 사용할 수 있는 크래딧을 제공합니다.
+일반 Cloud Free Tier 프로그램과 별도로 특별한 형태의 Cloud Free Trial을 제공하는 마케팅 프로그램이 있습니다. 이 프로그램을 편의상 &amp;ldquo;마케팅 트라이얼&amp;rdquo;이라고 부릅니다. 마케팅 트라이얼은 온라인/오프라인 오라클 행사에 참여한 분들에게 월간 500불 상당의 Cloud Free Tier를 제공하는 프로그램입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI Data Science 한글 폰트 설정</title>
+      <link>http://taewan.kim/cloud/setup_hangul_font_on_data_science/</link>
+      <pubDate>Fri, 05 Jun 2020 01:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/setup_hangul_font_on_data_science/</guid>
+      <description>OCI Data Science란? OCI Data Science는 Oracle Cloud에서 제공하는 전문 머신러닝 서비스입니다. 사용자는 Data Science를 이용하여 완전한 파이썬 기반 머신러닝 개발 환경을 필요한 시점에 만들고 바로 사용할 수 있습니다. 향후 OCI의 모든 데이터 서비스는 Data Science에 통합될 계획에 있습니다. Data Science는 다음과 같은 기능을 제공합니다.
+ 파이썬 전문 개발 환경 제공(Jupyter Lab 기반) 데이터 프로파일링, 전처리 및 시각화 EDA 및 모델 학습(AutoML) 모델 평가 및 모델 해석(Interpretability &amp;amp; Explanation) 모델 배포 및 모델 버전 관리  OCI Data Science는 배포할 때 지정한 Compute Shape(컴퓨터 자원)을 기준으로 초 단위 과금합니다.</description>
+    </item>
+    
+    <item>
+      <title>[OCFS2]OCI Shared Block Volume 구성</title>
+      <link>http://taewan.kim/cloud/oci_shared_block_volume/</link>
+      <pubDate>Mon, 09 Mar 2020 01:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_shared_block_volume/</guid>
+      <description>OCI(Oracle Cloud Infrastructure)는 여러 Compute 인스턴스가 공유하는 Block Volume을 지원합니다. 1개의 Block Volume을 2개 이 이상의 Compute 인스턴스가 마운트할 수 있습니다. 여러 Compute 인스턴스가 1개 Block Volume을 읽기/쓰기 모드로 마운트할 경우, 쓰기 중복을 방지하기 위해서 여러 Compute 인스턴스의 파일 쓰기를 조정하는 중재 소프트웨어가 필요합니다. 이런 중재 소프트웨어를 Clusterware라고 합니다.
+OCI는 공유 볼륨을 지원하기 위해서 2020년 3월 현재 다음과 같은 3개 Clusterware를 지원합니다.
+ OCSF2(Oracle Cluster File System Version 2) GlusterFS IBM Spectrum Scale  이번 문서에서는 OCFS2를 사용하여 Block Volume을 공유하는 방법을 정리합니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI Cloud Shell: 브라우저 기반 가상 터미널</title>
+      <link>http://taewan.kim/cloud/oci_cloud_shell/</link>
+      <pubDate>Sat, 07 Mar 2020 08:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_cloud_shell/</guid>
+      <description>OCI 브라우저 기반 가상 터미널 2020년 2월 11일 OCI(Oracle Cloud Infrastructure)는 Cloud Shell을 새롭게 공개했습니다. Cloud Shell은 OCI Console(OCI 관리 콘솔)에서 실행되는 브라우저 기반 터미널입니다. OCI Cloud Shell은 GCP의 Google Cloud Shell, Azure의 Cloud Shell 및 AWS의 Session Manager와 같은 서비스입니다. OCI Cloud Shell를 이용하면 PuTTY를 사용하지 않고 OCI VM 인스턴스에 접속하거나 별도의 소프트웨어와 계정 설정 작업 없이 즉시 OCI CLI와 같은 툴을 사용할 수 있습니다.
+Cloud Shell 과금정책과 사용 권한 OCI Cloud Shell은 Free 서비스입니다.</description>
+    </item>
+    
+    <item>
+      <title>S3FS를 이용한 OCI Object Storage 파일 시스템 마운트</title>
+      <link>http://taewan.kim/cloud/mounting_oci_objectstorage_bucket_on_linux_mac/</link>
+      <pubDate>Sat, 29 Feb 2020 10:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/mounting_oci_objectstorage_bucket_on_linux_mac/</guid>
+      <description>클라우드 서비스에서 데이터를 관리하는 핵심 저장소는 Object Storage입니다. OCI(Oracle Cloud Infrastructure)는 Object Storage에 파일을 저장하고 사용하는 다음과 같은 인터페이스를 제공합니다.
+ OCI Console의 UI: OCI 웹 사이트 REST API OCI SDK: Java, Python, Ruby, Go CLI 툴: OCI CLI  이러한 인터페이스는 애플리케이션에서 Object Storage에 저장된 파일을 접근하거나 자동화 프로세스에서 Object Storage를 사용하는 경우에는 효과적입니다. 반면, 이 인터페이스를 사람이 사용하는 것은 상당히 불편합니다. 일반 사용자에게는 Object Storage를 파일 시스템에 마운트하는 방식이 가장 효율적입니다.</description>
+    </item>
+    
+    <item>
+      <title>OCI에서 리눅스 VM 루트 파티션(Root Partition) 확장</title>
+      <link>http://taewan.kim/cloud/extending_root_partition_on_oci_linux/</link>
+      <pubDate>Fri, 28 Feb 2020 10:20:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/extending_root_partition_on_oci_linux/</guid>
+      <description>OCI(Oracle Cloud Infrastructure)에서 리눅스 VM을 만들 때, 기본 Boot Volume 크기는 46.6GB입니다. Boot Volume의 기본 크기를 최대 32TB까지 확장할 수 있습니다. Boot Volume을 조정하고 리눅스 VM을 프로비저닝하더라도, Root Partition의 사이즈는 기본 크기로 고정됩니다. Root Partition을 조정하는 방법과 Root Partition 조정을 자동화하는 방법을 정리합니다.
+OCI에서 Oracle Linux VM 인스턴스를 프로비저닝하는 방법은 다음 링크의 문서를 참조하시기 바랍니다. OCI 리눅스 가상머신 프로비저닝[↗NW]
+ Root Partiion 고정 38.4GB OCI에서 VM을 프로비저닝할 때 가상머신의 Boot Volume을 늘리는 방법은 다음과 같습니다.</description>
+    </item>
     
     <item>
       <title>2019 Modern Cloud Day @Seoul 세션 동영상과 발표 자료</title>
@@ -22,7 +242,7 @@
     </item>
     
     <item>
-      <title>[OCI Release Note]Object Storage 새기능 요약</title>
+      <title>[OCI Release Note] Object Storage 새기능 요약</title>
       <link>http://taewan.kim/cloud/oci_object_storage_new_feature/</link>
       <pubDate>Wed, 11 Dec 2019 01:28:14 +0900</pubDate>
       
