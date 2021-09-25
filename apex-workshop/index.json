@@ -1,181 +1,34 @@
 [
 {
-	"uri": "http://taewan.kim/apex-workshop/",
-	"title": "Oracle APEX",
-	"tags": [],
-	"description": "",
-	"content": " Oracle APEX Oracle APEX는 오라클에서 제공하는 Low-Code 기술입니다. Oracle APEX은 엔터프라이즈 애플맄이션 개발\u0026amp;배포에 대한 뛰어난 개발 생산성과 편의성을 제공합니다. Oracle APEX를 이용하여 현대적인 반응형 웹 및 모바일 애플리케이션을 개발할 수 있습니다.\nOracle APEX는 SQL및 PL/SQL 기술을 중심으로 웹 애플리케이션을 개발하는 기술입니다. 개발자가 웹 애플리케이션을 개발할 때 직면하는 HTLM, CSS, JavaScript 부담을 최소화하고, 개발 코드의 대부분은 데이터를 핸들링하는 SQL과 PL/SQL에 집중됩니다.\nOracle APEX는 브라우저 기반의 완전 관리형 개발 환경을 제공합니다. Oracle APEX 애플리케이션을 개발하기 위해서는 Oracle APEX 서비스를 제공하는 오라클 데이터베이스와 브라우저만 있으면 됩니다.\nOracle APEX를 사용하려면\u0026hellip; On-Premise에서 Oracle APEX를 사용하기 위해서는 자체적으로 관리하는 오라클 데이터베이스가 필요합니다.\n오라클 클라우드(OCI, Orace Cloud Infrastructure)에서 Oracle APEX를 사용하기 위해서는 다음과 같은 서비스가 필요합니다.\n OCI Autonomous Database (ATP, ADW) OCI Oracle Database 서비스(Autonomous DB, DBCS, ExaCS)가 필요합니다.  새로운 APEX 서비스는 오라클 클라우드 인프라스트럭처(Oracle Cloud Infrastructure, OCI)에서 제공됨에 따라, 브라우저 기반의 완전 관리형 서비스를 통해 직관적인 그래픽 인터페이스를 활용하는 현대적인 반응형 웹 및 모바일 애플리케이션 구축이 가능하다. 해당 서비스는 개발자들이 복잡한 풀스택(full-stack) 기술을 배우지 않고도 어떤 장비에서도 사용 가능한 엔터프라이즈 애플리케이션을 기존보다 38배 빠르게 구축함으로써 비즈니스 문제 해결에만 더욱 집중할 수 있도록 지원한다.\n전통적 방식의 복잡한 코딩 대신 쉽고 선언적인 방식의 개발에 관심이 있는 개발자라면 누구나 오라클 클라우드 무료 평가판(Oracle Cloud Free Tier)에 포함된 오라클 APEX 애플리케이션 개발 서비스를 활용해 로우코드 애플리케이션을 개발할 수 있다. 또한 이를 오라클 자율운영 데이터베이스와도 연동해 더욱 우수한 보안과 확장성, 가용성 및 성능에 대한 이점을 누리는 것도 가능하다.\n"
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/00.index/",
-	"title": "Oracle APEX Workshop",
+	"uri": "http://taewan.kim/oci-livelogs/000.index/",
+	"title": "OCI Livelogs",
 	"tags": [],
 	"description": "&#39;",
-	"content": "Oracle APEX 워크숍은 실습을 중심으로 Oracle APEX를 익히는 컨텐트로 구성됩니다. 각 워크샾은 동영상 따라하기 방식으로 진행됩니다.\n"
+	"content": " OCI Livelogs OCI Livelogs는 오라클 클라우드(OCI, Oracle Cloud Infrastructure) 사용법을 데모 시나리오 중심의 영상으로 소개하는 콘텐츠입니다. 오라클 클라우드에서 특정 작업을 수행하는 시나리오를 소개하고 그 과정을 영상으로 제시함으로써 직관적인 정보 전달을 목표로 합니다. 이미지와 문장 중심의 매뉴얼은 작업 과정을 상상해야 하는 불편함과 어려움이 있습니다. 매뉴얼을 보고 실습을 하기 위해서는 작업 환경 준비 및 은근히 복잡한 과정이 필요합니다. OCI Livelgos 실습 영상을 통해서 정보 전달력과 직관적인 이해를 높이고, 사용자가 실습을 따라 하는 부담을 최소화하는 것이 OCI LiveLogs의 지향점입니다.\nOracle Cloud 실습 문서 유형 오라클 클라우드는 시나리오 중심으로 클라우드 사용법을 쉽게 소개하는 다양한 문서를 제공합니다.\n Oracle Livelabs OCI Develper Tutorials Oracle Architecture Center  각 문서의 특징은 다음과 같이 요약할 수 있습니다.\nOracle Livelabs Oracle Livelabs는 시나리오 형 오라클 클라우드 실습 매뉴얼입니다. Oracle Livelabs은 이미지 중심의 단계별(Step-by-Step) 따라하기 형식으로 작성된 실습 온라인 문서입니다. 단편적인 실습 보다는 종합적인 시나리오를 제시하고, 제시한 주제를 해결하는 과정을 소개하는 형식으로 구성됩니다. 2021년 9월 18일 기준 255개의 OCI 실습 워크샵 문서를 제공합니다. Oracle Livelabs는 다음 URL에서 목록을 확인할 수 있습니다.\n https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/livelabs-workshop-cards  OCI Develper Tutorials 입문자를 위한 개발자 튜토리얼은 OCI 공식 문서의 일부분으로 입문자를 위한 8개 서비스(Free Tier, Functions, Kubernetes, Terraform, Data Catalog, Data Flow, Data Integration, Data Science)에 대한 초보자 실습 문서 42개 (2021년 9월 18일 기준 )를 제공합니다. 이 문서는 이미지 보다는 텍스트를 중심으로 작성됩니다. 입문자를 위한 개발자 튜토리얼은 다음 URL에서 확인할 수 있습니다.\nhttps://docs.oracle.com/en-us/iaas/developer-tutorials/tutorials/home.htm   Oracle Architecture Center 오라클 클라우드 서비스를 이용하여 특정 엔터프라이즈 이슈를 해결하는 아키텍처 및 구축 방법, 구현체를 소개하는 문서 353개(2021년 9월 18일 기준 )를 제공합니다. 아키텍처 이슈 소개, 이슈 해결을 위한 아키텍처 제시, Terraform으로 솔루션 배포로 구성됩니다. 오라클 아키텍처 센터에서 제공하는 문서 목록은 다음 URL에서 확인할 수 있습니다.\n https://docs.oracle.com/solutions/  OCI Livelogs Oracle Livelabs, Developer Tutorial 및 아키텍처 센터는 다음과 같은 문제점을 갖고 있습니다.\n 한글화 부족 이미지와 문자 중심의 문서  OCI Livelogs는 위 3개 문서를 대상으로 한글화하고 실습과정을 영상으로 녹화하여, 매뉴얼 내용과 진행 과정을 영상으로 확인할 수 있는 콘텐츠입니다. OCI Livelogs는 한글화된 문서와 Youtube 실습 동영상으로 구성됩니다. OCI Livelog를 통해서 다음과 같은 효과를 얻을 수 있습니다.\n 오라클 클라우드 실습형 메뉴얼 한글화 실습 과정을 영상으로 사전 확인 사용자가 실습을 진행할 경우 가이드라인 역할  오라클 클라우드에 대한 정보가 필요한 사용자가 오라클 클라우드 매뉴얼 습득의 효율성을 높이고 직과적으로 기술 이해를 돕는 콘텐츠를 양산하는 것이 OCI Livelogs의 지향점입니다.\n"
 },
 {
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/05-about-workshop/",
-	"title": "APEX 입문자 워크숍 소개",
+	"uri": "http://taewan.kim/oci-livelogs/",
+	"title": "OCI Livelogs",
 	"tags": [],
 	"description": "",
-	"content": "APEX 입문자 워크숍은 Oracle APEX를 처음 접하시는 분들을 대상으로 합니다. Oracle APEX Low-Code를 쉽게 따라하면서 기본적은 작동 방식을 이해하는 형태로 구성됩니다.\nAPEX 입문자 워크숍은 4개 모듈로 구성됩니다.\n M01: Oracle APEX 실습 환경 구성 M02: 직원 정보 관리 M03: Expense 영수증 관리 M04: APEX 인증 및 커스커마이징  총 4개 모듈로 구성되면 전체 동영상 길이는 5시간 입니다.\nOracle Cloud Infrastrucrue의 ADB를 기반 실습 환경으로합니다.\n"
+	"content": " OCI Livelogs OCI Livelogs는 오라클 클라우드(OCI, Oracle Cloud Infrastructure) 사용법을 데모 시나리오 중심의 영상으로 소개하는 콘텐츠입니다. 오라클 클라우드에서 특정 작업을 수행하는 시나리오를 소개하고 그 과정을 영상으로 제시함으로써 직관적인 정보 전달을 목표로 합니다. 이미지와 문장 중심의 매뉴얼은 작업 과정을 상상해야 하는 불편함과 어려움이 있습니다. 매뉴얼을 보고 실습을 하기 위해서는 작업 환경 준비 및 은근히 복잡한 과정이 필요합니다. OCI Livelgos 실습 영상을 통해서 정보 전달력과 직관적인 이해를 높이고, 사용자가 실습을 따라 하는 부담을 최소화하는 것이 OCI LiveLogs의 지향점입니다.\nOracle Cloud 실습 문서 유형 오라클 클라우드는 시나리오 중심으로 클라우드 사용법을 쉽게 소개하는 다양한 문서를 제공합니다.\n Oracle Livelabs OCI Develper Tutorials Oracle Architecture Center  각 문서의 특징은 다음과 같이 요약할 수 있습니다.\nOracle Livelabs Oracle Livelabs는 시나리오 형 오라클 클라우드 실습 매뉴얼입니다. Oracle Livelabs은 이미지 중심의 단계별(Step-by-Step) 따라하기 형식으로 작성된 실습 온라인 문서입니다. 단편적인 실습 보다는 종합적인 시나리오를 제시하고, 제시한 주제를 해결하는 과정을 소개하는 형식으로 구성됩니다. 2021년 9월 18일 기준 255개의 OCI 실습 워크샵 문서를 제공합니다. Oracle Livelabs는 다음 URL에서 목록을 확인할 수 있습니다.\n https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/livelabs-workshop-cards  OCI Develper Tutorials 입문자를 위한 개발자 튜토리얼은 OCI 공식 문서의 일부분으로 입문자를 위한 8개 서비스(Free Tier, Functions, Kubernetes, Terraform, Data Catalog, Data Flow, Data Integration, Data Science)에 대한 초보자 실습 문서 42개 (2021년 9월 18일 기준 )를 제공합니다. 이 문서는 이미지 보다는 텍스트를 중심으로 작성됩니다. 입문자를 위한 개발자 튜토리얼은 다음 URL에서 확인할 수 있습니다.\n https://docs.oracle.com/en-us/iaas/developer-tutorials/tutorials/home.htm  Oracle Architecture Center 오라클 클라우드 서비스를 이용하여 특정 엔터프라이즈 이슈를 해결하는 아키텍처 및 구축 방법, 구현체를 소개하는 문서 353개(2021년 9월 18일 기준 )를 제공합니다. 아키텍처 이슈 소개, 이슈 해결을 위한 아키텍처 제시, Terraform으로 솔루션 배포로 구성됩니다. 오라클 아키텍처 센터에서 제공하는 문서 목록은 다음 URL에서 확인할 수 있습니다.\n https://docs.oracle.com/solutions/  OCI Livelogs Oracle Livelabs, Developer Tutorial 및 아키텍처 센터는 다음과 같은 문제점을 갖고 있습니다.\n 한글화 부족 이미지와 문자 중심의 문서  OCI Livelogs는 위 3개 문서를 대상으로 한글화하고 실습과정을 영상으로 녹화하여, 매뉴얼 내용과 진행 과정을 영상으로 확인할 수 있는 콘텐츠입니다. OCI Livelogs는 한글화된 문서와 Youtube 실습 동영상으로 구성됩니다. OCI Livelog를 통해서 다음과 같은 효과를 얻을 수 있습니다.\n 오라클 클라우드 실습형 메뉴얼 한글화 실습 과정을 영상으로 사전 확인 사용자가 실습을 진행할 경우 가이드라인 역할  오라클 클라우드에 대한 정보가 필요한 사용자가 오라클 클라우드 매뉴얼 습득의 효율성을 높이고 직과적으로 기술 이해를 돕는 콘텐츠를 양산하는 것이 OCI Livelogs의 지향점입니다.\n"
 },
 {
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/10-expense_mngt/",
-	"title": "Expense 영수증 관리: Form",
+	"uri": "http://taewan.kim/oci-livelogs/010.change_logs/",
+	"title": "OCI Livelogs 변경 로그",
 	"tags": [],
-	"description": "",
-	"content": "   Expense 영수증 관리 생성    Page 번호 페이지 이름     31 Expenses   32 Expenses form    Expenses 테이블을 PK를 위한 오라클 객체 생성 Sequence 객체를 생성하고 트리거로 일련 번호를 확보하여 PK로 설정합니다.\n1. Sequence 생성 Object Browser를 이용하여 Sequence를 생성합니다.\n APEX Workspace  SQL Workshop  Object Browser Sequence 이름: expense_seq  2. 트리거 생성  APEX Workspace  SQL Workshop  SQL Command Expenses 테이블의 Insert 문 수행 전에 작동하는 트리거  create or replace trigger \u0026quot;EXPENSES_T1\u0026quot; BEFORE insert on \u0026quot;EXPENSES\u0026quot; for each row begin if :NEW.\u0026quot;EXPENSE_ID\u0026quot; is null then select \u0026quot;EXPENSE_SEQ\u0026quot;.nextval into :NEW.\u0026quot;EXPENSE_ID\u0026quot; from sys.dual; end if; end;  Expense Form 페이지  새로운 APEX 사용자 등록\n 대체 문자열 설정 Page Item - Hidden 처리 (P32_CRE_DATE) List of Values 구성 (EMPLOYEES, EXPENSE_TYPES, RECEIPT_STATUS, CARD_TYPES) LoV 컴포넌트 설정 컴포넌트 명 한글화 Page Item 타입 변경: P32_Title, P32_Description Page Item 타입 추가: P32_RECEIPT_PIC 폼 레이아웃 변경  새로운 APEX 사용자 등록    ID Mail Password     flower demo@gmail.com Welcome123456!    대체 문자열 설정  P32_EMPLOYEE_ID Default  Expression lower(:APP_USER)   List of Values 구성  EMPLOYEES  유형: Shared Component   select employee_id r, emp_name || ' (' || t.team_name||', '||t.team_full_name ||')' d from employees e, teams t where e.team_id = t.team_id   Expense Types  유형: Shared Component   select type_id as r, type_name as d from EXPENSE_TYPES order by 1   CARD TYPES  유형: Shared Component      Display Return     개인카드 pc   법인카드 cc     RECEIPT STATUS  유형: Shared Component      Display Return     분실 m   보관 k    LoV 컴포넌트 설정  직원: select list 비용 결재 유형: select list 카드 유형: radio group 영수증 상태: radio group  Page Item 타입 추가  P32_RECEIPT_PIC 복제 P32_RECEIPT_PIC_1\n type: Display Image  CSS 등록\n Expense Receipt Form  CSS 속성  inline   img { width: 200px; height: 200px; }  "
+	"description": "&#39;",
+	"content": "이 문서에서는 OCI Livelogs의 변경 이력을 정리합니다. OCI Livelogs에 추가 및 변경 문서 이력을 관리합니다.\n"
 },
 {
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/",
-	"title": "APEX APP, DB 테이블, LoV 생성",
-	"tags": [],
-	"description": "",
-	"content": "    영상 재생 시간: 13:02  APEX App 생성  Name: 슬기로운 익스펜스 생활 Appearance: Vita, Side Menu  DB 테이블 생성  리소스 파일 다운로드: https://taewanmerepo.github.io/2021/08/apex/apexws_res.zip DDL 파일 위치: /sqls/base_table.sql SQL Workshop \u0026gt;\u0026gt; SQL Script  7개 테이블   LoV 생성 Shared Component \u0026gt; List of Values 등록  JOB TYPES  업무 유형: 의사, 간호사   select job_id as r, job_name as d from JOB_TYPES   EMP TYPES  (1, \u0026lsquo;교수\u0026rsquo;) (2, \u0026lsquo;펠로우\u0026rsquo;) (3, \u0026lsquo;레시던트\u0026rsquo;) (4, \u0026lsquo;인턴\u0026rsquo;) (5, \u0026lsquo;본과실습생\u0026rsquo;) (6, \u0026lsquo;간호사\u0026rsquo;) (7, \u0026lsquo;주임간호사\u0026rsquo;) (8, \u0026lsquo;수간호사\u0026rsquo;) (9, \u0026lsquo;간호부장\u0026rsquo;)   select type_id as r, type_name as d from USER_TYPES   Teams  (1, 소아과) (2, 산부인과) (3, 간담췌외과) (4, 신경외과) (5, 응급의학과)   select team_full_name as d, team_id as r from TEAMS   Gender Types  남성: M 여성: F   "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/10-login/",
-	"title": "Login 페이지 변경",
-	"tags": [],
-	"description": "",
-	"content": "   Login 페이지 적용 이미지 다음 이미지를 다운로드 받으시기 바랍니다.\nStatic Application Files 등록 CSS Inline body{ background-image: url('#APP_IMAGES#base.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; } Span.t-Login-logo{ background-image : url('#APP_IMAGES#oracle-apex.png'); background-Size :cover; width :150px; height :120px; }  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/",
-	"title": "OCI Free Trial 신청",
-	"tags": [],
-	"description": "",
-	"content": "    영상 재생 시간: 1:46  이번 워크숖은 오라클 클라우드(OCI, Oracle Cloud Infrastructure)의 Always Free 환경에서 진행됩니다.\nAlways Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 기간 제약없이 무상으로 제공하는 서비스를 의미힙니다. 오라클 클라우드가 제공하는 Always Free 서비스에 대한 자세한 내용은 다음 문서를 참조하시기 바랍니다.\n새로운 Oracle Cloud 프로모션: \u0008Free Tier  \n 워크숖 실습을 진행하기 위해서는 오라클 클라우드(OCI, Oracle Cloud Infrastructure) 자원을 사용하기 위해서 OCI 계정이 필요합니다.\n현재 사용 가능한 OCI 계정이 있다면 다음 페이지로 넘어가셔도 좋습니다. 반면에 현재 사용 가능한 OCI 계정이 없다면 오라클이 30일 동안 클라우드 자원을 무료(최대 300달려)로 제공하는 OCI Free Trail 계정을 신청해야 합니다. OCI Free Trail 계정 신청 절차는 다음 동영상을 참고하시기 바랍니다.\n실습 환경 다음 동영상은 OCI Free Trial 계정 신청 방법을 소개합니다.\n  다음 단계 실습에 사용할 ATP 인스턴스를 생성할 수 있는 OCI 계정이 확보된 상태라면 다음 페이지로 이동하시기 바랍니다. 다음 페이지에서는 OCI 계정의 기본 설정을 다룹니다. 워크샾 가이드 통일성을 유지하기 위하여 다음과 같은 자원을 만들어 일관성을 높일 것입니다. 다음 페이지에서는 다음과 같은 작업을 진행합니다.\n Compartment 생성 OCI IAM 사용자 계정 생성 OCI IAM 사용자 그룹 생성 Policy 설정  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/",
-	"title": "M01.실습환경 준비",
-	"tags": [],
-	"description": "",
-	"content": " Oracle APEX 입문 워크숍을 진행하기 위해서는 다음과 같은 환경이 필요합니다.\n OCI Tenante (OCI 계정)  OCI 사용자 계정  OCI ATP 인스턴스  APEX Workspace   실습 환경 준비 절차 실습 환경을 준비하기 위하여 다음과 같은 작업을 진행합니다.\n OCI Free Trial 계정 신청 OCI 계정 기본 설정 APEX 실습 환경 구성  ATP 인스턴스 생성 APEX Workspace 생성   "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/",
-	"title": "Expense 영수증 관리: IR",
-	"tags": [],
-	"description": "",
-	"content": "   작업 절차  새로운 APEX 사용자 등록 모든 Expenses 데이터 삭제  신규 데이터 5건 입력 (flower, chuchu)  리포트 조회 조건 설정: 조회 범위 한정 (APP_USER) 컴럼 정리 (hidden) 컬럼 헤더 한글화 컬럼 패턴 변경 (사용일, 등록일) LoV를 적용하여 참조 컬럼의 Key값 변경 페이지 타이틀 설정 (리전) 검색 리전 추가 검색 리전에 PageItem 추가 리포트 검색 쿼리 변경 DYNAMIC ACTION 추가 직원정보 폼 연결 직원정보 폼 읽기 전용 설정  새로운 APEX 사용자 등록    ID Mail Password     chuchu demo@gmail.com Welcome123456!    리포트 조회 조건 where employee_id = lower(:APP_USER)  컬럼 정보 설정    컬럼 이럼 초기 헤더 이름 변경 헤더 이름 변경 설정     p31_employee_id Employee Id 사용자 LoV Lookup   p31_type_id Type Id 비용 유형 LoV Lookup   p31_payment_amount Payment Amount 결재금액 포멧 지정   p31_title Title 제목    p31_description Description 설명 html 지원 설정   p31_receipt_status Receipt Status 영수증 상태 LoV Lookup   p31_card_type Card Type 카드 유형 LoV Lookup   p31_receitp_pic Receipt Pic 영수증 사진 hidden 처리   p31_use_date Use Date 사용일 포멧 설정 YYYY-MM-DD   p31_cre_date Cre Date  hidden 처리    검색 리전 Page Item  P31_SEARCH_FROM: Date Picker  Validator 등록  P31_SEARCH_TO: Date Picker  Validator 등록   검색 리전 Page Item Default 설정  P31_SEARCH_FROM  select min(use_date) from expenses where employee_id = lower(:APP_USER)   P32_SEARCH_TO  select max(use_date) from expenses where employee_id = lower(:APP_USER)  검색 쿼리 리포트 검색 쿼리의 Where 절 변경\nwhere EMPLOYEE_ID = lower(:APP_USER) and USE_DATE \u0026gt;= TO_DATE(:P31_SEARCH_FROM, 'YYYY-MM-DD') and USE_DATE \u0026lt;= TO_DATE(:P31_SEARCH_TO, 'YYYY-MM-DD')  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/20-oci-env-setup/",
-	"title": "OCI 기본 환경 설정",
-	"tags": [],
-	"description": "",
-	"content": "    영상 재생 시간: 14:18  Oracle APEX 입문 워크숖 실습의 통일성을 높이기 위하여 OCI 기본 환경 다음과 같이 구성하겠습니다.\nOCI 사용자 ID \u0026amp; 사용자 그룹 다음과 같은 사용자 ID를 OCI IAM으로 만들고, OCI 사용자 그룹에 설정하겠습니다.\n   IAM User ID IAM USER Group 설명     admin administrators OCI 계정 관리자 ID   developer01 develoeprs 개발자 ID    OCI Compartment OCI Compartment(구획)은 OCI 자원을 논리적으로 묶는 OCI IAM 핵심 구성 요소입니다. OCI Compartment(구획) 계층 구조로 만들어집니다. 다음과 같은 계층 구조로 apexws와 livelabs 컴파트먼트를 만들겠습니다. 이번 워크샾의 모든 자원은 projects/apexws 컴파트먼트에 생성합니다.\n PROJECT  APEXWS LIVELABS   OCI Policy root 컴파트먼트에 다음과 같은 policy를 생성합니다.\nAllow group developers to manage all-resources in compartment PROJECT:APEXWS  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/20-authentication/",
-	"title": "Oracle APEX 커스텀 인증",
-	"tags": [],
-	"description": "",
-	"content": "   Employees 테이블 패스워 설정  SQL Workshop  SQL Commands  update employees set EMP_PW = 'WELCOME123456!';  Oracle Function: APEX 인증  SQL Workshop  SQL Commands  create or replace function authenticate_user ( p_username in varchar2, p_password in varchar2 ) return boolean as v_pw_check varchar2(1); begin APEX_UTIL.SET_SESSION_STATE('LOGIN_MESSAGE', '시작'); select 'x' into v_pw_check from employees where upper(employee_id) = upper(p_username) and upper(emp_pw) = upper(p_password); apex_util.set_authentication_result(0); APEX_UTIL.SET_SESSION_STATE('LOGIN_MESSAGE', 'Success'); return true; exception when NO_DATA_FOUND then apex_util.set_authentication_result(4); APEX_UTIL.SET_SESSION_STATE('LOGIN_MESSAGE', '오류!! 아이디와 비밀번호가 불일치합니다.'); return false; end authenticate_user;  Application Item 등록  LOGIN_MESSAGE  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/20-report-form/",
-	"title": "직원 정보 관리 Report 생성",
-	"tags": [],
-	"description": "",
-	"content": "    영상 재생 시간: 24:04  목표 애플리케이션  Report 생성  Report Type: Report with Form 대상 테이블: Employees page 번호  Report Page: 21 Form Page: 22   Form 페이지 CSS 적용 img { width: 200px; height: 200px; }  Form의 직급 select list 변경 select type_name, type_id from USER_TYPES where job_id = :P22_JOB_ID order by type_id  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/",
-	"title": "M02-직원정보관리",
-	"tags": [],
-	"description": "",
-	"content": " Oracle APEX Beginner Workshop의 첫 번째 실습으로 직원 정보를 관리하는 페이지를 개발하는 과정을 소개합니다. 이번 실습에서는 다음 이미지와 같은 직원 정보 관리 페이지를 개발해 보겠습니다.\n모듈 구성 이번 모듈은 다음과 같은 항목으로 구성됩니다.\n My Expense 앱 만들기 데모 테이블 생성 직원 정보 관리 APEX Report 생성 Key 처리를 위한 UI 컴포넌트 구성 이미지 이슈 처리 입력 데이터 Validation 입력 값 처리 (Serverside, Read Only, Default) 검색 \u0026amp; Dynamic Action  개발 화면 이번 모듈을 통해서 다음과 같은 페이지를 개발할 수 있습니다.\n 직원 정보 조회  직원 상세 정보 조회 및 정보 입력 폼   "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/30-expense_report/",
-	"title": "Expense Report: Master Detail(1)",
-	"tags": [],
-	"description": "",
-	"content": "   작업 절차  Expense Report 생성 (#41, #42, #43) SEQUENCE 생성: EXPEN\u0008SE_REPORT_SEQ Process 등록: set pk with seq FORM Page Item 수정 리포트 생성  Expense Report 생성  Start Page Number: 41 Type: Master Detail - Side by Side  SEQUENCE 생성  APEX Workspace  SQL Workshop  Object Browser Sequence 이름: EXPENSE_REPORT_SEQ  Process 등록: set pk with seq declare V_REPORT_ID number(9); begin select EXPENSE_REPORT_SEQ.nextval into V_REPORT_ID from dual; :P42_EXPENSE_REPORT_ID := V_REPORT_ID; end;   Server Sdie Condition 설정  Form Page Item 수정    Page Item 이름 작업 내역 출력 이름     P42_EMPLOYEE_ID Select List, READ Only, Defalut 작성자   P42_REPORT_TITLE 리포트 이름    P42_COMPANY_CARD_RECIEPT_NUM Hidden 처리    P42_PRIVATE_CARD_RECIEPT_NUM Hidden 처리    P42_COMPANY_CARD_AMOUNT Hidden 처리    P42_PRIVATE_CARD_AMOUNT Hidden 처리    P42_CRE_DATE READ Only, Defalut, Format: YYYY-MM-DD 작성일    "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/",
-	"title": "M03-영수증 관리",
-	"tags": [],
-	"description": "",
-	"content": "   Oracle APEX Beginner Workshop의 세 번째 모듈에서는 법인 카드 영수증을 관리하는 페이지 개발 과정을 소개합니다. 이번 실습에서는 다음 이미지와 같은 Expense 영수증 관리 페이지를 개발해 보겠습니다.\n모듈 구성 이번 모듈은 다음과 같은 항목을 다룹니다.\n Interactive Report Card Report Mater Detail: Side by Side Faceted Search JavaScript Validator Stored procedure 적용  개발 화면 이번 실습에서는 다음 이미지와 같은 법인카드 영수증 관리 페이지를 개발해 보겠습니다.\n"
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/",
-	"title": "APEX 개발 환경 구성",
-	"tags": [],
-	"description": "",
-	"content": "    영상 재생 시간: 7:47  APEX 환경을 구성하기 위해서 다음과 같은 작업을 수행합니다.\n ATP 인스턴스 생성 ATP 인스턴스의 APEX 로그인  id: admin  Workspace 생성  ATP 인스턴스 생성    설정 항목 설섲 값 비고     Compartment PROJECT \u0026gt;\u0026gt; APEXWS    Display Name DemoATP    Database Name DemoATP    Workload Type Transaction Processing    Deployment Type Shared Infrastructure    Version 19C    OCPU 1    Storage 1    Admin username admin 고정값   Password Welcome123456! 패스워드 예시    Oracle Application Expression  ATP 인스턴스의 Tools 탭의 Oracle APEX 오픈  Workspace 생성    설정 항목 설정 값 비고     Database User apexws    password Welcome123456! 패스워드 예시   Workspace User apexws 기본설정 값     Oracle APEX Administration 서비스 로그아웃  apexws Workspace 로그인    로그인 항목 입력 값     Database User apexws   password Welcome123456!   Workspace User apexws    "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/30-report-form/",
-	"title": "직원 정보 관리 세부설정",
-	"tags": [],
-	"description": "",
-	"content": "    영상 재생 시간: 22:01  이번 영상에서는 직원 정보 관리 Report의 다음을 업데이트 합니다.\n (FORM) 이슈: 업데이트 가능한 PK PAGE ITEM (P22_EMPLOYEE_ID) (FORM) 생일: 포멧 설정 (FORM) 기본값 설정: P22_CRE_DATE (FORM) 이메일 입력 데이터 검증 (Validation) (FORM) 전화번호 입력 데이터 검증 (Validation) (FORM) 생일 입력 데이터 검증 (Validation) (리포트) PK 컬럼 출력 (리포트) 지정한 컬럼 정리(Hidden 처리)\n P21_EMP_PW, P21_TEMP_PW, P21_CELL_PHONE, P21_EMP_PIC, P21_BIRTHDAY  (리포트) 컬럼 이름 한글화 (리포트) 컬럼 값 대체(Lookup) (리포트) 포멧 설정: P21_BIRTHDAY (리포트) 꾸미기 – HERO  정규 표현식 Validation 설정  Email  error message: Mail 포멧이 아닙니다. 메일 형식이어야 합니다.   ^[A-Za-z]+[A-Za-z0-9.]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$   핸드폰 번호  Error message: 핸드폰 전화번호 형식이 아닙니다. (예 010-1234-1234)   ^\\d{3}-\\d{3,4}-\\d{4}$   생년월일  Error message: 생일은 오늘 이전이어야 합니다.   sysdate \u0026gt; to_date(:P22_BIRTH_DAY, 'YYYY-MM-DD')  리포트 꾸미기  Icon ID: fa-users  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/40-expense_report_add_receipts/",
-	"title": "Expense Report: Master Detail(2)",
-	"tags": [],
-	"description": "",
-	"content": "   작업 절차  43번 페이지 수정 P43_REPORT_ID는 Hidden 처리 P43_EXPESNE_ID는 Select List 처리 P43_EXPESNE_ID 이름 한글화 41번 페이지의 +기호 한글화  P43_EXPESNE_ID는 Select List 처리 select title||','||payment_amount||'('||use_date||')', expense_id from expenses where employee_id=lower(:APP_USER) and expense_id not in ( select i.expense_id from expense_reports r, expense_report_items i where r.EXPENSE_REPORT_ID = i.report_id and r.employee_id = lower(:APP_USER) ) order by use_date  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/",
-	"title": "M04-APEX 인증",
-	"tags": [],
-	"description": "",
-	"content": " Oracle APEX Beginner Workshop의 네 번째 모듈에서는 APEX 인증 커스터마이징을 다룹니다.\n모듈 구성 이번 모듈은 다음과 같은 항목을 다룹니다.\n Login 페이지 수정 사용자 정의 인증: 데이터베이스 테이블 사용자 등록 메일 발송 패스워드 초기화  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/",
-	"title": "APEX Workspace 사용자 등록",
-	"tags": [],
-	"description": "",
-	"content": "    영상 재생 시간: 4:17  지금까지 APEX Workspace에 데이터베이스 사용자인 apexws로 로그인했습니다. 데이터베이스 사용자가 아닌 APEX Workspace 사용자를 등록하여 사용하겠습니다. 개발자 사용자와 일반 사용자 2개를 등록합니다.\n   사용자 유형 사용자 이름 패스워드 비고     개발자 사용자 dev01 Welcome123456! 관리자, 개발자 권한 부여   일반 사용자 user01 Welcome123456!     "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/40-report-search/",
-	"title": "직원 정보 관리 - 검색",
-	"tags": [],
-	"description": "",
-	"content": "    영상 재생 시간: 18:10  실습 과정에서 데이터 변경을 공지드립니다. 이전 영상에서는 EMPLOYEES 테이블의 employee_id로 songwha를 사용했습니다. 이 데이터가 이번 영상 부터 flower로 변경됩니다. 실습 데모를 진행하는 과정에서 부득이하게 변경됐습니다. 실습시 기존 데이터(songwha)를 삭제하고, employee_id가 flower인 새로운 직원 데이터를 입력하시고 실습을 진행하시기 바랍니다.\n 이번 영상에서는 직원 정보 관리 Report에 검색 기능을 추가해 보겠습니다.\n팀/성별 검색  팀 명을 체크박스 그룹으로 나열하고 하나 이상의 팀을 선택하여 검색 성별(Gender)을 체크박스 그룹으로 나열하고 하나 이상의 성별 검색\n   팀명 검색 Page Item  P21_SEARCH_TEAMS  성별 검색 Page Item  P21_SEARCH_GENDERS    Report 조회 조건  where InStr(':'||:P21_SEARCH_TEAMS||':', ':'||TEAM_ID||':') \u0026gt; 0 and TEAM_ID IS NOT NULL and InStr(':'||:P21_SEARCH_GENDERS||':', ':'||GENDER||':') \u0026gt; 0 and GENDER IS NOT NULL   조회 조건 디폴트 값 설정  Default Value  P21_SEARCH_TEAMS  select team_id from TEAMS   P21_SEARCH_GENDERS  M:F  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/",
-	"title": "Expense Report: 상세 리포트 개선",
-	"tags": [],
-	"description": "",
-	"content": "   작업 절차  41번 페이지 Expense Report Items 리전의 영수증 리포트 View 변경 리포트에 Select/Unselect All 설정 선택한 복수 영수증 삭제 버튼 선택한 복수 영수증 삭제 Process 리포트 컬 럼명 변경  리포트 뷰 변경  뷰: EXPENSE_REPORT_ITEMS_V Where: REPORT_ID = :P41_EXPENSE_REPORT_ID order: expense_id  select REPORT_ID, EXPENSE_ID, EMPLOYEE_ID, TYPE_ID, PAYMENT_AMOUNT, TITLE, DESCRIPTION, USE_DATE, CRE_DATE from EXPENSE_REPORT_ITEMS_V where REPORT_ID = :P41_EXPENSE_REPORT_ID order by expense_id  select/unselect all  리포트 SQL 컬럼 추가  apex_item.checkbox2(1, EXPENSE_ID) selected,   헤딩 변경\n\u0026lt;input type=\u0026quot;checkbox\u0026quot; id=\u0026quot;selectunselectall\u0026quot;\u0026gt;  컬럼 위치 변경\n Escape special characters 비활성화\n Expense Report Item 리전  SELECTED  SECURITY  Escape special characters  비활성화  Region static ID 설정\n Expense Report Item 리전  Advanced  Static ID 설정값: added_expenses  event 등록\n Identification\n Name : change selectunselectall  when  Event: change Selection Type: JQuery Selector JQuery Selector #selectunselectall  Advanced  Event Scope: Dynamic static container: #added_expenses   change event의 action\n Execute JavaScript    if ($('#added_expenses #selectunselectall' ).is(':checked') ) { $('#added_expenses input[type=checkbox][name=f01]').prop('checked',true); } else { $('#added_expenses input[type=checkbox][name=f01]').prop('checked',false); }  영수증 일괄 삭제  Delete Button 추가 Delete Process 추가  FOR i in 1..APEX_APPLICATION.G_F01.COUNT LOOP delete from EXPENSE_REPORT_ITEMS where report_id = :P41_EXPENSE_REPORT_ID and expense_id = APEX_APPLICATION.G_F01(i); END LOOP;  LoV 참조키 치환 select title||'('||payment_amount||')', expense_id from expenses  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/",
-	"title": "Expense Report: Master Update",
-	"tags": [],
-	"description": "",
-	"content": "   Stored Procedure create or replace PROCEDURE update_expense_report( p_report_id IN VARCHAR2 ) IS v_cc_num NUMBER(3); v_cc_amount NUMBER(9); v_pc_num NUMBER(3); v_pc_amount NUMBER(9); BEGIN select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_cc_num, v_cc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = 'cc'; select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_pc_num, v_pc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = 'pc'; UPDATE EXPENSE_REPORTS SET COMPANY_CARD_RECEIPT_NUM = v_cc_num, PRIVATE_CARD_RECEIEPT_NUM = v_pc_num, COMPANY_CARD_AMOUNT = v_cc_amount, PRIVATE_CARD_AMOUNT = v_pc_amount WHERE EXPENSE_REPORT_ID = p_report_id; END;  Page 41 - Process 추가  name: update report  when: Delete   begin update_expense_report( p_report_id =\u0026gt; :P41_EXPENSE_REPORT_ID); end;  Page 43 - Process 추가  name: update report     begin update_expense_report( p_report_id =\u0026gt; :P43_REPORT_ID); end;  "
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/01.beginner_ws/",
-	"title": "APEX 입문자 워크숍",
-	"tags": [],
-	"description": "",
-	"content": " APEX 입문자 워크숍은 Oracle APEX를 처음 접하시는 분들을 위한 실습을 다룹니다. 이번 워크샵은 다음과 목적으로 제작되었습니다.\n 실습을 통해서 Oracle APEX로 애플리케이션을 개발하는 전반적인 절차를 익힌다. 실습을 통해서 기본적인 Oracle APEX 개념을 익힌다. 실습을 통해서 Oracle APEX 애플리케이션의 작동방식을 이해한다.  입문자 워크샾을 통해서 다음과 같은 애플리케이션을 개발 할 예정입니다.\n모든 진행은 동영상으로 진행되며 전체 동영상은 17개 4시간 분량입니다. 실습과 동영상 시청은 8시간이 소요됩니다. 모든 동영상은 다음 URL에서 확인 가능합니다.\n Oracle APEX 입문 강좌 - Youtube 플레이리스트     실습 환경 이번 워크숍은 오라클 클라우드(OCI, Oracle Cloud Infrastructure)의 Always Free 환경에서 진행됩니다.\nAlways Free란 오라클 클라우드(OCI, Oracle Cloud Infrastructure)에서 제간 제약없이 무상으로 제공하는 서비스를 의미힙니다. 오라클 클라우드가 제공하는 Always Free 서비스에 대한 자세한 내용은 다음 문서를 참조하시기 바랍니다.\n새로운 Oracle Cloud 프로모션: \u0008Free Tier  \n 오라클 클라우드 계정 이번 워크숖 실습은 OCI의 Always Free 서비스 중에서 ATP(Autonomous Transaction Service)를 이용하여 실습을 진행합니다. 따라서 OCI의 Always Free 서비스를 사용하기 위하여 오라클 클라우드 계정이 필요합니다.\n현재 사용할 오라클 클라우드 계정이 없으시다면 다음 동영상을 참조하여 오라클 클라우드가 제공하는 Free Tier 계정을 먼저 등록하시고 진행하시기 바랍니다.\n  워크숖 시작 워크숖 실습에 사용할 오라클 클라우드 계정이 준비됐다면, 이제 APEX 입문자 워크숖을 시작하겠습니다. 다음 페이지로 이동해 주세요.\n"
-},
-{
-	"uri": "http://taewan.kim/apex-workshop/categories/",
+	"uri": "http://taewan.kim/oci-livelogs/categories/",
 	"title": "Categories",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "http://taewan.kim/apex-workshop/tags/",
+	"uri": "http://taewan.kim/oci-livelogs/tags/",
 	"title": "Tags",
 	"tags": [],
 	"description": "",
