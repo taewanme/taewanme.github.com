@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Oracle APEX Workshop</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -9,13 +8,16 @@
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="404 Page not found" />
-<meta property="og:description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="" />
+<meta property="og:title" content="Login 페이지 변경" />
+<meta property="og:description" content="   Login 페이지 적용 이미지 다음 이미지를 다운로드 받으시기 바랍니다.
+Static Application Files 등록 CSS Inline body{ background-image: url(&#39;#APP_IMAGES#base.jpg&#39;); background-position: center; background-repeat: no-repeat; background-size: cover; } Span.t-Login-logo{ background-image : url(&#39;#APP_IMAGES#oracle-apex.png&#39;); background-Size :cover; width :150px; height :120px; }  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/10-login/" />
 
 
 
+<meta property="article:published_time" content="2021-08-14T09:11:05&#43;09:00"/>
+<meta property="article:modified_time" content="2021-08-14T09:11:05&#43;09:00"/>
 
 
 
@@ -32,7 +34,7 @@
 
 
 
-<title>404 Page not found :: Oracle APEX Workshop</title>
+<title>Login 페이지 변경 :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -71,7 +73,7 @@
 
     
   </head>
-  <body data-url="">
+  <body data-url="/apex-workshop/01.beginner_ws/40.authentification/10-login/">
     
       <header>
   <div class="logo">
@@ -116,7 +118,7 @@
       <a href="/apex-workshop/00.index/">Oracle APEX Workshop</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/apex-workshop/01.beginner_ws/">APEX 입문자 워크숍</a>
@@ -255,14 +257,14 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/apex-workshop/01.beginner_ws/40.authentification/">M04-APEX 인증</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/10-login/" class="dd-item">
+      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/10-login/" class="dd-item active">
         <div>
           <a href="/apex-workshop/01.beginner_ws/40.authentification/10-login/">
             Login 페이지 변경
@@ -325,38 +327,6 @@
     <option value="/apex-workshop/01.beginner_ws/" >
    APEX 입문자 워크숍</option> 
       <option value="/apex-workshop/01.beginner_ws/05-about-workshop/" >- APEX 입문자 워크숍 소개</option>
-    <option value="/apex-workshop/01.beginner_ws/10.prep/" >
-  - 
-   M01.실습환경 준비</option> 
-      <option value="/apex-workshop/01.beginner_ws/10.prep/10-oci-free-trial/" >-- OCI Free Trial 신청</option>
-      <option value="/apex-workshop/01.beginner_ws/10.prep/20-oci-env-setup/" >-- OCI 기본 환경 설정</option>
-      <option value="/apex-workshop/01.beginner_ws/10.prep/30-apex-env-setup-copy/" >-- APEX 개발 환경 구성</option>
-      <option value="/apex-workshop/01.beginner_ws/10.prep/40-apex_users_tables/" >-- APEX Workspace 사용자 등록</option>
-  
-    <option value="/apex-workshop/01.beginner_ws/20.m01/" >
-  - 
-   M02-직원정보관리</option> 
-      <option value="/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/" >-- APEX APP, DB 테이블, LoV 생성</option>
-      <option value="/apex-workshop/01.beginner_ws/20.m01/20-report-form/" >-- 직원 정보 관리 Report 생성</option>
-      <option value="/apex-workshop/01.beginner_ws/20.m01/30-report-form/" >-- 직원 정보 관리 세부설정</option>
-      <option value="/apex-workshop/01.beginner_ws/20.m01/40-report-search/" >-- 직원 정보 관리 - 검색</option>
-  
-    <option value="/apex-workshop/01.beginner_ws/30.expense/" >
-  - 
-   M03-영수증 관리</option> 
-      <option value="/apex-workshop/01.beginner_ws/30.expense/10-expense_mngt/" >-- Expense 영수증 관리: Form</option>
-      <option value="/apex-workshop/01.beginner_ws/30.expense/20-expense_mngt_list/" >-- Expense 영수증 관리: IR</option>
-      <option value="/apex-workshop/01.beginner_ws/30.expense/30-expense_report/" >-- Expense Report: Master Detail(1)</option>
-      <option value="/apex-workshop/01.beginner_ws/30.expense/40-expense_report_add_receipts/" >-- Expense Report: Master Detail(2)</option>
-      <option value="/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/" >-- Expense Report: 상세 리포트 개선</option>
-      <option value="/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/" >-- Expense Report: Master Update</option>
-  
-    <option value="/apex-workshop/01.beginner_ws/40.authentification/" >
-  - 
-   M04-APEX 인증</option> 
-      <option value="/apex-workshop/01.beginner_ws/40.authentification/10-login/" >-- Login 페이지 변경</option>
-      <option value="/apex-workshop/01.beginner_ws/40.authentification/20-authentication/" >-- Oracle APEX 커스텀 인증</option>
-  
   
 
 
@@ -378,7 +348,7 @@
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>404 Page not found</h1>
+    <h1>Login 페이지 변경</h1>
 
 
      
@@ -386,20 +356,57 @@
   
     
     
-	<h1>Error</h1>
-	<p>
-	</p>
-	<p>Woops. Looks like this page doesn&#39;t exist.</p>
-	<p></p>
-	<p><a href="http://taewan.kim/apex-workshop">Go to homepage</a></p>
-	<p><img src="/apex-workshop/images/gopher-404.jpg" style="width:50%"></img></p>    
+    
+    
+
+
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/NtMdEcIe0kI" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
+ </div>
+
+
+<hr />
+
+<h2 id="login-페이지-적용-이미지">Login 페이지 적용 이미지</h2>
+
+<p>다음 이미지를 다운로드 받으시기 바랍니다.</p>
+
+<p><img src="https://taewanmerepo.github.io/2021/08/apex/bg.png" alt="" />
+<img src="https://www.oracle.com/a/ocom/img/dc/em/oracle-apex.png" alt="" /></p>
+
+<h2 id="static-application-files-등록">Static Application Files 등록</h2>
+
+<p><img src="https://taewanmerepo.github.io/2021/08/apex/600.jpg" alt="" />
+<img src="https://taewanmerepo.github.io/2021/08/apex/700.jpg" alt="" /></p>
+
+<h2 id="css-inline">CSS Inline</h2>
+
+<pre><code>body{
+  background-image: url('#APP_IMAGES#base.jpg');
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-size: cover;
+}
+
+
+Span.t-Login-logo{
+background-image : url('#APP_IMAGES#oracle-apex.png');
+background-Size :cover;
+ width :150px;
+height :120px;
+
+}
+</code></pre>
+
+
     
     
       <div class="alert alert-info" role="alter">
-  <li><strong>문서 생성:</strong> 0001-01-01 00:00 / <string>최종 문서 수정:</strong> 0001-01-01 00:00 </li>
+  <li><strong>문서 생성:</strong> 2021-08-14 09:11 / <string>최종 문서 수정:</strong> 2021-08-14 09:11 </li>
 </div><div class="chevrons">
     <div id="navigation">
-</div>
+<a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/40.authentification/" title="M04-APEX 인증"> <i class="fa fa-chevron-left"></i><label>M04-APEX 인증</label></a>
+    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/40.authentification/20-authentication/" title="Oracle APEX 커스텀 인증" style="margin-right: 0px;"><label>Oracle APEX 커스텀 인증</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="panel panel-danger">
@@ -409,7 +416,7 @@
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/10-login/"></div>
 
   </div>
 
@@ -423,6 +430,10 @@
 
     
 
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 14/08/2021
+    </div>
     
   </div>
 
@@ -479,5 +490,3 @@
 
   </body>
 </html>
-
-

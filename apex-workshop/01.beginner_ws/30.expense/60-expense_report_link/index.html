@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Oracle APEX Workshop</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -9,13 +8,15 @@
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="404 Page not found" />
-<meta property="og:description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="" />
+<meta property="og:title" content="Expense Report: Master Update" />
+<meta property="og:description" content="   Stored Procedure create or replace PROCEDURE update_expense_report( p_report_id IN VARCHAR2 ) IS v_cc_num NUMBER(3); v_cc_amount NUMBER(9); v_pc_num NUMBER(3); v_pc_amount NUMBER(9); BEGIN select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_cc_num, v_cc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = &#39;cc&#39;; select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0) into v_pc_num, v_pc_amount from expenses e, expense_report_items i where e.EXPENSE_ID = i.expense_id and i.report_id = p_report_id and card_type = &#39;pc&#39;; UPDATE EXPENSE_REPORTS SET COMPANY_CARD_RECEIPT_NUM = v_cc_num, PRIVATE_CARD_RECEIEPT_NUM = v_pc_num, COMPANY_CARD_AMOUNT = v_cc_amount, PRIVATE_CARD_AMOUNT = v_pc_amount WHERE EXPENSE_REPORT_ID = p_report_id; END;  Page 41 - Process 추가  name: update report  when: Delete   begin update_expense_report( p_report_id =&gt; :P41_EXPENSE_REPORT_ID); end;  Page 43 - Process 추가  name: update report     begin update_expense_report( p_report_id =&gt; :P43_REPORT_ID); end;  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/" />
 
 
 
+<meta property="article:published_time" content="2021-08-21T09:11:05&#43;09:00"/>
+<meta property="article:modified_time" content="2021-08-21T09:11:05&#43;09:00"/>
 
 
 
@@ -32,7 +33,7 @@
 
 
 
-<title>404 Page not found :: Oracle APEX Workshop</title>
+<title>Expense Report: Master Update :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -71,7 +72,7 @@
 
     
   </head>
-  <body data-url="">
+  <body data-url="/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/">
     
       <header>
   <div class="logo">
@@ -116,7 +117,7 @@
       <a href="/apex-workshop/00.index/">Oracle APEX Workshop</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/apex-workshop/01.beginner_ws/">APEX 입문자 워크숍</a>
@@ -204,7 +205,7 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/apex-workshop/01.beginner_ws/30.expense/">M03-영수증 관리</a>
@@ -246,7 +247,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/" class="dd-item">
+      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/" class="dd-item active">
         <div>
           <a href="/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/">
             Expense Report: Master Update
@@ -349,7 +350,7 @@
       <option value="/apex-workshop/01.beginner_ws/30.expense/30-expense_report/" >-- Expense Report: Master Detail(1)</option>
       <option value="/apex-workshop/01.beginner_ws/30.expense/40-expense_report_add_receipts/" >-- Expense Report: Master Detail(2)</option>
       <option value="/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/" >-- Expense Report: 상세 리포트 개선</option>
-      <option value="/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/" >-- Expense Report: Master Update</option>
+      <option value="/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/"  selected>-- Expense Report: Master Update</option>
   
     <option value="/apex-workshop/01.beginner_ws/40.authentification/" >
   - 
@@ -378,7 +379,7 @@
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>404 Page not found</h1>
+    <h1>Expense Report: Master Update</h1>
 
 
      
@@ -386,20 +387,92 @@
   
     
     
-	<h1>Error</h1>
-	<p>
-	</p>
-	<p>Woops. Looks like this page doesn&#39;t exist.</p>
-	<p></p>
-	<p><a href="http://taewan.kim/apex-workshop">Go to homepage</a></p>
-	<p><img src="/apex-workshop/images/gopher-404.jpg" style="width:50%"></img></p>    
+    
+    
+
+
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/jiXE-FfKrl4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
+ </div>
+
+
+<hr />
+
+<h3 id="stored-procedure">Stored Procedure</h3>
+
+<pre><code>create or replace PROCEDURE update_expense_report( p_report_id IN VARCHAR2 ) 
+IS 
+v_cc_num NUMBER(3);
+v_cc_amount NUMBER(9);
+v_pc_num NUMBER(3);
+v_pc_amount NUMBER(9);
+BEGIN 
+
+select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0)
+into v_cc_num, v_cc_amount
+from expenses e, expense_report_items i 
+where e.EXPENSE_ID = i.expense_id 
+and i.report_id = p_report_id
+and card_type = 'cc';
+
+select count(e.expense_id), nvl(sum(e.PAYMENT_AMOUNT),0)
+into v_pc_num, v_pc_amount
+from expenses e, expense_report_items i 
+where e.EXPENSE_ID = i.expense_id 
+and i.report_id = p_report_id
+and card_type = 'pc';
+
+
+UPDATE EXPENSE_REPORTS
+SET 
+COMPANY_CARD_RECEIPT_NUM = v_cc_num,
+PRIVATE_CARD_RECEIEPT_NUM = v_pc_num,
+COMPANY_CARD_AMOUNT = v_cc_amount,
+PRIVATE_CARD_AMOUNT = v_pc_amount
+WHERE EXPENSE_REPORT_ID = p_report_id;
+
+END; 
+</code></pre>
+
+<h3 id="page-41-process-추가">Page 41 - Process 추가</h3>
+
+<ul>
+<li>name: update report
+
+<ul>
+<li>when: Delete</li>
+</ul></li>
+</ul>
+
+<pre><code>begin
+update_expense_report( p_report_id =&gt; :P41_EXPENSE_REPORT_ID);
+end;
+</code></pre>
+
+<h3 id="page-43-process-추가">Page 43 - Process 추가</h3>
+
+<ul>
+<li>name: update report
+
+<ul>
+<li></li>
+</ul></li>
+</ul>
+
+<pre><code>begin
+update_expense_report( p_report_id =&gt; :P43_REPORT_ID);
+end;
+</code></pre>
+
+
     
     
       <div class="alert alert-info" role="alter">
-  <li><strong>문서 생성:</strong> 0001-01-01 00:00 / <string>최종 문서 수정:</strong> 0001-01-01 00:00 </li>
+  <li><strong>문서 생성:</strong> 2021-08-21 09:11 / <string>최종 문서 수정:</strong> 2021-08-21 09:11 </li>
 </div><div class="chevrons">
     <div id="navigation">
-</div>
+<a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/" title="Expense Report: 상세 리포트 개선"> <i class="fa fa-chevron-left"></i><label>Expense Report: 상세 리포트 개선</label></a>
+    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/40.authentification/" title="M04-APEX 인증" style="margin-right: 0px;"><label>M04-APEX 인증</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="panel panel-danger">
@@ -409,7 +482,7 @@
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/"></div>
 
   </div>
 
@@ -423,6 +496,10 @@
 
     
 
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 21/08/2021
+    </div>
     
   </div>
 
@@ -479,5 +556,3 @@
 
   </body>
 </html>
-
-

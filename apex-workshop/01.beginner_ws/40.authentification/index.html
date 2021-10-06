@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Oracle APEX Workshop</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -9,14 +8,14 @@
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="404 Page not found" />
+<meta property="og:title" content="M04-APEX 인증" />
 <meta property="og:description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="" />
+<meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/" />
 
 
 
-
+<meta property="og:updated_time" content="2021-08-21T01:11:05&#43;09:00"/>
 
 
 
@@ -32,7 +31,7 @@
 
 
 
-<title>404 Page not found :: Oracle APEX Workshop</title>
+<title>M04-APEX 인증 :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -71,7 +70,7 @@
 
     
   </head>
-  <body data-url="">
+  <body data-url="/apex-workshop/01.beginner_ws/40.authentification/">
     
       <header>
   <div class="logo">
@@ -116,7 +115,7 @@
       <a href="/apex-workshop/00.index/">Oracle APEX Workshop</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/apex-workshop/01.beginner_ws/">APEX 입문자 워크숍</a>
@@ -255,7 +254,7 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/" class="dd-item parent active alwaysopen haschildren
         ">
       <div>
       <a href="/apex-workshop/01.beginner_ws/40.authentification/">M04-APEX 인증</a>
@@ -351,7 +350,7 @@
       <option value="/apex-workshop/01.beginner_ws/30.expense/50-expense_report_receipts_list/" >-- Expense Report: 상세 리포트 개선</option>
       <option value="/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/" >-- Expense Report: Master Update</option>
   
-    <option value="/apex-workshop/01.beginner_ws/40.authentification/" >
+    <option value="/apex-workshop/01.beginner_ws/40.authentification/"  selected>
   - 
    M04-APEX 인증</option> 
       <option value="/apex-workshop/01.beginner_ws/40.authentification/10-login/" >-- Login 페이지 변경</option>
@@ -378,7 +377,7 @@
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>404 Page not found</h1>
+    <h1>M04-APEX 인증</h1>
 
 
      
@@ -386,20 +385,36 @@
   
     
     
-	<h1>Error</h1>
-	<p>
-	</p>
-	<p>Woops. Looks like this page doesn&#39;t exist.</p>
-	<p></p>
-	<p><a href="http://taewan.kim/apex-workshop">Go to homepage</a></p>
-	<p><img src="/apex-workshop/images/gopher-404.jpg" style="width:50%"></img></p>    
+    
+
+
+
+<hr />
+
+<p><strong>Oracle APEX Beginner Workshop</strong>의 네 번째 모듈에서는 APEX 인증 커스터마이징을 다룹니다.</p>
+
+<h2 id="모듈-구성">모듈 구성</h2>
+
+<p>이번 모듈은 다음과 같은 항목을 다룹니다.</p>
+
+<ul>
+<li>Login 페이지 수정</li>
+<li>사용자 정의 인증: 데이터베이스 테이블</li>
+<li>사용자 등록</li>
+<li>메일 발송</li>
+<li>패스워드 초기화</li>
+</ul>
+
+
+
     
     
       <div class="alert alert-info" role="alter">
-  <li><strong>문서 생성:</strong> 0001-01-01 00:00 / <string>최종 문서 수정:</strong> 0001-01-01 00:00 </li>
+  <li><strong>문서 생성:</strong> 2021-08-21 01:11 / <string>최종 문서 수정:</strong> 2021-08-21 01:11 </li>
 </div><div class="chevrons">
     <div id="navigation">
-</div>
+<a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/30.expense/60-expense_report_link/" title="Expense Report: Master Update"> <i class="fa fa-chevron-left"></i><label>Expense Report: Master Update</label></a>
+    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/40.authentification/10-login/" title="Login 페이지 변경" style="margin-right: 0px;"><label>Login 페이지 변경</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="panel panel-danger">
@@ -409,7 +424,7 @@
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/01.beginner_ws/40.authentification/"></div>
 
   </div>
 
@@ -423,6 +438,10 @@
 
     
 
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 21/08/2021
+    </div>
     
   </div>
 
@@ -479,5 +498,3 @@
 
   </body>
 </html>
-
-

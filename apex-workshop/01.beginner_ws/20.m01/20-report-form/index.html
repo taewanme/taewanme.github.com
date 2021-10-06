@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Oracle APEX Workshop</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -9,13 +8,15 @@
 
 <meta name="description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다.">
 <meta name="generator" content="Hugo 0.27.1" />
-<meta property="og:title" content="404 Page not found" />
-<meta property="og:description" content="오라클 클라우드 사용자 가이드입니다. 오라클 클라우드(OCI, Oracle Cloud Infrasturcture) 사용자를 위해 주요 문서를 정리합니다." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="" />
+<meta property="og:title" content="직원 정보 관리 Report 생성" />
+<meta property="og:description" content="    영상 재생 시간: 24:04  목표 애플리케이션  Report 생성  Report Type: Report with Form 대상 테이블: Employees page 번호  Report Page: 21 Form Page: 22   Form 페이지 CSS 적용 img { width: 200px; height: 200px; }  Form의 직급 select list 변경 select type_name, type_id from USER_TYPES where job_id = :P22_JOB_ID order by type_id  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/20-report-form/" />
 
 
 
+<meta property="article:published_time" content="2021-08-14T09:11:05&#43;09:00"/>
+<meta property="article:modified_time" content="2021-08-14T09:11:05&#43;09:00"/>
 
 
 
@@ -32,7 +33,7 @@
 
 
 
-<title>404 Page not found :: Oracle APEX Workshop</title>
+<title>직원 정보 관리 Report 생성 :: Oracle APEX Workshop</title>
 
 <link rel="shortcut icon" href="http://taewan.kim/img/icon/oracle.png" type="image/x-icon" />
 <link href="/apex-workshop/css/font-awesome.min.css" rel="stylesheet">
@@ -71,7 +72,7 @@
 
     
   </head>
-  <body data-url="">
+  <body data-url="/apex-workshop/01.beginner_ws/20.m01/20-report-form/">
     
       <header>
   <div class="logo">
@@ -116,7 +117,7 @@
       <a href="/apex-workshop/00.index/">Oracle APEX Workshop</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/apex-workshop/01.beginner_ws/">APEX 입문자 워크숍</a>
@@ -167,7 +168,7 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/" class="dd-item alwaysopen haschildren
+    <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/" class="dd-item parent alwaysopen haschildren
         ">
       <div>
       <a href="/apex-workshop/01.beginner_ws/20.m01/">M02-직원정보관리</a>
@@ -181,7 +182,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/20-report-form/" class="dd-item">
+      <li data-nav-id="http://taewan.kim/apex-workshop/01.beginner_ws/20.m01/20-report-form/" class="dd-item active">
         <div>
           <a href="/apex-workshop/01.beginner_ws/20.m01/20-report-form/">
             직원 정보 관리 Report 생성
@@ -337,7 +338,7 @@
   - 
    M02-직원정보관리</option> 
       <option value="/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/" >-- APEX APP, DB 테이블, LoV 생성</option>
-      <option value="/apex-workshop/01.beginner_ws/20.m01/20-report-form/" >-- 직원 정보 관리 Report 생성</option>
+      <option value="/apex-workshop/01.beginner_ws/20.m01/20-report-form/"  selected>-- 직원 정보 관리 Report 생성</option>
       <option value="/apex-workshop/01.beginner_ws/20.m01/30-report-form/" >-- 직원 정보 관리 세부설정</option>
       <option value="/apex-workshop/01.beginner_ws/20.m01/40-report-search/" >-- 직원 정보 관리 - 검색</option>
   
@@ -378,7 +379,7 @@
         </script>
         <script type="text/javascript" src="/apex-workshop/js/search.js"></script>
       </div>
-    <h1>404 Page not found</h1>
+    <h1>직원 정보 관리 Report 생성</h1>
 
 
      
@@ -386,20 +387,65 @@
   
     
     
-	<h1>Error</h1>
-	<p>
-	</p>
-	<p>Woops. Looks like this page doesn&#39;t exist.</p>
-	<p></p>
-	<p><a href="http://taewan.kim/apex-workshop">Go to homepage</a></p>
-	<p><img src="/apex-workshop/images/gopher-404.jpg" style="width:50%"></img></p>    
+    
+    
+
+
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/fhL9izpAtKY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
+ </div>
+
+
+<ul>
+<li>영상 재생 시간: 24:04</li>
+</ul>
+
+<hr />
+
+<h2 id="목표-애플리케이션">목표 애플리케이션</h2>
+
+<h2 id="https-taewanmerepo-github-io-2021-08-apex-100-jpg"><img src="https://taewanmerepo.github.io/2021/08/apex/100.jpg" alt="" /></h2>
+
+<p><img src="https://taewanmerepo.github.io/2021/08/apex/200.jpg" alt="" /></p>
+
+<h2 id="report-생성">Report 생성</h2>
+
+<ul>
+<li>Report Type: Report with Form</li>
+<li>대상 테이블: Employees</li>
+<li>page 번호
+
+<ul>
+<li>Report Page: 21</li>
+<li>Form Page: 22</li>
+</ul></li>
+</ul>
+
+<h2 id="form-페이지-css-적용">Form 페이지 CSS 적용</h2>
+
+<pre><code>img {
+width: 200px;
+height: 200px;
+}
+</code></pre>
+
+<h2 id="form의-직급-select-list-변경">Form의 직급 select list 변경</h2>
+
+<pre><code>select  type_name, type_id
+from USER_TYPES 
+where job_id = :P22_JOB_ID
+order by type_id 
+</code></pre>
+
+
     
     
       <div class="alert alert-info" role="alter">
-  <li><strong>문서 생성:</strong> 0001-01-01 00:00 / <string>최종 문서 수정:</strong> 0001-01-01 00:00 </li>
+  <li><strong>문서 생성:</strong> 2021-08-14 09:11 / <string>최종 문서 수정:</strong> 2021-08-14 09:11 </li>
 </div><div class="chevrons">
     <div id="navigation">
-</div>
+<a class="nav nav-prev" href="/apex-workshop/01.beginner_ws/20.m01/10-app-tabes/" title="APEX APP, DB 테이블, LoV 생성"> <i class="fa fa-chevron-left"></i><label>APEX APP, DB 테이블, LoV 생성</label></a>
+    <a class="nav nav-next" href="/apex-workshop/01.beginner_ws/20.m01/30-report-form/" title="직원 정보 관리 세부설정" style="margin-right: 0px;"><label>직원 정보 관리 세부설정</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
   <div class="chevrons">
       <div class="panel panel-danger">
@@ -409,7 +455,7 @@
 <hr />
 
 
-<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop"></div>
+<div class="fb-comments" data-width="100%" data-numposts="10" data-href="http://taewan.kimhttp://taewan.kim/apex-workshop/01.beginner_ws/20.m01/20-report-form/"></div>
 
   </div>
 
@@ -423,6 +469,10 @@
 
     
 
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 14/08/2021
+    </div>
     
   </div>
 
@@ -479,5 +529,3 @@
 
   </body>
 </html>
-
-
