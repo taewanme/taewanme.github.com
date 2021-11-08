@@ -122,9 +122,13 @@
 		</header>
 
 		<div class="post__content clearfix">
+
+			<figure class="post__thumbnail">
+				<img src="https://taewanmerepo.github.io/2020/ocidocs/teminology/994.jpg" alt="오라클 클라우드와 AWS의 주요 서비스 이름 매핑">
+			</figure>
 			
 
-<p>오라클 클라우드(OCI, Orace Cloud Infrastructure)와 AWS의 서비스를 비교해보면 비슷한 기능을 제공하는 클라우드 기능이 각각 다른 고유 서비스 명으로 명명되기에 혼동되는 경우가 많습니다. AWS 혹은 OCI에 유사 서비스 이름을 정리하면, 특정 클라우드 서비스에 익숙한 사용자가 다른 서비스를 빠르게 이해하는데 도움이 될 것 같다는 생각에 두 클라우드 서비스의 유사 기능의 이름을 매핑하고 OCI를 기준으로 기능을 소개하는 페이지 링크를 정리했습니다. 각 기능별로 OCI 공식 매뉴얼의 「개요」 페이지 주소를 정리했습니다.</p>
+<p>오라클 클라우드(OCI, Orace Cloud Infrastructure)와 AWS의 서비스를 비교하다 보면 비슷한 기능을 제공하는 클라우드 기능이 각각 다른 고유 서비스 명으로 명명되기에 혼동되는 경우가 많습니다. AWS 혹은 OCI에 유사 서비스 이름을 정리하면, 특정 클라우드 서비스에 익숙한 사용자가 다른 서비스를 빠르게 이해하는데 도움이 될 것 같다는 생각에 두 클라우드 서비스의 유사 기능의 이름을 매핑하고 OCI를 기준으로 기능을 소개하는 페이지 링크를 정리했습니다. 각 기능별로 OCI 공식 매뉴얼의 「개요」 페이지 주소를 정리했습니다.</p>
 
 <div class="notices note" ><p>이 문서는 신규 서비스 및 기존에 빠진 서비스 매핑을 최신 버전으로 유지하기 위하여 지속적으로 업데이트해 나갈 예정입니다. 잘못된 서비스 이름 매핍이나 빠진 정보가 있다면 댓글로 남겨 주시면 업데이트 하겠습니다.
 [최종 업데이트: <strong>2021년 11월 8일</strong>]</p>
@@ -536,6 +540,14 @@
 <td>통지</td>
 <td><a href="https://docs.oracle.com/en-us/iaas/Content/Notification/Concepts/notificationoverview.htm" target='_blank'>소개문서</a></td>
 </tr>
+
+<tr>
+<td>로그통합</td>
+<td>Kinesis Data Firehose</td>
+<td>Service Connect Hub</td>
+<td>서비스 커넥터 허브</td>
+<td><a href="https://docs.oracle.com/en-us/iaas/Content/service-connector-hub/overview.htm" target='_blank'>소개문서</a></td>
+</tr>
 </tbody>
 </table>
 
@@ -558,6 +570,14 @@
 <td>EMR(Elastic MapReduce)</td>
 <td>BDS(Big Data Service)</td>
 <td>BDS</td>
+<td><a href="https://docs.oracle.com/en-us/iaas/bigdata/home.htm" target='_blank'>소개문서</a></td>
+</tr>
+
+<tr>
+<td>Spark Cluster</td>
+<td>EMR(Elastic MapReduce)</td>
+<td>Data Flow</td>
+<td>데이터 플로우</td>
 <td><a href="https://docs.oracle.com/en-us/iaas/bigdata/home.htm" target='_blank'>소개문서</a></td>
 </tr>
 
@@ -591,6 +611,54 @@
 <td>Data Catalog</td>
 <td>데이터 카탈로그</td>
 <td><a href="https://docs.oracle.com/en-us/iaas/data-catalog/home.htm" target='_blank'>소개문서</a></td>
+</tr>
+
+<tr>
+<td>머신러닝 개발환경</td>
+<td>SageMaker</td>
+<td>Data Science</td>
+<td>데이터 과학</td>
+<td><a href="https://www.oracle.com/kr/data-science/cloud-infrastructure-data-science.html" target='_blank'>소개문서</a></td>
+</tr>
+
+<tr>
+<td>데이터 레이블링</td>
+<td>SageMaker Ground Truth</td>
+<td>Data Labeling</td>
+<td>데이터 레이블링</td>
+<td><a href="https://docs.oracle.com/en-us/iaas/data-labeling/data-labeling/using/home.htm" target='_blank'>소개문서</a></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="개발-운영-관리-툴">개발 &amp; 운영 관리 툴</h2>
+
+<table>
+<thead>
+<tr>
+<th>서비스 개요</th>
+<th>AWS</th>
+<th>OCI(영문)</th>
+<th>OCI(한국)</th>
+<th>OCI 소개 문서</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>브라우저 기반 가상터미널</td>
+<td>CloudShell</td>
+<td>Cloud Shell</td>
+<td>클라우드 쉘</td>
+<td><a href="https://docs.oracle.com/en-us/iaas/Content/API/Concepts/cloudshellintro.htm" target='_blank'>소개문서</a></td>
+</tr>
+
+<tr>
+<td>CLI(Command Line Interface)</td>
+<td>AWS CLI</td>
+<td>OCI CLI</td>
+<td>OCI CLI</td>
+<td><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.2.2/oci_cli_docs/" target='_blank'>소개문서</a></td>
 </tr>
 </tbody>
 </table>
@@ -679,6 +747,7 @@
 <li><a href="#모니터링-및-관리">모니터링 및 관리</a></li>
 <li><a href="#통합">통합</a></li>
 <li><a href="#빅데이터-ai">빅데이터 &amp; AI</a></li>
+<li><a href="#개발-운영-관리-툴">개발 &amp; 운영 관리 툴</a></li>
 </ul></li>
 </ul>
 </nav>
