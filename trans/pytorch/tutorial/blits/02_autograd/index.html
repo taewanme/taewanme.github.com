@@ -159,8 +159,8 @@ from torch.autograd import Variable
 <ul>
 <li>Variable 생성</li>
 </ul>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">Variable(torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">ones(</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">requires_grad</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">True)</span>
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(x)</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">Variable(torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">ones(</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">requires_grad</span><span style="color: #f92672">=</span><span style="color: #66d9ef">True</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">print(x)</span>
 </pre></div>
 
 <blockquote>
@@ -176,8 +176,8 @@ from torch.autograd import Variable
 <ul>
 <li>Variable 연산 수행</li>
 </ul>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">y</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">+</span> <span style="color: #ae81ff">2</span>
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(y)</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">y</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">+</span> <span style="color: #ae81ff">2</span>
+<span style="color: #f8f8f2">print(y)</span>
 </pre></div>
 
 <blockquote>
@@ -193,7 +193,7 @@ from torch.autograd import Variable
 <ul>
 <li>앞의 연산으로 부터 <code>y</code> 객체가 생성되었습니다. 이 객체의 grad_fn 속성을 다음과 같이 확인할 수 있습니다.</li>
 </ul>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(y</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">grad_fn)</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">print(y</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">grad_fn)</span>
 </pre></div>
 
 <blockquote>
@@ -206,12 +206,12 @@ from torch.autograd import Variable
 <ul>
 <li><code>y</code> 에 추가 연산을 적용합니다.</li>
 </ul>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">z</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">y</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">y</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">3</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">z</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">y</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">y</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">3</span>
 <span style="color: #f8f8f2">out</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">z</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">mean()</span>
 
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(z)</span>
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;---&quot;</span><span style="color: #f92672">*</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">)</span>
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(out)</span>
+<span style="color: #f8f8f2">print(z)</span>
+<span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;---&quot;</span><span style="color: #f92672">*</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">print(out)</span>
 </pre></div>
 
 <blockquote>
@@ -244,10 +244,10 @@ Variable containing:
 </blockquote>
 
 <p>y에 추가 연산을 적용할 수 있습니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">z</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">y</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">y</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">3</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">z</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">y</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">y</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">3</span>
 <span style="color: #f8f8f2">out</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">z</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">mean()</span>
 
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(z,</span> <span style="color: #f8f8f2">out)</span>
+<span style="color: #f8f8f2">print(z,</span> <span style="color: #f8f8f2">out)</span>
 </pre></div>
 
 <blockquote>
@@ -267,7 +267,7 @@ Variable containing:
 <h2 id="gradients">Gradients</h2>
 
 <p>역전파를 해보겠습니다. out.backward()과 out.backward(torch.Tensor([1.0]))은 동일하게 동작합니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">out</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">backward()</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">out</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">backward()</span>
 </pre></div>
 
 <p>기울기 $ \frac{d(out)}{dx} $를 다음과 같이 출력할 수 있습니다.</p>
@@ -301,14 +301,14 @@ Variable containing:
 </ul>
 
 <p>자동 기울기 계산(autograd) 기능을 가지고 재미있는 일을 할 수 있습니다. <sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup></p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">randn(</span><span style="color: #ae81ff">3</span><span style="color: #f8f8f2">)</span>
-<span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">Variable(x,</span> <span style="color: #f8f8f2">requires_grad</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">True)</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">randn(</span><span style="color: #ae81ff">3</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">Variable(x,</span> <span style="color: #f8f8f2">requires_grad</span><span style="color: #f92672">=</span><span style="color: #66d9ef">True</span><span style="color: #f8f8f2">)</span>
 
 <span style="color: #f8f8f2">y</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">2</span>
 <span style="color: #66d9ef">while</span> <span style="color: #f8f8f2">y</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">data</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">norm()</span> <span style="color: #f92672">&lt;</span> <span style="color: #ae81ff">1000</span><span style="color: #f8f8f2">:</span>
     <span style="color: #f8f8f2">y</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">y</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">2</span>
 
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(y)</span>
+<span style="color: #f8f8f2">print(y)</span>
 </pre></div>
 
 <blockquote>
@@ -321,10 +321,10 @@ Variable containing:
 [torch.FloatTensor of size 3]
 </code></pre>
 </blockquote>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">gradients</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">FloatTensor([</span><span style="color: #ae81ff">0.1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1.0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.0001</span><span style="color: #f8f8f2">])</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">gradients</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">FloatTensor([</span><span style="color: #ae81ff">0.1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1.0</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0.0001</span><span style="color: #f8f8f2">])</span>
 <span style="color: #f8f8f2">y</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">backward(gradients)</span>
 
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(x</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">grad)</span>
+<span style="color: #f8f8f2">print(x</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">grad)</span>
 </pre></div>
 
 <blockquote>
@@ -469,6 +469,10 @@ Variable containing:
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci-vs-aws/" title="오라클 클라우드와 AWS의 주요 서비스 이름 매핑">
+							오라클 클라우드와 AWS의 주요 서비스 이름 매핑</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oci_official_icon_png_202104/" title="오라클 클라우드 서비스 공식 로고 이미지 모음: 2021.04">
 							오라클 클라우드 서비스 공식 로고 이미지 모음: 2021.04</a>
 		  </li>
@@ -503,10 +507,6 @@ Variable containing:
 			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oci_adb_tutorial_01_provisioning/" title="OCI ADB 튜토리얼-01.프로비저닝">
 							OCI ADB 튜토리얼-01.프로비저닝</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/cloud/oci_basic_config/" title="OCI Tenancy 기본 환경 설정">
-							OCI Tenancy 기본 환경 설정</a>
 		  </li>
 		</ul>
 	</div>

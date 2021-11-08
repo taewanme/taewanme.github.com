@@ -6,10 +6,20 @@
     <description>Recent content in Oci on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Oct 2021 01:01:25 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 08 Nov 2021 01:01:25 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/oci/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>오라클 클라우드와 AWS의 주요 서비스 이름 매핑</title>
+      <link>http://taewan.kim/cloud/oci-vs-aws/</link>
+      <pubDate>Mon, 08 Nov 2021 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci-vs-aws/</guid>
+      <description>오라클 클라우드(OCI, Orace Cloud Infrastructure)와 AWS의 서비스를 비교해보면 비슷한 기능을 제공하는 클라우드 기능이 각각 다른 고유 서비스 명으로 명명되기에 혼동되는 경우가 많습니다. AWS 혹은 OCI에 유사 서비스 이름을 정리하면, 특정 클라우드 서비스에 익숙한 사용자가 다른 서비스를 빠르게 이해하는데 도움이 될 것 같다는 생각에 두 클라우드 서비스의 유사 기능의 이름을 매핑하고 OCI를 기준으로 기능을 소개하는 페이지 링크를 정리했습니다. 각 기능별로 OCI 공식 매뉴얼의 「개요」 페이지 주소를 정리했습니다.
+이 문서는 신규 서비스 및 기존에 빠진 서비스 매핑을 최신 버전으로 유지하기 위하여 지속적으로 업데이트해 나갈 예정입니다.</description>
+    </item>
     
     <item>
       <title>오라클 클라우드 서비스 공식 로고 이미지 모음: 2021.04</title>

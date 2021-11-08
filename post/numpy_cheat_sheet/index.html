@@ -153,7 +153,7 @@ NumPy Basics</a></strong> 문서를 참조하여 작성하였습니다.</p>
 NumPy는 고성능 다차원 배열과 이런 배열을 처리하는 다양한 함수와 툴을 제공합니다.</p>
 
 <p>파이썬에서 NumPy를 사용할 때, 다음과 같이 numpy 모듈을 &ldquo;np&rdquo;로 임포트하여 사용합니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">import</span> <span style="color: #f8f8f2">numpy</span> <span style="color: #f92672">as</span> <span style="color: #f8f8f2">np</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f92672">import</span> <span style="color: #f8f8f2">numpy</span> <span style="color: #66d9ef">as</span> <span style="color: #f8f8f2">np</span>
 </pre></div>
 
 <p>NumPy 라이브러리 버전은 다음과 같이 확인 할 수 있습니다.</p>
@@ -209,10 +209,10 @@ NumPy는 고성능 다차원 배열과 이런 배열을 처리하는 다양한 �
 <p>NumPy 배열의 axis와 관련해서는 &ldquo;<a href="http://taewan.kim/post/numpy_sum_axis/">Numpy에서 np.sum 함수의 axis 이해</a>&rdquo; 문서를 참조하시기 바랍니다.</p>
 
 <p>본 문서에서는 NumPy 객체의 정보를 출력하는 용도로 다음 pprint 함수를 공통으로 사용합니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">def</span> <span style="color: #a6e22e">pprint</span><span style="color: #f8f8f2">(arr):</span>
-    <span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;type:{}&quot;</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">format(type(arr)))</span>
-    <span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;shape: {}, dimension: {}, dtype:{}&quot;</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">format(arr</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">shape,</span> <span style="color: #f8f8f2">arr</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">ndim,</span> <span style="color: #f8f8f2">arr</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">dtype))</span>
-    <span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Array&#39;s Data:</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">arr)</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #66d9ef">def</span> <span style="color: #a6e22e">pprint</span><span style="color: #f8f8f2">(arr):</span>
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;type:{}&quot;</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">format(type(arr)))</span>
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;shape: {}, dimension: {}, dtype:{}&quot;</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">format(arr</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">shape,</span> <span style="color: #f8f8f2">arr</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">ndim,</span> <span style="color: #f8f8f2">arr</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">dtype))</span>
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;Array&#39;s Data:</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">arr)</span>
 </pre></div>
 
 <h2 id="2-배열-생성">2. 배열 생성</h2>
@@ -6233,6 +6233,10 @@ NumPy Basics by DataCamp</a></li>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci-vs-aws/" title="오라클 클라우드와 AWS의 주요 서비스 이름 매핑">
+							오라클 클라우드와 AWS의 주요 서비스 이름 매핑</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oci_official_icon_png_202104/" title="오라클 클라우드 서비스 공식 로고 이미지 모음: 2021.04">
 							오라클 클라우드 서비스 공식 로고 이미지 모음: 2021.04</a>
 		  </li>
@@ -6267,10 +6271,6 @@ NumPy Basics by DataCamp</a></li>
 			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oci_adb_tutorial_01_provisioning/" title="OCI ADB 튜토리얼-01.프로비저닝">
 							OCI ADB 튜토리얼-01.프로비저닝</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/cloud/oci_basic_config/" title="OCI Tenancy 기본 환경 설정">
-							OCI Tenancy 기본 환경 설정</a>
 		  </li>
 		</ul>
 	</div>

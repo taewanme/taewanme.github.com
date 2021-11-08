@@ -195,7 +195,7 @@ JShell은 Java9에 새로 추가된 REPL (Read-Evaluate-Print Loop)입니다. �
 <p>JShell을 사용하기 위해서는, 사용 중인 컴퓨터에 JDK 9이 설치되어 있어야 합니다. <strong>java-home/jdk-9/bin</strong> 디렉터리가 PATH 환경 변수에 설정되어 있다면, 디렉터리 위치와 상관없이 jshell을 어디서든지 실행할 수 있습니다.</p>
 
 <p>다음은 jshell를 실행하고 JShell로 부터 결과를 받는 예제입니다. <strong>%</strong> 다음 코드는 사용자가 입력한 명령입니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>% jshell
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span>% jshell
 <span style="color: #f8f8f2">|</span>  Welcome to JShell -- Version <span style="color: #ae81ff">9</span>
 <span style="color: #f8f8f2">|</span>  For an introduction type: /help intro
 
@@ -210,7 +210,7 @@ jshell&gt;
 </code></pre>
 
 <p>JShell 세션을 종료할 때는 <strong>/exit</strong> 명령을 사용합니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">exit</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">exit</span>
 <span style="color: #f92672">|</span>  <span style="color: #f8f8f2">Goodbye</span>
 </pre></div>
 
@@ -243,9 +243,9 @@ jshell&gt;
 </code></pre>
 
 <p>프롬프트에 다음 예제의 문(statement)을 입력하고, 출력 결과를 확인해 보시기 바랍니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">45</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">45</span>
 <span style="color: #f8f8f2">x</span> <span style="color: #f92672">==&gt;</span> <span style="color: #ae81ff">45</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">int</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">x</span> <span style="color: #f8f8f2">:</span> <span style="color: #66d9ef">int</span>
 </pre></div>
 
 <p>문을 입력하며, 바로 결과가 출력됩니다. 이 결과를 다음과 같이 해석할 수 있니다. &ldquo;변수 x는 값 45를 갖는다.&rdquo; JShell이 verbose 모드로 실행되었기 때문에, 수행된 액션에 대한 부가 설명도 출력됩니다. 부가 정보 메시지는 수직 막대(|) 문자로 시작합니다. 이 메시지에서 생성된 변수명과 변수 타입 정보를 확인할 수 있습니다.</p>
@@ -255,18 +255,18 @@ jshell&gt;
 
 
 <p>처리 결과를 저장할 변수를 지정하지 않은 식(expression)이 입력되면, 다음에 값을 참조하는 목적으로 스크래치 변수<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>가 생성됩니다. 그리고 그 스크래치 변수에 실행된 식의 결과가 저장됩니다. 다음 예제는 식과 메서드 실행 결과를 스크래치 변수에 저장하는 것을 설명합니다. 그리고 이 예제에서 하나의 스니펫이 여러줄로 완성할 때 사용되는 연속 프롬프트 (<strong>&hellip;&gt;</strong>)를 확인 할 수 있습니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #ae81ff">2</span> <span style="color: #f92672">+</span> <span style="color: #ae81ff">2</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #ae81ff">2</span> <span style="color: #f92672">+</span> <span style="color: #ae81ff">2</span>
 <span style="color: #f8f8f2">$3</span> <span style="color: #f92672">==&gt;</span> <span style="color: #ae81ff">4</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">scratch</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">$3</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">int</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">scratch</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">$3</span> <span style="color: #f8f8f2">:</span> <span style="color: #66d9ef">int</span>
 
-<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">String</span> <span style="color: #a6e22e">twice</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
-   <span style="color: #f92672">...&gt;</span>    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">s</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">;</span>
-   <span style="color: #f92672">...&gt;</span> <span style="color: #f92672">}</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">twice</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">String</span> <span style="color: #a6e22e">twice</span><span style="color: #f8f8f2">(String</span> <span style="color: #f8f8f2">s)</span> <span style="color: #f8f8f2">{</span>
+   <span style="color: #f8f8f2">...</span><span style="color: #f92672">&gt;</span>    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">s</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">s;</span>
+   <span style="color: #f8f8f2">...</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">}</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">twice</span><span style="color: #f8f8f2">(String)</span>
 
-<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">twice</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;Ocean&quot;</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">twice</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Ocean&quot;</span><span style="color: #f8f8f2">)</span>
 <span style="color: #f8f8f2">$5</span> <span style="color: #f92672">==&gt;</span> <span style="color: #e6db74">&quot;OceanOcean&quot;</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">scratch</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">$5</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">String</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">scratch</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">$5</span> <span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">String</span>
 </pre></div>
 
 <h3 id="정의-변경">정의 변경</h3>
@@ -274,27 +274,27 @@ jshell&gt;
 <p>코드를 실행하다보면 변수, 메서드 및 클래스가 개발자의 의도와 다르게 잘못 정의될 수 있습니다. JShell에서 이런 문제는 정의를 새로 입력하는 것으로 쉽게 해결 됩니다. 새로 입력된 정의는 이전 정의를 덮어씁니다.</p>
 
 <p>변수, 메서드 및 클래스의 정의를 변경해야 한다면, 단순히 새로운 정의를 입력하면 됩니다. 예를 들어서 앞에 &ldquo;스니펫 실행하기&rdquo; 절에서 정의한 <strong>twice</strong> 메서드는 다음 예제를 실행하면 새로운 정의로 변경됩니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">String</span> <span style="color: #a6e22e">twice</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
-   <span style="color: #f92672">...&gt;</span>    <span style="color: #66d9ef">return</span> <span style="color: #e6db74">&quot;Twice:&quot;</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">;</span>
-   <span style="color: #f92672">...&gt;</span> <span style="color: #f92672">}</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">modified</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">twice</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span><span style="color: #f92672">)</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">String</span> <span style="color: #a6e22e">twice</span><span style="color: #f8f8f2">(String</span> <span style="color: #f8f8f2">s)</span> <span style="color: #f8f8f2">{</span>
+   <span style="color: #f8f8f2">...</span><span style="color: #f92672">&gt;</span>    <span style="color: #66d9ef">return</span> <span style="color: #e6db74">&quot;Twice:&quot;</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">s;</span>
+   <span style="color: #f8f8f2">...</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">}</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">modified</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">twice</span><span style="color: #f8f8f2">(String)</span>
 
-<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">twice</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;thing&quot;</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">twice</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;thing&quot;</span><span style="color: #f8f8f2">)</span>
 <span style="color: #f8f8f2">$7</span> <span style="color: #f92672">==&gt;</span> <span style="color: #e6db74">&quot;Twice:thing&quot;</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">scratch</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">$7</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">String</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">scratch</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">$7</span> <span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">String</span>
 </pre></div>
 
 <p>앞에서 &ldquo;<strong>생성된 메서드(created method)</strong>&ldquo;로 표시된 부분이 이번 피드백에서는 &ldquo;<strong>수정된 메서드(modified method)</strong>&ldquo;로 표시됩니다. 이 메시지는 정의는 변경되었지만, 변경된 메서드가 이전과 같은 서명(signature)을 가지므로, 기존의 메서드 사용법이 여전히 유효합니다.</p>
 
 <p>호화되지 않는 방식으로 정의를 변경할 수도 있습니다. 다음 예제에서 변수 <strong>x</strong> 타입이 <strong>int</strong>에서 <strong>String</strong> 으로 변경되었습니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">45</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">45</span>
 <span style="color: #f8f8f2">x</span> <span style="color: #f92672">==&gt;</span> <span style="color: #ae81ff">45</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">int</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">x</span> <span style="color: #f8f8f2">:</span> <span style="color: #66d9ef">int</span>
 
 <span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">x</span>
 <span style="color: #f8f8f2">x</span> <span style="color: #f92672">==&gt;</span> <span style="color: #66d9ef">null</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">replaced</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">String</span>
-<span style="color: #f92672">|</span>    <span style="color: #f8f8f2">update</span> <span style="color: #f8f8f2">overwrote</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">int</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">replaced</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">x</span> <span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">String</span>
+<span style="color: #f92672">|</span>    <span style="color: #f8f8f2">update</span> <span style="color: #f8f8f2">overwrote</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">x</span> <span style="color: #f8f8f2">:</span> <span style="color: #66d9ef">int</span>
 </pre></div>
 
 <p>위 예제에서 변수 x의 타입 변경에 대한 피드백 메시지가 &ldquo;<strong>replaced</strong>&ldquo;로 표현되어 있습니다.</p>
@@ -308,51 +308,51 @@ jshell&gt;
 <p>JShell에서 메소드를 정의할 때 아직 정의하지 않은 메서드, 변수, 클래스를 참조할 수 있습니다. 이 기능은 탐색적인 프로그래밍을 지원하기 위해서 만들어졌습니다. 프로그래밍 과정에서 이런 기능이 필요할 때가 있습니다.</p>
 
 <p>예를 들어, 구의 볼륨을 구하는 메소드를 정의할 때, <strong>volume</strong> 메소드를 다음 예제와 같이 구현할 수 있습니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">double</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span> <span style="color: #f8f8f2">radius</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
-   <span style="color: #f92672">...&gt;</span>    <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">4.0</span> <span style="color: #f92672">/</span> <span style="color: #ae81ff">3.0</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">cube</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">radius</span><span style="color: #f92672">);</span>
-   <span style="color: #f92672">...&gt;</span> <span style="color: #f92672">}</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">),</span> <span style="color: #f8f8f2">however</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">it</span> <span style="color: #f8f8f2">cannot</span> <span style="color: #f8f8f2">be</span> <span style="color: #f8f8f2">invoked</span> <span style="color: #f8f8f2">until</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">PI</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">and</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">cube</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">)</span> <span style="color: #f8f8f2">are</span> <span style="color: #f8f8f2">declared</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">double</span> <span style="color: #a6e22e">volume</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">double</span> <span style="color: #f8f8f2">radius)</span> <span style="color: #f8f8f2">{</span>
+   <span style="color: #f8f8f2">...</span><span style="color: #f92672">&gt;</span>    <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">4.0</span> <span style="color: #f92672">/</span> <span style="color: #ae81ff">3.0</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">cube(radius);</span>
+   <span style="color: #f8f8f2">...</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">}</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">volume</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">double</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">however,</span> <span style="color: #f8f8f2">it</span> <span style="color: #f8f8f2">cannot</span> <span style="color: #f8f8f2">be</span> <span style="color: #f8f8f2">invoked</span> <span style="color: #f8f8f2">until</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">PI,</span> <span style="color: #f8f8f2">and</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">cube</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">double</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">are</span> <span style="color: #f8f8f2">declared</span>
 </pre></div>
 
 <p>위 예제의 volume 메소드 정의는 JShell 세션에서 정상적으로 수행됩니다. 그러나, 아직은 volume 메서드가 완전하게 정의된 것이 아니라는 메시지가 출력됩니다. 이 메소드 정의는 참조될 수는 있있습니다. 그러나, 필요한 모든 요소를 정의하기 전에 이 메서드를 실행하면 실폐하고 에러 피드백을 출력합니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">double</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">3.1415926535</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">double</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">3.1415926535</span>
 <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">==&gt;</span> <span style="color: #ae81ff">3.1415926535</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">double</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f8f8f2">:</span> <span style="color: #66d9ef">double</span>
 
-<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #ae81ff">2</span><span style="color: #f92672">)</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">attempted</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">call</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">)</span> <span style="color: #f8f8f2">which</span> <span style="color: #f8f8f2">cannot</span> <span style="color: #f8f8f2">be</span> <span style="color: #f8f8f2">invoked</span> <span style="color: #f8f8f2">until</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">cube</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">)</span> <span style="color: #f8f8f2">is</span> <span style="color: #f8f8f2">declared</span>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">volume</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">attempted</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">call</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">volume</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">double</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">which</span> <span style="color: #f8f8f2">cannot</span> <span style="color: #f8f8f2">be</span> <span style="color: #f8f8f2">invoked</span> <span style="color: #f8f8f2">until</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">cube</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">double</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">is</span> <span style="color: #f8f8f2">declared</span>
 
-<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">double</span> <span style="color: #a6e22e">cube</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span> <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">;</span> <span style="color: #f92672">}</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">cube</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">)</span>
-<span style="color: #f92672">|</span>    <span style="color: #f8f8f2">update</span> <span style="color: #f8f8f2">modified</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">double</span> <span style="color: #a6e22e">cube</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">double</span> <span style="color: #f8f8f2">x)</span> <span style="color: #f8f8f2">{</span> <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">x;</span> <span style="color: #f8f8f2">}</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">cube</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">double</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f92672">|</span>    <span style="color: #f8f8f2">update</span> <span style="color: #f8f8f2">modified</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">volume</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">double</span><span style="color: #f8f8f2">)</span>
 
-<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #ae81ff">2</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">volume</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">)</span>
 <span style="color: #f8f8f2">$5</span> <span style="color: #f92672">==&gt;</span> <span style="color: #ae81ff">33.510321637333334</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">scratch</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">$5</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">double</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">scratch</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">$5</span> <span style="color: #f8f8f2">:</span> <span style="color: #66d9ef">double</span>
 </pre></div>
 
 <p>필요한 모든 정의가 완료되면, <strong>volume</strong> 메서드는 정상적으로 작동합니다.</p>
 
 <p>이 volume 메서드를 이용하여 &ldquo;비호환 교체&rdquo;를 설명하겠습니다. 다음 예제에서는 <strong>PI</strong>의 정밀도를 변경<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup>하고, PI 객체에 새로운 값을 입력하였습니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">BigDecimal</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">BigDecimal</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;3.141592653589793238462643383&quot;</span><span style="color: #f92672">)</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">BigDecimal</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">BigDecimal(</span><span style="color: #e6db74">&quot;3.141592653589793238462643383&quot;</span><span style="color: #f8f8f2">)</span>
 <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">==&gt;</span> <span style="color: #ae81ff">3.141592653589793238462643383</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">replaced</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">BigDecimal</span>
-<span style="color: #f92672">|</span>    <span style="color: #f8f8f2">update</span> <span style="color: #f8f8f2">modified</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">)</span> <span style="color: #f8f8f2">which</span> <span style="color: #f8f8f2">cannot</span> <span style="color: #f8f8f2">be</span> <span style="color: #f8f8f2">invoked</span> <span style="color: #f8f8f2">until</span> <span style="color: #66d9ef">this</span> <span style="color: #f8f8f2">error</span> <span style="color: #f8f8f2">is</span> <span style="color: #f8f8f2">corrected</span><span style="color: #f92672">:</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">replaced</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">BigDecimal</span>
+<span style="color: #f92672">|</span>    <span style="color: #f8f8f2">update</span> <span style="color: #f8f8f2">modified</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">volume</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">double</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">which</span> <span style="color: #f8f8f2">cannot</span> <span style="color: #f8f8f2">be</span> <span style="color: #f8f8f2">invoked</span> <span style="color: #f8f8f2">until</span> <span style="color: #66d9ef">this</span> <span style="color: #f8f8f2">error</span> <span style="color: #f8f8f2">is</span> <span style="color: #f8f8f2">corrected:</span>
 <span style="color: #f92672">|</span>      <span style="color: #f8f8f2">bad</span> <span style="color: #f8f8f2">operand</span> <span style="color: #f8f8f2">types</span> <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">binary</span> <span style="color: #f8f8f2">operator</span> <span style="color: #e6db74">&#39;*&#39;</span>
-<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">first</span> <span style="color: #f8f8f2">type</span><span style="color: #f92672">:</span>  <span style="color: #66d9ef">double</span>
-<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">second</span> <span style="color: #f8f8f2">type</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">java</span><span style="color: #f92672">.</span><span style="color: #a6e22e">math</span><span style="color: #f92672">.</span><span style="color: #a6e22e">BigDecimal</span>
-<span style="color: #f92672">|</span>          <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">4.0</span> <span style="color: #f92672">/</span> <span style="color: #ae81ff">3.0</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">cube</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">radius</span><span style="color: #f92672">);</span>
+<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">first</span> <span style="color: #f8f8f2">type:</span>  <span style="color: #66d9ef">double</span>
+<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">second</span> <span style="color: #f8f8f2">type:</span> <span style="color: #f8f8f2">java.</span><span style="color: #a6e22e">math</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">BigDecimal</span>
+<span style="color: #f92672">|</span>          <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">4.0</span> <span style="color: #f92672">/</span> <span style="color: #ae81ff">3.0</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">cube(radius);</span>
 <span style="color: #f92672">|</span>                 <span style="color: #f92672">^------------^</span>
-<span style="color: #f92672">|</span>    <span style="color: #f8f8f2">update</span> <span style="color: #f8f8f2">overwrote</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">double</span>
+<span style="color: #f92672">|</span>    <span style="color: #f8f8f2">update</span> <span style="color: #f8f8f2">overwrote</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f8f8f2">:</span> <span style="color: #66d9ef">double</span>
 </pre></div>
 
 <p>새롭게 정의된 <strong>PI</strong> 타입은 <strong>volume</strong> 메서드 정의에 사용된 타입과 호환되지 않습니다. 현재 JShell은 verbose 모드로 동작하기 때문에,  PI 타입 변경에 영향을 받는 다른 요소 정보를 출력합니다. 이 예제는 비호환성을 설명하는 대표적인 사례입니다. verbose 모드는 업데이트 정보를 출력하는 유일한 사전 정의 피드백 모드(Predefined feedback mode)입니다. 다른 피드백 모드에서는 해당 코드가 실행될 때까지 어떠한 경고도 출력하지 않습니다. verbose 모드를 제외한 다른 사전 정의 피드백 모드는 실행 부하를 줄이기 위해서 업데이트 경고를 제공하지 않습니다. 모든 사전 정의 피드백 모드에서 <strong>volume</strong> 메서드를 실행하면, 다음과 같은 이슈를 출력합니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #ae81ff">2</span><span style="color: #f92672">)</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">attempted</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">call</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span><span style="color: #66d9ef">double</span><span style="color: #f92672">)</span> <span style="color: #f8f8f2">which</span> <span style="color: #f8f8f2">cannot</span> <span style="color: #f8f8f2">be</span> <span style="color: #f8f8f2">invoked</span> <span style="color: #f8f8f2">until</span> <span style="color: #66d9ef">this</span> <span style="color: #f8f8f2">error</span> <span style="color: #f8f8f2">is</span> <span style="color: #f8f8f2">corrected</span><span style="color: #f92672">:</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">volume</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">attempted</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">call</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">volume</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">double</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">which</span> <span style="color: #f8f8f2">cannot</span> <span style="color: #f8f8f2">be</span> <span style="color: #f8f8f2">invoked</span> <span style="color: #f8f8f2">until</span> <span style="color: #66d9ef">this</span> <span style="color: #f8f8f2">error</span> <span style="color: #f8f8f2">is</span> <span style="color: #f8f8f2">corrected:</span>
 <span style="color: #f92672">|</span>      <span style="color: #f8f8f2">bad</span> <span style="color: #f8f8f2">operand</span> <span style="color: #f8f8f2">types</span> <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">binary</span> <span style="color: #f8f8f2">operator</span> <span style="color: #e6db74">&#39;*&#39;</span>
-<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">first</span> <span style="color: #f8f8f2">type</span><span style="color: #f92672">:</span>  <span style="color: #66d9ef">double</span>
-<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">second</span> <span style="color: #f8f8f2">type</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">java</span><span style="color: #f92672">.</span><span style="color: #a6e22e">math</span><span style="color: #f92672">.</span><span style="color: #a6e22e">BigDecimal</span>
-<span style="color: #f92672">|</span>          <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">4.0</span> <span style="color: #f92672">/</span> <span style="color: #ae81ff">3.0</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">cube</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">radius</span><span style="color: #f92672">);</span>
+<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">first</span> <span style="color: #f8f8f2">type:</span>  <span style="color: #66d9ef">double</span>
+<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">second</span> <span style="color: #f8f8f2">type:</span> <span style="color: #f8f8f2">java.</span><span style="color: #a6e22e">math</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">BigDecimal</span>
+<span style="color: #f92672">|</span>          <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">4.0</span> <span style="color: #f92672">/</span> <span style="color: #ae81ff">3.0</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">PI</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">cube(radius);</span>
 <span style="color: #f92672">|</span>                 <span style="color: #f92672">^------------^</span>
 </pre></div>
 
@@ -361,22 +361,22 @@ jshell&gt;
 <p>예외 역추적(Backtrace)에서, 피드백은 예외가 발생한 스니펫과 해당 스니펫 내부의 위치를 출력합니다.</p>
 
 <p>JShell에 입력된 코드의 위치는 &ldquo;<strong>#ID:line-number</strong>&rdquo; 형식으로 출력됩니다. 여기서 스니펫 ID는 &ldquo;<strong>/list</strong>&rdquo; 명령이 제공하는 숫자입니다. &ldquo;<strong>line-number</strong>&ldquo;는 스니펫의 행 번호입니다. 다음 예제에서 예외가 발생한 위치는 스니펫 넘버 #1(devide 메서드)의 두 번째 행입니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">int</span> <span style="color: #a6e22e">divide</span><span style="color: #f92672">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">y</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
-   <span style="color: #f92672">...&gt;</span> <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">/</span> <span style="color: #f8f8f2">y</span><span style="color: #f92672">;</span>
-   <span style="color: #f92672">...&gt;</span> <span style="color: #f92672">}</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">divide</span><span style="color: #f92672">(</span><span style="color: #66d9ef">int</span><span style="color: #f92672">,</span><span style="color: #66d9ef">int</span><span style="color: #f92672">)</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">int</span> <span style="color: #a6e22e">divide</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">y)</span> <span style="color: #f8f8f2">{</span>
+   <span style="color: #f8f8f2">...</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">/</span> <span style="color: #f8f8f2">y;</span>
+   <span style="color: #f8f8f2">...</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">}</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">method</span> <span style="color: #a6e22e">divide</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">int</span><span style="color: #f8f8f2">,</span><span style="color: #66d9ef">int</span><span style="color: #f8f8f2">)</span>
 
-<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">divide</span><span style="color: #f92672">(</span><span style="color: #ae81ff">5</span><span style="color: #f92672">,</span> <span style="color: #ae81ff">0</span><span style="color: #f92672">)</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">java</span><span style="color: #f92672">.</span><span style="color: #a6e22e">lang</span><span style="color: #f92672">.</span><span style="color: #a6e22e">ArithmeticException</span> <span style="color: #f8f8f2">thrown</span><span style="color: #f92672">:</span> <span style="color: #f92672">/</span> <span style="color: #f8f8f2">by</span> <span style="color: #f8f8f2">zero</span>
-<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">at</span> <span style="color: #a6e22e">divide</span> <span style="color: #f92672">(</span><span style="color: #960050; background-color: #1e0010">#</span><span style="color: #ae81ff">1</span><span style="color: #f92672">:</span><span style="color: #ae81ff">2</span><span style="color: #f92672">)</span>
-<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">at</span> <span style="color: #f92672">(</span><span style="color: #960050; background-color: #1e0010">#</span><span style="color: #ae81ff">2</span><span style="color: #f92672">:</span><span style="color: #ae81ff">1</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">divide</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">java.</span><span style="color: #a6e22e">lang</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">ArithmeticException</span> <span style="color: #f8f8f2">thrown:</span> <span style="color: #f92672">/</span> <span style="color: #f8f8f2">by</span> <span style="color: #f8f8f2">zero</span>
+<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">at</span> <span style="color: #a6e22e">divide</span> <span style="color: #f8f8f2">(</span><span style="color: #960050; background-color: #1e0010">#</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">:</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f92672">|</span>        <span style="color: #f8f8f2">at</span> <span style="color: #f8f8f2">(</span><span style="color: #960050; background-color: #1e0010">#</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">:</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span>
 
 <span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span>
 
-   <span style="color: #ae81ff">1</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">int</span> <span style="color: #a6e22e">divide</span><span style="color: #f92672">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">y</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
-           <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">/</span> <span style="color: #f8f8f2">y</span><span style="color: #f92672">;</span>
-       <span style="color: #f92672">}</span>
-   <span style="color: #ae81ff">2</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">divide</span><span style="color: #f92672">(</span><span style="color: #ae81ff">5</span><span style="color: #f92672">,</span> <span style="color: #ae81ff">0</span><span style="color: #f92672">)</span>
+   <span style="color: #ae81ff">1</span> <span style="color: #f8f8f2">:</span> <span style="color: #66d9ef">int</span> <span style="color: #a6e22e">divide</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">y)</span> <span style="color: #f8f8f2">{</span>
+           <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">/</span> <span style="color: #f8f8f2">y;</span>
+       <span style="color: #f8f8f2">}</span>
+   <span style="color: #ae81ff">2</span> <span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">divide(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span>
 </pre></div>
 
 <h3 id="스니펫-텝-자동-완성">스니펫 텝 자동 완성</h3>
@@ -384,54 +384,54 @@ jshell&gt;
 <p>스니펫을 입력할 때, 텝 키를 이용하여 코드를 자동 완성할 수 있습니다. 현재까지 입력으로 코드를 결정할 수 없는 상황에서는, 가능한 옵션을 모두 제공합니다.</p>
 
 <p>다음 예제는 volume 메서드가 정의된 상태에서, 메서드 명의 첫 번째 3 개 문자(vol)를 입력한 후에 텝 키를 입력한 상태를 설명합니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">vol</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">vol</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
 </pre></div>
 
 <p>탭 키를 입력하면 입력값이 다음과 같이 변경됩니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">volume</span><span style="color: #f92672">(</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">volume</span><span style="color: #f8f8f2">(</span>
 </pre></div>
 
 <p>자동 완성 기능을 사용할 때 현재 입력 값을 기준으로 한 개 이상의 경우의 수를 갖는다면, 가능한 모든 코드를 출력합니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">System</span><span style="color: #f92672">.</span><span style="color: #a6e22e">c</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
-<span style="color: #66d9ef">class</span>                 <span style="color: #a6e22e">clearProperty</span><span style="color: #f92672">(</span>        <span style="color: #f8f8f2">console</span><span style="color: #f92672">()</span>             <span style="color: #f8f8f2">currentTimeMillis</span><span style="color: #f92672">()</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">System.</span><span style="color: #a6e22e">c</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
+<span style="color: #66d9ef">class</span>                 <span style="color: #a6e22e">clearProperty</span><span style="color: #f8f8f2">(</span>        <span style="color: #f8f8f2">console()</span>             <span style="color: #f8f8f2">currentTimeMillis()</span>
 
-<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">System</span><span style="color: #f92672">.</span><span style="color: #a6e22e">c</span>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">System.</span><span style="color: #a6e22e">c</span>
 </pre></div>
 
 <p>입력한 코드에 공통 문자가 추가되고 커서는 입력 끝부분으로 이동합니다. 아이템을 완성하기 위해 추가 문자를 입력할 수 있습니다.</p>
 
 <p>메소드의 열린 괄호에서 텝 키를 입력하면 매개 변수 유형으로 완료 가능한 형태를 출력합니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #e6db74">&quot;hello&quot;</span><span style="color: #f92672">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #e6db74">&quot;hello&quot;</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f8f8f2">(</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
 <span style="color: #f8f8f2">Signatures:</span>
-<span style="color: #66d9ef">boolean</span> <span style="color: #f8f8f2">String</span><span style="color: #f92672">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">prefix</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">toffset</span><span style="color: #f92672">)</span>
-<span style="color: #66d9ef">boolean</span> <span style="color: #f8f8f2">String</span><span style="color: #f92672">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">prefix</span><span style="color: #f92672">)</span>
+<span style="color: #66d9ef">boolean</span> <span style="color: #f8f8f2">String.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f8f8f2">(String</span> <span style="color: #f8f8f2">prefix,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">toffset)</span>
+<span style="color: #66d9ef">boolean</span> <span style="color: #f8f8f2">String.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f8f8f2">(String</span> <span style="color: #f8f8f2">prefix)</span>
 
 <span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">press</span> <span style="color: #f8f8f2">tab</span> <span style="color: #f8f8f2">again</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">see</span> <span style="color: #f8f8f2">documentation</span><span style="color: #f92672">&gt;</span>
 
-<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #e6db74">&quot;hello&quot;</span><span style="color: #f92672">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(</span>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #e6db74">&quot;hello&quot;</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f8f8f2">(</span>
 </pre></div>
 
 <p>텝 키를 다시 입력하면 첫 번째 메서드의 텍스트 버전 문서가 출력됩니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #e6db74">&quot;hello&quot;</span><span style="color: #f92672">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
-<span style="color: #66d9ef">boolean</span> <span style="color: #f8f8f2">String</span><span style="color: #f92672">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">prefix</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">toffset</span><span style="color: #f92672">)</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #e6db74">&quot;hello&quot;</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f8f8f2">(</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
+<span style="color: #66d9ef">boolean</span> <span style="color: #f8f8f2">String.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f8f8f2">(String</span> <span style="color: #f8f8f2">prefix,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">toffset)</span>
 <span style="color: #f8f8f2">Tests</span> <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">substring</span> <span style="color: #f8f8f2">of</span> <span style="color: #66d9ef">this</span> <span style="color: #f8f8f2">string</span> <span style="color: #f8f8f2">beginning</span> <span style="color: #f8f8f2">at</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">specified</span> <span style="color: #f8f8f2">index</span> <span style="color: #f8f8f2">starts</span> <span style="color: #f8f8f2">with</span> <span style="color: #f8f8f2">the</span>
-<span style="color: #f8f8f2">specified</span> <span style="color: #f8f8f2">prefix</span><span style="color: #f92672">.</span>
+<span style="color: #f8f8f2">specified</span> <span style="color: #f8f8f2">prefix.</span>
 
 <span style="color: #f8f8f2">Parameters:</span>
-<span style="color: #f8f8f2">prefix</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">prefix</span><span style="color: #f92672">.</span>
-<span style="color: #f8f8f2">toffset</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">where</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">begin</span> <span style="color: #f8f8f2">looking</span> <span style="color: #f8f8f2">in</span> <span style="color: #66d9ef">this</span> <span style="color: #f8f8f2">string</span><span style="color: #f92672">.</span>
+<span style="color: #f8f8f2">prefix</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">prefix.</span>
+<span style="color: #f8f8f2">toffset</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">where</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">begin</span> <span style="color: #f8f8f2">looking</span> <span style="color: #f8f8f2">in</span> <span style="color: #66d9ef">this</span> <span style="color: #f8f8f2">string.</span>
 
 <span style="color: #f8f8f2">Returns:</span>
 <span style="color: #66d9ef">true</span> <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">character</span> <span style="color: #f8f8f2">sequence</span> <span style="color: #f8f8f2">represented</span> <span style="color: #f8f8f2">by</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">argument</span> <span style="color: #f8f8f2">is</span> <span style="color: #f8f8f2">a</span> <span style="color: #f8f8f2">prefix</span> <span style="color: #f8f8f2">of</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">substring</span> <span style="color: #f8f8f2">of</span> <span style="color: #66d9ef">this</span>
-          <span style="color: #f8f8f2">object</span> <span style="color: #f8f8f2">starting</span> <span style="color: #f8f8f2">at</span> <span style="color: #f8f8f2">index</span> <span style="color: #f8f8f2">toffset</span> <span style="color: #f92672">;</span> <span style="color: #66d9ef">false</span> <span style="color: #f8f8f2">otherwise</span><span style="color: #f92672">.</span> <span style="color: #f8f8f2">The</span> <span style="color: #f8f8f2">result</span> <span style="color: #f8f8f2">is</span> <span style="color: #66d9ef">false</span> <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">toffset</span> <span style="color: #f8f8f2">is</span>
-          <span style="color: #f8f8f2">negative</span> <span style="color: #f8f8f2">or</span> <span style="color: #f8f8f2">greater</span> <span style="color: #f8f8f2">than</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">length</span> <span style="color: #f8f8f2">of</span> <span style="color: #66d9ef">this</span> <span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">object</span><span style="color: #f92672">;</span> <span style="color: #f8f8f2">otherwise</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">result</span> <span style="color: #f8f8f2">is</span>
+          <span style="color: #f8f8f2">object</span> <span style="color: #f8f8f2">starting</span> <span style="color: #f8f8f2">at</span> <span style="color: #f8f8f2">index</span> <span style="color: #f8f8f2">toffset</span> <span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">false</span> <span style="color: #f8f8f2">otherwise.</span> <span style="color: #f8f8f2">The</span> <span style="color: #f8f8f2">result</span> <span style="color: #f8f8f2">is</span> <span style="color: #66d9ef">false</span> <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">toffset</span> <span style="color: #f8f8f2">is</span>
+          <span style="color: #f8f8f2">negative</span> <span style="color: #f8f8f2">or</span> <span style="color: #f8f8f2">greater</span> <span style="color: #f8f8f2">than</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">length</span> <span style="color: #f8f8f2">of</span> <span style="color: #66d9ef">this</span> <span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">object;</span> <span style="color: #f8f8f2">otherwise</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">result</span> <span style="color: #f8f8f2">is</span>
           <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">same</span> <span style="color: #f8f8f2">as</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">result</span> <span style="color: #f8f8f2">of</span> <span style="color: #f8f8f2">the</span> <span style="color: #f8f8f2">expression</span>
-                    <span style="color: #66d9ef">this</span><span style="color: #f92672">.</span><span style="color: #a6e22e">substring</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">toffset</span><span style="color: #f92672">).</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">prefix</span><span style="color: #f92672">)</span>
+                    <span style="color: #66d9ef">this</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">substring</span><span style="color: #f8f8f2">(toffset).</span><span style="color: #a6e22e">startsWith</span><span style="color: #f8f8f2">(prefix)</span>
 
 
 <span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">press</span> <span style="color: #f8f8f2">tab</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">see</span> <span style="color: #f8f8f2">next</span> <span style="color: #f8f8f2">documentation</span><span style="color: #f92672">&gt;</span>
 
-<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #e6db74">&quot;hello&quot;</span><span style="color: #f92672">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f92672">(</span>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #e6db74">&quot;hello&quot;</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">startsWith</span><span style="color: #f8f8f2">(</span>
 </pre></div>
 
 <h3 id="스니펫-변환">스니펫 변환</h3>
@@ -439,11 +439,11 @@ jshell&gt;
 <p>JShell은 클래스를 처음 참조할 때 필요한 클래스 임포트(import)를 쉽게 할 수 있습니다. 또한 단축키를 사용하여 식(Expression)을 변수 선언으로 간단하게 변환할 수 있습니다.</p>
 
 <p>아직 가져 오지 않은 식별자를 입력한 다음에 바로 &ldquo;<strong>Shift + Tab i</strong>&ldquo;를 누르면 세션에 import문을 추가하는 옵션이 출력됩니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">JFrame</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Shift</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">Tab</span> <span style="color: #f8f8f2">i</span><span style="color: #f92672">&gt;</span>
-<span style="color: #ae81ff">0</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">Do</span> <span style="color: #f8f8f2">nothing</span>
-<span style="color: #ae81ff">1</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">import</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">javax</span><span style="color: #f92672">.</span><span style="color: #a6e22e">swing</span><span style="color: #f92672">.</span><span style="color: #a6e22e">JFrame</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">JFrame</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Shift</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">Tab</span> <span style="color: #f8f8f2">i</span><span style="color: #f92672">&gt;</span>
+<span style="color: #ae81ff">0</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">Do</span> <span style="color: #f8f8f2">nothing</span>
+<span style="color: #ae81ff">1</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">import:</span> <span style="color: #f8f8f2">javax.</span><span style="color: #a6e22e">swing</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">JFrame</span>
 <span style="color: #f8f8f2">Choice:</span> <span style="color: #ae81ff">1</span>
-<span style="color: #f8f8f2">Imported:</span> <span style="color: #f8f8f2">javax</span><span style="color: #f92672">.</span><span style="color: #a6e22e">swing</span><span style="color: #f92672">.</span><span style="color: #a6e22e">JFrame</span>
+<span style="color: #f8f8f2">Imported:</span> <span style="color: #f8f8f2">javax.</span><span style="color: #a6e22e">swing</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">JFrame</span>
 
 <span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">JFrame</span>
 </pre></div>
@@ -451,8 +451,8 @@ jshell&gt;
 <p>임포트 추가 옵션이 출력되면 사용할 옵션 번호를 입력하면 됩니다. 복수의 import 옵션이 제시될 수 있습니다.</p>
 
 <p>식(Expression)을  입력한 후 &ldquo;<strong>Shift+Tab v</strong>&ldquo;를 눌러 식(Expression) 변수 선언으로 변환할 수 있습니다. 앞에서 입력한 식은 변수 선언의 초기값이 되고, 식의 반환 타입은 변수의 타입으로 선언됩니다. 다음 예제에서 &ldquo;<strong>Shift+Tab v</strong>&ldquo;를 누르면, 세로 막대 (|)로 표시된 커서는 변수 이름을 입력해야 하는 곳에 위치하게 됩니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">new</span> <span style="color: #a6e22e">JFrame</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;Demo&quot;</span><span style="color: #f92672">)</span> <span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Shift</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">Tab</span> <span style="color: #f8f8f2">v</span><span style="color: #f92672">&gt;</span>
-<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">JFrame</span> <span style="color: #f92672">|</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">JFrame</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;Demo&quot;</span><span style="color: #f92672">)</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">new</span> <span style="color: #a6e22e">JFrame</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Demo&quot;</span><span style="color: #f8f8f2">)</span> <span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Shift</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">Tab</span> <span style="color: #f8f8f2">v</span><span style="color: #f92672">&gt;</span>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">JFrame</span> <span style="color: #f92672">|</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">JFrame(</span><span style="color: #e6db74">&quot;Demo&quot;</span><span style="color: #f8f8f2">)</span>
 </pre></div>
 
 <div class="notices note" ><p>식(Expression)은 유효해야 하며 그렇지 않으면 변환 요청은 무시됩니다. 이 예제에서 변수를 변환하기 전에 JFrame의 import가 선행되어야 합니다.</p>
@@ -460,27 +460,27 @@ jshell&gt;
 
 
 <p>앞 예제를 완료하기 위해서, 커서가 위치한 곳에 변수명 frame을 입력하고 <strong>Enter</strong> 키를 누릅니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">JFrame</span> <span style="color: #f8f8f2">frame</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">JFrame</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;Demo&quot;</span><span style="color: #f92672">)</span>
-<span style="color: #f8f8f2">frame</span> <span style="color: #f92672">==&gt;</span> <span style="color: #f8f8f2">javax</span><span style="color: #f92672">.</span><span style="color: #a6e22e">swing</span><span style="color: #f92672">.</span><span style="color: #a6e22e">JFrame</span><span style="color: #f92672">[</span><span style="color: #f8f8f2">frame0</span><span style="color: #f92672">,</span><span style="color: #ae81ff">0</span><span style="color: #f92672">,</span><span style="color: #ae81ff">0</span><span style="color: #f92672">,</span><span style="color: #ae81ff">0x0</span><span style="color: #f92672">,</span><span style="color: #f8f8f2">invalid</span><span style="color: #f92672">,</span><span style="color: #f8f8f2">hidden</span><span style="color: #f92672">,</span> <span style="color: #f92672">...</span> <span style="color: #f8f8f2">tPaneCheckingEnabled</span><span style="color: #f92672">=</span><span style="color: #66d9ef">true</span><span style="color: #f92672">]</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">frame</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">JFrame</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">JFrame</span> <span style="color: #f8f8f2">frame</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">JFrame(</span><span style="color: #e6db74">&quot;Demo&quot;</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">frame</span> <span style="color: #f92672">==&gt;</span> <span style="color: #f8f8f2">javax.</span><span style="color: #a6e22e">swing</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">JFrame</span><span style="color: #f92672">[</span><span style="color: #f8f8f2">frame0,</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">0x0</span><span style="color: #f8f8f2">,invalid,hidden,</span> <span style="color: #f8f8f2">...</span> <span style="color: #f8f8f2">tPaneCheckingEnabled</span><span style="color: #f92672">=</span><span style="color: #66d9ef">true</span><span style="color: #f92672">]</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">frame</span> <span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">JFrame</span>
 
 <span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span>
 </pre></div>
 
 <p>식(Expression)의 반환 타입이 아직 import 되지 않은 경우가 있습니다. 이런 상황에서, &ldquo;<strong>Shift+Tab v</strong>&ldquo;을 누르면 import 옵션과 변수 생성 기능 모두가 제공됩니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">frame</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getGraphics</span><span style="color: #f92672">()</span> <span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Shift</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">Tab</span> <span style="color: #f8f8f2">v</span><span style="color: #f92672">&gt;</span>
-<span style="color: #ae81ff">0</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">Do</span> <span style="color: #f8f8f2">nothing</span>
-<span style="color: #ae81ff">1</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">Create</span> <span style="color: #f8f8f2">variable</span>
-<span style="color: #ae81ff">2</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">import</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">java</span><span style="color: #f92672">.</span><span style="color: #a6e22e">awt</span><span style="color: #f92672">.</span><span style="color: #a6e22e">Graphics</span><span style="color: #f92672">.</span> <span style="color: #f8f8f2">Create</span> <span style="color: #f8f8f2">variable</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">frame.</span><span style="color: #a6e22e">getGraphics</span><span style="color: #f8f8f2">()</span> <span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Shift</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">Tab</span> <span style="color: #f8f8f2">v</span><span style="color: #f92672">&gt;</span>
+<span style="color: #ae81ff">0</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">Do</span> <span style="color: #f8f8f2">nothing</span>
+<span style="color: #ae81ff">1</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">Create</span> <span style="color: #f8f8f2">variable</span>
+<span style="color: #ae81ff">2</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">import:</span> <span style="color: #f8f8f2">java.</span><span style="color: #a6e22e">awt</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">Graphics</span><span style="color: #f8f8f2">.</span> <span style="color: #f8f8f2">Create</span> <span style="color: #f8f8f2">variable</span>
 <span style="color: #f8f8f2">Choice:</span> <span style="color: #ae81ff">2</span>
-<span style="color: #f8f8f2">Imported:</span> <span style="color: #f8f8f2">java</span><span style="color: #f92672">.</span><span style="color: #a6e22e">awt</span><span style="color: #f92672">.</span><span style="color: #a6e22e">Graphics</span>
+<span style="color: #f8f8f2">Imported:</span> <span style="color: #f8f8f2">java.</span><span style="color: #a6e22e">awt</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">Graphics</span>
 
-<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">Graphics</span> <span style="color: #f92672">|</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">frame</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getGraphics</span><span style="color: #f92672">()</span>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">Graphics</span> <span style="color: #f92672">|</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">frame.</span><span style="color: #a6e22e">getGraphics</span><span style="color: #f8f8f2">()</span>
 </pre></div>
 
 <p>위 예제를 완료하려면, 커서가 위치한 곳에 변수 이름 <strong>gc</strong>를 입력하고 <strong>Enter</strong> 키를 누릅니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">Graphics</span> <span style="color: #f8f8f2">gc</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">frame</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getGraphics</span><span style="color: #f92672">()</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">gc</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">JFrame</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">Graphics</span> <span style="color: #f8f8f2">gc</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">frame.</span><span style="color: #a6e22e">getGraphics</span><span style="color: #f8f8f2">()</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">gc</span> <span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">JFrame</span>
 
 <span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span>
 </pre></div>
@@ -507,44 +507,44 @@ jshell&gt;
 &ldquo;<strong>/var</strong>&rdquo;, &ldquo;<strong>/methods</strong>&rdquo; 그리고 &ldquo;<strong>/types</strong>&rdquo; 명령을 사용하여 현재 세션에 정의된 변수, 메서드 및 타입 정보를 확인할 수 있습니다.
 &ldquo;<strong>/list</strong>&rdquo; 명령을 사용하면 입력된 스니펫 목록을 확인할 수 있습니다.
 다음 예제는 이런 명령의 사용 방법과 출력 결과를 설명합니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">vars</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">vars</span>
 <span style="color: #f92672">|</span>    <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">45</span>
 <span style="color: #f92672">|</span>    <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">$3</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">4</span>
 <span style="color: #f92672">|</span>    <span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">$5</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;OceanOcean&quot;</span>
 
 <span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">methods</span>
-<span style="color: #f92672">|</span>    <span style="color: #f8f8f2">twice</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span><span style="color: #f92672">)</span><span style="color: #f8f8f2">String</span>
+<span style="color: #f92672">|</span>    <span style="color: #f8f8f2">twice</span> <span style="color: #f8f8f2">(String)String</span>
 
 <span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span>
 
-   <span style="color: #ae81ff">1</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">System</span><span style="color: #f92672">.</span><span style="color: #a6e22e">out</span><span style="color: #f92672">.</span><span style="color: #a6e22e">println</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;Hi&quot;</span><span style="color: #f92672">);</span>
-   <span style="color: #ae81ff">2</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">45</span><span style="color: #f92672">;</span>
-   <span style="color: #ae81ff">3</span> <span style="color: #f92672">:</span> <span style="color: #ae81ff">2</span> <span style="color: #f92672">+</span> <span style="color: #ae81ff">2</span>
-   <span style="color: #ae81ff">4</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">String</span> <span style="color: #a6e22e">twice</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
-         <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">s</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">;</span>
-       <span style="color: #f92672">}</span>
-   <span style="color: #ae81ff">5</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">twice</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;Ocean&quot;</span><span style="color: #f92672">)</span>
+   <span style="color: #ae81ff">1</span> <span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">System.</span><span style="color: #a6e22e">out</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">println</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Hi&quot;</span><span style="color: #f8f8f2">);</span>
+   <span style="color: #ae81ff">2</span> <span style="color: #f8f8f2">:</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">45</span><span style="color: #f8f8f2">;</span>
+   <span style="color: #ae81ff">3</span> <span style="color: #f8f8f2">:</span> <span style="color: #ae81ff">2</span> <span style="color: #f92672">+</span> <span style="color: #ae81ff">2</span>
+   <span style="color: #ae81ff">4</span> <span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">String</span> <span style="color: #a6e22e">twice</span><span style="color: #f8f8f2">(String</span> <span style="color: #f8f8f2">s)</span> <span style="color: #f8f8f2">{</span>
+         <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">s</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">s;</span>
+       <span style="color: #f8f8f2">}</span>
+   <span style="color: #ae81ff">5</span> <span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">twice(</span><span style="color: #e6db74">&quot;Ocean&quot;</span><span style="color: #f8f8f2">)</span>
 </pre></div>
 
 <p>변수의 유형과 값 및 메소드의 타입 시그니처(Signature)가 출력됩니다.</p>
 
 <p>JShell에는 JShell이 시작할 때, 기본 시작 스크립트(Default Startup Script)가 자동으로 실행됩니다. 사용자는 별도 부가적인 작업없이 바로 코드 작업을 할 수 있습니다. 시작 스크립트의 실행 항목은 &ldquo;<strong>/list -start</strong>&rdquo; 또는 &ldquo;<strong>/list -all</strong>&rdquo; 명령을 사용하여 확인할 수 있습니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span> <span style="color: #f92672">-</span><span style="color: #f8f8f2">all</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span> <span style="color: #f92672">-</span><span style="color: #f8f8f2">all</span>
 
-  <span style="color: #f8f8f2">s1</span> <span style="color: #f92672">:</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.util.*</span><span style="color: #f92672">;</span>
-  <span style="color: #f8f8f2">s2</span> <span style="color: #f92672">:</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.io.*</span><span style="color: #f92672">;</span>
-  <span style="color: #f8f8f2">s3</span> <span style="color: #f92672">:</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.math.*</span><span style="color: #f92672">;</span>
-  <span style="color: #f8f8f2">s4</span> <span style="color: #f92672">:</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.net.*</span><span style="color: #f92672">;</span>
-  <span style="color: #f8f8f2">s5</span> <span style="color: #f92672">:</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.util.concurrent.*</span><span style="color: #f92672">;</span>
-  <span style="color: #f8f8f2">s6</span> <span style="color: #f92672">:</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.util.prefs.*</span><span style="color: #f92672">;</span>
-  <span style="color: #f8f8f2">s7</span> <span style="color: #f92672">:</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.util.regex.*</span><span style="color: #f92672">;</span>
-   <span style="color: #ae81ff">1</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">System</span><span style="color: #f92672">.</span><span style="color: #a6e22e">out</span><span style="color: #f92672">.</span><span style="color: #a6e22e">println</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;Hi&quot;</span><span style="color: #f92672">);</span>
-   <span style="color: #ae81ff">2</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">45</span><span style="color: #f92672">;</span>
-   <span style="color: #ae81ff">3</span> <span style="color: #f92672">:</span> <span style="color: #ae81ff">2</span> <span style="color: #f92672">+</span> <span style="color: #ae81ff">2</span>
-   <span style="color: #ae81ff">4</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">String</span> <span style="color: #a6e22e">twice</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
-         <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">s</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">;</span>
-       <span style="color: #f92672">}</span>
-   <span style="color: #ae81ff">5</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">twice</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;Ocean&quot;</span><span style="color: #f92672">)</span>
+  <span style="color: #f8f8f2">s1</span> <span style="color: #f8f8f2">:</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.util.*;</span>
+  <span style="color: #f8f8f2">s2</span> <span style="color: #f8f8f2">:</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.io.*;</span>
+  <span style="color: #f8f8f2">s3</span> <span style="color: #f8f8f2">:</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.math.*;</span>
+  <span style="color: #f8f8f2">s4</span> <span style="color: #f8f8f2">:</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.net.*;</span>
+  <span style="color: #f8f8f2">s5</span> <span style="color: #f8f8f2">:</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.util.concurrent.*;</span>
+  <span style="color: #f8f8f2">s6</span> <span style="color: #f8f8f2">:</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.util.prefs.*;</span>
+  <span style="color: #f8f8f2">s7</span> <span style="color: #f8f8f2">:</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.util.regex.*;</span>
+   <span style="color: #ae81ff">1</span> <span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">System.</span><span style="color: #a6e22e">out</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">println</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Hi&quot;</span><span style="color: #f8f8f2">);</span>
+   <span style="color: #ae81ff">2</span> <span style="color: #f8f8f2">:</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">45</span><span style="color: #f8f8f2">;</span>
+   <span style="color: #ae81ff">3</span> <span style="color: #f8f8f2">:</span> <span style="color: #ae81ff">2</span> <span style="color: #f92672">+</span> <span style="color: #ae81ff">2</span>
+   <span style="color: #ae81ff">4</span> <span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">String</span> <span style="color: #a6e22e">twice</span><span style="color: #f8f8f2">(String</span> <span style="color: #f8f8f2">s)</span> <span style="color: #f8f8f2">{</span>
+         <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">s</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">s;</span>
+       <span style="color: #f8f8f2">}</span>
+   <span style="color: #ae81ff">5</span> <span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">twice(</span><span style="color: #e6db74">&quot;Ocean&quot;</span><span style="color: #f8f8f2">)</span>
 </pre></div>
 
 <p>기본 시작 스크립트는 기본 import 문으로 구성됩니다. &ldquo;<strong>/set start</strong>&rdquo; 명령을 이용하여 시작 항목의 개인화 설정을 할 수 있습니다.
@@ -562,7 +562,7 @@ jshell&gt;
 현재까지 입력으로 명령과 명령의 옵션의 자동 완성을 결정할 수 없는 상황에서는 가능한 선택 사항을 모두 제공합니다.</p>
 
 <p>다음 예제는 명령 슬래시(/) 다음에 텝 키를 눌렀을 때의 피드백 결과입니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
 <span style="color: #f92672">/!</span>          <span style="color: #f92672">/?</span>          <span style="color: #f92672">/</span><span style="color: #f8f8f2">drop</span>       <span style="color: #f92672">/</span><span style="color: #f8f8f2">edit</span>       <span style="color: #f92672">/</span><span style="color: #f8f8f2">env</span>        <span style="color: #f92672">/</span><span style="color: #f8f8f2">exit</span>       <span style="color: #f92672">/</span><span style="color: #f8f8f2">help</span>
 <span style="color: #f92672">/</span><span style="color: #f8f8f2">history</span>    <span style="color: #f92672">/</span><span style="color: #f8f8f2">imports</span>    <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span>       <span style="color: #f92672">/</span><span style="color: #f8f8f2">methods</span>    <span style="color: #f92672">/</span><span style="color: #f8f8f2">open</span>       <span style="color: #f92672">/</span><span style="color: #f8f8f2">reload</span>     <span style="color: #f92672">/</span><span style="color: #f8f8f2">reset</span>
 <span style="color: #f92672">/</span><span style="color: #f8f8f2">save</span>       <span style="color: #f92672">/</span><span style="color: #f8f8f2">set</span>        <span style="color: #f92672">/</span><span style="color: #f8f8f2">types</span>      <span style="color: #f92672">/</span><span style="color: #f8f8f2">vars</span>
@@ -573,13 +573,13 @@ jshell&gt;
 </pre></div>
 
 <p>명령 및 명령 옵션의 자동 완성이 가능한 상황에서는 그 자리에서 완료됩니다. 예를 들어서, <strong>/l</strong>을 입력하고 Tab(텝 키)을 누르면 그 입력줄에  &ldquo;<strong>/list</strong>&ldquo;이 출력됩니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">l</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">l</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
 
 <span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span>
 </pre></div>
 
 <p>텝 자동 완성 기능은 명령 옵션도 지원합니다. 다음은 &ldquo;<strong>/list</strong>&rdquo; 명령의 옵션을 출력하기 위해서 텝 키를 사용하는 예제입니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span> <span style="color: #f92672">-&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span> <span style="color: #f92672">-&lt;</span><span style="color: #f8f8f2">Tab</span><span style="color: #f92672">&gt;</span>
 <span style="color: #f92672">-</span><span style="color: #f8f8f2">all</span>       <span style="color: #f92672">-</span><span style="color: #f8f8f2">history</span>   <span style="color: #f92672">-</span><span style="color: #f8f8f2">start</span>     
 
 <span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">press</span> <span style="color: #f8f8f2">tab</span> <span style="color: #f8f8f2">again</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">see</span> <span style="color: #f8f8f2">synopsis</span><span style="color: #f92672">&gt;</span>
@@ -756,33 +756,33 @@ jshell&gt; /open definitions.jsh
 <p>이전애 입력한 것을 다시 입력하거나 수정하려면, 위 혹은 아래 화살표 방향키, 왼쪽 및 오른쪽 화살표 방향키를 사용하여 기록을 탐색한 후 커서가 위치한 곳에 텍스트를 입력합니다. 텍스트를 삭제해야 할 경우 <strong>Delete</strong> 키를 사용합니다. <strong>Enter</strong> 키를 눌러 히스토리 행을 재입력합니다.</p>
 
 <p>다음 예제에서, 위쪽 및 아래쪽 화살표 키는 한 번에 한 줄씩 히스토리를 앞뒤로 이동합니다</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">C</span> <span style="color: #f92672">{</span>
-   <span style="color: #f92672">...&gt;</span>    <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">;</span>
-   <span style="color: #f92672">...&gt;</span> <span style="color: #f92672">}</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">C</span> <span style="color: #f8f8f2">{</span>
+   <span style="color: #f8f8f2">...</span><span style="color: #f92672">&gt;</span>    <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x;</span>
+   <span style="color: #f8f8f2">...</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">}</span>
 <span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #66d9ef">class</span>
 <span style="color: #a6e22e">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span>
 
-   <span style="color: #ae81ff">1</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">C</span>
-         <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">;</span>
-       <span style="color: #f92672">}</span>
+   <span style="color: #ae81ff">1</span> <span style="color: #f8f8f2">:</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">C</span>
+         <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x;</span>
+       <span style="color: #f8f8f2">}</span>
 
 <span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">up</span> <span style="color: #f8f8f2">arrow</span><span style="color: #f92672">&gt;</span>
 </pre></div>
 
 <p>위 화살표 방향키를 입력하면 다음과 같이 <strong>/list</strong> 명령이 출력됩니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span>
 </pre></div>
 
 <p>위 방향 화살표 키를 다시 입력하면 클래스 정의 마지막 라인이 출력됩니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">}</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">}</span>
 </pre></div>
 
 <p>아래 방향 화살표 키를 누르면 &ldquo;<strong>/list</strong>&rdquo; 명령을 반환합니다. 엔터 키를 누르면 &ldquo;<strong>/list</strong>&rdquo; 명령이 실행됩니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span>
 
-   <span style="color: #ae81ff">1</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">C</span> <span style="color: #f92672">{</span>
-         <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">;</span>
-       <span style="color: #f92672">}</span>
+   <span style="color: #ae81ff">1</span> <span style="color: #f8f8f2">:</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">C</span> <span style="color: #f8f8f2">{</span>
+         <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x;</span>
+       <span style="color: #f8f8f2">}</span>
 </pre></div>
 
 <p><strong>Ctrl+위 화살표 방향키</strong>는 이전 스니펫으로 이동합니다.  스니펫이 한 줄이라면 <strong>Ctrl+위 화살표 방향키</strong><sup class="footnote-ref" id="fnref:4"><a rel="footnote" href="#fn:4">4</a></sup>는 <strong>위 화살표 방향키</strong> 와 결과가 같습니다. 클래스 C와 같이 여러 줄로 구성된 스니펫에서 <strong>Ctrl+위 화살표 방향키</strong>는 해당 스니펫의 첫 번째 행으로 이동합니다. 그 사이에 행은 건너 뜁니다.</p>
@@ -846,12 +846,12 @@ jshell&gt; /open definitions.jsh
 <p>히스토리 검색은  JShell의 기능으로, 이 기능을 통해서 한 번에 한 줄씩 히스토리를 이동하지 않고도 원하는 줄을 쉽게 찾을 수 있습니다.</p>
 
 <p>검색을 시작하려면 <strong>Ctrl-R</strong>을 누릅니다. 프롬프트에서 검색 문자열을 입력합니다. 검색은 가장 최근 항목에서 뒤쪽으로 이동하며 처리됩니다. 검색은 JShell의 이전 세션을 포함합니다. 다음 예제는 <strong>Ctrl-R</strong>을 누른 후에 표시되는 프롬프트를 보여줍니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Ctrl</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">R</span><span style="color: #f92672">&gt;</span>
-<span style="color: #f92672">((</span><span style="color: #f8f8f2">reverse</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">i</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">search</span><span style="color: #f92672">)</span><span style="color: #960050; background-color: #1e0010">`&#39;</span><span style="color: #f92672">:</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Ctrl</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">R</span><span style="color: #f92672">&gt;</span>
+<span style="color: #f8f8f2">((reverse</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">i</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">search)</span><span style="color: #960050; background-color: #1e0010">`&#39;</span><span style="color: #f8f8f2">:</span>
 </pre></div>
 
 <p>히스토리 탐색의 예제에서, <strong>class</strong>를 입력하면 텍스트 &ldquo;class&rdquo;를 포함하는 가장 최근 입력 행을 출력합니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">(</span><span style="color: #f8f8f2">reverse</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">i</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">search</span><span style="color: #f92672">)</span><span style="color: #960050; background-color: #1e0010">`</span><span style="color: #f8f8f2">class</span><span style="color: #960050; background-color: #1e0010">&#39;</span><span style="color: #f92672">:</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">C</span> <span style="color: #f92672">{</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">(reverse</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">i</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">search)</span><span style="color: #960050; background-color: #1e0010">`</span><span style="color: #f8f8f2">class</span><span style="color: #960050; background-color: #1e0010">&#39;</span><span style="color: #f8f8f2">:</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">C</span> <span style="color: #f8f8f2">{</span>
 </pre></div>
 
 <p>검색은 점증적으로 처리됩니다. 첫 번째 문자 &ldquo;c&rdquo;로 검색하고 예제와 같이 결과를 출력합니다. <strong>Ctrl+R</strong>를 반복적으로 입력해서 히스토리의 이전 결과를 검색할 수 있습니다. <strong>Ctrl+S</strong>는 현재 위치에서 앞 방향으로 검색을 계속합니다.</p>
@@ -901,7 +901,7 @@ jshell&gt; /open definitions.jsh
 <p>JShell 코드 편집에 외부 편집기를 사용할 수도 있습니다. 이 편집기는 스니펫 편집 및 생성에 사용됩니다. 특히 여러 줄로 작성된 스니펫 작업에 유용합니다. 여러분이 선호하는 편집기를 JShell에 지정할 수 있습니다.</p>
 
 <p>기존에 만들어진 모든 스니펫을 편집기에서 한 번에 편집할 경우, 별도 옵션 없이 <strong>/edit</strong> 명령을 사용합니다. 편집기에서 특정 스니펫을 지정하여 편집할 경우, <strong>/edit</strong> 명령에 스니펫 이름 혹은 ID를 추가하여 실행합니다. <strong>/list</strong> 명령을 사용 스니펫 ID를 얻을수 있습니다. 다음 예제를 실행하면 편집기를 열고, 앞에서 정의한 volume 스니펫 코드가 편집기에 출력됩니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">edit</span> <span style="color: #f8f8f2">volume</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">edit</span> <span style="color: #f8f8f2">volume</span>
 </pre></div>
 
 <p>편집기에서 새로운 스니펫을 작성할 수 있습니다. 편집기를 저장하면, 변경되거나 새로 작성된 스니펫은 JShell 세션에 입력됩니다. 이때 스니펫 입력에 대한 피드백은 JShell 윈도우에서 확인할 수 있습니다. 그러나 현재 JShell 윈도우에는 프롬프트가 없는 상태입니다. 편집기를 종료한 이후에는 JShell 윈도우에 명령이나 스니펫을 다시 입력할 수 있습니다.</p>
@@ -929,18 +929,18 @@ jshell&gt; /open definitions.jsh
 </blockquote>
 
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">set</span> <span style="color: #f8f8f2">editor</span> <span style="color: #f8f8f2">kwrite</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">Editor</span> <span style="color: #f8f8f2">set</span> <span style="color: #f8f8f2">to</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">kwrite</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">set</span> <span style="color: #f8f8f2">editor</span> <span style="color: #f8f8f2">kwrite</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">Editor</span> <span style="color: #f8f8f2">set</span> <span style="color: #f8f8f2">to:</span> <span style="color: #f8f8f2">kwrite</span>
 
 <span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">edit</span>
 </pre></div>
 
 <p>외부 편집기 윈도우에 x 변수를 정의한 다음에, 외부 편집기에 변경을 저장하면, JShell 윈도우에 다음과 메시지가 출력됩니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">x</span> <span style="color: #f8f8f2">of</span> <span style="color: #f8f8f2">type</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">with</span> <span style="color: #f8f8f2">initial</span> <span style="color: #f8f8f2">value</span> <span style="color: #ae81ff">6</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">x</span> <span style="color: #f8f8f2">of</span> <span style="color: #f8f8f2">type</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">with</span> <span style="color: #f8f8f2">initial</span> <span style="color: #f8f8f2">value</span> <span style="color: #ae81ff">6</span>
 </pre></div>
 
 <p>외부 편집기를 종료하면 JShell 윈도우에 프롬프트가 다시 나타납니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span>
 </pre></div>
 
 <h2 id="5-외부-코드">5. 외부 코드</h2>
@@ -967,12 +967,12 @@ jshell&gt; /open definitions.jsh
 </code></pre>
 
 <p>접근해야 하는 패키지를 포함하는 디렉터리 혹은 JAR 파일을 클래스 패스로 지정합니다. 코드는 클래스 파일로 컴파일되어 있어야 합니다. 이름이 없는 패키지로 표현되는 디폴트 패키지에 코드는 JShell에서는 접근할 수 없습니다. 클래스 패스를 설정한 상태라면, 이 패스에 포함된 패키지들은 세션에서 임포트 가능합니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">my.cool.code.*</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">my.cool.code.*</span>
 </pre></div>
 
 <p>다음 예제와 같이 JShell 세션 아래에서 <strong>/env</strong> 명령을 사용하여 클래스 패스를 설정할 수 있습니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">env</span> <span style="color: #f92672">--</span><span style="color: #f8f8f2">class</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">path</span> <span style="color: #f8f8f2">myOwnClassPath</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">Setting</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">options</span> <span style="color: #f8f8f2">and</span> <span style="color: #f8f8f2">restoring</span> <span style="color: #f8f8f2">state</span><span style="color: #f92672">.</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">env</span> <span style="color: #f92672">--</span><span style="color: #f8f8f2">class</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">path</span> <span style="color: #f8f8f2">myOwnClassPath</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">Setting</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">options</span> <span style="color: #f8f8f2">and</span> <span style="color: #f8f8f2">restoring</span> <span style="color: #f8f8f2">state.</span>
 </pre></div>
 
 <p><strong>/env</strong> 명령은 실행 상태를 재설정하고, 명령으로 입력 한 새로운 클래스 패스 혹은 환경 설정으로 현재 코드 스니펫을 모두 다시 로드합니다.</p>
@@ -987,14 +987,14 @@ jshell&gt; /open definitions.jsh
 </code></pre>
 
 <p>현재 환경 설정은 옵션 없이 <strong>/env</strong> 명령을 사용하여 확인할 수 있습니다. 다음은 클래스 패스가 설정된 상황에서, 클래스 패스 정보를 출력하는 <strong>/env</strong> 명령의 사용 예제입니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">env</span>
-<span style="color: #f92672">|</span>     <span style="color: #f92672">--</span><span style="color: #f8f8f2">add</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">modules</span> <span style="color: #f8f8f2">my</span><span style="color: #f92672">.</span><span style="color: #a6e22e">module</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">env</span>
+<span style="color: #f92672">|</span>     <span style="color: #f92672">--</span><span style="color: #f8f8f2">add</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">modules</span> <span style="color: #f8f8f2">my.</span><span style="color: #a6e22e">module</span>
 <span style="color: #f92672">|</span>     <span style="color: #f92672">--</span><span style="color: #f8f8f2">module</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">path</span> <span style="color: #f8f8f2">myOwnModulePath</span>
 <span style="color: #f92672">|</span>     <span style="color: #f92672">--</span><span style="color: #f8f8f2">class</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">path</span> <span style="color: #f8f8f2">myOwnClassPath</span>
 </pre></div>
 
 <p>옵션에 대한 자세한 내용을 보려면 다음 명령으로부터 확인할 수 있습니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">help</span> <span style="color: #f8f8f2">context</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">help</span> <span style="color: #f8f8f2">context</span>
 </pre></div>
 
 <h2 id="6-피그백-모드">6. 피그백 모드</h2>
@@ -1363,15 +1363,15 @@ jshell&gt; /set mode mine -delete -retain
 
 
 <p>시작 스크립트를 설정하는 용도로 <strong>/set start</strong> 명령을 사용합니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">set</span> <span style="color: #f8f8f2">start</span> <span style="color: #f8f8f2">mystartup</span><span style="color: #f92672">.</span><span style="color: #a6e22e">jsh</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">set</span> <span style="color: #f8f8f2">start</span> <span style="color: #f8f8f2">mystartup.</span><span style="color: #a6e22e">jsh</span>
 
 <span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">reset</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">Resetting</span> <span style="color: #f8f8f2">state</span><span style="color: #f92672">.</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">Resetting</span> <span style="color: #f8f8f2">state.</span>
 </pre></div>
 
 <p>모든 <strong>/set</strong> 명령과 마찬가지로, <strong>-retain</strong> 옵션을 사용하지 않으면 <strong>/set start</strong> 명령은 현재 세션에서만 유효합니다.
 일반적으로 <strong>-retain</strong> 옵션은 시작 스크립트 설정을 테스트할 때에는 사용하지 않습니다. 원하는 설정을 찾았을 경우, <strong>-retain</strong> 옵션을 이용하여 이 설정을 보존합니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">set</span> <span style="color: #f8f8f2">start</span> <span style="color: #f92672">-</span><span style="color: #f8f8f2">retain</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">set</span> <span style="color: #f8f8f2">start</span> <span style="color: #f92672">-</span><span style="color: #f8f8f2">retain</span>
 </pre></div>
 
 <p>시작 스크립트는 JShell이 시작할 때마다 실헹됩니다.</p>
@@ -1387,16 +1387,16 @@ jshell&gt; /set mode mine -delete -retain
 </code></pre>
 
 <p>System.out을 사용할 필요 없이 print 메서드를 사용할 수 있다면 매우 편리합니다. 사전정의 PRINTING 스크립트를 사용하면 <strong>print</strong>, <strong>println</strong> 및 <strong>printf</strong> 메서드를 바로 사용할 수 있습니다. <strong>/set start</strong> 명령을 사용하여 두 개 이상의 시작 스크립트를 지정할 수 있습니다. 다음 예제는 기본 import 문(DEFAULT)과 print 메소드 정의(PRINTING) 모두를 로드하는 시작 설정입니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">set</span> <span style="color: #f8f8f2">start</span> <span style="color: #f92672">-</span><span style="color: #f8f8f2">retain</span> <span style="color: #f8f8f2">DEFAULT</span> <span style="color: #f8f8f2">PRINTING</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">set</span> <span style="color: #f8f8f2">start</span> <span style="color: #f92672">-</span><span style="color: #f8f8f2">retain</span> <span style="color: #f8f8f2">DEFAULT</span> <span style="color: #f8f8f2">PRINTING</span>
 
 <span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">exit</span>
 <span style="color: #f92672">|</span>  <span style="color: #f8f8f2">Goodbye</span>
 
 <span style="color: #f92672">%</span> <span style="color: #f8f8f2">jshell</span>
 <span style="color: #f92672">|</span>  <span style="color: #f8f8f2">Welcome</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">JShell</span> <span style="color: #f92672">--</span> <span style="color: #f8f8f2">Version</span> <span style="color: #ae81ff">9</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">For</span> <span style="color: #f8f8f2">an</span> <span style="color: #f8f8f2">introduction</span> <span style="color: #f8f8f2">type</span><span style="color: #f92672">:</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">help</span> <span style="color: #f8f8f2">intro</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">For</span> <span style="color: #f8f8f2">an</span> <span style="color: #f8f8f2">introduction</span> <span style="color: #f8f8f2">type:</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">help</span> <span style="color: #f8f8f2">intro</span>
 
-<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">println</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;Hello World!&quot;</span><span style="color: #f92672">)</span>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">println</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Hello World!&quot;</span><span style="color: #f8f8f2">)</span>
 <span style="color: #f8f8f2">Hello</span> <span style="color: #f8f8f2">World</span><span style="color: #f92672">!</span>
 </pre></div>
 
@@ -1416,11 +1416,11 @@ jshell&gt; /set mode mine -delete -retain
 
 <p>스크립트는 외부 편집기를 이용하여 생성할 수 있습니다. 또한 스크립트는 JShell에 입력 한 항목으로부터 생성할 수도 있습니다.
 다음 명령 중 하나를 사용하여 JShell 세션의 항목을 이용하여 스크립트를 만듭니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">save</span> <span style="color: #f8f8f2">mysnippets</span><span style="color: #f92672">.</span><span style="color: #a6e22e">jsh</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">save</span> <span style="color: #f8f8f2">mysnippets.</span><span style="color: #a6e22e">jsh</span>
 
-<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">save</span> <span style="color: #f92672">-</span><span style="color: #f8f8f2">history</span> <span style="color: #f8f8f2">myhistory</span><span style="color: #f92672">.</span><span style="color: #a6e22e">jsh</span>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">save</span> <span style="color: #f92672">-</span><span style="color: #f8f8f2">history</span> <span style="color: #f8f8f2">myhistory.</span><span style="color: #a6e22e">jsh</span>
 
-<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">save</span> <span style="color: #f92672">-</span><span style="color: #f8f8f2">start</span> <span style="color: #f8f8f2">mystartup</span><span style="color: #f92672">.</span><span style="color: #a6e22e">jsh</span>
+<span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">save</span> <span style="color: #f92672">-</span><span style="color: #f8f8f2">start</span> <span style="color: #f8f8f2">mystartup.</span><span style="color: #a6e22e">jsh</span>
 </pre></div>
 
 <p>위 예제의 첫 번째 명령은 현재 활성 상태의 스니펫을 <strong>mysnippets.jsh</strong>에 저장합니다. 두 번째 명령은 <strong>myhistory.jsh</strong>에 히스토리에 기록된 모든 스니펫과 명령을 저장합니다. 스크립트에 저장된 스니펫은 현재 유효한 스니펫과 유효하지 않은 스니펫 모두를 포함합니다. 마지막 명령은 현재 시작 스크립트를 <strong>mystartup.jsh</strong>에 저장합니다. 명령에 사용된 파일명은 유효한 파일 경로 및 이름이어야 합니다.</p>
@@ -1433,7 +1433,7 @@ jshell&gt; /set mode mine -delete -retain
 </code></pre>
 
 <p>JShell 세션 내에 <strong>/open</strong> 명령을 사용하여 스크립트를 로드 할 수도 있습니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">open</span> <span style="color: #f8f8f2">PRINTING</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">open</span> <span style="color: #f8f8f2">PRINTING</span>
 </pre></div>
 <div class="footnotes">
 
@@ -1637,6 +1637,10 @@ jshell&gt; /set mode mine -delete -retain
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci-vs-aws/" title="오라클 클라우드와 AWS의 주요 서비스 이름 매핑">
+							오라클 클라우드와 AWS의 주요 서비스 이름 매핑</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oci_official_icon_png_202104/" title="오라클 클라우드 서비스 공식 로고 이미지 모음: 2021.04">
 							오라클 클라우드 서비스 공식 로고 이미지 모음: 2021.04</a>
 		  </li>
@@ -1671,10 +1675,6 @@ jshell&gt; /set mode mine -delete -retain
 			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oci_adb_tutorial_01_provisioning/" title="OCI ADB 튜토리얼-01.프로비저닝">
 							OCI ADB 튜토리얼-01.프로비저닝</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/cloud/oci_basic_config/" title="OCI Tenancy 기본 환경 설정">
-							OCI Tenancy 기본 환경 설정</a>
 		  </li>
 		</ul>
 	</div>

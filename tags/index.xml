@@ -183,6 +183,15 @@
     </item>
     
     <item>
+      <title>Aws</title>
+      <link>http://taewan.kim/tags/aws/</link>
+      <pubDate>Mon, 08 Nov 2021 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Axis</title>
       <link>http://taewan.kim/tags/axis/</link>
       <pubDate>Sun, 17 Sep 2017 21:28:14 +0900</pubDate>
@@ -1553,7 +1562,7 @@
     <item>
       <title>Oci</title>
       <link>http://taewan.kim/tags/oci/</link>
-      <pubDate>Thu, 14 Oct 2021 01:01:25 +0900</pubDate>
+      <pubDate>Mon, 08 Nov 2021 01:01:25 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/oci/</guid>
       <description></description>
@@ -1661,7 +1670,7 @@
     <item>
       <title>Oracle Cloud</title>
       <link>http://taewan.kim/tags/oracle-cloud/</link>
-      <pubDate>Thu, 14 Oct 2021 01:01:25 +0900</pubDate>
+      <pubDate>Mon, 08 Nov 2021 01:01:25 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/oracle-cloud/</guid>
       <description></description>
@@ -2861,6 +2870,15 @@
       <pubDate>Thu, 15 Nov 2018 09:28:14 +0900</pubDate>
       
       <guid>http://taewan.kim/tags/%EC%84%9C%EB%B8%8C%EC%8A%A4%ED%81%AC%EB%A6%BD%EC%85%98/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>서비스명</title>
+      <link>http://taewan.kim/tags/%EC%84%9C%EB%B9%84%EC%8A%A4%EB%AA%85/</link>
+      <pubDate>Mon, 08 Nov 2021 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/tags/%EC%84%9C%EB%B9%84%EC%8A%A4%EB%AA%85/</guid>
       <description></description>
     </item>
     

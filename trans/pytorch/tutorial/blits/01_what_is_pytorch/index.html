@@ -146,15 +146,15 @@
 <h3 id="tensors">Tensors</h3>
 
 <p>Tensors는 NumPy의 ndarrays와 유사하며, 차별점은 Tensors는 연산을 가속하는 GPU에서 사용될 수 있다는 점입니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">from</span> <span style="color: #f8f8f2">__future__</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">print_function</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f92672">from</span> <span style="color: #f8f8f2">__future__</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">print_function</span>
 <span style="color: #f92672">import</span> <span style="color: #f8f8f2">torch</span>
 </pre></div>
 
 <ul>
 <li>초기화되지 않은 5X3 매트릭스 생성</li>
 </ul>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">Tensor(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">)</span>
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(x)</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">Tensor(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">print(x)</span>
 </pre></div>
 
 <blockquote>
@@ -172,8 +172,8 @@
 <ul>
 <li>임의로 초기화된 행렬 생성</li>
 </ul>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">rand(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">)</span>
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(x)</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">rand(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">print(x)</span>
 </pre></div>
 
 <blockquote>
@@ -191,7 +191,7 @@
 <ul>
 <li>Tensors 사이즈 확인</li>
 </ul>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(x</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size())</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">print(x</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size())</span>
 </pre></div>
 
 <blockquote>
@@ -212,9 +212,9 @@
 <ul>
 <li>더하기 연산: 문법 1</li>
 </ul>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">rand(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">)</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">rand(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">)</span>
 <span style="color: #f8f8f2">y</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">rand(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">)</span>
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(x</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">y)</span>
+<span style="color: #f8f8f2">print(x</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">y)</span>
 </pre></div>
 
 <blockquote>
@@ -232,7 +232,7 @@
 <ul>
 <li>더하기 연산: 문법 2</li>
 </ul>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add(x,</span> <span style="color: #f8f8f2">y))</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">print(torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add(x,</span> <span style="color: #f8f8f2">y))</span>
 </pre></div>
 
 <blockquote>
@@ -250,9 +250,9 @@
 <ul>
 <li>더하기 연산: 전달 인자로 출력 텐서 전달</li>
 </ul>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">result</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">Tensor(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">)</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">result</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">Tensor(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">)</span>
 <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add(x,</span> <span style="color: #f8f8f2">y,</span> <span style="color: #f8f8f2">out</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">result)</span>
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(result)</span>
+<span style="color: #f8f8f2">print(result)</span>
 </pre></div>
 
 <blockquote>
@@ -270,9 +270,9 @@
 <ul>
 <li>더하기 연산: 객체 메서드(in-place)</li>
 </ul>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e"># x를 y에 더함</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #75715e"># x를 y에 더함</span>
 <span style="color: #f8f8f2">y</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add_(x)</span>
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(y)</span>
+<span style="color: #f8f8f2">print(y)</span>
 </pre></div>
 
 <blockquote>
@@ -292,7 +292,7 @@
 
 
 <p>NumPy와 같은 방식의 인덱싱 표기법을 사용할 수 있습니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(x[:,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">])</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">print(x[:,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">])</span>
 </pre></div>
 
 <blockquote>
@@ -310,10 +310,10 @@
 <ul>
 <li>크기 조정: torch.view를 사용하여 텐서의 사이즈를 변경하거나 Shape을 변경할 수 있습니다.</li>
 </ul>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">randn(</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">)</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">x</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">randn(</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">)</span>
 <span style="color: #f8f8f2">y</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">view(</span><span style="color: #ae81ff">16</span><span style="color: #f8f8f2">)</span>
 <span style="color: #f8f8f2">z</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">view(</span><span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">8</span><span style="color: #f8f8f2">)</span>  <span style="color: #75715e"># 사이즈가 -1로 설정되면 다른 차원으로 부터 해당 값을 유추</span>
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(x</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size(),</span> <span style="color: #f8f8f2">y</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size(),</span> <span style="color: #f8f8f2">z</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size())</span>
+<span style="color: #f8f8f2">print(x</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size(),</span> <span style="color: #f8f8f2">y</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size(),</span> <span style="color: #f8f8f2">z</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size())</span>
 </pre></div>
 
 <blockquote>
@@ -334,8 +334,8 @@
 <p>Torch Tensor를 NumPy 배열로 변환하거나 그 반대로 변환하기는 쉽습니다.</p>
 
 <h3 id="torch의-tensor를-numpy-배열-변환">Torch의 Tensor를 NumPy 배열 변환</h3>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">a</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">ones(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">)</span>
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(a)</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">a</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">ones(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">print(a)</span>
 </pre></div>
 
 <blockquote>
@@ -349,8 +349,8 @@
 [torch.FloatTensor of size 5]
 </code></pre>
 </blockquote>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">b</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">a</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">numpy()</span>
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(b)</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">b</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">a</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">numpy()</span>
+<span style="color: #f8f8f2">print(b)</span>
 </pre></div>
 
 <blockquote>
@@ -361,9 +361,9 @@
 </blockquote>
 
 <p>숫자로 NumPy 배열을 변경하는 방법은 다음과 같습니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">a</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add_(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span>
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(a)</span>
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(b)</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">a</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add_(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">print(a)</span>
+<span style="color: #f8f8f2">print(b)</span>
 </pre></div>
 
 <blockquote>
@@ -381,12 +381,12 @@
 </blockquote>
 
 <h3 id="numpy-배열을-torch-텐서로-변환">NumPy 배열을 Torch 텐서로 변환</h3>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">import</span> <span style="color: #f8f8f2">numpy</span> <span style="color: #f92672">as</span> <span style="color: #f8f8f2">np</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f92672">import</span> <span style="color: #f8f8f2">numpy</span> <span style="color: #66d9ef">as</span> <span style="color: #f8f8f2">np</span>
 <span style="color: #f8f8f2">a</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">np</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">ones(</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">)</span>
 <span style="color: #f8f8f2">b</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">torch</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">from_numpy(a)</span>
 <span style="color: #f8f8f2">np</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add(a,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">out</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">a)</span>
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(a)</span>
-<span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(b)</span>
+<span style="color: #f8f8f2">print(a)</span>
+<span style="color: #f8f8f2">print(b)</span>
 </pre></div>
 
 <blockquote>
@@ -536,6 +536,10 @@ if torch.cuda.is_available():
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci-vs-aws/" title="오라클 클라우드와 AWS의 주요 서비스 이름 매핑">
+							오라클 클라우드와 AWS의 주요 서비스 이름 매핑</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oci_official_icon_png_202104/" title="오라클 클라우드 서비스 공식 로고 이미지 모음: 2021.04">
 							오라클 클라우드 서비스 공식 로고 이미지 모음: 2021.04</a>
 		  </li>
@@ -570,10 +574,6 @@ if torch.cuda.is_available():
 			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oci_adb_tutorial_01_provisioning/" title="OCI ADB 튜토리얼-01.프로비저닝">
 							OCI ADB 튜토리얼-01.프로비저닝</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/cloud/oci_basic_config/" title="OCI Tenancy 기본 환경 설정">
-							OCI Tenancy 기본 환경 설정</a>
 		  </li>
 		</ul>
 	</div>

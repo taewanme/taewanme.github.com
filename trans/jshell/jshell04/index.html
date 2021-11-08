@@ -254,33 +254,33 @@
 <p>이전애 입력한 것을 다시 입력하거나 수정하려면, 위 혹은 아래 화살표 방향키, 왼쪽 및 오른쪽 화살표 방향키를 사용하여 기록을 탐색한 후 커서가 위치한 곳에 텍스트를 입력합니다. 텍스트를 삭제해야 할 경우 <strong>Delete</strong> 키를 사용합니다. <strong>Enter</strong> 키를 눌러 히스토리 행을 재입력합니다.</p>
 
 <p>다음 예제에서, 위쪽 및 아래쪽 화살표 키는 한 번에 한 줄씩 히스토리를 앞뒤로 이동합니다</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">C</span> <span style="color: #f92672">{</span>
-   <span style="color: #f92672">...&gt;</span>    <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">;</span>
-   <span style="color: #f92672">...&gt;</span> <span style="color: #f92672">}</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">C</span> <span style="color: #f8f8f2">{</span>
+   <span style="color: #f8f8f2">...</span><span style="color: #f92672">&gt;</span>    <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x;</span>
+   <span style="color: #f8f8f2">...</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">}</span>
 <span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #66d9ef">class</span>
 <span style="color: #a6e22e">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span>
 
-   <span style="color: #ae81ff">1</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">C</span>
-         <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">;</span>
-       <span style="color: #f92672">}</span>
+   <span style="color: #ae81ff">1</span> <span style="color: #f8f8f2">:</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">C</span>
+         <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x;</span>
+       <span style="color: #f8f8f2">}</span>
 
 <span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">up</span> <span style="color: #f8f8f2">arrow</span><span style="color: #f92672">&gt;</span>
 </pre></div>
 
 <p>위 화살표 방향키를 입력하면 다음과 같이 <strong>/list</strong> 명령이 출력됩니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span>
 </pre></div>
 
 <p>위 방향 화살표 키를 다시 입력하면 클래스 정의 마지막 라인이 출력됩니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">}</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">}</span>
 </pre></div>
 
 <p>아래 방향 화살표 키를 누르면 &ldquo;<strong>/list</strong>&rdquo; 명령을 반환합니다. 엔터 키를 누르면 &ldquo;<strong>/list</strong>&rdquo; 명령이 실행됩니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">list</span>
 
-   <span style="color: #ae81ff">1</span> <span style="color: #f92672">:</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">C</span> <span style="color: #f92672">{</span>
-         <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">;</span>
-       <span style="color: #f92672">}</span>
+   <span style="color: #ae81ff">1</span> <span style="color: #f8f8f2">:</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">C</span> <span style="color: #f8f8f2">{</span>
+         <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">x;</span>
+       <span style="color: #f8f8f2">}</span>
 </pre></div>
 
 <p><strong>Ctrl+위 화살표 방향키</strong>는 이전 스니펫으로 이동합니다.  스니펫이 한 줄이라면 <strong>Ctrl+위 화살표 방향키</strong><sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup>는 <strong>위 화살표 방향키</strong> 와 결과가 같습니다. 클래스 C와 같이 여러 줄로 구성된 스니펫에서 <strong>Ctrl+위 화살표 방향키</strong>는 해당 스니펫의 첫 번째 행으로 이동합니다. 그 사이에 행은 건너 뜁니다.</p>
@@ -344,12 +344,12 @@
 <p>히스토리 검색은  JShell의 기능으로, 이 기능을 통해서 한 번에 한 줄씩 히스토리를 이동하지 않고도 원하는 줄을 쉽게 찾을 수 있습니다.</p>
 
 <p>검색을 시작하려면 <strong>Ctrl-R</strong>을 누릅니다. 프롬프트에서 검색 문자열을 입력합니다. 검색은 가장 최근 항목에서 뒤쪽으로 이동하며 처리됩니다. 검색은 JShell의 이전 세션을 포함합니다. 다음 예제는 <strong>Ctrl-R</strong>을 누른 후에 표시되는 프롬프트를 보여줍니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Ctrl</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">R</span><span style="color: #f92672">&gt;</span>
-<span style="color: #f92672">((</span><span style="color: #f8f8f2">reverse</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">i</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">search</span><span style="color: #f92672">)</span><span style="color: #960050; background-color: #1e0010">`&#39;</span><span style="color: #f92672">:</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Ctrl</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">R</span><span style="color: #f92672">&gt;</span>
+<span style="color: #f8f8f2">((reverse</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">i</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">search)</span><span style="color: #960050; background-color: #1e0010">`&#39;</span><span style="color: #f8f8f2">:</span>
 </pre></div>
 
 <p>히스토리 탐색의 예제에서, <strong>class</strong>를 입력하면 텍스트 &ldquo;class&rdquo;를 포함하는 가장 최근 입력 행을 출력합니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">(</span><span style="color: #f8f8f2">reverse</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">i</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">search</span><span style="color: #f92672">)</span><span style="color: #960050; background-color: #1e0010">`</span><span style="color: #f8f8f2">class</span><span style="color: #960050; background-color: #1e0010">&#39;</span><span style="color: #f92672">:</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">C</span> <span style="color: #f92672">{</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">(reverse</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">i</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">search)</span><span style="color: #960050; background-color: #1e0010">`</span><span style="color: #f8f8f2">class</span><span style="color: #960050; background-color: #1e0010">&#39;</span><span style="color: #f8f8f2">:</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">C</span> <span style="color: #f8f8f2">{</span>
 </pre></div>
 
 <p>검색은 점증적으로 처리됩니다. 첫 번째 문자 &ldquo;c&rdquo;로 검색하고 예제와 같이 결과를 출력합니다. <strong>Ctrl+R</strong>를 반복적으로 입력해서 히스토리의 이전 결과를 검색할 수 있습니다. <strong>Ctrl+S</strong>는 현재 위치에서 앞 방향으로 검색을 계속합니다.</p>
@@ -399,7 +399,7 @@
 <p>JShell 코드 편집에 외부 편집기를 사용할 수도 있습니다. 이 편집기는 스니펫 편집 및 생성에 사용됩니다. 특히 여러 줄로 작성된 스니펫 작업에 유용합니다. 여러분이 선호하는 편집기를 JShell에 지정할 수 있습니다.</p>
 
 <p>기존에 만들어진 모든 스니펫을 편집기에서 한 번에 편집할 경우, 별도 옵션 없이 <strong>/edit</strong> 명령을 사용합니다. 편집기에서 특정 스니펫을 지정하여 편집할 경우, <strong>/edit</strong> 명령에 스니펫 이름 혹은 ID를 추가하여 실행합니다. <strong>/list</strong> 명령을 사용 스니펫 ID를 얻을수 있습니다. 다음 예제를 실행하면 편집기를 열고, 앞에서 정의한 volume 스니펫 코드가 편집기에 출력됩니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">edit</span> <span style="color: #f8f8f2">volume</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">edit</span> <span style="color: #f8f8f2">volume</span>
 </pre></div>
 
 <p>편집기에서 새로운 스니펫을 작성할 수 있습니다. 편집기를 저장하면, 변경되거나 새로 작성된 스니펫은 JShell 세션에 입력됩니다. 이때 스니펫 입력에 대한 피드백은 JShell 윈도우에서 확인할 수 있습니다. 그러나 현재 JShell 윈도우에는 프롬프트가 없는 상태입니다. 편집기를 종료한 이후에는 JShell 윈도우에 명령이나 스니펫을 다시 입력할 수 있습니다.</p>
@@ -427,18 +427,18 @@
 </blockquote>
 
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">set</span> <span style="color: #f8f8f2">editor</span> <span style="color: #f8f8f2">kwrite</span>
-<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">Editor</span> <span style="color: #f8f8f2">set</span> <span style="color: #f8f8f2">to</span><span style="color: #f92672">:</span> <span style="color: #f8f8f2">kwrite</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">set</span> <span style="color: #f8f8f2">editor</span> <span style="color: #f8f8f2">kwrite</span>
+<span style="color: #f92672">|</span>  <span style="color: #f8f8f2">Editor</span> <span style="color: #f8f8f2">set</span> <span style="color: #f8f8f2">to:</span> <span style="color: #f8f8f2">kwrite</span>
 
 <span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">/</span><span style="color: #f8f8f2">edit</span>
 </pre></div>
 
 <p>외부 편집기 윈도우에 x 변수를 정의한 다음에, 외부 편집기에 변경을 저장하면, JShell 윈도우에 다음과 메시지가 출력됩니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">x</span> <span style="color: #f8f8f2">of</span> <span style="color: #f8f8f2">type</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">with</span> <span style="color: #f8f8f2">initial</span> <span style="color: #f8f8f2">value</span> <span style="color: #ae81ff">6</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f92672">|</span>  <span style="color: #f8f8f2">created</span> <span style="color: #f8f8f2">variable</span> <span style="color: #f8f8f2">x</span> <span style="color: #f8f8f2">of</span> <span style="color: #f8f8f2">type</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">with</span> <span style="color: #f8f8f2">initial</span> <span style="color: #f8f8f2">value</span> <span style="color: #ae81ff">6</span>
 </pre></div>
 
 <p>외부 편집기를 종료하면 JShell 윈도우에 프롬프트가 다시 나타납니다.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%;"><span></span><span style="color: #f8f8f2">jshell</span><span style="color: #f92672">&gt;</span>
 </pre></div>
 <div class="footnotes">
 
@@ -569,6 +569,10 @@
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
+				<a class="widget__link" href="/cloud/oci-vs-aws/" title="오라클 클라우드와 AWS의 주요 서비스 이름 매핑">
+							오라클 클라우드와 AWS의 주요 서비스 이름 매핑</a>
+		  </li>
+			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oci_official_icon_png_202104/" title="오라클 클라우드 서비스 공식 로고 이미지 모음: 2021.04">
 							오라클 클라우드 서비스 공식 로고 이미지 모음: 2021.04</a>
 		  </li>
@@ -603,10 +607,6 @@
 			<li class="widget__item">
 				<a class="widget__link" href="/cloud/oci_adb_tutorial_01_provisioning/" title="OCI ADB 튜토리얼-01.프로비저닝">
 							OCI ADB 튜토리얼-01.프로비저닝</a>
-		  </li>
-			<li class="widget__item">
-				<a class="widget__link" href="/cloud/oci_basic_config/" title="OCI Tenancy 기본 환경 설정">
-							OCI Tenancy 기본 환경 설정</a>
 		  </li>
 		</ul>
 	</div>
