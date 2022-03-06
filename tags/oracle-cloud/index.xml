@@ -6,10 +6,20 @@
     <description>Recent content in Oracle Cloud on taewan.kim 블로그</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Nov 2021 01:01:25 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 22 Feb 2022 01:01:25 +0900</lastBuildDate>
     
 	<atom:link href="http://taewan.kim/tags/oracle-cloud/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>오라클 클라우드 서비스와 서비스 아이콘 정리: 2022.02</title>
+      <link>http://taewan.kim/cloud/oci_official_icon_png_20220222/</link>
+      <pubDate>Tue, 22 Feb 2022 01:01:25 +0900</pubDate>
+      
+      <guid>http://taewan.kim/cloud/oci_official_icon_png_20220222/</guid>
+      <description>2022년 2월 오라클이 배포한 OCI(Oracle Cloud Infrastructure, 오라클 킄라우드) 서비스 로고 아이콘 이미지를 정리했습니다. 이 페이지에서 사용하는 OCI 서비스 아이콘은 2022년 2월 현재 배포된 OCI 서비스 공식 로고 이미지의 최신 버전입니다. OCI 서비스 공식 아이콘 이미지에 대하여 서비스 이름 맵핑, 간단한 서비스/기술 설명, 관련 서비스 페이지 링크 및 메뉴얼 페이지 정보를 정리힙니다. 일관된 문서화와 정확한 정보 전달을 위하여 이 로고를 사용하여 문서화하고 컨텐츠를 제작할 계획입니다.
+관련 자료는 다음 링크로 다운로드 받으실 수 있습니다.</description>
+    </item>
     
     <item>
       <title>오라클 클라우드와 AWS의 주요 서비스 이름 매핑</title>
@@ -334,17 +344,6 @@ Terminology: 용어 정리 본 문서에서는 다음과 같은 용어를 사용
 MySQL CS는 MySQL Enterprise Edition 라이센스를 기반으로하는 PaaS 서비스 입니다.
 MySQL CS가 제공하는 엔터프라이즈 지원 기능은 다음과 같습니다.
  데이터베이스 관리 체계(백업, 패치, 모니터링) MySQL 전문 관리 도구  MySQL Query Analyzer MySQL Enterprise Monitor  셀프 프로비저닝 탄력적인 확장성(Elastic scalability) 다중계층 보안(Multi-layer security)  MySQL CS의 특징 Oracle MySQL CS는 라이센스, 보안, 성능, 안전성, 관리 효율성, 백업과 복구 측면에서 다음과 같은 특징을 제공합니다.</description>
-    </item>
-    
-    <item>
-      <title>오라클 클라우드 서비스 목록과 서비스 로고 정리: 2022.02</title>
-      <link>http://taewan.kim/cloud/oci_official_icon_png_20220222/</link>
-      <pubDate>Tue, 22 Feb 2000 01:01:25 +0900</pubDate>
-      
-      <guid>http://taewan.kim/cloud/oci_official_icon_png_20220222/</guid>
-      <description>2022년 2월 오라클에서 배포한 OCI(Oracle Cloud Infrastructure, 오라클 킄라우드) 공식 서비스 로고 이미지를 정리했습니다. 2022년 2월 현재 공식 OCI 서비스 공식 로고 이미지의 최신 버전입니다. 이 페이지를 통해서 OCI 공식 로고를 찾는 수고를 덜었으면 합니다. 향후 문서화를 진행할 때 정확한 정보 전달을 위하여 이 로고를 사용하여 문서화하고 컨텐츠를 제작하겠습니다.
-관련 자료는 다음 링크로 다운로드 받으실 수 있습니다.
- 아이콘 이미지 PNG/SVG 전체 다운로드: https://docs.oracle.com/en-us/iaas/Content/Resources/Assets/OCI_Icons_PNG_SVG.zip OCI 표준 스타일 파워포인트 파일: https://docs.</description>
     </item>
     
   </channel>

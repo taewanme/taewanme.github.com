@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://taewan.kim/cloud/oci_official_icon_png_20220222/</loc>
+    <lastmod>2022-02-22T01:01:25+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://taewan.kim/cloud/oci-vs-aws/</loc>
     <lastmod>2021-11-08T01:01:25+09:00</lastmod>
   </url>
@@ -1463,11 +1468,6 @@
   </url>
   
   <url>
-    <loc>http://taewan.kim/cloud/oci_official_icon_png_20220222/</loc>
-    <lastmod>2000-02-22T01:01:25+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://taewan.kim/categories/</loc>
     <lastmod>2018-08-22T23:28:14+09:00</lastmod>
     <priority>0</priority>
@@ -1755,7 +1755,7 @@
   
   <url>
     <loc>http://taewan.kim/categories/cloud/</loc>
-    <lastmod>2021-11-08T01:01:25+09:00</lastmod>
+    <lastmod>2022-02-22T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1779,7 +1779,7 @@
   
   <url>
     <loc>http://taewan.kim/cloud/</loc>
-    <lastmod>2021-11-08T01:01:25+09:00</lastmod>
+    <lastmod>2022-02-22T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2679,7 +2679,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/oci/</loc>
-    <lastmod>2021-11-08T01:01:25+09:00</lastmod>
+    <lastmod>2022-02-22T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2769,7 +2769,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/oracle-cloud/</loc>
-    <lastmod>2021-11-08T01:01:25+09:00</lastmod>
+    <lastmod>2022-02-22T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -2889,7 +2889,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/png/</loc>
-    <lastmod>2021-10-14T01:01:25+09:00</lastmod>
+    <lastmod>2022-02-22T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -3075,7 +3075,7 @@
   
   <url>
     <loc>http://taewan.kim/tags/service-logo/</loc>
-    <lastmod>2021-10-14T01:01:25+09:00</lastmod>
+    <lastmod>2022-02-22T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -3411,7 +3411,7 @@
   
   <url>
     <loc>http://taewan.kim/</loc>
-    <lastmod>2021-11-08T01:01:25+09:00</lastmod>
+    <lastmod>2022-02-22T01:01:25+09:00</lastmod>
     <priority>0</priority>
   </url>
   
